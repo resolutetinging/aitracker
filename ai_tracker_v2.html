@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 產業動態追蹤器</title>
+<style>
+:root {
+  --bg: #eceae6;
+  --surface: #f5f3f0;
+  --card: #faf9f7;
+  --card2: #f0ede9;
+  --border: #d8d4ce;
+  --border2: #c8c4be;
+  --text: #2c2a28;
+  --text2: #4a4744;
+  --muted: #7a756f;
+  --muted2: #9e9890;
+
+  --hw: #5a7fa8;
+  --corp: #a07040;
+  --app: #4a8a6a;
+  --gloss: #7060a0;
+  --insight: #8a5060;
+
+  --core: #3a5a7a;
+  --noise: #888078;
+  --opp: #4a7060;
+  --ethic: #a05040;
+
+  --shadow: 0 1px 4px rgba(0,0,0,0.08);
+  --shadow2: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', 'PingFang TC', system-ui, sans-serif;
+  min-height: 100vh;
+  padding: 20px 24px 40px;
+  line-height: 1.5;
+}
+
+/* ── Header ── */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.header-title { font-size: 18px; font-weight: 700; color: var(--text); }
+.header-title em { font-style: normal; color: var(--hw); }
+.date-badge {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ── Tabs ── */
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.tab-btn {
+  padding: 8px 16px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tab-btn:hover { background: var(--surface); color: var(--text2); }
+.tab-btn.t-hw   { background: rgba(90,127,168,0.10); border-color: var(--hw);    color: var(--hw); }
+.tab-btn.t-corp { background: rgba(160,112,64,0.10);  border-color: var(--corp);  color: var(--corp); }
+.tab-btn.t-app  { background: rgba(74,138,106,0.10);  border-color: var(--app);   color: var(--app); }
+.tab-btn.t-gloss{ background: rgba(112,96,160,0.10);  border-color: var(--gloss); color: var(--gloss); }
+.tab-btn.t-ins  { background: rgba(138,80,96,0.10);   border-color: var(--insight);color: var(--insight); }
+
+/* ── Panels ── */
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ── Metric row ── */
+.metric-row {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.metric-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+}
+.metric-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.7px; color: var(--muted); margin-bottom: 5px; }
+.metric-value { font-size: 20px; font-weight: 700; }
+.metric-sub { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+.c-hw    { color: var(--hw); }
+.c-corp  { color: var(--corp); }
+.c-app   { color: var(--app); }
+.c-warn  { color: #a06820; }
+.c-red   { color: #aa4040; }
+
+/* ── Signal strip ── */
+.signal-strip {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.signal-pill {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pill-red    { border-color: #c05050; background: rgba(192,80,80,0.06); color: #a03030; }
+.pill-yellow { border-color: #b08030; background: rgba(176,128,48,0.06); color: #907020; }
+.pill-green  { border-color: #408060; background: rgba(64,128,96,0.06);  color: #306850; }
+
+/* ── Section heading ── */
+.sec-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── News cards ── */
+.news-grid { display: flex; flex-direction: column; gap: 14px; }
+.news-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 18px 16px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.news-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  border-radius: 10px 0 0 10px;
+}
+.hw::before   { background: var(--hw); }
+.corp::before { background: var(--corp); }
+.app::before  { background: var(--app); }
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.card-title { font-size: 14.5px; font-weight: 700; line-height: 1.45; flex: 1; color: var(--text); }
+.tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 12px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border: 1px solid;
+}
+.tag-hw   { background: rgba(90,127,168,0.10); color: var(--hw);   border-color: rgba(90,127,168,0.3); }
+.tag-corp { background: rgba(160,112,64,0.10);  color: var(--corp); border-color: rgba(160,112,64,0.3); }
+.tag-app  { background: rgba(74,138,106,0.10);  color: var(--app);  border-color: rgba(74,138,106,0.3); }
+
+.card-body { font-size: 13px; color: var(--text2); line-height: 1.65; margin-bottom: 12px; }
+
+/* ── Impact chain ── */
+.impact-box {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 10px 12px;
+}
+.impact-title { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); margin-bottom: 8px; }
+.impact-chain {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  font-size: 12px;
+}
+.cn {
+  border: 1px solid var(--border2);
+  border-radius: 5px;
+  padding: 3px 9px;
+  background: var(--card);
+  color: var(--text2);
+  white-space: nowrap;
+}
+.cn-up   { border-color: #4a8a6a; color: #3a6a50; background: rgba(74,138,106,0.08); }
+.cn-down { border-color: #aa4040; color: #883030; background: rgba(170,64,64,0.07); }
+.cn-warn { border-color: #b08030; color: #907020; background: rgba(176,128,48,0.07); }
+.chain-arr { color: var(--muted2); font-size: 13px; }
+
+/* ── CapEx bar chart ── */
+.capex-section { margin-bottom: 20px; }
+.capex-bars { display: flex; flex-direction: column; gap: 9px; }
+.capex-row { display: flex; align-items: center; gap: 10px; }
+.capex-co { font-size: 12.5px; font-weight: 600; width: 85px; flex-shrink: 0; color: var(--text2); }
+.capex-track { flex: 1; background: var(--card2); border: 1px solid var(--border); border-radius: 5px; height: 24px; overflow: hidden; }
+.capex-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 10px; font-size: 12px; font-weight: 700; color: #fff; }
+.b-amz  { background: linear-gradient(90deg,#a07040,#886030); }
+.b-goog { background: linear-gradient(90deg,#5a7fa8,#486a90); }
+.b-ms   { background: linear-gradient(90deg,#7060a0,#5a4888); }
+.b-meta { background: linear-gradient(90deg,#4a8a6a,#387058); }
+.capex-yoy { font-size: 11.5px; color: var(--app); font-weight: 700; width: 48px; text-align: right; }
+
+/* ── Glossary ── */
+.gloss-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 12px;
+}
+.gloss-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+}
+.gloss-term {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gloss);
+  margin-bottom: 3px;
+  letter-spacing: 0.3px;
+}
+.gloss-full { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+.gloss-def { font-size: 12.5px; color: var(--text2); line-height: 1.55; }
+.gloss-why {
+  margin-top: 7px;
+  font-size: 11.5px;
+  color: var(--gloss);
+  background: rgba(112,96,160,0.07);
+  border-radius: 5px;
+  padding: 5px 9px;
+  border-left: 2px solid var(--gloss);
+}
+
+/* ── Insight panel ── */
+.ins-intro {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.6;
+  box-shadow: var(--shadow);
+}
+.ins-intro strong { color: var(--insight); }
+
+.ins-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+  margin-bottom: 12px;
+}
+.ins-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.ins-title { font-size: 13.5px; font-weight: 700; flex: 1; line-height: 1.4; }
+
+/* CNO badges */
+.badge {
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 12px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+  border: 1px solid;
+}
+.b-core { background: rgba(58,90,122,0.10); color: var(--core); border-color: rgba(58,90,122,0.3); }
+.b-noise{ background: rgba(136,128,120,0.10); color: var(--noise); border-color: rgba(136,128,120,0.3); }
+.b-opp  { background: rgba(74,112,96,0.10);  color: var(--opp);  border-color: rgba(74,112,96,0.3); }
+
+.ins-chain {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.ethic-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  background: rgba(160,80,64,0.07);
+  border: 1px solid rgba(160,80,64,0.25);
+  border-radius: 6px;
+  padding: 8px 11px;
+  font-size: 12px;
+  color: var(--ethic);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.my-insight {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  background: rgba(138,80,96,0.07);
+  border: 1px solid rgba(138,80,96,0.25);
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: 12.5px;
+  color: var(--insight);
+  line-height: 1.6;
+  font-style: italic;
+}
+.mi-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+@media (max-width: 680px) {
+  .metric-row { grid-template-columns: 1fr 1fr; }
+  .gloss-grid { grid-template-columns: 1fr; }
+  body { padding: 12px 14px 30px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-title">📡 AI 產業動態 <em>每日追蹤</em></div>
+  <div class="date-badge">🗓 2026年5月5日</div>
+</header>
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tab-btn" id="btn-hw"    onclick="sw('hw')">🔩 硬體缺口</button>
+  <button class="tab-btn" id="btn-corp"  onclick="sw('corp')">💰 巨頭角力</button>
+  <button class="tab-btn" id="btn-app"   onclick="sw('app')">🤖 新興應用</button>
+  <button class="tab-btn" id="btn-gloss" onclick="sw('gloss')">📚 專有名詞</button>
+  <button class="tab-btn" id="btn-ins"   onclick="sw('ins')">🎯 個人洞察</button>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PANEL 1: 硬體缺口
+════════════════════════════════════════════ -->
+<div id="panel-hw" class="panel">
+  <div class="metric-row">
+    <div class="metric-card">
+      <div class="metric-label">HBM 供需比</div>
+      <div class="metric-value c-red">需求 3× 供應</div>
+      <div class="metric-sub">售罄至 2026 底 · 結構性缺口</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">CoWoS 月產能（2026底目標）</div>
+      <div class="metric-value c-hw">12 萬片 / 月</div>
+      <div class="metric-sub">2025年 7.5 萬片 → +60%</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">HBM 年需求成長</div>
+      <div class="metric-value c-warn">+70% YoY</div>
+      <div class="metric-sub">2025 曾達 +130%，仍超過供給增速</div>
+    </div>
+  </div>
+
+  <div class="signal-strip">
+    <div class="signal-pill pill-red">🔴 HBM 嚴重吃緊</div>
+    <div class="signal-pill pill-red">🔴 CoWoS 售罄至2026底</div>
+    <div class="signal-pill pill-yellow">🟡 台灣地緣集中風險</div>
+    <div class="signal-pill pill-yellow">🟡 散熱/供電新瓶頸浮現</div>
+  </div>
+
+  <div class="sec-title">本週重點新聞</div>
+  <div class="news-grid">
+
+    <div class="news-card hw">
+      <div class="card-top">
+        <div class="card-title">NVIDIA 獨占 TSMC CoWoS 逾 60% 產能，AMD 僅能拿剩餘份額</div>
+        <span class="tag tag-hw">封裝層</span>
+      </div>
+      <div class="card-body">
+        TSMC CoWoS 以 80% 年複合成長率擴建，但 NVIDIA 透過長期預訂鎖定了 2025–2026 年超過六成產能。AMD MI350/MI400 系列只能依靠剩餘分配，在市佔上受到結構性限制。TSMC 已將部分封裝步驟外包至 ASE、Amkor 等 OSAT 廠商以紓解壓力。
+      </div>
+      <div class="impact-box">
+        <div class="impact-title">供應鏈影響鏈</div>
+        <div class="impact-chain">
+          <span class="cn cn-up">TSMC 議價能力↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-up">ASE / Amkor 溢出訂單↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-down">AMD 市佔受限↓</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-down">非NVIDIA CSP 交期拉長↓</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-card hw">
+      <div class="card-top">
+        <div class="card-title">SK Hynix 占 HBM 市場 62%；Micron 坦承只能滿足需求的 50～66%</div>
+        <span class="tag tag-hw">記憶體層</span>
+      </div>
+      <div class="card-body">
+        三家 HBM 供應商（SK Hynix、三星、Micron）均已上調合約價，高個位數至高十幾%不等。Micron 關閉消費者品牌 Crucial，全力轉攻 HBM/AI 伺服器市場。HBM3E 每 GB 耗用晶圓量是 DDR5 的 3 倍，傳統 DRAM 被排擠，PC/手機 DDR5 也跟著吃緊，HP、Lenovo 已提示漲價。
+      </div>
+      <div class="impact-box">
+        <div class="impact-title">供應鏈影響鏈</div>
+        <div class="impact-chain">
+          <span class="cn cn-up">SK Hynix / Micron HBM ASP↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-down">NVIDIA / CSP 的 GPU BOM↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-down">消費者 DDR5 漲價↓</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-down">PC OEM 毛利壓縮↓</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-card hw">
+      <div class="card-top">
+        <div class="card-title">TSMC 轉向 CoWoS-L（LSI Bridge）解決 Blackwell/Rubin 超越光刻極限問題</div>
+        <span class="tag tag-hw">先進封裝</span>
+      </div>
+      <div class="card-body">
+        NVIDIA Blackwell 系列晶片尺寸已超越光刻機單次曝光極限（reticle limit），TSMC 從傳統 CoWoS-S（矽中介層）轉型至 CoWoS-L（本地矽橋接），通過拼接多個 chiplet 實現更大封裝。嘉義 AP7 廠及亞利桑那兩座封裝廠均以此為目標，但美國製晶片目前仍需回台完成封裝。
+      </div>
+      <div class="impact-box">
+        <div class="impact-title">供應鏈影響鏈</div>
+        <div class="impact-chain">
+          <span class="cn cn-up">TSMC 嘉義廠產能↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-up">NVIDIA Rubin 時程↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-warn">台灣地緣集中風險⚠️</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-warn">Intel 封裝服務機會窗口↑</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PANEL 2: 巨頭角力
+════════════════════════════════════════════ -->
+<div id="panel-corp" class="panel">
+  <div class="metric-row">
+    <div class="metric-card">
+      <div class="metric-label">四大 CSP 2026 資本支出</div>
+      <div class="metric-value c-corp">$7,250 億</div>
+      <div class="metric-sub">2025年 $4,100 億 → +77% YoY</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">AI 基礎設施佔比</div>
+      <div class="metric-value c-app">~75%</div>
+      <div class="metric-sub">約 $4,500 億直接流向 AI 硬體</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Google Cloud Q1 成長</div>
+      <div class="metric-value c-app">+63% YoY</div>
+      <div class="metric-sub">單季 $200 億 · 積壓訂單 $4,620 億</div>
+    </div>
+  </div>
+
+  <div class="capex-section">
+    <div class="sec-title">2026 年資本支出競賽（十億美元）</div>
+    <div class="capex-bars">
+      <div class="capex-row">
+        <div class="capex-co">Amazon</div>
+        <div class="capex-track"><div class="capex-fill b-amz" style="width:100%">$200B</div></div>
+        <div class="capex-yoy">+60%</div>
+      </div>
+      <div class="capex-row">
+        <div class="capex-co">Google</div>
+        <div class="capex-track"><div class="capex-fill b-goog" style="width:95%">$190B</div></div>
+        <div class="capex-yoy">+109%</div>
+      </div>
+      <div class="capex-row">
+        <div class="capex-co">Microsoft</div>
+        <div class="capex-track"><div class="capex-fill b-ms" style="width:95%">$190B</div></div>
+        <div class="capex-yoy">+111%</div>
+      </div>
+      <div class="capex-row">
+        <div class="capex-co">Meta</div>
+        <div class="capex-track"><div class="capex-fill b-meta" style="width:72%">$145B</div></div>
+        <div class="capex-yoy">+101%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">本週重點新聞</div>
+  <div class="news-grid">
+
+    <div class="news-card corp">
+      <div class="card-top">
+        <div class="card-title">Microsoft CapEx 上修至 $1,900 億，其中 $250 億來自記憶體元件漲價</div>
+        <span class="tag tag-corp">需求端</span>
+      </div>
+      <div class="card-body">
+        CFO Amy Hood 在 Q1 財報中揭示，追加的 $250 億並非採購更多硬體，而是同等硬體的成本膨脹。即使如此投入，「Azure 至少在 2026 年底前仍持續處於容量受限狀態」。約 2/3 支出流向 GPU/CPU，服務 Azure 客戶與 M365 Copilot。
+      </div>
+      <div class="impact-box">
+        <div class="impact-title">供應鏈影響鏈</div>
+        <div class="impact-chain">
+          <span class="cn cn-up">HBM 廠商漲價成真↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-warn">Microsoft CapEx 膨脹但產能未增⚠️</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-down">Azure 企業客戶等待時間拉長↓</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-up">NVIDIA GPU 賣家議價能力↑</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-card corp">
+      <div class="card-top">
+        <div class="card-title">Google Cloud 積壓訂單單季從 $2,400 億暴增至 $4,620 億，Q1 雲端 +63%</div>
+        <span class="tag tag-corp">需求端</span>
+      </div>
+      <div class="card-body">
+        Alphabet Q1 遠超市場預期，Gemini 3 企業版用戶季增 40%，CFO 形容公司面臨「前所未有的企業 AI 運算資源需求」。Alphabet 隨之上調全年 CapEx 指引 $50 億至 $1,800～$1,900 億，2027 年 CapEx 預計將進一步顯著增加。
+      </div>
+      <div class="impact-box">
+        <div class="impact-title">供應鏈影響鏈</div>
+        <div class="impact-chain">
+          <span class="cn cn-up">Gemini 3 企業採用↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-up">TPU v7 / Trillium 需求↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-up">Broadcom（ASIC 設計夥伴）↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-up">TSMC CoWoS 需求持續拉升↑</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-card corp">
+      <div class="card-top">
+        <div class="card-title">Meta 宣布同時部署 Broadcom 客製矽晶片 + AMD + NVIDIA，分散供應風險</div>
+        <span class="tag tag-corp">採購策略</span>
+      </div>
+      <div class="card-body">
+        Meta CFO Susan Li 指出，CapEx 上調至最高 $1,450 億中，部分反映元件漲價、部分是額外資料中心建設。Meta 同步宣布推出超過 1GW 的自研矽晶片（與 Broadcom 合作），並搭配大量 AMD 晶片補充 NVIDIA 系統——這是大型 CSP 降低單一依賴的最強烈訊號。
+      </div>
+      <div class="impact-box">
+        <div class="impact-title">供應鏈影響鏈</div>
+        <div class="impact-chain">
+          <span class="cn cn-up">Broadcom ASIC 業務↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-up">AMD MI350/MI400 出貨增加↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-down">NVIDIA 長期壟斷受挑戰↓</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-warn">TSMC：不管誰贏封裝都找我⚠️</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PANEL 3: 新興應用
+════════════════════════════════════════════ -->
+<div id="panel-app" class="panel">
+  <div class="metric-row">
+    <div class="metric-card">
+      <div class="metric-label">Agentic AI 市場 (2034E)</div>
+      <div class="metric-value c-app">$2,000 億</div>
+      <div class="metric-sub">從2024年 $52 億 → 38倍成長</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">人形機器人市場 (2030E)</div>
+      <div class="metric-value c-app">$380 億</div>
+      <div class="metric-sub">2023年不足 $10 億・商業出貨已啟動</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">全球 AI 算力倍增週期</div>
+      <div class="metric-value c-warn">每 7 個月</div>
+      <div class="metric-sub">Epoch AI 估算 · 持續加速</div>
+    </div>
+  </div>
+
+  <div class="signal-strip">
+    <div class="signal-pill pill-yellow">🟡 Agentic AI 企業採用快速起步</div>
+    <div class="signal-pill pill-yellow">🟡 人形機器人受控環境驗證中</div>
+    <div class="signal-pill pill-green">🟢 Physical AI 模型已商業發布</div>
+  </div>
+
+  <div class="sec-title">本週重點新聞</div>
+  <div class="news-grid">
+
+    <div class="news-card app">
+      <div class="card-top">
+        <div class="card-title">Boston Dynamics Atlas 在 Hyundai 喬治亞工廠啟動首次真實場域測試</div>
+        <span class="tag tag-app">Physical AI</span>
+      </div>
+      <div class="card-body">
+        2026年1月4日 CBS《60分鐘》記錄 Atlas 在現代汽車工廠的首次實地測試，Figure AI、Boston Dynamics、Unitree 已開始向倉儲與製造客戶出貨商業級機器人。NVIDIA CEO Jensen Huang 在 GTC 2026 提出「Physical AI 全棧路線圖」，以合成數據訓練機器人在真實環境大規模運作。
+      </div>
+      <div class="impact-box">
+        <div class="impact-title">供應鏈影響鏈</div>
+        <div class="impact-chain">
+          <span class="cn cn-up">NVIDIA Cosmos 仿真平台↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-up">機器人感測器廠商（視覺/雷達）↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-up">工業推論 GPU 需求↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-down">傳統工業機器手臂廠壓力↓</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-card app">
+      <div class="card-top">
+        <div class="card-title">Agentic AI：非技術人員已能以自然語言驅動 AI 自主生成、測試並部署代碼</div>
+        <span class="tag tag-app">Agentic AI</span>
+      </div>
+      <div class="card-body">
+        2026年初，領域專家無需寫程式即可透過英文描述讓 AI 代理完成完整代碼庫開發到部署。「Vibe Coding」成為產業熱詞，但 AI 生成速度遠超傳統安全審計節奏，AI 原生資安協議成為緊迫需求。企業對推論端算力（Inference Compute）需求也隨之快速攀升。
+      </div>
+      <div class="impact-box">
+        <div class="impact-title">供應鏈影響鏈</div>
+        <div class="impact-chain">
+          <span class="cn cn-up">推論晶片 / 邊緣 AI 需求↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-up">雲端 API 呼叫量（CSP 收入）↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-up">AI 原生資安市場↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-down">傳統軟體外包人力需求↓</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-card app">
+      <div class="card-top">
+        <div class="card-title">NVIDIA 發布 Alpamayo：100億參數 VLA 自動駕駛模型，具備鏈式推理</div>
+        <span class="tag tag-app">Physical AI</span>
+      </div>
+      <div class="card-body">
+        Alpamayo 是 NVIDIA 推出的 Vision-Language-Action 模型，整合 Chain-of-Thought 推理處理複雜真實駕駛場景。這標誌著 Physical AI 從單純感知邁向「理解意圖 → 情境推理 → 自我糾錯」的能力跨越，同時驗證了 NVIDIA「AI Factory」從數據飛輪到量產部署的全閉環商業模式。
+      </div>
+      <div class="impact-box">
+        <div class="impact-title">供應鏈影響鏈</div>
+        <div class="impact-chain">
+          <span class="cn cn-up">NVIDIA DRIVE 平台收入↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-up">車用 GPU / ORIN 晶片↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-up">車廠採購 NVIDIA 平台↑</span>
+          <span class="chain-arr">→</span>
+          <span class="cn cn-down">傳統 Tier-1 汽車供應商壓力↓</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PANEL 4: 專有名詞 Glossary
+════════════════════════════════════════════ -->
+<div id="panel-gloss" class="panel">
+  <div class="sec-title">固定專有名詞庫 · 持續累積，不因每日新聞更新而刪減</div>
+  <div class="gloss-grid">
+
+    <div class="gloss-card">
+      <div class="gloss-term">HBM</div>
+      <div class="gloss-full">High Bandwidth Memory　高頻寬記憶體</div>
+      <div class="gloss-def">一種堆疊式 DRAM，透過矽穿孔（TSV）垂直連接多層記憶體晶片，提供遠超傳統 GDDR 的資料傳輸頻寬。目前主要版本為 HBM3E，下一代為 HBM4。三大供應商：SK Hynix（62%）、三星、Micron。</div>
+      <div class="gloss-why">📌 為何重要：AI 模型參數龐大，GPU 每秒需搬移數 TB 資料，HBM 是算力的「血管」，供應不足直接限制 GPU 出貨量。</div>
+    </div>
+
+    <div class="gloss-card">
+      <div class="gloss-term">CoWoS</div>
+      <div class="gloss-full">Chip-on-Wafer-on-Substrate　晶片堆疊封裝</div>
+      <div class="gloss-def">TSMC 的先進封裝技術，將 GPU 邏輯晶片與 HBM 堆疊並排放在矽中介層上，實現 TB/s 等級頻寬。分為 CoWoS-S（矽中介層）與 CoWoS-L（LSI 橋接，用於更大晶片）兩種版本。</div>
+      <div class="gloss-why">📌 為何重要：沒有 CoWoS，GPU + HBM 就只是一堆獨立晶片，無法組成 AI 加速器。這是目前 AI 硬體最核心的生產瓶頸。</div>
+    </div>
+
+    <div class="gloss-card">
+      <div class="gloss-term">CSP</div>
+      <div class="gloss-full">Cloud Service Provider　雲端服務供應商</div>
+      <div class="gloss-def">提供算力、儲存、AI 服務的大型雲端公司。本追蹤器主要關注四大超大規模 CSP：Amazon（AWS）、Google（GCP）、Microsoft（Azure）、Meta。</div>
+      <div class="gloss-why">📌 為何重要：四大 CSP 的 CapEx 決策是 AI 硬體需求最大的驅動力，也是判斷產業是否仍在擴張的最直接指標。</div>
+    </div>
+
+    <div class="gloss-card">
+      <div class="gloss-term">OSAT</div>
+      <div class="gloss-full">Outsourced Semiconductor Assembly & Test　委外封裝測試</div>
+      <div class="gloss-def">專門承接半導體封裝與測試業務的公司，如 ASE（日月光）、Amkor、Powertech。在 TSMC CoWoS 嚴重供不應求的情況下，TSMC 開始將部分封裝工序外包給 OSAT 廠商。</div>
+      <div class="gloss-why">📌 為何重要：TSMC 封裝訂單滿載時，溢出訂單流向 OSAT，這些公司的業務動向是供應鏈是否緊繃的次級指標。</div>
+    </div>
+
+    <div class="gloss-card">
+      <div class="gloss-term">VLA 模型</div>
+      <div class="gloss-full">Vision-Language-Action Model　視覺語言動作模型</div>
+      <div class="gloss-def">能同時處理視覺輸入（攝影機畫面）、語言指令，並直接輸出機器人動作指令的多模態 AI 模型。NVIDIA Alpamayo 是代表性案例，專為自動駕駛設計。</div>
+      <div class="gloss-why">📌 為何重要：VLA 是讓機器人從「執行規則」進化為「理解意圖」的關鍵技術，也是 Physical AI 落地的核心。</div>
+    </div>
+
+    <div class="gloss-card">
+      <div class="gloss-term">Reticle Limit</div>
+      <div class="gloss-full">光刻極限</div>
+      <div class="gloss-def">光刻機單次曝光能印製的最大晶片面積（約 858mm²）。NVIDIA Blackwell 系列晶片已超過此限制，迫使 TSMC 改用 CoWoS-L 技術拼接多個較小的 chiplet 來組成完整晶片。</div>
+      <div class="gloss-why">📌 為何重要：說明為何 AI 晶片不能無限做大，也解釋了封裝技術為何從配角變主角。</div>
+    </div>
+
+    <div class="gloss-card">
+      <div class="gloss-term">Capex</div>
+      <div class="gloss-full">Capital Expenditure　資本支出</div>
+      <div class="gloss-def">企業用於購置或升級固定資產（如伺服器、資料中心、GPU）的支出，區別於日常營運費用（Opex）。是衡量 CSP 對 AI 投資意願最直接的財務指標。</div>
+      <div class="gloss-why">📌 為何重要：四大 CSP 2026 年合計 CapEx 達 $7,250 億，較 2025 年 +77%，這是產業仍在擴張而非收縮的最強有力證據。</div>
+    </div>
+
+    <div class="gloss-card">
+      <div class="gloss-term">Agentic AI</div>
+      <div class="gloss-full">代理型人工智慧</div>
+      <div class="gloss-def">能自主規劃、決策並執行多步驟任務的 AI 系統，不需要人類逐步下達指令。與傳統 AI 助理（被動回應）最大差異在於「主動行動」與「自我糾錯」能力。</div>
+      <div class="gloss-why">📌 為何重要：Agentic AI 是 AI 從「回答問題」到「完成工作」的轉型關鍵，也是 AI 能否真正替代人類工序的核心判斷維度。</div>
+    </div>
+
+    <div class="gloss-card">
+      <div class="gloss-term">Physical AI</div>
+      <div class="gloss-full">實體人工智慧</div>
+      <div class="gloss-def">AI 與機器人、自動駕駛等物理系統的結合。使用 VLA 模型讓機器人理解環境並做出適當動作，不再依賴預設規則。NVIDIA 的 Cosmos 平台透過合成數據訓練並部署此類系統。</div>
+      <div class="gloss-why">📌 為何重要：Physical AI 代表 AI 從數字世界滲透到製造業、物流、汽車等實體經濟，是 AI 創造真實 GDP 的重要賽道。</div>
+    </div>
+
+    <div class="gloss-card">
+      <div class="gloss-term">TSV</div>
+      <div class="gloss-full">Through-Silicon Via　矽穿孔</div>
+      <div class="gloss-def">垂直穿透矽晶片的金屬導電通道，讓多層堆疊的記憶體晶片能夠彼此高速傳輸資料。HBM 的核心製造技術之一，也是 HBM 製造複雜度遠高於傳統 DRAM 的主因。</div>
+      <div class="gloss-why">📌 為何重要：TSV 的製造良率和可靠性直接影響 HBM 產量，也是為何 HBM 每 GB 需要消耗 3 倍 DDR5 晶圓的根本原因。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PANEL 5: 個人洞察
+════════════════════════════════════════════ -->
+<div id="panel-ins" class="panel">
+  <div class="ins-intro">
+    你現在是我的<strong>首席產業情報官</strong>。以下針對今日所有新聞進行結構化分析，依據三個維度收斂：<br>
+    <strong>① Core</strong> 直接影響 AI 架構與算力的關鍵訊號 ／ <strong>② Noise</strong> 短期雜訊或次要細節 ／ <strong>③ Opportunity</strong> 與個人 AI 轉型直接相關的應用突破。
+  </div>
+
+  <div class="sec-title">逐則分析 · 供應鏈箭頭 + 道德預警 + 我的洞察</div>
+
+  <!-- 1 -->
+  <div class="ins-card">
+    <div class="ins-card-top">
+      <span class="badge b-core">CORE</span>
+      <div class="ins-title">NVIDIA 獨占 CoWoS 60%+ 產能 → AMD 被結構性限制</div>
+    </div>
+    <div class="ins-chain">
+      <span class="cn cn-up">TSMC 定價權↑</span><span class="chain-arr">→</span>
+      <span class="cn cn-up">ASE/Amkor 受益↑</span><span class="chain-arr">→</span>
+      <span class="cn cn-down">AMD 市占天花板↓</span><span class="chain-arr">→</span>
+      <span class="cn cn-down">非NVIDIA 雲端交期拉長↓</span>
+    </div>
+    <div class="my-insight"><span class="mi-icon">💡</span>封裝是隱形的護城河——NVIDIA 真正的壁壘不只是 CUDA，而是把 TSMC 最稀缺的資源提前鎖死了。</div>
+  </div>
+
+  <!-- 2 -->
+  <div class="ins-card">
+    <div class="ins-card-top">
+      <span class="badge b-core">CORE</span>
+      <div class="ins-title">SK Hynix HBM 62% 市占；Micron 只能滿足需求的 50～66%</div>
+    </div>
+    <div class="ins-chain">
+      <span class="cn cn-up">HBM 售價持續攀升↑</span><span class="chain-arr">→</span>
+      <span class="cn cn-down">CSP GPU BOM 成本↑</span><span class="chain-arr">→</span>
+      <span class="cn cn-down">PC/手機 DDR5 漲價↓</span>
+    </div>
+    <div class="my-insight"><span class="mi-icon">💡</span>記憶體短缺不只是 AI 圈的事——你的下一台電腦可能因為 HBM 的搶奪而變貴，這是 AI 基礎設施繁榮的隱藏成本。</div>
+  </div>
+
+  <!-- 3 -->
+  <div class="ins-card">
+    <div class="ins-card-top">
+      <span class="badge b-noise">NOISE</span>
+      <div class="ins-title">TSMC 從 CoWoS-S 轉向 CoWoS-L（LSI Bridge）技術細節</div>
+    </div>
+    <div class="ins-chain">
+      <span class="cn cn-warn">封裝技術升級⚠️</span><span class="chain-arr">→</span>
+      <span class="cn cn-up">嘉義 AP7 廠投產↑</span><span class="chain-arr">→</span>
+      <span class="cn cn-warn">地緣集中風險未解⚠️</span>
+    </div>
+    <div class="ethic-alert">⚠️ <strong>Ethic / Safety Alert</strong>：全球 AI 加速器的封裝幾乎全數依賴台灣單一地點，任何地緣政治衝突或天災都可能瞬間凍結全球 AI 硬體供給——這是被低估的系統性風險。</div>
+    <div class="my-insight"><span class="mi-icon">💡</span>這是技術細節，但揭示了一個戰略真相：AI 的命脈目前實體上集中在一座島嶼。</div>
+  </div>
+
+  <!-- 4 -->
+  <div class="ins-card">
+    <div class="ins-card-top">
+      <span class="badge b-core">CORE</span>
+      <div class="ins-title">Microsoft CapEx $1,900 億；$250 億來自元件漲價非新增容量</div>
+    </div>
+    <div class="ins-chain">
+      <span class="cn cn-up">HBM 廠商議價成功↑</span><span class="chain-arr">→</span>
+      <span class="cn cn-warn">Microsoft 花更多錢買等量硬體⚠️</span><span class="chain-arr">→</span>
+      <span class="cn cn-down">Azure 容量受限至2026底↓</span>
+    </div>
+    <div class="my-insight"><span class="mi-icon">💡</span>這說明 AI 產業現在是「錢多但貨少」——巨頭願意花錢，但供應鏈跟不上，真正稀缺的是實體產能而非資本。</div>
+  </div>
+
+  <!-- 5 -->
+  <div class="ins-card">
+    <div class="ins-card-top">
+      <span class="badge b-core">CORE</span>
+      <div class="ins-title">Google Cloud 積壓訂單 $4,620 億；Q1 雲端收入 +63%</div>
+    </div>
+    <div class="ins-chain">
+      <span class="cn cn-up">Gemini 3 企業版黏著度↑</span><span class="chain-arr">→</span>
+      <span class="cn cn-up">Google Cloud 市占提升↑</span><span class="chain-arr">→</span>
+      <span class="cn cn-up">AI 投資正在兌現成真實收入↑</span>
+    </div>
+    <div class="my-insight"><span class="mi-icon">💡</span>這是整個 AI 敘事最重要的驗證——錢真的回來了，不只是故事，AI 投資的 ROI 已經在財報上現形。</div>
+  </div>
+
+  <!-- 6 -->
+  <div class="ins-card">
+    <div class="ins-card-top">
+      <span class="badge b-core">CORE</span>
+      <div class="ins-title">Meta 同時部署 Broadcom 客製矽 + AMD + NVIDIA，分散供應鏈</div>
+    </div>
+    <div class="ins-chain">
+      <span class="cn cn-up">Broadcom ASIC 業務↑</span><span class="chain-arr">→</span>
+      <span class="cn cn-up">AMD 出貨量↑</span><span class="chain-arr">→</span>
+      <span class="cn cn-down">NVIDIA 壟斷地位長期受挑戰↓</span>
+    </div>
+    <div class="my-insight"><span class="mi-icon">💡</span>當最大客戶開始自研晶片，代表護城河有縫——Broadcom 可能是這波 AI 浪潮裡被最低估的受益者。</div>
+  </div>
+
+  <!-- 7 -->
+  <div class="ins-card">
+    <div class="ins-card-top">
+      <span class="badge b-opp">OPPORTUNITY</span>
+      <div class="ins-title">Boston Dynamics Atlas 首次在現代汽車工廠真實場域測試</div>
+    </div>
+    <div class="ins-chain">
+      <span class="cn cn-up">NVIDIA Cosmos 平台採用↑</span><span class="chain-arr">→</span>
+      <span class="cn cn-up">工業推論 GPU 需求↑</span><span class="chain-arr">→</span>
+      <span class="cn cn-down">傳統工業機器手臂壓力↓</span>
+    </div>
+    <div class="my-insight"><span class="mi-icon">💡</span>機器人正從實驗室走進工廠，這個時間點意味著「懂 Physical AI 應用場景」的知識本身就是稀缺資產——值得持續關注。</div>
+  </div>
+
+  <!-- 8 -->
+  <div class="ins-card">
+    <div class="ins-card-top">
+      <span class="badge b-opp">OPPORTUNITY</span>
+      <div class="ins-title">Agentic AI：非技術人員以自然語言驅動 AI 自主生成並部署代碼</div>
+    </div>
+    <div class="ins-chain">
+      <span class="cn cn-up">推論算力需求↑</span><span class="chain-arr">→</span>
+      <span class="cn cn-up">CSP API 收入↑</span><span class="chain-arr">→</span>
+      <span class="cn cn-up">AI 原生資安新市場↑</span>
+    </div>
+    <div class="ethic-alert">⚠️ <strong>Safety Alert</strong>：AI 生成代碼速度已超越傳統安全審計節奏，「Vibe Coding」在提升生產力的同時，正在製造大規模難以稽核的安全漏洞風險。</div>
+    <div class="my-insight"><span class="mi-icon">💡</span>這直接影響你——作為個人 AI 轉型者，你不需要學會寫程式，但你需要學會「出題」：定義需求、驗證輸出、識別風險，這才是人的不可替代性所在。</div>
+  </div>
+
+  <!-- 9 -->
+  <div class="ins-card">
+    <div class="ins-card-top">
+      <span class="badge b-opp">OPPORTUNITY</span>
+      <div class="ins-title">NVIDIA Alpamayo：100億參數 VLA 自動駕駛模型，具備鏈式推理</div>
+    </div>
+    <div class="ins-chain">
+      <span class="cn cn-up">NVIDIA DRIVE 平台收入↑</span><span class="chain-arr">→</span>
+      <span class="cn cn-up">車用 GPU 需求↑</span><span class="chain-arr">→</span>
+      <span class="cn cn-down">傳統 Tier-1 汽車供應商↓</span>
+    </div>
+    <div class="my-insight"><span class="mi-icon">💡</span>Alpamayo 的意義在於「推理能力進入物理世界」——AI 不再只是回答問題，而是在真實環境中做決策，這是 Physical AI 真正落地的開始。</div>
+  </div>
+
+</div>
+
+<script>
+const tabMap = {
+  hw:    { btn: 'btn-hw',    cls: 't-hw' },
+  corp:  { btn: 'btn-corp',  cls: 't-corp' },
+  app:   { btn: 'btn-app',   cls: 't-app' },
+  gloss: { btn: 'btn-gloss', cls: 't-gloss' },
+  ins:   { btn: 'btn-ins',   cls: 't-ins' },
+};
+
+function sw(tab) {
+  // Hide all panels, remove all active btn styles
+  Object.keys(tabMap).forEach(k => {
+    document.getElementById('panel-' + k).classList.remove('active');
+    const btn = document.getElementById(tabMap[k].btn);
+    btn.classList.remove('t-hw','t-corp','t-app','t-gloss','t-ins');
+  });
+  document.getElementById('panel-' + tab).classList.add('active');
+  document.getElementById(tabMap[tab].btn).classList.add(tabMap[tab].cls);
+}
+
+// Default: open hw tab
+sw('hw');
+</script>
+</body>
+</html>
