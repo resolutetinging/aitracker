@@ -7,7 +7,7 @@ API：Groq（免費）+ DuckDuckGo 新聞搜尋（免費，不需要 key）
 import json, os, smtplib, urllib.request
 from datetime import datetime, timezone, timedelta
 from groq import Groq
-from duckduckgo_search import DDGS
+from ddgs import DDGS
 
 # ── 時區設定（台灣 UTC+8）
 TW = timezone(timedelta(hours=8))
