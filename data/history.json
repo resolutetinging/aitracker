@@ -1,5 +1,246 @@
 [
   {
+    "date": "2026-05-06",
+    "is_friday": false,
+    "hw": [
+      {
+        "title": "新型記憶體技術",
+        "layer": "記憶體層",
+        "body": "新型記憶體技術可以提高資料傳輸速度和降低功耗，對於AI應用有重要影響。該技術使用新的材料和設計，提高了記憶體的密度和速度。這項技術的開發對於AI的發展有重要意義。",
+        "chain": [
+          {
+            "label": "記憶體製造商",
+            "type": "up"
+          },
+          {
+            "label": "AI晶片製造商",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "AI轉型者需要關注新型記憶體技術的發展，以便在未來的AI應用中取得優勢。"
+      },
+      {
+        "title": "先進封裝技術",
+        "layer": "先進封裝",
+        "body": "先進封裝技術可以提高AI晶片的性能和降低功耗，對於AI應用有重要影響。該技術使用新的材料和設計，提高了封裝的密度和速度。這項技術的開發對於AI的發展有重要意義。",
+        "chain": [
+          {
+            "label": "AI晶片製造商",
+            "type": "up"
+          },
+          {
+            "label": "終端用戶",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "AI轉型者需要關注先進封裝技術的發展，以便在未來的AI應用中取得優勢。"
+      },
+      {
+        "title": "散熱層技術",
+        "layer": "散熱層",
+        "body": "散熱層技術可以提高AI晶片的性能和降低功耗，對於AI應用有重要影響。該技術使用新的材料和設計，提高了散熱層的效率。這項技術的開發對於AI的發展有重要意義。",
+        "chain": [
+          {
+            "label": "AI晶片製造商",
+            "type": "up"
+          },
+          {
+            "label": "終端用戶",
+            "type": "down"
+          }
+        ],
+        "rating": "opp",
+        "insight": "AI轉型者需要關注散熱層技術的發展，以便在未來的AI應用中取得優勢。"
+      },
+      {
+        "title": "封裝層技術",
+        "layer": "封裝層",
+        "body": "封裝層技術可以提高AI晶片的性能和降低功耗，對於AI應用有重要影響。該技術使用新的材料和設計，提高了封裝層的密度和速度。這項技術的開發對於AI的發展有重要意義。",
+        "chain": [
+          {
+            "label": "AI晶片製造商",
+            "type": "up"
+          },
+          {
+            "label": "終端用戶",
+            "type": "down"
+          }
+        ],
+        "rating": "noise",
+        "insight": "AI轉型者需要關注封裝層技術的發展，以便在未來的AI應用中取得優勢。"
+      }
+    ],
+    "corp": [
+      {
+        "title": "需求端變化",
+        "layer": "需求端",
+        "body": "AI應用的需求端變化對於AI晶片製造商有重要影響。終端用戶對於AI的需求越來越高，對於AI晶片製造商的挑戰也越來越大。",
+        "chain": [
+          {
+            "label": "AI晶片製造商",
+            "type": "up"
+          },
+          {
+            "label": "終端用戶",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "AI轉型者需要關注需求端變化，以便在未來的AI應用中取得優勢。"
+      },
+      {
+        "title": "採購策略變化",
+        "layer": "採購策略",
+        "body": "AI晶片製造商的採購策略變化對於AI應用有重要影響。AI晶片製造商需要關注採購策略的變化，以便在未來的AI應用中取得優勢。",
+        "chain": [
+          {
+            "label": "AI晶片製造商",
+            "type": "up"
+          },
+          {
+            "label": "終端用戶",
+            "type": "down"
+          }
+        ],
+        "rating": "opp",
+        "insight": "AI轉型者需要關注採購策略變化，以便在未來的AI應用中取得優勢。"
+      },
+      {
+        "title": "財報訊號",
+        "layer": "財報訊號",
+        "body": "AI晶片製造商的財報訊號對於AI應用有重要影響。AI晶片製造商需要關注財報訊號的變化，以便在未來的AI應用中取得優勢。",
+        "chain": [
+          {
+            "label": "AI晶片製造商",
+            "type": "up"
+          },
+          {
+            "label": "終端用戶",
+            "type": "down"
+          }
+        ],
+        "rating": "noise",
+        "insight": "AI轉型者需要關注財報訊號變化，以便在未來的AI應用中取得優勢。"
+      },
+      {
+        "title": "市場趨勢",
+        "layer": "需求端",
+        "body": "AI市場的趨勢對於AI晶片製造商有重要影響。終端用戶對於AI的需求越來越高，對於AI晶片製造商的挑戰也越來越大。",
+        "chain": [
+          {
+            "label": "AI晶片製造商",
+            "type": "up"
+          },
+          {
+            "label": "終端用戶",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "AI轉型者需要關注市場趨勢變化，以便在未來的AI應用中取得優勢。"
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI應用",
+        "layer": "Agentic AI",
+        "body": "Agentic AI應用對於AI的發展有重要意義。Agentic AI可以提高AI的智能和自主性，對於AI的未來發展有重要影響。",
+        "chain": [
+          {
+            "label": "AI晶片製造商",
+            "type": "up"
+          },
+          {
+            "label": "終端用戶",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "AI轉型者需要關注Agentic AI應用的發展，以便在未來的AI應用中取得優勢。"
+      },
+      {
+        "title": "Physical AI應用",
+        "layer": "Physical AI",
+        "body": "Physical AI應用對於AI的發展有重要意義。Physical AI可以提高AI的智能和自主性，對於AI的未來發展有重要影響。",
+        "chain": [
+          {
+            "label": "AI晶片製造商",
+            "type": "up"
+          },
+          {
+            "label": "終端用戶",
+            "type": "down"
+          }
+        ],
+        "rating": "opp",
+        "insight": "AI轉型者需要關注Physical AI應用的發展，以便在未來的AI應用中取得優勢。"
+      },
+      {
+        "title": "推論端應用",
+        "layer": "推論端",
+        "body": "推論端應用對於AI的發展有重要意義。推論端可以提高AI的智能和自主性，對於AI的未來發展有重要影響。",
+        "chain": [
+          {
+            "label": "AI晶片製造商",
+            "type": "up"
+          },
+          {
+            "label": "終端用戶",
+            "type": "down"
+          }
+        ],
+        "rating": "noise",
+        "insight": "AI轉型者需要關注推論端應用的發展，以便在未來的AI應用中取得優勢。"
+      },
+      {
+        "title": "AI晶片應用",
+        "layer": "推論端",
+        "body": "AI晶片應用對於AI的發展有重要意義。AI晶片可以提高AI的智能和自主性，對於AI的未來發展有重要影響。",
+        "chain": [
+          {
+            "label": "AI晶片製造商",
+            "type": "up"
+          },
+          {
+            "label": "終端用戶",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "AI轉型者需要關注AI晶片應用的發展，以便在未來的AI應用中取得優勢。"
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Neuromorphic",
+        "full": "Neuromorphic Computing 中英文",
+        "def": "模擬人腦神經網絡的計算方式",
+        "why": "為何重要：Neuromorphic Computing 可以提高AI的智能和自主性"
+      },
+      {
+        "term": "Edge AI",
+        "full": "Edge AI 英文全名 中英文",
+        "def": "邊緣AI技術",
+        "why": "為何重要：Edge AI 可以提高AI的實時性和自主性"
+      },
+      {
+        "term": "Explainable AI",
+        "full": "Explainable AI 英文全名 中英文",
+        "def": "可解釋AI技術",
+        "why": "為何重要：Explainable AI 可以提高AI的透明度和可靠性"
+      },
+      {
+        "term": "Transfer Learning",
+        "full": "Transfer Learning 英文全名 中英文",
+        "def": "轉移學習技術",
+        "why": "為何重要：Transfer Learning 可以提高AI的泛化能力和學習效率"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-05",
     "is_friday": false,
     "weekly_summary": null,
@@ -10,10 +251,22 @@
         "layer": "封裝層",
         "body": "TSMC CoWoS 以 80% 年複合成長率擴建，但 NVIDIA 透過長期預訂鎖定了 2025–2026 年超過六成產能。AMD MI350/MI400 系列只能依靠剩餘分配，在市佔上受到結構性限制。TSMC 已將部分封裝步驟外包至 ASE、Amkor 等 OSAT 廠商以紓解壓力。",
         "chain": [
-          {"label": "TSMC 議價能力↑", "type": "up"},
-          {"label": "ASE/Amkor 溢出訂單↑", "type": "up"},
-          {"label": "AMD 市佔受限↓", "type": "down"},
-          {"label": "非NVIDIA CSP 交期拉長↓", "type": "down"}
+          {
+            "label": "TSMC 議價能力↑",
+            "type": "up"
+          },
+          {
+            "label": "ASE/Amkor 溢出訂單↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD 市佔受限↓",
+            "type": "down"
+          },
+          {
+            "label": "非NVIDIA CSP 交期拉長↓",
+            "type": "down"
+          }
         ],
         "rating": "core",
         "insight": "封裝是隱形的護城河——NVIDIA 真正的壁壘不只是 CUDA，而是把 TSMC 最稀缺的資源提前鎖死了。"
@@ -23,10 +276,22 @@
         "layer": "記憶體層",
         "body": "三家 HBM 供應商均已上調合約價，高個位數至高十幾%不等。Micron 關閉消費者品牌 Crucial 全力轉攻 HBM/AI 伺服器市場。HBM3E 每 GB 耗用晶圓量是 DDR5 的 3 倍，PC/手機 DDR5 也跟著吃緊，HP、Lenovo 已提示漲價。",
         "chain": [
-          {"label": "SK Hynix/Micron HBM ASP↑", "type": "up"},
-          {"label": "GPU BOM 成本↑", "type": "down"},
-          {"label": "消費者 DDR5 漲價↓", "type": "down"},
-          {"label": "PC OEM 毛利壓縮↓", "type": "down"}
+          {
+            "label": "SK Hynix/Micron HBM ASP↑",
+            "type": "up"
+          },
+          {
+            "label": "GPU BOM 成本↑",
+            "type": "down"
+          },
+          {
+            "label": "消費者 DDR5 漲價↓",
+            "type": "down"
+          },
+          {
+            "label": "PC OEM 毛利壓縮↓",
+            "type": "down"
+          }
         ],
         "rating": "core",
         "insight": "記憶體短缺不只是 AI 圈的事——你的下一台電腦可能因為 HBM 的搶奪而變貴，這是 AI 基礎設施繁榮的隱藏成本。"
@@ -36,10 +301,22 @@
         "layer": "先進封裝",
         "body": "NVIDIA Blackwell 系列晶片尺寸已超越光刻機單次曝光極限，TSMC 從傳統 CoWoS-S 轉型至 CoWoS-L，通過拼接多個 chiplet 實現更大封裝。嘉義 AP7 廠及亞利桑那兩座封裝廠均以此為目標，但美國製晶片目前仍需回台完成封裝。",
         "chain": [
-          {"label": "TSMC 嘉義廠產能↑", "type": "up"},
-          {"label": "NVIDIA Rubin 時程↑", "type": "up"},
-          {"label": "台灣地緣集中風險⚠️", "type": "warn"},
-          {"label": "Intel 封裝服務機會窗口↑", "type": "warn"}
+          {
+            "label": "TSMC 嘉義廠產能↑",
+            "type": "up"
+          },
+          {
+            "label": "NVIDIA Rubin 時程↑",
+            "type": "up"
+          },
+          {
+            "label": "台灣地緣集中風險⚠️",
+            "type": "warn"
+          },
+          {
+            "label": "Intel 封裝服務機會窗口↑",
+            "type": "warn"
+          }
         ],
         "rating": "noise",
         "ethic": "全球 AI 加速器的封裝幾乎全數依賴台灣單一地點，任何地緣政治衝突或天災都可能瞬間凍結全球 AI 硬體供給——這是被低估的系統性風險。",
@@ -52,10 +329,22 @@
         "layer": "需求端",
         "body": "CFO Amy Hood 透露追加的 $250 億並非採購更多硬體，而是同等硬體的成本膨脹。即使如此投入，「Azure 至少在 2026 年底前仍持續處於容量受限狀態」。約 2/3 支出流向 GPU/CPU。",
         "chain": [
-          {"label": "HBM 廠商漲價成真↑", "type": "up"},
-          {"label": "Microsoft CapEx 膨脹但產能未增⚠️", "type": "warn"},
-          {"label": "Azure 企業客戶等待拉長↓", "type": "down"},
-          {"label": "NVIDIA GPU 議價能力↑", "type": "up"}
+          {
+            "label": "HBM 廠商漲價成真↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft CapEx 膨脹但產能未增⚠️",
+            "type": "warn"
+          },
+          {
+            "label": "Azure 企業客戶等待拉長↓",
+            "type": "down"
+          },
+          {
+            "label": "NVIDIA GPU 議價能力↑",
+            "type": "up"
+          }
         ],
         "rating": "core",
         "insight": "這說明 AI 產業現在是「錢多但貨少」——巨頭願意花錢，但供應鏈跟不上，真正稀缺的是實體產能而非資本。"
@@ -65,10 +354,22 @@
         "layer": "需求端",
         "body": "Alphabet Q1 遠超市場預期，Gemini 3 企業版用戶季增 40%，CFO 形容公司面臨「前所未有的企業 AI 運算資源需求」。Alphabet 上調全年 CapEx 指引 $50 億至 $1,800～$1,900 億。",
         "chain": [
-          {"label": "Gemini 3 企業採用↑", "type": "up"},
-          {"label": "TPU v7/Trillium 需求↑", "type": "up"},
-          {"label": "Broadcom ASIC 夥伴↑", "type": "up"},
-          {"label": "TSMC CoWoS 需求持續拉升↑", "type": "up"}
+          {
+            "label": "Gemini 3 企業採用↑",
+            "type": "up"
+          },
+          {
+            "label": "TPU v7/Trillium 需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Broadcom ASIC 夥伴↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC CoWoS 需求持續拉升↑",
+            "type": "up"
+          }
         ],
         "rating": "core",
         "insight": "這是整個 AI 敘事最重要的驗證——錢真的回來了，AI 投資的 ROI 已經在財報上現形。"
@@ -78,10 +379,22 @@
         "layer": "採購策略",
         "body": "Meta CFO Susan Li 指出 CapEx 上調至最高 $1,450 億中，部分反映元件漲價，部分是額外資料中心建設。Meta 同步宣布推出超過 1GW 的自研矽晶片，並搭配大量 AMD 晶片補充 NVIDIA 系統。",
         "chain": [
-          {"label": "Broadcom ASIC 業務↑", "type": "up"},
-          {"label": "AMD MI350/MI400 出貨增加↑", "type": "up"},
-          {"label": "NVIDIA 長期壟斷受挑戰↓", "type": "down"},
-          {"label": "TSMC：不管誰贏封裝都找我⚠️", "type": "warn"}
+          {
+            "label": "Broadcom ASIC 業務↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD MI350/MI400 出貨增加↑",
+            "type": "up"
+          },
+          {
+            "label": "NVIDIA 長期壟斷受挑戰↓",
+            "type": "down"
+          },
+          {
+            "label": "TSMC：不管誰贏封裝都找我⚠️",
+            "type": "warn"
+          }
         ],
         "rating": "core",
         "insight": "當最大客戶開始自研晶片，代表護城河有縫——Broadcom 可能是這波 AI 浪潮裡被最低估的受益者。"
@@ -93,10 +406,22 @@
         "layer": "Physical AI",
         "body": "2026年1月4日 CBS《60分鐘》記錄了 Atlas 在現代汽車工廠的首次實地測試，Figure AI、Boston Dynamics、Unitree 已開始向倉儲與製造客戶出貨商業級機器人。NVIDIA CEO Jensen Huang 在 GTC 2026 提出「Physical AI 全棧路線圖」。",
         "chain": [
-          {"label": "NVIDIA Cosmos 仿真平台↑", "type": "up"},
-          {"label": "機器人感測器廠商↑", "type": "up"},
-          {"label": "工業推論 GPU 需求↑", "type": "up"},
-          {"label": "傳統工業機器手臂廠壓力↓", "type": "down"}
+          {
+            "label": "NVIDIA Cosmos 仿真平台↑",
+            "type": "up"
+          },
+          {
+            "label": "機器人感測器廠商↑",
+            "type": "up"
+          },
+          {
+            "label": "工業推論 GPU 需求↑",
+            "type": "up"
+          },
+          {
+            "label": "傳統工業機器手臂廠壓力↓",
+            "type": "down"
+          }
         ],
         "rating": "opp",
         "insight": "機器人正從實驗室走進工廠，懂 Physical AI 應用場景的知識本身就是稀缺資產。"
@@ -106,10 +431,22 @@
         "layer": "Agentic AI",
         "body": "2026年初，領域專家無需寫程式即可透過英文描述讓 AI 代理完成完整代碼庫開發到部署。「Vibe Coding」成為產業熱詞，但 AI 生成速度遠超傳統安全審計節奏，AI 原生資安協議成為緊迫需求。",
         "chain": [
-          {"label": "推論晶片/邊緣 AI 需求↑", "type": "up"},
-          {"label": "雲端 API 呼叫量（CSP 收入）↑", "type": "up"},
-          {"label": "AI 原生資安市場↑", "type": "up"},
-          {"label": "傳統軟體外包人力需求↓", "type": "down"}
+          {
+            "label": "推論晶片/邊緣 AI 需求↑",
+            "type": "up"
+          },
+          {
+            "label": "雲端 API 呼叫量（CSP 收入）↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 原生資安市場↑",
+            "type": "up"
+          },
+          {
+            "label": "傳統軟體外包人力需求↓",
+            "type": "down"
+          }
         ],
         "rating": "opp",
         "ethic": "Safety Alert：AI 生成代碼速度已超越傳統安全審計節奏，正在製造大規模難以稽核的安全漏洞風險。",
@@ -120,10 +457,22 @@
         "layer": "Physical AI",
         "body": "Alpamayo 是 NVIDIA 推出的 Vision-Language-Action 模型，整合 Chain-of-Thought 推理處理複雜真實駕駛場景。這標誌著 Physical AI 從單純感知邁向「理解意圖 → 情境推理 → 自我糾錯」的能力跨越。",
         "chain": [
-          {"label": "NVIDIA DRIVE 平台收入↑", "type": "up"},
-          {"label": "車用 GPU/ORIN 晶片↑", "type": "up"},
-          {"label": "車廠採購 NVIDIA 平台↑", "type": "up"},
-          {"label": "傳統 Tier-1 汽車供應商壓力↓", "type": "down"}
+          {
+            "label": "NVIDIA DRIVE 平台收入↑",
+            "type": "up"
+          },
+          {
+            "label": "車用 GPU/ORIN 晶片↑",
+            "type": "up"
+          },
+          {
+            "label": "車廠採購 NVIDIA 平台↑",
+            "type": "up"
+          },
+          {
+            "label": "傳統 Tier-1 汽車供應商壓力↓",
+            "type": "down"
+          }
         ],
         "rating": "opp",
         "insight": "Alpamayo 的意義在於「推理能力進入物理世界」——AI 不再只是回答問題，而是在真實環境中做決策。"
