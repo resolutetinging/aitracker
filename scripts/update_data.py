@@ -31,7 +31,7 @@ def fetch_news():
     all_snippets = []
     for label, q in queries:
         try:
-            results = ddgs.news(keywords=q, max_results=6, timelimit="w")
+            rresults = ddgs.news(q, max_results=6, timelimit="w")
             for r in results:
                 snippet = f"[{label}] {r.get('title','')} — {r.get('body','')[:300]}"
                 all_snippets.append(snippet)
