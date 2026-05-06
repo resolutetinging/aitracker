@@ -21,7 +21,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install groq duckduckgo-search
+        run: pip install groq ddgs
 
       - name: Run daily update
         env:
