@@ -6,236 +6,226 @@
       {
         "title": "新型記憶體技術",
         "layer": "記憶體層",
-        "body": "新型記憶體技術可以提高存儲容量和傳輸速度，對於AI應用有重要意義。該技術使用新的材料和結構設計，實現了更高的存儲密度和更低的功耗。",
+        "body": "新型記憶體技術的開發可能會改善 AI 計算效率，減少能耗。這項技術預計在未來幾年內推出。相關公司正在積極研發中。",
         "chain": [
           {
             "label": "記憶體製造商",
             "type": "up"
           },
           {
-            "label": "AI晶片製造商",
+            "label": "AI 計算平台",
             "type": "down"
           }
         ],
         "rating": "core",
-        "insight": "AI轉型者需要關注新型記憶體技術的發展，以便在未來的AI應用中取得優勢"
+        "insight": "AI 計算效率的提升對於個人 AI 轉型者來說是非常重要的"
       },
       {
         "title": "先進封裝技術",
         "layer": "先進封裝",
-        "body": "先進封裝技術可以提高AI晶片的性能和可靠性，對於AI應用有重要意義。該技術使用新的封裝材料和結構設計，實現了更高的封裝密度和更低的功耗。",
+        "body": "先進封裝技術的進步可以提高芯片的性能和可靠性。這項技術預計在近期內得到廣泛應用。相關公司正在積極推動中。",
         "chain": [
           {
-            "label": "AI晶片製造商",
+            "label": "芯片製造商",
             "type": "up"
           },
           {
-            "label": "終端用戶",
+            "label": "電子設備製造商",
             "type": "down"
           }
         ],
-        "rating": "core",
-        "insight": "AI轉型者需要關注先進封裝技術的發展，以便在未來的AI應用中取得優勢"
+        "rating": "opp",
+        "insight": "先進封裝技術的應用可以為個人 AI 轉型者帶來新的機會"
       },
       {
         "title": "散熱層技術",
         "layer": "散熱層",
-        "body": "散熱層技術可以提高AI晶片的性能和可靠性，對於AI應用有重要意義。該技術使用新的散熱材料和結構設計，實現了更高的散熱效率和更低的功耗。",
+        "body": "散熱層技術的改進可以提高電子設備的性能和壽命。這項技術預計在未來幾年內得到廣泛應用。相關公司正在積極研發中。",
         "chain": [
           {
-            "label": "AI晶片製造商",
+            "label": "電子設備製造商",
             "type": "up"
           },
           {
-            "label": "終端用戶",
-            "type": "down"
-          }
-        ],
-        "rating": "opp",
-        "insight": "AI轉型者需要關注散熱層技術的發展，以便在未來的AI應用中取得優勢"
-      },
-      {
-        "title": "封裝層技術",
-        "layer": "封裝層",
-        "body": "封裝層技術可以提高AI晶片的性能和可靠性，對於AI應用有重要意義。該技術使用新的封裝材料和結構設計，實現了更高的封裝密度和更低的功耗。",
-        "chain": [
-          {
-            "label": "AI晶片製造商",
-            "type": "up"
-          },
-          {
-            "label": "終端用戶",
+            "label": "消費者",
             "type": "down"
           }
         ],
         "rating": "noise",
-        "insight": "AI轉型者需要關注封裝層技術的發展，以便在未來的AI應用中取得優勢"
-      }
-    ],
-    "corp": [
+        "insight": "散熱層技術的改進對於個人 AI 轉型者來說是有一定影響的"
+      },
       {
-        "title": "需求端",
-        "layer": "需求端",
-        "body": "AI應用需求不斷增長，對於AI晶片製造商有重要意義。該需求驅動了AI晶片製造商的產能擴張和技術研發。",
+        "title": "封裝層技術",
+        "layer": "封裝層",
+        "body": "封裝層技術的進步可以提高芯片的性能和可靠性。這項技術預計在近期內得到廣泛應用。相關公司正在積極推動中。",
         "chain": [
           {
-            "label": "AI晶片製造商",
+            "label": "芯片製造商",
             "type": "up"
           },
           {
-            "label": "終端用戶",
+            "label": "電子設備製造商",
             "type": "down"
           }
         ],
         "rating": "core",
-        "insight": "AI轉型者需要關注需求端的發展，以便在未來的AI應用中取得優勢"
-      },
+        "insight": "封裝層技術的應用可以為個人 AI 轉型者帶來新的機會",
+        "ethic": "需要考慮環境影響和資源利用"
+      }
+    ],
+    "corp": [
       {
-        "title": "採購策略",
-        "layer": "採購策略",
-        "body": "AI晶片製造商需要採用有效的採購策略，以確保原材料和零部件的供應。該策略對於AI晶片製造商的產能和成本有重要意義。",
-        "chain": [
-          {
-            "label": "AI晶片製造商",
-            "type": "up"
-          },
-          {
-            "label": "供應商",
-            "type": "down"
-          }
-        ],
-        "rating": "opp",
-        "insight": "AI轉型者需要關注採購策略的發展，以便在未來的AI應用中取得優勢"
-      },
-      {
-        "title": "財報訊號",
+        "title": "公司財報",
         "layer": "財報訊號",
-        "body": "AI晶片製造商的財報訊號對於投資者和分析師有重要意義。該訊號可以反映AI晶片製造商的財務狀況和未來的發展前景。",
+        "body": "某公司最近發布的財報顯示其在 AI 相關領域的投資增加。這可能是公司未來發展的重要方向。",
         "chain": [
           {
             "label": "投資者",
             "type": "up"
           },
           {
-            "label": "AI晶片製造商",
-            "type": "down"
-          }
-        ],
-        "rating": "noise",
-        "insight": "AI轉型者需要關注財報訊號的發展，以便在未來的AI應用中取得優勢"
-      },
-      {
-        "title": "產能擴張",
-        "layer": "需求端",
-        "body": "AI晶片製造商需要進行產能擴張，以滿足不斷增長的AI應用需求。該產能擴張對於AI晶片製造商的未來發展有重要意義。",
-        "chain": [
-          {
-            "label": "AI晶片製造商",
-            "type": "up"
-          },
-          {
-            "label": "終端用戶",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "AI轉型者需要關注產能擴張的發展，以便在未來的AI應用中取得優勢"
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI",
-        "layer": "Agentic AI",
-        "body": "Agentic AI是一種新的AI應用，對於AI轉型者有重要意義。該應用可以提高AI的智能和自主性，對於未來的AI發展有重要意義。",
-        "chain": [
-          {
-            "label": "AI轉型者",
-            "type": "up"
-          },
-          {
-            "label": "終端用戶",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "AI轉型者需要關注Agentic AI的發展，以便在未來的AI應用中取得優勢"
-      },
-      {
-        "title": "Physical AI",
-        "layer": "Physical AI",
-        "body": "Physical AI是一種新的AI應用，對於AI轉型者有重要意義。該應用可以提高AI的智能和自主性，對於未來的AI發展有重要意義。",
-        "chain": [
-          {
-            "label": "AI轉型者",
-            "type": "up"
-          },
-          {
-            "label": "終端用戶",
+            "label": "公司股價",
             "type": "down"
           }
         ],
         "rating": "opp",
-        "insight": "AI轉型者需要關注Physical AI的發展，以便在未來的AI應用中取得優勢"
+        "insight": "公司在 AI 相關領域的投資增加可能會帶來新的機會"
       },
       {
-        "title": "推論端",
-        "layer": "推論端",
-        "body": "推論端是AI應用的關鍵部分，對於AI轉型者有重要意義。該部分可以提高AI的智能和自主性，對於未來的AI發展有重要意義。",
+        "title": "公司採購策略",
+        "layer": "採購策略",
+        "body": "某公司最近改變了其採購策略，開始注重於 AI 相關技術的採購。這可能是公司未來發展的重要方向。",
         "chain": [
           {
-            "label": "AI轉型者",
+            "label": "供應商",
             "type": "up"
           },
           {
-            "label": "終端用戶",
-            "type": "down"
-          }
-        ],
-        "rating": "noise",
-        "insight": "AI轉型者需要關注推論端的發展，以便在未來的AI應用中取得優勢"
-      },
-      {
-        "title": "AI晶片",
-        "layer": "Agentic AI",
-        "body": "AI晶片是AI應用的關鍵部分，對於AI轉型者有重要意義。該晶片可以提高AI的智能和自主性，對於未來的AI發展有重要意義。",
-        "chain": [
-          {
-            "label": "AI轉型者",
-            "type": "up"
-          },
-          {
-            "label": "終端用戶",
+            "label": "公司採購部門",
             "type": "down"
           }
         ],
         "rating": "core",
-        "insight": "AI轉型者需要關注AI晶片的發展，以便在未來的AI應用中取得優勢"
+        "insight": "公司在 AI 相關技術的採購增加可能會帶來新的機會",
+        "ethic": "需要考慮供應鏈的可靠性和安全性"
+      },
+      {
+        "title": "公司需求端",
+        "layer": "需求端",
+        "body": "某公司最近增加了其在 AI 相關領域的需求。這可能是公司未來發展的重要方向。",
+        "chain": [
+          {
+            "label": "公司業務部門",
+            "type": "up"
+          },
+          {
+            "label": "公司 IT 部門",
+            "type": "down"
+          }
+        ],
+        "rating": "noise",
+        "insight": "公司在 AI 相關領域的需求增加可能會帶來新的機會"
+      },
+      {
+        "title": "公司投資計劃",
+        "layer": "財報訊號",
+        "body": "某公司最近發布了其在 AI 相關領域的投資計劃。這可能是公司未來發展的重要方向。",
+        "chain": [
+          {
+            "label": "投資者",
+            "type": "up"
+          },
+          {
+            "label": "公司股價",
+            "type": "down"
+          }
+        ],
+        "rating": "opp",
+        "insight": "公司在 AI 相關領域的投資增加可能會帶來新的機會"
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI 應用",
+        "layer": "Agentic AI",
+        "body": "Agentic AI 技術的應用可以提高 AI 系統的智能和自主性。這項技術預計在未來幾年內得到廣泛應用。",
+        "chain": [
+          {
+            "label": "AI 研發人員",
+            "type": "up"
+          },
+          {
+            "label": "AI 應用場景",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "Agentic AI 技術的應用可以為個人 AI 轉型者帶來新的機會"
+      },
+      {
+        "title": "Physical AI 應用",
+        "layer": "Physical AI",
+        "body": "Physical AI 技術的應用可以提高 AI 系統的物理互動能力。這項技術預計在未來幾年內得到廣泛應用。",
+        "chain": [
+          {
+            "label": "AI 研發人員",
+            "type": "up"
+          },
+          {
+            "label": "AI 應用場景",
+            "type": "down"
+          }
+        ],
+        "rating": "opp",
+        "insight": "Physical AI 技術的應用可以為個人 AI 轉型者帶來新的機會"
+      },
+      {
+        "title": "推論端技術",
+        "layer": "推論端",
+        "body": "推論端技術的進步可以提高 AI 系統的推論能力。這項技術預計在近期內得到廣泛應用。",
+        "chain": [
+          {
+            "label": "AI 研發人員",
+            "type": "up"
+          },
+          {
+            "label": "AI 應用場景",
+            "type": "down"
+          }
+        ],
+        "rating": "noise",
+        "insight": "推論端技術的進步對於個人 AI 轉型者來說是有一定影響的"
+      },
+      {
+        "title": "AI 計算平台",
+        "layer": "推論端",
+        "body": "AI 計算平台的進步可以提高 AI 系統的計算效率。這項技術預計在近期內得到廣泛應用。",
+        "chain": [
+          {
+            "label": "AI 研發人員",
+            "type": "up"
+          },
+          {
+            "label": "AI 應用場景",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "AI 計算平台的進步可以為個人 AI 轉型者帶來新的機會"
       }
     ],
     "glossary_new": [
       {
-        "term": "Neuromorphic",
-        "full": "Neuromorphic Computing 中英文",
-        "def": "模擬人工神經網路的計算方法",
-        "why": "可以提高AI的智能和自主性"
+        "term": "Neuromorphic Chip",
+        "full": "Neuromorphic Chip　神經形態芯片",
+        "def": "一種模擬人腦神經網絡的芯片",
+        "why": "可以提高 AI 系統的智能和自主性"
       },
       {
-        "term": "Swarm Intelligence",
-        "full": "Swarm Intelligence 中英文",
-        "def": "群體智能的計算方法",
-        "why": "可以提高AI的智能和自主性"
-      },
-      {
-        "term": "Explainable AI",
-        "full": "Explainable AI 中英文",
-        "def": "可解釋的AI算法",
-        "why": "可以提高AI的可靠性和安全性"
-      },
-      {
-        "term": "Transfer Learning",
-        "full": "Transfer Learning 中英文",
-        "def": "轉移學習的計算方法",
-        "why": "可以提高AI的智能和自主性"
+        "term": "Edge AI",
+        "full": "Edge AI　邊緣 AI",
+        "def": "一種在邊緣設備上運行的 AI 技術",
+        "why": "可以提高 AI 系統的實時性和安全性"
       }
     ],
     "weekly_summary": null
