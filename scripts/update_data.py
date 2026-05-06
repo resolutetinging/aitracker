@@ -158,7 +158,7 @@ def send_email(data):
                 f'padding:10px 14px;margin:8px 0;border-radius:4px;">'
                 f'<b>{item["title"]}</b><br>'
                 f'<span style="color:#7a756f;font-size:13px;">{item["body"]}</span><br>'
-                f'<i style="color:#8a5060;font-size:12px;">💡 {item["insight"]}</i></div>')
+                f'<span style="color:#8a5060;font-size:12px;">💡 {item["insight"]}</span></div>')
 
     weekly = (f'<h3 style="color:#a07040;">📊 本週摘要</h3>'
               f'<div style="background:#faf9f7;padding:14px;border-radius:4px;font-size:13px;">'
