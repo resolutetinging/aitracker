@@ -223,8 +223,11 @@ def push_notion(data):
         data=json.dumps(payload).encode(),
         headers={"Authorization": f"Bearer {token}","Content-Type":"application/json","Notion-Version":"2022-06-28"},
         method="POST")
-    with urllib.request.urlopen(req) as res:
-        print(f"  → Notion 頁面已建立：{json.loads(res.read())['id']}")
+    try:
+        with urllib.request.urlopen(req) as res:
+            print(f"  → Notion 頁面已建立：{json.loads(res.read())['id']}")
+    except Exception as e:
+        print(f"  → Notion 錯誤：{e}")
 
 
 # ══════════════════════════════════════════════════════════════════
