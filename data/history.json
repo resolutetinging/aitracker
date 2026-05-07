@@ -1,5 +1,113 @@
 [
   {
+    "date": "2026-05-07",
+    "is_friday": false,
+    "hw": [
+      {
+        "title": "Samsung 將在本季度出貨首批 HBM4E 記憶體樣品",
+        "layer": "記憶體層",
+        "body": "Samsung Electronics 計劃在本季度末前向客戶出貨首批 HBM4E 記憶體樣品。這項技術的推出可能會改變 AI 記憶體的供應鏈。HBM4E 記憶體的出貨將為 AI 應用提供更快的記憶體存取速度。Samsung 的這一舉動可能會對 Nvidia 和 AMD 等公司的 AI 記憶體供應產生影響。",
+        "chain": [
+          {
+            "label": "Nvidia ↓",
+            "type": "down"
+          },
+          {
+            "label": "AMD ↓",
+            "type": "down"
+          },
+          {
+            "label": "Samsung ↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著更快的記憶體存取速度和更低的延遲，從而提高 AI 應用的效率。",
+        "source_label": "Reuters",
+        "source": "https://www.reuters.com/..."
+      },
+      {
+        "title": "MediaTek 聘請前 TSMC 高管加強 AI 晶片封裝",
+        "layer": "先進封裝",
+        "body": "MediaTek 聘請前 TSMC 高管 Douglas Yu 加強公司的 AI 晶片封裝能力。這一舉動可能會提高 MediaTek 在 AI 晶片市場的競爭力。MediaTek 的 AI 晶片封裝技術可能會對其他公司的 AI 晶片供應產生影響。",
+        "chain": [
+          {
+            "label": "TSMC ↓",
+            "type": "down"
+          },
+          {
+            "label": "MediaTek ↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著更強大的 AI 晶片封裝能力和更高的晶片性能。",
+        "source_label": "Reuters",
+        "source": "https://www.reuters.com/..."
+      }
+    ],
+    "corp": [
+      {
+        "title": "Google、Microsoft、Meta 和 Amazon 的資本支出將達 7250 億美元",
+        "layer": "需求端",
+        "body": "Google、Microsoft、Meta 和 Amazon 的資本支出將在 2026 年達到 7250 億美元。這一數字遠高於之前的預測。這些公司的資本支出可能會對 AI 產業的發展產生重大影響。",
+        "chain": [
+          {
+            "label": "Google ↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft ↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta ↑",
+            "type": "up"
+          },
+          {
+            "label": "Amazon ↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著更多的資源將被投入到 AI 產業，從而推動 AI 技術的發展。",
+        "source_label": "Reuters",
+        "source": "https://www.reuters.com/..."
+      }
+    ],
+    "app": [
+      {
+        "title": "Google 的 AI 搜索摘要將引用 Reddit",
+        "layer": "推論端",
+        "body": "Google 的 AI 搜索摘要將開始引用 Reddit 的內容。這一功能可能會改善用戶的搜索體驗。Google 的 AI 搜索摘要可能會對其他搜索引擎的搜索結果產生影響。",
+        "chain": [
+          {
+            "label": "Google ↑",
+            "type": "up"
+          },
+          {
+            "label": "Reddit ↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著更好的搜索體驗和更豐富的搜索結果。",
+        "source_label": "Reuters",
+        "source": "https://www.reuters.com/..."
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "HBM4E",
+        "full": "High-Bandwidth Memory 4E",
+        "def": "HBM4E 是一種高頻寬記憶體技術，用于提高 AI 應用的記憶體存取速度。",
+        "why": "HBM4E 對 AI 產業重要，因為它可以提高 AI 應用的效率和性能。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-06",
     "is_friday": false,
     "hw": [
