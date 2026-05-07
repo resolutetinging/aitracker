@@ -3,7 +3,7 @@ name: 📡 Daily AI Tracker Update
 on:
   schedule:
     - cron: '0 0 * * *'   # 00:00 UTC = 台灣時間 08:00
-  workflow_dispatch:        # 允許手動觸發
+  workflow_dispatch:
 
 jobs:
   update:
@@ -36,5 +36,5 @@ jobs:
       - name: Commit updated data
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🤖 Auto-update AI tracker data"
+          commit_message: "🤖 Auto-update ${{ env.TODAY }}"
           file_pattern: 'data/history.json'
