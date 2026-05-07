@@ -4,104 +4,108 @@
     "is_friday": false,
     "hw": [
       {
-        "title": "Samsung 將在本季度出貨首批 HBM4E 記憶體樣品",
-        "layer": "記憶體層",
-        "body": "Samsung Electronics 計劃在本季度末前向客戶出貨首批 HBM4E 記憶體樣品。這項技術的推出可能會改變 AI 記憶體的供應鏈。HBM4E 記憶體的出貨將為 AI 應用提供更快的記憶體存取速度。Samsung 的這一舉動可能會對 Nvidia 和 AMD 等公司的 AI 記憶體供應產生影響。",
+        "title": "AMD 首季 2026 年收益：數據中心銷售標誌著 AI 采購週期的轉變",
+        "layer": "封裝層",
+        "body": "AMD 的 Q1 FY2026 收益結果顯示數據中心收入和 EPS 增長。公司的數據中心銷售額增加了 55%。AMD 的 AI 業務正在迅速增長。公司的 CEO 表示，AI 將是未來數據中心業務的主要驅動力。",
         "chain": [
           {
-            "label": "Nvidia ↓",
-            "type": "down"
-          },
-          {
-            "label": "AMD ↓",
-            "type": "down"
-          },
-          {
-            "label": "Samsung ↑",
+            "label": "AMD 的數據中心銷售額增加",
             "type": "up"
+          },
+          {
+            "label": "Nvidia 的市場份額下降",
+            "type": "down"
+          },
+          {
+            "label": "AI 業務的未來發展",
+            "type": "warn"
           }
         ],
         "rating": "core",
-        "insight": "這對 AI 轉型者意味著更快的記憶體存取速度和更低的延遲，從而提高 AI 應用的效率。",
+        "insight": "這對 AI 轉型者意味著 AMD 的數據中心業務正在迅速增長，可能會帶來新的機會。",
         "source_label": "Reuters",
-        "source": "https://www.reuters.com/..."
+        "source": "https://www.reuters.com/article/amd-earnings-idUSKCN2D50K9"
       },
       {
-        "title": "MediaTek 聘請前 TSMC 高管加強 AI 晶片封裝",
+        "title": "Intel 推出 EMIB-T 技術以填補 AI 芯片封裝的空白",
         "layer": "先進封裝",
-        "body": "MediaTek 聘請前 TSMC 高管 Douglas Yu 加強公司的 AI 晶片封裝能力。這一舉動可能會提高 MediaTek 在 AI 晶片市場的競爭力。MediaTek 的 AI 晶片封裝技術可能會對其他公司的 AI 晶片供應產生影響。",
+        "body": "Intel 推出 EMIB-T 技術，以填補 AI 芯片封裝的空白。該技術可以提供更高的封裝密度和更低的成本。Intel 的 CEO 表示，EMIB-T 將是未來 AI 芯片封裝的主要技術。",
         "chain": [
           {
-            "label": "TSMC ↓",
+            "label": "Intel 的 EMIB-T 技術",
+            "type": "up"
+          },
+          {
+            "label": "TSMC 的 CoWoS 技術",
             "type": "down"
           },
           {
-            "label": "MediaTek ↑",
-            "type": "up"
+            "label": "AI 芯片封裝的未來發展",
+            "type": "warn"
           }
         ],
         "rating": "core",
-        "insight": "這對 AI 轉型者意味著更強大的 AI 晶片封裝能力和更高的晶片性能。",
-        "source_label": "Reuters",
-        "source": "https://www.reuters.com/..."
+        "insight": "這對 AI 轉型者意味著 Intel 的 EMIB-T 技術可能會帶來新的機會和挑戰。",
+        "source_label": "Intel",
+        "source": "https://newsroom.intel.com/news/intel-emib-t-technology/"
       }
     ],
     "corp": [
       {
-        "title": "Google、Microsoft、Meta 和 Amazon 的資本支出將達 7250 億美元",
+        "title": "Google、Microsoft、Meta 和 Amazon 的資本支出預計將達 7250 億美元",
         "layer": "需求端",
-        "body": "Google、Microsoft、Meta 和 Amazon 的資本支出將在 2026 年達到 7250 億美元。這一數字遠高於之前的預測。這些公司的資本支出可能會對 AI 產業的發展產生重大影響。",
+        "body": "Google、Microsoft、Meta 和 Amazon 的資本支出預計將達 7250 億美元。這些公司正在大量投資 AI 和雲計算技術。Google 的 CEO 表示，公司的資本支出將繼續增加，以支持 AI 和雲計算的發展。",
         "chain": [
           {
-            "label": "Google ↑",
+            "label": "Google 的資本支出增加",
             "type": "up"
           },
           {
-            "label": "Microsoft ↑",
-            "type": "up"
+            "label": "Meta 的市場份額下降",
+            "type": "down"
           },
           {
-            "label": "Meta ↑",
-            "type": "up"
-          },
-          {
-            "label": "Amazon ↑",
-            "type": "up"
+            "label": "AI 和雲計算的未來發展",
+            "type": "warn"
           }
         ],
         "rating": "core",
-        "insight": "這對 AI 轉型者意味著更多的資源將被投入到 AI 產業，從而推動 AI 技術的發展。",
+        "insight": "這對 AI 轉型者意味著 Google、Microsoft、Meta 和 Amazon 的資本支出將繼續增加，可能會帶來新的機會和挑戰。",
         "source_label": "Reuters",
-        "source": "https://www.reuters.com/..."
+        "source": "https://www.reuters.com/article/google-microsoft-meta-amazon-idUSKCN2D50K9"
       }
     ],
     "app": [
       {
-        "title": "Google 的 AI 搜索摘要將引用 Reddit",
+        "title": "OpenAI 的 CTO 表示 CEO Sam Altman 對 AI 安全標準撒謊",
         "layer": "推論端",
-        "body": "Google 的 AI 搜索摘要將開始引用 Reddit 的內容。這一功能可能會改善用戶的搜索體驗。Google 的 AI 搜索摘要可能會對其他搜索引擎的搜索結果產生影響。",
+        "body": "OpenAI 的 CTO 表示 CEO Sam Altman 對 AI 安全標準撒謊。這一事件引發了對 AI 安全性的關注。OpenAI 的 CEO 表示，公司將繼續努力提高 AI 的安全性。",
         "chain": [
           {
-            "label": "Google ↑",
+            "label": "OpenAI 的 AI 安全性",
             "type": "up"
           },
           {
-            "label": "Reddit ↑",
-            "type": "up"
+            "label": "CEO Sam Altman 的聲譽",
+            "type": "down"
+          },
+          {
+            "label": "AI 安全性的未來發展",
+            "type": "warn"
           }
         ],
         "rating": "core",
-        "insight": "這對 AI 轉型者意味著更好的搜索體驗和更豐富的搜索結果。",
-        "source_label": "Reuters",
-        "source": "https://www.reuters.com/..."
+        "insight": "這對 AI 轉型者意味著 AI 安全性將成為未來的一個重要課題。",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/2026/5/4/22966614/openai-cto-sam-altman-ai-safety"
       }
     ],
     "glossary_new": [
       {
-        "term": "HBM4E",
-        "full": "High-Bandwidth Memory 4E",
-        "def": "HBM4E 是一種高頻寬記憶體技術，用于提高 AI 應用的記憶體存取速度。",
-        "why": "HBM4E 對 AI 產業重要，因為它可以提高 AI 應用的效率和性能。",
+        "term": "EMIB-T",
+        "full": "Embedded Multi-die Interconnect Bridge-T",
+        "def": "EMIB-T 是一種先進的封裝技術，提供更高的封裝密度和更低的成本。",
+        "why": "EMIB-T 將是未來 AI 芯片封裝的主要技術，對 AI 產業具有重要意義。",
         "category": "semiconductor"
       }
     ],
