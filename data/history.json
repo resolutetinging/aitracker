@@ -1,5 +1,101 @@
 [
   {
+    "date": "2026-05-09",
+    "is_friday": false,
+    "hw": [
+      {
+        "title": "TSMC 推動 CoPoS 封裝技術以鎖定下一代封裝領先地位",
+        "layer": "封裝層",
+        "body": "TSMC 正在加速其 CoWoS 先進封裝能力的擴展，並推動 CoPoS 封裝技術的發展。這項技術將有助於 TSMC 保持在封裝領域的領先地位。TSMC 的月度收入增長率已經減慢，但公司仍然致力於投資新技術。TSMC 的封裝能力將對 AI 產業的發展產生重要影響。TSMC 的 CoWoS 技術已經被廣泛應用於高性能計算和 AI 應用中。",
+        "chain": [
+          {
+            "label": "TSMC ↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 產業 ↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著 TSMC 的封裝技術將在未來的 AI 產業中發揮重要作用",
+        "source_label": "Reuters",
+        "source": "https://www.reuters.com/"
+      },
+      {
+        "title": "AMD 推出 Instinct MI350P GPU，配備 144GB 的 HBM3E 和 600W 的 TBP",
+        "layer": "記憶體層",
+        "body": "AMD 的新款 Instinct MI350P GPU 采用 CDNA 4 架構，具有 128 個計算單元，且可以配置為在 450W 下運行。這款 GPU 專為 AI 應用而設計，將提供高性能和高效率的運算能力。AMD 的這一舉動將有助於公司在 AI 產業中增強競爭力。Instinct MI350P GPU 的發布將對 AI 產業的發展產生重要影響。",
+        "chain": [
+          {
+            "label": "AMD ↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 產業 ↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著 AMD 的新款 GPU 將提供高性能和高效率的運算能力",
+        "source_label": "AMD",
+        "source": "https://www.amd.com/"
+      }
+    ],
+    "corp": [
+      {
+        "title": "SpaceX 計劃在德克薩斯州投資 55 億美元建造 AI 晶片工廠",
+        "layer": "需求端",
+        "body": "SpaceX 計劃在德克薩斯州投資 55 億美元建造一家 AI 晶片工廠，稱為 Terafab。這家工廠將生產高性能的 AI 晶片，用于 SpaceX 的各種應用。這一舉動將有助於 SpaceX 在 AI 產業中增強競爭力。Terafab 工廠的建造將對 AI 產業的發展產生重要影響。",
+        "chain": [
+          {
+            "label": "SpaceX ↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 產業 ↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著 SpaceX 的 AI 晶片工廠將提供高性能的 AI 晶片",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/"
+      }
+    ],
+    "app": [
+      {
+        "title": "Nanoleaf 將其未來押注於機器人、紅光療法和 AI",
+        "layer": "推論端",
+        "body": "Nanoleaf 將其未來押注於機器人、紅光療法和 AI。公司計劃開發新的智能照明產品，結合機器人和 AI 技術。這一舉動將有助於 Nanoleaf 在智能家居產業中增強競爭力。Nanoleaf 的新產品將對 AI 產業的發展產生重要影響。",
+        "chain": [
+          {
+            "label": "Nanoleaf ↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 產業 ↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著 Nanoleaf 的新產品將結合機器人和 AI 技術",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/"
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoPoS",
+        "full": "Chip-on-Package-on-Substrate",
+        "def": "CoPoS 是一種先進的封裝技術，將芯片直接封裝在基板上。這種技術可以提高芯片的性能和效率。",
+        "why": "CoPoS 封裝技術對 AI 產業的發展非常重要，因為它可以提供高性能和高效率的運算能力",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-08",
     "is_friday": true,
     "hw": [
