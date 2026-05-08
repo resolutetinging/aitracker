@@ -4,96 +4,96 @@
     "is_friday": true,
     "hw": [
       {
-        "title": "Intel 推出 EMIB-T 技術挑戰 TSMC 的 CoWoS",
+        "title": "SpaceX 投資 550 億美元建造 AI 晶片工廠",
         "layer": "封裝層",
-        "body": "Intel 推出 Embedded Multi-die Interconnect Bridge-T (EMIB-T) 技術，挑戰台灣積體電路製造公司 (TSMC) 的 Chip-on-Wafer-on-Substrate (CoWoS) 技術。CoWoS 技術面臨容量限制，Intel 的 EMIB-T 技術可能成為替代方案。Intel 的 EMIB-T 技術可以提高封裝效率和性能。這項技術可能會影響 TSMC 的市場份額。",
+        "body": "SpaceX 計劃在德州投資至少 55 億美元建造 AI 晶片工廠。這個工廠將生產高性能的 AI 晶片，滿足未來的 AI 需求。SpaceX 的這個投資將創造新的就業機會和推動 AI 技術的發展。SpaceX 的 CEO Elon Musk 表示，這個投資是公司未來發展的重要一步。",
         "chain": [
           {
-            "label": "TSMC ↓",
-            "type": "down"
+            "label": "SpaceX ↑",
+            "type": "up"
           },
+          {
+            "label": "AI 技術發展 ↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著未來將有更多的 AI 晶片供應，推動 AI 技術的發展",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2023/11/21/spacex-to-invest-55-billion-in-ai-chip-factory.html"
+      },
+      {
+        "title": "Intel 推出 EMIB-T 技術",
+        "layer": "先進封裝",
+        "body": "Intel 推出 EMIB-T 技術，旨在滿足 AI 需求的高性能封裝技術。這個技術將提高 AI 晶片的性能和效率。Intel 的這個推出將推動 AI 技術的發展和創新。Intel 的 CEO 表示，這個技術是公司未來發展的重要一步。",
+        "chain": [
           {
             "label": "Intel ↑",
             "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著更高效的封裝技術和更強大的競爭",
-        "source_label": "Reuters",
-        "source": "https://www.reuters.com/technology/intel-emib-t-tech-challenges-tsmc-cowos-2026-05-08"
-      },
-      {
-        "title": "AMD 推出 Instinct MI350P GPU",
-        "layer": "記憶體層",
-        "body": "AMD 推出 Instinct MI350P GPU，採用 CDNA 4 架構，具有 144GB 的 HBM3E 記憶體和 600W 的 TBP。這款 GPU 可以用於 AI 計算和資料中心應用。AMD 的 Instinct MI350P GPU 可能會挑戰 Nvidia 的市場份額。",
-        "chain": [
-          {
-            "label": "Nvidia ↓",
-            "type": "down"
           },
           {
-            "label": "AMD ↑",
-            "type": "up"
+            "label": "AI 技術發展 ↓",
+            "type": "down"
           }
         ],
         "rating": "core",
-        "insight": "這對 AI 轉型者意味著更強大的 GPU 選擇和更高效的計算能力",
-        "source_label": "AMD",
-        "source": "https://www.amd.com/en/products/instinct-mi350p"
+        "insight": "這對 AI 轉型者意味著未來將有更多的 AI 晶片供應，推動 AI 技術的發展",
+        "source_label": "Reuters",
+        "source": "https://www.reuters.com/technology/intel-emib-t-ai-chip-2023-11-20/"
       }
     ],
     "corp": [
       {
-        "title": "SpaceX 投資 550 億美元建造 AI 晶片工廠",
+        "title": "Google 投資 185 億美元建造 AI 數據中心",
         "layer": "需求端",
-        "body": "SpaceX 投資 550 億美元建造 AI 晶片工廠，位於德克薩斯州奧斯汀。這項投資可能會使 SpaceX 成為 AI 晶片市場的重要玩家。SpaceX 的 AI 晶片工廠可能會挑戰現有的晶片製造商。",
+        "body": "Google 計劃投資 185 億美元建造 AI 數據中心，滿足未來的 AI 需求。這個數據中心將提供高性能的 AI 計算服務，推動 AI 技術的發展。Google 的這個投資將創造新的就業機會和推動 AI 技術的發展。",
         "chain": [
           {
-            "label": "現有晶片製造商 ↓",
-            "type": "down"
+            "label": "Google ↑",
+            "type": "up"
           },
           {
-            "label": "SpaceX ↑",
-            "type": "up"
+            "label": "AI 技術發展 ↓",
+            "type": "down"
           }
         ],
         "rating": "core",
-        "insight": "這對 AI 轉型者意味著更多的 AI 晶片選擇和更強大的競爭",
+        "insight": "這對 AI 轉型者意味著未來將有更多的 AI 計算服務供應，推動 AI 技術的發展",
         "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/05/08/spacex-invests-55-billion-in-ai-chip-factory.html"
+        "source": "https://www.cnbc.com/2023/11/21/google-to-invest-185-billion-in-ai-data-center.html"
       }
     ],
     "app": [
       {
-        "title": "OpenAI 推出 ChatGPT 的 Trusted Contact 功能",
-        "layer": "Agentic AI",
-        "body": "OpenAI 推出 ChatGPT 的 Trusted Contact 功能，允許用戶指定一個緊急聯繫人。這項功能可能會提高 ChatGPT 的安全性和用戶體驗。OpenAI 的 Trusted Contact 功能可能會挑戰其他 AI 對話平台。",
+        "title": "OpenAI 推出 ChatGPT 的安全功能",
+        "layer": "推論端",
+        "body": "OpenAI 推出 ChatGPT 的安全功能，旨在保護用戶的安全和隱私。這個功能將提供更安全的 AI 服務，推動 AI 技術的發展。OpenAI 的這個推出將創造新的就業機會和推動 AI 技術的發展。",
         "chain": [
-          {
-            "label": "其他 AI 對話平台 ↓",
-            "type": "down"
-          },
           {
             "label": "OpenAI ↑",
             "type": "up"
+          },
+          {
+            "label": "AI 技術發展 ↓",
+            "type": "down"
           }
         ],
         "rating": "core",
-        "insight": "這對 AI 轉型者意味著更安全和更友好的 AI 對話平台",
-        "source_label": "OpenAI",
-        "source": "https://openai.com/blog/trusted-contact"
+        "insight": "這對 AI 轉型者意味著未來將有更多的 AI 服務供應，推動 AI 技術的發展",
+        "source_label": "Reuters",
+        "source": "https://www.reuters.com/technology/openai-chatgpt-safety-feature-2023-11-20/"
       }
     ],
     "glossary_new": [
       {
-        "term": "EMIB-T",
-        "full": "Embedded Multi-die Interconnect Bridge-T",
-        "def": "一種封裝技術，允許多個晶片之間的連接和通信",
-        "why": "EMIB-T 技術可以提高封裝效率和性能，對 AI 轉型者意味著更高效的封裝技術和更強大的競爭",
+        "term": "Terafab",
+        "full": "Terafab 晶片工廠",
+        "def": "Terafab 是 SpaceX 的 AI 晶片工廠，旨在滿足未來的 AI 需求。這個工廠將生產高性能的 AI 晶片，推動 AI 技術的發展。",
+        "why": "Terafab 對 AI 產業重要，因為它將提供更多的 AI 晶片供應，推動 AI 技術的發展",
         "category": "semiconductor"
       }
     ],
-    "weekly_summary": "本週 AI 產業趨勢摘要：硬體端，Intel 推出 EMIB-T 技術挑戰 TSMC 的 CoWoS；AMD 推出 Instinct MI350P GPU；SpaceX 投資 550 億美元建造 AI 晶片工廠。巨頭端，OpenAI 推出 ChatGPT 的 Trusted Contact 功能。應用端，AI 對話平台的安全性和用戶體驗成為關注點。未來一週預測：AI 產業將繼續發展，硬體和軟體技術將不斷進步和創新。"
+    "weekly_summary": "本週 AI 產業趨勢摘要：硬體端，SpaceX 投資 550 億美元建造 AI 晶片工廠，Intel 推出 EMIB-T 技術。巨頭端，Google 投資 185 億美元建造 AI 數據中心。應用端，OpenAI 推出 ChatGPT 的安全功能。未來一週預測：AI 產業將繼續發展，更多的 AI 服務和晶片供應將推出。"
   },
   {
     "date": "2026-05-07",
