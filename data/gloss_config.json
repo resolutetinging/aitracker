@@ -1,0 +1,15 @@
+{
+  "cat_overrides": {
+    "CapEx": "cc_general",
+    "Terafab": "cc_company",
+    "Neuromorphic Computing": "ai_technique",
+    "Explainable AI": "ai_technique",
+    "Transfer Learning": "ai_technique",
+    "Adversarial Attack": "ai_technique"
+  },
+  "custom_cats": [
+    "General",
+    "Company"
+  ],
+  "updated": "2026-05-09T07:11:14.626Z"
+}
