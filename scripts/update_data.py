@@ -11,7 +11,7 @@ from groq import Groq
 TW = timezone(timedelta(hours=8))
 NOW = datetime.now(TW)
 DATE_STR = NOW.strftime('%Y-%m-%d')
-IS_FRIDAY = NOW.weekday() == 4
+IS_SUNDAY = NOW.weekday() == 6
 
 KNOWN_TERMS = ["HBM","CoWoS","CSP","OSAT","VLA 模型",
                "Reticle Limit","CapEx","Agentic AI","Physical AI","TSV"]
@@ -108,25 +108,47 @@ def fetch_news():
             unique.append(s)
     return "\n\n".join(unique)
 
+def load_notes():
+    """讀取使用者存到 repo 的每日筆記"""
+    if os.path.exists('data/notes.json'):
+        with open('data/notes.json', encoding='utf-8') as f:
+            return json.load(f)
+    return {}
+
 # ══════════════════════════════════════════════════════════════════
 #  2. PROMPT
 # ══════════════════════════════════════════════════════════════════
 def make_prompt(news_context):
     known = "、".join(KNOWN_TERMS)
-    friday_field = (
-        '"本週AI產業趨勢摘要（200字）：硬體端：...巨頭端：...應用端：...未來一週預測：..."'
-        if IS_FRIDAY else 'null'
+    notes = load_notes() if IS_SUNDAY else {}
+    notes_text = "\n".join(
+        f"- {d}：{n}" for d, n in sorted(notes.items()) if n.strip()
+    ) if notes else ""
+
+    sunday_field = (
+        f'"本週AI產業趨勢摘要（約250字）：\\n'
+        f'硬體端：這週供應鏈最重要的變動是...\\n'
+        f'巨頭端：CSP這週最關鍵的動作是...\\n'
+        f'應用端：有哪些新的落地案例或技術突破...\\n'
+        f'個人筆記整合：{"（本週使用者觀察：" + notes_text + "）請將這些觀察融入摘要與預測。" if notes_text else "（本週無手動筆記）"}\\n'
+        f'未來一週預測：根據上述趨勢，下週最值得關注的事件或指標是..."'
+        if IS_SUNDAY else 'null'
     )
+
     return f"""你是 AI 產業首席情報官。根據以下今日新聞，依三個維度整理，輸出純 JSON（不要任何 markdown、反引號或說明文字，直接從 {{ 開始）。
 
 === 今日新聞 ===
 {news_context}
 ================
-
+{f"""
+=== 本週使用者筆記（請融入週報）===
+{notes_text}
+==================================
+""" if notes_text else ""}
 輸出格式：
 {{
   "date": "{DATE_STR}",
-  "is_friday": {str(IS_FRIDAY).lower()},
+  "is_sunday": {str(IS_SUNDAY).lower()},
   "hw": [
     {{
       "title": "新聞標題（繁體中文，具體說明誰做了什麼）",
@@ -154,17 +176,18 @@ def make_prompt(news_context):
       "category": "role/semiconductor/ai_technique/hardware（四選一）"
     }}
   ],
-  "weekly_summary": {friday_field}
+  "weekly_summary": {sunday_field}
 }}
 
 規則：
-- rating 只能是 "core"/"noise"/"opp" 三選一（core=關鍵基礎設施變動；noise=短期雜訊；opp=個人AI轉型機會）
+- rating 只能是 "core"/"noise"/"opp" 三選一
 - chain type 只能是 "up"/"down"/"warn" 三選一
 - 若有資安/道德疑慮，加 "ethic": "說明" 欄位
 - hw/corp/app 每個維度 2-4 條，優先選有具體數字的新聞
 - glossary_new 只列今天新出現術語，以下已知不要重複：{known}
-- category 欄位：role=產業角色(CSP/OSAT等)；semiconductor=半導體技術；ai_technique=AI技術方法；hardware=硬體/材料
-- 若新聞來源有 URL，填入 source 欄位"""
+- category 欄位：role=產業角色；semiconductor=半導體技術；ai_technique=AI技術方法；hardware=硬體/材料
+- 若新聞來源有 URL，填入 source 欄位
+- 週日時 weekly_summary 需整合使用者筆記的觀察視角"""
 
 # ══════════════════════════════════════════════════════════════════
 #  3. GROQ API
@@ -279,7 +302,7 @@ def send_email(data):
         <!-- Header -->
         <div style="border-bottom:1px solid #d8d4ce;padding-bottom:16px;margin-bottom:20px;">
           <div style="font-size:20px;font-weight:800;color:#2c2a28;">📡 AI 產業動態</div>
-          <div style="font-size:13px;color:#9e9890;margin-top:4px;">{DATE_STR}{"（週報）" if data.get("is_friday") else ""} &nbsp;·&nbsp; 自動更新</div>
+          <div style="font-size:13px;color:#9e9890;margin-top:4px;">{DATE_STR}{"（週報）" if data.get("is_sunday") else ""} &nbsp;·&nbsp; 自動更新</div>
         </div>
 
         <!-- Stats bar -->
@@ -320,7 +343,7 @@ def send_email(data):
     </body></html>'''
 
     msg = MIMEMultipart('alternative')
-    msg['Subject'] = f'📡 AI 動態 {DATE_STR}{"（週報）" if data.get("is_friday") else ""} — {core_count} CORE · {opp_count} OPP'
+    msg['Subject'] = f'📡 AI 動態 {DATE_STR}{"（週報）" if data.get("is_sunday") else ""} — {core_count} CORE · {opp_count} OPP'
     msg['From'] = user
     msg['To']   = to
     msg.attach(MIMEText(html, 'html', 'utf-8'))
@@ -367,7 +390,7 @@ def push_notion(data):
     payload = {
         "parent":{"database_id":db_id},
         "properties":{
-            "Name":{"title":[{"text":{"content":f'📡 AI 動態 {DATE_STR}{"（週報）" if data.get("is_friday") else ""}'}}]},
+            "Name":{"title":[{"text":{"content":f'📡 AI 動態 {DATE_STR}{"（週報）" if data.get("is_sunday") else ""}'}}]},
             "Date":{"date":{"start":DATE_STR}}
         },
         "children":blocks
