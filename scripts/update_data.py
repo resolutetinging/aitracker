@@ -140,11 +140,7 @@ def make_prompt(news_context):
 === 今日新聞 ===
 {news_context}
 ================
-{f"""
-=== 本週使用者筆記(請融入週報)===
-{notes_text}
-==================================
-""" if notes_text else ""}
+{f"=== 本週使用者筆記(請融入週報) ===\n{notes_text}\n" if notes_text else ""}
 輸出格式：
 {{
   "date": "{DATE_STR}",
