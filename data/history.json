@@ -1,5 +1,93 @@
 [
   {
+    "date": "2026-05-12",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Intel 推出 EMIB-T 技術挑戰 TSMC 的 CoWoS",
+        "layer": "先進封裝",
+        "body": "Intel 推出 EMIB-T 技術，挑戰 TSMC 的 CoWoS 封裝技術。Intel 表示，EMIB-T 技術可以提供更高的封裝密度和更低的成本。TSMC 的 CoWoS 技術目前已經被 Nvidia 和 AMD 所使用。Intel 的 EMIB-T 技術可能會挑戰 TSMC 在先進封裝市場的領導地位。Intel 的這一舉動可能會對 TSMC 的業務產生影響。",
+        "chain": [
+          {
+            "label": "TSMC 受影響↑",
+            "type": "up"
+          },
+          {
+            "label": "Intel 受益↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著先進封裝技術的競爭將會更加激烈，可能會推動技術的進步和成本的降低。",
+        "source_label": "Reuters",
+        "source": "https://www.reuters.com/technology/intel-emib-t-technology-challenges-tsmc-cows-2026-05-12"
+      },
+      {
+        "title": "AMD 的 Q1 2026 財報顯示 datacenter 銷售大幅增長",
+        "layer": "記憶體層",
+        "body": "AMD 的 Q1 2026 財報顯示，datacenter 銷售大幅增長，EPS 也出現了增長。這主要歸功於 AMD 在 AI 領域的布局和推動。AMD 的 datacenter 銷售增長可能會對 Intel 和 Nvidia 產生影響。AMD 的這一舉動可能會挑戰 Intel 和 Nvidia 在 datacenter 市場的領導地位。",
+        "chain": [
+          {
+            "label": "Intel 受影響↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 受影響↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著 datacenter 市場的競爭將會更加激烈，可能會推動技術的進步和成本的降低。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/05/12/amd-q1-2026-earnings-datacenter-sales.html"
+      }
+    ],
+    "corp": [
+      {
+        "title": "Google 停止了一個零日漏洞攻擊",
+        "layer": "需求端",
+        "body": "Google 停止了一個零日漏洞攻擊，這個攻擊是使用 AI 技術開發的。Google 表示，這個攻擊是由一個著名的網絡犯罪集團開發的。Google 的這一舉動可能會對網絡安全產業產生影響。Google 的這一舉動可能會挑戰網絡安全公司在 AI 領域的布局和推動。",
+        "chain": [
+          {
+            "label": "網絡安全公司受影響↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著網絡安全領域的競爭將會更加激烈，可能會推動技術的進步和成本的降低。",
+        "source_label": "Google",
+        "source": "https://blog.google/technology/safety-security/zero-day-vulnerability-ai-2026-05-12"
+      }
+    ],
+    "app": [
+      {
+        "title": "Nanoleaf押注機器人、紅光療法和 AI",
+        "layer": "Agentic AI",
+        "body": "Nanoleaf押注機器人、紅光療法和 AI。Nanoleaf 表示，這些技術將會對其業務產生重大影響。Nanoleaf 的這一舉動可能會挑戰其他公司在 AI 領域的布局和推動。",
+        "chain": [
+          {
+            "label": "其他公司受影響↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著 AI 領域的競爭將會更加激烈，可能會推動技術的進步和成本的降低。",
+        "source_label": "Nanoleaf",
+        "source": "https://www.nanoleaf.com/press-release/2026-05-12-ai-robotics"
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "EMIB-T",
+        "full": "Embedded Multi-die Interconnect Bridge-T",
+        "def": "EMIB-T 是一種先進的封裝技術，允許多個芯片之間的高密度連接。",
+        "why": "EMIB-T 封裝技術對於 AI 領域的發展具有重要意義，因為它可以提供更高的封裝密度和更低的成本。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-11",
     "is_sunday": false,
     "hw": [
