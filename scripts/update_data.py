@@ -141,7 +141,7 @@ def make_prompt(news_context):
 {news_context}
 ================
 {f"""
-=== 本週使用者筆記（請融入週報）===
+=== 本週使用者筆記(請融入週報)===
 {notes_text}
 ==================================
 """ if notes_text else ""}
