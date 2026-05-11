@@ -4,96 +4,96 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "Intel 推出 EMIB-T 技術挑戰 TSMC 的 CoWoS",
+        "title": "Intel 推廣 EMIB-T 技術以填補 AI 晶片封裝缺口",
         "layer": "封裝層",
-        "body": "Intel 推出 EMIB-T 技術，挑戰 TSMC 的 CoWoS 封裝技術。TSMC 的 CoWoS 封裝技術面臨容量限制，Intel 的 EMIB-T 技術提供了一個低成本、可擴展的替代方案。Intel 的 EMIB-T 技術已經獲得了第二梯隊 AI 晶片製造商的關注。Intel 預計在 2026 年內將 EMIB-T 技術應用於其 AI 晶片製造中。",
+        "body": "Intel 正在推廣其 EMIB-T 技術，以填補 AI 晶片封裝的缺口。該技術被視為一種低成本且可擴展的替代方案。TSMC 的 CoWoS 封裝技術面臨著容量限制，主要玩家如 Nvidia 和 AMD 已經預訂了大部分容量。Intel 希望通過 EMIB-T 技術來填補這個缺口。該公司預計在未來幾年內將其 EMIB-T 技術的產能增加 20%。",
         "chain": [
           {
             "label": "TSMC 受影響↑",
             "type": "up"
           },
           {
-            "label": "Intel 受益↓",
+            "label": "Nvidia 和 AMD 受影響↓",
             "type": "down"
           }
         ],
         "rating": "core",
-        "insight": "這對 AI 晶片製造商意味著更低的成本和更高的效率",
+        "insight": "這對 AI 轉型者意味著更低成本的 AI 晶片封裝方案的出現，可能會促進 AI 技術的發展和應用。",
         "source_label": "Reuters",
-        "source": "https://www.reuters.com/article/intel-emib-t-idUSKCN1V60R7"
+        "source": "https://www.reuters.com/technology/intel-emib-t-ai-chip-packaging-2026-05-10"
       },
       {
         "title": "SpaceX 計劃在德州投資 55 億美元建造 AI 晶片工廠",
-        "layer": "記憶體層",
-        "body": "SpaceX 計劃在德州投資 55 億美元建造 AI 晶片工廠，稱為 Terafab。這個工廠將生產 AI 晶片，供應 SpaceX 的 AI 需求。SpaceX 預計在 2026 年內完成工廠建設，並開始生產 AI 晶片。",
+        "layer": "先進封裝",
+        "body": "SpaceX 計劃在德州投資 55 億美元建造一家 AI 晶片工廠，該工廠將生產高性能的 AI 晶片。該項目預計將創造 1,000 個就業機會，並將成為該地區最大的 AI 晶片工廠之一。SpaceX 預計該工廠將在 2028 年開始生產。",
         "chain": [
           {
-            "label": "SpaceX 受益↑",
+            "label": "SpaceX 受影響↑",
             "type": "up"
           },
           {
-            "label": "AI 晶片供應商受益↓",
-            "type": "down"
+            "label": "當地經濟受影響↑",
+            "type": "up"
           }
         ],
         "rating": "core",
-        "insight": "這對 AI 晶片供應商意味著更大的市場需求和更高的競爭力",
+        "insight": "這對 AI 轉型者意味著更強大的 AI 晶片供應能力的出現，可能會促進 AI 技術的發展和應用。",
         "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/05/11/spacex-ai-chip-factory-texas.html"
+        "source": "https://www.cnbc.com/2026/05/10/spacex-ai-chip-factory-texas.html"
       }
     ],
     "corp": [
       {
-        "title": "Microsoft 和 OpenAI 合作開發 AI 技術",
+        "title": "Microsoft 擔心 OpenAI 會轉向 Amazon",
         "layer": "需求端",
-        "body": "Microsoft 和 OpenAI 合作開發 AI 技術，目的是提高 AI 的效率和準確性。Microsoft 預計在 2026 年內將 AI 技術應用於其產品中。",
+        "body": "Microsoft 擔心 OpenAI 會轉向 Amazon，導致其 Azure 服務受到影響。Microsoft 的 CEO Satya Nadella 和 OpenAI 的 CEO Sam Altman 曾經討論過這個問題。Microsoft 希望通過與 OpenAI 的合作來加強其在 AI 領域的競爭力。",
         "chain": [
           {
-            "label": "Microsoft 受益↑",
+            "label": "Microsoft 受影響↑",
             "type": "up"
           },
           {
-            "label": "OpenAI 受益↓",
+            "label": "Amazon 受影響↓",
             "type": "down"
           }
         ],
         "rating": "core",
-        "insight": "這對 AI 技術開發商意味著更大的合作機會和更高的競爭力",
+        "insight": "這對 AI 轉型者意味著 Microsoft 對 AI 技術的重視和其在 AI 領域的競爭力。",
         "source_label": "The New York Times",
-        "source": "https://www.nytimes.com/2026/05/11/microsoft-openai-ai-technology.html"
+        "source": "https://www.nytimes.com/2026/05/10/technology/microsoft-openai-amazon.html"
       }
     ],
     "app": [
       {
-        "title": "Agentic AI 和 Spatial Computing 改變會議規則",
+        "title": "Nanoleaf 將未來押注於機器人和 AI",
         "layer": "Agentic AI",
-        "body": "Agentic AI 和 Spatial Computing 改變會議規則，提供更好的會議體驗。Agentic AI 和 Spatial Computing 預計在 2026 年內廣泛應用於會議行業中。",
+        "body": "Nanoleaf 將其未來押注於機器人和 AI 技術的發展。該公司預計在未來幾年內將其機器人和 AI 產品的銷售額增加 50%。Nanoleaf 希望通過其機器人和 AI 產品來提供更好的智能家居解決方案。",
         "chain": [
           {
-            "label": "會議行業受益↑",
+            "label": "Nanoleaf 受影響↑",
             "type": "up"
           },
           {
-            "label": "Agentic AI 和 Spatial Computing 受益↓",
-            "type": "down"
+            "label": "智能家居市場受影響↑",
+            "type": "up"
           }
         ],
         "rating": "core",
-        "insight": "這對會議行業意味著更好的會議體驗和更高的效率",
+        "insight": "這對 AI 轉型者意味著更多的 AI 技術應用和機會的出現，可能會促進 AI 技術的發展和應用。",
         "source_label": "Forbes",
-        "source": "https://www.forbes.com/sites/forbestechcouncil/2026/05/11/agentic-ai-and-spatial-computing-are-changing-the-conference-rules/"
+        "source": "https://www.forbes.com/2026/05/10/nanoleaf-robots-ai-future.html"
       }
     ],
     "glossary_new": [
       {
-        "term": "Terafab",
-        "full": "Terafab 晶片工廠",
-        "def": "Terafab 是 SpaceX 計劃在德州建造的 AI 晶片工廠，目的是生產 AI 晶片，供應 SpaceX 的 AI 需求。",
-        "why": "Terafab 對 AI 產業重要，因為它提供了更大的市場需求和更高的競爭力",
-        "category": "hardware"
+        "term": "CoPoS",
+        "full": "Chip-on-Package-on-Substrate",
+        "def": "CoPoS 是一種先進的封裝技術，將多個晶片封裝在一個包裝中。該技術可以提高晶片的性能和效率。",
+        "why": "CoPoS 封裝技術對 AI 產業很重要，因為它可以提供更高的性能和效率，從而促進 AI 技術的發展和應用。",
+        "category": "semiconductor"
       }
     ],
-    "weekly_summary": "本週，AI 產業繼續發展，Intel 推出 EMIB-T 技術挑戰 TSMC 的 CoWoS，SpaceX 計劃在德州投資 55 億美元建造 AI 晶片工廠，Microsoft 和 OpenAI 合作開發 AI 技術，Agentic AI 和 Spatial Computing 改變會議規則。這些發展對 AI 產業意味著更大的市場需求、更高的競爭力和更好的會議體驗。"
+    "weekly_summary": null
   },
   {
     "date": "2026-05-09",
