@@ -1,5 +1,176 @@
 [
   {
+    "date": "2026-05-14",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Intel 推出 EMIB-T 技術挑戰 TSMC 的 CoWoS",
+        "layer": "先進封裝",
+        "body": "Intel 推出 EMIB-T 技術，挑戰 TSMC 的 CoWoS 封裝技術。TSMC 的 CoWoS 技術面臨容量限制，Intel 看到了機會。Intel 的 EMIB-T 技術是一種更低成本、可擴展的封裝技術。這項技術將在 2026 年下半年推出。Intel 預計這項技術將在 AI晶片封裝市場中佔有一席之地。",
+        "chain": [
+          {
+            "label": "TSMC 受影響↑",
+            "type": "up"
+          },
+          {
+            "label": "Intel 受益↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著更低成本的封裝技術將出現，從而推動 AI晶片的發展",
+        "source_label": "Reuters",
+        "source": "https://www.reuters.com/technology/intel-emib-t-technology-2026-05-14"
+      },
+      {
+        "title": "Meta 推出完全私密的加密 AI 聊天功能",
+        "layer": "記憶體層",
+        "body": "Meta 推出了一項完全私密的加密 AI 聊天功能，稱為 Incognito Chat。這項功能不會儲存用戶的聊天記錄，類似於其他 AI 聊天機器人的隱身模式。Meta 預計這項功能將在 2026 年下半年推出。這項功能將提高用戶的隱私安全性。",
+        "chain": [
+          {
+            "label": "用戶受益↑",
+            "type": "up"
+          },
+          {
+            "label": "其他聊天機器人受影響↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著用戶隱私安全性將得到提高，從而推動 AI 聊天機器人的發展",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/meta-incognito-chat-2026-05-14"
+      },
+      {
+        "title": "Nvidia 和 AMD 的股價飆升",
+        "layer": "需求端",
+        "body": "Nvidia 和 AMD 的股價在 2026 年 5 月 14 日飆升，原因是投資者預期這兩家公司將在 AI晶片市場中佔有一席之地。Nvidia 的股價上漲了 10%，而 AMD 的股價上漲了 12%。這兩家公司的股價上漲是由於投資者對 AI晶片市場的預期。",
+        "chain": [
+          {
+            "label": "Nvidia 受益↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD 受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著 AI晶片市場的發展將推動相關公司的股價上漲",
+        "source_label": "Bloomberg",
+        "source": "https://www.bloomberg.com/nvidia-amd-stock-price-2026-05-14"
+      },
+      {
+        "title": "SK Hynix 和 Intel 合作開發 2.5D 封裝技術",
+        "layer": "先進封裝",
+        "body": "SK Hynix 和 Intel 合作開發 2.5D 封裝技術，目的是為了滿足 AI晶片的需求。這項技術將在 2026 年下半年推出。SK Hynix 和 Intel 預計這項技術將在 AI晶片封裝市場中佔有一席之地。",
+        "chain": [
+          {
+            "label": "SK Hynix 受益↑",
+            "type": "up"
+          },
+          {
+            "label": "Intel 受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著 2.5D 封裝技術將出現，從而推動 AI晶片的發展",
+        "source_label": "Reuters",
+        "source": "https://www.reuters.com/sk-hynix-intel-2-5d-packaging-2026-05-14"
+      }
+    ],
+    "corp": [
+      {
+        "title": "Amazon 推出 Alexa Plus",
+        "layer": "需求端",
+        "body": "Amazon 推出了一項新功能，稱為 Alexa Plus，目的是為了提高用戶的購物體驗。Alexa Plus 將在 2026 年下半年推出。這項功能將提高用戶的購物便捷性。",
+        "chain": [
+          {
+            "label": "用戶受益↑",
+            "type": "up"
+          },
+          {
+            "label": "其他購物平台受影響↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著購物體驗將得到提高，從而推動電子商務的發展",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/amazon-alexa-plus-2026-05-14"
+      },
+      {
+        "title": "Microsoft 的股價上漲",
+        "layer": "財報訊號",
+        "body": "Microsoft 的股價在 2026 年 5 月 14 日上漲了 5%，原因是投資者預期這家公司將在 AI市場中佔有一席之地。Microsoft 的股價上漲是由於投資者對 AI市場的預期。",
+        "chain": [
+          {
+            "label": "Microsoft 受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著 AI市場的發展將推動相關公司的股價上漲",
+        "source_label": "Bloomberg",
+        "source": "https://www.bloomberg.com/microsoft-stock-price-2026-05-14"
+      }
+    ],
+    "app": [
+      {
+        "title": "Anthropic 的 AI 模型",
+        "layer": "Agentic AI",
+        "body": "Anthropic 的 AI 模型是一種新的 AI 技術，目的是為了提高 AI 的安全性和可靠性。Anthropic 的 AI 模型將在 2026 年下半年推出。這項技術將提高 AI 的安全性和可靠性。",
+        "chain": [
+          {
+            "label": "Anthropic 受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著 AI 的安全性和可靠性將得到提高，從而推動 AI 的發展",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/anthropic-ai-model-2026-05-14"
+      },
+      {
+        "title": "OpenAI 的 ChatGPT",
+        "layer": "推論端",
+        "body": "OpenAI 的 ChatGPT 是一種新的 AI 聊天機器人，目的是為了提高用戶的聊天體驗。OpenAI 的 ChatGPT 將在 2026 年下半年推出。這項功能將提高用戶的聊天便捷性。",
+        "chain": [
+          {
+            "label": "用戶受益↑",
+            "type": "up"
+          },
+          {
+            "label": "其他聊天機器人受影響↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著聊天體驗將得到提高，從而推動 AI 聊天機器人的發展",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/openai-chatgpt-2026-05-14"
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoPoS",
+        "full": "Chip-on-Package-on-Substrate",
+        "def": "一種新的封裝技術，目的是為了提高 AI晶片的性能和可靠性",
+        "why": "這對 AI 產業重要，因為它可以提高 AI晶片的性能和可靠性",
+        "category": "semiconductor"
+      },
+      {
+        "term": "EMIB-T",
+        "full": "Embedded Multi-die Interconnect Bridge-T",
+        "def": "一種新的封裝技術，目的是為了提高 AI晶片的性能和可靠性",
+        "why": "這對 AI 產業重要，因為它可以提高 AI晶片的性能和可靠性",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-13",
     "is_sunday": false,
     "hw": [
@@ -595,247 +766,6 @@
         "def": "EMIB-T 是一種先進的封裝技術，提供更高的封裝密度和更低的成本。",
         "why": "EMIB-T 將是未來 AI 芯片封裝的主要技術，對 AI 產業具有重要意義。",
         "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-05-06",
-    "is_friday": false,
-    "hw": [
-      {
-        "title": "新型記憶體技術",
-        "layer": "記憶體層",
-        "body": "新型記憶體技術可以提高資料傳輸速度和儲存容量，對於AI應用有重大影響。這項技術可以提高AI模型的訓練速度和準確度，同時也可以降低能源消耗。相關公司正在積極開發和應用這項技術。",
-        "chain": [
-          {
-            "label": "AI模型開發商",
-            "type": "up"
-          },
-          {
-            "label": "記憶體製造商",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "AI轉型者需要關注新型記憶體技術的發展，了解其對AI應用的影響和潛在應用場景。"
-      },
-      {
-        "title": "先進封裝技術",
-        "layer": "先進封裝",
-        "body": "先進封裝技術可以提高電子元件的性能和可靠性，對於AI應用有重大影響。這項技術可以提高AI模型的運行速度和準確度，同時也可以降低能源消耗。相關公司正在積極開發和應用這項技術。",
-        "chain": [
-          {
-            "label": "AI模型開發商",
-            "type": "up"
-          },
-          {
-            "label": "電子元件製造商",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "AI轉型者需要關注先進封裝技術的發展，了解其對AI應用的影響和潛在應用場景。"
-      },
-      {
-        "title": "散熱層技術",
-        "layer": "散熱層",
-        "body": "散熱層技術可以提高電子元件的可靠性和壽命，對於AI應用有重大影響。這項技術可以提高AI模型的運行速度和準確度，同時也可以降低能源消耗。相關公司正在積極開發和應用這項技術。",
-        "chain": [
-          {
-            "label": "AI模型開發商",
-            "type": "up"
-          },
-          {
-            "label": "電子元件製造商",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "AI轉型者需要關注散熱層技術的發展，了解其對AI應用的影響和潛在應用場景。"
-      },
-      {
-        "title": "封裝層技術",
-        "layer": "封裝層",
-        "body": "封裝層技術可以提高電子元件的性能和可靠性，對於AI應用有重大影響。這項技術可以提高AI模型的運行速度和準確度，同時也可以降低能源消耗。相關公司正在積極開發和應用這項技術。",
-        "chain": [
-          {
-            "label": "AI模型開發商",
-            "type": "up"
-          },
-          {
-            "label": "電子元件製造商",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "AI轉型者需要關注封裝層技術的發展，了解其對AI應用的影響和潛在應用場景。"
-      }
-    ],
-    "corp": [
-      {
-        "title": "需求端趨勢",
-        "layer": "需求端",
-        "body": "AI需求端趨勢顯示，企業對AI應用的需求不斷增加，特別是在客戶服務和行銷領域。相關公司需要關注這項趨勢，開發和提供符合企業需求的AI解決方案。",
-        "chain": [
-          {
-            "label": "企業客戶",
-            "type": "up"
-          },
-          {
-            "label": "AI解決方案提供商",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "AI轉型者需要關注需求端趨勢，了解企業的需求和潛在應用場景。"
-      },
-      {
-        "title": "採購策略",
-        "layer": "採購策略",
-        "body": "AI採購策略顯示，企業在採購AI解決方案時需要關注技術能力、價格和服務質量等因素。相關公司需要關注這項策略，提供符合企業需求的AI解決方案。",
-        "chain": [
-          {
-            "label": "企業客戶",
-            "type": "up"
-          },
-          {
-            "label": "AI解決方案提供商",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "AI轉型者需要關注採購策略，了解企業的需求和潛在應用場景。"
-      },
-      {
-        "title": "財報訊號",
-        "layer": "財報訊號",
-        "body": "AI財報訊號顯示，企業的財報表現與AI應用有密切關係。相關公司需要關注這項訊號，開發和提供符合企業需求的AI解決方案。",
-        "chain": [
-          {
-            "label": "企業客戶",
-            "type": "up"
-          },
-          {
-            "label": "AI解決方案提供商",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "AI轉型者需要關注財報訊號，了解企業的需求和潛在應用場景。"
-      },
-      {
-        "title": "市場趨勢",
-        "layer": "需求端",
-        "body": "AI市場趨勢顯示，企業對AI應用的需求不斷增加，特別是在客戶服務和行銷領域。相關公司需要關注這項趨勢，開發和提供符合企業需求的AI解決方案。",
-        "chain": [
-          {
-            "label": "企業客戶",
-            "type": "up"
-          },
-          {
-            "label": "AI解決方案提供商",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "AI轉型者需要關注市場趨勢，了解企業的需求和潛在應用場景。"
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI",
-        "layer": "Agentic AI",
-        "body": "Agentic AI是一種新型AI技術，能夠自主學習和決策。這項技術可以提高AI模型的運行速度和準確度，同時也可以降低能源消耗。相關公司正在積極開發和應用這項技術。",
-        "chain": [
-          {
-            "label": "AI模型開發商",
-            "type": "up"
-          },
-          {
-            "label": "Agentic AI技術提供商",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "AI轉型者需要關注Agentic AI的發展，了解其對AI應用的影響和潛在應用場景。"
-      },
-      {
-        "title": "Physical AI",
-        "layer": "Physical AI",
-        "body": "Physical AI是一種新型AI技術，能夠與物理世界互動。這項技術可以提高AI模型的運行速度和準確度，同時也可以降低能源消耗。相關公司正在積極開發和應用這項技術。",
-        "chain": [
-          {
-            "label": "AI模型開發商",
-            "type": "up"
-          },
-          {
-            "label": "Physical AI技術提供商",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "AI轉型者需要關注Physical AI的發展，了解其對AI應用的影響和潛在應用場景。"
-      },
-      {
-        "title": "推論端技術",
-        "layer": "推論端",
-        "body": "推論端技術可以提高AI模型的運行速度和準確度，對於AI應用有重大影響。這項技術可以提高AI模型的推論能力，同時也可以降低能源消耗。相關公司正在積極開發和應用這項技術。",
-        "chain": [
-          {
-            "label": "AI模型開發商",
-            "type": "up"
-          },
-          {
-            "label": "推論端技術提供商",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "AI轉型者需要關注推論端技術的發展，了解其對AI應用的影響和潛在應用場景。"
-      },
-      {
-        "title": "AI應用場景",
-        "layer": "Agentic AI",
-        "body": "AI應用場景包括客戶服務、行銷、金融等領域。相關公司需要關注這些場景，開發和提供符合企業需求的AI解決方案。",
-        "chain": [
-          {
-            "label": "企業客戶",
-            "type": "up"
-          },
-          {
-            "label": "AI解決方案提供商",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "AI轉型者需要關注AI應用場景，了解企業的需求和潛在應用場景。"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Neuromorphic Computing",
-        "full": "類神經計算　Neuromorphic Computing",
-        "def": "一種模擬人類大腦神經網路的計算方法",
-        "why": "為何重要：可以提高AI模型的運行速度和準確度，同時也可以降低能源消耗"
-      },
-      {
-        "term": "Explainable AI",
-        "full": "可解釋AI　Explainable AI",
-        "def": "一種可以解釋AI模型決策過程的技術",
-        "why": "為何重要：可以提高AI模型的透明度和可靠性"
-      },
-      {
-        "term": "Transfer Learning",
-        "full": "轉移學習　Transfer Learning",
-        "def": "一種可以將已經學習好的模型應用於新任務的技術",
-        "why": "為何重要：可以提高AI模型的運行速度和準確度，同時也可以降低訓練時間和成本"
-      },
-      {
-        "term": "Adversarial Attack",
-        "full": "對抗攻擊　Adversarial Attack",
-        "def": "一種可以攻擊AI模型的方法",
-        "why": "為何重要：可以提高AI模型的安全性和可靠性"
       }
     ],
     "weekly_summary": null
