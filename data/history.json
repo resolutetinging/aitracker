@@ -1,5 +1,117 @@
 [
   {
+    "date": "2026-05-15",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "TSMC 預測全球芯片市場將在 2030 年達 1.5 萬億美元",
+        "layer": "封裝層",
+        "body": "TSMC 預測全球芯片市場將在 2030 年達 1.5 萬億美元，高於之前的 1 萬億美元預測。TSMC 正在擴大其 CoWoS 和 SoIC 先進封裝能力，以滿足 AI 需求的增長。該公司將在全球建造 18 個新廠和先進封裝設施。TSMC 的 CoWoS 供應緊張正在推動 SK Hynix 和 Intel 合作開發 2.5D 封裝技術。",
+        "chain": [
+          {
+            "label": "TSMC ↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix ↓",
+            "type": "down"
+          },
+          {
+            "label": "Intel ⚠️",
+            "type": "warn"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著芯片供應鏈的變化和機會，需要關注 TSMC 和其他芯片製造商的動態。",
+        "source_label": "Reuters",
+        "source": "https://www.reuters.com/"
+      },
+      {
+        "title": "Microsoft Edge Copilot 更新使用 AI 從多個標籤中提取信息",
+        "layer": "記憶體層",
+        "body": "Microsoft Edge 的新功能允許其 Copilot AI 聊天機器人從多個標籤中提取信息，幫助用戶比較產品和摘要文章。這一功能是 Microsoft 在 AI 研發上的最新進展。Microsoft 還宣布了其在 AI 基礎設施上的投資計劃，包括 190 億美元的資本支出。",
+        "chain": [
+          {
+            "label": "Microsoft ↑",
+            "type": "up"
+          },
+          {
+            "label": "用戶 ↓",
+            "type": "down"
+          },
+          {
+            "label": "競爭對手 ⚠️",
+            "type": "warn"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著 Microsoft 在 AI 研發上的進展和對用戶體驗的重視，需要關注 Microsoft 的 AI 計劃和競爭對手的反應。",
+        "source_label": "Microsoft",
+        "source": "https://www.microsoft.com/"
+      }
+    ],
+    "corp": [
+      {
+        "title": "Amazon 將 Alexa Plus 整合到 Amazon.com",
+        "layer": "需求端",
+        "body": "Amazon 將其 LLM 驅動的 AI 助手 Alexa Plus 整合到 Amazon.com，允許用戶通過 Alexa 尋找和購買產品。這一功能是 Amazon 在 AI 研發上的最新進展。Amazon 還宣布了其在 AI 基礎設施上的投資計劃，包括數十億美元的資本支出。",
+        "chain": [
+          {
+            "label": "Amazon ↑",
+            "type": "up"
+          },
+          {
+            "label": "用戶 ↓",
+            "type": "down"
+          },
+          {
+            "label": "競爭對手 ⚠️",
+            "type": "warn"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著 Amazon 在 AI 研發上的進展和對用戶體驗的重視，需要關注 Amazon 的 AI 計劃和競爭對手的反應。",
+        "source_label": "Amazon",
+        "source": "https://www.amazon.com/"
+      }
+    ],
+    "app": [
+      {
+        "title": "Mark Zuckerberg 宣布 Meta 的新 AI 聊天功能",
+        "layer": "推論端",
+        "body": "Mark Zuckerberg 宣布 Meta 的新 AI 聊天功能，允許用戶進行完全私密的對話。這一功能是 Meta 在 AI 研發上的最新進展。Meta 還宣布了其在 AI 基礎設施上的投資計劃，包括數十億美元的資本支出。",
+        "chain": [
+          {
+            "label": "Meta ↑",
+            "type": "up"
+          },
+          {
+            "label": "用戶 ↓",
+            "type": "down"
+          },
+          {
+            "label": "競爭對手 ⚠️",
+            "type": "warn"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著 Meta 在 AI 研發上的進展和對用戶體驗的重視，需要關注 Meta 的 AI 計劃和競爭對手的反應。",
+        "source_label": "Meta",
+        "source": "https://www.meta.com/"
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoWoS",
+        "full": "Chip-on-Wafer-on-Substrate",
+        "def": "一種先進的封裝技術，允許將芯片直接封裝在基板上。",
+        "why": "CoWoS 技術對於 AI 產業的重要性在於其能夠提高芯片的性能和效率，同時降低成本和功耗。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-14",
     "is_sunday": false,
     "hw": [
@@ -657,117 +769,5 @@
       }
     ],
     "weekly_summary": "本週 AI 產業趨勢摘要：硬體端，SpaceX 投資 550 億美元建造 AI 晶片工廠，Intel 推出 EMIB-T 技術。巨頭端，Google 投資 185 億美元建造 AI 數據中心。應用端，OpenAI 推出 ChatGPT 的安全功能。未來一週預測：AI 產業將繼續發展，更多的 AI 服務和晶片供應將推出。"
-  },
-  {
-    "date": "2026-05-07",
-    "is_friday": false,
-    "hw": [
-      {
-        "title": "AMD 首季 2026 年收益：數據中心銷售標誌著 AI 采購週期的轉變",
-        "layer": "封裝層",
-        "body": "AMD 的 Q1 FY2026 收益結果顯示數據中心收入和 EPS 增長。公司的數據中心銷售額增加了 55%。AMD 的 AI 業務正在迅速增長。公司的 CEO 表示，AI 將是未來數據中心業務的主要驅動力。",
-        "chain": [
-          {
-            "label": "AMD 的數據中心銷售額增加",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia 的市場份額下降",
-            "type": "down"
-          },
-          {
-            "label": "AI 業務的未來發展",
-            "type": "warn"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著 AMD 的數據中心業務正在迅速增長，可能會帶來新的機會。",
-        "source_label": "Reuters",
-        "source": "https://www.reuters.com/article/amd-earnings-idUSKCN2D50K9"
-      },
-      {
-        "title": "Intel 推出 EMIB-T 技術以填補 AI 芯片封裝的空白",
-        "layer": "先進封裝",
-        "body": "Intel 推出 EMIB-T 技術，以填補 AI 芯片封裝的空白。該技術可以提供更高的封裝密度和更低的成本。Intel 的 CEO 表示，EMIB-T 將是未來 AI 芯片封裝的主要技術。",
-        "chain": [
-          {
-            "label": "Intel 的 EMIB-T 技術",
-            "type": "up"
-          },
-          {
-            "label": "TSMC 的 CoWoS 技術",
-            "type": "down"
-          },
-          {
-            "label": "AI 芯片封裝的未來發展",
-            "type": "warn"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著 Intel 的 EMIB-T 技術可能會帶來新的機會和挑戰。",
-        "source_label": "Intel",
-        "source": "https://newsroom.intel.com/news/intel-emib-t-technology/"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google、Microsoft、Meta 和 Amazon 的資本支出預計將達 7250 億美元",
-        "layer": "需求端",
-        "body": "Google、Microsoft、Meta 和 Amazon 的資本支出預計將達 7250 億美元。這些公司正在大量投資 AI 和雲計算技術。Google 的 CEO 表示，公司的資本支出將繼續增加，以支持 AI 和雲計算的發展。",
-        "chain": [
-          {
-            "label": "Google 的資本支出增加",
-            "type": "up"
-          },
-          {
-            "label": "Meta 的市場份額下降",
-            "type": "down"
-          },
-          {
-            "label": "AI 和雲計算的未來發展",
-            "type": "warn"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著 Google、Microsoft、Meta 和 Amazon 的資本支出將繼續增加，可能會帶來新的機會和挑戰。",
-        "source_label": "Reuters",
-        "source": "https://www.reuters.com/article/google-microsoft-meta-amazon-idUSKCN2D50K9"
-      }
-    ],
-    "app": [
-      {
-        "title": "OpenAI 的 CTO 表示 CEO Sam Altman 對 AI 安全標準撒謊",
-        "layer": "推論端",
-        "body": "OpenAI 的 CTO 表示 CEO Sam Altman 對 AI 安全標準撒謊。這一事件引發了對 AI 安全性的關注。OpenAI 的 CEO 表示，公司將繼續努力提高 AI 的安全性。",
-        "chain": [
-          {
-            "label": "OpenAI 的 AI 安全性",
-            "type": "up"
-          },
-          {
-            "label": "CEO Sam Altman 的聲譽",
-            "type": "down"
-          },
-          {
-            "label": "AI 安全性的未來發展",
-            "type": "warn"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著 AI 安全性將成為未來的一個重要課題。",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/2026/5/4/22966614/openai-cto-sam-altman-ai-safety"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "EMIB-T",
-        "full": "Embedded Multi-die Interconnect Bridge-T",
-        "def": "EMIB-T 是一種先進的封裝技術，提供更高的封裝密度和更低的成本。",
-        "why": "EMIB-T 將是未來 AI 芯片封裝的主要技術，對 AI 產業具有重要意義。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
   }
 ]
