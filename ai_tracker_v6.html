@@ -262,9 +262,13 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
   .tw-flow{gap:4px;}
   body{padding:12px 14px 30px;}
 }
+/* auto-upload toast */
+#auto-upload-toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(40,38,32,.88);color:#f0ede6;font-size:12.5px;padding:9px 18px;border-radius:20px;backdrop-filter:blur(8px);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:9999;}
+#auto-upload-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 </style>
 </head>
 <body>
+<div id="auto-upload-toast"></div>
 
 <header>
   <div class="header-title">📡 AI 產業動態 <em>每日追蹤</em></div>
@@ -394,9 +398,9 @@ function fmtDate(s) {
   return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（週${days[d.getDay()]}）`;
 }
 
-// 句點/。後換行
+// 句號後換行（。固定斷；英文 . 只在後接大寫字母或中文時斷，避免小數點誤判）
 function fmtBody(text) {
-  const lines = text.split(/(?<=[。.])\s*/);
+  const lines = text.split(/(?<=[。])\s*|(?<=\.)\s+(?=[A-Z一-鿿])/);
   return lines.filter(l=>l.trim()).map(l=>`<p>${l.trim()}</p>`).join('');
 }
 
@@ -801,6 +805,15 @@ function loadNote(date) {
 }
 
 let _noteSaveTimer = {};
+let _autoUploadTimer = null;
+function showToast(msg, duration=2800) {
+  const t = document.getElementById('auto-upload-toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._hide);
+  t._hide = setTimeout(() => t.classList.remove('show'), duration);
+}
 function saveNote(date, text) {
   try { localStorage.setItem('note_'+date, text); } catch(e) {}
   clearTimeout(_noteSaveTimer[date]);
@@ -808,6 +821,42 @@ function saveNote(date, text) {
     const el = document.getElementById('note-saved-'+date);
     if (el) { el.textContent = '已儲存'; setTimeout(()=>{ if(el) el.textContent=''; }, 2000); }
   }, 600);
+  // auto-upload to GitHub if token is set (debounce 10s)
+  if (localStorage.getItem('gh_pat')) {
+    clearTimeout(_autoUploadTimer);
+    _autoUploadTimer = setTimeout(autoUploadNotes, 10000);
+  }
+}
+async function autoUploadNotes() {
+  const token = localStorage.getItem('gh_pat');
+  if (!token) return;
+  showToast('📤 同步筆記中…', 5000);
+  const notes = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith('note_')) {
+      const val = localStorage.getItem(k);
+      if (val && val.trim()) notes[k.replace('note_','')] = val.trim();
+    }
+  }
+  notes.updated = new Date().toISOString();
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(notes, null, 2))));
+  try {
+    let sha;
+    const chk = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/data/notes.json`,
+      {headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github+json'}});
+    if (chk.ok) sha = (await chk.json()).sha;
+    const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/data/notes.json`, {
+      method:'PUT',
+      headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
+      body: JSON.stringify({message:'📝 Auto-sync weekly notes', content, ...(sha?{sha}:{})})
+    });
+    showToast(res.ok ? '✅ 筆記已自動同步' : '❌ 同步失敗，請手動上傳');
+    const st = document.getElementById('notes-save-status');
+    if (st) { st.textContent = res.ok ? `✅ 已同步（${Object.keys(notes).filter(k=>k!=='updated').length} 天）` : '❌ 同步失敗'; setTimeout(()=>{ if(st) st.textContent=''; }, 3000); }
+  } catch(e) {
+    showToast('❌ 同步失敗：' + e.message);
+  }
 }
 
 function tog(i) {
