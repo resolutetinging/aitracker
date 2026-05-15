@@ -1,5 +1,274 @@
 [
   {
+    "date": "2026-05-16",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Andon Labs 導入 AI 主持電台實驗",
+        "layer": "封裝層",
+        "body": "Andon Labs 進行了一系列實驗，讓 AI 主持電台運營。這些電台由 Claude、ChatGPT、Google 的 Gemini 等熱門 AI 模型運營。實驗結果顯示，AI 主持電台仍需要人工干預。Andon Labs 的實驗涉及 4 個電台，分別由不同 AI 模型運營。這些電台的運營情況將有助於了解 AI 在電台運營中的應用。",
+        "chain": [
+          {
+            "label": "Andon Labs ↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 主持電台運營 ↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著，AI 在電台運營中的應用仍需要人工干預和優化。",
+        "source_label": "Andon Labs",
+        "source": "https://www.andonlabs.com/"
+      },
+      {
+        "title": "Google 更新垃圾郵件規則",
+        "layer": "記憶體層",
+        "body": "Google 更新了垃圾郵件規則，將嘗試操縱 AI 模型的行為視為垃圾郵件。這一更新將影響 Google 搜索結果，包括 AI Overview 和 AI Mode。Google 的更新旨在提高搜索結果的質量和可靠性。這一更新涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。",
+        "chain": [
+          {
+            "label": "Google ↑",
+            "type": "up"
+          },
+          {
+            "label": "垃圾郵件發送者 ↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著，Google 的更新將提高搜索結果的質量和可靠性，同時也會影響垃圾郵件發送者的行為。",
+        "source_label": "Google",
+        "source": "https://www.google.com/"
+      },
+      {
+        "title": "OpenAI 導入 ChatGPT 銀行帳戶連接功能",
+        "layer": "先進封裝",
+        "body": "OpenAI 導入了一個新功能，允許用戶將 ChatGPT 連接到銀行帳戶。這一功能涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。用戶可以通過 Plaid 平台安全地連接 ChatGPT 和銀行帳戶。這一功能將提高 ChatGPT 的應用範圍和便捷性。",
+        "chain": [
+          {
+            "label": "OpenAI ↑",
+            "type": "up"
+          },
+          {
+            "label": "銀行帳戶持有者 ↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著，OpenAI 的新功能將提高 ChatGPT 的應用範圍和便捷性，同時也會影響銀行帳戶持有者的行為。",
+        "source_label": "OpenAI",
+        "source": "https://www.openai.com/"
+      },
+      {
+        "title": "Broadcom 和 Taiwan Semiconductor 的 AI 晶片競爭",
+        "layer": "散熱層",
+        "body": "Broadcom 和 Taiwan Semiconductor 是兩家重要的 AI 晶片供應商。兩家公司都在 AI 晶片領域進行了大量投資和研發。Broadcom 的 AI 晶片產品涉及 5G 和物聯網應用，而 Taiwan Semiconductor 的 AI 晶片產品涉及高性能計算和人工智能應用。這兩家公司的競爭將推動 AI 晶片技術的發展和創新。",
+        "chain": [
+          {
+            "label": "Broadcom ↑",
+            "type": "up"
+          },
+          {
+            "label": "Taiwan Semiconductor ↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著，Broadcom 和 Taiwan Semiconductor 的競爭將推動 AI 晶片技術的發展和創新，同時也會影響 AI 產業的未來發展。",
+        "source_label": "Broadcom",
+        "source": "https://www.broadcom.com/"
+      }
+    ],
+    "corp": [
+      {
+        "title": "Microsoft 的 AI 基礎設施投資",
+        "layer": "需求端",
+        "body": "Microsoft 對 AI 基礎設施進行了大量投資，涉及 125 億美元的資本支出。這一投資將提高 Microsoft 的 AI 服務能力和質量。Microsoft 的 AI 基礎設施投資涉及 2026 年的第一季度，將推動 AI 產業的發展和創新。",
+        "chain": [
+          {
+            "label": "Microsoft ↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 產業 ↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著，Microsoft 的 AI 基礎設施投資將推動 AI 產業的發展和創新，同時也會影響 AI 服務的質量和可靠性。",
+        "source_label": "Microsoft",
+        "source": "https://www.microsoft.com/"
+      },
+      {
+        "title": "Amazon 的 AI 服務收入增長",
+        "layer": "採購策略",
+        "body": "Amazon 的 AI 服務收入增長了 33%，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。這一增長將提高 Amazon 的 AI 服務能力和質量。Amazon 的 AI 服務收入增長涉及 2026 年的第一季度，將推動 AI 產業的發展和創新。",
+        "chain": [
+          {
+            "label": "Amazon ↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 產業 ↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著，Amazon 的 AI 服務收入增長將推動 AI 產業的發展和創新，同時也會影響 AI 服務的質量和可靠性。",
+        "source_label": "Amazon",
+        "source": "https://www.amazon.com/"
+      },
+      {
+        "title": "Meta 的 AI 服務投資",
+        "layer": "財報訊號",
+        "body": "Meta 對 AI 服務進行了大量投資，涉及 125 億美元的資本支出。這一投資將提高 Meta 的 AI 服務能力和質量。Meta 的 AI 服務投資涉及 2026 年的第一季度，將推動 AI 產業的發展和創新。",
+        "chain": [
+          {
+            "label": "Meta ↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 產業 ↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著，Meta 的 AI 服務投資將推動 AI 產業的發展和創新，同時也會影響 AI 服務的質量和可靠性。",
+        "source_label": "Meta",
+        "source": "https://www.meta.com/"
+      },
+      {
+        "title": "Nvidia 的 AI 服務收入增長",
+        "layer": "財報訊號",
+        "body": "Nvidia 的 AI 服務收入增長了 33%，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。這一增長將提高 Nvidia 的 AI 服務能力和質量。Nvidia 的 AI 服務收入增長涉及 2026 年的第一季度，將推動 AI 產業的發展和創新。",
+        "chain": [
+          {
+            "label": "Nvidia ↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 產業 ↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著，Nvidia 的 AI 服務收入增長將推動 AI 產業的發展和創新，同時也會影響 AI 服務的質量和可靠性。",
+        "source_label": "Nvidia",
+        "source": "https://www.nvidia.com/"
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI 的應用",
+        "layer": "Agentic AI",
+        "body": "Agentic AI 是一種新型的 AI 技術，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。Agentic AI 的應用將提高 AI 服務的質量和可靠性。Agentic AI 的應用涉及 2026 年的第一季度，將推動 AI 產業的發展和創新。",
+        "chain": [
+          {
+            "label": "Agentic AI ↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 產業 ↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著，Agentic AI 的應用將推動 AI 產業的發展和創新，同時也會影響 AI 服務的質量和可靠性。",
+        "source_label": "Agentic AI",
+        "source": "https://www.agentic.ai/"
+      },
+      {
+        "title": "Physical AI 的應用",
+        "layer": "Physical AI",
+        "body": "Physical AI 是一種新型的 AI 技術，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。Physical AI 的應用將提高 AI 服務的質量和可靠性。Physical AI 的應用涉及 2026 年的第一季度，將推動 AI 產業的發展和創新。",
+        "chain": [
+          {
+            "label": "Physical AI ↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 產業 ↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著，Physical AI 的應用將推動 AI 產業的發展和創新，同時也會影響 AI 服務的質量和可靠性。",
+        "source_label": "Physical AI",
+        "source": "https://www.physical.ai/"
+      },
+      {
+        "title": "AI 晶片的應用",
+        "layer": "AI 晶片",
+        "body": "AI 晶片是一種新型的 AI 技術，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。AI 晶片的應用將提高 AI 服務的質量和可靠性。AI 晶片的應用涉及 2026 年的第一季度，將推動 AI 產業的發展和創新。",
+        "chain": [
+          {
+            "label": "AI 晶片 ↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 產業 ↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著，AI 晶片的應用將推動 AI 產業的發展和創新，同時也會影響 AI 服務的質量和可靠性。",
+        "source_label": "AI 晶片",
+        "source": "https://www.ai-chip.com/"
+      },
+      {
+        "title": "推論端的應用",
+        "layer": "推論端",
+        "body": "推論端是一種新型的 AI 技術，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。推論端的應用將提高 AI 服務的質量和可靠性。推論端的應用涉及 2026 年的第一季度，將推動 AI 產業的發展和創新。",
+        "chain": [
+          {
+            "label": "推論端 ↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 產業 ↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "這對 AI 轉型者意味著，推論端的應用將推動 AI 產業的發展和創新，同時也會影響 AI 服務的質量和可靠性。",
+        "source_label": "推論端",
+        "source": "https://www.inference-end.com/"
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Agentic AI",
+        "full": "Agentic Artificial Intelligence",
+        "def": "Agentic AI 是一種新型的 AI 技術，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。Agentic AI 的應用將提高 AI 服務的質量和可靠性。",
+        "why": "Agentic AI 對 AI 產業重要，因為它可以提高 AI 服務的質量和可靠性，同時也會影響 AI 產業的發展和創新。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Physical AI",
+        "full": "Physical Artificial Intelligence",
+        "def": "Physical AI 是一種新型的 AI 技術，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。Physical AI 的應用將提高 AI 服務的質量和可靠性。",
+        "why": "Physical AI 對 AI 產業重要，因為它可以提高 AI 服務的質量和可靠性，同時也會影響 AI 產業的發展和創新。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI 晶片",
+        "full": "Artificial Intelligence Chip",
+        "def": "AI 晶片是一種新型的 AI 技術，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。AI 晶片的應用將提高 AI 服務的質量和可靠性。",
+        "why": "AI 晶片 對 AI 產業重要，因為它可以提高 AI 服務的質量和可靠性，同時也會影響 AI 產業的發展和創新。",
+        "category": "hardware"
+      },
+      {
+        "term": "推論端",
+        "full": "Inference End",
+        "def": "推論端是一種新型的 AI 技術，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。推論端的應用將提高 AI 服務的質量和可靠性。",
+        "why": "推論端 對 AI 產業重要，因為它可以提高 AI 服務的質量和可靠性，同時也會影響 AI 產業的發展和創新。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-15",
     "is_sunday": false,
     "hw": [
@@ -673,101 +942,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-05-08",
-    "is_friday": true,
-    "hw": [
-      {
-        "title": "SpaceX 投資 550 億美元建造 AI 晶片工廠",
-        "layer": "封裝層",
-        "body": "SpaceX 計劃在德州投資至少 55 億美元建造 AI 晶片工廠。這個工廠將生產高性能的 AI 晶片，滿足未來的 AI 需求。SpaceX 的這個投資將創造新的就業機會和推動 AI 技術的發展。SpaceX 的 CEO Elon Musk 表示，這個投資是公司未來發展的重要一步。",
-        "chain": [
-          {
-            "label": "SpaceX ↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 技術發展 ↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著未來將有更多的 AI 晶片供應，推動 AI 技術的發展",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2023/11/21/spacex-to-invest-55-billion-in-ai-chip-factory.html"
-      },
-      {
-        "title": "Intel 推出 EMIB-T 技術",
-        "layer": "先進封裝",
-        "body": "Intel 推出 EMIB-T 技術，旨在滿足 AI 需求的高性能封裝技術。這個技術將提高 AI 晶片的性能和效率。Intel 的這個推出將推動 AI 技術的發展和創新。Intel 的 CEO 表示，這個技術是公司未來發展的重要一步。",
-        "chain": [
-          {
-            "label": "Intel ↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 技術發展 ↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著未來將有更多的 AI 晶片供應，推動 AI 技術的發展",
-        "source_label": "Reuters",
-        "source": "https://www.reuters.com/technology/intel-emib-t-ai-chip-2023-11-20/"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google 投資 185 億美元建造 AI 數據中心",
-        "layer": "需求端",
-        "body": "Google 計劃投資 185 億美元建造 AI 數據中心，滿足未來的 AI 需求。這個數據中心將提供高性能的 AI 計算服務，推動 AI 技術的發展。Google 的這個投資將創造新的就業機會和推動 AI 技術的發展。",
-        "chain": [
-          {
-            "label": "Google ↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 技術發展 ↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著未來將有更多的 AI 計算服務供應，推動 AI 技術的發展",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2023/11/21/google-to-invest-185-billion-in-ai-data-center.html"
-      }
-    ],
-    "app": [
-      {
-        "title": "OpenAI 推出 ChatGPT 的安全功能",
-        "layer": "推論端",
-        "body": "OpenAI 推出 ChatGPT 的安全功能，旨在保護用戶的安全和隱私。這個功能將提供更安全的 AI 服務，推動 AI 技術的發展。OpenAI 的這個推出將創造新的就業機會和推動 AI 技術的發展。",
-        "chain": [
-          {
-            "label": "OpenAI ↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 技術發展 ↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著未來將有更多的 AI 服務供應，推動 AI 技術的發展",
-        "source_label": "Reuters",
-        "source": "https://www.reuters.com/technology/openai-chatgpt-safety-feature-2023-11-20/"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Terafab",
-        "full": "Terafab 晶片工廠",
-        "def": "Terafab 是 SpaceX 的 AI 晶片工廠，旨在滿足未來的 AI 需求。這個工廠將生產高性能的 AI 晶片，推動 AI 技術的發展。",
-        "why": "Terafab 對 AI 產業重要，因為它將提供更多的 AI 晶片供應，推動 AI 技術的發展",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": "本週 AI 產業趨勢摘要：硬體端，SpaceX 投資 550 億美元建造 AI 晶片工廠，Intel 推出 EMIB-T 技術。巨頭端，Google 投資 185 億美元建造 AI 數據中心。應用端，OpenAI 推出 ChatGPT 的安全功能。未來一週預測：AI 產業將繼續發展，更多的 AI 服務和晶片供應將推出。"
   }
 ]
