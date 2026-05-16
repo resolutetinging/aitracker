@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-AI Tracker 每日自動更新腳本 v2
+AI Tracker 每日自動更新腳本 v3
 新聞來源：RSS feeds（主）+ DuckDuckGo（副）
 """
 
@@ -20,21 +20,39 @@ KNOWN_TERMS = ["HBM","CoWoS","CSP","OSAT","VLA 模型",
 #  1. RSS FEEDS（主要新聞來源，穩定免費）
 # ══════════════════════════════════════════════════════════════════
 RSS_FEEDS = [
-    # AI & Tech
-    ("AI/Tech", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
-    ("AI/Tech", "https://feeds.arstechnica.com/arstechnica/technology-lab"),
-    ("AI/Tech", "https://hnrss.org/frontpage?q=NVIDIA+HBM+CoWoS+TSMC+AI+chip"),
-    ("AI/Tech", "https://hnrss.org/frontpage?q=Microsoft+Google+Meta+Amazon+capex+AI"),
-    ("AI/Tech", "https://hnrss.org/frontpage?q=Agentic+AI+Physical+AI+robotics+humanoid"),
-    # Semiconductor
+    # Semiconductor / Supply Chain（高訊噪比，優先）
+    ("Semiconductor", "https://www.theregister.com/headlines.atom"),
     ("Semiconductor", "https://feeds.reuters.com/reuters/technologyNews"),
+    ("Semiconductor", "https://hnrss.org/frontpage?q=TSMC+HBM+CoWoS+OSAT+semiconductor+packaging"),
+    ("Semiconductor", "https://hnrss.org/frontpage?q=NVIDIA+AMD+Intel+chip+wafer+capacity+supply"),
+    # CSP CapEx / Cloud
+    ("CSP/CapEx",    "https://hnrss.org/frontpage?q=Microsoft+Google+Meta+Amazon+capex+data+center+AI+investment"),
+    # Agentic / Physical AI
+    ("App/AI",       "https://hnrss.org/frontpage?q=Agentic+AI+Physical+AI+robotics+humanoid+VLA+inference"),
+    ("App/AI",       "https://feeds.arstechnica.com/arstechnica/technology-lab"),
+    ("App/AI",       "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
 ]
 
+# 硬體供應鏈關鍵字（hw 分類必須命中其中之一）
+HW_KEYWORDS = [
+    "hbm","cowos","tsmc","nvidia","amd","intel","sk hynix","micron","samsung foundry",
+    "semiconductor","packaging","wafer","gpu","chip","osat","asic","foundry",
+    "advanced packaging","chiplet","tsv","emib","soi","reticle","capacity","fab"
+]
+
+# CSP / 巨頭關鍵字
+CORP_KEYWORDS = [
+    "microsoft","google","meta","amazon","apple","capex","data center","cloud",
+    "investment","revenue","earnings","openai","anthropic","infrastructure"
+]
+
+# 通用 AI 關鍵字（寬篩選，用於 fetch_rss 初步過濾）
 AI_KEYWORDS = [
     "nvidia","hbm","cowos","tsmc","ai chip","gpu","semiconductor","memory",
     "microsoft","google","meta","amazon","capex","data center","cloud",
     "agentic","robot","humanoid","physical ai","inference","llm","foundation model",
-    "artificial intelligence","machine learning","openai","anthropic","groq"
+    "artificial intelligence","machine learning","openai","anthropic","groq",
+    "packaging","wafer","foundry","chiplet","osat"
 ]
 
 def fetch_rss():
@@ -99,14 +117,27 @@ def fetch_news():
     ddg = fetch_ddg()
     print(f"  → DDG 取得 {len(ddg)} 條")
     all_news = rss + ddg
-    # Deduplicate by title similarity
+    # Deduplicate by normalized title (first 80 chars, strip punctuation)
     seen, unique = set(), []
     for s in all_news:
-        key = s[:60].lower()
+        key = re.sub(r'[^\w\s]', '', s[:80]).lower().strip()
         if key not in seen:
             seen.add(key)
             unique.append(s)
+    print(f"  → 去重後 {len(unique)} 條")
     return "\n\n".join(unique)
+
+
+def get_recent_titles(history, days=3):
+    """取得近 N 天已報道過的新聞標題，用於跨日去重"""
+    titles = []
+    for entry in history[:days]:
+        for section in ['hw', 'corp', 'app']:
+            for item in entry.get(section, []):
+                t = item.get('title', '').strip()
+                if t:
+                    titles.append(t)
+    return titles
 
 def load_notes():
     """讀取使用者存到 repo 的每日筆記"""
@@ -118,57 +149,75 @@ def load_notes():
 # ══════════════════════════════════════════════════════════════════
 #  2. PROMPT
 # ══════════════════════════════════════════════════════════════════
-def make_prompt(news_context):
+def make_prompt(news_context, recent_titles=None):
     known = "、".join(KNOWN_TERMS)
     notes = load_notes() if IS_SUNDAY else {}
     notes_text = "\n".join(
         f"- {d}：{n}" for d, n in sorted(notes.items()) if n.strip()
     ) if notes else ""
 
+    recent_block = ""
+    if recent_titles:
+        recent_block = (
+            "\n=== 近三日已報道（勿重複選用相同事件）===\n"
+            + "\n".join(f"- {t}" for t in recent_titles)
+            + "\n==========================================\n"
+        )
+
     sunday_field = (
-        f'"本週AI產業趨勢摘要（約250字）：\\n'
-        f'硬體端：這週供應鏈最重要的變動是...\\n'
-        f'巨頭端：CSP這週最關鍵的動作是...\\n'
-        f'應用端：有哪些新的落地案例或技術突破...\\n'
-        f'個人筆記整合：{"（本週使用者觀察：" + notes_text + "）請將這些觀察融入摘要與預測。" if notes_text else "（本週無手動筆記）"}\\n'
-        f'未來一週預測：根據上述趨勢，下週最值得關注的事件或指標是..."'
+        f'"本週AI產業趨勢摘要（約300字）：\\n'
+        f'【硬體供應鏈】這週 CoWoS/HBM/OSAT 最重要的產能或技術變動是...\\n'
+        f'【CSP資本支出】Microsoft/Google/Meta/Amazon 這週最關鍵的投資行動是...\\n'
+        f'【應用落地】Agentic AI/Physical AI/VLA 有哪些真實部署或技術突破...\\n'
+        f'{"【筆記整合】（本週觀察：" + notes_text + "）請將這些觀察融入摘要。" if notes_text else ""}\\n'
+        f'【下週預測】根據上述趨勢，下週最值得追蹤的一個具體指標或事件是..."'
         if IS_SUNDAY else 'null'
     )
 
-    return f"""你是 AI 產業首席情報官。根據以下今日新聞，依三個維度整理，輸出純 JSON（不要任何 markdown、反引號或說明文字，直接從 {{ 開始）。
+    notes_block = (
+        f"\n=== 本週使用者筆記（請融入週報）===\n{notes_text}\n==================================\n"
+        if notes_text else ""
+    )
+
+    return f"""你是 AI 產業供應鏈分析師，專注 AI 晶片硬體生態、CSP 資本支出決策、Agentic/Physical AI 落地應用。
+根據以下今日新聞，依三個維度整理，輸出純 JSON（不要任何 markdown、反引號或說明文字，直接從 {{ 開始）。
 
 === 今日新聞 ===
 {news_context}
-================
-f"=== 本週使用者筆記(請融入週報) ===\n{notes_text}\n" if notes_text else ""
+================{recent_block}{notes_block}
+【分類定義（嚴格遵守）】
+- hw（硬體缺口）：僅限半導體製造/封裝（CoWoS/OSAT/EMIB）/記憶體（HBM/LPDDR）/晶片供應鏈相關。應用層新聞、軟體功能、公司股價一律不歸 hw。
+- corp（巨頭角力）：CSP（Microsoft/Google/Meta/Amazon/Apple）的 CapEx 決策、AI 基礎設施投資、財報中 AI 相關支出、平台戰略購併。
+- app（新興應用）：Agentic AI、Physical AI、VLA 模型、推論端部署、機器人/人形機器人、具體落地案例。
+
 輸出格式：
 {{
   "date": "{DATE_STR}",
   "is_sunday": {str(IS_SUNDAY).lower()},
   "hw": [
     {{
-      "title": "新聞標題（繁體中文，具體說明誰做了什麼）",
-      "layer": "封裝層/記憶體層/先進封裝/散熱層（四選一）",
-      "body": "3-4句重點摘要。每句結尾用句點。包含具體數字、公司名稱、時間點。",
+      "title": "新聞標題（繁體中文，具體說明誰做了什麼、涉及哪個技術節點）",
+      "layer": "封裝層/記憶體層/晶圓製造/散熱層（四選一）",
+      "body": "3-4句重點摘要。每句結尾用句點。必須包含：具體數字、公司名稱、技術規格或時間點。",
       "chain": [
-        {{"label": "受影響方（方向說明）↑", "type": "up"}},
-        {{"label": "受影響方（方向說明）↓", "type": "down"}},
-        {{"label": "受影響方（不確定）⚠️", "type": "warn"}}
+        {{"label": "受益方＋原因 ↑", "type": "up"}},
+        {{"label": "受壓方＋原因 ↓", "type": "down"}},
+        {{"label": "待觀察方 ⚠️", "type": "warn"}}
       ],
       "rating": "core",
-      "insight": "一句話：這對 AI 轉型者意味著什麼？從供應、成本、機會角度切入。",
+      "insight": "一句話：從 AI 供應鏈投資者視角，這代表什麼產能/成本/競爭格局訊號？",
       "source_label": "Reuters",
       "source": "https://原始新聞網址（若有）"
     }}
   ],
-  "corp": [ /* 同格式，layer：需求端/採購策略/財報訊號 */ ],
-  "app": [ /* 同格式，layer：Agentic AI/Physical AI/推論端/AI晶片 */ ],
+  "corp": [ /* 同格式，layer：需求端/CapEx決策/財報訊號/平台戰略（四選一）*/ ],
+  "app": [ /* 同格式，layer：Agentic AI/Physical AI/VLA模型/推論部署（四選一）*/ ],
   "glossary_new": [
     {{
       "term": "新術語縮寫",
       "full": "英文全名　繁體中文",
       "def": "清楚的定義說明（2-3句）",
-      "why": "📌 為何對 AI 產業重要（具體說明）",
+      "why": "📌 為何對 AI 供應鏈/產業轉型重要（具體說明）",
       "category": "role/semiconductor/ai_technique/hardware（四選一）"
     }}
   ],
@@ -176,14 +225,16 @@ f"=== 本週使用者筆記(請融入週報) ===\n{notes_text}\n" if notes_text 
 }}
 
 規則：
-- rating 只能是 "core"/"noise"/"opp" 三選一
+- rating 只能是 "core"/"noise"/"opp" 三選一（core=重大訊號；opp=投資/轉型機會；noise=背景雜訊）
 - chain type 只能是 "up"/"down"/"warn" 三選一
-- 若有資安/道德疑慮，加 "ethic": "說明" 欄位
-- hw/corp/app 每個維度 2-4 條，優先選有具體數字的新聞
+- hw/corp/app 每個維度 2-4 條；若今日真的無符合分類的新聞，可回傳 1 條並標 rating:"noise"，不要強行歸類或憑空生成
+- 每個條目的具體數字（金額/百分比/數量/規格）必須來自該條目本身的新聞，嚴禁從其他條目複製數字填充
 - glossary_new 只列今天新出現術語，以下已知不要重複：{known}
-- category 欄位：role=產業角色；semiconductor=半導體技術；ai_technique=AI技術方法；hardware=硬體/材料
+- category：role=產業角色；semiconductor=半導體技術；ai_technique=AI技術方法；hardware=硬體/材料
 - 若新聞來源有 URL，填入 source 欄位
-- 週日時 weekly_summary 需整合使用者筆記的觀察視角"""
+- insight 欄位角度：AI 晶片供應鏈投資者/AI 產業轉型觀察者最在意的訊號（產能瓶頸/成本走向/競爭格局）
+- 週日時 weekly_summary 需整合使用者筆記的觀察視角
+- 若有資安/道德疑慮，加 "ethic": "說明" 欄位"""
 
 # ══════════════════════════════════════════════════════════════════
 #  3. GROQ API
@@ -193,10 +244,16 @@ def call_groq(prompt):
     response = client.chat.completions.create(
         model="llama-3.3-70b-versatile",
         messages=[
-            {"role":"system","content":"你是 AI 產業分析師。只輸出純 JSON，不加任何說明或 markdown 格式。確保每個新聞條目都有具體數字和公司名稱。"},
+            {"role":"system","content":(
+                "你是 AI 產業供應鏈分析師，專注半導體供應鏈（HBM/CoWoS/OSAT）、CSP 資本支出、Agentic/Physical AI 落地。"
+                "只輸出純 JSON，不加任何說明或 markdown 格式。"
+                "hw 分類僅限半導體/封裝/記憶體供應鏈，應用層或軟體新聞絕對不能放入 hw。"
+                "每個條目的具體數字必須來自該條目本身的新聞，嚴禁跨條目複製數字或細節。"
+                "若某維度今日無相關新聞，回傳 1 條 noise 評級的條目，不要憑空生成內容。"
+            )},
             {"role":"user","content":prompt}
         ],
-        temperature=0.2,
+        temperature=0.45,
         max_tokens=4096,
     )
     raw = response.choices[0].message.content.strip()
@@ -411,11 +468,15 @@ if __name__ == '__main__':
     total = len(news.splitlines())
     print(f"  → 合計 {total} 行新聞摘要")
 
+    history = load_history()
+    recent_titles = get_recent_titles(history, days=3)
+    print(f"  → 近三日已報道標題 {len(recent_titles)} 條（用於去重）")
+
     print("🤖 呼叫 Groq API...")
-    data = call_groq(make_prompt(news))
+    data = call_groq(make_prompt(news, recent_titles))
     print(f"  → 硬體 {len(data.get('hw',[]))} / 巨頭 {len(data.get('corp',[]))} / 應用 {len(data.get('app',[]))} 則")
 
-    history = upsert(load_history(), data)
+    history = upsert(history, data)
     save_history(history)
     print(f"  → data/history.json 已更新（共 {len(history)} 天）")
 
