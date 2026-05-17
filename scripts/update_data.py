@@ -160,8 +160,8 @@ def make_prompt(news_context, recent_titles=None):
     notes_text = "; ".join(f"{d}:{n}" for d, n in sorted(notes.items()) if n.strip()) if notes else ""
 
     recent_str = ("【勿重複】" + "／".join(recent_titles)) if recent_titles else ""
-    notes_hint = ('本週筆記（請融入分析）：' + notes_text[:300]) if notes_text else ''
-    notes_line = ('\\n【筆記整合】' + notes_hint) if notes_hint else ''
+    notes_context = ('【本週筆記參考（勿逐字複製，請融入分析寫成洞察）】' + notes_text) if notes_text else ''
+    notes_line = '\\n【筆記整合】根據本週筆記寫出一句核心洞察（不得原文照抄）' if notes_text else ''
     weekly_val = (
         '"【硬體供應鏈】CoWoS/HBM/OSAT本週最重要產能或技術變動（一句話）'
         '\\n【CSP投資】MS/Google/Meta/Amazon最關鍵CapEx動作（一句話）'
@@ -178,6 +178,7 @@ def make_prompt(news_context, recent_titles=None):
 
 新聞：{news_short}
 {recent_str}
+{notes_context}
 
 分類：hw=半導體/封裝(CoWoS/OSAT/HBM)/晶片製造；corp=CSP(MS/Google/Meta/Amazon)CapEx/投資；app=Agentic AI/Physical AI/VLA/推論落地
 
