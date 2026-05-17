@@ -157,89 +157,28 @@ def load_notes():
 def make_prompt(news_context, recent_titles=None):
     known = "、".join(KNOWN_TERMS)
     notes = load_notes() if IS_SUNDAY else {}
-    notes_text = "\n".join(
-        f"- {d}：{n}" for d, n in sorted(notes.items()) if n.strip()
-    ) if notes else ""
+    notes_text = "; ".join(f"{d}:{n}" for d, n in sorted(notes.items()) if n.strip()) if notes else ""
 
-    recent_block = ""
-    if recent_titles:
-        recent_block = (
-            "\n=== 近三日已報道（勿重複選用相同事件）===\n"
-            + "\n".join(f"- {t}" for t in recent_titles)
-            + "\n==========================================\n"
-        )
-
-    sunday_field = (
-        f'"本週AI產業趨勢摘要（約300字）：\\n'
-        f'【硬體供應鏈】這週 CoWoS/HBM/OSAT 最重要的產能或技術變動是...\\n'
-        f'【CSP資本支出】Microsoft/Google/Meta/Amazon 這週最關鍵的投資行動是...\\n'
-        f'【應用落地】Agentic AI/Physical AI/VLA 有哪些真實部署或技術突破...\\n'
-        f'{"【筆記整合】（本週觀察：" + notes_text + "）請將這些觀察融入摘要。" if notes_text else ""}\\n'
-        f'【下週預測】根據上述趨勢，下週最值得追蹤的一個具體指標或事件是..."'
+    recent_str = ("【勿重複】" + "／".join(recent_titles)) if recent_titles else ""
+    weekly_val = (
+        f'"週報（約200字）：硬體供應鏈本週最重要變動→CSP投資動向→應用落地→下週預測{"→筆記："+notes_text if notes_text else ""}"'
         if IS_SUNDAY else 'null'
     )
 
-    notes_block = (
-        f"\n=== 本週使用者筆記（請融入週報）===\n{notes_text}\n==================================\n"
-        if notes_text else ""
-    )
+    # 新聞截斷至 2000 字元，控制 token 數
+    news_short = news_context[:2000]
 
-    return f"""你是 AI 產業供應鏈分析師，專注 AI 晶片硬體生態、CSP 資本支出決策、Agentic/Physical AI 落地應用。
-根據以下今日新聞，依三個維度整理，輸出純 JSON（不要任何 markdown、反引號或說明文字，直接從 {{ 開始）。
+    return f"""AI產業供應鏈分析師。根據新聞輸出純JSON（直接從{{開始）。
 
-=== 今日新聞 ===
-{news_context}
-================{recent_block}{notes_block}
-【分類定義（嚴格遵守）】
-- hw（硬體缺口）：僅限半導體製造/封裝（CoWoS/OSAT/EMIB）/記憶體（HBM/LPDDR）/晶片供應鏈相關。應用層新聞、軟體功能、公司股價一律不歸 hw。
-- corp（巨頭角力）：CSP（Microsoft/Google/Meta/Amazon/Apple）的 CapEx 決策、AI 基礎設施投資、財報中 AI 相關支出、平台戰略購併。
-- app（新興應用）：Agentic AI、Physical AI、VLA 模型、推論端部署、機器人/人形機器人、具體落地案例。
+新聞：{news_short}
+{recent_str}
 
-輸出格式：
-{{
-  "date": "{DATE_STR}",
-  "is_sunday": {str(IS_SUNDAY).lower()},
-  "hw": [
-    {{
-      "title": "新聞標題（繁體中文，具體說明誰做了什麼、涉及哪個技術節點）",
-      "layer": "封裝層/記憶體層/晶圓製造/散熱層（四選一）",
-      "body": "3-4句重點摘要。每句結尾用句點。必須包含：具體數字、公司名稱、技術規格或時間點。",
-      "chain": [
-        {{"label": "受益方＋原因 ↑", "type": "up"}},
-        {{"label": "受壓方＋原因 ↓", "type": "down"}},
-        {{"label": "待觀察方 ⚠️", "type": "warn"}}
-      ],
-      "rating": "core",
-      "insight": "一句話：從 AI 供應鏈投資者視角，這代表什麼產能/成本/競爭格局訊號？",
-      "source_label": "Reuters",
-      "source": "https://原始新聞網址（若有）"
-    }}
-  ],
-  "corp": [ /* 同格式，layer：需求端/CapEx決策/財報訊號/平台戰略（四選一）*/ ],
-  "app": [ /* 同格式，layer：Agentic AI/Physical AI/VLA模型/推論部署（四選一）*/ ],
-  "glossary_new": [
-    {{
-      "term": "新術語縮寫",
-      "full": "英文全名　繁體中文",
-      "def": "清楚的定義說明（2-3句）",
-      "why": "📌 為何對 AI 供應鏈/產業轉型重要（具體說明）",
-      "category": "role/semiconductor/ai_technique/hardware（四選一）"
-    }}
-  ],
-  "weekly_summary": {sunday_field}
-}}
+分類：hw=半導體/封裝(CoWoS/OSAT/HBM)/晶片製造；corp=CSP(MS/Google/Meta/Amazon)CapEx/投資；app=Agentic AI/Physical AI/VLA/推論落地
 
-規則：
-- rating 只能是 "core"/"noise"/"opp" 三選一（core=重大訊號；opp=投資/轉型機會；noise=背景雜訊）
-- chain type 只能是 "up"/"down"/"warn" 三選一
-- hw/corp/app 每個維度 2-4 條；若今日真的無符合分類的新聞，可回傳 1 條並標 rating:"noise"，不要強行歸類或憑空生成
-- 每個條目的具體數字（金額/百分比/數量/規格）必須來自該條目本身的新聞，嚴禁從其他條目複製數字填充
-- glossary_new 只列今天新出現術語，以下已知不要重複：{known}
-- category：role=產業角色；semiconductor=半導體技術；ai_technique=AI技術方法；hardware=硬體/材料
-- 若新聞來源有 URL，填入 source 欄位
-- insight 欄位角度：AI 晶片供應鏈投資者/AI 產業轉型觀察者最在意的訊號（產能瓶頸/成本走向/競爭格局）
-- 週日時 weekly_summary 需整合使用者筆記的觀察視角
-- 若有資安/道德疑慮，加 "ethic": "說明" 欄位"""
+格式（每區2-4條，無相關新聞則1條noise）：
+{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句含數字摘要","chain":[{{"label":"受益↑","type":"up"}},{{"label":"受壓↓","type":"down"}}],"rating":"core","insight":"供應鏈投資者視角","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
+
+規則：hw僅限硬體供應鏈；各條目數字不得跨條目複製；已知術語勿重列:{known}；全程繁體中文勿夾雜其他語言"""
 
 # ══════════════════════════════════════════════════════════════════
 #  3. GROQ API
@@ -259,7 +198,7 @@ def call_groq(prompt):
             {"role":"user","content":prompt}
         ],
         temperature=0.45,
-        max_tokens=4096,
+        max_tokens=1500,
     )
     raw = response.choices[0].message.content.strip()
     if raw.startswith('```'):
