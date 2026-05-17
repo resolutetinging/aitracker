@@ -4,156 +4,87 @@
     "is_sunday": true,
     "hw": [
       {
-        "title": "TSMC 擴張 CoWoS 和 SoIC 能力以滿足 AI 需求",
-        "layer": "封裝層",
-        "body": "TSMC 預計全球芯片市場將在 2030 年達到 1.5 萬億美元，AI 驅動的成長將推動公司的發展。TSMC 的 CoWoS 和 SoIC 技術是滿足 AI 需求的關鍵。",
-        "chain": [
-          {
-            "label": "TSMC",
-            "type": "up"
-          },
-          {
-            "label": "AI 需求",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "TSMC 的擴張將滿足 AI 需求，推動公司的發展。",
-        "source_label": "TSMC",
-        "source": "https://www.tsmc.com.tw/"
-      },
-      {
         "title": "LG Innotek 尋求美國 AI 芯片客戶",
-        "layer": "晶圓製造",
-        "body": "LG Innotek 的基板收入增加了 16%，公司正在尋求美國 AI 芯片客戶，以擴大其業務。",
+        "layer": "封裝層",
+        "body": "LG Innotek 的子strate 收入增加 16%，公司正尋求美國 AI 芯片客戶。TSMC 預計全球芯片市場將在 2030 年達到 1.5 萬億美元，AI 將驅動市場增長。TSMC 擴張 CoWoS 和 SoIC 能力以滿足 AI 需求",
         "chain": [
           {
-            "label": "LG Innotek",
-            "type": "up"
-          },
-          {
-            "label": "美國 AI 芯片客戶",
+            "label": "受益↑",
             "type": "up"
           }
         ],
         "rating": "core",
-        "insight": "LG Innotek 的業務擴張將推動公司的發展。",
-        "source_label": "LG Innotek",
-        "source": "https://www.lginnotek.com/"
+        "insight": "供應鏈投資者應關注半導體封裝層的發展，尤其是 CoWoS 和 SoIC 技術",
+        "source_label": "路透社",
+        "source": "https://www.reuters.com/"
       },
       {
-        "title": "無相關新聞",
-        "layer": "記憶體層",
-        "body": "無相關新聞。",
-        "chain": [],
-        "rating": "noise",
-        "insight": "無相關新聞。",
-        "source_label": "無",
-        "source": "無"
+        "title": "TSMC 擴張 CoWoS 和 SoIC 能力",
+        "layer": "晶圓製造",
+        "body": "TSMC 預計全球芯片市場將在 2030 年達到 1.5 萬億美元，AI 將驅動市場增長。公司擴張 CoWoS 和 SoIC 能力以滿足 AI 需求",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "供應鏈投資者應關注半導體晶圓製造的發展，尤其是 CoWoS 和 SoIC 技術",
+        "source_label": "路透社",
+        "source": "https://www.reuters.com/"
       }
     ],
     "corp": [
       {
-        "title": "Broadcom 和 TSMC 的 AI 晶片競爭",
+        "title": "Google 更新了其垃圾郵件規則",
         "layer": "需求端",
-        "body": "Broadcom 和 TSMC 是 AI 晶片市場的競爭對手，兩公司都在發展自己的 AI 晶片技術。",
+        "body": "Google 更新了其垃圾郵件規則，以標記嘗試操縱其 AI 模型的搜索結果為垃圾郵件",
         "chain": [
           {
-            "label": "Broadcom",
-            "type": "up"
-          },
-          {
-            "label": "TSMC",
-            "type": "up"
+            "label": "受壓↓",
+            "type": "down"
           }
         ],
-        "rating": "core",
-        "insight": "Broadcom 和 TSMC 的競爭將推動 AI 晶片市場的發展。",
-        "source_label": "Broadcom",
-        "source": "https://www.broadcom.com/"
-      },
-      {
-        "title": "Microsoft 的 AI 基礎設施投資",
-        "layer": "CapEx 決策",
-        "body": "Microsoft 正在投資 AI 基礎設施，包括資料中心和 AI 算力。",
-        "chain": [
-          {
-            "label": "Microsoft",
-            "type": "up"
-          },
-          {
-            "label": "AI 基礎設施",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Microsoft 的投資將推動 AI 基礎設施的發展。",
-        "source_label": "Microsoft",
-        "source": "https://www.microsoft.com/"
-      },
-      {
-        "title": "無相關新聞",
-        "layer": "財報訊號",
-        "body": "無相關新聞。",
-        "chain": [],
         "rating": "noise",
-        "insight": "無相關新聞。",
-        "source_label": "無",
-        "source": "無"
+        "insight": "CSP 公司的垃圾郵件規則更新可能會影響其搜索結果的質量",
+        "source_label": "Search Engine Land",
+        "source": "https://searchengineland.com/"
+      },
+      {
+        "title": "OpenAI 重新組織",
+        "layer": "CapEx 決策",
+        "body": "OpenAI 重新組織，以整合某些領域並使公司總裁 Greg Brockman 成為所有產品的官方負責人",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "CSP 公司的組織變革可能會影響其產品的發展",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/"
       }
     ],
     "app": [
       {
         "title": "OpenAI 的 ChatGPT 銀行帳戶連接功能",
         "layer": "Agentic AI",
-        "body": "OpenAI 的 ChatGPT 將可以連接銀行帳戶，提供更精準的財務建議和服務。",
+        "body": "OpenAI 即將推出讓 ChatGPT 直接存取用戶銀行帳戶的功能",
         "chain": [
           {
-            "label": "OpenAI",
-            "type": "up"
-          },
-          {
-            "label": "ChatGPT",
+            "label": "受益↑",
             "type": "up"
           }
         ],
         "rating": "core",
-        "insight": "OpenAI 的 ChatGPT 將推動 Agentic AI 的發展。",
-        "source_label": "OpenAI",
-        "source": "https://www.openai.com/"
-      },
-      {
-        "title": "Google 的 AI 服務收入增長",
-        "layer": "Physical AI",
-        "body": "Google 的 AI 服務收入增長，推動公司的發展。",
-        "chain": [
-          {
-            "label": "Google",
-            "type": "up"
-          },
-          {
-            "label": "AI 服務",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Google 的 AI 服務收入增長將推動 Physical AI 的發展。",
-        "source_label": "Google",
-        "source": "https://www.google.com/"
-      },
-      {
-        "title": "無相關新聞",
-        "layer": "VLA 模型",
-        "body": "無相關新聞。",
-        "chain": [],
-        "rating": "noise",
-        "insight": "無相關新聞。",
-        "source_label": "無",
-        "source": "無"
+        "insight": "Agentic AI 的發展可能會影響用戶的銀行帳戶安全",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/"
       }
     ],
     "glossary_new": [],
-    "weekly_summary": "本週，TSMC 擴張 CoWoS 和 SoIC 能力以滿足 AI 需求，LG Innotek 尋求美國 AI 芯片客戶，Broadcom 和 TSMC 的 AI 晶片競爭加劇，Microsoft 投資 AI 基礎設施，OpenAI 的 ChatGPT 推出銀行帳戶連接功能，Google 的 AI 服務收入增長。下週，預計 AI 需求將繼續推動半導體產業的發展，CSP 公司將繼續投資 AI 基礎設施，Agentic AI 和 Physical AI 將繼續推動 AI 服務的發展。"
+    "weekly_summary": "【硬體供應鏈】CoWoS/HBM/OSAT 本週最重要產能或技術變動是 TSMC 擴張 CoWoS 和 SoIC 能力以滿足 AI 需求\n【CSP 投資】MS/Google/Meta/Amazon 最關鍵 CapEx 動作是 OpenAI 重新組織\n【應用落地】Agentic AI/Physical AI 本週最具體進展是 OpenAI 的 ChatGPT 銀行帳戶連接功能\n【下週預測】最值得追蹤的一個指標或事件是 TSMC 的全球芯片市場預測\n【筆記整合】本週筆記：2026-05-08:- EMIB=局部橋接、多晶粒互連的封裝方法; EMIB-T=在這個方法上加上更強的垂直供電與更高密度互連能力，讓它更能對應 AI 大封裝需求"
   },
   {
     "date": "2026-05-16",
