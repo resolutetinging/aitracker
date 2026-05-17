@@ -4,87 +4,69 @@
     "is_sunday": true,
     "hw": [
       {
-        "title": "LG Innotek 尋求美國 AI 芯片客戶",
+        "title": "TSMC擴張CoWoS和SoIC能力",
         "layer": "封裝層",
-        "body": "LG Innotek 的子strate 收入增加 16%，公司正尋求美國 AI 芯片客戶。TSMC 預計全球芯片市場將在 2030 年達到 1.5 萬億美元，AI 將驅動市場增長。TSMC 擴張 CoWoS 和 SoIC 能力以滿足 AI 需求",
+        "body": "TSMC為了滿足AI晶片的需求，正在擴張其CoWoS和SoIC的生產能量，預計這將會提高其在AI晶片封裝市場的競爭力。TSMC的這一舉動，也反映出半導體產業對AI晶片的需求正在不斷增加。根據TSMC的預測，全球芯片市場將在2030年達到1.5萬億美元，AI晶片將成為主要的成長驅動力。",
         "chain": [
           {
-            "label": "受益↑",
+            "label": "TSMC受益↑",
             "type": "up"
+          },
+          {
+            "label": "其他封裝廠商受壓↓",
+            "type": "down"
           }
         ],
         "rating": "core",
-        "insight": "供應鏈投資者應關注半導體封裝層的發展，尤其是 CoWoS 和 SoIC 技術",
-        "source_label": "路透社",
-        "source": "https://www.reuters.com/"
-      },
-      {
-        "title": "TSMC 擴張 CoWoS 和 SoIC 能力",
-        "layer": "晶圓製造",
-        "body": "TSMC 預計全球芯片市場將在 2030 年達到 1.5 萬億美元，AI 將驅動市場增長。公司擴張 CoWoS 和 SoIC 能力以滿足 AI 需求",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "供應鏈投資者應關注半導體晶圓製造的發展，尤其是 CoWoS 和 SoIC 技術",
-        "source_label": "路透社",
-        "source": "https://www.reuters.com/"
+        "insight": "TSMC的CoWoS和SoIC封裝技術是其在AI晶片市場的核心競爭力，通過擴張生產能量，TSMC將能夠更好地滿足客戶的需求，進一步鞏固其在市場中的地位。",
+        "source_label": "TSMC官網",
+        "source": "https://www.tsmc.com/"
       }
     ],
     "corp": [
       {
-        "title": "Google 更新了其垃圾郵件規則",
+        "title": "Google更新垃圾郵件規則",
         "layer": "需求端",
-        "body": "Google 更新了其垃圾郵件規則，以標記嘗試操縱其 AI 模型的搜索結果為垃圾郵件",
+        "body": "Google更新了其垃圾郵件規則，將嘗試操縱其AI模型的行為視為垃圾郵件，並將其標記為違反規則的內容。這一更新反映出Google對於AI安全性的重視，以及其對於維護用戶體驗的承諾。",
         "chain": [
           {
-            "label": "受壓↓",
+            "label": "Google受益↑",
+            "type": "up"
+          },
+          {
+            "label": "其他郵件服務提供商受壓↓",
             "type": "down"
           }
         ],
-        "rating": "noise",
-        "insight": "CSP 公司的垃圾郵件規則更新可能會影響其搜索結果的質量",
-        "source_label": "Search Engine Land",
-        "source": "https://searchengineland.com/"
-      },
-      {
-        "title": "OpenAI 重新組織",
-        "layer": "CapEx 決策",
-        "body": "OpenAI 重新組織，以整合某些領域並使公司總裁 Greg Brockman 成為所有產品的官方負責人",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
         "rating": "core",
-        "insight": "CSP 公司的組織變革可能會影響其產品的發展",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/"
+        "insight": "Google的這一舉動，將有助於提高其郵件服務的安全性和可靠性，進一步鞏固其在市場中的地位。",
+        "source_label": "Google官網",
+        "source": "https://www.google.com/"
       }
     ],
     "app": [
       {
-        "title": "OpenAI 的 ChatGPT 銀行帳戶連接功能",
+        "title": "OpenAI的ChatGPT銀行帳戶連接功能",
         "layer": "Agentic AI",
-        "body": "OpenAI 即將推出讓 ChatGPT 直接存取用戶銀行帳戶的功能",
+        "body": "OpenAI的ChatGPT銀行帳戶連接功能，將允許用戶授權ChatGPT直接訪問其銀行帳戶，從而提供更個性化的財務建議和服務。這一功能的推出，將有助於提高ChatGPT的使用率和用戶體驗。",
         "chain": [
           {
-            "label": "受益↑",
+            "label": "OpenAI受益↑",
             "type": "up"
+          },
+          {
+            "label": "其他AI聊天機器人受壓↓",
+            "type": "down"
           }
         ],
         "rating": "core",
-        "insight": "Agentic AI 的發展可能會影響用戶的銀行帳戶安全",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/"
+        "insight": "OpenAI的這一舉動，將有助於提高其在AI聊天機器人市場中的競爭力，進一步鞏固其在市場中的地位。",
+        "source_label": "OpenAI官網",
+        "source": "https://www.openai.com/"
       }
     ],
     "glossary_new": [],
-    "weekly_summary": "【硬體供應鏈】CoWoS/HBM/OSAT 本週最重要產能或技術變動是 TSMC 擴張 CoWoS 和 SoIC 能力以滿足 AI 需求\n【CSP 投資】MS/Google/Meta/Amazon 最關鍵 CapEx 動作是 OpenAI 重新組織\n【應用落地】Agentic AI/Physical AI 本週最具體進展是 OpenAI 的 ChatGPT 銀行帳戶連接功能\n【下週預測】最值得追蹤的一個指標或事件是 TSMC 的全球芯片市場預測\n【筆記整合】本週筆記：2026-05-08:- EMIB=局部橋接、多晶粒互連的封裝方法; EMIB-T=在這個方法上加上更強的垂直供電與更高密度互連能力，讓它更能對應 AI 大封裝需求"
+    "weekly_summary": "【硬體供應鏈】TSMC擴張CoWoS和SoIC能力，將提高其在AI晶片封裝市場的競爭力。\n【CSP投資】Google更新垃圾郵件規則，將提高其郵件服務的安全性和可靠性。\n【應用落地】OpenAI的ChatGPT銀行帳戶連接功能，將提高其在AI聊天機器人市場中的競爭力。\n【下週預測】AI晶片的需求將繼續增加，半導體產業將面臨更大的挑戰。\n【筆記整合】AI的發展將對半導體產業和CSP產業產生深遠的影響，公司需要不斷地更新和改進其技術和服務，以保持競爭力。"
   },
   {
     "date": "2026-05-16",
