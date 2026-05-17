@@ -1,5 +1,61 @@
 [
   {
+    "date": "2026-05-18",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "台灣芯片製造商填補韓國HBM推動的空缺",
+        "layer": "記憶體層",
+        "body": "台灣的半導體生態系統從AI伺服器投資熱潮中意外受益，供應壓力從...開始，預計將會持續。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "供應鏈投資者視角，台灣芯片製造商的機會",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/"
+      }
+    ],
+    "corp": [
+      {
+        "title": "微軟全力投入AI基礎設施投資",
+        "layer": "需求端",
+        "body": "微軟的平台位於支出轉變的中心，存在一些風險需要考慮...",
+        "chain": [
+          {
+            "label": "投資↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "CSP的投資策略，微軟的AI基礎設施投資",
+        "source_label": "The Real Reason",
+        "source": "https://www.thereason.com/"
+      },
+      {
+        "title": "CSP資本支出預計達830億美元",
+        "layer": "CapEx決策",
+        "body": "TrendForce更新了CSP的資本支出預測，預計2026年將達830億美元，年增長率達79%。",
+        "chain": [
+          {
+            "label": "投資↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "CSP的資本支出預測，投資趨勢",
+        "source_label": "TrendForce",
+        "source": "https://www.trendforce.com/"
+      }
+    ],
+    "app": [],
+    "glossary_new": [],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-17",
     "is_sunday": true,
     "hw": [
@@ -815,102 +871,6 @@
         "full": "Embedded Multi-die Interconnect Bridge-T",
         "def": "EMIB-T 是一種先進的封裝技術，允許多個芯片之間的高密度連接。",
         "why": "EMIB-T 封裝技術對於 AI 領域的發展具有重要意義，因為它可以提供更高的封裝密度和更低的成本。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-05-11",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Intel 推廣 EMIB-T 技術以填補 AI 晶片封裝缺口",
-        "layer": "封裝層",
-        "body": "Intel 正在推廣其 EMIB-T 技術，以填補 AI 晶片封裝的缺口。該技術被視為一種低成本且可擴展的替代方案。TSMC 的 CoWoS 封裝技術面臨著容量限制，主要玩家如 Nvidia 和 AMD 已經預訂了大部分容量。Intel 希望通過 EMIB-T 技術來填補這個缺口。該公司預計在未來幾年內將其 EMIB-T 技術的產能增加 20%。",
-        "chain": [
-          {
-            "label": "TSMC 受影響↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia 和 AMD 受影響↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著更低成本的 AI 晶片封裝方案的出現，可能會促進 AI 技術的發展和應用。",
-        "source_label": "Reuters",
-        "source": "https://www.reuters.com/technology/intel-emib-t-ai-chip-packaging-2026-05-10"
-      },
-      {
-        "title": "SpaceX 計劃在德州投資 55 億美元建造 AI 晶片工廠",
-        "layer": "先進封裝",
-        "body": "SpaceX 計劃在德州投資 55 億美元建造一家 AI 晶片工廠，該工廠將生產高性能的 AI 晶片。該項目預計將創造 1,000 個就業機會，並將成為該地區最大的 AI 晶片工廠之一。SpaceX 預計該工廠將在 2028 年開始生產。",
-        "chain": [
-          {
-            "label": "SpaceX 受影響↑",
-            "type": "up"
-          },
-          {
-            "label": "當地經濟受影響↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著更強大的 AI 晶片供應能力的出現，可能會促進 AI 技術的發展和應用。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/05/10/spacex-ai-chip-factory-texas.html"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Microsoft 擔心 OpenAI 會轉向 Amazon",
-        "layer": "需求端",
-        "body": "Microsoft 擔心 OpenAI 會轉向 Amazon，導致其 Azure 服務受到影響。Microsoft 的 CEO Satya Nadella 和 OpenAI 的 CEO Sam Altman 曾經討論過這個問題。Microsoft 希望通過與 OpenAI 的合作來加強其在 AI 領域的競爭力。",
-        "chain": [
-          {
-            "label": "Microsoft 受影響↑",
-            "type": "up"
-          },
-          {
-            "label": "Amazon 受影響↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著 Microsoft 對 AI 技術的重視和其在 AI 領域的競爭力。",
-        "source_label": "The New York Times",
-        "source": "https://www.nytimes.com/2026/05/10/technology/microsoft-openai-amazon.html"
-      }
-    ],
-    "app": [
-      {
-        "title": "Nanoleaf 將未來押注於機器人和 AI",
-        "layer": "Agentic AI",
-        "body": "Nanoleaf 將其未來押注於機器人和 AI 技術的發展。該公司預計在未來幾年內將其機器人和 AI 產品的銷售額增加 50%。Nanoleaf 希望通過其機器人和 AI 產品來提供更好的智能家居解決方案。",
-        "chain": [
-          {
-            "label": "Nanoleaf 受影響↑",
-            "type": "up"
-          },
-          {
-            "label": "智能家居市場受影響↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著更多的 AI 技術應用和機會的出現，可能會促進 AI 技術的發展和應用。",
-        "source_label": "Forbes",
-        "source": "https://www.forbes.com/2026/05/10/nanoleaf-robots-ai-future.html"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "CoPoS",
-        "full": "Chip-on-Package-on-Substrate",
-        "def": "CoPoS 是一種先進的封裝技術，將多個晶片封裝在一個包裝中。該技術可以提高晶片的性能和效率。",
-        "why": "CoPoS 封裝技術對 AI 產業很重要，因為它可以提供更高的性能和效率，從而促進 AI 技術的發展和應用。",
         "category": "semiconductor"
       }
     ],
