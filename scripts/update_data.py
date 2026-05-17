@@ -71,7 +71,7 @@ def fetch_rss():
                 desc  = (item.findtext('description') or item.findtext('summary') or
                          item.findtext('atom:summary',namespaces=ns) or '').strip()
                 # Strip HTML tags
-                desc = re.sub(r'<[^>]+>', '', desc)[:400]
+                desc = re.sub(r'<[^>]+>', '', desc)[:200]
                 if title and any(kw in (title+desc).lower() for kw in AI_KEYWORDS):
                     snippets.append(f"[{label}] {title} — {desc}")
             print(f"  RSS {label}({url.split('/')[2]}): {len(items)} items")
@@ -99,7 +99,7 @@ def fetch_ddg():
             try:
                 results = list(ddgs.news(q, max_results=5, timelimit="w"))
                 for r in results:
-                    snippets.append(f"[{label}] {r.get('title','')} — {r.get('body','')[:300]}")
+                    snippets.append(f"[{label}] {r.get('title','')} — {r.get('body','')[:150]}")
                 print(f"  DDG '{label}': {len(results)} results")
                 break
             except Exception as e:
@@ -125,11 +125,16 @@ def fetch_news():
             seen.add(key)
             unique.append(s)
     print(f"  → 去重後 {len(unique)} 條")
-    return "\n\n".join(unique)
+    # 限制總字數在 5000 字元以內，避免超過 Groq TPM 限制
+    joined = "\n\n".join(unique)
+    if len(joined) > 5000:
+        joined = joined[:5000]
+        print(f"  → 截斷至 5000 字元")
+    return joined
 
 
-def get_recent_titles(history, days=3):
-    """取得近 N 天已報道過的新聞標題，用於跨日去重"""
+def get_recent_titles(history, days=3, max_titles=10):
+    """取得近 N 天已報道過的新聞標題，用於跨日去重（最多 max_titles 條）"""
     titles = []
     for entry in history[:days]:
         for section in ['hw', 'corp', 'app']:
@@ -137,7 +142,7 @@ def get_recent_titles(history, days=3):
                 t = item.get('title', '').strip()
                 if t:
                     titles.append(t)
-    return titles
+    return titles[:max_titles]
 
 def load_notes():
     """讀取使用者存到 repo 的每日筆記"""
