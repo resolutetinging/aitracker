@@ -237,7 +237,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .hist-sec:first-child{margin-top:0;}
 .weekly-box{background:rgba(160,112,64,.06);border:1px solid rgba(160,112,64,.25);border-radius:8px;padding:14px 16px;margin-bottom:16px;}
 .ws-title{font-size:13px;font-weight:700;color:var(--corp);margin-bottom:8px;}
-.ws-body{font-size:13px;color:var(--text2);line-height:1.65;}
+.ws-body{font-size:13px;color:var(--text2);line-height:1.65;}.ws-body ul{margin:4px 0;padding-left:18px;}.ws-body li{margin-bottom:6px;}
 .empty-state{text-align:center;color:var(--muted);font-size:14px;padding:48px 20px;}
 
 /* ── Modal ── */
@@ -759,8 +759,11 @@ function renderHistory(hist) {
     return;
   }
   const cards = hist.map((d,i) => {
-    const ws = d.weekly_summary
-      ? `<div class="weekly-box"><div class="ws-title">📊 本週摘要（週報）</div><div class="ws-body">${d.weekly_summary}</div></div>` : '';
+    const ws = d.weekly_summary ? (() => {
+      const lines = d.weekly_summary.split('\n').filter(l=>l.trim());
+      const items = lines.map(l=>`<li>${l.trim()}</li>`).join('');
+      return `<div class="weekly-box"><div class="ws-title">📊 本週摘要（週報）</div><div class="ws-body"><ul>${items}</ul></div></div>`;
+    })() : '';
     const hw = d.hw?.length ? `<div class="hist-sec">🔩 硬體缺口</div><div class="news-grid">${d.hw.map(x=>newsCard(x,'hw')).join('')}</div>` : '';
     const co = d.corp?.length ? `<div class="hist-sec">💰 巨頭角力</div><div class="news-grid">${d.corp.map(x=>newsCard(x,'corp')).join('')}</div>` : '';
     const ap = d.app?.length ? `<div class="hist-sec">🤖 新興應用</div><div class="news-grid">${d.app.map(x=>newsCard(x,'app')).join('')}</div>` : '';

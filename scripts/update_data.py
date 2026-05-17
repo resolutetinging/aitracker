@@ -160,8 +160,14 @@ def make_prompt(news_context, recent_titles=None):
     notes_text = "; ".join(f"{d}:{n}" for d, n in sorted(notes.items()) if n.strip()) if notes else ""
 
     recent_str = ("【勿重複】" + "／".join(recent_titles)) if recent_titles else ""
+    notes_hint = ('本週筆記（請融入分析）：' + notes_text[:300]) if notes_text else ''
+    notes_line = ('\\n【筆記整合】' + notes_hint) if notes_hint else ''
     weekly_val = (
-        f'"週報（約200字）：硬體供應鏈本週最重要變動→CSP投資動向→應用落地→下週預測{"→筆記："+notes_text if notes_text else ""}"'
+        '"【硬體供應鏈】CoWoS/HBM/OSAT本週最重要產能或技術變動（一句話）'
+        '\\n【CSP投資】MS/Google/Meta/Amazon最關鍵CapEx動作（一句話）'
+        '\\n【應用落地】Agentic AI/Physical AI本週最具體進展（一句話）'
+        '\\n【下週預測】最值得追蹤的一個指標或事件（一句話）'
+        + notes_line + '"'
         if IS_SUNDAY else 'null'
     )
 
@@ -382,7 +388,11 @@ def push_notion(data):
         *[item_block(i) for i in data['app']],
     ]
     if data.get('weekly_summary'):
-        blocks += [h2("📊 本週摘要"), para(data['weekly_summary'])]
+        def bullet(text):
+            return {"object":"block","type":"bulleted_list_item",
+                    "bulleted_list_item":{"rich_text":[{"type":"text","text":{"content":text[:2000]}}]}}
+        ws_lines = [l.strip() for l in data['weekly_summary'].split('\n') if l.strip()]
+        blocks += [h2("📊 本週摘要")] + [bullet(l) for l in ws_lines]
 
     payload = {
         "parent":{"database_id":db_id},
