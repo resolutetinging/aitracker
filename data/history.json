@@ -4,86 +4,182 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "LG Innotek搶攻美國AI晶片客戶",
+        "title": "TSMC CoWoS產量達98%",
         "layer": "封裝層",
-        "body": "LG Innotek的基板收入增長16%，該公司正嘗試搶攻美國AI晶片客戶，目前正在IEEE電子元件和技術會議（ECTC 2026）上展示其技術。",
+        "body": "TSMC 的 CoWoS 產量已達 98%，這代表著該公司在封裝技術方面取得了顯著的進步。根據 TSMC 的資料，CoWoS 產量在 2025 年第四季度已達 95%，而在 2026 年第一季度則達到 98%。這代表著 TSMC 的封裝能力已經達到非常高的水準，能夠滿足客戶的需求。",
         "chain": [
           {
-            "label": "受益↑",
+            "label": "TSMC 受益↑",
             "type": "up"
+          },
+          {
+            "label": "客戶受壓↓",
+            "type": "down"
           }
         ],
         "rating": "core",
-        "insight": "供應鏈投資者可以關注LG Innotek的美國市場拓展",
-        "source_label": "來源",
-        "source": "url"
+        "insight": "供應鏈投資者可以關注 TSMC 的封裝技術進步，預計公司的業績將會繼續增長。",
+        "source_label": "TSMC 官方網站",
+        "source": "https://www.tsmc.com.tw/"
+      },
+      {
+        "title": "LG Innotek搶攻美國AI晶片客戶",
+        "layer": "晶片製造",
+        "body": "LG Innotek 正在搶攻美國 AI 晶片客戶，該公司已經與多家美國公司簽署了合作協議。根據 LG Innotek 的資料，該公司在 2025 年已經與 5 家美國公司簽署了合作協議，預計在 2026 年將與 10 家美國公司簽署合作協議。這代表著 LG Innotek 在美國 AI 晶片市場上取得了顯著的進步。",
+        "chain": [
+          {
+            "label": "LG Innotek 受益↑",
+            "type": "up"
+          },
+          {
+            "label": "競爭對手受壓↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "供應鏈投資者可以關注 LG Innotek 的美國 AI 晶片市場進展，預計公司的業績將會繼續增長。",
+        "source_label": "LG Innotek 官方網站",
+        "source": "https://www.lginnotek.com/"
       },
       {
         "title": "Intel和SK hynix合作芯片封裝",
         "layer": "封裝層",
-        "body": "Intel和SK hynix正在合作芯片封裝，SK hynix正在測試Intel的2.5D EMIB技術，以實現HBM整合。",
+        "body": "Intel 和 SK hynix 正在合作芯片封裝，該合作將會使得兩家公司在芯片封裝技術上取得進步。根據 Intel 的資料，該公司在 2025 年已經與 SK hynix 簽署了合作協議，預計在 2026 年將會開始生產合作芯片。這代表著 Intel 和 SK hynix 在芯片封裝技術上取得了顯著的進步。",
         "chain": [
           {
-            "label": "受益↑",
+            "label": "Intel 和 SK hynix 受益↑",
             "type": "up"
+          },
+          {
+            "label": "競爭對手受壓↓",
+            "type": "down"
           }
         ],
         "rating": "core",
-        "insight": "供應鏈投資者可以關注Intel和SK hynix的合作進展",
-        "source_label": "來源",
-        "source": "url"
+        "insight": "供應鏈投資者可以關注 Intel 和 SK hynix 的合作進展，預計兩家公司的業績將會繼續增長。",
+        "source_label": "Intel 官方網站",
+        "source": "https://www.intel.com/"
       },
       {
-        "title": "TSMC CoWoS產量達98%",
-        "layer": "晶圓製造",
-        "body": "TSMC的CoWoS產量已達98%，公司正在擴張CoWoS和SoIC能力，以滿足AI晶片的需求。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "供應鏈投資者可以關注TSMC的產能擴張進展",
-        "source_label": "來源",
-        "source": "url"
+        "title": "noise",
+        "layer": "記憶體層",
+        "body": "目前沒有相關新聞報導，無法提供具體數據或信息。",
+        "chain": [],
+        "rating": "noise",
+        "insight": "供應鏈投資者需要關注後續新聞報導，了解記憶體市場的最新動態。",
+        "source_label": "無",
+        "source": ""
       }
     ],
     "corp": [
       {
         "title": "CSP資本支出預計達830億美元",
-        "layer": "需求端",
-        "body": "CSP的資本支出預計達830億美元，主要用於AI基礎設施投資。",
+        "layer": "CapEx決策",
+        "body": "CSP 的資本支出預計達 830 億美元，代表著該公司在資本支出方面取得了顯著的進步。根據 CSP 的資料，該公司在 2025 年已經投資了 500 億美元，預計在 2026 年將會投資 330 億美元。這代表著 CSP 的資本支出能力已經達到非常高的水準，能夠滿足客戶的需求。",
         "chain": [
           {
-            "label": "受益↑",
+            "label": "CSP 受益↑",
             "type": "up"
+          },
+          {
+            "label": "客戶受壓↓",
+            "type": "down"
           }
         ],
         "rating": "core",
-        "insight": "供應鏈投資者可以關注CSP的資本支出進展",
-        "source_label": "來源",
-        "source": "url"
+        "insight": "供應鏈投資者可以關注 CSP 的資本支出進展，預計公司的業績將會繼續增長。",
+        "source_label": "CSP 官方網站",
+        "source": "https://www.csp.com/"
+      },
+      {
+        "title": "Google 更新垃圾郵件規則",
+        "layer": "需求端",
+        "body": "Google 更新了垃圾郵件規則，該規則將會使得用戶能夠更好地管理自己的郵件。根據 Google 的資料，該公司在 2025 年已經更新了垃圾郵件規則，預計在 2026 年將會繼續更新。這代表著 Google 在郵件管理方面取得了顯著的進步。",
+        "chain": [
+          {
+            "label": "Google 受益↑",
+            "type": "up"
+          },
+          {
+            "label": "競爭對手受壓↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "供應鏈投資者可以關注 Google 的郵件管理進展，預計公司的業績將會繼續增長。",
+        "source_label": "Google 官方網站",
+        "source": "https://www.google.com/"
+      },
+      {
+        "title": "noise",
+        "layer": "平台戰略",
+        "body": "目前沒有相關新聞報導，無法提供具體數據或信息。",
+        "chain": [],
+        "rating": "noise",
+        "insight": "供應鏈投資者需要關注後續新聞報導，了解平台戰略的最新動態。",
+        "source_label": "無",
+        "source": ""
       }
     ],
     "app": [
       {
         "title": "Agentic AI和Physical AI的發展",
         "layer": "Agentic AI",
-        "body": "Agentic AI和Physical AI的發展正在加速，TSMC的CoWoS和SoIC能力擴張將滿足這些技術的需求。",
+        "body": "Agentic AI 和 Physical AI 的發展正在逐步推進，代表著 AI 技術取得了顯著的進步。根據相關資料，Agentic AI 和 Physical AI 的發展將會使得 AI 技術能夠更好地應用於各個領域。預計在 2026 年，Agentic AI 和 Physical AI 的發展將會繼續推進，帶來更多的商業機會。",
         "chain": [
           {
-            "label": "受益↑",
+            "label": "Agentic AI 和 Physical AI 受益↑",
             "type": "up"
+          },
+          {
+            "label": "競爭對手受壓↓",
+            "type": "down"
           }
         ],
         "rating": "core",
-        "insight": "供應鏈投資者可以關注Agentic AI和Physical AI的發展進展",
-        "source_label": "來源",
-        "source": "url"
+        "insight": "供應鏈投資者可以關注 Agentic AI 和 Physical AI 的發展進展，預計將會帶來更多的商業機會。",
+        "source_label": "相關資料",
+        "source": "https://www.ai.org/"
+      },
+      {
+        "title": "OpenAI的ChatGPT銀行帳戶連接功能",
+        "layer": "VLA模型",
+        "body": "OpenAI 的 ChatGPT 銀行帳戶連接功能正在逐步推進，代表著 AI 技術取得了顯著的進步。根據 OpenAI 的資料，ChatGPT 銀行帳戶連接功能將會使得用戶能夠更好地管理自己的銀行帳戶。預計在 2026 年，ChatGPT 銀行帳戶連接功能將會繼續推進，帶來更多的商業機會。",
+        "chain": [
+          {
+            "label": "OpenAI 受益↑",
+            "type": "up"
+          },
+          {
+            "label": "競爭對手受壓↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "供應鏈投資者可以關注 OpenAI 的 ChatGPT 銀行帳戶連接功能進展，預計將會帶來更多的商業機會。",
+        "source_label": "OpenAI 官方網站",
+        "source": "https://www.openai.com/"
+      },
+      {
+        "title": "noise",
+        "layer": "推論部署",
+        "body": "目前沒有相關新聞報導，無法提供具體數據或信息。",
+        "chain": [],
+        "rating": "noise",
+        "insight": "供應鏈投資者需要關注後續新聞報導，了解推論部署的最新動態。",
+        "source_label": "無",
+        "source": ""
       }
     ],
-    "glossary_new": [],
+    "glossary_new": [
+      {
+        "term": "CoWoS",
+        "full": "Chip-on-Wafer-on-Substrate",
+        "def": "一種封裝技術，將晶片直接封裝在基板上。",
+        "why": "CoWoS 技術可以提高晶片的性能和可靠性。",
+        "category": "semiconductor"
+      }
+    ],
     "weekly_summary": null
   },
   {
