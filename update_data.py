@@ -31,6 +31,11 @@ RSS_FEEDS = [
     ("App/AI",       "https://hnrss.org/frontpage?q=Agentic+AI+Physical+AI+robotics+humanoid+VLA+inference"),
     ("App/AI",       "https://feeds.arstechnica.com/arstechnica/technology-lab"),
     ("App/AI",       "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
+    # Google News RSS（保底，hnrss/DDG 失效時仍有料）
+    ("Semiconductor", "https://news.google.com/rss/search?q=TSMC+HBM+CoWoS+semiconductor+AI+chip&hl=en-US&gl=US&ceid=US:en"),
+    ("Semiconductor", "https://news.google.com/rss/search?q=NVIDIA+AMD+Intel+SK+Hynix+Micron+packaging&hl=en-US&gl=US&ceid=US:en"),
+    ("CSP/CapEx",    "https://news.google.com/rss/search?q=Microsoft+Google+Meta+Amazon+AI+capex+data+center+2026&hl=en-US&gl=US&ceid=US:en"),
+    ("App/AI",       "https://news.google.com/rss/search?q=Agentic+AI+Physical+AI+humanoid+robot+inference+2026&hl=en-US&gl=US&ceid=US:en"),
 ]
 
 # 硬體供應鏈關鍵字（hw 分類必須命中其中之一）
@@ -125,11 +130,11 @@ def fetch_news():
             seen.add(key)
             unique.append(s)
     print(f"  → 去重後 {len(unique)} 條")
-    # 限制總字數在 5000 字元以內，避免超過 Groq TPM 限制
+    # 限制總字數在 8000 字元以內，避免超過 Groq TPM 限制
     joined = "\n\n".join(unique)
-    if len(joined) > 5000:
-        joined = joined[:5000]
-        print(f"  → 截斷至 5000 字元")
+    if len(joined) > 8000:
+        joined = joined[:8000]
+        print(f"  → 截斷至 8000 字元")
     return joined
 
 
