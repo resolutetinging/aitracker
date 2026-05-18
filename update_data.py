@@ -185,7 +185,12 @@ def make_prompt(news_context, recent_titles=None):
 格式（每區2-4條，無相關新聞則1條noise）：
 {{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句含數字摘要","chain":[{{"label":"受益↑","type":"up"}},{{"label":"受壓↓","type":"down"}}],"rating":"core","insight":"供應鏈投資者視角","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
 
-規則：hw僅限硬體供應鏈；各條目數字不得跨條目複製；已知術語勿重列:{known}；全程繁體中文勿夾雜其他語言；body 欄位嚴禁使用「...」「…」等省略符號，資訊不確定請直接省略或改寫成完整句子"""
+規則：
+- hw 僅限硬體供應鏈；各條目數字不得跨條目複製；已知術語勿重列:{known}
+- 全程繁體中文，勿夾雜其他語言；「晶片」非「芯片」，「記憶體」非「内存」
+- body 欄位嚴禁使用「...」「…」等省略符號，資訊不確定請直接省略或改寫成完整句子
+- body 必須包含至少 3 句完整陳述，每句需含具體數字、時間點、公司名稱或技術細節，不得泛泛而談
+- 若某條目的原始新聞資訊不足以寫出 3 句有內容的句子，請將該條評為 noise 並簡短說明，不要用空話填充"""
 
 # ══════════════════════════════════════════════════════════════════
 #  3. GROQ API
@@ -201,11 +206,13 @@ def call_groq(prompt):
                 "hw 分類僅限半導體/封裝/記憶體供應鏈，應用層或軟體新聞絕對不能放入 hw。"
                 "每個條目的具體數字必須來自該條目本身的新聞，嚴禁跨條目複製數字或細節。"
                 "若某維度今日無相關新聞，回傳 1 條 noise 評級的條目，不要憑空生成內容。"
+                "每條 body 必須包含至少 3 句，每句需含具體數字、時間點或技術細節；資訊不足請評為 noise，不要用空話填充。"
+                "全程繁體中文：晶片（非芯片）、記憶體（非内存）、處理器（非处理器）。"
             )},
             {"role":"user","content":prompt}
         ],
         temperature=0.45,
-        max_tokens=1500,
+        max_tokens=2500,
     )
     raw = response.choices[0].message.content.strip()
     if raw.startswith('```'):
