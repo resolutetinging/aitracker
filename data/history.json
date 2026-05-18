@@ -6,7 +6,7 @@
       {
         "title": "TSMC晶片製造產能擴張",
         "layer": "晶圓製造",
-        "body": "TSMC預計從2022年到2026年，AI晶片需求將增加11倍。同時，TSMC也宣布將在2029年推出新一代CoWoS技術，支援24個HBM堆疊，預計將計算能力提高48倍。TSMC的CoWoS技術目前已經達到98%的產能利用率，公司也在積極擴張產能以滿足日益增加的需求。",
+        "body": "TSMC預計2022年至2026年間，AI晶片需求將增加11倍，同時公司也在推動CoWoS技術的發展，目標是到2029年實現24個HBM堆疊，從而大幅提高計算能力。TSMC的CoWoS技術可以支持超過14個reticle的封裝，預計到2029年計算能力將會增加48倍。同時，TSMC也在擴張其CoWoS和SoIC能力，以滿足日益增長的晶片需求。",
         "chain": [
           {
             "label": "TSMC受益↑",
@@ -18,14 +18,14 @@
           }
         ],
         "rating": "core",
-        "insight": "TSMC的產能擴張和新技術推出將進一步鞏固其在晶片製造市場的領導地位",
+        "insight": "供應鏈投資者可以關注TSMC的產能擴張和技術發展，從而評估其在晶片製造市場的競爭力。",
         "source_label": "TrendForce",
         "source": "https://www.trendforce.com/"
       },
       {
         "title": "SK Hynix和Intel合作晶片封裝",
         "layer": "封裝層",
-        "body": "SK Hynix和Intel宣布合作推出2.5D晶片封裝技術，以應對TSMC CoWoS技術的短缺。這項合作將使SK Hynix和Intel能夠提供更高效的晶片封裝解決方案，預計將在2029年推出。SK Hynix和Intel的合作也將進一步加強其在晶片封裝市場的競爭力。SK Hynix目前已經擁有14%的市場份額，預計將在2025年增加到20%。",
+        "body": "SK Hynix和Intel宣布合作開發2.5D封裝技術，以應對TSMC CoWoS技術的挑戰。這項合作將使SK Hynix和Intel能夠提高其晶片封裝能力，從而更好地競爭於市場。SK Hynix和Intel的合作預計將在2029年之前實現，屆時其封裝能力將會大幅提高。同時，TSMC的CoWoS技術也將面臨更大的挑戰。",
         "chain": [
           {
             "label": "SK Hynix和Intel受益↑",
@@ -37,14 +37,14 @@
           }
         ],
         "rating": "core",
-        "insight": "SK Hynix和Intel的合作將進一步加強其在晶片封裝市場的競爭力，挑戰TSMC的領導地位",
-        "source_label": "Digitimes",
+        "insight": "供應鏈投資者可以關注SK Hynix和Intel的合作，從而評估其在晶片封裝市場的競爭力。",
+        "source_label": "digitimes",
         "source": "https://www.digitimes.com/"
       },
       {
-        "title": "TSMC新一代CoWoS技術 Roadmap",
-        "layer": "晶圓製造",
-        "body": "TSMC宣布了新一代CoWoS技術的Roadmap，預計將在2029年推出支援24個HBM堆疊的CoWoS技術。這項技術將使計算能力提高48倍，同時也將大幅增加記憶體頻寬。TSMC的新一代CoWoS技術也將支援14個reticle的封裝，預計將在2029年推出。TSMC目前已經擁有60%的市場份額，預計將在2025年增加到70%。",
+        "title": "TSMC新一代CoWoS技術Roadmap",
+        "layer": "封裝層",
+        "body": "TSMC公布了其新一代CoWoS技術的Roadmap，預計到2029年將實現24個HBM堆疊，從而大幅提高計算能力。TSMC的新一代CoWoS技術將支持超過14個reticle的封裝，預計到2029年計算能力將會增加48倍。同時，TSMC也在擴張其CoWoS和SoIC能力，以滿足日益增長的晶片需求。",
         "chain": [
           {
             "label": "TSMC受益↑",
@@ -56,73 +56,65 @@
           }
         ],
         "rating": "core",
-        "insight": "TSMC的新一代CoWoS技術將進一步鞏固其在晶片製造市場的領導地位",
+        "insight": "供應鏈投資者可以關注TSMC的新一代CoWoS技術，從而評估其在晶片封裝市場的競爭力。",
         "source_label": "Tom's Hardware",
         "source": "https://www.tomshardware.com/"
       },
       {
         "title": "noise",
-        "layer": "noise",
-        "body": "無相關新聞",
+        "layer": "晶圓製造",
+        "body": "今日無相關新聞。",
         "chain": [],
         "rating": "noise",
-        "insight": "無相關新聞",
-        "source_label": "noise",
-        "source": "noise"
+        "insight": "",
+        "source_label": "",
+        "source": ""
       }
     ],
     "corp": [
       {
         "title": "CSP資本支出預計達830億美元",
         "layer": "需求端",
-        "body": "CSP預計在2023年至2025年期間，資本支出將達830億美元。這項投資將主要用於提升產能和開發新技術，預計將在2025年推出。CSP目前已經擁有40%的市場份額，預計將在2025年增加到50%。CSP的資本支出也將進一步鞏固其在市場的領導地位。",
+        "body": "CSP預計2026年的資本支出將達830億美元，主要用於擴張其晶片製造能力和開發新技術。CSP的資本支出預計將使其在晶片製造市場的競爭力大幅提高。同時，CSP也在推動其在AI領域的發展，預計將在2029年之前實現重大突破。",
         "chain": [
           {
             "label": "CSP受益↑",
             "type": "up"
           },
           {
-            "label": "其他公司受壓↓",
+            "label": "其他CSP受壓↓",
             "type": "down"
           }
         ],
         "rating": "core",
-        "insight": "CSP的資本支出將進一步鞏固其在市場的領導地位",
-        "source_label": "CSP",
-        "source": "https://www.csp.com/"
+        "insight": "供應鏈投資者可以關注CSP的資本支出，從而評估其在晶片製造市場的競爭力。",
+        "source_label": "來源",
+        "source": "https://www.source.com/"
       },
       {
         "title": "noise",
-        "layer": "noise",
-        "body": "無相關新聞",
+        "layer": "需求端",
+        "body": "今日無相關新聞。",
         "chain": [],
         "rating": "noise",
-        "insight": "無相關新聞",
-        "source_label": "noise",
-        "source": "noise"
+        "insight": "",
+        "source_label": "",
+        "source": ""
       }
     ],
     "app": [
       {
         "title": "noise",
-        "layer": "noise",
-        "body": "無相關新聞",
+        "layer": "Agentic AI",
+        "body": "今日無相關新聞。",
         "chain": [],
         "rating": "noise",
-        "insight": "無相關新聞",
-        "source_label": "noise",
-        "source": "noise"
+        "insight": "",
+        "source_label": "",
+        "source": ""
       }
     ],
-    "glossary_new": [
-      {
-        "term": "CoWoS",
-        "full": "Chip-on-Wafer-on-Substrate",
-        "def": "一種晶片封裝技術",
-        "why": "用於提高晶片的計算能力和記憶體頻寬",
-        "category": "semiconductor"
-      }
-    ],
+    "glossary_new": [],
     "weekly_summary": null
   },
   {
