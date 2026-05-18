@@ -4,9 +4,9 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "台灣芯片製造商填補韓國HBM推動的空缺",
-        "layer": "記憶體層",
-        "body": "台灣的半導體生態系統從AI伺服器投資熱潮中意外受益，供應壓力從...開始，預計將會持續。",
+        "title": "LG Innotek搶攻美國AI晶片客戶",
+        "layer": "封裝層",
+        "body": "LG Innotek的基板收入增長16%，該公司正嘗試搶攻美國AI晶片客戶，目前正在IEEE電子元件和技術會議（ECTC 2026）上展示其技術。",
         "chain": [
           {
             "label": "受益↑",
@@ -14,44 +14,75 @@
           }
         ],
         "rating": "core",
-        "insight": "供應鏈投資者視角，台灣芯片製造商的機會",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/"
+        "insight": "供應鏈投資者可以關注LG Innotek的美國市場拓展",
+        "source_label": "來源",
+        "source": "url"
+      },
+      {
+        "title": "Intel和SK hynix合作芯片封裝",
+        "layer": "封裝層",
+        "body": "Intel和SK hynix正在合作芯片封裝，SK hynix正在測試Intel的2.5D EMIB技術，以實現HBM整合。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "供應鏈投資者可以關注Intel和SK hynix的合作進展",
+        "source_label": "來源",
+        "source": "url"
+      },
+      {
+        "title": "TSMC CoWoS產量達98%",
+        "layer": "晶圓製造",
+        "body": "TSMC的CoWoS產量已達98%，公司正在擴張CoWoS和SoIC能力，以滿足AI晶片的需求。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "供應鏈投資者可以關注TSMC的產能擴張進展",
+        "source_label": "來源",
+        "source": "url"
       }
     ],
     "corp": [
       {
-        "title": "微軟全力投入AI基礎設施投資",
-        "layer": "需求端",
-        "body": "微軟的平台位於支出轉變的中心，存在一些風險需要考慮...",
-        "chain": [
-          {
-            "label": "投資↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "CSP的投資策略，微軟的AI基礎設施投資",
-        "source_label": "The Real Reason",
-        "source": "https://www.thereason.com/"
-      },
-      {
         "title": "CSP資本支出預計達830億美元",
-        "layer": "CapEx決策",
-        "body": "TrendForce更新了CSP的資本支出預測，預計2026年將達830億美元，年增長率達79%。",
+        "layer": "需求端",
+        "body": "CSP的資本支出預計達830億美元，主要用於AI基礎設施投資。",
         "chain": [
           {
-            "label": "投資↑",
+            "label": "受益↑",
             "type": "up"
           }
         ],
         "rating": "core",
-        "insight": "CSP的資本支出預測，投資趨勢",
-        "source_label": "TrendForce",
-        "source": "https://www.trendforce.com/"
+        "insight": "供應鏈投資者可以關注CSP的資本支出進展",
+        "source_label": "來源",
+        "source": "url"
       }
     ],
-    "app": [],
+    "app": [
+      {
+        "title": "Agentic AI和Physical AI的發展",
+        "layer": "Agentic AI",
+        "body": "Agentic AI和Physical AI的發展正在加速，TSMC的CoWoS和SoIC能力擴張將滿足這些技術的需求。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "供應鏈投資者可以關注Agentic AI和Physical AI的發展進展",
+        "source_label": "來源",
+        "source": "url"
+      }
+    ],
     "glossary_new": [],
     "weekly_summary": null
   },
