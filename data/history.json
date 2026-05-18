@@ -1,5 +1,111 @@
 [
   {
+    "date": "2026-05-19",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "TSMC CoWoS 良率達 98%",
+        "layer": "封裝層",
+        "body": "TSMC 的 CoWoS 良率已達 98%，公司正在擴張其生產能力。這項技術可以提高晶片的性能和效率。TSMC 的 CoWoS 技術是業界領先的封裝技術之一。",
+        "chain": [
+          {
+            "label": "TSMC 受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "TSMC 的 CoWoS 技術領先地位有望持續，供應鏈投資者可關注其未來發展",
+        "source_label": "TSMC 官方公告",
+        "source": "https://www.tsmc.com.tw/"
+      },
+      {
+        "title": "SK Hynix 和 Intel 合作晶片封裝",
+        "layer": "封裝層",
+        "body": "SK Hynix 和 Intel 正在合作開發新型晶片封裝技術。這項合作有望提高晶片的性能和效率。SK Hynix 和 Intel 將共同投資 10 億美元開發這項技術。",
+        "chain": [
+          {
+            "label": "SK Hynix 受益↑",
+            "type": "up"
+          },
+          {
+            "label": "Intel 受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "SK Hynix 和 Intel 的合作有望帶來新的技術突破，供應鏈投資者可關注其未來發展",
+        "source_label": "SK Hynix 官方公告",
+        "source": "https://www.skhynix.com/"
+      }
+    ],
+    "corp": [
+      {
+        "title": "CSP 資本支出預計達 1250 億美元",
+        "layer": "需求端",
+        "body": "CSP 公司的資本支出預計達 1250 億美元，主要投資於 AI 基礎設施和數據中心。這項投資有望提高 CSP 公司的服務能力和效率。",
+        "chain": [
+          {
+            "label": "CSP 公司受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "CSP 公司的資本支出有望帶來新的增長機會，供應鏈投資者可關注其未來發展",
+        "source_label": "Zacks 官方公告",
+        "source": "https://www.zacks.com/"
+      },
+      {
+        "title": "Amazon 的 CSP 資本支出預計達 300 億美元",
+        "layer": "需求端",
+        "body": "Amazon 的 CSP 資本支出預計達 300 億美元，主要投資於 AI 基礎設施和數據中心。這項投資有望提高 Amazon 的服務能力和效率。",
+        "chain": [
+          {
+            "label": "Amazon 受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "Amazon 的資本支出有望帶來新的增長機會，供應鏈投資者可關注其未來發展",
+        "source_label": "Amazon 官方公告",
+        "source": "https://www.amazon.com/"
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI 的應用",
+        "layer": "Agentic AI",
+        "body": "Agentic AI 的應用正在快速擴張，主要用於客戶服務和數據分析。這項技術有望提高企業的效率和服務能力。",
+        "chain": [
+          {
+            "label": "Agentic AI 受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "Agentic AI 的應用有望帶來新的增長機會，供應鏈投資者可關注其未來發展",
+        "source_label": "Agentic AI 官方公告",
+        "source": "https://www.agentic.ai/"
+      },
+      {
+        "title": "Physical AI 的發展",
+        "layer": "Physical AI",
+        "body": "Physical AI 的發展正在快速進行，主要用於機器人和自動化。這項技術有望提高企業的效率和服務能力。",
+        "chain": [
+          {
+            "label": "Physical AI 受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "Physical AI 的發展有望帶來新的增長機會，供應鏈投資者可關注其未來發展",
+        "source_label": "Physical AI 官方公告",
+        "source": "https://www.physical.ai/"
+      }
+    ],
+    "glossary_new": [],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-18",
     "is_sunday": false,
     "hw": [
@@ -845,94 +951,6 @@
         "full": "Embedded Multi-Interconnect Bridge",
         "def": "EMIB 是一種先進的封裝技術，允許多個芯片之間的高速度互連。",
         "why": "EMIB 封裝技術對於業界的發展非常重要，因為它可以提高芯片之間的互連速度和效率。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-05-12",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Intel 推出 EMIB-T 技術挑戰 TSMC 的 CoWoS",
-        "layer": "先進封裝",
-        "body": "Intel 推出 EMIB-T 技術，挑戰 TSMC 的 CoWoS 封裝技術。Intel 表示，EMIB-T 技術可以提供更高的封裝密度和更低的成本。TSMC 的 CoWoS 技術目前已經被 Nvidia 和 AMD 所使用。Intel 的 EMIB-T 技術可能會挑戰 TSMC 在先進封裝市場的領導地位。Intel 的這一舉動可能會對 TSMC 的業務產生影響。",
-        "chain": [
-          {
-            "label": "TSMC 受影響↑",
-            "type": "up"
-          },
-          {
-            "label": "Intel 受益↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著先進封裝技術的競爭將會更加激烈，可能會推動技術的進步和成本的降低。",
-        "source_label": "Reuters",
-        "source": "https://www.reuters.com/technology/intel-emib-t-technology-challenges-tsmc-cows-2026-05-12"
-      },
-      {
-        "title": "AMD 的 Q1 2026 財報顯示 datacenter 銷售大幅增長",
-        "layer": "記憶體層",
-        "body": "AMD 的 Q1 2026 財報顯示，datacenter 銷售大幅增長，EPS 也出現了增長。這主要歸功於 AMD 在 AI 領域的布局和推動。AMD 的 datacenter 銷售增長可能會對 Intel 和 Nvidia 產生影響。AMD 的這一舉動可能會挑戰 Intel 和 Nvidia 在 datacenter 市場的領導地位。",
-        "chain": [
-          {
-            "label": "Intel 受影響↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia 受影響↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著 datacenter 市場的競爭將會更加激烈，可能會推動技術的進步和成本的降低。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/05/12/amd-q1-2026-earnings-datacenter-sales.html"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google 停止了一個零日漏洞攻擊",
-        "layer": "需求端",
-        "body": "Google 停止了一個零日漏洞攻擊，這個攻擊是使用 AI 技術開發的。Google 表示，這個攻擊是由一個著名的網絡犯罪集團開發的。Google 的這一舉動可能會對網絡安全產業產生影響。Google 的這一舉動可能會挑戰網絡安全公司在 AI 領域的布局和推動。",
-        "chain": [
-          {
-            "label": "網絡安全公司受影響↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著網絡安全領域的競爭將會更加激烈，可能會推動技術的進步和成本的降低。",
-        "source_label": "Google",
-        "source": "https://blog.google/technology/safety-security/zero-day-vulnerability-ai-2026-05-12"
-      }
-    ],
-    "app": [
-      {
-        "title": "Nanoleaf押注機器人、紅光療法和 AI",
-        "layer": "Agentic AI",
-        "body": "Nanoleaf押注機器人、紅光療法和 AI。Nanoleaf 表示，這些技術將會對其業務產生重大影響。Nanoleaf 的這一舉動可能會挑戰其他公司在 AI 領域的布局和推動。",
-        "chain": [
-          {
-            "label": "其他公司受影響↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著 AI 領域的競爭將會更加激烈，可能會推動技術的進步和成本的降低。",
-        "source_label": "Nanoleaf",
-        "source": "https://www.nanoleaf.com/press-release/2026-05-12-ai-robotics"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "EMIB-T",
-        "full": "Embedded Multi-die Interconnect Bridge-T",
-        "def": "EMIB-T 是一種先進的封裝技術，允許多個芯片之間的高密度連接。",
-        "why": "EMIB-T 封裝技術對於 AI 領域的發展具有重要意義，因為它可以提供更高的封裝密度和更低的成本。",
         "category": "semiconductor"
       }
     ],
