@@ -4,104 +4,23 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "TSMC CoWoS 良率達 98%",
+        "title": "LG Innotek Targets U.S. AI Chip Clients",
         "layer": "封裝層",
-        "body": "TSMC 的 CoWoS 良率已達 98%，公司正在擴張其生產能力。這項技術可以提高晶片的性能和效率。TSMC 的 CoWoS 技術是業界領先的封裝技術之一。",
+        "body": "LG Innotek 的基板收入增加了 16%。該公司在 Orlando, Florida 舉行的 IEEE Electronic Conference 上與北美芯片設計師會面，目的是為其 AI 芯片業務尋找美國客戶。LG Innotek 的基板收入增長表明其在 AI 芯片封裝領域的業務正在擴張。",
         "chain": [
           {
-            "label": "TSMC 受益↑",
+            "label": "受益↑",
             "type": "up"
           }
         ],
         "rating": "core",
-        "insight": "TSMC 的 CoWoS 技術領先地位有望持續，供應鏈投資者可關注其未來發展",
-        "source_label": "TSMC 官方公告",
-        "source": "https://www.tsmc.com.tw/"
-      },
-      {
-        "title": "SK Hynix 和 Intel 合作晶片封裝",
-        "layer": "封裝層",
-        "body": "SK Hynix 和 Intel 正在合作開發新型晶片封裝技術。這項合作有望提高晶片的性能和效率。SK Hynix 和 Intel 將共同投資 10 億美元開發這項技術。",
-        "chain": [
-          {
-            "label": "SK Hynix 受益↑",
-            "type": "up"
-          },
-          {
-            "label": "Intel 受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "SK Hynix 和 Intel 的合作有望帶來新的技術突破，供應鏈投資者可關注其未來發展",
-        "source_label": "SK Hynix 官方公告",
-        "source": "https://www.skhynix.com/"
+        "insight": "LG Innotek 在 AI 芯片封裝領域的業務擴張可能會對其供應鏈產生正面影響，從而使其在市場上具有更強的競爭力。",
+        "source_label": "LG Innotek",
+        "source": "https://www.lginnotek.com/"
       }
     ],
-    "corp": [
-      {
-        "title": "CSP 資本支出預計達 1250 億美元",
-        "layer": "需求端",
-        "body": "CSP 公司的資本支出預計達 1250 億美元，主要投資於 AI 基礎設施和數據中心。這項投資有望提高 CSP 公司的服務能力和效率。",
-        "chain": [
-          {
-            "label": "CSP 公司受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "CSP 公司的資本支出有望帶來新的增長機會，供應鏈投資者可關注其未來發展",
-        "source_label": "Zacks 官方公告",
-        "source": "https://www.zacks.com/"
-      },
-      {
-        "title": "Amazon 的 CSP 資本支出預計達 300 億美元",
-        "layer": "需求端",
-        "body": "Amazon 的 CSP 資本支出預計達 300 億美元，主要投資於 AI 基礎設施和數據中心。這項投資有望提高 Amazon 的服務能力和效率。",
-        "chain": [
-          {
-            "label": "Amazon 受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Amazon 的資本支出有望帶來新的增長機會，供應鏈投資者可關注其未來發展",
-        "source_label": "Amazon 官方公告",
-        "source": "https://www.amazon.com/"
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI 的應用",
-        "layer": "Agentic AI",
-        "body": "Agentic AI 的應用正在快速擴張，主要用於客戶服務和數據分析。這項技術有望提高企業的效率和服務能力。",
-        "chain": [
-          {
-            "label": "Agentic AI 受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Agentic AI 的應用有望帶來新的增長機會，供應鏈投資者可關注其未來發展",
-        "source_label": "Agentic AI 官方公告",
-        "source": "https://www.agentic.ai/"
-      },
-      {
-        "title": "Physical AI 的發展",
-        "layer": "Physical AI",
-        "body": "Physical AI 的發展正在快速進行，主要用於機器人和自動化。這項技術有望提高企業的效率和服務能力。",
-        "chain": [
-          {
-            "label": "Physical AI 受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Physical AI 的發展有望帶來新的增長機會，供應鏈投資者可關注其未來發展",
-        "source_label": "Physical AI 官方公告",
-        "source": "https://www.physical.ai/"
-      }
-    ],
+    "corp": [],
+    "app": [],
     "glossary_new": [],
     "weekly_summary": null
   },
