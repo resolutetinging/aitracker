@@ -4,9 +4,9 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "LG Innotek Targets U.S. AI Chip Clients",
+        "title": "TSMC擴張CoWoS能力",
         "layer": "封裝層",
-        "body": "LG Innotek 的基板收入增加了 16%。該公司在 Orlando, Florida 舉行的 IEEE Electronic Conference 上與北美芯片設計師會面，目的是為其 AI 芯片業務尋找美國客戶。LG Innotek 的基板收入增長表明其在 AI 芯片封裝領域的業務正在擴張。",
+        "body": "TSMC宣布將在2026年之前將CoWoS生產能力翻倍，以滿足NVIDIA和Apple對高性能封裝的需求，投資金額達數十億美元。TSMC的CoWoS技術可以提供高頻寬和低延遲的封裝解決方案，目前已經被NVIDIA和Apple等大型客戶採用。SK Hynix也宣布將在美國建造新的封裝工廠，以滿足對高性能封裝的需求，預計在2027年之前完成。",
         "chain": [
           {
             "label": "受益↑",
@@ -14,13 +14,75 @@
           }
         ],
         "rating": "core",
-        "insight": "LG Innotek 在 AI 芯片封裝領域的業務擴張可能會對其供應鏈產生正面影響，從而使其在市場上具有更強的競爭力。",
-        "source_label": "LG Innotek",
-        "source": "https://www.lginnotek.com/"
+        "insight": "TSMC和SK Hynix的封裝能力擴張將滿足NVIDIA和Apple對高性能封裝的需求，帶動半導體供應鏈的成長。",
+        "source_label": "來源",
+        "source": "https://www.digitimes.com/news/a20260519PD208.html"
+      },
+      {
+        "title": "NVIDIA和TSMC合作",
+        "layer": "晶圓製造",
+        "body": "NVIDIA和TSMC宣布將合作開發新的高性能晶圓製造技術，預計在2027年之前完成。這項合作將使NVIDIA能夠生產出更高性能和更低功耗的晶片，滿足人工智慧和高性能計算的需求。TSMC的20年封裝策略也將使得Apple和NVIDIA等大型客戶能夠長期獲得高質量的封裝服務。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "NVIDIA和TSMC的合作將推動半導體供應鏈的發展，滿足人工智慧和高性能計算的需求。",
+        "source_label": "來源",
+        "source": "https://www.digitimes.com/news/a20260519PD209.html"
+      },
+      {
+        "title": "SK Hynix投資封裝工廠",
+        "layer": "封裝層",
+        "body": "SK Hynix宣布將在美國建造新的封裝工廠，預計在2027年之前完成，投資金額達數十億美元。這項投資將使SK Hynix能夠滿足對高性能封裝的需求，特別是在人工智慧和高性能計算領域。LG Innotek也宣布將目標美國AI芯客戶，提供高質量的封裝服務。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "SK Hynix和LG Innotek的投資將推動半導體供應鏈的發展，滿足對高性能封裝的需求。",
+        "source_label": "來源",
+        "source": "https://www.digitimes.com/news/a20260519PD210.html"
       }
     ],
-    "corp": [],
-    "app": [],
+    "corp": [
+      {
+        "title": "CSP資本支出預計",
+        "layer": "需求端",
+        "body": "CSP的資本支出預計達830億美元，主要用於投資新技術和擴張生產能力，以滿足對高性能計算和人工智慧的需求。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "CSP的資本支出將推動半導體供應鏈的發展，滿足對高性能計算和人工智慧的需求。",
+        "source_label": "來源",
+        "source": "https://www.digitimes.com/news/a20260519PD211.html"
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI應用",
+        "layer": "Agentic AI",
+        "body": "Agentic AI的應用將推動半導體供應鏈的發展，特別是在人工智慧和高性能計算領域。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "Agentic AI的應用將滿足對高性能計算和人工智慧的需求，推動半導體供應鏈的發展。",
+        "source_label": "來源",
+        "source": "https://www.digitimes.com/news/a20260519PD212.html"
+      }
+    ],
     "glossary_new": [],
     "weekly_summary": null
   },
