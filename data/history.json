@@ -1,5 +1,115 @@
 [
   {
+    "date": "2026-05-20",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "TSMC擴張CoWoS能力",
+        "layer": "封裝層",
+        "body": "TSMC擴張CoWoS能力，以滿足NVIDIA對先進封裝的需求，預計到2027年，TSMC的CoWoS產能將大幅增加。NVIDIA的先進封裝訂單將佔據TSMC大部分的CoWoS產能。TSMC的20年先進封裝策略已經與Apple和Nvidia達成合作協議，將為這兩家公司提供長期的封裝服務。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "TSMC的CoWoS產能擴張將為NVIDIA提供足夠的先進封裝能力，從而推動NVIDIA的業務增長。",
+        "source_label": "FinancialContent",
+        "source": "https://www.financialcontent.com/"
+      },
+      {
+        "title": "SK Hynix投資封裝工廠",
+        "layer": "封裝層",
+        "body": "SK Hynix宣布投資封裝工廠，以提高其封裝能力，預計將在未來幾年內投入大量資金。SK Hynix的封裝工廠將主要生產HBM和其他高端記憶體產品。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "SK Hynix的封裝工廠投資將提高其封裝能力，從而增加其市場份額和競爭力。",
+        "source_label": "Semiecosystem",
+        "source": "https://www.semiecosystem.com/"
+      },
+      {
+        "title": "TSMC新一代CoWoS技術Roadmap",
+        "layer": "封裝層",
+        "body": "TSMC宣布其新一代CoWoS技術Roadmap，預計將在未來幾年內推出更先進的封裝技術。這些新技術將提供更高的封裝密度和更低的功耗，從而提高整體系統的性能。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "TSMC的新一代CoWoS技術Roadmap將為客戶提供更先進的封裝技術，從而推動客戶的業務增長。",
+        "source_label": "TSMC",
+        "source": "https://www.tsmc.com/"
+      }
+    ],
+    "corp": [
+      {
+        "title": "CSP資本支出預計達830億美元",
+        "layer": "需求端",
+        "body": "CSP的資本支出預計達830億美元，主要投資於新技術和新工廠的建設。這些投資將提高CSP的產能和競爭力，從而推動其業務增長。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "CSP的資本支出將提高其產能和競爭力，從而推動其業務增長。",
+        "source_label": "Morgan Stanley",
+        "source": "https://www.morganstanley.com/"
+      },
+      {
+        "title": "Microsoft推出新一代Surface for Business產品",
+        "layer": "需求端",
+        "body": "Microsoft推出新一代Surface for Business產品，配備Intel的最新AI-focused處理器。這些新產品將為企業客戶提供更好的性能和更高的效率，從而推動Microsoft的業務增長。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "Microsoft的新一代Surface for Business產品將為企業客戶提供更好的性能和更高的效率，從而推動Microsoft的業務增長。",
+        "source_label": "Microsoft",
+        "source": "https://www.microsoft.com/"
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI應用",
+        "layer": "Agentic AI",
+        "body": "Agentic AI是一種新型的AI技術，主要應用於物理世界的控制和優化。這種技術將為企業客戶提供更好的性能和更高的效率，從而推動企業的業務增長。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "Agentic AI的應用將為企業客戶提供更好的性能和更高的效率，從而推動企業的業務增長。",
+        "source_label": "Agentic AI",
+        "source": "https://www.agentic.ai/"
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoWoS",
+        "full": "Chip-on-Wafer-on-Substrate",
+        "def": "一種先進的封裝技術，將芯片直接封裝在基板上。",
+        "why": "提高封裝密度和性能，降低功耗。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-19",
     "is_sunday": false,
     "hw": [
@@ -820,118 +930,6 @@
         "full": "Embedded Multi-die Interconnect Bridge-T",
         "def": "一種新的封裝技術，目的是為了提高 AI晶片的性能和可靠性",
         "why": "這對 AI 產業重要，因為它可以提高 AI晶片的性能和可靠性",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-05-13",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "TSMC CoWoS 供應短缺推動 SK Hynix 和 Intel 合作",
-        "layer": "先進封裝",
-        "body": "TSMC 的 CoWoS 供應短缺推動 SK Hynix 和 Intel 合作開發先進封裝技術。SK Hynix 股價在 2026 年上漲 171%。公司正在與 Intel 合作開發 EMIB 封裝技術。TSMC 的 CoWoS 供應短缺對業界產生了重大影響。SK Hynix 和 Intel 的合作將推動業界的發展。",
-        "chain": [
-          {
-            "label": "TSMC 供應短缺 ↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix 和 Intel 合作 ↓",
-            "type": "down"
-          },
-          {
-            "label": "業界發展 ⚠️",
-            "type": "warn"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著業界將更加重視先進封裝技術的開發和應用。",
-        "source_label": "Reuters",
-        "source": "https://www.reuters.com/"
-      },
-      {
-        "title": "Nvidia 投資 40 億美元開發 AI 基礎設施",
-        "layer": "記憶體層",
-        "body": "Nvidia 投資 40 億美元開發 AI 基礎設施，包括與 IREN 和 Corning 的合作。公司的 GPU 需求將推動業界的發展。Nvidia 的投資將推動 AI 技術的進步。公司的市場影響力將繼續增強。",
-        "chain": [
-          {
-            "label": "Nvidia 投資 ↑",
-            "type": "up"
-          },
-          {
-            "label": "業界發展 ↓",
-            "type": "down"
-          },
-          {
-            "label": "GPU 需求 ⚠️",
-            "type": "warn"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著業界將更加重視 AI 基礎設施的開發和應用。",
-        "source_label": "Bloomberg",
-        "source": "https://www.bloomberg.com/"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Meta 收購 Assured Robot Intelligence",
-        "layer": "需求端",
-        "body": "Meta 收購 Assured Robot Intelligence，一家專注於人形機器人 AI 的公司。公司的收購將推動業界的發展。Meta 的收購將推動人形機器人 AI 的進步。公司的市場影響力將繼續增強。",
-        "chain": [
-          {
-            "label": "Meta 收購 ↑",
-            "type": "up"
-          },
-          {
-            "label": "業界發展 ↓",
-            "type": "down"
-          },
-          {
-            "label": "人形機器人 AI ⚠️",
-            "type": "warn"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著業界將更加重視人形機器人 AI 的開發和應用。",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/"
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI 的採用加速",
-        "layer": "Agentic AI",
-        "body": "Agentic AI 的採用加速，96% 的技術人員預測 2026 年將加速採用。Agentic AI 的採用將推動業界的發展。公司的市場影響力將繼續增強。",
-        "chain": [
-          {
-            "label": "Agentic AI 採用 ↑",
-            "type": "up"
-          },
-          {
-            "label": "業界發展 ↓",
-            "type": "down"
-          },
-          {
-            "label": "技術人員預測 ⚠️",
-            "type": "warn"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著業界將更加重視 Agentic AI 的開發和應用。",
-        "source_label": "IEEE",
-        "source": "https://www.ieee.org/"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "EMIB",
-        "full": "Embedded Multi-Interconnect Bridge",
-        "def": "EMIB 是一種先進的封裝技術，允許多個芯片之間的高速度互連。",
-        "why": "EMIB 封裝技術對於業界的發展非常重要，因為它可以提高芯片之間的互連速度和效率。",
         "category": "semiconductor"
       }
     ],
