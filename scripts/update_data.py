@@ -71,7 +71,7 @@ def fetch_rss():
                 desc  = (item.findtext('description') or item.findtext('summary') or
                          item.findtext('atom:summary',namespaces=ns) or '').strip()
                 # Strip HTML tags
-                desc = re.sub(r'<[^>]+>', '', desc)[:200]
+                desc = re.sub(r'<[^>]+>', '', desc)[:350]
                 if title and any(kw in (title+desc).lower() for kw in AI_KEYWORDS):
                     snippets.append(f"[{label}] {title} — {desc}")
             print(f"  RSS {label}({url.split('/')[2]}): {len(items)} items")
@@ -171,8 +171,8 @@ def make_prompt(news_context, recent_titles=None):
         if IS_SUNDAY else 'null'
     )
 
-    # 新聞截斷至 2000 字元，控制 token 數
-    news_short = news_context[:2000]
+    # 新聞截斷至 2500 字元，控制 token 數
+    news_short = news_context[:2500]
 
     return f"""AI產業供應鏈分析師。根據新聞輸出純JSON（直接從{{開始）。
 
@@ -183,7 +183,7 @@ def make_prompt(news_context, recent_titles=None):
 分類：hw=半導體/封裝(CoWoS/OSAT/HBM)/晶片製造；corp=CSP(MS/Google/Meta/Amazon)CapEx/投資；app=Agentic AI/Physical AI/VLA/推論落地
 
 格式（每區2-4條，無相關新聞則1條noise）：
-{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句含數字摘要","chain":[{{"label":"受益↑","type":"up"}},{{"label":"受壓↓","type":"down"}}],"rating":"core","insight":"供應鏈投資者視角","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
+{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句，每句必須點名具體公司/產品/技術名稱，並含具體數字（金額/容量/百分比/時間節點）；嚴禁使用「有望提高效率」「服務能力」「競爭優勢」「業務流程」等空泛描述","chain":[{{"label":"受益↑","type":"up"}},{{"label":"受壓↓","type":"down"}}],"rating":"core","insight":"供應鏈投資者視角（含具體廠商或數字）","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
 
 規則：hw僅限硬體供應鏈；各條目數字不得跨條目複製；已知術語勿重列:{known}；全程繁體中文勿夾雜其他語言"""
 
@@ -201,6 +201,9 @@ def call_groq(prompt):
                 "hw 分類僅限半導體/封裝/記憶體供應鏈，應用層或軟體新聞絕對不能放入 hw。"
                 "每個條目的具體數字必須來自該條目本身的新聞，嚴禁跨條目複製數字或細節。"
                 "若某維度今日無相關新聞，回傳 1 條 noise 評級的條目，不要憑空生成內容。"
+                "body 每一句必須含：公司名/產品名/技術名稱 + 具體數字（金額/容量/百分比/時間）至少一項。"
+                "嚴禁使用以下空泛措詞：有望提高效率、服務能力、競爭優勢、業務流程自動化、提升企業效能、加速數位轉型。"
+                "若新聞原文沒有具體數字，直接描述事件本身（誰做了什麼、影響哪條供應鏈），不要用空話填補。"
             )},
             {"role":"user","content":prompt}
         ],
