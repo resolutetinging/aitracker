@@ -20,17 +20,19 @@ KNOWN_TERMS = ["HBM","CoWoS","CSP","OSAT","VLA 模型",
 #  1. RSS FEEDS（主要新聞來源，穩定免費）
 # ══════════════════════════════════════════════════════════════════
 RSS_FEEDS = [
-    # Semiconductor / Supply Chain（高訊噪比，優先）
+    # Semiconductor / Supply Chain
     ("Semiconductor", "https://www.theregister.com/headlines.atom"),
     ("Semiconductor", "https://feeds.reuters.com/reuters/technologyNews"),
-    ("Semiconductor", "https://hnrss.org/frontpage?q=TSMC+HBM+CoWoS+OSAT+semiconductor+packaging"),
-    ("Semiconductor", "https://hnrss.org/frontpage?q=NVIDIA+AMD+Intel+chip+wafer+capacity+supply"),
-    # CSP CapEx / Cloud
-    ("CSP/CapEx",    "https://hnrss.org/frontpage?q=Microsoft+Google+Meta+Amazon+capex+data+center+AI+investment"),
-    # Agentic / Physical AI
-    ("App/AI",       "https://hnrss.org/frontpage?q=Agentic+AI+Physical+AI+robotics+humanoid+VLA+inference"),
+    ("Semiconductor", "https://news.google.com/rss/search?q=TSMC+HBM+CoWoS+NVIDIA+semiconductor+chip&hl=en-US&gl=US&ceid=US:en"),
+    ("Semiconductor", "https://news.google.com/rss/search?q=NVIDIA+AMD+Intel+SK+Hynix+Micron+packaging+wafer&hl=en-US&gl=US&ceid=US:en"),
+    # CSP CapEx / Cloud（hnrss 不穩，改用 Google News）
+    ("CSP/CapEx",    "https://news.google.com/rss/search?q=Microsoft+Google+Meta+Amazon+AI+capex+data+center+investment+2026&hl=en-US&gl=US&ceid=US:en"),
+    ("CSP/CapEx",    "https://news.google.com/rss/search?q=OpenAI+Anthropic+xAI+cloud+infrastructure+revenue+funding&hl=en-US&gl=US&ceid=US:en"),
+    # Agentic / Physical AI（hnrss 不穩，改用 Google News + 穩定 RSS）
+    ("App/AI",       "https://news.google.com/rss/search?q=Agentic+AI+agent+automation+robotics+humanoid+VLA&hl=en-US&gl=US&ceid=US:en"),
     ("App/AI",       "https://feeds.arstechnica.com/arstechnica/technology-lab"),
     ("App/AI",       "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
+    ("App/AI",       "https://venturebeat.com/feed/"),
 ]
 
 # 硬體供應鏈關鍵字（hw 分類必須命中其中之一）
@@ -240,6 +242,19 @@ def upsert(history, data):
     else: history.append(data)
     return history
 
+NOISE_PLACEHOLDER = {
+    'corp': {'title':'今日無巨頭 CapEx 新訊','layer':'CapEx決策','body':'今日 CSP 相關新聞來源未能取得有效資料，請明日再查。','chain':[],'rating':'noise','insight':'無訊號','source_label':'','source':''},
+    'app':  {'title':'今日無 Agentic/Physical AI 新訊','layer':'Agentic AI','body':'今日應用落地相關新聞來源未能取得有效資料，請明日再查。','chain':[],'rating':'noise','insight':'無訊號','source_label':'','source':''},
+}
+
+def ensure_sections(data):
+    """若 corp 或 app 為空陣列，補一條 noise 佔位，避免顯示空白區塊。"""
+    for sec in ['corp', 'app']:
+        if not data.get(sec):
+            data[sec] = [NOISE_PLACEHOLDER[sec]]
+            print(f"  ⚠️  {sec} 無資料，已補 noise 佔位")
+    return data
+
 # ══════════════════════════════════════════════════════════════════
 #  5. EMAIL（5/5 content quality）
 # ══════════════════════════════════════════════════════════════════
@@ -432,6 +447,7 @@ if __name__ == '__main__':
 
     print("🤖 呼叫 Groq API...")
     data = call_groq(make_prompt(news, recent_titles))
+    data = ensure_sections(data)
     print(f"  → 硬體 {len(data.get('hw',[]))} / 巨頭 {len(data.get('corp',[]))} / 應用 {len(data.get('app',[]))} 則")
 
     history = upsert(history, data)
