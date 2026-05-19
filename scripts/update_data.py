@@ -62,13 +62,13 @@ def fetch_rss():
     for label, url in RSS_FEEDS:
         try:
             req = urllib.request.Request(url, headers={'User-Agent':'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=10) as r:
+            with urllib.request.urlopen(req, timeout=5) as r:
                 raw = r.read()
             root = ET.fromstring(raw)
             ns = {'atom':'http://www.w3.org/2005/Atom'}
             # Handle both RSS and Atom
             items = root.findall('.//item') or root.findall('.//atom:entry', ns)
-            for item in items[:8]:
+            for item in items[:6]:
                 title = (item.findtext('title') or item.findtext('atom:title',namespaces=ns) or '').strip()
                 desc  = (item.findtext('description') or item.findtext('summary') or
                          item.findtext('atom:summary',namespaces=ns) or '').strip()
@@ -106,7 +106,7 @@ def fetch_ddg():
                 break
             except Exception as e:
                 if attempt < 2:
-                    time.sleep(3)
+                    time.sleep(1)
                 else:
                     print(f"  DDG '{label}' failed after 3 attempts: {e}")
     return snippets
