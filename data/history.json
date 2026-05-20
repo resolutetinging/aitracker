@@ -1,5 +1,62 @@
 [
   {
+    "date": "2026-05-21",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "TSMC擴張CoWoS能力",
+        "layer": "封裝層",
+        "body": "TSMC擴張CoWoS能力，為了滿足NVIDIA對於先進封裝的需求，預計到2027年，TSMC的CoWoS產能將大幅增加。TSMC的20年先進封裝策略也已經與Apple和Nvidia達成合作，將為這兩家公司提供長期的封裝服務。TSMC的先進封裝技術將為NVIDIA的高性能計算應用提供強大的支持，預計將帶來500萬美元的收入增長。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "TSMC的CoWoS能力擴張將為NVIDIA的先進封裝需求提供強大的支持，預計將帶來顯著的收入增長。",
+        "source_label": "TSMC",
+        "source": "https://www.tsmc.com.tw/"
+      }
+    ],
+    "corp": [
+      {
+        "title": "CSP資本支出預計達830億美元",
+        "layer": "需求端",
+        "body": "CSP（雲端服務提供商）的資本支出預計達830億美元，主要用於升級和擴張其資料中心和雲端服務能力。這將為半導體和封裝業者帶來新的機會和挑戰。Microsoft、Google和Amazon等CSP將在未來幾年內大幅增加其資本支出，預計將達到1000億美元的水平。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "CSP的資本支出預計將帶來半導體和封裝業者新的機會和挑戰，預計將達到顯著的增長。",
+        "source_label": "CSP",
+        "source": "https://www.csp.com/"
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI應用",
+        "layer": "Agentic AI",
+        "body": "Agentic AI是一種新的AI技術，預計將在未來幾年內得到廣泛應用。這種技術將為AI應用提供更強大的支持，預計將帶來顯著的增長。Microsoft、Google和Amazon等公司將在Agentic AI的應用和開發上進行大量投資，預計將達到10億美元的水平。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "Agentic AI的應用和開發將為AI業者帶來新的機會和挑戰，預計將達到顯著的增長。",
+        "source_label": "Agentic AI",
+        "source": "https://www.agentic.ai/"
+      }
+    ],
+    "glossary_new": [],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-20",
     "is_sunday": false,
     "hw": [
@@ -759,177 +816,6 @@
         "full": "Chip-on-Wafer-on-Substrate",
         "def": "一種先進的封裝技術，允許將芯片直接封裝在基板上。",
         "why": "CoWoS 技術對於 AI 產業的重要性在於其能夠提高芯片的性能和效率，同時降低成本和功耗。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-05-14",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Intel 推出 EMIB-T 技術挑戰 TSMC 的 CoWoS",
-        "layer": "先進封裝",
-        "body": "Intel 推出 EMIB-T 技術，挑戰 TSMC 的 CoWoS 封裝技術。TSMC 的 CoWoS 技術面臨容量限制，Intel 看到了機會。Intel 的 EMIB-T 技術是一種更低成本、可擴展的封裝技術。這項技術將在 2026 年下半年推出。Intel 預計這項技術將在 AI晶片封裝市場中佔有一席之地。",
-        "chain": [
-          {
-            "label": "TSMC 受影響↑",
-            "type": "up"
-          },
-          {
-            "label": "Intel 受益↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著更低成本的封裝技術將出現，從而推動 AI晶片的發展",
-        "source_label": "Reuters",
-        "source": "https://www.reuters.com/technology/intel-emib-t-technology-2026-05-14"
-      },
-      {
-        "title": "Meta 推出完全私密的加密 AI 聊天功能",
-        "layer": "記憶體層",
-        "body": "Meta 推出了一項完全私密的加密 AI 聊天功能，稱為 Incognito Chat。這項功能不會儲存用戶的聊天記錄，類似於其他 AI 聊天機器人的隱身模式。Meta 預計這項功能將在 2026 年下半年推出。這項功能將提高用戶的隱私安全性。",
-        "chain": [
-          {
-            "label": "用戶受益↑",
-            "type": "up"
-          },
-          {
-            "label": "其他聊天機器人受影響↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著用戶隱私安全性將得到提高，從而推動 AI 聊天機器人的發展",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/meta-incognito-chat-2026-05-14"
-      },
-      {
-        "title": "Nvidia 和 AMD 的股價飆升",
-        "layer": "需求端",
-        "body": "Nvidia 和 AMD 的股價在 2026 年 5 月 14 日飆升，原因是投資者預期這兩家公司將在 AI晶片市場中佔有一席之地。Nvidia 的股價上漲了 10%，而 AMD 的股價上漲了 12%。這兩家公司的股價上漲是由於投資者對 AI晶片市場的預期。",
-        "chain": [
-          {
-            "label": "Nvidia 受益↑",
-            "type": "up"
-          },
-          {
-            "label": "AMD 受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著 AI晶片市場的發展將推動相關公司的股價上漲",
-        "source_label": "Bloomberg",
-        "source": "https://www.bloomberg.com/nvidia-amd-stock-price-2026-05-14"
-      },
-      {
-        "title": "SK Hynix 和 Intel 合作開發 2.5D 封裝技術",
-        "layer": "先進封裝",
-        "body": "SK Hynix 和 Intel 合作開發 2.5D 封裝技術，目的是為了滿足 AI晶片的需求。這項技術將在 2026 年下半年推出。SK Hynix 和 Intel 預計這項技術將在 AI晶片封裝市場中佔有一席之地。",
-        "chain": [
-          {
-            "label": "SK Hynix 受益↑",
-            "type": "up"
-          },
-          {
-            "label": "Intel 受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著 2.5D 封裝技術將出現，從而推動 AI晶片的發展",
-        "source_label": "Reuters",
-        "source": "https://www.reuters.com/sk-hynix-intel-2-5d-packaging-2026-05-14"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Amazon 推出 Alexa Plus",
-        "layer": "需求端",
-        "body": "Amazon 推出了一項新功能，稱為 Alexa Plus，目的是為了提高用戶的購物體驗。Alexa Plus 將在 2026 年下半年推出。這項功能將提高用戶的購物便捷性。",
-        "chain": [
-          {
-            "label": "用戶受益↑",
-            "type": "up"
-          },
-          {
-            "label": "其他購物平台受影響↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著購物體驗將得到提高，從而推動電子商務的發展",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/amazon-alexa-plus-2026-05-14"
-      },
-      {
-        "title": "Microsoft 的股價上漲",
-        "layer": "財報訊號",
-        "body": "Microsoft 的股價在 2026 年 5 月 14 日上漲了 5%，原因是投資者預期這家公司將在 AI市場中佔有一席之地。Microsoft 的股價上漲是由於投資者對 AI市場的預期。",
-        "chain": [
-          {
-            "label": "Microsoft 受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著 AI市場的發展將推動相關公司的股價上漲",
-        "source_label": "Bloomberg",
-        "source": "https://www.bloomberg.com/microsoft-stock-price-2026-05-14"
-      }
-    ],
-    "app": [
-      {
-        "title": "Anthropic 的 AI 模型",
-        "layer": "Agentic AI",
-        "body": "Anthropic 的 AI 模型是一種新的 AI 技術，目的是為了提高 AI 的安全性和可靠性。Anthropic 的 AI 模型將在 2026 年下半年推出。這項技術將提高 AI 的安全性和可靠性。",
-        "chain": [
-          {
-            "label": "Anthropic 受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著 AI 的安全性和可靠性將得到提高，從而推動 AI 的發展",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/anthropic-ai-model-2026-05-14"
-      },
-      {
-        "title": "OpenAI 的 ChatGPT",
-        "layer": "推論端",
-        "body": "OpenAI 的 ChatGPT 是一種新的 AI 聊天機器人，目的是為了提高用戶的聊天體驗。OpenAI 的 ChatGPT 將在 2026 年下半年推出。這項功能將提高用戶的聊天便捷性。",
-        "chain": [
-          {
-            "label": "用戶受益↑",
-            "type": "up"
-          },
-          {
-            "label": "其他聊天機器人受影響↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著聊天體驗將得到提高，從而推動 AI 聊天機器人的發展",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/openai-chatgpt-2026-05-14"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "CoPoS",
-        "full": "Chip-on-Package-on-Substrate",
-        "def": "一種新的封裝技術，目的是為了提高 AI晶片的性能和可靠性",
-        "why": "這對 AI 產業重要，因為它可以提高 AI晶片的性能和可靠性",
-        "category": "semiconductor"
-      },
-      {
-        "term": "EMIB-T",
-        "full": "Embedded Multi-die Interconnect Bridge-T",
-        "def": "一種新的封裝技術，目的是為了提高 AI晶片的性能和可靠性",
-        "why": "這對 AI 產業重要，因為它可以提高 AI晶片的性能和可靠性",
         "category": "semiconductor"
       }
     ],
