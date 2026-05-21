@@ -127,11 +127,12 @@ def fetch_news():
             seen.add(key)
             unique.append(s)
     print(f"  → 去重後 {len(unique)} 條")
-    # 限制總字數在 5000 字元以內，避免超過 Groq TPM 限制
-    joined = "\n\n".join(unique)
+    # 加編號，強制 LLM 引用來源
+    numbered = [f"[S{i+1}] {s}" for i, s in enumerate(unique)]
+    joined = "\n\n".join(numbered)
     if len(joined) > 8000:
         joined = joined[:8000]
-        print(f"  → 截斷至 5000 字元")
+        print(f"  → 截斷至 8000 字元")
     return joined
 
 
@@ -176,18 +177,19 @@ def make_prompt(news_context, recent_titles=None):
     # 新聞截斷至 2500 字元，控制 token 數
     news_short = news_context[:6000]
 
-    return f"""AI產業供應鏈分析師。根據新聞輸出純JSON（直接從{{開始）。
+    return f"""AI產業供應鏈分析師。以下是今日新聞原文（每條有編號 [S1]、[S2]...），請根據這些原文輸出純JSON（直接從{{開始）。
 
-新聞：{news_short}
+新聞原文：
+{news_short}
 {recent_str}
 {notes_context}
 
 分類：hw=半導體/封裝(CoWoS/OSAT/HBM)/晶片製造；corp=CSP(MS/Google/Meta/Amazon)CapEx/投資；app=Agentic AI/Physical AI/VLA/推論落地
 
 格式（每區2-4條，無相關新聞則1條noise）：
-{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句，每句必須點名具體公司/產品/技術名稱，並含具體數字（金額/容量/百分比/時間節點）；嚴禁使用「有望提高效率」「服務能力」「競爭優勢」「業務流程」等空泛描述","chain":[{{"label":"受益↑","type":"up"}},{{"label":"受壓↓","type":"down"}}],"rating":"core","insight":"供應鏈投資者視角（含具體廠商或數字）","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
+{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"來自原文的標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句，每句必須直接摘自上方新聞原文，點名具體公司/產品/技術名稱與具體數字；若原文無數字則描述事件本身","chain":[{{"label":"受益↑","type":"up"}},{{"label":"受壓↓","type":"down"}}],"rating":"core","insight":"供應鏈投資者視角","source_label":"來源名稱","source":"原文中的url或空字串"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
 
-規則：hw僅限硬體供應鏈；各條目數字不得跨條目複製；已知術語勿重列:{known}；全程繁體中文勿夾雜其他語言"""
+規則：只使用上方 [S1]-[SN] 原文中出現的事實，嚴禁自行推測或補充原文未提及的內容；hw僅限硬體供應鏈；找不到原文依據時rating必須設為noise；已知術語勿重列:{known}；全程繁體中文"""
 
 # ══════════════════════════════════════════════════════════════════
 #  3. GROQ API
