@@ -51,6 +51,28 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .archive-ta:focus{outline:none;border-color:#8a60b0;}
 .archive-empty{font-size:13px;color:var(--muted);font-style:italic;}
 
+/* ── Archive summary card ── */
+.arc-summary{background:linear-gradient(135deg,rgba(120,96,160,.08),rgba(74,104,128,.06));border:1px solid rgba(120,96,160,.3);border-radius:12px;padding:16px 18px;margin-bottom:18px;}
+.arc-summary-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.arc-summary-title{font-size:13px;font-weight:700;color:#7860a0;}
+.arc-analyze-btn{background:#7860a0;color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;}
+.arc-analyze-btn:disabled{opacity:.6;cursor:default;}
+.arc-analyze-btn.secondary{background:transparent;border:1px solid rgba(120,96,160,.4);color:#7860a0;}
+.arc-summary-body{font-size:12.5px;color:var(--text2);line-height:1.7;}
+.arc-kw-row{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px;}
+.arc-kw{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600;background:rgba(120,96,160,.10);border:1px solid rgba(120,96,160,.25);color:#6a50a0;}
+.arc-kw .kw-trend{font-size:11px;}
+.arc-kw.trend-up{background:rgba(64,138,96,.10);border-color:rgba(64,138,96,.3);color:#306840;}
+.arc-kw.trend-dn{background:rgba(136,80,80,.10);border-color:rgba(136,80,80,.3);color:#884040;}
+.arc-section-lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);font-weight:700;margin-bottom:4px;}
+.arc-def-list{display:flex;flex-direction:column;gap:6px;}
+.arc-def-item{background:var(--card);border-radius:7px;padding:8px 11px;border:1px solid var(--border);font-size:12.5px;line-height:1.6;}
+.arc-def-term{font-weight:700;color:#7860a0;margin-right:5px;}
+.arc-groq-prompt{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.arc-groq-input{flex:1;min-width:180px;background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:7px 10px;font-size:12px;font-family:monospace;color:var(--text);}
+.arc-groq-input:focus{outline:none;border-color:#8a60b0;}
+.arc-status{font-size:12px;color:var(--muted);font-style:italic;}
+
 /* ── Panels ── */
 .panel{display:none;}.panel.active{display:block;}
 .hidden{display:none!important;}
@@ -1055,6 +1077,7 @@ async function loadArchive() {
 }
 
 function renderArchive(notes) {
+  _currentArchiveNotes = notes;
   const el = document.getElementById('panel-archive');
   const dates = Object.keys(notes).filter(k => k.match(/^\d{4}-\d{2}-\d{2}$/)).sort((a,b) => b.localeCompare(a));
   const cards = dates.map(date => {
@@ -1065,14 +1088,195 @@ function renderArchive(notes) {
         oninput="archiveNoteChanged('${date}',this.value)">${val}</textarea>
     </div>`;
   }).join('');
+  // 摘要卡片（頂部）
+  const summaryHTML = renderSummaryCard(notes);
   el.innerHTML = `
     <div class="sec-title">歷史筆記存檔</div>
+    ${summaryHTML}
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
       <button class="gloss-save-btn" onclick="saveArchiveToGitHub()" style="font-size:12.5px;padding:6px 14px;">📤 儲存至 GitHub</button>
       <span id="archive-save-status" style="font-size:12px;color:var(--muted);"></span>
       <button onclick="_archiveLoaded=false;loadArchive()" style="margin-left:auto;font-size:12px;padding:5px 10px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:inherit;">↻ 重新載入</button>
     </div>
     ${dates.length ? `<div>${cards}</div>` : '<div class="archive-empty">尚無歷史筆記。在「本週紀錄」中撰寫並儲存後，會在此顯示。</div>'}`;
+  // 若已有快取分析結果，直接渲染
+  const cached = sessionStorage.getItem('arc_summary');
+  if (cached) { try { _renderSummaryResult(JSON.parse(cached)); } catch(e){} }
+}
+
+function renderSummaryCard(notes) {
+  const hasGroq = !!localStorage.getItem('groq_key');
+  const dates = Object.keys(notes).filter(k => k.match(/^\d{4}-\d{2}-\d{2}$/));
+  if (!dates.length) return '';
+  if (!hasGroq) {
+    return `<div class="arc-summary" id="arc-summary-card">
+      <div class="arc-summary-hd">
+        <span class="arc-summary-title">📊 筆記趨勢分析</span>
+      </div>
+      <div class="arc-summary-body">
+        <div class="arc-groq-prompt">
+          <span style="font-size:12.5px;color:var(--muted);">輸入 Groq API Key 以啟用 AI 分析：</span>
+          <input class="arc-groq-input" id="arc-groq-key-input" type="password" placeholder="gsk_xxxxxxxxxxxxxxxx">
+          <button class="arc-analyze-btn" onclick="saveGroqKey()">儲存 Key</button>
+        </div>
+        <div style="margin-top:8px;font-size:12px;color:var(--muted);">前往 <strong>console.groq.com → API Keys</strong> 取得免費 Key</div>
+      </div>
+    </div>`;
+  }
+  return `<div class="arc-summary" id="arc-summary-card">
+    <div class="arc-summary-hd">
+      <span class="arc-summary-title">📊 筆記趨勢分析</span>
+      <div style="display:flex;gap:6px;">
+        <button class="arc-analyze-btn secondary" onclick="clearGroqKey()" title="清除 Key">🔑</button>
+        <button class="arc-analyze-btn" id="arc-analyze-btn" onclick="summarizeArchive()">✨ 分析趨勢</button>
+      </div>
+    </div>
+    <div id="arc-summary-body" class="arc-summary-body">
+      <span class="arc-status">共 ${dates.length} 天筆記 — 點擊「✨ 分析趨勢」生成 AI 統整</span>
+    </div>
+  </div>`;
+}
+
+function saveGroqKey() {
+  const val = document.getElementById('arc-groq-key-input')?.value?.trim();
+  if (!val) return;
+  localStorage.setItem('groq_key', val);
+  _replaceSummaryCard();
+}
+function clearGroqKey() {
+  localStorage.removeItem('groq_key');
+  sessionStorage.removeItem('arc_summary');
+  _replaceSummaryCard();
+}
+function _replaceSummaryCard() {
+  const el = document.getElementById('arc-summary-card');
+  if (!el) return;
+  const tmp = document.createElement('div');
+  tmp.innerHTML = renderSummaryCard(_currentArchiveNotes || {});
+  el.replaceWith(tmp.firstElementChild);
+}
+
+// 暫存目前 notes 供 saveGroqKey / clearGroqKey 使用
+let _currentArchiveNotes = {};
+
+async function summarizeArchive() {
+  const key = localStorage.getItem('groq_key');
+  if (!key) return;
+  const btn = document.getElementById('arc-analyze-btn');
+  const body = document.getElementById('arc-summary-body');
+  if (!btn || !body) return;
+  btn.disabled = true;
+  btn.textContent = '分析中…';
+  body.innerHTML = '<span class="arc-status">🔄 正在分析所有筆記，請稍候…</span>';
+
+  // 收集筆記內容（依日期排序）
+  const notes = {};
+  try {
+    const res = await fetch(`./data/notes.json?v=${Date.now()}`);
+    if (res.ok) Object.assign(notes, await res.json());
+  } catch(e) {}
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith('note_')) {
+      const d = k.replace('note_','');
+      const v = localStorage.getItem(k) || '';
+      if (v.trim()) notes[d] = v.trim();
+    }
+  }
+  delete notes.updated;
+  const dates = Object.keys(notes).filter(k => k.match(/^\d{4}-\d{2}-\d{2}$/)).sort();
+  if (!dates.length) {
+    body.innerHTML = '<span class="arc-status">尚無可分析的筆記。</span>';
+    btn.disabled = false; btn.textContent = '✨ 分析趨勢';
+    return;
+  }
+
+  // 建立 prompt（依時間序列整理）
+  const noteBlocks = dates.map(d => `【${d}】\n${notes[d]}`).join('\n\n---\n\n');
+  const prompt = `以下是 AI 產業觀察日誌，按日期排列（共 ${dates.length} 天，${dates[0]} ~ ${dates[dates.length-1]}）：
+
+${noteBlocks}
+
+請以 JSON 格式回傳分析結果，格式如下：
+{
+  "keywords": [
+    {"term": "關鍵字", "count": 出現天數, "trend": "up|stable|down", "note": "一句話說明趨勢方向"},
+    ...（列出前 8 個最重要關鍵字，依頻率排序）
+  ],
+  "definitions": [
+    {"term": "技術名詞", "def": "整合多日筆記後的精確定義（50字內）"},
+    ...（若有跨日定義類描述，整理出 3-5 條）
+  ],
+  "insight": "2-3 句整體趨勢洞察，描述這段時間 AI 產業觀察的主軸方向"
+}
+
+規則：
+- 只分析筆記中真實出現的內容，禁止捏造
+- keyword trend: 若後期（最近幾天）出現次數增加→up；減少→down；穩定→stable
+- definitions 只包含筆記中有實質描述的技術概念，不要生硬定義常識詞
+- 回傳純 JSON，不加任何 markdown 或說明文字`;
+
+  try {
+    const resp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        model: 'llama-3.3-70b-versatile',
+        messages: [{role:'user', content: prompt}],
+        max_tokens: 1200,
+        temperature: 0.3
+      })
+    });
+    if (!resp.ok) throw new Error(`Groq ${resp.status}`);
+    const data = await resp.json();
+    let raw = data.choices?.[0]?.message?.content || '';
+    // 清除可能的 markdown code fence
+    raw = raw.replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'').trim();
+    const result = JSON.parse(raw);
+    sessionStorage.setItem('arc_summary', JSON.stringify(result));
+    _renderSummaryResult(result);
+  } catch(e) {
+    body.innerHTML = `<span class="arc-status">❌ 分析失敗：${e.message}</span>`;
+  }
+  btn.disabled = false;
+  btn.textContent = '↻ 重新分析';
+}
+
+function _renderSummaryResult(result) {
+  const body = document.getElementById('arc-summary-body');
+  if (!body || !result) return;
+  const btn = document.getElementById('arc-analyze-btn');
+  if (btn) { btn.disabled = false; btn.textContent = '↻ 重新分析'; }
+
+  const trendIcon = t => t === 'up' ? '↑' : t === 'down' ? '↓' : '→';
+  const trendCls  = t => t === 'up' ? 'trend-up' : t === 'down' ? 'trend-dn' : '';
+
+  const kwHTML = (result.keywords || []).map(k =>
+    `<span class="arc-kw ${trendCls(k.trend)}" title="${k.note || ''}">
+      ${k.term} <span class="kw-trend">${trendIcon(k.trend)}</span>
+      <span style="font-size:11px;opacity:.7;">${k.count}天</span>
+    </span>`
+  ).join('');
+
+  const defHTML = (result.definitions || []).length
+    ? `<div style="margin-top:12px;">
+        <div class="arc-section-lbl">定義整理</div>
+        <div class="arc-def-list">
+          ${(result.definitions).map(d =>
+            `<div class="arc-def-item"><span class="arc-def-term">${d.term}</span>${d.def}</div>`
+          ).join('')}
+        </div>
+      </div>`
+    : '';
+
+  body.innerHTML = `
+    <div>
+      <div class="arc-section-lbl">高頻關鍵字趨勢</div>
+      <div class="arc-kw-row">${kwHTML || '<span class="arc-status">無高頻關鍵字</span>'}</div>
+    </div>
+    ${defHTML}
+    ${result.insight ? `<div style="margin-top:12px;padding:10px 12px;background:rgba(120,96,160,.06);border-radius:8px;border-left:3px solid #8a60b0;font-size:12.5px;color:var(--text2);line-height:1.7;">${result.insight}</div>` : ''}
+  `;
 }
 
 function archiveNoteChanged(date, val) {
