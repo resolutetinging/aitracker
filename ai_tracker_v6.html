@@ -1299,7 +1299,7 @@ function _renderSummaryResult(result) {
       <div class="arc-kw-row">${kwHTML || '<span class="arc-status">無高頻關鍵字</span>'}</div>
     </div>
     ${defHTML}
-    ${result.insight ? `<div style="margin-top:12px;padding:10px 14px;background:rgba(120,96,160,.06);border-radius:8px;border-left:3px solid #8a60b0;font-size:12.5px;color:var(--text2);line-height:1.8;">${(Array.isArray(result.insight)?result.insight:result.insight.split(/\n+/)).filter(p=>p.trim()).map((p,i)=>`<p style="margin:0${i>0?';margin-top:10px':''}">${p.trim()}</p>`).join('')}</div>` : ''}
+    ${result.insight ? `<div style="margin-top:12px;padding:10px 14px;background:rgba(120,96,160,.06);border-radius:8px;border-left:3px solid #8a60b0;font-size:12.5px;color:var(--text2);line-height:1.8;"><ul style="margin:0;padding-left:16px;display:flex;flex-direction:column;gap:8px;">${(Array.isArray(result.insight)?result.insight:result.insight.split(/\n+/)).filter(p=>p.trim()).map(p=>`<li>${p.trim()}</li>`).join('')}</ul></div>` : ''}
   `;
 }
 
