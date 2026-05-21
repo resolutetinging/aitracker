@@ -129,8 +129,8 @@ def fetch_news():
     print(f"  → 去重後 {len(unique)} 條")
     # 限制總字數在 5000 字元以內，避免超過 Groq TPM 限制
     joined = "\n\n".join(unique)
-    if len(joined) > 5000:
-        joined = joined[:5000]
+    if len(joined) > 8000:
+        joined = joined[:8000]
         print(f"  → 截斷至 5000 字元")
     return joined
 
@@ -174,7 +174,7 @@ def make_prompt(news_context, recent_titles=None):
     )
 
     # 新聞截斷至 2500 字元，控制 token 數
-    news_short = news_context[:2500]
+    news_short = news_context[:6000]
 
     return f"""AI產業供應鏈分析師。根據新聞輸出純JSON（直接從{{開始）。
 
@@ -201,16 +201,17 @@ def call_groq(prompt):
                 "你是 AI 產業供應鏈分析師，專注半導體供應鏈（HBM/CoWoS/OSAT）、CSP 資本支出、Agentic/Physical AI 落地。"
                 "只輸出純 JSON，不加任何說明或 markdown 格式。"
                 "hw 分類僅限半導體/封裝/記憶體供應鏈，應用層或軟體新聞絕對不能放入 hw。"
+                "【最重要】所有條目必須直接來自提供的新聞原文，嚴禁自行編造、推測或補充原文未提及的內容。"
+                "找不到足夠新聞時，寧可輸出 noise 評級，也不要憑空捏造 core 條目。"
                 "每個條目的具體數字必須來自該條目本身的新聞，嚴禁跨條目複製數字或細節。"
-                "若某維度今日無相關新聞，回傳 1 條 noise 評級的條目，不要憑空生成內容。"
                 "body 每一句必須含：公司名/產品名/技術名稱 + 具體數字（金額/容量/百分比/時間）至少一項。"
-                "嚴禁使用以下空泛措詞：有望提高效率、服務能力、競爭優勢、業務流程自動化、提升企業效能、加速數位轉型。"
-                "若新聞原文沒有具體數字，直接描述事件本身（誰做了什麼、影響哪條供應鏈），不要用空話填補。"
+                "若新聞原文沒有具體數字，直接描述事件本身（誰做了什麼），不要用空話填補。"
+                "嚴禁使用以下空泛措詞：有望提高效率、服務能力、競爭優勢、業務流程自動化、提升企業效能、加速數位轉型、帶來顯著增長、提供強大支持。"
             )},
             {"role":"user","content":prompt}
         ],
         temperature=0.45,
-        max_tokens=1500,
+        max_tokens=2500,
     )
     raw = response.choices[0].message.content.strip()
     if raw.startswith('```'):
