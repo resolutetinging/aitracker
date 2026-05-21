@@ -6,7 +6,7 @@
       {
         "title": "TSMC擴張CoWoS能力",
         "layer": "封裝層",
-        "body": "TSMC擴張CoWoS能力，預計在2027年之前滿足NVIDIA的先進封裝需求，投資金額達數十億美元。TSMC的CoWoS技術是目前業界領先的先進封裝技術之一，能夠提供高性能和低延遲的封裝解決方案。TSMC的封裝能力擴張將有助於滿足NVIDIA和其他客戶的需求，進一步鞏固其在半導體供應鏈中的領導地位。",
+        "body": "TSMC Boosts CoWoS Capacity as NVIDIA Dominates Advanced Packaging Orders through 2027，TSMC的20年先進封裝策略確保了Apple和Nvidia的合作關係，TSMC擴張CoWoS能力以滿足NVIDIA的需求。",
         "chain": [
           {
             "label": "受益↑",
@@ -14,46 +14,36 @@
           }
         ],
         "rating": "core",
-        "insight": "TSMC的CoWoS技術領先地位和封裝能力擴張將有助於其在半導體供應鏈中的競爭力",
+        "insight": "供應鏈投資者應關注TSMC的CoWoS能力擴張對NVIDIA的影響",
         "source_label": "FinancialContent",
         "source": "https://www.financialcontent.com/"
       },
       {
         "title": "SK Hynix投資封裝工廠",
         "layer": "封裝層",
-        "body": "SK Hynix宣布投資數十億美元建造新的封裝工廠，預計在2028年開始生產。該工廠將使用最先進的封裝技術，包括CoWoS和OSAT，為客戶提供高性能和低延遲的封裝解決方案。SK Hynix的投資將有助於擴大其在半導體供應鏈中的份額，進一步挑戰TSMC和其他業者的地位。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "SK Hynix的投資將有助於其在半導體供應鏈中的競爭力，挑戰TSMC和其他業者的地位",
-        "source_label": "eu.36kr.com",
-        "source": "https://eu.36kr.com/"
+        "body": "缺乏相關新聞原文，無法提供具體數字或事件描述",
+        "chain": [],
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
       },
       {
         "title": "TSMC新一代CoWoS技術Roadmap",
         "layer": "封裝層",
-        "body": "TSMC宣布其新一代CoWoS技術Roadmap，預計在2029年之前推出下一代CoWoS技術。該技術將提供更高的性能和更低的延遲，進一步鞏固TSMC在半導體供應鏈中的領導地位。TSMC的新一代CoWoS技術將有助於滿足NVIDIA和其他客戶的需求，進一步擴大其在半導體供應鏈中的份額。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "TSMC的新一代CoWoS技術將有助於其在半導體供應鏈中的競爭力，進一步鞏固其領導地位",
-        "source_label": "TSMC",
-        "source": "https://www.tsmc.com/"
+        "body": "缺乏相關新聞原文，無法提供具體數字或事件描述",
+        "chain": [],
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
       }
     ],
     "corp": [
       {
         "title": "CSP資本支出預計達830億美元",
         "layer": "需求端",
-        "body": "CSP（雲端服務提供商）預計在2026年內的資本支出將達830億美元，主要用於建設新的資料中心和升級現有基礎設施。這將有助於滿足不斷增長的雲端服務需求，進一步鞏固CSP在雲端服務市場中的領導地位。",
+        "body": "Google、Microsoft、Meta和Amazon的資本支出預計達725億美元，在2026年，資本支出將增加77%。",
         "chain": [
           {
             "label": "受益↑",
@@ -61,14 +51,14 @@
           }
         ],
         "rating": "core",
-        "insight": "CSP的資本支出將有助於其在雲端服務市場中的競爭力，進一步鞏固其領導地位",
+        "insight": "供應鏈投資者應關注CSP的資本支出對AI產業的影響",
         "source_label": "Tom's Hardware",
         "source": "https://www.tomshardware.com/"
       },
       {
         "title": "Google、Microsoft、Meta和Amazon資本支出排名",
         "layer": "需求端",
-        "body": "根據最新的報告，Google、Microsoft、Meta和Amazon的資本支出排名分別為第一、第二、第三和第四。這些公司的資本支出主要用於建設新的資料中心和升級現有基礎設施，進一步鞏固其在雲端服務市場中的領導地位。",
+        "body": "Big Tech capex ranked：Google、Microsoft、Meta和Amazon的資本支出排名，投資者仍然信任Google的AI投資。",
         "chain": [
           {
             "label": "受益↑",
@@ -76,7 +66,7 @@
           }
         ],
         "rating": "core",
-        "insight": "Google、Microsoft、Meta和Amazon的資本支出排名反映了其在雲端服務市場中的競爭力，進一步鞏固其領導地位",
+        "insight": "供應鏈投資者應關注Google、Microsoft、Meta和Amazon的資本支出排名",
         "source_label": "Fast Company",
         "source": "https://www.fastcompany.com/"
       }
@@ -85,7 +75,7 @@
       {
         "title": "Agentic AI應用",
         "layer": "Agentic AI",
-        "body": "Agentic AI是一種新的AI技術，能夠提供更高的性能和更低的延遲。該技術已被應用於各個領域，包括雲端服務、資料分析和機器學習。Agentic AI的應用將有助於滿足不斷增長的AI需求，進一步鞏固其在AI市場中的領導地位。",
+        "body": "NVIDIA擴展開放AI模型，適用於代理、機器人和科學領域，AI Goes Physical：導航AI和機器人的融合。",
         "chain": [
           {
             "label": "受益↑",
@@ -93,14 +83,14 @@
           }
         ],
         "rating": "core",
-        "insight": "Agentic AI的應用將有助於其在AI市場中的競爭力，進一步鞏固其領導地位",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/"
+        "insight": "供應鏈投資者應關注Agentic AI的應用",
+        "source_label": "Engineering.com",
+        "source": "https://www.engineering.com/"
       },
       {
         "title": "Physical AI應用",
         "layer": "Physical AI",
-        "body": "Physical AI是一種新的AI技術，能夠提供更高的性能和更低的延遲。該技術已被應用於各個領域，包括雲端服務、資料分析和機器學習。Physical AI的應用將有助於滿足不斷增長的AI需求，進一步鞏固其在AI市場中的領導地位。",
+        "body": "AI Goes Physical：導航AI和機器人的融合，從人形機器人到工業現實。",
         "chain": [
           {
             "label": "受益↑",
@@ -108,7 +98,7 @@
           }
         ],
         "rating": "core",
-        "insight": "Physical AI的應用將有助於其在AI市場中的競爭力，進一步鞁固其領導地位",
+        "insight": "供應鏈投資者應關注Physical AI的應用",
         "source_label": "Deloitte",
         "source": "https://www2.deloitte.com/"
       }
