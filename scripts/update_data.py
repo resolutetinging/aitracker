@@ -101,7 +101,7 @@ def fetch_ddg():
             try:
                 results = list(ddgs.news(q, max_results=5, timelimit="w"))
                 for r in results:
-                    snippets.append(f"[{label}] {r.get('title','')} — {r.get('body','')[:150]}")
+                    snippets.append(f"[{label}] {r.get('title','')} — {r.get('body','')[:400]}")
                 print(f"  DDG '{label}': {len(results)} results")
                 break
             except Exception as e:
@@ -177,9 +177,9 @@ def make_prompt(news_context, recent_titles=None):
     # 新聞截斷至 2500 字元，控制 token 數
     news_short = news_context[:6000]
 
-    return f"""AI產業供應鏈分析師。以下是今日新聞原文（每條有編號 [S1]、[S2]...），請根據這些原文輸出純JSON（直接從{{開始）。
+    return f"""AI產業供應鏈分析師。以下是今日新聞（每條標記 [S編號]），請根據這些新聞輸出純JSON（直接從{{開始）。
 
-新聞原文：
+今日新聞：
 {news_short}
 {recent_str}
 {notes_context}
@@ -187,9 +187,9 @@ def make_prompt(news_context, recent_titles=None):
 分類：hw=半導體/封裝(CoWoS/OSAT/HBM)/晶片製造；corp=CSP(MS/Google/Meta/Amazon)CapEx/投資；app=Agentic AI/Physical AI/VLA/推論落地
 
 格式（每區2-4條，無相關新聞則1條noise）：
-{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"來自原文的標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句，每句必須直接摘自上方新聞原文，點名具體公司/產品/技術名稱與具體數字；若原文無數字則描述事件本身","chain":[{{"label":"受益↑","type":"up"}},{{"label":"受壓↓","type":"down"}}],"rating":"core","insight":"供應鏈投資者視角","source_label":"來源名稱","source":"原文中的url或空字串"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
+{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題（來自今日新聞）","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句摘要：第1句說明事件（誰做了什麼），第2句說明規模或影響（有數字就用原文數字，沒有就描述事件規模），第3句說明供應鏈連鎖效應；嚴禁憑空捏造具體數字","chain":[{{"label":"受益↑","type":"up"}},{{"label":"受壓↓","type":"down"}}],"rating":"core","insight":"供應鏈投資者視角","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
 
-規則：只使用上方 [S1]-[SN] 原文中出現的事實，嚴禁自行推測或補充原文未提及的內容；hw僅限硬體供應鏈；找不到原文依據時rating必須設為noise；已知術語勿重列:{known}；全程繁體中文"""
+規則：標題必須對應今日新聞中的真實事件；數字只能來自新聞原文（沒有就不寫數字）；hw僅限硬體供應鏈；無相關新聞時rating=noise；已知術語勿重列:{known}；全程繁體中文"""
 
 # ══════════════════════════════════════════════════════════════════
 #  3. GROQ API
@@ -203,12 +203,11 @@ def call_groq(prompt):
                 "你是 AI 產業供應鏈分析師，專注半導體供應鏈（HBM/CoWoS/OSAT）、CSP 資本支出、Agentic/Physical AI 落地。"
                 "只輸出純 JSON，不加任何說明或 markdown 格式。"
                 "hw 分類僅限半導體/封裝/記憶體供應鏈，應用層或軟體新聞絕對不能放入 hw。"
-                "【最重要】所有條目必須直接來自提供的新聞原文，嚴禁自行編造、推測或補充原文未提及的內容。"
-                "找不到足夠新聞時，寧可輸出 noise 評級，也不要憑空捏造 core 條目。"
-                "每個條目的具體數字必須來自該條目本身的新聞，嚴禁跨條目複製數字或細節。"
-                "body 每一句必須含：公司名/產品名/技術名稱 + 具體數字（金額/容量/百分比/時間）至少一項。"
-                "若新聞原文沒有具體數字，直接描述事件本身（誰做了什麼），不要用空話填補。"
-                "嚴禁使用以下空泛措詞：有望提高效率、服務能力、競爭優勢、業務流程自動化、提升企業效能、加速數位轉型、帶來顯著增長、提供強大支持。"
+                "所有條目的標題和事件必須來自今日提供的新聞，不能自行發明新聞事件。"
+                "body 描述事件本身（誰/做了什麼/影響哪條鏈），有原文數字就用，沒有就描述事件而非捏造數字。"
+                "嚴禁憑空捏造具體數字（億/百分比/時間節點），若新聞未提及則不寫。"
+                "嚴禁使用空泛措詞：有望提高效率、服務能力、競爭優勢、鞏固領導地位、帶來顯著增長、提供強大支持。"
+                "找不到真實新聞事件時，rating 設為 noise，body 說明今日無相關新聞。"
             )},
             {"role":"user","content":prompt}
         ],
