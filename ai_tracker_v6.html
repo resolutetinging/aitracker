@@ -43,7 +43,13 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .t-app  {background:rgba(74,138,106,.10); border-color:var(--app);  color:var(--app);}
 .t-gloss{background:rgba(74,104,128,.10); border-color:var(--gloss);color:var(--gloss);}
 .t-ins  {background:rgba(58,104,96,.10);  border-color:var(--insight);color:var(--insight);}
-.t-hist {background:rgba(96,112,128,.10); border-color:var(--hist); color:var(--hist);}
+.t-hist    {background:rgba(96,112,128,.10);  border-color:var(--hist);    color:var(--hist);}
+.t-archive {background:rgba(120,96,160,.10);  border-color:#8a60b0;        color:#8a60b0;}
+.archive-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:10px;}
+.archive-date{font-size:13px;font-weight:700;color:#8a60b0;margin-bottom:8px;}
+.archive-ta{width:100%;min-height:80px;resize:vertical;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:9px 11px;font-size:13px;color:var(--text);font-family:inherit;line-height:1.6;box-sizing:border-box;}
+.archive-ta:focus{outline:none;border-color:#8a60b0;}
+.archive-empty{font-size:13px;color:var(--muted);font-style:italic;}
 
 /* ── Panels ── */
 .panel{display:none;}.panel.active{display:block;}
@@ -286,15 +292,17 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
   <button class="tab-btn" id="btn-app"   onclick="sw('app')">🤖 新興應用</button>
   <button class="tab-btn" id="btn-gloss" onclick="sw('gloss')">📚 專有名詞</button>
   <button class="tab-btn" id="btn-ins"   onclick="sw('ins')">🎯 個人洞察</button>
-  <button class="tab-btn" id="btn-hist"  onclick="sw('hist')">📅 本週紀錄</button>
+  <button class="tab-btn" id="btn-hist"    onclick="sw('hist')">📅 本週紀錄</button>
+  <button class="tab-btn" id="btn-archive" onclick="sw('archive');loadArchive()">📝 歷史筆記</button>
 </div>
 
-<div id="panel-hw"    class="panel"></div>
-<div id="panel-corp"  class="panel"></div>
-<div id="panel-app"   class="panel"></div>
-<div id="panel-gloss" class="panel"></div>
-<div id="panel-ins"   class="panel"></div>
-<div id="panel-hist"  class="panel"></div>
+<div id="panel-hw"      class="panel"></div>
+<div id="panel-corp"    class="panel"></div>
+<div id="panel-app"     class="panel"></div>
+<div id="panel-gloss"   class="panel"></div>
+<div id="panel-ins"     class="panel"></div>
+<div id="panel-hist"    class="panel"></div>
+<div id="panel-archive" class="panel"></div>
 
 <div id="modal-overlay" class="modal-overlay hidden" onclick="closeModal()">
   <div class="modal-box" onclick="event.stopPropagation()">
@@ -1017,9 +1025,100 @@ async function saveNotesToGitHub() {
 }
 
 // ══════════════════════════════════════════════════════════════════
+//  歷史筆記存檔頁
+// ══════════════════════════════════════════════════════════════════
+let _archiveLoaded = false;
+
+async function loadArchive() {
+  if (_archiveLoaded) return;
+  const el = document.getElementById('panel-archive');
+  el.innerHTML = '<div style="padding:20px;color:var(--muted);font-size:13px;">載入中…</div>';
+  // 從 GitHub 讀取 notes.json（合併 localStorage）
+  let ghNotes = {};
+  try {
+    const res = await fetch(`./data/notes.json?v=${Date.now()}`);
+    if (res.ok) ghNotes = await res.json();
+  } catch(e) {}
+  // 合併 localStorage（可能有未同步的新筆記）
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith('note_')) {
+      const date = k.replace('note_', '');
+      const val = localStorage.getItem(k) || '';
+      if (val.trim()) ghNotes[date] = val.trim();
+    }
+  }
+  // 移除 metadata key
+  delete ghNotes.updated;
+  renderArchive(ghNotes);
+  _archiveLoaded = true;
+}
+
+function renderArchive(notes) {
+  const el = document.getElementById('panel-archive');
+  const dates = Object.keys(notes).filter(k => k.match(/^\d{4}-\d{2}-\d{2}$/)).sort((a,b) => b.localeCompare(a));
+  const cards = dates.map(date => {
+    const val = notes[date] || '';
+    return `<div class="archive-card">
+      <div class="archive-date">${fmtDate(date)}</div>
+      <textarea class="archive-ta" id="archta-${date}"
+        oninput="archiveNoteChanged('${date}',this.value)">${val}</textarea>
+    </div>`;
+  }).join('');
+  el.innerHTML = `
+    <div class="sec-title">歷史筆記存檔</div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+      <button class="gloss-save-btn" onclick="saveArchiveToGitHub()" style="font-size:12.5px;padding:6px 14px;">📤 儲存至 GitHub</button>
+      <span id="archive-save-status" style="font-size:12px;color:var(--muted);"></span>
+      <button onclick="_archiveLoaded=false;loadArchive()" style="margin-left:auto;font-size:12px;padding:5px 10px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:inherit;">↻ 重新載入</button>
+    </div>
+    ${dates.length ? `<div>${cards}</div>` : '<div class="archive-empty">尚無歷史筆記。在「本週紀錄」中撰寫並儲存後，會在此顯示。</div>'}`;
+}
+
+function archiveNoteChanged(date, val) {
+  try { localStorage.setItem('note_'+date, val); } catch(e) {}
+}
+
+async function saveArchiveToGitHub() {
+  const token = localStorage.getItem('gh_pat');
+  if (!token) { openPatModal(); return; }
+  const status = document.getElementById('archive-save-status');
+  if (status) status.textContent = '儲存中…';
+  // 收集所有 localStorage note_*
+  const notes = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith('note_')) {
+      const date = k.replace('note_','');
+      const val = localStorage.getItem(k) || '';
+      if (val.trim()) notes[date] = val.trim();
+    }
+  }
+  notes.updated = new Date().toISOString();
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(notes, null, 2))));
+  try {
+    let sha;
+    const chk = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/data/notes.json`,
+      {headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github+json'}});
+    if (chk.ok) sha = (await chk.json()).sha;
+    const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/data/notes.json`, {
+      method:'PUT',
+      headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
+      body: JSON.stringify({message:'📝 Update archive notes', content, ...(sha?{sha}:{})})
+    });
+    if (status) {
+      status.textContent = res.ok ? `✅ 已儲存（${Object.keys(notes).filter(k=>k!=='updated').length} 天）` : '❌ 儲存失敗';
+      setTimeout(()=>{ if(status) status.textContent=''; }, 3000);
+    }
+  } catch(e) {
+    if (status) status.textContent = `❌ ${e.message}`;
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════
 //  TAB SWITCHING
 // ══════════════════════════════════════════════════════════════════
-const TCLS = {hw:'t-hw',corp:'t-corp',app:'t-app',gloss:'t-gloss',ins:'t-ins',hist:'t-hist'};
+const TCLS = {hw:'t-hw',corp:'t-corp',app:'t-app',gloss:'t-gloss',ins:'t-ins',hist:'t-hist',archive:'t-archive'};
 function sw(tab) {
   Object.keys(TCLS).forEach(k => {
     document.getElementById('panel-'+k).classList.remove('active');
