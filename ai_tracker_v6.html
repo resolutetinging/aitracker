@@ -1207,15 +1207,19 @@ ${noteBlocks}
     {"term": "技術名詞", "def": "整合多日筆記後的精確定義（50字內）"},
     ...（若有跨日定義類描述，整理出 3-5 條）
   ],
-  "insight": "主軸方向（1-2句）\n\n關鍵決策（2-3句，含具體公司/對象）\n\n影響鏈（2-3句，上下游連鎖影響）\n\n前瞻（1-2句，接下來值得關注的變化）"
-  （insight 為單一字串，四段之間用 \n\n 分隔，各段自然書寫不加標題標籤）
+  "insight": [
+    "主軸方向：這段時間最主要的 AI 產業趨勢（1-2句）",
+    "關鍵決策：哪些公司做了什麼戰略決策，動機是什麼（2-3句，含具體公司名）",
+    "影響鏈：對上下游（供應商/開發者/用戶/監管）的連鎖影響（2-3句）",
+    "前瞻：從筆記觀察到的方向，接下來最值得關注的變化（1-2句）"
+  ]
 }
 
 規則：
 - 只分析筆記中真實出現的內容，禁止捏造
 - keyword trend: 若後期（最近幾天）出現次數增加→up；減少→down；穩定→stable
 - definitions 只包含筆記中有實質描述的技術概念，不要生硬定義常識詞
-- insight 必須是一個字串（String），包含主軸/決策/影響/前瞻四個面向，寫成連貫段落
+- insight 必須是恰好 4 個元素的 JSON 陣列，每個元素是一段純文字字串
 - 回傳純 JSON，不加任何 markdown 或說明文字`;
 
   try {
@@ -1295,7 +1299,7 @@ function _renderSummaryResult(result) {
       <div class="arc-kw-row">${kwHTML || '<span class="arc-status">無高頻關鍵字</span>'}</div>
     </div>
     ${defHTML}
-    ${result.insight ? `<div style="margin-top:12px;padding:10px 12px;background:rgba(120,96,160,.06);border-radius:8px;border-left:3px solid #8a60b0;font-size:12.5px;color:var(--text2);line-height:1.8;">${result.insight.split(/\n\n+/).map(p=>`<p style="margin-bottom:8px;">${p.trim()}</p>`).join('').replace(/<p style="margin-bottom:8px;"><\/p>/g,'')}</div>` : ''}
+    ${result.insight ? `<div style="margin-top:12px;padding:10px 14px;background:rgba(120,96,160,.06);border-radius:8px;border-left:3px solid #8a60b0;font-size:12.5px;color:var(--text2);line-height:1.8;">${(Array.isArray(result.insight)?result.insight:result.insight.split(/\n+/)).filter(p=>p.trim()).map((p,i)=>`<p style="margin:0${i>0?';margin-top:10px':''}">${p.trim()}</p>`).join('')}</div>` : ''}
   `;
 }
 
