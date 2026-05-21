@@ -1234,6 +1234,8 @@ ${noteBlocks}
     let raw = data.choices?.[0]?.message?.content || '';
     // 清除可能的 markdown code fence
     raw = raw.replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'').trim();
+    // LLM 有時在 JSON 字串值裡放真實換行，需先做字元級清理
+    raw = _sanitizeJson(raw);
     const result = JSON.parse(raw);
     sessionStorage.setItem('arc_summary', JSON.stringify(result));
     _renderSummaryResult(result);
@@ -1242,6 +1244,22 @@ ${noteBlocks}
   }
   btn.disabled = false;
   btn.textContent = '↻ 重新分析';
+}
+
+function _sanitizeJson(str) {
+  // 逐字元追蹤是否在字串值內，遇到裸換行/回車就轉成 \n \r escape
+  let inStr = false, esc = false, out = '';
+  for (let i = 0; i < str.length; i++) {
+    const ch = str[i];
+    if (esc) { out += ch; esc = false; continue; }
+    if (ch === '\\') { esc = true; out += ch; continue; }
+    if (ch === '"') { inStr = !inStr; out += ch; continue; }
+    if (inStr && ch === '\n') { out += '\\n'; continue; }
+    if (inStr && ch === '\r') { out += '\\r'; continue; }
+    if (inStr && ch === '\t') { out += '\\t'; continue; }
+    out += ch;
+  }
+  return out;
 }
 
 function _renderSummaryResult(result) {
