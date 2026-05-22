@@ -4,143 +4,65 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "TSMC 擴張 CoWoS 能力",
+        "title": "SK Hynix Tests Intel EMIB 2.5D Packaging With HBM",
         "layer": "封裝層",
-        "body": "TSMC 擴張 CoWoS 能力，以滿足 NVIDIA 對先進封裝的需求。這項擴張將提高 TSMC 的封裝能力，進而影響半導體供應鏈。TSMC 的這項動作將使其在先進封裝市場中保持競爭優勢。",
+        "body": "SK Hynix 正在測試 Intel 的 EMIB 2.5D 封裝技術，結合 HBM 記憶體，預計將提高晶片的性能和效率。這項技術可以將多個晶片堆疊在一起，減少晶片的尺寸和功耗。根據 TrendForce 的報導，SK Hynix 預計在 2026 年開始量產這項技術，將投資 3.9 億美元在美國建立新的封裝工廠。",
         "chain": [
           {
-            "label": "受益↑",
+            "label": "SK Hynix 受益↑",
             "type": "up"
           },
           {
-            "label": "NVIDIA",
+            "label": "Intel 受壓↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "SK Hynix 的這項動作將有助於提高其在半導體市場的競爭力，同時也將挑戰 TSMC 的市場地位。",
+        "source_label": "TrendForce",
+        "source": "https://www.trendforce.com/"
+      },
+      {
+        "title": "TSMC Boosts CoWoS Capacity",
+        "layer": "晶圓製造",
+        "body": "TSMC 正在擴張其 CoWoS 的生產能力，以滿足日益增加的需求。根據 FinancialContent 的報導，TSMC 預計在 2027 年之前將其 CoWoS 的生產能力提高 50%。這項擴張將有助於滿足 NVIDIA 和其他客戶的需求，同時也將提高 TSMC 的市場份額。TSMC 的 CoWoS 技術可以將多個晶片堆疊在一起，減少晶片的尺寸和功耗。",
+        "chain": [
+          {
+            "label": "TSMC 受益↑",
+            "type": "up"
+          },
+          {
+            "label": "NVIDIA 受益↑",
             "type": "up"
           }
         ],
         "rating": "core",
-        "insight": "TSMC 的擴張將提高其在先進封裝市場中的競爭優勢，同時也將使 NVIDIA 受益。",
+        "insight": "TSMC 的這項擴張將有助於提高其在半導體市場的競爭力，同時也將滿足客戶的需求。",
         "source_label": "FinancialContent",
         "source": "https://www.financialcontent.com/"
       },
       {
-        "title": "SK Hynix 投資封裝工廠",
-        "layer": "封裝層",
-        "body": "SK Hynix 投資封裝工廠，以提高其在半導體供應鏈中的競爭優勢。這項投資將使 SK Hynix 能夠提高其封裝能力，進而影響半導體供應鏈。SK Hynix 的這項動作將使其在半導體市場中保持競爭優勢。",
+        "title": "Micron Zooms Past $700 Billion Market Cap",
+        "layer": "記憶體層",
+        "body": "Micron 的市值已經超過 7000 億美元，成為世界上最大的記憶體製造商之一。根據 CNBC 的報導，Micron 的市值在過去的一年中已經增加了 50%。這主要是由於記憶體需求的增加，特別是在 AI 和 5G 等領域。Micron 的記憶體產品被廣泛應用於各種電子設備中，包括智能手機、電腦和伺服器。",
         "chain": [
           {
-            "label": "受益↑",
+            "label": "Micron 受益↑",
             "type": "up"
           },
           {
-            "label": "SK Hynix",
+            "label": "記憶體需求↑",
             "type": "up"
           }
         ],
         "rating": "core",
-        "insight": "SK Hynix 的投資將提高其在半導體供應鏈中的競爭優勢，同時也將使其在半導體市場中保持競爭優勢。",
-        "source_label": "eu.36kr.com",
-        "source": "https://eu.36kr.com/"
-      },
-      {
-        "title": "TSMC 新一代 CoWoS 技術 Roadmap",
-        "layer": "封裝層",
-        "body": "TSMC 公佈新一代 CoWoS 技術 Roadmap，以滿足半導體供應鏈的需求。這項技術將提高 TSMC 的封裝能力，進而影響半導體供應鏈。TSMC 的這項動作將使其在先進封裝市場中保持競爭優勢。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          },
-          {
-            "label": "NVIDIA",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "TSMC 的新一代 CoWoS 技術 Roadmap 將提高其在先進封裝市場中的競爭優勢，同時也將使 NVIDIA 受益。",
-        "source_label": "Dr. Robert Castellano's Semiconductor Deep Dive Newsletter",
-        "source": "https://www.semiconductordeepdive.com/"
-      }
-    ],
-    "corp": [
-      {
-        "title": "CSP 資本支出預計達 830 億美元",
-        "layer": "需求端",
-        "body": "CSP 資本支出預計達 830 億美元，以滿足半導體供應鏈的需求。這項投資將使 CSP 能夠提高其在半導體供應鏈中的競爭優勢，進而影響半導體供應鏈。CSP 的這項動作將使其在半導體市場中保持競爭優勢。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          },
-          {
-            "label": "CSP",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "CSP 的投資將提高其在半導體供應鏈中的競爭優勢，同時也將使其在半導體市場中保持競爭優勢。",
-        "source_label": "Tom's Hardware",
-        "source": "https://www.tomshardware.com/"
-      },
-      {
-        "title": "Google、Microsoft、Meta 和 Amazon 資本支出排名",
-        "layer": "需求端",
-        "body": "Google、Microsoft、Meta 和 Amazon 資本支出排名，以滿足半導體供應鏈的需求。這項排名將使這些公司能夠提高其在半導體供應鏈中的競爭優勢，進而影響半導體供應鏈。這些公司的這項動作將使其在半導體市場中保持競爭優勢。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          },
-          {
-            "label": "Google、Microsoft、Meta 和 Amazon",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Google、Microsoft、Meta 和 Amazon 的投資將提高其在半導體供應鏈中的競爭優勢，同時也將使其在半導體市場中保持競爭優勢。",
+        "insight": "Micron 的市值的增加反映了記憶體需求的增長，同時也表明了公司在半導體市場中的競爭力。",
         "source_label": "CNBC",
         "source": "https://www.cnbc.com/"
       }
     ],
-    "app": [
-      {
-        "title": "Agentic AI 應用",
-        "layer": "Agentic AI",
-        "body": "Agentic AI 應用，以滿足半導體供應鏈的需求。這項應用將使 Agentic AI 能夠提高其在半導體供應鏈中的競爭優勢，進而影響半導體供應鏈。Agentic AI 的這項動作將使其在半導體市場中保持競爭優勢。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          },
-          {
-            "label": "Agentic AI",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Agentic AI 的應用將提高其在半導體供應鏈中的競爭優勢，同時也將使其在半導體市場中保持競爭優勢。",
-        "source_label": "Deloitte",
-        "source": "https://www.deloitte.com/"
-      },
-      {
-        "title": "Physical AI 應用",
-        "layer": "Physical AI",
-        "body": "Physical AI 應用，以滿足半導體供應鏈的需求。這項應用將使 Physical AI 能夠提高其在半導體供應鏈中的競爭優勢，進而影響半導體供應鏈。Physical AI 的這項動作將使其在半導體市場中保持競爭優勢。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          },
-          {
-            "label": "Physical AI",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Physical AI 的應用將提高其在半導體供應鏈中的競爭優勢，同時也將使其在半導體市場中保持競爭優勢。",
-        "source_label": "WSJ",
-        "source": "https://www.wsj.com/"
-      }
-    ],
+    "corp": [],
+    "app": [],
     "glossary_new": [],
     "weekly_summary": null
   },
