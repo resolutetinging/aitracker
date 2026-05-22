@@ -20,19 +20,22 @@ KNOWN_TERMS = ["HBM","CoWoS","CSP","OSAT","VLA 模型",
 #  1. RSS FEEDS（主要新聞來源，穩定免費）
 # ══════════════════════════════════════════════════════════════════
 RSS_FEEDS = [
-    # Semiconductor / Supply Chain
+    # Semiconductor / Supply Chain（高訊噪比，優先）
     ("Semiconductor", "https://www.theregister.com/headlines.atom"),
     ("Semiconductor", "https://feeds.reuters.com/reuters/technologyNews"),
-    ("Semiconductor", "https://news.google.com/rss/search?q=TSMC+HBM+CoWoS+NVIDIA+semiconductor+chip&hl=en-US&gl=US&ceid=US:en"),
-    ("Semiconductor", "https://news.google.com/rss/search?q=NVIDIA+AMD+Intel+SK+Hynix+Micron+packaging+wafer&hl=en-US&gl=US&ceid=US:en"),
-    # CSP CapEx / Cloud（hnrss 不穩，改用 Google News）
-    ("CSP/CapEx",    "https://news.google.com/rss/search?q=Microsoft+Google+Meta+Amazon+AI+capex+data+center+investment+2026&hl=en-US&gl=US&ceid=US:en"),
-    ("CSP/CapEx",    "https://news.google.com/rss/search?q=OpenAI+Anthropic+xAI+cloud+infrastructure+revenue+funding&hl=en-US&gl=US&ceid=US:en"),
-    # Agentic / Physical AI（hnrss 不穩，改用 Google News + 穩定 RSS）
-    ("App/AI",       "https://news.google.com/rss/search?q=Agentic+AI+agent+automation+robotics+humanoid+VLA&hl=en-US&gl=US&ceid=US:en"),
+    ("Semiconductor", "https://hnrss.org/frontpage?q=TSMC+HBM+CoWoS+OSAT+semiconductor+packaging"),
+    ("Semiconductor", "https://hnrss.org/frontpage?q=NVIDIA+AMD+Intel+chip+wafer+capacity+supply"),
+    # CSP CapEx / Cloud
+    ("CSP/CapEx",    "https://hnrss.org/frontpage?q=Microsoft+Google+Meta+Amazon+capex+data+center+AI+investment"),
+    # Agentic / Physical AI
+    ("App/AI",       "https://hnrss.org/frontpage?q=Agentic+AI+Physical+AI+robotics+humanoid+VLA+inference"),
     ("App/AI",       "https://feeds.arstechnica.com/arstechnica/technology-lab"),
     ("App/AI",       "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
-    ("App/AI",       "https://venturebeat.com/feed/"),
+    # Google News RSS（保底，hnrss/DDG 失效時仍有料）
+    ("Semiconductor", "https://news.google.com/rss/search?q=TSMC+HBM+CoWoS+semiconductor+AI+chip&hl=en-US&gl=US&ceid=US:en"),
+    ("Semiconductor", "https://news.google.com/rss/search?q=NVIDIA+AMD+Intel+SK+Hynix+Micron+packaging&hl=en-US&gl=US&ceid=US:en"),
+    ("CSP/CapEx",    "https://news.google.com/rss/search?q=Microsoft+Google+Meta+Amazon+AI+capex+data+center+2026&hl=en-US&gl=US&ceid=US:en"),
+    ("App/AI",       "https://news.google.com/rss/search?q=Agentic+AI+Physical+AI+humanoid+robot+inference+2026&hl=en-US&gl=US&ceid=US:en"),
 ]
 
 # 硬體供應鏈關鍵字（hw 分類必須命中其中之一）
@@ -62,18 +65,18 @@ def fetch_rss():
     for label, url in RSS_FEEDS:
         try:
             req = urllib.request.Request(url, headers={'User-Agent':'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=5) as r:
+            with urllib.request.urlopen(req, timeout=10) as r:
                 raw = r.read()
             root = ET.fromstring(raw)
             ns = {'atom':'http://www.w3.org/2005/Atom'}
             # Handle both RSS and Atom
             items = root.findall('.//item') or root.findall('.//atom:entry', ns)
-            for item in items[:6]:
+            for item in items[:8]:
                 title = (item.findtext('title') or item.findtext('atom:title',namespaces=ns) or '').strip()
                 desc  = (item.findtext('description') or item.findtext('summary') or
                          item.findtext('atom:summary',namespaces=ns) or '').strip()
                 # Strip HTML tags
-                desc = re.sub(r'<[^>]+>', '', desc)[:350]
+                desc = re.sub(r'<[^>]+>', '', desc)[:200]
                 if title and any(kw in (title+desc).lower() for kw in AI_KEYWORDS):
                     snippets.append(f"[{label}] {title} — {desc}")
             print(f"  RSS {label}({url.split('/')[2]}): {len(items)} items")
@@ -101,12 +104,12 @@ def fetch_ddg():
             try:
                 results = list(ddgs.news(q, max_results=5, timelimit="w"))
                 for r in results:
-                    snippets.append(f"[{label}] {r.get('title','')} — {r.get('body','')[:400]}")
+                    snippets.append(f"[{label}] {r.get('title','')} — {r.get('body','')[:300]}")
                 print(f"  DDG '{label}': {len(results)} results")
                 break
             except Exception as e:
                 if attempt < 2:
-                    time.sleep(1)
+                    time.sleep(3)
                 else:
                     print(f"  DDG '{label}' failed after 3 attempts: {e}")
     return snippets
@@ -127,9 +130,8 @@ def fetch_news():
             seen.add(key)
             unique.append(s)
     print(f"  → 去重後 {len(unique)} 條")
-    # 加編號，強制 LLM 引用來源
-    numbered = [f"[S{i+1}] {s}" for i, s in enumerate(unique)]
-    joined = "\n\n".join(numbered)
+    # 限制總字數在 8000 字元以內，避免超過 Groq TPM 限制
+    joined = "\n\n".join(unique)
     if len(joined) > 8000:
         joined = joined[:8000]
         print(f"  → 截斷至 8000 字元")
@@ -162,7 +164,11 @@ def make_prompt(news_context, recent_titles=None):
     notes = load_notes() if IS_SUNDAY else {}
     notes_text = "; ".join(f"{d}:{n}" for d, n in sorted(notes.items()) if n.strip()) if notes else ""
 
-    recent_str = ("【勿重複】" + "／".join(recent_titles)) if recent_titles else ""
+    recent_str = (
+        "【前三日已報道，嚴禁重複】以下主題若今日無明確新進展（新數字/新事件/新公司動作），"
+        "請直接評為 noise，不得生成相似內容，不得以改寫或重述替代：\n"
+        + "\n".join(f"・{t}" for t in recent_titles)
+    ) if recent_titles else ""
     notes_context = ('【本週筆記參考（勿逐字複製，請融入分析寫成洞察）】' + notes_text) if notes_text else ''
     notes_line = '\\n【筆記整合】根據本週筆記寫出一句核心洞察（不得原文照抄）' if notes_text else ''
     weekly_val = (
@@ -174,22 +180,28 @@ def make_prompt(news_context, recent_titles=None):
         if IS_SUNDAY else 'null'
     )
 
-    # 新聞截斷至 2500 字元，控制 token 數
-    news_short = news_context[:6000]
+    # 新聞截斷至 4500 字元（原 2000 太短，容易只剩舊文章）
+    news_short = news_context[:4500]
 
-    return f"""AI產業供應鏈分析師。以下是今日新聞（每條標記 [S編號]），請根據這些新聞輸出純JSON（直接從{{開始）。
+    return f"""AI產業供應鏈分析師。根據新聞輸出純JSON（直接從{{開始）。
 
-今日新聞：
-{news_short}
+新聞：{news_short}
 {recent_str}
 {notes_context}
 
 分類：hw=半導體/封裝(CoWoS/OSAT/HBM)/晶片製造；corp=CSP(MS/Google/Meta/Amazon)CapEx/投資；app=Agentic AI/Physical AI/VLA/推論落地
 
 格式（每區2-4條，無相關新聞則1條noise）：
-{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題（來自今日新聞）","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句摘要：第1句說明事件（誰做了什麼），第2句說明規模或影響（有數字就用原文數字，沒有就描述事件規模），第3句說明供應鏈連鎖效應；嚴禁憑空捏造具體數字","chain":[{{"label":"受益↑","type":"up"}},{{"label":"受壓↓","type":"down"}}],"rating":"core","insight":"供應鏈投資者視角","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
+{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句含數字摘要","chain":[{{"label":"受益↑","type":"up"}},{{"label":"受壓↓","type":"down"}}],"rating":"core","insight":"供應鏈投資者視角","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
 
-規則：標題必須對應今日新聞中的真實事件；數字只能來自新聞原文（沒有就不寫數字）；hw僅限硬體供應鏈；無相關新聞時rating=noise；已知術語勿重列:{known}；全程繁體中文"""
+規則：
+- hw 僅限硬體供應鏈；各條目數字不得跨條目複製；已知術語勿重列:{known}
+- 全程繁體中文，勿夾雜其他語言；「晶片」非「芯片」，「記憶體」非「内存」
+- body 欄位嚴禁使用「...」「…」等省略符號，資訊不確定請直接省略或改寫成完整句子
+- body 必須包含至少 3 句完整陳述，每句需含具體數字、時間點、公司名稱或技術細節，不得泛泛而談
+- 若某條目的原始新聞資訊不足以寫出 3 句有內容的句子，請將該條評為 noise 並簡短說明，不要用空話填充
+- noise 條目只在該分區完全無相關新聞時才加入（限 1 條）；若已有 core 或 opp 條目，不得再混入 noise
+- 【前三日已報道】清單中的主題：無新進展則必須 noise；絕不允許用改寫、重述、補充細節等方式「偽裝成新內容」通過審查"""
 
 # ══════════════════════════════════════════════════════════════════
 #  3. GROQ API
@@ -203,11 +215,11 @@ def call_groq(prompt):
                 "你是 AI 產業供應鏈分析師，專注半導體供應鏈（HBM/CoWoS/OSAT）、CSP 資本支出、Agentic/Physical AI 落地。"
                 "只輸出純 JSON，不加任何說明或 markdown 格式。"
                 "hw 分類僅限半導體/封裝/記憶體供應鏈，應用層或軟體新聞絕對不能放入 hw。"
-                "所有條目的標題和事件必須來自今日提供的新聞，不能自行發明新聞事件。"
-                "body 描述事件本身（誰/做了什麼/影響哪條鏈），有原文數字就用，沒有就描述事件而非捏造數字。"
-                "嚴禁憑空捏造具體數字（億/百分比/時間節點），若新聞未提及則不寫。"
-                "嚴禁使用空泛措詞：有望提高效率、服務能力、競爭優勢、鞏固領導地位、帶來顯著增長、提供強大支持。"
-                "找不到真實新聞事件時，rating 設為 noise，body 說明今日無相關新聞。"
+                "每個條目的具體數字必須來自該條目本身的新聞，嚴禁跨條目複製數字或細節。"
+                "若某維度今日無相關新聞，回傳 1 條 noise 評級的條目，不要憑空生成內容。"
+                "每條 body 必須包含至少 3 句，每句需含具體數字、時間點或技術細節；資訊不足請評為 noise，不要用空話填充。"
+                "user 訊息中標示【前三日已報道，嚴禁重複】的主題，若今日新聞中沒有該主題的明確新進展，絕對不可生成該主題的條目，直接評為 noise 或略過。"
+                "全程繁體中文：晶片（非芯片）、記憶體（非内存）、處理器（非处理器）。"
             )},
             {"role":"user","content":prompt}
         ],
@@ -243,19 +255,6 @@ def upsert(history, data):
     if idx is not None: history[idx] = data
     else: history.append(data)
     return history
-
-NOISE_PLACEHOLDER = {
-    'corp': {'title':'今日無巨頭 CapEx 新訊','layer':'CapEx決策','body':'今日 CSP 相關新聞來源未能取得有效資料，請明日再查。','chain':[],'rating':'noise','insight':'無訊號','source_label':'','source':''},
-    'app':  {'title':'今日無 Agentic/Physical AI 新訊','layer':'Agentic AI','body':'今日應用落地相關新聞來源未能取得有效資料，請明日再查。','chain':[],'rating':'noise','insight':'無訊號','source_label':'','source':''},
-}
-
-def ensure_sections(data):
-    """若 corp 或 app 為空陣列，補一條 noise 佔位，避免顯示空白區塊。"""
-    for sec in ['corp', 'app']:
-        if not data.get(sec):
-            data[sec] = [NOISE_PLACEHOLDER[sec]]
-            print(f"  ⚠️  {sec} 無資料，已補 noise 佔位")
-    return data
 
 # ══════════════════════════════════════════════════════════════════
 #  5. EMAIL（5/5 content quality）
@@ -449,7 +448,6 @@ if __name__ == '__main__':
 
     print("🤖 呼叫 Groq API...")
     data = call_groq(make_prompt(news, recent_titles))
-    data = ensure_sections(data)
     print(f"  → 硬體 {len(data.get('hw',[]))} / 巨頭 {len(data.get('corp',[]))} / 應用 {len(data.get('app',[]))} 則")
 
     history = upsert(history, data)
