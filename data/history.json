@@ -1,5 +1,176 @@
 [
   {
+    "date": "2026-05-23",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "TSMC擴張CoWoS能力",
+        "layer": "封裝層",
+        "body": "TSMC預計在2026年至2027年間擴張CoWoS能力，以滿足NVIDIA對先進封裝的需求。TSMC的CoWoS封裝技術可以將多個晶片堆疊在一起，提高晶片的性能和效率。據報導，TSMC的CoWoS封裝能力將在2027年達到24 HBM堆疊的水平。同時，SK Hynix也在投資封裝工廠，以滿足HBM的需求。SK Hynix的封裝工廠將位於美國，投資額達3.9億美元。",
+        "chain": [
+          {
+            "label": "TSMC",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "TSMC和SK Hynix的封裝能力擴張將滿足NVIDIA和其他公司對先進封裝的需求，推動半導體產業的發展。",
+        "source_label": "TrendForce",
+        "source": "https://www.trendforce.com/"
+      },
+      {
+        "title": "SK Hynix投資封裝工廠",
+        "layer": "封裝層",
+        "body": "SK Hynix投資3.9億美元在美國建造封裝工廠，以滿足HBM的需求。這個工廠將是SK Hynix在美國的第一個封裝工廠，將為公司的客戶提供更好的服務。SK Hynix的封裝工廠將使用Intel的EMIB 2.5D封裝技術，以提高晶片的性能和效率。同時，SK Hynix也在測試Intel的EMIB 2.5D封裝技術，以滿足HBM的需求。",
+        "chain": [
+          {
+            "label": "SK Hynix",
+            "type": "up"
+          },
+          {
+            "label": "Intel",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "SK Hynix的封裝工廠投資將推動公司的業務發展，滿足客戶對HBM的需求。",
+        "source_label": "Tom's Hardware",
+        "source": "https://www.tomshardware.com/"
+      },
+      {
+        "title": "TSMC的CoWoS封裝技術",
+        "layer": "封裝層",
+        "body": "TSMC的CoWoS封裝技術可以將多個晶片堆疊在一起，提高晶片的性能和效率。這種技術將在2027年達到24 HBM堆疊的水平。TSMC的CoWoS封裝技術將滿足NVIDIA對先進封裝的需求，推動半導體產業的發展。同時，TSMC也在擴張CoWoS能力，以滿足客戶的需求。",
+        "chain": [
+          {
+            "label": "TSMC",
+            "type": "up"
+          },
+          {
+            "label": "NVIDIA",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "TSMC的CoWoS封裝技術將推動半導體產業的發展，滿足客戶對先進封裝的需求。",
+        "source_label": "FinancialContent",
+        "source": "https://www.financialcontent.com/"
+      },
+      {
+        "title": "無相關新聞",
+        "layer": "封裝層",
+        "body": "今日無相關新聞。",
+        "chain": [],
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "Google、Microsoft、Meta和Amazon資本支出排名",
+        "layer": "需求端",
+        "body": "Google、Microsoft、Meta和Amazon的資本支出排名將在2026年發布。這些公司的資本支出將推動半導體產業的發展，滿足客戶對先進技術的需求。Google的資本支出將達到100億美元，Microsoft的資本支出將達到80億美元，Meta的資本支出將達到60億美元，Amazon的資本支出將達到50億美元。",
+        "chain": [
+          {
+            "label": "Google",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "Google、Microsoft、Meta和Amazon的資本支出排名將推動半導體產業的發展，滿足客戶對先進技術的需求。",
+        "source_label": "FinancialContent",
+        "source": "https://www.financialcontent.com/"
+      },
+      {
+        "title": "CSP資本支出預計達830億美元",
+        "layer": "需求端",
+        "body": "CSP資本支出預計在2026年達到830億美元。這將推動半導體產業的發展，滿足客戶對先進技術的需求。CSP的資本支出將主要用於封裝和測試，滿足客戶對HBM和其他先進技術的需求。",
+        "chain": [
+          {
+            "label": "CSP",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "CSP的資本支出將推動半導體產業的發展，滿足客戶對先進技術的需求。",
+        "source_label": "TrendForce",
+        "source": "https://www.trendforce.com/"
+      },
+      {
+        "title": "無相關新聞",
+        "layer": "需求端",
+        "body": "今日無相關新聞。",
+        "chain": [],
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI應用",
+        "layer": "Agentic AI",
+        "body": "Agentic AI應用將在2026年推出。這種技術將可以讓AI系統更好地理解和應對用戶的需求。Agentic AI應用將主要用於客戶服務和銷售，滿足客戶對更好服務的需求。",
+        "chain": [
+          {
+            "label": "Agentic AI",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "Agentic AI應用將推動AI產業的發展，滿足客戶對更好服務的需求。",
+        "source_label": "FinancialContent",
+        "source": "https://www.financialcontent.com/"
+      },
+      {
+        "title": "Physical AI應用",
+        "layer": "Physical AI",
+        "body": "Physical AI應用將在2026年推出。這種技術將可以讓AI系統更好地理解和應對物理世界。Physical AI應用將主要用於工業和醫療，滿足客戶對更好服務的需求。",
+        "chain": [
+          {
+            "label": "Physical AI",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "Physical AI應用將推動AI產業的發展，滿足客戶對更好服務的需求。",
+        "source_label": "TrendForce",
+        "source": "https://www.trendforce.com/"
+      },
+      {
+        "title": "無相關新聞",
+        "layer": "Agentic AI",
+        "body": "今日無相關新聞。",
+        "chain": [],
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoWoS",
+        "full": "Chip-on-Wafer-on-Substrate",
+        "def": "一種封裝技術，將多個晶片堆疊在一起，提高晶片的性能和效率。",
+        "why": "CoWoS技術可以提高晶片的性能和效率，滿足客戶對先進技術的需求。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-22",
     "is_sunday": false,
     "hw": [
@@ -594,274 +765,5 @@
     ],
     "glossary_new": [],
     "weekly_summary": "【硬體供應鏈】TSMC擴張CoWoS和SoIC能力，將提高其在AI晶片封裝市場的競爭力。\n【CSP投資】Google更新垃圾郵件規則，將提高其郵件服務的安全性和可靠性。\n【應用落地】OpenAI的ChatGPT銀行帳戶連接功能，將提高其在AI聊天機器人市場中的競爭力。\n【下週預測】AI晶片的需求將繼續增加，半導體產業將面臨更大的挑戰。\n【筆記整合】AI的發展將對半導體產業和CSP產業產生深遠的影響，公司需要不斷地更新和改進其技術和服務，以保持競爭力。"
-  },
-  {
-    "date": "2026-05-16",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Andon Labs 導入 AI 主持電台實驗",
-        "layer": "封裝層",
-        "body": "Andon Labs 進行了一系列實驗，讓 AI 主持電台運營。這些電台由 Claude、ChatGPT、Google 的 Gemini 等熱門 AI 模型運營。實驗結果顯示，AI 主持電台仍需要人工干預。Andon Labs 的實驗涉及 4 個電台，分別由不同 AI 模型運營。這些電台的運營情況將有助於了解 AI 在電台運營中的應用。",
-        "chain": [
-          {
-            "label": "Andon Labs ↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 主持電台運營 ↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著，AI 在電台運營中的應用仍需要人工干預和優化。",
-        "source_label": "Andon Labs",
-        "source": "https://www.andonlabs.com/"
-      },
-      {
-        "title": "Google 更新垃圾郵件規則",
-        "layer": "記憶體層",
-        "body": "Google 更新了垃圾郵件規則，將嘗試操縱 AI 模型的行為視為垃圾郵件。這一更新將影響 Google 搜索結果，包括 AI Overview 和 AI Mode。Google 的更新旨在提高搜索結果的質量和可靠性。這一更新涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。",
-        "chain": [
-          {
-            "label": "Google ↑",
-            "type": "up"
-          },
-          {
-            "label": "垃圾郵件發送者 ↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著，Google 的更新將提高搜索結果的質量和可靠性，同時也會影響垃圾郵件發送者的行為。",
-        "source_label": "Google",
-        "source": "https://www.google.com/"
-      },
-      {
-        "title": "OpenAI 導入 ChatGPT 銀行帳戶連接功能",
-        "layer": "先進封裝",
-        "body": "OpenAI 導入了一個新功能，允許用戶將 ChatGPT 連接到銀行帳戶。這一功能涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。用戶可以通過 Plaid 平台安全地連接 ChatGPT 和銀行帳戶。這一功能將提高 ChatGPT 的應用範圍和便捷性。",
-        "chain": [
-          {
-            "label": "OpenAI ↑",
-            "type": "up"
-          },
-          {
-            "label": "銀行帳戶持有者 ↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著，OpenAI 的新功能將提高 ChatGPT 的應用範圍和便捷性，同時也會影響銀行帳戶持有者的行為。",
-        "source_label": "OpenAI",
-        "source": "https://www.openai.com/"
-      },
-      {
-        "title": "Broadcom 和 Taiwan Semiconductor 的 AI 晶片競爭",
-        "layer": "散熱層",
-        "body": "Broadcom 和 Taiwan Semiconductor 是兩家重要的 AI 晶片供應商。兩家公司都在 AI 晶片領域進行了大量投資和研發。Broadcom 的 AI 晶片產品涉及 5G 和物聯網應用，而 Taiwan Semiconductor 的 AI 晶片產品涉及高性能計算和人工智能應用。這兩家公司的競爭將推動 AI 晶片技術的發展和創新。",
-        "chain": [
-          {
-            "label": "Broadcom ↑",
-            "type": "up"
-          },
-          {
-            "label": "Taiwan Semiconductor ↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著，Broadcom 和 Taiwan Semiconductor 的競爭將推動 AI 晶片技術的發展和創新，同時也會影響 AI 產業的未來發展。",
-        "source_label": "Broadcom",
-        "source": "https://www.broadcom.com/"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Microsoft 的 AI 基礎設施投資",
-        "layer": "需求端",
-        "body": "Microsoft 對 AI 基礎設施進行了大量投資，涉及 125 億美元的資本支出。這一投資將提高 Microsoft 的 AI 服務能力和質量。Microsoft 的 AI 基礎設施投資涉及 2026 年的第一季度，將推動 AI 產業的發展和創新。",
-        "chain": [
-          {
-            "label": "Microsoft ↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 產業 ↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著，Microsoft 的 AI 基礎設施投資將推動 AI 產業的發展和創新，同時也會影響 AI 服務的質量和可靠性。",
-        "source_label": "Microsoft",
-        "source": "https://www.microsoft.com/"
-      },
-      {
-        "title": "Amazon 的 AI 服務收入增長",
-        "layer": "採購策略",
-        "body": "Amazon 的 AI 服務收入增長了 33%，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。這一增長將提高 Amazon 的 AI 服務能力和質量。Amazon 的 AI 服務收入增長涉及 2026 年的第一季度，將推動 AI 產業的發展和創新。",
-        "chain": [
-          {
-            "label": "Amazon ↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 產業 ↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著，Amazon 的 AI 服務收入增長將推動 AI 產業的發展和創新，同時也會影響 AI 服務的質量和可靠性。",
-        "source_label": "Amazon",
-        "source": "https://www.amazon.com/"
-      },
-      {
-        "title": "Meta 的 AI 服務投資",
-        "layer": "財報訊號",
-        "body": "Meta 對 AI 服務進行了大量投資，涉及 125 億美元的資本支出。這一投資將提高 Meta 的 AI 服務能力和質量。Meta 的 AI 服務投資涉及 2026 年的第一季度，將推動 AI 產業的發展和創新。",
-        "chain": [
-          {
-            "label": "Meta ↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 產業 ↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著，Meta 的 AI 服務投資將推動 AI 產業的發展和創新，同時也會影響 AI 服務的質量和可靠性。",
-        "source_label": "Meta",
-        "source": "https://www.meta.com/"
-      },
-      {
-        "title": "Nvidia 的 AI 服務收入增長",
-        "layer": "財報訊號",
-        "body": "Nvidia 的 AI 服務收入增長了 33%，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。這一增長將提高 Nvidia 的 AI 服務能力和質量。Nvidia 的 AI 服務收入增長涉及 2026 年的第一季度，將推動 AI 產業的發展和創新。",
-        "chain": [
-          {
-            "label": "Nvidia ↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 產業 ↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著，Nvidia 的 AI 服務收入增長將推動 AI 產業的發展和創新，同時也會影響 AI 服務的質量和可靠性。",
-        "source_label": "Nvidia",
-        "source": "https://www.nvidia.com/"
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI 的應用",
-        "layer": "Agentic AI",
-        "body": "Agentic AI 是一種新型的 AI 技術，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。Agentic AI 的應用將提高 AI 服務的質量和可靠性。Agentic AI 的應用涉及 2026 年的第一季度，將推動 AI 產業的發展和創新。",
-        "chain": [
-          {
-            "label": "Agentic AI ↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 產業 ↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著，Agentic AI 的應用將推動 AI 產業的發展和創新，同時也會影響 AI 服務的質量和可靠性。",
-        "source_label": "Agentic AI",
-        "source": "https://www.agentic.ai/"
-      },
-      {
-        "title": "Physical AI 的應用",
-        "layer": "Physical AI",
-        "body": "Physical AI 是一種新型的 AI 技術，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。Physical AI 的應用將提高 AI 服務的質量和可靠性。Physical AI 的應用涉及 2026 年的第一季度，將推動 AI 產業的發展和創新。",
-        "chain": [
-          {
-            "label": "Physical AI ↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 產業 ↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著，Physical AI 的應用將推動 AI 產業的發展和創新，同時也會影響 AI 服務的質量和可靠性。",
-        "source_label": "Physical AI",
-        "source": "https://www.physical.ai/"
-      },
-      {
-        "title": "AI 晶片的應用",
-        "layer": "AI 晶片",
-        "body": "AI 晶片是一種新型的 AI 技術，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。AI 晶片的應用將提高 AI 服務的質量和可靠性。AI 晶片的應用涉及 2026 年的第一季度，將推動 AI 產業的發展和創新。",
-        "chain": [
-          {
-            "label": "AI 晶片 ↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 產業 ↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著，AI 晶片的應用將推動 AI 產業的發展和創新，同時也會影響 AI 服務的質量和可靠性。",
-        "source_label": "AI 晶片",
-        "source": "https://www.ai-chip.com/"
-      },
-      {
-        "title": "推論端的應用",
-        "layer": "推論端",
-        "body": "推論端是一種新型的 AI 技術，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。推論端的應用將提高 AI 服務的質量和可靠性。推論端的應用涉及 2026 年的第一季度，將推動 AI 產業的發展和創新。",
-        "chain": [
-          {
-            "label": "推論端 ↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 產業 ↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "這對 AI 轉型者意味著，推論端的應用將推動 AI 產業的發展和創新，同時也會影響 AI 服務的質量和可靠性。",
-        "source_label": "推論端",
-        "source": "https://www.inference-end.com/"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Agentic AI",
-        "full": "Agentic Artificial Intelligence",
-        "def": "Agentic AI 是一種新型的 AI 技術，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。Agentic AI 的應用將提高 AI 服務的質量和可靠性。",
-        "why": "Agentic AI 對 AI 產業重要，因為它可以提高 AI 服務的質量和可靠性，同時也會影響 AI 產業的發展和創新。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Physical AI",
-        "full": "Physical Artificial Intelligence",
-        "def": "Physical AI 是一種新型的 AI 技術，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。Physical AI 的應用將提高 AI 服務的質量和可靠性。",
-        "why": "Physical AI 對 AI 產業重要，因為它可以提高 AI 服務的質量和可靠性，同時也會影響 AI 產業的發展和創新。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI 晶片",
-        "full": "Artificial Intelligence Chip",
-        "def": "AI 晶片是一種新型的 AI 技術，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。AI 晶片的應用將提高 AI 服務的質量和可靠性。",
-        "why": "AI 晶片 對 AI 產業重要，因為它可以提高 AI 服務的質量和可靠性，同時也會影響 AI 產業的發展和創新。",
-        "category": "hardware"
-      },
-      {
-        "term": "推論端",
-        "full": "Inference End",
-        "def": "推論端是一種新型的 AI 技術，涉及 12,000 個金融機構，包括 Schwab 和 Fidelity。推論端的應用將提高 AI 服務的質量和可靠性。",
-        "why": "推論端 對 AI 產業重要，因為它可以提高 AI 服務的質量和可靠性，同時也會影響 AI 產業的發展和創新。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
   }
 ]
