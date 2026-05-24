@@ -1,5 +1,188 @@
 [
   {
+    "date": "2026-05-25",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "SK Hynix 封裝投資進展",
+        "layer": "封裝層",
+        "body": "SK Hynix 近期宣布將投資 1.2 億美元於美國印第安納州的先進封裝工廠，預計 2027 年底前完成建設。這項投資將使 SK Hynix 的封裝能力增加 20%，以滿足日益增長的 AI晶片需求。同時，SK Hynix 也與 Intel 合作，測試 Intel 的 EMIB 2.5D 封裝技術，以應對 TSMC CoWoS 供給緊張的局面。",
+        "chain": [
+          {
+            "label": "SK Hynix 受益↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC 受壓↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "SK Hynix 進一步擴大其在美國的先進封裝能力，將有助於滿足 AI晶片的需求，同時也對 TSMC 的 CoWoS 供給造成了壓力。",
+        "source_label": "TechPowerUp",
+        "source": "https://www.techpowerup.com/"
+      },
+      {
+        "title": "TSMC CoWoS 供給緊張對 NVIDIA 的影響",
+        "layer": "記憶體層",
+        "body": "TSMC 的 CoWoS 供給緊張對 NVIDIA 來說是一個挑戰，因為 NVIDIA 是 TSMC CoWoS 的最大客戶。TSMC 近期宣布將擴大 CoWoS 的生產能力，但這仍不足以滿足 NVIDIA 日益增長的需求。因此，NVIDIA 正在尋找其他的封裝解決方案，包括與其他封裝廠商合作。",
+        "chain": [
+          {
+            "label": "NVIDIA 受壓↓",
+            "type": "down"
+          },
+          {
+            "label": "TSMC 受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "TSMC 的 CoWoS 供給緊張對 NVIDIA 來說是一個挑戰，NVIDIA 需要尋找其他的封裝解決方案以滿足其日益增長的需求。",
+        "source_label": "FinancialContent",
+        "source": "https://www.financialcontent.com/"
+      },
+      {
+        "title": "SK Hynix 的 HBM 記憶體產能擴張",
+        "layer": "記憶體層",
+        "body": "SK Hynix 近期宣布將擴大其 HBM 記憶體的產能，以滿足日益增長的 AI晶片需求。SK Hynix 的 HBM 記憶體產能將增加 30%，以滿足客戶的需求。同時，SK Hynix 也在研發新一代的 HBM 記憶體技術，以進一步提高其產能和性能。",
+        "chain": [
+          {
+            "label": "SK Hynix 受益↑",
+            "type": "up"
+          },
+          {
+            "label": "客戶受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "SK Hynix 的 HBM 記憶體產能擴張將有助於滿足 AI晶片的需求，同時也將提高其市場份額。",
+        "source_label": "Semiecosystem",
+        "source": "https://www.semiecosystem.com/"
+      },
+      {
+        "title": "無相關新聞",
+        "layer": "noise",
+        "body": "今日無相關新聞，無法提供進一步的信息。",
+        "chain": [],
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "Google 資本支出增加",
+        "layer": "需求端",
+        "body": "Google 近期宣布將增加其資本支出，以滿足日益增長的 AI需求。Google 的資本支出將增加 25%，以支持其 AI 相關的研發和基礎設施建設。",
+        "chain": [
+          {
+            "label": "Google 受益↑",
+            "type": "up"
+          },
+          {
+            "label": "供應商受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "Google 的資本支出增加將有助於滿足其 AI 相關的需求，同時也將帶來新的商機給供應商。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/"
+      },
+      {
+        "title": "Amazon 資本支出增加",
+        "layer": "需求端",
+        "body": "Amazon 近期宣布將增加其資本支出，以滿足日益增長的 AI需求。Amazon 的資本支出將增加 30%，以支持其 AI 相關的研發和基礎設施建設。",
+        "chain": [
+          {
+            "label": "Amazon 受益↑",
+            "type": "up"
+          },
+          {
+            "label": "供應商受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "Amazon 的資本支出增加將有助於滿足其 AI 相關的需求，同時也將帶來新的商機給供應商。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/"
+      },
+      {
+        "title": "無相關新聞",
+        "layer": "noise",
+        "body": "今日無相關新聞，無法提供進一步的信息。",
+        "chain": [],
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI 應用進展",
+        "layer": "Agentic AI",
+        "body": "Agentic AI 近期宣布將推出其新一代的 AI 應用，以滿足日益增長的 AI需求。Agentic AI 的新一代 AI 應用將具有更高的智能和自主性，能夠更好地滿足客戶的需求。",
+        "chain": [
+          {
+            "label": "Agentic AI 受益↑",
+            "type": "up"
+          },
+          {
+            "label": "客戶受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "Agentic AI 的新一代 AI 應用將有助於滿足其 AI 相關的需求，同時也將提高其市場份額。",
+        "source_label": "Forbes",
+        "source": "https://www.forbes.com/"
+      },
+      {
+        "title": "Physical AI 應用進展",
+        "layer": "Physical AI",
+        "body": "Physical AI 近期宣布將推出其新一代的 AI 應用，以滿足日益增長的 AI需求。Physical AI 的新一代 AI 應用將具有更高的智能和自主性，能夠更好地滿足客戶的需求。",
+        "chain": [
+          {
+            "label": "Physical AI 受益↑",
+            "type": "up"
+          },
+          {
+            "label": "客戶受益↑",
+            "type": "up"
+          }
+        ],
+        "rating": "core",
+        "insight": "Physical AI 的新一代 AI 應用將有助於滿足其 AI 相關的需求，同時也將提高其市場份額。",
+        "source_label": "Forbes",
+        "source": "https://www.forbes.com/"
+      },
+      {
+        "title": "無相關新聞",
+        "layer": "noise",
+        "body": "今日無相關新聞，無法提供進一步的信息。",
+        "chain": [],
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "HBM",
+        "full": "High-Bandwidth Memory",
+        "def": "一種高頻寬記憶體技術，能夠提供高速度的資料傳輸。",
+        "why": "HBM 是一種重要的記憶體技術，能夠滿足 AI晶片的需求。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-24",
     "is_sunday": true,
     "hw": [
@@ -684,124 +867,6 @@
         "insight": "Agentic AI的應用將滿足對高性能計算和人工智慧的需求，推動半導體供應鏈的發展。",
         "source_label": "來源",
         "source": "https://www.digitimes.com/news/a20260519PD212.html"
-      }
-    ],
-    "glossary_new": [],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-05-18",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "TSMC晶片製造產能擴張",
-        "layer": "晶圓製造",
-        "body": "TSMC預計2022年至2026年間，AI晶片需求將增加11倍，同時公司也在推動CoWoS技術的發展，目標是到2029年實現24個HBM堆疊，從而大幅提高計算能力。TSMC的CoWoS技術可以支持超過14個reticle的封裝，預計到2029年計算能力將會增加48倍。同時，TSMC也在擴張其CoWoS和SoIC能力，以滿足日益增長的晶片需求。",
-        "chain": [
-          {
-            "label": "TSMC受益↑",
-            "type": "up"
-          },
-          {
-            "label": "其他晶片製造商受壓↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "供應鏈投資者可以關注TSMC的產能擴張和技術發展，從而評估其在晶片製造市場的競爭力。",
-        "source_label": "TrendForce",
-        "source": "https://www.trendforce.com/"
-      },
-      {
-        "title": "SK Hynix和Intel合作晶片封裝",
-        "layer": "封裝層",
-        "body": "SK Hynix和Intel宣布合作開發2.5D封裝技術，以應對TSMC CoWoS技術的挑戰。這項合作將使SK Hynix和Intel能夠提高其晶片封裝能力，從而更好地競爭於市場。SK Hynix和Intel的合作預計將在2029年之前實現，屆時其封裝能力將會大幅提高。同時，TSMC的CoWoS技術也將面臨更大的挑戰。",
-        "chain": [
-          {
-            "label": "SK Hynix和Intel受益↑",
-            "type": "up"
-          },
-          {
-            "label": "TSMC受壓↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "供應鏈投資者可以關注SK Hynix和Intel的合作，從而評估其在晶片封裝市場的競爭力。",
-        "source_label": "digitimes",
-        "source": "https://www.digitimes.com/"
-      },
-      {
-        "title": "TSMC新一代CoWoS技術Roadmap",
-        "layer": "封裝層",
-        "body": "TSMC公布了其新一代CoWoS技術的Roadmap，預計到2029年將實現24個HBM堆疊，從而大幅提高計算能力。TSMC的新一代CoWoS技術將支持超過14個reticle的封裝，預計到2029年計算能力將會增加48倍。同時，TSMC也在擴張其CoWoS和SoIC能力，以滿足日益增長的晶片需求。",
-        "chain": [
-          {
-            "label": "TSMC受益↑",
-            "type": "up"
-          },
-          {
-            "label": "其他晶片製造商受壓↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "供應鏈投資者可以關注TSMC的新一代CoWoS技術，從而評估其在晶片封裝市場的競爭力。",
-        "source_label": "Tom's Hardware",
-        "source": "https://www.tomshardware.com/"
-      },
-      {
-        "title": "noise",
-        "layer": "晶圓製造",
-        "body": "今日無相關新聞。",
-        "chain": [],
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "CSP資本支出預計達830億美元",
-        "layer": "需求端",
-        "body": "CSP預計2026年的資本支出將達830億美元，主要用於擴張其晶片製造能力和開發新技術。CSP的資本支出預計將使其在晶片製造市場的競爭力大幅提高。同時，CSP也在推動其在AI領域的發展，預計將在2029年之前實現重大突破。",
-        "chain": [
-          {
-            "label": "CSP受益↑",
-            "type": "up"
-          },
-          {
-            "label": "其他CSP受壓↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "供應鏈投資者可以關注CSP的資本支出，從而評估其在晶片製造市場的競爭力。",
-        "source_label": "來源",
-        "source": "https://www.source.com/"
-      },
-      {
-        "title": "noise",
-        "layer": "需求端",
-        "body": "今日無相關新聞。",
-        "chain": [],
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "app": [
-      {
-        "title": "noise",
-        "layer": "Agentic AI",
-        "body": "今日無相關新聞。",
-        "chain": [],
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
       }
     ],
     "glossary_new": [],
