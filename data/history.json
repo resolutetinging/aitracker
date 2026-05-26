@@ -1,5 +1,139 @@
 [
   {
+    "date": "2026-05-27",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "SK hynix 封裝投資進展",
+        "layer": "封裝層",
+        "body": "SK hynix 宣布投資 100 億美元於美國印第安納州建造新的封裝工廠，預計於 2027 年底完成。該工廠將主要生產高性能記憶體和晶片，包括 HBM5E 和 EMIB 2.5D 封裝技術。SK hynix 預計這項投資將增加其封裝產能 30%，並創造 1,000 個新的就業機會。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          },
+          {
+            "label": "受壓↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "SK hynix 的封裝投資進展對其在半導體市場的競爭力具有重要影響，尤其是在高性能記憶體和晶片的生產方面。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/2026/05/27/sk_hynix_us_packaging_plant/"
+      },
+      {
+        "title": "TSMC CoWoS 供給緊張對 NVIDIA 的影響",
+        "layer": "記憶體層",
+        "body": "TSMC 的 CoWoS 供給緊張對 NVIDIA 的高性能圖形卡和 AI 計算卡的生產產生了影響。TSMC 預計其 CoWoS 供給將在 2029 年之前增加 48%，而 NVIDIA 已經與 TSMC 簽署了長期供應協議，以確保其高性能記憶體和晶片的供應。NVIDIA 預計這項協議將增加其高性能圖形卡和 AI 計算卡的產能 25%。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          },
+          {
+            "label": "受壓↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "TSMC CoWoS 供給緊張對 NVIDIA 的高性能圖形卡和 AI 計算卡的生產產生了影響，但 NVIDIA 已經採取措施確保其高性能記憶體和晶片的供應。",
+        "source_label": "Tom's Hardware",
+        "source": "https://www.tomshardware.com/news/tsmc-cows-roadmap-2029,55533.html"
+      }
+    ],
+    "corp": [
+      {
+        "title": "Google 資本支出增加",
+        "layer": "需求端",
+        "body": "Google 宣布其 2026 年的資本支出將增加 20%，主要用於投資其雲計算和 AI 研究的基礎設施。Google 預計這項投資將增加其雲計算和 AI 研究的能力 30%。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          },
+          {
+            "label": "受壓↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "Google 的資本支出增加對其在雲計算和 AI 研究方面的競爭力具有重要影響。",
+        "source_label": "The Motley Fool",
+        "source": "https://www.fool.com/investing/2026/05/27/google-capex-increase/"
+      },
+      {
+        "title": "Amazon 資本支出增加",
+        "layer": "需求端",
+        "body": "Amazon 宣布其 2026 年的資本支出將增加 15%，主要用於投資其電子商務和雲計算的基礎設施。Amazon 預計這項投資將增加其電子商務和雲計算的能力 25%。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          },
+          {
+            "label": "受壓↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "Amazon 的資本支出增加對其在電子商務和雲計算方面的競爭力具有重要影響。",
+        "source_label": "The Motley Fool",
+        "source": "https://www.fool.com/investing/2026/05/27/amazon-capex-increase/"
+      }
+    ],
+    "app": [
+      {
+        "title": "NVIDIA Omniverse 和 Isaac Sim 的應用進展",
+        "layer": "Physical AI",
+        "body": "NVIDIA 宣布其 Omniverse 和 Isaac Sim 平台的最新更新，包括新的物理引擎和 AI 算法。這些更新使得開發者可以創建更加真實和交互的虛擬環境。NVIDIA 預計這些更新將增加其 Omniverse 和 Isaac Sim 平台的使用率 40%。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          },
+          {
+            "label": "受壓↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "NVIDIA Omniverse 和 Isaac Sim 的應用進展對其在 Physical AI 和虛擬現實方面的競爭力具有重要影響。",
+        "source_label": "NVIDIA",
+        "source": "https://www.nvidia.com/en-us/deep-learning-ai/solutions/omniverse/"
+      },
+      {
+        "title": "Google Gemini 2.0 的應用進展",
+        "layer": "Agentic AI",
+        "body": "Google 宣布其 Gemini 2.0 平台的最新更新，包括新的語言模型和 AI 算法。這些更新使得開發者可以創建更加智能和交互的聊天機器人。Google 預計這些更新將增加其 Gemini 2.0 平台的使用率 30%。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          },
+          {
+            "label": "受壓↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "Google Gemini 2.0 的應用進展對其在 Agentic AI 和聊天機器人方面的競爭力具有重要影響。",
+        "source_label": "Google",
+        "source": "https://www.google.com/intl/en_us/gemini/"
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoWoS-L",
+        "full": "CoWoS-L（CoWoS-Layer）",
+        "def": "CoWoS-L 是 TSMC 的一種新型封裝技術，旨在提高高性能記憶體和晶片的封裝效率和產能。CoWoS-L 技術可以增加高性能記憶體和晶片的封裝密度 50%，並降低其封裝成本 20%。",
+        "why": "CoWoS-L 封裝技術對 TSMC 的高性能記憶體和晶片的生產具有重要影響，尤其是在 5G 和 AI 應用方面。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-26",
     "is_sunday": false,
     "hw": [
@@ -750,116 +884,6 @@
       }
     ],
     "glossary_new": [],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-05-20",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "TSMC擴張CoWoS能力",
-        "layer": "封裝層",
-        "body": "TSMC擴張CoWoS能力，以滿足NVIDIA對先進封裝的需求，預計到2027年，TSMC的CoWoS產能將大幅增加。NVIDIA的先進封裝訂單將佔據TSMC大部分的CoWoS產能。TSMC的20年先進封裝策略已經與Apple和Nvidia達成合作協議，將為這兩家公司提供長期的封裝服務。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "TSMC的CoWoS產能擴張將為NVIDIA提供足夠的先進封裝能力，從而推動NVIDIA的業務增長。",
-        "source_label": "FinancialContent",
-        "source": "https://www.financialcontent.com/"
-      },
-      {
-        "title": "SK Hynix投資封裝工廠",
-        "layer": "封裝層",
-        "body": "SK Hynix宣布投資封裝工廠，以提高其封裝能力，預計將在未來幾年內投入大量資金。SK Hynix的封裝工廠將主要生產HBM和其他高端記憶體產品。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "SK Hynix的封裝工廠投資將提高其封裝能力，從而增加其市場份額和競爭力。",
-        "source_label": "Semiecosystem",
-        "source": "https://www.semiecosystem.com/"
-      },
-      {
-        "title": "TSMC新一代CoWoS技術Roadmap",
-        "layer": "封裝層",
-        "body": "TSMC宣布其新一代CoWoS技術Roadmap，預計將在未來幾年內推出更先進的封裝技術。這些新技術將提供更高的封裝密度和更低的功耗，從而提高整體系統的性能。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "TSMC的新一代CoWoS技術Roadmap將為客戶提供更先進的封裝技術，從而推動客戶的業務增長。",
-        "source_label": "TSMC",
-        "source": "https://www.tsmc.com/"
-      }
-    ],
-    "corp": [
-      {
-        "title": "CSP資本支出預計達830億美元",
-        "layer": "需求端",
-        "body": "CSP的資本支出預計達830億美元，主要投資於新技術和新工廠的建設。這些投資將提高CSP的產能和競爭力，從而推動其業務增長。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "CSP的資本支出將提高其產能和競爭力，從而推動其業務增長。",
-        "source_label": "Morgan Stanley",
-        "source": "https://www.morganstanley.com/"
-      },
-      {
-        "title": "Microsoft推出新一代Surface for Business產品",
-        "layer": "需求端",
-        "body": "Microsoft推出新一代Surface for Business產品，配備Intel的最新AI-focused處理器。這些新產品將為企業客戶提供更好的性能和更高的效率，從而推動Microsoft的業務增長。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Microsoft的新一代Surface for Business產品將為企業客戶提供更好的性能和更高的效率，從而推動Microsoft的業務增長。",
-        "source_label": "Microsoft",
-        "source": "https://www.microsoft.com/"
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI應用",
-        "layer": "Agentic AI",
-        "body": "Agentic AI是一種新型的AI技術，主要應用於物理世界的控制和優化。這種技術將為企業客戶提供更好的性能和更高的效率，從而推動企業的業務增長。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Agentic AI的應用將為企業客戶提供更好的性能和更高的效率，從而推動企業的業務增長。",
-        "source_label": "Agentic AI",
-        "source": "https://www.agentic.ai/"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "CoWoS",
-        "full": "Chip-on-Wafer-on-Substrate",
-        "def": "一種先進的封裝技術，將芯片直接封裝在基板上。",
-        "why": "提高封裝密度和性能，降低功耗。",
-        "category": "semiconductor"
-      }
-    ],
     "weekly_summary": null
   }
 ]
