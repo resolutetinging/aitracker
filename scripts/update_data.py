@@ -138,14 +138,15 @@ def fetch_news():
     return joined
 
 
-def get_recent_titles(history, days=3, max_titles=10):
-    """取得近 N 天已報道過的新聞標題，用於跨日去重（最多 max_titles 條）"""
-    titles = []
+def get_recent_titles(history, days=7, max_titles=30):
+    """取得近 N 天已報道過的新聞標題，用於跨日去重（去除重複後最多 max_titles 條）"""
+    seen, titles = set(), []
     for entry in history[:days]:
         for section in ['hw', 'corp', 'app']:
             for item in entry.get(section, []):
                 t = item.get('title', '').strip()
-                if t:
+                if t and t not in seen:
+                    seen.add(t)
                     titles.append(t)
     return titles[:max_titles]
 
@@ -165,8 +166,12 @@ def make_prompt(news_context, recent_titles=None):
     notes_text = "; ".join(f"{d}:{n}" for d, n in sorted(notes.items()) if n.strip()) if notes else ""
 
     recent_str = (
-        "【前三日已報道，嚴禁重複】以下主題若今日無明確新進展（新數字/新事件/新公司動作），"
-        "請直接評為 noise，不得生成相似內容，不得以改寫或重述替代：\n"
+        "【近 7 日已報道，嚴禁重複】以下主題若今日沒有符合以下任一條件的新事實，"
+        "必須直接評為 noise，絕對不允許以改寫、換角度、補充細節等方式繞過：\n"
+        "  ① 出現全新的具體數字（金額、產能比例、時間點）\n"
+        "  ② 出現新的合作方、新公司名稱、新地點\n"
+        "  ③ 官方正式宣布（非分析師預測或媒體推測）\n"
+        "已追蹤主題清單：\n"
         + "\n".join(f"・{t}" for t in recent_titles)
     ) if recent_titles else ""
     notes_context = ('【本週筆記參考（勿逐字複製，請融入分析寫成洞察）】' + notes_text) if notes_text else ''
@@ -218,7 +223,7 @@ def call_groq(prompt):
                 "每個條目的具體數字必須來自該條目本身的新聞，嚴禁跨條目複製數字或細節。"
                 "若某維度今日無相關新聞，回傳 1 條 noise 評級的條目，不要憑空生成內容。"
                 "每條 body 必須包含至少 3 句，每句需含具體數字、時間點或技術細節；資訊不足請評為 noise，不要用空話填充。"
-                "user 訊息中標示【前三日已報道，嚴禁重複】的主題，若今日新聞中沒有該主題的明確新進展，絕對不可生成該主題的條目，直接評為 noise 或略過。"
+                "user 訊息中標示【近 7 日已報道，嚴禁重複】的主題，必須同時符合以下三項之一才能生成：①新的具體數字 ②新的合作方/公司/地點 ③官方正式宣布。否則直接評為 noise，不得改寫或換角度繞過。"
                 "全程繁體中文：晶片（非芯片）、記憶體（非内存）、處理器（非处理器）。"
             )},
             {"role":"user","content":prompt}
@@ -443,8 +448,8 @@ if __name__ == '__main__':
     print(f"  → 合計 {total} 行新聞摘要")
 
     history = load_history()
-    recent_titles = get_recent_titles(history, days=3)
-    print(f"  → 近三日已報道標題 {len(recent_titles)} 條（用於去重）")
+    recent_titles = get_recent_titles(history, days=7)
+    print(f"  → 近七日已報道標題 {len(recent_titles)} 條（用於去重）")
 
     print("🤖 呼叫 Groq API...")
     data = call_groq(make_prompt(news, recent_titles))
