@@ -29,13 +29,15 @@ RSS_FEEDS = [
     ("CSP/CapEx",    "https://hnrss.org/frontpage?q=Microsoft+Google+Meta+Amazon+capex+data+center+AI+investment"),
     # Agentic / Physical AI
     ("App/AI",       "https://hnrss.org/frontpage?q=Agentic+AI+Physical+AI+robotics+humanoid+VLA+inference"),
+    ("App/AI",       "https://hnrss.org/frontpage?q=NVIDIA+Omniverse+Isaac+Cosmos+Boston+Dynamics+Figure+Unitree"),
     ("App/AI",       "https://feeds.arstechnica.com/arstechnica/technology-lab"),
     ("App/AI",       "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
     # Google News RSS（保底，hnrss/DDG 失效時仍有料）
     ("Semiconductor", "https://news.google.com/rss/search?q=TSMC+HBM+CoWoS+semiconductor+AI+chip&hl=en-US&gl=US&ceid=US:en"),
     ("Semiconductor", "https://news.google.com/rss/search?q=NVIDIA+AMD+Intel+SK+Hynix+Micron+packaging&hl=en-US&gl=US&ceid=US:en"),
     ("CSP/CapEx",    "https://news.google.com/rss/search?q=Microsoft+Google+Meta+Amazon+AI+capex+data+center+2026&hl=en-US&gl=US&ceid=US:en"),
-    ("App/AI",       "https://news.google.com/rss/search?q=Agentic+AI+Physical+AI+humanoid+robot+inference+2026&hl=en-US&gl=US&ceid=US:en"),
+    ("App/AI",       "https://news.google.com/rss/search?q=NVIDIA+Omniverse+Isaac+Cosmos+VLA+model+humanoid+robot+2026&hl=en-US&gl=US&ceid=US:en"),
+    ("App/AI",       "https://news.google.com/rss/search?q=Agentic+AI+Claude+GPT+Gemini+inference+deployment+2026&hl=en-US&gl=US&ceid=US:en"),
 ]
 
 # 硬體供應鏈關鍵字（hw 分類必須命中其中之一）
@@ -96,7 +98,7 @@ def fetch_ddg():
     queries = [
         ("硬體供應鏈", "HBM CoWoS TSMC NVIDIA AMD AI chip 2026"),
         ("CSP資本支出",  "Microsoft Google Meta Amazon AI capex data center 2026"),
-        ("新興應用",     "Agentic AI Physical AI robotics humanoid inference 2026"),
+        ("新興應用",     "NVIDIA Omniverse Isaac Cosmos VLA model humanoid robot Agentic AI deployment 2026"),
     ]
     ddgs = DDGS()
     for label, q in queries:
@@ -201,6 +203,7 @@ def make_prompt(news_context, recent_titles=None):
 
 規則：
 - hw 僅限硬體供應鏈；各條目數字不得跨條目複製；已知術語勿重列:{known}
+- app 每條 title 與 body 必須包含具體模型名稱、平台名稱或產品名稱（例如 NVIDIA Omniverse/Isaac/Cosmos、Boston Dynamics Atlas、Figure 02、Unitree G1、Claude 3.5/GPT-4o/Gemini 2.0 等），不得以「某 AI 模型」「AI 系統」「人形機器人」等泛稱代替；資訊不具體則評為 noise
 - 全程繁體中文，勿夾雜其他語言；「晶片」非「芯片」，「記憶體」非「内存」
 - body 欄位嚴禁使用「...」「…」等省略符號，資訊不確定請直接省略或改寫成完整句子
 - body 必須包含至少 3 句完整陳述，每句需含具體數字、時間點、公司名稱或技術細節，不得泛泛而談
@@ -220,6 +223,7 @@ def call_groq(prompt):
                 "你是 AI 產業供應鏈分析師，專注半導體供應鏈（HBM/CoWoS/OSAT）、CSP 資本支出、Agentic/Physical AI 落地。"
                 "只輸出純 JSON，不加任何說明或 markdown 格式。"
                 "hw 分類僅限半導體/封裝/記憶體供應鏈，應用層或軟體新聞絕對不能放入 hw。"
+                "app 分類每條必須提及具體模型或產品名稱（如 NVIDIA Omniverse、Isaac Sim、Cosmos、Boston Dynamics Atlas、Figure 02、Unitree G1、Claude、GPT-4o、Gemini），泛稱一律評為 noise。"
                 "每個條目的具體數字必須來自該條目本身的新聞，嚴禁跨條目複製數字或細節。"
                 "若某維度今日無相關新聞，回傳 1 條 noise 評級的條目，不要憑空生成內容。"
                 "每條 body 必須包含至少 3 句，每句需含具體數字、時間點或技術細節；資訊不足請評為 noise，不要用空話填充。"
