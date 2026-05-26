@@ -202,11 +202,17 @@ def make_prompt(news_context, recent_titles=None):
 
 分類：hw=半導體/封裝(CoWoS/OSAT/HBM)/晶片製造；corp=CSP(MS/Google/Meta/Amazon)CapEx/投資；app=Agentic AI/Physical AI/VLA/推論落地
 
+【glossary_new 封鎖清單】以下術語已有完整定義，絕對不可出現在 glossary_new，一旦出現視為錯誤：
+{known}
+glossary_new 只收錄今日新聞中首次出現、且不在上列封鎖清單內的技術名詞或縮寫。
+若今日沒有符合條件的新術語，回傳空陣列 [] 即可，不要強行生成。
+潛在可收錄範圍（需確認今日新聞確實提及）：CoWoS-L、CoWoS-S、HBM4、HBM4E、EMIB、LSI Bridge、Blackwell、Rubin、NIM、Isaac Sim、Cosmos、NCCL、NVLink、InfiniBand、RAS、SiPh、UCIe、Chiplet、3D-IC、FOPLP、Disaggregated Memory 等。
+
 格式（每區2-4條，無相關新聞則1條noise）：
-{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句含數字摘要","chain":[{{"label":"受益↑","type":"up"}},{{"label":"受壓↓","type":"down"}}],"rating":"core","insight":"供應鏈投資者視角","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
+{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句含數字摘要","chain":[{{"label":"受益↑","type":"up"}},{{"label":"受壓↓","type":"down"}}],"rating":"core","insight":"供應鏈投資者視角","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"縮寫或名詞","full":"英文全名　中文全名","def":"3句定義，含技術細節","why":"📌 為何值得追蹤（投資/供應鏈視角）","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
 
 規則：
-- hw 僅限硬體供應鏈；各條目數字不得跨條目複製；已知術語勿重列:{known}
+- hw 僅限硬體供應鏈；各條目數字不得跨條目複製
 - app 每條 title 與 body 必須包含具體模型名稱、平台名稱或產品名稱，例如：
     Physical AI/機器人：NVIDIA Omniverse/Isaac Sim/Cosmos、Boston Dynamics Atlas/Spot、Figure 02、Unitree G1/H1、Agility Digit、Apptronik Apollo、1X Neo、Fourier GR-1、Sanctuary Phoenix
     Agentic AI/模型落地：Claude（Anthropic）、GPT-4o/o3（OpenAI）、Gemini 2.0/2.5（Google DeepMind）、Llama 3（Meta）、Copilot（Microsoft）、Grok（xAI）
@@ -235,6 +241,7 @@ def call_groq(prompt):
                 "若某維度今日無相關新聞，回傳 1 條 noise 評級的條目，不要憑空生成內容。"
                 "每條 body 必須包含至少 3 句，每句需含具體數字、時間點或技術細節；資訊不足請評為 noise，不要用空話填充。"
                 "user 訊息中標示【近 7 日已報道，嚴禁重複】的主題，必須同時符合以下三項之一才能生成：①新的具體數字 ②新的合作方/公司/地點 ③官方正式宣布。否則直接評為 noise，不得改寫或換角度繞過。"
+                f"glossary_new 封鎖清單（術語已有定義，絕對不得出現）：{'、'.join(KNOWN_TERMS)}。僅收錄今日新聞中首次出現且不在封鎖清單內的術語；無新術語回傳空陣列 []。"
                 "全程繁體中文：晶片（非芯片）、記憶體（非内存）、處理器（非处理器）。"
             )},
             {"role":"user","content":prompt}
