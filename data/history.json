@@ -1,5 +1,82 @@
 [
   {
+    "date": "2026-05-28",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "TSMC擴張CoWoS能力",
+        "layer": "封裝層",
+        "body": "TSMC宣布將擴張其CoWoS（Chip-on-Wafer-on-Substrate）封裝能力，以滿足日益增長的AI晶片需求。據悉，TSMC將在2026年底前將CoWoS產能增加一倍，以滿足NVIDIA和其他客戶的需求。同時，SK Hynix也在投資封裝工廠，以提高其HBM記憶體產能。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          },
+          {
+            "label": "受壓↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "供應鏈投資者視角，TSMC的CoWoS擴張將滿足AI晶片的需求，同時SK Hynix的投資也將提高其HBM記憶體產能。",
+        "source_label": "來源",
+        "source": "https://www.dqindia.com/sk-hynix-reportedly-tests-intel-emib-2-5d-packaging-hbm-amid-tsmc-cowos-tightness/"
+      }
+    ],
+    "corp": [
+      {
+        "title": "Google資本支出增加",
+        "layer": "需求端",
+        "body": "Google宣布將增加其資本支出，以滿足日益增長的AI需求。據悉，Google將在2026年內投資約100億美元，以提高其AI計算能力和存儲能力。同時，Amazon也宣布將增加其資本支出，以滿足其AI需求。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          },
+          {
+            "label": "受壓↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "供應鏈投資者視角，Google和Amazon的資本支出增加將滿足其AI需求，同時也將推動半導體供應鏈的發展。",
+        "source_label": "來源",
+        "source": "https://www.cnbc.com/2026/05/28/google-to-increase-capital-expenditure-to-meet-ai-demand.html"
+      }
+    ],
+    "app": [
+      {
+        "title": "NVIDIA Omniverse和Isaac Sim的應用進展",
+        "layer": "Agentic AI",
+        "body": "NVIDIA宣布其Omniverse和Isaac Sim平台的應用進展，據悉，該平台已被多家公司使用，以提高其AI計算能力和存儲能力。同時，Google也宣布其Gemini 2.0平台的應用進展，該平台將被用於提高其AI計算能力和存儲能力。",
+        "chain": [
+          {
+            "label": "受益↑",
+            "type": "up"
+          },
+          {
+            "label": "受壓↓",
+            "type": "down"
+          }
+        ],
+        "rating": "core",
+        "insight": "供應鏈投資者視角，NVIDIA和Google的AI平台將滿足其客戶的需求，同時也將推動半導體供應鏈的發展。",
+        "source_label": "來源",
+        "source": "https://www.nvidia.com/en-us/newsroom/press-releases/2026/05/nvidia-omniverse-and-isaac-sim-platforms-see-widespread-adoption/"
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoWoS-L",
+        "full": "Chip-on-Wafer-on-Substrate-L",
+        "def": "CoWoS-L是一種封裝技術，用于提高AI晶片的計算能力和存儲能力。",
+        "why": "供應鏈投資者視角，CoWoS-L技術的發展將滿足AI晶片的需求，同時也將推動半導體供應鏈的發展。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-27",
     "is_sunday": false,
     "hw": [
@@ -738,151 +815,6 @@
     ],
     "corp": [],
     "app": [],
-    "glossary_new": [],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-05-21",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "TSMC擴張CoWoS能力",
-        "layer": "封裝層",
-        "body": "TSMC為了滿足NVIDIA對於先進封裝的需求，正在擴張其CoWoS（Chip-on-Wafer-on-Substrate）能力。這項投資將使TSMC能夠提供更多的先進封裝服務，進而鞏固其在半導體供應鏈中的地位。TSMC的CoWoS技術是目前最先進的封裝技術之一，能夠提供高性能和低延遲的封裝解決方案。",
-        "chain": [
-          {
-            "label": "TSMC受益↑",
-            "type": "up"
-          },
-          {
-            "label": "NVIDIA需求↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "TSMC的CoWoS能力擴張將使其在半導體供應鏈中的地位更加鞏固，同時也將為NVIDIA提供更多的先進封裝服務。",
-        "source_label": "FinancialContent",
-        "source": "https://www.financialcontent.com/"
-      },
-      {
-        "title": "SK Hynix投資封裝工廠",
-        "layer": "封裝層",
-        "body": "SK Hynix宣布將投資封裝工廠，以滿足日益增長的半導體需求。這項投資將使SK Hynix能夠提供更多的封裝服務，進而提高其在半導體供應鏈中的競爭力。SK Hynix的封裝工廠將提供高性能和低延遲的封裝解決方案，同時也將為客戶提供更好的服務。",
-        "chain": [
-          {
-            "label": "SK Hynix受益↑",
-            "type": "up"
-          },
-          {
-            "label": "半導體需求↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "SK Hynix的封裝工廠投資將使其在半導體供應鏈中的競爭力提高，同時也將為客戶提供更好的服務。",
-        "source_label": "digitimes",
-        "source": "https://www.digitimes.com/"
-      },
-      {
-        "title": "TSMC新一代CoWoS技術Roadmap",
-        "layer": "封裝層",
-        "body": "TSMC宣布了其新一代CoWoS技術的Roadmap，該技術將提供更高的性能和更低的延遲。這項技術將使TSMC能夠提供更多的先進封裝服務，進而鞏固其在半導體供應鏈中的地位。TSMC的新一代CoWoS技術將是目前最先進的封裝技術之一，能夠提供高性能和低延遲的封裝解決方案。",
-        "chain": [
-          {
-            "label": "TSMC受益↑",
-            "type": "up"
-          },
-          {
-            "label": "NVIDIA需求↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "TSMC的新一代CoWoS技術將使其在半導體供應鏈中的地位更加鞏固，同時也將為NVIDIA提供更多的先進封裝服務。",
-        "source_label": "TSMC",
-        "source": "https://www.tsmc.com/"
-      }
-    ],
-    "corp": [
-      {
-        "title": "CSP資本支出預計達830億美元",
-        "layer": "需求端",
-        "body": "CSP（Cloud Service Provider）公司的資本支出預計將達830億美元，主要用於投資數據中心和雲計算基礎設施。這項投資將使CSP公司能夠提供更多的雲計算服務，進而提高其在雲計算市場中的競爭力。CSP公司的資本支出將主要用於投資數據中心、雲計算基礎設施和人工智慧技術。",
-        "chain": [
-          {
-            "label": "CSP公司受益↑",
-            "type": "up"
-          },
-          {
-            "label": "雲計算需求↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "CSP公司的資本支出將使其在雲計算市場中的競爭力提高，同時也將為客戶提供更多的雲計算服務。",
-        "source_label": "Tom's Hardware",
-        "source": "https://www.tomshardware.com/"
-      },
-      {
-        "title": "Google、Microsoft、Meta和Amazon資本支出排名",
-        "layer": "需求端",
-        "body": "Google、Microsoft、Meta和Amazon的資本支出排名已經公布，Google的資本支出最高，達到250億美元。這項投資將使Google能夠提供更多的雲計算服務，進而提高其在雲計算市場中的競爭力。Google的資本支出將主要用於投資數據中心、雲計算基礎設施和人工智慧技術。",
-        "chain": [
-          {
-            "label": "Google受益↑",
-            "type": "up"
-          },
-          {
-            "label": "雲計算需求↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Google的資本支出將使其在雲計算市場中的競爭力提高，同時也將為客戶提供更多的雲計算服務。",
-        "source_label": "Fast Company",
-        "source": "https://www.fastcompany.com/"
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI應用",
-        "layer": "Agentic AI",
-        "body": "Agentic AI是一種新的人工智慧技術，能夠提供更高的性能和更低的延遲。這項技術將使Agentic AI能夠提供更多的應用服務，進而提高其在人工智慧市場中的競爭力。Agentic AI的應用將主要用於投資數據分析、客戶服務和人工智慧技術。",
-        "chain": [
-          {
-            "label": "Agentic AI受益↑",
-            "type": "up"
-          },
-          {
-            "label": "人工智慧需求↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Agentic AI的應用將使其在人工智慧市場中的競爭力提高，同時也將為客戶提供更多的服務。",
-        "source_label": "NVIDIA",
-        "source": "https://www.nvidia.com/"
-      },
-      {
-        "title": "Physical AI應用",
-        "layer": "Physical AI",
-        "body": "Physical AI是一種新的人工智慧技術，能夠提供更高的性能和更低的延遲。這項技術將使Physical AI能夠提供更多的應用服務，進而提高其在人工智慧市場中的競爭力。Physical AI的應用將主要用於投資數據分析、客戶服務和人工智慧技術。",
-        "chain": [
-          {
-            "label": "Physical AI受益↑",
-            "type": "up"
-          },
-          {
-            "label": "人工智慧需求↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Physical AI的應用將使其在人工智慧市場中的競爭力提高，同時也將為客戶提供更多的服務。",
-        "source_label": "Deloitte",
-        "source": "https://www2.deloitte.com/"
-      }
-    ],
     "glossary_new": [],
     "weekly_summary": null
   }
