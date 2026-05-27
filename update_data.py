@@ -75,10 +75,18 @@ def fetch_rss():
                 title = (item.findtext('title') or item.findtext('atom:title',namespaces=ns) or '').strip()
                 desc  = (item.findtext('description') or item.findtext('summary') or
                          item.findtext('atom:summary',namespaces=ns) or '').strip()
+                # 擷取真實 URL（RSS <link> 或 Atom <link href>）
+                link = item.findtext('link') or ''
+                if not link:
+                    link_el = item.find('atom:link', ns)
+                    if link_el is not None:
+                        link = link_el.get('href', '')
+                link = link.strip()
                 # Strip HTML tags
                 desc = re.sub(r'<[^>]+>', '', desc)[:200]
                 if title and any(kw in (title+desc).lower() for kw in AI_KEYWORDS):
-                    snippets.append(f"[{label}] {title} — {desc}")
+                    url_part = f" | SOURCE_URL:{link}" if link else ""
+                    snippets.append(f"[{label}] {title} — {desc}{url_part}")
             print(f"  RSS {label}({url.split('/')[2]}): {len(items)} items")
         except Exception as e:
             print(f"  RSS failed ({url.split('/')[2]}): {e}")
@@ -104,7 +112,9 @@ def fetch_ddg():
             try:
                 results = list(ddgs.news(q, max_results=5, timelimit="w"))
                 for r in results:
-                    snippets.append(f"[{label}] {r.get('title','')} — {r.get('body','')[:300]}")
+                    link = r.get('url', '')
+                    url_part = f" | SOURCE_URL:{link}" if link else ""
+                    snippets.append(f"[{label}] {r.get('title','')} — {r.get('body','')[:300]}{url_part}")
                 print(f"  DDG '{label}': {len(results)} results")
                 break
             except Exception as e:
@@ -164,7 +174,11 @@ def make_prompt(news_context, recent_titles=None):
     notes = load_notes() if IS_SUNDAY else {}
     notes_text = "; ".join(f"{d}:{n}" for d, n in sorted(notes.items()) if n.strip()) if notes else ""
 
-    recent_str = ("【勿重複】" + "／".join(recent_titles)) if recent_titles else ""
+    recent_str = (
+        "【前三日已報道，嚴禁重複】以下主題若今日無明確新進展（新數字/新事件/新公司動作），"
+        "請直接評為 noise，不得生成相似內容，不得以改寫或重述替代：\n"
+        + "\n".join(f"・{t}" for t in recent_titles)
+    ) if recent_titles else ""
     notes_context = ('【本週筆記參考（勿逐字複製，請融入分析寫成洞察）】' + notes_text) if notes_text else ''
     notes_line = '\\n【筆記整合】根據本週筆記寫出一句核心洞察（不得原文照抄）' if notes_text else ''
     weekly_val = (
@@ -176,8 +190,8 @@ def make_prompt(news_context, recent_titles=None):
         if IS_SUNDAY else 'null'
     )
 
-    # 新聞截斷至 2000 字元，控制 token 數
-    news_short = news_context[:2000]
+    # 新聞截斷至 4500 字元（原 2000 太短，容易只剩舊文章）
+    news_short = news_context[:4500]
 
     return f"""AI產業供應鏈分析師。根據新聞輸出純JSON（直接從{{開始）。
 
@@ -188,7 +202,7 @@ def make_prompt(news_context, recent_titles=None):
 分類：hw=半導體/封裝(CoWoS/OSAT/HBM)/晶片製造；corp=CSP(MS/Google/Meta/Amazon)CapEx/投資；app=Agentic AI/Physical AI/VLA/推論落地
 
 格式（每區2-4條，無相關新聞則1條noise）：
-{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句含數字摘要","chain":[{{"label":"受益↑","type":"up"}},{{"label":"受壓↓","type":"down"}}],"rating":"core","insight":"供應鏈投資者視角","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
+{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句含數字摘要","chain":[{{"label":"TSMC 議價能力↑","type":"up"}},{{"label":"AMD 交期拉長↓","type":"down"}},{{"label":"SK Hynix ASP↑","type":"up"}}],"rating":"core","insight":"供應鏈投資者視角","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
 
 規則：
 - hw 僅限硬體供應鏈；各條目數字不得跨條目複製；已知術語勿重列:{known}
@@ -196,7 +210,10 @@ def make_prompt(news_context, recent_titles=None):
 - body 欄位嚴禁使用「...」「…」等省略符號，資訊不確定請直接省略或改寫成完整句子
 - body 必須包含至少 3 句完整陳述，每句需含具體數字、時間點、公司名稱或技術細節，不得泛泛而談
 - 若某條目的原始新聞資訊不足以寫出 3 句有內容的句子，請將該條評為 noise 並簡短說明，不要用空話填充
-- noise 條目只在該分區完全無相關新聞時才加入（限 1 條）；若已有 core 或 opp 條目，不得再混入 noise"""
+- noise 條目只在該分區完全無相關新聞時才加入（限 1 條）；若已有 core 或 opp 條目，不得再混入 noise
+- 【前三日已報道】清單中的主題：無新進展則必須 noise；絕不允許用改寫、重述、補充細節等方式「偽裝成新內容」通過審查
+- chain label 必須是具體公司名/產品/角色 + 方向詞，例如「TSMC 議價能力↑」「Azure 交期拉長↓」；嚴禁使用「受益↑」「受壓↓」「受損↓」等泛稱；每條 chain 應有 2-4 個節點
+- source 欄位必須直接使用新聞列表中「SOURCE_URL:」後的完整 URL；若該則新聞無 SOURCE_URL，則 source 填 ""，source_label 填 "—"；絕對禁止自行推測或捏造任何 URL"""
 
 # ══════════════════════════════════════════════════════════════════
 #  3. GROQ API
@@ -213,6 +230,7 @@ def call_groq(prompt):
                 "每個條目的具體數字必須來自該條目本身的新聞，嚴禁跨條目複製數字或細節。"
                 "若某維度今日無相關新聞，回傳 1 條 noise 評級的條目，不要憑空生成內容。"
                 "每條 body 必須包含至少 3 句，每句需含具體數字、時間點或技術細節；資訊不足請評為 noise，不要用空話填充。"
+                "user 訊息中標示【前三日已報道，嚴禁重複】的主題，若今日新聞中沒有該主題的明確新進展，絕對不可生成該主題的條目，直接評為 noise 或略過。"
                 "全程繁體中文：晶片（非芯片）、記憶體（非内存）、處理器（非处理器）。"
             )},
             {"role":"user","content":prompt}
@@ -226,7 +244,36 @@ def call_groq(prompt):
     return json.loads(raw)
 
 # ══════════════════════════════════════════════════════════════════
-#  4. HISTORY
+#  4. URL VALIDATION
+# ══════════════════════════════════════════════════════════════════
+def check_url(url, timeout=6):
+    """HEAD request 驗證 URL 是否存在，回傳 True/False"""
+    if not url or not url.startswith('http'):
+        return False
+    try:
+        req = urllib.request.Request(url, method='HEAD',
+                                     headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return r.status < 400
+    except Exception:
+        return False
+
+def validate_sources(data):
+    """驗證所有 NewsItem 的 source URL；失效者清空 source/source_label"""
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            url = item.get('source', '')
+            if not url:
+                continue
+            if check_url(url):
+                print(f"  ✓ {url[:60]}")
+            else:
+                print(f"  ✗ 無效 URL，已清空：{url[:60]}")
+                item['source'] = ''
+                item['source_label'] = '—'
+
+# ══════════════════════════════════════════════════════════════════
+#  5. HISTORY
 # ══════════════════════════════════════════════════════════════════
 DATA_PATH = 'data/history.json'
 
@@ -443,6 +490,9 @@ if __name__ == '__main__':
     print("🤖 呼叫 Groq API...")
     data = call_groq(make_prompt(news, recent_titles))
     print(f"  → 硬體 {len(data.get('hw',[]))} / 巨頭 {len(data.get('corp',[]))} / 應用 {len(data.get('app',[]))} 則")
+
+    print("🔗 驗證 source URL...")
+    validate_sources(data)
 
     history = upsert(history, data)
     save_history(history)

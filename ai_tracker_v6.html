@@ -72,6 +72,16 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .arc-groq-input{flex:1;min-width:180px;background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:7px 10px;font-size:12px;font-family:monospace;color:var(--text);}
 .arc-groq-input:focus{outline:none;border-color:#8a60b0;}
 .arc-status{font-size:12px;color:var(--muted);font-style:italic;}
+/* ── Archive Search ── */
+.arc-search-bar{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.arc-search-inp{flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;color:var(--text);outline:none;transition:border-color .15s;}
+.arc-search-inp:focus{border-color:#8a60b0;}
+.arc-search-count{font-size:12px;color:var(--muted);white-space:nowrap;min-width:52px;text-align:right;}
+.arc-search-clear{background:none;border:none;color:var(--muted);cursor:pointer;font-size:16px;line-height:1;padding:0 2px;flex-shrink:0;}
+.arc-search-clear:hover{color:var(--text);}
+.arc-preview-text{font-size:13px;color:var(--text2);line-height:1.7;white-space:pre-wrap;word-break:break-word;padding:2px 0;}
+.arc-preview-text mark{background:#ffe082;color:inherit;border-radius:2px;padding:0 2px;font-style:normal;}
+.archive-card.arc-hit{border-left:3px solid #8a60b0;}
 
 /* ── Panels ── */
 .panel{display:none;}.panel.active{display:block;}
@@ -1093,12 +1103,18 @@ function renderArchive(notes) {
   el.innerHTML = `
     <div class="sec-title">歷史筆記存檔</div>
     ${summaryHTML}
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
       <button class="gloss-save-btn" onclick="saveArchiveToGitHub()" style="font-size:12.5px;padding:6px 14px;">📤 儲存至 GitHub</button>
       <span id="archive-save-status" style="font-size:12px;color:var(--muted);"></span>
       <button onclick="_archiveLoaded=false;loadArchive()" style="margin-left:auto;font-size:12px;padding:5px 10px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:inherit;">↻ 重新載入</button>
     </div>
-    ${dates.length ? `<div>${cards}</div>` : '<div class="archive-empty">尚無歷史筆記。在「本週紀錄」中撰寫並儲存後，會在此顯示。</div>'}`;
+    ${dates.length ? `
+    <div class="arc-search-bar">
+      <input class="arc-search-inp" id="arc-search-inp" placeholder="🔍 搜尋筆記關鍵字…" oninput="filterArchive(this.value)" />
+      <span class="arc-search-count" id="arc-search-count"></span>
+      <button class="arc-search-clear" id="arc-search-clear" style="display:none" onclick="clearArchiveSearch()">✕</button>
+    </div>
+    <div id="archive-cards-wrap">${cards}</div>` : '<div class="archive-empty">尚無歷史筆記。在「本週紀錄」中撰寫並儲存後，會在此顯示。</div>'}`;
   // 若已有快取分析結果，直接渲染
   const cached = sessionStorage.getItem('arc_summary');
   if (cached) { try { _renderSummaryResult(JSON.parse(cached)); } catch(e){} }
@@ -1301,6 +1317,56 @@ function _renderSummaryResult(result) {
     ${defHTML}
     ${result.insight ? `<div style="margin-top:12px;padding:10px 14px;background:rgba(120,96,160,.06);border-radius:8px;border-left:3px solid #8a60b0;font-size:12.5px;color:var(--text2);line-height:1.8;"><ul style="margin:0;padding-left:16px;display:flex;flex-direction:column;gap:8px;">${(Array.isArray(result.insight)?result.insight:result.insight.split(/\n+/)).filter(p=>p.trim()).map(p=>`<li>${p.trim()}</li>`).join('')}</ul></div>` : ''}
   `;
+}
+
+// ── Archive Search ──
+function _arcEsc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function _arcEscRx(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+
+function _arcHighlight(text, query) {
+  const parts = text.split(new RegExp(`(${_arcEscRx(query)})`, 'gi'));
+  return parts.map(p => p.toLowerCase() === query.toLowerCase()
+    ? `<mark>${_arcEsc(p)}</mark>` : _arcEsc(p)).join('');
+}
+
+function _arcEditableCards(notes, dates) {
+  return dates.map(date => `<div class="archive-card">
+    <div class="archive-date">${fmtDate(date)}</div>
+    <textarea class="archive-ta" id="archta-${date}"
+      oninput="archiveNoteChanged('${date}',this.value)">${_arcEsc(notes[date]||'')}</textarea>
+  </div>`).join('');
+}
+
+function filterArchive(query) {
+  const wrap  = document.getElementById('archive-cards-wrap');
+  const count = document.getElementById('arc-search-count');
+  const clear = document.getElementById('arc-search-clear');
+  if (!wrap) return;
+  const notes = _currentArchiveNotes;
+  const dates = Object.keys(notes).filter(k => /^\d{4}-\d{2}-\d{2}$/.test(k)).sort((a,b) => b.localeCompare(a));
+  const q = query.trim();
+  if (clear) clear.style.display = q ? '' : 'none';
+  if (!q) {
+    if (count) count.textContent = '';
+    wrap.innerHTML = _arcEditableCards(notes, dates);
+    return;
+  }
+  const ql = q.toLowerCase();
+  const matched = dates.filter(d => (notes[d]||'').toLowerCase().includes(ql));
+  if (count) count.textContent = matched.length ? `找到 ${matched.length} 筆` : '無符合筆記';
+  if (!matched.length) {
+    wrap.innerHTML = `<div class="archive-empty" style="text-align:center;padding:24px 0;">找不到包含「${_arcEsc(q)}」的筆記。</div>`;
+    return;
+  }
+  wrap.innerHTML = matched.map(date => `<div class="archive-card arc-hit">
+    <div class="archive-date">${fmtDate(date)}</div>
+    <div class="arc-preview-text">${_arcHighlight(notes[date]||'', q)}</div>
+  </div>`).join('');
+}
+
+function clearArchiveSearch() {
+  const inp = document.getElementById('arc-search-inp');
+  if (inp) { inp.value = ''; filterArchive(''); inp.focus(); }
 }
 
 function archiveNoteChanged(date, val) {
