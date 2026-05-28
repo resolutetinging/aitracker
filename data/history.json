@@ -6,10 +6,10 @@
       {
         "title": "Snowflake 對 AWS Graviton CPUs 和 AI 加速器的投資",
         "layer": "晶片製造",
-        "body": "Snowflake 將在 AWS Graviton CPUs 和 AI 加速器上投資 6 億美元，預計在 2026 年底前完成部署。這項投資將使 Snowflake 能夠提供更快、更具成本效益的雲端服務，同時也將加速其 AI 研發能力。根據 Snowflake 的預測，這項投資將使其每年節省約 1 億美元的成本。",
-        "impact": "這項投資將使 Amazon 的 AWS 服務受益，同時也將加速 Snowflake 的業務發展，可能會對其他雲端服務提供商如 Google 和 Microsoft 造成一定的競爭壓力。",
+        "body": "Snowflake 將在 AWS Graviton CPUs 和 AI 加速器上投資 6 億美元，預計在未來幾年內實現雲端計算的便捷性和 AI 加速的效能。這項投資將使 Snowflake 能夠更好地支持其客戶的雲端運算需求，並提供更快速的資料處理和分析能力。Snowflake 的投資計劃包括使用 AWS Graviton CPUs 和 AI 加速器來增強其資料倉儲和分析平台的能力，從而能夠更好地支持其客戶的商業智能和資料科學需求。",
+        "impact": "這項投資將對 Amazon Web Services (AWS) 產生正面影響，因為 Snowflake 將使用 AWS 的 Graviton CPUs 和 AI 加速器來增強其平台的能力。同時，這項投資也將對其他雲端運算提供商，如 Microsoft Azure 和 Google Cloud Platform，產生一定的競爭壓力。",
         "rating": "core",
-        "insight": "供應鏈投資者應關注 AWS 和 Snowflake 的合作，了解其對整個雲端服務市場的影響。",
+        "insight": "供應鏈投資者應該關注 Snowflake 對 AWS Graviton CPUs 和 AI 加速器的投資，因為這項投資將使 Snowflake 能夠更好地支持其客戶的雲端運算需求。",
         "source_label": "The Register",
         "source": "https://www.theregister.com/off-prem/2026/05/27/snowflake-to-burn-6b-on-aws-graviton-cpus-ai-infra/5247475"
       }
@@ -18,10 +18,10 @@
       {
         "title": "Nutanix CEO 談論 Bare Metal Cloud 服務",
         "layer": "需求端",
-        "body": "Nutanix CEO 表示，Bare Metal Cloud 服務現在比傳統的 On-Prem 硬體更便宜、更容易獲得。這項服務可以提供更好的性能和更低的成本，同時也可以提供更好的安全性和更高的可靠性。根據 Nutanix 的預測，Bare Metal Cloud 服務將在未來幾年內成為雲端服務市場的主流。",
-        "impact": "這項服務將使 Nutanix 和其他 Bare Metal Cloud 服務提供商受益，同時也將對傳統的 On-Prem 硬體提供商造成一定的競爭壓力。",
+        "body": "Nutanix CEO 表示，Bare Metal Cloud 服務現在比傳統的 on-prem 硬體更便宜和更容易獲得。這是因為 Hyperscalers 可以在企業級別的客戶之前獲得硬體，並且客戶不太關心他們的資料存放在哪裡。Nutanix 的 Bare Metal Cloud 服務提供了一種更靈活和更具成本效益的方式來部署和管理雲端運算資源。Nutanix 的 CEO 還表示，Bare Metal Cloud 服務的需求正在增加，因為更多的企業正在尋求更靈活和更具成本效益的雲端運算解決方案。",
+        "impact": "這項發展將對 Nutanix 產生正面影響，因為其 Bare Metal Cloud 服務將能夠更好地滿足客戶的需求。同時，這項發展也將對其他雲端運算提供商，如 Amazon Web Services (AWS) 和 Microsoft Azure，產生一定的競爭壓力。",
         "rating": "core",
-        "insight": "供應鏈投資者應關注 Bare Metal Cloud 服務的發展，了解其對整個雲端服務市場的影響。",
+        "insight": "供應鏈投資者應該關注 Nutanix 的 Bare Metal Cloud 服務，因為這項服務將能夠更好地滿足客戶的需求。",
         "source_label": "The Register",
         "source": "https://www.theregister.com/virtualization/2026/05/28/bare-metal-cloud-servers-now-cheaper-and-more-readily-available-than-on-prem-hardware-says-nutanix-ceo/5247599"
       }
@@ -30,15 +30,23 @@
       {
         "title": "Aetina 展示 Physical AI 和 Vision AI 解決方案",
         "layer": "Agentic AI",
-        "body": "Aetina 在 COMPUTEX 2026 上展示了其 Physical AI 和 Vision AI 解決方案，包括人工智慧和視覺識別技術。這些解決方案可以應用於各種領域，包括工業、醫療和交通。根據 Aetina 的預測，這些解決方案將在未來幾年內成為人工智慧市場的主流。",
-        "impact": "這項技術將使 Aetina 和其他 Physical AI 和 Vision AI 解決方案提供商受益，同時也將對其他人工智慧技術提供商造成一定的競爭壓力。",
+        "body": "Aetina 在 COMPUTEX 2026 上展示了其 Physical AI 和 Vision AI 解決方案。這些解決方案提供了一種更具成本效益和更靈活的方式來部署和管理 AI 模型。Aetina 的 Physical AI 和 Vision AI 解決方案使用了最新的 AI 技術和硬體來提供更快和更準確的 AI 處理能力。Aetina 的展示包括了其 Physical AI 和 Vision AI 解決方案在各種應用場景中的示範，如工業自動化和智能城市。",
+        "impact": "這項發展將對 Aetina 產生正面影響，因為其 Physical AI 和 Vision AI 解決方案將能夠更好地滿足客戶的需求。同時，這項發展也將對其他 AI 解決方案提供商，如 Google 和 Microsoft，產生一定的競爭壓力。",
         "rating": "core",
-        "insight": "供應鏈投資者應關注 Physical AI 和 Vision AI 技術的發展，了解其對整個人工智慧市場的影響。",
+        "insight": "供應鏈投資者應該關注 Aetina 的 Physical AI 和 Vision AI 解決方案，因為這些解決方案將能夠更好地滿足客戶的需求。",
         "source_label": "Embedded Computing Design",
         "source": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNWDV6ZzJpelhqU3RqOVZQclBNR18wODNvYzBOSXR0YVM4eGhXNWRyd0pEZW53X2s4eGdWS3U1a0dXRm5mOHp3VXlnUzVnX1YzNXNsaXNkbnFocHgzTjExVGNkZXl1WTZwNDBYd2txR3ZuNjBiV2Iwd3IycVpBWjJvMHgzMWZSN2hIa1dRcjVrUXZmUVlxR3pYM1N4OEk5TzNETWxYUGdDTGxLM1podEtZU0pmTFRYai1LWFhiLWswVS1wQzdRbG1YZFZGampucVpkR2VHMFVCS3IzanJlcUt4X2FpWTM2WDZ0?oc=5"
       }
     ],
-    "glossary_new": [],
+    "glossary_new": [
+      {
+        "term": "Bare Metal Cloud",
+        "full": "Bare Metal Cloud 服務",
+        "def": "一種提供雲端運算資源的服務，使用裸機硬體來提供更靈活和更具成本效益的方式來部署和管理雲端運算資源",
+        "why": "因為 Hyperscalers 可以在企業級別的客戶之前獲得硬體，並且客戶不太關心他們的資料存放在哪裡",
+        "category": "cloud computing"
+      }
+    ],
     "weekly_summary": null
   },
   {
