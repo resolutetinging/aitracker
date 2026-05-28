@@ -423,8 +423,8 @@ def send_email(data):
               <div style="font-size:14px;font-weight:700;color:#2c2a28;margin-bottom:8px;line-height:1.4;">{item["title"]}</div>
               <div style="font-size:13px;color:#4a4744;line-height:1.65;margin-bottom:10px;">{item["body"]}</div>
               <div style="background:#f0ede9;border-radius:5px;padding:8px 12px;font-size:12px;color:#6a6460;">
-                <span style="font-size:10px;text-transform:uppercase;letter-spacing:0.6px;color:#9e9890;display:block;margin-bottom:4px;">供應鏈影響鏈</span>
-                {chain_text(item["chain"])}
+                <span style="font-size:10px;text-transform:uppercase;letter-spacing:0.6px;color:#9e9890;display:block;margin-bottom:4px;">供應鏈影響分析</span>
+                {item.get("impact") or chain_text(item.get("chain") or [])}
               </div>
               {eth}
               <div style="margin-top:10px;font-size:12.5px;color:#3a6860;background:#f0f8f6;padding:8px 12px;border-radius:5px;border-left:2px solid #4a8a6a;">
@@ -528,8 +528,8 @@ def push_notion(data):
                 "heading_2":{"rich_text":[{"type":"text","text":{"content":text}}]}}
 
     def item_block(item):
-        chain = ' → '.join(c['label'] for c in item['chain'])
-        text = f"▸ {item['title']}\n{item['body']}\n供應鏈：{chain}\n注意方向：{item['insight']}"
+        impact = item.get('impact') or ' → '.join(c['label'] for c in item.get('chain') or [])
+        text = f"▸ {item['title']}\n{item['body']}\n供應鏈影響：{impact}\n注意方向：{item['insight']}"
         return para(text)
 
     blocks = [
