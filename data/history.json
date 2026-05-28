@@ -4,53 +4,38 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "NVIDIA投資台灣",
+        "title": "Snowflake 對 AWS Graviton CPUs 和 AI 加速器的投資",
         "layer": "晶片製造",
-        "body": "NVIDIA計畫每年在台灣投資150億美元，主要用於開發AI晶片和相關技術。這項投資將為台灣的半導體產業帶來新的機遇和挑戰。預計這項投資將在未來5年內完成，屆時NVIDIA在台灣的產能將大幅增加。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
+        "body": "Snowflake 將在 AWS Graviton CPUs 和 AI 加速器上投資 6 億美元，預計在 2026 年底前完成部署。這項投資將使 Snowflake 能夠提供更快、更具成本效益的雲端服務，同時也將加速其 AI 研發能力。根據 Snowflake 的預測，這項投資將使其每年節省約 1 億美元的成本。",
+        "impact": "這項投資將使 Amazon 的 AWS 服務受益，同時也將加速 Snowflake 的業務發展，可能會對其他雲端服務提供商如 Google 和 Microsoft 造成一定的競爭壓力。",
         "rating": "core",
-        "insight": "NVIDIA的投資將加速台灣半導體產業的發展，同時也將提高NVIDIA在全球市場的競爭力。",
-        "source_label": "Benzinga",
-        "source": "https://www.benzinga.com/Opinion/26/05/52808834/nvidias-taiwan-investment-signals-a-new-ai-supply-chain-reality"
+        "insight": "供應鏈投資者應關注 AWS 和 Snowflake 的合作，了解其對整個雲端服務市場的影響。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/off-prem/2026/05/27/snowflake-to-burn-6b-on-aws-graviton-cpus-ai-infra/5247475"
       }
     ],
     "corp": [
       {
-        "title": "SK Hynix市值突破1萬億美元",
+        "title": "Nutanix CEO 談論 Bare Metal Cloud 服務",
         "layer": "需求端",
-        "body": "SK Hynix的市值已經突破1萬億美元，成為全球第三家市值超過1萬億美元的半導體公司。這主要歸功於NVIDIA對其HBM4記憶體的龐大需求。預計SK Hynix的市值將繼續上升，主要受惠於其在半導體產業的領先地位。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
+        "body": "Nutanix CEO 表示，Bare Metal Cloud 服務現在比傳統的 On-Prem 硬體更便宜、更容易獲得。這項服務可以提供更好的性能和更低的成本，同時也可以提供更好的安全性和更高的可靠性。根據 Nutanix 的預測，Bare Metal Cloud 服務將在未來幾年內成為雲端服務市場的主流。",
+        "impact": "這項服務將使 Nutanix 和其他 Bare Metal Cloud 服務提供商受益，同時也將對傳統的 On-Prem 硬體提供商造成一定的競爭壓力。",
         "rating": "core",
-        "insight": "SK Hynix的市值突破1萬億美元，標誌著其在半導體產業的重要地位。",
-        "source_label": "The Next Web",
-        "source": "https://thenextweb.com/news/sk-hynix-tops-1-trillion-market-cap"
+        "insight": "供應鏈投資者應關注 Bare Metal Cloud 服務的發展，了解其對整個雲端服務市場的影響。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/virtualization/2026/05/28/bare-metal-cloud-servers-now-cheaper-and-more-readily-available-than-on-prem-hardware-says-nutanix-ceo/5247599"
       }
     ],
     "app": [
       {
-        "title": "Claude的應用進展",
+        "title": "Aetina 展示 Physical AI 和 Vision AI 解決方案",
         "layer": "Agentic AI",
-        "body": "Anthropic的Claude模型已經在多個領域中得到應用，包括客戶服務和內容創作。根據最新的數據，Claude的使用量已經增加了五倍，主要歸功於其在Sales Cloud上的應用。預計Claude的應用將繼續擴大，主要受惠於其在自然語言處理方面的優勢。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
+        "body": "Aetina 在 COMPUTEX 2026 上展示了其 Physical AI 和 Vision AI 解決方案，包括人工智慧和視覺識別技術。這些解決方案可以應用於各種領域，包括工業、醫療和交通。根據 Aetina 的預測，這些解決方案將在未來幾年內成為人工智慧市場的主流。",
+        "impact": "這項技術將使 Aetina 和其他 Physical AI 和 Vision AI 解決方案提供商受益，同時也將對其他人工智慧技術提供商造成一定的競爭壓力。",
         "rating": "core",
-        "insight": "Claude的應用進展標誌著Agentic AI在實際應用的重要性。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/saas/2026/05/28/salesforce-waves-bye-bye-to-ui-in-headless-embrace/5247587"
+        "insight": "供應鏈投資者應關注 Physical AI 和 Vision AI 技術的發展，了解其對整個人工智慧市場的影響。",
+        "source_label": "Embedded Computing Design",
+        "source": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNWDV6ZzJpelhqU3RqOVZQclBNR18wODNvYzBOSXR0YVM4eGhXNWRyd0pEZW53X2s4eGdWS3U1a0dXRm5mOHp3VXlnUzVnX1YzNXNsaXNkbnFocHgzTjExVGNkZXl1WTZwNDBYd2txR3ZuNjBiV2Iwd3IycVpBWjJvMHgzMWZSN2hIa1dRcjVrUXZmUVlxR3pYM1N4OEk5TzNETWxYUGdDTGxLM1podEtZU0pmTFRYai1LWFhiLWswVS1wQzdRbG1YZFZGampucVpkR2VHMFVCS3IzanJlcUt4X2FpWTM2WDZ0?oc=5"
       }
     ],
     "glossary_new": [],
