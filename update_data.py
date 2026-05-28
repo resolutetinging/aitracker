@@ -6,6 +6,7 @@ AI Tracker 每日自動更新腳本 v3
 
 import json, os, smtplib, urllib.request, xml.etree.ElementTree as ET, time, re
 from datetime import datetime, timezone, timedelta
+from email.utils import parsedate_to_datetime
 from groq import Groq
 
 TW = timezone(timedelta(hours=8))
@@ -60,7 +61,27 @@ AI_KEYWORDS = [
     "packaging","wafer","foundry","chiplet","osat"
 ]
 
+def parse_rss_date(item, ns):
+    """嘗試解析 RSS/Atom 條目的發布時間，失敗回傳 None"""
+    raw = (item.findtext('pubDate') or item.findtext('published') or
+           item.findtext('atom:published', namespaces=ns) or
+           item.findtext('updated') or item.findtext('atom:updated', namespaces=ns) or '')
+    if not raw:
+        return None
+    try:
+        return parsedate_to_datetime(raw.strip())
+    except Exception:
+        pass
+    # 嘗試 ISO 8601
+    for fmt in ('%Y-%m-%dT%H:%M:%S%z', '%Y-%m-%dT%H:%M:%SZ', '%Y-%m-%d %H:%M:%S%z'):
+        try:
+            return datetime.strptime(raw.strip()[:25], fmt)
+        except Exception:
+            pass
+    return None
+
 def fetch_rss():
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=48)
     snippets = []
     for label, url in RSS_FEEDS:
         try:
@@ -71,7 +92,8 @@ def fetch_rss():
             ns = {'atom':'http://www.w3.org/2005/Atom'}
             # Handle both RSS and Atom
             items = root.findall('.//item') or root.findall('.//atom:entry', ns)
-            for item in items[:8]:
+            kept = 0
+            for item in items[:15]:
                 title = (item.findtext('title') or item.findtext('atom:title',namespaces=ns) or '').strip()
                 desc  = (item.findtext('description') or item.findtext('summary') or
                          item.findtext('atom:summary',namespaces=ns) or '').strip()
@@ -82,12 +104,20 @@ def fetch_rss():
                     if link_el is not None:
                         link = link_el.get('href', '')
                 link = link.strip()
+                # 日期過濾：跳過 48h 前的舊文章
+                pub = parse_rss_date(item, ns)
+                if pub:
+                    if pub.tzinfo is None:
+                        pub = pub.replace(tzinfo=timezone.utc)
+                    if pub < cutoff:
+                        continue
                 # Strip HTML tags
                 desc = re.sub(r'<[^>]+>', '', desc)[:200]
                 if title and any(kw in (title+desc).lower() for kw in AI_KEYWORDS):
                     url_part = f" | SOURCE_URL:{link}" if link else ""
                     snippets.append(f"[{label}] {title} — {desc}{url_part}")
-            print(f"  RSS {label}({url.split('/')[2]}): {len(items)} items")
+                    kept += 1
+            print(f"  RSS {label}({url.split('/')[2]}): {len(items)} items, {kept} kept (48h filter)")
         except Exception as e:
             print(f"  RSS failed ({url.split('/')[2]}): {e}")
     return snippets
@@ -110,7 +140,7 @@ def fetch_ddg():
     for label, q in queries:
         for attempt in range(3):
             try:
-                results = list(ddgs.news(q, max_results=5, timelimit="w"))
+                results = list(ddgs.news(q, max_results=5, timelimit="d"))
                 for r in results:
                     link = r.get('url', '')
                     url_part = f" | SOURCE_URL:{link}" if link else ""
@@ -148,7 +178,7 @@ def fetch_news():
     return joined
 
 
-def get_recent_titles(history, days=3, max_titles=10):
+def get_recent_titles(history, days=3, max_titles=20):
     """取得近 N 天已報道過的新聞標題，用於跨日去重（最多 max_titles 條）"""
     titles = []
     for entry in history[:days]:
