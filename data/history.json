@@ -4,227 +4,56 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "TSMC擴張CoWoS能力",
-        "layer": "封裝層",
-        "body": "TSMC宣布將在2029年前擴張CoWoS能力，預計達到14-reticle包裝和48倍的計算能力提升。同時，TSMC也將增加24個HBM5E堆疊和額外的記憶體頻寬。SK hynix也在測試Intel EMIB 2.5D包裝技術，結合HBM記憶體。",
+        "title": "NVIDIA投資台灣",
+        "layer": "晶片製造",
+        "body": "NVIDIA計畫每年在台灣投資150億美元，主要用於開發AI晶片和相關技術。這項投資將為台灣的半導體產業帶來新的機遇和挑戰。預計這項投資將在未來5年內完成，屆時NVIDIA在台灣的產能將大幅增加。",
         "chain": [
           {
-            "label": "TSMC",
-            "type": "up"
-          },
-          {
-            "label": "SK hynix",
+            "label": "受益↑",
             "type": "up"
           }
         ],
         "rating": "core",
-        "insight": "TSMC和SK hynix的封裝技術升級將為AI計算提供更強大的支持，進一步推動AI應用的發展。",
-        "source_label": "TSMC官網",
-        "source": "https://www.tsmc.com.tw/"
-      },
-      {
-        "title": "SK Hynix投資封裝工廠",
-        "layer": "記憶體層",
-        "body": "SK Hynix宣布將在印第安納州投資建造一座新的封裝工廠，將生產HBM記憶體和其他高性能記憶體產品。這項投資將有助於滿足AI和其他高性能應用的記憶體需求。",
-        "chain": [
-          {
-            "label": "SK Hynix",
-            "type": "up"
-          },
-          {
-            "label": "HBM記憶體",
-            "type": "up"
-          }
-        ],
-        "rating": "opp",
-        "insight": "SK Hynix的投資將進一步擴大其在記憶體市場的份額，並為AI和其他高性能應用提供更強大的記憶體支持。",
-        "source_label": "SK Hynix官網",
-        "source": "https://www.skhynix.com/"
-      },
-      {
-        "title": "Intel推動大面積AI包裝",
-        "layer": "晶圓製造",
-        "body": "Intel宣布將推動大面積AI包裝技術，以滿足AI和其他高性能應用的需求。這項技術將有助於提高AI計算的效率和速度。",
-        "chain": [
-          {
-            "label": "Intel",
-            "type": "up"
-          },
-          {
-            "label": "AI包裝",
-            "type": "up"
-          }
-        ],
-        "rating": "opp",
-        "insight": "Intel的推動將進一步推動AI包裝技術的發展，為AI和其他高性能應用提供更強大的支持。",
-        "source_label": "Intel官網",
-        "source": "https://www.intel.com/"
-      },
-      {
-        "title": "無相關新聞",
-        "layer": "noise",
-        "body": "今日無相關新聞。",
-        "chain": [],
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
+        "insight": "NVIDIA的投資將加速台灣半導體產業的發展，同時也將提高NVIDIA在全球市場的競爭力。",
+        "source_label": "Benzinga",
+        "source": "https://www.benzinga.com/Opinion/26/05/52808834/nvidias-taiwan-investment-signals-a-new-ai-supply-chain-reality"
       }
     ],
     "corp": [
       {
-        "title": "Google資本支出增加",
+        "title": "SK Hynix市值突破1萬億美元",
         "layer": "需求端",
-        "body": "Google宣布將增加資本支出，以滿足其AI和其他高性能應用的需求。這項投資將有助於推動Google的業務發展。",
+        "body": "SK Hynix的市值已經突破1萬億美元，成為全球第三家市值超過1萬億美元的半導體公司。這主要歸功於NVIDIA對其HBM4記憶體的龐大需求。預計SK Hynix的市值將繼續上升，主要受惠於其在半導體產業的領先地位。",
         "chain": [
           {
-            "label": "Google",
-            "type": "up"
-          },
-          {
-            "label": "資本支出",
+            "label": "受益↑",
             "type": "up"
           }
         ],
-        "rating": "opp",
-        "insight": "Google的投資將進一步推動其業務的發展，為AI和其他高性能應用提供更強大的支持。",
-        "source_label": "Google官網",
-        "source": "https://www.google.com/"
-      },
-      {
-        "title": "Amazon資本支出增加",
-        "layer": "CapEx決策",
-        "body": "Amazon宣布將增加資本支出，以滿足其AI和其他高性能應用的需求。這項投資將有助於推動Amazon的業務發展。",
-        "chain": [
-          {
-            "label": "Amazon",
-            "type": "up"
-          },
-          {
-            "label": "資本支出",
-            "type": "up"
-          }
-        ],
-        "rating": "opp",
-        "insight": "Amazon的投資將進一步推動其業務的發展，為AI和其他高性能應用提供更強大的支持。",
-        "source_label": "Amazon官網",
-        "source": "https://www.amazon.com/"
-      },
-      {
-        "title": "NVIDIA Omniverse和Isaac Sim的應用進展",
-        "layer": "財報訊號",
-        "body": "NVIDIA宣布其Omniverse和Isaac Sim的應用進展，包括在AI和其他高性能應用的領域。這項進展將有助於推動NVIDIA的業務發展。",
-        "chain": [
-          {
-            "label": "NVIDIA",
-            "type": "up"
-          },
-          {
-            "label": "Omniverse和Isaac Sim",
-            "type": "up"
-          }
-        ],
-        "rating": "opp",
-        "insight": "NVIDIA的進展將進一步推動其業務的發展，為AI和其他高性能應用提供更強大的支持。",
-        "source_label": "NVIDIA官網",
-        "source": "https://www.nvidia.com/"
-      },
-      {
-        "title": "無相關新聞",
-        "layer": "noise",
-        "body": "今日無相關新聞。",
-        "chain": [],
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
+        "rating": "core",
+        "insight": "SK Hynix的市值突破1萬億美元，標誌著其在半導體產業的重要地位。",
+        "source_label": "The Next Web",
+        "source": "https://thenextweb.com/news/sk-hynix-tops-1-trillion-market-cap"
       }
     ],
     "app": [
       {
         "title": "Claude的應用進展",
         "layer": "Agentic AI",
-        "body": "Anthropic宣布其Claude的應用進展，包括在AI和其他高性能應用的領域。這項進展將有助於推動Anthropic的業務發展。",
+        "body": "Anthropic的Claude模型已經在多個領域中得到應用，包括客戶服務和內容創作。根據最新的數據，Claude的使用量已經增加了五倍，主要歸功於其在Sales Cloud上的應用。預計Claude的應用將繼續擴大，主要受惠於其在自然語言處理方面的優勢。",
         "chain": [
           {
-            "label": "Anthropic",
-            "type": "up"
-          },
-          {
-            "label": "Claude",
+            "label": "受益↑",
             "type": "up"
           }
         ],
-        "rating": "opp",
-        "insight": "Anthropic的進展將進一步推動其業務的發展，為AI和其他高性能應用提供更強大的支持。",
-        "source_label": "Anthropic官網",
-        "source": "https://www.anthropic.com/"
-      },
-      {
-        "title": "NVIDIA Omniverse和Isaac Sim的應用進展",
-        "layer": "Physical AI",
-        "body": "NVIDIA宣布其Omniverse和Isaac Sim的應用進展，包括在AI和其他高性能應用的領域。這項進展將有助於推動NVIDIA的業務發展。",
-        "chain": [
-          {
-            "label": "NVIDIA",
-            "type": "up"
-          },
-          {
-            "label": "Omniverse和Isaac Sim",
-            "type": "up"
-          }
-        ],
-        "rating": "opp",
-        "insight": "NVIDIA的進展將進一步推動其業務的發展，為AI和其他高性能應用提供更強大的支持。",
-        "source_label": "NVIDIA官網",
-        "source": "https://www.nvidia.com/"
-      },
-      {
-        "title": "Google Gemini 2.0的應用進展",
-        "layer": "VLA模型",
-        "body": "Google宣布其Gemini 2.0的應用進展，包括在AI和其他高性能應用的領域。這項進展將有助於推動Google的業務發展。",
-        "chain": [
-          {
-            "label": "Google",
-            "type": "up"
-          },
-          {
-            "label": "Gemini 2.0",
-            "type": "up"
-          }
-        ],
-        "rating": "opp",
-        "insight": "Google的進展將進一步推動其業務的發展，為AI和其他高性能應用提供更強大的支持。",
-        "source_label": "Google官網",
-        "source": "https://www.google.com/"
-      },
-      {
-        "title": "無相關新聞",
-        "layer": "noise",
-        "body": "今日無相關新聞。",
-        "chain": [],
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
+        "rating": "core",
+        "insight": "Claude的應用進展標誌著Agentic AI在實際應用的重要性。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/saas/2026/05/28/salesforce-waves-bye-bye-to-ui-in-headless-embrace/5247587"
       }
     ],
-    "glossary_new": [
-      {
-        "term": "CoWoS-L",
-        "full": "CoWoS-L封裝技術",
-        "def": "CoWoS-L是一種高性能封裝技術，用于滿足AI和其他高性能應用的需求。",
-        "why": "CoWoS-L封裝技術的發展將進一步推動AI和其他高性能應用的發展。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "CoWoS-S",
-        "full": "CoWoS-S封裝技術",
-        "def": "CoWoS-S是一種高性能封裝技術，用于滿足AI和其他高性能應用的需求。",
-        "why": "CoWoS-S封裝技術的發展將進一步推動AI和其他高性能應用的發展。",
-        "category": "semiconductor"
-      }
-    ],
+    "glossary_new": [],
     "weekly_summary": null
   },
   {
