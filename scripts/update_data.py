@@ -232,7 +232,7 @@ def make_prompt(news_context, recent_titles=None):
 分類：hw=半導體/封裝(CoWoS/OSAT/HBM)/晶片製造；corp=CSP(MS/Google/Meta/Amazon)CapEx/投資；app=Agentic AI/Physical AI/VLA/推論落地
 
 格式（每區2-4條，無相關新聞則1條noise）：
-{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句含數字摘要","chain":[{{"label":"TSMC 議價能力↑","type":"up"}},{{"label":"AMD 交期拉長↓","type":"down"}},{{"label":"SK Hynix ASP↑","type":"up"}}],"rating":"core","insight":"供應鏈投資者視角","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
+{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句含數字摘要","impact":"2句說明此事件對哪些具體公司/國家/供應商的影響及方向，例：SK Hynix 與 Intel 合作可能分流 TSMC CoWoS 封裝訂單，TSMC 於 HBM 整合封裝的市占比預計承壓。","rating":"core","insight":"供應鏈投資者視角一句話","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
 
 規則：
 - hw 僅限硬體供應鏈；各條目數字不得跨條目複製；已知術語勿重列:{known}
@@ -242,7 +242,7 @@ def make_prompt(news_context, recent_titles=None):
 - 若某條目的原始新聞資訊不足以寫出 3 句有內容的句子，請將該條評為 noise 並簡短說明，不要用空話填充
 - noise 條目只在該分區完全無相關新聞時才加入（限 1 條）；若已有 core 或 opp 條目，不得再混入 noise
 - 【前三日已報道】清單中的主題：無新進展則必須 noise；絕不允許用改寫、重述、補充細節等方式「偽裝成新內容」通過審查
-- chain label 必須是具體公司名/產品/角色 + 方向詞，例如「TSMC 議價能力↑」「Azure 交期拉長↓」；嚴禁使用「受益↑」「受壓↓」「受損↓」等泛稱；每條 chain 應有 2-4 個節點
+- impact 欄位：必須點名受影響的具體公司/國家/供應商，並說明影響方向（漲/跌/分流/訂單轉移等）；嚴禁空泛描述如「整體受益」「產業影響」
 - source 欄位必須直接使用新聞列表中「SOURCE_URL:」後的完整 URL；若該則新聞無 SOURCE_URL，則 source 填 ""，source_label 填 "—"；絕對禁止自行推測或捏造任何 URL"""
 
 # ══════════════════════════════════════════════════════════════════
@@ -321,6 +321,7 @@ def call_groq(prompt):
                 "每個條目的具體數字必須來自該條目本身的新聞，嚴禁跨條目複製數字或細節。"
                 "若某維度今日無相關新聞，回傳 1 條 noise 評級的條目，不要憑空生成內容。"
                 "每條 body 必須包含至少 3 句，每句需含具體數字、時間點或技術細節；資訊不足請評為 noise，不要用空話填充。"
+                "impact 欄位必須點名受影響的具體公司名（如 TSMC、SK Hynix、Micron）或國家/地區，並說明影響方向（訂單轉移、市占變化、ASP漲跌、產能吃緊等），嚴禁空泛描述。"
                 "user 訊息中標示【前三日已報道，嚴禁重複】的主題，若今日新聞中沒有該主題的明確新進展，絕對不可生成該主題的條目，直接評為 noise 或略過。"
                 "全程繁體中文：晶片（非芯片）、記憶體（非内存）、處理器（非处理器）。"
             )},
@@ -581,9 +582,6 @@ if __name__ == '__main__':
     print("🤖 呼叫 Groq API...")
     data = call_groq(make_prompt(news, recent_titles))
     print(f"  → 硬體 {len(data.get('hw',[]))} / 巨頭 {len(data.get('corp',[]))} / 應用 {len(data.get('app',[]))} 則")
-
-    print("🔗 驗證 chain 品質…")
-    fix_chains(data)
 
     print("🔗 驗證 source URL...")
     validate_sources(data)

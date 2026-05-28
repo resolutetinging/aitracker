@@ -453,18 +453,6 @@ function chainHtml(chain) {
   }).join('');
 }
 
-const _GENERIC_LABELS = new Set([
-  '受益','受損','受壓','獲益','利好','利空','影響','波及','受害','上漲','下跌',
-  '提升','下降','增加','減少','擴大','縮小'
-]);
-function isGoodChain(chain) {
-  if (!chain || chain.length < 2) return false;
-  return chain.every(n => {
-    const label = (n.label || '').replace(/[↑↓⚠️\s]+$/, '').trim();
-    return !_GENERIC_LABELS.has(label) && label.length > 2;
-  });
-}
-
 function isNoiseEmpty(item) {
   return item.rating === 'noise' && (item.body || '').includes('無相關新聞');
 }
@@ -477,13 +465,16 @@ function newsCard(item, ptype) {
   const validUrl = item.source && /^https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i.test(item.source);
   const src = validUrl
     ? `<div class="card-source">來源：<a href="${item.source}" target="_blank" rel="noopener">${item.source_label||new URL(item.source).hostname}</a></div>` : '';
-  const chainBox = isGoodChain(item.chain)
-    ? `<div class="impact-box"><div class="impact-title">供應鏈影響鏈</div>
-       <div class="impact-chain">${chainHtml(item.chain)}</div></div>`
-    : '';
+  const impactBox = item.impact
+    ? `<div class="impact-box"><div class="impact-title">供應鏈影響分析</div>
+       <div style="font-size:12.5px;color:var(--text2);line-height:1.7;">${item.impact}</div></div>`
+    : (item.chain?.length
+        ? `<div class="impact-box"><div class="impact-title">供應鏈影響鏈</div>
+           <div class="impact-chain">${chainHtml(item.chain)}</div></div>`
+        : '');
   return `<div class="news-card ${ptype}">
     <div class="card-top"><div class="card-title">${item.title}</div><span class="tag ${tc}">${item.layer}</span></div>
-    <div class="card-body">${fmtBody(item.body)}</div>${eth}${chainBox}${src}
+    <div class="card-body">${fmtBody(item.body)}</div>${eth}${impactBox}${src}
   </div>`;
 }
 
@@ -764,7 +755,9 @@ function renderInsights(d) {
           <div class="ins-toggle" id="itog-${prefix}${idx}">▼</div>
         </div>
         <div class="ins-body" id="ibody-${prefix}${idx}">
-          ${isGoodChain(item.chain)?`<div class="ins-chain">${chainHtml(item.chain)}</div>`:''}
+          ${item.impact
+            ? `<div class="impact-box" style="margin-bottom:10px;"><div class="impact-title">供應鏈影響分析</div><div style="font-size:12.5px;color:var(--text2);line-height:1.7;">${item.impact}</div></div>`
+            : (item.chain?.length ? `<div class="ins-chain">${chainHtml(item.chain)}</div>` : '')}
           ${eth}
           <div class="ins-insight">
             <div class="ins-insight-label">注意方向</div>
