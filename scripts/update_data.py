@@ -28,20 +28,15 @@ RSS_FEEDS = [
     ("Semiconductor", "https://hnrss.org/frontpage?q=NVIDIA+AMD+Intel+chip+wafer+capacity+supply"),
     # CSP CapEx / Cloud
     ("CSP/CapEx",    "https://hnrss.org/frontpage?q=Microsoft+Google+Meta+Amazon+capex+data+center+AI+investment"),
-    # Agentic / Physical AI — 通用
+    # Agentic / Physical AI
     ("App/AI",       "https://hnrss.org/frontpage?q=Agentic+AI+Physical+AI+robotics+humanoid+VLA+inference"),
     ("App/AI",       "https://feeds.arstechnica.com/arstechnica/technology-lab"),
     ("App/AI",       "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
-    # Google News RSS — 保底
+    # Google News RSS（保底，hnrss/DDG 失效時仍有料）
     ("Semiconductor", "https://news.google.com/rss/search?q=TSMC+HBM+CoWoS+semiconductor+AI+chip&hl=en-US&gl=US&ceid=US:en"),
     ("Semiconductor", "https://news.google.com/rss/search?q=NVIDIA+AMD+Intel+SK+Hynix+Micron+packaging&hl=en-US&gl=US&ceid=US:en"),
     ("CSP/CapEx",    "https://news.google.com/rss/search?q=Microsoft+Google+Meta+Amazon+AI+capex+data+center+2026&hl=en-US&gl=US&ceid=US:en"),
-    # Physical AI — 具體平台（跨公司）
-    ("App/AI",       "https://news.google.com/rss/search?q=NVIDIA+Omniverse+Isaac+Cosmos+Boston+Dynamics+Figure+Unitree+Agility+2026&hl=en-US&gl=US&ceid=US:en"),
-    ("App/AI",       "https://news.google.com/rss/search?q=Apptronik+1X+Fourier+Sanctuary+humanoid+robot+deployment+factory+2026&hl=en-US&gl=US&ceid=US:en"),
-    # Agentic / 模型落地 — 跨公司
-    ("App/AI",       "https://news.google.com/rss/search?q=Claude+Operator+GPT-4o+Gemini+Llama+Copilot+agentic+workflow+enterprise+2026&hl=en-US&gl=US&ceid=US:en"),
-    ("App/AI",       "https://news.google.com/rss/search?q=Google+DeepMind+AlphaFold+Gemini+deployment+Meta+Llama+enterprise+2026&hl=en-US&gl=US&ceid=US:en"),
+    ("App/AI",       "https://news.google.com/rss/search?q=Agentic+AI+Physical+AI+humanoid+robot+inference+2026&hl=en-US&gl=US&ceid=US:en"),
 ]
 
 # 硬體供應鏈關鍵字（hw 分類必須命中其中之一）
@@ -66,7 +61,8 @@ AI_KEYWORDS = [
     "packaging","wafer","foundry","chiplet","osat"
 ]
 
-def _parse_rss_date(item, ns):
+def parse_rss_date(item, ns):
+    """嘗試解析 RSS/Atom 條目的發布時間，失敗回傳 None"""
     raw = (item.findtext('pubDate') or item.findtext('published') or
            item.findtext('atom:published', namespaces=ns) or
            item.findtext('updated') or item.findtext('atom:updated', namespaces=ns) or '')
@@ -76,6 +72,7 @@ def _parse_rss_date(item, ns):
         return parsedate_to_datetime(raw.strip())
     except Exception:
         pass
+    # 嘗試 ISO 8601
     for fmt in ('%Y-%m-%dT%H:%M:%S%z', '%Y-%m-%dT%H:%M:%SZ', '%Y-%m-%d %H:%M:%S%z'):
         try:
             return datetime.strptime(raw.strip()[:25], fmt)
@@ -100,13 +97,15 @@ def fetch_rss():
                 title = (item.findtext('title') or item.findtext('atom:title',namespaces=ns) or '').strip()
                 desc  = (item.findtext('description') or item.findtext('summary') or
                          item.findtext('atom:summary',namespaces=ns) or '').strip()
+                # 擷取真實 URL（RSS <link> 或 Atom <link href>）
                 link = item.findtext('link') or ''
                 if not link:
                     link_el = item.find('atom:link', ns)
                     if link_el is not None:
                         link = link_el.get('href', '')
                 link = link.strip()
-                pub = _parse_rss_date(item, ns)
+                # 日期過濾：跳過 48h 前的舊文章
+                pub = parse_rss_date(item, ns)
                 if pub:
                     if pub.tzinfo is None:
                         pub = pub.replace(tzinfo=timezone.utc)
@@ -135,8 +134,7 @@ def fetch_ddg():
     queries = [
         ("硬體供應鏈", "HBM CoWoS TSMC NVIDIA AMD AI chip 2026"),
         ("CSP資本支出",  "Microsoft Google Meta Amazon AI capex data center 2026"),
-        ("Physical AI",  "Boston Dynamics Figure Unitree Agility Apptronik humanoid robot factory deployment VLA 2026"),
-        ("Agentic AI",   "Claude GPT-4o Gemini Llama Copilot agentic workflow enterprise AI deployment 2026"),
+        ("新興應用",     "Agentic AI Physical AI robotics humanoid inference 2026"),
     ]
     ddgs = DDGS()
     for label, q in queries:
@@ -180,15 +178,14 @@ def fetch_news():
     return joined
 
 
-def get_recent_titles(history, days=7, max_titles=30):
-    """取得近 N 天已報道過的新聞標題，用於跨日去重（去除重複後最多 max_titles 條）"""
-    seen, titles = set(), []
+def get_recent_titles(history, days=3, max_titles=20):
+    """取得近 N 天已報道過的新聞標題，用於跨日去重（最多 max_titles 條）"""
+    titles = []
     for entry in history[:days]:
         for section in ['hw', 'corp', 'app']:
             for item in entry.get(section, []):
                 t = item.get('title', '').strip()
-                if t and t not in seen:
-                    seen.add(t)
+                if t:
                     titles.append(t)
     return titles[:max_titles]
 
@@ -208,12 +205,8 @@ def make_prompt(news_context, recent_titles=None):
     notes_text = "; ".join(f"{d}:{n}" for d, n in sorted(notes.items()) if n.strip()) if notes else ""
 
     recent_str = (
-        "【近 7 日已報道，嚴禁重複】以下主題若今日沒有符合以下任一條件的新事實，"
-        "必須直接評為 noise，絕對不允許以改寫、換角度、補充細節等方式繞過：\n"
-        "  ① 出現全新的具體數字（金額、產能比例、時間點）\n"
-        "  ② 出現新的合作方、新公司名稱、新地點\n"
-        "  ③ 官方正式宣布（非分析師預測或媒體推測）\n"
-        "已追蹤主題清單：\n"
+        "【前三日已報道，嚴禁重複】以下主題若今日無明確新進展（新數字/新事件/新公司動作），"
+        "請直接評為 noise，不得生成相似內容，不得以改寫或重述替代：\n"
         + "\n".join(f"・{t}" for t in recent_titles)
     ) if recent_titles else ""
     notes_context = ('【本週筆記參考（勿逐字複製，請融入分析寫成洞察）】' + notes_text) if notes_text else ''
@@ -238,31 +231,84 @@ def make_prompt(news_context, recent_titles=None):
 
 分類：hw=半導體/封裝(CoWoS/OSAT/HBM)/晶片製造；corp=CSP(MS/Google/Meta/Amazon)CapEx/投資；app=Agentic AI/Physical AI/VLA/推論落地
 
-【glossary_new 封鎖清單】以下術語已有完整定義，絕對不可出現在 glossary_new，一旦出現視為錯誤：
-{known}
-glossary_new 只收錄今日新聞中首次出現、且不在上列封鎖清單內的技術名詞或縮寫。
-若今日沒有符合條件的新術語，回傳空陣列 [] 即可，不要強行生成。
-潛在可收錄範圍（需確認今日新聞確實提及）：CoWoS-L、CoWoS-S、HBM4、HBM4E、EMIB、LSI Bridge、Blackwell、Rubin、NIM、Isaac Sim、Cosmos、NCCL、NVLink、InfiniBand、RAS、SiPh、UCIe、Chiplet、3D-IC、FOPLP、Disaggregated Memory 等。
-
 格式（每區2-4條，無相關新聞則1條noise）：
-{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句含數字摘要","chain":[{{"label":"受益↑","type":"up"}},{{"label":"受壓↓","type":"down"}}],"rating":"core","insight":"供應鏈投資者視角","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"縮寫或名詞","full":"英文全名　中文全名","def":"3句定義，含技術細節","why":"📌 為何值得追蹤（投資/供應鏈視角）","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
+{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句含數字摘要","chain":[{{"label":"TSMC 議價能力↑","type":"up"}},{{"label":"AMD 交期拉長↓","type":"down"}},{{"label":"SK Hynix ASP↑","type":"up"}}],"rating":"core","insight":"供應鏈投資者視角","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
 
 規則：
-- hw 僅限硬體供應鏈；各條目數字不得跨條目複製
-- app 每條 title 與 body 必須包含具體模型名稱、平台名稱或產品名稱，例如：
-    Physical AI/機器人：NVIDIA Omniverse/Isaac Sim/Cosmos、Boston Dynamics Atlas/Spot、Figure 02、Unitree G1/H1、Agility Digit、Apptronik Apollo、1X Neo、Fourier GR-1、Sanctuary Phoenix
-    Agentic AI/模型落地：Claude（Anthropic）、GPT-4o/o3（OpenAI）、Gemini 2.0/2.5（Google DeepMind）、Llama 3（Meta）、Copilot（Microsoft）、Grok（xAI）
-    不得以「某 AI 模型」「AI 系統」「人形機器人」「大型語言模型」等泛稱代替；資訊不具體則評為 noise
+- hw 僅限硬體供應鏈；各條目數字不得跨條目複製；已知術語勿重列:{known}
 - 全程繁體中文，勿夾雜其他語言；「晶片」非「芯片」，「記憶體」非「内存」
 - body 欄位嚴禁使用「...」「…」等省略符號，資訊不確定請直接省略或改寫成完整句子
 - body 必須包含至少 3 句完整陳述，每句需含具體數字、時間點、公司名稱或技術細節，不得泛泛而談
 - 若某條目的原始新聞資訊不足以寫出 3 句有內容的句子，請將該條評為 noise 並簡短說明，不要用空話填充
 - noise 條目只在該分區完全無相關新聞時才加入（限 1 條）；若已有 core 或 opp 條目，不得再混入 noise
-- 【前三日已報道】清單中的主題：無新進展則必須 noise；絕不允許用改寫、重述、補充細節等方式「偽裝成新內容」通過審查"""
+- 【前三日已報道】清單中的主題：無新進展則必須 noise；絕不允許用改寫、重述、補充細節等方式「偽裝成新內容」通過審查
+- chain label 必須是具體公司名/產品/角色 + 方向詞，例如「TSMC 議價能力↑」「Azure 交期拉長↓」；嚴禁使用「受益↑」「受壓↓」「受損↓」等泛稱；每條 chain 應有 2-4 個節點
+- source 欄位必須直接使用新聞列表中「SOURCE_URL:」後的完整 URL；若該則新聞無 SOURCE_URL，則 source 填 ""，source_label 填 "—"；絕對禁止自行推測或捏造任何 URL"""
 
 # ══════════════════════════════════════════════════════════════════
-#  3. GROQ API
+#  3. GROQ API + CHAIN QUALITY FIX
 # ══════════════════════════════════════════════════════════════════
+_GENERIC_LABELS = {
+    '受益','受損','受壓','獲益','利好','利空','影響','波及','受害',
+    '上漲','下跌','提升','下降','增加','減少','擴大','縮小'
+}
+
+def _is_bad_chain(item):
+    chain = item.get('chain', [])
+    if len(chain) < 2:
+        return True
+    for node in chain:
+        label = re.sub(r'[↑↓⚠️\s]+$', '', node.get('label', '')).strip()
+        if label in _GENERIC_LABELS or len(label) <= 2:
+            return True
+    return False
+
+def fix_chains(data):
+    bad = [(sec, item) for sec in ['hw','corp','app']
+           for item in data.get(sec,[]) if _is_bad_chain(item)]
+    if not bad:
+        print("  → chain 品質檢核通過"); return
+
+    print(f"  → {len(bad)} 條 chain 不合格，重新生成…")
+    client = Groq(api_key=os.environ['GROQ_API_KEY'])
+    items_json = json.dumps(
+        [{"sec":sec,"title":item["title"],"body":item.get("body","")[:300]}
+         for sec,item in bad], ensure_ascii=False)
+
+    prompt = (
+        "以下新聞的 chain 使用了「受益↑」「受損↓」等泛稱或節點不足2個，請重新生成。\n"
+        "要求：每條 chain 2–4 個節點；label 必須含具體公司名/產品+方向詞，"
+        "例如「TSMC CoWoS 產能↑」「SK Hynix ASP↑」「Azure GPU 交期↓」「AMD 市占↓」；"
+        "嚴禁使用「受益」「受損」「受壓」等泛稱。\n"
+        f"條目：{items_json}\n"
+        '輸出純JSON陣列（直接從[開始）：'
+        '[{"title":"原標題","chain":[{"label":"具體公司+方向","type":"up"}]}]'
+    )
+    try:
+        resp = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[
+                {"role":"system","content":"只輸出純JSON陣列，不加任何說明或markdown。"},
+                {"role":"user","content":prompt}
+            ],
+            temperature=0.3, max_tokens=800,
+        )
+        raw = resp.choices[0].message.content.strip()
+        if raw.startswith('```'):
+            raw = raw.split('\n',1)[-1].rsplit('```',1)[0].strip()
+        fixes = json.loads(raw)
+        fixed = 0
+        for fix in fixes:
+            for sec in ['hw','corp','app']:
+                for item in data.get(sec,[]):
+                    if item['title'] == fix['title'] and fix.get('chain'):
+                        item['chain'] = fix['chain']
+                        fixed += 1
+                        print(f"  ✓ {item['title'][:45]}")
+        print(f"  → 共修正 {fixed} 條")
+    except Exception as e:
+        print(f"  → chain 修正失敗：{e}")
+
 def call_groq(prompt):
     client = Groq(api_key=os.environ['GROQ_API_KEY'])
     response = client.chat.completions.create(
@@ -272,12 +318,10 @@ def call_groq(prompt):
                 "你是 AI 產業供應鏈分析師，專注半導體供應鏈（HBM/CoWoS/OSAT）、CSP 資本支出、Agentic/Physical AI 落地。"
                 "只輸出純 JSON，不加任何說明或 markdown 格式。"
                 "hw 分類僅限半導體/封裝/記憶體供應鏈，應用層或軟體新聞絕對不能放入 hw。"
-                "app 分類每條必須提及具體模型或產品名稱，範圍涵蓋所有公司：Physical AI（NVIDIA Omniverse/Isaac/Cosmos、Boston Dynamics、Figure、Unitree、Agility、Apptronik、1X、Fourier、Sanctuary 等）；Agentic/模型落地（Claude、GPT-4o/o3、Gemini、Llama、Copilot、Grok 等），泛稱一律評為 noise。"
                 "每個條目的具體數字必須來自該條目本身的新聞，嚴禁跨條目複製數字或細節。"
                 "若某維度今日無相關新聞，回傳 1 條 noise 評級的條目，不要憑空生成內容。"
                 "每條 body 必須包含至少 3 句，每句需含具體數字、時間點或技術細節；資訊不足請評為 noise，不要用空話填充。"
-                "user 訊息中標示【近 7 日已報道，嚴禁重複】的主題，必須同時符合以下三項之一才能生成：①新的具體數字 ②新的合作方/公司/地點 ③官方正式宣布。否則直接評為 noise，不得改寫或換角度繞過。"
-                f"glossary_new 封鎖清單（術語已有定義，絕對不得出現）：{'、'.join(KNOWN_TERMS)}。僅收錄今日新聞中首次出現且不在封鎖清單內的術語；無新術語回傳空陣列 []。"
+                "user 訊息中標示【前三日已報道，嚴禁重複】的主題，若今日新聞中沒有該主題的明確新進展，絕對不可生成該主題的條目，直接評為 noise 或略過。"
                 "全程繁體中文：晶片（非芯片）、記憶體（非内存）、處理器（非处理器）。"
             )},
             {"role":"user","content":prompt}
@@ -291,7 +335,36 @@ def call_groq(prompt):
     return json.loads(raw)
 
 # ══════════════════════════════════════════════════════════════════
-#  4. HISTORY
+#  4. URL VALIDATION
+# ══════════════════════════════════════════════════════════════════
+def check_url(url, timeout=6):
+    """HEAD request 驗證 URL 是否存在，回傳 True/False"""
+    if not url or not url.startswith('http'):
+        return False
+    try:
+        req = urllib.request.Request(url, method='HEAD',
+                                     headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return r.status < 400
+    except Exception:
+        return False
+
+def validate_sources(data):
+    """驗證所有 NewsItem 的 source URL；失效者清空 source/source_label"""
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            url = item.get('source', '')
+            if not url:
+                continue
+            if check_url(url):
+                print(f"  ✓ {url[:60]}")
+            else:
+                print(f"  ✗ 無效 URL，已清空：{url[:60]}")
+                item['source'] = ''
+                item['source_label'] = '—'
+
+# ══════════════════════════════════════════════════════════════════
+#  5. HISTORY
 # ══════════════════════════════════════════════════════════════════
 DATA_PATH = 'data/history.json'
 
@@ -502,12 +575,18 @@ if __name__ == '__main__':
     print(f"  → 合計 {total} 行新聞摘要")
 
     history = load_history()
-    recent_titles = get_recent_titles(history, days=7)
-    print(f"  → 近七日已報道標題 {len(recent_titles)} 條（用於去重）")
+    recent_titles = get_recent_titles(history, days=3)
+    print(f"  → 近三日已報道標題 {len(recent_titles)} 條（用於去重）")
 
     print("🤖 呼叫 Groq API...")
     data = call_groq(make_prompt(news, recent_titles))
     print(f"  → 硬體 {len(data.get('hw',[]))} / 巨頭 {len(data.get('corp',[]))} / 應用 {len(data.get('app',[]))} 則")
+
+    print("🔗 驗證 chain 品質…")
+    fix_chains(data)
+
+    print("🔗 驗證 source URL...")
+    validate_sources(data)
 
     history = upsert(history, data)
     save_history(history)

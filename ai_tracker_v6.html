@@ -453,6 +453,18 @@ function chainHtml(chain) {
   }).join('');
 }
 
+const _GENERIC_LABELS = new Set([
+  '受益','受損','受壓','獲益','利好','利空','影響','波及','受害','上漲','下跌',
+  '提升','下降','增加','減少','擴大','縮小'
+]);
+function isGoodChain(chain) {
+  if (!chain || chain.length < 2) return false;
+  return chain.every(n => {
+    const label = (n.label || '').replace(/[↑↓⚠️\s]+$/, '').trim();
+    return !_GENERIC_LABELS.has(label) && label.length > 2;
+  });
+}
+
 function isNoiseEmpty(item) {
   return item.rating === 'noise' && (item.body || '').includes('無相關新聞');
 }
@@ -462,15 +474,16 @@ function newsCard(item, ptype) {
   const tc = ptype==='hw'?'tag-hw':ptype==='corp'?'tag-corp':'tag-app';
   const eth = item.ethic
     ? `<div class="ethic-alert">⚠️ <strong>Safety Alert</strong>：${item.ethic}</div>` : '';
-  // Only show source if URL looks real (starts with https:// and has a domain)
   const validUrl = item.source && /^https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i.test(item.source);
   const src = validUrl
     ? `<div class="card-source">來源：<a href="${item.source}" target="_blank" rel="noopener">${item.source_label||new URL(item.source).hostname}</a></div>` : '';
+  const chainBox = isGoodChain(item.chain)
+    ? `<div class="impact-box"><div class="impact-title">供應鏈影響鏈</div>
+       <div class="impact-chain">${chainHtml(item.chain)}</div></div>`
+    : '';
   return `<div class="news-card ${ptype}">
     <div class="card-top"><div class="card-title">${item.title}</div><span class="tag ${tc}">${item.layer}</span></div>
-    <div class="card-body">${fmtBody(item.body)}</div>${eth}
-    <div class="impact-box"><div class="impact-title">供應鏈影響鏈</div>
-    <div class="impact-chain">${chainHtml(item.chain)}</div></div>${src}
+    <div class="card-body">${fmtBody(item.body)}</div>${eth}${chainBox}${src}
   </div>`;
 }
 
@@ -751,7 +764,7 @@ function renderInsights(d) {
           <div class="ins-toggle" id="itog-${prefix}${idx}">▼</div>
         </div>
         <div class="ins-body" id="ibody-${prefix}${idx}">
-          <div class="ins-chain">${chainHtml(item.chain)}</div>
+          ${isGoodChain(item.chain)?`<div class="ins-chain">${chainHtml(item.chain)}</div>`:''}
           ${eth}
           <div class="ins-insight">
             <div class="ins-insight-label">注意方向</div>
