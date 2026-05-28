@@ -453,6 +453,11 @@ function chainHtml(chain) {
   }).join('');
 }
 
+function isNoiseEmpty(item) {
+  return item.rating === 'noise' && (item.body || '').includes('無相關新聞');
+}
+function visibleItems(arr) { return (arr || []).filter(i => !isNoiseEmpty(i)); }
+
 function newsCard(item, ptype) {
   const tc = ptype==='hw'?'tag-hw':ptype==='corp'?'tag-corp':'tag-app';
   const eth = item.ethic
@@ -502,7 +507,7 @@ function renderHW(d) {
     </div>
 
     <div class="sec-title">本日重點新聞 · ${fmtDate(d.date)}</div>
-    <div class="news-grid">${d.hw.map(i=>newsCard(i,'hw')).join('')}</div>`;
+    <div class="news-grid">${visibleItems(d.hw).map(i=>newsCard(i,'hw')).join('')}</div>`;
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -525,7 +530,7 @@ function renderCorp(d) {
       </div>
     </div>
     <div class="sec-title">本日重點新聞 · ${fmtDate(d.date)}</div>
-    <div class="news-grid">${d.corp.map(i=>newsCard(i,'corp')).join('')}</div>`;
+    <div class="news-grid">${visibleItems(d.corp).map(i=>newsCard(i,'corp')).join('')}</div>`;
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -567,7 +572,7 @@ function renderApp(d) {
     <div class="sec-title">四大技術層面 — 關注框架</div>
     <div class="app-sector-grid">${sectorHtml}</div>
     <div class="sec-title">本日重點新聞 · ${fmtDate(d.date)}</div>
-    <div class="news-grid">${d.app.map(i=>newsCard(i,'app')).join('')}</div>`;
+    <div class="news-grid">${visibleItems(d.app).map(i=>newsCard(i,'app')).join('')}</div>`;
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -731,7 +736,7 @@ function confirmAddCat() {
 //  INSIGHT PANEL — sub-tabs + accordion
 // ══════════════════════════════════════════════════════════════════
 function renderInsights(d) {
-  const all = [...d.hw, ...d.corp, ...d.app];
+  const all = [...visibleItems(d.hw), ...visibleItems(d.corp), ...visibleItems(d.app)];
   const groups = {core:[], noise:[], opp:[]};
   all.forEach(i => { if (groups[i.rating]) groups[i.rating].push(i); });
 
@@ -805,9 +810,9 @@ function renderHistory(hist) {
       const items = lines.map(l=>`<div class="ws-item">${l.trim()}</div>`).join('');
       return `<div class="weekly-box"><div class="ws-title">📊 本週摘要（週報）</div><div class="ws-body">${items}</div></div>`;
     })() : '';
-    const hw = d.hw?.length ? `<div class="hist-sec">🔩 硬體缺口</div><div class="news-grid">${d.hw.map(x=>newsCard(x,'hw')).join('')}</div>` : '';
-    const co = d.corp?.length ? `<div class="hist-sec">💰 巨頭角力</div><div class="news-grid">${d.corp.map(x=>newsCard(x,'corp')).join('')}</div>` : '';
-    const ap = d.app?.length ? `<div class="hist-sec">🤖 新興應用</div><div class="news-grid">${d.app.map(x=>newsCard(x,'app')).join('')}</div>` : '';
+    const hw = visibleItems(d.hw).length ? `<div class="hist-sec">🔩 硬體缺口</div><div class="news-grid">${visibleItems(d.hw).map(x=>newsCard(x,'hw')).join('')}</div>` : '';
+    const co = visibleItems(d.corp).length ? `<div class="hist-sec">💰 巨頭角力</div><div class="news-grid">${visibleItems(d.corp).map(x=>newsCard(x,'corp')).join('')}</div>` : '';
+    const ap = visibleItems(d.app).length ? `<div class="hist-sec">🤖 新興應用</div><div class="news-grid">${visibleItems(d.app).map(x=>newsCard(x,'app')).join('')}</div>` : '';
     const savedNote = loadNote(d.date);
     const noteSection = `
       <div class="hist-note-section">
