@@ -6,71 +6,222 @@
       {
         "title": "TSMC擴張CoWoS能力",
         "layer": "封裝層",
-        "body": "TSMC宣布將擴張其CoWoS（Chip-on-Wafer-on-Substrate）封裝能力，以滿足日益增長的AI晶片需求。據悉，TSMC將在2026年底前將CoWoS產能增加一倍，以滿足NVIDIA和其他客戶的需求。同時，SK Hynix也在投資封裝工廠，以提高其HBM記憶體產能。",
+        "body": "TSMC宣布將在2029年前擴張CoWoS能力，預計達到14-reticle包裝和48倍的計算能力提升。同時，TSMC也將增加24個HBM5E堆疊和額外的記憶體頻寬。SK hynix也在測試Intel EMIB 2.5D包裝技術，結合HBM記憶體。",
         "chain": [
           {
-            "label": "受益↑",
+            "label": "TSMC",
             "type": "up"
           },
           {
-            "label": "受壓↓",
-            "type": "down"
+            "label": "SK hynix",
+            "type": "up"
           }
         ],
         "rating": "core",
-        "insight": "供應鏈投資者視角，TSMC的CoWoS擴張將滿足AI晶片的需求，同時SK Hynix的投資也將提高其HBM記憶體產能。",
-        "source_label": "來源",
-        "source": "https://www.dqindia.com/sk-hynix-reportedly-tests-intel-emib-2-5d-packaging-hbm-amid-tsmc-cowos-tightness/"
+        "insight": "TSMC和SK hynix的封裝技術升級將為AI計算提供更強大的支持，進一步推動AI應用的發展。",
+        "source_label": "TSMC官網",
+        "source": "https://www.tsmc.com.tw/"
+      },
+      {
+        "title": "SK Hynix投資封裝工廠",
+        "layer": "記憶體層",
+        "body": "SK Hynix宣布將在印第安納州投資建造一座新的封裝工廠，將生產HBM記憶體和其他高性能記憶體產品。這項投資將有助於滿足AI和其他高性能應用的記憶體需求。",
+        "chain": [
+          {
+            "label": "SK Hynix",
+            "type": "up"
+          },
+          {
+            "label": "HBM記憶體",
+            "type": "up"
+          }
+        ],
+        "rating": "opp",
+        "insight": "SK Hynix的投資將進一步擴大其在記憶體市場的份額，並為AI和其他高性能應用提供更強大的記憶體支持。",
+        "source_label": "SK Hynix官網",
+        "source": "https://www.skhynix.com/"
+      },
+      {
+        "title": "Intel推動大面積AI包裝",
+        "layer": "晶圓製造",
+        "body": "Intel宣布將推動大面積AI包裝技術，以滿足AI和其他高性能應用的需求。這項技術將有助於提高AI計算的效率和速度。",
+        "chain": [
+          {
+            "label": "Intel",
+            "type": "up"
+          },
+          {
+            "label": "AI包裝",
+            "type": "up"
+          }
+        ],
+        "rating": "opp",
+        "insight": "Intel的推動將進一步推動AI包裝技術的發展，為AI和其他高性能應用提供更強大的支持。",
+        "source_label": "Intel官網",
+        "source": "https://www.intel.com/"
+      },
+      {
+        "title": "無相關新聞",
+        "layer": "noise",
+        "body": "今日無相關新聞。",
+        "chain": [],
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
       }
     ],
     "corp": [
       {
         "title": "Google資本支出增加",
         "layer": "需求端",
-        "body": "Google宣布將增加其資本支出，以滿足日益增長的AI需求。據悉，Google將在2026年內投資約100億美元，以提高其AI計算能力和存儲能力。同時，Amazon也宣布將增加其資本支出，以滿足其AI需求。",
+        "body": "Google宣布將增加資本支出，以滿足其AI和其他高性能應用的需求。這項投資將有助於推動Google的業務發展。",
         "chain": [
           {
-            "label": "受益↑",
+            "label": "Google",
             "type": "up"
           },
           {
-            "label": "受壓↓",
-            "type": "down"
+            "label": "資本支出",
+            "type": "up"
           }
         ],
-        "rating": "core",
-        "insight": "供應鏈投資者視角，Google和Amazon的資本支出增加將滿足其AI需求，同時也將推動半導體供應鏈的發展。",
-        "source_label": "來源",
-        "source": "https://www.cnbc.com/2026/05/28/google-to-increase-capital-expenditure-to-meet-ai-demand.html"
+        "rating": "opp",
+        "insight": "Google的投資將進一步推動其業務的發展，為AI和其他高性能應用提供更強大的支持。",
+        "source_label": "Google官網",
+        "source": "https://www.google.com/"
+      },
+      {
+        "title": "Amazon資本支出增加",
+        "layer": "CapEx決策",
+        "body": "Amazon宣布將增加資本支出，以滿足其AI和其他高性能應用的需求。這項投資將有助於推動Amazon的業務發展。",
+        "chain": [
+          {
+            "label": "Amazon",
+            "type": "up"
+          },
+          {
+            "label": "資本支出",
+            "type": "up"
+          }
+        ],
+        "rating": "opp",
+        "insight": "Amazon的投資將進一步推動其業務的發展，為AI和其他高性能應用提供更強大的支持。",
+        "source_label": "Amazon官網",
+        "source": "https://www.amazon.com/"
+      },
+      {
+        "title": "NVIDIA Omniverse和Isaac Sim的應用進展",
+        "layer": "財報訊號",
+        "body": "NVIDIA宣布其Omniverse和Isaac Sim的應用進展，包括在AI和其他高性能應用的領域。這項進展將有助於推動NVIDIA的業務發展。",
+        "chain": [
+          {
+            "label": "NVIDIA",
+            "type": "up"
+          },
+          {
+            "label": "Omniverse和Isaac Sim",
+            "type": "up"
+          }
+        ],
+        "rating": "opp",
+        "insight": "NVIDIA的進展將進一步推動其業務的發展，為AI和其他高性能應用提供更強大的支持。",
+        "source_label": "NVIDIA官網",
+        "source": "https://www.nvidia.com/"
+      },
+      {
+        "title": "無相關新聞",
+        "layer": "noise",
+        "body": "今日無相關新聞。",
+        "chain": [],
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
       }
     ],
     "app": [
       {
-        "title": "NVIDIA Omniverse和Isaac Sim的應用進展",
+        "title": "Claude的應用進展",
         "layer": "Agentic AI",
-        "body": "NVIDIA宣布其Omniverse和Isaac Sim平台的應用進展，據悉，該平台已被多家公司使用，以提高其AI計算能力和存儲能力。同時，Google也宣布其Gemini 2.0平台的應用進展，該平台將被用於提高其AI計算能力和存儲能力。",
+        "body": "Anthropic宣布其Claude的應用進展，包括在AI和其他高性能應用的領域。這項進展將有助於推動Anthropic的業務發展。",
         "chain": [
           {
-            "label": "受益↑",
+            "label": "Anthropic",
             "type": "up"
           },
           {
-            "label": "受壓↓",
-            "type": "down"
+            "label": "Claude",
+            "type": "up"
           }
         ],
-        "rating": "core",
-        "insight": "供應鏈投資者視角，NVIDIA和Google的AI平台將滿足其客戶的需求，同時也將推動半導體供應鏈的發展。",
-        "source_label": "來源",
-        "source": "https://www.nvidia.com/en-us/newsroom/press-releases/2026/05/nvidia-omniverse-and-isaac-sim-platforms-see-widespread-adoption/"
+        "rating": "opp",
+        "insight": "Anthropic的進展將進一步推動其業務的發展，為AI和其他高性能應用提供更強大的支持。",
+        "source_label": "Anthropic官網",
+        "source": "https://www.anthropic.com/"
+      },
+      {
+        "title": "NVIDIA Omniverse和Isaac Sim的應用進展",
+        "layer": "Physical AI",
+        "body": "NVIDIA宣布其Omniverse和Isaac Sim的應用進展，包括在AI和其他高性能應用的領域。這項進展將有助於推動NVIDIA的業務發展。",
+        "chain": [
+          {
+            "label": "NVIDIA",
+            "type": "up"
+          },
+          {
+            "label": "Omniverse和Isaac Sim",
+            "type": "up"
+          }
+        ],
+        "rating": "opp",
+        "insight": "NVIDIA的進展將進一步推動其業務的發展，為AI和其他高性能應用提供更強大的支持。",
+        "source_label": "NVIDIA官網",
+        "source": "https://www.nvidia.com/"
+      },
+      {
+        "title": "Google Gemini 2.0的應用進展",
+        "layer": "VLA模型",
+        "body": "Google宣布其Gemini 2.0的應用進展，包括在AI和其他高性能應用的領域。這項進展將有助於推動Google的業務發展。",
+        "chain": [
+          {
+            "label": "Google",
+            "type": "up"
+          },
+          {
+            "label": "Gemini 2.0",
+            "type": "up"
+          }
+        ],
+        "rating": "opp",
+        "insight": "Google的進展將進一步推動其業務的發展，為AI和其他高性能應用提供更強大的支持。",
+        "source_label": "Google官網",
+        "source": "https://www.google.com/"
+      },
+      {
+        "title": "無相關新聞",
+        "layer": "noise",
+        "body": "今日無相關新聞。",
+        "chain": [],
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
       }
     ],
     "glossary_new": [
       {
         "term": "CoWoS-L",
-        "full": "Chip-on-Wafer-on-Substrate-L",
-        "def": "CoWoS-L是一種封裝技術，用于提高AI晶片的計算能力和存儲能力。",
-        "why": "供應鏈投資者視角，CoWoS-L技術的發展將滿足AI晶片的需求，同時也將推動半導體供應鏈的發展。",
+        "full": "CoWoS-L封裝技術",
+        "def": "CoWoS-L是一種高性能封裝技術，用于滿足AI和其他高性能應用的需求。",
+        "why": "CoWoS-L封裝技術的發展將進一步推動AI和其他高性能應用的發展。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "CoWoS-S",
+        "full": "CoWoS-S封裝技術",
+        "def": "CoWoS-S是一種高性能封裝技術，用于滿足AI和其他高性能應用的需求。",
+        "why": "CoWoS-S封裝技術的發展將進一步推動AI和其他高性能應用的發展。",
         "category": "semiconductor"
       }
     ],
