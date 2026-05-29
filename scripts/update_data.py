@@ -397,22 +397,22 @@ def upsert(history, data):
 def send_email(data):
     user = os.environ.get('GMAIL_USER','').replace('\xa0','').replace(' ','').strip()
     pwd  = os.environ.get('GMAIL_APP_PASSWORD','').replace('\xa0','').replace(' ','').strip()
-    to   = os.environ.get('NOTIFY_EMAIL', user).replace('\xa0','').replace(' ','').strip()
-    # Merge with data/email_config.json recipients (union with NOTIFY_EMAIL)
+    secret_to = os.environ.get('NOTIFY_EMAIL', user).replace('\xa0','').replace(' ','').strip()
+    secret_recipients = [a.strip() for a in secret_to.split(',') if a.strip()]
+
+    # Extra recipients from email_config.json (exclude those already in secret)
+    extra_recipients = []
     cfg_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'email_config.json')
     if os.path.exists(cfg_path):
         try:
             with open(cfg_path, 'r', encoding='utf-8') as f:
                 cfg = json.load(f)
-            extra = [r.strip() for r in cfg.get('recipients', []) if r.strip()]
-            all_recipients = list(dict.fromkeys(
-                [a.strip() for a in to.split(',') if a.strip()] + extra
-            ))
-            if all_recipients:
-                to = ','.join(all_recipients)
+            extra_recipients = [r.strip() for r in cfg.get('recipients', [])
+                                if r.strip() and r.strip() not in secret_recipients]
         except Exception:
             pass
-    if not user or not pwd or not to:
+
+    if not user or not pwd or (not secret_recipients and not extra_recipients):
         print("  → Email 未設定，略過。"); return
 
     from email.mime.text import MIMEText
@@ -504,28 +504,34 @@ def send_email(data):
 
         <!-- Footer -->
         <div style="border-top:1px solid #d8d4ce;padding-top:16px;margin-top:8px;text-align:center;">
-          <a href="https://resolutetinging.github.io/aitracker/ai_tracker_v5.html"
-             style="display:inline-block;background:#5a7fa8;color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;">
-            🔗 查看完整 Dashboard →
-          </a>
+          {{footer_extra}}
           <div style="font-size:11px;color:#b0b0b0;margin-top:12px;">AI Tracker · 自動產生 · {DATE_STR}</div>
         </div>
 
       </div>
     </body></html>'''
 
-    msg = MIMEMultipart('alternative')
-    msg['Subject'] = f'📡 AI 動態 {DATE_STR}{"（週報）" if data.get("is_sunday") else ""} — {core_count} CORE · {opp_count} OPP'
-    msg['From'] = user
-    msg['To']   = to
-    msg.attach(MIMEText(html, 'html', 'utf-8'))
-    try:
-        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as s:
-            s.login(user, pwd)
-            s.send_message(msg)
-        print(f"  → Email 已發送至 {to}")
-    except Exception as e:
-        print(f"  → Email 失敗：{e}")
+    footer_with = '<a href="https://resolutetinging.github.io/aitracker/ai_tracker_v6.html" style="display:inline-block;background:#5a7fa8;color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;">🔗 查看完整 Dashboard →</a>'
+
+    subject = f'📡 AI 動態 {DATE_STR}{"（週報）" if data.get("is_sunday") else ""} — {core_count} CORE · {opp_count} OPP'
+
+    def do_send(recipients, include_dashboard):
+        if not recipients: return
+        body = html.replace('{footer_extra}', footer_with if include_dashboard else '')
+        msg = MIMEMultipart('alternative')
+        msg['Subject'] = subject
+        msg['From'] = user
+        msg['To'] = ','.join(recipients)
+        msg.attach(MIMEText(body, 'html', 'utf-8'))
+        try:
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465) as s:
+                s.login(user, pwd)
+                s.send_message(msg)
+            print(f"  → Email 已發送至 {', '.join(recipients)}")
+        except Exception as e:
+            print(f"  → Email 失敗：{e}")
+    do_send(secret_recipients, include_dashboard=True)
+    do_send(extra_recipients, include_dashboard=False)
 
 # ══════════════════════════════════════════════════════════════════
 #  6. NOTION
