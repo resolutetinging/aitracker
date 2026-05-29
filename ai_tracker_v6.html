@@ -726,7 +726,6 @@ function renderGlossary(hist) {
         title="${hasPat?'儲存分類設定到 GitHub':'請先設定 GitHub Token'}">
         💾 儲存分類
       </button>
-      <button class="gloss-pat-btn" onclick="openEmailModal()" title="設定 Email 收件人">📧</button>
       <button class="gloss-pat-btn" onclick="openPatModal()" title="設定 GitHub Token">⚙️</button>
       <span class="gloss-save-status" id="gloss-save-status"></span>
     </div>`;
@@ -865,7 +864,7 @@ function renderHistory(hist) {
         📤 儲存本週筆記到 GitHub
       </button>
       <span style="font-size:12px;color:var(--muted);" id="notes-save-status"></span>
-      <span style="font-size:12px;color:var(--muted);margin-left:auto;">週日週報會自動整合本週筆記</span>
+      <button class="gloss-pat-btn" onclick="openEmailModal()" title="設定 Daily Email 收件人" style="margin-left:auto;">🕊️</button>
     </div>
     <div class="hist-list">${cards}</div>`;
 }
