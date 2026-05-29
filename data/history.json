@@ -4,47 +4,47 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "Energy use forcing rethink of AI chip design",
-        "layer": "晶片製造",
-        "body": "TSMC 表示，由於能源使用量的增加，AI 晶片設計需要進行重新思考。TSMC 的高級主管表示，該公司正在努力降低晶片的能源消耗，以滿足未來的需求。根據 TSMC 的預測，未來 5 年內，AI 晶片的能源消耗將增加 20%。因此，TSMC 將投資 100 億美元於新型晶片設計和製造技術的研發。",
-        "impact": "這一事件將對 TSMC 和 NVIDIA 等公司的市占比產生影響，可能會導致 TSMC 的市占比增加 10%。同時，這也會影響到 SK Hynix 和 Micron 等公司的封裝業務，可能會導致這些公司的封裝訂單減少 15%。",
+        "title": "TSMC 封裝設計受能效影響",
+        "layer": "封裝層",
+        "body": "TSMC 高層表示，AI晶片的能耗問題正迫使公司重新思考封裝設計，未來的封裝設計將優先考慮能效而非運算能力。TSMC 預計，能效將成為未來晶片設計的主要限制因素。該公司目前正與客戶合作，開發更節能的晶片設計。TSMC 的客戶包括 NVIDIA 和 Google 等大型科技公司，該公司的封裝設計將對整個半導體產業產生重大影響。",
+        "impact": "TSMC 的封裝設計變化可能會影響 NVIDIA 和 Google 等公司的晶片供應，尤其是在能效方面。這可能會導致這些公司的市占率和銷售額發生變化。",
         "rating": "core",
-        "insight": "供應鏈投資者需要關注 TSMC 和 NVIDIA 等公司的市占比變化和封裝業務的發展趨勢。",
-        "source_label": "—",
-        "source": ""
+        "insight": "供應鏈投資者應關注 TSMC 封裝設計的變化和其對半導體產業的影響。",
+        "source_label": "MSN",
+        "source": "https://www.msn.com/en-ca/money/other/energy-use-forcing-rethink-of-ai-chip-design-tsmc-says/ar-AA24iihD"
       }
     ],
     "corp": [
       {
-        "title": "Meta Cloud Business Is 'Definitely on the Table'",
+        "title": "Meta 雲端業務投資",
         "layer": "需求端",
-        "body": "Meta 的 CEO Mark Zuckerberg 表示，Meta 的雲端業務「絕對是在考慮之列」。根據 Zuckerberg 的說法，Meta 的雲端業務將是公司未來的一個重要發展方向。Meta 預計，未來 3 年內，公司的雲端業務將增加 50%。同時，Meta 也將投資 10 億美元於雲端基礎設施的建設。",
-        "impact": "這一事件將對 Amazon 和 Google 等公司的雲端業務產生影響，可能會導致這些公司的市占比減少 5%。同時，這也會影響到 Microsoft 和 IBM 等公司的雲端業務，可能會導致這些公司的市占比增加 10%。",
+        "body": "Meta 的 CEO 馬克·祖克柏表示，公司的雲端業務投資將達 145 億美元，主要用於 AI 相關的資本支出。這一投資將使 Meta 能夠提高其雲端服務的能力和競爭力。Meta 的雲端業務投資也將對其他雲端服務提供商，如 Amazon 和 Google 產生影響。",
+        "impact": "Meta 的雲端業務投資可能會使公司的市占率提高，同時也可能會導致 Amazon 和 Google 等公司的市占率下降。",
         "rating": "core",
-        "insight": "供應鏈投資者需要關注 Meta 和 Amazon 等公司的雲端業務發展趨勢和市占比變化。",
+        "insight": "供應鏈投資者應關注 Meta 的雲端業務投資和其對雲端服務市場的影響。",
         "source_label": "MLQ.ai",
-        "source": "https://news.google.com/"
+        "source": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNOFBXZDlhcWpoTmZ6Qkx1QTFoUmdTbnk3UFdxVDF3MmM2anRScFFvUmhFY0IyQndYUXB4eEd5b05FczJGajJiT2xla2VjVHpjNWVNWHMwV3JzZEZ5OUpIM2FBYWd6WWo2WGFDNWxLQVNvajBqZGVFWW8zMDVKbG14TEVENnBEX2hqemFRWDU5alU1X1FIR3J3MVk3T0h0RXJubTIzUFdYRGpLbVhvM2lDSlV3"
       }
     ],
     "app": [
       {
-        "title": "Aetina Showcases Physical AI Solutions",
-        "layer": "Physical AI",
-        "body": "Aetina 正在展示其 Physical AI 解決方案，該解決方案可以應用於各種領域，包括工業和醫療。根據 Aetina 的說法，Physical AI 解決方案可以提高 20% 的效率和 15% 的準確度。Aetina 預計，未來 2 年內，公司的 Physical AI 解決方案將增加 30%。",
-        "impact": "這一事件將對 Anthropic 和 OpenAI 等公司的 Physical AI 業務產生影響，可能會導致這些公司的市占比減少 10%。同時，這也會影響到 Google 和 Microsoft 等公司的 Physical AI 業務，可能會導致這些公司的市占比增加 15%。",
+        "title": "Aetina 展示 Physical AI 解決方案",
+        "layer": "Agentic AI",
+        "body": "Aetina 公司在 COMPUTEX 2026 展示了其 Physical AI 和 Vision AI 解決方案，旨在提供更好的 AI 能力和應用。Aetina 的 Physical AI 解決方案可以應用於各種領域，如工業、醫療和交通等。",
+        "impact": "Aetina 的 Physical AI 解決方案可能會對其他 AI 公司，如 Anthropic 和 OpenAI 產生影響，尤其是在 Physical AI 領域。",
         "rating": "core",
-        "insight": "供應鏈投資者需要關注 Aetina 和 Anthropic 等公司的 Physical AI 業務發展趨勢和市占比變化。",
+        "insight": "供應鏈投資者應關注 Aetina 的 Physical AI 解決方案和其對 AI 產業的影響。",
         "source_label": "Embedded Computing Design",
-        "source": "https://news.google.com/"
+        "source": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNWDV6ZzJpelhqU3RqOVZQclBNR18wODNvYzBOSXR0YVM4eGhXNWRyd0pEZW53X2s4eGdWS3U1a0dXRm5mOHp3VXlnUzVnX1YzNXNsaXNkbnFocHgzTjExVGNkZXl1WTZwNDBYd2txR3ZuNjBiV2Iwd3IycVpBWjJvMHgzMWZSN2hIa1dRcjVrUXZmUVlxR3pYM1N4OEk5TzNETWxYUGdDTGxLM1podEtZU0pmTFRYai1LWFhiLWswVS1wQzdRbG1YZFZGampucVpkR2VHMFVCS3IzanJlcUt4X2FpWTM2WDZ0"
       }
     ],
     "glossary_new": [
       {
         "term": "on-prem",
         "full": "on-premises",
-        "def": "在本地設置和管理的系統或服務",
-        "why": "on-prem 的概念在雲端計算中很重要，因為它涉及到資料的安全性和控制權",
-        "category": "hardware"
+        "def": "指在用戶的本地伺服器或資料中心中部署和運行的系統或應用程序。",
+        "why": "因為 Aetina 的 Physical AI 解決方案可以應用於各種領域，如工業、醫療和交通等，需要在用戶的本地伺服器或資料中心中部署和運行。",
+        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
