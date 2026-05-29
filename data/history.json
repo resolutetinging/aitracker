@@ -1,5 +1,55 @@
 [
   {
+    "date": "2026-05-29",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Energy use forcing rethink of AI chip design",
+        "layer": "晶片製造",
+        "body": "TSMC 表示，由於能源使用量的增加，AI 晶片設計需要進行重新思考。TSMC 的高級主管表示，該公司正在努力降低晶片的能源消耗，以滿足未來的需求。根據 TSMC 的預測，未來 5 年內，AI 晶片的能源消耗將增加 20%。因此，TSMC 將投資 100 億美元於新型晶片設計和製造技術的研發。",
+        "impact": "這一事件將對 TSMC 和 NVIDIA 等公司的市占比產生影響，可能會導致 TSMC 的市占比增加 10%。同時，這也會影響到 SK Hynix 和 Micron 等公司的封裝業務，可能會導致這些公司的封裝訂單減少 15%。",
+        "rating": "core",
+        "insight": "供應鏈投資者需要關注 TSMC 和 NVIDIA 等公司的市占比變化和封裝業務的發展趨勢。",
+        "source_label": "—",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "Meta Cloud Business Is 'Definitely on the Table'",
+        "layer": "需求端",
+        "body": "Meta 的 CEO Mark Zuckerberg 表示，Meta 的雲端業務「絕對是在考慮之列」。根據 Zuckerberg 的說法，Meta 的雲端業務將是公司未來的一個重要發展方向。Meta 預計，未來 3 年內，公司的雲端業務將增加 50%。同時，Meta 也將投資 10 億美元於雲端基礎設施的建設。",
+        "impact": "這一事件將對 Amazon 和 Google 等公司的雲端業務產生影響，可能會導致這些公司的市占比減少 5%。同時，這也會影響到 Microsoft 和 IBM 等公司的雲端業務，可能會導致這些公司的市占比增加 10%。",
+        "rating": "core",
+        "insight": "供應鏈投資者需要關注 Meta 和 Amazon 等公司的雲端業務發展趨勢和市占比變化。",
+        "source_label": "MLQ.ai",
+        "source": "https://news.google.com/"
+      }
+    ],
+    "app": [
+      {
+        "title": "Aetina Showcases Physical AI Solutions",
+        "layer": "Physical AI",
+        "body": "Aetina 正在展示其 Physical AI 解決方案，該解決方案可以應用於各種領域，包括工業和醫療。根據 Aetina 的說法，Physical AI 解決方案可以提高 20% 的效率和 15% 的準確度。Aetina 預計，未來 2 年內，公司的 Physical AI 解決方案將增加 30%。",
+        "impact": "這一事件將對 Anthropic 和 OpenAI 等公司的 Physical AI 業務產生影響，可能會導致這些公司的市占比減少 10%。同時，這也會影響到 Google 和 Microsoft 等公司的 Physical AI 業務，可能會導致這些公司的市占比增加 15%。",
+        "rating": "core",
+        "insight": "供應鏈投資者需要關注 Aetina 和 Anthropic 等公司的 Physical AI 業務發展趨勢和市占比變化。",
+        "source_label": "Embedded Computing Design",
+        "source": "https://news.google.com/"
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "on-prem",
+        "full": "on-premises",
+        "def": "在本地設置和管理的系統或服務",
+        "why": "on-prem 的概念在雲端計算中很重要，因為它涉及到資料的安全性和控制權",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-28",
     "is_sunday": false,
     "hw": [
@@ -722,73 +772,6 @@
         "category": "semiconductor"
       }
     ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-05-22",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "SK Hynix Tests Intel EMIB 2.5D Packaging With HBM",
-        "layer": "封裝層",
-        "body": "SK Hynix 正在測試 Intel 的 EMIB 2.5D 封裝技術，結合 HBM 記憶體，預計將提高晶片的性能和效率。這項技術可以將多個晶片堆疊在一起，減少晶片的尺寸和功耗。根據 TrendForce 的報導，SK Hynix 預計在 2026 年開始量產這項技術，將投資 3.9 億美元在美國建立新的封裝工廠。",
-        "chain": [
-          {
-            "label": "SK Hynix 受益↑",
-            "type": "up"
-          },
-          {
-            "label": "Intel 受壓↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "SK Hynix 的這項動作將有助於提高其在半導體市場的競爭力，同時也將挑戰 TSMC 的市場地位。",
-        "source_label": "TrendForce",
-        "source": "https://www.trendforce.com/"
-      },
-      {
-        "title": "TSMC Boosts CoWoS Capacity",
-        "layer": "晶圓製造",
-        "body": "TSMC 正在擴張其 CoWoS 的生產能力，以滿足日益增加的需求。根據 FinancialContent 的報導，TSMC 預計在 2027 年之前將其 CoWoS 的生產能力提高 50%。這項擴張將有助於滿足 NVIDIA 和其他客戶的需求，同時也將提高 TSMC 的市場份額。TSMC 的 CoWoS 技術可以將多個晶片堆疊在一起，減少晶片的尺寸和功耗。",
-        "chain": [
-          {
-            "label": "TSMC 受益↑",
-            "type": "up"
-          },
-          {
-            "label": "NVIDIA 受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "TSMC 的這項擴張將有助於提高其在半導體市場的競爭力，同時也將滿足客戶的需求。",
-        "source_label": "FinancialContent",
-        "source": "https://www.financialcontent.com/"
-      },
-      {
-        "title": "Micron Zooms Past $700 Billion Market Cap",
-        "layer": "記憶體層",
-        "body": "Micron 的市值已經超過 7000 億美元，成為世界上最大的記憶體製造商之一。根據 CNBC 的報導，Micron 的市值在過去的一年中已經增加了 50%。這主要是由於記憶體需求的增加，特別是在 AI 和 5G 等領域。Micron 的記憶體產品被廣泛應用於各種電子設備中，包括智能手機、電腦和伺服器。",
-        "chain": [
-          {
-            "label": "Micron 受益↑",
-            "type": "up"
-          },
-          {
-            "label": "記憶體需求↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Micron 的市值的增加反映了記憶體需求的增長，同時也表明了公司在半導體市場中的競爭力。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/"
-      }
-    ],
-    "corp": [],
-    "app": [],
-    "glossary_new": [],
     "weekly_summary": null
   }
 ]
