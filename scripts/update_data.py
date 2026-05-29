@@ -398,6 +398,17 @@ def send_email(data):
     user = os.environ.get('GMAIL_USER','').replace('\xa0','').replace(' ','').strip()
     pwd  = os.environ.get('GMAIL_APP_PASSWORD','').replace('\xa0','').replace(' ','').strip()
     to   = os.environ.get('NOTIFY_EMAIL', user).replace('\xa0','').replace(' ','').strip()
+    # Override with data/email_config.json if present
+    cfg_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'email_config.json')
+    if os.path.exists(cfg_path):
+        try:
+            with open(cfg_path, 'r', encoding='utf-8') as f:
+                cfg = json.load(f)
+            recipients = [r.strip() for r in cfg.get('recipients', []) if r.strip()]
+            if recipients:
+                to = ','.join(recipients)
+        except Exception:
+            pass
     if not user or not pwd or not to:
         print("  → Email 未設定，略過。"); return
 

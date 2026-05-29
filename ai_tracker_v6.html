@@ -348,6 +348,20 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
   </div>
 </div>
 
+<!-- Email recipients modal -->
+<div id="email-modal" class="pat-modal hidden" onclick="closeEmailModal()">
+  <div class="pat-box" onclick="event.stopPropagation()">
+    <div class="pat-title">📧 Daily Email 收件人</div>
+    <div class="pat-sub">每行或逗號分隔一個 Email，每日自動推送 AI 動態給這些收件人。<br>需先設定 GitHub Token 才能儲存。</div>
+    <textarea class="pat-input" id="email-recipients-input" style="min-height:90px;resize:vertical;font-family:inherit;" placeholder="example@gmail.com&#10;another@gmail.com"></textarea>
+    <div class="pat-row">
+      <button class="pat-save-btn" onclick="saveEmailConfig()">儲存收件人</button>
+      <button class="pat-cancel-btn" onclick="closeEmailModal()">取消</button>
+    </div>
+    <div id="email-save-status" style="font-size:12px;color:var(--muted);margin-top:8px;min-height:16px;"></div>
+  </div>
+</div>
+
 <!-- PAT modal -->
 <div id="pat-modal" class="pat-modal hidden" onclick="closePatModal()">
   <div class="pat-box" onclick="event.stopPropagation()">
@@ -712,6 +726,7 @@ function renderGlossary(hist) {
         title="${hasPat?'儲存分類設定到 GitHub':'請先設定 GitHub Token'}">
         💾 儲存分類
       </button>
+      <button class="gloss-pat-btn" onclick="openEmailModal()" title="設定 Email 收件人">📧</button>
       <button class="gloss-pat-btn" onclick="openPatModal()" title="設定 GitHub Token">⚙️</button>
       <span class="gloss-save-status" id="gloss-save-status"></span>
     </div>`;
@@ -1006,6 +1021,49 @@ async function saveGlossConfig() {
     status.textContent = `❌ 網路錯誤：${e.message}`;
   }
   btn.disabled = false;
+}
+
+// Email recipients modal
+const EMAIL_CFG_PATH = 'data/email_config.json';
+
+async function openEmailModal() {
+  const cfg = await fetchEmailConfig();
+  document.getElementById('email-recipients-input').value = (cfg.recipients || []).join('\n');
+  document.getElementById('email-save-status').textContent = '';
+  document.getElementById('email-modal').classList.remove('hidden');
+}
+function closeEmailModal() { document.getElementById('email-modal').classList.add('hidden'); }
+
+async function fetchEmailConfig() {
+  try {
+    const res = await fetch(`./data/email_config.json?v=${Date.now()}`);
+    if (res.ok) return await res.json();
+  } catch(e) {}
+  return {recipients: []};
+}
+
+async function saveEmailConfig() {
+  const token = localStorage.getItem('gh_pat');
+  if (!token) { closeEmailModal(); openPatModal(); return; }
+  const raw = document.getElementById('email-recipients-input').value;
+  const recipients = raw.split(/[\n,]/).map(s => s.trim()).filter(Boolean);
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify({recipients}, null, 2))));
+  const statusEl = document.getElementById('email-save-status');
+  statusEl.textContent = '儲存中…';
+  try {
+    const chk = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${EMAIL_CFG_PATH}`,
+      {headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github+json'}});
+    const sha = chk.ok ? (await chk.json()).sha : undefined;
+    const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${EMAIL_CFG_PATH}`, {
+      method:'PUT',
+      headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
+      body:JSON.stringify({message:'📧 Update email recipients', content, ...(sha?{sha}:{})})
+    });
+    if (res.ok) {
+      statusEl.textContent = `✓ 已儲存 ${recipients.length} 位收件人`;
+      setTimeout(() => closeEmailModal(), 1500);
+    } else { statusEl.textContent = '❌ 儲存失敗，請確認 Token 權限'; }
+  } catch(e) { statusEl.textContent = '❌ 網路錯誤'; }
 }
 
 // PAT modal
