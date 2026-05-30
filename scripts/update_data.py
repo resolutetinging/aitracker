@@ -235,7 +235,9 @@ def make_prompt(news_context, recent_titles=None):
 {{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句含數字摘要","impact":"2句說明此事件對哪些具體公司/國家/供應商的影響及方向，例：SK Hynix 與 Intel 合作可能分流 TSMC CoWoS 封裝訂單，TSMC 於 HBM 整合封裝的市占比預計承壓。","rating":"core","insight":"供應鏈投資者視角一句話","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
 
 規則：
+- **每條 item 只能描述一則獨立新聞事件**；若原始新聞涵蓋兩則不相關事件，必須拆成兩條分別列入，絕對禁止合併到同一個 title/body
 - hw 僅限硬體供應鏈；各條目數字不得跨條目複製；已知術語勿重列:{known}
+- corp 僅限 CSP（MS/Google/Meta/Amazon/AWS）的 CapEx 決策、AI 投資、財報訊號、平台策略；股價漲跌、一般企業財報不屬於 corp，應評為 noise
 - 全程繁體中文，勿夾雜其他語言；「晶片」非「芯片」，「記憶體」非「内存」
 - body 欄位嚴禁使用「...」「…」等省略符號，資訊不確定請直接省略或改寫成完整句子
 - body 必須包含至少 3 句完整陳述，每句需含具體數字、時間點、公司名稱或技術細節，不得泛泛而談
