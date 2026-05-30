@@ -1,5 +1,65 @@
 [
   {
+    "date": "2026-05-30",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "無相關新聞",
+        "layer": "noise",
+        "body": "今日無相關半導體供應鏈新聞，無法提供具體數字或技術細節",
+        "impact": "無影響",
+        "rating": "noise",
+        "insight": "供應鏈投資者無需關注",
+        "source_label": "—",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "Dell 股價上漲",
+        "layer": "需求端",
+        "body": "Dell 股價在 AI 銷售增長的帶動下上漲， Anthropic 超越 OpenAI 成為世界上最有價值的 AI 啟動公司，Palo Alto Networks 股價上漲 4.1%",
+        "impact": "Dell 和 Anthropic 受益，OpenAI 市場份額可能下降",
+        "rating": "core",
+        "insight": "CSP 資本支出增加可能帶動相關企業的發展",
+        "source_label": "Yahoo Finance",
+        "source": "https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-dell-stock-soars-on-ai-sales-anthropic-overtakes-openai-as-worlds-most-valuable-ai-startup-100000518.html"
+      },
+      {
+        "title": "Palo Alto Networks 股價上漲",
+        "layer": "CapEx 決策",
+        "body": "Palo Alto Networks 股價上漲 4.1% 因為公司宣佈了一項戰略合作，Dell 股價上漲可能與 AI 銷售增長有關",
+        "impact": "Palo Alto Networks 和 Dell 受益，其他網絡安全企業可能面臨競爭壓力",
+        "rating": "core",
+        "insight": "CSP 資本支出增加可能帶動相關企業的發展",
+        "source_label": "Yahoo Finance",
+        "source": "https://finance.yahoo.com/markets/stocks/articles/why-palo-alto-networks-panw-035000567.html"
+      }
+    ],
+    "app": [
+      {
+        "title": "Shift AI 訓練數據",
+        "layer": "Agentic AI",
+        "body": "Shift 這家 AI 訓練數據初創公司將為用戶提供免費的家居清潔服務，以此來收集數據並訓練未來的機器人， Anthropic 的 Claude 模型更新為 Opus 4.8，強調了模型的誠實性",
+        "impact": "Shift 和 Anthropic 受益，其他 AI 初創公司可能面臨競爭壓力",
+        "rating": "core",
+        "insight": "Agentic AI 和 Physical AI 的發展可能帶動相關企業的發展",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/ai-artificial-intelligence/939765/ai-training-data-startup-shift-free-cleaning"
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Opus 4.8",
+        "full": "Claude Opus 4.8",
+        "def": "Anthropic 的 Claude 模型更新版本，強調了模型的誠實性",
+        "why": "因為 Anthropic 的 Claude 模型更新為 Opus 4.8，強調了模型的誠實性",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-29",
     "is_sunday": false,
     "hw": [
@@ -602,176 +662,5 @@
       }
     ],
     "weekly_summary": "【硬體供應鏈】SK Hynix 封裝投資和 TSMC CoWoS 供給緊張是本週最重要的產能和技術變動。\n【CSP 投資】Google 和 Amazon 的資本支出是本週最關鍵的 CapEx 動作。\n【應用落地】Agentic AI 和 Physical AI 的應用是本週最具體的進展。\n【下週預測】最值得追蹤的一個指標或事件是 TSMC 的 CoWoS 產能增長。\n【筆記整合】本週的核心洞察是 SK Hynix 和 TSMC 在封裝技術和產能上的競爭將推動硬體供應鏈的發展。"
-  },
-  {
-    "date": "2026-05-23",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "TSMC擴張CoWoS能力",
-        "layer": "封裝層",
-        "body": "TSMC預計在2026年至2027年間擴張CoWoS能力，以滿足NVIDIA對先進封裝的需求。TSMC的CoWoS封裝技術可以將多個晶片堆疊在一起，提高晶片的性能和效率。據報導，TSMC的CoWoS封裝能力將在2027年達到24 HBM堆疊的水平。同時，SK Hynix也在投資封裝工廠，以滿足HBM的需求。SK Hynix的封裝工廠將位於美國，投資額達3.9億美元。",
-        "chain": [
-          {
-            "label": "TSMC",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "TSMC和SK Hynix的封裝能力擴張將滿足NVIDIA和其他公司對先進封裝的需求，推動半導體產業的發展。",
-        "source_label": "TrendForce",
-        "source": "https://www.trendforce.com/"
-      },
-      {
-        "title": "SK Hynix投資封裝工廠",
-        "layer": "封裝層",
-        "body": "SK Hynix投資3.9億美元在美國建造封裝工廠，以滿足HBM的需求。這個工廠將是SK Hynix在美國的第一個封裝工廠，將為公司的客戶提供更好的服務。SK Hynix的封裝工廠將使用Intel的EMIB 2.5D封裝技術，以提高晶片的性能和效率。同時，SK Hynix也在測試Intel的EMIB 2.5D封裝技術，以滿足HBM的需求。",
-        "chain": [
-          {
-            "label": "SK Hynix",
-            "type": "up"
-          },
-          {
-            "label": "Intel",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "SK Hynix的封裝工廠投資將推動公司的業務發展，滿足客戶對HBM的需求。",
-        "source_label": "Tom's Hardware",
-        "source": "https://www.tomshardware.com/"
-      },
-      {
-        "title": "TSMC的CoWoS封裝技術",
-        "layer": "封裝層",
-        "body": "TSMC的CoWoS封裝技術可以將多個晶片堆疊在一起，提高晶片的性能和效率。這種技術將在2027年達到24 HBM堆疊的水平。TSMC的CoWoS封裝技術將滿足NVIDIA對先進封裝的需求，推動半導體產業的發展。同時，TSMC也在擴張CoWoS能力，以滿足客戶的需求。",
-        "chain": [
-          {
-            "label": "TSMC",
-            "type": "up"
-          },
-          {
-            "label": "NVIDIA",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "TSMC的CoWoS封裝技術將推動半導體產業的發展，滿足客戶對先進封裝的需求。",
-        "source_label": "FinancialContent",
-        "source": "https://www.financialcontent.com/"
-      },
-      {
-        "title": "無相關新聞",
-        "layer": "封裝層",
-        "body": "今日無相關新聞。",
-        "chain": [],
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google、Microsoft、Meta和Amazon資本支出排名",
-        "layer": "需求端",
-        "body": "Google、Microsoft、Meta和Amazon的資本支出排名將在2026年發布。這些公司的資本支出將推動半導體產業的發展，滿足客戶對先進技術的需求。Google的資本支出將達到100億美元，Microsoft的資本支出將達到80億美元，Meta的資本支出將達到60億美元，Amazon的資本支出將達到50億美元。",
-        "chain": [
-          {
-            "label": "Google",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Google、Microsoft、Meta和Amazon的資本支出排名將推動半導體產業的發展，滿足客戶對先進技術的需求。",
-        "source_label": "FinancialContent",
-        "source": "https://www.financialcontent.com/"
-      },
-      {
-        "title": "CSP資本支出預計達830億美元",
-        "layer": "需求端",
-        "body": "CSP資本支出預計在2026年達到830億美元。這將推動半導體產業的發展，滿足客戶對先進技術的需求。CSP的資本支出將主要用於封裝和測試，滿足客戶對HBM和其他先進技術的需求。",
-        "chain": [
-          {
-            "label": "CSP",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "CSP的資本支出將推動半導體產業的發展，滿足客戶對先進技術的需求。",
-        "source_label": "TrendForce",
-        "source": "https://www.trendforce.com/"
-      },
-      {
-        "title": "無相關新聞",
-        "layer": "需求端",
-        "body": "今日無相關新聞。",
-        "chain": [],
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI應用",
-        "layer": "Agentic AI",
-        "body": "Agentic AI應用將在2026年推出。這種技術將可以讓AI系統更好地理解和應對用戶的需求。Agentic AI應用將主要用於客戶服務和銷售，滿足客戶對更好服務的需求。",
-        "chain": [
-          {
-            "label": "Agentic AI",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Agentic AI應用將推動AI產業的發展，滿足客戶對更好服務的需求。",
-        "source_label": "FinancialContent",
-        "source": "https://www.financialcontent.com/"
-      },
-      {
-        "title": "Physical AI應用",
-        "layer": "Physical AI",
-        "body": "Physical AI應用將在2026年推出。這種技術將可以讓AI系統更好地理解和應對物理世界。Physical AI應用將主要用於工業和醫療，滿足客戶對更好服務的需求。",
-        "chain": [
-          {
-            "label": "Physical AI",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Physical AI應用將推動AI產業的發展，滿足客戶對更好服務的需求。",
-        "source_label": "TrendForce",
-        "source": "https://www.trendforce.com/"
-      },
-      {
-        "title": "無相關新聞",
-        "layer": "Agentic AI",
-        "body": "今日無相關新聞。",
-        "chain": [],
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "CoWoS",
-        "full": "Chip-on-Wafer-on-Substrate",
-        "def": "一種封裝技術，將多個晶片堆疊在一起，提高晶片的性能和效率。",
-        "why": "CoWoS技術可以提高晶片的性能和效率，滿足客戶對先進技術的需求。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
   }
 ]
