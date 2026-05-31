@@ -200,53 +200,25 @@ def load_notes():
 #  2. PROMPT
 # ══════════════════════════════════════════════════════════════════
 def make_prompt(news_context, recent_titles=None):
-    known = "、".join(KNOWN_TERMS)
     notes = load_notes() if IS_SUNDAY else {}
     notes_text = "; ".join(f"{d}:{n}" for d, n in sorted(notes.items()) if n.strip()) if notes else ""
-
-    recent_str = (
-        "【前三日已報道，嚴禁重複】以下主題若今日無明確新進展（新數字/新事件/新公司動作），"
-        "請直接評為 noise，不得生成相似內容，不得以改寫或重述替代：\n"
-        + "\n".join(f"・{t}" for t in recent_titles)
-    ) if recent_titles else ""
-    notes_context = ('【本週筆記參考（勿逐字複製，請融入分析寫成洞察）】' + notes_text) if notes_text else ''
-    notes_line = '\\n【筆記整合】根據本週筆記寫出一句核心洞察（不得原文照抄）' if notes_text else ''
     weekly_val = (
-        '"【硬體供應鏈】CoWoS/HBM/OSAT本週最重要產能或技術變動（一句話）'
-        '\\n【CSP投資】MS/Google/Meta/Amazon最關鍵CapEx動作（一句話）'
-        '\\n【應用落地】Agentic AI/Physical AI本週最具體進展（一句話）'
-        '\\n【下週預測】最值得追蹤的一個指標或事件（一句話）'
-        + notes_line + '"'
+        '"hw weekly summary | corp weekly summary | app weekly summary | next week forecast'
+        + (' | notes insight' if notes_text else '') + '"'
         if IS_SUNDAY else 'null'
     )
+    recent = ("NO-REPEAT:" + ";".join(recent_titles[:4])) if recent_titles else ""
+    notes_ctx = ("NOTES:" + notes_text[:200]) if notes_text else ""
+    news_short = news_context[:2000]
 
-    # 新聞截斷至 2500 字元（4500 容易超 Groq 12k TPM 限制）
-    news_short = news_context[:2500]
-
-    return f"""AI產業供應鏈分析師。根據新聞輸出純JSON（直接從{{開始）。
-
-新聞：{news_short}
-{recent_str}
-{notes_context}
-
-分類：hw=半導體/封裝(CoWoS/OSAT/HBM)/晶片製造；corp=CSP(MS/Google/Meta/Amazon)CapEx/投資；app=Agentic AI/Physical AI/VLA/推論落地
-
-格式（每區2-4條，無相關新聞則1條noise）：
-{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句含數字摘要","impact":"2句說明此事件對哪些具體公司/國家/供應商的影響及方向，例：SK Hynix 與 Intel 合作可能分流 TSMC CoWoS 封裝訂單，TSMC 於 HBM 整合封裝的市占比預計承壓。","rating":"core","insight":"供應鏈投資者視角一句話","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
-
-規則：
-- **每條 item 只能描述一則獨立新聞事件**；若原始新聞涵蓋兩則不相關事件，必須拆成兩條分別列入，絕對禁止合併到同一個 title/body
-- hw 僅限硬體供應鏈；各條目數字不得跨條目複製；已知術語勿重列:{known}
-- corp 僅限 CSP（MS/Google/Meta/Amazon/AWS）的 CapEx 決策、AI 投資、財報訊號、平台策略；股價漲跌、一般企業財報不屬於 corp，應評為 noise
-- 全程繁體中文，勿夾雜其他語言；「晶片」非「芯片」，「記憶體」非「内存」
-- body 欄位嚴禁使用「...」「…」等省略符號，資訊不確定請直接省略或改寫成完整句子
-- body 必須包含至少 3 句完整陳述，每句需含具體數字、時間點、公司名稱或技術細節，不得泛泛而談
-- 若某條目的原始新聞資訊不足以寫出 3 句有內容的句子，請將該條評為 noise 並簡短說明，不要用空話填充
-- noise 條目只在該分區完全無相關新聞時才加入（限 1 條）；若已有 core 或 opp 條目，不得再混入 noise
-- 【前三日已報道】清單中的主題：無新進展則必須 noise；絕不允許用改寫、重述、補充細節等方式「偽裝成新內容」通過審查
-- impact 欄位：必須點名受影響的具體公司/國家/供應商，並說明影響方向（漲/跌/分流/訂單轉移等）；嚴禁空泛描述如「整體受益」「產業影響」
-- glossary_new 欄位：**必填，不得為空陣列**。從當日新聞中挑出 1-3 個讀者可能不熟悉的技術術語或縮寫（如 on-prem、bare-metal、CoWoS-L、Trainium、ASIC 等），逐一填入 term/full/def/why/category；已知術語（{known}）不得重複列入
-- source 欄位必須直接使用新聞列表中「SOURCE_URL:」後的完整 URL；若該則新聞無 SOURCE_URL，則 source 填 ""，source_label 填 "—"；絕對禁止自行推測或捏造任何 URL"""
+    return f"""Analyze news, output JSON starting with {{.
+NEWS:{news_short}
+{recent}
+{notes_ctx}
+hw=semiconductor/packaging/HBM/CoWoS corp=CSP-CapEx/investment app=AgenticAI/PhysicalAI
+Output:{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[item],"corp":[item],"app":[item],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":""}}],"weekly_summary":{weekly_val}}}
+item={{"title":"zh-TW","layer":"","body":"3 sentences with numbers","impact":"name companies+direction","rating":"core|opp|noise","insight":"1 sentence","source_label":"","source":"SOURCE_URL value or empty"}}
+Rules:1item=1story,split if merged. hw=hardware only. corp=CSP CapEx only(no stock price). body=3 sentences with numbers. noise only if no relevant news. glossary_new=1-3 new terms(required). All output in Traditional Chinese."""
 
 # ══════════════════════════════════════════════════════════════════
 #  3. GROQ API + CHAIN QUALITY FIX
