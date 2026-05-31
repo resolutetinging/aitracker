@@ -211,14 +211,31 @@ def make_prompt(news_context, recent_titles=None):
     notes_ctx = ("NOTES:" + notes_text[:200]) if notes_text else ""
     news_short = news_context[:2000]
 
-    return f"""Analyze news, output JSON starting with {{.
-NEWS:{news_short}
+    return f"""You are an AI supply chain analyst. Analyze the news below and output pure JSON (start directly with {{).
+
+NEWS:
+{news_short}
 {recent}
 {notes_ctx}
-hw=semiconductor/packaging/HBM/CoWoS corp=CSP-CapEx/investment app=AgenticAI/PhysicalAI
-Output:{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[item],"corp":[item],"app":[item],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":""}}],"weekly_summary":{weekly_val}}}
-item={{"title":"zh-TW","layer":"","body":"3 sentences with numbers","impact":"name companies+direction","rating":"core|opp|noise","insight":"1 sentence","source_label":"","source":"SOURCE_URL value or empty"}}
-Rules:1item=1story,split if merged. hw=hardware only. corp=CSP CapEx only(no stock price). body=3 sentences with numbers. noise only if no relevant news. glossary_new=1-3 new terms(required). All output in Traditional Chinese."""
+
+CATEGORIES:
+- hw: semiconductor/packaging (CoWoS/OSAT/HBM)/chip manufacturing only
+- corp: CSP (Microsoft/Google/Meta/Amazon/AWS) CapEx, AI investment, earnings signals only — NOT stock prices
+- app: Agentic AI, Physical AI, VLA, inference deployment
+
+OUTPUT FORMAT:
+{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[ITEMS],"corp":[ITEMS],"app":[ITEMS],"glossary_new":[{{"term":"","full":"","def":"2-3 sentences","why":"why it matters","category":"semiconductor|ai_technique|hardware|role"}}],"weekly_summary":{weekly_val}}}
+
+Each ITEM: {{"title":"Traditional Chinese title","layer":"sublayer","body":"EXACTLY 3 sentences each with specific numbers/dates/company names","impact":"Name specific companies/countries affected and direction (e.g. TSMC CoWoS capacity pressure, SK Hynix ASP up)","rating":"core|opp|noise","insight":"1-sentence investor takeaway","source_label":"source name","source":"use SOURCE_URL value or empty string"}}
+
+RULES:
+- 2-4 items per section; if no relevant news → 1 noise item only
+- One item = one story; if source mixes 2 unrelated stories, split into 2 items
+- body: 3 complete sentences, each must contain a specific number, date, or company name — no vague statements
+- impact: must name specific companies/countries and explain direction; never write vague phrases like "industry benefits"
+- glossary_new: required, 1-3 terms from today's news that readers may not know
+- source: copy verbatim from SOURCE_URL in the news; never fabricate URLs
+- All titles, body, impact, insight in Traditional Chinese (zh-TW)"""
 
 # ══════════════════════════════════════════════════════════════════
 #  3. GROQ API + CHAIN QUALITY FIX
