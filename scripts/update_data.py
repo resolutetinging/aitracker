@@ -313,27 +313,30 @@ def fix_chains(data):
         print(f"  → chain 修正失敗：{e}")
 
 def call_groq(prompt):
+    from groq import APIStatusError as GroqAPIStatusError
     client = Groq(api_key=os.environ['GROQ_API_KEY'])
-    response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[
-            {"role":"system","content":(
-                "你是 AI 產業供應鏈分析師，專注半導體供應鏈（HBM/CoWoS/OSAT）、CSP 資本支出、Agentic/Physical AI 落地。"
-                "只輸出純 JSON，不加任何說明或 markdown 格式。"
-                "hw 分類僅限半導體/封裝/記憶體供應鏈，應用層或軟體新聞絕對不能放入 hw。"
-                "每個條目的具體數字必須來自該條目本身的新聞，嚴禁跨條目複製數字或細節。"
-                "若某維度今日無相關新聞，回傳 1 條 noise 評級的條目，不要憑空生成內容。"
-                "每條 body 必須包含至少 3 句，每句需含具體數字、時間點或技術細節；資訊不足請評為 noise，不要用空話填充。"
-                "impact 欄位必須點名受影響的具體公司名（如 TSMC、SK Hynix、Micron）或國家/地區，並說明影響方向（訂單轉移、市占變化、ASP漲跌、產能吃緊等），嚴禁空泛描述。"
-                "glossary_new 必須從當日新聞挑出 1-3 個新術語填入，絕對不可回傳空陣列 []。"
-                "user 訊息中標示【前三日已報道，嚴禁重複】的主題，若今日新聞中沒有該主題的明確新進展，絕對不可生成該主題的條目，直接評為 noise 或略過。"
-                "全程繁體中文：晶片（非芯片）、記憶體（非内存）、處理器（非处理器）。"
-            )},
-            {"role":"user","content":prompt}
-        ],
-        temperature=0.45,
-        max_tokens=2000,
-    )
+    sys_msg = "你是AI供應鏈分析師。只輸出純JSON，不加說明。全程繁體中文：晶片/記憶體。"
+    models = ["llama-3.3-70b-versatile", "llama-3.1-8b-instant"]
+    response = None
+    for model in models:
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                messages=[
+                    {"role":"system","content":sys_msg},
+                    {"role":"user","content":prompt}
+                ],
+                temperature=0.45,
+                max_tokens=2000,
+            )
+            if model != models[0]:
+                print(f"  → 使用備用模型 {model}")
+            break
+        except GroqAPIStatusError as e:
+            if e.status_code == 413 and model != models[-1]:
+                print(f"  → {model} 超出 TPM，切換備用模型…")
+                continue
+            raise
     raw = response.choices[0].message.content.strip()
     if raw.startswith('```'):
         raw = raw.split('\n',1)[-1].rsplit('```',1)[0].strip()
