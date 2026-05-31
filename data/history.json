@@ -1,5 +1,69 @@
 [
   {
+    "date": "2026-05-31",
+    "is_sunday": true,
+    "hw": [
+      {
+        "title": "晶片記憶體短缺",
+        "layer": "硬體供應鏈",
+        "body": "高頻寬記憶體是 AI 晶片的瓶頸，需求量大，Micron 的市值曾一度超過 1 萬億美元。目前，高頻寬記憶體的產能不足，導致 AI 晶片的生產受到限制。預計未來幾年，高頻寬記憶體的需求將繼續增加，達到 10% 的年增率。",
+        "impact": "Micron、AI 晶片製造商",
+        "rating": "core",
+        "insight": "高頻寬記憶體的短缺將對 AI 晶片的生產產生重大影響",
+        "source_label": "Scientific American",
+        "source": "https://www.scientificamerican.com/article/high-bandwidth-memory-is-a-bottleneck-for-ai-chips/"
+      }
+    ],
+    "corp": [
+      {
+        "title": "AI 基礎設施投資",
+        "layer": "CSP 資本支出",
+        "body": "AI 基礎設施的投資正在增加，投資者正在關注 AI 的發展。目前，AI 基礎設施的投資已經超過 100 億美元，預計未來幾年將繼續增加。AI 基礎設施的投資將對 CSP 公司的資本支出產生重大影響。",
+        "impact": "CSP 公司、AI 基礎設施投資者",
+        "rating": "opp",
+        "insight": "AI 基礎設施的投資將推動 CSP 公司的發展",
+        "source_label": "Yahoo Finance",
+        "source": "https://finance.yahoo.com/markets/stocks/articles/ai-hyperscalers-taking-debt"
+      }
+    ],
+    "app": [
+      {
+        "title": "AI 應用",
+        "layer": "App/AI",
+        "body": "AI 應用的發展正在增加，目前已經有多種 AI 應用被開發出來。預計未來幾年，AI 應用的需求將繼續增加，達到 20% 的年增率。AI 應用的發展將對各個行業產生重大影響。",
+        "impact": "各個行業、AI 應用開發商",
+        "rating": "core",
+        "insight": "AI 應用的發展將推動各個行業的變革",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/ai-artificial-intelligence/938844/ai-tiktok-shop-blackface-shein-dropshipping"
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "高頻寬記憶體",
+        "full": "High-Bandwidth Memory",
+        "def": "一種高頻寬的記憶體技術，用于 AI 晶片的資料傳輸",
+        "why": "高頻寬記憶體是 AI 晶片的瓶頸，需求量大",
+        "category": "硬體供應鏈"
+      },
+      {
+        "term": "AI 基礎設施",
+        "full": "AI Infrastructure",
+        "def": "用于支持 AI 應用的基礎設施，包括資料中心、伺服器等",
+        "why": "AI 基礎設施的投資正在增加，對 CSP 公司的資本支出產生重大影響",
+        "category": "CSP 資本支出"
+      },
+      {
+        "term": "EMIB-T",
+        "full": "Embedded Multi-Interconnect Bridge-T",
+        "def": "一種封裝技術，用于提高 AI 晶片的資料傳輸速度",
+        "why": "EMIB-T 是 EMIB 的升級版，重點升級在 TSV 垂直供電、HBM4/4e 相容性與更高整合密度",
+        "category": "硬體供應鏈"
+      }
+    ],
+    "weekly_summary": "硬體供應鏈：高頻寬記憶體短缺，對 AI 晶片的生產產生重大影響。CSP 資本支出：AI 基礎設施的投資正在增加，對 CSP 公司的資本支出產生重大影響。App/AI：AI 應用的發展正在增加，對各個行業產生重大影響。預計未來幾年，AI 的發展將繼續推動各個行業的變革。"
+  },
+  {
     "date": "2026-05-30",
     "is_sunday": false,
     "hw": [
@@ -552,115 +616,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-05-24",
-    "is_sunday": true,
-    "hw": [
-      {
-        "title": "SK Hynix 封裝投資",
-        "layer": "封裝層",
-        "body": "SK Hynix 對封裝廠的投資為 3.9 億美元，預計在 2027 年完成。這項投資將增加 SK Hynix 在 HBM 和記憶體封裝方面的能力，進一步滿足 AI 伺服器和資料中心的需求。SK Hynix 預計這項投資將帶來 20% 的產能增長，同時也將創造 500 個新的就業機會。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "SK Hynix 對封裝廠的投資是為了滿足 AI 伺服器和資料中心對記憶體的需求，同時也將增加公司在 HBM 和記憶體封裝方面的能力。",
-        "source_label": "SK Hynix 官方公告",
-        "source": "https://www.skhynix.com/"
-      },
-      {
-        "title": "TSMC CoWoS 供給緊張",
-        "layer": "封裝層",
-        "body": "TSMC 的 CoWoS 供給緊張導致客戶等待時間延長。TSMC 目前正在擴張 CoWoS 的產能，以滿足客戶的需求。預計在 2027 年，TSMC 的 CoWoS 產能將增加 30%。這將有助於滿足 AI 伺服器和資料中心對高性能記憶體的需求。",
-        "chain": [
-          {
-            "label": "受壓↓",
-            "type": "down"
-          }
-        ],
-        "rating": "opp",
-        "insight": "TSMC 的 CoWoS 供給緊張是由於客戶需求的增加，特別是來自 AI 伺服器和資料中心的需求。",
-        "source_label": "TSMC 官方公告",
-        "source": "https://www.tsmc.com/"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google 資本支出",
-        "layer": "需求端",
-        "body": "Google 的資本支出預計在 2027 年達到 830 億美元。這項支出將主要用於雲端資料中心和 AI 基礎設施的建設。Google 預計這項投資將帶來 25% 的雲端服務收入增長，同時也將創造 1000 個新的就業機會。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Google 的資本支出是為了滿足雲端服務和 AI 基礎設施的需求，同時也將增加公司在雲端服務方面的能力。",
-        "source_label": "Google 官方公告",
-        "source": "https://about.google/"
-      },
-      {
-        "title": "Amazon 資本支出",
-        "layer": "需求端",
-        "body": "Amazon 的資本支出預計在 2027 年達到 750 億美元。這項支出將主要用於雲端資料中心和 AI 基礎設施的建設。Amazon 預計這項投資將帶來 20% 的雲端服務收入增長，同時也將創造 500 個新的就業機會。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "opp",
-        "insight": "Amazon 的資本支出是為了滿足雲端服務和 AI 基礎設施的需求，同時也將增加公司在雲端服務方面的能力。",
-        "source_label": "Amazon 官方公告",
-        "source": "https://www.amazon.com/"
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI 應用",
-        "layer": "Agentic AI",
-        "body": "Agentic AI 應用預計在 2027 年達到 10 億美元的市場規模。這項應用將主要用於智能家居和智能城市的建設。Agentic AI 預計這項投資將帶來 30% 的智能家居和智能城市的收入增長，同時也將創造 2000 個新的就業機會。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Agentic AI 應用是為了滿足智能家居和智能城市的需求，同時也將增加公司在 AI 方面的人才和技術能力。",
-        "source_label": "Agentic AI 官方公告",
-        "source": "https://www.agentic.ai/"
-      },
-      {
-        "title": "Physical AI 應用",
-        "layer": "Physical AI",
-        "body": "Physical AI 應用預計在 2027 年達到 5 億美元的市場規模。這項應用將主要用於智能製造和智能物流的建設。Physical AI 預計這項投資將帶來 25% 的智能製造和智能物流的收入增長，同時也將創造 1000 個新的就業機會。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "opp",
-        "insight": "Physical AI 應用是為了滿足智能製造和智能物流的需求，同時也將增加公司在 AI 方面的人才和技術能力。",
-        "source_label": "Physical AI 官方公告",
-        "source": "https://www.physical.ai/"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "CoWoS",
-        "full": "Chip-on-Wafer-on-Substrate",
-        "def": "一種先進的封裝技術，將晶片直接封裝在基板上",
-        "why": "用於提高晶片的性能和可靠性",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": "【硬體供應鏈】SK Hynix 封裝投資和 TSMC CoWoS 供給緊張是本週最重要的產能和技術變動。\n【CSP 投資】Google 和 Amazon 的資本支出是本週最關鍵的 CapEx 動作。\n【應用落地】Agentic AI 和 Physical AI 的應用是本週最具體的進展。\n【下週預測】最值得追蹤的一個指標或事件是 TSMC 的 CoWoS 產能增長。\n【筆記整合】本週的核心洞察是 SK Hynix 和 TSMC 在封裝技術和產能上的競爭將推動硬體供應鏈的發展。"
   }
 ]
