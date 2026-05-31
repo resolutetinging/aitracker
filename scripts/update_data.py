@@ -231,8 +231,9 @@ Each ITEM: {{"title":"Traditional Chinese title","layer":"sublayer","body":"EXAC
 RULES:
 - 2-4 items per section; if no relevant news → 1 noise item only
 - One item = one story; if source mixes 2 unrelated stories, split into 2 items
-- body: 3 complete sentences, each must contain a specific number, date, or company name — no vague statements
-- impact: must name specific companies/countries and explain direction; never write vague phrases like "industry benefits"
+- body: 3 sentences using ONLY facts from the provided news above — NEVER invent numbers, dates, or connections between companies not stated in the source; if you cannot write 3 real sentences from the source, rate it noise instead
+- HALLUCINATION IS FORBIDDEN: do not combine unrelated companies or technologies (e.g. do not link Intel's EMIB to Microsoft); every company-technology pairing must come directly from the news text
+- impact: name specific companies/countries from the news; never write vague phrases like "industry benefits"
 - glossary_new: required, 1-3 terms from today's news that readers may not know
 - source: copy verbatim from SOURCE_URL in the news; never fabricate URLs
 - All titles, body, impact, insight in Traditional Chinese (zh-TW)"""
