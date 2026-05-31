@@ -178,7 +178,7 @@ def fetch_news():
     return joined
 
 
-def get_recent_titles(history, days=3, max_titles=20):
+def get_recent_titles(history, days=3, max_titles=6):
     """取得近 N 天已報道過的新聞標題，用於跨日去重（最多 max_titles 條）"""
     titles = []
     for entry in history[:days]:
@@ -220,8 +220,8 @@ def make_prompt(news_context, recent_titles=None):
         if IS_SUNDAY else 'null'
     )
 
-    # 新聞截斷至 4500 字元（原 2000 太短，容易只剩舊文章）
-    news_short = news_context[:4500]
+    # 新聞截斷至 2500 字元（4500 容易超 Groq 12k TPM 限制）
+    news_short = news_context[:2500]
 
     return f"""AI產業供應鏈分析師。根據新聞輸出純JSON（直接從{{開始）。
 
@@ -332,7 +332,7 @@ def call_groq(prompt):
             {"role":"user","content":prompt}
         ],
         temperature=0.45,
-        max_tokens=2500,
+        max_tokens=2000,
     )
     raw = response.choices[0].message.content.strip()
     if raw.startswith('```'):
