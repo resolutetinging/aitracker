@@ -649,6 +649,10 @@ document.addEventListener('click', e => {
 });
 function setCat(term, catKey, pickerId) {
   saveCatOverride(term, catKey);
+  // 若是 user term，把分類也寫進 gloss_user_terms 避免 loadGlossConfig 覆蓋 gloss_cat 後消失
+  const ut = loadUserTerms();
+  const ui = ut.findIndex(t => t.term === term);
+  if (ui >= 0) { ut[ui].category = catKey; saveUserTerms(ut); }
   document.getElementById(pickerId)?.classList.remove('open');
   renderGlossary(HISTORY);
 }
@@ -812,12 +816,20 @@ async function addUserTerm(){
     g.term=term; // 確保 term 正確
     saveUserTerms([...existing,g]);
     input.value='';
-    status.textContent='✓ 已生成，請確認分類 ↓';
     renderGlossary(HISTORY);
+    // renderGlossary 重建 DOM，要重新拿 status element
+    const newStatus=document.getElementById('add-term-status');
+    if(newStatus)newStatus.textContent='✓ 已生成，請確認分類';
+    // scroll 到新卡片
+    const newCard=document.querySelector('.gloss-card:last-of-type');
+    if(newCard)newCard.scrollIntoView({behavior:'smooth',block:'center'});
   }catch(e){
-    status.textContent='生成失敗：'+e.message;
+    renderGlossary(HISTORY);
+    const newStatus=document.getElementById('add-term-status');
+    if(newStatus)newStatus.textContent='生成失敗：'+(e.message||'請確認 Groq Key');
   }
-  btn.disabled=false;btn.textContent='✦ AI 補完';
+  const newBtn=document.getElementById('add-term-btn');
+  if(newBtn){newBtn.disabled=false;newBtn.textContent='✦ AI 補完';}
 }
 
 // ══════════════════════════════════════════════════════════════════
