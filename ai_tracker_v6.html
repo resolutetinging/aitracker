@@ -786,7 +786,7 @@ async function addUserTerm(){
   if(!input)return;
   const term=input.value.trim();
   if(!term){status.textContent='請輸入術語名稱';return;}
-  const key=getKey();
+  const key=localStorage.getItem('groq_key');
   if(!key){status.textContent='請先設定 Groq Key';return;}
   // 避免重複
   const existing=loadUserTerms();
@@ -1057,8 +1057,16 @@ async function loadGlossConfig() {
     const res = await fetch(`./data/gloss_config.json?v=${Date.now()}`);
     if (!res.ok) return;
     const cfg = await res.json();
-    if (cfg.cat_overrides) localStorage.setItem('gloss_cat', JSON.stringify(cfg.cat_overrides));
-    if (cfg.custom_cats)   localStorage.setItem('custom_cats', JSON.stringify(cfg.custom_cats));
+    if (cfg.cat_overrides) {
+      const local = loadCatOverrides();
+      // 本地優先：local 覆蓋 repo，避免重整頁面把未儲存的分類異動清掉
+      localStorage.setItem('gloss_cat', JSON.stringify({...cfg.cat_overrides, ...local}));
+    }
+    if (cfg.custom_cats) {
+      const localCats = loadCustomCats();
+      const merged = [...new Set([...cfg.custom_cats, ...localCats])];
+      localStorage.setItem('custom_cats', JSON.stringify(merged));
+    }
   } catch(e) { /* first run, file doesn't exist yet */ }
 }
 
