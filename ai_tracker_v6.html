@@ -691,6 +691,17 @@ function renderGlossary(hist) {
     });
   });
 
+  // User-added terms
+  loadUserTerms().forEach(g => {
+    if (seen.has(g.term)) return;
+    seen.add(g.term);
+    const term = {...g, _new:true, _user:true};
+    const destKey = overrides[g.term] || g.category || '';
+    const destIdx = catKeyToIdx[destKey];
+    if (destIdx !== undefined) allCatData[destIdx].terms.push(term);
+    else uncategorized.push(term);
+  });
+
   const sections = [...allCatData.filter(c => c.terms.length > 0)];
   if (uncategorized.length) sections.push({key:'_new', label:'新增術語 New Terms', terms: uncategorized, _extra:true});
 
@@ -703,7 +714,7 @@ function renderGlossary(hist) {
     ).join('');
     return `<div class="gloss-card">
       <div class="gloss-cat-row">
-        <div class="gloss-term">${g.term}${g._new?'<span class="new-badge">NEW</span>':''}</div>
+        <div class="gloss-term">${g.term}${g._new?'<span class="new-badge">NEW</span>':''}${g._user?`<span class="new-badge" style="background:#6a5a9a;cursor:pointer;margin-left:4px;" onclick="deleteUserTerm('${g.term.replace(/'/g,"\\'")}')">自添 ✕</span>`:''}</div>
         <div style="position:relative;display:inline-block;">
           <span class="gloss-cat-badge" onclick="togglePicker('${pid}')">${clabel} ▾</span>
           <div class="gloss-cat-picker" id="${pid}">${opts}</div>
@@ -718,6 +729,12 @@ function renderGlossary(hist) {
   const customCats = loadCustomCats();
   const hasPat = !!localStorage.getItem('gh_pat');
   const addRowHtml = `
+    <div class="gloss-toolbar" style="margin-bottom:8px;">
+      <input class="gloss-add-input" id="new-term-input" placeholder="輸入術語（如：Blackwell、NVLink）" maxlength="60"
+        onkeydown="if(event.key==='Enter')addUserTerm()" style="flex:1;min-width:160px;">
+      <button class="gloss-add-btn" id="add-term-btn" onclick="addUserTerm()">✦ AI 補完</button>
+      <span id="add-term-status" style="font-size:12px;color:var(--muted);"></span>
+    </div>
     <div class="gloss-toolbar">
       <input class="gloss-add-input" id="new-cat-input" placeholder="新分類名稱（如：Edge AI）" maxlength="30"
         onkeydown="if(event.key==='Enter')confirmAddCat()" style="flex:1;min-width:140px;">
@@ -748,6 +765,59 @@ function confirmAddCat() {
   if (!input) return;
   addCustomCat(input.value);
   input.value = '';
+}
+
+// ── USER TERM (AI 補完) ──
+function loadUserTerms(){try{return JSON.parse(localStorage.getItem('gloss_user_terms')||'[]');}catch{return[];}}
+function saveUserTerms(arr){localStorage.setItem('gloss_user_terms',JSON.stringify(arr));}
+function deleteUserTerm(term){
+  saveUserTerms(loadUserTerms().filter(t=>t.term!==term));
+  renderGlossary(HISTORY);
+}
+
+async function addUserTerm(){
+  const input=document.getElementById('new-term-input');
+  const btn=document.getElementById('add-term-btn');
+  const status=document.getElementById('add-term-status');
+  if(!input)return;
+  const term=input.value.trim();
+  if(!term){status.textContent='請輸入術語名稱';return;}
+  const key=getKey();
+  if(!key){status.textContent='請先設定 Groq Key';return;}
+  // 避免重複
+  const existing=loadUserTerms();
+  if(existing.some(t=>t.term===term)||GLOSS_CATS.some(c=>c.terms.some(t=>t.term===term))){
+    status.textContent='此術語已存在';return;
+  }
+  btn.disabled=true;btn.textContent='生成中…';status.textContent='';
+  try{
+    const catList=getAllCatDefs().map(c=>c.key).join('|');
+    const resp=await fetch('https://api.groq.com/openai/v1/chat/completions',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
+      body:JSON.stringify({
+        model:'llama-3.3-70b-versatile',
+        messages:[{role:'user',content:
+          `Generate a glossary card for the AI/semiconductor supply chain term: "${term}"\nOutput pure JSON only:\n{"term":"${term}","full":"English Full Name　繁體中文名稱","def":"2-3句繁體中文定義，含具體數字或公司名","why":"📌 對AI供應鏈投資者的重要性（1-2句繁體中文）","category":"${catList}"}`
+        }],
+        max_tokens:300,temperature:0.4
+      })
+    });
+    const json=await resp.json();
+    const text=json.choices?.[0]?.message?.content||'';
+    const m=text.match(/\{[\s\S]*\}/);
+    if(!m)throw new Error('no json');
+    const g=JSON.parse(m[0]);
+    if(!g.term||!g.def)throw new Error('invalid');
+    g.term=term; // 確保 term 正確
+    saveUserTerms([...existing,g]);
+    input.value='';
+    status.textContent='✓ 已生成，請確認分類 ↓';
+    renderGlossary(HISTORY);
+  }catch(e){
+    status.textContent='生成失敗：'+e.message;
+  }
+  btn.disabled=false;btn.textContent='✦ AI 補完';
 }
 
 // ══════════════════════════════════════════════════════════════════
