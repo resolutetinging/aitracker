@@ -5,23 +5,33 @@
     "hw": [
       {
         "title": "研究人員開發固定硬體神經網路實現",
-        "layer": "神經網路",
-        "body": "研究人員從耶魯大學、康奈爾大學、波士頓大學和NTT Research發表了一篇題為「Physical Foundation Models: Fixed hardware implementations of large-scale neural networks」的論文。這篇論文介紹了一種新的神經網路實現方法，使用固定硬體實現大規模神經網路。這種方法可以提高神經網路的效率和可靠性，適用於各種應用領域，包括圖像和語音識別。",
-        "impact": "耶魯大學、康奈爾大學、波士頓大學和NTT Research等研究機構將受益於這項技術進步，未來可能會在各個領域中應用。",
+        "layer": "晶片製造",
+        "body": "研究人員從耶魯大學、康奈爾大學、波士頓大學和NTT Research共同發表了一篇論文，題為「Physical Foundation Models: Fixed hardware implementations of large-scale neural networks」。這篇論文介紹了一種新的神經網路實現方法，使用固定硬體來加速神經網路的運算。這種方法有可能提高神經網路的運算效率和降低能耗。",
+        "impact": "耶魯大學、康奈爾大學、波士頓大學和NTT Research等研究機構將受益於這項技術的發展",
         "rating": "core",
-        "insight": "這項技術進步可能會提高神經網路的效率和可靠性，為各個領域的應用提供新的機會。",
-        "source_label": "Semiengineering",
+        "insight": "固定硬體神經網路實現有可能成為未來人工智慧技術的重要發展方向",
+        "source_label": "SemiEngineering",
         "source": "https://semiengineering.com/building-fixed-hw-implementations-of-neural-networks-yale-cornell-et-al/"
+      },
+      {
+        "title": "Intel Xeon 6+『Clearwater Forest』晶片",
+        "layer": "晶片製造",
+        "body": "Intel Xeon 6+『Clearwater Forest』晶片使用18A工藝，具有最高288個核心和576 MB的L3快取。這款晶片比AMD Epyc 9965快30%。Intel表示，這款晶片適合於資料中心的應用。這款晶片的推出將進一步提高Intel在資料中心市場的競爭力。",
+        "impact": "Intel和AMD等公司將受益於這項技術的發展",
+        "rating": "core",
+        "insight": "Intel Xeon 6+『Clearwater Forest』晶片的推出將進一步提高Intel在資料中心市場的競爭力",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/"
       }
     ],
     "corp": [
       {
         "title": "微軟公司更新Copilot功能",
-        "layer": "AI應用",
-        "body": "微軟公司更新了Copilot功能，新增了新的使用介面和功能。根據微軟公司的資料，使用Copilot功能的使用者數量在一周內增加了27-43%。微軟公司表示，這項更新可能會提高使用者體驗和效率。",
-        "impact": "微軟公司的使用者將受益於這項更新，未來可能會在各個領域中應用。",
+        "layer": "企業動態",
+        "body": "微軟公司更新了Copilot功能，新增了一個新的界面和更好的使用體驗。這項更新使得Copilot的使用率提高了27-43%。微軟公司表示，這項更新將進一步提高Copilot的使用率和競爭力。這項更新將對微軟公司的AI業務產生積極影響。",
+        "impact": "微軟公司將受益於這項技術的發展",
         "rating": "core",
-        "insight": "這項更新可能會提高微軟公司的競爭力，為使用者提供更好的體驗和效率。",
+        "insight": "微軟公司更新Copilot功能將進一步提高其AI業務的競爭力",
         "source_label": "The Register",
         "source": "https://www.theregister.com/ai-ml/2026/05/29/microsoft-slaps-new-coat-of-paint-on-copilot-buries-annoying-button/5248442"
       }
@@ -29,12 +39,12 @@
     "app": [
       {
         "title": "邊緣計算中的缺陷檢測和分類",
-        "layer": "AI應用",
-        "body": "邊緣計算中的缺陷檢測和分類是一項重要的技術，需要快速和準確地檢測和分類缺陷。研究人員提出了一種新的方法，使用邊緣計算中的缺陷檢測和分類技術，提高檢測和分類的效率和可靠性。這種方法可以應用於各種領域，包括半導體製造。",
-        "impact": "半導體製造業將受益於這項技術進步，未來可能會在各個領域中應用。",
-        "rating": "core",
-        "insight": "這項技術進步可能會提高半導體製造業的效率和可靠性，為各個領域的應用提供新的機會。",
-        "source_label": "Semiengineering",
+        "layer": "應用場景",
+        "body": "邊緣計算中的缺陷檢測和分類是一種重要的應用場景。研究人員表示，缺陷檢測和分類需要更快的運算速度和更低的延遲。這種應用場景需要更好的硬體和軟體支持。這項技術的發展將進一步提高邊緣計算的效率和競爭力。",
+        "impact": "邊緣計算中的缺陷檢測和分類將受益於這項技術的發展",
+        "rating": "opp",
+        "insight": "邊緣計算中的缺陷檢測和分類將成為未來的一個重要應用場景",
+        "source_label": "SemiEngineering",
         "source": "https://semiengineering.com/moving-defect-detection-and-classification-to-the-edge/"
       }
     ],
@@ -42,9 +52,9 @@
       {
         "term": "Physical Foundation Models",
         "full": "物理基礎模型",
-        "def": "一種新的神經網路實現方法，使用固定硬體實現大規模神經網路。",
-        "why": "這項技術進步可能會提高神經網路的效率和可靠性，為各個領域的應用提供新的機會。",
-        "category": "神經網路"
+        "def": "一種新的神經網路實現方法，使用固定硬體來加速神經網路的運算",
+        "why": "這種方法有可能提高神經網路的運算效率和降低能耗",
+        "category": "semiconductor"
       }
     ],
     "weekly_summary": null
