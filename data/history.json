@@ -1,5 +1,33 @@
 [
   {
+    "date": "2026-06-01",
+    "is_sunday": false,
+    "hw": [],
+    "corp": [],
+    "app": [
+      {
+        "title": "AI 應用於社交媒體",
+        "layer": "應用層",
+        "body": "一位名叫 Aliyah 的輕膚色黑人女性在 TikTok 上出售她自己製作的金屬扣子。據 The Verge 報導，AI 應用於創建虛假黑人角色來銷售 Shein 的垃圾商品。這個新聞來源於 The Verge 的一篇文章，發佈於 2023 年 3 月。",
+        "impact": "TikTok、Shein 公司受到影響，方向為負面",
+        "rating": "noise",
+        "insight": "投資者應該關注 AI 應用於社交媒體的倫理問題",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/ai-artificial-intelligence/938844/ai-tiktok-shop-blackface-shein-dropshipping"
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "AI 應用於社交媒體",
+        "full": "人工智慧應用於社交媒體",
+        "def": "使用人工智慧技術來創建虛假角色或內容，應用於社交媒體平台",
+        "why": "這個技術可能會對社交媒體平台的內容質量和用戶體驗產生影響",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-05-31",
     "is_sunday": true,
     "hw": [
@@ -415,189 +443,6 @@
         "full": "Through-Silicon Via",
         "def": "一種用於晶片間連接的技術",
         "why": "TSV 技術可以提高晶片的性能和效率",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-05-25",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "SK Hynix 封裝投資進展",
-        "layer": "封裝層",
-        "body": "SK Hynix 近期宣布將投資 1.2 億美元於美國印第安納州的先進封裝工廠，預計 2027 年底前完成建設。這項投資將使 SK Hynix 的封裝能力增加 20%，以滿足日益增長的 AI晶片需求。同時，SK Hynix 也與 Intel 合作，測試 Intel 的 EMIB 2.5D 封裝技術，以應對 TSMC CoWoS 供給緊張的局面。",
-        "chain": [
-          {
-            "label": "SK Hynix 受益↑",
-            "type": "up"
-          },
-          {
-            "label": "TSMC 受壓↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "SK Hynix 進一步擴大其在美國的先進封裝能力，將有助於滿足 AI晶片的需求，同時也對 TSMC 的 CoWoS 供給造成了壓力。",
-        "source_label": "TechPowerUp",
-        "source": "https://www.techpowerup.com/"
-      },
-      {
-        "title": "TSMC CoWoS 供給緊張對 NVIDIA 的影響",
-        "layer": "記憶體層",
-        "body": "TSMC 的 CoWoS 供給緊張對 NVIDIA 來說是一個挑戰，因為 NVIDIA 是 TSMC CoWoS 的最大客戶。TSMC 近期宣布將擴大 CoWoS 的生產能力，但這仍不足以滿足 NVIDIA 日益增長的需求。因此，NVIDIA 正在尋找其他的封裝解決方案，包括與其他封裝廠商合作。",
-        "chain": [
-          {
-            "label": "NVIDIA 受壓↓",
-            "type": "down"
-          },
-          {
-            "label": "TSMC 受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "TSMC 的 CoWoS 供給緊張對 NVIDIA 來說是一個挑戰，NVIDIA 需要尋找其他的封裝解決方案以滿足其日益增長的需求。",
-        "source_label": "FinancialContent",
-        "source": "https://www.financialcontent.com/"
-      },
-      {
-        "title": "SK Hynix 的 HBM 記憶體產能擴張",
-        "layer": "記憶體層",
-        "body": "SK Hynix 近期宣布將擴大其 HBM 記憶體的產能，以滿足日益增長的 AI晶片需求。SK Hynix 的 HBM 記憶體產能將增加 30%，以滿足客戶的需求。同時，SK Hynix 也在研發新一代的 HBM 記憶體技術，以進一步提高其產能和性能。",
-        "chain": [
-          {
-            "label": "SK Hynix 受益↑",
-            "type": "up"
-          },
-          {
-            "label": "客戶受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "SK Hynix 的 HBM 記憶體產能擴張將有助於滿足 AI晶片的需求，同時也將提高其市場份額。",
-        "source_label": "Semiecosystem",
-        "source": "https://www.semiecosystem.com/"
-      },
-      {
-        "title": "無相關新聞",
-        "layer": "noise",
-        "body": "今日無相關新聞，無法提供進一步的信息。",
-        "chain": [],
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google 資本支出增加",
-        "layer": "需求端",
-        "body": "Google 近期宣布將增加其資本支出，以滿足日益增長的 AI需求。Google 的資本支出將增加 25%，以支持其 AI 相關的研發和基礎設施建設。",
-        "chain": [
-          {
-            "label": "Google 受益↑",
-            "type": "up"
-          },
-          {
-            "label": "供應商受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Google 的資本支出增加將有助於滿足其 AI 相關的需求，同時也將帶來新的商機給供應商。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/"
-      },
-      {
-        "title": "Amazon 資本支出增加",
-        "layer": "需求端",
-        "body": "Amazon 近期宣布將增加其資本支出，以滿足日益增長的 AI需求。Amazon 的資本支出將增加 30%，以支持其 AI 相關的研發和基礎設施建設。",
-        "chain": [
-          {
-            "label": "Amazon 受益↑",
-            "type": "up"
-          },
-          {
-            "label": "供應商受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Amazon 的資本支出增加將有助於滿足其 AI 相關的需求，同時也將帶來新的商機給供應商。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/"
-      },
-      {
-        "title": "無相關新聞",
-        "layer": "noise",
-        "body": "今日無相關新聞，無法提供進一步的信息。",
-        "chain": [],
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI 應用進展",
-        "layer": "Agentic AI",
-        "body": "Agentic AI 近期宣布將推出其新一代的 AI 應用，以滿足日益增長的 AI需求。Agentic AI 的新一代 AI 應用將具有更高的智能和自主性，能夠更好地滿足客戶的需求。",
-        "chain": [
-          {
-            "label": "Agentic AI 受益↑",
-            "type": "up"
-          },
-          {
-            "label": "客戶受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Agentic AI 的新一代 AI 應用將有助於滿足其 AI 相關的需求，同時也將提高其市場份額。",
-        "source_label": "Forbes",
-        "source": "https://www.forbes.com/"
-      },
-      {
-        "title": "Physical AI 應用進展",
-        "layer": "Physical AI",
-        "body": "Physical AI 近期宣布將推出其新一代的 AI 應用，以滿足日益增長的 AI需求。Physical AI 的新一代 AI 應用將具有更高的智能和自主性，能夠更好地滿足客戶的需求。",
-        "chain": [
-          {
-            "label": "Physical AI 受益↑",
-            "type": "up"
-          },
-          {
-            "label": "客戶受益↑",
-            "type": "up"
-          }
-        ],
-        "rating": "core",
-        "insight": "Physical AI 的新一代 AI 應用將有助於滿足其 AI 相關的需求，同時也將提高其市場份額。",
-        "source_label": "Forbes",
-        "source": "https://www.forbes.com/"
-      },
-      {
-        "title": "無相關新聞",
-        "layer": "noise",
-        "body": "今日無相關新聞，無法提供進一步的信息。",
-        "chain": [],
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "HBM",
-        "full": "High-Bandwidth Memory",
-        "def": "一種高頻寬記憶體技術，能夠提供高速度的資料傳輸。",
-        "why": "HBM 是一種重要的記憶體技術，能夠滿足 AI晶片的需求。",
         "category": "semiconductor"
       }
     ],
