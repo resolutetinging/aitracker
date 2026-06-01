@@ -5,11 +5,15 @@
     "Neuromorphic Computing": "ai_technique",
     "Explainable AI": "ai_technique",
     "Transfer Learning": "ai_technique",
-    "Adversarial Attack": "ai_technique"
+    "Adversarial Attack": "ai_technique",
+    "Physical Foundation Models": "hardware",
+    "EMIB-T": "semiconductor",
+    "Bare Metal Cloud": "cc_software"
   },
   "custom_cats": [
     "General",
-    "Company"
+    "Company",
+    "Software"
   ],
-  "updated": "2026-05-09T07:11:14.626Z"
+  "updated": "2026-06-01T02:49:39.317Z"
 }
