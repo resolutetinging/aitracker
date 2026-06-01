@@ -1,5 +1,109 @@
 [
   {
+    "date": "2026-06-02",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Nvidia的Grace Blackwell超級晶片",
+        "layer": "晶片製造",
+        "body": "Nvidia的Grace Blackwell超級晶片即將在PC市場推出，搭載於RTX Spark筆電中。這些晶片將為高端PC市場帶來強大的計算能力。Nvidia的這一舉動被視為進軍高端PC市場的重要一步。",
+        "impact": "Nvidia、PC製造商",
+        "rating": "core",
+        "insight": "Nvidia的Grace Blackwell超級晶片將為高端PC市場帶來新的機遇",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/06/01/nvidia-recasts-gb10-superchip-in-bid-for-high-end-pc-market/5249068"
+      },
+      {
+        "title": "記憶體短缺導致PC價格上漲",
+        "layer": "記憶體製造",
+        "body": "記憶體短缺導致PC價格上漲，筆電價格上漲11%，桌面電腦價格上漲10%。這是因為晶片製造商轉向生產AI伺服器的記憶體。記憶體短缺對PC市場產生了重大影響。",
+        "impact": "PC製造商、消費者",
+        "rating": "core",
+        "insight": "記憶體短缺對PC市場產生了重大影響",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/personal-tech/2026/06/01/memory-crunch-sends-pc-prices-into-double-digit-climb/5248525"
+      },
+      {
+        "title": "固定硬體神經網路實現",
+        "layer": "晶片設計",
+        "body": "研究人員開發了固定硬體神經網路實現，稱為「Physical Foundation Models」。這項技術可以實現大規模神經網路的固定硬體實現。這一技術的開發對AI領域具有重要意義。",
+        "impact": "AI研究人員、晶片製造商",
+        "rating": "core",
+        "insight": "固定硬體神經網路實現對AI領域具有重要意義",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/"
+      }
+    ],
+    "corp": [
+      {
+        "title": "Amazon的Serverless OpenSearch",
+        "layer": "雲端服務",
+        "body": "Amazon宣布推出Serverless OpenSearch，為開發人員提供了一種無伺服器的搜索引擎解決方案。這項技術可以幫助開發人員更容易地構建和部署搜索引擎。Serverless OpenSearch對開發人員具有重要意義。",
+        "impact": "Amazon、開發人員",
+        "rating": "core",
+        "insight": "Serverless OpenSearch對開發人員具有重要意義",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/databases/2026/06/01/agent-led-devs-need-serverless-opensearch-amazon-claims/5249033"
+      },
+      {
+        "title": "Microsoft的EA頻道架構",
+        "layer": "企業架構",
+        "body": "Microsoft的EA頻道架構於2001年設計，目前正在進行轉型。這項架構的設計者指出，新版本缺乏了原來的頻道架構。這一轉型對Microsoft的業務具有重要影響。",
+        "impact": "Microsoft、企業客戶",
+        "rating": "core",
+        "insight": "Microsoft的EA頻道架構轉型對業務具有重要影響",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/oses/2026/06/01/i-designed-microsofts-5b-ea-channel-architecture-in-2001-the-2026-transition-is-missing-what-made-it-work/5248235"
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI",
+        "layer": "AI應用",
+        "body": "Agentic AI是一種新的AI技術，正在被開發和應用。這項技術可以幫助開發人員更容易地構建和部署AI模型。Agentic AI對AI領域具有重要意義。",
+        "impact": "AI研究人員、開發人員",
+        "rating": "opp",
+        "insight": "Agentic AI對AI領域具有重要意義",
+        "source_label": "The Register",
+        "source": ""
+      },
+      {
+        "title": "Physical AI",
+        "layer": "AI應用",
+        "body": "Physical AI是一種新的AI技術，正在被開發和應用。這項技術可以幫助開發人員更容易地構建和部署AI模型。Physical AI對AI領域具有重要意義。",
+        "impact": "AI研究人員、開發人員",
+        "rating": "opp",
+        "insight": "Physical AI對AI領域具有重要意義",
+        "source_label": "The Register",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Physical Foundation Models",
+        "full": "實體基礎模型",
+        "def": "一種大規模神經網路的固定硬體實現技術",
+        "why": "對AI領域具有重要意義",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Serverless OpenSearch",
+        "full": "無伺服器搜索引擎",
+        "def": "一種無伺服器的搜索引擎解決方案",
+        "why": "對開發人員具有重要意義",
+        "category": "cloud_service"
+      },
+      {
+        "term": "Agentic AI",
+        "full": "代理AI",
+        "def": "一種新的AI技術，正在被開發和應用",
+        "why": "對AI領域具有重要意義",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-01",
     "is_sunday": false,
     "hw": [
@@ -398,83 +502,6 @@
         "full": "CoWoS-L（CoWoS-Layer）",
         "def": "CoWoS-L 是 TSMC 的一種新型封裝技術，旨在提高高性能記憶體和晶片的封裝效率和產能。CoWoS-L 技術可以增加高性能記憶體和晶片的封裝密度 50%，並降低其封裝成本 20%。",
         "why": "CoWoS-L 封裝技術對 TSMC 的高性能記憶體和晶片的生產具有重要影響，尤其是在 5G 和 AI 應用方面。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-05-26",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "SK hynix 封裝投資進展",
-        "layer": "封裝層",
-        "body": "SK hynix 正在測試 Intel EMIB 2.5D 封裝技術，以應對 TSMC CoWoS 供給緊張。SK hynix 計畫在 2026 年底前將其 HBM 記憶體產能擴張至 1.15 萬片。TSMC 的 CoWoS 供給緊張對 NVIDIA 的影響相當大，NVIDIA 已經開始尋找其他供應商。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          },
-          {
-            "label": "受壓↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "SK hynix 封裝投資進展對其在半導體供應鏈中的地位具有重要意義。",
-        "source_label": "來源",
-        "source": "https://www.dqindia.com/sk-hynix-reportedly-tests-intel-emib-2-5d-packaging-with-hbm-amid-tsmc-cowos-tightness/"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google 資本支出增加",
-        "layer": "需求端",
-        "body": "Google 近期大幅增加了其資本支出，尤其是在 AI 領域。Google 的 AI 研發投入已經超過 100 億美元，預計在 2027 年底前將其 AI 相關業務收入增加 50%。Amazon 也在增加其資本支出，尤其是在雲計算和 AI 領域。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          },
-          {
-            "label": "受壓↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "Google 和 Amazon 的資本支出增加對其在 AI 領域的競爭地位具有重要意義。",
-        "source_label": "來源",
-        "source": "https://www.cnbc.com/2026/05/25/google-increases-capital-expenditure-in-ai.html"
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI 應用進展",
-        "layer": "Agentic AI",
-        "body": "Agentic AI 的應用進展相當迅速，已經在多個領域取得了成果。Anthropic 公司的 Mythos-class 模型已經可以處理複雜的任務，預計在 2027 年底前將其應用範圍擴張至 10 個領域。Physical AI 的應用進展也相當迅速，已經在多個領域取得了成果。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          },
-          {
-            "label": "受壓↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "Agentic AI 和 Physical AI 的應用進展對其在 AI 領域的競爭地位具有重要意義。",
-        "source_label": "來源",
-        "source": "https://www.anthropic.com/mythos-class-models"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "TSV",
-        "full": "Through-Silicon Via",
-        "def": "一種用於晶片間連接的技術",
-        "why": "TSV 技術可以提高晶片的性能和效率",
         "category": "semiconductor"
       }
     ],
