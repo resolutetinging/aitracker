@@ -2,27 +2,49 @@
   {
     "date": "2026-06-01",
     "is_sunday": false,
-    "hw": [],
-    "corp": [],
+    "hw": [
+      {
+        "title": "研究人員開發固定硬體神經網路實現",
+        "layer": "神經網路",
+        "body": "研究人員從耶魯大學、康奈爾大學、波士頓大學和NTT Research發表了一篇題為「Physical Foundation Models: Fixed hardware implementations of large-scale neural networks」的論文。這篇論文介紹了一種新的神經網路實現方法，使用固定硬體實現大規模神經網路。這種方法可以提高神經網路的效率和可靠性，適用於各種應用領域，包括圖像和語音識別。",
+        "impact": "耶魯大學、康奈爾大學、波士頓大學和NTT Research等研究機構將受益於這項技術進步，未來可能會在各個領域中應用。",
+        "rating": "core",
+        "insight": "這項技術進步可能會提高神經網路的效率和可靠性，為各個領域的應用提供新的機會。",
+        "source_label": "Semiengineering",
+        "source": "https://semiengineering.com/building-fixed-hw-implementations-of-neural-networks-yale-cornell-et-al/"
+      }
+    ],
+    "corp": [
+      {
+        "title": "微軟公司更新Copilot功能",
+        "layer": "AI應用",
+        "body": "微軟公司更新了Copilot功能，新增了新的使用介面和功能。根據微軟公司的資料，使用Copilot功能的使用者數量在一周內增加了27-43%。微軟公司表示，這項更新可能會提高使用者體驗和效率。",
+        "impact": "微軟公司的使用者將受益於這項更新，未來可能會在各個領域中應用。",
+        "rating": "core",
+        "insight": "這項更新可能會提高微軟公司的競爭力，為使用者提供更好的體驗和效率。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-ml/2026/05/29/microsoft-slaps-new-coat-of-paint-on-copilot-buries-annoying-button/5248442"
+      }
+    ],
     "app": [
       {
-        "title": "AI 應用於社交媒體",
-        "layer": "應用層",
-        "body": "一位名叫 Aliyah 的輕膚色黑人女性在 TikTok 上出售她自己製作的金屬扣子。據 The Verge 報導，AI 應用於創建虛假黑人角色來銷售 Shein 的垃圾商品。這個新聞來源於 The Verge 的一篇文章，發佈於 2023 年 3 月。",
-        "impact": "TikTok、Shein 公司受到影響，方向為負面",
-        "rating": "noise",
-        "insight": "投資者應該關注 AI 應用於社交媒體的倫理問題",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/ai-artificial-intelligence/938844/ai-tiktok-shop-blackface-shein-dropshipping"
+        "title": "邊緣計算中的缺陷檢測和分類",
+        "layer": "AI應用",
+        "body": "邊緣計算中的缺陷檢測和分類是一項重要的技術，需要快速和準確地檢測和分類缺陷。研究人員提出了一種新的方法，使用邊緣計算中的缺陷檢測和分類技術，提高檢測和分類的效率和可靠性。這種方法可以應用於各種領域，包括半導體製造。",
+        "impact": "半導體製造業將受益於這項技術進步，未來可能會在各個領域中應用。",
+        "rating": "core",
+        "insight": "這項技術進步可能會提高半導體製造業的效率和可靠性，為各個領域的應用提供新的機會。",
+        "source_label": "Semiengineering",
+        "source": "https://semiengineering.com/moving-defect-detection-and-classification-to-the-edge/"
       }
     ],
     "glossary_new": [
       {
-        "term": "AI 應用於社交媒體",
-        "full": "人工智慧應用於社交媒體",
-        "def": "使用人工智慧技術來創建虛假角色或內容，應用於社交媒體平台",
-        "why": "這個技術可能會對社交媒體平台的內容質量和用戶體驗產生影響",
-        "category": "ai_technique"
+        "term": "Physical Foundation Models",
+        "full": "物理基礎模型",
+        "def": "一種新的神經網路實現方法，使用固定硬體實現大規模神經網路。",
+        "why": "這項技術進步可能會提高神經網路的效率和可靠性，為各個領域的應用提供新的機會。",
+        "category": "神經網路"
       }
     ],
     "weekly_summary": null
