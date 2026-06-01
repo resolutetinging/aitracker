@@ -21,18 +21,23 @@ KNOWN_TERMS = ["HBM","CoWoS","CSP","OSAT","VLA 模型",
 #  1. RSS FEEDS（主要新聞來源，穩定免費）
 # ══════════════════════════════════════════════════════════════════
 RSS_FEEDS = [
-    # Semiconductor / Supply Chain（高訊噪比，優先）
+    # Semiconductor / Supply Chain — 專業媒體（高訊噪比）
     ("Semiconductor", "https://www.theregister.com/headlines.atom"),
+    ("Semiconductor", "https://semiengineering.com/feed/"),
+    ("Semiconductor", "https://www.tomshardware.com/feeds/all"),
+    ("Semiconductor", "https://blocksandfiles.com/feed/"),
     ("Semiconductor", "https://feeds.reuters.com/reuters/technologyNews"),
     ("Semiconductor", "https://hnrss.org/frontpage?q=TSMC+HBM+CoWoS+OSAT+semiconductor+packaging"),
     ("Semiconductor", "https://hnrss.org/frontpage?q=NVIDIA+AMD+Intel+chip+wafer+capacity+supply"),
-    # CSP CapEx / Cloud
+    # CSP CapEx / Cloud — 資料中心專業媒體
+    ("CSP/CapEx",    "https://www.datacenterdynamics.com/en/rss/"),
+    ("CSP/CapEx",    "https://nextplatform.com/feed/"),
     ("CSP/CapEx",    "https://hnrss.org/frontpage?q=Microsoft+Google+Meta+Amazon+capex+data+center+AI+investment"),
     # Agentic / Physical AI
     ("App/AI",       "https://hnrss.org/frontpage?q=Agentic+AI+Physical+AI+robotics+humanoid+VLA+inference"),
     ("App/AI",       "https://feeds.arstechnica.com/arstechnica/technology-lab"),
     ("App/AI",       "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
-    # Google News RSS（保底，hnrss/DDG 失效時仍有料）
+    # Google News RSS（保底）
     ("Semiconductor", "https://news.google.com/rss/search?q=TSMC+HBM+CoWoS+semiconductor+AI+chip&hl=en-US&gl=US&ceid=US:en"),
     ("Semiconductor", "https://news.google.com/rss/search?q=NVIDIA+AMD+Intel+SK+Hynix+Micron+packaging&hl=en-US&gl=US&ceid=US:en"),
     ("CSP/CapEx",    "https://news.google.com/rss/search?q=Microsoft+Google+Meta+Amazon+AI+capex+data+center+2026&hl=en-US&gl=US&ceid=US:en"),
@@ -81,7 +86,7 @@ def parse_rss_date(item, ns):
     return None
 
 def fetch_rss():
-    cutoff = datetime.now(timezone.utc) - timedelta(hours=48)
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=72)
     snippets = []
     for label, url in RSS_FEEDS:
         try:
@@ -117,7 +122,7 @@ def fetch_rss():
                     url_part = f" | SOURCE_URL:{link}" if link else ""
                     snippets.append(f"[{label}] {title} — {desc}{url_part}")
                     kept += 1
-            print(f"  RSS {label}({url.split('/')[2]}): {len(items)} items, {kept} kept (48h filter)")
+            print(f"  RSS {label}({url.split('/')[2]}): {len(items)} items, {kept} kept (72h filter)")
         except Exception as e:
             print(f"  RSS failed ({url.split('/')[2]}): {e}")
     return snippets
