@@ -4,10 +4,12 @@ AI Tracker 每日自動更新腳本 v3
 新聞來源：RSS feeds（主）+ DuckDuckGo（副）
 """
 
-import json, os, smtplib, urllib.request, xml.etree.ElementTree as ET, time, re
+import json, os, sys, smtplib, urllib.request, xml.etree.ElementTree as ET, time, re
 from datetime import datetime, timezone, timedelta
 from email.utils import parsedate_to_datetime
 from groq import Groq
+
+FORCE_REGEN = '--force' in sys.argv
 
 TW = timezone(timedelta(hours=8))
 NOW = datetime.now(TW)
@@ -183,15 +185,20 @@ def fetch_news():
     return joined
 
 
-def get_recent_titles(history, days=3, max_titles=6):
-    """取得近 N 天已報道過的新聞標題，用於跨日去重（最多 max_titles 條）"""
+def get_recent_titles(history, days=3, max_titles=20):
+    """取得近 N 天已報道過的新聞標題，用於跨日去重（最多 max_titles 條）
+    注意：今日自己的資料不納入（避免同日第二次跑時把素材全封鎖）"""
     titles = []
-    for entry in history[:days]:
+    for entry in history:
+        if entry.get('date') == DATE_STR:
+            continue  # 跳過今日，防止自我封鎖
         for section in ['hw', 'corp', 'app']:
             for item in entry.get(section, []):
                 t = item.get('title', '').strip()
                 if t:
                     titles.append(t)
+        if len(titles) >= max_titles:
+            break
     return titles[:max_titles]
 
 def load_notes():
@@ -321,7 +328,7 @@ def call_groq(prompt):
                     {"role":"system","content":sys_msg},
                     {"role":"user","content":prompt}
                 ],
-                temperature=0.45,
+                temperature=0.3,
                 max_tokens=2000,
             )
             if model != models[0]:
@@ -592,14 +599,31 @@ def push_notion(data):
 # ══════════════════════════════════════════════════════════════════
 if __name__ == '__main__':
     print(f"🚀 開始更新 AI Tracker（{DATE_STR}）...")
+
+    history = load_history()
+
+    # ── 冪等保護：今日已有高品質資料，直接沿用（加 --force 強制重跑）──
+    existing_today = next((h for h in history if h.get('date') == DATE_STR), None)
+    if existing_today and not FORCE_REGEN:
+        all_items = existing_today.get('hw',[]) + existing_today.get('corp',[]) + existing_today.get('app',[])
+        core_count = sum(1 for i in all_items if i.get('rating') == 'core')
+        if core_count >= 2:
+            print(f"  → 今日已有資料（{core_count} CORE），直接沿用既有內容寄送")
+            print(f"  → 如需強制重新生成請加 --force 參數")
+            print("📧 發送 Email（沿用）...")
+            send_email(existing_today)
+            print("📝 推送 Notion（沿用）...")
+            push_notion(existing_today)
+            print("✅ 完成！")
+            sys.exit(0)
+
     print("📰 抓取新聞...")
     news = fetch_news()
     total = len(news.splitlines())
     print(f"  → 合計 {total} 行新聞摘要")
 
-    history = load_history()
     recent_titles = get_recent_titles(history, days=3)
-    print(f"  → 近三日已報道標題 {len(recent_titles)} 條（用於去重）")
+    print(f"  → 近三日已報道標題 {len(recent_titles)} 條（今日自身已排除）")
 
     print("🤖 呼叫 Groq API...")
     data = call_groq(make_prompt(news, recent_titles))
