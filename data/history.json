@@ -4,100 +4,56 @@
     "is_sunday": false,
     "hw": [
       {
+        "title": "美國企業仍主導晶片補貼",
+        "layer": "晶片製造",
+        "body": "美國企業仍主導晶片補貼，中國的支持相對於半導體行業收入更大。美國企業在晶片補貼方面的主導地位仍然明顯。中國的支持主要集中在半導體行業的發展上。",
+        "impact": "美國企業、中國，正面影響",
+        "rating": "core",
+        "insight": "美國企業在晶片補貼方面的主導地位對其未來發展具有重要影響。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/06/01/us-firms-still-dominate-chip-subsidies/5249668"
+      },
+      {
         "title": "Nvidia的Grace Blackwell超級晶片",
         "layer": "晶片製造",
-        "body": "Nvidia的Grace Blackwell超級晶片即將在PC市場推出，搭載於RTX Spark筆電中。這些晶片將為高端PC市場帶來強大的計算能力。Nvidia的這一舉動被視為進軍高端PC市場的重要一步。",
-        "impact": "Nvidia、PC製造商",
+        "body": "Nvidia的Grace Blackwell超級晶片即將在PC市場上推出，搭載RTX Spark筆記本。這些晶片的推出將使Nvidia在高端PC市場上占據重要地位。Nvidia的Grace Blackwell超級晶片的推出對PC市場具有重要影響。",
+        "impact": "Nvidia，正面影響",
         "rating": "core",
-        "insight": "Nvidia的Grace Blackwell超級晶片將為高端PC市場帶來新的機遇",
+        "insight": "Nvidia的Grace Blackwell超級晶片的推出對其未來發展具有重要影響。",
         "source_label": "The Register",
         "source": "https://www.theregister.com/systems/2026/06/01/nvidia-recasts-gb10-superchip-in-bid-for-high-end-pc-market/5249068"
-      },
-      {
-        "title": "記憶體短缺導致PC價格上漲",
-        "layer": "記憶體製造",
-        "body": "記憶體短缺導致PC價格上漲，筆電價格上漲11%，桌面電腦價格上漲10%。這是因為晶片製造商轉向生產AI伺服器的記憶體。記憶體短缺對PC市場產生了重大影響。",
-        "impact": "PC製造商、消費者",
-        "rating": "core",
-        "insight": "記憶體短缺對PC市場產生了重大影響",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/personal-tech/2026/06/01/memory-crunch-sends-pc-prices-into-double-digit-climb/5248525"
-      },
-      {
-        "title": "固定硬體神經網路實現",
-        "layer": "晶片設計",
-        "body": "研究人員開發了固定硬體神經網路實現，稱為「Physical Foundation Models」。這項技術可以實現大規模神經網路的固定硬體實現。這一技術的開發對AI領域具有重要意義。",
-        "impact": "AI研究人員、晶片製造商",
-        "rating": "core",
-        "insight": "固定硬體神經網路實現對AI領域具有重要意義",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/"
       }
     ],
     "corp": [
       {
-        "title": "Amazon的Serverless OpenSearch",
-        "layer": "雲端服務",
-        "body": "Amazon宣布推出Serverless OpenSearch，為開發人員提供了一種無伺服器的搜索引擎解決方案。這項技術可以幫助開發人員更容易地構建和部署搜索引擎。Serverless OpenSearch對開發人員具有重要意義。",
-        "impact": "Amazon、開發人員",
+        "title": "Anthropic申請IPO",
+        "layer": "企業投資",
+        "body": "Anthropic申請IPO，成為最新一家申請上市的AI公司。Anthropic的申請IPO對其未來發展具有重要影響。Anthropic的IPO申請對AI行業具有重要影響。",
+        "impact": "Anthropic，正面影響",
         "rating": "core",
-        "insight": "Serverless OpenSearch對開發人員具有重要意義",
+        "insight": "Anthropic的IPO申請對其未來發展具有重要影響。",
         "source_label": "The Register",
-        "source": "https://www.theregister.com/databases/2026/06/01/agent-led-devs-need-serverless-opensearch-amazon-claims/5249033"
-      },
-      {
-        "title": "Microsoft的EA頻道架構",
-        "layer": "企業架構",
-        "body": "Microsoft的EA頻道架構於2001年設計，目前正在進行轉型。這項架構的設計者指出，新版本缺乏了原來的頻道架構。這一轉型對Microsoft的業務具有重要影響。",
-        "impact": "Microsoft、企業客戶",
-        "rating": "core",
-        "insight": "Microsoft的EA頻道架構轉型對業務具有重要影響",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/oses/2026/06/01/i-designed-microsofts-5b-ea-channel-architecture-in-2001-the-2026-transition-is-missing-what-made-it-work/5248235"
+        "source": "https://www.theregister.com/ai-and-ml/2026/06/01/anthropic-now-atop-the-ai-bubble-files-for-its-ipo/5249753"
       }
     ],
     "app": [
       {
-        "title": "Agentic AI",
+        "title": "Agentic AI推出Delphi和C++ Builder的AI擴充",
         "layer": "AI應用",
-        "body": "Agentic AI是一種新的AI技術，正在被開發和應用。這項技術可以幫助開發人員更容易地構建和部署AI模型。Agentic AI對AI領域具有重要意義。",
-        "impact": "AI研究人員、開發人員",
-        "rating": "opp",
-        "insight": "Agentic AI對AI領域具有重要意義",
+        "body": "Agentic AI推出Delphi和C++ Builder的AI擴充，名為Kai。Kai是一個擴充，能夠整合外部AI提供者。Kai的推出對Delphi和C++ Builder的使用者具有重要影響。",
+        "impact": "Agentic AI，正面影響",
+        "rating": "core",
+        "insight": "Agentic AI的Kai擴充對Delphi和C++ Builder的使用者具有重要影響。",
         "source_label": "The Register",
-        "source": ""
-      },
-      {
-        "title": "Physical AI",
-        "layer": "AI應用",
-        "body": "Physical AI是一種新的AI技術，正在被開發和應用。這項技術可以幫助開發人員更容易地構建和部署AI模型。Physical AI對AI領域具有重要意義。",
-        "impact": "AI研究人員、開發人員",
-        "rating": "opp",
-        "insight": "Physical AI對AI領域具有重要意義",
-        "source_label": "The Register",
-        "source": ""
+        "source": "https://www.theregister.com/devops/2026/06/01/agentic-ai-arrives-for-delphi-and-c-builder/5249638"
       }
     ],
     "glossary_new": [
       {
-        "term": "Physical Foundation Models",
-        "full": "實體基礎模型",
-        "def": "一種大規模神經網路的固定硬體實現技術",
-        "why": "對AI領域具有重要意義",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Serverless OpenSearch",
-        "full": "無伺服器搜索引擎",
-        "def": "一種無伺服器的搜索引擎解決方案",
-        "why": "對開發人員具有重要意義",
-        "category": "cloud_service"
-      },
-      {
         "term": "Agentic AI",
-        "full": "代理AI",
-        "def": "一種新的AI技術，正在被開發和應用",
-        "why": "對AI領域具有重要意義",
+        "full": "Agentic AI",
+        "def": "Agentic AI是一家提供AI解決方案的公司，推出Delphi和C++ Builder的AI擴充。",
+        "why": "Agentic AI的Kai擴充對Delphi和C++ Builder的使用者具有重要影響。",
         "category": "ai_technique"
       }
     ],
