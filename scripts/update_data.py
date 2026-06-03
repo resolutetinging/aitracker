@@ -44,13 +44,16 @@ RSS_FEEDS = [
     ("Semiconductor", "https://news.google.com/rss/search?q=NVIDIA+AMD+Intel+SK+Hynix+Micron+packaging&hl=en-US&gl=US&ceid=US:en"),
     ("CSP/CapEx",    "https://news.google.com/rss/search?q=Microsoft+Google+Meta+Amazon+AI+capex+data+center+2026&hl=en-US&gl=US&ceid=US:en"),
     ("App/AI",       "https://news.google.com/rss/search?q=Agentic+AI+Physical+AI+humanoid+robot+inference+2026&hl=en-US&gl=US&ceid=US:en"),
+    # 重大展會（Computex / CES / GTC）—— 非展會期間自動沒有結果，無副作用
+    ("Semiconductor", "https://news.google.com/rss/search?q=Computex+2026+AI+chip+GPU+NVIDIA+AMD&hl=en-US&gl=US&ceid=US:en"),
 ]
 
 # 硬體供應鏈關鍵字（hw 分類必須命中其中之一）
 HW_KEYWORDS = [
     "hbm","cowos","tsmc","nvidia","amd","intel","sk hynix","micron","samsung foundry",
     "semiconductor","packaging","wafer","gpu","chip","osat","asic","foundry",
-    "advanced packaging","chiplet","tsv","emib","soi","reticle","capacity","fab"
+    "advanced packaging","chiplet","tsv","emib","soi","reticle","capacity","fab",
+    "computex","ces","gtc"  # 重大展會：展覽期間新聞直通 hw section
 ]
 
 # CSP / 巨頭關鍵字
@@ -65,7 +68,8 @@ AI_KEYWORDS = [
     "microsoft","google","meta","amazon","capex","data center","cloud",
     "agentic","robot","humanoid","physical ai","inference","llm","foundation model",
     "artificial intelligence","machine learning","openai","anthropic","groq",
-    "packaging","wafer","foundry","chiplet","osat"
+    "packaging","wafer","foundry","chiplet","osat",
+    "computex","ces","gtc"  # 展會關鍵字：避免展覽期間大量相關新聞被過濾掉
 ]
 
 def parse_rss_date(item, ns):
