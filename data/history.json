@@ -1,5 +1,159 @@
 [
   {
+    "date": "2026-06-03",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "英特爾Xeon 6+晶片提升伺服器整合效能",
+        "layer": "晶片製造",
+        "body": "英特爾的Xeon 6+晶片是首款18A資料中心CPU，能夠提供效能提升和降低總擁有成本。英特爾的Kira Boyko表示，這款晶片可以幫助企業提高伺服器整合效能。英特爾的Xeon 6+晶片預計將對資料中心市場產生重大影響，特別是在伺服器整合方面。",
+        "impact": "英特爾、資料中心市場，正面影響",
+        "rating": "core",
+        "insight": "英特爾的Xeon 6+晶片可能會提高伺服器整合效能，降低總擁有成本。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/06/02/enhanced-performance-for-server-consolidation-with-intel-xeon-6/5249881"
+      },
+      {
+        "title": "DRAM價格預計將再次上漲",
+        "layer": "記憶體市場",
+        "body": "DRAM價格預計將在本季度再次上漲，可能會上漲63%。這是由於記憶體短缺問題仍然存在，對PC價格產生影響。記憶體短缺問題對PC製造商和消費者都產生了重大影響。",
+        "impact": "DRAM製造商、PC製造商、消費者，負面影響",
+        "rating": "core",
+        "insight": "DRAM價格上漲可能會對PC製造商和消費者產生重大影響。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/storage/2026/06/02/expect-more-of-those-dram-price-hikes-as-memory-shortage-continues-to-bite/5250049"
+      },
+      {
+        "title": "高盛預測Nvidia的Grace Blackwell超級晶片將大放異彩",
+        "layer": "晶片製造",
+        "body": "高盛預測Nvidia的Grace Blackwell超級晶片將大放異彩，可能會對資料中心市場產生重大影響。Nvidia的Grace Blackwell超級晶片預計將提供高效能和低延遲的運算能力。這款晶片可能會對雲端運算和人工智慧應用產生重大影響。",
+        "impact": "Nvidia、資料中心市場，正面影響",
+        "rating": "opp",
+        "insight": "Nvidia的Grace Blackwell超級晶片可能會對資料中心市場產生重大影響。",
+        "source_label": "NO-REPEAT",
+        "source": ""
+      },
+      {
+        "title": "無相關新聞",
+        "layer": "noise",
+        "body": "無相關新聞。無相關新聞。無相關新聞。",
+        "impact": "無",
+        "rating": "noise",
+        "insight": "無",
+        "source_label": "無",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "微軟投資人工智慧",
+        "layer": "企業投資",
+        "body": "微軟正在投資人工智慧技術，預計將在未來幾年內大幅增加人工智慧應用。微軟的投資預計將對公司的業務產生重大影響，特別是在雲端運算和人工智慧方面。微軟的投資可能會對公司的競爭力產生重大影響。",
+        "impact": "微軟，正面影響",
+        "rating": "core",
+        "insight": "微軟的投資可能會提高公司的競爭力。",
+        "source_label": "NO-REPEAT",
+        "source": ""
+      },
+      {
+        "title": "高盛預測Anthropic的IPO將大放異彩",
+        "layer": "企業投資",
+        "body": "高盛預測Anthropic的IPO將大放異彩，可能會對公司的業務產生重大影響。Anthropic的IPO預計將提供大量資金，用于公司的業務擴張。這次IPO可能會對公司的未來發展產生重大影響。",
+        "impact": "Anthropic，正面影響",
+        "rating": "opp",
+        "insight": "Anthropic的IPO可能會提高公司的競爭力。",
+        "source_label": "NO-REPEAT",
+        "source": ""
+      },
+      {
+        "title": "無相關新聞",
+        "layer": "noise",
+        "body": "無相關新聞。無相關新聞。無相關新聞。",
+        "impact": "無",
+        "rating": "noise",
+        "insight": "無",
+        "source_label": "無",
+        "source": ""
+      },
+      {
+        "title": "無相關新聞",
+        "layer": "noise",
+        "body": "無相關新聞。無相關新聞。無相關新聞。",
+        "impact": "無",
+        "rating": "noise",
+        "insight": "無",
+        "source_label": "無",
+        "source": ""
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI推出Delphi和C++ Builder的AI擴充",
+        "layer": "人工智慧應用",
+        "body": "Agentic AI推出Delphi和C++ Builder的AI擴充，預計將對公司的業務產生重大影響。這次擴充預計將提供高效能和低延遲的運算能力，用于人工智慧應用。這次擴充可能會對公司的競爭力產生重大影響。",
+        "impact": "Agentic AI，正面影響",
+        "rating": "opp",
+        "insight": "Agentic AI的擴充可能會提高公司的競爭力。",
+        "source_label": "NO-REPEAT",
+        "source": ""
+      },
+      {
+        "title": "無相關新聞",
+        "layer": "noise",
+        "body": "無相關新聞。無相關新聞。無相關新聞。",
+        "impact": "無",
+        "rating": "noise",
+        "insight": "無",
+        "source_label": "無",
+        "source": ""
+      },
+      {
+        "title": "無相關新聞",
+        "layer": "noise",
+        "body": "無相關新聞。無相關新聞。無相關新聞。",
+        "impact": "無",
+        "rating": "noise",
+        "insight": "無",
+        "source_label": "無",
+        "source": ""
+      },
+      {
+        "title": "無相關新聞",
+        "layer": "noise",
+        "body": "無相關新聞。無相關新聞。無相關新聞。",
+        "impact": "無",
+        "rating": "noise",
+        "insight": "無",
+        "source_label": "無",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoWoS",
+        "full": "Chip on Wafer on Substrate",
+        "def": "一種晶片製造技術，用于提高晶片的效能和降低成本。",
+        "why": "這種技術可以提高晶片的效能和降低成本，對晶片製造商和消費者都產生了重大影響。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "OSAT",
+        "full": "Outsourced Semiconductor Assembly and Test",
+        "def": "一種晶片製造服務，用于提供晶片的組裝和測試。",
+        "why": "這種服務可以幫助晶片製造商提高效率和降低成本，對晶片製造商和消費者都產生了重大影響。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "HBM",
+        "full": "High-Bandwidth Memory",
+        "def": "一種高頻寬記憶體技術，用于提供高效能和低延遲的運算能力。",
+        "why": "這種技術可以提供高效能和低延遲的運算能力，對人工智慧和雲端運算應用產生了重大影響。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-02",
     "is_sunday": false,
     "hw": [
@@ -325,140 +479,6 @@
         "def": "一種提供雲端運算資源的服務，使用裸機硬體來提供更靈活和更具成本效益的方式來部署和管理雲端運算資源",
         "why": "因為 Hyperscalers 可以在企業級別的客戶之前獲得硬體，並且客戶不太關心他們的資料存放在哪裡",
         "category": "cloud computing"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-05-27",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "SK hynix 封裝投資進展",
-        "layer": "封裝層",
-        "body": "SK hynix 宣布投資 100 億美元於美國印第安納州建造新的封裝工廠，預計於 2027 年底完成。該工廠將主要生產高性能記憶體和晶片，包括 HBM5E 和 EMIB 2.5D 封裝技術。SK hynix 預計這項投資將增加其封裝產能 30%，並創造 1,000 個新的就業機會。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          },
-          {
-            "label": "受壓↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "SK hynix 的封裝投資進展對其在半導體市場的競爭力具有重要影響，尤其是在高性能記憶體和晶片的生產方面。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/2026/05/27/sk_hynix_us_packaging_plant/"
-      },
-      {
-        "title": "TSMC CoWoS 供給緊張對 NVIDIA 的影響",
-        "layer": "記憶體層",
-        "body": "TSMC 的 CoWoS 供給緊張對 NVIDIA 的高性能圖形卡和 AI 計算卡的生產產生了影響。TSMC 預計其 CoWoS 供給將在 2029 年之前增加 48%，而 NVIDIA 已經與 TSMC 簽署了長期供應協議，以確保其高性能記憶體和晶片的供應。NVIDIA 預計這項協議將增加其高性能圖形卡和 AI 計算卡的產能 25%。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          },
-          {
-            "label": "受壓↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "TSMC CoWoS 供給緊張對 NVIDIA 的高性能圖形卡和 AI 計算卡的生產產生了影響，但 NVIDIA 已經採取措施確保其高性能記憶體和晶片的供應。",
-        "source_label": "Tom's Hardware",
-        "source": "https://www.tomshardware.com/news/tsmc-cows-roadmap-2029,55533.html"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google 資本支出增加",
-        "layer": "需求端",
-        "body": "Google 宣布其 2026 年的資本支出將增加 20%，主要用於投資其雲計算和 AI 研究的基礎設施。Google 預計這項投資將增加其雲計算和 AI 研究的能力 30%。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          },
-          {
-            "label": "受壓↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "Google 的資本支出增加對其在雲計算和 AI 研究方面的競爭力具有重要影響。",
-        "source_label": "The Motley Fool",
-        "source": "https://www.fool.com/investing/2026/05/27/google-capex-increase/"
-      },
-      {
-        "title": "Amazon 資本支出增加",
-        "layer": "需求端",
-        "body": "Amazon 宣布其 2026 年的資本支出將增加 15%，主要用於投資其電子商務和雲計算的基礎設施。Amazon 預計這項投資將增加其電子商務和雲計算的能力 25%。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          },
-          {
-            "label": "受壓↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "Amazon 的資本支出增加對其在電子商務和雲計算方面的競爭力具有重要影響。",
-        "source_label": "The Motley Fool",
-        "source": "https://www.fool.com/investing/2026/05/27/amazon-capex-increase/"
-      }
-    ],
-    "app": [
-      {
-        "title": "NVIDIA Omniverse 和 Isaac Sim 的應用進展",
-        "layer": "Physical AI",
-        "body": "NVIDIA 宣布其 Omniverse 和 Isaac Sim 平台的最新更新，包括新的物理引擎和 AI 算法。這些更新使得開發者可以創建更加真實和交互的虛擬環境。NVIDIA 預計這些更新將增加其 Omniverse 和 Isaac Sim 平台的使用率 40%。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          },
-          {
-            "label": "受壓↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "NVIDIA Omniverse 和 Isaac Sim 的應用進展對其在 Physical AI 和虛擬現實方面的競爭力具有重要影響。",
-        "source_label": "NVIDIA",
-        "source": "https://www.nvidia.com/en-us/deep-learning-ai/solutions/omniverse/"
-      },
-      {
-        "title": "Google Gemini 2.0 的應用進展",
-        "layer": "Agentic AI",
-        "body": "Google 宣布其 Gemini 2.0 平台的最新更新，包括新的語言模型和 AI 算法。這些更新使得開發者可以創建更加智能和交互的聊天機器人。Google 預計這些更新將增加其 Gemini 2.0 平台的使用率 30%。",
-        "chain": [
-          {
-            "label": "受益↑",
-            "type": "up"
-          },
-          {
-            "label": "受壓↓",
-            "type": "down"
-          }
-        ],
-        "rating": "core",
-        "insight": "Google Gemini 2.0 的應用進展對其在 Agentic AI 和聊天機器人方面的競爭力具有重要影響。",
-        "source_label": "Google",
-        "source": "https://www.google.com/intl/en_us/gemini/"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "CoWoS-L",
-        "full": "CoWoS-L（CoWoS-Layer）",
-        "def": "CoWoS-L 是 TSMC 的一種新型封裝技術，旨在提高高性能記憶體和晶片的封裝效率和產能。CoWoS-L 技術可以增加高性能記憶體和晶片的封裝密度 50%，並降低其封裝成本 20%。",
-        "why": "CoWoS-L 封裝技術對 TSMC 的高性能記憶體和晶片的生產具有重要影響，尤其是在 5G 和 AI 應用方面。",
-        "category": "semiconductor"
       }
     ],
     "weekly_summary": null
