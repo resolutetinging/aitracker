@@ -223,16 +223,14 @@ def make_prompt(news_context, recent_titles=None):
         + (' | notes insight' if notes_text else '') + '"'
         if IS_SUNDAY else 'null'
     )
-    recent = ("NO-REPEAT:" + ";".join(recent_titles[:4])) if recent_titles else ""
-    notes_ctx = ("NOTES:" + notes_text[:200]) if notes_text else ""
+    no_repeat_str = ("Do NOT repeat these recently covered titles: " + "; ".join(recent_titles[:4])) if recent_titles else ""
+    notes_ctx = ("User notes context: " + notes_text[:200]) if notes_text else ""
     news_short = news_context[:2000]
 
     return f"""You are an AI supply chain analyst. Analyze the news below and output pure JSON (start directly with {{).
 
 NEWS:
 {news_short}
-{recent}
-{notes_ctx}
 
 CATEGORIES:
 - hw: semiconductor/packaging (CoWoS/OSAT/HBM)/chip manufacturing only
@@ -248,11 +246,14 @@ RULES:
 - 2-4 items per section; if no relevant news → 1 noise item only
 - One item = one story; if source mixes 2 unrelated stories, split into 2 items
 - body: 3 sentences using ONLY facts from the provided news above — NEVER invent numbers, dates, or connections between companies not stated in the source; if you cannot write 3 real sentences from the source, rate it noise instead
-- HALLUCINATION IS FORBIDDEN: do not combine unrelated companies or technologies (e.g. do not link Intel's EMIB to Microsoft); every company-technology pairing must come directly from the news text
+- SOURCE REQUIREMENT: every core or opp item MUST have a SOURCE_URL from the news; if no SOURCE_URL exists for a story, you MUST rate it noise — never assign core/opp to unsourced items
+- HALLUCINATION IS FORBIDDEN: do not combine unrelated companies or technologies; every company-technology pairing must come directly from the news text
 - impact: name specific companies/countries from the news; never write vague phrases like "industry benefits"
 - glossary_new: required, 1-3 terms from today's news that readers may not know
 - source: copy verbatim from SOURCE_URL in the news; never fabricate URLs
-- All titles, body, impact, insight in Traditional Chinese (zh-TW)"""
+- All titles, body, impact, insight in Traditional Chinese (zh-TW)
+{no_repeat_str}
+{notes_ctx}"""
 
 # ══════════════════════════════════════════════════════════════════
 #  3. GROQ API + CHAIN QUALITY FIX
@@ -376,6 +377,17 @@ def validate_sources(data):
                 print(f"  ✗ 無效 URL，已清空：{url[:60]}")
                 item['source'] = ''
                 item['source_label'] = '—'
+
+def downgrade_unsourced(data):
+    """沒有 source URL 但評為 core/opp 的條目降級為 noise，防止幻覺混入"""
+    count = 0
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            if item.get('rating') in ('core', 'opp') and not item.get('source', '').strip():
+                item['rating'] = 'noise'
+                count += 1
+    if count:
+        print(f"  → {count} 筆無來源條目已降級為 noise")
 
 # ══════════════════════════════════════════════════════════════════
 #  5. HISTORY
@@ -635,6 +647,7 @@ if __name__ == '__main__':
 
     print("🔗 驗證 source URL...")
     validate_sources(data)
+    downgrade_unsourced(data)
 
     history = upsert(history, data)
     save_history(history)
