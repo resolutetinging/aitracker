@@ -23,7 +23,14 @@ KNOWN_TERMS = ["HBM","CoWoS","CSP","OSAT","VLA 模型",
 #  1. RSS FEEDS（主要新聞來源，穩定免費）
 # ══════════════════════════════════════════════════════════════════
 RSS_FEEDS = [
-    # Semiconductor / Supply Chain — 專業媒體（高訊噪比）
+    # Google News RSS（精準關鍵字，優先餵給 LLM）
+    ("Semiconductor", "https://news.google.com/rss/search?q=TSMC+HBM+CoWoS+semiconductor+AI+chip&hl=en-US&gl=US&ceid=US:en"),
+    ("Semiconductor", "https://news.google.com/rss/search?q=NVIDIA+AMD+Intel+SK+Hynix+Micron+packaging&hl=en-US&gl=US&ceid=US:en"),
+    ("CSP/CapEx",    "https://news.google.com/rss/search?q=Microsoft+Google+Meta+Amazon+AI+capex+data+center+2026&hl=en-US&gl=US&ceid=US:en"),
+    ("App/AI",       "https://news.google.com/rss/search?q=Agentic+AI+Physical+AI+humanoid+robot+inference+2026&hl=en-US&gl=US&ceid=US:en"),
+    # 重大展會（Computex / CES / GTC）—— 非展會期間自動沒有結果，無副作用
+    ("Semiconductor", "https://news.google.com/rss/search?q=Computex+2026+AI+chip+GPU+NVIDIA+AMD&hl=en-US&gl=US&ceid=US:en"),
+    # Semiconductor / Supply Chain — 專業媒體
     ("Semiconductor", "https://www.theregister.com/headlines.atom"),
     ("Semiconductor", "https://semiengineering.com/feed/"),
     ("Semiconductor", "https://www.tomshardware.com/feeds/all"),
@@ -31,7 +38,7 @@ RSS_FEEDS = [
     ("Semiconductor", "https://feeds.reuters.com/reuters/technologyNews"),
     ("Semiconductor", "https://hnrss.org/frontpage?q=TSMC+HBM+CoWoS+OSAT+semiconductor+packaging"),
     ("Semiconductor", "https://hnrss.org/frontpage?q=NVIDIA+AMD+Intel+chip+wafer+capacity+supply"),
-    # CSP CapEx / Cloud — 資料中心專業媒體
+    # CSP CapEx / Cloud
     ("CSP/CapEx",    "https://www.datacenterdynamics.com/en/rss/"),
     ("CSP/CapEx",    "https://nextplatform.com/feed/"),
     ("CSP/CapEx",    "https://hnrss.org/frontpage?q=Microsoft+Google+Meta+Amazon+capex+data+center+AI+investment"),
@@ -39,13 +46,6 @@ RSS_FEEDS = [
     ("App/AI",       "https://hnrss.org/frontpage?q=Agentic+AI+Physical+AI+robotics+humanoid+VLA+inference"),
     ("App/AI",       "https://feeds.arstechnica.com/arstechnica/technology-lab"),
     ("App/AI",       "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
-    # Google News RSS（保底）
-    ("Semiconductor", "https://news.google.com/rss/search?q=TSMC+HBM+CoWoS+semiconductor+AI+chip&hl=en-US&gl=US&ceid=US:en"),
-    ("Semiconductor", "https://news.google.com/rss/search?q=NVIDIA+AMD+Intel+SK+Hynix+Micron+packaging&hl=en-US&gl=US&ceid=US:en"),
-    ("CSP/CapEx",    "https://news.google.com/rss/search?q=Microsoft+Google+Meta+Amazon+AI+capex+data+center+2026&hl=en-US&gl=US&ceid=US:en"),
-    ("App/AI",       "https://news.google.com/rss/search?q=Agentic+AI+Physical+AI+humanoid+robot+inference+2026&hl=en-US&gl=US&ceid=US:en"),
-    # 重大展會（Computex / CES / GTC）—— 非展會期間自動沒有結果，無副作用
-    ("Semiconductor", "https://news.google.com/rss/search?q=Computex+2026+AI+chip+GPU+NVIDIA+AMD&hl=en-US&gl=US&ceid=US:en"),
 ]
 
 # 硬體供應鏈關鍵字（hw 分類必須命中其中之一）
@@ -225,7 +225,7 @@ def make_prompt(news_context, recent_titles=None):
     )
     no_repeat_str = ("Do NOT repeat these recently covered titles: " + "; ".join(recent_titles[:4])) if recent_titles else ""
     notes_ctx = ("User notes context: " + notes_text[:200]) if notes_text else ""
-    news_short = news_context[:2000]
+    news_short = news_context[:3500]
 
     return f"""You are an AI supply chain analyst. Analyze the news below and output pure JSON (start directly with {{).
 
@@ -353,16 +353,22 @@ def call_groq(prompt):
 #  4. URL VALIDATION
 # ══════════════════════════════════════════════════════════════════
 def check_url(url, timeout=6):
-    """HEAD request 驗證 URL 是否存在，回傳 True/False"""
+    """驗證 URL 是否存在；HEAD 被拒（403/405）時改用 GET 確認"""
     if not url or not url.startswith('http'):
         return False
-    try:
-        req = urllib.request.Request(url, method='HEAD',
-                                     headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req, timeout=timeout) as r:
-            return r.status < 400
-    except Exception:
-        return False
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    for method in ('HEAD', 'GET'):
+        try:
+            req = urllib.request.Request(url, method=method, headers=headers)
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.status < 400
+        except urllib.error.HTTPError as e:
+            if method == 'HEAD' and e.code in (403, 405):
+                continue  # HEAD 被拒，試 GET
+            return False
+        except Exception:
+            return False
+    return False
 
 def validate_sources(data):
     """驗證所有 NewsItem 的 source URL；失效者清空 source/source_label"""
