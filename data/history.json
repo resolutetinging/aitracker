@@ -6,10 +6,10 @@
       {
         "title": "英特爾18A製程節點遇到困難",
         "layer": "晶片製造",
-        "body": "英特爾的18A製程節點遇到困難，首席財務官Zinsner表示這是一次性的失誤，14A製程節點仍然按計劃進行。英特爾的18A製程節點是公司的一項重要投資，但現在看來這項投資可能沒有帶來預期的成果。英特爾的晶片製造能力可能會受到影響，導致公司的市場份額下降。",
-        "impact": "英特爾的晶片製造能力可能會受到影響，導致公司的市場份額下降",
+        "body": "英特爾的18A製程節點遇到困難，公司的首席財務官Zinsner表示，這個節點的問題是個別的，14A製程節點仍然按計劃進行。英特爾的18A製程節點是公司的一個重要項目，旨在提高晶片的性能和效率。然而，該節點的困難可能會對英特爾的業務產生影響。",
+        "impact": "英特爾的晶片供應可能會受到影響，對公司的業務和客戶（如戴爾、惠普等）產生影響",
         "rating": "noise",
-        "insight": "英特爾的18A製程節點失誤可能會影響公司的市場份額",
+        "insight": "英特爾的18A製程節點遇到困難，可能會對公司的業務和客戶產生影響，投資者應該關注公司的後續發展",
         "source_label": "—",
         "source": ""
       }
@@ -18,22 +18,22 @@
       {
         "title": "微軟將Linux命令整合到Windows",
         "layer": "企業投資",
-        "body": "微軟宣布將Linux命令整合到Windows，提供超過75個Unix命令給Windows和PowerShell使用者。這項功能將使Windows使用者能夠更方便地使用Linux命令，提高工作效率。微軟的這項投資可能會吸引更多的開發者使用Windows。",
-        "impact": "微軟的Linux命令整合可能會吸引更多的開發者使用Windows",
+        "body": "微軟宣布將Linux命令整合到Windows，提供超過75個Unix命令給Windows和PowerShell用戶。這個功能將使Windows用戶能夠更容易地使用Linux命令，提高工作效率。微軟的這個舉動可能會對公司的競爭對手（如Google、Amazon）產生影響。",
+        "impact": "微軟的Windows用戶可能會受益，公司的競爭對手（如Google、Amazon）可能會受到影響",
         "rating": "noise",
-        "insight": "微軟的Linux命令整合可能會提高Windows的市場份額",
+        "insight": "微軟將Linux命令整合到Windows，可能會提高Windows用戶的工作效率，投資者應該關注公司的後續發展",
         "source_label": "—",
         "source": ""
       }
     ],
     "app": [
       {
-        "title": "微軟的AI代理將取代人工",
+        "title": "微軟的AI代理將更加智能",
         "layer": "AI應用",
-        "body": "微軟宣布其AI代理將取代人工，提供24小時不間斷的服務。這項功能將使使用者能夠更方便地使用AI，提高工作效率。微軟的AI代理可能會吸引更多的使用者使用公司的服務。",
-        "impact": "微軟的AI代理可能會吸引更多的使用者使用公司的服務",
+        "body": "微軟宣布其AI代理將更加智能，能夠更好地協助用戶完成工作。這個AI代理將始終在線，提供實時的協助和建議。微軟的這個舉動可能會對公司的競爭對手（如Google、Amazon）產生影響。",
+        "impact": "微軟的AI代理可能會提高用戶的工作效率，公司的競爭對手（如Google、Amazon）可能會受到影響",
         "rating": "noise",
-        "insight": "微軟的AI代理可能會提高公司的市場份額",
+        "insight": "微軟的AI代理將更加智能，可能會提高用戶的工作效率，投資者應該關注公司的後續發展",
         "source_label": "—",
         "source": ""
       }
@@ -42,9 +42,9 @@
       {
         "term": "Coreutils",
         "full": "核心工具",
-        "def": "一套提供超過75個Unix命令的工具集",
-        "why": "微軟將Coreutils整合到Windows，提供給Windows和PowerShell使用者",
-        "category": "軟體"
+        "def": "Coreutils是一個提供超過75個Unix命令的工具，現在被整合到Windows中。",
+        "why": "Coreutils的整合將使Windows用戶能夠更容易地使用Linux命令，提高工作效率",
+        "category": "semiconductor"
       }
     ],
     "weekly_summary": null
