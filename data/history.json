@@ -4,57 +4,47 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "英特爾晶片提升伺服器整合效能",
+        "title": "英特爾18A製程節點遇到困難",
         "layer": "晶片製造",
-        "body": "英特爾Xeon 6+晶片提升伺服器整合效能。這項技術可以提高伺服器的效能和效率。英特爾的這項技術可以幫助資料中心和雲端計算的發展。",
-        "impact": "英特爾、資料中心、雲端計算",
-        "rating": "core",
-        "insight": "英特爾的晶片技術可以提高伺服器的效能和效率，對資料中心和雲端計算的發展有幫助。",
-        "source_label": "無相關新聞",
-        "source": ""
-      },
-      {
-        "title": "DRAM價格預計將再次上漲",
-        "layer": "記憶體價格",
-        "body": "DRAM價格預計將再次上漲。這是由於全球DRAM需求增加和供應不足所致。DRAM價格的上漲將對電子產品的成本和價格產生影響。",
-        "impact": "DRAM供應商、電子產品製造商",
-        "rating": "core",
-        "insight": "DRAM價格的上漲將對電子產品的成本和價格產生影響，對電子產品製造商來說是挑戰。",
-        "source_label": "無相關新聞",
+        "body": "英特爾的18A製程節點遇到困難，首席財務官Zinsner表示這是一次性的失誤，14A製程節點仍然按計劃進行。英特爾的18A製程節點是公司的一項重要投資，但現在看來這項投資可能沒有帶來預期的成果。英特爾的晶片製造能力可能會受到影響，導致公司的市場份額下降。",
+        "impact": "英特爾的晶片製造能力可能會受到影響，導致公司的市場份額下降",
+        "rating": "noise",
+        "insight": "英特爾的18A製程節點失誤可能會影響公司的市場份額",
+        "source_label": "—",
         "source": ""
       }
     ],
     "corp": [
       {
-        "title": "Microsoft Build：Surface RTX Spark Dev Box、Coreutils for Windows、air-gapped GitHub和更多",
-        "layer": "公司新聞",
-        "body": "Microsoft Build發佈了Surface RTX Spark Dev Box、Coreutils for Windows、air-gapped GitHub和更多的產品和技術。這些產品和技術可以幫助開發者更好地使用Microsoft的平台和工具。Microsoft Build還發佈了Execution Containers，提供安全的環境讓開發者運行AI代理。",
-        "impact": "Microsoft、開發者",
-        "rating": "core",
-        "insight": "Microsoft的新產品和技術可以幫助開發者更好地使用Microsoft的平台和工具，對開發者來說是機會。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/os-platforms/2026/06/03/microsoft-build-surface-rtx-spark-dev-box-coreutils-for-windows-air-gapped-github-and-more/5250501"
+        "title": "微軟將Linux命令整合到Windows",
+        "layer": "企業投資",
+        "body": "微軟宣布將Linux命令整合到Windows，提供超過75個Unix命令給Windows和PowerShell使用者。這項功能將使Windows使用者能夠更方便地使用Linux命令，提高工作效率。微軟的這項投資可能會吸引更多的開發者使用Windows。",
+        "impact": "微軟的Linux命令整合可能會吸引更多的開發者使用Windows",
+        "rating": "noise",
+        "insight": "微軟的Linux命令整合可能會提高Windows的市場份額",
+        "source_label": "—",
+        "source": ""
       }
     ],
     "app": [
       {
-        "title": "Agentic AI和Physical AI的發展",
-        "layer": "AI技術",
-        "body": "Agentic AI和Physical AI是兩種新的AI技術。這些技術可以幫助AI代理更好地與物理世界互動。Agentic AI和Physical AI的發展可以帶來新的應用和機會。",
-        "impact": "AI開發者、AI應用",
-        "rating": "opp",
-        "insight": "Agentic AI和Physical AI的發展可以帶來新的應用和機會，對AI開發者和AI應用來說是機會。",
-        "source_label": "無相關新聞",
+        "title": "微軟的AI代理將取代人工",
+        "layer": "AI應用",
+        "body": "微軟宣布其AI代理將取代人工，提供24小時不間斷的服務。這項功能將使使用者能夠更方便地使用AI，提高工作效率。微軟的AI代理可能會吸引更多的使用者使用公司的服務。",
+        "impact": "微軟的AI代理可能會吸引更多的使用者使用公司的服務",
+        "rating": "noise",
+        "insight": "微軟的AI代理可能會提高公司的市場份額",
+        "source_label": "—",
         "source": ""
       }
     ],
     "glossary_new": [
       {
-        "term": "Agentic AI",
-        "full": "Agentic AI",
-        "def": "Agentic AI是一種新的AI技術，旨在讓AI代理更好地與物理世界互動。",
-        "why": "Agentic AI可以帶來新的應用和機會，對AI開發者和AI應用來說是機會。",
-        "category": "ai_technique"
+        "term": "Coreutils",
+        "full": "核心工具",
+        "def": "一套提供超過75個Unix命令的工具集",
+        "why": "微軟將Coreutils整合到Windows，提供給Windows和PowerShell使用者",
+        "category": "軟體"
       }
     ],
     "weekly_summary": null
