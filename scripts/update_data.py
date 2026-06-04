@@ -395,6 +395,36 @@ def downgrade_unsourced(data):
     if count:
         print(f"  → {count} 筆無來源條目已降級為 noise")
 
+def _body_is_low_quality(body: str) -> bool:
+    """True = body 不達標（重複句 or 無具體數字）"""
+    if not body or len(body) < 30:
+        return True
+    sentences = [s.strip() for s in re.split(r'[。！？]', body) if len(s.strip()) > 8]
+    # 任意兩句字元集重疊率 > 65% → 重複湊字
+    for i in range(len(sentences)):
+        for j in range(i + 1, len(sentences)):
+            s1, s2 = set(sentences[i]), set(sentences[j])
+            overlap = len(s1 & s2) / max(len(s1), len(s2), 1)
+            if overlap > 0.65:
+                return True
+    # core/opp body 必須含數字（%, $, 億, 倍, 具體數量）
+    if not re.search(r'\d|%|億|兆|倍|萬|百億|千億', body):
+        return True
+    return False
+
+def downgrade_low_quality(data):
+    """body 重複或無具體數字的 core/opp 條目降級為 noise"""
+    count = 0
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            if item.get('rating') in ('core', 'opp') and _body_is_low_quality(item.get('body', '')):
+                item['rating'] = 'noise'
+                count += 1
+    if count:
+        print(f"  → {count} 筆低品質 body（重複句/無數字）已降級為 noise")
+    else:
+        print("  → body 品質檢核通過")
+
 # ══════════════════════════════════════════════════════════════════
 #  5. HISTORY
 # ══════════════════════════════════════════════════════════════════
@@ -654,6 +684,8 @@ if __name__ == '__main__':
     print("🔗 驗證 source URL...")
     validate_sources(data)
     downgrade_unsourced(data)
+    print("🔍 body 品質檢核...")
+    downgrade_low_quality(data)
 
     history = upsert(history, data)
     save_history(history)
