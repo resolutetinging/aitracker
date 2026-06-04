@@ -4,47 +4,64 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "英特爾18A製程節點遇到困難",
+        "title": "Nvidia推出新晶片將AI直接帶到個人電腦",
         "layer": "晶片製造",
-        "body": "英特爾的18A製程節點遇到困難，公司的首席財務官Zinsner表示，這個節點的問題是個別的，14A製程節點仍然按計劃進行。英特爾的18A製程節點是公司的一個重要項目，旨在提高晶片的性能和效率。然而，該節點的困難可能會對英特爾的業務產生影響。",
-        "impact": "英特爾的晶片供應可能會受到影響，對公司的業務和客戶（如戴爾、惠普等）產生影響",
+        "body": "Nvidia推出新晶片將AI直接帶到個人電腦，該晶片能夠讓用戶在個人電腦上體驗AI的力量。Nvidia的CEO黃仁勳表示，這款新晶片代表了公司在AI領域的重大突破。該晶片將能夠讓用戶在個人電腦上進行AI相關的工作，如圖像識別和語言翻譯等",
+        "impact": "Nvidia、Microsoft、個人電腦用戶",
         "rating": "noise",
-        "insight": "英特爾的18A製程節點遇到困難，可能會對公司的業務和客戶產生影響，投資者應該關注公司的後續發展",
+        "insight": "Nvidia的新晶片將為個人電腦用戶帶來AI的體驗，提升用戶的工作效率",
         "source_label": "—",
         "source": ""
+      },
+      {
+        "title": "Nvidia和TSMC將AI帶入晶片製造工廠",
+        "layer": "晶片製造",
+        "body": "Nvidia和TSMC宣布將AI技術應用於晶片製造工廠，該技術將能夠提升晶片製造的效率和品質。Nvidia的CEO黃仁勳表示，這項合作將為公司在AI領域的發展提供強大的支持。該技術將能夠讓用戶在晶片製造過程中進行AI相關的工作，如晶片設計和測試等",
+        "impact": "Nvidia、TSMC、晶片製造業",
+        "rating": "core",
+        "insight": "Nvidia和TSMC的合作將為晶片製造業帶來AI的革命，提升製造效率和品質",
+        "source_label": "Electronics360",
+        "source": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNbWJxby13czRZWFM4aWJ3bFBZdTFGMW1fSGtvNFpvTmctREtpenZYcEl2dEFEdmdsb2pNT3VFVW5QaUQwNWM1T3Zvb2VjY0dpRjIzS09uMy1NbGtoUjF2RDhYdTBKdUtxbmgzTGNPLWNFWUZhQm10Sm4tMmlRUWNLVkFERHJVcTltM1JLNHl0R05sQmFjV0RIYkdnNDF1WldXcVFaVWdlbEhnN1V5WmJSR0hZbDg1ZElh"
       }
     ],
     "corp": [
       {
-        "title": "微軟將Linux命令整合到Windows",
-        "layer": "企業投資",
-        "body": "微軟宣布將Linux命令整合到Windows，提供超過75個Unix命令給Windows和PowerShell用戶。這個功能將使Windows用戶能夠更容易地使用Linux命令，提高工作效率。微軟的這個舉動可能會對公司的競爭對手（如Google、Amazon）產生影響。",
-        "impact": "微軟的Windows用戶可能會受益，公司的競爭對手（如Google、Amazon）可能會受到影響",
-        "rating": "noise",
-        "insight": "微軟將Linux命令整合到Windows，可能會提高Windows用戶的工作效率，投資者應該關注公司的後續發展",
-        "source_label": "—",
-        "source": ""
+        "title": "Meta、Microsoft、Amazon和Alphabet將大舉投資AI領域",
+        "layer": "公司投資",
+        "body": "Meta、Microsoft、Amazon和Alphabet宣布將大舉投資AI領域，該投資將為公司在AI領域的發展提供強大的支持。這四家公司將在AI領域進行深入的合作，共同推動AI技術的發展。該投資將為公司帶來新的商業機會和增長點",
+        "impact": "Meta、Microsoft、Amazon、Alphabet",
+        "rating": "core",
+        "insight": "四家公司的投資將為AI領域帶來新的機會和增長點，提升公司的競爭力",
+        "source_label": "Yahoo Finance",
+        "source": "https://news.google.com/rss/articles/CBMigAJBVV95cUxOWVdpLTZhdk92a2NnZFA4ZDVHQTVjaWEtcFkzNmd0QnBSNjRMUmlVZi0zbnVaNVdocC0xSUNIbmVnRzNxZ0ZuNG1jOWZRYXh5ZE1VOHBuemRuaXF5NkpfYjJlcDM2OXBlU3pEVTA5eWw0aUlXTGxTODBkbWE0TUIzclhrQllFOEhrTEhqX3dKd0JOVVN0cUdvYmp5LWxpU3VaLTFpTDhGVEZOaE1GOU0wLXRhZDVkMHRrcWdCN05td2RCTzNYZHp0Q2NNY3VlZGNoYldlOU51N0NHVzVIWGx6NEFhNWRUM2FNemoxdHRWQjBHanRwSS1qVFdOUVZ0Z3F2"
       }
     ],
     "app": [
       {
-        "title": "微軟的AI代理將更加智能",
+        "title": "Nvidia的Vera Rubin和DGX Station計劃",
         "layer": "AI應用",
-        "body": "微軟宣布其AI代理將更加智能，能夠更好地協助用戶完成工作。這個AI代理將始終在線，提供實時的協助和建議。微軟的這個舉動可能會對公司的競爭對手（如Google、Amazon）產生影響。",
-        "impact": "微軟的AI代理可能會提高用戶的工作效率，公司的競爭對手（如Google、Amazon）可能會受到影響",
-        "rating": "noise",
-        "insight": "微軟的AI代理將更加智能，可能會提高用戶的工作效率，投資者應該關注公司的後續發展",
-        "source_label": "—",
-        "source": ""
+        "body": "Nvidia宣布了Vera Rubin和DGX Station的計劃，該計劃將為用戶提供更強大的AI計算能力。Nvidia的CEO黃仁勳表示，Vera Rubin和DGX Station將為用戶提供更好的AI體驗。該計劃將能夠讓用戶在AI相關的工作中取得更好的成果",
+        "impact": "Nvidia、AI用戶",
+        "rating": "core",
+        "insight": "Nvidia的Vera Rubin和DGX Station計劃將為AI用戶帶來更強大的計算能力和更好的體驗",
+        "source_label": "Techzine Global",
+        "source": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNb2NGbl9aYkUzNkFFN3hQY0ZqdDdXR2ZsSUdmVGZ6QTlIbVNIYVhYMnRjRnRiVkwxcXdoMlp4ZzctT0stM3lrWkE3dVBMS3h6TFNCOXFsU2JINGdGZ2RLYU9DYzh5QUd5SnBGdnd4SmdmRGYzb2JwUVRrbmo1bFUzY2s3SFpzMERKWndkYVotZnBtQW5GS05feXByRWQ0dTNBelNTNTVn"
       }
     ],
     "glossary_new": [
       {
-        "term": "Coreutils",
-        "full": "核心工具",
-        "def": "Coreutils是一個提供超過75個Unix命令的工具，現在被整合到Windows中。",
-        "why": "Coreutils的整合將使Windows用戶能夠更容易地使用Linux命令，提高工作效率",
-        "category": "semiconductor"
+        "term": "Vera Rubin",
+        "full": "維拉魯賓",
+        "def": "Nvidia的AI計算平台",
+        "why": "Nvidia的Vera Rubin計劃將為用戶提供更強大的AI計算能力",
+        "category": "AI技術"
+      },
+      {
+        "term": "DGX Station",
+        "full": "數據科學工作站",
+        "def": "Nvidia的AI計算工作站",
+        "why": "Nvidia的DGX Station計劃將為用戶提供更好的AI體驗",
+        "category": "AI技術"
       }
     ],
     "weekly_summary": null
