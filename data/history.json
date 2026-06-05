@@ -4,79 +4,103 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "英特爾神秘的新資料中心GPU",
+        "title": "Intel推出神秘新資料中心GPU",
         "layer": "資料中心",
-        "body": "英特爾的新資料中心GPU是什麼Nvidia的Rubin CPX幾乎是。英特爾的新資料中心GPU是為了挑戰Nvidia的市場地位。英特爾的新資料中心GPU將會在資料中心市場中發揮重要作用。",
-        "impact": "英特爾的新資料中心GPU將會對Nvidia的市場地位產生影響，可能會導致Nvidia的銷量下降。同時，英特爾的新資料中心GPU也會對資料中心的供應鏈產生影響，可能會導致相關的企業如TSMC、Samsung等的產能吃緊。英特爾的新資料中心GPU將會是資料中心市場的一個重要變化。",
+        "body": "Intel推出了一款神秘的新資料中心GPU，據悉該GPU是Nvidia的Rubin CPX幾乎要成為的東西。Nvidia的Rubin CPX是一款高性能的GPU，原本打算用於資料中心市場。Intel的新GPU可能會與Nvidia的產品競爭，爭奪資料中心市場的份額。",
+        "impact": "Intel的新GPU可能會對Nvidia的資料中心業務產生影響，導致Nvidia的市場份額下降；同時，Intel的新GPU也可能會吸引其他資料中心客戶，例如Google、Amazon等，從而增加Intel的市場份額。TSMC和Samsung等代工廠商可能會因為Intel的新GPU而增加產能，從而導致產能吃緊的問題。",
         "rating": "noise",
-        "insight": "英特爾的新資料中心GPU將會是資料中心市場的一個重要變化，投資者需要關注其對Nvidia的影響。",
+        "insight": "Intel的新GPU可能會對Nvidia的資料中心業務產生重大影響，投資者應該關注這一發展。",
         "source_label": "The Register",
         "source": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQVnY4cUpPeE5PbFltSlVDdC1CTGJwbm9UY2Zmb0N6NWlYUUJZOU9uZmkzb0lpekdUcTVEYWpuaG4tRFBjQ3dfRkNYaUxjLXV3ZFpidzFjbEFEeEloVmNBTzVUWXZ5by1iVnIzcFZ6VVkyMmxMdHJwUjI2d2JjVVRVMjVxb3Z2NkpRMGRTTVVWZElzTmZGUEJmM0FhZjRGZDZsaGpTbGNDYk5CVHNh",
         "chain": [
           {
-            "label": "英特爾資料中心GPU 產能↑",
+            "label": "Intel 產能↑",
             "type": "up"
           },
           {
-            "label": "Nvidia 市場地位↓",
+            "label": "Nvidia 市占↓",
             "type": "down"
           },
           {
-            "label": "英特爾資料中心GPU 市占↑",
+            "label": "Nvidia Rubin CPX 產量↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "ASUS推出ProArt RTX Spark",
+        "layer": "消費級GPU",
+        "body": "ASUS推出了ProArt RTX Spark，一款針對創意人士的高性能GPU。ProArt RTX Spark基於Nvidia的RTX架構，提供了強大的圖形處理能力。ASUS表示，ProArt RTX Spark將會在 Computex 2026上展示。",
+        "impact": "ASUS的ProArt RTX Spark可能會對Nvidia的RTX系列GPU產生正面影響，增加Nvidia的市場份額；同時，ProArt RTX Spark也可能會吸引其他創意人士客戶，例如設計師、藝術家等，從而增加ASUS的市場份額。TSMC和Samsung等代工廠商可能會因為ProArt RTX Spark而增加產能，從而導致產能吃緊的問題。",
+        "rating": "noise",
+        "insight": "ASUS的ProArt RTX Spark可能會對Nvidia的RTX系列GPU產生正面影響，投資者應該關注這一發展。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "ASUS 市占↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia RTX 架構銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "ProArt RTX Spark 產能↑",
             "type": "up"
           }
         ]
       },
       {
-        "title": "Nvidia的新PC晶片",
-        "layer": "PC",
-        "body": "Nvidia的新PC晶片代表了CEO黃仁勳的計畫，想要在AI領域中贏得每一層。Nvidia的新PC晶片將會在PC市場中發揮重要作用。Nvidia的新PC晶片將會是PC市場的一個重要變化。",
-        "impact": "Nvidia的新PC晶片將會對PC市場產生影響，可能會導致相關的企業如ASUS、MSI等的銷量上升。同時，Nvidia的新PC晶片也會對AI領域的供應鏈產生影響，可能會導致相關的企業如Google、Amazon等的產能吃緊。Nvidia的新PC晶片將會是PC市場的一個重要變化。",
+        "title": "Nvidia Jetson帶來Agentic AI",
+        "layer": "AI應用",
+        "body": "Nvidia的Jetson平台帶來了Agentic AI，一種新的AI技術。Agentic AI可以讓AI系統更好地與物理世界互動。Nvidia表示，Jetson平台將會在各種應用中使用Agentic AI。",
+        "impact": "Nvidia的Jetson平台可能會對AI應用市場產生重大影響，增加Nvidia的市場份額；同時，Jetson平台也可能會吸引其他AI應用客戶，例如機器人、自動駕駛等，從而增加Nvidia的市場份額。TSMC和Samsung等代工廠商可能會因為Jetson平台而增加產能，從而導致產能吃緊的問題。",
         "rating": "noise",
-        "insight": "Nvidia的新PC晶片將會是PC市場的一個重要變化，投資者需要關注其對PC市場的影響。",
-        "source_label": "CNBC",
-        "source": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNbmVzdDlDSi1RYTZCRFdfTjhjMDFrRk9FeklYYzJuUERNZ2NTb28yc0t2UnFybVB6bXNDMDQ5OXVLcWU3a1ZOak41LVJRM3h6NGNlQTNabVdlWS1lNXFuam5aa3dKU05XbWdXUUJERmV1R2FreW5xeUJ0OUdCXzIyYjQ2cHJOUjlKbVBGVGRKNXQxZmJrZjBTcjVkWHZ5MDEzUVHSAacBQVVfeXFMTVVVYjZzVTBGQ1lhXzFzSU4tYS1iVEpsVVh3LXBOZlluWS14emtldWlCdnVXLWNwTDBxWjNrdkgtclJKWmlCemVhamNtU2FOUFdLQW5MUUMtSXVWQmdnNzJDMGFub1g2eE14Wi12R1VJVUxKZk5aQVBOZ1BXbDhac0tCeVNxbEhXcnRCeTIwdXFKQVQ5R1pZUjNqZUl0T0huLUN0RmJKT0k",
+        "insight": "Nvidia的Jetson平台可能會對AI應用市場產生重大影響，投資者應該關注這一發展。",
+        "source_label": "NVIDIA Blog",
+        "source": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5BWThjck1tdk1YOG9YRkJZNjdYeEhuTkQ1OEwxdlBZZ3gzaTdwRE9NVi1mYzJNRGRSWnhwb0JXYmdoZXJGTjJmMkV4VVRSRk1Xdk0wVDhEQkktZGlqT1Q0NzVVVGtWQVJqa2puR0tnYVo",
         "chain": [
           {
-            "label": "Nvidia PC晶片 產能↑",
+            "label": "Nvidia Jetson 平台銷量↑",
             "type": "up"
           },
           {
-            "label": "Nvidia AI領域市占↑",
+            "label": "Agentic AI 技術應用↑",
             "type": "up"
           },
           {
-            "label": "AMD PC市場市占↓",
-            "type": "down"
+            "label": "Nvidia AI 研究投入↑",
+            "type": "up"
           }
         ]
       }
     ],
     "corp": [
       {
-        "title": "Meta、Microsoft、Amazon和Alphabet的大舉投資",
-        "layer": "AI",
-        "body": "Meta、Microsoft、Amazon和Alphabet將大舉投資AI領域。這四家公司將會在AI領域中發揮重要作用。這四家公司的大舉投資將會是AI領域的一個重要變化。",
-        "impact": "Meta、Microsoft、Amazon和Alphabet的大舉投資將會對AI領域產生影響，可能會導致相關的企業如Nvidia、Google等的銷量上升。同時，這四家公司的大舉投資也會對AI領域的供應鏈產生影響，可能會導致相關的企業如TSMC、Samsung等的產能吃緊。這四家公司的大舉投資將會是AI領域的一個重要變化。",
+        "title": "Meta、Microsoft、Amazon和Alphabet將大舉投資AI領域",
+        "layer": "AI投資",
+        "body": "Meta、Microsoft、Amazon和Alphabet將大舉投資AI領域，預計將會在AI研究和開發上投入大量資源。這些公司希望通過AI技術來提高自己的競爭力。投資AI領域可能會對這些公司的業務產生重大影響。",
+        "impact": "Meta、Microsoft、Amazon和Alphabet的大舉投資AI領域可能會對AI應用市場產生重大影響，增加這些公司的市場份額；同時，也可能會吸引其他AI應用客戶，例如企業、政府等，從而增加這些公司的市場份額。TSMC和Samsung等代工廠商可能會因為AI應用市場的增長而增加產能，從而導致產能吃緊的問題。",
         "rating": "noise",
-        "insight": "Meta、Microsoft、Amazon和Alphabet的大舉投資將會是AI領域的一個重要變化，投資者需要關注其對AI領域的影響。",
+        "insight": "Meta、Microsoft、Amazon和Alphabet的大舉投資AI領域可能會對AI應用市場產生重大影響，投資者應該關注這一發展。",
         "source_label": "Yahoo Finance",
         "source": "https://news.google.com/rss/articles/CBMigAJBVV95cUxOWVdpLTZhdk92a2NnZFA4ZDVHQTVjaWEtcFkzNmd0QnBSNjRMUmlVZi0zbnVaNVdocC0xSUNIbmVnRzNxZ0ZuNG1jOWZRYXh5ZE1VOHBuemRuaXF5NkpfYjJlcDM2OXBlU3pEVTA5eWw0aUlXTGxTODBkbWE0TUIzclhrQllFOEhrTEhqX3dKd0JOVVN0cUdvYmp5LWxpU3VaLTFpTDhGVEZOaE1GOU0wLXRhZDVkMHRrcWdCN05td2RCTzNYZHp0Q2NNY3VlZGNoYldlOU51N0NHVzVIWGx6NEFhNWRUM2FNemoxdHRWQjBHanRwSS1qVFdOUVZ0Z3F2",
         "chain": [
           {
-            "label": "Meta AI領域投資↑",
+            "label": "Meta AI 研究投入↑",
             "type": "up"
           },
           {
-            "label": "Microsoft AI領域市占↑",
+            "label": "Microsoft AI 產能↑",
             "type": "up"
           },
           {
-            "label": "Amazon AI領域市占↑",
+            "label": "Amazon AI 技術應用↑",
             "type": "up"
           },
           {
-            "label": "Alphabet AI領域市占↑",
+            "label": "Alphabet AI 市占↑",
             "type": "up"
           }
         ]
@@ -84,25 +108,25 @@
     ],
     "app": [
       {
-        "title": "ASUS Computex 2026 AI PC Lineup",
-        "layer": "AI PC",
-        "body": "ASUS Computex 2026 AI PC Lineup包括ProArt RTX Spark、Zenbook等。這些產品將會在AI PC市場中發揮重要作用。ASUS Computex 2026 AI PC Lineup將會是AI PC市場的一個重要變化。",
-        "impact": "ASUS Computex 2026 AI PC Lineup將會對AI PC市場產生影響，可能會導致相關的企業如Nvidia、Google等的銷量上升。同時，ASUS Computex 2026 AI PC Lineup也會對AI領域的供應鏈產生影響，可能會導致相關的企業如TSMC、Samsung等的產能吃緊。ASUS Computex 2026 AI PC Lineup將會是AI PC市場的一個重要變化。",
-        "rating": "core",
-        "insight": "ASUS Computex 2026 AI PC Lineup將會是AI PC市場的一個重要變化，投資者需要關注其對AI PC市場的影響。",
-        "source_label": "ASUS Pressroom",
-        "source": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQbUwwQnJybHU3ejZVNzRkMVJRMDlTNGpsbWRKWXI3MTU2OWcwaGlsOEhXR0NCMUlqQS1QSWRGUF8tdjhQMFhjTHN0b3JtRWVyMmF1ZGNDTFNmV3c5SE1KOUs5MnZVSlpWSXdwb2RsVnNLS2hUa1Y1WG1IRU96U1RiSjJkVEI1V3dDOTFVbDJlUTNoc3hMTmdWYzIzdTkyWGRrYkV4Vm1lckdJdmRKSVE",
+        "title": "Nvidia Jetson帶來Agentic AI",
+        "layer": "AI應用",
+        "body": "Nvidia的Jetson平台帶來了Agentic AI，一種新的AI技術。Agentic AI可以讓AI系統更好地與物理世界互動。Nvidia表示，Jetson平台將會在各種應用中使用Agentic AI。",
+        "impact": "Nvidia的Jetson平台可能會對AI應用市場產生重大影響，增加Nvidia的市場份額；同時，Jetson平台也可能會吸引其他AI應用客戶，例如機器人、自動駕駛等，從而增加Nvidia的市場份額。TSMC和Samsung等代工廠商可能會因為Jetson平台而增加產能，從而導致產能吃緊的問題。",
+        "rating": "noise",
+        "insight": "Nvidia的Jetson平台可能會對AI應用市場產生重大影響，投資者應該關注這一發展。",
+        "source_label": "NVIDIA Blog",
+        "source": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5BWThjck1tdk1YOG9YRkJZNjdYeEhuTkQ1OEwxdlBZZ3gzaTdwRE9NVi1mYzJNRGRSWnhwb0JXYmdoZXJGTjJmMkV4VVRSRk1Xdk0wVDhEQkktZGlqT1Q0NzVVVGtWQVJqa2puR0tnYVo",
         "chain": [
           {
-            "label": "ASUS AI PC 產能↑",
+            "label": "Nvidia Jetson 平台銷量↑",
             "type": "up"
           },
           {
-            "label": "ASUS ProArt RTX Spark 銷量↑",
+            "label": "Agentic AI 技術應用↑",
             "type": "up"
           },
           {
-            "label": "Zenbook 市占↑",
+            "label": "Nvidia AI 研究投入↑",
             "type": "up"
           }
         ]
@@ -110,11 +134,11 @@
     ],
     "glossary_new": [
       {
-        "term": "CoWoS",
-        "full": "Chip-on-Wafer-on-Substrate",
-        "def": "CoWoS是一種封裝技術，將晶片直接封裝在載板上。這種技術可以提高晶片的性能和可靠性。",
-        "why": "CoWoS技術可以提高晶片的性能和可靠性，從而提高整個系統的性能和可靠性。",
-        "category": "semiconductor"
+        "term": "Agentic AI",
+        "full": "Agentic AI",
+        "def": "Agentic AI是一種新的AI技術，允許AI系統更好地與物理世界互動。",
+        "why": "Agentic AI可以讓AI系統更好地理解和應對物理世界，從而提高AI的應用價值。",
+        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
