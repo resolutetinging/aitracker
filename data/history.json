@@ -1,5 +1,125 @@
 [
   {
+    "date": "2026-06-06",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Nvidia和TSMC將AI帶入晶片製造",
+        "layer": "semiconductor",
+        "body": "Nvidia和TSMC合作將AI技術應用於晶片製造過程。TSMC的先進製造技術將與Nvidia的AI能力結合，提高晶片的生產效率。Computex 2026上，Nvidia和TSMC展示了他們的合作成果，包括AI驅動的晶片設計和製造流程。",
+        "impact": "TSMC的產能吃緊問題可能會得到緩解，因為Nvidia的AI技術可以幫助優化製造流程。下游客戶如Google和Amazon可能會受益於更高效的晶片生產，從而推動他們的AI應用發展。然而，其他晶片製造商如Intel和Samsung可能會面臨更大的競爭壓力，需要加速自己的AI技術研發以保持競爭力。",
+        "rating": "core",
+        "insight": "Nvidia和TSMC的合作可能會成為晶片製造業的一個重要趨勢，推動AI技術在製造流程中的應用。",
+        "source_label": "Electronics360",
+        "source": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNbWJxby13czRZWFM4aWJ3bFBZdTFGMW1fSGtvNFpvTmctREtpenZYcEl2dEFEdmdsb2pNT3VFVW5QaUQwNWM1T3Zvb2VjY0dpRjIzS09uMy1NbGtoUjF2RDhYdTBKdUtxbmgzTGNPLWNFWUZhQm10Sm4tMmlRUWNLVkFERHJVcTltM1JLNHl0R05sQmFjV0RIYkdnNDF1WldXcVFaVWdlbEhnN1V5WmJSR0hZbDg1ZElh",
+        "chain": [
+          {
+            "label": "Nvidia AI技術應用↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC 先進製造技術↑",
+            "type": "up"
+          },
+          {
+            "label": "晶片生產效率↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Intel的新資料中心GPU",
+        "layer": "semiconductor",
+        "body": "Intel推出了新資料中心GPU，該GPU的性能與Nvidia的Rubin CPX相似。Intel的GPU採用了先進的製造技術，提高了其性能和功耗效率。Computex 2026上，Intel展示了該GPU的能力，包括其在AI計算和圖形渲染方面的優勢。",
+        "impact": "Intel的新GPU可能會對Nvidia的市場份額產生影響，特別是在資料中心和AI計算領域。下游客戶如Google和Amazon可能會受益於更高性能和更低功耗的GPU，從而推動他們的AI應用發展。然而，Intel的GPU仍需要與Nvidia的產品競爭，需要在性能、功耗和價格方面進行優化。",
+        "rating": "opp",
+        "insight": "Intel的新GPU可能會成為Nvidia的一個重要競爭對手，推動GPU市場的發展和創新。",
+        "source_label": "The Register",
+        "source": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQVnY4cUpPeE5PbFltSlVDdC1CTGJwbm9UY2Zmb0N6NWlYUUJZOU9uZmkzb0lpekdUcTVEYWpuaG4tRFBjQ3dfRkNYaUxjLXV3ZFpidzFjbEFEeEloVmNBTzVUWXZ5by1iVnIzcFZ6VVkyMmxMdHJwUjI2d2JjVVRVMjVxb3Z2NkpRMGRTTVVWZElzTmZGUEJmM0FhZjRGZDZsaGpTbGNDYk5CVHNh",
+        "chain": [
+          {
+            "label": "Intel 資料中心GPU 性能↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia Rubin CPX 競爭力↓",
+            "type": "down"
+          },
+          {
+            "label": "Intel 先進製造技術↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Meta、Microsoft、Amazon和Alphabet的大規模AI投資",
+        "layer": "AI investment",
+        "body": "Meta、Microsoft、Amazon和Alphabet等公司將大規模投資AI領域，推動AI技術的發展和應用。這些公司將在AI研究和開發方面進行大量投資，包括聘請AI人才和建設AI實驗室。投資額預計將達到數十億美元，創下AI投資的新紀錄。",
+        "impact": "這些公司的AI投資可能會推動AI技術的快速發展，從而帶動相關產業的成長。下游客戶如企業和個人可能會受益於更先進的AI服務和產品，從而提高生產效率和生活質量。然而，AI投資的風險也可能會增加，包括AI人才的短缺和AI倫理問題的出現。",
+        "rating": "core",
+        "insight": "Meta、Microsoft、Amazon和Alphabet的大規模AI投資可能會成為AI領域的一個重要趨勢，推動AI技術的發展和應用。",
+        "source_label": "Yahoo Finance",
+        "source": "https://news.google.com/rss/articles/CBMigAJBVV95cUxOWVdpLTZhdk92a2NnZFA4ZDVHQTVjaWEtcFkzNmd0QnBSNjRMUmlVZi0zbnVaNVdocC0xSUNIbmVnRzNxZ0ZuNG1jOWZRYXh5ZE1VOHBuemRuaXF5NkpfYjJlcDM2OXBlU3pEVTA5eWw0aUlXTGxTODBkbWE0TUIzclhrQllFOEhrTEhqX3dKd0JOVVN0cUdvYmp5LWxpU3VaLTFpTDhGVEZOaE1GOU0wLXRhZDVkMHRrcWdCN05td2RCTzNYZHp0Q2NNY3VlZGNoYldlOU51N0NHVzVIWGx6NEFhNWRUM2FNemoxdHRWQjBHanRwSS1qVFdOUVZ0Z3F2",
+        "chain": [
+          {
+            "label": "Meta AI 研究投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft AI人才招聘↑",
+            "type": "up"
+          },
+          {
+            "label": "Amazon AI實驗室建設↑",
+            "type": "up"
+          },
+          {
+            "label": "Alphabet AI 領域競爭力↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Intel-Powered機器人在 Computex 2026 上展示",
+        "layer": "Physical AI",
+        "body": "Intel-Powered機器人在Computex 2026上展示了其在物理AI領域的能力，包括機器人臂和移動機器人的控制。Intel的AI技術使得機器人可以更好地感知和響應環境，從而提高其工作效率和安全性。展示的機器人包括了一個可以為人類製作咖啡的機器人，展示了AI技術在日常生活中的應用。",
+        "impact": "Intel-Powered機器人的展示可能會推動物理AI技術的發展和應用，從而帶動相關產業的成長。下游客戶如企業和個人可能會受益於更先進的機器人服務和產品，從而提高生產效率和生活質量。然而，機器人的安全性和可靠性仍需要進一步提高，從而滿足更廣泛的應用需求。",
+        "rating": "opp",
+        "insight": "Intel-Powered機器人的展示可能會成為物理AI領域的一個重要趨勢，推動AI技術在機器人領域的發展和應用。",
+        "source_label": "MySmartPrice",
+        "source": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNVVlxc3Y3QjhEVjAzMkFwbHRkOUh4dW1aZTNHdk1FMlBQN0FnYXpsNm5qT1AzeHcwYVlUMTdDeTctR2oyeGU5RXVDaW5oSlhoRFBXODd6ODh1ZEtkT2RNT1ZZdzhXR19aeWFNSS13SGF3NFZWQXdzTm5CazFkM3JTa19ZcjB1R2V6RWpuWTZsMW1SekJqUlAtaU1kcTF3YjVrWlY0V2pPejQ0VGJxYl9ub1FIWjFWUTBWbVVxVDF3NHVFSThRRUVVd2RxQ0IzUlMxdVdHeVFpQWhkeU1YNWk3UU1B",
+        "chain": [
+          {
+            "label": "Intel AI技術應用↑",
+            "type": "up"
+          },
+          {
+            "label": "機器人臂控制精度↑",
+            "type": "up"
+          },
+          {
+            "label": "移動機器人安全性↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Agentic AI",
+        "full": "代理AI",
+        "def": "Agentic AI是一種可以自主地感知和響應環境的AI技術，通常應用於機器人和自動駕駛領域。Agentic AI可以使得機器人和自動駕駛系統更好地感知和響應環境，從而提高其工作效率和安全性。",
+        "why": "Agentic AI的發展和應用可能會帶動相關產業的成長，從而提高生產效率和生活質量。然而，Agentic AI的安全性和可靠性仍需要進一步提高，從而滿足更廣泛的應用需求。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-05",
     "is_sunday": false,
     "hw": [
@@ -533,65 +653,5 @@
       }
     ],
     "weekly_summary": "本週晶片記憶體短缺問題持續，微軟公司的 AI 投資增加，Shift 公司的 AI 清潔技術應用於家居清潔。下週預計將出現更多 AI 應用，投資者應關注高頻寬記憶體的供應情況和微軟公司的 AI 投資動向。"
-  },
-  {
-    "date": "2026-05-30",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "無相關新聞",
-        "layer": "noise",
-        "body": "今日無相關半導體供應鏈新聞，無法提供具體數字或技術細節",
-        "impact": "無影響",
-        "rating": "noise",
-        "insight": "供應鏈投資者無需關注",
-        "source_label": "—",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "Dell 股價上漲",
-        "layer": "需求端",
-        "body": "Dell 股價在 AI 銷售增長的帶動下上漲， Anthropic 超越 OpenAI 成為世界上最有價值的 AI 啟動公司，Palo Alto Networks 股價上漲 4.1%",
-        "impact": "Dell 和 Anthropic 受益，OpenAI 市場份額可能下降",
-        "rating": "core",
-        "insight": "CSP 資本支出增加可能帶動相關企業的發展",
-        "source_label": "Yahoo Finance",
-        "source": "https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-dell-stock-soars-on-ai-sales-anthropic-overtakes-openai-as-worlds-most-valuable-ai-startup-100000518.html"
-      },
-      {
-        "title": "Palo Alto Networks 股價上漲",
-        "layer": "CapEx 決策",
-        "body": "Palo Alto Networks 股價上漲 4.1% 因為公司宣佈了一項戰略合作，Dell 股價上漲可能與 AI 銷售增長有關",
-        "impact": "Palo Alto Networks 和 Dell 受益，其他網絡安全企業可能面臨競爭壓力",
-        "rating": "core",
-        "insight": "CSP 資本支出增加可能帶動相關企業的發展",
-        "source_label": "Yahoo Finance",
-        "source": "https://finance.yahoo.com/markets/stocks/articles/why-palo-alto-networks-panw-035000567.html"
-      }
-    ],
-    "app": [
-      {
-        "title": "Shift AI 訓練數據",
-        "layer": "Agentic AI",
-        "body": "Shift 這家 AI 訓練數據初創公司將為用戶提供免費的家居清潔服務，以此來收集數據並訓練未來的機器人， Anthropic 的 Claude 模型更新為 Opus 4.8，強調了模型的誠實性",
-        "impact": "Shift 和 Anthropic 受益，其他 AI 初創公司可能面臨競爭壓力",
-        "rating": "core",
-        "insight": "Agentic AI 和 Physical AI 的發展可能帶動相關企業的發展",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/ai-artificial-intelligence/939765/ai-training-data-startup-shift-free-cleaning"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Opus 4.8",
-        "full": "Claude Opus 4.8",
-        "def": "Anthropic 的 Claude 模型更新版本，強調了模型的誠實性",
-        "why": "因為 Anthropic 的 Claude 模型更新為 Opus 4.8，強調了模型的誠實性",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
   }
 ]
