@@ -6,54 +6,114 @@
       {
         "title": "英特爾神秘的新資料中心GPU",
         "layer": "資料中心",
-        "body": "英特爾推出了一款神秘的新資料中心GPU，該GPU是Nvidia的Rubin CPX的競爭對手。英特爾的新GPU旨在提供更好的效能和功耗比。這款GPU的推出可能會對Nvidia的市場份額產生影響。",
-        "impact": "英特爾、Nvidia",
+        "body": "英特爾的新資料中心GPU是什麼Nvidia的Rubin CPX幾乎是。英特爾的新資料中心GPU是為了挑戰Nvidia的市場地位。英特爾的新資料中心GPU將會在資料中心市場中發揮重要作用。",
+        "impact": "英特爾的新資料中心GPU將會對Nvidia的市場地位產生影響，可能會導致Nvidia的銷量下降。同時，英特爾的新資料中心GPU也會對資料中心的供應鏈產生影響，可能會導致相關的企業如TSMC、Samsung等的產能吃緊。英特爾的新資料中心GPU將會是資料中心市場的一個重要變化。",
         "rating": "noise",
-        "insight": "英特爾的新GPU可能會挑戰Nvidia在資料中心市場的領導地位",
+        "insight": "英特爾的新資料中心GPU將會是資料中心市場的一個重要變化，投資者需要關注其對Nvidia的影響。",
         "source_label": "The Register",
-        "source": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQVnY4cUpPeE5PbFltSlVDdC1CTGJwbm9UY2Zmb0N6NWlYUUJZOU9uZmkzb0lpekdUcTVEYWpuaG4tRFBjQ3dfRkNYaUxjLXV3ZFpidzFjbEFEeEloVmNBTzVUWXZ5by1iVnIzcFZ6VVkyMmxMdHJwUjI2d2JjVVRVMjVxb3Z2NkpRMGRTTVVWZElzTmZGUEJmM0FhZjRGZDZsaGpTbGNDYk5CVHNh"
+        "source": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQVnY4cUpPeE5PbFltSlVDdC1CTGJwbm9UY2Zmb0N6NWlYUUJZOU9uZmkzb0lpekdUcTVEYWpuaG4tRFBjQ3dfRkNYaUxjLXV3ZFpidzFjbEFEeEloVmNBTzVUWXZ5by1iVnIzcFZ6VVkyMmxMdHJwUjI2d2JjVVRVMjVxb3Z2NkpRMGRTTVVWZElzTmZGUEJmM0FhZjRGZDZsaGpTbGNDYk5CVHNh",
+        "chain": [
+          {
+            "label": "英特爾資料中心GPU 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 市場地位↓",
+            "type": "down"
+          },
+          {
+            "label": "英特爾資料中心GPU 市占↑",
+            "type": "up"
+          }
+        ]
       },
       {
         "title": "Nvidia的新PC晶片",
-        "layer": "個人電腦",
-        "body": "Nvidia推出了新PC晶片，旨在提供更好的AI效能。這些晶片代表了Nvidia CEO黃仁勳的戰略，旨在贏得AI市場的每一層。Nvidia的新晶片可能會對Intel和AMD的市場份額產生影響。",
-        "impact": "Nvidia、Intel、AMD",
+        "layer": "PC",
+        "body": "Nvidia的新PC晶片代表了CEO黃仁勳的計畫，想要在AI領域中贏得每一層。Nvidia的新PC晶片將會在PC市場中發揮重要作用。Nvidia的新PC晶片將會是PC市場的一個重要變化。",
+        "impact": "Nvidia的新PC晶片將會對PC市場產生影響，可能會導致相關的企業如ASUS、MSI等的銷量上升。同時，Nvidia的新PC晶片也會對AI領域的供應鏈產生影響，可能會導致相關的企業如Google、Amazon等的產能吃緊。Nvidia的新PC晶片將會是PC市場的一個重要變化。",
         "rating": "noise",
-        "insight": "Nvidia的新晶片可能會挑戰Intel和AMD在個人電腦市場的領導地位",
+        "insight": "Nvidia的新PC晶片將會是PC市場的一個重要變化，投資者需要關注其對PC市場的影響。",
         "source_label": "CNBC",
-        "source": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNbmVzdDlDSi1RYTZCRFdfTjhjMDFrRk9FeklYYzJuUERNZ2NTb28yc0t2UnFybVB6bXNDMDQ5OXVLcWU3a1ZOak41LVJRM3h6NGNlQTNabVdlWS1lNXFuam5aa3dKU05XbWdXUUJERmV1R2FreW5xeUJ0OUdCXzIyYjQ2cHJOUjlKbVBGVGRKNXQxZmJrZjBTcjVkWHZ5MDEzUVHSAacBQVVfeXFMTVVVYjZzVTBGQ1lhXzFzSU4tYS1iVEpsVVh3LXBOZlluWS14emtldWlCdnVXLWNwTDBxWjNrdkgtclJKWmlCemVhamNtU2FOUFdLQW5MUUMtSXVWQmdnNzJDMGFub1g2eE14Wi12R1VJVUxKZk5aQVBOZ1BXbDhac0tCeVNxbEhXcnRCeTIwdXFKQVQ5R1pZUjNqZUl0T0huLUN0RmJKT0k"
+        "source": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNbmVzdDlDSi1RYTZCRFdfTjhjMDFrRk9FeklYYzJuUERNZ2NTb28yc0t2UnFybVB6bXNDMDQ5OXVLcWU3a1ZOak41LVJRM3h6NGNlQTNabVdlWS1lNXFuam5aa3dKU05XbWdXUUJERmV1R2FreW5xeUJ0OUdCXzIyYjQ2cHJOUjlKbVBGVGRKNXQxZmJrZjBTcjVkWHZ5MDEzUVHSAacBQVVfeXFMTVVVYjZzVTBGQ1lhXzFzSU4tYS1iVEpsVVh3LXBOZlluWS14emtldWlCdnVXLWNwTDBxWjNrdkgtclJKWmlCemVhamNtU2FOUFdLQW5MUUMtSXVWQmdnNzJDMGFub1g2eE14Wi12R1VJVUxKZk5aQVBOZ1BXbDhac0tCeVNxbEhXcnRCeTIwdXFKQVQ5R1pZUjNqZUl0T0huLUN0RmJKT0k",
+        "chain": [
+          {
+            "label": "Nvidia PC晶片 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia AI領域市占↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD PC市場市占↓",
+            "type": "down"
+          }
+        ]
       }
     ],
     "corp": [
       {
-        "title": "Meta、Microsoft、Amazon和Alphabet的大投資",
-        "layer": "AI投資",
-        "body": "Meta、Microsoft、Amazon和Alphabet將大舉投資AI領域，旨在贏得AI市場的領導地位。這些公司的投資可能會對AI技術的發展產生重大影響。這些公司的投資也可能會對其他公司的市場份額產生影響。",
-        "impact": "Meta、Microsoft、Amazon、Alphabet",
+        "title": "Meta、Microsoft、Amazon和Alphabet的大舉投資",
+        "layer": "AI",
+        "body": "Meta、Microsoft、Amazon和Alphabet將大舉投資AI領域。這四家公司將會在AI領域中發揮重要作用。這四家公司的大舉投資將會是AI領域的一個重要變化。",
+        "impact": "Meta、Microsoft、Amazon和Alphabet的大舉投資將會對AI領域產生影響，可能會導致相關的企業如Nvidia、Google等的銷量上升。同時，這四家公司的大舉投資也會對AI領域的供應鏈產生影響，可能會導致相關的企業如TSMC、Samsung等的產能吃緊。這四家公司的大舉投資將會是AI領域的一個重要變化。",
         "rating": "noise",
-        "insight": "Meta、Microsoft、Amazon和Alphabet的大投資可能會挑戰其他公司在AI市場的領導地位",
+        "insight": "Meta、Microsoft、Amazon和Alphabet的大舉投資將會是AI領域的一個重要變化，投資者需要關注其對AI領域的影響。",
         "source_label": "Yahoo Finance",
-        "source": "https://news.google.com/rss/articles/CBMigAJBVV95cUxOWVdpLTZhdk92a2NnZFA4ZDVHQTVjaWEtcFkzNmd0QnBSNjRMUmlVZi0zbnVaNVdocC0xSUNIbmVnRzNxZ0ZuNG1jOWZRYXh5ZE1VOHBuemRuaXF5NkpfYjJlcDM2OXBlU3pEVTA5eWw0aUlXTGxTODBkbWE0TUIzclhrQllFOEhrTEhqX3dKd0JOVVN0cUdvYmp5LWxpU3VaLTFpTDhGVEZOaE1GOU0wLXRhZDVkMHRrcWdCN05td2RCTzNYZHp0Q2NNY3VlZGNoYldlOU51N0NHVzVIWGx6NEFhNWRUM2FNemoxdHRWQjBHanRwSS1qVFdOUVZ0Z3F2"
+        "source": "https://news.google.com/rss/articles/CBMigAJBVV95cUxOWVdpLTZhdk92a2NnZFA4ZDVHQTVjaWEtcFkzNmd0QnBSNjRMUmlVZi0zbnVaNVdocC0xSUNIbmVnRzNxZ0ZuNG1jOWZRYXh5ZE1VOHBuemRuaXF5NkpfYjJlcDM2OXBlU3pEVTA5eWw0aUlXTGxTODBkbWE0TUIzclhrQllFOEhrTEhqX3dKd0JOVVN0cUdvYmp5LWxpU3VaLTFpTDhGVEZOaE1GOU0wLXRhZDVkMHRrcWdCN05td2RCTzNYZHp0Q2NNY3VlZGNoYldlOU51N0NHVzVIWGx6NEFhNWRUM2FNemoxdHRWQjBHanRwSS1qVFdOUVZ0Z3F2",
+        "chain": [
+          {
+            "label": "Meta AI領域投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft AI領域市占↑",
+            "type": "up"
+          },
+          {
+            "label": "Amazon AI領域市占↑",
+            "type": "up"
+          },
+          {
+            "label": "Alphabet AI領域市占↑",
+            "type": "up"
+          }
+        ]
       }
     ],
     "app": [
       {
         "title": "ASUS Computex 2026 AI PC Lineup",
-        "layer": "AI個人電腦",
-        "body": "ASUS在Computex 2026上推出了新的AI PC Lineup，包括ProArt RTX Spark和Zenbook等。這些產品旨在提供更好的AI效能和使用體驗。ASUS的新產品可能會對其他公司的市場份額產生影響。",
-        "impact": "ASUS",
+        "layer": "AI PC",
+        "body": "ASUS Computex 2026 AI PC Lineup包括ProArt RTX Spark、Zenbook等。這些產品將會在AI PC市場中發揮重要作用。ASUS Computex 2026 AI PC Lineup將會是AI PC市場的一個重要變化。",
+        "impact": "ASUS Computex 2026 AI PC Lineup將會對AI PC市場產生影響，可能會導致相關的企業如Nvidia、Google等的銷量上升。同時，ASUS Computex 2026 AI PC Lineup也會對AI領域的供應鏈產生影響，可能會導致相關的企業如TSMC、Samsung等的產能吃緊。ASUS Computex 2026 AI PC Lineup將會是AI PC市場的一個重要變化。",
         "rating": "core",
-        "insight": "ASUS的新AI PC Lineup可能會挑戰其他公司在AI個人電腦市場的領導地位",
+        "insight": "ASUS Computex 2026 AI PC Lineup將會是AI PC市場的一個重要變化，投資者需要關注其對AI PC市場的影響。",
         "source_label": "ASUS Pressroom",
-        "source": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQbUwwQnJybHU3ejZVNzRkMVJRMDlTNGpsbWRKWXI3MTU2OWcwaGlsOEhXR0NCMUlqQS1QSWRGUF8tdjhQMFhjTHN0b3JtRWVyMmF1ZGNDTFNmV3c5SE1KOUs5MnZVSlpWSXdwb2RsVnNLS2hUa1Y1WG1IRU96U1RiSjJkVEI1V3dDOTFVbDJlUTNoc3hMTmdWYzIzdTkyWGRrYkV4Vm1lckdJdmRKSVE"
+        "source": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQbUwwQnJybHU3ejZVNzRkMVJRMDlTNGpsbWRKWXI3MTU2OWcwaGlsOEhXR0NCMUlqQS1QSWRGUF8tdjhQMFhjTHN0b3JtRWVyMmF1ZGNDTFNmV3c5SE1KOUs5MnZVSlpWSXdwb2RsVnNLS2hUa1Y1WG1IRU96U1RiSjJkVEI1V3dDOTFVbDJlUTNoc3hMTmdWYzIzdTkyWGRrYkV4Vm1lckdJdmRKSVE",
+        "chain": [
+          {
+            "label": "ASUS AI PC 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "ASUS ProArt RTX Spark 銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "Zenbook 市占↑",
+            "type": "up"
+          }
+        ]
       }
     ],
     "glossary_new": [
       {
         "term": "CoWoS",
-        "full": "Chip on Wafer on Substrate",
-        "def": "一種半導體製造技術，將晶片直接封裝在基板上。這種技術可以提高晶片的效能和降低功耗。",
-        "why": "CoWoS技術可以提高晶片的效能和降低功耗，對於AI和其他高效能應用非常重要。",
+        "full": "Chip-on-Wafer-on-Substrate",
+        "def": "CoWoS是一種封裝技術，將晶片直接封裝在載板上。這種技術可以提高晶片的性能和可靠性。",
+        "why": "CoWoS技術可以提高晶片的性能和可靠性，從而提高整個系統的性能和可靠性。",
         "category": "semiconductor"
       }
     ],
