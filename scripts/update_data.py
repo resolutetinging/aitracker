@@ -240,7 +240,7 @@ CATEGORIES:
 OUTPUT FORMAT:
 {{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[ITEMS],"corp":[ITEMS],"app":[ITEMS],"glossary_new":[{{"term":"","full":"","def":"2-3 sentences","why":"why it matters","category":"semiconductor|ai_technique|hardware|role"}}],"weekly_summary":{weekly_val}}}
 
-Each ITEM: {{"title":"Traditional Chinese title","layer":"sublayer","body":"EXACTLY 3 sentences each with specific numbers/dates/company names","impact":"Name specific companies/countries affected and direction (e.g. TSMC CoWoS capacity pressure, SK Hynix ASP up)","rating":"core|opp|noise","insight":"1-sentence investor takeaway","source_label":"source name","source":"use SOURCE_URL value or empty string"}}
+Each ITEM: {{"title":"Traditional Chinese title","layer":"sublayer","body":"EXACTLY 3 sentences each with specific numbers/dates/company names","impact":"2-3 sentences in zh-TW analyzing how this news ripples through the supply chain: identify upstream suppliers (foundry/OSAT/memory/materials) and downstream customers (CSP/OEM/ODM/end users) by name, describe the specific direction of impact for each role (e.g. 產能吃緊/ASP走高/訂單轉移/資本支出削減), and explain why. Example: 「TSMC CoWoS 產能持續吃緊，Amkor/ASE 等 OSAT 廠商有望承接溢出封裝訂單；Nvidia 下游客戶出貨時程料延後 1-2 季。SK Hynix HBM ASP 因需求集中持續走高，Samsung 被迫加速 HBM3E 良率改善以防市占流失。」","rating":"core|opp|noise","insight":"1-sentence investor takeaway","source_label":"source name","source":"use SOURCE_URL value or empty string"}}
 
 RULES:
 - 2-4 items per section; if no relevant news → 1 noise item only
@@ -248,7 +248,7 @@ RULES:
 - body: 3 sentences using ONLY facts from the provided news above — NEVER invent numbers, dates, or connections between companies not stated in the source; if you cannot write 3 real sentences from the source, rate it noise instead
 - SOURCE REQUIREMENT: every core or opp item MUST have a SOURCE_URL from the news; if no SOURCE_URL exists for a story, you MUST rate it noise — never assign core/opp to unsourced items
 - HALLUCINATION IS FORBIDDEN: do not combine unrelated companies or technologies; every company-technology pairing must come directly from the news text
-- impact: name specific companies/countries from the news; never write vague phrases like "industry benefits"
+- impact: must be 2-3 full sentences analyzing supply chain ripple effects; never a comma-separated keyword list; never vague phrases like "industry benefits"
 - glossary_new: required, 1-3 terms from today's news that readers may not know
 - source: copy verbatim from SOURCE_URL in the news; never fabricate URLs
 - All titles, body, impact, insight in Traditional Chinese (zh-TW)
@@ -689,6 +689,8 @@ if __name__ == '__main__':
     downgrade_unsourced(data)
     print("🔍 body 品質檢核...")
     downgrade_low_quality(data)
+    print("🔗 supply chain 品質檢核...")
+    fix_chains(data)
 
     history = upsert(history, data)
     save_history(history)
