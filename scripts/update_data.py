@@ -245,7 +245,7 @@ Each ITEM: {{"title":"Traditional Chinese title","layer":"sublayer","body":"EXAC
 RULES:
 - 2-4 items per section; if no relevant news → 1 noise item only
 - One item = one story; if source mixes 2 unrelated stories, split into 2 items
-- body: 3 sentences using ONLY facts from the provided news above — NEVER invent numbers, dates, or connections between companies not stated in the source; if you cannot write 3 real sentences from the source, rate it noise instead
+- body: 3 sentences using ONLY facts from the provided news above — each sentence MUST start with a DIFFERENT subject (company/product/metric); NEVER start 2+ sentences with the same subject; each sentence must state a NEW fact not covered in the others; NEVER invent numbers, dates, or connections between companies not stated in the source; if you cannot write 3 genuinely different sentences from the source, rate it noise instead
 - SOURCE REQUIREMENT: every core or opp item MUST have a SOURCE_URL from the news; if no SOURCE_URL exists for a story, you MUST rate it noise — never assign core/opp to unsourced items
 - HALLUCINATION IS FORBIDDEN: do not combine unrelated companies or technologies; every company-technology pairing must come directly from the news text
 - impact: must be 2-3 full sentences analyzing supply chain ripple effects; never a comma-separated keyword list; never vague phrases like "industry benefits"
@@ -398,18 +398,32 @@ def downgrade_unsourced(data):
     if count:
         print(f"  → {count} 筆無來源條目已降級為 noise")
 
+def _cjk_bigrams(text):
+    cjk = [c for c in text if '一' <= c <= '鿿']
+    return {(cjk[i], cjk[i+1]) for i in range(len(cjk)-1)}
+
+def _cjk_prefix(text, n=5):
+    return ''.join(c for c in text if '一' <= c <= '鿿')[:n]
+
 def _body_is_low_quality(body: str) -> bool:
     """True = body 不達標（重複句 or 無具體數字）"""
     if not body or len(body) < 30:
         return True
     sentences = [s.strip() for s in re.split(r'[。！？]', body) if len(s.strip()) > 8]
-    # 任意兩句字元集重疊率 > 65% → 重複湊字
     for i in range(len(sentences)):
         for j in range(i + 1, len(sentences)):
+            # 字元集重疊率 > 65%（原有）
             s1, s2 = set(sentences[i]), set(sentences[j])
-            overlap = len(s1 & s2) / max(len(s1), len(s2), 1)
-            if overlap > 0.65:
+            if len(s1 & s2) / max(len(s1), len(s2), 1) > 0.65:
                 return True
+            # CJK bigram 重疊率 > 45%（相同主題換句話說）
+            b1, b2 = _cjk_bigrams(sentences[i]), _cjk_bigrams(sentences[j])
+            if b1 and b2 and len(b1 & b2) / max(len(b1), len(b2), 1) > 0.45:
+                return True
+    # 2+ 句共用相同前 5 個中文字 → 主語重複
+    prefixes = [_cjk_prefix(s) for s in sentences if len(_cjk_prefix(s)) >= 5]
+    if len(prefixes) != len(set(prefixes)):
+        return True
     # core/opp body 必須含數字（%, $, 億, 倍, 具體數量）
     if not re.search(r'\d|%|億|兆|倍|萬|百億|千億', body):
         return True
@@ -469,6 +483,8 @@ def send_email(data):
         try:
             with open(cfg_path, 'r', encoding='utf-8') as f:
                 cfg = json.load(f)
+            if not cfg.get('enabled', True):
+                print("  → Email 推送已暫停（enabled=false），略過。"); return
             extra_recipients = [r.strip() for r in cfg.get('recipients', [])
                                 if r.strip() and r.strip() not in secret_recipients]
         except Exception:
