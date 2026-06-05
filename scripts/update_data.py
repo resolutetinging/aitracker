@@ -334,7 +334,7 @@ def call_groq(prompt):
                     {"role":"user","content":prompt}
                 ],
                 temperature=0.3,
-                max_tokens=2000,
+                max_tokens=4000,
             )
             if model != models[0]:
                 print(f"  → 使用備用模型 {model}")
@@ -347,6 +347,9 @@ def call_groq(prompt):
     raw = response.choices[0].message.content.strip()
     if raw.startswith('```'):
         raw = raw.split('\n',1)[-1].rsplit('```',1)[0].strip()
+    finish_reason = response.choices[0].finish_reason
+    if finish_reason == 'length':
+        raise ValueError(f"Groq response truncated (finish_reason=length, {len(raw)} chars). Increase max_tokens.")
     return json.loads(raw)
 
 # ══════════════════════════════════════════════════════════════════
