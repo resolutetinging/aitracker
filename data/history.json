@@ -1,5 +1,65 @@
 [
   {
+    "date": "2026-06-05",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "英特爾神秘的新資料中心GPU",
+        "layer": "資料中心",
+        "body": "英特爾推出了一款神秘的新資料中心GPU，該GPU是Nvidia的Rubin CPX的競爭對手。英特爾的新GPU旨在提供更好的效能和功耗比。這款GPU的推出可能會對Nvidia的市場份額產生影響。",
+        "impact": "英特爾、Nvidia",
+        "rating": "noise",
+        "insight": "英特爾的新GPU可能會挑戰Nvidia在資料中心市場的領導地位",
+        "source_label": "The Register",
+        "source": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQVnY4cUpPeE5PbFltSlVDdC1CTGJwbm9UY2Zmb0N6NWlYUUJZOU9uZmkzb0lpekdUcTVEYWpuaG4tRFBjQ3dfRkNYaUxjLXV3ZFpidzFjbEFEeEloVmNBTzVUWXZ5by1iVnIzcFZ6VVkyMmxMdHJwUjI2d2JjVVRVMjVxb3Z2NkpRMGRTTVVWZElzTmZGUEJmM0FhZjRGZDZsaGpTbGNDYk5CVHNh"
+      },
+      {
+        "title": "Nvidia的新PC晶片",
+        "layer": "個人電腦",
+        "body": "Nvidia推出了新PC晶片，旨在提供更好的AI效能。這些晶片代表了Nvidia CEO黃仁勳的戰略，旨在贏得AI市場的每一層。Nvidia的新晶片可能會對Intel和AMD的市場份額產生影響。",
+        "impact": "Nvidia、Intel、AMD",
+        "rating": "noise",
+        "insight": "Nvidia的新晶片可能會挑戰Intel和AMD在個人電腦市場的領導地位",
+        "source_label": "CNBC",
+        "source": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNbmVzdDlDSi1RYTZCRFdfTjhjMDFrRk9FeklYYzJuUERNZ2NTb28yc0t2UnFybVB6bXNDMDQ5OXVLcWU3a1ZOak41LVJRM3h6NGNlQTNabVdlWS1lNXFuam5aa3dKU05XbWdXUUJERmV1R2FreW5xeUJ0OUdCXzIyYjQ2cHJOUjlKbVBGVGRKNXQxZmJrZjBTcjVkWHZ5MDEzUVHSAacBQVVfeXFMTVVVYjZzVTBGQ1lhXzFzSU4tYS1iVEpsVVh3LXBOZlluWS14emtldWlCdnVXLWNwTDBxWjNrdkgtclJKWmlCemVhamNtU2FOUFdLQW5MUUMtSXVWQmdnNzJDMGFub1g2eE14Wi12R1VJVUxKZk5aQVBOZ1BXbDhac0tCeVNxbEhXcnRCeTIwdXFKQVQ5R1pZUjNqZUl0T0huLUN0RmJKT0k"
+      }
+    ],
+    "corp": [
+      {
+        "title": "Meta、Microsoft、Amazon和Alphabet的大投資",
+        "layer": "AI投資",
+        "body": "Meta、Microsoft、Amazon和Alphabet將大舉投資AI領域，旨在贏得AI市場的領導地位。這些公司的投資可能會對AI技術的發展產生重大影響。這些公司的投資也可能會對其他公司的市場份額產生影響。",
+        "impact": "Meta、Microsoft、Amazon、Alphabet",
+        "rating": "noise",
+        "insight": "Meta、Microsoft、Amazon和Alphabet的大投資可能會挑戰其他公司在AI市場的領導地位",
+        "source_label": "Yahoo Finance",
+        "source": "https://news.google.com/rss/articles/CBMigAJBVV95cUxOWVdpLTZhdk92a2NnZFA4ZDVHQTVjaWEtcFkzNmd0QnBSNjRMUmlVZi0zbnVaNVdocC0xSUNIbmVnRzNxZ0ZuNG1jOWZRYXh5ZE1VOHBuemRuaXF5NkpfYjJlcDM2OXBlU3pEVTA5eWw0aUlXTGxTODBkbWE0TUIzclhrQllFOEhrTEhqX3dKd0JOVVN0cUdvYmp5LWxpU3VaLTFpTDhGVEZOaE1GOU0wLXRhZDVkMHRrcWdCN05td2RCTzNYZHp0Q2NNY3VlZGNoYldlOU51N0NHVzVIWGx6NEFhNWRUM2FNemoxdHRWQjBHanRwSS1qVFdOUVZ0Z3F2"
+      }
+    ],
+    "app": [
+      {
+        "title": "ASUS Computex 2026 AI PC Lineup",
+        "layer": "AI個人電腦",
+        "body": "ASUS在Computex 2026上推出了新的AI PC Lineup，包括ProArt RTX Spark和Zenbook等。這些產品旨在提供更好的AI效能和使用體驗。ASUS的新產品可能會對其他公司的市場份額產生影響。",
+        "impact": "ASUS",
+        "rating": "core",
+        "insight": "ASUS的新AI PC Lineup可能會挑戰其他公司在AI個人電腦市場的領導地位",
+        "source_label": "ASUS Pressroom",
+        "source": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQbUwwQnJybHU3ejZVNzRkMVJRMDlTNGpsbWRKWXI3MTU2OWcwaGlsOEhXR0NCMUlqQS1QSWRGUF8tdjhQMFhjTHN0b3JtRWVyMmF1ZGNDTFNmV3c5SE1KOUs5MnZVSlpWSXdwb2RsVnNLS2hUa1Y1WG1IRU96U1RiSjJkVEI1V3dDOTFVbDJlUTNoc3hMTmdWYzIzdTkyWGRrYkV4Vm1lckdJdmRKSVE"
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoWoS",
+        "full": "Chip on Wafer on Substrate",
+        "def": "一種半導體製造技術，將晶片直接封裝在基板上。這種技術可以提高晶片的效能和降低功耗。",
+        "why": "CoWoS技術可以提高晶片的效能和降低功耗，對於AI和其他高效能應用非常重要。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-04",
     "is_sunday": false,
     "hw": [
@@ -446,56 +506,6 @@
         "def": "Anthropic 的 Claude 模型更新版本，強調了模型的誠實性",
         "why": "因為 Anthropic 的 Claude 模型更新為 Opus 4.8，強調了模型的誠實性",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-05-29",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "能源使用迫使重新思考 AI 晶片設計",
-        "layer": "晶圓製造",
-        "body": "根據 TSMC 高級執行官的說法，AI 的能源需求正在使能源效率而非計算能力成為未來電腦晶片開發的主要限制。TSMC 表示，能源使用量的增加使得晶片設計需要更注重能效。這一轉變可能會影響未來晶片的設計和製造。TSMC 將在未來幾年內繼續投資於能效更高的晶片設計和製造技術。",
-        "impact": "這一轉變可能會影響 TSMC 和其他晶片製造商的業務，例如 SK Hynix 和 Intel。TSMC 在能效更高的晶片設計和製造技術上的投資可能會使其在市場上占據更有利的位置。",
-        "rating": "core",
-        "insight": "供應鏈投資者應關注 TSMC 和其他晶片製造商在能效更高的晶片設計和製造技術上的投資。",
-        "source_label": "Reuters",
-        "source": "https://www.msn.com/en-ca/money/other/energy-use-forcing-rethink-of-ai-chip-design-tsmc-says/ar-AA24iihD"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Meta 雲端業務投資",
-        "layer": "需求端",
-        "body": "根據 Mark Zuckerberg 的說法，Meta 的雲端業務投資是「肯定在考慮之中」。這一投資可能會使 Meta 能夠提供更好的雲端服務和競爭力。Meta 的雲端業務投資可能會影響 Amazon 和 Google 等其他雲端服務提供商的業務。Meta 將在未來幾年內繼續投資於雲端業務和技術。",
-        "impact": "這一投資可能會影響 Amazon 和 Google 等其他雲端服務提供商的業務。Meta 在雲端業務和技術上的投資可能會使其在市場上占據更有利的位置。",
-        "rating": "core",
-        "insight": "供應鏈投資者應關注 Meta 和其他雲端服務提供商在雲端業務和技術上的投資。",
-        "source_label": "—",
-        "source": ""
-      }
-    ],
-    "app": [
-      {
-        "title": "Aetina 展示 Physical AI 和 Vision AI 解決方案",
-        "layer": "Agentic AI",
-        "body": "Aetina 在 COMPUTEX 2026 上展示了 Physical AI 和 Vision AI 解決方案。這些解決方案可以應用於各種領域，例如工業自動化和安全監控。Aetina 的 Physical AI 和 Vision AI 解決方案可能會影響其他 AI 技術提供商的業務。Aetina 將在未來幾年內繼續投資於 AI 技術和解決方案。",
-        "impact": "這些解決方案可能會影響其他 AI 技術提供商的業務。Aetina 在 AI 技術和解決方案上的投資可能會使其在市場上占據更有利的位置。",
-        "rating": "core",
-        "insight": "供應鏈投資者應關注 Aetina 和其他 AI 技術提供商在 AI 技術和解決方案上的投資。",
-        "source_label": "Embedded Computing Design",
-        "source": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNWDV6ZzJpelhqU3RqOVZQclBNR18wODNvYzBOSXR0YVM4eGhXNWRyd0pEZW53X2s4eGdWS3U1a0dXRm5mOHp3VXlnUzVnX1YzNXNsaXNkbnFocHgzTjExVGNkZXl1WTZwNDBYd2txR3ZuNjBiV2Iwd3IycVpBWjJvMHgzMWZSN2hIa1dRcjVrUXZmUVlxR3pYM1N4OEk5TzNETWxYUGdDTGxLM1podEtZU0pmTFRYai1LWFhiLWswVS1wQzdRbG1YZFZGampucVpkR2VHMFVCS3IzanJlcUt4X2FpWTM2WDZ0"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "on-prem",
-        "full": "on-premises",
-        "def": "在本地設置和管理的系統或服務",
-        "why": "on-prem 是一個重要的概念，因為它與雲端服務相比，提供了更好的安全性和控制性",
-        "category": "hardware"
       }
     ],
     "weekly_summary": null
