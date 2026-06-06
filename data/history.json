@@ -1,5 +1,125 @@
 [
   {
+    "date": "2026-06-07",
+    "is_sunday": true,
+    "hw": [
+      {
+        "title": "Intel 新資料中心 GPU",
+        "layer": "資料中心",
+        "body": "Intel 推出了一款新的資料中心 GPU，該 GPU 的詳細規格尚未公布。Nvidia 的 Rubin CPX 專案曾經是該公司的資料中心 GPU 計畫，但最終沒有推出。Intel 的新 GPU 可能會填補這個空白。",
+        "impact": "Intel 的新 GPU 將會對 Nvidia 的資料中心業務產生影響，可能會導致 Nvidia 的市場份額下降。同時，Intel 的新 GPU 也會對下游客戶如 CSP 產生影響，可能會導致他們的出貨時程延後。TSMC 和其他 OSAT 廠商可能會因為 Intel 的新 GPU 而獲得更多的封裝訂單。",
+        "rating": "noise",
+        "insight": "Intel 的新資料中心 GPU 將會對 Nvidia 的市場份額產生影響，投資者應該關注這個發展。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "Intel 資料中心 GPU 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 市場份額↓",
+            "type": "down"
+          },
+          {
+            "label": "Intel 與 Nvidia 競爭關係↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Computex 2026 會議",
+        "layer": "會議",
+        "body": "Computex 2026 會議吸引了大量參與者，會議中展示了各種新技術和產品。Intel 的新資料中心 GPU 在會議中受到關注。Nvidia 也在會議中展示了其最新的技術和產品。",
+        "impact": "Computex 2026 會議對於各個公司的市場份額和客戶關係將會產生影響。會議中展示的新技術和產品可能會導致客戶的需求轉變，從而影響各個公司的業務。TSMC 和其他 OSAT 廠商可能會因為會議中展示的新技術而獲得更多的封裝訂單。",
+        "rating": "opp",
+        "insight": "Computex 2026 會議對於各個公司的市場份額和客戶關係將會產生影響，投資者應該關注這個發展。",
+        "source_label": "Tech Times",
+        "source": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOM3pfd1NjVFN0TDdPMTlWNW42QzFhUnBCamdGcWJMVnlrdExlY0pEc0poREQtc09WZnhjSVI3UEZEa25ZMDcweDhxZV9ZZUlwcUdIbmhjVTlFWTAyRUFtTDQ2TWxvYzN1ckIyRWpoeWdKMHl4U1VFNHZZTzBjcDhEYUtsTmJLOFRDMWVpNy1nREZOMXFSRTlIel9YcHlpTktKOVZFMXk3UW9ETDNERlE5bGhtUGRaWXBQT2stLTdySXRIcFpZbFhOR2d5NU1HOWYtay1LZmRUVlVMQTAzdGc?oc=5",
+        "chain": [
+          {
+            "label": "Intel 新技術展示↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 技術展示↑",
+            "type": "up"
+          },
+          {
+            "label": "會議參與者數量↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Microsoft、Meta 和 Google 的 AI 投資",
+        "layer": "AI 投資",
+        "body": "Microsoft、Meta 和 Google 近期對 AI 的投資達到 725 億美元。Alphabet 也宣布將投資 85 億美元於 AI。這些投資將會對各個公司的市場份額和客戶關係產生影響。",
+        "impact": "Microsoft、Meta 和 Google 的 AI 投資將會對 Nvidia 的市場份額產生影響，可能會導致 Nvidia 的市場份額下降。同時，這些投資也會對下游客戶如 CSP 產生影響，可能會導致他們的出貨時程延後。TSMC 和其他 OSAT 廠商可能會因為這些投資而獲得更多的封裝訂單。",
+        "rating": "core",
+        "insight": "Microsoft、Meta 和 Google 的 AI 投資將會對 Nvidia 的市場份額產生影響，投資者應該關注這個發展。",
+        "source_label": "Stocktwits",
+        "source": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNQ2ZDQkRWWGZaNVdBV1UwS0FEY0RvVVJqUFUxNXd2eHpWM1haeXltLUNpaXB2TW5kcHlJRFo0WFNOQWZFaGNDZ2p3WlcwZjhPVndrYkQwWVAxR0tVVnotaFdDNnZHT1IxZ1BJVHJXZXFpVG5ROUlMcGZoR29iczhkOGM4VG9UMEVWWHJoUEY5TlBCN0RiTEotLTFWNVdFZHZpUmVBOHBuYWVaN0xYMEJzSkgtSno4WHhuc2x4TmpMUkV5bHJDaTNqVHFKalBIMl9pZ01MSjF2a0hpczUtYjMxUHk1OGt0VUxxbHRuaHZ3Nkt4ekRLTl9YZzVQX04wYjFUS25wLUZwWUJwTFU?oc=5",
+        "chain": [
+          {
+            "label": "Microsoft AI 投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta AI 市場份額↑",
+            "type": "up"
+          },
+          {
+            "label": "Google AI 研發能力↑",
+            "type": "up"
+          },
+          {
+            "label": "Alphabet AI 投資↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI 和 Physical AI",
+        "layer": "AI 應用",
+        "body": "Agentic AI 和 Physical AI 是近期的熱門話題。Intel 的新資料中心 GPU 可能會加速這些技術的發展。Computex 2026 會議中展示了各種新技術和產品，包括 Agentic AI 和 Physical AI。",
+        "impact": "Agentic AI 和 Physical AI 將會對各個公司的市場份額和客戶關係產生影響。這些技術可能會導致客戶的需求轉變，從而影響各個公司的業務。TSMC 和其他 OSAT 廠商可能會因為這些技術而獲得更多的封裝訂單。",
+        "rating": "opp",
+        "insight": "Agentic AI 和 Physical AI 將會對各個公司的市場份額和客戶關係產生影響，投資者應該關注這個發展。",
+        "source_label": "MySmartPrice",
+        "source": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNVVlxc3Y3QjhEVjAzMkFwbHRkOUh4dW1aZTNHdk1FMlBQN0FnYXpsNm5qT1AzeHcwYVlUMTdDeTctR2oyeGU5RXVDaW5oSlhoRFBXODd6ODh1ZEtkT2RNT1ZZdzhXR19aeWFNSS13SGF3NFZWQXdzTm5CazFkM3JTa19ZcjB1R2V6RWpuWTZsMW1SekJqUlAtaU1kcTF3YjVrWlY0V2pPejQ0VGJxYl9ub1FIWjFWUTBWbVVxVDF3NHVFSThRRUVVd2RxQ0IzUlMxdVdHeXFpQWhkeU1YNWk3UU1B?oc=5",
+        "chain": [
+          {
+            "label": "Intel 資料中心 GPU 技術支持↑",
+            "type": "up"
+          },
+          {
+            "label": "Agentic AI 研發進度↑",
+            "type": "up"
+          },
+          {
+            "label": "Physical AI 應用領域↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Agentic AI",
+        "full": "Agentic AI",
+        "def": "Agentic AI 是一種新型的 AI 技術，具有自主性和主動性。它可以在沒有人工干預的情況下，自主地完成各種任務。",
+        "why": "Agentic AI 將會對各個公司的市場份額和客戶關係產生影響。它可能會導致客戶的需求轉變，從而影響各個公司的業務。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": "本周，Intel 推出了一款新的資料中心 GPU，可能會填補 Nvidia 的空白。Microsoft、Meta 和 Google 對 AI 的投資達到 725 億美元，將會對各個公司的市場份額和客戶關係產生影響。Agentic AI 和 Physical AI 是近期的熱門話題，將會對各個公司的市場份額和客戶關係產生影響。下周，投資者應該關注這些發展。"
+  },
+  {
     "date": "2026-06-06",
     "is_sunday": false,
     "hw": [
@@ -603,55 +723,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-05-31",
-    "is_sunday": true,
-    "hw": [
-      {
-        "title": "晶片記憶體短缺問題",
-        "layer": "半導體",
-        "body": "高頻寬記憶體是 AI 晶片的瓶頸，Micron 公司的高頻寬記憶體需求增加，於 2026 年 5 月 29 日達到 1 萬億美元的市值。Micron 公司的高頻寬記憶體產能不足，導致 AI 晶片的生產受到影響，例如 2026 年 5 月 28 日，SK Hynix 公司宣布其高頻寬記憶體產能將增加 20%。高頻寬記憶體的短缺問題預計將持續到 2026 年底，屆時 Micron 公司的市值可能會下降 10%。",
-        "impact": "Micron 公司、SK Hynix 公司受影響，市值可能下降",
-        "rating": "core",
-        "insight": "投資者應關注高頻寬記憶體的供應情況",
-        "source_label": "Scientific American",
-        "source": "https://www.scientificamerican.com/article/high-bandwidth-memory-is-a-bottleneck-for-ai-chips/"
-      }
-    ],
-    "corp": [
-      {
-        "title": "微軟公司的 AI 投資",
-        "layer": "企業投資",
-        "body": "微軟公司於 2026 年 5 月 29 日宣布其 AI 投資增加 27-43%，並推出新的 Copilot 產品。微軟公司的 AI 投資預計將達到 10 億美元，主要用於開發新 AI 技術，例如 2026 年 5 月 28 日宣布的 EMIB-T 技術。微軟公司的 AI 投資預計將帶來 20% 的收益增加，屆時公司市值可能會上升 15%。",
-        "impact": "微軟公司受益，市值可能上升",
-        "rating": "opp",
-        "insight": "投資者應關注微軟公司的 AI 投資動向",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-ml/2026/05/29/microsoft-slaps-new-coat-of-paint-on-copilot-buries-annoying-button/5248442"
-      }
-    ],
-    "app": [
-      {
-        "title": "AI 應用於家居清潔",
-        "layer": "AI 應用",
-        "body": "Shift 公司於 2026 年 5 月 29 日宣布其 AI 清潔技術，可以清潔家居，同時收集數據用於訓練 AI 模型。Shift 公司的 AI 清潔技術預計將應用於 10 萬戶家居，屆時公司收入可能會增加 30%。Shift 公司的 AI 清潔技術預計將帶來 25% 的成本降低，屆時公司市值可能會上升 10%。",
-        "impact": "Shift 公司受益，市值可能上升",
-        "rating": "opp",
-        "insight": "投資者應關注 Shift 公司的 AI 清潔技術",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/ai-artificial-intelligence/939765/ai-training-data-startup-shift-free-cleaning"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "EMIB-T",
-        "full": "高頻寬記憶體封裝技術",
-        "def": "EMIB-T 是一種高頻寬記憶體封裝技術，能夠提高記憶體的頻寬和密度，適用於 AI 晶片的生產。",
-        "why": "EMIB-T 技術可以提高 AI 晶片的性能和效率",
-        "category": "半導體"
-      }
-    ],
-    "weekly_summary": "本週晶片記憶體短缺問題持續，微軟公司的 AI 投資增加，Shift 公司的 AI 清潔技術應用於家居清潔。下週預計將出現更多 AI 應用，投資者應關注高頻寬記憶體的供應情況和微軟公司的 AI 投資動向。"
   }
 ]
