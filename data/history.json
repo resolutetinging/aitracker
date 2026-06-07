@@ -1,5 +1,145 @@
 [
   {
+    "date": "2026-06-08",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Nvidia RTX Spark 亮相 Computex 2026",
+        "layer": "semiconductor",
+        "body": "Nvidia 在 Computex 2026 會議上推出了 RTX Spark 新品；該產品結合了 AI 和 GPU 技術，提供更強大的計算能力；Intel 則展示了其最新的資料中心 GPU 解決方案。",
+        "impact": "Nvidia 的 RTX Spark 亮相可能會對其下游客戶如 Google 和 Meta 產生影響，促使他們加速 AI 應用開發；TSMC 和 Samsung 等晶片製造商可能會因 Nvidia 的新品而增加生產量；同時，Intel 的資料中心 GPU 解決方案也可能會對市場產生一定的影響。",
+        "rating": "core",
+        "insight": "Nvidia 的 RTX Spark 亮相將推動 AI 和 GPU 技術的發展",
+        "source_label": "IndexBox",
+        "source": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPOVdZMVpXV3N0cEtEMmo4dnREanlMN3BqblFtUzA5U252bDdndUtJZUpvNFAtZjNHd3FvN3M0akRnc2tNMGllZTVsZ0JzVkZOZ0ZlNlZiWmJsT000d2J4cmRlcDZFRE04VFBrbEVVeElWeTcyVHhvMzFSRVpmMnFwU2loVnFXbEpNTHl0SkRSS3JkNENMcEZHVHNhbnc?oc=5",
+        "chain": [
+          {
+            "label": "Nvidia RTX Spark 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Intel 資料中心 GPU 解決方案競爭力↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Computex 2026 會議創下 45 年來最多參加人數",
+        "layer": "semiconductor",
+        "body": "Computex 2026 會議創下 45 年來最多參加人數，吸引了眾多科技業者參與；Agentic AI 和 Physical AI 等新技術也在會議上受到關注；會議期間，各大廠商也展示了其最新的產品和技術。",
+        "impact": "會議的成功可能會對臺灣的科技產業產生積極影響，促進相關企業的合作和發展；同時，Agentic AI 和 Physical AI 等新技術的出現也可能會對市場產生一定的影響，推動 AI 技術的發展；TSMC 和其他晶片製造商可能會因會議上的新技術而增加投資。",
+        "rating": "core",
+        "insight": "Computex 2026 會議的成功將推動臺灣科技產業的發展",
+        "source_label": "Tech Times",
+        "source": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOM3pfd1NjVFN0TDdPMTlWNW42QzFhUnBCamdGcWJMVnlrdExlY0pEc0poREQtc09WZnhjSVI3UEZEa25ZMDcweDhxZV9ZZUlwcUdIbmhjVTlFWTAyRUFtTDQ2TWxvYzN1ckIyRWpoeWdKMHl4U1VFNHZZTzBjcDhEYUtsTmJLOFRDMWVpNy1nREZOMXFSRTlIel9YcHlpTktKOVZFMXk3UW9ETDNERlE5bGhtUGRaWXBQT2stLTdySXRIcFpZbFhOR2d5NU1HOWYtay1LZmRUVlVMQTAzdGc?oc=5",
+        "chain": [
+          {
+            "label": "Agentic AI 關注度↑",
+            "type": "up"
+          },
+          {
+            "label": "Physical AI 關注度↑",
+            "type": "up"
+          },
+          {
+            "label": "傳統科技業者市占↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "UK 考試監管機構擔憂智慧眼鏡作弊",
+        "layer": "semiconductor",
+        "body": "UK 考試監管機構 Ofqual 擔憂智慧眼鏡和隱藏式耳機等新技術可能會被用於作弊；這些新技術可能會對考試的公平性產生影響；同時，AI 工具也可能會被用於作弊。",
+        "impact": "Ofqual 的擔憂可能會對考試的安全性產生影響，促使相關機構加強考試的監控；同時，智慧眼鏡和隱藏式耳機等新技術的出現也可能會對市場產生一定的影響，推動相關技術的發展；相關企業可能會因 Ofqual 的擔憂而增加投資。",
+        "rating": "noise",
+        "insight": "Ofqual 的擔憂將推動考試安全性的發展",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/personal-tech/2026/06/07/uk_exams_watchdog_frets_over_smart_specs_turning_gcses_into_google_searches/5251365",
+        "chain": [
+          {
+            "label": "智慧眼鏡銷量↓",
+            "type": "down"
+          },
+          {
+            "label": "隱藏式耳機銷量↓",
+            "type": "down"
+          },
+          {
+            "label": "AI 工具監管嚴格性↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Microsoft、Meta 和 Google 的 AI 投資",
+        "layer": "corp",
+        "body": "Microsoft、Meta 和 Google 等大型科技企業在 AI 技術上的投資不斷增加；這些企業的 AI 投資可能會對市場產生積極影響，推動 AI 技術的發展；同時，相關企業也可能會因這些企業的投資而增加投資。",
+        "impact": "Microsoft、Meta 和 Google 等企業的 AI 投資可能會對市場產生積極影響，促進相關企業的合作和發展；同時，AI 技術的出現也可能會對市場產生一定的影響，推動相關技術的發展；TSMC 和其他晶片製造商可能會因這些企業的投資而增加投資。",
+        "rating": "noise",
+        "insight": "Microsoft、Meta 和 Google 的 AI 投資將推動 AI 技術的發展",
+        "source_label": "Stocktwits",
+        "source": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNQ2ZDQkRWWGZaNVdBV1UwS0FEY0RvVVJqUFUxNXd2eHpWM1haeXltLUNpaXB2TW5kcHlJRFo0WFNOQWZFaGNDZ2p3WlcwZjhPVndrYkQwWVAxR0tVVnotaFdDNnZHT1IxZ1BJVHJXZXFpVG5ROUlMcGZoR29iczhkOGM4VG9UMEVWWHJoUEY5TlBCN0RiTEotLTFWNVdFZHZpUmVBOHBuYWVaN0xYMEJzSkgtSno4WHhuc2x4TmpMUkV5bHJDaTNqVHFKalBIMl9pZ01MSjF2a0hpczUtYjMxUHk1OGt0VUxxbHRuaHZ3Nkt4ekRLTl9YZzVQX04wYjFUS25wLUZwWUJwTFU?oc=5",
+        "chain": [
+          {
+            "label": "Microsoft AI 投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta AI 投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Google AI 投資↑",
+            "type": "up"
+          },
+          {
+            "label": "小型科技企業競爭力↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI 和 Physical AI 的發展",
+        "layer": "app",
+        "body": "Agentic AI 和 Physical AI 等新技術在 Computex 2026 會議上受到關注；這些新技術可能會對市場產生積極影響，推動 AI 技術的發展；同時，相關企業也可能會因這些新技術而增加投資。",
+        "impact": "Agentic AI 和 Physical AI 等新技術的出現可能會對市場產生積極影響，促進相關企業的合作和發展；同時，AI 技術的出現也可能會對市場產生一定的影響，推動相關技術的發展；TSMC 和其他晶片製造商可能會因這些新技術而增加投資。",
+        "rating": "core",
+        "insight": "Agentic AI 和 Physical AI 的發展將推動 AI 技術的發展",
+        "source_label": "IndexBox",
+        "source": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPOVdZMVpXV3N0cEtEMmo4dnREanlMN3BqblFtUzA5U252bDdndUtJZUpvNFAtZjNHd3FvN3M0akRnc2tNMGllZTVsZ0JzVkZOZ0ZlNlZiWmJsT000d2J4cmRlcDZFRE04VFBrbEVVeElWeTcyVHhvMzFSRVpmMnFwU2loVnFXbEpNTHl0SkRSS3JkNENMcEZHVHNhbnc?oc=5",
+        "chain": [
+          {
+            "label": "Agentic AI 關注度↑",
+            "type": "up"
+          },
+          {
+            "label": "Physical AI 關注度↑",
+            "type": "up"
+          },
+          {
+            "label": "傳統 AI 技術市占↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Agentic AI",
+        "full": "代理人式 AI",
+        "def": "一種可以自主學習和決策的 AI 技術",
+        "why": "Agentic AI 可以用於各種應用，例如智慧眼鏡和隱藏式耳機",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-07",
     "is_sunday": true,
     "hw": [
@@ -660,66 +800,6 @@
         "def": "Agentic AI是一家提供AI解決方案的公司，推出Delphi和C++ Builder的AI擴充。",
         "why": "Agentic AI的Kai擴充對Delphi和C++ Builder的使用者具有重要影響。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-01",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "研究人員開發固定硬體神經網路實現",
-        "layer": "晶片製造",
-        "body": "研究人員從耶魯大學、康奈爾大學、波士頓大學和NTT Research共同發表了一篇論文，題為「Physical Foundation Models: Fixed hardware implementations of large-scale neural networks」。這篇論文介紹了一種新的神經網路實現方法，使用固定硬體來加速神經網路的運算。這種方法有可能提高神經網路的運算效率和降低能耗。",
-        "impact": "耶魯大學、康奈爾大學、波士頓大學和NTT Research等研究機構將受益於這項技術的發展",
-        "rating": "core",
-        "insight": "固定硬體神經網路實現有可能成為未來人工智慧技術的重要發展方向",
-        "source_label": "SemiEngineering",
-        "source": "https://semiengineering.com/building-fixed-hw-implementations-of-neural-networks-yale-cornell-et-al/"
-      },
-      {
-        "title": "Intel Xeon 6+『Clearwater Forest』晶片",
-        "layer": "晶片製造",
-        "body": "Intel Xeon 6+『Clearwater Forest』晶片使用18A工藝，具有最高288個核心和576 MB的L3快取。這款晶片比AMD Epyc 9965快30%。Intel表示，這款晶片適合於資料中心的應用。這款晶片的推出將進一步提高Intel在資料中心市場的競爭力。",
-        "impact": "Intel和AMD等公司將受益於這項技術的發展",
-        "rating": "core",
-        "insight": "Intel Xeon 6+『Clearwater Forest』晶片的推出將進一步提高Intel在資料中心市場的競爭力",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/"
-      }
-    ],
-    "corp": [
-      {
-        "title": "微軟公司更新Copilot功能",
-        "layer": "企業動態",
-        "body": "微軟公司更新了Copilot功能，新增了一個新的界面和更好的使用體驗。這項更新使得Copilot的使用率提高了27-43%。微軟公司表示，這項更新將進一步提高Copilot的使用率和競爭力。這項更新將對微軟公司的AI業務產生積極影響。",
-        "impact": "微軟公司將受益於這項技術的發展",
-        "rating": "core",
-        "insight": "微軟公司更新Copilot功能將進一步提高其AI業務的競爭力",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-ml/2026/05/29/microsoft-slaps-new-coat-of-paint-on-copilot-buries-annoying-button/5248442"
-      }
-    ],
-    "app": [
-      {
-        "title": "邊緣計算中的缺陷檢測和分類",
-        "layer": "應用場景",
-        "body": "邊緣計算中的缺陷檢測和分類是一種重要的應用場景。研究人員表示，缺陷檢測和分類需要更快的運算速度和更低的延遲。這種應用場景需要更好的硬體和軟體支持。這項技術的發展將進一步提高邊緣計算的效率和競爭力。",
-        "impact": "邊緣計算中的缺陷檢測和分類將受益於這項技術的發展",
-        "rating": "opp",
-        "insight": "邊緣計算中的缺陷檢測和分類將成為未來的一個重要應用場景",
-        "source_label": "SemiEngineering",
-        "source": "https://semiengineering.com/moving-defect-detection-and-classification-to-the-edge/"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Physical Foundation Models",
-        "full": "物理基礎模型",
-        "def": "一種新的神經網路實現方法，使用固定硬體來加速神經網路的運算",
-        "why": "這種方法有可能提高神經網路的運算效率和降低能耗",
-        "category": "semiconductor"
       }
     ],
     "weekly_summary": null
