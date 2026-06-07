@@ -483,10 +483,11 @@ def send_email(data):
         try:
             with open(cfg_path, 'r', encoding='utf-8') as f:
                 cfg = json.load(f)
-            if not cfg.get('enabled', True):
-                print("  → Email 推送已暫停（enabled=false），略過。"); return
-            extra_recipients = [r.strip() for r in cfg.get('recipients', [])
+            if cfg.get('enabled', True):
+                extra_recipients = [r.strip() for r in cfg.get('recipients', [])
                                 if r.strip() and r.strip() not in secret_recipients]
+            else:
+                print("  → 公開收件人推送已暫停（enabled=false），僅發送 secret 收件人")
         except Exception:
             pass
 
