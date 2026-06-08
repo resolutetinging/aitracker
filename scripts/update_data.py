@@ -240,7 +240,7 @@ CATEGORIES:
 OUTPUT FORMAT:
 {{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[ITEMS],"corp":[ITEMS],"app":[ITEMS],"glossary_new":[{{"term":"","full":"","def":"2-3 sentences","why":"why it matters","category":"semiconductor|ai_technique|hardware|role"}}],"weekly_summary":{weekly_val}}}
 
-Each ITEM: {{"title":"Traditional Chinese title","layer":"sublayer","body":"EXACTLY 3 sentences each with specific numbers/dates/company names","impact":"2-3 sentences in zh-TW analyzing how this news ripples through the supply chain: identify upstream suppliers (foundry/OSAT/memory/materials) and downstream customers (CSP/OEM/ODM/end users) by name, describe the specific direction of impact for each role (e.g. 產能吃緊/ASP走高/訂單轉移/資本支出削減), and explain why. Example: 「TSMC CoWoS 產能持續吃緊，Amkor/ASE 等 OSAT 廠商有望承接溢出封裝訂單；Nvidia 下游客戶出貨時程料延後 1-2 季。SK Hynix HBM ASP 因需求集中持續走高，Samsung 被迫加速 HBM3E 良率改善以防市占流失。」","rating":"core|opp|noise","insight":"1-sentence investor takeaway","source_label":"source name","source":"use SOURCE_URL value or empty string"}}
+Each ITEM: {{"title":"Traditional Chinese title","layer":"sublayer","body":"EXACTLY 3 sentences each with specific numbers/dates/company names","impact":"2-3 sentences in zh-TW tracing upstream/downstream ripple effects. CRITICAL: name ONLY companies and technologies that appear verbatim in the NEWS TEXT above — never introduce any company not in the source. Trace the chain appropriate to the category: hw→foundry/OSAT/memory/customer; corp→CSP spending→GPU/server supplier→ODM/OEM/enterprise customer; app→inference provider→enterprise adopter. hw example: 「TSMC CoWoS 產能持續吃緊，Amkor/ASE 等 OSAT 廠有望承接溢出訂單；Nvidia 客戶出貨時程料延後 1-2 季。」 corp example: 「Meta/Microsoft CapEx 擴大直接拉動 Nvidia GPU 採購量；廣達、緯穎等 ODM 伺服器廠訂單能見度延伸至 2026H2。AWS 加碼投資同步推升自研 Trainium 晶片需求，擠壓第三方 GPU 採購比重。」","rating":"core|opp|noise","insight":"1-sentence investor takeaway","source_label":"source name","source":"use SOURCE_URL value or empty string"}}
 
 RULES:
 - 2-4 items per section; if no relevant news → 1 noise item only
@@ -248,7 +248,7 @@ RULES:
 - body: 3 sentences using ONLY facts from the provided news above — each sentence MUST start with a DIFFERENT subject (company/product/metric); NEVER start 2+ sentences with the same subject; each sentence must state a NEW fact not covered in the others; NEVER invent numbers, dates, or connections between companies not stated in the source; if you cannot write 3 genuinely different sentences from the source, rate it noise instead
 - SOURCE REQUIREMENT: every core or opp item MUST have a SOURCE_URL from the news; if no SOURCE_URL exists for a story, you MUST rate it noise — never assign core/opp to unsourced items
 - HALLUCINATION IS FORBIDDEN: do not combine unrelated companies or technologies; every company-technology pairing must come directly from the news text
-- impact: must be 2-3 full sentences analyzing supply chain ripple effects; never a comma-separated keyword list; never vague phrases like "industry benefits"
+- impact: must be 2-3 full sentences; ONLY name companies explicitly in the news text — if a company is not in the source, it must NOT appear in impact; never extrapolate to foundry/OSAT/memory companies for corp/app items unless the news explicitly names them; never a comma-separated list; never vague phrases
 - glossary_new: required, 1-3 terms from today's news that readers may not know
 - source: copy verbatim from SOURCE_URL in the news; never fabricate URLs
 - All titles, body, impact, insight in Traditional Chinese (zh-TW)
