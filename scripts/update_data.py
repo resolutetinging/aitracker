@@ -219,8 +219,8 @@ def make_prompt(news_context, recent_titles=None):
     notes = load_notes() if IS_SUNDAY else {}
     notes_text = "; ".join(f"{d}:{n}" for d, n in sorted(notes.items()) if n.strip()) if notes else ""
     weekly_val = (
-        '"hw weekly summary | corp weekly summary | app weekly summary | next week forecast'
-        + (' | notes insight' if notes_text else '') + '"'
+        '"hw半導體本週一句摘要\\ncorp CSP/CapEx本週一句摘要\\napp新興AI本週一句摘要\\n下週投資者一句看點'
+        + ('\\n用戶筆記洞察一句' if notes_text else '') + '"'
         if IS_SUNDAY else 'null'
     )
     no_repeat_str = ("Do NOT repeat these recently covered titles: " + "; ".join(recent_titles[:4])) if recent_titles else ""
@@ -252,6 +252,7 @@ RULES:
 - glossary_new: required, 1-3 terms from today's news that readers may not know
 - source: copy verbatim from SOURCE_URL in the news; never fabricate URLs
 - All titles, body, impact, insight in Traditional Chinese (zh-TW)
+- weekly_summary: each distinct point must be its own line separated by \n (one sentence per line, ending with 。); never merge multiple topics into one continuous paragraph
 {no_repeat_str}
 {notes_ctx}"""
 
