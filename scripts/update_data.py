@@ -320,6 +320,61 @@ def fix_chains(data):
     except Exception as e:
         print(f"  → chain 修正失敗：{e}")
 
+def validate_impact(data):
+    """二次 API 驗證：impact 每句是否有 body/title 的明確因果依據，無依據則改寫或刪除"""
+    client = Groq(api_key=os.environ['GROQ_API_KEY'])
+    items = [
+        {"sec": sec, "title": item["title"],
+         "body": item.get("body", "")[:400],
+         "impact": item.get("impact", "")}
+        for sec in ['hw', 'corp', 'app']
+        for item in data.get(sec, [])
+        if item.get("impact") and item.get("rating") in ("core", "opp")
+    ]
+    if not items:
+        print("  → impact 驗證：無需處理"); return
+
+    items_json = json.dumps(items, ensure_ascii=False)
+    prompt = (
+        "以下每條新聞包含 title、body、impact。"
+        "請逐句審查 impact：若某句提及的公司或效果在 body/title 中沒有明確的因果依據（僅因常識推測而非原文支撐），"
+        "請刪除該句或改寫為只保留有依據的部分。"
+        "不得因為『投資增加→晶片需求↑→TSMC訂單↑』這類多步推論而引入 body 未提及的公司。"
+        "若 impact 整體無因果依據，改為空字串。\n"
+        f"條目：{items_json}\n"
+        '輸出純JSON陣列（直接從[開始）：[{"title":"原標題","impact":"修正後impact或空字串"}]'
+    )
+    try:
+        resp = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[
+                {"role": "system", "content": "只輸出純JSON陣列，不加任何說明或markdown。"},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.1, max_tokens=1200,
+        )
+        raw = resp.choices[0].message.content.strip()
+        if raw.startswith('```'):
+            raw = raw.split('\n', 1)[-1].rsplit('```', 1)[0].strip()
+        fixes = json.loads(raw)
+        fixed = 0
+        for fix in fixes:
+            for sec in ['hw', 'corp', 'app']:
+                for item in data.get(sec, []):
+                    if item['title'] == fix['title'] and 'impact' in fix:
+                        old = item.get('impact', '')
+                        new = fix['impact']
+                        if new != old:
+                            item['impact'] = new
+                            fixed += 1
+                            print(f"  ✓ impact 修正：{item['title'][:40]}")
+        if fixed == 0:
+            print("  → impact 因果驗證通過")
+        else:
+            print(f"  → 共修正 {fixed} 筆 impact")
+    except Exception as e:
+        print(f"  → impact 驗證失敗：{e}")
+
 def call_groq(prompt):
     from groq import APIStatusError as GroqAPIStatusError
     client = Groq(api_key=os.environ['GROQ_API_KEY'])
@@ -709,6 +764,8 @@ if __name__ == '__main__':
     downgrade_low_quality(data)
     print("🔗 supply chain 品質檢核...")
     fix_chains(data)
+    print("🔎 impact 因果驗證...")
+    validate_impact(data)
 
     history = upsert(history, data)
     save_history(history)
