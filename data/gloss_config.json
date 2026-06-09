@@ -8,12 +8,16 @@
     "Adversarial Attack": "ai_technique",
     "Physical Foundation Models": "hardware",
     "EMIB-T": "semiconductor",
-    "Bare Metal Cloud": "cc_software"
+    "Bare Metal Cloud": "cc_software",
+    "Vera Rubin": "ai_technique",
+    "DGX Station": "ai_technique",
+    "RTX Spark": "ai_technique",
+    "DGX Spark": "ai_technique"
   },
   "custom_cats": [
     "General",
     "Company",
     "Software"
   ],
-  "updated": "2026-06-03T01:54:43.300Z"
+  "updated": "2026-06-09T02:04:52.756Z"
 }
