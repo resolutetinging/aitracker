@@ -1208,10 +1208,10 @@ async function manualDispatchEmail() {
   if (!token) { closeEmailModal(); openPatModal(); return; }
   const btn = document.getElementById('email-manual-push-btn');
   const statusEl = document.getElementById('email-save-status');
-  const origText = btn.textContent;
   btn.disabled = true;
   btn.textContent = '觸發中…';
   statusEl.textContent = '';
+  const triggerTime = Date.now();
   try {
     const res = await fetch(
       `https://api.github.com/repos/${GH_REPO}/actions/workflows/daily-update.yml/dispatches`,
@@ -1226,19 +1226,58 @@ async function manualDispatchEmail() {
       }
     );
     if (res.status === 204) {
-      statusEl.textContent = '✓ 已觸發推送，約 2 分鐘後送達';
-      btn.textContent = '已觸發 ✓';
-      setTimeout(() => { btn.textContent = origText; btn.disabled = false; }, 6000);
+      btn.textContent = '📨 立即推送';
+      statusEl.textContent = '⏳ 等待 Actions 啟動…';
+      pollWorkflowStatus(token, triggerTime, statusEl, btn);
     } else {
-      statusEl.textContent = '❌ 觸發失敗（Token 需開啟 Actions: Write 權限）';
-      btn.textContent = origText;
+      statusEl.textContent = '❌ 觸發失敗（Token 需 Actions: Write 權限）';
+      btn.textContent = '📨 立即推送';
       btn.disabled = false;
     }
   } catch(e) {
     statusEl.textContent = '❌ 網路錯誤';
-    btn.textContent = origText;
+    btn.textContent = '📨 立即推送';
     btn.disabled = false;
   }
+}
+
+async function pollWorkflowStatus(token, triggerTime, statusEl, btn) {
+  const MAX = 30;
+  let n = 0;
+  const tick = async () => {
+    n++;
+    try {
+      const r = await fetch(
+        `https://api.github.com/repos/${GH_REPO}/actions/runs?event=workflow_dispatch&per_page=5`,
+        { headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github+json' } }
+      );
+      if (r.ok) {
+        const { workflow_runs: runs = [] } = await r.json();
+        // 找到本次觸發後建立的 run（容許 60 秒內時鐘偏差）
+        const run = runs.find(x => new Date(x.created_at).getTime() >= triggerTime - 60000);
+        if (run) {
+          if (run.status === 'completed') {
+            const ok = run.conclusion === 'success';
+            statusEl.innerHTML = ok
+              ? `✅ 推送完成，Email 已送出 · <a href="${run.html_url}" target="_blank" style="color:var(--app);">查看記錄</a>`
+              : `❌ 執行失敗（${run.conclusion}） · <a href="${run.html_url}" target="_blank" style="color:#c05040;">查看詳情</a>`;
+            btn.disabled = false;
+            return;
+          }
+          const label = { queued: '排隊中', in_progress: '執行中' }[run.status] || run.status;
+          statusEl.innerHTML = `⏳ ${label}… · <a href="${run.html_url}" target="_blank" style="color:var(--muted);font-size:11px;">查看</a>`;
+        } else {
+          statusEl.textContent = `⏳ 等待啟動… (${n * 8}s)`;
+        }
+      }
+    } catch(_) {}
+    if (n < MAX) setTimeout(tick, 8000);
+    else {
+      statusEl.innerHTML = `⚠️ 超時，請至 <a href="https://github.com/${GH_REPO}/actions" target="_blank" style="color:var(--muted);">GitHub Actions</a> 確認`;
+      btn.disabled = false;
+    }
+  };
+  setTimeout(tick, 6000); // GitHub 需幾秒才建立 run 記錄
 }
 
 // PAT modal
