@@ -243,6 +243,10 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .gloss-del-btn{position:absolute;top:9px;right:11px;background:none;border:none;color:var(--faint);font-size:15px;line-height:1;cursor:pointer;padding:2px 5px;border-radius:4px;opacity:0;transition:opacity .15s;}
 .gloss-card:hover .gloss-del-btn{opacity:.6;}
 .gloss-del-btn:hover{opacity:1!important;background:rgba(176,80,80,.09);color:#884040;}
+.gloss-regen-btn{position:absolute;top:9px;right:32px;background:none;border:none;color:var(--faint);font-size:13px;line-height:1;cursor:pointer;padding:2px 4px;border-radius:4px;opacity:0;transition:opacity .15s;}
+.gloss-card:hover .gloss-regen-btn{opacity:.6;}
+.gloss-regen-btn:hover{opacity:1!important;color:var(--gloss);}
+.gloss-regen-btn:disabled{opacity:.3!important;cursor:not-allowed;}
 
 /* ── Insight panel ── */
 .ins-legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
@@ -710,11 +714,12 @@ function renderGlossary(hist) {
   const seen = new Set();
   GLOSS_CATS.forEach(c => c.terms.forEach(t => seen.add(t.term)));
   const uncategorized = [];
+  const newThresh = new Date(Date.now() - 3*86400000).toISOString().slice(0,10);
   (hist||[]).forEach(d => {
     (d.glossary_new||[]).forEach(g => {
       if (seen.has(g.term) || hidden.has(g.term)) return;
       seen.add(g.term);
-      const term = {...g, _new:true};
+      const term = {...g, _new: d.date >= newThresh};
       const destKey = overrides[g.term] || g.category || '';
       const destIdx = catKeyToIdx[destKey];
       if (destIdx !== undefined) allCatData[destIdx].terms.push(term);
@@ -726,7 +731,7 @@ function renderGlossary(hist) {
   loadUserTerms().forEach(g => {
     if (seen.has(g.term)) return;
     seen.add(g.term);
-    const term = {...g, _new:true, _user:true};
+    const term = {...g, _new: !!(g._addedAt && g._addedAt >= newThresh), _user:true};
     const destKey = overrides[g.term] || g.category || '';
     const destIdx = catKeyToIdx[destKey];
     if (destIdx !== undefined) allCatData[destIdx].terms.push(term);
@@ -747,6 +752,7 @@ function renderGlossary(hist) {
     const delFn = g._user ? `deleteUserTerm('${escapedTerm}')` : `hideBaseTerm('${escapedTerm}')`;
     return `<div class="gloss-card">
       <button class="gloss-del-btn" onclick="${delFn}" title="移除此卡片">×</button>
+      ${g._user?`<button class="gloss-regen-btn" id="regen-${escapedTerm}" onclick="regenerateUserTerm('${escapedTerm}')" title="重新生成內容">↻</button>`:''}
       <div class="gloss-cat-row">
         <div class="gloss-term">${g.term}${g._new?'<span class="new-badge">NEW</span>':''}${g._user?`<span class="user-badge" onclick="deleteUserTerm('${escapedTerm}')">自添 ✕</span>`:''}</div>
         <div style="position:relative;display:inline-block;">
@@ -838,9 +844,9 @@ async function addUserTerm(){
       body:JSON.stringify({
         model:'llama-3.3-70b-versatile',
         messages:[{role:'user',content:
-          `Generate a glossary card for the AI/semiconductor supply chain term: "${term}"\nOutput pure JSON only:\n{"term":"${term}","full":"English Full Name　繁體中文名稱","def":"2-3句繁體中文定義，含具體數字或公司名","why":"📌 對AI供應鏈投資者的重要性（1-2句繁體中文）","category":"${catList}"}`
+          `Generate a detailed glossary card for the AI/semiconductor supply chain term: "${term}"\nOutput ONLY pure JSON, no markdown:\n{"term":"${term}","full":"English Full Name　繁體中文名稱","def":"必須寫滿3句繁體中文定義，每句需包含具體數字、產品規格或公司名稱，禁止只寫一句短語","why":"📌 對AI供應鏈投資者的重要性：具體說明影響哪些公司（如TSMC/NVIDIA/SK Hynix等）及上下游供應鏈效應，2句繁體中文","category":"${catList}"}`
         }],
-        max_tokens:300,temperature:0.4
+        max_tokens:600,temperature:0.4
       })
     });
     const json=await resp.json();
@@ -850,6 +856,7 @@ async function addUserTerm(){
     const g=JSON.parse(m[0]);
     if(!g.term||!g.def)throw new Error('invalid');
     g.term=term; // 確保 term 正確
+    g._addedAt=new Date().toISOString().slice(0,10);
     saveUserTerms([...existing,g]);
     input.value='';
     renderGlossary(HISTORY);
@@ -866,6 +873,41 @@ async function addUserTerm(){
   }
   const newBtn=document.getElementById('add-term-btn');
   if(newBtn){newBtn.disabled=false;newBtn.textContent='✦ AI 補完';}
+}
+
+async function regenerateUserTerm(term){
+  const key=localStorage.getItem('groq_key');
+  if(!key){alert('請先設定 Groq Key');return;}
+  const btn=document.getElementById('regen-'+term.replace(/[^a-z0-9]/gi,'_'));
+  if(btn){btn.disabled=true;btn.textContent='…';}
+  try{
+    const catList=getAllCatDefs().map(c=>c.key).join('|');
+    const resp=await fetch('https://api.groq.com/openai/v1/chat/completions',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
+      body:JSON.stringify({
+        model:'llama-3.3-70b-versatile',
+        messages:[{role:'user',content:
+          `Generate a detailed glossary card for the AI/semiconductor supply chain term: "${term}"\nOutput ONLY pure JSON, no markdown:\n{"term":"${term}","full":"English Full Name　繁體中文名稱","def":"必須寫滿3句繁體中文定義，每句需包含具體數字、產品規格或公司名稱","why":"📌 對AI供應鏈投資者的重要性：具體說明影響哪些公司及上下游供應鏈效應，2句繁體中文","category":"${catList}"}`
+        }],
+        max_tokens:600,temperature:0.4
+      })
+    });
+    const json=await resp.json();
+    const text=json.choices?.[0]?.message?.content||'';
+    const m=text.match(/\{[\s\S]*\}/);
+    if(!m)throw new Error('no json');
+    const g=JSON.parse(m[0]);
+    if(!g.term||!g.def)throw new Error('invalid');
+    g.term=term;
+    g._addedAt=new Date().toISOString().slice(0,10);
+    const ut=loadUserTerms();
+    const idx=ut.findIndex(t=>t.term===term);
+    if(idx>=0){ut[idx]=g;saveUserTerms(ut);}
+    renderGlossary(HISTORY);
+  }catch(e){
+    if(btn){btn.disabled=false;btn.textContent='↻';}
+  }
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -1703,6 +1745,7 @@ function sw(tab) {
   });
   document.getElementById('panel-'+tab).classList.add('active');
   document.getElementById('btn-'+tab).classList.add(TCLS[tab]);
+  sessionStorage.setItem('at_tab', tab);
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -1732,7 +1775,10 @@ async function init() {
     return;
   }
   renderAll(hist);
-  sw('hw');
+  const savedTab = sessionStorage.getItem('at_tab');
+  const restoredTab = savedTab && Object.keys(TCLS).includes(savedTab) ? savedTab : 'hw';
+  sw(restoredTab);
+  if (restoredTab === 'archive') loadArchive();
 }
 
 init();
