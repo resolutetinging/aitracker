@@ -715,16 +715,16 @@
     "glossary_new": [
       {
         "term": "Vera Rubin",
-        "full": "維拉魯賓",
-        "def": "Nvidia的AI計算平台",
-        "why": "Nvidia的Vera Rubin計劃將為用戶提供更強大的AI計算能力",
+        "full": "Vera Rubin GPU Architecture　維拉·魯賓 GPU 架構",
+        "def": "NVIDIA 繼 Blackwell 後的下世代 GPU 架構，代號取自天文學家 Vera Rubin，預計 2026 年量產，搭載自研 NV-HBM 記憶體，AI 算力較 Blackwell 提升約 3.3 倍。完整版 Vera Rubin Ultra 預計 2027 年跟進，採用 NV-HBM4E 超高頻寬記憶體，針對超大型 LLM 訓練與推論工作負載。整體系統採多晶片封裝設計，由 TSMC 先進製程代工。",
+        "why": "📌 自研 NV-HBM 策略可能降低 NVIDIA 對 SK Hynix/Micron 外部 HBM 採購的依賴，對現有 HBM 供應商形成議價壓力；TSMC CoWoS/SoIC 封裝仍為關鍵瓶頸，Rubin 量產將推動先進封裝產能進一步吃緊。",
         "category": "AI技術"
       },
       {
         "term": "DGX Station",
-        "full": "數據科學工作站",
-        "def": "Nvidia的AI計算工作站",
-        "why": "Nvidia的DGX Station計劃將為用戶提供更好的AI體驗",
+        "full": "DGX Station Personal AI Supercomputer　DGX 桌上型 AI 超級電腦",
+        "def": "NVIDIA 推出的工作站級個人 AI 超級電腦，現行款搭載 4 張 A100 80GB GPU，提供 2.5 PFLOPS AI 算力與 320GB 總 GPU 記憶體，可在辦公室環境直接執行大型語言模型推論。最新 Blackwell 架構版預計 2025–2026 年推出，定位企業 on-premise AI 部署，無需仰賴公有雲即可處理敏感資料。",
+        "why": "📌 DGX Station 反映資料主權與 CSP 雲算力成本壓力催生的本地 GPU 需求，對 NVIDIA 為高毛利整機銷售管道；同時對 Dell/HPE 等 OEM 伺服器廠商的 AI 工作站業務形成直接競爭壓力。",
         "category": "AI技術"
       }
     ],
