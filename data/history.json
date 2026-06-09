@@ -1,5 +1,231 @@
 [
   {
+    "date": "2026-06-10",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "NVIDIA 的 ARM 晶片和早期 Wi-Fi 8 路由器",
+        "layer": "semiconductor",
+        "body": "NVIDIA 的 ARM 晶片是 Computex 2026 的一大亮點。早期 Wi-Fi 8 路由器也在會議上展出。How-To Geek 對這些技術表示讚賞，認為它們是未來科技的重要趨勢。",
+        "impact": "NVIDIA 的 ARM 晶片可能會拉升其在市場上的競爭力。早期 Wi-Fi 8 路由器的出現也可能會促進無線網路技術的發展。",
+        "rating": "core",
+        "insight": "NVIDIA 的 ARM 晶片和早期 Wi-Fi 8 路由器是未來科技的重要趨勢，投資者應該關注。",
+        "source_label": "How-To Geek",
+        "source": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE44QmVNNEVMNDdnTHJSSW04V3pyX0d1NnV1dVFSQkpldmNvZW1CaU9adzdMWW5WdUlCbUQtOUpiaVVXNmFXM1VTU1lDa1VpQk5iVXhRUFg1QQ?oc=5",
+        "chain": [
+          {
+            "label": "NVIDIA ARM 晶片 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Wi-Fi 8 路由器 銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "How-To Geek 網站流量↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "LibreOffice 對 Euro-Office 的批評",
+        "layer": "semiconductor",
+        "body": "LibreOffice 對 Euro-Office 的批評是因為後者使用 Microsoft 的 OOXML 文件格式。LibreOffice認為這會損害數位主權。Signal 也對英國政府的兒童裸照檢查計劃表示擔憂。Chrome 的零日漏洞也被發現。",
+        "impact": "LibreOffice 的批評可能會對 Euro-Office 的聲譽造成影響。Signal 的擔憂也可能會影響英國政府的兒童裸照檢查計劃。",
+        "rating": "noise",
+        "insight": "LibreOffice 和 Signal 的批評和擔憂可能會影響相關公司和政府的計劃。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/applications/2026/06/09/libreoffice-brands-euro-office-a-de-facto-ally-of-microsofts-lock-in-strategy/5252854",
+        "chain": [
+          {
+            "label": "LibreOffice 市占↑",
+            "type": "up"
+          },
+          {
+            "label": "Euro-Office 銷量↓",
+            "type": "down"
+          },
+          {
+            "label": "Microsoft OOXML 文件格式 使用率↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Signal 對英國政府的兒童裸照檢查計劃的擔憂",
+        "layer": "semiconductor",
+        "body": "Signal 對英國政府的兒童裸照檢查計劃表示擔憂，認為這會損害用戶的隱私。Chrome 的零日漏洞也被發現。Signal 的擔憂可能會影響英國政府的計劃。",
+        "impact": "Signal 的擔憂可能會對英國政府的兒童裸照檢查計劃造成影響。",
+        "rating": "noise",
+        "insight": "Signal 的擔憂可能會影響英國政府的計劃，投資者應該關注。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/security/2026/06/09/signal-uks-child-nude-block-threat-wont-protect-children/5252761",
+        "chain": [
+          {
+            "label": "Signal 用戶數↑",
+            "type": "up"
+          },
+          {
+            "label": "英國政府兒童裸照檢查計劃 實施率↓",
+            "type": "down"
+          },
+          {
+            "label": "Chrome 用戶隱私保護↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Chrome 的零日漏洞",
+        "layer": "semiconductor",
+        "body": "Chrome 的零日漏洞被發現，Google 已經支付了 55,000 美元的獎金給發現者。這是 Chrome 的第五個零日漏洞。",
+        "impact": "Chrome 的零日漏洞可能會對用戶的安全造成影響。",
+        "rating": "noise",
+        "insight": "Chrome 的零日漏洞是安全性的一個問題，投資者應該關注。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/security/2026/06/09/chromes-zero-day-whac-a-mole-continues-with-fifth-exploited-bug-of-the-year/5252689",
+        "chain": [
+          {
+            "label": "Google 資安投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Chrome 用戶數↓",
+            "type": "down"
+          },
+          {
+            "label": "Google 瀏覽器市場份額↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Microsoft、Meta 和 Google 的 AI 投資",
+        "layer": "CSP",
+        "body": "Microsoft、Meta 和 Google 的 AI 投資正在增加，三家公司的資本支出已經達到 725 億美元。這是 AI 技術發展的一個重要趨勢。Microsoft、Meta 和 Google 的 AI 投資可能會拉升相關公司的股票價格。",
+        "impact": "Microsoft、Meta 和 Google 的 AI 投資可能會拉升相關公司的股票價格。",
+        "rating": "core",
+        "insight": "Microsoft、Meta 和 Google 的 AI 投資是 AI 技術發展的一個重要趨勢，投資者應該關注。",
+        "source_label": "Stocktwits",
+        "source": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNQ2ZDQkRWWGZaNVdBV1UwS0FEY0RvVVJqUFUxNXd2eHpWM1haeXltLUNpaXB2TW5kcHlJRFo0WFNOQWZFaGNDZ2p3WlcwZjhPVndrYkQwWVAxR0tVVnotaFdDNnZHT1IxZ1BJVHJXZXFpVG5ROUlMcGZoR29iczhkOGM4VG9UMEVWWHJoUEY5TlBCN0RiTEotLTFWNVdFZHZpUmVBOHBuYWVaN0xYMEJzSkgtSno4WHhuc2x4TmpMUkV5bHJDaTNqVHFKalBIMl9pZ01MSjF2a0hpczUtYjMxUHk1OGt0VUxxbHRuaHZ3Nkt4ekRLTl9YZzVQX04wYjFUS25wLUZwWUJwTFU?oc=5",
+        "chain": [
+          {
+            "label": "Microsoft AI 研發投入↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta AI 技術應用↑",
+            "type": "up"
+          },
+          {
+            "label": "Google AI 產業解決方案↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "NVIDIA 和 LG Group 的 AI 工廠",
+        "layer": "CSP",
+        "body": "NVIDIA 和 LG Group 正在合作建立一個 AI 工廠，目的是推動物理 AI、移動性和 AI 基礎設施的發展。這是 AI 技術發展的一個重要趨勢。NVIDIA 和 LG Group 的合作可能會拉升相關公司的股票價格。",
+        "impact": "NVIDIA 和 LG Group 的合作可能會對相關公司的股票價格造成影響。",
+        "rating": "noise",
+        "insight": "NVIDIA 和 LG Group 的合作是 AI 技術發展的一個重要趨勢，投資者應該關注。",
+        "source_label": "NVIDIA Blog",
+        "source": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1WZWJQbW5PdHZoZmNCbExjaVVXX25PcVlWNWlEcmMwSU9YakFyNDRoVXNRTm1tZUdIeThxaEJjMmR2NHl5TnFHbHhla2ctWGVfQldZREsxWEVYNFZCSDFLbVlONEM5dVZvVzl3czBn?oc=5",
+        "chain": [
+          {
+            "label": "NVIDIA AI 晶片銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "LG Group AI 產業合作↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 工廠建設投資↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "台灣供應商的物理 AI 平台",
+        "layer": "Agentic AI",
+        "body": "台灣供應商正在目標物理 AI 平台，機器人競賽正在超越硬體的範圍。這是 AI 技術發展的一個重要趨勢。台灣供應商的物理 AI 平台可能會拉升相關公司的股票價格。",
+        "impact": "台灣供應商的物理 AI 平台可能會對相關公司的股票價格造成影響。",
+        "rating": "noise",
+        "insight": "台灣供應商的物理 AI 平台是 AI 技術發展的一個重要趨勢，投資者應該關注。",
+        "source_label": "digitimes",
+        "source": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQLTczckgxWkY1dFB4eExob19zdDdIaGR1VGdVRmRMN0NGWl9QY3FVRnhXYWg5M2E0VHBUbERIYkxuN2NGU0JpRHBEMjM2RUZxWE8tMFB4N3M5S2ZPSjhscEVBUlhVZ3ltV2diMnRMcER0bXBTYXVYbTh4RVViYWNvX3loS1NoN2xrbjBkaGl2LXhSdzNrcVE?oc=5",
+        "chain": [
+          {
+            "label": "台灣供應商物理 AI 平台銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "機器人競賽參賽數↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 技術應用領域擴展↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "NVIDIA 和 LG Group 的 AI 工廠",
+        "layer": "Physical AI",
+        "body": "NVIDIA 和 LG Group 正在合作建立一個 AI 工廠，目的是推動物理 AI、移動性和 AI 基礎設施的發展。這是 AI 技術發展的一個重要趨勢。NVIDIA 和 LG Group 的合作可能會拉升相關公司的股票價格。",
+        "impact": "NVIDIA 和 LG Group 的合作可能會對相關公司的股票價格造成影響。",
+        "rating": "noise",
+        "insight": "NVIDIA 和 LG Group 的合作是 AI 技術發展的一個重要趨勢，投資者應該關注。",
+        "source_label": "NVIDIA Blog",
+        "source": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1WZWJQbW5PdHZoZmNCbExjaVVXX25PcVlWNWlEcmMwSU9YakFyNDRoVXNRTm1tZUdIeThxaEJjMmR2NHl5TnFHbHhla2ctWGVfQldZREsxWEVYNFZCSDFLbVlONEM5dVZvVzl3czBn?oc=5",
+        "chain": [
+          {
+            "label": "NVIDIA AI 晶片銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "LG Group AI 產業合作↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 工廠建設投資↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "物理 AI",
+        "full": "Physical AI",
+        "def": "一種將 AI 技術應用於物理世界的技術，例如機器人和自動駕駛。",
+        "why": "物理 AI 可以提高生產效率和安全性，同時也可以創造新的商業機會。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Agentic AI",
+        "full": "Agentic AI",
+        "def": "一種將 AI 技術應用於代理和決策的技術，例如聊天機器人和虛擬助手。",
+        "why": "Agentic AI 可以提高用戶體驗和效率，同時也可以創造新的商業機會。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "VLA",
+        "full": "VLA",
+        "def": "一種高性能的 AI 處理器，適用於各種 AI 應用。",
+        "why": "VLA 可以提高 AI 處理效率和速度，同時也可以降低能耗和成本。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": "本週的新聞主要圍繞著 AI 技術的發展，包括物理 AI、Agentic AI 和 VLA 等。NVIDIA 和 LG Group 的合作是本週的一大亮點，兩家公司正在合作建立一個 AI 工廠，目的是推動物理 AI、移動性和 AI 基礎設施的發展。台灣供應商也正在目標物理 AI 平台，機器人競賽正在超越硬體的範圍。"
+  },
+  {
     "date": "2026-06-09",
     "is_sunday": false,
     "hw": [
@@ -726,160 +952,6 @@
         "def": "NVIDIA 推出的工作站級個人 AI 超級電腦，現行款搭載 4 張 A100 80GB GPU，提供 2.5 PFLOPS AI 算力與 320GB 總 GPU 記憶體，可在辦公室環境直接執行大型語言模型推論。最新 Blackwell 架構版預計 2025–2026 年推出，定位企業 on-premise AI 部署，無需仰賴公有雲即可處理敏感資料。",
         "why": "📌 DGX Station 反映資料主權與 CSP 雲算力成本壓力催生的本地 GPU 需求，對 NVIDIA 為高毛利整機銷售管道；同時對 Dell/HPE 等 OEM 伺服器廠商的 AI 工作站業務形成直接競爭壓力。",
         "category": "AI技術"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-03",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "英特爾Xeon 6+晶片提升伺服器整合效能",
-        "layer": "晶片製造",
-        "body": "英特爾的Xeon 6+晶片是首款18A資料中心CPU，能夠提供效能提升和降低總擁有成本。英特爾的Kira Boyko表示，這款晶片可以幫助企業提高伺服器整合效能。英特爾的Xeon 6+晶片預計將對資料中心市場產生重大影響，特別是在伺服器整合方面。",
-        "impact": "英特爾、資料中心市場，正面影響",
-        "rating": "core",
-        "insight": "英特爾的Xeon 6+晶片可能會提高伺服器整合效能，降低總擁有成本。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/06/02/enhanced-performance-for-server-consolidation-with-intel-xeon-6/5249881"
-      },
-      {
-        "title": "DRAM價格預計將再次上漲",
-        "layer": "記憶體市場",
-        "body": "DRAM價格預計將在本季度再次上漲，可能會上漲63%。這是由於記憶體短缺問題仍然存在，對PC價格產生影響。記憶體短缺問題對PC製造商和消費者都產生了重大影響。",
-        "impact": "DRAM製造商、PC製造商、消費者，負面影響",
-        "rating": "core",
-        "insight": "DRAM價格上漲可能會對PC製造商和消費者產生重大影響。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/storage/2026/06/02/expect-more-of-those-dram-price-hikes-as-memory-shortage-continues-to-bite/5250049"
-      },
-      {
-        "title": "高盛預測Nvidia的Grace Blackwell超級晶片將大放異彩",
-        "layer": "晶片製造",
-        "body": "高盛預測Nvidia的Grace Blackwell超級晶片將大放異彩，可能會對資料中心市場產生重大影響。Nvidia的Grace Blackwell超級晶片預計將提供高效能和低延遲的運算能力。這款晶片可能會對雲端運算和人工智慧應用產生重大影響。",
-        "impact": "Nvidia、資料中心市場，正面影響",
-        "rating": "opp",
-        "insight": "Nvidia的Grace Blackwell超級晶片可能會對資料中心市場產生重大影響。",
-        "source_label": "NO-REPEAT",
-        "source": ""
-      },
-      {
-        "title": "無相關新聞",
-        "layer": "noise",
-        "body": "無相關新聞。無相關新聞。無相關新聞。",
-        "impact": "無",
-        "rating": "noise",
-        "insight": "無",
-        "source_label": "無",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "微軟投資人工智慧",
-        "layer": "企業投資",
-        "body": "微軟正在投資人工智慧技術，預計將在未來幾年內大幅增加人工智慧應用。微軟的投資預計將對公司的業務產生重大影響，特別是在雲端運算和人工智慧方面。微軟的投資可能會對公司的競爭力產生重大影響。",
-        "impact": "微軟，正面影響",
-        "rating": "core",
-        "insight": "微軟的投資可能會提高公司的競爭力。",
-        "source_label": "NO-REPEAT",
-        "source": ""
-      },
-      {
-        "title": "高盛預測Anthropic的IPO將大放異彩",
-        "layer": "企業投資",
-        "body": "高盛預測Anthropic的IPO將大放異彩，可能會對公司的業務產生重大影響。Anthropic的IPO預計將提供大量資金，用于公司的業務擴張。這次IPO可能會對公司的未來發展產生重大影響。",
-        "impact": "Anthropic，正面影響",
-        "rating": "opp",
-        "insight": "Anthropic的IPO可能會提高公司的競爭力。",
-        "source_label": "NO-REPEAT",
-        "source": ""
-      },
-      {
-        "title": "無相關新聞",
-        "layer": "noise",
-        "body": "無相關新聞。無相關新聞。無相關新聞。",
-        "impact": "無",
-        "rating": "noise",
-        "insight": "無",
-        "source_label": "無",
-        "source": ""
-      },
-      {
-        "title": "無相關新聞",
-        "layer": "noise",
-        "body": "無相關新聞。無相關新聞。無相關新聞。",
-        "impact": "無",
-        "rating": "noise",
-        "insight": "無",
-        "source_label": "無",
-        "source": ""
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI推出Delphi和C++ Builder的AI擴充",
-        "layer": "人工智慧應用",
-        "body": "Agentic AI推出Delphi和C++ Builder的AI擴充，預計將對公司的業務產生重大影響。這次擴充預計將提供高效能和低延遲的運算能力，用于人工智慧應用。這次擴充可能會對公司的競爭力產生重大影響。",
-        "impact": "Agentic AI，正面影響",
-        "rating": "opp",
-        "insight": "Agentic AI的擴充可能會提高公司的競爭力。",
-        "source_label": "NO-REPEAT",
-        "source": ""
-      },
-      {
-        "title": "無相關新聞",
-        "layer": "noise",
-        "body": "無相關新聞。無相關新聞。無相關新聞。",
-        "impact": "無",
-        "rating": "noise",
-        "insight": "無",
-        "source_label": "無",
-        "source": ""
-      },
-      {
-        "title": "無相關新聞",
-        "layer": "noise",
-        "body": "無相關新聞。無相關新聞。無相關新聞。",
-        "impact": "無",
-        "rating": "noise",
-        "insight": "無",
-        "source_label": "無",
-        "source": ""
-      },
-      {
-        "title": "無相關新聞",
-        "layer": "noise",
-        "body": "無相關新聞。無相關新聞。無相關新聞。",
-        "impact": "無",
-        "rating": "noise",
-        "insight": "無",
-        "source_label": "無",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "CoWoS",
-        "full": "Chip on Wafer on Substrate",
-        "def": "一種晶片製造技術，用于提高晶片的效能和降低成本。",
-        "why": "這種技術可以提高晶片的效能和降低成本，對晶片製造商和消費者都產生了重大影響。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "OSAT",
-        "full": "Outsourced Semiconductor Assembly and Test",
-        "def": "一種晶片製造服務，用于提供晶片的組裝和測試。",
-        "why": "這種服務可以幫助晶片製造商提高效率和降低成本，對晶片製造商和消費者都產生了重大影響。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "HBM",
-        "full": "High-Bandwidth Memory",
-        "def": "一種高頻寬記憶體技術，用于提供高效能和低延遲的運算能力。",
-        "why": "這種技術可以提供高效能和低延遲的運算能力，對人工智慧和雲端運算應用產生了重大影響。",
-        "category": "hardware"
       }
     ],
     "weekly_summary": null
