@@ -307,6 +307,7 @@ def fix_chains(data):
         raw = resp.choices[0].message.content.strip()
         if raw.startswith('```'):
             raw = raw.split('\n',1)[-1].rsplit('```',1)[0].strip()
+        raw = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', ' ', raw)
         fixes = json.loads(raw)
         fixed = 0
         for fix in fixes:
@@ -356,6 +357,7 @@ def validate_impact(data):
         raw = resp.choices[0].message.content.strip()
         if raw.startswith('```'):
             raw = raw.split('\n', 1)[-1].rsplit('```', 1)[0].strip()
+        raw = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', ' ', raw)
         fixes = json.loads(raw)
         fixed = 0
         for fix in fixes:
@@ -406,6 +408,8 @@ def call_groq(prompt):
     finish_reason = response.choices[0].finish_reason
     if finish_reason == 'length':
         raise ValueError(f"Groq response truncated (finish_reason=length, {len(raw)} chars). Increase max_tokens.")
+    # 移除 JSON 字串值內不合法的控制字元（保留 \t \n \r）
+    raw = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', ' ', raw)
     return json.loads(raw)
 
 # ══════════════════════════════════════════════════════════════════
