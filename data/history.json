@@ -1,5 +1,145 @@
 [
   {
+    "date": "2026-06-09",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "NVIDIA 的 ARM 晶片和早期 Wi-Fi 8 路由器",
+        "layer": "晶片製造",
+        "body": "NVIDIA 的 ARM 晶片是 Computex 2026 的一大亮點。早期 Wi-Fi 8 路由器也在展會上展出，展示了未來網路技術的發展方向。NVIDIA 的 ARM 晶片和早期 Wi-Fi 8 路由器的結合，將為用戶帶來更快、更穩定的網路體驗。",
+        "impact": "NVIDIA 的 ARM 晶片和早期 Wi-Fi 8 路由器的結合，可能會為用戶帶來更好的網路體驗。",
+        "rating": "core",
+        "insight": "NVIDIA 的 ARM 晶片和早期 Wi-Fi 8 路由器的結合，可能會為用戶帶來更好的網路體驗。",
+        "source_label": "How-To Geek",
+        "source": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE44QmVNNEVMNDdnTHJSSW04V3pyX0d1NnV1dVFSQkpldmNvZW1CaU9adzdMWW5WdUlCbUQtOUpiaVVXNmFXM1VTU1lDa1VpQk5iVXhRUFg1QQ?oc=5",
+        "chain": [
+          {
+            "label": "NVIDIA ARM 晶片 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "NVIDIA GPU 銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "Wi-Fi 8 路由器 出貨量↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Computex 2026 會議創下 45 年來最多參加人數",
+        "layer": "半導體產業",
+        "body": "Computex 2026 會議創下 45 年來最多參加人數，吸引了許多半導體產業的重量級人物。Agentic AI Buildout 也在展會上展出，展示了未來 AI 技術的發展方向。展會上還有許多其他半導體相關的產品和技術展出，為參加者提供了豐富的資訊和見解。",
+        "impact": "展會上展出的半導體相關產品和技術，可能會為參加者帶來新的見解和機會。",
+        "rating": "core",
+        "insight": "Computex 2026 會議的成功，可能會對半導體產業產生一定的影響。",
+        "source_label": "Tech Times",
+        "source": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOM3pfd1NjVFN0TDdPMTlWNW42QzFhUnBCamdGcWJMVnlrdExlY0pEc0poREQtc09WZnhjSVI3UEZEa25ZMDcweDhxZV9ZZUlwcUdIbmhjVTlFWTAyRUFtTDQ2TWxvYzN1ckIyRWpoeWdKMHl4U1VFNHZZTzBjcDhEYUtsTmJLOFRDMWVpNy1nREZOMXFSRTlIel9YcHlpTktKOVZFMXk3UW9ETDNERlE5bGhtUGRaWXBQT2stLTdySXRIcFpZbFhOR2d5NU1HOWYtay1LZmRUVlVMQTAzdGc?oc=5",
+        "chain": [
+          {
+            "label": "Agentic AI Buildout 市占↑",
+            "type": "up"
+          },
+          {
+            "label": "半導體產業 投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Computex 2026 參加人數↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Canonical 將 Ubuntu 推向 AI 代理時代",
+        "layer": "軟體開發",
+        "body": "Canonical 將 Ubuntu 推向 AI 代理時代，展示了未來軟體開發的新方向。Ubuntu 的 AI 代理功能，可能會為用戶帶來更好的使用體驗。Canonical 的這一舉動，可能會對軟體開發產業產生一定的影響。",
+        "impact": "Canonical 將 Ubuntu 推向 AI 代理時代，可能會對軟體開發產業產生一定的影響，特別是對於那些已經在使用 Ubuntu 的公司。然而，具體的影響還需要進一步觀察和分析。Ubuntu 的 AI 代理功能，可能會為用戶帶來更好的使用體驗。",
+        "rating": "noise",
+        "insight": "Canonical 將 Ubuntu 推向 AI 代理時代，可能會對軟體開發產業產生一定的影響。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/software/2026/06/08/canonical-sends-ubuntu-into-the-ai-agent-era/5252373",
+        "chain": [
+          {
+            "label": "Canonical Ubuntu 銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 代理技術 開發↑",
+            "type": "up"
+          },
+          {
+            "label": "軟體開發產業 投資↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Amazon Leo 的衛星任務延遲",
+        "layer": "企業動態",
+        "body": "Amazon Leo 的衛星任務延遲，可能會對公司的業務產生一定的影響。Amazon Leo 的衛星任務延遲，可能會導致公司的收入減少。FCC 對 Amazon Leo 的衛星任務延遲，可能會採取一定的措施。",
+        "impact": "Amazon Leo 的衛星任務延遲，可能會對公司的業務產生一定的影響，特別是對於那些已經在使用 Amazon Leo 服務的客戶。然而，具體的影響還需要進一步觀察和分析。FCC 對 Amazon Leo 的衛星任務延遲，可能會採取一定的措施。",
+        "rating": "noise",
+        "insight": "Amazon Leo 的衛星任務延遲，可能會對公司的業務產生一定的影響。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/networks/2026/06/08/amazon-leos-satellite-homework-is-late-but-fcc-wont-flunk-it-just-yet/5252287",
+        "chain": [
+          {
+            "label": "Amazon Leo 衛星任務 交期↓",
+            "type": "down"
+          },
+          {
+            "label": "Amazon Leo 收入↓",
+            "type": "down"
+          },
+          {
+            "label": "FCC 對 Amazon Leo 監管↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "NVIDIA 和 LG Group 建立 AI 工廠",
+        "layer": "AI 技術",
+        "body": "NVIDIA 和 LG Group 建立 AI 工廠，展示了未來 AI 技術的發展方向。NVIDIA 和 LG Group 的合作，可能會為用戶帶來更好的 AI 服務。NVIDIA 和 LG Group 的 AI 工廠，可能會對 AI 產業產生一定的影響。",
+        "impact": "NVIDIA 和 LG Group 建立 AI 工廠，可能會對 AI 產業產生一定的影響，特別是對於那些已經在使用 AI 技術的公司。然而，具體的影響還需要進一步觀察和分析。NVIDIA 和 LG Group 的合作，可能會為用戶帶來更好的 AI 服務。",
+        "rating": "noise",
+        "insight": "NVIDIA 和 LG Group 建立 AI 工廠，可能會對 AI 產業產生一定的影響。",
+        "source_label": "NVIDIA Blog",
+        "source": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1WZWJQbW5PdHZoZmNCbExjaVVXX25PcVlWNWlEcmMwSU9YakFyNDRoVXNRTm1tZUdIeThxaEJjMmR2NHl5TnFHbHhla2ctWGVfQldZREsxWEVYNFZCSDFLbVlONEM5dVZvVzl3czBn?oc=5",
+        "chain": [
+          {
+            "label": "NVIDIA AI 服務 銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "LG Group AI 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 產業 投資↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Agentic AI",
+        "full": "代理 AI",
+        "def": "一種可以自主學習和決策的 AI 技術。",
+        "why": "Agentic AI 可以幫助企業自動化業務流程和決策過程。",
+        "category": "AI 技術"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-08",
     "is_sunday": false,
     "hw": [
@@ -740,66 +880,6 @@
         "def": "一種高頻寬記憶體技術，用于提供高效能和低延遲的運算能力。",
         "why": "這種技術可以提供高效能和低延遲的運算能力，對人工智慧和雲端運算應用產生了重大影響。",
         "category": "hardware"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-02",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "美國企業仍主導晶片補貼",
-        "layer": "晶片製造",
-        "body": "美國企業仍主導晶片補貼，中國的支持相對於半導體行業收入更大。美國企業在晶片補貼方面的主導地位仍然明顯。中國的支持主要集中在半導體行業的發展上。",
-        "impact": "美國企業、中國，正面影響",
-        "rating": "core",
-        "insight": "美國企業在晶片補貼方面的主導地位對其未來發展具有重要影響。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/06/01/us-firms-still-dominate-chip-subsidies/5249668"
-      },
-      {
-        "title": "Nvidia的Grace Blackwell超級晶片",
-        "layer": "晶片製造",
-        "body": "Nvidia的Grace Blackwell超級晶片即將在PC市場上推出，搭載RTX Spark筆記本。這些晶片的推出將使Nvidia在高端PC市場上占據重要地位。Nvidia的Grace Blackwell超級晶片的推出對PC市場具有重要影響。",
-        "impact": "Nvidia，正面影響",
-        "rating": "core",
-        "insight": "Nvidia的Grace Blackwell超級晶片的推出對其未來發展具有重要影響。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/06/01/nvidia-recasts-gb10-superchip-in-bid-for-high-end-pc-market/5249068"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Anthropic申請IPO",
-        "layer": "企業投資",
-        "body": "Anthropic申請IPO，成為最新一家申請上市的AI公司。Anthropic的申請IPO對其未來發展具有重要影響。Anthropic的IPO申請對AI行業具有重要影響。",
-        "impact": "Anthropic，正面影響",
-        "rating": "core",
-        "insight": "Anthropic的IPO申請對其未來發展具有重要影響。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/06/01/anthropic-now-atop-the-ai-bubble-files-for-its-ipo/5249753"
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI推出Delphi和C++ Builder的AI擴充",
-        "layer": "AI應用",
-        "body": "Agentic AI推出Delphi和C++ Builder的AI擴充，名為Kai。Kai是一個擴充，能夠整合外部AI提供者。Kai的推出對Delphi和C++ Builder的使用者具有重要影響。",
-        "impact": "Agentic AI，正面影響",
-        "rating": "core",
-        "insight": "Agentic AI的Kai擴充對Delphi和C++ Builder的使用者具有重要影響。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/devops/2026/06/01/agentic-ai-arrives-for-delphi-and-c-builder/5249638"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Agentic AI",
-        "full": "Agentic AI",
-        "def": "Agentic AI是一家提供AI解決方案的公司，推出Delphi和C++ Builder的AI擴充。",
-        "why": "Agentic AI的Kai擴充對Delphi和C++ Builder的使用者具有重要影響。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
