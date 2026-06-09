@@ -1770,12 +1770,13 @@ function renderAll(hist) {
 }
 
 async function init() {
-  const savedTab = sessionStorage.getItem('at_tab'); // 先讀，避免被下方 sw('hw') 覆蓋
+  const savedTab = sessionStorage.getItem('at_tab');
+  const initTab = savedTab && Object.keys(TCLS).includes(savedTab) ? savedTab : 'hw';
   ['hw','corp','app','gloss','ins','hist'].forEach(p => {
     document.getElementById('panel-'+p).innerHTML =
       '<div class="loading-screen"><div class="spinner"></div><div class="loading-text">載入最新資料中...</div></div>';
   });
-  sw('hw');
+  sw(initTab);
   // Load gloss config from repo first (applies to localStorage before render)
   await loadGlossConfig();
   const hist = await fetchHistory();
@@ -1784,9 +1785,8 @@ async function init() {
     return;
   }
   renderAll(hist);
-  const restoredTab = savedTab && Object.keys(TCLS).includes(savedTab) ? savedTab : 'hw';
-  sw(restoredTab);
-  if (restoredTab === 'archive') loadArchive();
+  sw(initTab);
+  if (initTab === 'archive') loadArchive();
 }
 
 init();
