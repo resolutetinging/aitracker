@@ -9,7 +9,8 @@ from datetime import datetime, timezone, timedelta
 from email.utils import parsedate_to_datetime
 from groq import Groq
 
-FORCE_REGEN = '--force' in sys.argv
+FORCE_REGEN   = '--force' in sys.argv
+PIGEON_ONLY   = '--pigeon-only' in sys.argv
 
 TW = timezone(timedelta(hours=8))
 NOW = datetime.now(TW)
@@ -533,8 +534,13 @@ def upsert(history, data):
 def send_email(data):
     user = os.environ.get('GMAIL_USER','').replace('\xa0','').replace(' ','').strip()
     pwd  = os.environ.get('GMAIL_APP_PASSWORD','').replace('\xa0','').replace(' ','').strip()
-    secret_to = os.environ.get('NOTIFY_EMAIL', user).replace('\xa0','').replace(' ','').strip()
-    secret_recipients = [a.strip() for a in secret_to.split(',') if a.strip()]
+
+    # --pigeon-only：跳過 GitHub Secret 收件人，只送飛鴿名單
+    if PIGEON_ONLY:
+        secret_recipients = []
+    else:
+        secret_to = os.environ.get('NOTIFY_EMAIL', user).replace('\xa0','').replace(' ','').strip()
+        secret_recipients = [a.strip() for a in secret_to.split(',') if a.strip()]
 
     # Extra recipients from email_config.json (exclude those already in secret)
     extra_recipients = []
@@ -547,6 +553,8 @@ def send_email(data):
                 extra_recipients = [r.strip() for r in cfg.get('recipients', [])
                                 if r.strip() and r.strip() not in secret_recipients]
             else:
+                if PIGEON_ONLY:
+                    print("  → 飛鴿推送已暫停（enabled=false），略過。"); return
                 print("  → 公開收件人推送已暫停（enabled=false），僅發送 secret 收件人")
         except Exception:
             pass

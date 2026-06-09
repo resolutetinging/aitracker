@@ -4,6 +4,12 @@ on:
   repository_dispatch:
     types: [daily-trigger]  # cron-job.org POST /repos/.../dispatches
   workflow_dispatch:        # 手動備用
+    inputs:
+      pigeon_only:
+        description: '只發送飛鴿收件者（略過 GitHub Secret 收件人）'
+        required: false
+        default: 'false'
+        type: string
 
 jobs:
   update:
@@ -36,7 +42,12 @@ jobs:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           NOTION_TOKEN:       ${{ secrets.NOTION_TOKEN }}
           NOTION_DB_ID:       ${{ secrets.NOTION_DB_ID }}
-        run: python scripts/update_data.py
+        run: |
+          EXTRA=""
+          if [ "${{ github.event.inputs.pigeon_only }}" = "true" ]; then
+            EXTRA="--pigeon-only"
+          fi
+          python scripts/update_data.py $EXTRA
 
       - name: Commit updated data
         uses: stefanzweifel/git-auto-commit-action@v5

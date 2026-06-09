@@ -1222,7 +1222,7 @@ async function manualDispatchEmail() {
           'Accept': 'application/vnd.github+json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ ref: 'main' })
+        body: JSON.stringify({ ref: 'main', inputs: { pigeon_only: 'true' } })
       }
     );
     if (res.status === 204) {
