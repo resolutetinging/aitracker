@@ -176,6 +176,9 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .email-toggle-slider:before{position:absolute;content:"";height:14px;width:14px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.25s;}
 .email-toggle input:checked + .email-toggle-slider{background:var(--app);}
 .email-toggle input:checked + .email-toggle-slider:before{transform:translateX(16px);}
+.email-push-btn{width:100%;background:var(--app);color:#fff;border:none;border-radius:6px;padding:9px;font-size:13px;font-weight:600;cursor:pointer;margin-top:6px;transition:.18s;}
+.email-push-btn:hover:not(:disabled){opacity:.82;}
+.email-push-btn:disabled{background:var(--muted2);cursor:not-allowed;}
 
 /* ── History notes ── */
 .hist-note-section{margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border);}
@@ -379,6 +382,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
       <button class="pat-save-btn" onclick="saveEmailConfig()">儲存收件人</button>
       <button class="pat-cancel-btn" onclick="closeEmailModal()">取消</button>
     </div>
+    <button class="email-push-btn" id="email-manual-push-btn" onclick="manualDispatchEmail()" disabled>📨 立即推送</button>
     <div id="email-save-status" style="font-size:12px;color:var(--muted);margin-top:8px;min-height:16px;"></div>
   </div>
 </div>
@@ -1161,6 +1165,8 @@ function updateEmailToggleLabel() {
   const lbl = document.getElementById('email-toggle-label');
   lbl.textContent = on ? '推送中' : '已暫停';
   lbl.style.color = on ? 'var(--app)' : 'var(--muted)';
+  const pushBtn = document.getElementById('email-manual-push-btn');
+  if (pushBtn) pushBtn.disabled = !on;
 }
 
 async function fetchEmailConfig() {
@@ -1195,6 +1201,44 @@ async function saveEmailConfig() {
       setTimeout(() => closeEmailModal(), 1500);
     } else { statusEl.textContent = '❌ 儲存失敗，請確認 Token 權限'; }
   } catch(e) { statusEl.textContent = '❌ 網路錯誤'; }
+}
+
+async function manualDispatchEmail() {
+  const token = localStorage.getItem('gh_pat');
+  if (!token) { closeEmailModal(); openPatModal(); return; }
+  const btn = document.getElementById('email-manual-push-btn');
+  const statusEl = document.getElementById('email-save-status');
+  const origText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '觸發中…';
+  statusEl.textContent = '';
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/${GH_REPO}/actions/workflows/daily-update.yml/dispatches`,
+      {
+        method: 'POST',
+        headers: {
+          'Authorization': `token ${token}`,
+          'Accept': 'application/vnd.github+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ref: 'main' })
+      }
+    );
+    if (res.status === 204) {
+      statusEl.textContent = '✓ 已觸發推送，約 2 分鐘後送達';
+      btn.textContent = '已觸發 ✓';
+      setTimeout(() => { btn.textContent = origText; btn.disabled = false; }, 6000);
+    } else {
+      statusEl.textContent = '❌ 觸發失敗（Token 需開啟 Actions: Write 權限）';
+      btn.textContent = origText;
+      btn.disabled = false;
+    }
+  } catch(e) {
+    statusEl.textContent = '❌ 網路錯誤';
+    btn.textContent = origText;
+    btn.disabled = false;
+  }
 }
 
 // PAT modal
