@@ -240,13 +240,13 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .new-badge{display:inline-block;font-size:10px;background:rgba(74,138,106,.12);color:var(--app);border:1px solid rgba(74,138,106,.3);border-radius:8px;padding:1px 7px;margin-left:6px;font-weight:600;}
 .user-badge{display:inline-block;font-size:10px;background:rgba(40,38,32,.07);color:var(--sub);border:1px solid rgba(40,38,32,.18);border-radius:8px;padding:1px 7px;margin-left:6px;font-weight:600;cursor:pointer;}
 .user-badge:hover{background:rgba(176,80,80,.09);color:#884040;border-color:rgba(176,80,80,.3);}
-.gloss-del-btn{position:absolute;top:9px;right:11px;background:none;border:none;color:var(--faint);font-size:15px;line-height:1;cursor:pointer;padding:2px 5px;border-radius:4px;opacity:0;transition:opacity .15s;}
-.gloss-card:hover .gloss-del-btn{opacity:.6;}
-.gloss-del-btn:hover{opacity:1!important;background:rgba(176,80,80,.09);color:#884040;}
-.gloss-regen-btn{position:absolute;top:9px;right:34px;background:none;border:none;color:var(--faint);font-size:14px;line-height:1;cursor:pointer;padding:2px 5px;border-radius:4px;opacity:0;transition:opacity .15s;}
-.gloss-card:hover .gloss-regen-btn{opacity:.6;}
-.gloss-regen-btn:hover{opacity:1!important;background:rgba(74,104,128,.10);color:var(--gloss);}
-.gloss-regen-btn:disabled{opacity:.3!important;cursor:not-allowed;}
+.gloss-card-actions{display:flex;align-items:center;gap:4px;margin-left:8px;opacity:0;transition:opacity .15s;}
+.gloss-card:hover .gloss-card-actions{opacity:1;}
+.gloss-del-btn{background:none;border:none;color:var(--faint);font-size:15px;line-height:1;cursor:pointer;padding:4px 7px;border-radius:5px;transition:background .12s,color .12s;}
+.gloss-del-btn:hover{background:rgba(176,80,80,.09);color:#884040;}
+.gloss-regen-btn{background:none;border:none;color:var(--faint);font-size:14px;line-height:1;cursor:pointer;padding:4px 7px;border-radius:5px;transition:background .12s,color .12s;}
+.gloss-regen-btn:hover{background:rgba(74,104,128,.10);color:var(--gloss);}
+.gloss-regen-btn:disabled{opacity:.3;cursor:not-allowed;}
 
 /* ── Insight panel ── */
 .ins-legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
@@ -753,13 +753,17 @@ function renderGlossary(hist) {
     const escapedTerm = g.term.replace(/'/g,"\\'");
     const delFn = g._user ? `deleteUserTerm('${escapedTerm}')` : `hideBaseTerm('${escapedTerm}')`;
     return `<div class="gloss-card">
-      <button class="gloss-del-btn" onclick="${delFn}" title="移除此卡片">×</button>
-      ${(g._user||g._hist)?`<button class="gloss-regen-btn" id="regen-${escapedTerm}" onclick="regenerateUserTerm('${escapedTerm}')" title="重新生成內容">↻</button>`:''}
       <div class="gloss-cat-row">
         <div class="gloss-term">${g.term}${g._new?'<span class="new-badge">NEW</span>':''}${g._user?`<span class="user-badge" onclick="deleteUserTerm('${escapedTerm}')">自添 ✕</span>`:''}</div>
-        <div style="position:relative;display:inline-block;">
-          <span class="gloss-cat-badge" onclick="togglePicker('${pid}')">${clabel} ▾</span>
-          <div class="gloss-cat-picker" id="${pid}">${opts}</div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <div style="position:relative;display:inline-block;">
+            <span class="gloss-cat-badge" onclick="togglePicker('${pid}')">${clabel} ▾</span>
+            <div class="gloss-cat-picker" id="${pid}">${opts}</div>
+          </div>
+          <div class="gloss-card-actions">
+            ${(g._user||g._hist)?`<button class="gloss-regen-btn" id="regen-${escapedTerm}" onclick="regenerateUserTerm('${escapedTerm}')" title="重新生成內容">↻</button>`:''}
+            <button class="gloss-del-btn" onclick="${delFn}" title="移除此卡片">×</button>
+          </div>
         </div>
       </div>
       <div class="gloss-full">${g.full}</div>
