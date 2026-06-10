@@ -253,7 +253,7 @@ RULES:
 - glossary_new: required, 1-3 terms from today's news that readers may not know
 - source: copy verbatim from SOURCE_URL in the news; never fabricate URLs
 - All titles, body, impact, insight in Traditional Chinese (zh-TW)
-- weekly_summary: each distinct point must be its own line separated by \n (one sentence per line, ending with 。); never merge multiple topics into one continuous paragraph
+- weekly_summary: {"each distinct point must be its own line separated by \\n (one sentence per line, ending with 。); never merge multiple topics into one continuous paragraph" if IS_SUNDAY else "MUST be null — today is NOT Sunday; outputting any non-null value is an error"}
 {no_repeat_str}
 {notes_ctx}"""
 
