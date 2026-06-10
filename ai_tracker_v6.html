@@ -686,10 +686,15 @@ function setCat(term, catKey, pickerId) {
   renderGlossary(HISTORY);
 }
 
+function setCatFromEl(el) {
+  setCat(el.dataset.term, el.dataset.catkey, el.dataset.pickerid);
+}
+
 function renderGlossary(hist) {
   const overrides = loadCatOverrides();
   const catDefs = getAllCatDefs();
   const hidden = new Set(loadHiddenTerms());
+  let _pidSeq = 0;
 
   // Build cat key → index map (all cats including custom)
   const catKeyToIdx = {};
@@ -746,9 +751,10 @@ function renderGlossary(hist) {
   function cardHtml(g) {
     const ckey = overrides[g.term] || g.category || '';
     const clabel = catDefs.find(c=>c.key===ckey)?.label || '分類';
-    const pid = 'gp_'+g.term.replace(/[^a-z0-9]/gi,'_');
+    const pid = 'gp_' + (_pidSeq++);
+    const safeTermAttr = g.term.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
     const opts = catDefs.map(c =>
-      `<div class="gloss-picker-opt" onclick="setCat('${g.term}','${c.key}','${pid}')">${c.label}</div>`
+      `<div class="gloss-picker-opt" data-term="${safeTermAttr}" data-catkey="${c.key}" data-pickerid="${pid}" onclick="setCatFromEl(this)">${c.label}</div>`
     ).join('');
     const escapedTerm = g.term.replace(/'/g,"\\'");
     const delFn = g._user ? `deleteUserTerm('${escapedTerm}')` : `hideBaseTerm('${escapedTerm}')`;
