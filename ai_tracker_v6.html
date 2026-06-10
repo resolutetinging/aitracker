@@ -845,6 +845,7 @@ async function addUserTerm(){
       headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
       body:JSON.stringify({
         model:'llama-3.3-70b-versatile',
+        response_format:{type:'json_object'},
         messages:[{role:'user',content:
           `Generate a detailed glossary card for the AI/semiconductor supply chain term: "${term}"\nOutput ONLY pure JSON, no markdown:\n{"term":"${term}","full":"English Full Name　繁體中文名稱","def":"必須寫滿3句繁體中文定義，每句需包含具體數字、產品規格或公司名稱，禁止只寫一句短語","why":"📌 對AI供應鏈投資者的重要性：具體說明影響哪些公司（如TSMC/NVIDIA/SK Hynix等）及上下游供應鏈效應，2句繁體中文","category":"${catList}"}`
         }],
@@ -852,6 +853,7 @@ async function addUserTerm(){
       })
     });
     const json=await resp.json();
+    if(!resp.ok)throw new Error(json.error?.message||'API error '+resp.status);
     const text=json.choices?.[0]?.message?.content||'';
     const m=text.match(/\{[\s\S]*\}/);
     if(!m)throw new Error('no json');
@@ -889,6 +891,7 @@ async function regenerateUserTerm(term){
       headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
       body:JSON.stringify({
         model:'llama-3.3-70b-versatile',
+        response_format:{type:'json_object'},
         messages:[{role:'user',content:
           `Generate a detailed glossary card for the AI/semiconductor supply chain term: "${term}"\nOutput ONLY pure JSON, no markdown:\n{"term":"${term}","full":"English Full Name　繁體中文名稱","def":"必須寫滿3句繁體中文定義，每句需包含具體數字、產品規格或公司名稱","why":"📌 對AI供應鏈投資者的重要性：具體說明影響哪些公司及上下游供應鏈效應，2句繁體中文","category":"${catList}"}`
         }],
@@ -896,6 +899,7 @@ async function regenerateUserTerm(term){
       })
     });
     const json=await resp.json();
+    if(!resp.ok)throw new Error(json.error?.message||'API error '+resp.status);
     const text=json.choices?.[0]?.message?.content||'';
     const m=text.match(/\{[\s\S]*\}/);
     if(!m)throw new Error('no json');
