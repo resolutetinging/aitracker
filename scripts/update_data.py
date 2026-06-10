@@ -245,11 +245,12 @@ Each ITEM: {{"title":"Traditional Chinese title","layer":"sublayer","body":"EXAC
 
 RULES:
 - 2-4 items per section; if no relevant news → 1 noise item only
-- One item = one story; if source mixes 2 unrelated stories, split into 2 items
+- One item = one story; if source mixes 2 unrelated stories, split into 2 items; NEVER include the same story in more than one section
 - body: 3 sentences using ONLY facts from the provided news above — each sentence MUST start with a DIFFERENT subject (company/product/metric); NEVER start 2+ sentences with the same subject; each sentence must state a NEW fact not covered in the others; NEVER invent numbers, dates, or connections between companies not stated in the source; if you cannot write 3 genuinely different sentences from the source, rate it noise instead
+- body FORBIDDEN PATTERNS: never write sentences like "這是X的重要趨勢" / "這是X的一大亮點" / "這將推動X發展" — these are empty summaries with no new facts; every sentence must contain at least one specific number, date, company name, or product name drawn directly from the news text
 - SOURCE REQUIREMENT: every core or opp item MUST have a SOURCE_URL from the news; if no SOURCE_URL exists for a story, you MUST rate it noise — never assign core/opp to unsourced items
 - HALLUCINATION IS FORBIDDEN: do not combine unrelated companies or technologies; every company-technology pairing must come directly from the news text
-- impact: every causal claim must be traceable to a specific fact in the news; before including any company or effect, ask "does the news explicitly establish WHY this entity is affected?"; if the answer is no, omit it; do not introduce supply chain effects that are merely plausible but not stated or directly implied in the source
+- impact: every causal claim must be traceable to a specific fact in the news; before including any company or effect, ask "does the news explicitly establish WHY this entity is affected?"; if the answer is no, omit it; do not introduce supply chain effects that are merely plausible but not stated or directly implied in the source; NEVER mention stock price movements or "拉升股票/股價" — corp category explicitly excludes stock prices
 - glossary_new: required, 1-3 terms from today's news that readers may not know
 - source: copy verbatim from SOURCE_URL in the news; never fabricate URLs
 - All titles, body, impact, insight in Traditional Chinese (zh-TW)
