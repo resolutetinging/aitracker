@@ -1,5 +1,125 @@
 [
   {
+    "date": "2026-06-11",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "SK Hynix 投注 HBM 晶片",
+        "layer": "記憶體",
+        "body": "SK Hynix 投注 HBM 晶片，獲得 Nvidia 的大單。Nvidia 的 HBM 晶片需求量大，SK Hynix 的投資獲得了回報。HBM 晶片的產能將會增加，滿足 Nvidia 的需求。",
+        "impact": "SK Hynix 的 HBM 晶片投資將會增加 Nvidia 的採購量，對記憶體市場產生影響。Nvidia 的 HBM 晶片需求量大，將會拉升記憶體市場的成長。SK Hynix 的投資將會增加其在記憶體市場的競爭力。",
+        "rating": "noise",
+        "insight": "SK Hynix 的 HBM 晶片投資是記憶體市場的一個重要趨勢，投資者應該關注記憶體市場的發展。",
+        "source_label": "Jon Peddie Research",
+        "source": "https://news.google.com/rss/articles/CBMieEFVX3lxTE8tYXd5MmdxZjJVV0RMNUZycjNON0gtZk90VVlsN21rZjVDX3NzbkZ6NzRfUVJ6Q2tPc2RYU0cwWnNFMGVabUloNVBBQk5sSTAwMXNZUThNTG1Gbk1RdEFWTkFmOS1sQjdIQ3g0dzQ1T25YaHlHUl84Vw?oc=5",
+        "chain": [
+          {
+            "label": "SK Hynix 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia HBM 晶片需求↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix 投資回報↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Nvidia 獲得 81.6B 美元的季度收益",
+        "layer": "晶片",
+        "body": "Nvidia 獲得 81.6B 美元的季度收益，創下了公司的新紀錄。Nvidia 的收益主要來自其在 AI 和遊戲市場的強勁表現。Nvidia 的晶片銷售量大幅增加，推動了公司的收益增長。",
+        "impact": "Nvidia 的強勁表現將會增加其在 AI 和遊戲市場的競爭力。",
+        "rating": "core",
+        "insight": "Nvidia 的收益增長是公司的一個重要里程碑，投資者應該關注公司的未來發展。",
+        "source_label": "tech-insider.org",
+        "source": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBmREpnVmp5NDExaURPOVpvSWJHVm5SeEJUN2s0eUhXUnZ2UE9fNmxkblRQNUt1V2pfdXFySUMzNG1WZVRKaURTeVBrVmFBZUxBWTd2Y0ZxYkJjaWhldnJjUnMzU1NQbjJ3ZVdYVEhveG96YW8?oc=5",
+        "chain": [
+          {
+            "label": "Nvidia 季度收益↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 晶片銷售量↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia AI 和遊戲市場份額↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Microsoft、Meta 和 Google 的 AI 投資",
+        "layer": "CSP",
+        "body": "Microsoft、Meta 和 Google 的 AI 投資增加，推動了公司的 CapEx 增長。Microsoft、Meta 和 Google 的 AI 投資主要集中在基礎設施和硬體上。Microsoft、Meta 和 Google 的 AI 投資將會增加其在 AI 市場的競爭力。",
+        "impact": "Microsoft、Meta 和 Google 的 AI 投資將會拉升公司的採購量，對科技業產生影響。Microsoft、Meta 和 Google 的 AI 投資將會增加其在 AI 市場的領導地位。Microsoft、Meta 和 Google 的 AI 投資也將會增加其在基礎設施和硬體上的投資。",
+        "rating": "noise",
+        "insight": "Microsoft、Meta 和 Google 的 AI 投資是公司的一個重要趨勢，投資者應該關注公司的未來發展。",
+        "source_label": "Stocktwits",
+        "source": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNQ2ZDQkRWWGZaNVdBV1UwS0FEY0RvVVJqUFUxNXd2eHpWM1haeXltLUNpaXB2TW5kcHlJRFo0WFNOQWZFaGNDZ2p3WlcwZjhPVndrYkQwWVAxR0tVVnotaFdDNnZHT1IxZ1BJVHJXZXFpVG5ROUlMcGZoR29iczhkOGM4VG9UMEVWWHJoUEY5TlBCN0RiTEotLTFWNVdFZHZpUmVBOHBuYWVaN0xYMEJzSkgtSno4WHhuc2x4TmpMUkV5bHJDaTNqVHFKalBIMl9pZ01MSjF2a0hpczUtYjMxUHk1OGt0VUxxbHRuaHZ3Nkt4ekRLTl9YZzVQX04wYjFUS25wLUZwWUJwTFU?oc=5",
+        "chain": [
+          {
+            "label": "Microsoft AI 投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta AI 投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Google AI 投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft、Meta 和 Google CapEx↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Nvidia 和 LG Group 的 AI 工廠",
+        "layer": "Physical AI",
+        "body": "Nvidia 和 LG Group 的 AI 工廠將會推動 Physical AI 的發展。Nvidia 和 LG Group 的合作將會增加其在 AI 市場的競爭力。Nvidia 和 LG Group 的 AI 工廠將會提供更好的 AI 解決方案。",
+        "impact": "Nvidia 和 LG Group 的 AI 工廠將會拉升公司的採購量，對科技業產生影響。Nvidia 和 LG Group 的合作將會增加其在 AI 市場的領導地位。Nvidia 和 LG Group 的 AI 工廠也將會增加其在基礎設施和硬體上的投資。",
+        "rating": "noise",
+        "insight": "Nvidia 和 LG Group 的 AI 工廠是公司的一個重要里程碑，投資者應該關注公司的未來發展。",
+        "source_label": "NVIDIA Blog",
+        "source": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1WZWJQbW5PdHZoZmNCbExjaVVXX25PcVlWNWlEcmMwSU9YakFyNDRoVXNRTm1tZUdIeThxaEJjMmR2NHl5TnFHbHhla2ctWGVfQldZREsxWEVYNFZCSDFLbVlONEM5dVZvVzl3czBn?oc=5",
+        "chain": [
+          {
+            "label": "Nvidia AI 解決方案↑",
+            "type": "up"
+          },
+          {
+            "label": "LG Group AI 解決方案↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 和 LG Group 合作↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "HBM",
+        "full": "High-Bandwidth Memory",
+        "def": "HBM 是一種高頻寬記憶體技術，主要用於高性能計算和 AI 應用。",
+        "why": "HBM 技術可以提供更高的頻寬和更低的延遲，對於高性能計算和 AI 應用非常重要。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-10",
     "is_sunday": false,
     "hw": [
@@ -885,73 +1005,6 @@
         "def": "Agentic AI是一種新的AI技術，允許AI系統更好地與物理世界互動。",
         "why": "Agentic AI可以讓AI系統更好地理解和應對物理世界，從而提高AI的應用價值。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-04",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Nvidia推出新晶片將AI直接帶到個人電腦",
-        "layer": "晶片製造",
-        "body": "Nvidia推出新晶片將AI直接帶到個人電腦，該晶片能夠讓用戶在個人電腦上體驗AI的力量。Nvidia的CEO黃仁勳表示，這款新晶片代表了公司在AI領域的重大突破。該晶片將能夠讓用戶在個人電腦上進行AI相關的工作，如圖像識別和語言翻譯等",
-        "impact": "Nvidia、Microsoft、個人電腦用戶",
-        "rating": "noise",
-        "insight": "Nvidia的新晶片將為個人電腦用戶帶來AI的體驗，提升用戶的工作效率",
-        "source_label": "—",
-        "source": ""
-      },
-      {
-        "title": "Nvidia和TSMC將AI帶入晶片製造工廠",
-        "layer": "晶片製造",
-        "body": "Nvidia和TSMC宣布將AI技術應用於晶片製造工廠，該技術將能夠提升晶片製造的效率和品質。Nvidia的CEO黃仁勳表示，這項合作將為公司在AI領域的發展提供強大的支持。該技術將能夠讓用戶在晶片製造過程中進行AI相關的工作，如晶片設計和測試等",
-        "impact": "Nvidia、TSMC、晶片製造業",
-        "rating": "core",
-        "insight": "Nvidia和TSMC的合作將為晶片製造業帶來AI的革命，提升製造效率和品質",
-        "source_label": "Electronics360",
-        "source": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNbWJxby13czRZWFM4aWJ3bFBZdTFGMW1fSGtvNFpvTmctREtpenZYcEl2dEFEdmdsb2pNT3VFVW5QaUQwNWM1T3Zvb2VjY0dpRjIzS09uMy1NbGtoUjF2RDhYdTBKdUtxbmgzTGNPLWNFWUZhQm10Sm4tMmlRUWNLVkFERHJVcTltM1JLNHl0R05sQmFjV0RIYkdnNDF1WldXcVFaVWdlbEhnN1V5WmJSR0hZbDg1ZElh"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Meta、Microsoft、Amazon和Alphabet將大舉投資AI領域",
-        "layer": "公司投資",
-        "body": "Meta、Microsoft、Amazon和Alphabet宣布將大舉投資AI領域，該投資將為公司在AI領域的發展提供強大的支持。這四家公司將在AI領域進行深入的合作，共同推動AI技術的發展。該投資將為公司帶來新的商業機會和增長點",
-        "impact": "Meta、Microsoft、Amazon、Alphabet",
-        "rating": "core",
-        "insight": "四家公司的投資將為AI領域帶來新的機會和增長點，提升公司的競爭力",
-        "source_label": "Yahoo Finance",
-        "source": "https://news.google.com/rss/articles/CBMigAJBVV95cUxOWVdpLTZhdk92a2NnZFA4ZDVHQTVjaWEtcFkzNmd0QnBSNjRMUmlVZi0zbnVaNVdocC0xSUNIbmVnRzNxZ0ZuNG1jOWZRYXh5ZE1VOHBuemRuaXF5NkpfYjJlcDM2OXBlU3pEVTA5eWw0aUlXTGxTODBkbWE0TUIzclhrQllFOEhrTEhqX3dKd0JOVVN0cUdvYmp5LWxpU3VaLTFpTDhGVEZOaE1GOU0wLXRhZDVkMHRrcWdCN05td2RCTzNYZHp0Q2NNY3VlZGNoYldlOU51N0NHVzVIWGx6NEFhNWRUM2FNemoxdHRWQjBHanRwSS1qVFdOUVZ0Z3F2"
-      }
-    ],
-    "app": [
-      {
-        "title": "Nvidia的Vera Rubin和DGX Station計劃",
-        "layer": "AI應用",
-        "body": "Nvidia宣布了Vera Rubin和DGX Station的計劃，該計劃將為用戶提供更強大的AI計算能力。Nvidia的CEO黃仁勳表示，Vera Rubin和DGX Station將為用戶提供更好的AI體驗。該計劃將能夠讓用戶在AI相關的工作中取得更好的成果",
-        "impact": "Nvidia、AI用戶",
-        "rating": "core",
-        "insight": "Nvidia的Vera Rubin和DGX Station計劃將為AI用戶帶來更強大的計算能力和更好的體驗",
-        "source_label": "Techzine Global",
-        "source": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNb2NGbl9aYkUzNkFFN3hQY0ZqdDdXR2ZsSUdmVGZ6QTlIbVNIYVhYMnRjRnRiVkwxcXdoMlp4ZzctT0stM3lrWkE3dVBMS3h6TFNCOXFsU2JINGdGZ2RLYU9DYzh5QUd5SnBGdnd4SmdmRGYzb2JwUVRrbmo1bFUzY2s3SFpzMERKWndkYVotZnBtQW5GS05feXByRWQ0dTNBelNTNTVn"
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Vera Rubin",
-        "full": "Vera Rubin GPU Architecture　維拉·魯賓 GPU 架構",
-        "def": "NVIDIA 繼 Blackwell 後的下世代 GPU 架構，代號取自天文學家 Vera Rubin，預計 2026 年量產，搭載自研 NV-HBM 記憶體，AI 算力較 Blackwell 提升約 3.3 倍。完整版 Vera Rubin Ultra 預計 2027 年跟進，採用 NV-HBM4E 超高頻寬記憶體，針對超大型 LLM 訓練與推論工作負載。整體系統採多晶片封裝設計，由 TSMC 先進製程代工。",
-        "why": "📌 自研 NV-HBM 策略可能降低 NVIDIA 對 SK Hynix/Micron 外部 HBM 採購的依賴，對現有 HBM 供應商形成議價壓力；TSMC CoWoS/SoIC 封裝仍為關鍵瓶頸，Rubin 量產將推動先進封裝產能進一步吃緊。",
-        "category": "AI技術"
-      },
-      {
-        "term": "DGX Station",
-        "full": "DGX Station Personal AI Supercomputer　DGX 桌上型 AI 超級電腦",
-        "def": "NVIDIA 推出的工作站級個人 AI 超級電腦，現行款搭載 4 張 A100 80GB GPU，提供 2.5 PFLOPS AI 算力與 320GB 總 GPU 記憶體，可在辦公室環境直接執行大型語言模型推論。最新 Blackwell 架構版預計 2025–2026 年推出，定位企業 on-premise AI 部署，無需仰賴公有雲即可處理敏感資料。",
-        "why": "📌 DGX Station 反映資料主權與 CSP 雲算力成本壓力催生的本地 GPU 需求，對 NVIDIA 為高毛利整機銷售管道；同時對 Dell/HPE 等 OEM 伺服器廠商的 AI 工作站業務形成直接競爭壓力。",
-        "category": "AI技術"
       }
     ],
     "weekly_summary": null
