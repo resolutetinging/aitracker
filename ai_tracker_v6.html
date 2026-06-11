@@ -137,7 +137,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 
 /* ── Glossary category editor ── */
 .gloss-cat-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;}
-.gloss-cat-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;border:1px solid;cursor:pointer;background:rgba(74,104,128,.08);color:var(--gloss);border-color:rgba(74,104,128,.3);}
+.gloss-cat-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;border:1px solid;cursor:pointer;background:rgba(74,104,128,.08);color:var(--gloss);border-color:rgba(74,104,128,.3);white-space:nowrap;}
 .gloss-cat-badge:hover{background:rgba(74,104,128,.16);}
 .gloss-cat-picker{display:none;position:absolute;z-index:100;background:var(--card);border:1px solid var(--border2);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);padding:6px;min-width:160px;}
 .gloss-cat-picker.open{display:block;}
@@ -761,7 +761,7 @@ function renderGlossary(hist) {
     return `<div class="gloss-card">
       <div class="gloss-cat-row">
         <div class="gloss-term">${g.term}${g._new?'<span class="new-badge">NEW</span>':''}${g._user?`<span class="user-badge" onclick="deleteUserTerm('${escapedTerm}')">自添 ✕</span>`:''}</div>
-        <div style="display:flex;align-items:center;gap:6px;">
+        <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
           <div style="position:relative;display:inline-block;z-index:1;">
             <span class="gloss-cat-badge" onclick="togglePicker('${pid}')">${clabel} ▾</span>
             <div class="gloss-cat-picker" id="${pid}">${opts}</div>

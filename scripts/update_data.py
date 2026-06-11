@@ -190,7 +190,7 @@ def fetch_news():
     return joined
 
 
-def get_recent_titles(history, days=3, max_titles=20):
+def get_recent_titles(history, days=3, max_titles=30):
     """取得近 N 天已報道過的新聞標題，用於跨日去重（最多 max_titles 條）
     注意：今日自己的資料不納入（避免同日第二次跑時把素材全封鎖）"""
     titles = []
@@ -224,7 +224,7 @@ def make_prompt(news_context, recent_titles=None):
         + ('\\n用戶筆記洞察一句' if notes_text else '') + '"'
         if IS_SUNDAY else 'null'
     )
-    no_repeat_str = ("Do NOT repeat these recently covered titles: " + "; ".join(recent_titles[:4])) if recent_titles else ""
+    no_repeat_str = ("NO-REPEAT (STRICT): these topics were covered in recent days — do NOT generate any item about the same story or event even with a different headline; only include if there is a significant new development with wholly new facts not present before: " + "; ".join(recent_titles)) if recent_titles else ""
     notes_ctx = ("User notes context: " + notes_text[:200]) if notes_text else ""
     news_short = news_context[:3500]
     weekly_rule = (
