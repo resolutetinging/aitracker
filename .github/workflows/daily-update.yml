@@ -10,6 +10,11 @@ on:
         required: false
         default: 'false'
         type: string
+      force:
+        description: '強制重新生成（略過冪等保護，重新抓新聞+呼叫 Groq）'
+        required: false
+        default: 'false'
+        type: string
 
 jobs:
   update:
@@ -45,7 +50,10 @@ jobs:
         run: |
           EXTRA=""
           if [ "${{ github.event.inputs.pigeon_only }}" = "true" ]; then
-            EXTRA="--pigeon-only"
+            EXTRA="$EXTRA --pigeon-only"
+          fi
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then
+            EXTRA="$EXTRA --force"
           fi
           python scripts/update_data.py $EXTRA
 
