@@ -4,49 +4,49 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "SK Hynix 投注 HBM 晶片",
+        "title": "SK Hynix 購買 HBM 晶片",
         "layer": "記憶體",
-        "body": "SK Hynix 投注 HBM 晶片，獲得 Nvidia 的大單。Nvidia 的 HBM 晶片需求量大，SK Hynix 的投資獲得了回報。HBM 晶片的產能將會增加，滿足 Nvidia 的需求。",
-        "impact": "SK Hynix 的 HBM 晶片投資將會增加 Nvidia 的採購量，對記憶體市場產生影響。Nvidia 的 HBM 晶片需求量大，將會拉升記憶體市場的成長。SK Hynix 的投資將會增加其在記憶體市場的競爭力。",
+        "body": "SK Hynix 購買 HBM 晶片以滿足 Nvidia 的需求。Nvidia 的 HBM 晶片需求量大，SK Hynix 的購買行為將會滿足這個需求。HBM 晶片的價格將會因為 SK Hynix 的購買而上漲，對於其他晶片製造商來說將是一個挑戰。",
+        "impact": "SK Hynix 的購買行為將會拉升 HBM 晶片的價格，對於其他晶片製造商來說將是一個挑戰。Nvidia 的 HBM 晶片需求量大，SK Hynix 的購買行為將會滿足這個需求。這個交易將會對 SK Hynix 和 Nvidia 的財務狀況產生影響。",
         "rating": "noise",
-        "insight": "SK Hynix 的 HBM 晶片投資是記憶體市場的一個重要趨勢，投資者應該關注記憶體市場的發展。",
+        "insight": "SK Hynix 的購買行為將會滿足 Nvidia 的 HBM 晶片需求，對於其他晶片製造商來說將是一個挑戰。",
         "source_label": "Jon Peddie Research",
         "source": "https://news.google.com/rss/articles/CBMieEFVX3lxTE8tYXd5MmdxZjJVV0RMNUZycjNON0gtZk90VVlsN21rZjVDX3NzbkZ6NzRfUVJ6Q2tPc2RYU0cwWnNFMGVabUloNVBBQk5sSTAwMXNZUThNTG1Gbk1RdEFWTkFmOS1sQjdIQ3g0dzQ1T25YaHlHUl84Vw?oc=5",
         "chain": [
           {
-            "label": "SK Hynix 產能↑",
+            "label": "SK Hynix HBM 晶片需求↑",
             "type": "up"
           },
           {
-            "label": "Nvidia HBM 晶片需求↑",
+            "label": "Nvidia HBM 晶片供應↑",
             "type": "up"
           },
           {
-            "label": "SK Hynix 投資回報↑",
+            "label": "HBM 晶片價格↑",
             "type": "up"
           }
         ]
       },
       {
         "title": "Nvidia 獲得 81.6B 美元的季度收益",
-        "layer": "晶片",
-        "body": "Nvidia 獲得 81.6B 美元的季度收益，創下了公司的新紀錄。Nvidia 的收益主要來自其在 AI 和遊戲市場的強勁表現。Nvidia 的晶片銷售量大幅增加，推動了公司的收益增長。",
-        "impact": "Nvidia 的強勁表現將會增加其在 AI 和遊戲市場的競爭力。",
+        "layer": "晶片製造",
+        "body": "Nvidia 獲得 81.6B 美元的季度收益，創下了公司的新紀錄。Nvidia 的收益主要來自於其晶片的銷售，尤其是其高端晶片的銷售。這個季度的收益表明 Nvidia 的晶片仍然是市場上最受歡迎的選擇。",
+        "impact": "Nvidia 的季度收益將會對其股東和投資者產生影響，同時也會對其競爭對手產生壓力。這個季度的收益也會對 Nvidia 的未來發展產生影響。",
         "rating": "core",
-        "insight": "Nvidia 的收益增長是公司的一個重要里程碑，投資者應該關注公司的未來發展。",
+        "insight": "Nvidia 的季度收益創下了公司的新紀錄，表明其晶片仍然是市場上最受歡迎的選擇。",
         "source_label": "tech-insider.org",
         "source": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBmREpnVmp5NDExaURPOVpvSWJHVm5SeEJUN2s0eUhXUnZ2UE9fNmxkblRQNUt1V2pfdXFySUMzNG1WZVRKaURTeVBrVmFBZUxBWTd2Y0ZxYkJjaWhldnJjUnMzU1NQbjJ3ZVdYVEhveG96YW8?oc=5",
         "chain": [
+          {
+            "label": "Nvidia 晶片銷售↑",
+            "type": "up"
+          },
           {
             "label": "Nvidia 季度收益↑",
             "type": "up"
           },
           {
-            "label": "Nvidia 晶片銷售量↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia AI 和遊戲市場份額↑",
+            "label": "Nvidia 市占↑",
             "type": "up"
           }
         ]
@@ -56,10 +56,10 @@
       {
         "title": "Microsoft、Meta 和 Google 的 AI 投資",
         "layer": "CSP",
-        "body": "Microsoft、Meta 和 Google 的 AI 投資增加，推動了公司的 CapEx 增長。Microsoft、Meta 和 Google 的 AI 投資主要集中在基礎設施和硬體上。Microsoft、Meta 和 Google 的 AI 投資將會增加其在 AI 市場的競爭力。",
-        "impact": "Microsoft、Meta 和 Google 的 AI 投資將會拉升公司的採購量，對科技業產生影響。Microsoft、Meta 和 Google 的 AI 投資將會增加其在 AI 市場的領導地位。Microsoft、Meta 和 Google 的 AI 投資也將會增加其在基礎設施和硬體上的投資。",
-        "rating": "noise",
-        "insight": "Microsoft、Meta 和 Google 的 AI 投資是公司的一個重要趨勢，投資者應該關注公司的未來發展。",
+        "body": "Microsoft、Meta 和 Google 將在 AI 投資上花費 725B 美元。這個投資將會用於開發新的 AI 技術和應用。Microsoft、Meta 和 Google 的 AI 投資將會對其業務產生影響，同時也會對其競爭對手產生壓力。",
+        "impact": "Microsoft、Meta 和 Google 的 AI 投資將會對其業務產生影響，同時也會對其競爭對手產生壓力。",
+        "rating": "core",
+        "insight": "Microsoft、Meta 和 Google 的 AI 投資將會對其業務產生影響，同時也會對其競爭對手產生壓力。",
         "source_label": "Stocktwits",
         "source": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNQ2ZDQkRWWGZaNVdBV1UwS0FEY0RvVVJqUFUxNXd2eHpWM1haeXltLUNpaXB2TW5kcHlJRFo0WFNOQWZFaGNDZ2p3WlcwZjhPVndrYkQwWVAxR0tVVnotaFdDNnZHT1IxZ1BJVHJXZXFpVG5ROUlMcGZoR29iczhkOGM4VG9UMEVWWHJoUEY5TlBCN0RiTEotLTFWNVdFZHZpUmVBOHBuYWVaN0xYMEJzSkgtSno4WHhuc2x4TmpMUkV5bHJDaTNqVHFKalBIMl9pZ01MSjF2a0hpczUtYjMxUHk1OGt0VUxxbHRuaHZ3Nkt4ekRLTl9YZzVQX04wYjFUS25wLUZwWUJwTFU?oc=5",
         "chain": [
@@ -72,11 +72,7 @@
             "type": "up"
           },
           {
-            "label": "Google AI 投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft、Meta 和 Google CapEx↑",
+            "label": "Google AI 研發↑",
             "type": "up"
           }
         ]
@@ -84,26 +80,26 @@
     ],
     "app": [
       {
-        "title": "Nvidia 和 LG Group 的 AI 工廠",
-        "layer": "Physical AI",
-        "body": "Nvidia 和 LG Group 的 AI 工廠將會推動 Physical AI 的發展。Nvidia 和 LG Group 的合作將會增加其在 AI 市場的競爭力。Nvidia 和 LG Group 的 AI 工廠將會提供更好的 AI 解決方案。",
-        "impact": "Nvidia 和 LG Group 的 AI 工廠將會拉升公司的採購量，對科技業產生影響。Nvidia 和 LG Group 的合作將會增加其在 AI 市場的領導地位。Nvidia 和 LG Group 的 AI 工廠也將會增加其在基礎設施和硬體上的投資。",
+        "title": "台灣供應商的物理 AI 平台",
+        "layer": "Agentic AI",
+        "body": "台灣供應商正在開發物理 AI 平台，以滿足未來的需求。這個平台將會用於開發新的 AI 技術和應用。台灣供應商的物理 AI 平台將會對其業務產生影響，同時也會對其競爭對手產生壓力。",
+        "impact": "台灣供應商的物理 AI 平台將會拉升其業務的發展，同時也會對其競爭對手產生壓力。這個平台將會對 AI 技術的發展產生影響，同時也會對其應用的發展產生影響。台灣供應商的物理 AI 平台將會是其業務的重要組成部分。",
         "rating": "noise",
-        "insight": "Nvidia 和 LG Group 的 AI 工廠是公司的一個重要里程碑，投資者應該關注公司的未來發展。",
-        "source_label": "NVIDIA Blog",
-        "source": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1WZWJQbW5PdHZoZmNCbExjaVVXX25PcVlWNWlEcmMwSU9YakFyNDRoVXNRTm1tZUdIeThxaEJjMmR2NHl5TnFHbHhla2ctWGVfQldZREsxWEVYNFZCSDFLbVlONEM5dVZvVzl3czBn?oc=5",
+        "insight": "台灣供應商的物理 AI 平台將會對其業務產生影響，同時也會對其競爭對手產生壓力。",
+        "source_label": "digitimes",
+        "source": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQLTczckgxWkY1dFB4eExob19zdDdIaGR1VGdVRmRMN0NGWl9QY3FVRnhXYWg5M2E0VHBUbERIYkxuN2NGU0JpRHBEMjM2RUZxWE8tMFB4N3M5S2ZPSjhscEVBUlhVZ3ltV2diMnRMcER0bXBTYXVYbTh4RVViYWNvX3loS1NoN2xrbjBkaGl2LXhSdzNrcVE?oc=5",
         "chain": [
           {
-            "label": "Nvidia AI 解決方案↑",
+            "label": "台灣供應商 AI 平台開發↑",
             "type": "up"
           },
           {
-            "label": "LG Group AI 解決方案↑",
+            "label": "台灣供應商 業務拓展↑",
             "type": "up"
           },
           {
-            "label": "Nvidia 和 LG Group 合作↑",
-            "type": "up"
+            "label": "競爭對手 AI 研發↓",
+            "type": "down"
           }
         ]
       }
@@ -112,8 +108,8 @@
       {
         "term": "HBM",
         "full": "High-Bandwidth Memory",
-        "def": "HBM 是一種高頻寬記憶體技術，主要用於高性能計算和 AI 應用。",
-        "why": "HBM 技術可以提供更高的頻寬和更低的延遲，對於高性能計算和 AI 應用非常重要。",
+        "def": "HBM 是一種高頻寬記憶體技術，主要用於高性能計算和 AI 應用。HBM 的優點是其高頻寬和低延遲，能夠滿足高性能計算和 AI 應用的需求。HBM 的應用包括高性能計算、AI 和深度學習等領域。",
+        "why": "HBM 對於高性能計算和 AI 應用非常重要，因為它能夠提供高頻寬和低延遲的記憶體存取。HBM 的發展將會對高性能計算和 AI 應用的發展產生影響。",
         "category": "semiconductor"
       }
     ],
