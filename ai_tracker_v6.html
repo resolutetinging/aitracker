@@ -1024,11 +1024,14 @@ function renderHistory(hist) {
           oninput="saveNote('${d.date}',this.value)">${savedNote}</textarea>
         <div class="hist-note-saved" id="note-saved-${d.date}"></div>
       </div>`;
+    const coreCount = [...(d.hw||[]),...(d.corp||[]),...(d.app||[])].filter(x=>x.rating==='core').length;
+    const coldTag = coreCount < 2 ? '<span style="font-size:10px;color:var(--noise);font-weight:700;padding:1px 7px;border:1px solid rgba(104,100,96,.3);border-radius:8px;letter-spacing:.3px;">冷</span>' : '';
     return `<div class="hist-card ${d.is_sunday?'hist-sunday':''}">
       <div class="hist-header" onclick="tog(${i})">
         <div class="hist-date-row">
           <span class="hist-date">${fmtDate(d.date)}</span>
           ${d.is_sunday?'<span class="fri-badge">📊 週報</span>':''}
+          ${coldTag}
           ${savedNote?'<span style="font-size:11px;color:var(--insight);">📝</span>':''}
         </div>
         <div class="hist-meta">
