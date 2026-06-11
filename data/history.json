@@ -1,5 +1,121 @@
 [
   {
+    "date": "2026-06-12",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "SK Hynix 購買 HBM 晶片",
+        "layer": "記憶體",
+        "body": "SK Hynix 購買 HBM 晶片以滿足 Nvidia 的需求。Nvidia 的 RTX Spark 產品需要大量的 HBM 晶片。SK Hynix 的 HBM 晶片生產能力將增加以滿足這個需求。",
+        "impact": "SK Hynix 的 HBM 晶片購買將直接拉升 Nvidia 的 GPU 採購量。這將對 Nvidia 的財務表現產生積極影響。SK Hynix 的 HBM 晶片生產能力增加也將對記憶體市場產生影響。",
+        "rating": "noise",
+        "insight": "SK Hynix 的 HBM 晶片購買是 Nvidia 成功的關鍵因素",
+        "source_label": "Jon Peddie Research",
+        "source": "https://news.google.com/rss/articles/CBMieEFVX3lxTE8tYXd5MmdxZjJVV0RMNUZycjNON0gtZk90VVlsN21rZjVDX3NzbkZ6NzRfUVJ6Q2tPc2RYU0cwWnNFMGVabUloNVBBQk5sSTAwMXNZUThNTG1Gbk1RdEFWTkFmOS1sQjdIQ3g0dzQ1T25YaHlHUl84Vw?oc=5",
+        "chain": [
+          {
+            "label": "SK Hynix HBM 晶片供應↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia RTX Spark 需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 圖形處理技術需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Nvidia 的 RTX Spark 亮相 Computex 2026",
+        "layer": "圖形處理",
+        "body": "Nvidia 的 RTX Spark 產品在 Computex 2026 會議上亮相。RTX Spark 產品使用了 Nvidia 的最新圖形處理技術。這個產品的亮相將對圖形處理市場產生影響。",
+        "impact": "Nvidia 的 RTX Spark 產品將對圖形處理市場產生積極影響。",
+        "rating": "core",
+        "insight": "Nvidia 的 RTX Spark 產品是圖形處理市場的重要發展",
+        "source_label": "TechPowerUp",
+        "source": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQMDlsbk1IM2dUU0JlbDRRUi14R1hFV0RrelQxOFFNamdOSnVmYWV6WGhwemp2TWsxT0xyTXk4V2FYdkdrVm5iYUlMVnlFRHhwSzVIcTFiT25PU1ZoTng5OENLemVMUWlnYmlsalBLVnhQY1dPbnhsakN2TFBkWW83aDJZYWxjZWgwQWFpc1BkMVlJbmZXQklPS3N2WW53MzhfU0pCSGhnNFJMUdIBqgFBVV95cUxQMDlsbk1IM2dUU0JlbDRRUi14R1hFV0RrelQxOFFNamdOSnVmYWV6WGhwemp2TWsxT0xyTXk4V2FYdkdrVm5iYUlMVnlFRHhwSzVIcTFiT25PU1ZoTng5OENLemVMUWlnYmlsalBLVnhQY1dPbnhsakN2TFBkWW83aDJZYWxjZWgwQWFpc1BkMVlJbmZXQklPS3N2WW53MzhfU0pCSGhnNFJMUQ?oc=5",
+        "chain": [
+          {
+            "label": "Nvidia RTX Spark 產品銷售↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 圖形處理技術需求↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD 市占↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Wall Street 的 8000 億美元 AI 資料中心投資",
+        "layer": "資料中心",
+        "body": "Wall Street 將投資 8000 億美元於 AI 資料中心。這個投資將對資料中心市場產生影響。AI 資料中心的需求將增加。",
+        "impact": "Wall Street 的投資將對資料中心市場產生積極影響。",
+        "rating": "core",
+        "insight": "Wall Street 的投資是 AI 資料中心市場的重要發展",
+        "source_label": "24/7 Wall St.",
+        "source": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNMFVjbE9yNERTNUwzeVlOaXRBZjl4YmFLRkVGdDVwX2RUUHVPb0Utc08yX0VLek1YdDh3alBvb1FMUUduM1ZuTF9uWHE0WHJVTHRTWVRrSVFHVE5ZeUdITnY3WmVraWw0Y0Y2cjctcElibjlOQnJxQ2FRS2o5cUdrODlNUmNjV3htY1IzeU8zZW1XWU43UjNHNF9zRUpRc243LXU3NUQwdW9RcndQTVVrdFZEUTROZlBQc3dhOW5neFVpSzJyQzBISFItV1RRaGpPUVJJNEhmQWhXOV9Na09ZMm94VEVMOUU?oc=5",
+        "chain": [
+          {
+            "label": "Wall Street AI 資料中心投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Cloud AI 資料中心需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Azure GPU 交期↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "台灣供應商的物理 AI 平台",
+        "layer": "AI 應用",
+        "body": "台灣供應商正在開發物理 AI 平台。這個平台將對 AI 應用市場產生影響。物理 AI 平台的需求將增加。",
+        "impact": "台灣供應商的物理 AI 平台將對 AI 應用市場產生積極影響。這個平台也將對 AI 技術的發展產生影響。",
+        "rating": "noise",
+        "insight": "台灣供應商的物理 AI 平台是 AI 應用市場的重要發展",
+        "source_label": "digitimes",
+        "source": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQLTczckgxWkY1dFB4eExob19zdDdIaGR1VGdVRmRMN0NGWl9QY3FVRnhXYWg5M2E0VHBUbERIYkxuN2NGU0JpRHBEMjM2RUZxWE8tMFB4N3M5S2ZPSjhscEVBUlhVZ3ltV2diMnRMcER0bXBTYXVYbTh4RVViYWNvX3loS1NoN2xrbjBkaGl2LXhSdzNrcVE?oc=5",
+        "chain": [
+          {
+            "label": "台灣供應商物理 AI 平台供應↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC CoWoS 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix ASP↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "HBM",
+        "full": "High-Bandwidth Memory",
+        "def": "HBM 是一種高頻寬記憶體技術，用于提高圖形處理和 AI 計算的效能。",
+        "why": "HBM 技術對圖形處理和 AI 計算的發展非常重要",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-11",
     "is_sunday": false,
     "hw": [
@@ -856,150 +972,6 @@
         "full": "代理AI",
         "def": "Agentic AI是一種可以自主地感知和響應環境的AI技術，通常應用於機器人和自動駕駛領域。Agentic AI可以使得機器人和自動駕駛系統更好地感知和響應環境，從而提高其工作效率和安全性。",
         "why": "Agentic AI的發展和應用可能會帶動相關產業的成長，從而提高生產效率和生活質量。然而，Agentic AI的安全性和可靠性仍需要進一步提高，從而滿足更廣泛的應用需求。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-05",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Intel推出神秘新資料中心GPU",
-        "layer": "資料中心",
-        "body": "Intel推出了一款神秘的新資料中心GPU，據悉該GPU是Nvidia的Rubin CPX幾乎要成為的東西。Nvidia的Rubin CPX是一款高性能的GPU，原本打算用於資料中心市場。Intel的新GPU可能會與Nvidia的產品競爭，爭奪資料中心市場的份額。",
-        "impact": "Intel的新GPU可能會對Nvidia的資料中心業務產生影響，導致Nvidia的市場份額下降；同時，Intel的新GPU也可能會吸引其他資料中心客戶，例如Google、Amazon等，從而增加Intel的市場份額。TSMC和Samsung等代工廠商可能會因為Intel的新GPU而增加產能，從而導致產能吃緊的問題。",
-        "rating": "noise",
-        "insight": "Intel的新GPU可能會對Nvidia的資料中心業務產生重大影響，投資者應該關注這一發展。",
-        "source_label": "The Register",
-        "source": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQVnY4cUpPeE5PbFltSlVDdC1CTGJwbm9UY2Zmb0N6NWlYUUJZOU9uZmkzb0lpekdUcTVEYWpuaG4tRFBjQ3dfRkNYaUxjLXV3ZFpidzFjbEFEeEloVmNBTzVUWXZ5by1iVnIzcFZ6VVkyMmxMdHJwUjI2d2JjVVRVMjVxb3Z2NkpRMGRTTVVWZElzTmZGUEJmM0FhZjRGZDZsaGpTbGNDYk5CVHNh",
-        "chain": [
-          {
-            "label": "Intel 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia 市占↓",
-            "type": "down"
-          },
-          {
-            "label": "Nvidia Rubin CPX 產量↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "ASUS推出ProArt RTX Spark",
-        "layer": "消費級GPU",
-        "body": "ASUS推出了ProArt RTX Spark，一款針對創意人士的高性能GPU。ProArt RTX Spark基於Nvidia的RTX架構，提供了強大的圖形處理能力。ASUS表示，ProArt RTX Spark將會在 Computex 2026上展示。",
-        "impact": "ASUS的ProArt RTX Spark可能會對Nvidia的RTX系列GPU產生正面影響，增加Nvidia的市場份額；同時，ProArt RTX Spark也可能會吸引其他創意人士客戶，例如設計師、藝術家等，從而增加ASUS的市場份額。TSMC和Samsung等代工廠商可能會因為ProArt RTX Spark而增加產能，從而導致產能吃緊的問題。",
-        "rating": "noise",
-        "insight": "ASUS的ProArt RTX Spark可能會對Nvidia的RTX系列GPU產生正面影響，投資者應該關注這一發展。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "ASUS 市占↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia RTX 架構銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "ProArt RTX Spark 產能↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Nvidia Jetson帶來Agentic AI",
-        "layer": "AI應用",
-        "body": "Nvidia的Jetson平台帶來了Agentic AI，一種新的AI技術。Agentic AI可以讓AI系統更好地與物理世界互動。Nvidia表示，Jetson平台將會在各種應用中使用Agentic AI。",
-        "impact": "Nvidia的Jetson平台可能會對AI應用市場產生重大影響，增加Nvidia的市場份額；同時，Jetson平台也可能會吸引其他AI應用客戶，例如機器人、自動駕駛等，從而增加Nvidia的市場份額。TSMC和Samsung等代工廠商可能會因為Jetson平台而增加產能，從而導致產能吃緊的問題。",
-        "rating": "noise",
-        "insight": "Nvidia的Jetson平台可能會對AI應用市場產生重大影響，投資者應該關注這一發展。",
-        "source_label": "NVIDIA Blog",
-        "source": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5BWThjck1tdk1YOG9YRkJZNjdYeEhuTkQ1OEwxdlBZZ3gzaTdwRE9NVi1mYzJNRGRSWnhwb0JXYmdoZXJGTjJmMkV4VVRSRk1Xdk0wVDhEQkktZGlqT1Q0NzVVVGtWQVJqa2puR0tnYVo",
-        "chain": [
-          {
-            "label": "Nvidia Jetson 平台銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "Agentic AI 技術應用↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia AI 研究投入↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Meta、Microsoft、Amazon和Alphabet將大舉投資AI領域",
-        "layer": "AI投資",
-        "body": "Meta、Microsoft、Amazon和Alphabet將大舉投資AI領域，預計將會在AI研究和開發上投入大量資源。這些公司希望通過AI技術來提高自己的競爭力。投資AI領域可能會對這些公司的業務產生重大影響。",
-        "impact": "Meta、Microsoft、Amazon和Alphabet的大舉投資AI領域可能會對AI應用市場產生重大影響，增加這些公司的市場份額；同時，也可能會吸引其他AI應用客戶，例如企業、政府等，從而增加這些公司的市場份額。TSMC和Samsung等代工廠商可能會因為AI應用市場的增長而增加產能，從而導致產能吃緊的問題。",
-        "rating": "noise",
-        "insight": "Meta、Microsoft、Amazon和Alphabet的大舉投資AI領域可能會對AI應用市場產生重大影響，投資者應該關注這一發展。",
-        "source_label": "Yahoo Finance",
-        "source": "https://news.google.com/rss/articles/CBMigAJBVV95cUxOWVdpLTZhdk92a2NnZFA4ZDVHQTVjaWEtcFkzNmd0QnBSNjRMUmlVZi0zbnVaNVdocC0xSUNIbmVnRzNxZ0ZuNG1jOWZRYXh5ZE1VOHBuemRuaXF5NkpfYjJlcDM2OXBlU3pEVTA5eWw0aUlXTGxTODBkbWE0TUIzclhrQllFOEhrTEhqX3dKd0JOVVN0cUdvYmp5LWxpU3VaLTFpTDhGVEZOaE1GOU0wLXRhZDVkMHRrcWdCN05td2RCTzNYZHp0Q2NNY3VlZGNoYldlOU51N0NHVzVIWGx6NEFhNWRUM2FNemoxdHRWQjBHanRwSS1qVFdOUVZ0Z3F2",
-        "chain": [
-          {
-            "label": "Meta AI 研究投入↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft AI 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Amazon AI 技術應用↑",
-            "type": "up"
-          },
-          {
-            "label": "Alphabet AI 市占↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Nvidia Jetson帶來Agentic AI",
-        "layer": "AI應用",
-        "body": "Nvidia的Jetson平台帶來了Agentic AI，一種新的AI技術。Agentic AI可以讓AI系統更好地與物理世界互動。Nvidia表示，Jetson平台將會在各種應用中使用Agentic AI。",
-        "impact": "Nvidia的Jetson平台可能會對AI應用市場產生重大影響，增加Nvidia的市場份額；同時，Jetson平台也可能會吸引其他AI應用客戶，例如機器人、自動駕駛等，從而增加Nvidia的市場份額。TSMC和Samsung等代工廠商可能會因為Jetson平台而增加產能，從而導致產能吃緊的問題。",
-        "rating": "noise",
-        "insight": "Nvidia的Jetson平台可能會對AI應用市場產生重大影響，投資者應該關注這一發展。",
-        "source_label": "NVIDIA Blog",
-        "source": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5BWThjck1tdk1YOG9YRkJZNjdYeEhuTkQ1OEwxdlBZZ3gzaTdwRE9NVi1mYzJNRGRSWnhwb0JXYmdoZXJGTjJmMkV4VVRSRk1Xdk0wVDhEQkktZGlqT1Q0NzVVVGtWQVJqa2puR0tnYVo",
-        "chain": [
-          {
-            "label": "Nvidia Jetson 平台銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "Agentic AI 技術應用↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia AI 研究投入↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Agentic AI",
-        "full": "Agentic AI",
-        "def": "Agentic AI是一種新的AI技術，允許AI系統更好地與物理世界互動。",
-        "why": "Agentic AI可以讓AI系統更好地理解和應對物理世界，從而提高AI的應用價值。",
         "category": "ai_technique"
       }
     ],
