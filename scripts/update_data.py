@@ -227,6 +227,11 @@ def make_prompt(news_context, recent_titles=None):
     no_repeat_str = ("Do NOT repeat these recently covered titles: " + "; ".join(recent_titles[:4])) if recent_titles else ""
     notes_ctx = ("User notes context: " + notes_text[:200]) if notes_text else ""
     news_short = news_context[:3500]
+    weekly_rule = (
+        'each distinct point must be its own line separated by \\n (one sentence per line, ending with 。); never merge multiple topics into one continuous paragraph'
+        if IS_SUNDAY else
+        'MUST be null — today is NOT Sunday; outputting any non-null value is an error'
+    )
 
     return f"""You are an AI supply chain analyst. Analyze the news below and output pure JSON (start directly with {{).
 
@@ -254,7 +259,7 @@ RULES:
 - glossary_new: required, 1-3 terms from today's news that readers may not know
 - source: copy verbatim from SOURCE_URL in the news; never fabricate URLs
 - All titles, body, impact, insight in Traditional Chinese (zh-TW)
-- weekly_summary: {"each distinct point must be its own line separated by \\n (one sentence per line, ending with 。); never merge multiple topics into one continuous paragraph" if IS_SUNDAY else "MUST be null — today is NOT Sunday; outputting any non-null value is an error"}
+- weekly_summary: {weekly_rule}
 {no_repeat_str}
 {notes_ctx}"""
 
