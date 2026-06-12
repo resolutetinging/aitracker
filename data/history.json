@@ -1,5 +1,121 @@
 [
   {
+    "date": "2026-06-13",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "NVIDIA 的 RTX Spark Gaming Hands-On",
+        "layer": "晶片",
+        "body": "NVIDIA 在 Computex 2026 會議上展示了 RTX Spark Gaming Hands-On。RTX Spark 是一款新的晶片，具有強大的圖形處理能力。NVIDIA 的這一新產品預計將在未來幾個月內推出市場。",
+        "impact": "NVIDIA 的 RTX Spark 預計將對圖形處理市場產生重大影響，尤其是在遊戲領域。這款新晶片的推出可能會拉升 NVIDIA 的市場份額。",
+        "rating": "core",
+        "insight": "NVIDIA 的 RTX Spark 預計將成為圖形處理市場的一個重要玩家",
+        "source_label": "TechPowerUp",
+        "source": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQMDlsbk1IM2dUU0JlbDRRUi14R1hFV0RrelQxOFFNamdOSnVmYWV6WGhwemp2TWsxT0xyTXk4V2FYdkdrVm5iYUlMVnlFRHhwSzVIcTFiT25PU1ZoTng5OENLemVMUWlnYmlsalBLVnhQY1dPbnhsakN2TFBkWW83aDJZYWxjZWgwQWFpc1BkMVlJbmZXQklPS3N2WW53MzhfU0pCSGhnNFJMUdIBqgFBVV95cUxQMDlsbk1IM2dUU0JlbDRRUi14R1hFV0RrelQxOFFNamdOSnVmYWV6WGhwemp2TWsxT0xyTXk4V2FYdkdrVm5iYUlMVnlFRHhwSzVIcTFiT25PU1ZoTng5OENLemVMUWlnYmlsalBLVnhQY1dPbnhsakN2TFBkWW83aDJZYWxjZWgwQWFpc1BkMVlJbmZXQklPS3N2WW53MzhfU0pCSGhnNFJMUQ",
+        "chain": [
+          {
+            "label": "NVIDIA RTX Spark 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "NVIDIA 市占↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD 市占↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Delos Data 的 AI 晶片",
+        "layer": "晶片",
+        "body": "Delos Data 提供了 AI 晶片給初創公司，讓他們能夠快速地將產品推向市場。Delos Data 的這一服務預計將對 AI 晶片市場產生重大影響。AI 晶片的需求預計將在未來幾年內大幅增加。",
+        "impact": "Delos Data 的服務預計將對 AI 晶片市場產生積極的影響，尤其是在初創公司中。這一服務可能會拉升 AI 晶片的採購量，並對其他 AI 晶片製造商產生競爭壓力。",
+        "rating": "noise",
+        "insight": "Delos Data 的服務預計將成為 AI 晶片市場的一個重要玩家",
+        "source_label": "The Register",
+        "source": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQdGtqOGpWMm5YU3UtRXNXRmJPakJXNG41OE5DT2JRcGNza2lFM2s1Ml9wclVqMkREdUtyQ21rVlNwWHA4SFowT1ZjOU5XTGhocjlZWGJKeEg5RDktbkVXVkJ6cjBBaGw5eW4wMkNtenJrU2E2WXVLM2d4eXdoSHpRejY4V0VYZlo4bVgwa1pMZV8wUHR5ek1DVkphWWYwSEctWDlVNGhlT3R0clQxd0NRN2dheDdmU3c",
+        "chain": [
+          {
+            "label": "Delos Data AI 晶片銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 晶片需求↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix 晶片銷量↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "NVIDIA 的季度收益",
+        "layer": "公司",
+        "body": "NVIDIA 的季度收益達到 81.6B 美元，同比增長 92%。NVIDIA 的這一收益主要歸功於其在 AI 和圖形處理領域的強大表現。NVIDIA 預計將在未來幾個季度內繼續保持強勁的增長勢頭。",
+        "impact": "NVIDIA 的季度收益預計將對公司的市場份額和競爭力產生積極的影響。這一收益可能會拉升 NVIDIA 的股價。",
+        "rating": "core",
+        "insight": "NVIDIA 的季度收益預計將成為公司的一個重要里程碑",
+        "source_label": "tech-insider.org",
+        "source": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBmREpnVmp5NDExaURPOVpvSWJHVm5SeEJUN2s0eUhXUnZ2UE9fNmxkblRQNUt1V2pfdXFySUMzNG1WZVRKaURTeVBrVmFBZUxBWTd2Y0ZxYkJjaWhldnJjUnMzU1NQbjJ3ZVdYVEhveG96YW8",
+        "chain": [
+          {
+            "label": "NVIDIA 季度收益↑",
+            "type": "up"
+          },
+          {
+            "label": "NVIDIA 股價↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD 股價↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI 和 Physical AI 的發展",
+        "layer": "應用",
+        "body": "Agentic AI 和 Physical AI 是兩個快速發展的領域，預計將在未來幾年內對各個行業產生重大影響。Agentic AI 和 Physical AI 的應用預計將在 AI 和機器人領域中大幅增加。這兩個領域的發展預計將對各個行業的生產力和效率產生積極的影響。",
+        "impact": "Agentic AI 和 Physical AI 的發展預計將對各個行業的生產力和效率產生積極的影響。這兩個領域的應用可能會拉升 AI 和機器人的採購量，並對其他公司在 AI 和機器人領域的投資產生競爭壓力。",
+        "rating": "noise",
+        "insight": "Agentic AI 和 Physical AI 的發展預計將成為未來的一個重要趨勢",
+        "source_label": "",
+        "source": "",
+        "chain": [
+          {
+            "label": "Agentic AI 應用↑",
+            "type": "up"
+          },
+          {
+            "label": "Physical AI 研發↑",
+            "type": "up"
+          },
+          {
+            "label": "傳統產業效率↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "HBM",
+        "full": "High-Bandwidth Memory",
+        "def": "HBM 是一種高頻寬記憶體技術，主要用於圖形處理和 AI 計算。HBM 的頻寬比傳統記憶體技術高出許多，能夠提供更快的資料傳輸速度。",
+        "why": "HBM 對於圖形處理和 AI 計算的應用非常重要，因為它能夠提供更快的資料傳輸速度和更高的頻寬。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-12",
     "is_sunday": false,
     "hw": [
@@ -856,125 +972,5 @@
       }
     ],
     "weekly_summary": "本周，Intel 推出了一款新的資料中心 GPU，可能會填補 Nvidia 的空白。Microsoft、Meta 和 Google 對 AI 的投資達到 725 億美元，將會對各個公司的市場份額和客戶關係產生影響。Agentic AI 和 Physical AI 是近期的熱門話題，將會對各個公司的市場份額和客戶關係產生影響。下周，投資者應該關注這些發展。"
-  },
-  {
-    "date": "2026-06-06",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Nvidia和TSMC將AI帶入晶片製造",
-        "layer": "semiconductor",
-        "body": "Nvidia和TSMC合作將AI技術應用於晶片製造過程。TSMC的先進製造技術將與Nvidia的AI能力結合，提高晶片的生產效率。Computex 2026上，Nvidia和TSMC展示了他們的合作成果，包括AI驅動的晶片設計和製造流程。",
-        "impact": "TSMC的產能吃緊問題可能會得到緩解，因為Nvidia的AI技術可以幫助優化製造流程。下游客戶如Google和Amazon可能會受益於更高效的晶片生產，從而推動他們的AI應用發展。然而，其他晶片製造商如Intel和Samsung可能會面臨更大的競爭壓力，需要加速自己的AI技術研發以保持競爭力。",
-        "rating": "core",
-        "insight": "Nvidia和TSMC的合作可能會成為晶片製造業的一個重要趨勢，推動AI技術在製造流程中的應用。",
-        "source_label": "Electronics360",
-        "source": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNbWJxby13czRZWFM4aWJ3bFBZdTFGMW1fSGtvNFpvTmctREtpenZYcEl2dEFEdmdsb2pNT3VFVW5QaUQwNWM1T3Zvb2VjY0dpRjIzS09uMy1NbGtoUjF2RDhYdTBKdUtxbmgzTGNPLWNFWUZhQm10Sm4tMmlRUWNLVkFERHJVcTltM1JLNHl0R05sQmFjV0RIYkdnNDF1WldXcVFaVWdlbEhnN1V5WmJSR0hZbDg1ZElh",
-        "chain": [
-          {
-            "label": "Nvidia AI技術應用↑",
-            "type": "up"
-          },
-          {
-            "label": "TSMC 先進製造技術↑",
-            "type": "up"
-          },
-          {
-            "label": "晶片生產效率↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Intel的新資料中心GPU",
-        "layer": "semiconductor",
-        "body": "Intel推出了新資料中心GPU，該GPU的性能與Nvidia的Rubin CPX相似。Intel的GPU採用了先進的製造技術，提高了其性能和功耗效率。Computex 2026上，Intel展示了該GPU的能力，包括其在AI計算和圖形渲染方面的優勢。",
-        "impact": "Intel的新GPU可能會對Nvidia的市場份額產生影響，特別是在資料中心和AI計算領域。下游客戶如Google和Amazon可能會受益於更高性能和更低功耗的GPU，從而推動他們的AI應用發展。然而，Intel的GPU仍需要與Nvidia的產品競爭，需要在性能、功耗和價格方面進行優化。",
-        "rating": "opp",
-        "insight": "Intel的新GPU可能會成為Nvidia的一個重要競爭對手，推動GPU市場的發展和創新。",
-        "source_label": "The Register",
-        "source": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQVnY4cUpPeE5PbFltSlVDdC1CTGJwbm9UY2Zmb0N6NWlYUUJZOU9uZmkzb0lpekdUcTVEYWpuaG4tRFBjQ3dfRkNYaUxjLXV3ZFpidzFjbEFEeEloVmNBTzVUWXZ5by1iVnIzcFZ6VVkyMmxMdHJwUjI2d2JjVVRVMjVxb3Z2NkpRMGRTTVVWZElzTmZGUEJmM0FhZjRGZDZsaGpTbGNDYk5CVHNh",
-        "chain": [
-          {
-            "label": "Intel 資料中心GPU 性能↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia Rubin CPX 競爭力↓",
-            "type": "down"
-          },
-          {
-            "label": "Intel 先進製造技術↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Meta、Microsoft、Amazon和Alphabet的大規模AI投資",
-        "layer": "AI investment",
-        "body": "Meta、Microsoft、Amazon和Alphabet等公司將大規模投資AI領域，推動AI技術的發展和應用。這些公司將在AI研究和開發方面進行大量投資，包括聘請AI人才和建設AI實驗室。投資額預計將達到數十億美元，創下AI投資的新紀錄。",
-        "impact": "這些公司的AI投資可能會推動AI技術的快速發展，從而帶動相關產業的成長。下游客戶如企業和個人可能會受益於更先進的AI服務和產品，從而提高生產效率和生活質量。然而，AI投資的風險也可能會增加，包括AI人才的短缺和AI倫理問題的出現。",
-        "rating": "core",
-        "insight": "Meta、Microsoft、Amazon和Alphabet的大規模AI投資可能會成為AI領域的一個重要趨勢，推動AI技術的發展和應用。",
-        "source_label": "Yahoo Finance",
-        "source": "https://news.google.com/rss/articles/CBMigAJBVV95cUxOWVdpLTZhdk92a2NnZFA4ZDVHQTVjaWEtcFkzNmd0QnBSNjRMUmlVZi0zbnVaNVdocC0xSUNIbmVnRzNxZ0ZuNG1jOWZRYXh5ZE1VOHBuemRuaXF5NkpfYjJlcDM2OXBlU3pEVTA5eWw0aUlXTGxTODBkbWE0TUIzclhrQllFOEhrTEhqX3dKd0JOVVN0cUdvYmp5LWxpU3VaLTFpTDhGVEZOaE1GOU0wLXRhZDVkMHRrcWdCN05td2RCTzNYZHp0Q2NNY3VlZGNoYldlOU51N0NHVzVIWGx6NEFhNWRUM2FNemoxdHRWQjBHanRwSS1qVFdOUVZ0Z3F2",
-        "chain": [
-          {
-            "label": "Meta AI 研究投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft AI人才招聘↑",
-            "type": "up"
-          },
-          {
-            "label": "Amazon AI實驗室建設↑",
-            "type": "up"
-          },
-          {
-            "label": "Alphabet AI 領域競爭力↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Intel-Powered機器人在 Computex 2026 上展示",
-        "layer": "Physical AI",
-        "body": "Intel-Powered機器人在Computex 2026上展示了其在物理AI領域的能力，包括機器人臂和移動機器人的控制。Intel的AI技術使得機器人可以更好地感知和響應環境，從而提高其工作效率和安全性。展示的機器人包括了一個可以為人類製作咖啡的機器人，展示了AI技術在日常生活中的應用。",
-        "impact": "Intel-Powered機器人的展示可能會推動物理AI技術的發展和應用，從而帶動相關產業的成長。下游客戶如企業和個人可能會受益於更先進的機器人服務和產品，從而提高生產效率和生活質量。然而，機器人的安全性和可靠性仍需要進一步提高，從而滿足更廣泛的應用需求。",
-        "rating": "opp",
-        "insight": "Intel-Powered機器人的展示可能會成為物理AI領域的一個重要趨勢，推動AI技術在機器人領域的發展和應用。",
-        "source_label": "MySmartPrice",
-        "source": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNVVlxc3Y3QjhEVjAzMkFwbHRkOUh4dW1aZTNHdk1FMlBQN0FnYXpsNm5qT1AzeHcwYVlUMTdDeTctR2oyeGU5RXVDaW5oSlhoRFBXODd6ODh1ZEtkT2RNT1ZZdzhXR19aeWFNSS13SGF3NFZWQXdzTm5CazFkM3JTa19ZcjB1R2V6RWpuWTZsMW1SekJqUlAtaU1kcTF3YjVrWlY0V2pPejQ0VGJxYl9ub1FIWjFWUTBWbVVxVDF3NHVFSThRRUVVd2RxQ0IzUlMxdVdHeVFpQWhkeU1YNWk3UU1B",
-        "chain": [
-          {
-            "label": "Intel AI技術應用↑",
-            "type": "up"
-          },
-          {
-            "label": "機器人臂控制精度↑",
-            "type": "up"
-          },
-          {
-            "label": "移動機器人安全性↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Agentic AI",
-        "full": "代理AI",
-        "def": "Agentic AI是一種可以自主地感知和響應環境的AI技術，通常應用於機器人和自動駕駛領域。Agentic AI可以使得機器人和自動駕駛系統更好地感知和響應環境，從而提高其工作效率和安全性。",
-        "why": "Agentic AI的發展和應用可能會帶動相關產業的成長，從而提高生產效率和生活質量。然而，Agentic AI的安全性和可靠性仍需要進一步提高，從而滿足更廣泛的應用需求。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
   }
 ]
