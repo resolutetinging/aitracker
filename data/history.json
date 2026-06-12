@@ -5,11 +5,11 @@
     "hw": [
       {
         "title": "SK Hynix 購買 HBM 晶片",
-        "layer": "記憶體",
-        "body": "SK Hynix 購買 HBM 晶片以滿足 Nvidia 的需求。Nvidia 的 RTX Spark 產品需要大量的 HBM 晶片。SK Hynix 的 HBM 晶片生產能力將增加以滿足這個需求。",
-        "impact": "SK Hynix 的 HBM 晶片購買將直接拉升 Nvidia 的 GPU 採購量。這將對 Nvidia 的財務表現產生積極影響。SK Hynix 的 HBM 晶片生產能力增加也將對記憶體市場產生影響。",
+        "layer": "semiconductor",
+        "body": "SK Hynix 購買 HBM 晶片以滿足 Nvidia 的需求。Nvidia 的 RTX Spark Gaming 平台需要高性能的 HBM 晶片。SK Hynix 的 HBM 晶片生產能力將增加以滿足 Nvidia 的需求。",
+        "impact": "SK Hynix 的 HBM 晶片購買可能會增加 Nvidia 的採購量。Nvidia 的 RTX Spark Gaming 平台的需求可能會推動 HBM 晶片的銷售。SK Hynix 的 HBM 晶片生產能力的增加可能會滿足 Nvidia 的需求。",
         "rating": "noise",
-        "insight": "SK Hynix 的 HBM 晶片購買是 Nvidia 成功的關鍵因素",
+        "insight": "SK Hynix 的 HBM 晶片購買可能會增加 Nvidia 的採購量，推動 HBM 晶片的銷售。",
         "source_label": "Jon Peddie Research",
         "source": "https://news.google.com/rss/articles/CBMieEFVX3lxTE8tYXd5MmdxZjJVV0RMNUZycjNON0gtZk90VVlsN21rZjVDX3NzbkZ6NzRfUVJ6Q2tPc2RYU0cwWnNFMGVabUloNVBBQk5sSTAwMXNZUThNTG1Gbk1RdEFWTkFmOS1sQjdIQ3g0dzQ1T25YaHlHUl84Vw?oc=5",
         "chain": [
@@ -18,48 +18,48 @@
             "type": "up"
           },
           {
-            "label": "Nvidia RTX Spark 需求↑",
+            "label": "Nvidia RTX Spark Gaming 平台需求↑",
             "type": "up"
           },
           {
-            "label": "Nvidia 圖形處理技術需求↑",
+            "label": "SK Hynix 生產能力↑",
             "type": "up"
           }
         ]
       },
       {
-        "title": "Nvidia 的 RTX Spark 亮相 Computex 2026",
-        "layer": "圖形處理",
-        "body": "Nvidia 的 RTX Spark 產品在 Computex 2026 會議上亮相。RTX Spark 產品使用了 Nvidia 的最新圖形處理技術。這個產品的亮相將對圖形處理市場產生影響。",
-        "impact": "Nvidia 的 RTX Spark 產品將對圖形處理市場產生積極影響。",
+        "title": "Nvidia 獲得 81.6B 美元的季度收益",
+        "layer": "semiconductor",
+        "body": "Nvidia 獲得 81.6B 美元的季度收益，92% 的增長來自於資料中心的業務。Nvidia 的資料中心業務的增長主要來自於 AI 的需求。Nvidia 的 RTX Spark Gaming 平台的需求也推動了公司的收益。",
+        "impact": "Nvidia 的資料中心業務的增長可能會推動公司的收益。",
         "rating": "core",
-        "insight": "Nvidia 的 RTX Spark 產品是圖形處理市場的重要發展",
-        "source_label": "TechPowerUp",
-        "source": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQMDlsbk1IM2dUU0JlbDRRUi14R1hFV0RrelQxOFFNamdOSnVmYWV6WGhwemp2TWsxT0xyTXk4V2FYdkdrVm5iYUlMVnlFRHhwSzVIcTFiT25PU1ZoTng5OENLemVMUWlnYmlsalBLVnhQY1dPbnhsakN2TFBkWW83aDJZYWxjZWgwQWFpc1BkMVlJbmZXQklPS3N2WW53MzhfU0pCSGhnNFJMUdIBqgFBVV95cUxQMDlsbk1IM2dUU0JlbDRRUi14R1hFV0RrelQxOFFNamdOSnVmYWV6WGhwemp2TWsxT0xyTXk4V2FYdkdrVm5iYUlMVnlFRHhwSzVIcTFiT25PU1ZoTng5OENLemVMUWlnYmlsalBLVnhQY1dPbnhsakN2TFBkWW83aDJZYWxjZWgwQWFpc1BkMVlJbmZXQklPS3N2WW53MzhfU0pCSGhnNFJMUQ?oc=5",
+        "insight": "Nvidia 的季度收益可能會增加公司的投資於 AI 和資料中心的業務，推動公司的收益。",
+        "source_label": "tech-insider.org",
+        "source": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBmREpnVmp5NDExaURPOVpvSWJHVm5SeEJUN2s0eUhXUnZ2UE9fNmxkblRQNUt1V2pfdXFySUMzNG1WZVRKaURTeVBrVmFBZUxBWTd2Y0ZxYkJjaWhldnJjUnMzU1NQbjJ3ZVdYVEhveG96YW8?oc=5",
         "chain": [
           {
-            "label": "Nvidia RTX Spark 產品銷售↑",
+            "label": "Nvidia 資料中心業務收益↑",
             "type": "up"
           },
           {
-            "label": "Nvidia 圖形處理技術需求↑",
+            "label": "Nvidia RTX Spark Gaming 平台需求↑",
             "type": "up"
           },
           {
-            "label": "AMD 市占↓",
-            "type": "down"
+            "label": "Nvidia 季度收益↑",
+            "type": "up"
           }
         ]
       }
     ],
     "corp": [
       {
-        "title": "Wall Street 的 8000 億美元 AI 資料中心投資",
-        "layer": "資料中心",
-        "body": "Wall Street 將投資 8000 億美元於 AI 資料中心。這個投資將對資料中心市場產生影響。AI 資料中心的需求將增加。",
-        "impact": "Wall Street 的投資將對資料中心市場產生積極影響。",
-        "rating": "core",
-        "insight": "Wall Street 的投資是 AI 資料中心市場的重要發展",
+        "title": "Wall Street 的 800 億美元 AI 資料中心投資",
+        "layer": "CSP",
+        "body": "Wall Street 的 800 億美元 AI 資料中心投資可能會推動資料中心的建設。資料中心的建設可能會增加對於 AI 硬體的需求。AI 硬體的需求可能會推動 Nvidia 和其他公司的收益。",
+        "impact": "Wall Street 的 AI 資料中心投資可能會增加對於 AI 硬體的需求，推動 Nvidia 和其他公司的收益。",
+        "rating": "opp",
+        "insight": "Wall Street 的 AI 資料中心投資可能會增加對於 AI 硬體的需求，推動 Nvidia 和其他公司的收益。",
         "source_label": "24/7 Wall St.",
         "source": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNMFVjbE9yNERTNUwzeVlOaXRBZjl4YmFLRkVGdDVwX2RUUHVPb0Utc08yX0VLek1YdDh3alBvb1FMUUduM1ZuTF9uWHE0WHJVTHRTWVRrSVFHVE5ZeUdITnY3WmVraWw0Y0Y2cjctcElibjlOQnJxQ2FRS2o5cUdrODlNUmNjV3htY1IzeU8zZW1XWU43UjNHNF9zRUpRc243LXU3NUQwdW9RcndQTVVrdFZEUTROZlBQc3dhOW5neFVpSzJyQzBISFItV1RRaGpPUVJJNEhmQWhXOV9Na09ZMm94VEVMOUU?oc=5",
         "chain": [
@@ -68,12 +68,12 @@
             "type": "up"
           },
           {
-            "label": "Google Cloud AI 資料中心需求↑",
+            "label": "資料中心建設需求↑",
             "type": "up"
           },
           {
-            "label": "Azure GPU 交期↓",
-            "type": "down"
+            "label": "Nvidia AI 硬體需求↑",
+            "type": "up"
           }
         ]
       }
@@ -81,11 +81,11 @@
     "app": [
       {
         "title": "台灣供應商的物理 AI 平台",
-        "layer": "AI 應用",
-        "body": "台灣供應商正在開發物理 AI 平台。這個平台將對 AI 應用市場產生影響。物理 AI 平台的需求將增加。",
-        "impact": "台灣供應商的物理 AI 平台將對 AI 應用市場產生積極影響。這個平台也將對 AI 技術的發展產生影響。",
+        "layer": "Agentic AI",
+        "body": "台灣供應商的物理 AI 平台可能會推動 AI 的發展。AI 的發展可能會增加對於物理 AI 平台的需求。物理 AI 平台的需求可能會推動台灣供應商的收益。",
+        "impact": "台灣供應商的物理 AI 平台可能會增加對於 AI 的需求，推動公司的投資於 AI 和物理 AI 平台的業務。物理 AI 平台的需求可能會推動台灣供應商的收益，增加公司的採購量。",
         "rating": "noise",
-        "insight": "台灣供應商的物理 AI 平台是 AI 應用市場的重要發展",
+        "insight": "台灣供應商的物理 AI 平台可能會增加對於 AI 的需求，推動公司的投資於 AI 和物理 AI 平台的業務。",
         "source_label": "digitimes",
         "source": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQLTczckgxWkY1dFB4eExob19zdDdIaGR1VGdVRmRMN0NGWl9QY3FVRnhXYWg5M2E0VHBUbERIYkxuN2NGU0JpRHBEMjM2RUZxWE8tMFB4N3M5S2ZPSjhscEVBUlhVZ3ltV2diMnRMcER0bXBTYXVYbTh4RVViYWNvX3loS1NoN2xrbjBkaGl2LXhSdzNrcVE?oc=5",
         "chain": [
@@ -94,11 +94,11 @@
             "type": "up"
           },
           {
-            "label": "TSMC CoWoS 產能↑",
+            "label": "AI 平台需求↑",
             "type": "up"
           },
           {
-            "label": "SK Hynix ASP↑",
+            "label": "台灣供應商收益↑",
             "type": "up"
           }
         ]
@@ -108,8 +108,8 @@
       {
         "term": "HBM",
         "full": "High-Bandwidth Memory",
-        "def": "HBM 是一種高頻寬記憶體技術，用于提高圖形處理和 AI 計算的效能。",
-        "why": "HBM 技術對圖形處理和 AI 計算的發展非常重要",
+        "def": "HBM 是一種高頻寬記憶體技術，用于提高記憶體的頻寬和效率。",
+        "why": "HBM 技術可以提高記憶體的頻寬和效率，從而提高系統的整體性能。",
         "category": "semiconductor"
       }
     ],
