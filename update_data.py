@@ -4,7 +4,7 @@ AI Tracker 每日自動更新腳本 v3
 新聞來源：RSS feeds（主）+ DuckDuckGo（副）
 """
 
-import json, os, smtplib, urllib.request, xml.etree.ElementTree as ET, time, re
+import json, os, smtplib, urllib.request, urllib.error, xml.etree.ElementTree as ET, time, re
 from datetime import datetime, timezone, timedelta
 from email.utils import parsedate_to_datetime
 from groq import Groq
@@ -81,7 +81,7 @@ def parse_rss_date(item, ns):
     return None
 
 def fetch_rss():
-    cutoff = datetime.now(timezone.utc) - timedelta(hours=48)
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=30)
     snippets = []
     for label, url in RSS_FEEDS:
         try:
@@ -154,7 +154,27 @@ def fetch_ddg():
                     print(f"  DDG '{label}' failed after 3 attempts: {e}")
     return snippets
 
-def fetch_news():
+def filter_recent(snippets, recent_titles):
+    """過濾與近日已報道標題高度重疊的新聞摘要（code-level 去重，不依賴 LLM 指令）"""
+    if not recent_titles:
+        return snippets
+    recent_norm = [set(re.sub(r'[^\w]', ' ', rt).lower().split()) for rt in recent_titles]
+    filtered, dropped = [], 0
+    for s in snippets:
+        dash = s.find(' — ')
+        bracket = s.find(']')
+        title_part = s[bracket+1:dash if dash > 0 else bracket+80].strip()
+        words = set(w for w in re.sub(r'[^\w]', ' ', title_part).lower().split() if len(w) > 2)
+        is_dup = any(len(words & rn) >= 3 for rn in recent_norm)
+        if is_dup:
+            dropped += 1
+        else:
+            filtered.append(s)
+    if dropped:
+        print(f"  → 預過濾舊新聞 {dropped} 條（與近日標題重疊）")
+    return filtered
+
+def fetch_news(recent_titles=None):
     print("  → RSS feeds...")
     rss = fetch_rss()
     print(f"  → RSS 取得 {len(rss)} 條")
@@ -170,6 +190,10 @@ def fetch_news():
             seen.add(key)
             unique.append(s)
     print(f"  → 去重後 {len(unique)} 條")
+    # code-level 預過濾：移除與近三日標題重疊度高的新聞
+    if recent_titles:
+        unique = filter_recent(unique, recent_titles)
+        print(f"  → 預過濾後剩 {len(unique)} 條")
     # 限制總字數在 8000 字元以內，避免超過 Groq TPM 限制
     joined = "\n\n".join(unique)
     if len(joined) > 8000:
@@ -178,12 +202,20 @@ def fetch_news():
     return joined
 
 
-def get_recent_titles(history, days=3, max_titles=20):
-    """取得近 N 天已報道過的新聞標題，用於跨日去重（最多 max_titles 條）"""
+def get_recent_titles(history, days=3, max_titles=30):
+    """取得近 N 天 core/opp 標題用於跨日去重；排除今日自身與 noise 條目"""
     titles = []
-    for entry in history[:days]:
+    count = 0
+    for entry in history:
+        if entry.get('date') == DATE_STR:
+            continue  # 跳過今日自身，避免二次執行自我封鎖
+        if count >= days:
+            break
+        count += 1
         for section in ['hw', 'corp', 'app']:
             for item in entry.get(section, []):
+                if item.get('rating') == 'noise':
+                    continue  # noise 不列入 NO-REPEAT，否則佔位無效
                 t = item.get('title', '').strip()
                 if t:
                     titles.append(t)
@@ -205,9 +237,11 @@ def make_prompt(news_context, recent_titles=None):
     notes_text = "; ".join(f"{d}:{n}" for d, n in sorted(notes.items()) if n.strip()) if notes else ""
 
     recent_str = (
-        "【前三日已報道，嚴禁重複】以下主題若今日無明確新進展（新數字/新事件/新公司動作），"
-        "請直接評為 noise，不得生成相似內容，不得以改寫或重述替代：\n"
+        "【前三日已報道，嚴禁任何形式重複】以下是近三天已出現的 core/opp 標題。"
+        "只要是同一家公司、同一產品、同一事件的報道（不論標題措辭是否不同），"
+        "今日若無全新數字/新宣告/新公司動作，必須評為 noise，不得以任何方式重述或補充細節：\n"
         + "\n".join(f"・{t}" for t in recent_titles)
+        + "\n以上清單中的故事今日若重複出現即為錯誤，請直接略過不生成。"
     ) if recent_titles else ""
     notes_context = ('【本週筆記參考（勿逐字複製，請融入分析寫成洞察）】' + notes_text) if notes_text else ''
     notes_line = '\\n【筆記整合】根據本週筆記寫出一句核心洞察（不得原文照抄）' if notes_text else ''
@@ -220,8 +254,8 @@ def make_prompt(news_context, recent_titles=None):
         if IS_SUNDAY else 'null'
     )
 
-    # 新聞截斷至 4500 字元（原 2000 太短，容易只剩舊文章）
-    news_short = news_context[:4500]
+    # 新聞截斷至 5500 字元（給 LLM 更多新鮮素材）
+    news_short = news_context[:5500]
 
     return f"""AI產業供應鏈分析師。根據新聞輸出純JSON（直接從{{開始）。
 
@@ -256,17 +290,19 @@ def call_groq(prompt):
             {"role":"system","content":(
                 "你是 AI 產業供應鏈分析師，專注半導體供應鏈（HBM/CoWoS/OSAT）、CSP 資本支出、Agentic/Physical AI 落地。"
                 "只輸出純 JSON，不加任何說明或 markdown 格式。"
-                "hw 分類僅限半導體/封裝/記憶體供應鏈，應用層或軟體新聞絕對不能放入 hw。"
+                "【hw 分類鐵律】hw 絕對僅限：半導體製造、封裝（CoWoS/OSAT/chiplet）、記憶體（HBM/DDR）、晶圓廠（TSMC/三星/英特爾晶圓代工）、GPU/ASIC 供應鏈。"
+                "隱私/資安/軟體/一般科技/社群媒體新聞嚴禁放入 hw，違者即為錯誤輸出。"
+                "【noise 鐵律】某分區若已有任何 core 或 opp 條目，該分區嚴禁再加 noise 條目。"
+                "noise 條目的 title 必須是『本日無相關[分區名稱]新聞』，不得使用任何具體新聞標題。"
                 "每個條目的具體數字必須來自該條目本身的新聞，嚴禁跨條目複製數字或細節。"
-                "若某維度今日無相關新聞，回傳 1 條 noise 評級的條目，不要憑空生成內容。"
                 "每條 body 必須包含至少 3 句，每句需含具體數字、時間點或技術細節；資訊不足請評為 noise，不要用空話填充。"
-                "user 訊息中標示【前三日已報道，嚴禁重複】的主題，若今日新聞中沒有該主題的明確新進展，絕對不可生成該主題的條目，直接評為 noise 或略過。"
+                "【NO-REPEAT 鐵律】user 訊息中【前三日已報道】清單的任何標題涉及的公司/產品/事件，若今日新聞中沒有全新數字或新宣告，直接跳過，不得生成任何條目。"
                 "全程繁體中文：晶片（非芯片）、記憶體（非内存）、處理器（非处理器）。"
             )},
             {"role":"user","content":prompt}
         ],
-        temperature=0.45,
-        max_tokens=2500,
+        temperature=0.3,
+        max_tokens=4000,
     )
     raw = response.choices[0].message.content.strip()
     if raw.startswith('```'):
@@ -277,16 +313,22 @@ def call_groq(prompt):
 #  4. URL VALIDATION
 # ══════════════════════════════════════════════════════════════════
 def check_url(url, timeout=6):
-    """HEAD request 驗證 URL 是否存在，回傳 True/False"""
+    """HEAD request 驗證 URL，403/405 自動改用 GET（避免 The Register 等媒體誤判失效）"""
     if not url or not url.startswith('http'):
         return False
-    try:
-        req = urllib.request.Request(url, method='HEAD',
-                                     headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req, timeout=timeout) as r:
-            return r.status < 400
-    except Exception:
-        return False
+    for method in ('HEAD', 'GET'):
+        try:
+            req = urllib.request.Request(url, method=method,
+                                         headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.status < 400
+        except urllib.error.HTTPError as e:
+            if method == 'HEAD' and e.code in (403, 405):
+                continue
+            return False
+        except Exception:
+            return False
+    return False
 
 def validate_sources(data):
     """驗證所有 NewsItem 的 source URL；失效者清空 source/source_label"""
@@ -301,6 +343,71 @@ def validate_sources(data):
                 print(f"  ✗ 無效 URL，已清空：{url[:60]}")
                 item['source'] = ''
                 item['source_label'] = '—'
+
+# ══════════════════════════════════════════════════════════════════
+#  4b. QUALITY PIPELINE
+# ══════════════════════════════════════════════════════════════════
+def fix_chains(data):
+    """確保每條 chain 有合法的 label 與 type 欄位"""
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            chain = item.get('chain')
+            if not isinstance(chain, list):
+                item['chain'] = []
+            else:
+                item['chain'] = [c for c in chain if isinstance(c, dict) and c.get('label')]
+
+def downgrade_unsourced(data):
+    """無來源 URL 的 core/opp 條目降評為 noise（LLM 常幻覺 URL，這道閘強制把守）"""
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            if item.get('rating') in ('core', 'opp') and not item.get('source'):
+                print(f"  ↓ 無來源降評→noise：{item.get('title','')[:50]}")
+                item['rating'] = 'noise'
+
+def _char_overlap(a, b):
+    sa, sb = set(a.lower()), set(b.lower())
+    if not sa or not sb:
+        return 0
+    return len(sa & sb) / min(len(sa), len(sb))
+
+def _cjk_bigrams(text):
+    cjk = re.sub(r'[^一-鿿]', '', text)
+    return set(cjk[i:i+2] for i in range(len(cjk) - 1))
+
+def downgrade_low_quality(data):
+    """重複句 / 無數字 / 空洞 body → noise（三道閘）"""
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            if item.get('rating') == 'noise':
+                continue
+            body = item.get('body', '')
+            # 無數字直接降評
+            if not re.search(r'\d', body):
+                print(f"  ↓ 無數字降評→noise：{item.get('title','')[:50]}")
+                item['rating'] = 'noise'
+                continue
+            sents = [s.strip() for s in re.split(r'[。！？]', body) if len(s.strip()) > 5]
+            dup = False
+            for i in range(len(sents)):
+                for j in range(i + 1, len(sents)):
+                    # Gate 1: 字元集重疊 > 65%
+                    if _char_overlap(sents[i], sents[j]) > 0.65:
+                        dup = True; break
+                    # Gate 2: CJK bigram 重疊 > 45%
+                    bi, bj = _cjk_bigrams(sents[i]), _cjk_bigrams(sents[j])
+                    if bi and bj and len(bi & bj) / min(len(bi), len(bj)) > 0.45:
+                        dup = True; break
+                    # Gate 3: CJK 前 5 字共用前綴
+                    pi = re.sub(r'[^一-鿿]', '', sents[i])[:5]
+                    pj = re.sub(r'[^一-鿿]', '', sents[j])[:5]
+                    if len(pi) >= 3 and pi == pj:
+                        dup = True; break
+                if dup:
+                    break
+            if dup:
+                print(f"  ↓ 重複句降評→noise：{item.get('title','')[:50]}")
+                item['rating'] = 'noise'
 
 # ══════════════════════════════════════════════════════════════════
 #  5. HISTORY
@@ -507,29 +614,53 @@ def push_notion(data):
 #  MAIN
 # ══════════════════════════════════════════════════════════════════
 if __name__ == '__main__':
+    import sys
+    force = '--force' in sys.argv
+    pigeon_only = '--pigeon-only' in sys.argv
+
     print(f"🚀 開始更新 AI Tracker（{DATE_STR}）...")
-    print("📰 抓取新聞...")
-    news = fetch_news()
-    total = len(news.splitlines())
-    print(f"  → 合計 {total} 行新聞摘要")
 
     history = load_history()
     recent_titles = get_recent_titles(history, days=3)
-    print(f"  → 近三日已報道標題 {len(recent_titles)} 條（用於去重）")
+    print(f"  → 近三日 core/opp 標題 {len(recent_titles)} 條（NO-REPEAT 用）")
+
+    # 冪等保護：今日已有 ≥2 CORE 且非強制重跑
+    today_entry = next((e for e in history if e.get('date') == DATE_STR), None)
+    if today_entry and not force:
+        core_n = sum(1 for s in ['hw','corp','app'] for i in today_entry.get(s,[]) if i.get('rating')=='core')
+        if core_n >= 2:
+            print(f"  → 今日已有 {core_n} 條 CORE，跳過重新生成（加 --force 可強制）")
+            print("📧 發送 Email...")
+            send_email(today_entry)
+            print("✅ 完成（沿用今日現有資料）")
+            sys.exit(0)
+
+    print("📰 抓取新聞（含近日預過濾）...")
+    news = fetch_news(recent_titles)
+    total = len(news.splitlines())
+    print(f"  → 合計 {total} 行新聞摘要")
 
     print("🤖 呼叫 Groq API...")
     data = call_groq(make_prompt(news, recent_titles))
     print(f"  → 硬體 {len(data.get('hw',[]))} / 巨頭 {len(data.get('corp',[]))} / 應用 {len(data.get('app',[]))} 則")
 
+    print("🔧 修復供應鏈欄位...")
+    fix_chains(data)
+
     print("🔗 驗證 source URL...")
     validate_sources(data)
+
+    print("📉 品質管線（降評低品質條目）...")
+    downgrade_unsourced(data)
+    downgrade_low_quality(data)
 
     history = upsert(history, data)
     save_history(history)
     print(f"  → data/history.json 已更新（共 {len(history)} 天）")
 
-    print("📧 發送 Email...")
-    send_email(data)
+    if not pigeon_only:
+        print("📧 發送 Email...")
+        send_email(data)
     print("📝 推送 Notion...")
     push_notion(data)
     print("✅ 完成！")
