@@ -4,113 +4,151 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "NVIDIA 的 RTX Spark Gaming Hands-On",
-        "layer": "晶片",
-        "body": "NVIDIA 在 Computex 2026 會議上展示了 RTX Spark Gaming Hands-On。RTX Spark 是一款新的晶片，具有強大的圖形處理能力。NVIDIA 的這一新產品預計將在未來幾個月內推出市場。",
-        "impact": "NVIDIA 的 RTX Spark 預計將對圖形處理市場產生重大影響，尤其是在遊戲領域。這款新晶片的推出可能會拉升 NVIDIA 的市場份額。",
+        "title": "SK Hynix 將提升記憶體生產量",
+        "layer": "記憶體",
+        "body": "SK Hynix 預計在 2034 年前提升記憶體生產量三倍。SK 集團董事長表示，公司正在盡快推進生產量提升計畫。SK Hynix 的生產量提升將對全球記憶體市場產生重大影響。",
+        "impact": "SK Hynix 的生產量提升計畫可能會推動公司的營收增長。",
         "rating": "core",
-        "insight": "NVIDIA 的 RTX Spark 預計將成為圖形處理市場的一個重要玩家",
-        "source_label": "TechPowerUp",
-        "source": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQMDlsbk1IM2dUU0JlbDRRUi14R1hFV0RrelQxOFFNamdOSnVmYWV6WGhwemp2TWsxT0xyTXk4V2FYdkdrVm5iYUlMVnlFRHhwSzVIcTFiT25PU1ZoTng5OENLemVMUWlnYmlsalBLVnhQY1dPbnhsakN2TFBkWW83aDJZYWxjZWgwQWFpc1BkMVlJbmZXQklPS3N2WW53MzhfU0pCSGhnNFJMUdIBqgFBVV95cUxQMDlsbk1IM2dUU0JlbDRRUi14R1hFV0RrelQxOFFNamdOSnVmYWV6WGhwemp2TWsxT0xyTXk4V2FYdkdrVm5iYUlMVnlFRHhwSzVIcTFiT25PU1ZoTng5OENLemVMUWlnYmlsalBLVnhQY1dPbnhsakN2TFBkWW83aDJZYWxjZWgwQWFpc1BkMVlJbmZXQklPS3N2WW53MzhfU0pCSGhnNFJMUQ",
-        "chain": [
-          {
-            "label": "NVIDIA RTX Spark 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "NVIDIA 市占↑",
-            "type": "up"
-          },
-          {
-            "label": "AMD 市占↓",
-            "type": "down"
-          }
-        ]
+        "insight": "SK Hynix 的生產量提升計畫可能會對全球記憶體市場產生重大影響，投資者應關注公司的營收增長。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/06/12/sk-hynix-to-triple-wafer-capacity-by-2034/5255151"
       },
       {
-        "title": "Delos Data 的 AI 晶片",
+        "title": "Nvidia 在 Computex 2026 上展示 RTX Spark Gaming",
         "layer": "晶片",
-        "body": "Delos Data 提供了 AI 晶片給初創公司，讓他們能夠快速地將產品推向市場。Delos Data 的這一服務預計將對 AI 晶片市場產生重大影響。AI 晶片的需求預計將在未來幾年內大幅增加。",
-        "impact": "Delos Data 的服務預計將對 AI 晶片市場產生積極的影響，尤其是在初創公司中。這一服務可能會拉升 AI 晶片的採購量，並對其他 AI 晶片製造商產生競爭壓力。",
+        "body": "Nvidia 在 Computex 2026 上展示了 RTX Spark Gaming 的功能。RTX Spark Gaming 是一種新的遊戲技術，能夠提供更好的遊戲體驗。Nvidia 的展示吸引了許多遊戲玩家的關注。",
+        "impact": "Nvidia 的展示可能會增加公司的品牌知名度。",
+        "rating": "opp",
+        "insight": "Nvidia 的 RTX Spark Gaming 技術可能會對遊戲業界產生重大影響，投資者應關注公司的遊戲相關業務增長。",
+        "source_label": "TechPowerUp",
+        "source": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPM0MxYzdGQi02TEd0WjlXR1Vfbnl4bnhYRTF3MlZCRnQ3LTlSNUhWZmJWVnpZcjN3dkxYSTJxMVVVNW5uVnZ0eXd3T0JOVFh1LUY1YzVjd1hKeGYyVE5Jc1VhcExMQ2lQdWotamlfazNlOFl6b1lCTWJMM0xOSG9IbURTV1pDZmpXTTFKbElUSHRoYVpMRmNORm5YazFlekZ5cUJ0OdIBqgFBVV95cUxQMDlsbk1IM2dUU0JlbDRRUi14R1hFV0RrelQxOFFNamdOSnVmYWV6WGhwemp2TWsxT0xyTXk4V2FYdkdrVm5iYUlMVnlFRHhwSzVIcTFiT25PU1ZoTng5OENLemVMUWlnYmlsalBLVnhQY1dPbnhsakN2TFBkWW83aDJZYWxjZWgwQWFpc1BkMVlJbmZXQklPS3N2WW53MzhfU0pCSGhnNFJMUQ"
+      },
+      {
+        "title": "Delos Data 為 AI 晶片創業公司提供快速通道",
+        "layer": "晶片",
+        "body": "Delos Data 為 AI 晶片創業公司提供了一種快速通道，能夠快速將晶片設計轉化為實際產品。Delos Data 的技術能夠幫助創業公司節省時間和成本。Delos Data 的快速通道可能會推動 AI 晶片創業公司的發展。",
+        "impact": "Delos Data 的快速通道可能會對 AI 晶片創業公司產生重大影響。這也可能會推動公司的業務增長。Delos Data 的快速通道可能會增加公司的品牌知名度。",
         "rating": "noise",
-        "insight": "Delos Data 的服務預計將成為 AI 晶片市場的一個重要玩家",
+        "insight": "Delos Data 的快速通道可能會對 AI 晶片創業公司產生重大影響，投資者應關注公司的業務增長。",
         "source_label": "The Register",
-        "source": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQdGtqOGpWMm5YU3UtRXNXRmJPakJXNG41OE5DT2JRcGNza2lFM2s1Ml9wclVqMkREdUtyQ21rVlNwWHA4SFowT1ZjOU5XTGhocjlZWGJKeEg5RDktbkVXVkJ6cjBBaGw5eW4wMkNtenJrU2E2WXVLM2d4eXdoSHpRejY4V0VYZlo4bVgwa1pMZV8wUHR5ek1DVkphWWYwSEctWDlVNGhlT3R0clQxd0NRN2dheDdmU3c",
-        "chain": [
-          {
-            "label": "Delos Data AI 晶片銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 晶片需求↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix 晶片銷量↓",
-            "type": "down"
-          }
-        ]
+        "source": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQdGtqOGpWMm5YU3UtRXNXRmJPakJXNG41OE5DT2JRcGNza2lFM2s1Ml9wclVqMkREdUtyQ21rVlNwWHA4SFowT1ZjOU5XTGhocjlZWGJKeEg5RDktbkVXVkJ6cjBBaGw5eW4wMkNtenJrU2E2WXVLM2d4eXdoSHpRejY4V0VYZlo4bVgwa1pMZV8wUHR5ek1DVkphWWYwSEctWDlVNGhlT3R0clQxd0NRN2dheDdmU3c"
+      },
+      {
+        "title": "Nvidia 獲得 81.6B 美元的季度收益",
+        "layer": "晶片",
+        "body": "Nvidia 獲得 81.6B 美元的季度收益，同比增長 92%。Nvidia 的收益主要來自於其晶片業務。Nvidia 的季度收益可能會推動公司的股票價格上漲。",
+        "impact": "Nvidia 的季度收益可能會對公司的股票價格產生影響。這也可能會推動公司的業務增長。Nvidia 的季度收益可能會增加公司的品牌知名度。",
+        "rating": "noise",
+        "insight": "Nvidia 的季度收益可能會對公司的股票價格產生影響，但這不是一個重要的投資訊息。",
+        "source_label": "tech-insider.org",
+        "source": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBmREpnVmp5NDExaURPOVpvSWJHVm5SeEJUN2s0eUhXUnZ2UE9fNmxkblRQNUt1V2pfdXFySUMzNG1WZVRKaURTeVBrVmFBZUxBWTd2Y0ZxYkJjaWhldnJjUnMzU1NQbjJ3ZVdYVEhveG96YW8"
       }
     ],
     "corp": [
       {
-        "title": "NVIDIA 的季度收益",
-        "layer": "公司",
-        "body": "NVIDIA 的季度收益達到 81.6B 美元，同比增長 92%。NVIDIA 的這一收益主要歸功於其在 AI 和圖形處理領域的強大表現。NVIDIA 預計將在未來幾個季度內繼續保持強勁的增長勢頭。",
-        "impact": "NVIDIA 的季度收益預計將對公司的市場份額和競爭力產生積極的影響。這一收益可能會拉升 NVIDIA 的股價。",
-        "rating": "core",
-        "insight": "NVIDIA 的季度收益預計將成為公司的一個重要里程碑",
-        "source_label": "tech-insider.org",
-        "source": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBmREpnVmp5NDExaURPOVpvSWJHVm5SeEJUN2s0eUhXUnZ2UE9fNmxkblRQNUt1V2pfdXFySUMzNG1WZVRKaURTeVBrVmFBZUxBWTd2Y0ZxYkJjaWhldnJjUnMzU1NQbjJ3ZVdYVEhveG96YW8",
-        "chain": [
-          {
-            "label": "NVIDIA 季度收益↑",
-            "type": "up"
-          },
-          {
-            "label": "NVIDIA 股價↑",
-            "type": "up"
-          },
-          {
-            "label": "AMD 股價↓",
-            "type": "down"
-          }
-        ]
+        "title": "Meta 增加 AI 投資",
+        "layer": "AI",
+        "body": "Meta 增加了 AI 投資，同比增長 31%。Meta 的 AI 投資主要用於其 AI 研發業務。Meta 的 AI 投資可能會推動公司的業務增長。",
+        "impact": "Meta 的 AI 投資可能會對公司的業務增長產生影響。這也可能會推動公司的股票價格上漲。Meta 的 AI 投資可能會增加公司的品牌知名度。",
+        "rating": "noise",
+        "insight": "Meta 的 AI 投資可能會對公司的業務增長產生影響，投資者應關注公司的 AI 研發業務。",
+        "source_label": "abhs.in",
+        "source": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQOXJDV2ZxVWJDeEo2RDJMSHg4S1o0dDJ4SmhOSXY0VDZNMlpkd0dOQ0VCZ1BtZkIwY2lpWlNNcl9rZjNVLUltYTNGQ0s0d1Zmbi11YUtETG1yeEE3UDRoS3AtOFRMamNLbGQ1VDh4Tm9Sc3AtYk93V0wtcHVWMGxnU2d4dHBVVkVrLTVPazd3RnB3alkzZ1dQNHZfVGM0RElu"
+      },
+      {
+        "title": "Microsoft 的 GitHub 出現宕機",
+        "layer": "AI",
+        "body": "Microsoft 的 GitHub 出現宕機，原因是 AI 編碼流量激增。GitHub 的宕機可能會對開發者產生影響。Microsoft 的 GitHub 宕機可能會推動公司的 AI 研發業務。",
+        "impact": "Microsoft 的 GitHub 宕機可能會對開發者產生影響。這也可能會推動公司的 AI 研發業務。Microsoft 的 GitHub 宕機可能會增加公司的品牌知名度。",
+        "rating": "noise",
+        "insight": "Microsoft 的 GitHub 宕機可能會對開發者產生影響，投資者應關注公司的 AI 研發業務。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/software/2026/06/12/github-outages-persist-as-ai-coding-drives-traffic-surge/5255125"
+      },
+      {
+        "title": "KPMG 的 AI 報告出現錯誤",
+        "layer": "AI",
+        "body": "KPMG 的 AI 報告出現錯誤，原因是 AI 的幻覺。KPMG 的 AI 報告可能會對公司的品牌知名度產生影響。KPMG 的 AI 報告錯誤可能會推動公司的 AI 研發業務。",
+        "impact": "KPMG 的 AI 報告錯誤可能會對公司的品牌知名度產生影響。這也可能會推動公司的 AI 研發業務。KPMG 的 AI 報告錯誤可能會增加公司的品牌知名度。",
+        "rating": "noise",
+        "insight": "KPMG 的 AI 報告錯誤可能會對公司的品牌知名度產生影響，但這不是一個重要的投資訊息。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/06/12/kpmgs-ai-report-turns-into-a-demo-of-ai-hallucinations/5255029"
+      },
+      {
+        "title": "Amazon 的 AI 投資",
+        "layer": "AI",
+        "body": "Amazon 的 AI 投資主要用於其 AI 研發業務。Amazon 的 AI 投資可能會推動公司的業務增長。Amazon 的 AI 投資可能會增加公司的品牌知名度。",
+        "impact": "Amazon 的 AI 投資可能會對公司的業務增長產生影響。這也可能會推動公司的股票價格上漲。Amazon 的 AI 投資可能會增加公司的品牌知名度。",
+        "rating": "noise",
+        "insight": "Amazon 的 AI 投資可能會對公司的業務增長產生影響，但這不是一個重要的投資訊息。",
+        "source_label": "",
+        "source": ""
       }
     ],
     "app": [
       {
-        "title": "Agentic AI 和 Physical AI 的發展",
-        "layer": "應用",
-        "body": "Agentic AI 和 Physical AI 是兩個快速發展的領域，預計將在未來幾年內對各個行業產生重大影響。Agentic AI 和 Physical AI 的應用預計將在 AI 和機器人領域中大幅增加。這兩個領域的發展預計將對各個行業的生產力和效率產生積極的影響。",
-        "impact": "Agentic AI 和 Physical AI 的發展預計將對各個行業的生產力和效率產生積極的影響。這兩個領域的應用可能會拉升 AI 和機器人的採購量，並對其他公司在 AI 和機器人領域的投資產生競爭壓力。",
+        "title": "Nvidia 的 RTX Spark Gaming",
+        "layer": "遊戲",
+        "body": "Nvidia 的 RTX Spark Gaming 是一種新的遊戲技術，能夠提供更好的遊戲體驗。Nvidia 的 RTX Spark Gaming 可以支持多種遊戲平台。Nvidia 的 RTX Spark Gaming 可能會推動公司的遊戲相關業務增長。",
+        "impact": "Nvidia 的 RTX Spark Gaming 可能會對遊戲業界產生重大影響。這也可能會推動公司的遊戲相關業務增長。Nvidia 的 RTX Spark Gaming 可能會增加公司的品牌知名度。",
         "rating": "noise",
-        "insight": "Agentic AI 和 Physical AI 的發展預計將成為未來的一個重要趨勢",
+        "insight": "Nvidia 的 RTX Spark Gaming 可能會對遊戲業界產生重大影響，投資者應關注公司的遊戲相關業務增長。",
+        "source_label": "TechPowerUp",
+        "source": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPM0MxYzdGQi02TEd0WjlXR1Vfbnl4bnhYRTF3MlZCRnQ3LTlSNUhWZmJWVnpZcjN3dkxYSTJxMVVVNW5uVnZ0eXd3T0JOVFh1LUY1YzVjd1hKeGYyVE5Jc1VhcExMQ2lQdWotamlfazNlOFl6b1lCTWJMM0xOSG9IbURTV1pDZmpXTTFKbElUSHRoYVpMRmNORm5YazFlekZ5cUJ0OdIBqgFBVV95cUxQMDlsbk1IM2dUU0JlbDRRUi14R1hFV0RrelQxOFFNamdOSnVmYWV6WGhwemp2TWsxT0xyTXk4V2FYdkdrVm5iYUlMVnlFRHhwSzVIcTFiT25PU1ZoTng5OENLemVMUWlnYmlsalBLVnhQY1dPbnhsakN2TFBkWW83aDJZYWxjZWgwQWFpc1BkMVlJbmZXQklPS3N2WW53MzhfU0pCSGhnNFJMUQ"
+      },
+      {
+        "title": "Delos Data 的 AI 晶片",
+        "layer": "AI",
+        "body": "Delos Data 的 AI 晶片是為 AI 應用而設計的。Delos Data 的 AI 晶片可以支持多種 AI 算法。Delos Data 的 AI 晶片可能會推動公司的 AI 相關業務增長。",
+        "impact": "Delos Data 的 AI 晶片可能會對 AI 業界產生重大影響。這也可能會推動公司的 AI 相關業務增長。Delos Data 的 AI 晶片可能會增加公司的品牌知名度。",
+        "rating": "noise",
+        "insight": "Delos Data 的 AI 晶片可能會對 AI 業界產生重大影響，投資者應關注公司的 AI 相關業務增長。",
+        "source_label": "The Register",
+        "source": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQdGtqOGpWMm5YU3UtRXNXRmJPakJXNG41OE5DT2JRcGNza2lFM2s1Ml9wclVqMkREdUtyQ21rVlNwWHA4SFowT1ZjOU5XTGhocjlZWGJKeEg5RDktbkVXVkJ6cjBBaGw5eW4wMkNtenJrU2E2WXVLM2d4eXdoSHpRejY4V0VYZlo4bVgwa1pMZV8wUHR5ek1DVkphWWYwSEctWDlVNGhlT3R0clQxd0NRN2dheDdmU3c"
+      },
+      {
+        "title": "Nvidia 的 DLSS 4.5",
+        "layer": "遊戲",
+        "body": "Nvidia 的 DLSS 4.5 是一種新的遊戲技術，能夠提供更好的遊戲體驗。Nvidia 的 DLSS 4.5 可以支持多種遊戲平台。Nvidia 的 DLSS 4.5 可能會推動公司的遊戲相關業務增長。",
+        "impact": "Nvidia 的 DLSS 4.5 可能會推動公司的遊戲相關業務增長。",
+        "rating": "opp",
+        "insight": "Nvidia 的 DLSS 4.5 可能會對遊戲業界產生重大影響，投資者應關注公司的遊戲相關業務增長。",
+        "source_label": "TechPowerUp",
+        "source": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPM0MxYzdGQi02TEd0WjlXR1Vfbnl4bnhYRTF3MlZCRnQ3LTlSNUhWZmJWVnpZcjN3dkxYSTJxMVVVNW5uVnZ0eXd3T0JOVFh1LUY1YzVjd1hKeGYyVE5Jc1VhcExMQ2lQdWotamlfazNlOFl6b1lCTWJMM0xOSG9IbURTV1pDZmpXTTFKbElUSHRoYVpMRmNORm5YazFlekZ5cUJ0OdIBqgFBVV95cUxQMDlsbk1IM2dUU0JlbDRRUi14R1hFV0RrelQxOFFNamdOSnVmYWV6WGhwemp2TWsxT0xyTXk4V2FYdkdrVm5iYUlMVnlFRHhwSzVIcTFiT25PU1ZoTng5OENLemVMUWlnYmlsalBLVnhQY1dPbnhsakN2TFBkWW83aDJZYWxjZWgwQWFpc1BkMVlJbmZXQklPS3N2WW53MzhfU0pCSGhnNFJMUQ"
+      },
+      {
+        "title": "Amazon 的 AI 編碼",
+        "layer": "AI",
+        "body": "Amazon 的 AI 編碼是為 AI 應用而設計的。Amazon 的 AI 編碼可以支持多種 AI 算法。Amazon 的 AI 編碼可能會推動公司的 AI 相關業務增長。",
+        "impact": "Amazon 的 AI 編碼可能會對 AI 業界產生重大影響。這也可能會推動公司的 AI 相關業務增長。Amazon 的 AI 編碼可能會增加公司的品牌知名度。",
+        "rating": "noise",
+        "insight": "Amazon 的 AI 編碼可能會對 AI 業界產生重大影響，但這不是一個重要的投資訊息。",
         "source_label": "",
-        "source": "",
-        "chain": [
-          {
-            "label": "Agentic AI 應用↑",
-            "type": "up"
-          },
-          {
-            "label": "Physical AI 研發↑",
-            "type": "up"
-          },
-          {
-            "label": "傳統產業效率↓",
-            "type": "down"
-          }
-        ]
+        "source": ""
       }
     ],
     "glossary_new": [
       {
-        "term": "HBM",
-        "full": "High-Bandwidth Memory",
-        "def": "HBM 是一種高頻寬記憶體技術，主要用於圖形處理和 AI 計算。HBM 的頻寬比傳統記憶體技術高出許多，能夠提供更快的資料傳輸速度。",
-        "why": "HBM 對於圖形處理和 AI 計算的應用非常重要，因為它能夠提供更快的資料傳輸速度和更高的頻寬。",
-        "category": "semiconductor"
+        "term": "RTX Spark Gaming",
+        "full": "Nvidia 的 RTX Spark Gaming",
+        "def": "一種新的遊戲技術，能夠提供更好的遊戲體驗",
+        "why": "Nvidia 的 RTX Spark Gaming 可能會對遊戲業界產生重大影響",
+        "category": "遊戲"
+      },
+      {
+        "term": "DLSS 4.5",
+        "full": "Nvidia 的 DLSS 4.5",
+        "def": "一種新的遊戲技術，能夠提供更好的遊戲體驗",
+        "why": "Nvidia 的 DLSS 4.5 可能會對遊戲業界產生重大影響",
+        "category": "遊戲"
+      },
+      {
+        "term": "AI 編碼",
+        "full": "Amazon 的 AI 編碼",
+        "def": "為 AI 應用而設計的編碼",
+        "why": "Amazon 的 AI 編碼可能會對 AI 業界產生重大影響",
+        "category": "AI"
       }
     ],
     "weekly_summary": null
