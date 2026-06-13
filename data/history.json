@@ -56,9 +56,9 @@
         "source": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQOXJDV2ZxVWJDeEo2RDJMSHg4S1o0dDJ4SmhOSXY0VDZNMlpkd0dOQ0VCZ1BtZkIwY2lpWlNNcl9rZjNVLUltYTNGQ0s0d1Zmbi11YUtETG1yeEE3UDRoS3AtOFRMamNLbGQ1VDh4Tm9Sc3AtYk93V0wtcHVWMGxnU2d4dHBVVkVrLTVPazd3RnB3alkzZ1dQNHZfVGM0RElu"
       },
       {
-        "title": "Microsoft 的 GitHub 出現宕機",
+        "title": "Microsoft 的 GitHub 出現當機",
         "layer": "AI",
-        "body": "Microsoft 的 GitHub 出現宕機，原因是 AI 編碼流量激增。GitHub 的宕機可能會對開發者產生影響。Microsoft 的 GitHub 宕機可能會推動公司的 AI 研發業務。",
+        "body": "Microsoft 的 GitHub 出現當機，原因是 AI 編碼流量激增。GitHub 的當機可能會對開發者產生影響。Microsoft 的 GitHub 當機可能會推動公司的 AI 研發業務。",
         "impact": "Microsoft 的 GitHub 宕機可能會對開發者產生影響。這也可能會推動公司的 AI 研發業務。Microsoft 的 GitHub 宕機可能會增加公司的品牌知名度。",
         "rating": "noise",
         "insight": "Microsoft 的 GitHub 宕機可能會對開發者產生影響，投資者應關注公司的 AI 研發業務。",
@@ -68,7 +68,7 @@
       {
         "title": "KPMG 的 AI 報告出現錯誤",
         "layer": "AI",
-        "body": "KPMG 的 AI 報告出現錯誤，原因是 AI 的幻覺。KPMG 的 AI 報告可能會對公司的品牌知名度產生影響。KPMG 的 AI 報告錯誤可能會推動公司的 AI 研發業務。",
+        "body": "KPMG 的 AI 生成報告出現事實性錯誤，起因為大型語言模型的幻覺現象。此事件引發外界對顧問業在專業交付文件中使用生成式 AI 的審核流程是否足夠嚴謹的質疑。各大顧問公司面臨壓力，須建立人工複核機制以防止幻覺輸出進入客戶報告。",
         "impact": "KPMG 的 AI 報告錯誤可能會對公司的品牌知名度產生影響。這也可能會推動公司的 AI 研發業務。KPMG 的 AI 報告錯誤可能會增加公司的品牌知名度。",
         "rating": "noise",
         "insight": "KPMG 的 AI 報告錯誤可能會對公司的品牌知名度產生影響，但這不是一個重要的投資訊息。",

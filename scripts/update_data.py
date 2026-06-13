@@ -415,7 +415,7 @@ def validate_impact(data):
 def call_groq(prompt):
     from groq import APIStatusError as GroqAPIStatusError
     client = Groq(api_key=os.environ['GROQ_API_KEY'])
-    sys_msg = "你是AI供應鏈分析師。只輸出純JSON，不加說明。全程繁體中文：晶片/記憶體。"
+    sys_msg = "你是AI供應鏈分析師。只輸出純JSON，不加說明。全程繁體中文：晶片（非芯片）、記憶體（非内存）、當機（非宕機）。"
     models = ["llama-3.3-70b-versatile", "llama-3.1-8b-instant"]
     response = None
     for model in models:
