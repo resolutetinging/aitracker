@@ -166,7 +166,28 @@ def fetch_ddg():
                     print(f"  DDG '{label}' failed after 3 attempts: {e}")
     return snippets
 
-def fetch_news():
+def filter_recent(snippets, recent_titles):
+    """過濾與近日已報道標題高度重疊的新聞摘要（code-level 去重）"""
+    if not recent_titles:
+        return snippets
+    recent_norm = [set(re.sub(r'[^\w]', ' ', rt).lower().split()) for rt in recent_titles]
+    filtered, dropped = [], 0
+    for s in snippets:
+        dash = s.find(' — ')
+        bracket = s.find(']')
+        title_part = s[bracket+1:dash if dash > 0 else bracket+80].strip()
+        words = set(w for w in re.sub(r'[^\w]', ' ', title_part).lower().split() if len(w) > 2)
+        # 門檻 2：「RTX Spark」等雙字產品名不漏網
+        if any(len(words & rn) >= 2 for rn in recent_norm):
+            dropped += 1
+        else:
+            filtered.append(s)
+    if dropped:
+        print(f"  → 預過濾舊新聞 {dropped} 條（與近日標題重疊）")
+    return filtered
+
+
+def fetch_news(recent_titles=None):
     print("  → RSS feeds...")
     rss = fetch_rss()
     print(f"  → RSS 取得 {len(rss)} 條")
@@ -182,6 +203,10 @@ def fetch_news():
             seen.add(key)
             unique.append(s)
     print(f"  → 去重後 {len(unique)} 條")
+    # code-level 預過濾：移除與近三日標題高度重疊的摘要
+    if recent_titles:
+        unique = filter_recent(unique, recent_titles)
+        print(f"  → 預過濾後剩 {len(unique)} 條")
     # 限制總字數在 8000 字元以內，避免超過 Groq TPM 限制
     joined = "\n\n".join(unique)
     if len(joined) > 8000:
@@ -191,19 +216,22 @@ def fetch_news():
 
 
 def get_recent_titles(history, days=3, max_titles=30):
-    """取得近 N 天已報道過的新聞標題，用於跨日去重（最多 max_titles 條）
-    注意：今日自己的資料不納入（避免同日第二次跑時把素材全封鎖）"""
+    """取得近 N 天 core/opp 標題用於跨日去重；排除今日自身與 noise 條目"""
     titles = []
+    count = 0
     for entry in history:
         if entry.get('date') == DATE_STR:
             continue  # 跳過今日，防止自我封鎖
+        if count >= days:
+            break
+        count += 1
         for section in ['hw', 'corp', 'app']:
             for item in entry.get(section, []):
+                if item.get('rating') == 'noise':
+                    continue  # noise 不列入 NO-REPEAT，noise title 多為佔位符
                 t = item.get('title', '').strip()
                 if t:
                     titles.append(t)
-        if len(titles) >= max_titles:
-            break
     return titles[:max_titles]
 
 def load_notes():
@@ -399,7 +427,7 @@ def call_groq(prompt):
                     {"role":"user","content":prompt}
                 ],
                 temperature=0.3,
-                max_tokens=4000,
+                max_tokens=8000,
             )
             if model != models[0]:
                 print(f"  → 使用備用模型 {model}")
@@ -453,6 +481,33 @@ def validate_sources(data):
                 print(f"  ✗ 無效 URL，已清空：{url[:60]}")
                 item['source'] = ''
                 item['source_label'] = '—'
+
+def downgrade_repeated_stories(data, recent_titles):
+    """生成後 title-level 去重：LLM 改寫標題繞過 NO-REPEAT 指令時的最後一道 guard。
+    新 title 與近日 core/opp title 詞彙重疊率 ≥50% 且 ≥2 詞 → 降評 noise。"""
+    if not recent_titles:
+        return
+    recent_norm = [
+        set(w for w in re.sub(r'[^\w]', ' ', rt).lower().split() if len(w) > 1)
+        for rt in recent_titles
+    ]
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            if item.get('rating') == 'noise':
+                continue
+            title = item.get('title', '')
+            t_words = set(w for w in re.sub(r'[^\w]', ' ', title).lower().split() if len(w) > 1)
+            if not t_words:
+                continue
+            for rn in recent_norm:
+                if not rn:
+                    continue
+                overlap = len(t_words & rn)
+                if overlap >= 2 and overlap / min(len(t_words), len(rn)) >= 0.5:
+                    print(f"  ↓ 跨日重複降評→noise：{title[:60]}")
+                    item['rating'] = 'noise'
+                    break
+
 
 def downgrade_unsourced(data):
     """沒有 source URL 但評為 core/opp 的條目降級為 noise，防止幻覺混入"""
@@ -763,13 +818,13 @@ if __name__ == '__main__':
             print("✅ 完成！")
             sys.exit(0)
 
-    print("📰 抓取新聞...")
-    news = fetch_news()
+    recent_titles = get_recent_titles(history, days=3)
+    print(f"  → 近三日 core/opp 標題 {len(recent_titles)} 條（NO-REPEAT 用）")
+
+    print("📰 抓取新聞（含近日預過濾）...")
+    news = fetch_news(recent_titles)
     total = len(news.splitlines())
     print(f"  → 合計 {total} 行新聞摘要")
-
-    recent_titles = get_recent_titles(history, days=3)
-    print(f"  → 近三日已報道標題 {len(recent_titles)} 條（今日自身已排除）")
 
     print("🤖 呼叫 Groq API...")
     data = call_groq(make_prompt(news, recent_titles))
@@ -777,6 +832,8 @@ if __name__ == '__main__':
 
     print("🔗 驗證 source URL...")
     validate_sources(data)
+    print("📉 品質管線（降評低品質條目）...")
+    downgrade_repeated_stories(data, recent_titles)
     downgrade_unsourced(data)
     print("🔍 body 品質檢核...")
     downgrade_low_quality(data)
