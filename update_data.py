@@ -165,7 +165,8 @@ def filter_recent(snippets, recent_titles):
         bracket = s.find(']')
         title_part = s[bracket+1:dash if dash > 0 else bracket+80].strip()
         words = set(w for w in re.sub(r'[^\w]', ' ', title_part).lower().split() if len(w) > 2)
-        is_dup = any(len(words & rn) >= 3 for rn in recent_norm)
+        # 門檻降為 2：避免「RTX Spark」這類雙字產品名漏網
+        is_dup = any(len(words & rn) >= 2 for rn in recent_norm)
         if is_dup:
             dropped += 1
         else:
@@ -173,6 +174,34 @@ def filter_recent(snippets, recent_titles):
     if dropped:
         print(f"  → 預過濾舊新聞 {dropped} 條（與近日標題重疊）")
     return filtered
+
+
+def downgrade_repeated_stories(data, recent_titles):
+    """生成後 title-level 去重：LLM 改寫標題繞過 NO-REPEAT 時的最後一道 code-level guard。
+    比對新標題與近日 core/opp 標題的詞彙重疊率，≥50% 且 ≥2 詞重疊者降評 noise。"""
+    if not recent_titles:
+        return
+    recent_norm = [
+        set(w for w in re.sub(r'[^\w]', ' ', rt).lower().split() if len(w) > 1)
+        for rt in recent_titles
+    ]
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            if item.get('rating') == 'noise':
+                continue
+            title = item.get('title', '')
+            t_words = set(w for w in re.sub(r'[^\w]', ' ', title).lower().split() if len(w) > 1)
+            if not t_words:
+                continue
+            for rn in recent_norm:
+                if not rn:
+                    continue
+                overlap = len(t_words & rn)
+                ratio = overlap / min(len(t_words), len(rn))
+                if ratio >= 0.5 and overlap >= 2:
+                    print(f"  ↓ 跨日重複降評→noise：{title[:60]}")
+                    item['rating'] = 'noise'
+                    break
 
 def fetch_news(recent_titles=None):
     print("  → RSS feeds...")
@@ -651,6 +680,7 @@ if __name__ == '__main__':
     validate_sources(data)
 
     print("📉 品質管線（降評低品質條目）...")
+    downgrade_repeated_stories(data, recent_titles)
     downgrade_unsourced(data)
     downgrade_low_quality(data)
 
