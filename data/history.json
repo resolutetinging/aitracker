@@ -1,5 +1,125 @@
 [
   {
+    "date": "2026-06-15",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Delos Data 為 AI 晶片啟動提供快速通道",
+        "layer": "晶片製造",
+        "body": "Delos Data 提供 AI 晶片啟動的快速通道，讓晶片啟動公司可以更快速地將其產品推向市場。該公司的解決方案可以讓晶片啟動公司節省時間和成本，從而提高其競爭力。Delos Data 的解決方案已經被多家晶片啟動公司所採用，包括一些領先的 AI 晶片公司。",
+        "impact": "供應鏈影響分析：Delos Data 的解決方案將直接影響晶片啟動公司的生產效率，從而提高其供應能力。這將對下游的 AI 系統製造商產生正面影響，提高其生產效率和競爭力。同時，Delos Data 的解決方案也將對上游的晶片設計公司產生間接影響，提高其設計效率和質量。",
+        "rating": "noise",
+        "insight": "Delos Data 的解決方案將提高晶片啟動公司的競爭力和供應能力，從而推動 AI 晶片產業的發展。",
+        "source_label": "The Register",
+        "source": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQdGtqOGpWMm5YU3UtRXNXRmJPakJXNG41OE5DT2JRcGNza2lFM2s1Ml9wclVqMkREdUtyQ21rVlNwWHA4SFowT1ZjOU5XTGhocjlZWGJKeEg5RDktbkVXVkJ6cjBBaGw5eW4wMkNtenJrU2E2WXVLM2d4eXdoSHpRejY4V0VYZlo4bVgwa1pMZV8wUHR5ek1DVkphWWYwSEctWDlVNGhlT3R0clQxd0NRN2dheDdmU3c",
+        "chain": [
+          {
+            "label": "Delos Data 業務量↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 晶片公司競爭力↑",
+            "type": "up"
+          },
+          {
+            "label": "晶片啟動公司時間成本↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "SK Hynix 將提升記憶體生產量",
+        "layer": "記憶體製造",
+        "body": "SK Hynix 將在 2034 年前提升其記憶體生產量，從而提高其供應能力。該公司的記憶體生產量將增加三倍，從而滿足日益增長的記憶體需求。SK Hynix 的記憶體生產量提升將對下游的電子製造商產生正面影響，提高其生產效率和競爭力。",
+        "impact": "供應鏈影響分析：SK Hynix 的記憶體生產量提升將直接影響電子製造商的生產效率，從而提高其競爭力。這將對上游的晶片設計公司產生間接影響，提高其設計效率和質量。同時，SK Hynix 的記憶體生產量提升也將對下游的消費電子產業產生間接影響，提高其生產效率和競爭力。",
+        "rating": "noise",
+        "insight": "SK Hynix 的記憶體生產量提升將提高電子製造商的競爭力和供應能力，從而推動電子產業的發展。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/06/12/sk-hynix-to-triple-wafer-capacity-by-2034/5255151",
+        "chain": [
+          {
+            "label": "SK Hynix 記憶體產能↑",
+            "type": "up"
+          },
+          {
+            "label": "電子製造商生產效率↑",
+            "type": "up"
+          },
+          {
+            "label": "記憶體需求滿足率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Microsoft、Meta 和 Google 的 AI 投資",
+        "layer": "CSP 投資",
+        "body": "Microsoft、Meta 和 Google 的 AI 投資已經達到 7250 億美元，從而推動 AI 技術的發展。這三家公司的 AI 投資將對下游的 AI 應用產業產生正面影響，提高其生產效率和競爭力。Microsoft、Meta 和 Google 的 AI 投資也將對上游的 AI 技術公司產生間接影響，提高其研究和開發能力。",
+        "impact": "供應鏈影響分析：Microsoft、Meta 和 Google 的 AI 投資將直接影響 AI 應用產業的生產效率，從而提高其競爭力。這將對上游的 AI 技術公司產生間接影響，提高其研究和開發能力。",
+        "rating": "core",
+        "insight": "Microsoft、Meta 和 Google 的 AI 投資將推動 AI 技術的發展，從而提高 AI 應用產業的競爭力和供應能力。",
+        "source_label": "Stocktwits",
+        "source": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNQ2ZDQkRWWGZaNVdBV1UwS0FEY0RvVVJqUFUxNXd2eHpWM1haeXltLUNpaXB2TW5kcHlJRFo0WFNOQWZFaGNDZ2p3WlcwZjhPVndrYkQwWVAxR0tVVnotaFdDNnZHT1IxZ1BJVHJXZXFpVG5ROUlMcGZoR29iczhkOGM4VG9UMEVWWHJoUEY5TlBCN0RiTEotLTFWNVdFZHZpUmVBOHBuYWVaN0xYMEJzSkgtSno4WHhuc2x4TmpMUkV5bHJDaTNqVHFKalBIMl9pZ01MSjF2a0hpczUtYjMxUHk1OGt0VUxxbHRuaHZ3Nkt4ekRLTl9YZzVQX04wYjFUS25wLUZwWUJwTFU",
+        "chain": [
+          {
+            "label": "Microsoft AI 研究投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta AI 應用開發↑",
+            "type": "up"
+          },
+          {
+            "label": "Google AI 技術研發↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 技術公司競爭力↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI 對數據中心架構的影響",
+        "layer": "AI 應用",
+        "body": "Agentic AI 對數據中心架構的影響已經成為一個重要的趨勢，從而推動數據中心的發展。Agentic AI 將對下游的數據中心產業產生正面影響，提高其生產效率和競爭力。Agentic AI 對數據中心架構的影響也將對上游的 AI 技術公司產生間接影響，提高其研究和開發能力。",
+        "impact": "供應鏈影響分析：Agentic AI 對數據中心架構的影響將直接影響數據中心產業的生產效率，從而提高其競爭力。這將對上游的 AI 技術公司產生間接影響，提高其研究和開發能力。同時，Agentic AI 對數據中心架構的影響也將對下游的消費電子產業產生間接影響，提高其生產效率和競爭力。",
+        "rating": "noise",
+        "insight": "Agentic AI 對數據中心架構的影響將推動數據中心的發展，從而提高數據中心產業的競爭力和供應能力。",
+        "source_label": "The Register",
+        "source": "",
+        "chain": [
+          {
+            "label": "Agentic AI 效能↑",
+            "type": "up"
+          },
+          {
+            "label": "數據中心產能↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 技術公司研發投資↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Agentic AI",
+        "full": "Agentic AI",
+        "def": "Agentic AI 是一種人工智慧技術，旨在提高數據中心的生產效率和競爭力。它可以對數據中心架構進行優化，從而提高數據中心的性能和可靠性。",
+        "why": "Agentic AI 對數據中心架構的影響已經成為一個重要的趨勢，從而推動數據中心的發展。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-14",
     "is_sunday": true,
     "hw": [
@@ -935,146 +1055,6 @@
         "def": "一種可以自主學習和決策的 AI 技術。",
         "why": "Agentic AI 可以幫助企業自動化業務流程和決策過程。",
         "category": "AI 技術"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-08",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Nvidia RTX Spark 亮相 Computex 2026",
-        "layer": "semiconductor",
-        "body": "Nvidia 在 Computex 2026 會議上推出了 RTX Spark 新品；該產品結合了 AI 和 GPU 技術，提供更強大的計算能力；Intel 則展示了其最新的資料中心 GPU 解決方案。",
-        "impact": "Nvidia 的 RTX Spark 亮相可能會對其下游客戶如 Google 和 Meta 產生影響，促使他們加速 AI 應用開發；TSMC 和 Samsung 等晶片製造商可能會因 Nvidia 的新品而增加生產量；同時，Intel 的資料中心 GPU 解決方案也可能會對市場產生一定的影響。",
-        "rating": "core",
-        "insight": "Nvidia 的 RTX Spark 亮相將推動 AI 和 GPU 技術的發展",
-        "source_label": "IndexBox",
-        "source": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPOVdZMVpXV3N0cEtEMmo4dnREanlMN3BqblFtUzA5U252bDdndUtJZUpvNFAtZjNHd3FvN3M0akRnc2tNMGllZTVsZ0JzVkZOZ0ZlNlZiWmJsT000d2J4cmRlcDZFRE04VFBrbEVVeElWeTcyVHhvMzFSRVpmMnFwU2loVnFXbEpNTHl0SkRSS3JkNENMcEZHVHNhbnc?oc=5",
-        "chain": [
-          {
-            "label": "Nvidia RTX Spark 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Intel 資料中心 GPU 解決方案競爭力↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Computex 2026 會議創下 45 年來最多參加人數",
-        "layer": "semiconductor",
-        "body": "Computex 2026 會議創下 45 年來最多參加人數，吸引了眾多科技業者參與；Agentic AI 和 Physical AI 等新技術也在會議上受到關注；會議期間，各大廠商也展示了其最新的產品和技術。",
-        "impact": "會議的成功可能會對臺灣的科技產業產生積極影響，促進相關企業的合作和發展；同時，Agentic AI 和 Physical AI 等新技術的出現也可能會對市場產生一定的影響，推動 AI 技術的發展；TSMC 和其他晶片製造商可能會因會議上的新技術而增加投資。",
-        "rating": "core",
-        "insight": "Computex 2026 會議的成功將推動臺灣科技產業的發展",
-        "source_label": "Tech Times",
-        "source": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOM3pfd1NjVFN0TDdPMTlWNW42QzFhUnBCamdGcWJMVnlrdExlY0pEc0poREQtc09WZnhjSVI3UEZEa25ZMDcweDhxZV9ZZUlwcUdIbmhjVTlFWTAyRUFtTDQ2TWxvYzN1ckIyRWpoeWdKMHl4U1VFNHZZTzBjcDhEYUtsTmJLOFRDMWVpNy1nREZOMXFSRTlIel9YcHlpTktKOVZFMXk3UW9ETDNERlE5bGhtUGRaWXBQT2stLTdySXRIcFpZbFhOR2d5NU1HOWYtay1LZmRUVlVMQTAzdGc?oc=5",
-        "chain": [
-          {
-            "label": "Agentic AI 關注度↑",
-            "type": "up"
-          },
-          {
-            "label": "Physical AI 關注度↑",
-            "type": "up"
-          },
-          {
-            "label": "傳統科技業者市占↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "UK 考試監管機構擔憂智慧眼鏡作弊",
-        "layer": "semiconductor",
-        "body": "UK 考試監管機構 Ofqual 擔憂智慧眼鏡和隱藏式耳機等新技術可能會被用於作弊；這些新技術可能會對考試的公平性產生影響；同時，AI 工具也可能會被用於作弊。",
-        "impact": "Ofqual 的擔憂可能會對考試的安全性產生影響，促使相關機構加強考試的監控；同時，智慧眼鏡和隱藏式耳機等新技術的出現也可能會對市場產生一定的影響，推動相關技術的發展；相關企業可能會因 Ofqual 的擔憂而增加投資。",
-        "rating": "noise",
-        "insight": "Ofqual 的擔憂將推動考試安全性的發展",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/personal-tech/2026/06/07/uk_exams_watchdog_frets_over_smart_specs_turning_gcses_into_google_searches/5251365",
-        "chain": [
-          {
-            "label": "智慧眼鏡銷量↓",
-            "type": "down"
-          },
-          {
-            "label": "隱藏式耳機銷量↓",
-            "type": "down"
-          },
-          {
-            "label": "AI 工具監管嚴格性↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Microsoft、Meta 和 Google 的 AI 投資",
-        "layer": "corp",
-        "body": "Microsoft、Meta 和 Google 等大型科技企業在 AI 技術上的投資不斷增加；這些企業的 AI 投資可能會對市場產生積極影響，推動 AI 技術的發展；同時，相關企業也可能會因這些企業的投資而增加投資。",
-        "impact": "Microsoft、Meta 和 Google 等企業的 AI 投資可能會對市場產生積極影響，促進相關企業的合作和發展；同時，AI 技術的出現也可能會對市場產生一定的影響，推動相關技術的發展；TSMC 和其他晶片製造商可能會因這些企業的投資而增加投資。",
-        "rating": "noise",
-        "insight": "Microsoft、Meta 和 Google 的 AI 投資將推動 AI 技術的發展",
-        "source_label": "Stocktwits",
-        "source": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNQ2ZDQkRWWGZaNVdBV1UwS0FEY0RvVVJqUFUxNXd2eHpWM1haeXltLUNpaXB2TW5kcHlJRFo0WFNOQWZFaGNDZ2p3WlcwZjhPVndrYkQwWVAxR0tVVnotaFdDNnZHT1IxZ1BJVHJXZXFpVG5ROUlMcGZoR29iczhkOGM4VG9UMEVWWHJoUEY5TlBCN0RiTEotLTFWNVdFZHZpUmVBOHBuYWVaN0xYMEJzSkgtSno4WHhuc2x4TmpMUkV5bHJDaTNqVHFKalBIMl9pZ01MSjF2a0hpczUtYjMxUHk1OGt0VUxxbHRuaHZ3Nkt4ekRLTl9YZzVQX04wYjFUS25wLUZwWUJwTFU?oc=5",
-        "chain": [
-          {
-            "label": "Microsoft AI 投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta AI 投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Google AI 投資↑",
-            "type": "up"
-          },
-          {
-            "label": "小型科技企業競爭力↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI 和 Physical AI 的發展",
-        "layer": "app",
-        "body": "Agentic AI 和 Physical AI 等新技術在 Computex 2026 會議上受到關注；這些新技術可能會對市場產生積極影響，推動 AI 技術的發展；同時，相關企業也可能會因這些新技術而增加投資。",
-        "impact": "Agentic AI 和 Physical AI 等新技術的出現可能會對市場產生積極影響，促進相關企業的合作和發展；同時，AI 技術的出現也可能會對市場產生一定的影響，推動相關技術的發展；TSMC 和其他晶片製造商可能會因這些新技術而增加投資。",
-        "rating": "core",
-        "insight": "Agentic AI 和 Physical AI 的發展將推動 AI 技術的發展",
-        "source_label": "IndexBox",
-        "source": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPOVdZMVpXV3N0cEtEMmo4dnREanlMN3BqblFtUzA5U252bDdndUtJZUpvNFAtZjNHd3FvN3M0akRnc2tNMGllZTVsZ0JzVkZOZ0ZlNlZiWmJsT000d2J4cmRlcDZFRE04VFBrbEVVeElWeTcyVHhvMzFSRVpmMnFwU2loVnFXbEpNTHl0SkRSS3JkNENMcEZHVHNhbnc?oc=5",
-        "chain": [
-          {
-            "label": "Agentic AI 關注度↑",
-            "type": "up"
-          },
-          {
-            "label": "Physical AI 關注度↑",
-            "type": "up"
-          },
-          {
-            "label": "傳統 AI 技術市占↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Agentic AI",
-        "full": "代理人式 AI",
-        "def": "一種可以自主學習和決策的 AI 技術",
-        "why": "Agentic AI 可以用於各種應用，例如智慧眼鏡和隱藏式耳機",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
