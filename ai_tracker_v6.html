@@ -297,6 +297,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .ws-title{font-size:13px;font-weight:700;color:var(--corp);margin-bottom:8px;}
 .ws-body{font-size:13px;color:var(--text2);line-height:1.65;}
 .ws-item{padding:3px 0 3px 10px;margin-bottom:8px;border-left:2px solid rgba(160,112,64,.3);line-height:1.7;}
+.ws-label{font-weight:700;color:var(--corp);}
 .empty-state{text-align:center;color:var(--muted);font-size:14px;padding:48px 20px;}
 
 /* ── Modal ── */
@@ -1011,7 +1012,11 @@ function renderHistory(hist) {
   const cards = hist.map((d,i) => {
     const ws = d.weekly_summary ? (() => {
       const lines = d.weekly_summary.split('\n').filter(l=>l.trim());
-      const items = lines.map(l=>`<div class="ws-item">${l.trim()}</div>`).join('');
+      const items = lines.map(l=>{
+        const m=l.trim().match(/^([^：]+)：(.+)$/);
+        if(m) return `<div class="ws-item"><strong class="ws-label">${m[1]}：</strong>${m[2]}</div>`;
+        return `<div class="ws-item">${l.trim()}</div>`;
+      }).join('');
       return `<div class="weekly-box"><div class="ws-title">📊 本週摘要（週報）</div><div class="ws-body">${items}</div></div>`;
     })() : '';
     const hw = visibleItems(d.hw).length ? `<div class="hist-sec">🔩 硬體缺口</div><div class="news-grid">${visibleItems(d.hw).map(x=>newsCard(x,'hw')).join('')}</div>` : '';

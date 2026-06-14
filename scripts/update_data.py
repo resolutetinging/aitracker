@@ -248,8 +248,8 @@ def make_prompt(news_context, recent_titles=None):
     notes = load_notes() if IS_SUNDAY else {}
     notes_text = "; ".join(f"{d}:{n}" for d, n in sorted(notes.items()) if n.strip()) if notes else ""
     weekly_val = (
-        '"hw半導體本週一句摘要\\ncorp CSP/CapEx本週一句摘要\\napp新興AI本週一句摘要\\n下週投資者一句看點'
-        + ('\\n用戶筆記洞察一句' if notes_text else '') + '"'
+        '"HW：[半導體本週最重要一句摘要]\\nCORP：[CSP/CapEx本週一句摘要]\\nAPP：[新興AI本週一句摘要]\\n下週看點：[下週最值得追蹤的一個指標或事件]'
+        + ('\\n用戶洞察：[根據用戶筆記的核心洞察]' if notes_text else '') + '"'
         if IS_SUNDAY else 'null'
     )
     no_repeat_str = ("NO-REPEAT (STRICT): these topics were covered in recent days — do NOT generate any item about the same story or event even with a different headline; only include if there is a significant new development with wholly new facts not present before: " + "; ".join(recent_titles)) if recent_titles else ""
@@ -664,12 +664,26 @@ def send_email(data):
           {cards}
         </div>'''
 
+    def _fmt_weekly_html(text):
+        rows = []
+        for ln in text.split('\n'):
+            ln = ln.strip()
+            if not ln: continue
+            if '：' in ln:
+                sep = ln.index('：')
+                lbl, body = ln[:sep], ln[sep+1:]
+                rows.append(f'<div style="margin:5px 0;padding:3px 0 3px 10px;border-left:2px solid #d4b060;"><strong style="font-weight:700;color:#8a6030;">{lbl}：</strong>{body}</div>')
+            else:
+                rows.append(f'<div style="margin:5px 0;padding:3px 0 3px 10px;border-left:2px solid #d4b060;">{ln}</div>')
+        return ''.join(rows)
+
     weekly = ''
     if data.get('weekly_summary'):
+        ws_html = _fmt_weekly_html(data['weekly_summary'])
         weekly = f'''
         <div style="background:#fdf8f0;border:1px solid #d4b060;border-radius:8px;padding:16px 20px;margin:20px 0;">
           <div style="font-size:14px;font-weight:700;color:#a07040;margin-bottom:10px;">📊 本週摘要</div>
-          <div style="font-size:13px;color:#4a4744;line-height:1.7;">{data["weekly_summary"]}</div>
+          <div style="font-size:13px;color:#4a4744;line-height:1.7;">{ws_html}</div>
         </div>'''
 
     all_items = data['hw']+data['corp']+data['app']
