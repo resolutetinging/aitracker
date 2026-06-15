@@ -1,5 +1,121 @@
 [
   {
+    "date": "2026-06-16",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Google Cloud India 網路發生火災",
+        "layer": "資料中心",
+        "body": "Google Cloud India 的網路發生火災，導致網路速度變慢，影響了多個客戶的服務。火災發生在 6 月 7 日，距離現在已經有一周的時間，網路速度仍然沒有完全恢復。Google Cloud India 的客戶包括多個大型企業和政府機構，火災對他們的業務造成了嚴重的影響。",
+        "impact": "這次火災對 Google Cloud India 的客戶造成了直接的影響，導致他們的服務受到影響。",
+        "rating": "core",
+        "insight": "Google Cloud India 的火災對其客戶和供應鏈產生了嚴重的影響，投資者需要關注 Google Cloud 的資料中心容量和網路速度的恢復情況。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/off-prem/2026/06/14/fire-burns-google-cloud-indias-network-which-remains-slow-a-week-later/5255246",
+        "chain": [
+          {
+            "label": "Google Cloud India 網路速度↓",
+            "type": "down"
+          },
+          {
+            "label": "客戶服務體驗↓",
+            "type": "down"
+          },
+          {
+            "label": "Google Cloud India 企業客戶數↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Bambu Lab 推出周年慶促銷",
+        "layer": "3D 列印",
+        "body": "Bambu Lab 推出周年慶促銷，提供高達 52% 的折扣。促銷活動包括 Bambu Lab 的多款 3D 列印機和配件，客戶可以以低於原價的價格購買。Bambu Lab 的 3D 列印機以高品質和高精度而聞名，受到多個行業的客戶的青睞。促銷活動將持續到 6 月 30 日，客戶可以在 Bambu Lab 的官網上購買。",
+        "impact": "這次促銷活動對 Bambu Lab 的客戶產生了直接的影響，提供了高折扣的購買機會。",
+        "rating": "opp",
+        "insight": "Bambu Lab 的周年慶促銷對其客戶和供應鏈產生了積極的影響，投資者需要關注 Bambu Lab 的 3D 列印機和配件的銷量和市場份額的變化。",
+        "source_label": "Tom's Hardware",
+        "source": "https://www.tomshardware.com/3d-printing/bambu-labs-big-anniversary-sale-is-live-with-up-to-52-percent-off-score-huge-discounts-on-their-most-popular-3d-printers-and-accessories",
+        "chain": [
+          {
+            "label": "Bambu Lab 3D 列印機銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "Bambu Lab 客戶滿意度↑",
+            "type": "up"
+          },
+          {
+            "label": "Bambu Lab 市占率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Big Tech Q1 2026 投資報告",
+        "layer": "AI 投資",
+        "body": "Big Tech Q1 2026 投資報告顯示，AI 投資達到 630 億美元。報告還顯示，Azure 的容量受到限制，Meta 的投資增加了 31%。Big Tech 的 AI 投資主要集中在雲端服務和人工智慧技術的研發上。報告還預測，AI 投資將在未來幾年繼續增加，驅動著科技業的發展。",
+        "impact": "這次投資報告對 Big Tech 的客戶和供應鏈產生了直接的影響，提供了 AI 投資的最新趨勢和預測。",
+        "rating": "core",
+        "insight": "Big Tech 的 AI 投資報告對其客戶和供應鏈產生了積極的影響，投資者需要關注 Big Tech 的 AI 投資的趨勢和預測。",
+        "source_label": "abhs.in",
+        "source": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQOXJDV2ZxVWJDeEo2RDJMSHg4S1o0dDJ4SmhOSXY0VDZNMlpkd0dOQ0VCZ1BtZkIwY2lpWlNNcl9rZjNVLUltYTNGQ0s0d1Zmbi11YUtETG1yeEE3UDRoS3AtOFRMamNLbGQ1VDh4Tm9Sc3AtYk93V0wtcHVWMGxnU2d4dHBVVkVrLTVPazd3RnB3alkzZ1dQNHZfVGM0RElu?oc=5",
+        "chain": [
+          {
+            "label": "Azure 容量利用率↓",
+            "type": "down"
+          },
+          {
+            "label": "Meta 投資額↑",
+            "type": "up"
+          },
+          {
+            "label": "Big Tech AI 研發投入↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Google 的 AI 概覽結果被判定為不合格",
+        "layer": "AI 應用",
+        "body": "Google 的 AI 概覽結果被判定為不合格，原因是結果不夠準確。這次判定對 Google 的 AI 應用產生了直接的影響，可能會導致 Google 的 AI 應用受到質疑。同時，也對 Google 的供應鏈產生了間接的影響，可能會導致 Google 的 AI 研發團隊受到影響。另外，競爭對手的 AI 公司可能會因為這次判定而獲得更多的商機。",
+        "impact": "這次判定對 Google 的 AI 應用產生了直接的影響，可能會導致 Google 的 AI 應用受到質疑。同時，也對 Google 的供應鏈產生了間接的影響，可能會導致 Google 的 AI 研發團隊受到影響。另外，競爭對手的 AI 公司可能會因為這次判定而獲得更多的商機。",
+        "rating": "noise",
+        "insight": "Google 的 AI 概覽結果被判定為不合格，對其 AI 應用和供應鏈產生了負面的影響，投資者需要關注 Google 的 AI 研發團隊的反應和改進措施。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/06/15/google-found-liable-for-bad-ai-overview-results-lets-play-truth-or-consequences/5254897",
+        "chain": [
+          {
+            "label": "Google AI 應用可靠性↓",
+            "type": "down"
+          },
+          {
+            "label": "Google AI 研發團隊士氣↓",
+            "type": "down"
+          },
+          {
+            "label": "競爭對手 AI 公司商機↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoWoS",
+        "full": "Chip on Wafer on Substrate",
+        "def": "CoWoS 是一種晶片製造技術，將晶片直接裝配在基板上。這種技術可以提高晶片的性能和可靠性，同時也可以降低製造成本。",
+        "why": "CoWoS 技術對晶片製造業產生了重要的影響，提高了晶片的性能和可靠性，同時也降低了製造成本。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-15",
     "is_sunday": false,
     "hw": [
@@ -918,145 +1034,5 @@
       }
     ],
     "weekly_summary": "本週的新聞主要圍繞著 AI 技術的發展，包括物理 AI、Agentic AI 和 VLA 等。NVIDIA 和 LG Group 的合作是本週的一大亮點，兩家公司正在合作建立一個 AI 工廠，目的是推動物理 AI、移動性和 AI 基礎設施的發展。台灣供應商也正在目標物理 AI 平台，機器人競賽正在超越硬體的範圍。"
-  },
-  {
-    "date": "2026-06-09",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "NVIDIA 的 ARM 晶片和早期 Wi-Fi 8 路由器",
-        "layer": "晶片製造",
-        "body": "NVIDIA 的 ARM 晶片是 Computex 2026 的一大亮點。早期 Wi-Fi 8 路由器也在展會上展出，展示了未來網路技術的發展方向。NVIDIA 的 ARM 晶片和早期 Wi-Fi 8 路由器的結合，將為用戶帶來更快、更穩定的網路體驗。",
-        "impact": "NVIDIA 的 ARM 晶片和早期 Wi-Fi 8 路由器的結合，可能會為用戶帶來更好的網路體驗。",
-        "rating": "core",
-        "insight": "NVIDIA 的 ARM 晶片和早期 Wi-Fi 8 路由器的結合，可能會為用戶帶來更好的網路體驗。",
-        "source_label": "How-To Geek",
-        "source": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE44QmVNNEVMNDdnTHJSSW04V3pyX0d1NnV1dVFSQkpldmNvZW1CaU9adzdMWW5WdUlCbUQtOUpiaVVXNmFXM1VTU1lDa1VpQk5iVXhRUFg1QQ?oc=5",
-        "chain": [
-          {
-            "label": "NVIDIA ARM 晶片 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "NVIDIA GPU 銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "Wi-Fi 8 路由器 出貨量↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Computex 2026 會議創下 45 年來最多參加人數",
-        "layer": "半導體產業",
-        "body": "Computex 2026 會議創下 45 年來最多參加人數，吸引了許多半導體產業的重量級人物。Agentic AI Buildout 也在展會上展出，展示了未來 AI 技術的發展方向。展會上還有許多其他半導體相關的產品和技術展出，為參加者提供了豐富的資訊和見解。",
-        "impact": "展會上展出的半導體相關產品和技術，可能會為參加者帶來新的見解和機會。",
-        "rating": "core",
-        "insight": "Computex 2026 會議的成功，可能會對半導體產業產生一定的影響。",
-        "source_label": "Tech Times",
-        "source": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOM3pfd1NjVFN0TDdPMTlWNW42QzFhUnBCamdGcWJMVnlrdExlY0pEc0poREQtc09WZnhjSVI3UEZEa25ZMDcweDhxZV9ZZUlwcUdIbmhjVTlFWTAyRUFtTDQ2TWxvYzN1ckIyRWpoeWdKMHl4U1VFNHZZTzBjcDhEYUtsTmJLOFRDMWVpNy1nREZOMXFSRTlIel9YcHlpTktKOVZFMXk3UW9ETDNERlE5bGhtUGRaWXBQT2stLTdySXRIcFpZbFhOR2d5NU1HOWYtay1LZmRUVlVMQTAzdGc?oc=5",
-        "chain": [
-          {
-            "label": "Agentic AI Buildout 市占↑",
-            "type": "up"
-          },
-          {
-            "label": "半導體產業 投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Computex 2026 參加人數↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Canonical 將 Ubuntu 推向 AI 代理時代",
-        "layer": "軟體開發",
-        "body": "Canonical 將 Ubuntu 推向 AI 代理時代，展示了未來軟體開發的新方向。Ubuntu 的 AI 代理功能，可能會為用戶帶來更好的使用體驗。Canonical 的這一舉動，可能會對軟體開發產業產生一定的影響。",
-        "impact": "Canonical 將 Ubuntu 推向 AI 代理時代，可能會對軟體開發產業產生一定的影響，特別是對於那些已經在使用 Ubuntu 的公司。然而，具體的影響還需要進一步觀察和分析。Ubuntu 的 AI 代理功能，可能會為用戶帶來更好的使用體驗。",
-        "rating": "noise",
-        "insight": "Canonical 將 Ubuntu 推向 AI 代理時代，可能會對軟體開發產業產生一定的影響。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/software/2026/06/08/canonical-sends-ubuntu-into-the-ai-agent-era/5252373",
-        "chain": [
-          {
-            "label": "Canonical Ubuntu 銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 代理技術 開發↑",
-            "type": "up"
-          },
-          {
-            "label": "軟體開發產業 投資↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Amazon Leo 的衛星任務延遲",
-        "layer": "企業動態",
-        "body": "Amazon Leo 的衛星任務延遲，可能會對公司的業務產生一定的影響。Amazon Leo 的衛星任務延遲，可能會導致公司的收入減少。FCC 對 Amazon Leo 的衛星任務延遲，可能會採取一定的措施。",
-        "impact": "Amazon Leo 的衛星任務延遲，可能會對公司的業務產生一定的影響，特別是對於那些已經在使用 Amazon Leo 服務的客戶。然而，具體的影響還需要進一步觀察和分析。FCC 對 Amazon Leo 的衛星任務延遲，可能會採取一定的措施。",
-        "rating": "noise",
-        "insight": "Amazon Leo 的衛星任務延遲，可能會對公司的業務產生一定的影響。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/networks/2026/06/08/amazon-leos-satellite-homework-is-late-but-fcc-wont-flunk-it-just-yet/5252287",
-        "chain": [
-          {
-            "label": "Amazon Leo 衛星任務 交期↓",
-            "type": "down"
-          },
-          {
-            "label": "Amazon Leo 收入↓",
-            "type": "down"
-          },
-          {
-            "label": "FCC 對 Amazon Leo 監管↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "NVIDIA 和 LG Group 建立 AI 工廠",
-        "layer": "AI 技術",
-        "body": "NVIDIA 和 LG Group 建立 AI 工廠，展示了未來 AI 技術的發展方向。NVIDIA 和 LG Group 的合作，可能會為用戶帶來更好的 AI 服務。NVIDIA 和 LG Group 的 AI 工廠，可能會對 AI 產業產生一定的影響。",
-        "impact": "NVIDIA 和 LG Group 建立 AI 工廠，可能會對 AI 產業產生一定的影響，特別是對於那些已經在使用 AI 技術的公司。然而，具體的影響還需要進一步觀察和分析。NVIDIA 和 LG Group 的合作，可能會為用戶帶來更好的 AI 服務。",
-        "rating": "noise",
-        "insight": "NVIDIA 和 LG Group 建立 AI 工廠，可能會對 AI 產業產生一定的影響。",
-        "source_label": "NVIDIA Blog",
-        "source": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1WZWJQbW5PdHZoZmNCbExjaVVXX25PcVlWNWlEcmMwSU9YakFyNDRoVXNRTm1tZUdIeThxaEJjMmR2NHl5TnFHbHhla2ctWGVfQldZREsxWEVYNFZCSDFLbVlONEM5dVZvVzl3czBn?oc=5",
-        "chain": [
-          {
-            "label": "NVIDIA AI 服務 銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "LG Group AI 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 產業 投資↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Agentic AI",
-        "full": "代理 AI",
-        "def": "一種可以自主學習和決策的 AI 技術。",
-        "why": "Agentic AI 可以幫助企業自動化業務流程和決策過程。",
-        "category": "AI 技術"
-      }
-    ],
-    "weekly_summary": null
   }
 ]
