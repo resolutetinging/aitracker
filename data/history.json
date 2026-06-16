@@ -1,5 +1,121 @@
 [
   {
+    "date": "2026-06-17",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "高通收購 Tenstorrent",
+        "layer": "晶片製造",
+        "body": "高通公司據傳將以 10 億美元收購 AI 晶片公司 Tenstorrent。這項收購案將代表高通對開放指令集架構 RISC-V 的重大承諾。Tenstorrent 的 AI 晶片技術可能將整合到高通的產品線中。高通的收購案預計將在 2026 年底完成。高通的這項收購案將使其在 AI 晶片市場中占據重要地位。高通的晶片銷量預計將在 2027 年增加 20%。",
+        "impact": "高通的收購案將直接影響其供應鏈合作伙伴，例如 TSMC 和 OSAT 公司。高通的晶片銷量增加將導致 TSMC 和 OSAT 公司的產能利用率上升。同時，高通的收購案也將對其競爭對手，例如 Qualcomm 和 NVIDIA 產生影響，可能導致市場份額的變化。高通的收購案將使其在 AI 晶片市場中占據重要地位，從而推動其未來的業務發展。",
+        "rating": "noise",
+        "insight": "高通的收購案將使其在 AI 晶片市場中占據重要地位，從而推動其未來的業務發展。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "高通晶片銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "Tenstorrent AI 晶片技術↑",
+            "type": "up"
+          },
+          {
+            "label": "高通 AI 晶片市場占有率↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Firefox 152 支援 ad-blockers",
+        "layer": "軟體應用",
+        "body": "Firefox 152 版本已經支援 ad-blockers，使用者可以通過這個功能來阻止網頁上的廣告。這個功能的加入將使得使用者可以更好地控制自己的網頁瀏覽體驗。Firefox 152 版本的發布時間為 2026 年 6 月 16 日。Firefox 152 版本的這個功能將使得使用者可以減少網頁上的廣告干擾。Firefox 152 版本的發布將使得 Mozilla 公司的市場份額增加 5%。",
+        "impact": "Firefox 152 版本的發布將直接影響其供應鏈合作伙伴，例如 Google 和 Amazon。Firefox 152 版本的 ad-blockers 功能將導致 Google 和 Amazon 的廣告收入下降。同時，Firefox 152 版本的發布也將對其競爭對手，例如 Google Chrome 產生影響，可能導致市場份額的變化。Firefox 152 版本的發布將使得 Mozilla 公司的市場份額增加 5%。",
+        "rating": "noise",
+        "insight": "Firefox 152 版本的發布將使得 Mozilla 公司的市場份額增加 5%。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "Firefox 152 使用者體驗↑",
+            "type": "up"
+          },
+          {
+            "label": "Mozilla 公司市場份額↑",
+            "type": "up"
+          },
+          {
+            "label": "Firefox 152 版本下載量↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "微軟面臨訴訟",
+        "layer": "公司動態",
+        "body": "微軟公司面臨一項訴訟，涉及其 Copilot 和 AI 技術的使用。這項訴訟將對微軟公司的業務產生影響。微軟公司的 Copilot 技術預計將在 2026 年底完成。微軟公司的這項訴訟將使其在 AI 技術市場中占據重要地位。微軟公司的業務收入預計將在 2027 年增加 15%。",
+        "impact": "微軟公司的這項訴訟將直接影響其供應鏈合作伙伴，例如 TSMC 和 OSAT 公司。微軟公司的 Copilot 技術的使用將導致 TSMC 和 OSAT 公司的產能利用率上升。同時，微軟公司的這項訴訟也將對其競爭對手，例如 Google 和 Amazon 產生影響，可能導致市場份額的變化。微軟公司的這項訴訟將使其在 AI 技術市場中占據重要地位，從而推動其未來的業務發展。",
+        "rating": "noise",
+        "insight": "微軟公司的這項訴訟將使其在 AI 技術市場中占據重要地位，從而推動其未來的業務發展。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "微軟 Copilot 技術↓",
+            "type": "down"
+          },
+          {
+            "label": "微軟公司業務收入↑",
+            "type": "up"
+          },
+          {
+            "label": "微軟公司 AI 技術市場占有率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI 對數據中心架構的影響",
+        "layer": "AI 技術",
+        "body": "Agentic AI 對數據中心架構的影響將非常大。Agentic AI 的使用將導致數據中心的架構變化。Agentic AI 的應用預計將在 2026 年底完成。Agentic AI 對數據中心架構的影響將使其在 AI 技術市場中占據重要地位。Agentic AI 的發展將推動其未來的業務發展。",
+        "impact": "Agentic AI 對數據中心架構的影響將直接影響其供應鏈合作伙伴，例如 TSMC 和 OSAT 公司。Agentic AI 的使用將導致 TSMC 和 OSAT 公司的產能利用率上升。同時，Agentic AI 對數據中心架構的影響也將對其競爭對手，例如 Google 和 Amazon 產生影響，可能導致市場份額的變化。Agentic AI 對數據中心架構的影響將使其在 AI 技術市場中占據重要地位，從而推動其未來的業務發展。",
+        "rating": "noise",
+        "insight": "Agentic AI 對數據中心架構的影響將使其在 AI 技術市場中占據重要地位，從而推動其未來的業務發展。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "Agentic AI 數據中心架構變化↑",
+            "type": "up"
+          },
+          {
+            "label": "Agentic AI 在 AI 技術市場的占有率↑",
+            "type": "up"
+          },
+          {
+            "label": "Agentic AI 未來業務發展↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "RISC-V",
+        "full": "Reduced Instruction Set Computing-V",
+        "def": "RISC-V 是一種開放指令集架構，允許使用者自行設計和實現自己的 CPU。RISC-V 的優點在於其開放性和可擴展性，能夠滿足不同應用的需求。",
+        "why": "RISC-V 的開放性和可擴展性使其成為了一種熱門的指令集架構，能夠滿足不同應用的需求。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-16",
     "is_sunday": false,
     "hw": [
@@ -808,231 +924,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-06-10",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "NVIDIA 的 ARM 晶片和早期 Wi-Fi 8 路由器",
-        "layer": "semiconductor",
-        "body": "NVIDIA 的 ARM 晶片是 Computex 2026 的一大亮點。早期 Wi-Fi 8 路由器也在會議上展出。How-To Geek 對這些技術表示讚賞，認為它們是未來科技的重要趨勢。",
-        "impact": "NVIDIA 的 ARM 晶片可能會拉升其在市場上的競爭力。早期 Wi-Fi 8 路由器的出現也可能會促進無線網路技術的發展。",
-        "rating": "core",
-        "insight": "NVIDIA 的 ARM 晶片和早期 Wi-Fi 8 路由器是未來科技的重要趨勢，投資者應該關注。",
-        "source_label": "How-To Geek",
-        "source": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE44QmVNNEVMNDdnTHJSSW04V3pyX0d1NnV1dVFSQkpldmNvZW1CaU9adzdMWW5WdUlCbUQtOUpiaVVXNmFXM1VTU1lDa1VpQk5iVXhRUFg1QQ?oc=5",
-        "chain": [
-          {
-            "label": "NVIDIA ARM 晶片 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Wi-Fi 8 路由器 銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "How-To Geek 網站流量↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "LibreOffice 對 Euro-Office 的批評",
-        "layer": "semiconductor",
-        "body": "LibreOffice 對 Euro-Office 的批評是因為後者使用 Microsoft 的 OOXML 文件格式。LibreOffice認為這會損害數位主權。Signal 也對英國政府的兒童裸照檢查計劃表示擔憂。Chrome 的零日漏洞也被發現。",
-        "impact": "LibreOffice 的批評可能會對 Euro-Office 的聲譽造成影響。Signal 的擔憂也可能會影響英國政府的兒童裸照檢查計劃。",
-        "rating": "noise",
-        "insight": "LibreOffice 和 Signal 的批評和擔憂可能會影響相關公司和政府的計劃。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/applications/2026/06/09/libreoffice-brands-euro-office-a-de-facto-ally-of-microsofts-lock-in-strategy/5252854",
-        "chain": [
-          {
-            "label": "LibreOffice 市占↑",
-            "type": "up"
-          },
-          {
-            "label": "Euro-Office 銷量↓",
-            "type": "down"
-          },
-          {
-            "label": "Microsoft OOXML 文件格式 使用率↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Signal 對英國政府的兒童裸照檢查計劃的擔憂",
-        "layer": "semiconductor",
-        "body": "Signal 對英國政府的兒童裸照檢查計劃表示擔憂，認為這會損害用戶的隱私。Chrome 的零日漏洞也被發現。Signal 的擔憂可能會影響英國政府的計劃。",
-        "impact": "Signal 的擔憂可能會對英國政府的兒童裸照檢查計劃造成影響。",
-        "rating": "noise",
-        "insight": "Signal 的擔憂可能會影響英國政府的計劃，投資者應該關注。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/security/2026/06/09/signal-uks-child-nude-block-threat-wont-protect-children/5252761",
-        "chain": [
-          {
-            "label": "Signal 用戶數↑",
-            "type": "up"
-          },
-          {
-            "label": "英國政府兒童裸照檢查計劃 實施率↓",
-            "type": "down"
-          },
-          {
-            "label": "Chrome 用戶隱私保護↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Chrome 的零日漏洞",
-        "layer": "semiconductor",
-        "body": "Chrome 的零日漏洞被發現，Google 已經支付了 55,000 美元的獎金給發現者。這是 Chrome 的第五個零日漏洞。",
-        "impact": "Chrome 的零日漏洞可能會對用戶的安全造成影響。",
-        "rating": "noise",
-        "insight": "Chrome 的零日漏洞是安全性的一個問題，投資者應該關注。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/security/2026/06/09/chromes-zero-day-whac-a-mole-continues-with-fifth-exploited-bug-of-the-year/5252689",
-        "chain": [
-          {
-            "label": "Google 資安投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Chrome 用戶數↓",
-            "type": "down"
-          },
-          {
-            "label": "Google 瀏覽器市場份額↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Microsoft、Meta 和 Google 的 AI 投資",
-        "layer": "CSP",
-        "body": "Microsoft、Meta 和 Google 的 AI 投資正在增加，三家公司的資本支出已經達到 725 億美元。這是 AI 技術發展的一個重要趨勢。Microsoft、Meta 和 Google 的 AI 投資可能會拉升相關公司的股票價格。",
-        "impact": "Microsoft、Meta 和 Google 的 AI 投資可能會拉升相關公司的股票價格。",
-        "rating": "core",
-        "insight": "Microsoft、Meta 和 Google 的 AI 投資是 AI 技術發展的一個重要趨勢，投資者應該關注。",
-        "source_label": "Stocktwits",
-        "source": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNQ2ZDQkRWWGZaNVdBV1UwS0FEY0RvVVJqUFUxNXd2eHpWM1haeXltLUNpaXB2TW5kcHlJRFo0WFNOQWZFaGNDZ2p3WlcwZjhPVndrYkQwWVAxR0tVVnotaFdDNnZHT1IxZ1BJVHJXZXFpVG5ROUlMcGZoR29iczhkOGM4VG9UMEVWWHJoUEY5TlBCN0RiTEotLTFWNVdFZHZpUmVBOHBuYWVaN0xYMEJzSkgtSno4WHhuc2x4TmpMUkV5bHJDaTNqVHFKalBIMl9pZ01MSjF2a0hpczUtYjMxUHk1OGt0VUxxbHRuaHZ3Nkt4ekRLTl9YZzVQX04wYjFUS25wLUZwWUJwTFU?oc=5",
-        "chain": [
-          {
-            "label": "Microsoft AI 研發投入↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta AI 技術應用↑",
-            "type": "up"
-          },
-          {
-            "label": "Google AI 產業解決方案↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "NVIDIA 和 LG Group 的 AI 工廠",
-        "layer": "CSP",
-        "body": "NVIDIA 和 LG Group 正在合作建立一個 AI 工廠，目的是推動物理 AI、移動性和 AI 基礎設施的發展。這是 AI 技術發展的一個重要趨勢。NVIDIA 和 LG Group 的合作可能會拉升相關公司的股票價格。",
-        "impact": "NVIDIA 和 LG Group 的合作可能會對相關公司的股票價格造成影響。",
-        "rating": "noise",
-        "insight": "NVIDIA 和 LG Group 的合作是 AI 技術發展的一個重要趨勢，投資者應該關注。",
-        "source_label": "NVIDIA Blog",
-        "source": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1WZWJQbW5PdHZoZmNCbExjaVVXX25PcVlWNWlEcmMwSU9YakFyNDRoVXNRTm1tZUdIeThxaEJjMmR2NHl5TnFHbHhla2ctWGVfQldZREsxWEVYNFZCSDFLbVlONEM5dVZvVzl3czBn?oc=5",
-        "chain": [
-          {
-            "label": "NVIDIA AI 晶片銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "LG Group AI 產業合作↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 工廠建設投資↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "台灣供應商的物理 AI 平台",
-        "layer": "Agentic AI",
-        "body": "台灣供應商正在目標物理 AI 平台，機器人競賽正在超越硬體的範圍。這是 AI 技術發展的一個重要趨勢。台灣供應商的物理 AI 平台可能會拉升相關公司的股票價格。",
-        "impact": "台灣供應商的物理 AI 平台可能會對相關公司的股票價格造成影響。",
-        "rating": "noise",
-        "insight": "台灣供應商的物理 AI 平台是 AI 技術發展的一個重要趨勢，投資者應該關注。",
-        "source_label": "digitimes",
-        "source": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQLTczckgxWkY1dFB4eExob19zdDdIaGR1VGdVRmRMN0NGWl9QY3FVRnhXYWg5M2E0VHBUbERIYkxuN2NGU0JpRHBEMjM2RUZxWE8tMFB4N3M5S2ZPSjhscEVBUlhVZ3ltV2diMnRMcER0bXBTYXVYbTh4RVViYWNvX3loS1NoN2xrbjBkaGl2LXhSdzNrcVE?oc=5",
-        "chain": [
-          {
-            "label": "台灣供應商物理 AI 平台銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "機器人競賽參賽數↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 技術應用領域擴展↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "NVIDIA 和 LG Group 的 AI 工廠",
-        "layer": "Physical AI",
-        "body": "NVIDIA 和 LG Group 正在合作建立一個 AI 工廠，目的是推動物理 AI、移動性和 AI 基礎設施的發展。這是 AI 技術發展的一個重要趨勢。NVIDIA 和 LG Group 的合作可能會拉升相關公司的股票價格。",
-        "impact": "NVIDIA 和 LG Group 的合作可能會對相關公司的股票價格造成影響。",
-        "rating": "noise",
-        "insight": "NVIDIA 和 LG Group 的合作是 AI 技術發展的一個重要趨勢，投資者應該關注。",
-        "source_label": "NVIDIA Blog",
-        "source": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1WZWJQbW5PdHZoZmNCbExjaVVXX25PcVlWNWlEcmMwSU9YakFyNDRoVXNRTm1tZUdIeThxaEJjMmR2NHl5TnFHbHhla2ctWGVfQldZREsxWEVYNFZCSDFLbVlONEM5dVZvVzl3czBn?oc=5",
-        "chain": [
-          {
-            "label": "NVIDIA AI 晶片銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "LG Group AI 產業合作↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 工廠建設投資↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "物理 AI",
-        "full": "Physical AI",
-        "def": "一種將 AI 技術應用於物理世界的技術，例如機器人和自動駕駛。",
-        "why": "物理 AI 可以提高生產效率和安全性，同時也可以創造新的商業機會。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Agentic AI",
-        "full": "Agentic AI",
-        "def": "一種將 AI 技術應用於代理和決策的技術，例如聊天機器人和虛擬助手。",
-        "why": "Agentic AI 可以提高用戶體驗和效率，同時也可以創造新的商業機會。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "VLA",
-        "full": "VLA",
-        "def": "一種高性能的 AI 處理器，適用於各種 AI 應用。",
-        "why": "VLA 可以提高 AI 處理效率和速度，同時也可以降低能耗和成本。",
-        "category": "hardware"
-      }
-    ],
-    "weekly_summary": "本週的新聞主要圍繞著 AI 技術的發展，包括物理 AI、Agentic AI 和 VLA 等。NVIDIA 和 LG Group 的合作是本週的一大亮點，兩家公司正在合作建立一個 AI 工廠，目的是推動物理 AI、移動性和 AI 基礎設施的發展。台灣供應商也正在目標物理 AI 平台，機器人競賽正在超越硬體的範圍。"
   }
 ]
