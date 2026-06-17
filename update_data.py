@@ -319,8 +319,9 @@ def call_groq(prompt):
             {"role":"system","content":(
                 "你是 AI 產業供應鏈分析師，專注半導體供應鏈（HBM/CoWoS/OSAT）、CSP 資本支出、Agentic/Physical AI 落地。"
                 "只輸出純 JSON，不加任何說明或 markdown 格式。"
-                "【hw 分類鐵律】hw 絕對僅限：半導體製造、封裝（CoWoS/OSAT/chiplet）、記憶體（HBM/DDR）、晶圓廠（TSMC/三星/英特爾晶圓代工）、GPU/ASIC 供應鏈。"
-                "隱私/資安/軟體/一般科技/社群媒體新聞嚴禁放入 hw，違者即為錯誤輸出。"
+                "【hw 分類鐵律】hw 絕對僅限：TSMC/三星/英特爾晶圓代工、CoWoS/OSAT/chiplet 封裝、HBM/DDR 記憶體、GPU/ASIC 供應鏈。"
+                "凡標題/body 不含 TSMC/CoWoS/HBM/OSAT/GPU/晶圓/封裝/半導體 等核心詞彙，必須放 corp 或 app 或評為 noise，嚴禁放 hw。"
+                "3D 列印/消費電子促銷/網路火災/資安/軟體/社群媒體等新聞一律不得進入 hw，違者即為錯誤輸出。"
                 "【noise 鐵律】某分區若已有任何 core 或 opp 條目，該分區嚴禁再加 noise 條目。"
                 "noise 條目的 title 必須是『本日無相關[分區名稱]新聞』，不得使用任何具體新聞標題。"
                 "每個條目的具體數字必須來自該條目本身的新聞，嚴禁跨條目複製數字或細節。"
@@ -436,6 +437,36 @@ def downgrade_low_quality(data):
                     break
             if dup:
                 print(f"  ↓ 重複句降評→noise：{item.get('title','')[:50]}")
+                item['rating'] = 'noise'
+
+# HW 區段不屬半導體/GPU/HBM/CoWoS/封裝/晶圓廠相關 → 降噪
+HW_MUST_CONTAIN = re.compile(
+    r'TSMC|台積|CoWoS|HBM|OSAT|封裝|晶圓|半導體|GPU|ASIC|AI.?chip|Nvidia|AMD|晶片|'
+    r'HBM|Micron|SK.?Hynix|三星|Samsung|chiplet|wafer|fab|foundry|N\d[nN]|先進封裝',
+    re.IGNORECASE
+)
+def downgrade_hw_offtopic(data):
+    """hw 區若 title+body 不含半導體/封裝/HBM/GPU 關鍵字 → noise"""
+    for item in data.get('hw', []):
+        if item.get('rating') == 'noise':
+            continue
+        combined = item.get('title','') + item.get('body','')
+        if not HW_MUST_CONTAIN.search(combined):
+            print(f"  ↓ HW 跑偏降評→noise：{item.get('title','')[:60]}")
+            item['rating'] = 'noise'
+
+# body 末尾幻覺偵測：句子包含「未來」+「預計」+百分比但 source 非可信財報詞 → noise
+HALLUC_PAT = re.compile(r'(預計|估計|預期|將在未來).{0,15}(增加|成長|上升|達到).{0,8}\d+%')
+ANCHOR_PAT = re.compile(r'(財報|報告|Q[1-4]|法說|Earnings|季報|年報|白皮書|聲明|宣布)')
+def downgrade_hallucinated(data):
+    """body 含無來源預測數字（未來+%）且無財報錨點 → noise"""
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            if item.get('rating') == 'noise':
+                continue
+            body = item.get('body', '')
+            if HALLUC_PAT.search(body) and not ANCHOR_PAT.search(body):
+                print(f"  ↓ 幻覺預測降評→noise：{item.get('title','')[:60]}")
                 item['rating'] = 'noise'
 
 # ══════════════════════════════════════════════════════════════════
@@ -682,6 +713,8 @@ if __name__ == '__main__':
     print("📉 品質管線（降評低品質條目）...")
     downgrade_repeated_stories(data, recent_titles)
     downgrade_unsourced(data)
+    downgrade_hw_offtopic(data)
+    downgrade_hallucinated(data)
     downgrade_low_quality(data)
 
     history = upsert(history, data)

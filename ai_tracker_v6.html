@@ -777,7 +777,7 @@ function renderGlossary(hist) {
       </div>
       <div class="gloss-full">${g.full}</div>
       <div class="gloss-def">${g.def}</div>
-      <div class="gloss-why">${g.why}</div>
+      <div class="gloss-why">${g.why ? (String(g.why).trimStart().startsWith('📌') ? g.why : '📌 ' + g.why) : ''}</div>
     </div>`;
   }
 
@@ -895,7 +895,7 @@ async function addUserTerm(){
 async function regenerateUserTerm(term){
   const key=localStorage.getItem('groq_key');
   if(!key){alert('請先設定 Groq Key');return;}
-  const btn=document.getElementById('regen-'+term.replace(/[^a-z0-9]/gi,'_'));
+  const btn=document.getElementById('regen-'+term.replace(/'/g,"\\'"));
   if(btn){btn.disabled=true;btn.textContent='…';}
   try{
     const catList=getAllCatDefs().map(c=>c.key).join('|');
