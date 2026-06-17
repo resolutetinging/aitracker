@@ -240,8 +240,9 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .new-badge{display:inline-block;font-size:10px;background:rgba(74,138,106,.12);color:var(--app);border:1px solid rgba(74,138,106,.3);border-radius:8px;padding:1px 7px;margin-left:6px;font-weight:600;}
 .user-badge{display:inline-block;font-size:10px;background:rgba(40,38,32,.07);color:var(--sub);border:1px solid rgba(40,38,32,.18);border-radius:8px;padding:1px 7px;margin-left:6px;font-weight:600;cursor:pointer;}
 .user-badge:hover{background:rgba(176,80,80,.09);color:#884040;border-color:rgba(176,80,80,.3);}
-.gloss-card-actions{display:flex;align-items:center;gap:4px;margin-left:8px;opacity:0;pointer-events:none;transition:opacity .15s;}
-.gloss-card:hover .gloss-card-actions{opacity:1;pointer-events:auto;}
+.gloss-card-actions{display:flex;align-items:center;gap:4px;margin-left:8px;opacity:0;transition:opacity .15s;}
+.gloss-card:hover .gloss-card-actions{opacity:1;}
+.gloss-regen-btn,.gloss-del-btn{pointer-events:auto;}
 .gloss-del-btn{background:none;border:none;color:var(--faint);font-size:15px;line-height:1;cursor:pointer;padding:4px 7px;border-radius:5px;transition:background .12s,color .12s;}
 .gloss-del-btn:hover{background:rgba(176,80,80,.09);color:#884040;}
 .gloss-regen-btn{background:none;border:none;color:var(--faint);font-size:14px;line-height:1;cursor:pointer;padding:4px 7px;border-radius:5px;transition:background .12s,color .12s;}
@@ -678,6 +679,9 @@ function togglePicker(id) {
 document.addEventListener('click', e => {
   if (!e.target.closest('.gloss-card') && !e.target.closest('.gloss-add-row'))
     document.querySelectorAll('.gloss-cat-picker.open').forEach(p=>p.classList.remove('open'));
+  // ↻ 刷新按鈕 — 事件委派（取代 inline onclick，確保觸發）
+  const rb = e.target.closest('[data-regen]');
+  if (rb) { e.stopPropagation(); regenerateUserTerm(rb.dataset.regen); }
 });
 function setCat(term, catKey, pickerId) {
   saveCatOverride(term, catKey);
@@ -770,7 +774,7 @@ function renderGlossary(hist) {
             <div class="gloss-cat-picker" id="${pid}">${opts}</div>
           </div>
           <div class="gloss-card-actions">
-            ${(g._user||g._hist)?`<button class="gloss-regen-btn" id="regen-${escapedTerm}" onclick="regenerateUserTerm('${escapedTerm}')" title="重新生成內容">↻</button>`:''}
+            ${(g._user||g._hist)?`<button class="gloss-regen-btn" data-regen="${safeTermAttr}" title="重新生成內容">↻</button>`:''}
             <button class="gloss-del-btn" onclick="${delFn}" title="移除此卡片">×</button>
           </div>
         </div>
