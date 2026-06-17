@@ -717,7 +717,8 @@ function renderGlossary(hist) {
       const ov = overrides[t.term];
       const destKey = ov || BASE_CAT_DEFS[bi].key;
       const destIdx = catKeyToIdx[destKey];
-      if (destIdx !== undefined) allCatData[destIdx].terms.push(t);
+      const base = histOv[t.term] ? {...histOv[t.term], _hist:true} : t;
+      if (destIdx !== undefined) allCatData[destIdx].terms.push(base);
       else allCatData[bi].terms.push(t); // fallback
     });
   });
@@ -774,7 +775,7 @@ function renderGlossary(hist) {
             <div class="gloss-cat-picker" id="${pid}">${opts}</div>
           </div>
           <div class="gloss-card-actions">
-            ${(g._user||g._hist)?`<button class="gloss-regen-btn" data-regen="${safeTermAttr}" title="重新生成內容">↻</button>`:''}
+            <button class="gloss-regen-btn" data-regen="${safeTermAttr}" title="重新生成內容">↻</button>
             <button class="gloss-del-btn" onclick="${delFn}" title="移除此卡片">×</button>
           </div>
         </div>
