@@ -1,5 +1,145 @@
 [
   {
+    "date": "2026-06-18",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "智能手機市場將萎縮15%，記憶體危機是主因",
+        "layer": "晶片製造",
+        "body": "根據最新報告，智能手機市場今年將萎縮15%，主要原因是記憶體危機導致價格上漲。這個趨勢預計將持續到今年底，屆時手機製造商將面臨嚴峻的挑戰。例如，高通公司的Snapdragon X2晶片將成為新款手機的主力晶片，然而其價格將比之前的晶片高出15%。",
+        "impact": "這個趨勢將直接影響手機製造商的供應鏈，例如高通公司的Snapdragon X2晶片將成為新款手機的主力晶片，然而其價格將比之前的晶片高出15%。",
+        "rating": "core",
+        "insight": "手機製造商需要謹慎評估記憶體危機的影響，尋找替代方案以降低成本和風險。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/personal-tech/2026/06/17/smartphone-market-to-shrink-15-percent-this-year-due-to-memory-crisis/5257652",
+        "chain": [
+          {
+            "label": "高通 Snapdragon X2 產能↓",
+            "type": "down"
+          },
+          {
+            "label": "高通 Snapdragon X2 價格↑",
+            "type": "up"
+          },
+          {
+            "label": "手機製造商 利潤↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "英特爾推出18A-P增強版晶片",
+        "layer": "晶片製造",
+        "body": "英特爾公司宣布推出18A-P增強版晶片，該晶片的速度比之前的晶片快9%，同時功耗不變。這個新晶片將成為英特爾公司的主力晶片，屆時將廣泛應用於各種電子產品中。例如，英特爾公司的客戶將可以使用這個新晶片來提高其產品的性能和效率。",
+        "impact": "這個新晶片將直接影響英特爾公司的供應鏈，例如英特爾公司的客戶將可以使用這個新晶片來提高其產品的性能和效率。",
+        "rating": "core",
+        "insight": "英特爾公司的新晶片將為電子產品的性能和效率帶來新的提升，同時也將對供應鏈產生一定的影響。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/06/17/intel-starts-cooking-up-enhanced-18a-p-silicon-for-would-be-foundry-customers/5257487",
+        "chain": [
+          {
+            "label": "英特爾 18A-P 速度↑",
+            "type": "up"
+          },
+          {
+            "label": "英特爾 客戶滿意度↑",
+            "type": "up"
+          },
+          {
+            "label": "英特爾 市占↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "蘋果公司的WebKit性能稅收影響iOS瀏覽器",
+        "layer": "軟體開發",
+        "body": "蘋果公司的WebKit性能稅收導致iOS瀏覽器的性能下降，根據微軟公司的測試，WebKit的性能比其他瀏覽器慢了近30%。這個問題將直接影響蘋果公司的用戶體驗，同時也將間接影響下游的開發商，例如網頁開發商。",
+        "impact": "這個問題將直接影響蘋果公司的用戶體驗，同時也將間接影響下游的開發商，例如網頁開發商。",
+        "rating": "core",
+        "insight": "蘋果公司需要謹慎評估WebKit的性能問題，尋找解決方案以提高其用戶體驗和供應鏈的效率。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/software/2026/06/17/apples-webkit-performance-tax-leaves-ios-browsers-stuck-in-the-slow-lane-says-microsoft/5257384",
+        "chain": [
+          {
+            "label": "WebKit 性能↓",
+            "type": "down"
+          },
+          {
+            "label": "蘋果公司 用戶體驗↓",
+            "type": "down"
+          },
+          {
+            "label": "網頁開發商 開發效率↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "AWS推出連續代理DevOps",
+        "layer": "雲計算",
+        "body": "AWS推出連續代理DevOps，該技術可以提高雲計算的性能和效率。根據AWS的測試，連續代理DevOps可以提高雲計算的速度和穩定性。例如，AWS的客戶將可以使用這個技術來提高其雲計算的性能和效率。",
+        "impact": "這個技術將直接影響AWS的供應鏈，例如雲計算供應商將需要增加其研發投入以滿足客戶的需求。同時，這個技術也將間接影響下游的零組件供應商，例如記憶體和顯示屏供應商。另外，這個技術也將對競爭對手Google Cloud和Microsoft Azure產生一定的影響，Google Cloud和Microsoft Azure可能會因為AWS的連續代理DevOps而提高其自身的研發投入。",
+        "rating": "noise",
+        "insight": "AWS的連續代理DevOps將為雲計算的性能和效率帶來新的提升，同時也將對供應鏈產生一定的影響。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/devops/2026/06/17/aws-hypes-continuous-agentic-devops-puts-kiro-in-your-pocket/5256365",
+        "chain": [
+          {
+            "label": "AWS 連續代理DevOps 速度↑",
+            "type": "up"
+          },
+          {
+            "label": "AWS 客戶滿意度↑",
+            "type": "up"
+          },
+          {
+            "label": "AWS 市占↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Google推出TPU訓練超級計算機",
+        "layer": "人工智慧",
+        "body": "Google推出TPU訓練超級計算機，該技術可以提高人工智慧的性能和效率。根據Google的測試，TPU訓練超級計算機可以提高人工智慧的速度和準確性。例如，Google的客戶將可以使用這個技術來提高其人工智慧的性能和效率。",
+        "impact": "這個技術將直接影響Google的供應鏈，例如人工智慧供應商將需要增加其研發投入以滿足客戶的需求。同時，這個技術也將間接影響下游的零組件供應商，例如記憶體和顯示屏供應商。另外，這個技術也將對競爭對手Amazon和Microsoft產生一定的影響，Amazon和Microsoft可能會因為Google的TPU訓練超級計算機而提高其自身的研發投入。",
+        "rating": "noise",
+        "insight": "Google的TPU訓練超級計算機將為人工智慧的性能和效率帶來新的提升，同時也將對供應鏈產生一定的影響。",
+        "source_label": "SemiEngineering",
+        "source": "https://semiengineering.com/goo",
+        "chain": [
+          {
+            "label": "Google TPU 訓練速度↑",
+            "type": "up"
+          },
+          {
+            "label": "Google 人工智慧準確性↑",
+            "type": "up"
+          },
+          {
+            "label": "Google 客戶滿意度↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "晶片製造",
+        "full": "晶片製造是指將晶片設計轉換為實際的晶片產品的過程",
+        "def": "晶片製造涉及多個步驟，包括晶片設計、掩模製造、晶片生產和測試",
+        "why": "晶片製造是電子產品的核心元件，對電子產品的性能和效率有著重要的影響",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-17",
     "is_sunday": false,
     "hw": [
@@ -804,122 +944,6 @@
         "full": "High-Bandwidth Memory",
         "def": "HBM 是一種高頻寬記憶體技術，用于提高記憶體的頻寬和效率。",
         "why": "HBM 技術可以提高記憶體的頻寬和效率，從而提高系統的整體性能。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-11",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "SK Hynix 購買 HBM 晶片",
-        "layer": "記憶體",
-        "body": "SK Hynix 購買 HBM 晶片以滿足 Nvidia 的需求。Nvidia 的 HBM 晶片需求量大，SK Hynix 的購買行為將會滿足這個需求。HBM 晶片的價格將會因為 SK Hynix 的購買而上漲，對於其他晶片製造商來說將是一個挑戰。",
-        "impact": "SK Hynix 的購買行為將會拉升 HBM 晶片的價格，對於其他晶片製造商來說將是一個挑戰。Nvidia 的 HBM 晶片需求量大，SK Hynix 的購買行為將會滿足這個需求。這個交易將會對 SK Hynix 和 Nvidia 的財務狀況產生影響。",
-        "rating": "noise",
-        "insight": "SK Hynix 的購買行為將會滿足 Nvidia 的 HBM 晶片需求，對於其他晶片製造商來說將是一個挑戰。",
-        "source_label": "Jon Peddie Research",
-        "source": "https://news.google.com/rss/articles/CBMieEFVX3lxTE8tYXd5MmdxZjJVV0RMNUZycjNON0gtZk90VVlsN21rZjVDX3NzbkZ6NzRfUVJ6Q2tPc2RYU0cwWnNFMGVabUloNVBBQk5sSTAwMXNZUThNTG1Gbk1RdEFWTkFmOS1sQjdIQ3g0dzQ1T25YaHlHUl84Vw?oc=5",
-        "chain": [
-          {
-            "label": "SK Hynix HBM 晶片需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia HBM 晶片供應↑",
-            "type": "up"
-          },
-          {
-            "label": "HBM 晶片價格↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Nvidia 獲得 81.6B 美元的季度收益",
-        "layer": "晶片製造",
-        "body": "Nvidia 獲得 81.6B 美元的季度收益，創下了公司的新紀錄。Nvidia 的收益主要來自於其晶片的銷售，尤其是其高端晶片的銷售。這個季度的收益表明 Nvidia 的晶片仍然是市場上最受歡迎的選擇。",
-        "impact": "Nvidia 的季度收益將會對其股東和投資者產生影響，同時也會對其競爭對手產生壓力。這個季度的收益也會對 Nvidia 的未來發展產生影響。",
-        "rating": "core",
-        "insight": "Nvidia 的季度收益創下了公司的新紀錄，表明其晶片仍然是市場上最受歡迎的選擇。",
-        "source_label": "tech-insider.org",
-        "source": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBmREpnVmp5NDExaURPOVpvSWJHVm5SeEJUN2s0eUhXUnZ2UE9fNmxkblRQNUt1V2pfdXFySUMzNG1WZVRKaURTeVBrVmFBZUxBWTd2Y0ZxYkJjaWhldnJjUnMzU1NQbjJ3ZVdYVEhveG96YW8?oc=5",
-        "chain": [
-          {
-            "label": "Nvidia 晶片銷售↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia 季度收益↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia 市占↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Microsoft、Meta 和 Google 的 AI 投資",
-        "layer": "CSP",
-        "body": "Microsoft、Meta 和 Google 將在 AI 投資上花費 725B 美元。這個投資將會用於開發新的 AI 技術和應用。Microsoft、Meta 和 Google 的 AI 投資將會對其業務產生影響，同時也會對其競爭對手產生壓力。",
-        "impact": "Microsoft、Meta 和 Google 的 AI 投資將會對其業務產生影響，同時也會對其競爭對手產生壓力。",
-        "rating": "core",
-        "insight": "Microsoft、Meta 和 Google 的 AI 投資將會對其業務產生影響，同時也會對其競爭對手產生壓力。",
-        "source_label": "Stocktwits",
-        "source": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNQ2ZDQkRWWGZaNVdBV1UwS0FEY0RvVVJqUFUxNXd2eHpWM1haeXltLUNpaXB2TW5kcHlJRFo0WFNOQWZFaGNDZ2p3WlcwZjhPVndrYkQwWVAxR0tVVnotaFdDNnZHT1IxZ1BJVHJXZXFpVG5ROUlMcGZoR29iczhkOGM4VG9UMEVWWHJoUEY5TlBCN0RiTEotLTFWNVdFZHZpUmVBOHBuYWVaN0xYMEJzSkgtSno4WHhuc2x4TmpMUkV5bHJDaTNqVHFKalBIMl9pZ01MSjF2a0hpczUtYjMxUHk1OGt0VUxxbHRuaHZ3Nkt4ekRLTl9YZzVQX04wYjFUS25wLUZwWUJwTFU?oc=5",
-        "chain": [
-          {
-            "label": "Microsoft AI 投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta AI 投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Google AI 研發↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "台灣供應商的物理 AI 平台",
-        "layer": "Agentic AI",
-        "body": "台灣供應商正在開發物理 AI 平台，以滿足未來的需求。這個平台將會用於開發新的 AI 技術和應用。台灣供應商的物理 AI 平台將會對其業務產生影響，同時也會對其競爭對手產生壓力。",
-        "impact": "台灣供應商的物理 AI 平台將會拉升其業務的發展，同時也會對其競爭對手產生壓力。這個平台將會對 AI 技術的發展產生影響，同時也會對其應用的發展產生影響。台灣供應商的物理 AI 平台將會是其業務的重要組成部分。",
-        "rating": "noise",
-        "insight": "台灣供應商的物理 AI 平台將會對其業務產生影響，同時也會對其競爭對手產生壓力。",
-        "source_label": "digitimes",
-        "source": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQLTczckgxWkY1dFB4eExob19zdDdIaGR1VGdVRmRMN0NGWl9QY3FVRnhXYWg5M2E0VHBUbERIYkxuN2NGU0JpRHBEMjM2RUZxWE8tMFB4N3M5S2ZPSjhscEVBUlhVZ3ltV2diMnRMcER0bXBTYXVYbTh4RVViYWNvX3loS1NoN2xrbjBkaGl2LXhSdzNrcVE?oc=5",
-        "chain": [
-          {
-            "label": "台灣供應商 AI 平台開發↑",
-            "type": "up"
-          },
-          {
-            "label": "台灣供應商 業務拓展↑",
-            "type": "up"
-          },
-          {
-            "label": "競爭對手 AI 研發↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "HBM",
-        "full": "High-Bandwidth Memory",
-        "def": "HBM 是一種高頻寬記憶體技術，主要用於高性能計算和 AI 應用。HBM 的優點是其高頻寬和低延遲，能夠滿足高性能計算和 AI 應用的需求。HBM 的應用包括高性能計算、AI 和深度學習等領域。",
-        "why": "HBM 對於高性能計算和 AI 應用非常重要，因為它能夠提供高頻寬和低延遲的記憶體存取。HBM 的發展將會對高性能計算和 AI 應用的發展產生影響。",
         "category": "semiconductor"
       }
     ],
