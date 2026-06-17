@@ -709,6 +709,7 @@ function renderGlossary(hist) {
 
   // Start with base sections + custom sections
   const allCatData = catDefs.map(c => ({...c, terms:[]}));
+  const histOv = JSON.parse(localStorage.getItem('gloss_hist_overrides')||'{}');
 
   // Populate base terms
   GLOSS_CATS.forEach((baseCat, bi) => {
@@ -728,7 +729,6 @@ function renderGlossary(hist) {
   GLOSS_CATS.forEach(c => c.terms.forEach(t => seen.add(t.term)));
   const uncategorized = [];
   const newThresh = new Date(Date.now() - 3*86400000).toISOString().slice(0,10);
-  const histOv = JSON.parse(localStorage.getItem('gloss_hist_overrides')||'{}');
   (hist||[]).forEach(d => {
     (d.glossary_new||[]).forEach(g => {
       if (seen.has(g.term) || hidden.has(g.term)) return;
