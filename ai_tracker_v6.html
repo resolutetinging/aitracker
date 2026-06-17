@@ -780,8 +780,10 @@ function renderGlossary(hist) {
           </div>
         </div>
       </div>
-      <div class="gloss-full">${g.full}</div>
-      <div class="gloss-def">${g.def}</div>
+      <div style="flex:1;min-height:0;">
+        <div class="gloss-full">${g.full}</div>
+        <div class="gloss-def">${g.def}</div>
+      </div>
       <div class="gloss-why">${g.why ? (String(g.why).trimStart().startsWith('📌') ? g.why : '📌 ' + g.why) : ''}</div>
     </div>`;
   }
