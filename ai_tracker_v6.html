@@ -894,9 +894,9 @@ async function addUserTerm(){
 
 async function regenerateUserTerm(term){
   const key=localStorage.getItem('groq_key');
-  if(!key){alert('請先設定 Groq Key');return;}
+  if(!key){alert('請先在「⚙ 設定」區儲存 Groq Key');return;}
   const btn=document.getElementById('regen-'+term.replace(/'/g,"\\'"));
-  if(btn){btn.disabled=true;btn.textContent='…';}
+  if(btn){btn.disabled=true;btn.textContent='⏳';}
   try{
     const catList=getAllCatDefs().map(c=>c.key).join('|');
     const resp=await fetch('https://api.groq.com/openai/v1/chat/completions',{
@@ -912,25 +912,29 @@ async function regenerateUserTerm(term){
       })
     });
     const json=await resp.json();
-    if(!resp.ok)throw new Error(json.error?.message||'API error '+resp.status);
+    if(!resp.ok)throw new Error(json.error?.message||'HTTP '+resp.status);
     const text=json.choices?.[0]?.message?.content||'';
     const m=text.match(/\{[\s\S]*\}/);
-    if(!m)throw new Error('no json');
+    if(!m)throw new Error('回傳非 JSON');
     const g=JSON.parse(m[0]);
-    if(!g.term||!g.def)throw new Error('invalid');
+    if(!g.term||!g.def)throw new Error('缺少必要欄位');
     g.term=term;
     g._addedAt=new Date().toISOString().slice(0,10);
     const ut=loadUserTerms();
     const idx=ut.findIndex(t=>t.term===term);
     if(idx>=0){
-      ut[idx]=g; saveUserTerms(ut);          // user-added: 更新 localStorage
+      ut[idx]=g; saveUserTerms(ut);
     } else {
-      // history glossary_new: 存至 gloss_hist_overrides
       const ov=JSON.parse(localStorage.getItem('gloss_hist_overrides')||'{}');
       ov[term]=g; localStorage.setItem('gloss_hist_overrides',JSON.stringify(ov));
     }
     renderGlossary(HISTORY);
+    // 重建後顯示成功提示
+    const st=document.getElementById('add-term-status');
+    if(st){st.textContent='✓ '+term+' 已更新';setTimeout(()=>{if(st)st.textContent='';},3000);}
   }catch(e){
+    console.error('regen failed:',e);
+    alert('↻ 刷新失敗：'+e.message);
     if(btn){btn.disabled=false;btn.textContent='↻';}
   }
 }
