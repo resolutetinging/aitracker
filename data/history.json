@@ -1,5 +1,121 @@
 [
   {
+    "date": "2026-06-19",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "台積電加速玻璃基板生產",
+        "layer": "晶片製造",
+        "body": "台積電加速玻璃基板生產，以應對人工智慧封裝需求的增長。台積電的CoWoS先進封裝技術已經被應用於多個領域，包括人工智慧和5G通信。根據報導，台積電的CoWoS技術已經被多個大型科技公司採用，包括谷歌和亞馬遜。",
+        "impact": "台積電加速玻璃基板生產將直接影響其封裝能力的提升，從而對下游客戶如谷歌和亞馬遜的AI應用產生正面影響。",
+        "rating": "core",
+        "insight": "台積電加速玻璃基板生產是人工智慧封裝需求增長的重要體現，投資者應關注相關公司的發展動向。",
+        "source_label": "CHOSUNBIZ",
+        "source": "https://news.google.com/rss/articles/CBMiekFVX3lxTFA5NHRjUFE3RzZ3eU5Ib2hvZzdWUW9CVnl3VUhNaEtxT2hiaGRBQlI0cnZBUG1UczdWQWx1cmxrN0xyME9jX09ISnlQeTZNWXJaeFRfVF9fVVBaYVM3NWc0TVRQc3hzVUJhNjdJbmxtdGJqVG1yZzhTWmxR0gGOAUFVX3lxTE1SSHVna0NBQlBaSWtObXVHX0g5RGw0SjR0ZTNwV3dicnV6V09mNEcwR19wTzUwOHV2VVlrM1dUcVdXQmhFVUpaVS03UlAyelRaUmpkb2VUYkRkVVd4RUtudHdGZXE2bEwyRmhaUlNTbHFCMFpKSzk3VUlJWE1yd1pnOFJrVndSQkppZlNCaFE?oc=5",
+        "chain": [
+          {
+            "label": "TSMC CoWoS 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "谷歌封裝需求↑",
+            "type": "up"
+          },
+          {
+            "label": "亞馬遜封裝需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "SK海力士出貨12層次HBM4E樣品",
+        "layer": "記憶體",
+        "body": "SK海力士出貨12層次HBM4E樣品，標誌著其在高性能記憶體領域的進步。HBM4E是一種高頻寬和低延遲的記憶體技術，適合於人工智慧和高性能計算應用。根據報導，SK海力士的HBM4E樣品已經被多個大型科技公司採用，包括谷歌和亞馬遜。",
+        "impact": "SK海力士出貨12層次HBM4E樣品將直接影響其記憶體供應能力的提升，從而對下游客戶如谷歌和亞馬遜的AI應用產生正面影響。",
+        "rating": "core",
+        "insight": "SK海力士出貨12層次HBM4E樣品是高性能記憶體需求增長的重要體現，投資者應關注相關公司的發展動向。",
+        "source_label": "TechPowerUp",
+        "source": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQaTR1blV6QU1QREM0bWY3SkVHS0xtZ2dPVGVMR012cW9QR0tsSzdlZ2hvSDhtU3ZwSmlpY2h4amZNQjlyUGNNX3BmczlqalhVSDNtSmRJVG03UzFrLXp2Vi04dW1rd1ZDamRTMjU4ODZYM3pXaUJZLXU5T05yYVl3dVNvUkZBVWRtUGNxLXhvYTdNd9IBkgFBVV95cUxQaTR1blV6QU1QREM0bWY3SkVHS0xtZ2dPVGVMR012cW9QR0tsSzdlZ2hvSDhtU3ZwSmlpY2h4amZNQjlyUGNNX3BmczlqalhVSDNtSmRJVG03UzFrLXp2Vi04dW1rd1ZDamRTMjU4ODZYM3pXaUJZLXU5T05yYVl3dVNvUkZBVWRtUGNxLXhvYTdNdw?oc=5",
+        "chain": [
+          {
+            "label": "SK Hynix HBM4E 出貨量↑",
+            "type": "up"
+          },
+          {
+            "label": "谷歌記憶體需求↑",
+            "type": "up"
+          },
+          {
+            "label": "亞馬遜記憶體需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "NVIDIA、亞馬遜和微軟面臨AI投資減少",
+        "layer": "AI投資",
+        "body": "NVIDIA、亞馬遜和微軟面臨AI投資減少，原因是資金短缺。根據報導，AI投資的減少將對這些公司的AI研發和應用產生負面影響。NVIDIA、亞馬遜和微軟都是AI領域的重要玩家，AI投資的減少將對其業務產生重大影響。",
+        "impact": "NVIDIA、亞馬遜和微軟面臨AI投資減少將直接影響其AI研發和應用的進度，從而對其業務產生負面影響。同時，AI投資的減少也將對其他AI公司產生間接影響，促使其加速研發和投資。這一發展也將對晶片製造商和記憶體供應商產生間接影響，推動其提高生產效率和降低成本。",
+        "rating": "noise",
+        "insight": "NVIDIA、亞馬遜和微軟面臨AI投資減少是AI領域的重要體現，投資者應關注相關公司的發展動向。",
+        "source_label": "24/7 Wall St.",
+        "source": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQWllvczZfMkYtVmtpQXYyMmQ3VEw5VHdEdkQ4bXZHOU1VX0daRTBOaTE0SDdoY1kycFpfVlhXMHp1TjJMNFcxMm9lZERWajE0M1hlci02dTl6T0EzbXJUdzNJNS1XQ1lieGhsTGJjbnRRSEl2YmZQQV9hNnFhZlRRV2FUcEZrc3g0Y1Yxcmk5ZmU4R204cmJYazk3X2UxWWZkRkZ4LV81aFM2eml2alBUaEVGckVuYm1RTGJnZA?oc=5",
+        "chain": [
+          {
+            "label": "NVIDIA AI 研發↓",
+            "type": "down"
+          },
+          {
+            "label": "亞馬遜 AI 研發↓",
+            "type": "down"
+          },
+          {
+            "label": "微軟 AI 研發↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "富士康推出人形機器人",
+        "layer": "人形機器人",
+        "body": "富士康推出人形機器人，標誌著其在機器人領域的進步。根據報導，富士康的機器人已經被應用於多個領域，包括生產和服務。富士康的機器人技術也將對其他公司產生競爭壓力，促使其加速研發和投資。",
+        "impact": "富士康推出人形機器人將直接影響其機器人供應能力的提升，從而對下游客戶產生正面影響。同時，富士康的機器人技術也將對其他機器人公司產生競爭壓力，促使其加速研發和投資。這一發展也將對晶片製造商和記憶體供應商產生間接影響，推動其提高生產效率和降低成本。",
+        "rating": "noise",
+        "insight": "富士康推出人形機器人是機器人領域的重要體現，投資者應關注相關公司的發展動向。",
+        "source_label": "Tech Times",
+        "source": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNSWN6REp2TjUzbC00bkp2TVVTYnRUdnVIRUtFV0xDcWxsU2ZXdFo3ZEdLTlM2X0M0MDJsSXQzN19wc3ZPRTdnWUVnUlR2Rl9LRzJ6WVJMSlFjc2dHOEI5Y0dqOGlWX1lIOVdIT0hHZVQ1Xzc5YU5UN0FLWE82OWJkS3dndUlpa1FEeUVRckhucWpzMHRVUUFyaVRsYkVVZkRnUTI5M283QlNNdE4tQjFmZXFJcnVOOVg5WlM2ZnJjSVpabkR3MHV5dXdCTmg?oc=5",
+        "chain": [
+          {
+            "label": "富士康 機器人技術↑",
+            "type": "up"
+          },
+          {
+            "label": "生產效率↑",
+            "type": "up"
+          },
+          {
+            "label": "服務質量↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoWoS",
+        "full": "Chip-on-Wafer-on-Substrate",
+        "def": "CoWoS是一種先進的封裝技術，將晶片直接封裝在基板上，提高了封裝的密度和性能。",
+        "why": "CoWoS技術可以提高封裝的效率和降低成本，對於人工智慧和5G通信等領域的應用具有重要意義。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-18",
     "is_sunday": false,
     "hw": [
@@ -829,122 +945,6 @@
         "def": "為 AI 應用而設計的編碼",
         "why": "Amazon 的 AI 編碼可能會對 AI 業界產生重大影響",
         "category": "AI"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-12",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "SK Hynix 購買 HBM 晶片",
-        "layer": "semiconductor",
-        "body": "SK Hynix 購買 HBM 晶片以滿足 Nvidia 的需求。Nvidia 的 RTX Spark Gaming 平台需要高性能的 HBM 晶片。SK Hynix 的 HBM 晶片生產能力將增加以滿足 Nvidia 的需求。",
-        "impact": "SK Hynix 的 HBM 晶片購買可能會增加 Nvidia 的採購量。Nvidia 的 RTX Spark Gaming 平台的需求可能會推動 HBM 晶片的銷售。SK Hynix 的 HBM 晶片生產能力的增加可能會滿足 Nvidia 的需求。",
-        "rating": "noise",
-        "insight": "SK Hynix 的 HBM 晶片購買可能會增加 Nvidia 的採購量，推動 HBM 晶片的銷售。",
-        "source_label": "Jon Peddie Research",
-        "source": "https://news.google.com/rss/articles/CBMieEFVX3lxTE8tYXd5MmdxZjJVV0RMNUZycjNON0gtZk90VVlsN21rZjVDX3NzbkZ6NzRfUVJ6Q2tPc2RYU0cwWnNFMGVabUloNVBBQk5sSTAwMXNZUThNTG1Gbk1RdEFWTkFmOS1sQjdIQ3g0dzQ1T25YaHlHUl84Vw?oc=5",
-        "chain": [
-          {
-            "label": "SK Hynix HBM 晶片供應↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia RTX Spark Gaming 平台需求↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix 生產能力↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Nvidia 獲得 81.6B 美元的季度收益",
-        "layer": "semiconductor",
-        "body": "Nvidia 獲得 81.6B 美元的季度收益，92% 的增長來自於資料中心的業務。Nvidia 的資料中心業務的增長主要來自於 AI 的需求。Nvidia 的 RTX Spark Gaming 平台的需求也推動了公司的收益。",
-        "impact": "Nvidia 的資料中心業務的增長可能會推動公司的收益。",
-        "rating": "core",
-        "insight": "Nvidia 的季度收益可能會增加公司的投資於 AI 和資料中心的業務，推動公司的收益。",
-        "source_label": "tech-insider.org",
-        "source": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBmREpnVmp5NDExaURPOVpvSWJHVm5SeEJUN2s0eUhXUnZ2UE9fNmxkblRQNUt1V2pfdXFySUMzNG1WZVRKaURTeVBrVmFBZUxBWTd2Y0ZxYkJjaWhldnJjUnMzU1NQbjJ3ZVdYVEhveG96YW8?oc=5",
-        "chain": [
-          {
-            "label": "Nvidia 資料中心業務收益↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia RTX Spark Gaming 平台需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia 季度收益↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Wall Street 的 800 億美元 AI 資料中心投資",
-        "layer": "CSP",
-        "body": "Wall Street 的 800 億美元 AI 資料中心投資可能會推動資料中心的建設。資料中心的建設可能會增加對於 AI 硬體的需求。AI 硬體的需求可能會推動 Nvidia 和其他公司的收益。",
-        "impact": "Wall Street 的 AI 資料中心投資可能會增加對於 AI 硬體的需求，推動 Nvidia 和其他公司的收益。",
-        "rating": "opp",
-        "insight": "Wall Street 的 AI 資料中心投資可能會增加對於 AI 硬體的需求，推動 Nvidia 和其他公司的收益。",
-        "source_label": "24/7 Wall St.",
-        "source": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNMFVjbE9yNERTNUwzeVlOaXRBZjl4YmFLRkVGdDVwX2RUUHVPb0Utc08yX0VLek1YdDh3alBvb1FMUUduM1ZuTF9uWHE0WHJVTHRTWVRrSVFHVE5ZeUdITnY3WmVraWw0Y0Y2cjctcElibjlOQnJxQ2FRS2o5cUdrODlNUmNjV3htY1IzeU8zZW1XWU43UjNHNF9zRUpRc243LXU3NUQwdW9RcndQTVVrdFZEUTROZlBQc3dhOW5neFVpSzJyQzBISFItV1RRaGpPUVJJNEhmQWhXOV9Na09ZMm94VEVMOUU?oc=5",
-        "chain": [
-          {
-            "label": "Wall Street AI 資料中心投資↑",
-            "type": "up"
-          },
-          {
-            "label": "資料中心建設需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia AI 硬體需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "台灣供應商的物理 AI 平台",
-        "layer": "Agentic AI",
-        "body": "台灣供應商的物理 AI 平台可能會推動 AI 的發展。AI 的發展可能會增加對於物理 AI 平台的需求。物理 AI 平台的需求可能會推動台灣供應商的收益。",
-        "impact": "台灣供應商的物理 AI 平台可能會增加對於 AI 的需求，推動公司的投資於 AI 和物理 AI 平台的業務。物理 AI 平台的需求可能會推動台灣供應商的收益，增加公司的採購量。",
-        "rating": "noise",
-        "insight": "台灣供應商的物理 AI 平台可能會增加對於 AI 的需求，推動公司的投資於 AI 和物理 AI 平台的業務。",
-        "source_label": "digitimes",
-        "source": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQLTczckgxWkY1dFB4eExob19zdDdIaGR1VGdVRmRMN0NGWl9QY3FVRnhXYWg5M2E0VHBUbERIYkxuN2NGU0JpRHBEMjM2RUZxWE8tMFB4N3M5S2ZPSjhscEVBUlhVZ3ltV2diMnRMcER0bXBTYXVYbTh4RVViYWNvX3loS1NoN2xrbjBkaGl2LXhSdzNrcVE?oc=5",
-        "chain": [
-          {
-            "label": "台灣供應商物理 AI 平台供應↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 平台需求↑",
-            "type": "up"
-          },
-          {
-            "label": "台灣供應商收益↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "HBM",
-        "full": "High-Bandwidth Memory",
-        "def": "HBM 是一種高頻寬記憶體技術，用于提高記憶體的頻寬和效率。",
-        "why": "HBM 技術可以提高記憶體的頻寬和效率，從而提高系統的整體性能。",
-        "category": "semiconductor"
       }
     ],
     "weekly_summary": null
