@@ -1,5 +1,128 @@
 [
   {
+    "date": "2026-06-20",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "台積電的CoWoS先進封裝技術",
+        "layer": "semiconductor",
+        "body": "台積電的CoWoS先進封裝技術已經成為人工智慧發展的重要推動力，該技術可以將多個晶片封裝在一起，提高計算效率。根據報導，台積電的CoWoS技術已經被多家公司採用，包括Google和Microsoft。台積電的CoWoS技術預計在2026年底前將達到每月10萬個單位的產能。",
+        "impact": "台積電的CoWoS技術將直接影響到晶片封裝產業的供應鏈，預計將會增加對OSAT的需求，從而推動OSAT產業的發展。同時，台積電的CoWoS技術也將會影響到下游的計算機硬件產業，預計將會增加對高效計算硬件的需求。因此，台積電的CoWoS技術將會對整個電子產業的供應鏈產生深遠的影響。",
+        "rating": "core",
+        "insight": "台積電的CoWoS技術是人工智慧發展的重要推動力，投資者應該關注該技術的發展趨勢。",
+        "source_label": "AD HOC NEWS",
+        "source": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPY0REVEJqaWVrMUJlbm9ZcEhtYzZ3Rl9Oc19rQU45MU9nbjNsMVlEYkU0Z2lLbWJWVGwtMWRjMjFfbzNzd0xaMXVmM2g2QVB6eFlZSTlwQTRxZ0hqRW9aQkhjNFpFR2doMlRzU2dyTWIyUFdDYnNQQ3RaOXVrbERvVWpjTzdEaFFVYTF3V2JYc2V6LThTTmxpWUpfci1POHhUeHNrbXczMlo4MHZSQ3hmSUhSeGE0Zk84Mm5xWnln",
+        "chain": [
+          {
+            "label": "TSMC CoWoS 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Google AI 訂單↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft 伺服器需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Tensordyne的對數運算技術",
+        "layer": "semiconductor",
+        "body": "Tensordyne公司宣布將使用對數運算技術來挑戰Nvidia的霸主地位，該技術可以將計算效率提高10倍。根據報導，Tensordyne的對數運算技術已經被多家公司採用，包括Google和Microsoft。Tensordyne的對數運算技術預計在2026年底前將達到每月1萬個單位的產能。",
+        "impact": "Tensordyne的對數運算技術將直接影響到晶片設計產業的供應鏈，預計將會增加對高效計算晶片的需求，從而推動晶片設計產業的發展。同時，Tensordyne的對數運算技術也將會影響到下游的計算機硬件產業，預計將會增加對高效計算硬件的需求。因此，Tensordyne的對數運算技術將會對整個電子產業的供應鏈產生深遠的影響。",
+        "rating": "opp",
+        "insight": "Tensordyne的對數運算技術是挑戰Nvidia霸主地位的重要技術，投資者應該關注該技術的發展趨勢。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/06/19/tensordyne-makes-a-big-bet-on-log-math-to-beat-nvidia/5258662",
+        "chain": [
+          {
+            "label": "Tensordyne 對數運算技術產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 市占↓",
+            "type": "down"
+          },
+          {
+            "label": "Google AI 研發投資↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "微軟、Meta和Google的AI投資",
+        "layer": "CSP",
+        "body": "微軟、Meta和Google三家公司在最近的財報中宣布了對AI的巨額投資，總計達到725億美元。根據報導，三家公司將會在AI研究和開發上進行大量的投資，預計將會推動AI技術的發展。微軟、Meta和Google的AI投資預計在2026年底前將達到每月1億美元的投資額。",
+        "impact": "微軟、Meta和Google的AI投資將直接影響到AI產業的供應鏈，預計將會增加對AI技術的需求，從而推動AI產業的發展。同時，三家公司的AI投資也將會影響到下游的計算機硬件產業，預計將會增加對高效計算硬件的需求。因此，微軟、Meta和Google的AI投資將會對整個電子產業的供應鏈產生深遠的影響。",
+        "rating": "core",
+        "insight": "微軟、Meta和Google的AI投資是推動AI技術發展的重要動力，投資者應該關注該投資的發展趨勢。",
+        "source_label": "Stocktwits",
+        "source": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNQ2ZDQkRWWGZaNVdBV1UwS0FEY0RvVVJqUFUxNXd2eHpWM1haeXltLUNpaXB2TW5kcHlJRFo0WFNOQWZFaGNDZ2p3WlcwZjhPVndrYkQwWVAxR0tVVnotaFdDNnZHT1IxZ1BJVHJXZXFpVG5ROUlMcGZoR29iczhkOGM4VG9UMEVWWHJoUEY5TlBCN0RiTEotLTFWNVdFZHZpUmVBOHBuYWVaN0xYMEJzSkgtSno4WHhuc2x4TmpMUkV5bHJDaTNqVHFKalBIMl9pZ01MSjF2a0hpczUtYjMxUHk1OGt0VUxxbHRuaHZ3Nkt4ekRLTl9YZzVQX04wYjFUS25wLUZwWUJwTFU",
+        "chain": [
+          {
+            "label": "微軟 AI 研究投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta AI 人才招聘↑",
+            "type": "up"
+          },
+          {
+            "label": "Google AI 產業合作↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Foxconn的人形機器人",
+        "layer": "Agentic AI",
+        "body": "Foxconn公司宣布推出的人形機器人，該機器人可以進行多種任務，包括組裝和測試。根據報導，Foxconn的人形機器人已經被多家公司採用，包括Google和Microsoft。Foxconn的人形機器人預計在2026年底前將達到每月1萬個單位的產能。",
+        "impact": "Foxconn的人形機器人將直接影響到制造業的供應鏈，預計將會增加對機器人的需求，從而推動機器人產業的發展。同時，Foxconn的人形機器人也將會影響到下游的計算機硬件產業，預計將會增加對高效計算硬件的需求。因此，Foxconn的人形機器人將會對整個電子產業的供應鏈產生深遠的影響。",
+        "rating": "opp",
+        "insight": "Foxconn的人形機器人是推動制造業自動化的重要技術，投資者應該關注該技術的發展趨勢。",
+        "source_label": "Tech Times",
+        "source": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNSWN6REp2TjUzbC00bkp2TVVTYnRUdnVIRUtFV0xDcWxsU2ZXdFo3ZEdLTlM2X0M0MDJsSXQzN19wc3ZPRTdnWUVnUlR2Rl9LRzJ6WVJMSlFjc2dHOEI5Y0dqOGlWX1lIOVdIT0hHZVQ1Xzc5YU5UN0FLWE82OWJkS3dndUlpa1FEeUVRckhucWpzMHRVUUFyaVRsYkVVZkRnUTI5M283QlNNdE4tQjFmZXFJcnVOOVg5WlM2ZnJjSVpabkR3MHV5dXdCTmg",
+        "chain": [
+          {
+            "label": "Foxconn 機器人產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Google 供應鏈優化↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft 智能製造投資↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoWoS",
+        "full": "Chip-on-Wafer-on-Substrate",
+        "def": "一種先進的封裝技術，將多個晶片封裝在一起，提高計算效率。",
+        "why": "CoWoS技術可以提高計算效率，降低能耗，提高晶片的可靠性。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "對數運算",
+        "full": "Logarithmic Computation",
+        "def": "一種計算方法，使用對數來簡化計算過程，提高計算效率。",
+        "why": "對數運算可以提高計算效率，降低能耗，提高晶片的可靠性。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-19",
     "is_sunday": false,
     "hw": [
@@ -794,159 +917,5 @@
       }
     ],
     "weekly_summary": "hw 半導體本週一句摘要：SK Hynix 將在 2034 年前提升記憶體生產量三倍。\ncorp CSP/CapEx 本週一句摘要：Big Tech 在 Q1 2026 年投入了 6300 億美元的 AI 資本支出。\napp 新興 AI 本週一句摘要：Agentic AI 將改變數據中心的架構，使用異構 SoC 和 chiplet 結合 CPU、GPU 和 NPU。\n下週投資者一句看點：Agentic AI 對數據中心架構的影響可能會帶來新的機會。\n用戶筆記洞察一句：KPMG 的 AI 報告錯誤可能會帶來新的挑戰。"
-  },
-  {
-    "date": "2026-06-13",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "SK Hynix 將提升記憶體生產量",
-        "layer": "記憶體",
-        "body": "SK Hynix 預計在 2034 年前提升記憶體生產量三倍。SK 集團董事長表示，公司正在盡快推進生產量提升計畫。SK Hynix 的生產量提升將對全球記憶體市場產生重大影響。",
-        "impact": "SK Hynix 的生產量提升計畫可能會推動公司的營收增長。",
-        "rating": "core",
-        "insight": "SK Hynix 的生產量提升計畫可能會對全球記憶體市場產生重大影響，投資者應關注公司的營收增長。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/06/12/sk-hynix-to-triple-wafer-capacity-by-2034/5255151"
-      },
-      {
-        "title": "Nvidia 在 Computex 2026 上展示 RTX Spark Gaming",
-        "layer": "晶片",
-        "body": "Nvidia 在 Computex 2026 上展示了 RTX Spark Gaming 的功能。RTX Spark Gaming 是一種新的遊戲技術，能夠提供更好的遊戲體驗。Nvidia 的展示吸引了許多遊戲玩家的關注。",
-        "impact": "Nvidia 的展示可能會增加公司的品牌知名度。",
-        "rating": "opp",
-        "insight": "Nvidia 的 RTX Spark Gaming 技術可能會對遊戲業界產生重大影響，投資者應關注公司的遊戲相關業務增長。",
-        "source_label": "TechPowerUp",
-        "source": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPM0MxYzdGQi02TEd0WjlXR1Vfbnl4bnhYRTF3MlZCRnQ3LTlSNUhWZmJWVnpZcjN3dkxYSTJxMVVVNW5uVnZ0eXd3T0JOVFh1LUY1YzVjd1hKeGYyVE5Jc1VhcExMQ2lQdWotamlfazNlOFl6b1lCTWJMM0xOSG9IbURTV1pDZmpXTTFKbElUSHRoYVpMRmNORm5YazFlekZ5cUJ0OdIBqgFBVV95cUxQMDlsbk1IM2dUU0JlbDRRUi14R1hFV0RrelQxOFFNamdOSnVmYWV6WGhwemp2TWsxT0xyTXk4V2FYdkdrVm5iYUlMVnlFRHhwSzVIcTFiT25PU1ZoTng5OENLemVMUWlnYmlsalBLVnhQY1dPbnhsakN2TFBkWW83aDJZYWxjZWgwQWFpc1BkMVlJbmZXQklPS3N2WW53MzhfU0pCSGhnNFJMUQ"
-      },
-      {
-        "title": "Delos Data 為 AI 晶片創業公司提供快速通道",
-        "layer": "晶片",
-        "body": "Delos Data 為 AI 晶片創業公司提供了一種快速通道，能夠快速將晶片設計轉化為實際產品。Delos Data 的技術能夠幫助創業公司節省時間和成本。Delos Data 的快速通道可能會推動 AI 晶片創業公司的發展。",
-        "impact": "Delos Data 的快速通道可能會對 AI 晶片創業公司產生重大影響。這也可能會推動公司的業務增長。Delos Data 的快速通道可能會增加公司的品牌知名度。",
-        "rating": "noise",
-        "insight": "Delos Data 的快速通道可能會對 AI 晶片創業公司產生重大影響，投資者應關注公司的業務增長。",
-        "source_label": "The Register",
-        "source": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQdGtqOGpWMm5YU3UtRXNXRmJPakJXNG41OE5DT2JRcGNza2lFM2s1Ml9wclVqMkREdUtyQ21rVlNwWHA4SFowT1ZjOU5XTGhocjlZWGJKeEg5RDktbkVXVkJ6cjBBaGw5eW4wMkNtenJrU2E2WXVLM2d4eXdoSHpRejY4V0VYZlo4bVgwa1pMZV8wUHR5ek1DVkphWWYwSEctWDlVNGhlT3R0clQxd0NRN2dheDdmU3c"
-      },
-      {
-        "title": "Nvidia 獲得 81.6B 美元的季度收益",
-        "layer": "晶片",
-        "body": "Nvidia 獲得 81.6B 美元的季度收益，同比增長 92%。Nvidia 的收益主要來自於其晶片業務。Nvidia 的季度收益可能會推動公司的股票價格上漲。",
-        "impact": "Nvidia 的季度收益可能會對公司的股票價格產生影響。這也可能會推動公司的業務增長。Nvidia 的季度收益可能會增加公司的品牌知名度。",
-        "rating": "noise",
-        "insight": "Nvidia 的季度收益可能會對公司的股票價格產生影響，但這不是一個重要的投資訊息。",
-        "source_label": "tech-insider.org",
-        "source": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBmREpnVmp5NDExaURPOVpvSWJHVm5SeEJUN2s0eUhXUnZ2UE9fNmxkblRQNUt1V2pfdXFySUMzNG1WZVRKaURTeVBrVmFBZUxBWTd2Y0ZxYkJjaWhldnJjUnMzU1NQbjJ3ZVdYVEhveG96YW8"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Meta 增加 AI 投資",
-        "layer": "AI",
-        "body": "Meta 增加了 AI 投資，同比增長 31%。Meta 的 AI 投資主要用於其 AI 研發業務。Meta 的 AI 投資可能會推動公司的業務增長。",
-        "impact": "Meta 的 AI 投資可能會對公司的業務增長產生影響。這也可能會推動公司的股票價格上漲。Meta 的 AI 投資可能會增加公司的品牌知名度。",
-        "rating": "noise",
-        "insight": "Meta 的 AI 投資可能會對公司的業務增長產生影響，投資者應關注公司的 AI 研發業務。",
-        "source_label": "abhs.in",
-        "source": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQOXJDV2ZxVWJDeEo2RDJMSHg4S1o0dDJ4SmhOSXY0VDZNMlpkd0dOQ0VCZ1BtZkIwY2lpWlNNcl9rZjNVLUltYTNGQ0s0d1Zmbi11YUtETG1yeEE3UDRoS3AtOFRMamNLbGQ1VDh4Tm9Sc3AtYk93V0wtcHVWMGxnU2d4dHBVVkVrLTVPazd3RnB3alkzZ1dQNHZfVGM0RElu"
-      },
-      {
-        "title": "Microsoft 的 GitHub 出現當機",
-        "layer": "AI",
-        "body": "Microsoft 的 GitHub 出現當機，原因是 AI 編碼流量激增。GitHub 的當機可能會對開發者產生影響。Microsoft 的 GitHub 當機可能會推動公司的 AI 研發業務。",
-        "impact": "Microsoft 的 GitHub 宕機可能會對開發者產生影響。這也可能會推動公司的 AI 研發業務。Microsoft 的 GitHub 宕機可能會增加公司的品牌知名度。",
-        "rating": "noise",
-        "insight": "Microsoft 的 GitHub 宕機可能會對開發者產生影響，投資者應關注公司的 AI 研發業務。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/software/2026/06/12/github-outages-persist-as-ai-coding-drives-traffic-surge/5255125"
-      },
-      {
-        "title": "KPMG 的 AI 報告出現錯誤",
-        "layer": "AI",
-        "body": "KPMG 的 AI 生成報告出現事實性錯誤，起因為大型語言模型的幻覺現象。此事件引發外界對顧問業在專業交付文件中使用生成式 AI 的審核流程是否足夠嚴謹的質疑。各大顧問公司面臨壓力，須建立人工複核機制以防止幻覺輸出進入客戶報告。",
-        "impact": "KPMG 的 AI 報告錯誤可能會對公司的品牌知名度產生影響。這也可能會推動公司的 AI 研發業務。KPMG 的 AI 報告錯誤可能會增加公司的品牌知名度。",
-        "rating": "noise",
-        "insight": "KPMG 的 AI 報告錯誤可能會對公司的品牌知名度產生影響，但這不是一個重要的投資訊息。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/06/12/kpmgs-ai-report-turns-into-a-demo-of-ai-hallucinations/5255029"
-      },
-      {
-        "title": "Amazon 的 AI 投資",
-        "layer": "AI",
-        "body": "Amazon 的 AI 投資主要用於其 AI 研發業務。Amazon 的 AI 投資可能會推動公司的業務增長。Amazon 的 AI 投資可能會增加公司的品牌知名度。",
-        "impact": "Amazon 的 AI 投資可能會對公司的業務增長產生影響。這也可能會推動公司的股票價格上漲。Amazon 的 AI 投資可能會增加公司的品牌知名度。",
-        "rating": "noise",
-        "insight": "Amazon 的 AI 投資可能會對公司的業務增長產生影響，但這不是一個重要的投資訊息。",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "app": [
-      {
-        "title": "Nvidia 的 RTX Spark Gaming",
-        "layer": "遊戲",
-        "body": "Nvidia 的 RTX Spark Gaming 是一種新的遊戲技術，能夠提供更好的遊戲體驗。Nvidia 的 RTX Spark Gaming 可以支持多種遊戲平台。Nvidia 的 RTX Spark Gaming 可能會推動公司的遊戲相關業務增長。",
-        "impact": "Nvidia 的 RTX Spark Gaming 可能會對遊戲業界產生重大影響。這也可能會推動公司的遊戲相關業務增長。Nvidia 的 RTX Spark Gaming 可能會增加公司的品牌知名度。",
-        "rating": "noise",
-        "insight": "Nvidia 的 RTX Spark Gaming 可能會對遊戲業界產生重大影響，投資者應關注公司的遊戲相關業務增長。",
-        "source_label": "TechPowerUp",
-        "source": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPM0MxYzdGQi02TEd0WjlXR1Vfbnl4bnhYRTF3MlZCRnQ3LTlSNUhWZmJWVnpZcjN3dkxYSTJxMVVVNW5uVnZ0eXd3T0JOVFh1LUY1YzVjd1hKeGYyVE5Jc1VhcExMQ2lQdWotamlfazNlOFl6b1lCTWJMM0xOSG9IbURTV1pDZmpXTTFKbElUSHRoYVpMRmNORm5YazFlekZ5cUJ0OdIBqgFBVV95cUxQMDlsbk1IM2dUU0JlbDRRUi14R1hFV0RrelQxOFFNamdOSnVmYWV6WGhwemp2TWsxT0xyTXk4V2FYdkdrVm5iYUlMVnlFRHhwSzVIcTFiT25PU1ZoTng5OENLemVMUWlnYmlsalBLVnhQY1dPbnhsakN2TFBkWW83aDJZYWxjZWgwQWFpc1BkMVlJbmZXQklPS3N2WW53MzhfU0pCSGhnNFJMUQ"
-      },
-      {
-        "title": "Delos Data 的 AI 晶片",
-        "layer": "AI",
-        "body": "Delos Data 的 AI 晶片是為 AI 應用而設計的。Delos Data 的 AI 晶片可以支持多種 AI 算法。Delos Data 的 AI 晶片可能會推動公司的 AI 相關業務增長。",
-        "impact": "Delos Data 的 AI 晶片可能會對 AI 業界產生重大影響。這也可能會推動公司的 AI 相關業務增長。Delos Data 的 AI 晶片可能會增加公司的品牌知名度。",
-        "rating": "noise",
-        "insight": "Delos Data 的 AI 晶片可能會對 AI 業界產生重大影響，投資者應關注公司的 AI 相關業務增長。",
-        "source_label": "The Register",
-        "source": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQdGtqOGpWMm5YU3UtRXNXRmJPakJXNG41OE5DT2JRcGNza2lFM2s1Ml9wclVqMkREdUtyQ21rVlNwWHA4SFowT1ZjOU5XTGhocjlZWGJKeEg5RDktbkVXVkJ6cjBBaGw5eW4wMkNtenJrU2E2WXVLM2d4eXdoSHpRejY4V0VYZlo4bVgwa1pMZV8wUHR5ek1DVkphWWYwSEctWDlVNGhlT3R0clQxd0NRN2dheDdmU3c"
-      },
-      {
-        "title": "Nvidia 的 DLSS 4.5",
-        "layer": "遊戲",
-        "body": "Nvidia 的 DLSS 4.5 是一種新的遊戲技術，能夠提供更好的遊戲體驗。Nvidia 的 DLSS 4.5 可以支持多種遊戲平台。Nvidia 的 DLSS 4.5 可能會推動公司的遊戲相關業務增長。",
-        "impact": "Nvidia 的 DLSS 4.5 可能會推動公司的遊戲相關業務增長。",
-        "rating": "opp",
-        "insight": "Nvidia 的 DLSS 4.5 可能會對遊戲業界產生重大影響，投資者應關注公司的遊戲相關業務增長。",
-        "source_label": "TechPowerUp",
-        "source": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPM0MxYzdGQi02TEd0WjlXR1Vfbnl4bnhYRTF3MlZCRnQ3LTlSNUhWZmJWVnpZcjN3dkxYSTJxMVVVNW5uVnZ0eXd3T0JOVFh1LUY1YzVjd1hKeGYyVE5Jc1VhcExMQ2lQdWotamlfazNlOFl6b1lCTWJMM0xOSG9IbURTV1pDZmpXTTFKbElUSHRoYVpMRmNORm5YazFlekZ5cUJ0OdIBqgFBVV95cUxQMDlsbk1IM2dUU0JlbDRRUi14R1hFV0RrelQxOFFNamdOSnVmYWV6WGhwemp2TWsxT0xyTXk4V2FYdkdrVm5iYUlMVnlFRHhwSzVIcTFiT25PU1ZoTng5OENLemVMUWlnYmlsalBLVnhQY1dPbnhsakN2TFBkWW83aDJZYWxjZWgwQWFpc1BkMVlJbmZXQklPS3N2WW53MzhfU0pCSGhnNFJMUQ"
-      },
-      {
-        "title": "Amazon 的 AI 編碼",
-        "layer": "AI",
-        "body": "Amazon 的 AI 編碼是為 AI 應用而設計的。Amazon 的 AI 編碼可以支持多種 AI 算法。Amazon 的 AI 編碼可能會推動公司的 AI 相關業務增長。",
-        "impact": "Amazon 的 AI 編碼可能會對 AI 業界產生重大影響。這也可能會推動公司的 AI 相關業務增長。Amazon 的 AI 編碼可能會增加公司的品牌知名度。",
-        "rating": "noise",
-        "insight": "Amazon 的 AI 編碼可能會對 AI 業界產生重大影響，但這不是一個重要的投資訊息。",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "RTX Spark Gaming",
-        "full": "Nvidia 的 RTX Spark Gaming",
-        "def": "一種新的遊戲技術，能夠提供更好的遊戲體驗",
-        "why": "Nvidia 的 RTX Spark Gaming 可能會對遊戲業界產生重大影響",
-        "category": "遊戲"
-      },
-      {
-        "term": "DLSS 4.5",
-        "full": "Nvidia 的 DLSS 4.5",
-        "def": "一種新的遊戲技術，能夠提供更好的遊戲體驗",
-        "why": "Nvidia 的 DLSS 4.5 可能會對遊戲業界產生重大影響",
-        "category": "遊戲"
-      },
-      {
-        "term": "AI 編碼",
-        "full": "Amazon 的 AI 編碼",
-        "def": "為 AI 應用而設計的編碼",
-        "why": "Amazon 的 AI 編碼可能會對 AI 業界產生重大影響",
-        "category": "AI"
-      }
-    ],
-    "weekly_summary": null
   }
 ]
