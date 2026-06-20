@@ -1,5 +1,97 @@
 [
   {
+    "date": "2026-06-21",
+    "is_sunday": true,
+    "hw": [
+      {
+        "title": "台積電的CoWoS先進封裝技術助力AI發展",
+        "layer": "半導體",
+        "body": "台積電的CoWoS先進封裝技術正在助力AI的發展，該技術可以提高晶片的性能和效率。根據報導，CoWoS技術已經被應用在多個AI相關的項目中，包括Google和Meta的AI晶片。台積電的CoWoS技術預計在2026年底前將達到每月10萬個晶片的產能。",
+        "impact": "台積電的CoWoS先進封裝技術的應用將直接影響到AI晶片的供應，從而間接影響到AI相關的下游產業，例如雲計算和大數據分析。",
+        "rating": "core",
+        "insight": "台積電的CoWoS先進封裝技術是AI發展的重要助力，投資者應該關注其在AI相關項目中的應用和發展。",
+        "source_label": "AD HOC NEWS",
+        "source": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPY0REVEJqaWVrMUJlbm9ZcEhtYzZ3Rl9Oc19rQU45MU9nbjNsMVlEYkU0Z2lLbWJWVGwtMWRjMjFfbzNzd0xaMXVmM2g2QVB6eFlZSTlwQTRxZ0hqRW9aQkhjNFpFR2doMlRzU2dyTWIyUFdDYnNQQ3RaOXVrbERvVWpjTzdEaFFVYTF3V2JYc2V6LThTTmxpWUpfci1POHhUeHNrbXczMlo4MHZSQ3hmSUhSeGE0Zk84Mm5xWnln",
+        "chain": [
+          {
+            "label": "TSMC CoWoS 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Google AI晶片性能↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta AI晶片效率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "微軟、Meta和Google的AI投資達725億美元",
+        "layer": "CSP",
+        "body": "微軟、Meta和Google的AI投資已經達到725億美元，遠超過之前的預期。這三家公司的AI投資主要集中在雲計算和大數據分析等領域。根據報導，微軟、Meta和Google的AI投資將繼續增加，預計在2026年底前將達到1000億美元。",
+        "impact": "微軟、Meta和Google的AI投資將直接影響到AI相關的下游產業，例如雲計算和大數據分析。",
+        "rating": "core",
+        "insight": "微軟、Meta和Google的AI投資是CSP產業的重要發展，投資者應該關注其在AI相關項目中的投資和發展。",
+        "source_label": "Stocktwits",
+        "source": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNQ2ZDQkRWWGZaNVdBV1UwS0FEY0RvVVJqUFUxNXd2eHpWM1haeXltLUNpaXB2TW5kcHlJRFo0WFNOQWZFaGNDZ2p3WlcwZjhPVndrYkQwWVAxR0tVVnotaFdDNnZHT1IxZ1BJVHJXZXFpVG5ROUlMcGZoR29iczhkOGM4VG9UMEVWWHJoUEY5TlBCN0RiTEotLTFWNVdFZHZpUmVBOHBuYWVaN0xYMEJzSkgtSno4WHhuc2x4TmpMUkV5bHJDaTNqVHFKalBIMl9pZ01MSjF2a0hpczUtYjMxUHk1OGt0VUxxbHRuaHZ3Nkt4ekRLTl9YZzVQX04wYjFUS25wLUZwWUJwTFU",
+        "chain": [
+          {
+            "label": "微軟 AI 投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta AI 研發↑",
+            "type": "up"
+          },
+          {
+            "label": "Google AI雲計算↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "NVIDIA和Doosan擴展物理AI應用",
+        "layer": "Agentic AI",
+        "body": "NVIDIA和Doosan正在擴展物理AI的應用，包括機器人、反應堆和電路板材料等領域。根據報導，NVIDIA和Doosan的合作將使物理AI技術更加成熟和普及。預計在2026年底前，NVIDIA和Doosan的物理AI技術將被應用在多個產業中。",
+        "impact": "NVIDIA和Doosan的物理AI技術的應用將直接影響到相關的下游產業，例如製造和能源等領域。",
+        "rating": "core",
+        "insight": "NVIDIA和Doosan的物理AI技術是AI發展的重要助力，投資者應該關注其在相關項目中的應用和發展。",
+        "source_label": "Tech Times",
+        "source": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOdEFvQXMwbC00SDNIMVUxcXExRl8xRHMyVEJrQnF3WVNyQktmc2tvS2dLWGFQWTRmWXB3Y2t6ZmNuZU9ydDBLMDlVaTlMZXRjcTlLeThhY2FDdXpkeXNMUFNDS0k4ZVA1TjNrSFY2X0xBZW1peHRDM0E1WkNrV3A2YzYxal9KMmM3cE5VaHVkbHJ1VWxOdnhVTmx6R1ZKZ2hoQlc3TS13cS14WXF0cVZOOUtsMmhmOV9HS0NBUU9Hb1kyRUV2V2xtdzNSR0JReHM",
+        "chain": [
+          {
+            "label": "NVIDIA 物理AI技術↑",
+            "type": "up"
+          },
+          {
+            "label": "Doosan 機器人應用↑",
+            "type": "up"
+          },
+          {
+            "label": "物理AI產業應用↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoWoS",
+        "full": "Chip-on-Wafer-on-Substrate",
+        "def": "一種先進的封裝技術，能夠提高晶片的性能和效率。",
+        "why": "CoWoS技術是AI發展的重要助力，能夠提高晶片的性能和效率。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": "HW：台積電的CoWoS先進封裝技術助力AI發展。\nCORP：微軟、Meta和Google的AI投資達725億美元。\nAPP：NVIDIA和Doosan擴展物理AI應用。\n下週看點：AI相關的下游產業將繼續發展。\n用戶洞察：AI技術的發展將對整個產業的供應鏈產生深遠的影響。"
+  },
+  {
     "date": "2026-06-20",
     "is_sunday": false,
     "hw": [
@@ -729,193 +821,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-06-14",
-    "is_sunday": true,
-    "hw": [
-      {
-        "title": "晶片產業週報",
-        "layer": "半導體",
-        "body": "SK Hynix 將在 2034 年前提升記憶體生產量三倍。Delos Data 為 AI 晶片創業公司提供快速擴展的方案。Microsoft 的 Surface 硬體存在一個漏洞，可能導致設備被單一封包 brick。",
-        "impact": "SK Hynix 的記憶體生產量增加可能會影響半導體供應鏈。Delos Data 的方案可能會幫助 AI 晶片創業公司加速發展。Microsoft 的漏洞修復可能會提高 Surface 硬體的安全性。",
-        "rating": "core",
-        "insight": "SK Hynix 的記憶體生產量增加可能會帶來半導體供應鏈的變化。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/06/12/sk-hynix-to-triple-wafer-capacity-by-2034/5255151",
-        "chain": [
-          {
-            "label": "SK Hynix 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Delos Data 業務↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft Surface 銷量↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Agentic AI 對數據中心架構的影響",
-        "layer": "半導體",
-        "body": "Agentic AI 將改變數據中心的架構，使用異構 SoC 和 chiplet 結合 CPU、GPU 和 NPU。Amazon 的數據中心使用了 2.5 億加侖的水。Microsoft 的 GitHub 出現了當機的情況。",
-        "impact": "Agentic AI 對數據中心架構的影響可能會提高效率和降低延遲。",
-        "rating": "opp",
-        "insight": "Agentic AI 對數據中心架構的影響可能會帶來新的機會。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/on-prem/2026/06/12/amazon-owns-up-to-using-25bn-gallons-of-h2o-in-its-bit-barns-last-year/5254748",
-        "chain": [
-          {
-            "label": "Agentic AI 市占↑",
-            "type": "up"
-          },
-          {
-            "label": "Delos Data 業務↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft Surface 安全性↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Google 對中國釣魚攻擊的訴訟",
-        "layer": "半導體",
-        "body": "Google 對中國釣魚攻擊的組織提起訴訟，指控他們使用 AI 驅動的詐騙作業。KPMG 的 AI 報告出現了錯誤，引發了對 AI 報告的質疑。Microsoft 的 Surface 硬體存在一個漏洞，可能導致設備被單一封包 brick。",
-        "impact": "Google 的訴訟可能會影響中國釣魚攻擊的組織。KPMG 的 AI 報告錯誤可能會影響 AI 報告的可靠性。Microsoft 的漏洞修復可能會提高 Surface 硬體的安全性。",
-        "rating": "noise",
-        "insight": "Google 的訴訟可能會帶來新的挑戰。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/security/2026/06/12/google-fires-sueball-at-alleged-chinese-phishers-over-ai-powered-fraud-ops/5254841",
-        "chain": [
-          {
-            "label": "Google 法律訴訟↑",
-            "type": "up"
-          },
-          {
-            "label": "KPMG AI 報告質量↓",
-            "type": "down"
-          },
-          {
-            "label": "Microsoft Surface 安全性↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Big Tech 的 AI 投資",
-        "layer": "CSP",
-        "body": "Big Tech 在 Q1 2026 年投入了 6300 億美元的 AI 資本支出。Meta 的 AI 投資增加了 31%。Azure 的容量受到限制。",
-        "impact": "Big Tech 的 AI 投資可能會推動 AI 技術的發展。Meta 的 AI 投資增加可能會提高其在 AI 領域的競爭力。Azure 的容量限制可能會影響其用戶體驗。",
-        "rating": "noise",
-        "insight": "Big Tech 的 AI 投資可能會帶來新的機會。",
-        "source_label": "abhs.in",
-        "source": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQOXJDV2ZxVWJDeEo2RDJMSHg4S1o0dDJ4SmhOSXY0VDZNMlpkd0dOQ0VCZ1BtZkIwY2lpWlNNcl9rZjNVLUltYTNGQ0s0d1Zmbi11YUtETG1yeEE3UDRoS3AtOFRMamNLbGQ1VDh4Tm9Sc3AtYk93V0wtcHVWMGxnU2d4dHBVVkVrLTVPazd3RnB3alkzZ1dQNHZfVGM0RElu?oc=5",
-        "chain": [
-          {
-            "label": "Big Tech AI 投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta AI 研發↑",
-            "type": "up"
-          },
-          {
-            "label": "Azure 容量↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Microsoft 的 GitHub 當機",
-        "layer": "CSP",
-        "body": "Microsoft 的 GitHub 出現了當機的情況，可能是由於 AI 驅動的編碼流量激增。Amazon 的數據中心使用了 2.5 億加侖的水。Google 對中國釣魚攻擊的組織提起訴訟。",
-        "impact": "Microsoft 的 GitHub 當機可能會影響用戶體驗。Google 的訴訟可能會影響中國釣魚攻擊的組織。",
-        "rating": "opp",
-        "insight": "Microsoft 的 GitHub 當機可能會帶來新的挑戰。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/software/2026/06/12/github-outages-persist-as-ai-coding-drives-traffic-surge/5255125",
-        "chain": [
-          {
-            "label": "Microsoft GitHub 服務質量↓",
-            "type": "down"
-          },
-          {
-            "label": "Amazon 數據中心用水量↓",
-            "type": "down"
-          },
-          {
-            "label": "Google 法律訴訟↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI 對數據中心架構的影響",
-        "layer": "Agentic AI",
-        "body": "Agentic AI 將改變數據中心的架構，使用異構 SoC 和 chiplet 結合 CPU、GPU 和 NPU。Delos Data 為 AI 晶片創業公司提供快速擴展的方案。Microsoft 的 Surface 硬體存在一個漏洞，可能導致設備被單一封包 brick。",
-        "impact": "Agentic AI 對數據中心架構的影響可能會提高效率和降低延遲。",
-        "rating": "noise",
-        "insight": "Agentic AI 對數據中心架構的影響可能會帶來新的機會。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/on-prem/2026/06/12/amazon-owns-up-to-using-25bn-gallons-of-h2o-in-its-bit-barns-last-year/5254748",
-        "chain": [
-          {
-            "label": "Agentic AI 市占↑",
-            "type": "up"
-          },
-          {
-            "label": "Delos Data 業務↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft Surface 安全性↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "KPMG 的 AI 報告錯誤",
-        "layer": "AI 報告",
-        "body": "KPMG 的 AI 報告出現了錯誤，引發了對 AI 報告的質疑。Google 對中國釣魚攻擊的組織提起訴訟。Microsoft 的 GitHub 出現了當機的情況。",
-        "impact": "KPMG 的 AI 報告錯誤可能會影響 AI 報告的可靠性。Google 的訴訟可能會影響中國釣魚攻擊的組織。Microsoft 的 GitHub 當機可能會影響用戶體驗。",
-        "rating": "noise",
-        "insight": "KPMG 的 AI 報告錯誤可能會帶來新的挑戰。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/06/12/kpmgs-ai-report-turns-into-a-demo-of-ai-hallucinations/5255029",
-        "chain": [
-          {
-            "label": "KPMG AI 報告質量↓",
-            "type": "down"
-          },
-          {
-            "label": "Google 法律訴訟↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft GitHub 服務質量↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Agentic AI",
-        "full": "Agentic AI 是一種人工智慧技術，使用異構 SoC 和 chiplet 結合 CPU、GPU 和 NPU，旨在提高效率和降低延遲。",
-        "def": "Agentic AI 是一種新型的人工智慧技術，使用異構 SoC 和 chiplet 結合 CPU、GPU 和 NPU，旨在提高效率和降低延遲。",
-        "why": "Agentic AI 可以提高效率和降低延遲，從而改善數據中心的性能。",
-        "category": "AI 技術"
-      }
-    ],
-    "weekly_summary": "hw 半導體本週一句摘要：SK Hynix 將在 2034 年前提升記憶體生產量三倍。\ncorp CSP/CapEx 本週一句摘要：Big Tech 在 Q1 2026 年投入了 6300 億美元的 AI 資本支出。\napp 新興 AI 本週一句摘要：Agentic AI 將改變數據中心的架構，使用異構 SoC 和 chiplet 結合 CPU、GPU 和 NPU。\n下週投資者一句看點：Agentic AI 對數據中心架構的影響可能會帶來新的機會。\n用戶筆記洞察一句：KPMG 的 AI 報告錯誤可能會帶來新的挑戰。"
   }
 ]
