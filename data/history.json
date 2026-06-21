@@ -1,5 +1,121 @@
 [
   {
+    "date": "2026-06-22",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Tensordyne 對數運算技術挑戰 NVIDIA",
+        "layer": "晶片製造",
+        "body": "Tensordyne 公司宣布開發出對數運算技術，旨在挑戰 NVIDIA 的傳統運算方法。該技術可以將複雜的乘法運算簡化為加法運算，從而提高計算效率。Tensordyne 預計該技術將在 2027 年初推出。",
+        "impact": "Tensordyne 的對數運算技術可能會對 NVIDIA 的傳統運算方法產生挑戰，提高計算效率。",
+        "rating": "opp",
+        "insight": "Tensordyne 的對數運算技術可能會挑戰 NVIDIA 的傳統運算方法，投資者應該關注該技術的發展動態。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/06/19/tensordyne-makes-a-big-bet-on-log-math-to-beat-nvidia/5258662",
+        "chain": [
+          {
+            "label": "Tensordyne 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "NVIDIA 市占↓",
+            "type": "down"
+          },
+          {
+            "label": "Tensordyne 市值↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Waymo 自動駕駛車輛故障",
+        "layer": "晶片應用",
+        "body": "Waymo 的自動駕駛車輛因為軟體故障導致近 4,000 輛車輛被召回。該故障導致車輛無法正確地識別道路施工區域的標誌。Waymo 已經開始修復該問題，並預計在短期內完成。",
+        "impact": "Waymo 的自動駕駛車輛故障可能會對公司的聲譽和客戶信任度產生負面影響。",
+        "rating": "core",
+        "insight": "Waymo 的自動駕駛車輛故障凸顯了該技術的安全性和可靠性問題，投資者應該關注該公司的修復措施和未來的發展動態。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/offbeat/2026/06/19/waymo-hits-the-brakes-after-robotaxis-keep-missing-the-signs-for-freeway-construction-zones/5258951",
+        "chain": [
+          {
+            "label": "Waymo 車輛銷量↓",
+            "type": "down"
+          },
+          {
+            "label": "Waymo 股價↓",
+            "type": "down"
+          },
+          {
+            "label": "競爭對手車企銷量↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "微軟、Meta 和 Google 的 AI 投資",
+        "layer": "企業投資",
+        "body": "微軟、Meta 和 Google 公司宣布其 AI 投資達 725 億美元。該投資將用於開發新的 AI 技術和應用。三家公司預計該投資將推動 AI 技術的發展和應用。",
+        "impact": "微軟、Meta 和 Google 的 AI 投資可能會對 AI 技術的發展和應用產生正面影響。",
+        "rating": "core",
+        "insight": "微軟、Meta 和 Google 的 AI 投資凸顯了該技術的重要性和發展潛力，投資者應該關注該領域的發展動態。",
+        "source_label": "Stocktwits",
+        "source": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNQ2ZDQkRWWGZaNVdBV1UwS0FEY0RvVVJqUFUxNXd2eHpWM1haeXltLUNpaXB2TW5kcHlJRFo0WFNOQWZFaGNDZ2p3WlcwZjhPVndrYkQwWVAxR0tVVnotaFdDNnZHT1IxZ1BJVHJXZXFpVG5ROUlMcGZoR29iczhkOGM4VG9UMEVWWHJoUEY5TlBCN0RiTEotLTFWNVdFZHZpUmVBOHBuYWVaN0xYMEJzSkgtSno4WHhuc2x4TmpMUkV5bHJDaTNqVHFKalBIMl9pZ01MSjF2a0hpczUtYjMxUHk1OGt0VUxxbHRuaHZ3Nkt4ekRLTl9YZzVQX04wYjFUS25wLUZwWUJwTFU?oc=5",
+        "chain": [
+          {
+            "label": "微軟 AI 研發投入↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta AI 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Google AI 市占↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "NVIDIA 和 Doosan 擴展物理 AI 應用",
+        "layer": "AI 應用",
+        "body": "NVIDIA 和 Doosan 公司宣布擴展物理 AI 應用，包括機器人、反應堆和電路板材料的生產。該合作將推動物理 AI 技術的發展和應用。NVIDIA 和 Doosan 預計該合作將在 2027 年初推出。",
+        "impact": "NVIDIA 和 Doosan 的物理 AI 應用合作可能會對相關企業的發展產生正面影響。",
+        "rating": "opp",
+        "insight": "NVIDIA 和 Doosan 的物理 AI 應用合作凸顯了該技術的重要性和發展潛力，投資者應該關注該領域的發展動態。",
+        "source_label": "Tech Times",
+        "source": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOdEFvQXMwbC00SDNIMVUxcXExRl8xRHMyVEJrQnF3WVNyQktmc2tvS2dLWGFQWTRmWXB3Y2t6ZmNuZU9ydDBLMDlVaTlMZXRjcTlLeThhY2FDdXpkeXNMUFNDS0k4ZVA1TjNrSFY2X0xBZW1peHRDM0E1WkNrV3A2YzYxal9KMmM3cE5VaHVkbHJ1VWxOdnhVTmx6R1ZKZ2hoQlc3TS13cS14WXF0cVZOOUtsMmhmOV9HS0NBUU9Hb1kyRUV2V2xtdzNSR0JReHM?oc=5",
+        "chain": [
+          {
+            "label": "NVIDIA 物理 AI 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Doosan 物理 AI 銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "NVIDIA 和 Doosan 合作項目交期↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "對數運算",
+        "full": "對數運算技術",
+        "def": "一種運算方法，使用對數來簡化複雜的乘法運算。",
+        "why": "對數運算技術可以提高計算效率和簡化運算過程。",
+        "category": "晶片製造"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-21",
     "is_sunday": true,
     "hw": [
@@ -698,126 +814,6 @@
         "def": "CoWoS 是一種晶片製造技術，將晶片直接裝配在基板上。這種技術可以提高晶片的性能和可靠性，同時也可以降低製造成本。",
         "why": "CoWoS 技術對晶片製造業產生了重要的影響，提高了晶片的性能和可靠性，同時也降低了製造成本。",
         "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-15",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Delos Data 為 AI 晶片啟動提供快速通道",
-        "layer": "晶片製造",
-        "body": "Delos Data 提供 AI 晶片啟動的快速通道，讓晶片啟動公司可以更快速地將其產品推向市場。該公司的解決方案可以讓晶片啟動公司節省時間和成本，從而提高其競爭力。Delos Data 的解決方案已經被多家晶片啟動公司所採用，包括一些領先的 AI 晶片公司。",
-        "impact": "供應鏈影響分析：Delos Data 的解決方案將直接影響晶片啟動公司的生產效率，從而提高其供應能力。這將對下游的 AI 系統製造商產生正面影響，提高其生產效率和競爭力。同時，Delos Data 的解決方案也將對上游的晶片設計公司產生間接影響，提高其設計效率和質量。",
-        "rating": "noise",
-        "insight": "Delos Data 的解決方案將提高晶片啟動公司的競爭力和供應能力，從而推動 AI 晶片產業的發展。",
-        "source_label": "The Register",
-        "source": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQdGtqOGpWMm5YU3UtRXNXRmJPakJXNG41OE5DT2JRcGNza2lFM2s1Ml9wclVqMkREdUtyQ21rVlNwWHA4SFowT1ZjOU5XTGhocjlZWGJKeEg5RDktbkVXVkJ6cjBBaGw5eW4wMkNtenJrU2E2WXVLM2d4eXdoSHpRejY4V0VYZlo4bVgwa1pMZV8wUHR5ek1DVkphWWYwSEctWDlVNGhlT3R0clQxd0NRN2dheDdmU3c",
-        "chain": [
-          {
-            "label": "Delos Data 業務量↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 晶片公司競爭力↑",
-            "type": "up"
-          },
-          {
-            "label": "晶片啟動公司時間成本↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "SK Hynix 將提升記憶體生產量",
-        "layer": "記憶體製造",
-        "body": "SK Hynix 將在 2034 年前提升其記憶體生產量，從而提高其供應能力。該公司的記憶體生產量將增加三倍，從而滿足日益增長的記憶體需求。SK Hynix 的記憶體生產量提升將對下游的電子製造商產生正面影響，提高其生產效率和競爭力。",
-        "impact": "供應鏈影響分析：SK Hynix 的記憶體生產量提升將直接影響電子製造商的生產效率，從而提高其競爭力。這將對上游的晶片設計公司產生間接影響，提高其設計效率和質量。同時，SK Hynix 的記憶體生產量提升也將對下游的消費電子產業產生間接影響，提高其生產效率和競爭力。",
-        "rating": "noise",
-        "insight": "SK Hynix 的記憶體生產量提升將提高電子製造商的競爭力和供應能力，從而推動電子產業的發展。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/06/12/sk-hynix-to-triple-wafer-capacity-by-2034/5255151",
-        "chain": [
-          {
-            "label": "SK Hynix 記憶體產能↑",
-            "type": "up"
-          },
-          {
-            "label": "電子製造商生產效率↑",
-            "type": "up"
-          },
-          {
-            "label": "記憶體需求滿足率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Microsoft、Meta 和 Google 的 AI 投資",
-        "layer": "CSP 投資",
-        "body": "Microsoft、Meta 和 Google 的 AI 投資已經達到 7250 億美元，從而推動 AI 技術的發展。這三家公司的 AI 投資將對下游的 AI 應用產業產生正面影響，提高其生產效率和競爭力。Microsoft、Meta 和 Google 的 AI 投資也將對上游的 AI 技術公司產生間接影響，提高其研究和開發能力。",
-        "impact": "供應鏈影響分析：Microsoft、Meta 和 Google 的 AI 投資將直接影響 AI 應用產業的生產效率，從而提高其競爭力。這將對上游的 AI 技術公司產生間接影響，提高其研究和開發能力。",
-        "rating": "core",
-        "insight": "Microsoft、Meta 和 Google 的 AI 投資將推動 AI 技術的發展，從而提高 AI 應用產業的競爭力和供應能力。",
-        "source_label": "Stocktwits",
-        "source": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNQ2ZDQkRWWGZaNVdBV1UwS0FEY0RvVVJqUFUxNXd2eHpWM1haeXltLUNpaXB2TW5kcHlJRFo0WFNOQWZFaGNDZ2p3WlcwZjhPVndrYkQwWVAxR0tVVnotaFdDNnZHT1IxZ1BJVHJXZXFpVG5ROUlMcGZoR29iczhkOGM4VG9UMEVWWHJoUEY5TlBCN0RiTEotLTFWNVdFZHZpUmVBOHBuYWVaN0xYMEJzSkgtSno4WHhuc2x4TmpMUkV5bHJDaTNqVHFKalBIMl9pZ01MSjF2a0hpczUtYjMxUHk1OGt0VUxxbHRuaHZ3Nkt4ekRLTl9YZzVQX04wYjFUS25wLUZwWUJwTFU",
-        "chain": [
-          {
-            "label": "Microsoft AI 研究投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta AI 應用開發↑",
-            "type": "up"
-          },
-          {
-            "label": "Google AI 技術研發↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 技術公司競爭力↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI 對數據中心架構的影響",
-        "layer": "AI 應用",
-        "body": "Agentic AI 對數據中心架構的影響已經成為一個重要的趨勢，從而推動數據中心的發展。Agentic AI 將對下游的數據中心產業產生正面影響，提高其生產效率和競爭力。Agentic AI 對數據中心架構的影響也將對上游的 AI 技術公司產生間接影響，提高其研究和開發能力。",
-        "impact": "供應鏈影響分析：Agentic AI 對數據中心架構的影響將直接影響數據中心產業的生產效率，從而提高其競爭力。這將對上游的 AI 技術公司產生間接影響，提高其研究和開發能力。同時，Agentic AI 對數據中心架構的影響也將對下游的消費電子產業產生間接影響，提高其生產效率和競爭力。",
-        "rating": "noise",
-        "insight": "Agentic AI 對數據中心架構的影響將推動數據中心的發展，從而提高數據中心產業的競爭力和供應能力。",
-        "source_label": "The Register",
-        "source": "",
-        "chain": [
-          {
-            "label": "Agentic AI 效能↑",
-            "type": "up"
-          },
-          {
-            "label": "數據中心產能↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 技術公司研發投資↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Agentic AI",
-        "full": "Agentic AI",
-        "def": "Agentic AI 是一種人工智慧技術，旨在提高數據中心的生產效率和競爭力。它可以對數據中心架構進行優化，從而提高數據中心的性能和可靠性。",
-        "why": "Agentic AI 對數據中心架構的影響已經成為一個重要的趨勢，從而推動數據中心的發展。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
