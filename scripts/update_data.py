@@ -283,6 +283,8 @@ RULES:
 - body FORBIDDEN: never write "這是X的重要趨勢" / "這將推動X發展" / "可能會帶來新的機會" — these add no facts; never combine two unrelated companies or events in the same body
 - SOURCE REQUIREMENT: every core or opp item MUST have a SOURCE_URL from the news; if no SOURCE_URL exists for a story, you MUST rate it noise — never assign core/opp to unsourced items
 - HALLUCINATION IS FORBIDDEN: do not combine unrelated companies or technologies; every company-technology pairing must come directly from the news text
+- FORBIDDEN ADOPTION CLAIM: NEVER write that a major platform company (Google/Microsoft/Amazon/Meta/Apple/Nvidia) "has adopted", "is using", or "already uses" technology from a smaller/startup company unless the source article EXPLICITLY names that platform company as a confirmed customer, partner, or evaluator — inference-based adoption claims are hallucinations and will be rejected
+- FORBIDDEN CAPACITY TEMPLATE: NEVER write production/manufacturing capacity figures ("每月X個單位的產能", "月產X萬晶圓", "產能達每月X") for software, IP licensing, or startup companies that do not operate physical fabs — this phrasing belongs only to foundry/memory manufacturers (TSMC, Samsung, SK Hynix, Micron, OSAT); applying it to non-fab entities is a hallucination regardless of what numbers appear in other articles
 - impact: write a genuine supply chain analysis — identify upstream suppliers, downstream customers, and competing alternatives affected by this event; state direction (↑/↓) and mechanism for each; do NOT rephrase the body; NEVER use vague phrases like "可能會影響X" without specifying direction and reason; NEVER mention stock prices
 - glossary_new: required, 1-3 terms from today's news that readers may not know
 - source: copy verbatim from SOURCE_URL in the news; never fabricate URLs
@@ -507,6 +509,94 @@ def downgrade_repeated_stories(data, recent_titles):
                     print(f"  ↓ 跨日重複降評→noise：{title[:60]}")
                     item['rating'] = 'noise'
                     break
+
+
+def downgrade_hallucination_patterns(data):
+    """pattern-based 幻覺攔截：兩類最常見的 Llama 幻覺結構"""
+    PATTERNS = [
+        # 跨公司採用幻覺：「已被 Google/Microsoft/… 採用」
+        (r'已(?:被|經).{0,25}(?:Google|Microsoft|Amazon|Meta|Apple|Nvidia|AMD).{0,25}採用',
+         '跨公司採用幻覺'),
+        (r'(?:Google|Microsoft|Amazon|Meta|Apple|Nvidia|AMD).{0,25}已(?:採用|導入|使用)',
+         '跨公司採用幻覺'),
+        # 產能模板幻覺：「每月X個單位/晶圓的產能」套用在非晶圓廠公司上
+        (r'每月\d[\d,]*\s*(?:個|萬|千)\s*(?:單位|晶圓)',
+         '非晶圓廠產能模板幻覺'),
+    ]
+    count = 0
+    for sec in ['hw', 'corp', 'app']:
+        for item in data.get(sec, []):
+            if item.get('rating') not in ('core', 'opp'):
+                continue
+            body = item.get('body', '')
+            for pat, reason in PATTERNS:
+                if re.search(pat, body):
+                    item['rating'] = 'noise'
+                    count += 1
+                    print(f"  ↓ 幻覺pattern→noise：{item['title'][:50]}（{reason}）")
+                    break
+    if count == 0:
+        print("  → 幻覺 pattern 檢核通過")
+    else:
+        print(f"  → 共攔截 {count} 筆")
+
+
+def validate_body(data, news_context):
+    """LLM 二次驗證：body 聲明是否能在原始 RSS 摘要中找到支撐"""
+    client = Groq(api_key=os.environ['GROQ_API_KEY'])
+    items = [
+        {"sec": sec, "title": item["title"], "body": item.get("body", "")}
+        for sec in ['hw', 'corp', 'app']
+        for item in data.get(sec, [])
+        if item.get("rating") in ("core", "opp")
+    ]
+    if not items:
+        print("  → body 聲明驗證：無 core/opp 條目"); return
+
+    news_short = news_context[:2500]
+    items_json = json.dumps(items, ensure_ascii=False)
+    prompt = (
+        "以下是今日 RSS 新聞摘要（原始來源）：\n"
+        f"---\n{news_short}\n---\n\n"
+        "以下是根據這些摘要生成的新聞條目。請逐一檢查每條的 body，判斷是否存在幻覺：\n"
+        "1. body 中是否聲稱 Google/Microsoft/Amazon/Meta/Apple 已採用某技術，"
+        "但摘要中未明確提及該公司作為客戶或夥伴？→ downgrade=true\n"
+        "2. body 中是否出現「每月X個單位/晶圓的產能」，"
+        "但摘要中未出現此數字，或該公司並非晶圓廠？→ downgrade=true\n"
+        "3. body 中有無主要事實聲明（非推論）完全無法在摘要中找到對應文字？→ downgrade=true\n"
+        "若以上均無問題 → downgrade=false。\n"
+        f"條目：{items_json}\n"
+        '只輸出純JSON陣列：[{"title":"原標題","downgrade":true或false}]'
+    )
+    try:
+        resp = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[
+                {"role": "system", "content": "只輸出純JSON陣列，不加說明或markdown。"},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.1, max_tokens=500,
+        )
+        raw = resp.choices[0].message.content.strip()
+        if raw.startswith('```'):
+            raw = raw.split('\n', 1)[-1].rsplit('```', 1)[0].strip()
+        raw = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', ' ', raw)
+        fixes = json.loads(raw)
+        count = 0
+        for fix in fixes:
+            if fix.get('downgrade'):
+                for sec in ['hw', 'corp', 'app']:
+                    for item in data.get(sec, []):
+                        if item['title'] == fix['title']:
+                            item['rating'] = 'noise'
+                            count += 1
+                            print(f"  ↓ body聲明無來源支撐→noise：{item['title'][:50]}")
+        if count == 0:
+            print("  → body 聲明驗證通過")
+        else:
+            print(f"  → 共降評 {count} 筆")
+    except Exception as e:
+        print(f"  → body 驗證失敗（略過）：{e}")
 
 
 def downgrade_unsourced(data):
@@ -851,6 +941,10 @@ if __name__ == '__main__':
     downgrade_unsourced(data)
     print("🔍 body 品質檢核...")
     downgrade_low_quality(data)
+    print("🚨 幻覺 pattern 攔截...")
+    downgrade_hallucination_patterns(data)
+    print("🔎 body 聲明 LLM 驗證...")
+    validate_body(data, news)
     print("🔗 supply chain 品質檢核...")
     fix_chains(data)
     print("🔎 impact 因果驗證...")
