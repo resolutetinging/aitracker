@@ -1,5 +1,121 @@
 [
   {
+    "date": "2026-06-23",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "晶片記憶體的可靠性",
+        "layer": "晶片製造",
+        "body": "根據Semiengineering的報導，晶片記憶體的可靠性是一個重要的問題。晶片製造商需要確保記憶體的正確性和可靠性，以避免當機的情況。例如，晶片製造商需要進行嚴格的測試和驗證，以確保記憶體的正確性。另外，晶片製造商也需要考慮記憶體的容量和速度，以滿足不同應用的需求。例如，高性能計算應用需要高容量和高速的記憶體。",
+        "impact": "晶片記憶體的可靠性問題可能會影響晶片製造商的生產能力和交貨時間。例如，如果晶片製造商不能確保記憶體的正確性和可靠性，就可能導致當機的情況，從而影響生產能力和交貨時間。另外，記憶體的容量和速度也會影響晶片的性能和價格。例如，高容量和高速的記憶體可能會增加晶片的成本，但也會提高晶片的性能和競爭力。",
+        "rating": "noise",
+        "insight": "晶片記憶體的可靠性是晶片製造商的一個重要挑戰，需要進行嚴格的測試和驗證，以確保記憶體的正確性和可靠性。",
+        "source_label": "Semiengineering",
+        "source": "https://semiengineering.com/will-your-chips-memory-work-as-expected/",
+        "chain": [
+          {
+            "label": "TSMC 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Micron Technology 產能↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "雲端HPC對AI的影響",
+        "layer": "雲端計算",
+        "body": "根據Semiengineering的報導，雲端HPC（高性能計算）對AI的影響是一個重要的趨勢。雲端HPC可以提供高性能的計算能力，滿足AI的需求。例如，雲端HPC可以提供低延遲和高吞吐量的計算能力，滿足AI的訓練和推理需求。另外，雲端HPC也可以提供彈性的計算能力，滿足AI的不同需求。例如，雲端HPC可以提供按需的計算能力，滿足AI的峰值需求。",
+        "impact": "雲端HPC對AI的影響可能會提高AI的性能和效率。例如，雲端HPC可以提供低延遲和高吞吐量的計算能力，提高AI的訓練和推理速度。另外，雲端HPC也可以提供彈性的計算能力，降低AI的運營成本。例如，雲端HPC可以提供按需的計算能力，降低AI的資源浪費。",
+        "rating": "noise",
+        "insight": "雲端HPC對AI的影響是一個重要的趨勢，需要關注雲端HPC的發展和應用。",
+        "source_label": "Semiengineering",
+        "source": "https://semiengineering.com/cloud-hpc-for-ai-addressing-latency-cost-and-scale-at-the-architectural-level/",
+        "chain": [
+          {
+            "label": "Azure GPU 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "AWS EC2 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Cloud GPU 產能↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Google的AI戰略",
+        "layer": "AI應用",
+        "body": "根據The Register的報導，Google的AI戰略是一個重要的趨勢。Google正在投資AI的研發和應用，滿足不同行業的需求。例如，Google正在投資AI的語言模型和視覺模型，滿足自然語言處理和計算機視覺的需求。另外，Google也正在投資AI的邊緣計算和雲端計算，滿足不同應用的需求。例如，Google正在投資AI的邊緣計算，滿足物聯網和自動駕駛的需求。",
+        "impact": "Google的AI戰略可能會提高AI的應用和普及度。例如，Google的AI語言模型和視覺模型可以提高自然語言處理和計算機視覺的性能和效率。另外，Google的AI邊緣計算和雲端計算也可以提供彈性的計算能力，滿足不同應用的需求。例如，Google的AI邊緣計算可以提供低延遲和高吞吐量的計算能力，滿足物聯網和自動駕駛的需求。",
+        "rating": "noise",
+        "insight": "Google的AI戰略是一個重要的趨勢，需要關注Google的AI研發和應用。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/databases/2026/06/22/the-new-database-world-according-to-google-inexact-queries-and-ai-in-everything/5259454",
+        "chain": [
+          {
+            "label": "Google AI 研發投入↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Cloud AI 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft AI 研發投入↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI的應用",
+        "layer": "AI應用",
+        "body": "根據The Register的報導，Agentic AI的應用是一個重要的趨勢。Agentic AI可以提供智能和自主的能力，滿足不同行業的需求。例如，Agentic AI可以提供智能和自主的能力，滿足自然語言處理和計算機視覺的需求。另外，Agentic AI也可以提供彈性的計算能力，滿足不同應用的需求。例如，Agentic AI可以提供低延遲和高吞吐量的計算能力，滿足物聯網和自動駕駛的需求。",
+        "impact": "Agentic AI的應用可能會提高AI的性能和效率。例如，Agentic AI可以提供智能和自主的能力，提高自然語言處理和計算機視覺的性能和效率。另外，Agentic AI也可以提供彈性的計算能力，降低AI的運營成本。例如，Agentic AI可以提供按需的計算能力，降低AI的資源浪費。",
+        "rating": "noise",
+        "insight": "Agentic AI的應用是一個重要的趨勢，需要關注Agentic AI的發展和應用。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/06/22/anthropics-mythos-mess-just-keeps-getting-more-complicated/5258577",
+        "chain": [
+          {
+            "label": "Agentic AI 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "NVIDIA AI 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD AI 產能↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Agentic AI",
+        "full": "代理AI",
+        "def": "Agentic AI是一種可以提供智能和自主的能力的AI技術，滿足不同行業的需求。",
+        "why": "Agentic AI可以提高AI的性能和效率，滿足不同行業的需求。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-22",
     "is_sunday": false,
     "hw": [
@@ -697,122 +813,6 @@
         "full": "Reduced Instruction Set Computing-V",
         "def": "RISC-V 是一種開放指令集架構，允許使用者自行設計和實現自己的 CPU。RISC-V 的優點在於其開放性和可擴展性，能夠滿足不同應用的需求。",
         "why": "RISC-V 的開放性和可擴展性使其成為了一種熱門的指令集架構，能夠滿足不同應用的需求。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-16",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Google Cloud India 網路發生火災",
-        "layer": "資料中心",
-        "body": "Google Cloud India 的網路發生火災，導致網路速度變慢，影響了多個客戶的服務。火災發生在 6 月 7 日，距離現在已經有一周的時間，網路速度仍然沒有完全恢復。Google Cloud India 的客戶包括多個大型企業和政府機構，火災對他們的業務造成了嚴重的影響。",
-        "impact": "這次火災對 Google Cloud India 的客戶造成了直接的影響，導致他們的服務受到影響。",
-        "rating": "core",
-        "insight": "Google Cloud India 的火災對其客戶和供應鏈產生了嚴重的影響，投資者需要關注 Google Cloud 的資料中心容量和網路速度的恢復情況。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/off-prem/2026/06/14/fire-burns-google-cloud-indias-network-which-remains-slow-a-week-later/5255246",
-        "chain": [
-          {
-            "label": "Google Cloud India 網路速度↓",
-            "type": "down"
-          },
-          {
-            "label": "客戶服務體驗↓",
-            "type": "down"
-          },
-          {
-            "label": "Google Cloud India 企業客戶數↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Bambu Lab 推出周年慶促銷",
-        "layer": "3D 列印",
-        "body": "Bambu Lab 推出周年慶促銷，提供高達 52% 的折扣。促銷活動包括 Bambu Lab 的多款 3D 列印機和配件，客戶可以以低於原價的價格購買。Bambu Lab 的 3D 列印機以高品質和高精度而聞名，受到多個行業的客戶的青睞。促銷活動將持續到 6 月 30 日，客戶可以在 Bambu Lab 的官網上購買。",
-        "impact": "這次促銷活動對 Bambu Lab 的客戶產生了直接的影響，提供了高折扣的購買機會。",
-        "rating": "opp",
-        "insight": "Bambu Lab 的周年慶促銷對其客戶和供應鏈產生了積極的影響，投資者需要關注 Bambu Lab 的 3D 列印機和配件的銷量和市場份額的變化。",
-        "source_label": "Tom's Hardware",
-        "source": "https://www.tomshardware.com/3d-printing/bambu-labs-big-anniversary-sale-is-live-with-up-to-52-percent-off-score-huge-discounts-on-their-most-popular-3d-printers-and-accessories",
-        "chain": [
-          {
-            "label": "Bambu Lab 3D 列印機銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "Bambu Lab 客戶滿意度↑",
-            "type": "up"
-          },
-          {
-            "label": "Bambu Lab 市占率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Big Tech Q1 2026 投資報告",
-        "layer": "AI 投資",
-        "body": "Big Tech Q1 2026 投資報告顯示，AI 投資達到 630 億美元。報告還顯示，Azure 的容量受到限制，Meta 的投資增加了 31%。Big Tech 的 AI 投資主要集中在雲端服務和人工智慧技術的研發上。報告還預測，AI 投資將在未來幾年繼續增加，驅動著科技業的發展。",
-        "impact": "這次投資報告對 Big Tech 的客戶和供應鏈產生了直接的影響，提供了 AI 投資的最新趨勢和預測。",
-        "rating": "core",
-        "insight": "Big Tech 的 AI 投資報告對其客戶和供應鏈產生了積極的影響，投資者需要關注 Big Tech 的 AI 投資的趨勢和預測。",
-        "source_label": "abhs.in",
-        "source": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQOXJDV2ZxVWJDeEo2RDJMSHg4S1o0dDJ4SmhOSXY0VDZNMlpkd0dOQ0VCZ1BtZkIwY2lpWlNNcl9rZjNVLUltYTNGQ0s0d1Zmbi11YUtETG1yeEE3UDRoS3AtOFRMamNLbGQ1VDh4Tm9Sc3AtYk93V0wtcHVWMGxnU2d4dHBVVkVrLTVPazd3RnB3alkzZ1dQNHZfVGM0RElu?oc=5",
-        "chain": [
-          {
-            "label": "Azure 容量利用率↓",
-            "type": "down"
-          },
-          {
-            "label": "Meta 投資額↑",
-            "type": "up"
-          },
-          {
-            "label": "Big Tech AI 研發投入↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Google 的 AI 概覽結果被判定為不合格",
-        "layer": "AI 應用",
-        "body": "Google 的 AI 概覽結果被判定為不合格，原因是結果不夠準確。這次判定對 Google 的 AI 應用產生了直接的影響，可能會導致 Google 的 AI 應用受到質疑。同時，也對 Google 的供應鏈產生了間接的影響，可能會導致 Google 的 AI 研發團隊受到影響。另外，競爭對手的 AI 公司可能會因為這次判定而獲得更多的商機。",
-        "impact": "這次判定對 Google 的 AI 應用產生了直接的影響，可能會導致 Google 的 AI 應用受到質疑。同時，也對 Google 的供應鏈產生了間接的影響，可能會導致 Google 的 AI 研發團隊受到影響。另外，競爭對手的 AI 公司可能會因為這次判定而獲得更多的商機。",
-        "rating": "noise",
-        "insight": "Google 的 AI 概覽結果被判定為不合格，對其 AI 應用和供應鏈產生了負面的影響，投資者需要關注 Google 的 AI 研發團隊的反應和改進措施。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/06/15/google-found-liable-for-bad-ai-overview-results-lets-play-truth-or-consequences/5254897",
-        "chain": [
-          {
-            "label": "Google AI 應用可靠性↓",
-            "type": "down"
-          },
-          {
-            "label": "Google AI 研發團隊士氣↓",
-            "type": "down"
-          },
-          {
-            "label": "競爭對手 AI 公司商機↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "CoWoS",
-        "full": "Chip on Wafer on Substrate",
-        "def": "CoWoS 是一種晶片製造技術，將晶片直接裝配在基板上。這種技術可以提高晶片的性能和可靠性，同時也可以降低製造成本。",
-        "why": "CoWoS 技術對晶片製造業產生了重要的影響，提高了晶片的性能和可靠性，同時也降低了製造成本。",
         "category": "semiconductor"
       }
     ],
