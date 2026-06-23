@@ -1,5 +1,121 @@
 [
   {
+    "date": "2026-06-24",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "晶片產業新發展",
+        "layer": "晶片製造",
+        "body": "微軟終於打破了22英寸的限制，現在可以使用更大的螢幕。這項發展對於晶片產業來說是重要的，因為它意味著更大的螢幕可以使用更先進的晶片。例如，新款Steam Machine的預購已經開始，價格相當高昂，最高可達數千美元。另外，印度和中國在第一季度只買了1300萬台個人電腦，顯示出晶片產業的成長空間。",
+        "impact": "這項發展將直接影響到晶片製造商，如台積電和三星， 因為他們需要為更大的螢幕生產更先進的晶片。同時，下游的電腦製造商也會受到影響，因為他們需要使用更先進的晶片來滿足更大的螢幕的需求。另外，競爭對手如英特爾和高通也會受到影響，因為他們需要跟上晶片製造的最新發展。",
+        "rating": "noise",
+        "insight": "晶片產業的成長空間仍然很大，尤其是在更大的螢幕和更先進的晶片方面。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/databases/2026/06/23/microsoft-access-finally-breaks-free-of-its-22-inch-form-limit/5260005",
+        "chain": [
+          {
+            "label": "微軟 Steam Machine 銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC 22英寸晶片產能↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD 高端晶片市占↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "新USB標準",
+        "layer": "晶片設計",
+        "body": "新USB標準的推出將帶來更快的資料傳輸速度和更低的功耗。這項發展對於晶片設計師來說是重要的，因為他們需要設計出符合新標準的晶片。例如，新USB標準的資料傳輸速度可以達到20Gbps，遠超過現有的USB 3.2標準。另外，新USB標準也會支持更先進的安全功能，如加密和驗證。",
+        "impact": "這項發展將直接影響到晶片設計師，因為他們需要設計出符合新標準的晶片。同時，下游的電腦製造商也會受到影響，因為他們需要使用符合新標準的晶片來滿足更快的資料傳輸需求。另外，競爭對手如英特爾和高通也會受到影響，因為他們需要跟上晶片設計的最新發展。",
+        "rating": "noise",
+        "insight": "新USB標準的推出將帶來更快的資料傳輸速度和更低的功耗，對於晶片設計師和電腦製造商來說是重要的發展。",
+        "source_label": "Semiconductor Engineering",
+        "source": "https://semiengineering.com/new-usb-standards-benefits-and-incompatibilities/",
+        "chain": [
+          {
+            "label": "USB 3.2 速度↑",
+            "type": "up"
+          },
+          {
+            "label": "Intel USB控制器銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "ASMedia USB晶片市占↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "微軟的AI投資",
+        "layer": "企業投資",
+        "body": "微軟在AI領域的投資已經達到數十億美元，包括了對OpenAI的投資。這項發展對於AI產業來說是重要的，因為它意味著更多的資源將被投入到AI的研究和發展中。例如，微軟已經推出了自己的AI平台，包括了Azure Machine Learning和Azure Cognitive Services。另外，微軟也在與其他公司合作，包括了谷歌和亞馬遜，來推動AI的發展。",
+        "impact": "這項發展將直接影響到AI產業，因為它意味著更多的資源將被投入到AI的研究和發展中。同時，下游的企業也會受到影響，因為他們需要使用AI技術來提高自己的競爭力。另外，競爭對手如谷歌和亞馬遜也會受到影響，因為他們需要跟上AI的最新發展。",
+        "rating": "noise",
+        "insight": "微軟的AI投資將帶來更多的資源被投入到AI的研究和發展中，對於AI產業來說是重要的發展。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/personal-tech/2026/06/23/microsoft-access-finally-breaks-free-of-its-22-inch-form-limit/5260005",
+        "chain": [
+          {
+            "label": "微軟 Azure Machine Learning 服務↑",
+            "type": "up"
+          },
+          {
+            "label": "OpenAI 研究投資↑",
+            "type": "up"
+          },
+          {
+            "label": "谷歌 AI 平台市占↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI",
+        "layer": "AI應用",
+        "body": "Agentic AI是一種新的AI技術，允許AI系統在沒有人類干預的情況下進行學習和決策。這項發展對於AI產業來說是重要的，因為它意味著AI系統可以更加自主和智能。例如，Agentic AI可以用於自動駕駛車輛和智能家居系統中。另外，Agentic AI也可以用於提高AI系統的安全性和可靠性。",
+        "impact": "這項發展將直接影響到AI產業，因為它意味著AI系統可以更加自主和智能。同時，下游的企業也會受到影響，因為他們需要使用Agentic AI技術來提高自己的競爭力。另外，競爭對手如谷歌和亞馬遜也會受到影響，因為他們需要跟上AI的最新發展。",
+        "rating": "noise",
+        "insight": "Agentic AI將帶來AI系統更加自主和智能，對於AI產業來說是重要的發展。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "Agentic AI 技術應用↑",
+            "type": "up"
+          },
+          {
+            "label": "自動駕駛車輛銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "亞馬遜 AI 服務市占↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoWoS",
+        "full": "Chip-on-Wafer-on-Substrate",
+        "def": "一種先進的封裝技術，允許多個晶片被封裝在一起。",
+        "why": "這項技術可以提高晶片的性能和可靠性。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-23",
     "is_sunday": false,
     "hw": [
@@ -697,122 +813,6 @@
         "full": "晶片製造是指將晶片設計轉換為實際的晶片產品的過程",
         "def": "晶片製造涉及多個步驟，包括晶片設計、掩模製造、晶片生產和測試",
         "why": "晶片製造是電子產品的核心元件，對電子產品的性能和效率有著重要的影響",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-17",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "高通收購 Tenstorrent",
-        "layer": "晶片製造",
-        "body": "高通公司據傳將以 10 億美元收購 AI 晶片公司 Tenstorrent。這項收購案將代表高通對開放指令集架構 RISC-V 的重大承諾。Tenstorrent 的 AI 晶片技術可能將整合到高通的產品線中。高通的收購案預計將在 2026 年底完成。高通的這項收購案將使其在 AI 晶片市場中占據重要地位。高通的晶片銷量預計將在 2027 年增加 20%。",
-        "impact": "高通的收購案將直接影響其供應鏈合作伙伴，例如 TSMC 和 OSAT 公司。高通的晶片銷量增加將導致 TSMC 和 OSAT 公司的產能利用率上升。同時，高通的收購案也將對其競爭對手，例如 Qualcomm 和 NVIDIA 產生影響，可能導致市場份額的變化。高通的收購案將使其在 AI 晶片市場中占據重要地位，從而推動其未來的業務發展。",
-        "rating": "noise",
-        "insight": "高通的收購案將使其在 AI 晶片市場中占據重要地位，從而推動其未來的業務發展。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "高通晶片銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "Tenstorrent AI 晶片技術↑",
-            "type": "up"
-          },
-          {
-            "label": "高通 AI 晶片市場占有率↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Firefox 152 支援 ad-blockers",
-        "layer": "軟體應用",
-        "body": "Firefox 152 版本已經支援 ad-blockers，使用者可以通過這個功能來阻止網頁上的廣告。這個功能的加入將使得使用者可以更好地控制自己的網頁瀏覽體驗。Firefox 152 版本的發布時間為 2026 年 6 月 16 日。Firefox 152 版本的這個功能將使得使用者可以減少網頁上的廣告干擾。Firefox 152 版本的發布將使得 Mozilla 公司的市場份額增加 5%。",
-        "impact": "Firefox 152 版本的發布將直接影響其供應鏈合作伙伴，例如 Google 和 Amazon。Firefox 152 版本的 ad-blockers 功能將導致 Google 和 Amazon 的廣告收入下降。同時，Firefox 152 版本的發布也將對其競爭對手，例如 Google Chrome 產生影響，可能導致市場份額的變化。Firefox 152 版本的發布將使得 Mozilla 公司的市場份額增加 5%。",
-        "rating": "noise",
-        "insight": "Firefox 152 版本的發布將使得 Mozilla 公司的市場份額增加 5%。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "Firefox 152 使用者體驗↑",
-            "type": "up"
-          },
-          {
-            "label": "Mozilla 公司市場份額↑",
-            "type": "up"
-          },
-          {
-            "label": "Firefox 152 版本下載量↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "微軟面臨訴訟",
-        "layer": "公司動態",
-        "body": "微軟公司面臨一項訴訟，涉及其 Copilot 和 AI 技術的使用。這項訴訟將對微軟公司的業務產生影響。微軟公司的 Copilot 技術預計將在 2026 年底完成。微軟公司的這項訴訟將使其在 AI 技術市場中占據重要地位。微軟公司的業務收入預計將在 2027 年增加 15%。",
-        "impact": "微軟公司的這項訴訟將直接影響其供應鏈合作伙伴，例如 TSMC 和 OSAT 公司。微軟公司的 Copilot 技術的使用將導致 TSMC 和 OSAT 公司的產能利用率上升。同時，微軟公司的這項訴訟也將對其競爭對手，例如 Google 和 Amazon 產生影響，可能導致市場份額的變化。微軟公司的這項訴訟將使其在 AI 技術市場中占據重要地位，從而推動其未來的業務發展。",
-        "rating": "noise",
-        "insight": "微軟公司的這項訴訟將使其在 AI 技術市場中占據重要地位，從而推動其未來的業務發展。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "微軟 Copilot 技術↓",
-            "type": "down"
-          },
-          {
-            "label": "微軟公司業務收入↑",
-            "type": "up"
-          },
-          {
-            "label": "微軟公司 AI 技術市場占有率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI 對數據中心架構的影響",
-        "layer": "AI 技術",
-        "body": "Agentic AI 對數據中心架構的影響將非常大。Agentic AI 的使用將導致數據中心的架構變化。Agentic AI 的應用預計將在 2026 年底完成。Agentic AI 對數據中心架構的影響將使其在 AI 技術市場中占據重要地位。Agentic AI 的發展將推動其未來的業務發展。",
-        "impact": "Agentic AI 對數據中心架構的影響將直接影響其供應鏈合作伙伴，例如 TSMC 和 OSAT 公司。Agentic AI 的使用將導致 TSMC 和 OSAT 公司的產能利用率上升。同時，Agentic AI 對數據中心架構的影響也將對其競爭對手，例如 Google 和 Amazon 產生影響，可能導致市場份額的變化。Agentic AI 對數據中心架構的影響將使其在 AI 技術市場中占據重要地位，從而推動其未來的業務發展。",
-        "rating": "noise",
-        "insight": "Agentic AI 對數據中心架構的影響將使其在 AI 技術市場中占據重要地位，從而推動其未來的業務發展。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "Agentic AI 數據中心架構變化↑",
-            "type": "up"
-          },
-          {
-            "label": "Agentic AI 在 AI 技術市場的占有率↑",
-            "type": "up"
-          },
-          {
-            "label": "Agentic AI 未來業務發展↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "RISC-V",
-        "full": "Reduced Instruction Set Computing-V",
-        "def": "RISC-V 是一種開放指令集架構，允許使用者自行設計和實現自己的 CPU。RISC-V 的優點在於其開放性和可擴展性，能夠滿足不同應用的需求。",
-        "why": "RISC-V 的開放性和可擴展性使其成為了一種熱門的指令集架構，能夠滿足不同應用的需求。",
         "category": "semiconductor"
       }
     ],
