@@ -154,19 +154,27 @@ def fetch_ddg():
                     print(f"  DDG '{label}' failed after 3 attempts: {e}")
     return snippets
 
+def _title_tokens(text):
+    """混合 tokenizer：CJK bigram + 英文單詞（len>2），解決中文無空格的詞切分問題"""
+    cjk = re.sub(r'[^一-鿿]', '', text)
+    bigrams = set(cjk[i:i+2] for i in range(len(cjk) - 1))
+    eng = set(w for w in re.sub(r'[^\w]', ' ', text).lower().split()
+              if len(w) > 2 and not re.search(r'[一-鿿]', w))
+    return bigrams | eng
+
 def filter_recent(snippets, recent_titles):
     """過濾與近日已報道標題高度重疊的新聞摘要（code-level 去重，不依賴 LLM 指令）"""
     if not recent_titles:
         return snippets
-    recent_norm = [set(re.sub(r'[^\w]', ' ', rt).lower().split()) for rt in recent_titles]
+    recent_norm = [_title_tokens(rt) for rt in recent_titles]
     filtered, dropped = [], 0
     for s in snippets:
         dash = s.find(' — ')
         bracket = s.find(']')
         title_part = s[bracket+1:dash if dash > 0 else bracket+80].strip()
-        words = set(w for w in re.sub(r'[^\w]', ' ', title_part).lower().split() if len(w) > 2)
-        # 門檻降為 2：避免「RTX Spark」這類雙字產品名漏網
-        is_dup = any(len(words & rn) >= 2 for rn in recent_norm)
+        tokens = _title_tokens(title_part)
+        # ≥3 個 bigram/英文詞重疊才視為重複（CJK bigram 比單詞更精準）
+        is_dup = any(len(tokens & rn) >= 3 for rn in recent_norm) if tokens else False
         if is_dup:
             dropped += 1
         else:
@@ -178,27 +186,24 @@ def filter_recent(snippets, recent_titles):
 
 def downgrade_repeated_stories(data, recent_titles):
     """生成後 title-level 去重：LLM 改寫標題繞過 NO-REPEAT 時的最後一道 code-level guard。
-    比對新標題與近日 core/opp 標題的詞彙重疊率，≥50% 且 ≥2 詞重疊者降評 noise。"""
+    用 CJK bigram + 英文詞混合 token 比對，≥50% 重疊且 ≥3 token 才降評（修正中文無空格問題）。"""
     if not recent_titles:
         return
-    recent_norm = [
-        set(w for w in re.sub(r'[^\w]', ' ', rt).lower().split() if len(w) > 1)
-        for rt in recent_titles
-    ]
+    recent_norm = [_title_tokens(rt) for rt in recent_titles]
     for section in ['hw', 'corp', 'app']:
         for item in data.get(section, []):
             if item.get('rating') == 'noise':
                 continue
             title = item.get('title', '')
-            t_words = set(w for w in re.sub(r'[^\w]', ' ', title).lower().split() if len(w) > 1)
-            if not t_words:
+            t_tokens = _title_tokens(title)
+            if not t_tokens:
                 continue
             for rn in recent_norm:
                 if not rn:
                     continue
-                overlap = len(t_words & rn)
-                ratio = overlap / min(len(t_words), len(rn))
-                if ratio >= 0.5 and overlap >= 2:
+                overlap = len(t_tokens & rn)
+                ratio = overlap / min(len(t_tokens), len(rn))
+                if ratio >= 0.5 and overlap >= 3:
                     print(f"  ↓ 跨日重複降評→noise：{title[:60]}")
                     item['rating'] = 'noise'
                     break
@@ -303,6 +308,8 @@ def make_prompt(news_context, recent_titles=None):
 - body 欄位嚴禁使用「...」「…」等省略符號，資訊不確定請直接省略或改寫成完整句子
 - body 必須包含至少 3 句完整陳述，每句需含具體數字、時間點、公司名稱或技術細節，不得泛泛而談
 - 若某條目的原始新聞資訊不足以寫出 3 句有內容的句子，請將該條評為 noise 並簡短說明，不要用空話填充
+- 【body 禁句型】以下句型嚴禁出現：「根據報導，...」「預計在20XX年底前將達到每月N個」「已被多家公司採用，包括...」「正在助力...的發展」；每句必須直接陳述具體事實，不得轉述套話
+- 【分析角度差異化】同日各條目 body 分析角度須各異：hw 聚焦產能/良率/技術參數；corp 聚焦財務決策/投資額/競爭動機；app 聚焦落地場景/效能數字/商業模式；禁止不同條目重用同一分析框架
 - noise 條目只在該分區完全無相關新聞時才加入（限 1 條）；若已有 core 或 opp 條目，不得再混入 noise
 - 【前三日已報道】清單中的主題：無新進展則必須 noise；絕不允許用改寫、重述、補充細節等方式「偽裝成新內容」通過審查
 - chain label 必須是具體公司名/產品/角色 + 方向詞，例如「TSMC 議價能力↑」「Azure 交期拉長↓」；嚴禁使用「受益↑」「受壓↓」「受損↓」等泛稱；每條 chain 應有 2-4 個節點
@@ -326,6 +333,7 @@ def call_groq(prompt):
                 "noise 條目的 title 必須是『本日無相關[分區名稱]新聞』，不得使用任何具體新聞標題。"
                 "每個條目的具體數字必須來自該條目本身的新聞，嚴禁跨條目複製數字或細節。"
                 "每條 body 必須包含至少 3 句，每句需含具體數字、時間點或技術細節；資訊不足請評為 noise，不要用空話填充。"
+                "【body 禁句絕對規定】body 中嚴禁出現以下句型：「根據報導，」「預計在20XX年底前將達到每月」「已被多家公司採用，包括Google和Microsoft」「正在助力...的發展」「將繼續增加」；違者即為空洞輸出，視同錯誤。每句必須直接以事件主體開頭，陳述具體數字或技術動作。"
                 "【NO-REPEAT 鐵律】user 訊息中【前三日已報道】清單的任何標題涉及的公司/產品/事件，若今日新聞中沒有全新數字或新宣告，直接跳過，不得生成任何條目。"
                 "全程繁體中文：晶片（非芯片）、記憶體（非内存）、處理器（非处理器）。"
             )},
