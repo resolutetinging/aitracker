@@ -27,6 +27,10 @@ RSS_FEEDS = [
     # Google News RSS（精準關鍵字，優先餵給 LLM）
     ("Semiconductor", "https://news.google.com/rss/search?q=TSMC+HBM+CoWoS+semiconductor+AI+chip&hl=en-US&gl=US&ceid=US:en"),
     ("Semiconductor", "https://news.google.com/rss/search?q=NVIDIA+AMD+Intel+SK+Hynix+Micron+packaging&hl=en-US&gl=US&ceid=US:en"),
+    # 出口管制 / 法規（高影響、過去完全缺席）
+    ("Semiconductor", "https://news.google.com/rss/search?q=semiconductor+export+control+restriction+China+2026&hl=en-US&gl=US&ceid=US:en"),
+    # 財報 / 產能擴張（TSMC/HBM 業者季報常帶出真實供需訊號）
+    ("Semiconductor", "https://news.google.com/rss/search?q=TSMC+Samsung+SK+Hynix+Micron+earnings+revenue+capacity+2026&hl=en-US&gl=US&ceid=US:en"),
     ("CSP/CapEx",    "https://news.google.com/rss/search?q=Microsoft+Google+Meta+Amazon+AI+capex+data+center+2026&hl=en-US&gl=US&ceid=US:en"),
     ("App/AI",       "https://news.google.com/rss/search?q=Agentic+AI+Physical+AI+humanoid+robot+inference+2026&hl=en-US&gl=US&ceid=US:en"),
     # 重大展會（Computex / CES / GTC）—— 非展會期間自動沒有結果，無副作用
@@ -34,11 +38,13 @@ RSS_FEEDS = [
     # Semiconductor / Supply Chain — 專業媒體
     ("Semiconductor", "https://www.theregister.com/headlines.atom"),
     ("Semiconductor", "https://semiengineering.com/feed/"),
+    ("Semiconductor", "https://www.eetimes.com/feed/"),
     ("Semiconductor", "https://www.tomshardware.com/feeds/all"),
     ("Semiconductor", "https://blocksandfiles.com/feed/"),
     ("Semiconductor", "https://feeds.reuters.com/reuters/technologyNews"),
     ("Semiconductor", "https://hnrss.org/frontpage?q=TSMC+HBM+CoWoS+OSAT+semiconductor+packaging"),
     ("Semiconductor", "https://hnrss.org/frontpage?q=NVIDIA+AMD+Intel+chip+wafer+capacity+supply"),
+    ("Semiconductor", "https://hnrss.org/frontpage?q=semiconductor+export+control+supply+chain+chip+ban"),
     # CSP CapEx / Cloud
     ("CSP/CapEx",    "https://www.datacenterdynamics.com/en/rss/"),
     ("CSP/CapEx",    "https://nextplatform.com/feed/"),
@@ -54,6 +60,7 @@ HW_KEYWORDS = [
     "hbm","cowos","tsmc","nvidia","amd","intel","sk hynix","micron","samsung foundry",
     "semiconductor","packaging","wafer","gpu","chip","osat","asic","foundry",
     "advanced packaging","chiplet","tsv","emib","soi","reticle","capacity","fab",
+    "export control","export ban","restriction","sanction","supply chain","earnings","revenue",
     "computex","ces","gtc"  # 重大展會：展覽期間新聞直通 hw section
 ]
 
@@ -70,6 +77,7 @@ AI_KEYWORDS = [
     "agentic","robot","humanoid","physical ai","inference","llm","foundation model",
     "artificial intelligence","machine learning","openai","anthropic","groq",
     "packaging","wafer","foundry","chiplet","osat",
+    "export control","export ban","restriction","sanction","supply chain","earnings","revenue",
     "computex","ces","gtc"  # 展會關鍵字：避免展覽期間大量相關新聞被過濾掉
 ]
 
@@ -105,7 +113,7 @@ def fetch_rss():
             # Handle both RSS and Atom
             items = root.findall('.//item') or root.findall('.//atom:entry', ns)
             kept = 0
-            for item in items[:15]:
+            for item in items[:25]:
                 title = (item.findtext('title') or item.findtext('atom:title',namespaces=ns) or '').strip()
                 desc  = (item.findtext('description') or item.findtext('summary') or
                          item.findtext('atom:summary',namespaces=ns) or '').strip()
@@ -145,6 +153,7 @@ def fetch_ddg():
             return snippets
     queries = [
         ("硬體供應鏈", "HBM CoWoS TSMC NVIDIA AMD AI chip 2026"),
+        ("出口管制",   "semiconductor export control restriction China ban supply chain 2026"),
         ("CSP資本支出",  "Microsoft Google Meta Amazon AI capex data center 2026"),
         ("新興應用",     "Agentic AI Physical AI robotics humanoid inference 2026"),
     ]
@@ -152,7 +161,7 @@ def fetch_ddg():
     for label, q in queries:
         for attempt in range(3):
             try:
-                results = list(ddgs.news(q, max_results=5, timelimit="d"))
+                results = list(ddgs.news(q, max_results=10, timelimit="w"))
                 for r in results:
                     link = r.get('url', '')
                     url_part = f" | SOURCE_URL:{link}" if link else ""
@@ -209,9 +218,9 @@ def fetch_news(recent_titles=None):
         print(f"  → 預過濾後剩 {len(unique)} 條")
     # 限制總字數在 8000 字元以內，避免超過 Groq TPM 限制
     joined = "\n\n".join(unique)
-    if len(joined) > 8000:
-        joined = joined[:8000]
-        print(f"  → 截斷至 8000 字元")
+    if len(joined) > 14000:
+        joined = joined[:14000]
+        print(f"  → 截斷至 14000 字元")
     return joined
 
 
@@ -254,7 +263,7 @@ def make_prompt(news_context, recent_titles=None):
     )
     no_repeat_str = ("NO-REPEAT (STRICT): these topics were covered in recent days — do NOT generate any item about the same story or event even with a different headline; only include if there is a significant new development with wholly new facts not present before: " + "; ".join(recent_titles)) if recent_titles else ""
     notes_ctx = ("User notes context: " + notes_text[:200]) if notes_text else ""
-    news_short = news_context[:3500]
+    news_short = news_context[:7000]
     weekly_rule = (
         'each distinct point must be its own line separated by \\n (one sentence per line, ending with 。); never merge multiple topics into one continuous paragraph'
         if IS_SUNDAY else
