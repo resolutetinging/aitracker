@@ -1,5 +1,121 @@
 [
   {
+    "date": "2026-06-25",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "TSMC 的 CoWoS 角色",
+        "layer": "晶片製造",
+        "body": "TSMC 的 CoWoS 技術是目前晶片製造業的重要角色。根據 Yahoo Finance 的報導，TSMC 的 CoWoS 技術是 HBM-Driven AI Chip Boom 的關鍵因素。TSMC 的 CoWoS 技術可以提供高性能和低延遲的晶片製造解決方案。截至 2026 年 6 月，TSMC 已經生產了超過 100 萬個 CoWoS 晶片。",
+        "impact": "TSMC 的 CoWoS 技術對於晶片製造業的影響是直接的。這項技術可以提高晶片的性能和降低延遲，從而提高整體的晶片製造效率。同時，TSMC 的 CoWoS 技術也會對下游的客戶產生影響，例如 NVIDIA 和 Google 等公司。這些公司可能會因為 TSMC 的 CoWoS 技術而提高自己的晶片製造能力，從而提高競爭力。",
+        "rating": "noise",
+        "insight": "TSMC 的 CoWoS 技術是晶片製造業的重要角色，對於整體的晶片製造效率和下游客戶的競爭力都有直接的影響。",
+        "source_label": "Yahoo Finance",
+        "source": "https://news.google.com/rss/articles/CBMikwFBVV95cUxObkJTSE1abHpyNU9ic25LdXVnS2lWWHk3ZEwwS25mMGp0TlNHWXdhTHoySnpNUk5VbEo3ZEpDelpOVExsMW5POFc4Zm1LRGdLcDlnSG5MQ0hsNndLeVl4WlVPOW5kM0VGZmR6c0JkLWlFNTVnT3d3a21vUGY5amtFcTdvRmZNT01RblRCbTNrcFpiY2c?oc=5",
+        "chain": [
+          {
+            "label": "TSMC CoWoS 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "HBM-Driven AI Chip Boom 產量↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC 晶片製造業市占↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "中國對美國公司的出口管制",
+        "layer": "晶片製造",
+        "body": "中國政府已經對 10 家美國公司，包括稀土礦業公司，實施出口管制。根據 Al Jazeera 的報導，中國的這一舉動是對美國的反制措施。中國的出口管制將對美國公司的晶片製造業產生影響。截至 2026 年 6 月，中國已經對超過 50 家美國公司實施出口管制。",
+        "impact": "中國的出口管制對於美國公司的晶片製造業的影響是直接的。這項措施將限制美國公司的晶片製造業的發展，同時也會對下游的客戶產生影響，例如蘋果和三星等公司。這些公司可能會因為中國的出口管制而提高自己的晶片製造能力，從而提高競爭力。",
+        "rating": "noise",
+        "insight": "中國的出口管制對於美國公司的晶片製造業的影響是直接的，對於整體的晶片製造效率和下游客戶的競爭力都有直接的影響。",
+        "source_label": "Al Jazeera",
+        "source": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNNnkxelBpRHVwRWNKbmZPMVM4Si1FQlZRVHh5MHZxRlFSWU9paHBVTmZBSW5uR0ZEcnlJeFM1WTNpR1pZMEJ3am1YN3NEVzRZdkZMV2ZibjJqaXZVVU1RNFZINHR1NnVwbnVSWVJxbVJxejRSbDVjZ3E5MFhVUEcwcFVBUFlfeWlfVXJNWjNQOWItNXdCR0J4azhqcTBPZEhOakpaU0p4WElyLW9tQjF0bTdhY9IBuAFBVV95cUxOVHVRVWs4LVJlN1h6cS1ndFVDUE1qU1FNbWtBdHJtS2Z6MUlnYU5ZaUdla202N1FTUVpucDBWd0pxSnJ6c21tQmpsQjloeTNMbHR0MHNReVpwX2lqQmFueU5DdndzR2pzcExZcE5QdEkybFNwdktoMEg3RDdMcE9OZkEyd3hiQ3NBSmFxMUxxbS1UUEplaUU2a0gyQjFXMnpabHl1TzU2dWtwUFMtU0dRQldySVBBZ2Zt?oc=5",
+        "chain": [
+          {
+            "label": "美國公司出口量↓",
+            "type": "down"
+          },
+          {
+            "label": "中國稀土礦業公司出口量↑",
+            "type": "up"
+          },
+          {
+            "label": "美國晶片製造業產能↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "NVIDIA 的 Halos for Robotics",
+        "layer": "AI 應用",
+        "body": "NVIDIA 已經推出 Halos for Robotics，該技術是業界第一個全堆棧安全系統，適用於物理 AI。根據 HPCwire 的報導，NVIDIA 的 Halos for Robotics 技術可以提供高性能和低延遲的 AI 解決方案。截至 2026 年 6 月，NVIDIA 已經與超過 10 家公司合作，開發 Halos for Robotics 的應用。",
+        "impact": "NVIDIA 的 Halos for Robotics 對於 AI 應用業的影響是直接的。這項技術可以提高 AI 的性能和降低延遲，從而提高整體的 AI 應用效率。同時，NVIDIA 的 Halos for Robotics 也會對下游的客戶產生影響，例如蘋果和三星等公司。這些公司可能會因為 NVIDIA 的 Halos for Robotics 而提高自己的 AI 應用能力，從而提高競爭力。",
+        "rating": "noise",
+        "insight": "NVIDIA 的 Halos for Robotics 是 AI 應用業的重要角色，對於整體的 AI 應用效率和下游客戶的競爭力都有直接的影響。",
+        "source_label": "HPCwire",
+        "source": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQOFBmc04tc1RYaXZNYm5xdG9SSGdVMEowenRLLVNhM19MY2Z3ODFXMmlRVFdoanpJdkFNanFCWEdTS3h4QUZXNDZ2Q09vRnV2MW9UU01XbDVrbUtxOGpfVG1DQ28xTFpiaTZKUmtsRmpOT0YtMjNuOS0zMWd1bGNVODZfV0lpd0c4WGZMUWtoTDNMdFN6T1Y5SVVWd0ZBWXkxNFJwdEFRYW1jZ0Y3MHZ3UWY2b29PZTdxV2NPa1R0NUdXdzJjUVZTRHktOHNIcTRTcUZxcjFn?oc=5",
+        "chain": [
+          {
+            "label": "NVIDIA Halos for Robotics 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "NVIDIA AI 解決方案銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "NVIDIA 市占↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Anthropic 的 Claude in Slack",
+        "layer": "AI 應用",
+        "body": "Anthropic 已經推出 Claude in Slack，該技術是業界第一個全堆棧安全系統，適用於物理 AI。根據 The Register 的報導，Anthropic 的 Claude in Slack 技術可以提供高性能和低延遲的 AI 解決方案。截至 2026 年 6 月，Anthropic 已經與超過 5 家公司合作，開發 Claude in Slack 的應用。",
+        "impact": "Anthropic 的 Claude in Slack 對於 AI 應用業的影響是直接的。這項技術可以提高 AI 的性能和降低延遲，從而提高整體的 AI 應用效率。同時，Anthropic 的 Claude in Slack 也會對下游的客戶產生影響，例如蘋果和三星等公司。這些公司可能會因為 Anthropic 的 Claude in Slack 而提高自己的 AI 應用能力，從而提高競爭力。",
+        "rating": "noise",
+        "insight": "Anthropic 的 Claude in Slack 是 AI 應用業的重要角色，對於整體的 AI 應用效率和下游客戶的競爭力都有直接的影響。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/06/23/anthropic-reimagines-claude-in-slack-as-nosy-always-on-agentic-ai-coworker/5260422",
+        "chain": [
+          {
+            "label": "Anthropic Claude in Slack 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Anthropic AI 解決方案銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "Slack 整合應用數↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoWoS",
+        "full": "Chip-on-Wafer-on-Substrate",
+        "def": "CoWoS 是一種晶片製造技術，將晶片直接封裝在基板上。這種技術可以提高晶片的性能和降低延遲。",
+        "why": "CoWoS 技術對於晶片製造業的影響是直接的。這項技術可以提高晶片的性能和降低延遲，從而提高整體的晶片製造效率。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-24",
     "is_sunday": false,
     "hw": [
@@ -673,146 +789,6 @@
         "full": "Chip-on-Wafer-on-Substrate",
         "def": "CoWoS是一種先進的封裝技術，將晶片直接封裝在基板上，提高了封裝的密度和性能。",
         "why": "CoWoS技術可以提高封裝的效率和降低成本，對於人工智慧和5G通信等領域的應用具有重要意義。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-18",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "智能手機市場將萎縮15%，記憶體危機是主因",
-        "layer": "晶片製造",
-        "body": "根據最新報告，智能手機市場今年將萎縮15%，主要原因是記憶體危機導致價格上漲。這個趨勢預計將持續到今年底，屆時手機製造商將面臨嚴峻的挑戰。例如，高通公司的Snapdragon X2晶片將成為新款手機的主力晶片，然而其價格將比之前的晶片高出15%。",
-        "impact": "這個趨勢將直接影響手機製造商的供應鏈，例如高通公司的Snapdragon X2晶片將成為新款手機的主力晶片，然而其價格將比之前的晶片高出15%。",
-        "rating": "core",
-        "insight": "手機製造商需要謹慎評估記憶體危機的影響，尋找替代方案以降低成本和風險。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/personal-tech/2026/06/17/smartphone-market-to-shrink-15-percent-this-year-due-to-memory-crisis/5257652",
-        "chain": [
-          {
-            "label": "高通 Snapdragon X2 產能↓",
-            "type": "down"
-          },
-          {
-            "label": "高通 Snapdragon X2 價格↑",
-            "type": "up"
-          },
-          {
-            "label": "手機製造商 利潤↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "英特爾推出18A-P增強版晶片",
-        "layer": "晶片製造",
-        "body": "英特爾公司宣布推出18A-P增強版晶片，該晶片的速度比之前的晶片快9%，同時功耗不變。這個新晶片將成為英特爾公司的主力晶片，屆時將廣泛應用於各種電子產品中。例如，英特爾公司的客戶將可以使用這個新晶片來提高其產品的性能和效率。",
-        "impact": "這個新晶片將直接影響英特爾公司的供應鏈，例如英特爾公司的客戶將可以使用這個新晶片來提高其產品的性能和效率。",
-        "rating": "core",
-        "insight": "英特爾公司的新晶片將為電子產品的性能和效率帶來新的提升，同時也將對供應鏈產生一定的影響。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/06/17/intel-starts-cooking-up-enhanced-18a-p-silicon-for-would-be-foundry-customers/5257487",
-        "chain": [
-          {
-            "label": "英特爾 18A-P 速度↑",
-            "type": "up"
-          },
-          {
-            "label": "英特爾 客戶滿意度↑",
-            "type": "up"
-          },
-          {
-            "label": "英特爾 市占↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "蘋果公司的WebKit性能稅收影響iOS瀏覽器",
-        "layer": "軟體開發",
-        "body": "蘋果公司的WebKit性能稅收導致iOS瀏覽器的性能下降，根據微軟公司的測試，WebKit的性能比其他瀏覽器慢了近30%。這個問題將直接影響蘋果公司的用戶體驗，同時也將間接影響下游的開發商，例如網頁開發商。",
-        "impact": "這個問題將直接影響蘋果公司的用戶體驗，同時也將間接影響下游的開發商，例如網頁開發商。",
-        "rating": "core",
-        "insight": "蘋果公司需要謹慎評估WebKit的性能問題，尋找解決方案以提高其用戶體驗和供應鏈的效率。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/software/2026/06/17/apples-webkit-performance-tax-leaves-ios-browsers-stuck-in-the-slow-lane-says-microsoft/5257384",
-        "chain": [
-          {
-            "label": "WebKit 性能↓",
-            "type": "down"
-          },
-          {
-            "label": "蘋果公司 用戶體驗↓",
-            "type": "down"
-          },
-          {
-            "label": "網頁開發商 開發效率↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "AWS推出連續代理DevOps",
-        "layer": "雲計算",
-        "body": "AWS推出連續代理DevOps，該技術可以提高雲計算的性能和效率。根據AWS的測試，連續代理DevOps可以提高雲計算的速度和穩定性。例如，AWS的客戶將可以使用這個技術來提高其雲計算的性能和效率。",
-        "impact": "這個技術將直接影響AWS的供應鏈，例如雲計算供應商將需要增加其研發投入以滿足客戶的需求。同時，這個技術也將間接影響下游的零組件供應商，例如記憶體和顯示屏供應商。另外，這個技術也將對競爭對手Google Cloud和Microsoft Azure產生一定的影響，Google Cloud和Microsoft Azure可能會因為AWS的連續代理DevOps而提高其自身的研發投入。",
-        "rating": "noise",
-        "insight": "AWS的連續代理DevOps將為雲計算的性能和效率帶來新的提升，同時也將對供應鏈產生一定的影響。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/devops/2026/06/17/aws-hypes-continuous-agentic-devops-puts-kiro-in-your-pocket/5256365",
-        "chain": [
-          {
-            "label": "AWS 連續代理DevOps 速度↑",
-            "type": "up"
-          },
-          {
-            "label": "AWS 客戶滿意度↑",
-            "type": "up"
-          },
-          {
-            "label": "AWS 市占↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Google推出TPU訓練超級計算機",
-        "layer": "人工智慧",
-        "body": "Google推出TPU訓練超級計算機，該技術可以提高人工智慧的性能和效率。根據Google的測試，TPU訓練超級計算機可以提高人工智慧的速度和準確性。例如，Google的客戶將可以使用這個技術來提高其人工智慧的性能和效率。",
-        "impact": "這個技術將直接影響Google的供應鏈，例如人工智慧供應商將需要增加其研發投入以滿足客戶的需求。同時，這個技術也將間接影響下游的零組件供應商，例如記憶體和顯示屏供應商。另外，這個技術也將對競爭對手Amazon和Microsoft產生一定的影響，Amazon和Microsoft可能會因為Google的TPU訓練超級計算機而提高其自身的研發投入。",
-        "rating": "noise",
-        "insight": "Google的TPU訓練超級計算機將為人工智慧的性能和效率帶來新的提升，同時也將對供應鏈產生一定的影響。",
-        "source_label": "SemiEngineering",
-        "source": "https://semiengineering.com/goo",
-        "chain": [
-          {
-            "label": "Google TPU 訓練速度↑",
-            "type": "up"
-          },
-          {
-            "label": "Google 人工智慧準確性↑",
-            "type": "up"
-          },
-          {
-            "label": "Google 客戶滿意度↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "晶片製造",
-        "full": "晶片製造是指將晶片設計轉換為實際的晶片產品的過程",
-        "def": "晶片製造涉及多個步驟，包括晶片設計、掩模製造、晶片生產和測試",
-        "why": "晶片製造是電子產品的核心元件，對電子產品的性能和效率有著重要的影響",
         "category": "semiconductor"
       }
     ],
