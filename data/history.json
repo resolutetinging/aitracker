@@ -1,5 +1,169 @@
 [
   {
+    "date": "2026-06-26",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "台積電的CoWoS角色",
+        "layer": "晶片製造",
+        "body": "台積電的CoWoS技術在HBM驅動的AI晶片市場中發揮著關鍵作用。根據報導，台積電的CoWoS技術可以提供高性能和低延遲的晶片製造解決方案。目前，台積電的CoWoS技術已經被多家大型科技公司採用，包括Google和Microsoft。",
+        "impact": "這個事件對台積電的供應鏈影響是正面的， 因為它可以增加台積電的晶片製造能力和市場份額。同時，這也會對下游的HBM供應商產生正面的影響，因為HBM的需求會增加。然而，這也可能會對競爭對手的晶片製造商產生負面的影響，因為它們可能會難以跟上台積電的技術進步。",
+        "rating": "noise",
+        "insight": "台積電的CoWoS技術是AI晶片市場的關鍵因素，投資者應該關注其發展動態。",
+        "source_label": "Yahoo Finance",
+        "source": "https://news.google.com/rss/articles/CBMikwFBVV95cUxObkJTSE1abHpyNU9ic25LdXVnS2lWWHk3ZEwwS25mMGp0TlNHWXdhTHoySnpNUk5VbEo3ZEpDelpOVExsMW5POFc4Zm1LRGdLcDlnSG5MQ0hsNndLeVl4WlVPOW5kM0VGZmR6c0JkLWlFNTVnT3d3a21vUGY5amtFcTdvRmZNT01RblRCbTNrcFpiY2c?oc=5",
+        "chain": [
+          {
+            "label": "TSMC CoWoS 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Google AI晶片需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft AI晶片需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "記憶體價格創新高",
+        "layer": "記憶體製造",
+        "body": "Micron公司已經鎖定了記憶體價格為五年內的歷史新高。根據報導，Micron公司已經與大型買家簽署了協議，將在五年內提供記憶體產品。這個協議將為Micron公司帶來歷史性的利潤和收入。目前，Micron公司的記憶體產品已經被多家大型科技公司採用，包括Google和Microsoft。",
+        "impact": "這個事件對Micron公司的供應鏈影響是正面的， 因為它可以增加Micron公司的記憶體製造能力和市場份額。同時，這也會對下游的記憶體需求產生正面的影響，因為記憶體的需求會增加。然而，這也可能會對競爭對手的記憶體製造商產生負面的影響，因為它們可能會難以跟上Micron公司的價格和技術進步。",
+        "rating": "noise",
+        "insight": "Micron公司的記憶體價格是科技業的關鍵因素，投資者應該關注其發展動態。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "Micron 記憶體價格↑",
+            "type": "up"
+          },
+          {
+            "label": "Google 記憶體需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft 記憶體需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "IBM的次納米晶片",
+        "layer": "晶片製造",
+        "body": "IBM公司已經展示了其次納米晶片的技術。根據報導，IBM公司的次納米晶片可以提供高性能和低功耗的晶片製造解決方案。目前，IBM公司的次納米晶片技術已經被多家大型科技公司採用，包括Google和Microsoft。",
+        "impact": "這個事件對IBM公司的供應鏈影響是正面的， 因為它可以增加IBM公司的晶片製造能力和市場份額。同時，這也會對下游的晶片需求產生正面的影響，因為晶片的需求會增加。然而，這也可能會對競爭對手的晶片製造商產生負面的影響，因為它們可能會難以跟上IBM公司的技術進步。",
+        "rating": "noise",
+        "insight": "IBM公司的次納米晶片技術是科技業的關鍵因素，投資者應該關注其發展動態。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "IBM 次納米晶片性能↑",
+            "type": "up"
+          },
+          {
+            "label": "Google 次納米晶片需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft 次納米晶片需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Amazon、Microsoft和Google的AI投資",
+        "layer": "AI投資",
+        "body": "Amazon、Microsoft和Google公司已經投資了57億美元在印度的AI基礎設施上。根據報導，Amazon、Microsoft和Google公司將在印度建立AI研究中心和數據中心。這個投資將為印度的AI產業帶來新的機會和發展。",
+        "impact": "這個事件對Amazon、Microsoft和Google公司的供應鏈影響是正面的， 因為它可以增加這些公司在印度的AI市場份額和影響力。",
+        "rating": "core",
+        "insight": "Amazon、Microsoft和Google公司的AI投資是科技業的關鍵因素，投資者應該關注其發展動態。",
+        "source_label": "Moneycontrol.com",
+        "source": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxPZGpLZmNmT2xvSjFoV1lOZGhJYXlpZWFTS1MzMnJwWWJCczNTYjMxTHlJeFl0VnY2U3dhQ2djRVpIRlpfUkVrLU5wMU12dTF2OGJNenVnblozT0QyenJBVnVkVDI1Mk9ObjRzUnNwME9MRmplT2JqX3VPYnJlQ2lObU16NjB0dnBqbzE4aS1NTnJUU3ljR05MbC1MZmFpVklMWWk3ejNhaHNobEVtbzlPMHhmQ1dhLTJwNzB0c3JzNVpBb1hOS241eFN1TTdWTW44WExKN1dNS1BlSnoxQkdjVHRvbkVPY2JPUDNpbVNGTWZkZ9IB9wFBVV95cUxOUFFlWmNQb3FtU1NlTkF4ZUY0TXdiWndkamhDYXdtYUVfRnRIVVh1MnIyRmFRVWNZN2oxOGFqSW4xZlZ5QV9zMk4yWm1lT1MyU1RzS2tndWhlRnVqR0k0dklGNlllVDVqVmk5TmxwdEJhY2tLT0laelNZMmQzSk9XR2hUVkU0WXM2bmo2QXRnUFpOazNQb1JuSkRvWnNZRFZPcUVsWngzU0NteVIxY3VTbGdqbVZKeVAwWXRsZ19GUmlFcVhQLWxqV1FpQ0pzdjdEcVoyU1ZQcXY5TWpfYXRHcEsxQjVkbi1vQnJvdEd0OWp2WnBaOS1N?oc=5",
+        "chain": [
+          {
+            "label": "Amazon AI投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft AI投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Google AI投資↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Meta和Microsoft的AI投資",
+        "layer": "AI投資",
+        "body": "Meta和Microsoft公司已經投資了大量資金在AI研究和開發上。根據報導，Meta和Microsoft公司將在AI技術上進行合作和投資。這個投資將為Meta和Microsoft公司帶來新的機會和發展。",
+        "impact": "這個事件對Meta和Microsoft公司的供應鏈影響是正面的， 因為它可以增加這些公司在AI市場份額和影響力。同時，這也會對下游的AI需求產生正面的影響，因為AI的需求會增加。然而，這也可能會對競爭對手的AI公司產生負面的影響，因為它們可能會難以跟上Meta和Microsoft公司的技術進步和市場份額。",
+        "rating": "noise",
+        "insight": "Meta和Microsoft公司的AI投資是科技業的關鍵因素，投資者應該關注其發展動態。",
+        "source_label": "Startup Fortune",
+        "source": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPaDd0eDhMMHFicDl1RmVPSjNSVTJ2b3ZnVE5SWFAxV0pteXNHRmMyUVBmZlhuY0hRMWhyMVI5dUZDSTFlRjV2SElISWI1bWdOMmhsNVRGQTNFeVhvNnhzMGwwLVdBdXlyYkhPNzBkejU4WWx0QUtreDJWaG1JVVdtTjFqTUNBazBrdzdodll4VmcxRUNIWXpqdWY1dGN1R0lyNktMYW0wQ3dON3pMZEkyd3dla01LbDBMU1oyMlp2Z0dzdC1v?oc=5",
+        "chain": [
+          {
+            "label": "Meta AI投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft AI投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta 市占↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "NVIDIA的Halos for Robotics",
+        "layer": "AI應用",
+        "body": "NVIDIA公司已經推出了Halos for Robotics的AI解決方案。根據報導，NVIDIA的Halos for Robotics可以提供安全和高性能的AI應用。目前，NVIDIA的Halos for Robotics已經被多家大型科技公司採用，包括Google和Microsoft。",
+        "impact": "這個事件對NVIDIA公司的供應鏈影響是正面的， 因為它可以增加NVIDIA公司的AI市場份額和影響力。同時，這也會對下游的AI需求產生正面的影響，因為AI的需求會增加。然而，這也可能會對競爭對手的AI公司產生負面的影響，因為它們可能會難以跟上NVIDIA公司的技術進步和市場份額。",
+        "rating": "noise",
+        "insight": "NVIDIA公司的Halos for Robotics是AI應用的關鍵因素，投資者應該關注其發展動態。",
+        "source_label": "HPCwire",
+        "source": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQOFBmc04tc1RYaXZNYm5xdG9SSGdVMEowenRLLVNhM19MY2Z3ODFXMmlRVFdoanpJdkFNanFCWEdTS3h4QUZXNDZ2Q09vRnV2MW9UU01XbDVrbUtxOGpfVG1DQ28xTFpiaTZKUmtsRmpOT0YtMjNuOS0zMWd1bGNVODZfV0lpd0c4WGZMUWtoTDNMdFN6T1Y5SVVWd0ZBWXkxNFJwdEFRYW1jZ0Y3MHZ3UWY2b29PZTdxV2NPa1R0NUdXdzJjUVZTRHktOHNIcTRTcUZxcjFn?oc=5",
+        "chain": [
+          {
+            "label": "NVIDIA Halos for Robotics 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Robotics需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft Robotics需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoWoS",
+        "full": "Chip-on-Wafer-on-Substrate",
+        "def": "CoWoS是一種晶片製造技術，將晶片直接堆疊在基板上。這種技術可以提高晶片的性能和降低功耗。",
+        "why": "CoWoS技術是AI晶片市場的關鍵因素，因為它可以提供高性能和低功耗的晶片製造解決方案。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-25",
     "is_sunday": false,
     "hw": [
@@ -674,122 +838,6 @@
         "def": "一種計算方法，使用對數來簡化計算過程，提高計算效率。",
         "why": "對數運算可以提高計算效率，降低能耗，提高晶片的可靠性。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-19",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "台積電加速玻璃基板生產",
-        "layer": "晶片製造",
-        "body": "台積電加速玻璃基板生產，以應對人工智慧封裝需求的增長。台積電的CoWoS先進封裝技術已經被應用於多個領域，包括人工智慧和5G通信。根據報導，台積電的CoWoS技術已經被多個大型科技公司採用，包括谷歌和亞馬遜。",
-        "impact": "台積電加速玻璃基板生產將直接影響其封裝能力的提升，從而對下游客戶如谷歌和亞馬遜的AI應用產生正面影響。",
-        "rating": "core",
-        "insight": "台積電加速玻璃基板生產是人工智慧封裝需求增長的重要體現，投資者應關注相關公司的發展動向。",
-        "source_label": "CHOSUNBIZ",
-        "source": "https://news.google.com/rss/articles/CBMiekFVX3lxTFA5NHRjUFE3RzZ3eU5Ib2hvZzdWUW9CVnl3VUhNaEtxT2hiaGRBQlI0cnZBUG1UczdWQWx1cmxrN0xyME9jX09ISnlQeTZNWXJaeFRfVF9fVVBaYVM3NWc0TVRQc3hzVUJhNjdJbmxtdGJqVG1yZzhTWmxR0gGOAUFVX3lxTE1SSHVna0NBQlBaSWtObXVHX0g5RGw0SjR0ZTNwV3dicnV6V09mNEcwR19wTzUwOHV2VVlrM1dUcVdXQmhFVUpaVS03UlAyelRaUmpkb2VUYkRkVVd4RUtudHdGZXE2bEwyRmhaUlNTbHFCMFpKSzk3VUlJWE1yd1pnOFJrVndSQkppZlNCaFE?oc=5",
-        "chain": [
-          {
-            "label": "TSMC CoWoS 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "谷歌封裝需求↑",
-            "type": "up"
-          },
-          {
-            "label": "亞馬遜封裝需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "SK海力士出貨12層次HBM4E樣品",
-        "layer": "記憶體",
-        "body": "SK海力士出貨12層次HBM4E樣品，標誌著其在高性能記憶體領域的進步。HBM4E是一種高頻寬和低延遲的記憶體技術，適合於人工智慧和高性能計算應用。根據報導，SK海力士的HBM4E樣品已經被多個大型科技公司採用，包括谷歌和亞馬遜。",
-        "impact": "SK海力士出貨12層次HBM4E樣品將直接影響其記憶體供應能力的提升，從而對下游客戶如谷歌和亞馬遜的AI應用產生正面影響。",
-        "rating": "core",
-        "insight": "SK海力士出貨12層次HBM4E樣品是高性能記憶體需求增長的重要體現，投資者應關注相關公司的發展動向。",
-        "source_label": "TechPowerUp",
-        "source": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQaTR1blV6QU1QREM0bWY3SkVHS0xtZ2dPVGVMR012cW9QR0tsSzdlZ2hvSDhtU3ZwSmlpY2h4amZNQjlyUGNNX3BmczlqalhVSDNtSmRJVG03UzFrLXp2Vi04dW1rd1ZDamRTMjU4ODZYM3pXaUJZLXU5T05yYVl3dVNvUkZBVWRtUGNxLXhvYTdNd9IBkgFBVV95cUxQaTR1blV6QU1QREM0bWY3SkVHS0xtZ2dPVGVMR012cW9QR0tsSzdlZ2hvSDhtU3ZwSmlpY2h4amZNQjlyUGNNX3BmczlqalhVSDNtSmRJVG03UzFrLXp2Vi04dW1rd1ZDamRTMjU4ODZYM3pXaUJZLXU5T05yYVl3dVNvUkZBVWRtUGNxLXhvYTdNdw?oc=5",
-        "chain": [
-          {
-            "label": "SK Hynix HBM4E 出貨量↑",
-            "type": "up"
-          },
-          {
-            "label": "谷歌記憶體需求↑",
-            "type": "up"
-          },
-          {
-            "label": "亞馬遜記憶體需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "NVIDIA、亞馬遜和微軟面臨AI投資減少",
-        "layer": "AI投資",
-        "body": "NVIDIA、亞馬遜和微軟面臨AI投資減少，原因是資金短缺。根據報導，AI投資的減少將對這些公司的AI研發和應用產生負面影響。NVIDIA、亞馬遜和微軟都是AI領域的重要玩家，AI投資的減少將對其業務產生重大影響。",
-        "impact": "NVIDIA、亞馬遜和微軟面臨AI投資減少將直接影響其AI研發和應用的進度，從而對其業務產生負面影響。同時，AI投資的減少也將對其他AI公司產生間接影響，促使其加速研發和投資。這一發展也將對晶片製造商和記憶體供應商產生間接影響，推動其提高生產效率和降低成本。",
-        "rating": "noise",
-        "insight": "NVIDIA、亞馬遜和微軟面臨AI投資減少是AI領域的重要體現，投資者應關注相關公司的發展動向。",
-        "source_label": "24/7 Wall St.",
-        "source": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQWllvczZfMkYtVmtpQXYyMmQ3VEw5VHdEdkQ4bXZHOU1VX0daRTBOaTE0SDdoY1kycFpfVlhXMHp1TjJMNFcxMm9lZERWajE0M1hlci02dTl6T0EzbXJUdzNJNS1XQ1lieGhsTGJjbnRRSEl2YmZQQV9hNnFhZlRRV2FUcEZrc3g0Y1Yxcmk5ZmU4R204cmJYazk3X2UxWWZkRkZ4LV81aFM2eml2alBUaEVGckVuYm1RTGJnZA?oc=5",
-        "chain": [
-          {
-            "label": "NVIDIA AI 研發↓",
-            "type": "down"
-          },
-          {
-            "label": "亞馬遜 AI 研發↓",
-            "type": "down"
-          },
-          {
-            "label": "微軟 AI 研發↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "富士康推出人形機器人",
-        "layer": "人形機器人",
-        "body": "富士康推出人形機器人，標誌著其在機器人領域的進步。根據報導，富士康的機器人已經被應用於多個領域，包括生產和服務。富士康的機器人技術也將對其他公司產生競爭壓力，促使其加速研發和投資。",
-        "impact": "富士康推出人形機器人將直接影響其機器人供應能力的提升，從而對下游客戶產生正面影響。同時，富士康的機器人技術也將對其他機器人公司產生競爭壓力，促使其加速研發和投資。這一發展也將對晶片製造商和記憶體供應商產生間接影響，推動其提高生產效率和降低成本。",
-        "rating": "noise",
-        "insight": "富士康推出人形機器人是機器人領域的重要體現，投資者應關注相關公司的發展動向。",
-        "source_label": "Tech Times",
-        "source": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNSWN6REp2TjUzbC00bkp2TVVTYnRUdnVIRUtFV0xDcWxsU2ZXdFo3ZEdLTlM2X0M0MDJsSXQzN19wc3ZPRTdnWUVnUlR2Rl9LRzJ6WVJMSlFjc2dHOEI5Y0dqOGlWX1lIOVdIT0hHZVQ1Xzc5YU5UN0FLWE82OWJkS3dndUlpa1FEeUVRckhucWpzMHRVUUFyaVRsYkVVZkRnUTI5M283QlNNdE4tQjFmZXFJcnVOOVg5WlM2ZnJjSVpabkR3MHV5dXdCTmg?oc=5",
-        "chain": [
-          {
-            "label": "富士康 機器人技術↑",
-            "type": "up"
-          },
-          {
-            "label": "生產效率↑",
-            "type": "up"
-          },
-          {
-            "label": "服務質量↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "CoWoS",
-        "full": "Chip-on-Wafer-on-Substrate",
-        "def": "CoWoS是一種先進的封裝技術，將晶片直接封裝在基板上，提高了封裝的密度和性能。",
-        "why": "CoWoS技術可以提高封裝的效率和降低成本，對於人工智慧和5G通信等領域的應用具有重要意義。",
-        "category": "semiconductor"
       }
     ],
     "weekly_summary": null
