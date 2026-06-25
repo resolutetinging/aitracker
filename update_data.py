@@ -477,6 +477,51 @@ def downgrade_hallucinated(data):
                 print(f"  ↓ 幻覺預測降評→noise：{item.get('title','')[:60]}")
                 item['rating'] = 'noise'
 
+# prompt 明列禁句（Llama 常忽略）
+FORBIDDEN_PATS = [
+    re.compile(r'根據.{0,10}報導[，,]'),
+    re.compile(r'已被多家公司採用.{0,5}包括'),
+    re.compile(r'預計在20\d\d年底前將達到每月'),
+    re.compile(r'正在助力.{0,20}的發展'),
+    re.compile(r'將繼續增加'),
+    re.compile(r'例如.{0,8}客戶將可以使用'),
+]
+def downgrade_forbidden_phrases(data):
+    """body 含 prompt 明列禁句 → noise（Llama 不遵守規則的補救）"""
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            if item.get('rating') == 'noise':
+                continue
+            body = item.get('body', '')
+            for pat in FORBIDDEN_PATS:
+                if pat.search(body):
+                    print(f"  ↓ 禁句降評→noise：{item.get('title','')[:50]}")
+                    item['rating'] = 'noise'
+                    break
+
+def downgrade_cross_item_duplicates(data):
+    """跨條目 body+insight bigram 相似度 > 55% → 後者降評→noise（截圖問題：不同 item 描述幾乎相同）"""
+    all_items = []
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            all_items.append(item)
+
+    for i in range(len(all_items)):
+        if all_items[i].get('rating') == 'noise':
+            continue
+        text_i = all_items[i].get('body', '') + all_items[i].get('insight', '')
+        bi_i = _cjk_bigrams(text_i)
+        for j in range(i + 1, len(all_items)):
+            if all_items[j].get('rating') == 'noise':
+                continue
+            text_j = all_items[j].get('body', '') + all_items[j].get('insight', '')
+            bi_j = _cjk_bigrams(text_j)
+            if bi_i and bi_j and len(bi_i) > 5 and len(bi_j) > 5:
+                overlap = len(bi_i & bi_j) / min(len(bi_i), len(bi_j))
+                if overlap > 0.55:
+                    print(f"  ↓ 跨條目重複降評→noise：{all_items[j].get('title','')[:50]} (overlap {overlap:.0%})")
+                    all_items[j]['rating'] = 'noise'
+
 # ══════════════════════════════════════════════════════════════════
 #  5. HISTORY
 # ══════════════════════════════════════════════════════════════════
@@ -723,6 +768,8 @@ if __name__ == '__main__':
     downgrade_unsourced(data)
     downgrade_hw_offtopic(data)
     downgrade_hallucinated(data)
+    downgrade_forbidden_phrases(data)
+    downgrade_cross_item_duplicates(data)
     downgrade_low_quality(data)
 
     history = upsert(history, data)
