@@ -24,35 +24,20 @@ KNOWN_TERMS = ["HBM","CoWoS","CSP","OSAT","VLA 模型",
 #  1. RSS FEEDS（主要新聞來源，穩定免費）
 # ══════════════════════════════════════════════════════════════════
 RSS_FEEDS = [
-    # Google News RSS（精準關鍵字，優先餵給 LLM）
-    ("Semiconductor", "https://news.google.com/rss/search?q=TSMC+HBM+CoWoS+semiconductor+AI+chip&hl=en-US&gl=US&ceid=US:en"),
-    ("Semiconductor", "https://news.google.com/rss/search?q=NVIDIA+AMD+Intel+SK+Hynix+Micron+packaging&hl=en-US&gl=US&ceid=US:en"),
-    # 出口管制 / 法規（高影響、過去完全缺席）
-    ("Semiconductor", "https://news.google.com/rss/search?q=semiconductor+export+control+restriction+China+2026&hl=en-US&gl=US&ceid=US:en"),
-    # 財報 / 產能擴張（TSMC/HBM 業者季報常帶出真實供需訊號）
-    ("Semiconductor", "https://news.google.com/rss/search?q=TSMC+Samsung+SK+Hynix+Micron+earnings+revenue+capacity+2026&hl=en-US&gl=US&ceid=US:en"),
-    ("CSP/CapEx",    "https://news.google.com/rss/search?q=Microsoft+Google+Meta+Amazon+AI+capex+data+center+2026&hl=en-US&gl=US&ceid=US:en"),
-    ("App/AI",       "https://news.google.com/rss/search?q=Agentic+AI+Physical+AI+humanoid+robot+inference+2026&hl=en-US&gl=US&ceid=US:en"),
-    # 重大展會（Computex / CES / GTC）—— 非展會期間自動沒有結果，無副作用
-    ("Semiconductor", "https://news.google.com/rss/search?q=Computex+2026+AI+chip+GPU+NVIDIA+AMD&hl=en-US&gl=US&ceid=US:en"),
-    # Semiconductor / Supply Chain — 專業媒體
+    # ── 硬體供應鏈 & 半導體 ─────────────────────────────────────────
     ("Semiconductor", "https://www.theregister.com/headlines.atom"),
     ("Semiconductor", "https://semiengineering.com/feed/"),
     ("Semiconductor", "https://www.eetimes.com/feed/"),
     ("Semiconductor", "https://www.tomshardware.com/feeds/all"),
-    ("Semiconductor", "https://blocksandfiles.com/feed/"),
-    ("Semiconductor", "https://feeds.reuters.com/reuters/technologyNews"),
-    ("Semiconductor", "https://hnrss.org/frontpage?q=TSMC+HBM+CoWoS+OSAT+semiconductor+packaging"),
-    ("Semiconductor", "https://hnrss.org/frontpage?q=NVIDIA+AMD+Intel+chip+wafer+capacity+supply"),
-    ("Semiconductor", "https://hnrss.org/frontpage?q=semiconductor+export+control+supply+chain+chip+ban"),
-    # CSP CapEx / Cloud
+    ("Semiconductor", "https://www.cnbc.com/id/19854910/device/rss/rss.html"),  # Micron/NVIDIA 財報常出現
+    # ── CSP CapEx / 巨頭投資 ─────────────────────────────────────────
     ("CSP/CapEx",    "https://www.datacenterdynamics.com/en/rss/"),
-    ("CSP/CapEx",    "https://nextplatform.com/feed/"),
-    ("CSP/CapEx",    "https://hnrss.org/frontpage?q=Microsoft+Google+Meta+Amazon+capex+data+center+AI+investment"),
-    # Agentic / Physical AI
-    ("App/AI",       "https://hnrss.org/frontpage?q=Agentic+AI+Physical+AI+robotics+humanoid+VLA+inference"),
+    ("CSP/CapEx",    "https://techcrunch.com/category/artificial-intelligence/feed/"),
+    ("CSP/CapEx",    "https://www.cnbc.com/id/19854910/device/rss/rss.html"),
+    # ── Agentic / Physical AI / 應用落地 ─────────────────────────────
     ("App/AI",       "https://feeds.arstechnica.com/arstechnica/technology-lab"),
     ("App/AI",       "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
+    ("App/AI",       "https://techcrunch.com/category/artificial-intelligence/feed/"),
 ]
 
 # 硬體供應鏈關鍵字（hw 分類必須命中其中之一）
@@ -161,11 +146,11 @@ def fetch_ddg():
     for label, q in queries:
         for attempt in range(3):
             try:
-                results = list(ddgs.news(q, max_results=10, timelimit="w"))
+                results = list(ddgs.news(q, max_results=5, timelimit="w"))
                 for r in results:
                     link = r.get('url', '')
                     url_part = f" | SOURCE_URL:{link}" if link else ""
-                    snippets.append(f"[{label}] {r.get('title','')} — {r.get('body','')[:300]}{url_part}")
+                    snippets.append(f"[{label}] {r.get('title','')} — {r.get('body','')[:150]}{url_part}")
                 print(f"  DDG '{label}': {len(results)} results")
                 break
             except Exception as e:
@@ -204,10 +189,11 @@ def fetch_news(recent_titles=None):
     ddg = fetch_ddg()
     print(f"  → DDG 取得 {len(ddg)} 條")
     all_news = rss + ddg
-    # Deduplicate by normalized title (first 80 chars, strip punctuation)
+    # Deduplicate by title（去掉 [label] 前綴再比對，同一文章因 section 不同不視為兩條）
     seen, unique = set(), []
     for s in all_news:
-        key = re.sub(r'[^\w\s]', '', s[:80]).lower().strip()
+        body = re.sub(r'^\[[^\]]+\]\s*', '', s)
+        key = re.sub(r'[^\w\s]', '', body[:80]).lower().strip()
         if key not in seen:
             seen.add(key)
             unique.append(s)
@@ -216,11 +202,11 @@ def fetch_news(recent_titles=None):
     if recent_titles:
         unique = filter_recent(unique, recent_titles)
         print(f"  → 預過濾後剩 {len(unique)} 條")
-    # 限制總字數在 8000 字元以內，避免超過 Groq TPM 限制
+    # 限制總字數，避免超過 Groq TPM 限制
     joined = "\n\n".join(unique)
-    if len(joined) > 14000:
-        joined = joined[:14000]
-        print(f"  → 截斷至 14000 字元")
+    if len(joined) > 8000:
+        joined = joined[:8000]
+        print(f"  → 截斷至 8000 字元")
     return joined
 
 
@@ -263,7 +249,7 @@ def make_prompt(news_context, recent_titles=None):
     )
     no_repeat_str = ("NO-REPEAT (STRICT): these topics were covered in recent days — do NOT generate any item about the same story or event even with a different headline; only include if there is a significant new development with wholly new facts not present before: " + "; ".join(recent_titles)) if recent_titles else ""
     notes_ctx = ("User notes context: " + notes_text[:200]) if notes_text else ""
-    news_short = news_context[:7000]
+    news_short = news_context[:3500]
     weekly_rule = (
         'each distinct point must be its own line separated by \\n (one sentence per line, ending with 。); never merge multiple topics into one continuous paragraph'
         if IS_SUNDAY else
@@ -438,7 +424,7 @@ def call_groq(prompt):
                     {"role":"user","content":prompt}
                 ],
                 temperature=0.3,
-                max_tokens=8000,
+                max_tokens=4000,
             )
             if model != models[0]:
                 print(f"  → 使用備用模型 {model}")
