@@ -479,25 +479,44 @@ def downgrade_hallucinated(data):
 
 # prompt 明列禁句（Llama 常忽略）
 FORBIDDEN_PATS = [
-    re.compile(r'根據.{0,10}報導[，,]'),
-    re.compile(r'已被多家公司採用.{0,5}包括'),
+    re.compile(r'根據.{0,25}報導[，,。]'),              # 擴大至 25 字，攔「根據 Yahoo Finance 的報導，」
+    re.compile(r'已.{0,4}被多家.{0,15}公司採用.{0,10}包括'),  # 攔「已被/已經被多家大型科技公司採用，包括」
     re.compile(r'預計在20\d\d年底前將達到每月'),
     re.compile(r'正在助力.{0,20}的發展'),
     re.compile(r'將繼續增加'),
     re.compile(r'例如.{0,8}客戶將可以使用'),
+    # impact 欄位模板偵測
+    re.compile(r'的供應鏈影響是正面的'),
+    re.compile(r'它可以增加.{1,20}的.{1,20}能力和市場份額'),
+    re.compile(r'對下游的.{1,30}需求產生正面的影響'),
+    re.compile(r'競爭對手.{1,30}難以跟上.{1,20}的技術進步'),
 ]
+
 def downgrade_forbidden_phrases(data):
-    """body 含 prompt 明列禁句 → noise（Llama 不遵守規則的補救）"""
+    """body 含禁句 → noise；impact 含模板 → 清除 impact（無論 rating）"""
     for section in ['hw', 'corp', 'app']:
         for item in data.get(section, []):
-            if item.get('rating') == 'noise':
-                continue
             body = item.get('body', '')
-            for pat in FORBIDDEN_PATS:
-                if pat.search(body):
-                    print(f"  ↓ 禁句降評→noise：{item.get('title','')[:50]}")
-                    item['rating'] = 'noise'
-                    break
+            impact = item.get('impact') or ''
+            if item.get('rating') != 'noise':
+                for pat in FORBIDDEN_PATS:
+                    if pat.search(body):
+                        print(f"  ↓ 禁句降評→noise：{item.get('title','')[:50]}")
+                        item['rating'] = 'noise'
+                        break
+            if impact:
+                for pat in FORBIDDEN_PATS:
+                    if pat.search(impact):
+                        print(f"  ✕ 模板 impact 清除：{item.get('title','')[:50]}")
+                        item['impact'] = None
+                        break
+
+def strip_noise_impact(data):
+    """所有 noise 條目的 impact 欄位設為 None，避免模板框出現在前端"""
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            if item.get('rating') == 'noise' and item.get('impact'):
+                item['impact'] = None
 
 def downgrade_cross_item_duplicates(data):
     """跨條目 body+insight bigram 相似度 > 55% → 後者降評→noise（截圖問題：不同 item 描述幾乎相同）"""
@@ -771,6 +790,7 @@ if __name__ == '__main__':
     downgrade_forbidden_phrases(data)
     downgrade_cross_item_duplicates(data)
     downgrade_low_quality(data)
+    strip_noise_impact(data)
 
     history = upsert(history, data)
     save_history(history)
