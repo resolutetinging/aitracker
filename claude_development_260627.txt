@@ -1,0 +1,149 @@
+AI Tracker 開發日誌 2026-06-27
+======================================
+
+## 問題一：供應鏈影響分析（impact）出現大量模板套話
+
+### 現象
+截圖顯示每個新聞卡片下方出現「供應鏈影響分析」灰框，內容全為模板：
+「這個事件對XXX的供應鏈影響是正面的，因為它可以增加XXX的能力和市場份額。
+同時，這也會對下游的XXX需求產生正面的影響...
+然而，這也可能會對競爭對手的XXX製造商產生負面的影響，因為它們可能會難以跟上XXX的技術進步。」
+三個條目結構完全相同，僅換公司名。
+
+### 根本原因（三層）
+
+**1. Groq 自發加入 schema 外的 `impact` 欄位**
+prompt 的 OUTPUT FORMAT 中沒有 `impact`（只有 title/layer/body/chain/rating/insight/source），
+但 Groq 自行在 JSON 中加入 `impact`，且全是模板。
+
+**2. FORBIDDEN_PATS 正規式太窄**
+- `根據.{0,10}報導[，,]` 攔不到「根據 Yahoo Finance 的報導，」（16字元，超過上限10）
+- `已被多家公司採用.{0,5}包括` 攔不到「已**經**被多家**大型科技**公司採用，包括」
+
+**3. noise 條目的 `impact` 欄位未清除**
+降評為 noise 後，`impact` 仍保留在 JSON，HTML 照常顯示灰框。
+而 `isNoiseEmpty()` 只過濾 body 含「無相關新聞」的條目，
+其他 noise 條目照常出現在前端，造成模板框到處顯示。
+
+### 修法（v2.5）
+
+**擴展 FORBIDDEN_PATS（update_data.py）：**
+- `根據.{0,10}` → `.{0,25}` 攔住來源引用句
+- `已被多家公司採用` → `已.{0,4}被多家.{0,15}公司採用.{0,10}包括`
+
+**新增 impact 模板偵測 pattern：**
+- `的供應鏈影響是正面的`
+- `它可以增加.{1,20}的.{1,20}能力和市場份額`
+- `對下游的.{1,30}需求產生正面的影響`
+- `競爭對手.{1,30}難以跟上.{1,20}的技術進步`
+
+**修改 `downgrade_forbidden_phrases()`：**
+同時掃 `body` 和 `impact`：
+- body 含禁句 → rating=noise（原行為）
+- impact 含模板 → `item['impact'] = None`（無論 rating）
+
+**新增 `strip_noise_impact()`：**
+管線末尾加一步，所有 rating==noise 的條目清除 impact，
+防止未來 noise 條目意外帶模板框出現在前端。
+
+**回溯修補：**
+以上 pattern 套用到 history.json 現有資料，共清除 18 個模板 impact 欄位
+（2026-06-19 ~ 2026-06-26 的 noise 條目）。
+
+---
+
+## 問題二：一整週新聞全部 noise（root update_data.py 診斷）
+
+### 現象
+2026-06-23 至 2026-06-25 共 3 天，所有條目都是 noise。
+市場實際上很活躍，應該有真實新聞。
+
+### 根本原因
+RSS 來源問題（本機 update_data.py 測試）：
+- `hnrss.org` 全線返回 0 篇（HackerNews 前頁不固定有晶片貼文）
+- `news.google.com` 搜尋 RSS 帶回 1~5 個月前文章（最舊 2025-11），
+  30小時過濾窗口全清零（49篇 → 0 kept）
+- Reuters：DNS 解析失敗
+
+結果 LLM 每天只有 6 篇不相關文章（Windows 10 延伸支援、中國資安公司…），
+找不到半導體素材只好捏造模板 → 全被品質閘打成 noise。
+
+### 修法（v2.6 for root update_data.py）
+
+**移除失效來源：**
+- Reuters（DNS 失敗）
+- 所有 hnrss.org（返回 0 或 502）
+- 所有 Google News 搜尋 query RSS（回傳 1~5 個月前舊文）
+
+**新增可靠來源：**
+- EE Times（專業半導體業界，今日 4 篇相關）
+- CNBC Tech × 2（Semiconductor + CSP/CapEx，今日 9 篇相關，含 Micron 財報）
+- TechCrunch AI × 2（CSP + App，今日 8 篇相關，含 Amazon $13B 印度 AI）
+
+**其他：**
+- 時間窗口 30h → 36h
+- dedup 去掉 [label] 前綴後比對（防同文章因不同 section label 重複進 LLM）
+
+**效果：** RSS 6 篇 → 25 篇（去重後），涵蓋真實市場新聞。
+
+---
+
+## 問題三：GitHub Actions 自動跑失敗（scripts/update_data.py 413 TPM 超限）
+
+### 錯誤訊息
+```
+→ llama-3.3-70b-versatile 超出 TPM，切換備用模型…
+groq.APIStatusError: Error code: 413 - Limit 6000, Requested 12025
+```
+
+### 根本原因
+Groq 免費方案 TPM 限制 6000 tokens/分鐘。
+scripts/update_data.py 的設定：
+- `news_short = news_context[:7000]` → ~2500 tokens
+- Prompt template → ~600 tokens
+- Total input: ~3100 tokens
+- `max_tokens = 8000`
+- **Total: ~11100 tokens >> 6000 TPM 限制**
+
+備用模型 llama-3.1-8b-instant 也有 6000 TPM，同樣超限。
+
+### 修法（v2.7 for scripts/update_data.py）
+
+**Token 縮減（關鍵修改）：**
+- `news_short`: `news_context[:7000]` → `news_context[:3500]`
+- `max_tokens`: 8000 → 4000
+- DDG `max_results`: 10 → 5；body 截斷 300 → 150 chars
+- 總 news_context 截斷: 14000 → 8000
+
+**預估結果：**
+- Total input: ~1600 tokens（3500 chars 新聞 + template）
+- max_tokens: 4000
+- Total: ~5600 tokens < 6000 TPM ✓
+
+**同步換 RSS 來源（與 v2.6 一致）：**
+- 移除：Reuters（DNS）、blocksandfiles（403）、nextplatform（403）、所有 hnrss.org（502/0）
+- 移除：所有 Google News 搜尋 RSS（帶回舊文）
+- 新增：CNBC Tech × 2、TechCrunch AI × 2
+
+**其他：**
+- dedup 同步修正（去 label 前綴）
+
+**測試結果：**
+scripts/ 版本 RSS 測試：127 篇全數成功抓取，無失敗項目。
+
+---
+
+## 今日 Commit 清單
+
+| Commit | 說明 |
+|--------|------|
+| `ebdfaf6` / `32c1eea` | v2.5：擴展禁句 regex + impact 模板清除 + strip_noise_impact |
+| `042d298` / `7e8158f` | v2.6：root update_data.py 換 RSS 來源（CNBC/TechCrunch/EEtimes） |
+| `3e72735` | v2.7：scripts/update_data.py TPM 修正 + RSS 換源 |
+
+---
+
+## 待觀察
+- 明天 cron 執行後確認是否有 core/opp 新聞出現（不再全部 noise）
+- 確認 total tokens 是否穩定在 6000 以下
+- CNBC/TechCrunch 來源品質是否帶入真實 hw 新聞（Micron 記憶體危機、ON Semi 收購等）
