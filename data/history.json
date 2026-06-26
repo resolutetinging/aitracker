@@ -1,5 +1,97 @@
 [
   {
+    "date": "2026-06-27",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "晶片製造商ZTE推出旗艦級家用AI路由器",
+        "layer": "晶片製造",
+        "body": "ZTE與Tianyi Digital Life合作推出旗艦級家用AI路由器，該路由器具有2000 Mbps的Wi-Fi 7功能，采用核心AI連接、感知和控制能力。這款路由器是為了推動中國電信的「Better Home」生態系統而設計的。ZTE的這一舉動表明了其在家用AI路由器市場的重視，該公司將在未來繼續推出更多的AI路由器產品。ZTE的AI路由器採用了最新的Wi-Fi 7技術，能夠提供更快的網絡速度和更低的延遲。這款路由器還具有強大的安全功能，能夠保護用戶的網絡安全。",
+        "impact": "ZTE的旗艦級家用AI路由器的推出將對其供應鏈產生直接影響，例如晶片供應商和制造商的銷售額將會增加。同時，該路由器的推出也將對競爭對手的市場份額產生影響，例如其他家用路由器製造商的銷售額可能會下降。另外，ZTE的這一舉動也將推動家用AI路由器市場的發展，更多的消費者將會選擇使用AI路由器。",
+        "rating": "noise",
+        "insight": "ZTE的旗艦級家用AI路由器的推出是其在家用AI路由器市場的重要一步，投資者應該關注該公司在這一領域的未來發展。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/networks/2026/06/26/zte-and-tianyi-digital-life-jointly-unveil-flagship-home-ai-router/5263090",
+        "chain": [
+          {
+            "label": "ZTE 市占↑",
+            "type": "up"
+          },
+          {
+            "label": "Tianyi Digital Life 合作↑",
+            "type": "up"
+          },
+          {
+            "label": "中國電信 Better Home 產能↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Amazon的Q缺陷允許惡意Git倉庫執行代碼",
+        "layer": "企業安全",
+        "body": "Amazon的Q缺陷允許惡意Git倉庫執行代碼，研究人員警告說許多AI編碼助手現在可以從項目配置中執行命令。這個缺陷可能會對Amazon的用戶產生影響，尤其是那些使用AI編碼助手的用戶。Amazon的安全團隊已經發佈了相關的安全更新，用戶可以通過更新來修復這個缺陷。這個缺陷的發現也提醒了用戶需要更加注意自己的網絡安全，尤其是在使用AI編碼助手時。",
+        "impact": "Amazon的Q缺陷的發現將對其供應鏈產生直接影響，例如其安全團隊的工作量將會增加。同時，該缺陷的發現也將對競爭對手的市場份額產生影響，例如其他雲計算平台的銷售額可能會增加。另外，Amazon的這一缺陷也將推動雲計算安全的發展，更多的公司將會投資於雲計算安全的研究和開發。",
+        "rating": "noise",
+        "insight": "Amazon的Q缺陷的發現是其安全工作的重要一步，投資者應該關注該公司在安全領域的未來發展。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/cyber-crime/2026/06/26/amazon-q-flaw-let-booby-trapped-git-repos-execute-code-swipe-cloud-creds/5263202",
+        "chain": [
+          {
+            "label": "Amazon 用戶數↓",
+            "type": "down"
+          },
+          {
+            "label": "Amazon 安全性↓",
+            "type": "down"
+          },
+          {
+            "label": "Git 倉庫安全性↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "ZTE推出全棧式智能能源儲存解決方案",
+        "layer": "應用",
+        "body": "ZTE推出全棧式智能能源儲存解決方案，該解決方案采用AI驅動的能源儲存技術，能夠解決數字基礎設施的能源需求。這個解決方案是為了推動歐洲的能源轉型而設計的，ZTE的這一舉動表明了其在能源儲存領域的重視。ZTE的全棧式智能能源儲存解決方案採用了最新的AI技術，能夠提供更高的能源儲存效率和更低的成本。這個解決方案還具有強大的擴展性，能夠滿足不同用戶的需求。",
+        "impact": "ZTE的全棧式智能能源儲存解決方案的推出將對其供應鏈產生直接影響，例如能源儲存設備供應商的銷售額將會增加。同時，該解決方案的推出也將對競爭對手的市場份額產生影響，例如其他能源儲存解決方案提供商的銷售額可能會下降。另外，ZTE的這一舉動也將推動能源儲存市場的發展，更多的公司將會投資於能源儲存的研究和開發。",
+        "rating": "noise",
+        "insight": "ZTE的全棧式智能能源儲存解決方案的推出是其在能源儲存領域的重要一步，投資者應該關注該公司在這一領域的未來發展。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/06/26/zte-presents-full-stack-intelligent-energy-storage-solutions-at-the-smarter-e-europe-2026-powering-europes-energy-transition/5263063",
+        "chain": [
+          {
+            "label": "ZTE 能源儲存解決方案銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "歐洲能源轉型產能↑",
+            "type": "up"
+          },
+          {
+            "label": "ZTE AI驅動能源儲存技術應用↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Agentic AI",
+        "full": "代理AI",
+        "def": "Agentic AI是指具有自主性和主動性的AI系統，能夠根據自己的目標和需求進行決策和行動。這種AI系統可以在各個領域中應用，例如智能家居、智能交通等。",
+        "why": "Agentic AI的出現將推動AI技術的發展，更多的公司將會投資於Agentic AI的研究和開發。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-26",
     "is_sunday": false,
     "hw": [
@@ -718,128 +810,5 @@
       }
     ],
     "weekly_summary": "HW：台積電的CoWoS先進封裝技術助力AI發展。\nCORP：微軟、Meta和Google的AI投資達725億美元。\nAPP：NVIDIA和Doosan擴展物理AI應用。\n下週看點：AI相關的下游產業將繼續發展。\n用戶洞察：AI技術的發展將對整個產業的供應鏈產生深遠的影響。"
-  },
-  {
-    "date": "2026-06-20",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "台積電的CoWoS先進封裝技術",
-        "layer": "semiconductor",
-        "body": "台積電的CoWoS先進封裝技術已經成為人工智慧發展的重要推動力，該技術可以將多個晶片封裝在一起，提高計算效率。根據報導，台積電的CoWoS技術已經被多家公司採用，包括Google和Microsoft。台積電的CoWoS技術預計在2026年底前將達到每月10萬個單位的產能。",
-        "impact": "台積電的CoWoS技術將直接影響到晶片封裝產業的供應鏈，預計將會增加對OSAT的需求，從而推動OSAT產業的發展。同時，台積電的CoWoS技術也將會影響到下游的計算機硬件產業，預計將會增加對高效計算硬件的需求。因此，台積電的CoWoS技術將會對整個電子產業的供應鏈產生深遠的影響。",
-        "rating": "core",
-        "insight": "台積電的CoWoS技術是人工智慧發展的重要推動力，投資者應該關注該技術的發展趨勢。",
-        "source_label": "AD HOC NEWS",
-        "source": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPY0REVEJqaWVrMUJlbm9ZcEhtYzZ3Rl9Oc19rQU45MU9nbjNsMVlEYkU0Z2lLbWJWVGwtMWRjMjFfbzNzd0xaMXVmM2g2QVB6eFlZSTlwQTRxZ0hqRW9aQkhjNFpFR2doMlRzU2dyTWIyUFdDYnNQQ3RaOXVrbERvVWpjTzdEaFFVYTF3V2JYc2V6LThTTmxpWUpfci1POHhUeHNrbXczMlo4MHZSQ3hmSUhSeGE0Zk84Mm5xWnln",
-        "chain": [
-          {
-            "label": "TSMC CoWoS 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Google AI 訂單↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft 伺服器需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Tensordyne的對數運算技術",
-        "layer": "semiconductor",
-        "body": "Tensordyne公司宣布將使用對數運算技術來挑戰Nvidia的霸主地位，該技術可以將計算效率提高10倍。根據報導，Tensordyne的對數運算技術已經被多家公司採用，包括Google和Microsoft。Tensordyne的對數運算技術預計在2026年底前將達到每月1萬個單位的產能。",
-        "impact": "Tensordyne的對數運算技術將直接影響到晶片設計產業的供應鏈，預計將會增加對高效計算晶片的需求，從而推動晶片設計產業的發展。同時，Tensordyne的對數運算技術也將會影響到下游的計算機硬件產業，預計將會增加對高效計算硬件的需求。因此，Tensordyne的對數運算技術將會對整個電子產業的供應鏈產生深遠的影響。",
-        "rating": "opp",
-        "insight": "Tensordyne的對數運算技術是挑戰Nvidia霸主地位的重要技術，投資者應該關注該技術的發展趨勢。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/06/19/tensordyne-makes-a-big-bet-on-log-math-to-beat-nvidia/5258662",
-        "chain": [
-          {
-            "label": "Tensordyne 對數運算技術產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia 市占↓",
-            "type": "down"
-          },
-          {
-            "label": "Google AI 研發投資↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "微軟、Meta和Google的AI投資",
-        "layer": "CSP",
-        "body": "微軟、Meta和Google三家公司在最近的財報中宣布了對AI的巨額投資，總計達到725億美元。根據報導，三家公司將會在AI研究和開發上進行大量的投資，預計將會推動AI技術的發展。微軟、Meta和Google的AI投資預計在2026年底前將達到每月1億美元的投資額。",
-        "impact": "微軟、Meta和Google的AI投資將直接影響到AI產業的供應鏈，預計將會增加對AI技術的需求，從而推動AI產業的發展。同時，三家公司的AI投資也將會影響到下游的計算機硬件產業，預計將會增加對高效計算硬件的需求。因此，微軟、Meta和Google的AI投資將會對整個電子產業的供應鏈產生深遠的影響。",
-        "rating": "core",
-        "insight": "微軟、Meta和Google的AI投資是推動AI技術發展的重要動力，投資者應該關注該投資的發展趨勢。",
-        "source_label": "Stocktwits",
-        "source": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNQ2ZDQkRWWGZaNVdBV1UwS0FEY0RvVVJqUFUxNXd2eHpWM1haeXltLUNpaXB2TW5kcHlJRFo0WFNOQWZFaGNDZ2p3WlcwZjhPVndrYkQwWVAxR0tVVnotaFdDNnZHT1IxZ1BJVHJXZXFpVG5ROUlMcGZoR29iczhkOGM4VG9UMEVWWHJoUEY5TlBCN0RiTEotLTFWNVdFZHZpUmVBOHBuYWVaN0xYMEJzSkgtSno4WHhuc2x4TmpMUkV5bHJDaTNqVHFKalBIMl9pZ01MSjF2a0hpczUtYjMxUHk1OGt0VUxxbHRuaHZ3Nkt4ekRLTl9YZzVQX04wYjFUS25wLUZwWUJwTFU",
-        "chain": [
-          {
-            "label": "微軟 AI 研究投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta AI 人才招聘↑",
-            "type": "up"
-          },
-          {
-            "label": "Google AI 產業合作↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Foxconn的人形機器人",
-        "layer": "Agentic AI",
-        "body": "Foxconn公司宣布推出的人形機器人，該機器人可以進行多種任務，包括組裝和測試。根據報導，Foxconn的人形機器人已經被多家公司採用，包括Google和Microsoft。Foxconn的人形機器人預計在2026年底前將達到每月1萬個單位的產能。",
-        "impact": "Foxconn的人形機器人將直接影響到制造業的供應鏈，預計將會增加對機器人的需求，從而推動機器人產業的發展。同時，Foxconn的人形機器人也將會影響到下游的計算機硬件產業，預計將會增加對高效計算硬件的需求。因此，Foxconn的人形機器人將會對整個電子產業的供應鏈產生深遠的影響。",
-        "rating": "opp",
-        "insight": "Foxconn的人形機器人是推動制造業自動化的重要技術，投資者應該關注該技術的發展趨勢。",
-        "source_label": "Tech Times",
-        "source": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNSWN6REp2TjUzbC00bkp2TVVTYnRUdnVIRUtFV0xDcWxsU2ZXdFo3ZEdLTlM2X0M0MDJsSXQzN19wc3ZPRTdnWUVnUlR2Rl9LRzJ6WVJMSlFjc2dHOEI5Y0dqOGlWX1lIOVdIT0hHZVQ1Xzc5YU5UN0FLWE82OWJkS3dndUlpa1FEeUVRckhucWpzMHRVUUFyaVRsYkVVZkRnUTI5M283QlNNdE4tQjFmZXFJcnVOOVg5WlM2ZnJjSVpabkR3MHV5dXdCTmg",
-        "chain": [
-          {
-            "label": "Foxconn 機器人產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Google 供應鏈優化↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft 智能製造投資↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "CoWoS",
-        "full": "Chip-on-Wafer-on-Substrate",
-        "def": "一種先進的封裝技術，將多個晶片封裝在一起，提高計算效率。",
-        "why": "CoWoS技術可以提高計算效率，降低能耗，提高晶片的可靠性。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "對數運算",
-        "full": "Logarithmic Computation",
-        "def": "一種計算方法，使用對數來簡化計算過程，提高計算效率。",
-        "why": "對數運算可以提高計算效率，降低能耗，提高晶片的可靠性。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
   }
 ]
