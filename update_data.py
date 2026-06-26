@@ -21,22 +21,17 @@ KNOWN_TERMS = ["HBM","CoWoS","CSP","OSAT","VLA 模型",
 #  1. RSS FEEDS（主要新聞來源，穩定免費）
 # ══════════════════════════════════════════════════════════════════
 RSS_FEEDS = [
-    # Semiconductor / Supply Chain（高訊噪比，優先）
+    # ── 硬體供應鏈 & 半導體（高訊噪比）──────────────────────────────
     ("Semiconductor", "https://www.theregister.com/headlines.atom"),
-    ("Semiconductor", "https://feeds.reuters.com/reuters/technologyNews"),
-    ("Semiconductor", "https://hnrss.org/frontpage?q=TSMC+HBM+CoWoS+OSAT+semiconductor+packaging"),
-    ("Semiconductor", "https://hnrss.org/frontpage?q=NVIDIA+AMD+Intel+chip+wafer+capacity+supply"),
-    # CSP CapEx / Cloud
-    ("CSP/CapEx",    "https://hnrss.org/frontpage?q=Microsoft+Google+Meta+Amazon+capex+data+center+AI+investment"),
-    # Agentic / Physical AI
-    ("App/AI",       "https://hnrss.org/frontpage?q=Agentic+AI+Physical+AI+robotics+humanoid+VLA+inference"),
-    ("App/AI",       "https://feeds.arstechnica.com/arstechnica/technology-lab"),
+    ("Semiconductor", "https://www.eetimes.com/feed/"),                     # 專業半導體業界新聞
+    ("Semiconductor", "https://www.cnbc.com/id/19854910/device/rss/rss.html"),  # CNBC Tech（Micron/NVIDIA 財報常出現）
+    # ── CSP CapEx / 巨頭投資 ────────────────────────────────────────
+    ("CSP/CapEx",    "https://techcrunch.com/category/artificial-intelligence/feed/"),  # TC AI（CapEx 新聞最密集）
+    ("CSP/CapEx",    "https://www.cnbc.com/id/19854910/device/rss/rss.html"),  # 同 CNBC（corp 視角）
+    # ── Agentic / Physical AI / 應用落地 ────────────────────────────
     ("App/AI",       "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
-    # Google News RSS（保底，hnrss/DDG 失效時仍有料）
-    ("Semiconductor", "https://news.google.com/rss/search?q=TSMC+HBM+CoWoS+semiconductor+AI+chip&hl=en-US&gl=US&ceid=US:en"),
-    ("Semiconductor", "https://news.google.com/rss/search?q=NVIDIA+AMD+Intel+SK+Hynix+Micron+packaging&hl=en-US&gl=US&ceid=US:en"),
-    ("CSP/CapEx",    "https://news.google.com/rss/search?q=Microsoft+Google+Meta+Amazon+AI+capex+data+center+2026&hl=en-US&gl=US&ceid=US:en"),
-    ("App/AI",       "https://news.google.com/rss/search?q=Agentic+AI+Physical+AI+humanoid+robot+inference+2026&hl=en-US&gl=US&ceid=US:en"),
+    ("App/AI",       "https://feeds.arstechnica.com/arstechnica/technology-lab"),
+    ("App/AI",       "https://techcrunch.com/category/artificial-intelligence/feed/"),
 ]
 
 # 硬體供應鏈關鍵字（hw 分類必須命中其中之一）
@@ -81,7 +76,7 @@ def parse_rss_date(item, ns):
     return None
 
 def fetch_rss():
-    cutoff = datetime.now(timezone.utc) - timedelta(hours=30)
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=36)
     snippets = []
     for label, url in RSS_FEEDS:
         try:
@@ -216,10 +211,11 @@ def fetch_news(recent_titles=None):
     ddg = fetch_ddg()
     print(f"  → DDG 取得 {len(ddg)} 條")
     all_news = rss + ddg
-    # Deduplicate by normalized title (first 80 chars, strip punctuation)
+    # Deduplicate by title（去掉 [label] 前綴再比對，同一文章不同 section label 視為重複）
     seen, unique = set(), []
     for s in all_news:
-        key = re.sub(r'[^\w\s]', '', s[:80]).lower().strip()
+        body = re.sub(r'^\[[^\]]+\]\s*', '', s)  # 移除 "[Semiconductor] " 等 label
+        key = re.sub(r'[^\w\s]', '', body[:80]).lower().strip()
         if key not in seen:
             seen.add(key)
             unique.append(s)
