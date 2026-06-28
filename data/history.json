@@ -1,5 +1,152 @@
 [
   {
+    "date": "2026-06-29",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "晶片產業週報",
+        "layer": "晶片製造",
+        "body": "Onsemi即將收購Synaptics，IBM推出7Å晶片，具有40%更大的SRAM面積。同時，1nm MoS2奈米管的開發也在進行中。這些進展預計將在未來幾年內推動晶片產業的發展。Onsemi的收購案預計將在2026年完成，IBM的7Å晶片預計將在2027年量產。Synaptics的AI計算資產將為Onsemi的邊緣AI事業提供強大的支持。",
+        "impact": "Onsemi的收購案將直接影響到Synaptics的員工和客戶，同時也將對晶片產業的競爭格局產生影響。IBM的7Å晶片將對記憶體製造商產生壓力，促使他們提高生產效率和降低成本。1nm MoS2奈米管的開發將為未來的晶片設計提供新的可能性。",
+        "rating": "noise",
+        "insight": "Onsemi的收購案和IBM的7Å晶片將推動晶片產業的發展和創新。",
+        "source_label": "semiengineering.com",
+        "source": "https://semiengineering.com/chip-industry-week-in-review-144/",
+        "chain": [
+          {
+            "label": "Onsemi 收購↑",
+            "type": "up"
+          },
+          {
+            "label": "Synaptics 市值↑",
+            "type": "up"
+          },
+          {
+            "label": "IBM 7Å晶片 產能↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "記憶體市場的變化",
+        "layer": "記憶體製造",
+        "body": "Lenovo表示，記憶體市場的變化將是新的正常狀態。PNY的32GB DDR5-5600 RAM成為最便宜的2x16GB套件，價格降低了70美元。同時，Apple也在遊說美國政府批准購買中國的記憶體晶片。這些變化預計將對記憶體市場產生重大影響。Lenovo的說法預計將在2026年得到驗證，PNY的RAM套件預計將在2026年第三季度上市。Apple的遊說行動預計將在2026年第四季度結束。",
+        "impact": "記憶體市場的變化將直接影響到記憶體製造商和消費者，同時也將對整個電子產業產生影響。Lenovo的說法將促使記憶體製造商提高生產效率和降低成本，PNY的RAM套件將為消費者提供更便宜的選擇。Apple的遊說行動將對中國的記憶體製造商產生影響，可能會提高他們的市場份額。",
+        "rating": "noise",
+        "insight": "記憶體市場的變化將推動記憶體製造商提高生產效率和降低成本。",
+        "source_label": "tomshardware.com",
+        "source": "https://www.tomshardware.com/pc-components/pnys-performance-32gb-ddr5-5600-ram-becomes-the-cheapest-2x16gb-kit-ddr5-kit-gets-a-usd70-discount",
+        "chain": [
+          {
+            "label": "Lenovo 銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "PNY 32GB DDR5-5600 RAM 價格↓",
+            "type": "down"
+          },
+          {
+            "label": "Apple 記憶體採購↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "晶片設計的進展",
+        "layer": "晶片設計",
+        "body": "Jim Keller表示，AI仍然遵循傳統的計算規律。同時，IBM的7Å晶片和1nm MoS2奈米管的開發也在進行中。這些進展預計將在未來幾年內推動晶片設計的發展。Jim Keller的說法預計將在2026年得到驗證，IBM的7Å晶片預計將在2027年量產。1nm MoS2奈米管的開發將為未來的晶片設計提供新的可能性。",
+        "impact": "Jim Keller的說法將直接影響到AI的發展和晶片設計，同時也將對整個電子產業產生影響。IBM的7Å晶片將對記憶體製造商產生壓力，促使他們提高生產效率和降低成本。1nm MoS2奈米管的開發將為未來的晶片設計提供新的可能性。",
+        "rating": "noise",
+        "insight": "Jim Keller的說法和IBM的7Å晶片將推動晶片設計的發展和創新。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "Jim Keller 影響↑",
+            "type": "up"
+          },
+          {
+            "label": "IBM 7Å晶片 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "1nm MoS2 奈米管 開發↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "企業投資的變化",
+        "layer": "企業投資",
+        "body": "Apple正在遊說美國政府批准購買中國的記憶體晶片。同時，Onsemi也在收購Synaptics，IBM也在推出7Å晶片。這些變化預計將對企業投資產生重大影響。Apple的遊說行動預計將在2026年第四季度結束，Onsemi的收購案預計將在2026年完成。IBM的7Å晶片預計將在2027年量產。",
+        "impact": "企業投資的變化將直接影響到企業的發展和競爭格局，同時也將對整個電子產業產生影響。Apple的遊說行動將對中國的記憶體製造商產生影響，可能會提高他們的市場份額。Onsemi的收購案將為Onsemi的邊緣AI事業提供強大的支持。IBM的7Å晶片將對記憶體製造商產生壓力，促使他們提高生產效率和降低成本。",
+        "rating": "noise",
+        "insight": "企業投資的變化將推動企業的發展和創新。",
+        "source_label": "tomshardware.com",
+        "source": "https://www.tomshardware.com/tech-industry/apple-reportedly-lobbies-uncle-sam-for-access-to-chinese-memory-chips-tech-giant-allegedly-wants-to-buy-from-blacklisted-cxmt",
+        "chain": [
+          {
+            "label": "Apple 投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Onsemi 收購↑",
+            "type": "up"
+          },
+          {
+            "label": "IBM 研發↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "AI應用的變化",
+        "layer": "AI應用",
+        "body": "Jim Keller表示，AI仍然遵循傳統的計算規律。同時，Onsemi也在收購Synaptics，IBM也在推出7Å晶片。這些變化預計將對AI應用產生重大影響。Jim Keller的說法預計將在2026年得到驗證，Onsemi的收購案預計將在2026年完成。IBM的7Å晶片預計將在2027年量產。",
+        "impact": "AI應用的變化將直接影響到AI的發展和競爭格局，同時也將對整個電子產業產生影響。Jim Keller的說法將促使AI的發展更加注重傳統的計算規律，Onsemi的收購案將為Onsemi的邊緣AI事業提供強大的支持。IBM的7Å晶片將對記憶體製造商產生壓力，促使他們提高生產效率和降低成本。",
+        "rating": "noise",
+        "insight": "AI應用的變化將推動AI的發展和創新。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "Jim Keller 影響↑",
+            "type": "up"
+          },
+          {
+            "label": "Onsemi AI 計算↑",
+            "type": "up"
+          },
+          {
+            "label": "IBM 7Å晶片 AI應用↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "SRAM",
+        "full": "Static Random Access Memory",
+        "def": "一種電腦記憶體，能夠快速存取和儲存資料。",
+        "why": "SRAM是晶片設計中的一個重要元件，能夠提高晶片的性能和效率。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "MoS2奈米管",
+        "full": "Molybdenum Disulfide Nanotubes",
+        "def": "一種新型的奈米材料，具有高導電性和高強度。",
+        "why": "MoS2奈米管是一種潛在的晶片設計材料，能夠提高晶片的性能和效率。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-28",
     "is_sunday": true,
     "hw": [
@@ -715,122 +862,6 @@
         "def": "Agentic AI是一種可以提供智能和自主的能力的AI技術，滿足不同行業的需求。",
         "why": "Agentic AI可以提高AI的性能和效率，滿足不同行業的需求。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-22",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Tensordyne 對數運算技術挑戰 NVIDIA",
-        "layer": "晶片製造",
-        "body": "Tensordyne 公司宣布開發出對數運算技術，旨在挑戰 NVIDIA 的傳統運算方法。該技術可以將複雜的乘法運算簡化為加法運算，從而提高計算效率。Tensordyne 預計該技術將在 2027 年初推出。",
-        "impact": "Tensordyne 的對數運算技術可能會對 NVIDIA 的傳統運算方法產生挑戰，提高計算效率。",
-        "rating": "opp",
-        "insight": "Tensordyne 的對數運算技術可能會挑戰 NVIDIA 的傳統運算方法，投資者應該關注該技術的發展動態。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/06/19/tensordyne-makes-a-big-bet-on-log-math-to-beat-nvidia/5258662",
-        "chain": [
-          {
-            "label": "Tensordyne 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "NVIDIA 市占↓",
-            "type": "down"
-          },
-          {
-            "label": "Tensordyne 市值↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Waymo 自動駕駛車輛故障",
-        "layer": "晶片應用",
-        "body": "Waymo 的自動駕駛車輛因為軟體故障導致近 4,000 輛車輛被召回。該故障導致車輛無法正確地識別道路施工區域的標誌。Waymo 已經開始修復該問題，並預計在短期內完成。",
-        "impact": "Waymo 的自動駕駛車輛故障可能會對公司的聲譽和客戶信任度產生負面影響。",
-        "rating": "core",
-        "insight": "Waymo 的自動駕駛車輛故障凸顯了該技術的安全性和可靠性問題，投資者應該關注該公司的修復措施和未來的發展動態。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/offbeat/2026/06/19/waymo-hits-the-brakes-after-robotaxis-keep-missing-the-signs-for-freeway-construction-zones/5258951",
-        "chain": [
-          {
-            "label": "Waymo 車輛銷量↓",
-            "type": "down"
-          },
-          {
-            "label": "Waymo 股價↓",
-            "type": "down"
-          },
-          {
-            "label": "競爭對手車企銷量↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "微軟、Meta 和 Google 的 AI 投資",
-        "layer": "企業投資",
-        "body": "微軟、Meta 和 Google 公司宣布其 AI 投資達 725 億美元。該投資將用於開發新的 AI 技術和應用。三家公司預計該投資將推動 AI 技術的發展和應用。",
-        "impact": "微軟、Meta 和 Google 的 AI 投資可能會對 AI 技術的發展和應用產生正面影響。",
-        "rating": "core",
-        "insight": "微軟、Meta 和 Google 的 AI 投資凸顯了該技術的重要性和發展潛力，投資者應該關注該領域的發展動態。",
-        "source_label": "Stocktwits",
-        "source": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNQ2ZDQkRWWGZaNVdBV1UwS0FEY0RvVVJqUFUxNXd2eHpWM1haeXltLUNpaXB2TW5kcHlJRFo0WFNOQWZFaGNDZ2p3WlcwZjhPVndrYkQwWVAxR0tVVnotaFdDNnZHT1IxZ1BJVHJXZXFpVG5ROUlMcGZoR29iczhkOGM4VG9UMEVWWHJoUEY5TlBCN0RiTEotLTFWNVdFZHZpUmVBOHBuYWVaN0xYMEJzSkgtSno4WHhuc2x4TmpMUkV5bHJDaTNqVHFKalBIMl9pZ01MSjF2a0hpczUtYjMxUHk1OGt0VUxxbHRuaHZ3Nkt4ekRLTl9YZzVQX04wYjFUS25wLUZwWUJwTFU?oc=5",
-        "chain": [
-          {
-            "label": "微軟 AI 研發投入↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta AI 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Google AI 市占↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "NVIDIA 和 Doosan 擴展物理 AI 應用",
-        "layer": "AI 應用",
-        "body": "NVIDIA 和 Doosan 公司宣布擴展物理 AI 應用，包括機器人、反應堆和電路板材料的生產。該合作將推動物理 AI 技術的發展和應用。NVIDIA 和 Doosan 預計該合作將在 2027 年初推出。",
-        "impact": "NVIDIA 和 Doosan 的物理 AI 應用合作可能會對相關企業的發展產生正面影響。",
-        "rating": "opp",
-        "insight": "NVIDIA 和 Doosan 的物理 AI 應用合作凸顯了該技術的重要性和發展潛力，投資者應該關注該領域的發展動態。",
-        "source_label": "Tech Times",
-        "source": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOdEFvQXMwbC00SDNIMVUxcXExRl8xRHMyVEJrQnF3WVNyQktmc2tvS2dLWGFQWTRmWXB3Y2t6ZmNuZU9ydDBLMDlVaTlMZXRjcTlLeThhY2FDdXpkeXNMUFNDS0k4ZVA1TjNrSFY2X0xBZW1peHRDM0E1WkNrV3A2YzYxal9KMmM3cE5VaHVkbHJ1VWxOdnhVTmx6R1ZKZ2hoQlc3TS13cS14WXF0cVZOOUtsMmhmOV9HS0NBUU9Hb1kyRUV2V2xtdzNSR0JReHM?oc=5",
-        "chain": [
-          {
-            "label": "NVIDIA 物理 AI 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Doosan 物理 AI 銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "NVIDIA 和 Doosan 合作項目交期↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "對數運算",
-        "full": "對數運算技術",
-        "def": "一種運算方法，使用對數來簡化複雜的乘法運算。",
-        "why": "對數運算技術可以提高計算效率和簡化運算過程。",
-        "category": "晶片製造"
       }
     ],
     "weekly_summary": null
