@@ -66,6 +66,35 @@ AI_KEYWORDS = [
     "computex","ces","gtc"  # 展會關鍵字：避免展覽期間大量相關新聞被過濾掉
 ]
 
+# 高信號關鍵字：公司/產品名或財務詞，出現代表有實質新聞素材
+HIGH_SIGNAL_PAT = re.compile(
+    r'nvidia|tsmc|hbm|cowos|micron|sk hynix|samsung foundry|amd|\bintel\b|\barm\b|'
+    r'earnings|revenue|\$\d+\s*[bm]\b|capex|data.?center investment|'
+    r'openai|anthropic|gemini|gpt-\d|claude|llama|mistral|'
+    r'robot|humanoid|autonomous vehicle|physical ai|agentic|'
+    r'export (?:ban|control|restriction)|supply chain disruption|'
+    r'chip ban|wafer capacity|foundry capacity',
+    re.IGNORECASE
+)
+
+def count_high_signal(news_text: str) -> int:
+    """計算 news_text 中包含高信號關鍵字的行數（代表有實質新聞素材）"""
+    return sum(1 for line in news_text.splitlines()
+               if line.strip() and HIGH_SIGNAL_PAT.search(line))
+
+def make_empty_day() -> dict:
+    """素材不足時回傳空日結構，不呼叫 LLM"""
+    return {
+        'date': DATE_STR,
+        'is_sunday': IS_SUNDAY,
+        'hw': [],
+        'corp': [],
+        'app': [],
+        'glossary_new': [],
+        'weekly_summary': None,
+        '_skip_reason': 'insufficient_source_material',
+    }
+
 def parse_rss_date(item, ns):
     """嘗試解析 RSS/Atom 條目的發布時間，失敗回傳 None"""
     raw = (item.findtext('pubDate') or item.findtext('published') or
@@ -993,6 +1022,17 @@ if __name__ == '__main__':
     news = fetch_news(recent_titles)
     total = len(news.splitlines())
     print(f"  → 合計 {total} 行新聞摘要")
+
+    hs_count = count_high_signal(news)
+    print(f"  → 高信號素材 {hs_count} 條（門檻：3）")
+    if hs_count < 3 and not FORCE_REGEN:
+        print("  → 素材不足，跳過 LLM 生成，存為空日（零捏造模式）")
+        data = make_empty_day()
+        history = upsert(history, data)
+        save_history(history)
+        print(f"  → data/history.json 已更新（空日）")
+        print("✅ 完成（空日）")
+        sys.exit(0)
 
     print("🤖 呼叫 Groq API...")
     data = call_groq(make_prompt(news, recent_titles))

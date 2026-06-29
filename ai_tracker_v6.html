@@ -502,6 +502,12 @@ function isNoiseEmpty(item) {
   return item.rating === 'noise' && (item.body || '').includes('無相關新聞');
 }
 function visibleItems(arr) { return (arr || []).filter(i => !isNoiseEmpty(i)); }
+function newsGrid(arr, ptype) {
+  const v = visibleItems(arr);
+  return v.length
+    ? `<div class="news-grid">${v.map(i => newsCard(i, ptype)).join('')}</div>`
+    : `<div class="empty-state" style="padding:32px 0;">📭 今日新聞素材不足，無法生成內容<br><span style="font-size:12px;margin-top:6px;display:block;">RSS 來源暫無高信號 AI / 半導體新聞，明日再看</span></div>`;
+}
 
 function newsCard(item, ptype) {
   const tc = ptype==='hw'?'tag-hw':ptype==='corp'?'tag-corp':'tag-app';
@@ -557,7 +563,7 @@ function renderHW(d) {
     </div>
 
     <div class="sec-title">本日重點新聞 · ${fmtDate(d.date)}</div>
-    <div class="news-grid">${visibleItems(d.hw).map(i=>newsCard(i,'hw')).join('')}</div>`;
+    ${newsGrid(d.hw, 'hw')}`;
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -581,7 +587,7 @@ function renderCorp(d) {
       </div>
     </div>
     <div class="sec-title">本日重點新聞 · ${fmtDate(d.date)}</div>
-    <div class="news-grid">${visibleItems(d.corp).map(i=>newsCard(i,'corp')).join('')}</div>`;
+    ${newsGrid(d.corp, 'corp')}`;
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -623,7 +629,7 @@ function renderApp(d) {
     <div class="sec-title">四大技術層面 — 關注框架</div>
     <div class="app-sector-grid">${sectorHtml}</div>
     <div class="sec-title">本日重點新聞 · ${fmtDate(d.date)}</div>
-    <div class="news-grid">${visibleItems(d.app).map(i=>newsCard(i,'app')).join('')}</div>`;
+    ${newsGrid(d.app, 'app')}`;
 }
 
 // ══════════════════════════════════════════════════════════════════
