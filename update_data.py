@@ -475,12 +475,18 @@ def downgrade_hallucinated(data):
 
 # prompt 明列禁句（Llama 常忽略）
 FORBIDDEN_PATS = [
-    re.compile(r'根據.{0,25}報導[，,。]'),              # 擴大至 25 字，攔「根據 Yahoo Finance 的報導，」
-    re.compile(r'已.{0,4}被多家.{0,15}公司採用.{0,10}包括'),  # 攔「已被/已經被多家大型科技公司採用，包括」
+    re.compile(r'根據.{0,25}報導[，,。]'),
+    re.compile(r'已.{0,4}被多家.{0,15}公司採用.{0,10}包括'),
     re.compile(r'預計在20\d\d年底前將達到每月'),
     re.compile(r'正在助力.{0,20}的發展'),
     re.compile(r'將繼續增加'),
     re.compile(r'例如.{0,8}客戶將可以使用'),
+    # 跨條目模板句（換湯不換藥）
+    re.compile(r'業界第一個全堆棧安全系統'),
+    re.compile(r'提供高性能和低延遲的.{0,10}解決方案'),
+    re.compile(r'截至20\d\d年\d+月.{0,20}已經與超過\d+家公司合作'),
+    re.compile(r'將在未來繼續推出更多的.{0,20}產品'),
+    re.compile(r'表明了其在.{0,20}的重視'),
     # impact 欄位模板偵測
     re.compile(r'的供應鏈影響是正面的'),
     re.compile(r'它可以增加.{1,20}的.{1,20}能力和市場份額'),

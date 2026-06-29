@@ -479,6 +479,75 @@ def validate_sources(data):
                 item['source'] = ''
                 item['source_label'] = '—'
 
+FORBIDDEN_PATS = [
+    re.compile(r'根據.{0,25}報導[，,。]'),
+    re.compile(r'已.{0,4}被多家.{0,15}公司採用.{0,10}包括'),
+    re.compile(r'預計在20\d\d年底前將達到每月'),
+    re.compile(r'正在助力.{0,20}的發展'),
+    re.compile(r'將繼續增加'),
+    re.compile(r'例如.{0,8}客戶將可以使用'),
+    # 跨條目模板句（換湯不換藥）
+    re.compile(r'業界第一個全堆棧安全系統'),
+    re.compile(r'提供高性能和低延遲的.{0,10}解決方案'),
+    re.compile(r'截至20\d\d年\d+月.{0,20}已經與超過\d+家公司合作'),
+    re.compile(r'將在未來繼續推出更多的.{0,20}產品'),
+    re.compile(r'表明了其在.{0,20}的重視'),
+    # impact 欄位模板偵測
+    re.compile(r'的供應鏈影響是正面的'),
+    re.compile(r'它可以增加.{1,20}的.{1,20}能力和市場份額'),
+    re.compile(r'對下游的.{1,30}需求產生正面的影響'),
+    re.compile(r'競爭對手.{1,30}難以跟上.{1,20}的技術進步'),
+]
+
+def downgrade_forbidden_phrases(data):
+    """body 含禁句 → noise；impact 含模板 → 清除 impact（無論 rating）"""
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            body = item.get('body', '')
+            impact = item.get('impact') or ''
+            if item.get('rating') != 'noise':
+                for pat in FORBIDDEN_PATS:
+                    if pat.search(body):
+                        print(f"  ↓ 禁句降評→noise：{item.get('title','')[:50]}")
+                        item['rating'] = 'noise'
+                        break
+            if impact:
+                for pat in FORBIDDEN_PATS:
+                    if pat.search(impact):
+                        print(f"  ✕ 模板 impact 清除：{item.get('title','')[:50]}")
+                        item['impact'] = None
+                        break
+
+def strip_noise_impact(data):
+    """所有 noise 條目的 impact 欄位設為 None，避免模板框出現在前端"""
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            if item.get('rating') == 'noise' and item.get('impact'):
+                item['impact'] = None
+
+def downgrade_cross_item_duplicates(data):
+    """跨條目 body+insight bigram 相似度 > 55% → 後者降評→noise"""
+    all_items = []
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            all_items.append(item)
+
+    for i in range(len(all_items)):
+        if all_items[i].get('rating') == 'noise':
+            continue
+        text_i = all_items[i].get('body', '') + all_items[i].get('insight', '')
+        bi_i = _cjk_bigrams(text_i)
+        for j in range(i + 1, len(all_items)):
+            if all_items[j].get('rating') == 'noise':
+                continue
+            text_j = all_items[j].get('body', '') + all_items[j].get('insight', '')
+            bi_j = _cjk_bigrams(text_j)
+            if bi_i and bi_j and len(bi_i) > 5 and len(bi_j) > 5:
+                overlap = len(bi_i & bi_j) / min(len(bi_i), len(bi_j))
+                if overlap > 0.55:
+                    print(f"  ↓ 跨條目重複降評→noise：{all_items[j].get('title','')[:50]} (overlap {overlap:.0%})")
+                    all_items[j]['rating'] = 'noise'
+
 def downgrade_repeated_stories(data, recent_titles):
     """生成後 title-level 去重：LLM 改寫標題繞過 NO-REPEAT 指令時的最後一道 guard。
     新 title 與近日 core/opp title 詞彙重疊率 ≥50% 且 ≥2 詞 → 降評 noise。"""
@@ -938,6 +1007,11 @@ if __name__ == '__main__':
     downgrade_low_quality(data)
     print("🚨 幻覺 pattern 攔截...")
     downgrade_hallucination_patterns(data)
+    print("🔤 禁句 pattern 攔截...")
+    downgrade_forbidden_phrases(data)
+    print("🔁 跨條目重複偵測...")
+    downgrade_cross_item_duplicates(data)
+    strip_noise_impact(data)
     print("🔎 body 聲明 LLM 驗證...")
     validate_body(data, news)
     print("🔗 supply chain 品質檢核...")
