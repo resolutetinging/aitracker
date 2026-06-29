@@ -1,5 +1,121 @@
 [
   {
+    "date": "2026-06-30",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "三星和SK Hynix投資520億美元擴大記憶體晶片領導地位",
+        "layer": "晶片製造",
+        "body": "南韓政府宣布了一項520億美元的投資計畫，與三星和SK Hynix合作，擴大記憶體晶片的領導地位。這項計畫將在2027年之前實施，預計會增加南韓的記憶體晶片產能。三星和SK Hynix將共同投資這項計畫，預計會創造數千個就業機會。",
+        "impact": "這項投資將直接影響南韓的晶片製造業，增加產能和就業機會。同時，也會對下游的電子產品製造業產生影響，例如智能手機和電腦的生產。另外，競爭對手如美光和海力士也會受到影響，可能會降低他們的市場份額。",
+        "rating": "noise",
+        "insight": "南韓政府的投資計畫將會增強該國的晶片製造業，並增加其在全球市場的競爭力。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/",
+        "chain": [
+          {
+            "label": "三星 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "南韓記憶體晶片產業就業機會↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "微軟繼續支持Windows Server 2022的hotpatching",
+        "layer": "晶片製造",
+        "body": "微軟宣布將繼續支持Windows Server 2022的hotpatching，直到2027年。這項功能允許用戶在不需要重啟伺服器的情況下更新系統。微軟表示，這項功能將會在Azure Edition中提供，預計會增加用戶的生產力和安全性。微軟的這項決定將會影響到下游的伺服器製造業，例如戴爾和惠普。",
+        "impact": "微軟的決定將會直接影響到下游的伺服器製造業，增加用戶的生產力和安全性。",
+        "rating": "opp",
+        "insight": "微軟的決定將會增強其在伺服器市場的競爭力，並增加其用戶的生產力和安全性。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/",
+        "chain": [
+          {
+            "label": "微軟 Azure Edition 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "戴爾 伺服器銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "惠普 伺服器銷量↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "谷歌希望在自己的條件下進行AI監管",
+        "layer": "AI技術",
+        "body": "谷歌表示希望在自己的條件下進行AI監管，認為這樣可以讓公司繼續發展AI技術。谷歌的這項表態引起了廣泛的關注和討論，預計會影響到AI的未來發展。谷歌的CEO表示，公司將會與監管機構合作，制定合適的AI監管規則。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "谷歌的表態將會增強其在AI市場的競爭力，並增加其AI技術的應用和普及。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/",
+        "chain": [
+          {
+            "label": "谷歌 AI 研發↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 技術應用領域擴張↑",
+            "type": "up"
+          },
+          {
+            "label": "監管機構與谷歌合作程度↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "ZTE發布全方位FTTR-B解決方案",
+        "layer": "AI應用",
+        "body": "ZTE發布了一個全方位的FTTR-B解決方案，旨在為中小企業提供AI和連接性的解決方案。這個解決方案包括了支持本地AI大型模型運行，從而降低了雲端成本和提高了企業數據的安全性。ZTE的這個解決方案將會影響到下游的中小企業，增加他們的生產力和安全性。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "ZTE的解決方案將會增強其在中小企業市場的競爭力，並增加其AI技術的應用和普及。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/",
+        "chain": [
+          {
+            "label": "ZTE FTTR-B 解決方案銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "中小企業生產力↑",
+            "type": "up"
+          },
+          {
+            "label": "中小企業數據安全性↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "FTTR-B",
+        "full": "全方位FTTR-B解決方案",
+        "def": "一個為中小企業提供AI和連接性的解決方案，包括支持本地AI大型模型運行，從而降低了雲端成本和提高了企業數據的安全性。",
+        "why": "這個解決方案可以幫助中小企業增加生產力和安全性，同時也可以幫助AI技術供應商增加銷量。",
+        "category": "AI技術"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-29",
     "is_sunday": false,
     "hw": [
@@ -746,122 +862,6 @@
         "def": "一種先進的封裝技術，允許多個晶片被封裝在一起。",
         "why": "這項技術可以提高晶片的性能和可靠性。",
         "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-23",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "晶片記憶體的可靠性",
-        "layer": "晶片製造",
-        "body": "根據Semiengineering的報導，晶片記憶體的可靠性是一個重要的問題。晶片製造商需要確保記憶體的正確性和可靠性，以避免當機的情況。例如，晶片製造商需要進行嚴格的測試和驗證，以確保記憶體的正確性。另外，晶片製造商也需要考慮記憶體的容量和速度，以滿足不同應用的需求。例如，高性能計算應用需要高容量和高速的記憶體。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "晶片記憶體的可靠性是晶片製造商的一個重要挑戰，需要進行嚴格的測試和驗證，以確保記憶體的正確性和可靠性。",
-        "source_label": "Semiengineering",
-        "source": "https://semiengineering.com/will-your-chips-memory-work-as-expected/",
-        "chain": [
-          {
-            "label": "TSMC 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Micron Technology 產能↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "雲端HPC對AI的影響",
-        "layer": "雲端計算",
-        "body": "根據Semiengineering的報導，雲端HPC（高性能計算）對AI的影響是一個重要的趨勢。雲端HPC可以提供高性能的計算能力，滿足AI的需求。例如，雲端HPC可以提供低延遲和高吞吐量的計算能力，滿足AI的訓練和推理需求。另外，雲端HPC也可以提供彈性的計算能力，滿足AI的不同需求。例如，雲端HPC可以提供按需的計算能力，滿足AI的峰值需求。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "雲端HPC對AI的影響是一個重要的趨勢，需要關注雲端HPC的發展和應用。",
-        "source_label": "Semiengineering",
-        "source": "https://semiengineering.com/cloud-hpc-for-ai-addressing-latency-cost-and-scale-at-the-architectural-level/",
-        "chain": [
-          {
-            "label": "Azure GPU 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "AWS EC2 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Google Cloud GPU 產能↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google的AI戰略",
-        "layer": "AI應用",
-        "body": "根據The Register的報導，Google的AI戰略是一個重要的趨勢。Google正在投資AI的研發和應用，滿足不同行業的需求。例如，Google正在投資AI的語言模型和視覺模型，滿足自然語言處理和計算機視覺的需求。另外，Google也正在投資AI的邊緣計算和雲端計算，滿足不同應用的需求。例如，Google正在投資AI的邊緣計算，滿足物聯網和自動駕駛的需求。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "Google的AI戰略是一個重要的趨勢，需要關注Google的AI研發和應用。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/databases/2026/06/22/the-new-database-world-according-to-google-inexact-queries-and-ai-in-everything/5259454",
-        "chain": [
-          {
-            "label": "Google AI 研發投入↑",
-            "type": "up"
-          },
-          {
-            "label": "Google Cloud AI 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft AI 研發投入↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI的應用",
-        "layer": "AI應用",
-        "body": "根據The Register的報導，Agentic AI的應用是一個重要的趨勢。Agentic AI可以提供智能和自主的能力，滿足不同行業的需求。例如，Agentic AI可以提供智能和自主的能力，滿足自然語言處理和計算機視覺的需求。另外，Agentic AI也可以提供彈性的計算能力，滿足不同應用的需求。例如，Agentic AI可以提供低延遲和高吞吐量的計算能力，滿足物聯網和自動駕駛的需求。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "Agentic AI的應用是一個重要的趨勢，需要關注Agentic AI的發展和應用。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/06/22/anthropics-mythos-mess-just-keeps-getting-more-complicated/5258577",
-        "chain": [
-          {
-            "label": "Agentic AI 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "NVIDIA AI 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "AMD AI 產能↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Agentic AI",
-        "full": "代理AI",
-        "def": "Agentic AI是一種可以提供智能和自主的能力的AI技術，滿足不同行業的需求。",
-        "why": "Agentic AI可以提高AI的性能和效率，滿足不同行業的需求。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
