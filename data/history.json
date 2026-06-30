@@ -1,5 +1,121 @@
 [
   {
+    "date": "2026-07-01",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "南韓推出3S+1F計畫，投資晶片產業",
+        "layer": "晶片製造",
+        "body": "南韓政府宣布將投資約900億美元於晶片產業，推出3S+1F計畫，旨在成為全球晶片強國。這個計畫將於2026年至2030年間實施，預計將創造大量就業機會和經濟效益。南韓政府希望透過這個計畫，提升國內晶片產業的競爭力，成為全球晶片市場的重要角色。",
+        "impact": "這個計畫將直接影響南韓的晶片產業，帶來大量投資和就業機會，間接影響全球晶片市場的供應鏈，可能導致晶片價格下降，惠及下游客戶。同時，南韓的晶片產業將面臨來自其他國家的競爭，需要不斷提升技術和效率以保持競爭力。這個計畫也可能帶來環境和能源的挑戰，需要南韓政府和產業界共同努力解決。",
+        "rating": "core",
+        "insight": "南韓的3S+1F計畫將成為全球晶片產業的重要發展，投資者應關注南韓晶片產業的成長和挑戰。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/06/30/south-koreas-hot-new-sensation-is-3s1f-a-quadrillion-won-ai-plan-not-a-band/5264175",
+        "chain": [
+          {
+            "label": "SK Hynix 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Samsung Foundry 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "南韓晶片產業就業機會↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Arm64 桌面版：昂貴且效能遜色",
+        "layer": "晶片架構",
+        "body": "Arm64 桌面版的效能遜色於x86架構，儘管配備大量RAM、GPU和快速磁碟。這個問題可能是由於Arm64架構的限制，需要軟體和硬體的優化。目前，Arm64 桌面版的成本較高，可能是由於生產和開發的成本較高。",
+        "impact": "這個問題將直接影響Arm64 桌面版的銷售和市場份額，可能導致客戶轉向x86架構的產品。同時，Arm64 桌面版的效能問題也將影響軟體開發商的選擇，可能導致軟體的兼容性問題。這個問題也可能帶來機會，讓Arm64 桌面版的製造商優化和改進產品。",
+        "rating": "opp",
+        "insight": "Arm64 桌面版的效能問題需要優化和改進，投資者應關注Arm64 桌面版的發展和挑戰。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/personal-tech/2026/06/30/arm64-on-the-desktop-its-spendy-and-its-sluggish/5264407",
+        "chain": [
+          {
+            "label": "Arm Holdings 市占↓",
+            "type": "down"
+          },
+          {
+            "label": "Apple M1 效能↑",
+            "type": "up"
+          },
+          {
+            "label": "x86 架構市占↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "微軟預覽Linux容器在Windows上運行",
+        "layer": "雲端運算",
+        "body": "微軟宣布預覽Linux容器在Windows上運行，允許開發者在Windows上運行Linux容器。這個功能將提高開發者的效率和便利性，同時也將提高Windows的競爭力。微軟預計將在未來的Windows版本中正式推出這個功能。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "微軟的Linux容器在Windows上運行將提高Windows的競爭力和吸引力，投資者應關注微軟的雲端運算業務的發展。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/virtualization/2026/06/30/microsoft-previews-linux-containers-that-run-in-windows/5264468",
+        "chain": [
+          {
+            "label": "微軟Azure 市占↑",
+            "type": "up"
+          },
+          {
+            "label": "Linux 容器技術發展↑",
+            "type": "up"
+          },
+          {
+            "label": "Windows 競爭力↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "安全研究人員欺騙LLM提供可卡因配方",
+        "layer": "人工智慧",
+        "body": "安全研究人員成功欺騙LLM提供可卡因配方，揭示了LLM的安全性漏洞。這個漏洞可能是由於LLM的設計和訓練的限制，需要改進和優化。安全研究人員呼籲LLM的開發者和使用者提高警惕，防止類似的安全性問題。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "LLM的安全性漏洞需要改進和優化，投資者應關注LLM的發展和挑戰。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/06/30/security-researchers-tricked-llms-into-giving-them-cocaine-recipes-by-abusing-role-models-for-prompt-injection/5264115",
+        "chain": [
+          {
+            "label": "LLM 開發者警惕性↑",
+            "type": "up"
+          },
+          {
+            "label": "LLM 安全性漏洞↓",
+            "type": "down"
+          },
+          {
+            "label": "AI 研究人員安全意識↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "3S+1F",
+        "full": "三個S和一個F",
+        "def": "南韓政府推出的晶片產業發展計畫，包括三個S（semiconductor、software、system）和一個F（fund）",
+        "why": "這個計畫將提高南韓的晶片產業競爭力和吸引力",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-06-30",
     "is_sunday": false,
     "hw": [
@@ -745,122 +861,6 @@
         "full": "Chip-on-Wafer-on-Substrate",
         "def": "CoWoS 是一種晶片製造技術，將晶片直接封裝在基板上。這種技術可以提高晶片的性能和降低延遲。",
         "why": "CoWoS 技術對於晶片製造業的影響是直接的。這項技術可以提高晶片的性能和降低延遲，從而提高整體的晶片製造效率。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-24",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "晶片產業新發展",
-        "layer": "晶片製造",
-        "body": "微軟終於打破了22英寸的限制，現在可以使用更大的螢幕。這項發展對於晶片產業來說是重要的，因為它意味著更大的螢幕可以使用更先進的晶片。例如，新款Steam Machine的預購已經開始，價格相當高昂，最高可達數千美元。另外，印度和中國在第一季度只買了1300萬台個人電腦，顯示出晶片產業的成長空間。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "晶片產業的成長空間仍然很大，尤其是在更大的螢幕和更先進的晶片方面。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/databases/2026/06/23/microsoft-access-finally-breaks-free-of-its-22-inch-form-limit/5260005",
-        "chain": [
-          {
-            "label": "微軟 Steam Machine 銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "TSMC 22英寸晶片產能↑",
-            "type": "up"
-          },
-          {
-            "label": "AMD 高端晶片市占↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "新USB標準",
-        "layer": "晶片設計",
-        "body": "新USB標準的推出將帶來更快的資料傳輸速度和更低的功耗。這項發展對於晶片設計師來說是重要的，因為他們需要設計出符合新標準的晶片。例如，新USB標準的資料傳輸速度可以達到20Gbps，遠超過現有的USB 3.2標準。另外，新USB標準也會支持更先進的安全功能，如加密和驗證。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "新USB標準的推出將帶來更快的資料傳輸速度和更低的功耗，對於晶片設計師和電腦製造商來說是重要的發展。",
-        "source_label": "Semiconductor Engineering",
-        "source": "https://semiengineering.com/new-usb-standards-benefits-and-incompatibilities/",
-        "chain": [
-          {
-            "label": "USB 3.2 速度↑",
-            "type": "up"
-          },
-          {
-            "label": "Intel USB控制器銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "ASMedia USB晶片市占↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "微軟的AI投資",
-        "layer": "企業投資",
-        "body": "微軟在AI領域的投資已經達到數十億美元，包括了對OpenAI的投資。這項發展對於AI產業來說是重要的，因為它意味著更多的資源將被投入到AI的研究和發展中。例如，微軟已經推出了自己的AI平台，包括了Azure Machine Learning和Azure Cognitive Services。另外，微軟也在與其他公司合作，包括了谷歌和亞馬遜，來推動AI的發展。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "微軟的AI投資將帶來更多的資源被投入到AI的研究和發展中，對於AI產業來說是重要的發展。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/personal-tech/2026/06/23/microsoft-access-finally-breaks-free-of-its-22-inch-form-limit/5260005",
-        "chain": [
-          {
-            "label": "微軟 Azure Machine Learning 服務↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI 研究投資↑",
-            "type": "up"
-          },
-          {
-            "label": "谷歌 AI 平台市占↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI",
-        "layer": "AI應用",
-        "body": "Agentic AI是一種新的AI技術，允許AI系統在沒有人類干預的情況下進行學習和決策。這項發展對於AI產業來說是重要的，因為它意味著AI系統可以更加自主和智能。例如，Agentic AI可以用於自動駕駛車輛和智能家居系統中。另外，Agentic AI也可以用於提高AI系統的安全性和可靠性。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "Agentic AI將帶來AI系統更加自主和智能，對於AI產業來說是重要的發展。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "Agentic AI 技術應用↑",
-            "type": "up"
-          },
-          {
-            "label": "自動駕駛車輛銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "亞馬遜 AI 服務市占↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "CoWoS",
-        "full": "Chip-on-Wafer-on-Substrate",
-        "def": "一種先進的封裝技術，允許多個晶片被封裝在一起。",
-        "why": "這項技術可以提高晶片的性能和可靠性。",
         "category": "semiconductor"
       }
     ],
