@@ -4,101 +4,100 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "南韓推出3S+1F計畫，投資晶片產業",
-        "layer": "晶片製造",
-        "body": "南韓政府宣布將投資約900億美元於晶片產業，推出3S+1F計畫，旨在成為全球晶片強國。這個計畫將於2026年至2030年間實施，預計將創造大量就業機會和經濟效益。南韓政府希望透過這個計畫，提升國內晶片產業的競爭力，成為全球晶片市場的重要角色。",
-        "impact": "這個計畫將直接影響南韓的晶片產業，帶來大量投資和就業機會，間接影響全球晶片市場的供應鏈，可能導致晶片價格下降，惠及下游客戶。同時，南韓的晶片產業將面臨來自其他國家的競爭，需要不斷提升技術和效率以保持競爭力。這個計畫也可能帶來環境和能源的挑戰，需要南韓政府和產業界共同努力解決。",
-        "rating": "core",
-        "insight": "南韓的3S+1F計畫將成為全球晶片產業的重要發展，投資者應關注南韓晶片產業的成長和挑戰。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/06/30/south-koreas-hot-new-sensation-is-3s1f-a-quadrillion-won-ai-plan-not-a-band/5264175",
+        "title": "Nvidia 研究院提出自我演化代理框架",
+        "layer": "晶片設計",
+        "body": "Nvidia 研究院發表了一篇技術論文，提出了一個名為 HORIZON 的自我演化代理框架，該框架將硬件設計視為儲存庫級別的代碼演化。這個框架可以自動優化硬件設計，提高晶片的性能和效率。Nvidia 研究院的研究人員表示，HORIZON 框架可以應用於各種晶片設計領域，包括人工智慧、機器學習和物聯網。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "Nvidia 研究院的自我演化代理框架可能會成為晶片設計的新趨勢，投資者應該關注這個領域的發展。",
+        "source_label": "semiengineering.com",
+        "source": "https://semiengineering.com/a-self-evolving-agent-framework-that-treats-hardware-design-as-repository-level-code-evolution-nvidia-research/",
         "chain": [
           {
-            "label": "SK Hynix 產能↑",
+            "label": "Nvidia HORIZON 框架性能↑",
             "type": "up"
           },
           {
-            "label": "Samsung Foundry 產能↑",
+            "label": "Nvidia晶片設計效率↑",
             "type": "up"
           },
           {
-            "label": "南韓晶片產業就業機會↑",
+            "label": "Nvidia人工智慧應用↑",
             "type": "up"
           }
         ]
       },
       {
-        "title": "Arm64 桌面版：昂貴且效能遜色",
-        "layer": "晶片架構",
-        "body": "Arm64 桌面版的效能遜色於x86架構，儘管配備大量RAM、GPU和快速磁碟。這個問題可能是由於Arm64架構的限制，需要軟體和硬體的優化。目前，Arm64 桌面版的成本較高，可能是由於生產和開發的成本較高。",
-        "impact": "這個問題將直接影響Arm64 桌面版的銷售和市場份額，可能導致客戶轉向x86架構的產品。同時，Arm64 桌面版的效能問題也將影響軟體開發商的選擇，可能導致軟體的兼容性問題。這個問題也可能帶來機會，讓Arm64 桌面版的製造商優化和改進產品。",
+        "title": "晶片產業技術論文匯總：6 月 30 日",
+        "layer": "晶片製造",
+        "body": "晶片產業技術論文匯總：6 月 30 日，包括了處理使用 DRAM 干擾、原子級別等多個領域的研究成果。這些研究成果可能會對晶片製造和設計產生影響，提高晶片的性能和效率。例如，研究人員提出了新的方法來減少 DRAM 干擾，提高晶片的可靠性。",
+        "impact": "這些研究成果可能會提高晶片製造和設計的效率和性能，從而對下游的晶片製造商和終端用戶產生正面的影響。",
         "rating": "opp",
-        "insight": "Arm64 桌面版的效能問題需要優化和改進，投資者應關注Arm64 桌面版的發展和挑戰。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/personal-tech/2026/06/30/arm64-on-the-desktop-its-spendy-and-its-sluggish/5264407",
+        "insight": "晶片產業的技術進步可能會推動晶片製造和設計的發展，投資者應該關注這個領域的發展。",
+        "source_label": "semiengineering.com",
+        "source": "https://semiengineering.com/chip-industry-technical-paper-roundup-june-30/",
         "chain": [
           {
-            "label": "Arm Holdings 市占↓",
-            "type": "down"
-          },
-          {
-            "label": "Apple M1 效能↑",
+            "label": "DRAM 干擾減少↑",
             "type": "up"
           },
           {
-            "label": "x86 架構市占↑",
+            "label": "晶片可靠性↑",
+            "type": "up"
+          },
+          {
+            "label": "晶片製造效率↑",
             "type": "up"
           }
         ]
-      }
-    ],
-    "corp": [
+      },
       {
-        "title": "微軟預覽Linux容器在Windows上運行",
-        "layer": "雲端運算",
-        "body": "微軟宣布預覽Linux容器在Windows上運行，允許開發者在Windows上運行Linux容器。這個功能將提高開發者的效率和便利性，同時也將提高Windows的競爭力。微軟預計將在未來的Windows版本中正式推出這個功能。",
+        "title": "研究簡報：6 月 30 日",
+        "layer": "晶片設計",
+        "body": "研究簡報：6 月 30 日，包括了單晶 3D 集成和近場熱傳導等多個領域的研究成果。這些研究成果可能會對晶片設計和製造產生影響，提高晶片的性能和效率。例如，研究人員提出了新的方法來提高單晶 3D 集成的效率，減少熱傳導。",
         "impact": null,
         "rating": "noise",
-        "insight": "微軟的Linux容器在Windows上運行將提高Windows的競爭力和吸引力，投資者應關注微軟的雲端運算業務的發展。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/virtualization/2026/06/30/microsoft-previews-linux-containers-that-run-in-windows/5264468",
+        "insight": "晶片設計和製造的技術進步可能會推動晶片產業的發展，投資者應該關注這個領域的發展。",
+        "source_label": "semiengineering.com",
+        "source": "https://semiengineering.com/research-bits-june-30/",
         "chain": [
           {
-            "label": "微軟Azure 市占↑",
+            "label": "單晶 3D 集成效率↑",
             "type": "up"
           },
           {
-            "label": "Linux 容器技術發展↑",
+            "label": "近場熱傳導減少↑",
             "type": "up"
           },
           {
-            "label": "Windows 競爭力↑",
+            "label": "晶片設計性能↑",
             "type": "up"
           }
         ]
       }
     ],
+    "corp": [],
     "app": [
       {
-        "title": "安全研究人員欺騙LLM提供可卡因配方",
+        "title": "Agentic AI 框架",
         "layer": "人工智慧",
-        "body": "安全研究人員成功欺騙LLM提供可卡因配方，揭示了LLM的安全性漏洞。這個漏洞可能是由於LLM的設計和訓練的限制，需要改進和優化。安全研究人員呼籲LLM的開發者和使用者提高警惕，防止類似的安全性問題。",
+        "body": "Nvidia 研究院提出了一個名為 HORIZON 的自我演化代理框架，該框架可以自動優化硬件設計，提高晶片的性能和效率。這個框架可以應用於各種晶片設計領域，包括人工智慧、機器學習和物聯網。研究人員表示，HORIZON 框架可以提高人工智慧的性能和效率，從而對下游的應用產生正面的影響。",
         "impact": null,
         "rating": "noise",
-        "insight": "LLM的安全性漏洞需要改進和優化，投資者應關注LLM的發展和挑戰。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/06/30/security-researchers-tricked-llms-into-giving-them-cocaine-recipes-by-abusing-role-models-for-prompt-injection/5264115",
+        "insight": "Agentic AI 框架可能會成為人工智慧的新趨勢，投資者應該關注這個領域的發展。",
+        "source_label": "semiengineering.com",
+        "source": "https://semiengineering.com/a-self-evolving-agent-framework-that-treats-hardware-design-as-repository-level-code-evolution-nvidia-research/",
         "chain": [
           {
-            "label": "LLM 開發者警惕性↑",
+            "label": "Nvidia HORIZON 框架性能↑",
             "type": "up"
           },
           {
-            "label": "LLM 安全性漏洞↓",
-            "type": "down"
+            "label": "人工智慧性能↑",
+            "type": "up"
           },
           {
-            "label": "AI 研究人員安全意識↑",
+            "label": "機器學習效率↑",
             "type": "up"
           }
         ]
@@ -106,11 +105,11 @@
     ],
     "glossary_new": [
       {
-        "term": "3S+1F",
-        "full": "三個S和一個F",
-        "def": "南韓政府推出的晶片產業發展計畫，包括三個S（semiconductor、software、system）和一個F（fund）",
-        "why": "這個計畫將提高南韓的晶片產業競爭力和吸引力",
-        "category": "semiconductor"
+        "term": "Agentic AI",
+        "full": "自我演化代理框架",
+        "def": "一種可以自動優化硬件設計的框架，提高晶片的性能和效率。",
+        "why": "這個框架可以提高人工智慧的性能和效率，從而對下游的應用產生正面的影響。",
+        "category": "人工智慧"
       }
     ],
     "weekly_summary": null
