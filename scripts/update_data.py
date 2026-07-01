@@ -116,6 +116,14 @@ def parse_rss_date(item, ns):
             pass
     return None
 
+# 彙整型文章標題 pattern：論文彙整/週報/每日摘要，本身是 meta-post 而非單一新聞事件，跳過
+DIGEST_TITLE_PATS = re.compile(
+    r'(?:literature digest|research digest|technical digest|chip industry.*digest|'
+    r'weekly\s+(?:digest|roundup|update|wrap)|daily\s+(?:digest|roundup|briefing)|'
+    r'論文匯總|技術論文|研究簡報|每週.*摘要|週報|每日簡報)',
+    re.IGNORECASE
+)
+
 def fetch_rss():
     cutoff = datetime.now(timezone.utc) - timedelta(hours=72)
     snippets = []
@@ -133,6 +141,9 @@ def fetch_rss():
                 title = (item.findtext('title') or item.findtext('atom:title',namespaces=ns) or '').strip()
                 desc  = (item.findtext('description') or item.findtext('summary') or
                          item.findtext('atom:summary',namespaces=ns) or '').strip()
+                # 跳過彙整型 meta-post（論文匯總、每週/每日摘要等）
+                if DIGEST_TITLE_PATS.search(title):
+                    continue
                 # 擷取真實 URL（RSS <link> 或 Atom <link href>）
                 link = item.findtext('link') or ''
                 if not link:
