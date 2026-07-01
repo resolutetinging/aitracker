@@ -24,12 +24,14 @@ KNOWN_TERMS = ["HBM","CoWoS","CSP","OSAT","VLA 模型",
 #  1. RSS FEEDS（主要新聞來源，穩定免費）
 # ══════════════════════════════════════════════════════════════════
 RSS_FEEDS = [
-    # ── 硬體供應鏈 & 半導體 ─────────────────────────────────────────
-    ("Semiconductor", "https://www.theregister.com/headlines.atom"),
+    # ── 硬體供應鏈 & 半導體（精準來源優先）────────────────────────────
     ("Semiconductor", "https://semiengineering.com/feed/"),
     ("Semiconductor", "https://www.eetimes.com/feed/"),
+    ("Semiconductor", "https://www.anandtech.com/rss/"),          # GPU/memory 評測與產業分析
+    ("Semiconductor", "https://www.digitimes.com/rss/"),          # 台灣供應鏈第一手
     ("Semiconductor", "https://www.tomshardware.com/feeds/all"),
-    ("Semiconductor", "https://www.cnbc.com/id/19854910/device/rss/rss.html"),  # Micron/NVIDIA 財報常出現
+    ("Semiconductor", "https://www.theregister.com/headlines.atom"),
+    ("Semiconductor", "https://www.cnbc.com/id/19854910/device/rss/rss.html"),  # Micron/NVIDIA 財報
     # ── CSP CapEx / 巨頭投資 ─────────────────────────────────────────
     ("CSP/CapEx",    "https://www.datacenterdynamics.com/en/rss/"),
     ("CSP/CapEx",    "https://techcrunch.com/category/artificial-intelligence/feed/"),
@@ -403,6 +405,9 @@ def validate_impact(data):
         "請刪除該句或改寫為只保留有依據的部分。"
         "不得因為『投資增加→晶片需求↑→TSMC訂單↑』這類多步推論而引入 body 未提及的公司。"
         "若 impact 整體無因果依據，改為空字串。\n"
+        "【主角矛盾規則】若某公司已在 title 或 body 中被明確列為投資方、受益方、或主要行動者，"
+        "則 impact 中禁止將該公司列為「競爭對手」或「受損方」——這是邏輯矛盾，必須刪除或改寫該句。"
+        "例如：title 提到「三星和SK Hynix投資…」，impact 就不得寫「競爭對手如SK Hynix…」。\n"
         f"條目：{items_json}\n"
         '輸出純JSON陣列（直接從[開始）：[{"title":"原標題","impact":"修正後impact或空字串"}]'
     )
@@ -546,6 +551,47 @@ def downgrade_forbidden_phrases(data):
                         print(f"  ✕ 模板 impact 清除：{item.get('title','')[:50]}")
                         item['impact'] = None
                         break
+
+def fix_protagonist_as_competitor(data):
+    """主角矛盾修正：title/body 中明確列為投資方或受益方的公司，不得在 impact 中被稱為競爭對手。
+    偵測到矛盾時清除 impact 中包含該公司的那句話（以句號切割逐句判斷）。"""
+    COMPETITOR_PATS = re.compile(r'競爭對手|對手如|對手包括|競爭者如|競爭者包括')
+    MAJOR_COS = ['三星','samsung','sk hynix','海力士','hynix','micron','美光',
+                 'nvidia','tsmc','台積電','intel','amd','arm','qualcomm','高通',
+                 'microsoft','google','meta','amazon','apple','openai','anthropic']
+    count = 0
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            impact = item.get('impact') or ''
+            if not impact or not COMPETITOR_PATS.search(impact):
+                continue
+            title_body = (item.get('title','') + ' ' + item.get('body','')).lower()
+            sentences = re.split(r'(?<=[。！？])', impact)
+            new_sentences = []
+            changed = False
+            for sent in sentences:
+                if not COMPETITOR_PATS.search(sent):
+                    new_sentences.append(sent)
+                    continue
+                # 找 impact 這句裡的公司名
+                conflict = False
+                for co in MAJOR_COS:
+                    if co in sent.lower() and co in title_body:
+                        # 這間公司在 title/body 是主角，卻在 impact 被當競爭對手
+                        conflict = True
+                        print(f"  ✕ 主角矛盾移除：'{sent.strip()[:60]}' ({co} 是主角)")
+                        break
+                if not conflict:
+                    new_sentences.append(sent)
+                else:
+                    changed = True
+                    count += 1
+            if changed:
+                item['impact'] = ''.join(new_sentences).strip() or None
+    if count == 0:
+        print("  → 主角矛盾檢核通過")
+    else:
+        print(f"  → 共修正 {count} 筆主角矛盾 impact")
 
 def strip_noise_impact(data):
     """所有 noise 條目的 impact 欄位設為 None，避免模板框出現在前端"""
@@ -1058,6 +1104,8 @@ if __name__ == '__main__':
     fix_chains(data)
     print("🔎 impact 因果驗證...")
     validate_impact(data)
+    print("🔍 主角矛盾偵測...")
+    fix_protagonist_as_competitor(data)
 
     history = upsert(history, data)
     save_history(history)
