@@ -524,6 +524,13 @@ def validate_sources(data):
                 item['source'] = ''
                 item['source_label'] = '—'
 
+# 日期幻覺：body 聲稱發表/發布年份比當前年份早 2 年以上 → 舊論文/舊事件混入，降評
+_STALE_YEAR_THRESHOLD = NOW.year - 1  # e.g. 2026 → 禁止 2024 以前的「發表於」年份
+_STALE_DATE_PAT = re.compile(
+    r'(?:發表於|發布於|公布於|於)\s*(20\d{2})\s*年',
+    re.IGNORECASE
+)
+
 FORBIDDEN_PATS = [
     re.compile(r'根據.{0,25}報導[，,。]'),
     re.compile(r'已.{0,4}被多家.{0,15}公司採用.{0,10}包括'),
@@ -544,13 +551,25 @@ FORBIDDEN_PATS = [
     re.compile(r'競爭對手.{1,30}難以跟上.{1,20}的技術進步'),
 ]
 
+def _contains_stale_date(text: str) -> bool:
+    """body 中「發表於 20XX 年」的 XX 早於去年 → 日期幻覺"""
+    for m in _STALE_DATE_PAT.finditer(text):
+        if int(m.group(1)) < _STALE_YEAR_THRESHOLD:
+            return True
+    return False
+
 def downgrade_forbidden_phrases(data):
-    """body 含禁句 → noise；impact 含模板 → 清除 impact（無論 rating）"""
+    """body 含禁句或日期幻覺 → noise；impact 含模板 → 清除 impact（無論 rating）"""
     for section in ['hw', 'corp', 'app']:
         for item in data.get(section, []):
             body = item.get('body', '')
             impact = item.get('impact') or ''
             if item.get('rating') != 'noise':
+                # 日期幻覺：body 聲稱 2 年前的「發表於」年份
+                if _contains_stale_date(body):
+                    print(f"  ↓ 日期幻覺→noise：{item.get('title','')[:50]}")
+                    item['rating'] = 'noise'
+                    continue
                 for pat in FORBIDDEN_PATS:
                     if pat.search(body):
                         print(f"  ↓ 禁句降評→noise：{item.get('title','')[:50]}")
@@ -714,6 +733,8 @@ def validate_body(data, news_context):
         "2. body 中是否出現「每月X個單位/晶圓的產能」，"
         "但摘要中未出現此數字，或該公司並非晶圓廠？→ downgrade=true\n"
         "3. body 中有無主要事實聲明（非推論）完全無法在摘要中找到對應文字？→ downgrade=true\n"
+        f"4. body 中若出現「發表於 20XX 年」的具體年份，該年份必須來自摘要原文；"
+        f"若摘要中沒有該年份，或年份明顯早於新聞發布時間（{NOW.year - 1}年以前），視為日期幻覺 → downgrade=true\n"
         "若以上均無問題 → downgrade=false。\n"
         f"條目：{items_json}\n"
         '只輸出純JSON陣列：[{"title":"原標題","downgrade":true或false}]'
