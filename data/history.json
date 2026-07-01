@@ -4,100 +4,101 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "Nvidia 研究院提出自我演化代理框架",
+        "title": "Nvidia 研究院發表新技術論文",
         "layer": "晶片設計",
-        "body": "Nvidia 研究院發表了一篇技術論文，提出了一個名為 HORIZON 的自我演化代理框架，該框架將硬件設計視為儲存庫級別的代碼演化。這個框架可以自動優化硬件設計，提高晶片的性能和效率。Nvidia 研究院的研究人員表示，HORIZON 框架可以應用於各種晶片設計領域，包括人工智慧、機器學習和物聯網。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "Nvidia 研究院的自我演化代理框架可能會成為晶片設計的新趨勢，投資者應該關注這個領域的發展。",
-        "source_label": "semiengineering.com",
+        "body": "Nvidia 研究院發表了一篇新的技術論文，題為《Agentic Hardware Design as Repository-Level Code Evolution》。這篇論文介紹了一個名為 HORIZON 的自我演化代理框架，該框架將硬體設計視為儲存庫級別的代碼演化。論文發表於 2023 年 6 月 30 日。Nvidia 研究院的研究人員使用這個框架來設計和優化晶片架構，從而提高晶片的性能和效率。",
+        "impact": "這個新技術可能會對晶片設計和製造業產生重大影響，特別是對於那些需要高性能和低延遲的應用。例如，資料中心和人工智慧應用可能會受益於這種新技術。",
+        "rating": "core",
+        "insight": "Nvidia 研究院的新技術可能會對晶片設計和製造業產生重大影響，投資者應該關注這個領域的發展。",
+        "source_label": "SemiEngineering",
         "source": "https://semiengineering.com/a-self-evolving-agent-framework-that-treats-hardware-design-as-repository-level-code-evolution-nvidia-research/",
         "chain": [
           {
-            "label": "Nvidia HORIZON 框架性能↑",
+            "label": "Nvidia 研究院 產能↑",
             "type": "up"
           },
           {
-            "label": "Nvidia晶片設計效率↑",
+            "label": "Nvidia GPU 性能↑",
             "type": "up"
           },
           {
-            "label": "Nvidia人工智慧應用↑",
+            "label": "Nvidia 市占↑",
             "type": "up"
           }
         ]
       },
       {
-        "title": "晶片產業技術論文匯總：6 月 30 日",
+        "title": "晶片產業技術論文匯總",
         "layer": "晶片製造",
-        "body": "晶片產業技術論文匯總：6 月 30 日，包括了處理使用 DRAM 干擾、原子級別等多個領域的研究成果。這些研究成果可能會對晶片製造和設計產生影響，提高晶片的性能和效率。例如，研究人員提出了新的方法來減少 DRAM 干擾，提高晶片的可靠性。",
-        "impact": "這些研究成果可能會提高晶片製造和設計的效率和性能，從而對下游的晶片製造商和終端用戶產生正面的影響。",
-        "rating": "opp",
-        "insight": "晶片產業的技術進步可能會推動晶片製造和設計的發展，投資者應該關注這個領域的發展。",
-        "source_label": "semiengineering.com",
+        "body": "SemiEngineering 網站發表了一篇文章，匯總了最近的晶片產業技術論文。這些論文涵蓋了多個領域，包括 DRAM 干擾、原子級別等離子體加工、鎵氧化物相不穩定性等。文章發表於 2023 年 6 月 30 日。這些論文展示了晶片產業的最新技術進展和趨勢。例如，DRAM 干擾的研究可能會對晶片設計和製造業產生影響，特別是對於那些需要高性能和低延遲的應用。",
+        "impact": "這些新技術可能會對晶片設計和製造業產生重大影響，特別是對於那些需要高性能和低延遲的應用。例如，DRAM 干擾的研究可能會對晶片設計和製造業產生影響，特別是對於那些需要高性能和低延遲的應用。",
+        "rating": "core",
+        "insight": "晶片產業的技術進展可能會對相關產業產生重大影響，投資者應該關注這個領域的發展。",
+        "source_label": "SemiEngineering",
         "source": "https://semiengineering.com/chip-industry-technical-paper-roundup-june-30/",
         "chain": [
           {
-            "label": "DRAM 干擾減少↑",
+            "label": "DRAM 產能↑",
             "type": "up"
           },
           {
-            "label": "晶片可靠性↑",
-            "type": "up"
+            "label": "鎵氧化物 相不穩定性↓",
+            "type": "down"
           },
           {
-            "label": "晶片製造效率↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "研究簡報：6 月 30 日",
-        "layer": "晶片設計",
-        "body": "研究簡報：6 月 30 日，包括了單晶 3D 集成和近場熱傳導等多個領域的研究成果。這些研究成果可能會對晶片設計和製造產生影響，提高晶片的性能和效率。例如，研究人員提出了新的方法來提高單晶 3D 集成的效率，減少熱傳導。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "晶片設計和製造的技術進步可能會推動晶片產業的發展，投資者應該關注這個領域的發展。",
-        "source_label": "semiengineering.com",
-        "source": "https://semiengineering.com/research-bits-june-30/",
-        "chain": [
-          {
-            "label": "單晶 3D 集成效率↑",
-            "type": "up"
-          },
-          {
-            "label": "近場熱傳導減少↑",
-            "type": "up"
-          },
-          {
-            "label": "晶片設計性能↑",
+            "label": "晶片產業 技術進步↑",
             "type": "up"
           }
         ]
       }
     ],
-    "corp": [],
-    "app": [
+    "corp": [
       {
-        "title": "Agentic AI 框架",
-        "layer": "人工智慧",
-        "body": "Nvidia 研究院提出了一個名為 HORIZON 的自我演化代理框架，該框架可以自動優化硬件設計，提高晶片的性能和效率。這個框架可以應用於各種晶片設計領域，包括人工智慧、機器學習和物聯網。研究人員表示，HORIZON 框架可以提高人工智慧的性能和效率，從而對下游的應用產生正面的影響。",
+        "title": "美國關注中國在拉丁美洲的擴張",
+        "layer": "供應鏈",
+        "body": "根據 EETimes 網站的報導，美國關注中國在拉丁美洲的擴張。這可能會對供應鏈產生影響，特別是對於那些依賴拉丁美洲供應鏈的公司。美國政府已經開始關注這個問題，可能會採取措施來應對。例如，美國可能會增加對拉丁美洲供應鏈的投資，從而減少對中國的依賴。",
         "impact": null,
         "rating": "noise",
-        "insight": "Agentic AI 框架可能會成為人工智慧的新趨勢，投資者應該關注這個領域的發展。",
-        "source_label": "semiengineering.com",
-        "source": "https://semiengineering.com/a-self-evolving-agent-framework-that-treats-hardware-design-as-repository-level-code-evolution-nvidia-research/",
+        "insight": "美國關注中國在拉丁美洲的擴張可能會對供應鏈產生重大影響，投資者應該關注這個領域的發展。",
+        "source_label": "—",
+        "source": "",
         "chain": [
           {
-            "label": "Nvidia HORIZON 框架性能↑",
+            "label": "美國供應鏈 安全性↑",
             "type": "up"
           },
           {
-            "label": "人工智慧性能↑",
+            "label": "中國在拉丁美洲 供應鏈↓",
+            "type": "down"
+          },
+          {
+            "label": "美國對拉丁美洲 投資↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "RISC-V 生態系統的成長",
+        "layer": "人工智慧",
+        "body": "根據 EETimes 網站的報導，RISC-V 生態系統正在成長。這可能會對人工智慧應用產生影響，特別是對於那些需要高性能和低延遲的應用。例如，資料中心和人工智慧應用可能會受益於 RISC-V 的成長。同時，這也可能會對相關產業的供應鏈產生影響，例如增加對 RISC-V 的需求，從而推動相關產業的發展。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "RISC-V 生態系統的成長可能會對人工智慧應用產生重大影響，投資者應該關注這個領域的發展。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "RISC-V 需求↑",
             "type": "up"
           },
           {
-            "label": "機器學習效率↑",
+            "label": "人工智慧應用 性能↑",
+            "type": "up"
+          },
+          {
+            "label": "資料中心 供應鏈↑",
             "type": "up"
           }
         ]
@@ -105,11 +106,11 @@
     ],
     "glossary_new": [
       {
-        "term": "Agentic AI",
+        "term": "HORIZON",
         "full": "自我演化代理框架",
-        "def": "一種可以自動優化硬件設計的框架，提高晶片的性能和效率。",
-        "why": "這個框架可以提高人工智慧的性能和效率，從而對下游的應用產生正面的影響。",
-        "category": "人工智慧"
+        "def": "HORIZON 是一個自我演化代理框架，該框架將硬體設計視為儲存庫級別的代碼演化。它可以用於設計和優化晶片架構，從而提高晶片的性能和效率。",
+        "why": "HORIZON 可以用於設計和優化晶片架構，從而提高晶片的性能和效率。這對於需要高性能和低延遲的應用非常重要，例如資料中心和人工智慧應用。",
+        "category": "semiconductor"
       }
     ],
     "weekly_summary": null
