@@ -1,5 +1,128 @@
 [
   {
+    "date": "2026-07-02",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "晶片產業的觀察性設計",
+        "layer": "晶片設計",
+        "body": "下一代矽晶中，人工智慧可以在大規模解釋系統行為，但只有當觀察性設計被納入為第一類架構能力時才可實現。晶片產業的觀察性設計是下一代晶片設計的重要趨勢，預計在2026年底前會有更多的晶片製造商採用這種設計。觀察性設計可以讓晶片製造商更好地了解晶片的行為，從而提高晶片的性能和可靠性，例如提高晶片的運算速度和降低晶片的功耗。",
+        "impact": "這個趨勢將直接影響晶片製造商的設計流程，例如台積電和三星等公司需要升級其設計工具和流程以支持觀察性設計。同時，這也會影響下游的晶片使用者，例如蘋果和華為等公司需要與晶片製造商合作以確保其產品的兼容性和性能。另外，這也會推動相關的設計工具和服務的發展，例如 Cadence 和 Synopsys 等公司的設計工具和服務將會受到更多的需求。",
+        "rating": "noise",
+        "insight": "晶片產業的觀察性設計是下一代晶片設計的重要趨勢，投資者應該關注相關的設計工具和服務的發展。",
+        "source_label": "Semiconductor Engineering",
+        "source": "https://semiengineering.com/observability-is-a-missing-layer-in-ai-era-chiplet-design/",
+        "chain": [
+          {
+            "label": "TSMC 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Intel 市占↓",
+            "type": "down"
+          },
+          {
+            "label": "晶片產業績效↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "GPU 虛擬化技術",
+        "layer": "GPU 技術",
+        "body": "HyperLane 是一種 GPU 虛擬化技術，提供更強的隔離和資源利用率，同時也可以整合更多的軟體功能到相同的硬體平台上。這種技術預計在2026年中期前會被廣泛採用，例如 Nvidia 和 AMD 等公司已經開始開發相關的技術。GPU 虛擬化技術可以提高 GPU 的利用率和性能，例如提高 GPU 的運算速度和降低 GPU 的功耗。HyperLane 技術也可以提高 GPU 的安全性和兼容性，例如提供更強的隔離和訪問控制。",
+        "impact": "這個趨勢將直接影響 GPU 製造商的設計流程，例如 Nvidia 和 AMD 等公司需要升級其設計工具和流程以支持 GPU 虛擬化技術。同時，這也會影響下游的 GPU 使用者，例如 Google 和 Facebook 等公司需要與 GPU 製造商合作以確保其產品的兼容性和性能。另外，這也會推動相關的設計工具和服務的發展，例如 Cadence 和 Synopsys 等公司的設計工具和服務將會受到更多的需求。",
+        "rating": "noise",
+        "insight": "GPU 虛擬化技術是下一代 GPU 技術的重要趨勢，投資者應該關注相關的設計工具和服務的發展。",
+        "source_label": "Semiconductor Engineering",
+        "source": "https://semiengineering.com/hyperlane-gpu-virtualization-with-imagination/",
+        "chain": [
+          {
+            "label": "Nvidia GPU 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD 市占↓",
+            "type": "down"
+          },
+          {
+            "label": "HyperLane 技術交期↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Oxmiq 獲得 3500 萬美元投資",
+        "layer": "公司投資",
+        "body": "Oxmiq 是一家 GPU IP 公司，最近獲得了 3500 萬美元的投資，預計會用於開發新的 GPU IP 產品。這個投資將會推動 Oxmiq 的業務發展，例如提高其 GPU IP 產品的性能和兼容性。Oxmiq 的 GPU IP 產品預計在2026年底前會被廣泛採用，例如在資料中心和人工智慧應用中。Oxmiq 的 CEO Raja Koduri 表示，這個投資將會幫助公司加速其業務發展和技術創新。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "Oxmiq 的投資是公司發展的重要機會，投資者應該關注其業務發展和技術創新。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "Oxmiq 獲投資↑",
+            "type": "up"
+          },
+          {
+            "label": "GPU IP 產品銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "競爭對手市占↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "人工智慧應用",
+        "layer": "人工智慧",
+        "body": "人工智慧應用預計在2026年中期前會被廣泛採用，例如在資料中心和邊緣計算中。人工智慧可以提高系統的性能和可靠性，例如提高系統的運算速度和降低系統的功耗。人工智慧也可以提高系統的安全性和兼容性，例如提供更強的隔離和訪問控制。例如，Google 和 Facebook 等公司已經開始使用人工智慧技術來提高其系統的性能和可靠性。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "人工智慧應用是下一代系統技術的重要趨勢，投資者應該關注相關的設計工具和服務的發展。",
+        "source_label": "Semiconductor Engineering",
+        "source": "https://semiengineering.com/observability-is-a-missing-layer-in-ai-era-chiplet-design/",
+        "chain": [
+          {
+            "label": "Google 人工智慧技術↑",
+            "type": "up"
+          },
+          {
+            "label": "Facebook 系統安全性↑",
+            "type": "up"
+          },
+          {
+            "label": "傳統系統交期↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "觀察性設計",
+        "full": "Observability Design",
+        "def": "觀察性設計是一種晶片設計技術，允許晶片製造商更好地了解晶片的行為，從而提高晶片的性能和可靠性。",
+        "why": "觀察性設計是下一代晶片設計的重要趨勢，可以提高晶片的性能和可靠性。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "GPU 虛擬化",
+        "full": "GPU Virtualization",
+        "def": "GPU 虛擬化是一種技術，允許多個虛擬機器共享同一個 GPU 資源，提高 GPU 的利用率和性能。",
+        "why": "GPU 虛擬化是下一代 GPU 技術的重要趨勢，可以提高 GPU 的利用率和性能。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-01",
     "is_sunday": false,
     "hw": [
@@ -745,122 +868,6 @@
         "full": "Chip-on-Wafer-on-Substrate",
         "def": "CoWoS是一種晶片製造技術，將晶片直接堆疊在基板上。這種技術可以提高晶片的性能和降低功耗。",
         "why": "CoWoS技術是AI晶片市場的關鍵因素，因為它可以提供高性能和低功耗的晶片製造解決方案。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-25",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "TSMC 的 CoWoS 角色",
-        "layer": "晶片製造",
-        "body": "TSMC 的 CoWoS 技術是目前晶片製造業的重要角色。根據 Yahoo Finance 的報導，TSMC 的 CoWoS 技術是 HBM-Driven AI Chip Boom 的關鍵因素。TSMC 的 CoWoS 技術可以提供高性能和低延遲的晶片製造解決方案。截至 2026 年 6 月，TSMC 已經生產了超過 100 萬個 CoWoS 晶片。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "TSMC 的 CoWoS 技術是晶片製造業的重要角色，對於整體的晶片製造效率和下游客戶的競爭力都有直接的影響。",
-        "source_label": "Yahoo Finance",
-        "source": "https://news.google.com/rss/articles/CBMikwFBVV95cUxObkJTSE1abHpyNU9ic25LdXVnS2lWWHk3ZEwwS25mMGp0TlNHWXdhTHoySnpNUk5VbEo3ZEpDelpOVExsMW5POFc4Zm1LRGdLcDlnSG5MQ0hsNndLeVl4WlVPOW5kM0VGZmR6c0JkLWlFNTVnT3d3a21vUGY5amtFcTdvRmZNT01RblRCbTNrcFpiY2c?oc=5",
-        "chain": [
-          {
-            "label": "TSMC CoWoS 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "HBM-Driven AI Chip Boom 產量↑",
-            "type": "up"
-          },
-          {
-            "label": "TSMC 晶片製造業市占↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "中國對美國公司的出口管制",
-        "layer": "晶片製造",
-        "body": "中國政府已經對 10 家美國公司，包括稀土礦業公司，實施出口管制。根據 Al Jazeera 的報導，中國的這一舉動是對美國的反制措施。中國的出口管制將對美國公司的晶片製造業產生影響。截至 2026 年 6 月，中國已經對超過 50 家美國公司實施出口管制。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "中國的出口管制對於美國公司的晶片製造業的影響是直接的，對於整體的晶片製造效率和下游客戶的競爭力都有直接的影響。",
-        "source_label": "Al Jazeera",
-        "source": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNNnkxelBpRHVwRWNKbmZPMVM4Si1FQlZRVHh5MHZxRlFSWU9paHBVTmZBSW5uR0ZEcnlJeFM1WTNpR1pZMEJ3am1YN3NEVzRZdkZMV2ZibjJqaXZVVU1RNFZINHR1NnVwbnVSWVJxbVJxejRSbDVjZ3E5MFhVUEcwcFVBUFlfeWlfVXJNWjNQOWItNXdCR0J4azhqcTBPZEhOakpaU0p4WElyLW9tQjF0bTdhY9IBuAFBVV95cUxOVHVRVWs4LVJlN1h6cS1ndFVDUE1qU1FNbWtBdHJtS2Z6MUlnYU5ZaUdla202N1FTUVpucDBWd0pxSnJ6c21tQmpsQjloeTNMbHR0MHNReVpwX2lqQmFueU5DdndzR2pzcExZcE5QdEkybFNwdktoMEg3RDdMcE9OZkEyd3hiQ3NBSmFxMUxxbS1UUEplaUU2a0gyQjFXMnpabHl1TzU2dWtwUFMtU0dRQldySVBBZ2Zt?oc=5",
-        "chain": [
-          {
-            "label": "美國公司出口量↓",
-            "type": "down"
-          },
-          {
-            "label": "中國稀土礦業公司出口量↑",
-            "type": "up"
-          },
-          {
-            "label": "美國晶片製造業產能↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "NVIDIA 的 Halos for Robotics",
-        "layer": "AI 應用",
-        "body": "NVIDIA 已經推出 Halos for Robotics，該技術是業界第一個全堆棧安全系統，適用於物理 AI。根據 HPCwire 的報導，NVIDIA 的 Halos for Robotics 技術可以提供高性能和低延遲的 AI 解決方案。截至 2026 年 6 月，NVIDIA 已經與超過 10 家公司合作，開發 Halos for Robotics 的應用。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "NVIDIA 的 Halos for Robotics 是 AI 應用業的重要角色，對於整體的 AI 應用效率和下游客戶的競爭力都有直接的影響。",
-        "source_label": "HPCwire",
-        "source": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQOFBmc04tc1RYaXZNYm5xdG9SSGdVMEowenRLLVNhM19MY2Z3ODFXMmlRVFdoanpJdkFNanFCWEdTS3h4QUZXNDZ2Q09vRnV2MW9UU01XbDVrbUtxOGpfVG1DQ28xTFpiaTZKUmtsRmpOT0YtMjNuOS0zMWd1bGNVODZfV0lpd0c4WGZMUWtoTDNMdFN6T1Y5SVVWd0ZBWXkxNFJwdEFRYW1jZ0Y3MHZ3UWY2b29PZTdxV2NPa1R0NUdXdzJjUVZTRHktOHNIcTRTcUZxcjFn?oc=5",
-        "chain": [
-          {
-            "label": "NVIDIA Halos for Robotics 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "NVIDIA AI 解決方案銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "NVIDIA 市占↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Anthropic 的 Claude in Slack",
-        "layer": "AI 應用",
-        "body": "Anthropic 已經推出 Claude in Slack，該技術是業界第一個全堆棧安全系統，適用於物理 AI。根據 The Register 的報導，Anthropic 的 Claude in Slack 技術可以提供高性能和低延遲的 AI 解決方案。截至 2026 年 6 月，Anthropic 已經與超過 5 家公司合作，開發 Claude in Slack 的應用。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "Anthropic 的 Claude in Slack 是 AI 應用業的重要角色，對於整體的 AI 應用效率和下游客戶的競爭力都有直接的影響。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/06/23/anthropic-reimagines-claude-in-slack-as-nosy-always-on-agentic-ai-coworker/5260422",
-        "chain": [
-          {
-            "label": "Anthropic Claude in Slack 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Anthropic AI 解決方案銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "Slack 整合應用數↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "CoWoS",
-        "full": "Chip-on-Wafer-on-Substrate",
-        "def": "CoWoS 是一種晶片製造技術，將晶片直接封裝在基板上。這種技術可以提高晶片的性能和降低延遲。",
-        "why": "CoWoS 技術對於晶片製造業的影響是直接的。這項技術可以提高晶片的性能和降低延遲，從而提高整體的晶片製造效率。",
         "category": "semiconductor"
       }
     ],
