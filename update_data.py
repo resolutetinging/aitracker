@@ -21,17 +21,18 @@ KNOWN_TERMS = ["HBM","CoWoS","CSP","OSAT","VLA 模型",
 #  1. RSS FEEDS（主要新聞來源，穩定免費）
 # ══════════════════════════════════════════════════════════════════
 RSS_FEEDS = [
-    # ── 硬體供應鏈 & 半導體（高訊噪比）──────────────────────────────
+    # ── 硬體供應鏈 & 半導體（供應鏈投資訊號優先）────────────────────────
     ("Semiconductor", "https://www.theregister.com/headlines.atom"),
     ("Semiconductor", "https://www.eetimes.com/feed/"),                     # 專業半導體業界新聞
-    ("Semiconductor", "https://www.cnbc.com/id/19854910/device/rss/rss.html"),  # CNBC Tech（Micron/NVIDIA 財報常出現）
-    # ── CSP CapEx / 巨頭投資 ────────────────────────────────────────
-    ("CSP/CapEx",    "https://techcrunch.com/category/artificial-intelligence/feed/"),  # TC AI（CapEx 新聞最密集）
-    ("CSP/CapEx",    "https://www.cnbc.com/id/19854910/device/rss/rss.html"),  # 同 CNBC（corp 視角）
-    # ── Agentic / Physical AI / 應用落地 ────────────────────────────
+    ("Semiconductor", "https://www.cnbc.com/id/19854910/device/rss/rss.html"),  # CNBC Tech（財報/投資訊號）
+    # ── 產業採用 / 巨頭投資 ─────────────────────────────────────────
+    ("CSP/CapEx",    "https://techcrunch.com/category/artificial-intelligence/feed/"),
+    ("CSP/CapEx",    "https://www.cnbc.com/id/19854910/device/rss/rss.html"),
+    # ── AI 應用落地（跨行業）─────────────────────────────────────────
     ("App/AI",       "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
     ("App/AI",       "https://feeds.arstechnica.com/arstechnica/technology-lab"),
     ("App/AI",       "https://techcrunch.com/category/artificial-intelligence/feed/"),
+    ("App/AI",       "https://venturebeat.com/category/ai/feed/"),  # 企業 AI 採用與垂直行業落地
 ]
 
 # 硬體供應鏈關鍵字（hw 分類必須命中其中之一）
@@ -53,7 +54,14 @@ AI_KEYWORDS = [
     "microsoft","google","meta","amazon","capex","data center","cloud",
     "agentic","robot","humanoid","physical ai","inference","llm","foundation model",
     "artificial intelligence","machine learning","openai","anthropic","groq",
-    "packaging","wafer","foundry","chiplet","osat"
+    "packaging","wafer","foundry","chiplet","osat",
+    "export control","export ban","restriction","sanction","supply chain","earnings","revenue",
+    # 應用行業關鍵字：企業採用與垂直行業落地
+    "healthcare","hospital","clinical","drug discovery","pharma","diagnosis","medical ai",
+    "autonomous","self-driving","robotaxi","adas","automotive ai",
+    "fintech","fraud","trading","financial services","insurance ai",
+    "manufacturing","industrial","factory","automation","enterprise",
+    "deployment","commercial launch","production","real-world"
 ]
 
 def parse_rss_date(item, ns):
@@ -127,9 +135,10 @@ def fetch_ddg():
         except ImportError:
             return snippets
     queries = [
-        ("硬體供應鏈", "HBM CoWoS TSMC NVIDIA AMD AI chip 2026"),
-        ("CSP資本支出",  "Microsoft Google Meta Amazon AI capex data center 2026"),
-        ("新興應用",     "Agentic AI Physical AI robotics humanoid inference 2026"),
+        ("產業投資",  "AI chip supply chain CapEx capacity investment strategic 2026"),
+        ("出口管制",  "semiconductor export control restriction China supply chain 2026"),
+        ("企業採用",  "enterprise AI deployment healthcare finance manufacturing commercial 2026"),
+        ("應用落地",  "AI product launch real-world deployment industry adoption 2026"),
     ]
     ddgs = DDGS()
     for label, q in queries:
@@ -293,7 +302,7 @@ def make_prompt(news_context, recent_titles=None):
 {recent_str}
 {notes_context}
 
-分類：hw=半導體/封裝(CoWoS/OSAT/HBM)/晶片製造；corp=CSP(MS/Google/Meta/Amazon)CapEx/投資；app=Agentic AI/Physical AI/VLA/推論落地
+分類：hw=AI基礎設施供應鏈投資訊號（CoWoS/HBM/OSAT/Fab產能承諾、策略供應商決策、出口管制地緣影響，偏重資金承諾而非技術規格，不含GPU架構分析或晶片效能比較）；corp=產業AI採用訊號（CSP CapEx、大型企業AI合約、垂直行業部署醫療/汽車/金融/製造，商業化里程碑，不含股價）；app=現實世界AI應用推進（已落地產品、跨行業部署醫療/金融/製造/法律/創意/教育/物流，可量化商業成果，偏重已推出產品而非研究宣告）
 
 格式（每區2-4條，無相關新聞則1條noise）：
 {{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[{{"title":"標題","layer":"封裝層/記憶體層/晶圓製造/散熱層","body":"3句含數字摘要","chain":[{{"label":"TSMC 議價能力↑","type":"up"}},{{"label":"AMD 交期拉長↓","type":"down"}},{{"label":"SK Hynix ASP↑","type":"up"}}],"rating":"core","insight":"供應鏈投資者視角","source_label":"來源","source":"url"}}],"corp":[同格式,layer:需求端/CapEx決策/財報訊號/平台戰略],"app":[同格式,layer:Agentic AI/Physical AI/VLA模型/推論部署],"glossary_new":[{{"term":"","full":"","def":"","why":"","category":"semiconductor/ai_technique/hardware/role"}}],"weekly_summary":{weekly_val}}}
@@ -492,6 +501,15 @@ FORBIDDEN_PATS = [
     re.compile(r'它可以增加.{1,20}的.{1,20}能力和市場份額'),
     re.compile(r'對下游的.{1,30}需求產生正面的影響'),
     re.compile(r'競爭對手.{1,30}難以跟上.{1,20}的技術進步'),
+    # 空洞能力描述套話（無具體新聞事件）
+    re.compile(r'人工智慧(?:可以|能夠|將可以).{0,20}(?:提高|改善|增強|優化).{0,20}(?:性能|效率|可靠性|安全性)'),
+    re.compile(r'AI(?:可以|能夠|將可以).{0,20}(?:提高|改善|增強|優化).{0,20}(?:性能|效率|可靠性|安全性)'),
+    # 廣泛採用預測套話（無具體公司/數字）
+    re.compile(r'預計在20\d\d年.{0,10}前.{0,10}(?:被廣泛|大規模)(?:採用|应用|应用)'),
+    re.compile(r'(?:廣泛|大規模)採用.{0,20}預計在20\d\d'),
+    # 「等公司已經開始使用/採用 AI 技術」幻覺採用聲明
+    re.compile(r'等(?:公司|企業).{0,10}已(?:經|).{0,10}(?:開始使用|採用|导入|導入).{0,20}(?:人工智慧|AI|技術)'),
+    re.compile(r'(?:已|開始).{0,5}(?:廣泛|大量).{0,10}(?:使用|採用|部署).{0,10}(?:人工智慧|AI)技術'),
 ]
 
 def downgrade_forbidden_phrases(data):

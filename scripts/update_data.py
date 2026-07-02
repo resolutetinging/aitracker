@@ -24,22 +24,21 @@ KNOWN_TERMS = ["HBM","CoWoS","CSP","OSAT","VLA 模型",
 #  1. RSS FEEDS（主要新聞來源，穩定免費）
 # ══════════════════════════════════════════════════════════════════
 RSS_FEEDS = [
-    # ── 硬體供應鏈 & 半導體（精準來源優先）────────────────────────────
+    # ── 硬體供應鏈 & 半導體（供應鏈投資訊號優先）───────────────────────
     ("Semiconductor", "https://semiengineering.com/feed/"),
     ("Semiconductor", "https://www.eetimes.com/feed/"),
-    ("Semiconductor", "https://www.anandtech.com/rss/"),          # GPU/memory 評測與產業分析
     ("Semiconductor", "https://www.digitimes.com/rss/"),          # 台灣供應鏈第一手
-    ("Semiconductor", "https://www.tomshardware.com/feeds/all"),
     ("Semiconductor", "https://www.theregister.com/headlines.atom"),
     ("Semiconductor", "https://www.cnbc.com/id/19854910/device/rss/rss.html"),  # Micron/NVIDIA 財報
-    # ── CSP CapEx / 巨頭投資 ─────────────────────────────────────────
+    # ── 產業採用 / 巨頭投資 ──────────────────────────────────────────
     ("CSP/CapEx",    "https://www.datacenterdynamics.com/en/rss/"),
     ("CSP/CapEx",    "https://techcrunch.com/category/artificial-intelligence/feed/"),
     ("CSP/CapEx",    "https://www.cnbc.com/id/19854910/device/rss/rss.html"),
-    # ── Agentic / Physical AI / 應用落地 ─────────────────────────────
+    # ── AI 應用落地（跨行業）──────────────────────────────────────────
     ("App/AI",       "https://feeds.arstechnica.com/arstechnica/technology-lab"),
     ("App/AI",       "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
     ("App/AI",       "https://techcrunch.com/category/artificial-intelligence/feed/"),
+    ("App/AI",       "https://venturebeat.com/category/ai/feed/"),  # 企業 AI 採用與垂直行業落地
 ]
 
 # 硬體供應鏈關鍵字（hw 分類必須命中其中之一）
@@ -65,7 +64,13 @@ AI_KEYWORDS = [
     "artificial intelligence","machine learning","openai","anthropic","groq",
     "packaging","wafer","foundry","chiplet","osat",
     "export control","export ban","restriction","sanction","supply chain","earnings","revenue",
-    "computex","ces","gtc"  # 展會關鍵字：避免展覽期間大量相關新聞被過濾掉
+    "computex","ces","gtc",  # 展會關鍵字
+    # 應用行業關鍵字：企業採用與垂直行業落地
+    "healthcare","hospital","clinical","drug discovery","pharma","diagnosis","medical ai",
+    "autonomous","self-driving","robotaxi","adas","automotive ai",
+    "fintech","fraud","trading","financial services","insurance ai",
+    "manufacturing","industrial","factory","automation","enterprise",
+    "deployment","commercial launch","production","real-world"
 ]
 
 # 高信號關鍵字：公司/產品名或財務詞，出現代表有實質新聞素材
@@ -179,10 +184,10 @@ def fetch_ddg():
         except ImportError:
             return snippets
     queries = [
-        ("硬體供應鏈", "HBM CoWoS TSMC NVIDIA AMD AI chip 2026"),
-        ("出口管制",   "semiconductor export control restriction China ban supply chain 2026"),
-        ("CSP資本支出",  "Microsoft Google Meta Amazon AI capex data center 2026"),
-        ("新興應用",     "Agentic AI Physical AI robotics humanoid inference 2026"),
+        ("產業投資",  "AI chip supply chain CapEx capacity investment strategic 2026"),
+        ("出口管制",  "semiconductor export control restriction China supply chain 2026"),
+        ("企業採用",  "enterprise AI deployment healthcare finance manufacturing commercial 2026"),
+        ("應用落地",  "AI product launch real-world deployment industry adoption 2026"),
     ]
     ddgs = DDGS()
     for label, q in queries:
@@ -304,9 +309,9 @@ NEWS:
 {news_short}
 
 CATEGORIES:
-- hw: semiconductor/packaging (CoWoS/OSAT/HBM)/chip manufacturing only
-- corp: CSP (Microsoft/Google/Meta/Amazon/AWS) CapEx, AI investment, earnings signals only — NOT stock prices
-- app: Agentic AI, Physical AI, VLA, inference deployment
+- hw: AI infrastructure supply chain signals — capacity commitments (CoWoS/HBM/OSAT/fab), strategic supplier decisions, export controls that shift production geography; prioritize financial/strategic signals over technical specifications; NOT GPU architecture analysis, chip benchmark comparisons, or speculative roadmap commentary
+- corp: industry AI adoption signals — CSP CapEx, major enterprise AI contracts, vertical-sector deployments (healthcare/automotive/finance/manufacturing) by large incumbents, model commercialization milestones that show where AI is being adopted at scale; NOT stock prices
+- app: real-world AI application advances — deployed products and services across any industry (healthcare, finance, manufacturing, legal, creative, education, logistics), measurable commercial traction, new business models enabled by AI; prefer concrete launched products over research-stage announcements
 
 OUTPUT FORMAT:
 {{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[ITEMS],"corp":[ITEMS],"app":[ITEMS],"glossary_new":[{{"term":"","full":"","def":"2-3 sentences","why":"why it matters","category":"semiconductor|ai_technique|hardware|role"}}],"weekly_summary":{weekly_val}}}
@@ -549,6 +554,15 @@ FORBIDDEN_PATS = [
     re.compile(r'它可以增加.{1,20}的.{1,20}能力和市場份額'),
     re.compile(r'對下游的.{1,30}需求產生正面的影響'),
     re.compile(r'競爭對手.{1,30}難以跟上.{1,20}的技術進步'),
+    # 空洞能力描述套話（無具體新聞事件）
+    re.compile(r'人工智慧(?:可以|能夠|將可以).{0,20}(?:提高|改善|增強|優化).{0,20}(?:性能|效率|可靠性|安全性)'),
+    re.compile(r'AI(?:可以|能夠|將可以).{0,20}(?:提高|改善|增強|優化).{0,20}(?:性能|效率|可靠性|安全性)'),
+    # 廣泛採用預測套話（無具體公司/數字）
+    re.compile(r'預計在20\d\d年.{0,10}前.{0,10}(?:被廣泛|大規模)(?:採用|应用|应用)'),
+    re.compile(r'(?:廣泛|大規模)採用.{0,20}預計在20\d\d'),
+    # 「等公司已經開始使用/採用 AI 技術」幻覺採用聲明
+    re.compile(r'等(?:公司|企業).{0,10}已(?:經|).{0,10}(?:開始使用|採用|导入|導入).{0,20}(?:人工智慧|AI|技術)'),
+    re.compile(r'(?:已|開始).{0,5}(?:廣泛|大量).{0,10}(?:使用|採用|部署).{0,10}(?:人工智慧|AI)技術'),
 ]
 
 def _contains_stale_date(text: str) -> bool:
