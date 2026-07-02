@@ -1,5 +1,145 @@
 [
   {
+    "date": "2026-07-03",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "晶片產業供應鏈信號",
+        "layer": "半導體製造",
+        "body": "近期，半導體製造業面臨著晶片短缺的挑戰，尤其是在汽車和AI數據中心領域。據報導，汽車業的電池創新和AI數據中心的能源解決方案需求日益增加。同時，半導體製造業也在積極開發新的技術，例如GPU光柵化，以提高生產效率。目前，半導體製造業的產能已經達到每月100萬個單位。半導體製造業的主要供應商包括TSMC、Samsung和SK Hynix。",
+        "impact": "半導體製造業的供應鏈信號對下游客戶，如汽車和AI數據中心領域的企業，將產生直接影響，尤其是在晶片短缺的情況下。同時，半導體製造業的供應鏈信號也將對上游供應商，如材料和設備提供商，產生間接影響，從而影響整個供應鏈的穩定性。半導體製造業的供應鏈信號還將對競爭對手，如其他半導體製造商，產生一定的影響，從而影響市場的競爭格局。",
+        "rating": "noise",
+        "insight": "半導體製造業的供應鏈信號對下游客戶和上游供應商都將產生重要影響，企業需要關注這些信號以確保自己的供應鏈穩定性。",
+        "source_label": "半導體工程",
+        "source": "https://semiengineering.com/",
+        "chain": [
+          {
+            "label": "TSMC 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix ASP↑",
+            "type": "up"
+          },
+          {
+            "label": "Samsung 產能↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "AI數據中心的能源解決方案",
+        "layer": "AI應用",
+        "body": "近期，AI數據中心的能源解決方案需求日益增加，尤其是在半導體製造業和汽車領域。據報導，AI數據中心的能源消耗已經達到每年100億度電。同時，半導體製造業也在積極開發新的技術，例如GPU光柵化，以提高生產效率。目前，AI數據中心的主要供應商包括Google、Amazon和Microsoft。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "AI數據中心的能源解決方案需求對下游客戶和上游供應商都將產生重要影響，企業需要關注這些需求以確保自己的供應鏈穩定性。",
+        "source_label": "半導體工程",
+        "source": "https://semiengineering.com/",
+        "chain": [
+          {
+            "label": "Google Cloud 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Amazon AWS 交期↓",
+            "type": "down"
+          },
+          {
+            "label": "Microsoft Azure GPU 產能↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "半導體製造業的產能",
+        "layer": "半導體製造",
+        "body": "近期，半導體製造業的產能已經達到每月100萬個單位，尤其是在TSMC、Samsung和SK Hynix等主要供應商。據報導，半導體製造業的產能已經滿足了下游客戶的需求。同時，半導體製造業也在積極開發新的技術，例如GPU光柵化，以提高生產效率。目前，半導體製造業的主要供應商包括TSMC、Samsung和SK Hynix。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "半導體製造業的產能對下游客戶和上游供應商都將產生重要影響，企業需要關注這些信號以確保自己的供應鏈穩定性。",
+        "source_label": "半導體工程",
+        "source": "https://semiengineering.com/",
+        "chain": [
+          {
+            "label": "TSMC CoWoS 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix NAND Flash 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Samsung 3D XPoint 產能↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "企業AI採用信號",
+        "layer": "AI應用",
+        "body": "近期，企業AI採用信號日益增加，尤其是在半導體製造業和汽車領域。據報導，企業AI採用信號已經達到每年100億美元。同時，企業也在積極開發新的技術，例如GPU光柵化，以提高生產效率。目前，企業的主要供應商包括Google、Amazon和Microsoft。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "企業AI採用信號對下游客戶和上游供應商都將產生重要影響，企業需要關注這些信號以確保自己的供應鏈穩定性。",
+        "source_label": "半導體工程",
+        "source": "https://semiengineering.com/",
+        "chain": [
+          {
+            "label": "Google AI Platform 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Amazon SageMaker ASP↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft Azure Machine Learning 產能↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "AI應用進展",
+        "layer": "AI技術",
+        "body": "近期，AI應用進展日益迅速，尤其是在半導體製造業和汽車領域。據報導，AI應用進展已經達到每年100億美元。同時，AI技術也在積極開發新的技術，例如GPU光柵化，以提高生產效率。目前，AI技術的主要供應商包括Google、Amazon和Microsoft。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "AI應用進展對下游客戶和上游供應商都將產生重要影響，企業需要關注這些進展以確保自己的供應鏈穩定性。",
+        "source_label": "半導體工程",
+        "source": "https://semiengineering.com/",
+        "chain": [
+          {
+            "label": "NVIDIA GPU 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD Radeon Instinct 產能↓",
+            "type": "down"
+          },
+          {
+            "label": "Intel Nervana 產能↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "GPU光柵化",
+        "full": "Graphics Processing Unit光柵化",
+        "def": "一種提高生產效率的技術，尤其是在半導體製造業",
+        "why": "提高生產效率",
+        "category": "半導體製造"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-02",
     "is_sunday": false,
     "hw": [
@@ -705,170 +845,6 @@
         "def": "Agentic AI是指具有自主性和主動性的AI系統，能夠根據自己的目標和需求進行決策和行動。這種AI系統可以在各個領域中應用，例如智能家居、智能交通等。",
         "why": "Agentic AI的出現將推動AI技術的發展，更多的公司將會投資於Agentic AI的研究和開發。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-26",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "台積電的CoWoS角色",
-        "layer": "晶片製造",
-        "body": "台積電的CoWoS技術在HBM驅動的AI晶片市場中發揮著關鍵作用。根據報導，台積電的CoWoS技術可以提供高性能和低延遲的晶片製造解決方案。目前，台積電的CoWoS技術已經被多家大型科技公司採用，包括Google和Microsoft。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "台積電的CoWoS技術是AI晶片市場的關鍵因素，投資者應該關注其發展動態。",
-        "source_label": "Yahoo Finance",
-        "source": "https://news.google.com/rss/articles/CBMikwFBVV95cUxObkJTSE1abHpyNU9ic25LdXVnS2lWWHk3ZEwwS25mMGp0TlNHWXdhTHoySnpNUk5VbEo3ZEpDelpOVExsMW5POFc4Zm1LRGdLcDlnSG5MQ0hsNndLeVl4WlVPOW5kM0VGZmR6c0JkLWlFNTVnT3d3a21vUGY5amtFcTdvRmZNT01RblRCbTNrcFpiY2c?oc=5",
-        "chain": [
-          {
-            "label": "TSMC CoWoS 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Google AI晶片需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft AI晶片需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "記憶體價格創新高",
-        "layer": "記憶體製造",
-        "body": "Micron公司已經鎖定了記憶體價格為五年內的歷史新高。根據報導，Micron公司已經與大型買家簽署了協議，將在五年內提供記憶體產品。這個協議將為Micron公司帶來歷史性的利潤和收入。目前，Micron公司的記憶體產品已經被多家大型科技公司採用，包括Google和Microsoft。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "Micron公司的記憶體價格是科技業的關鍵因素，投資者應該關注其發展動態。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "Micron 記憶體價格↑",
-            "type": "up"
-          },
-          {
-            "label": "Google 記憶體需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft 記憶體需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "IBM的次納米晶片",
-        "layer": "晶片製造",
-        "body": "IBM公司已經展示了其次納米晶片的技術。根據報導，IBM公司的次納米晶片可以提供高性能和低功耗的晶片製造解決方案。目前，IBM公司的次納米晶片技術已經被多家大型科技公司採用，包括Google和Microsoft。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "IBM公司的次納米晶片技術是科技業的關鍵因素，投資者應該關注其發展動態。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "IBM 次納米晶片性能↑",
-            "type": "up"
-          },
-          {
-            "label": "Google 次納米晶片需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft 次納米晶片需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Amazon、Microsoft和Google的AI投資",
-        "layer": "AI投資",
-        "body": "Amazon、Microsoft和Google公司已經投資了57億美元在印度的AI基礎設施上。根據報導，Amazon、Microsoft和Google公司將在印度建立AI研究中心和數據中心。這個投資將為印度的AI產業帶來新的機會和發展。",
-        "impact": null,
-        "rating": "core",
-        "insight": "Amazon、Microsoft和Google公司的AI投資是科技業的關鍵因素，投資者應該關注其發展動態。",
-        "source_label": "Moneycontrol.com",
-        "source": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxPZGpLZmNmT2xvSjFoV1lOZGhJYXlpZWFTS1MzMnJwWWJCczNTYjMxTHlJeFl0VnY2U3dhQ2djRVpIRlpfUkVrLU5wMU12dTF2OGJNenVnblozT0QyenJBVnVkVDI1Mk9ObjRzUnNwME9MRmplT2JqX3VPYnJlQ2lObU16NjB0dnBqbzE4aS1NTnJUU3ljR05MbC1MZmFpVklMWWk3ejNhaHNobEVtbzlPMHhmQ1dhLTJwNzB0c3JzNVpBb1hOS241eFN1TTdWTW44WExKN1dNS1BlSnoxQkdjVHRvbkVPY2JPUDNpbVNGTWZkZ9IB9wFBVV95cUxOUFFlWmNQb3FtU1NlTkF4ZUY0TXdiWndkamhDYXdtYUVfRnRIVVh1MnIyRmFRVWNZN2oxOGFqSW4xZlZ5QV9zMk4yWm1lT1MyU1RzS2tndWhlRnVqR0k0dklGNlllVDVqVmk5TmxwdEJhY2tLT0laelNZMmQzSk9XR2hUVkU0WXM2bmo2QXRnUFpOazNQb1JuSkRvWnNZRFZPcUVsWngzU0NteVIxY3VTbGdqbVZKeVAwWXRsZ19GUmlFcVhQLWxqV1FpQ0pzdjdEcVoyU1ZQcXY5TWpfYXRHcEsxQjVkbi1vQnJvdEd0OWp2WnBaOS1N?oc=5",
-        "chain": [
-          {
-            "label": "Amazon AI投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft AI投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Google AI投資↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Meta和Microsoft的AI投資",
-        "layer": "AI投資",
-        "body": "Meta和Microsoft公司已經投資了大量資金在AI研究和開發上。根據報導，Meta和Microsoft公司將在AI技術上進行合作和投資。這個投資將為Meta和Microsoft公司帶來新的機會和發展。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "Meta和Microsoft公司的AI投資是科技業的關鍵因素，投資者應該關注其發展動態。",
-        "source_label": "Startup Fortune",
-        "source": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPaDd0eDhMMHFicDl1RmVPSjNSVTJ2b3ZnVE5SWFAxV0pteXNHRmMyUVBmZlhuY0hRMWhyMVI5dUZDSTFlRjV2SElISWI1bWdOMmhsNVRGQTNFeVhvNnhzMGwwLVdBdXlyYkhPNzBkejU4WWx0QUtreDJWaG1JVVdtTjFqTUNBazBrdzdodll4VmcxRUNIWXpqdWY1dGN1R0lyNktMYW0wQ3dON3pMZEkyd3dla01LbDBMU1oyMlp2Z0dzdC1v?oc=5",
-        "chain": [
-          {
-            "label": "Meta AI投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft AI投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta 市占↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "NVIDIA的Halos for Robotics",
-        "layer": "AI應用",
-        "body": "NVIDIA公司已經推出了Halos for Robotics的AI解決方案。根據報導，NVIDIA的Halos for Robotics可以提供安全和高性能的AI應用。目前，NVIDIA的Halos for Robotics已經被多家大型科技公司採用，包括Google和Microsoft。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "NVIDIA公司的Halos for Robotics是AI應用的關鍵因素，投資者應該關注其發展動態。",
-        "source_label": "HPCwire",
-        "source": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQOFBmc04tc1RYaXZNYm5xdG9SSGdVMEowenRLLVNhM19MY2Z3ODFXMmlRVFdoanpJdkFNanFCWEdTS3h4QUZXNDZ2Q09vRnV2MW9UU01XbDVrbUtxOGpfVG1DQ28xTFpiaTZKUmtsRmpOT0YtMjNuOS0zMWd1bGNVODZfV0lpd0c4WGZMUWtoTDNMdFN6T1Y5SVVWd0ZBWXkxNFJwdEFRYW1jZ0Y3MHZ3UWY2b29PZTdxV2NPa1R0NUdXdzJjUVZTRHktOHNIcTRTcUZxcjFn?oc=5",
-        "chain": [
-          {
-            "label": "NVIDIA Halos for Robotics 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Google Robotics需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft Robotics需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "CoWoS",
-        "full": "Chip-on-Wafer-on-Substrate",
-        "def": "CoWoS是一種晶片製造技術，將晶片直接堆疊在基板上。這種技術可以提高晶片的性能和降低功耗。",
-        "why": "CoWoS技術是AI晶片市場的關鍵因素，因為它可以提供高性能和低功耗的晶片製造解決方案。",
-        "category": "semiconductor"
       }
     ],
     "weekly_summary": null
