@@ -6,39 +6,47 @@
       {
         "title": "人形機器人視覺和運動技術進展",
         "layer": "晶片",
-        "body": "Infineon Technologies 的 Adam White 表示，人形機器人可以分解為多個元素，包括主計算、區域控制、馬達控制、電池、充電和環境感知。人形機器人類似於汽車，需要區域控制和功能安全。人形機器人技術的進展將使其能夠在各種環境中安全地移動，包括醫院和家庭。",
+        "body": "人形機器人仍需改善其在各種環境中的安全移動能力，包括醫院和家庭。目前，攝像頭和雷達技術已能提供良好的視覺效果，但仍需要進一步改善以避免事故。Infineon Technologies 的 Adam White 表示，機器人可以分解為多個元素，包括主計算、區域控制、馬達控制、電池、充電和環境感知等。",
         "impact": null,
         "rating": "noise",
-        "insight": "人形機器人技術的進展將使其能夠在各種環境中安全地移動，推動相關產業的發展。",
-        "source_label": "SemiEngineering",
+        "insight": "人形機器人視覺和運動技術的進展將推動晶片供應鏈的發展和創新。",
+        "source_label": "semiengineering",
         "source": "https://semiengineering.com/fine-tuning-humanoid-vision-and-movement/",
         "chain": [
           {
-            "label": "Infineon Technologies 產能↑",
+            "label": "Infineon Technologies 主計算能力↑",
             "type": "up"
           },
           {
-            "label": "人形機器人技術應用↑",
+            "label": "攝像頭技術視覺效果↑",
+            "type": "up"
+          },
+          {
+            "label": "雷達技術感知能力↑",
             "type": "up"
           }
         ]
       },
       {
-        "title": "Anthropic 將移除隱藏代碼",
+        "title": "AI 驅動的勒索軟件攻擊",
         "layer": "晶片",
-        "body": "Anthropic 將移除其 Claude Code 系統中的隱藏代碼，該代碼是用於防止未經授權的複製和銷售。Anthropic 的工程師 Thariq Shihipar 表示，該代碼將在 7 月 1 日被移除。",
+        "body": "Sysdig 的研究團隊發現了一種新的 AI 驅動的勒索軟件攻擊，該攻擊利用 Langflow 實例的漏洞進行攻擊。該攻擊被稱為 JadePuffer，具有自我敘述和目標優先的能力。",
         "impact": null,
         "rating": "noise",
-        "insight": "Anthropic 將移除隱藏代碼的決定將保護其智慧財產權，推動 AI 模型的開發和銷售。",
-        "source_label": "—",
-        "source": "",
+        "insight": "AI 驅動的勒索軟件攻擊將推動晶片供應鏈的安全性和創新。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/security/2026/07/02/smooth-ai-criminal-drives-first-end-to-end-agentic-ransomware-attack/5266073",
         "chain": [
           {
-            "label": "Anthropic Claude Code 系統安全性↑",
+            "label": "Sysdig 研究團隊發現能力↑",
             "type": "up"
           },
           {
-            "label": "Anthropic 客戶信任↑",
+            "label": "Langflow 實例漏洞利用↑",
+            "type": "up"
+          },
+          {
+            "label": "JadePuffer 攻擊能力↑",
             "type": "up"
           }
         ]
@@ -47,24 +55,24 @@
     "corp": [
       {
         "title": "Google 計劃在南非建立連接中心",
-        "layer": "CSP",
-        "body": "Google 計劃在南非建立四個連接中心，作為其「Building for Africa」計畫的一部分。該連接中心將作為國際交換點，連接非洲和其他洲。",
-        "impact": null,
+        "layer": "企業",
+        "body": "Google 宣布計劃在南非建立四個連接中心，作為其「Building for Africa」計畫的一部分。這些連接中心將作為數字交換港，直接連接非洲和澳洲、印度等地區。",
+        "impact": "Google 的連接中心計畫將直接影響企業的供應鏈，特別是數據中心和雲計算服務的需求。同時，該計畫也將間接影響相關的上游供應商，例如數據中心和雲計算服務提供商。最後，Google 的連接中心計畫也將對下游的行業，例如金融和服務業，產生一定的影響。",
         "rating": "noise",
-        "insight": "Google 在南非建立連接中心的決定將拓展其在非洲的市場份額，推動雲計算和網際網路服務的發展。",
-        "source_label": "未知",
-        "source": "",
+        "insight": "Google 的連接中心計畫將推動企業的供應鏈和創新。",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/esds/",
         "chain": [
           {
-            "label": "Google 連接中心建設↑",
+            "label": "Google 連接中心數量↑",
             "type": "up"
           },
           {
-            "label": "非洲國際交換點數量↑",
+            "label": "非洲數字交換能力↑",
             "type": "up"
           },
           {
-            "label": "Google 在非洲市場份額↑",
+            "label": "Google Building for Africa 計畫進展↑",
             "type": "up"
           }
         ]
@@ -74,7 +82,7 @@
       {
         "title": "今日無相關應用新聞",
         "layer": "應用",
-        "body": "今日無相關應用新聞。",
+        "body": "今日該分類無足夠具體新聞素材可供分析。",
         "impact": "",
         "rating": "noise",
         "insight": "",
@@ -86,8 +94,15 @@
       {
         "term": "人形機器人",
         "full": "Humanoid Robot",
-        "def": "一種類似人類的機器人，具有人類的外貌和運動能力。",
-        "why": "人形機器人技術的進展將使其能夠在各種環境中安全地移動，推動相關產業的發展。",
+        "def": "一種模擬人類外觀和運動的機器人",
+        "why": "人形機器人可以模擬人類的運動和感知，具有廣泛的應用前景",
+        "category": "晶片"
+      },
+      {
+        "term": "AI 驅動的勒索軟件攻擊",
+        "full": "AI-Driven Ransomware Attack",
+        "def": "一種利用 AI 技術進行的勒索軟件攻擊",
+        "why": "AI 驅動的勒索軟件攻擊具有自我敘述和目標優先的能力，對企業和個人構成重大威脅",
         "category": "晶片"
       }
     ],
