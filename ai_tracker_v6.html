@@ -499,7 +499,10 @@ function chainHtml(chain) {
 }
 
 function isNoiseEmpty(item) {
-  return item.rating === 'noise';
+  // 只隱藏「完全沒有內容」的空白佔位（無 body），不再因 rating==='noise' 整張藏起來——
+  // noise 只是品質標記，內容本身可能是使用者已經讀過/做過筆記研究的真實新聞，
+  // email 推送從不篩選 rating，html 也應該顯示一致，只用 NOISE 徽章標示，不隱藏。
+  return !item.body || !item.body.trim();
 }
 function visibleItems(arr) { return (arr || []).filter(i => !isNoiseEmpty(i)); }
 function newsGrid(arr, ptype) {
@@ -511,6 +514,8 @@ function newsGrid(arr, ptype) {
 
 function newsCard(item, ptype) {
   const tc = ptype==='hw'?'tag-hw':ptype==='corp'?'tag-corp':'tag-app';
+  const noiseBadge = item.rating === 'noise'
+    ? `<span class="tag" style="background:rgba(104,100,96,.12);color:var(--muted);border:1px solid rgba(104,100,96,.3);">NOISE</span>` : '';
   const eth = item.ethic
     ? `<div class="ethic-alert">⚠️ <strong>Safety Alert</strong>：${item.ethic}</div>` : '';
   const validUrl = item.source && /^https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i.test(item.source);
@@ -524,7 +529,7 @@ function newsCard(item, ptype) {
            <div class="impact-chain">${chainHtml(item.chain)}</div></div>`
         : '');
   return `<div class="news-card ${ptype}">
-    <div class="card-top"><div class="card-title">${item.title}</div><span class="tag ${tc}">${item.layer}</span></div>
+    <div class="card-top"><div class="card-title">${item.title}</div><span class="tag ${tc}">${item.layer}</span>${noiseBadge}</div>
     <div class="card-body">${fmtBody(item.body)}</div>${eth}${impactBox}${src}
   </div>`;
 }
