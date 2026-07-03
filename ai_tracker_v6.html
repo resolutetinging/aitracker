@@ -1837,5 +1837,32 @@ async function init() {
 
 init();
 </script>
+<script>
+// 使用頻率追蹤（累積前景停留時間，供 Control Center Dev Dashboard「使用頻率」讀取）
+(function(){
+  var _ccKey='aitracker',_ccLabel='AI Tracker';
+  var _ccStart=Date.now(),_ccActive=(document.visibilityState!=='hidden');
+  function _ccFlush(){
+    if(!_ccActive)return;
+    var elapsed=Date.now()-_ccStart;
+    if(elapsed<1000)return;
+    try{
+      var stats=JSON.parse(localStorage.getItem('cc_usage_stats')||'{}');
+      if(!stats[_ccKey])stats[_ccKey]={label:_ccLabel,ms:0};
+      stats[_ccKey].ms=(stats[_ccKey].ms||0)+elapsed;
+      stats[_ccKey].label=_ccLabel;
+      localStorage.setItem('cc_usage_stats',JSON.stringify(stats));
+    }catch(e){}
+    _ccStart=Date.now();
+  }
+  document.addEventListener('visibilitychange',function(){
+    if(document.visibilityState==='hidden'){_ccFlush();_ccActive=false;}
+    else{_ccStart=Date.now();_ccActive=true;}
+  });
+  window.addEventListener('beforeunload',_ccFlush);
+  window.addEventListener('pagehide',_ccFlush);
+  setInterval(_ccFlush,30000);
+})();
+</script>
 </body>
 </html>
