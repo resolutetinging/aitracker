@@ -368,6 +368,7 @@ RULES:
 - ONE STORY PER CARD (critical): each item covers exactly one news event or announcement; if the source contains 2 unrelated stories, create 2 separate items; NEVER mix multiple unrelated events into one body — doing so is a format error
 - body: all 3 sentences describe different factual dimensions of THE SAME event; they must NOT introduce a second unrelated story; each sentence must contain a specific number, date, company name, or product name from the source; if the source does not provide enough facts for 3 distinct sentences about one event, rate it noise
 - body FORBIDDEN: never write "這是X的重要趨勢" / "這將推動X發展" / "可能會帶來新的機會" — these add no facts; never combine two unrelated companies or events in the same body
+- body GENERIC REASONING FORBIDDEN: if you only have ONE concrete fact from the source, do NOT pad the remaining sentences with generic economic-impact reasoning that could apply to any company ("將迫使競爭對手提高服務質量和降低價格", "預計將創造大量的就業機會", "投資者應該關注...的發展", "對使用者/企業產生競爭壓力") — these are template filler, not facts; sentence 2 and 3 MUST cite a different concrete detail from the source text (another number, date, named entity, or quote) — if the source genuinely offers only one fact, rate the item noise instead of padding
 - SOURCE REQUIREMENT: every core or opp item MUST have a SOURCE_URL from the news; if no SOURCE_URL exists for a story, you MUST rate it noise — never assign core/opp to unsourced items
 - HALLUCINATION IS FORBIDDEN: do not combine unrelated companies or technologies; every company-technology pairing must come directly from the news text
 - FORBIDDEN ADOPTION CLAIM: NEVER write that a major platform company (Google/Microsoft/Amazon/Meta/Apple/Nvidia) "has adopted", "is using", or "already uses" technology from a smaller/startup company unless the source article EXPLICITLY names that platform company as a confirmed customer, partner, or evaluator — inference-based adoption claims are hallucinations and will be rejected
@@ -608,6 +609,11 @@ FORBIDDEN_PATS = [
     # 「等公司已經開始使用/採用 AI 技術」幻覺採用聲明
     re.compile(r'等(?:公司|企業).{0,10}已(?:經|).{0,10}(?:開始使用|採用|导入|導入).{0,20}(?:人工智慧|AI|技術)'),
     re.compile(r'(?:已|開始).{0,5}(?:廣泛|大量).{0,10}(?:使用|採用|部署).{0,10}(?:人工智慧|AI)技術'),
+    # 通用經濟影響套話（任何公司新聞都套得上，非具體事實）
+    re.compile(r'提高.{0,4}(?:服務)?(?:質量|品質).{0,4}和降低.{0,4}(?:服務)?價格'),
+    re.compile(r'創造大量的?就業機會'),
+    re.compile(r'投資者應該關注.{0,20}(?:市場的)?發展'),
+    re.compile(r'產生競爭壓力.{0,10}迫使'),
 ]
 
 def _contains_stale_date(text: str) -> bool:
