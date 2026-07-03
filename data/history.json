@@ -6,71 +6,65 @@
       {
         "title": "人形機器人視覺和運動技術進展",
         "layer": "晶片",
-        "body": "Infineon Technologies 的 Adam White 表示，機器人可以分解為多個元素，包括主計算、區域控制、馬達控制、電池、充電和環境感知。人形機器人是一種物理 AI，技術正在每個領域進步，從先進計算到微型化感測器。",
+        "body": "Infineon Technologies 的 Adam White 表示，人形機器人可以分解為多個元素，包括主計算、區域控制、馬達控制、電池、充電和環境感知。人形機器人類似於汽車，需要區域控制和功能安全。人形機器人技術的進展將使其能夠在各種環境中安全地移動，包括醫院和家庭。",
         "impact": null,
         "rating": "noise",
-        "insight": "人形機器人技術的進展可能會推動 AI 在各個領域的應用和發展。",
+        "insight": "人形機器人技術的進展將使其能夠在各種環境中安全地移動，推動相關產業的發展。",
         "source_label": "SemiEngineering",
         "source": "https://semiengineering.com/fine-tuning-humanoid-vision-and-movement/",
         "chain": [
           {
-            "label": "Infineon Technologies 主計算能力↑",
+            "label": "Infineon Technologies 產能↑",
             "type": "up"
           },
           {
-            "label": "Infineon Technologies 感測器微型化↑",
+            "label": "人形機器人技術應用↑",
             "type": "up"
           }
         ]
       },
       {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日該分類無足夠具體新聞素材可供分析。",
-        "impact": "",
+        "title": "Anthropic 將移除隱藏代碼",
+        "layer": "晶片",
+        "body": "Anthropic 將移除其 Claude Code 系統中的隱藏代碼，該代碼是用於防止未經授權的複製和銷售。Anthropic 的工程師 Thariq Shihipar 表示，該代碼將在 7 月 1 日被移除。",
+        "impact": null,
         "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
+        "insight": "Anthropic 將移除隱藏代碼的決定將保護其智慧財產權，推動 AI 模型的開發和銷售。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "Anthropic Claude Code 系統安全性↑",
+            "type": "up"
+          },
+          {
+            "label": "Anthropic 客戶信任↑",
+            "type": "up"
+          }
+        ]
       }
     ],
     "corp": [
       {
-        "title": "Google 計劃在南非東開普省建立連接中心",
+        "title": "Google 計劃在南非建立連接中心",
         "layer": "CSP",
-        "body": "Google 宣布計劃在非洲建立四個連接中心，作為其「為非洲而建」努力的一部分。第一個中心將位於南非東開普省，將直接連接到澳大利亞和印度，支持非洲的互聯網連接。",
+        "body": "Google 計劃在南非建立四個連接中心，作為其「Building for Africa」計畫的一部分。該連接中心將作為國際交換點，連接非洲和其他洲。",
         "impact": null,
         "rating": "noise",
-        "insight": "Google 的連接中心計劃可能會推動非洲的數字經濟發展和互聯網連接。",
-        "source_label": "DatacenterDynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/esds/",
+        "insight": "Google 在南非建立連接中心的決定將拓展其在非洲的市場份額，推動雲計算和網際網路服務的發展。",
+        "source_label": "未知",
+        "source": "",
         "chain": [
           {
-            "label": "Google 連接中心數量↑",
+            "label": "Google 連接中心建設↑",
             "type": "up"
           },
           {
-            "label": "Google 互聯網連接支持↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Qolab 籌集 5420 萬美元支持超導量子計算發展",
-        "layer": "CSP",
-        "body": "Qolab，一家由前 Google 高管創立的量子計算初創公司，宣布完成了 5420 萬美元的 B 輪融資。這筆資金將支持公司的超導量子計算技術發展。",
-        "impact": "Qolab 的超導量子計算技術發展可能會推動量子計算的進步和應用，從而增加對相關技術和服務的需求。",
-        "rating": "noise",
-        "insight": "Qolab 的超導量子計算技術發展可能會推動量子計算的進步和應用。",
-        "source_label": "SemiEngineering",
-        "source": "https://semiengineering.com/fine-tuning-humanoid-vision-and-movement/",
-        "chain": [
-          {
-            "label": "Qolab 融資額↑",
+            "label": "非洲國際交換點數量↑",
             "type": "up"
           },
           {
-            "label": "Qolab 超導量子計算技術發展↑",
+            "label": "Google 在非洲市場份額↑",
             "type": "up"
           }
         ]
@@ -79,8 +73,8 @@
     "app": [
       {
         "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日該分類無足夠具體新聞素材可供分析。",
+        "layer": "應用",
+        "body": "今日無相關應用新聞。",
         "impact": "",
         "rating": "noise",
         "insight": "",
@@ -90,11 +84,11 @@
     ],
     "glossary_new": [
       {
-        "term": "FuSa",
-        "full": "Functional Safety",
-        "def": "功能安全是一種確保系統在故障或錯誤的情況下仍能保持安全的方法。",
-        "why": "功能安全在各種應用中非常重要，尤其是在人形機器人和汽車等領域。",
-        "category": "hardware"
+        "term": "人形機器人",
+        "full": "Humanoid Robot",
+        "def": "一種類似人類的機器人，具有人類的外貌和運動能力。",
+        "why": "人形機器人技術的進展將使其能夠在各種環境中安全地移動，推動相關產業的發展。",
+        "category": "晶片"
       }
     ],
     "weekly_summary": null
