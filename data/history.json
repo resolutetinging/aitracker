@@ -4,75 +4,73 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "Nvidia 推出雙重資料中心融資方案",
-        "layer": "資料中心",
-        "body": "Nvidia 推出了一個新的資料中心融資方案，旨在幫助新興的 AI 雲端提供商獲得所需的融資。該方案將允許 Nvidia 獲得一部分的收入。該方案的細節尚未公佈，但據悉，Nvidia 將與第三方貸款機構合作提供融資。該方案預計將於近期內推出。Nvidia 的這一舉動表明了其在 AI 雲端市場的雄心。該公司已經在 AI 領域投入了大量資源，包括開發新的 GPU 架構和 AI 軟件框架。",
+        "title": "人形機器人視覺和運動技術進展",
+        "layer": "晶片",
+        "body": "Infineon Technologies 的 Adam White 表示，機器人可以分解為多個元素，包括主計算、區域控制、馬達控制、電池、充電和環境感知。人形機器人是一種物理 AI，技術正在每個領域進步，從先進計算到微型化感測器。",
         "impact": null,
         "rating": "noise",
-        "insight": "Nvidia 的雙重資料中心融資方案是其在 AI 雲端市場的重要一步，表明了其在該領域的雄心和投入。",
-        "source_label": "—",
-        "source": "",
+        "insight": "人形機器人技術的進展可能會推動 AI 在各個領域的應用和發展。",
+        "source_label": "SemiEngineering",
+        "source": "https://semiengineering.com/fine-tuning-humanoid-vision-and-movement/",
         "chain": [
           {
-            "label": "Nvidia 資料中心融資方案↑",
+            "label": "Infineon Technologies 主計算能力↑",
             "type": "up"
           },
           {
-            "label": "Nvidia AI 雲端市場份額↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia GPU 產能↑",
+            "label": "Infineon Technologies 感測器微型化↑",
             "type": "up"
           }
         ]
       },
       {
-        "title": "Google 計劃在南非建立連接中心",
-        "layer": "資料中心",
-        "body": "Google 計劃在南非建立一個連接中心，旨在加強該地區的網際網路連接性。該連接中心將位於南非的東開普省，將直接連接到澳大利亞和印度的網際網路。Google 表示，該連接中心將加強該地區的網際網路連接性和可靠性。該項目預計將於近期內完成。Google 的這一舉動表明了其在非洲市場的投入和擴張。",
-        "impact": null,
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日該分類無足夠具體新聞素材可供分析。",
+        "impact": "",
         "rating": "noise",
-        "insight": "Google 的連接中心是其在非洲市場的重要一步，表明了其在該領域的投入和擴張。",
-        "source_label": "未知",
-        "source": "",
-        "chain": [
-          {
-            "label": "Google 南非連接中心建設↑",
-            "type": "up"
-          },
-          {
-            "label": "Google 非洲市場份額↑",
-            "type": "up"
-          },
-          {
-            "label": "Google 連接中心帶寬↑",
-            "type": "up"
-          }
-        ]
+        "insight": "",
+        "source_label": "",
+        "source": ""
       }
     ],
     "corp": [
       {
-        "title": "人形機器人視覺和運動技術的進步",
-        "layer": "AI 技術",
-        "body": "人形機器人視覺和運動技術的進步使得機器人能夠更好地模擬人類的視覺和運動。該技術的進步將使得機器人能夠在各種環境中安全地移動，例如醫院和家庭。人形機器人視覺和運動技術的進步預計將於近期內實現。Infineon Technologies 的 Adam White 表示，機器人可以分解為多個元素，包括主計算、區域控制、馬達控制、電池、充電和環境感知。",
+        "title": "Google 計劃在南非東開普省建立連接中心",
+        "layer": "CSP",
+        "body": "Google 宣布計劃在非洲建立四個連接中心，作為其「為非洲而建」努力的一部分。第一個中心將位於南非東開普省，將直接連接到澳大利亞和印度，支持非洲的互聯網連接。",
         "impact": null,
         "rating": "noise",
-        "insight": "人形機器人視覺和運動技術的進步是機器人產業的重要一步，表明了其在該領域的投入和擴張。",
-        "source_label": "Semiconductor Engineering",
+        "insight": "Google 的連接中心計劃可能會推動非洲的數字經濟發展和互聯網連接。",
+        "source_label": "DatacenterDynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/esds/",
+        "chain": [
+          {
+            "label": "Google 連接中心數量↑",
+            "type": "up"
+          },
+          {
+            "label": "Google 互聯網連接支持↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Qolab 籌集 5420 萬美元支持超導量子計算發展",
+        "layer": "CSP",
+        "body": "Qolab，一家由前 Google 高管創立的量子計算初創公司，宣布完成了 5420 萬美元的 B 輪融資。這筆資金將支持公司的超導量子計算技術發展。",
+        "impact": "Qolab 的超導量子計算技術發展可能會推動量子計算的進步和應用，從而增加對相關技術和服務的需求。",
+        "rating": "noise",
+        "insight": "Qolab 的超導量子計算技術發展可能會推動量子計算的進步和應用。",
+        "source_label": "SemiEngineering",
         "source": "https://semiengineering.com/fine-tuning-humanoid-vision-and-movement/",
         "chain": [
           {
-            "label": "Infineon Technologies 機器人技術↑",
+            "label": "Qolab 融資額↑",
             "type": "up"
           },
           {
-            "label": "人形機器人安全性↑",
-            "type": "up"
-          },
-          {
-            "label": "Infineon Technologies 市占↑",
+            "label": "Qolab 超導量子計算技術發展↑",
             "type": "up"
           }
         ]
@@ -80,37 +78,23 @@
     ],
     "app": [
       {
-        "title": "AI 應用進步",
-        "layer": "AI 應用",
-        "body": "AI 應用進步使得 AI 技術能夠在各種領域中實現。該技術的進步將使得 AI 能夠在各種環境中安全地運行，例如醫院和家庭。AI 應用進步預計將於近期內實現。AI 技術的進步將使得 AI 能夠在各種領域中實現，例如 healthcare、automotive、finance 和 manufacturing。",
-        "impact": null,
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日該分類無足夠具體新聞素材可供分析。",
+        "impact": "",
         "rating": "noise",
-        "insight": "AI 應用進步是 AI 產業的重要一步，表明了其在該領域的投入和擴張。",
-        "source_label": "未知",
-        "source": "",
-        "chain": [
-          {
-            "label": "AI 技術應用領域↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 在 healthcare 領域的應用↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 在 automotive 領域的應用↑",
-            "type": "up"
-          }
-        ]
+        "insight": "",
+        "source_label": "",
+        "source": ""
       }
     ],
     "glossary_new": [
       {
         "term": "FuSa",
         "full": "Functional Safety",
-        "def": "功能安全是一種確保系統能夠在各種環境中安全運行的技術。功能安全是機器人和自動駕駛車輛等領域的重要概念。",
-        "why": "功能安全是確保系統能夠在各種環境中安全運行的重要技術。功能安全的進步將使得機器人和自動駕駛車輛等領域的發展更加快速和安全。",
-        "category": "semiconductor"
+        "def": "功能安全是一種確保系統在故障或錯誤的情況下仍能保持安全的方法。",
+        "why": "功能安全在各種應用中非常重要，尤其是在人形機器人和汽車等領域。",
+        "category": "hardware"
       }
     ],
     "weekly_summary": null
