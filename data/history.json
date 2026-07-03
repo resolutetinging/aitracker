@@ -4,99 +4,75 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "晶片產業供應鏈信號",
-        "layer": "半導體製造",
-        "body": "近期，半導體製造業面臨著晶片短缺的挑戰，尤其是在汽車和AI數據中心領域。據報導，汽車業的電池創新和AI數據中心的能源解決方案需求日益增加。同時，半導體製造業也在積極開發新的技術，例如GPU光柵化，以提高生產效率。目前，半導體製造業的產能已經達到每月100萬個單位。半導體製造業的主要供應商包括TSMC、Samsung和SK Hynix。",
-        "impact": "半導體製造業的供應鏈信號對下游客戶，如汽車和AI數據中心領域的企業，將產生直接影響，尤其是在晶片短缺的情況下。同時，半導體製造業的供應鏈信號也將對上游供應商，如材料和設備提供商，產生間接影響，從而影響整個供應鏈的穩定性。半導體製造業的供應鏈信號還將對競爭對手，如其他半導體製造商，產生一定的影響，從而影響市場的競爭格局。",
+        "title": "谷歌計畫在南非東開普省建立連接中心",
+        "layer": "CSP",
+        "body": "谷歌宣佈計畫在非洲建立四個「連接中心」，其中第一個將位於南非東開普省。這是谷歌「為非洲而建」計畫的一部分，目的是將非洲打造為國際交換點。這個連接中心將通過Umoja海底電纜直接連接到澳洲。谷歌這個計畫的目的是為非洲提供更好的連接服務。谷歌的這個計畫將會在本月內開始實施，預計將會對非洲的連接服務產生重大影響。谷歌的這個計畫將會涉及到多個非洲國家，包括南非、肯亞等。谷歌的這個計畫將會對非洲的經濟產生重大影響，預計將會創造大量的就業機會。",
+        "impact": null,
         "rating": "noise",
-        "insight": "半導體製造業的供應鏈信號對下游客戶和上游供應商都將產生重要影響，企業需要關注這些信號以確保自己的供應鏈穩定性。",
-        "source_label": "半導體工程",
-        "source": "https://semiengineering.com/",
+        "insight": "谷歌在南非東開普省建立連接中心將會對非洲的連接服務產生重大影響，投資者應該關注非洲的連接服務市場的發展。",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/esds/",
         "chain": [
           {
-            "label": "TSMC 產能↑",
+            "label": "谷歌連接中心建設↑",
             "type": "up"
           },
           {
-            "label": "SK Hynix ASP↑",
+            "label": "南非東開普省經濟↑",
             "type": "up"
           },
           {
-            "label": "Samsung 產能↑",
+            "label": "Umoja海底電纜使用率↑",
             "type": "up"
           }
         ]
       },
       {
-        "title": "AI數據中心的能源解決方案",
-        "layer": "AI應用",
-        "body": "近期，AI數據中心的能源解決方案需求日益增加，尤其是在半導體製造業和汽車領域。據報導，AI數據中心的能源消耗已經達到每年100億度電。同時，半導體製造業也在積極開發新的技術，例如GPU光柵化，以提高生產效率。目前，AI數據中心的主要供應商包括Google、Amazon和Microsoft。",
+        "title": "Qolab 籌集 5.42 億美元發展超導量子計算",
+        "layer": "CSP",
+        "body": "Qolab 籌集 5.42 億美元發展超導量子計算，領投者為 UC Investments。這個籌資將會用於發展超導量子計算技術，目的是為企業提供更好的計算服務。Qolab 的超導量子計算技術將會對企業的計算需求產生重大影響，直接影響到企業的計算服務供應商，間接影響到企業的經濟。Qolab 的超導量子計算技術將會對企業的計算服務供應商產生競爭壓力，迫使他們提高服務質量和降低服務價格。Qolab 的超導量子計算技術將會對企業的就業市場產生影響，預計將會創造大量的就業機會。",
         "impact": null,
         "rating": "noise",
-        "insight": "AI數據中心的能源解決方案需求對下游客戶和上游供應商都將產生重要影響，企業需要關注這些需求以確保自己的供應鏈穩定性。",
-        "source_label": "半導體工程",
-        "source": "https://semiengineering.com/",
+        "insight": "Qolab 籌集 5.42 億美元發展超導量子計算將會對企業的計算服務產生重大影響，投資者應該關注企業的計算服務市場的發展。",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/qolab-raises-542m-to-support-development-of-superconducting-quantum-computing/",
         "chain": [
           {
-            "label": "Google Cloud 產能↑",
+            "label": "Qolab籌資額↑",
             "type": "up"
           },
           {
-            "label": "Amazon AWS 交期↓",
-            "type": "down"
-          },
-          {
-            "label": "Microsoft Azure GPU 產能↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "半導體製造業的產能",
-        "layer": "半導體製造",
-        "body": "近期，半導體製造業的產能已經達到每月100萬個單位，尤其是在TSMC、Samsung和SK Hynix等主要供應商。據報導，半導體製造業的產能已經滿足了下游客戶的需求。同時，半導體製造業也在積極開發新的技術，例如GPU光柵化，以提高生產效率。目前，半導體製造業的主要供應商包括TSMC、Samsung和SK Hynix。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "半導體製造業的產能對下游客戶和上游供應商都將產生重要影響，企業需要關注這些信號以確保自己的供應鏈穩定性。",
-        "source_label": "半導體工程",
-        "source": "https://semiengineering.com/",
-        "chain": [
-          {
-            "label": "TSMC CoWoS 產能↑",
+            "label": "UC Investments投資收益↑",
             "type": "up"
           },
           {
-            "label": "SK Hynix NAND Flash 產能↑",
+            "label": "超導量子計算技術應用率↑",
             "type": "up"
-          },
-          {
-            "label": "Samsung 3D XPoint 產能↓",
-            "type": "down"
           }
         ]
       }
     ],
     "corp": [
       {
-        "title": "企業AI採用信號",
-        "layer": "AI應用",
-        "body": "近期，企業AI採用信號日益增加，尤其是在半導體製造業和汽車領域。據報導，企業AI採用信號已經達到每年100億美元。同時，企業也在積極開發新的技術，例如GPU光柵化，以提高生產效率。目前，企業的主要供應商包括Google、Amazon和Microsoft。",
+        "title": "SoftBank 成立 SB Neo 開發美國新雲計算業務",
+        "layer": "CSP",
+        "body": "SoftBank 成立 SB Neo 開發美國新雲計算業務，目的是為美國企業提供更好的雲計算服務。SB Neo 將會提供 AI 雲計算服務，直接影響到美國的雲計算服務供應商，間接影響到美國的經濟。SB Neo 的 AI 雲計算服務將會對美國的雲計算服務供應商產生競爭壓力，迫使他們提高服務質量和降低服務價格。SB Neo 的 AI 雲計算服務將會對美國的就業市場產生影響，預計將會創造大量的就業機會。SoftBank 的這個計畫將會對美國的雲計算服務市場產生重大影響，投資者應該關注美國的雲計算服務市場的發展。",
         "impact": null,
         "rating": "noise",
-        "insight": "企業AI採用信號對下游客戶和上游供應商都將產生重要影響，企業需要關注這些信號以確保自己的供應鏈穩定性。",
-        "source_label": "半導體工程",
-        "source": "https://semiengineering.com/",
+        "insight": "SoftBank 成立 SB Neo 開發美國新雲計算業務將會對美國的雲計算服務產生重大影響，投資者應該關注美國的雲計算服務市場的發展。",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/softbank-establishes-sb-neo-to-operate-us-neocloud-business/",
         "chain": [
           {
-            "label": "Google AI Platform 產能↑",
+            "label": "SoftBank雲計算服務供應↑",
             "type": "up"
           },
           {
-            "label": "Amazon SageMaker ASP↑",
+            "label": "SB Neo AI雲計算服務競爭力↑",
             "type": "up"
           },
           {
-            "label": "Microsoft Azure Machine Learning 產能↑",
+            "label": "美國雲計算服務市場規模↑",
             "type": "up"
           }
         ]
@@ -104,25 +80,25 @@
     ],
     "app": [
       {
-        "title": "AI應用進展",
-        "layer": "AI技術",
-        "body": "近期，AI應用進展日益迅速，尤其是在半導體製造業和汽車領域。據報導，AI應用進展已經達到每年100億美元。同時，AI技術也在積極開發新的技術，例如GPU光柵化，以提高生產效率。目前，AI技術的主要供應商包括Google、Amazon和Microsoft。",
+        "title": "人形機器人視覺和運動的精細化",
+        "layer": "AI",
+        "body": "人形機器人視覺和運動的精細化是目前的一個重要趨勢，目的是為人形機器人提供更好的視覺和運動能力。這個趨勢將會對人形機器人的應用產生重大影響，直接影響到人形機器人的使用者，間接影響到人形機器人的製造商。人形機器人的視覺和運動能力將會對人形機器人的使用者產生競爭壓力，迫使他們提高服務質量和降低服務價格。人形機器人的視覺和運動能力將會對人形機器人的就業市場產生影響，預計將會創造大量的就業機會。人形機器人的視覺和運動能力將會對人形機器人的應用產生重大影響，投資者應該關注人形機器人的應用市場的發展。",
         "impact": null,
         "rating": "noise",
-        "insight": "AI應用進展對下游客戶和上游供應商都將產生重要影響，企業需要關注這些進展以確保自己的供應鏈穩定性。",
-        "source_label": "半導體工程",
-        "source": "https://semiengineering.com/",
+        "insight": "人形機器人視覺和運動的精細化將會對人形機器人的應用產生重大影響，投資者應該關注人形機器人的應用市場的發展。",
+        "source_label": "SemiEngineering",
+        "source": "https://semiengineering.com/fine-tuning-humanoid-vision-and-movement/",
         "chain": [
           {
-            "label": "NVIDIA GPU 產能↑",
+            "label": "人形機器人視覺能力↑",
             "type": "up"
           },
           {
-            "label": "AMD Radeon Instinct 產能↓",
-            "type": "down"
+            "label": "人形機器人運動能力↑",
+            "type": "up"
           },
           {
-            "label": "Intel Nervana 產能↑",
+            "label": "人形機器人應用領域擴張↑",
             "type": "up"
           }
         ]
@@ -130,11 +106,11 @@
     ],
     "glossary_new": [
       {
-        "term": "GPU光柵化",
-        "full": "Graphics Processing Unit光柵化",
-        "def": "一種提高生產效率的技術，尤其是在半導體製造業",
-        "why": "提高生產效率",
-        "category": "半導體製造"
+        "term": "人形機器人",
+        "full": "Humanoid Robot",
+        "def": "人形機器人是一種模擬人類外觀和運動的機器人，通常用於服務、娛樂和研究等領域。",
+        "why": "人形機器人具有模擬人類外觀和運動的能力，能夠與人類進行交互和溝通，具有廣泛的應用前景。",
+        "category": "AI"
       }
     ],
     "weekly_summary": null
