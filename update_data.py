@@ -483,8 +483,8 @@ def downgrade_low_quality(data):
             if item.get('rating') == 'noise':
                 continue
             body = item.get('body', '')
-            # 無數字直接降評
-            if not re.search(r'\d', body):
+            # 無數字直接降評（含中文數字如「四個」「第一」，不只認阿拉伯數字）
+            if not re.search(r'\d|%|億|兆|倍|萬|百億|千億|[一二三四五六七八九十兩]+[個家款次項座台支波批輪席人年月日]|第[一二三四五六七八九十]', body):
                 print(f"  ↓ 無數字降評→noise：{item.get('title','')[:50]}")
                 item['rating'] = 'noise'
                 continue

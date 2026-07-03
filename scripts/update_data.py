@@ -881,8 +881,8 @@ def _body_is_low_quality(body: str) -> bool:
     prefixes = [_cjk_prefix(s) for s in sentences if len(_cjk_prefix(s)) >= 5]
     if len(prefixes) != len(set(prefixes)):
         return True
-    # core/opp body 必須含數字（%, $, 億, 倍, 具體數量）
-    if not re.search(r'\d|%|億|兆|倍|萬|百億|千億', body):
+    # core/opp body 必須含數字（%, $, 億, 倍, 具體數量；含中文數字如「四個」「第一」）
+    if not re.search(r'\d|%|億|兆|倍|萬|百億|千億|[一二三四五六七八九十兩]+[個家款次項座台支波批輪席人年月日]|第[一二三四五六七八九十]', body):
         return True
     return False
 
