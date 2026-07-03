@@ -207,7 +207,7 @@ def fetch_ddg():
                     print(f"  DDG '{label}' failed after 3 attempts: {e}")
     return snippets
 
-def fetch_article_text(url, max_chars=500, timeout=6):
+def fetch_article_text(url, max_chars=1100, timeout=6):
     """抓取文章內文前幾段真實段落，取代單薄的 RSS/DDG 摘要（title+200字短句無法支撐具體事實）"""
     try:
         req = urllib.request.Request(url, headers={'User-Agent':'Mozilla/5.0'})
@@ -373,6 +373,7 @@ RULES:
 - HALLUCINATION IS FORBIDDEN: do not combine unrelated companies or technologies; every company-technology pairing must come directly from the news text
 - FORBIDDEN ADOPTION CLAIM: NEVER write that a major platform company (Google/Microsoft/Amazon/Meta/Apple/Nvidia) "has adopted", "is using", or "already uses" technology from a smaller/startup company unless the source article EXPLICITLY names that platform company as a confirmed customer, partner, or evaluator — inference-based adoption claims are hallucinations and will be rejected
 - FORBIDDEN CAPACITY TEMPLATE: NEVER write production/manufacturing capacity figures ("每月X個單位的產能", "月產X萬晶圓", "產能達每月X") for software, IP licensing, or startup companies that do not operate physical fabs — this phrasing belongs only to foundry/memory manufacturers (TSMC, Samsung, SK Hynix, Micron, OSAT); applying it to non-fab entities is a hallucination regardless of what numbers appear in other articles
+- FORBIDDEN GROWTH FORECAST: NEVER invent a specific revenue-growth percentage or forecast ("該公司預計在20XX年底前將其X業務收入增加N%") unless that exact number appears verbatim in the source text — a company's real news being reported does NOT license you to guess a plausible-sounding percentage
 - impact: write a genuine supply chain analysis — identify upstream suppliers, downstream customers, and competing alternatives affected by this event; state direction (↑/↓) and mechanism for each; do NOT rephrase the body; NEVER use vague phrases like "可能會影響X" without specifying direction and reason; NEVER mention stock prices
 - glossary_new: required, 1-3 terms from today's news that readers may not know
 - source: copy verbatim from SOURCE_URL in the news; never fabricate URLs
@@ -614,6 +615,8 @@ FORBIDDEN_PATS = [
     re.compile(r'創造大量的?就業機會'),
     re.compile(r'投資者應該關注.{0,20}(?:市場的)?發展'),
     re.compile(r'產生競爭壓力.{0,10}迫使'),
+    # 幻覺成長率套話（「X業務正在快速增長，該公司預計在20XX年底前收入增加N%」，數字通常無來源）
+    re.compile(r'業務.{0,4}正在(?:快速)?增長.{0,15}(?:預計|预计).{0,15}(?:在)?20\d\d年.{0,4}底?前.{0,20}(?:收入|營收).{0,4}增加\d+%'),
 ]
 
 def _contains_stale_date(text: str) -> bool:
