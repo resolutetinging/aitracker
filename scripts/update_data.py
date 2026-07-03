@@ -242,7 +242,9 @@ def enrich_with_full_text(snippets, max_fetch=8):
             if text:
                 head = s.split(' — ', 1)[0]
                 url_part = s[s.find(' | SOURCE_URL:'):]
-                enriched.append(f"{head} — {text}{url_part}")
+                # SOURCE_URL 緊接標題之後，不放在長內文最後面——內文拉長到 1100 字後，
+                # LLM 常常讀到文末前就已經寫完 JSON，導致 source 欄位留空或抓錯
+                enriched.append(f"{head}{url_part} — {text}")
                 fetched += 1
                 continue
         rest.append(s)
@@ -370,6 +372,7 @@ RULES:
 - body FORBIDDEN: never write "這是X的重要趨勢" / "這將推動X發展" / "可能會帶來新的機會" — these add no facts; never combine two unrelated companies or events in the same body
 - body GENERIC REASONING FORBIDDEN: if you only have ONE concrete fact from the source, do NOT pad the remaining sentences with generic economic-impact reasoning that could apply to any company ("將迫使競爭對手提高服務質量和降低價格", "預計將創造大量的就業機會", "投資者應該關注...的發展", "對使用者/企業產生競爭壓力") — these are template filler, not facts; sentence 2 and 3 MUST cite a different concrete detail from the source text (another number, date, named entity, or quote) — if the source genuinely offers only one fact, rate the item noise instead of padding
 - SOURCE REQUIREMENT: every core or opp item MUST have a SOURCE_URL from the news; if no SOURCE_URL exists for a story, you MUST rate it noise — never assign core/opp to unsourced items
+- SOURCE_URL LOCATION: for each news entry, "SOURCE_URL:" appears right after the headline, BEFORE the long article text that follows — do not skip past it; before writing each item's "source" field, look back at the SOURCE_URL that immediately followed that entry's headline and copy it exactly; leaving "source" empty for a story that actually has a SOURCE_URL is a mistake, not a valid choice
 - HALLUCINATION IS FORBIDDEN: do not combine unrelated companies or technologies; every company-technology pairing must come directly from the news text
 - FORBIDDEN ADOPTION CLAIM: NEVER write that a major platform company (Google/Microsoft/Amazon/Meta/Apple/Nvidia) "has adopted", "is using", or "already uses" technology from a smaller/startup company unless the source article EXPLICITLY names that platform company as a confirmed customer, partner, or evaluator — inference-based adoption claims are hallucinations and will be rejected
 - FORBIDDEN CAPACITY TEMPLATE: NEVER write production/manufacturing capacity figures ("每月X個單位的產能", "月產X萬晶圓", "產能達每月X") for software, IP licensing, or startup companies that do not operate physical fabs — this phrasing belongs only to foundry/memory manufacturers (TSMC, Samsung, SK Hynix, Micron, OSAT); applying it to non-fab entities is a hallucination regardless of what numbers appear in other articles

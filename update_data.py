@@ -204,7 +204,9 @@ def enrich_with_full_text(snippets, max_fetch=8):
             if text:
                 head = s.split(' — ', 1)[0]
                 url_part = s[s.find(' | SOURCE_URL:'):]
-                enriched.append(f"{head} — {text}{url_part}")
+                # SOURCE_URL 緊接標題之後，不放在長內文最後面——內文拉長到 1100 字後，
+                # LLM 常常讀到文末前就已經寫完 JSON，導致 source 欄位留空或抓錯
+                enriched.append(f"{head}{url_part} — {text}")
                 fetched += 1
                 continue
         rest.append(s)
@@ -376,7 +378,8 @@ def make_prompt(news_context, recent_titles=None):
 - noise 條目只在該分區完全無相關新聞時才加入（限 1 條），且 title/body 必須老實說明無新聞（例如 title:"今日無相關新聞", body:"今日該分類無足夠具體新聞素材可供分析。"），嚴禁捏造「AI 應用進步」「產業趨勢觀察」這類看似新聞實則空泛循環論述的假標題——承認沒新聞，好過生出一篇假新聞；若已有 core 或 opp 條目，不得再混入 noise
 - 【前三日已報道】清單中的主題：無新進展則必須 noise；絕不允許用改寫、重述、補充細節等方式「偽裝成新內容」通過審查
 - chain label 必須是具體公司名/產品/角色 + 方向詞，例如「TSMC 議價能力↑」「Azure 交期拉長↓」；嚴禁使用「受益↑」「受壓↓」「受損↓」等泛稱；每條 chain 應有 2-4 個節點
-- source 欄位必須直接使用新聞列表中「SOURCE_URL:」後的完整 URL；若該則新聞無 SOURCE_URL，則 source 填 ""，source_label 填 "—"；絕對禁止自行推測或捏造任何 URL"""
+- source 欄位必須直接使用新聞列表中「SOURCE_URL:」後的完整 URL；若該則新聞無 SOURCE_URL，則 source 填 ""，source_label 填 "—"；絕對禁止自行推測或捏造任何 URL
+- 【SOURCE_URL 位置提醒】每則新聞的「SOURCE_URL:」緊接在標題之後、內文之前，不在該則新聞的最尾端；寫每個 item 的 source 欄位前，回頭找該則新聞標題後方的 SOURCE_URL 複製過來；某則新聞明明有 SOURCE_URL 卻把 source 留空，是錯誤，不是合理選擇"""
 
 # ══════════════════════════════════════════════════════════════════
 #  3. GROQ API
