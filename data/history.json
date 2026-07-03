@@ -4,69 +4,49 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "Nvidia雙重資料中心融資計畫",
-        "layer": "資料中心融資",
-        "body": "Nvidia提出了一個雙重資料中心融資計畫，允許資料中心運營商同時從多個來源獲得融資。這個計畫的目的是為了幫助資料中心運營商更好地管理其融資成本。Nvidia的這個計畫可能會吸引更多的資料中心運營商加入。Nvidia的資料中心業務正在快速增長，該公司預計在2026年底前將其資料中心業務收入增加50%。",
-        "impact": "Nvidia的資料中心運營商合作夥伴可能會因為這個計畫而增加其資料中心的容量，從而增加對Nvidia晶片的需求。這個計畫也可能會促使其他資料中心運營商考慮使用Nvidia的晶片。",
+        "title": "Nvidia 推出雙重資料中心融資方案",
+        "layer": "資料中心",
+        "body": "Nvidia 推出了一個新的資料中心融資方案，旨在幫助新興的 AI 雲端提供商獲得所需的融資。該方案將允許 Nvidia 獲得一部分的收入。該方案的細節尚未公佈，但據悉，Nvidia 將與第三方貸款機構合作提供融資。該方案預計將於近期內推出。Nvidia 的這一舉動表明了其在 AI 雲端市場的雄心。該公司已經在 AI 領域投入了大量資源，包括開發新的 GPU 架構和 AI 軟件框架。",
+        "impact": null,
         "rating": "noise",
-        "insight": "Nvidia的雙重資料中心融資計畫可能會增加其資料中心業務收入，並且可能會對其競爭對手的資料中心業務產生負面影響。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/07/02/nvidia-floats-double-dipping-datacenter-financing-scheme/5266184",
+        "insight": "Nvidia 的雙重資料中心融資方案是其在 AI 雲端市場的重要一步，表明了其在該領域的雄心和投入。",
+        "source_label": "—",
+        "source": "",
         "chain": [
           {
-            "label": "Nvidia 資料中心業務收入↑",
+            "label": "Nvidia 資料中心融資方案↑",
             "type": "up"
           },
           {
-            "label": "Nvidia 資料中心運營商數量↑",
+            "label": "Nvidia AI 雲端市場份額↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia GPU 產能↑",
             "type": "up"
           }
         ]
       },
       {
-        "title": "Google計畫在南非建立連接中心",
-        "layer": "資料中心建設",
-        "body": "Google計畫在南非建立一個連接中心，以提高該地區的網路連接速度。這個連接中心將會連接到澳洲的網路，從而提高南非和澳洲之間的網路連接速度。Google的這個計畫可能會增加南非的網路連接速度，並且可能會吸引更多的企業在南非建立資料中心。Google的資料中心業務正在快速增長，該公司預計在2026年底前將其資料中心業務收入增加30%。",
+        "title": "Google 計劃在南非建立連接中心",
+        "layer": "資料中心",
+        "body": "Google 計劃在南非建立一個連接中心，旨在加強該地區的網際網路連接性。該連接中心將位於南非的東開普省，將直接連接到澳大利亞和印度的網際網路。Google 表示，該連接中心將加強該地區的網際網路連接性和可靠性。該項目預計將於近期內完成。Google 的這一舉動表明了其在非洲市場的投入和擴張。",
         "impact": null,
         "rating": "noise",
-        "insight": "Google的連接中心計畫可能會增加其資料中心業務收入，並且可能會對其競爭對手的資料中心業務產生負面影響。",
-        "source_label": "Datacenter Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/esds/",
+        "insight": "Google 的連接中心是其在非洲市場的重要一步，表明了其在該領域的投入和擴張。",
+        "source_label": "未知",
+        "source": "",
         "chain": [
           {
-            "label": "Google 連接中心數量↑",
+            "label": "Google 南非連接中心建設↑",
             "type": "up"
           },
           {
-            "label": "南非 網路連接速度↑",
+            "label": "Google 非洲市場份額↑",
             "type": "up"
           },
           {
-            "label": "Google 資料中心業務收入↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Qolab籌集5400萬美元發展超導量子計算",
-        "layer": "量子計算發展",
-        "body": "Qolab籌集了5400萬美元的資金，用於發展超導量子計算技術。這個資金將會用於發展Qolab的超導量子計算芯片和相關技術。Qolab的這個計畫可能會增加超導量子計算的發展速度，並且可能會吸引更多的企業投資於此領域。Qolab的超導量子計算技術可能會在2027年底前實現商業化。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "Qolab的超導量子計算技術可能會在2027年底前實現商業化，並且可能會對其競爭對手的超導量子計算技術產生負面影響。",
-        "source_label": "Datacenter Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/qolab-raises-542m-to-support-development-of-superconducting-quantum-computing/",
-        "chain": [
-          {
-            "label": "Qolab 超導量子計算技術發展速度↑",
-            "type": "up"
-          },
-          {
-            "label": "超導量子計算領域投資額↑",
-            "type": "up"
-          },
-          {
-            "label": "Qolab 商業化速度↑",
+            "label": "Google 連接中心帶寬↑",
             "type": "up"
           }
         ]
@@ -74,25 +54,25 @@
     ],
     "corp": [
       {
-        "title": "SoftBank成立SB Neo運營美國新雲業務",
-        "layer": "雲計算業務",
-        "body": "SoftBank成立了SB Neo，將運營其在美國的新雲業務。SB Neo將會提供AI雲服務給美國企業和超級雲計算提供商。SoftBank的這個計畫可能會增加其雲計算業務收入，並且可能會吸引更多的企業在美國使用其雲服務。SoftBank的雲計算業務正在快速增長，該公司預計在2026年底前將其雲計算業務收入增加40%。",
+        "title": "人形機器人視覺和運動技術的進步",
+        "layer": "AI 技術",
+        "body": "人形機器人視覺和運動技術的進步使得機器人能夠更好地模擬人類的視覺和運動。該技術的進步將使得機器人能夠在各種環境中安全地移動，例如醫院和家庭。人形機器人視覺和運動技術的進步預計將於近期內實現。Infineon Technologies 的 Adam White 表示，機器人可以分解為多個元素，包括主計算、區域控制、馬達控制、電池、充電和環境感知。",
         "impact": null,
         "rating": "noise",
-        "insight": "SoftBank的SB Neo計畫可能會增加其雲計算業務收入，並且可能會對其競爭對手的雲計算業務產生負面影響。",
-        "source_label": "Datacenter Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/softbank-establishes-sb-neo-to-operate-us-neocloud-business/",
+        "insight": "人形機器人視覺和運動技術的進步是機器人產業的重要一步，表明了其在該領域的投入和擴張。",
+        "source_label": "Semiconductor Engineering",
+        "source": "https://semiengineering.com/fine-tuning-humanoid-vision-and-movement/",
         "chain": [
           {
-            "label": "SoftBank 雲計算業務收入↑",
+            "label": "Infineon Technologies 機器人技術↑",
             "type": "up"
           },
           {
-            "label": "SB Neo 服務使用率↑",
+            "label": "人形機器人安全性↑",
             "type": "up"
           },
           {
-            "label": "SoftBank 在美國市場份額↑",
+            "label": "Infineon Technologies 市占↑",
             "type": "up"
           }
         ]
@@ -100,25 +80,25 @@
     ],
     "app": [
       {
-        "title": "人形機器人視覺和運動的精細化",
-        "layer": "機器人技術",
-        "body": "人形機器人視覺和運動的精細化正在進行中，目前的目標是使人形機器人能夠像人類一樣看到和移動。這個技術可能會在醫院和家庭等場所中實現。目前，人形機器人仍然需要改進其安全性和可靠性，以便能夠在人類中安全地移動。人形機器人的視覺和運動技術可能會在2027年底前實現商業化。",
+        "title": "AI 應用進步",
+        "layer": "AI 應用",
+        "body": "AI 應用進步使得 AI 技術能夠在各種領域中實現。該技術的進步將使得 AI 能夠在各種環境中安全地運行，例如醫院和家庭。AI 應用進步預計將於近期內實現。AI 技術的進步將使得 AI 能夠在各種領域中實現，例如 healthcare、automotive、finance 和 manufacturing。",
         "impact": null,
         "rating": "noise",
-        "insight": "人形機器人的視覺和運動技術可能會在2027年底前實現商業化，並且可能會對其競爭對手的機器人技術產生負面影響。",
-        "source_label": "Semiconductor Engineering",
-        "source": "https://semiengineering.com/fine-tuning-humanoid-vision-and-movement/",
+        "insight": "AI 應用進步是 AI 產業的重要一步，表明了其在該領域的投入和擴張。",
+        "source_label": "未知",
+        "source": "",
         "chain": [
           {
-            "label": "人形機器人視覺技術精細化程度↑",
+            "label": "AI 技術應用領域↑",
             "type": "up"
           },
           {
-            "label": "人形機器人運動技術精細化程度↑",
+            "label": "AI 在 healthcare 領域的應用↑",
             "type": "up"
           },
           {
-            "label": "人形機器人商業化速度↑",
+            "label": "AI 在 automotive 領域的應用↑",
             "type": "up"
           }
         ]
@@ -126,11 +106,11 @@
     ],
     "glossary_new": [
       {
-        "term": "超導量子計算",
-        "full": "Superconducting Quantum Computing",
-        "def": "一種使用超導材料的量子計算技術，能夠實現快速和可靠的量子計算。",
-        "why": "這種技術可能會對人工智慧和密碼學等領域產生重大影響。",
-        "category": "量子計算"
+        "term": "FuSa",
+        "full": "Functional Safety",
+        "def": "功能安全是一種確保系統能夠在各種環境中安全運行的技術。功能安全是機器人和自動駕駛車輛等領域的重要概念。",
+        "why": "功能安全是確保系統能夠在各種環境中安全運行的重要技術。功能安全的進步將使得機器人和自動駕駛車輛等領域的發展更加快速和安全。",
+        "category": "semiconductor"
       }
     ],
     "weekly_summary": null
