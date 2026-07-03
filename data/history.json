@@ -4,49 +4,69 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "谷歌計畫在南非東開普省建立連接中心",
-        "layer": "CSP",
-        "body": "谷歌宣佈計畫在非洲建立四個「連接中心」，其中第一個將位於南非東開普省。這是谷歌「為非洲而建」計畫的一部分，目的是將非洲打造為國際交換點。這個連接中心將通過Umoja海底電纜直接連接到澳洲。谷歌這個計畫的目的是為非洲提供更好的連接服務。谷歌的這個計畫將會在本月內開始實施，預計將會對非洲的連接服務產生重大影響。谷歌的這個計畫將會涉及到多個非洲國家，包括南非、肯亞等。谷歌的這個計畫將會對非洲的經濟產生重大影響，預計將會創造大量的就業機會。",
-        "impact": null,
+        "title": "Nvidia雙重資料中心融資計畫",
+        "layer": "資料中心融資",
+        "body": "Nvidia提出了一個雙重資料中心融資計畫，允許資料中心運營商同時從多個來源獲得融資。這個計畫的目的是為了幫助資料中心運營商更好地管理其融資成本。Nvidia的這個計畫可能會吸引更多的資料中心運營商加入。Nvidia的資料中心業務正在快速增長，該公司預計在2026年底前將其資料中心業務收入增加50%。",
+        "impact": "Nvidia的資料中心運營商合作夥伴可能會因為這個計畫而增加其資料中心的容量，從而增加對Nvidia晶片的需求。這個計畫也可能會促使其他資料中心運營商考慮使用Nvidia的晶片。",
         "rating": "noise",
-        "insight": "谷歌在南非東開普省建立連接中心將會對非洲的連接服務產生重大影響，投資者應該關注非洲的連接服務市場的發展。",
-        "source_label": "Datacenter Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/esds/",
+        "insight": "Nvidia的雙重資料中心融資計畫可能會增加其資料中心業務收入，並且可能會對其競爭對手的資料中心業務產生負面影響。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/07/02/nvidia-floats-double-dipping-datacenter-financing-scheme/5266184",
         "chain": [
           {
-            "label": "谷歌連接中心建設↑",
+            "label": "Nvidia 資料中心業務收入↑",
             "type": "up"
           },
           {
-            "label": "南非東開普省經濟↑",
-            "type": "up"
-          },
-          {
-            "label": "Umoja海底電纜使用率↑",
+            "label": "Nvidia 資料中心運營商數量↑",
             "type": "up"
           }
         ]
       },
       {
-        "title": "Qolab 籌集 5.42 億美元發展超導量子計算",
-        "layer": "CSP",
-        "body": "Qolab 籌集 5.42 億美元發展超導量子計算，領投者為 UC Investments。這個籌資將會用於發展超導量子計算技術，目的是為企業提供更好的計算服務。Qolab 的超導量子計算技術將會對企業的計算需求產生重大影響，直接影響到企業的計算服務供應商，間接影響到企業的經濟。Qolab 的超導量子計算技術將會對企業的計算服務供應商產生競爭壓力，迫使他們提高服務質量和降低服務價格。Qolab 的超導量子計算技術將會對企業的就業市場產生影響，預計將會創造大量的就業機會。",
+        "title": "Google計畫在南非建立連接中心",
+        "layer": "資料中心建設",
+        "body": "Google計畫在南非建立一個連接中心，以提高該地區的網路連接速度。這個連接中心將會連接到澳洲的網路，從而提高南非和澳洲之間的網路連接速度。Google的這個計畫可能會增加南非的網路連接速度，並且可能會吸引更多的企業在南非建立資料中心。Google的資料中心業務正在快速增長，該公司預計在2026年底前將其資料中心業務收入增加30%。",
         "impact": null,
         "rating": "noise",
-        "insight": "Qolab 籌集 5.42 億美元發展超導量子計算將會對企業的計算服務產生重大影響，投資者應該關注企業的計算服務市場的發展。",
+        "insight": "Google的連接中心計畫可能會增加其資料中心業務收入，並且可能會對其競爭對手的資料中心業務產生負面影響。",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/esds/",
+        "chain": [
+          {
+            "label": "Google 連接中心數量↑",
+            "type": "up"
+          },
+          {
+            "label": "南非 網路連接速度↑",
+            "type": "up"
+          },
+          {
+            "label": "Google 資料中心業務收入↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Qolab籌集5400萬美元發展超導量子計算",
+        "layer": "量子計算發展",
+        "body": "Qolab籌集了5400萬美元的資金，用於發展超導量子計算技術。這個資金將會用於發展Qolab的超導量子計算芯片和相關技術。Qolab的這個計畫可能會增加超導量子計算的發展速度，並且可能會吸引更多的企業投資於此領域。Qolab的超導量子計算技術可能會在2027年底前實現商業化。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "Qolab的超導量子計算技術可能會在2027年底前實現商業化，並且可能會對其競爭對手的超導量子計算技術產生負面影響。",
         "source_label": "Datacenter Dynamics",
         "source": "https://www.datacenterdynamics.com/en/news/qolab-raises-542m-to-support-development-of-superconducting-quantum-computing/",
         "chain": [
           {
-            "label": "Qolab籌資額↑",
+            "label": "Qolab 超導量子計算技術發展速度↑",
             "type": "up"
           },
           {
-            "label": "UC Investments投資收益↑",
+            "label": "超導量子計算領域投資額↑",
             "type": "up"
           },
           {
-            "label": "超導量子計算技術應用率↑",
+            "label": "Qolab 商業化速度↑",
             "type": "up"
           }
         ]
@@ -54,25 +74,25 @@
     ],
     "corp": [
       {
-        "title": "SoftBank 成立 SB Neo 開發美國新雲計算業務",
-        "layer": "CSP",
-        "body": "SoftBank 成立 SB Neo 開發美國新雲計算業務，目的是為美國企業提供更好的雲計算服務。SB Neo 將會提供 AI 雲計算服務，直接影響到美國的雲計算服務供應商，間接影響到美國的經濟。SB Neo 的 AI 雲計算服務將會對美國的雲計算服務供應商產生競爭壓力，迫使他們提高服務質量和降低服務價格。SB Neo 的 AI 雲計算服務將會對美國的就業市場產生影響，預計將會創造大量的就業機會。SoftBank 的這個計畫將會對美國的雲計算服務市場產生重大影響，投資者應該關注美國的雲計算服務市場的發展。",
+        "title": "SoftBank成立SB Neo運營美國新雲業務",
+        "layer": "雲計算業務",
+        "body": "SoftBank成立了SB Neo，將運營其在美國的新雲業務。SB Neo將會提供AI雲服務給美國企業和超級雲計算提供商。SoftBank的這個計畫可能會增加其雲計算業務收入，並且可能會吸引更多的企業在美國使用其雲服務。SoftBank的雲計算業務正在快速增長，該公司預計在2026年底前將其雲計算業務收入增加40%。",
         "impact": null,
         "rating": "noise",
-        "insight": "SoftBank 成立 SB Neo 開發美國新雲計算業務將會對美國的雲計算服務產生重大影響，投資者應該關注美國的雲計算服務市場的發展。",
+        "insight": "SoftBank的SB Neo計畫可能會增加其雲計算業務收入，並且可能會對其競爭對手的雲計算業務產生負面影響。",
         "source_label": "Datacenter Dynamics",
         "source": "https://www.datacenterdynamics.com/en/news/softbank-establishes-sb-neo-to-operate-us-neocloud-business/",
         "chain": [
           {
-            "label": "SoftBank雲計算服務供應↑",
+            "label": "SoftBank 雲計算業務收入↑",
             "type": "up"
           },
           {
-            "label": "SB Neo AI雲計算服務競爭力↑",
+            "label": "SB Neo 服務使用率↑",
             "type": "up"
           },
           {
-            "label": "美國雲計算服務市場規模↑",
+            "label": "SoftBank 在美國市場份額↑",
             "type": "up"
           }
         ]
@@ -81,24 +101,24 @@
     "app": [
       {
         "title": "人形機器人視覺和運動的精細化",
-        "layer": "AI",
-        "body": "人形機器人視覺和運動的精細化是目前的一個重要趨勢，目的是為人形機器人提供更好的視覺和運動能力。這個趨勢將會對人形機器人的應用產生重大影響，直接影響到人形機器人的使用者，間接影響到人形機器人的製造商。人形機器人的視覺和運動能力將會對人形機器人的使用者產生競爭壓力，迫使他們提高服務質量和降低服務價格。人形機器人的視覺和運動能力將會對人形機器人的就業市場產生影響，預計將會創造大量的就業機會。人形機器人的視覺和運動能力將會對人形機器人的應用產生重大影響，投資者應該關注人形機器人的應用市場的發展。",
+        "layer": "機器人技術",
+        "body": "人形機器人視覺和運動的精細化正在進行中，目前的目標是使人形機器人能夠像人類一樣看到和移動。這個技術可能會在醫院和家庭等場所中實現。目前，人形機器人仍然需要改進其安全性和可靠性，以便能夠在人類中安全地移動。人形機器人的視覺和運動技術可能會在2027年底前實現商業化。",
         "impact": null,
         "rating": "noise",
-        "insight": "人形機器人視覺和運動的精細化將會對人形機器人的應用產生重大影響，投資者應該關注人形機器人的應用市場的發展。",
-        "source_label": "SemiEngineering",
+        "insight": "人形機器人的視覺和運動技術可能會在2027年底前實現商業化，並且可能會對其競爭對手的機器人技術產生負面影響。",
+        "source_label": "Semiconductor Engineering",
         "source": "https://semiengineering.com/fine-tuning-humanoid-vision-and-movement/",
         "chain": [
           {
-            "label": "人形機器人視覺能力↑",
+            "label": "人形機器人視覺技術精細化程度↑",
             "type": "up"
           },
           {
-            "label": "人形機器人運動能力↑",
+            "label": "人形機器人運動技術精細化程度↑",
             "type": "up"
           },
           {
-            "label": "人形機器人應用領域擴張↑",
+            "label": "人形機器人商業化速度↑",
             "type": "up"
           }
         ]
@@ -106,11 +126,11 @@
     ],
     "glossary_new": [
       {
-        "term": "人形機器人",
-        "full": "Humanoid Robot",
-        "def": "人形機器人是一種模擬人類外觀和運動的機器人，通常用於服務、娛樂和研究等領域。",
-        "why": "人形機器人具有模擬人類外觀和運動的能力，能夠與人類進行交互和溝通，具有廣泛的應用前景。",
-        "category": "AI"
+        "term": "超導量子計算",
+        "full": "Superconducting Quantum Computing",
+        "def": "一種使用超導材料的量子計算技術，能夠實現快速和可靠的量子計算。",
+        "why": "這種技術可能會對人工智慧和密碼學等領域產生重大影響。",
+        "category": "量子計算"
       }
     ],
     "weekly_summary": null
