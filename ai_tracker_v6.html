@@ -499,7 +499,7 @@ function chainHtml(chain) {
 }
 
 function isNoiseEmpty(item) {
-  return item.rating === 'noise' && (item.body || '').includes('無相關新聞');
+  return item.rating === 'noise';
 }
 function visibleItems(arr) { return (arr || []).filter(i => !isNoiseEmpty(i)); }
 function newsGrid(arr, ptype) {

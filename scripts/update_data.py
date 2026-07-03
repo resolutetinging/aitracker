@@ -207,6 +207,49 @@ def fetch_ddg():
                     print(f"  DDG '{label}' failed after 3 attempts: {e}")
     return snippets
 
+def fetch_article_text(url, max_chars=500, timeout=6):
+    """抓取文章內文前幾段真實段落，取代單薄的 RSS/DDG 摘要（title+200字短句無法支撐具體事實）"""
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent':'Mozilla/5.0'})
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            raw = r.read(300_000)
+        html = raw.decode('utf-8', errors='ignore')
+        html = re.sub(r'<(script|style|noscript|nav|footer|header)[^>]*>.*?</\1>', ' ', html, flags=re.S|re.I)
+        paras = re.findall(r'<p[^>]*>(.*?)</p>', html, flags=re.S|re.I)
+        parts, total = [], 0
+        for p in paras:
+            t = re.sub(r'<[^>]+>', '', p)
+            t = re.sub(r'\s+', ' ', t).strip()
+            if len(t) > 40:  # 跳過導覽列/版權宣告等短句雜訊
+                parts.append(t)
+                total += len(t)
+            if total >= max_chars:
+                break
+        text = ' '.join(parts)[:max_chars]
+        return text if len(text) > 80 else None
+    except Exception:
+        return None
+
+def enrich_with_full_text(snippets, max_fetch=8):
+    """對高信號候選（有 SOURCE_URL 且命中 HIGH_SIGNAL_PAT）抓取真實內文取代薄摘要；
+    成功抓到內文的條目移到最前面，確保後續 3500 字截斷時優先保留高密度素材。"""
+    fetched = 0
+    enriched, rest = [], []
+    for s in snippets:
+        if fetched < max_fetch and 'SOURCE_URL:' in s and HIGH_SIGNAL_PAT.search(s):
+            m = re.search(r'SOURCE_URL:(\S+)', s)
+            text = fetch_article_text(m.group(1)) if m else None
+            if text:
+                head = s.split(' — ', 1)[0]
+                url_part = s[s.find(' | SOURCE_URL:'):]
+                enriched.append(f"{head} — {text}{url_part}")
+                fetched += 1
+                continue
+        rest.append(s)
+    if fetched:
+        print(f"  → 已抓取 {fetched} 篇完整內文取代薄摘要")
+    return enriched + rest
+
 def filter_recent(snippets, recent_titles):
     """過濾與近日已報道標題高度重疊的新聞摘要（code-level 去重）"""
     if not recent_titles:
@@ -249,6 +292,8 @@ def fetch_news(recent_titles=None):
     if recent_titles:
         unique = filter_recent(unique, recent_titles)
         print(f"  → 預過濾後剩 {len(unique)} 條")
+    # 對高信號候選抓取完整內文取代薄摘要，並移到最前面優先保留
+    unique = enrich_with_full_text(unique)
     # 限制總字數，避免超過 Groq TPM 限制
     joined = "\n\n".join(unique)
     if len(joined) > 8000:
