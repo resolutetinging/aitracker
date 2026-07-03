@@ -1,5 +1,107 @@
 [
   {
+    "date": "2026-07-04",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "南韓全力推動AI和半導體投資",
+        "layer": "晶片產業",
+        "body": "南韓政府計劃推動三個與半導體、物理AI/機器人和AI數據中心相關的巨型項目，預計將得到政府對區域晶片集群、封裝能力、電力、水資源、場地和勞動力發展的支持。其中包括在日本，Kioxia和Sandisk開始在Kioxia的Kitakami工廠的Fab2生產第10代3D閃存記憶體。",
+        "impact": "這將直接影響南韓的半導體產業，促進其在全球市場的競爭力。同時，也會間接影響相關的上游供應商和下游客戶，例如晶片設計公司和終端設備製造商。這可能會導致南韓半導體產業的產能和出貨量增加，從而對全球半導體市場產生一定的影響。",
+        "rating": "core",
+        "insight": "南韓政府的投資計劃可能會促進其半導體產業的快速發展，從而增強其在全球市場的競爭力。",
+        "source_label": "SemiEngineering",
+        "source": "https://semiengineering.com/chip-industry-week-in-review-145/",
+        "chain": [
+          {
+            "label": "Kioxia 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Sandisk 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "南韓半導體產業發展↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "英飛凌在德國德累斯頓開設智能電源晶片工廠",
+        "layer": "晶片產業",
+        "body": "英飛凌在德國德累斯頓開設了一家智能電源晶片工廠，該工廠的產能將達到每年1,000萬個單位，預計將為當地創造1,000個就業機會。這是英飛凌在歐洲的第一家智能電源晶片工廠，也是全球最大的智能電源晶片工廠之一。",
+        "impact": "這將直接影響英飛凌在歐洲的市場份額，增加其在智能電源晶片市場的競爭力。同時，也會間接影響相關的上游供應商和下游客戶，例如晶片設計公司和終端設備製造商。這可能會導致英飛凌的智能電源晶片產能和出貨量增加，從而對全球智能電源晶片市場產生一定的影響。",
+        "rating": "noise",
+        "insight": "英飛凌在德國德累斯頓開設智能電源晶片工廠，可能會增強其在歐洲的市場份額和競爭力。",
+        "source_label": "SemiEngineering",
+        "source": "https://semiengineering.com/chip-industry-week-in-review-145/",
+        "chain": [
+          {
+            "label": "英飛凌 智能電源晶片產能↑",
+            "type": "up"
+          },
+          {
+            "label": "德國半導體產業發展↑",
+            "type": "up"
+          },
+          {
+            "label": "英飛凌 市占↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "GM確保記憶體供應",
+        "layer": "企業新聞",
+        "body": "GM確保了記憶體供應，預計將為其在全球市場的競爭力提供支持。這是GM在半導體產業的又一項重要投資，預計將為其帶來更大的市場份額和更強的競爭力。",
+        "impact": "這將直接影響GM在全球市場的競爭力，增加其在汽車產業的市場份額。",
+        "rating": "core",
+        "insight": "GM確保記憶體供應，可能會增強其在全球市場的競爭力和市場份額。",
+        "source_label": "SemiEngineering",
+        "source": "https://semiengineering.com/chip-industry-week-in-review-145/",
+        "chain": [
+          {
+            "label": "GM 半導體供應保障↑",
+            "type": "up"
+          },
+          {
+            "label": "GM 市場競爭力↑",
+            "type": "up"
+          },
+          {
+            "label": "GM 市占↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "應用新聞",
+        "body": "今日無相關應用新聞可供分析。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "智能電源晶片",
+        "full": "Smart Power Chip",
+        "def": "一種可以智能控制電源的晶片，廣泛應用於電子設備中。",
+        "why": "智能電源晶片可以提高電子設備的效率和可靠性，減少能耗和熱量。",
+        "category": "半導體"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-03",
     "is_sunday": false,
     "hw": [
@@ -725,97 +827,5 @@
       }
     ],
     "weekly_summary": "HW：美國汽車監管機構希望取消機器人出租車的煞車踏板，對無人駕駛車輛的生產和銷售產生重大影響。\nCORP：谷歌希望AI監管，但要按照自己的方式，對AI技術的發展產生重大影響。\nAPP：ZTE展示實用路徑到Level-4自主網絡，對Level-4自主網絡的生產和銷售產生重大影響。\n下週看點：無人駕駛車輛的市場發展趨勢，AI技術的應用和監管。\n用戶洞察：投資者應該關注無人駕駛車輛和AI技術的發展趨勢，特別是對於中國電信的「Better Home」生態系統。"
-  },
-  {
-    "date": "2026-06-27",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "晶片製造商ZTE推出旗艦級家用AI路由器",
-        "layer": "晶片製造",
-        "body": "ZTE與Tianyi Digital Life合作推出旗艦級家用AI路由器，該路由器具有2000 Mbps的Wi-Fi 7功能，采用核心AI連接、感知和控制能力。這款路由器是為了推動中國電信的「Better Home」生態系統而設計的。ZTE的這一舉動表明了其在家用AI路由器市場的重視，該公司將在未來繼續推出更多的AI路由器產品。ZTE的AI路由器採用了最新的Wi-Fi 7技術，能夠提供更快的網絡速度和更低的延遲。這款路由器還具有強大的安全功能，能夠保護用戶的網絡安全。",
-        "impact": "ZTE的旗艦級家用AI路由器的推出將對其供應鏈產生直接影響，例如晶片供應商和制造商的銷售額將會增加。同時，該路由器的推出也將對競爭對手的市場份額產生影響，例如其他家用路由器製造商的銷售額可能會下降。另外，ZTE的這一舉動也將推動家用AI路由器市場的發展，更多的消費者將會選擇使用AI路由器。",
-        "rating": "noise",
-        "insight": "ZTE的旗艦級家用AI路由器的推出是其在家用AI路由器市場的重要一步，投資者應該關注該公司在這一領域的未來發展。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/networks/2026/06/26/zte-and-tianyi-digital-life-jointly-unveil-flagship-home-ai-router/5263090",
-        "chain": [
-          {
-            "label": "ZTE 市占↑",
-            "type": "up"
-          },
-          {
-            "label": "Tianyi Digital Life 合作↑",
-            "type": "up"
-          },
-          {
-            "label": "中國電信 Better Home 產能↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Amazon的Q缺陷允許惡意Git倉庫執行代碼",
-        "layer": "企業安全",
-        "body": "Amazon的Q缺陷允許惡意Git倉庫執行代碼，研究人員警告說許多AI編碼助手現在可以從項目配置中執行命令。這個缺陷可能會對Amazon的用戶產生影響，尤其是那些使用AI編碼助手的用戶。Amazon的安全團隊已經發佈了相關的安全更新，用戶可以通過更新來修復這個缺陷。這個缺陷的發現也提醒了用戶需要更加注意自己的網絡安全，尤其是在使用AI編碼助手時。",
-        "impact": "Amazon的Q缺陷的發現將對其供應鏈產生直接影響，例如其安全團隊的工作量將會增加。同時，該缺陷的發現也將對競爭對手的市場份額產生影響，例如其他雲計算平台的銷售額可能會增加。另外，Amazon的這一缺陷也將推動雲計算安全的發展，更多的公司將會投資於雲計算安全的研究和開發。",
-        "rating": "noise",
-        "insight": "Amazon的Q缺陷的發現是其安全工作的重要一步，投資者應該關注該公司在安全領域的未來發展。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/cyber-crime/2026/06/26/amazon-q-flaw-let-booby-trapped-git-repos-execute-code-swipe-cloud-creds/5263202",
-        "chain": [
-          {
-            "label": "Amazon 用戶數↓",
-            "type": "down"
-          },
-          {
-            "label": "Amazon 安全性↓",
-            "type": "down"
-          },
-          {
-            "label": "Git 倉庫安全性↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "ZTE推出全棧式智能能源儲存解決方案",
-        "layer": "應用",
-        "body": "ZTE推出全棧式智能能源儲存解決方案，該解決方案采用AI驅動的能源儲存技術，能夠解決數字基礎設施的能源需求。這個解決方案是為了推動歐洲的能源轉型而設計的，ZTE的這一舉動表明了其在能源儲存領域的重視。ZTE的全棧式智能能源儲存解決方案採用了最新的AI技術，能夠提供更高的能源儲存效率和更低的成本。這個解決方案還具有強大的擴展性，能夠滿足不同用戶的需求。",
-        "impact": "ZTE的全棧式智能能源儲存解決方案的推出將對其供應鏈產生直接影響，例如能源儲存設備供應商的銷售額將會增加。同時，該解決方案的推出也將對競爭對手的市場份額產生影響，例如其他能源儲存解決方案提供商的銷售額可能會下降。另外，ZTE的這一舉動也將推動能源儲存市場的發展，更多的公司將會投資於能源儲存的研究和開發。",
-        "rating": "noise",
-        "insight": "ZTE的全棧式智能能源儲存解決方案的推出是其在能源儲存領域的重要一步，投資者應該關注該公司在這一領域的未來發展。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/06/26/zte-presents-full-stack-intelligent-energy-storage-solutions-at-the-smarter-e-europe-2026-powering-europes-energy-transition/5263063",
-        "chain": [
-          {
-            "label": "ZTE 能源儲存解決方案銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "歐洲能源轉型產能↑",
-            "type": "up"
-          },
-          {
-            "label": "ZTE AI驅動能源儲存技術應用↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Agentic AI",
-        "full": "代理AI",
-        "def": "Agentic AI是指具有自主性和主動性的AI系統，能夠根據自己的目標和需求進行決策和行動。這種AI系統可以在各個領域中應用，例如智能家居、智能交通等。",
-        "why": "Agentic AI的出現將推動AI技術的發展，更多的公司將會投資於Agentic AI的研究和開發。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
   }
 ]
