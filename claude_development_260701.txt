@@ -1,0 +1,104 @@
+Claude Development Log — AI Tracker — 2026-07-01
+================================================================
+
+SESSION SUMMARY
+- Session: 2026-07-01
+- Version: v2.9（各 sub-version a–e）
+- Files: aitracker/scripts/update_data.py
+
+ROOT CAUSE ANALYSIS（週一到週三全 noise）
+----------------------------------------------------------------
+1. semiengineering.com 每日彙整文（Literature Digest: June 30 等）
+   被 RSS 抓入，LLM 素材不足時把多篇 paper 拼成混合卡
+   → body bigram 重複 >45% → validate_body downgrade → noise
+
+2. general tech 新聞（ZTE 路由器、robotaxi）跑題
+   → 無 semiconductor 關鍵字 → keyword filter 失效（論文摘要帶到不相關詞）
+
+----------------------------------------------------------------
+FIX 1: 彙整文 RSS 過濾（v2.9a）
+----------------------------------------------------------------
+新增 DIGEST_TITLE_PATS（compile once，module level）：
+  pattern: Literature Digest|Research Digest|Technical Digest|
+           Chip Industry.*Digest|Weekly Digest|Daily Roundup|
+           Daily Briefing|論文匯總|技術論文|研究簡報|每週.*摘要|週報|每日簡報
+  flags: re.IGNORECASE
+
+位置：fetch_rss() 主迴圈，在 keyword 過濾之前
+```python
+if DIGEST_TITLE_PATS.search(title):
+    continue
+```
+
+Commit: 888c19f
+
+----------------------------------------------------------------
+FIX 2: RSS 新增精準半導體來源（v2.9b）
+----------------------------------------------------------------
+新增：
+  ("Semiconductor", "https://www.anandtech.com/rss/")   # GPU/memory 深度分析
+  ("Semiconductor", "https://www.digitimes.com/rss/")   # 台灣供應鏈第一手
+
+Commit: 312e7c4
+
+----------------------------------------------------------------
+FIX 3: 日期幻覺 guard（v2.9c）
+----------------------------------------------------------------
+問題：LLM 從 arxiv 論文取原始提交年份（如 2023），
+     寫進 body「論文發表於 2023 年 6 月 30 日」
+
+方案：pattern-level 先行 downgrade，不依賴 LLM 自我修正
+
+新增：
+  _STALE_YEAR_THRESHOLD = NOW.year - 1
+  _STALE_DATE_PAT = re.compile(r'(?:發表於|發布於|公布於|於)\s*(20\d\d)\s*年')
+  _contains_stale_date(text) → bool
+
+downgrade_forbidden_phrases() 加日期幻覺 check（FORBIDDEN_PATS 迴圈前）：
+  if _contains_stale_date(body):
+      item['rating'] = 'noise'
+      continue
+
+validate_body prompt 加第 4 條規則：
+  「body 中若出現「發表於 20XX 年」的具體年份，
+    該年份必須來自摘要原文；
+    若早於新聞發布時間（{NOW.year - 1}年以前），視為日期幻覺 → downgrade=true」
+
+Commit: cdb635c
+
+----------------------------------------------------------------
+FIX 4: 主角矛盾 impact guard（v2.9d）
+----------------------------------------------------------------
+問題：「三星和SK Hynix投資520億」body 主角
+     → impact 寫「競爭對手如美光和海力士也會受影響」— 邏輯矛盾
+
+新增 fix_protagonist_as_competitor(data)：
+  COMPETITOR_PATS: 競爭對手|對手如|競爭者如（等）
+  MAJOR_COS: 三星、samsung、sk hynix、海力士、hynix、micron、美光、nvidia、
+             tsmc、台積電、intel、amd、arm、qualcomm、高通、microsoft、google、
+             meta、amazon、apple、openai、anthropic
+  邏輯：逐 item → 拆 impact 為句子 → 偵測含 COMPETITOR_PATS 的句子 →
+         檢查 title/body 中出現的 MAJOR_COS → 若公司在 title/body 是主角但
+         被 impact 列為「競爭對手」→ 移除該句
+
+validate_impact prompt 加主角矛盾規則：
+  「title 或 body 中被列為投資方/受益方/主要行動者的公司，
+    禁止在 impact 中列為『競爭對手』——邏輯矛盾，必須刪除或改寫」
+
+位置：pipeline 末尾，validate_impact 之後執行
+
+Commit: 312e7c4
+
+----------------------------------------------------------------
+CLARIFICATION（RISC-V Five）
+----------------------------------------------------------------
+GLOSSARY 的 full 欄顯示「Reduced Instruction Set Computing – Five」
+是正確的：V = 羅馬數字 5，官方唸法 RISC-Five。
+勿修改。
+
+----------------------------------------------------------------
+COMMITS（依時序）
+----------------------------------------------------------------
+  888c19f  add DIGEST_TITLE_PATS RSS 彙整文過濾
+  cdb635c  add _contains_stale_date 日期幻覺 guard
+  312e7c4  add fix_protagonist_as_competitor + digitimes/anandtech RSS

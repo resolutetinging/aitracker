@@ -1,0 +1,49 @@
+AI Tracker 開發日誌 2026-06-25
+======================================
+
+## 問題診斷：新聞內容重複性高（不同 item 描述幾乎相同）
+
+### 現象
+截圖顯示「NVIDIA Halos for Robotics」與「Anthropic Claude in Slack」兩條 app 新聞，
+body 和 insight 幾乎逐字相同（「業界第一個全堆棧安全系統，適用於物理 AI」），
+供應鏈分析都提「蘋果和三星」——明顯是 Llama 模板填空，非真實資訊。
+
+### 根本原因
+現有品質管線（downgrade_low_quality 等）只檢查「單一 item 內的重複句」，
+不檢查跨條目的相似度；也沒有偵測 prompt 明列的禁句是否被 Llama 忽略。
+
+Llama-3.3-70b-versatile 即使 prompt 明列禁句也常違反，
+既有 history.json 顯示多條「根據報導，」「已被多家公司採用，包括Google和Microsoft」仍通過管線。
+
+### 修法：新增兩道品質閘
+
+#### `downgrade_forbidden_phrases(data)`
+掃描 body 欄位，命中以下任一 regex → 降評 noise：
+- `根據.{0,10}報導[，,]`
+- `已被多家公司採用.{0,5}包括`
+- `預計在20\d\d年底前將達到每月`
+- `正在助力.{0,20}的發展`
+- `將繼續增加`
+- `例如.{0,8}客戶將可以使用`
+
+#### `downgrade_cross_item_duplicates(data)`
+收集全部非 noise 條目（hw/corp/app），兩兩比對 body+insight 的 CJK bigram。
+相似度 > 55% → 後者降評 noise（附 overlap % 打印）。
+bigram 字數 ≤5 的條目跳過比對（太短會誤觸）。
+
+### 測試結果
+對現有 history.json 最後 3 天跑驗證：攔下 7 條原本通過的垃圾資料。
+
+### Pipeline 順序（v2.4）
+```
+downgrade_repeated_stories
+→ downgrade_unsourced
+→ downgrade_hw_offtopic
+→ downgrade_hallucinated
+→ downgrade_forbidden_phrases   ← 新增
+→ downgrade_cross_item_duplicates  ← 新增
+→ downgrade_low_quality
+```
+
+### Commit
+ee3dda0  add forbidden-phrase + cross-item duplicate gates to quality pipeline

@@ -1,0 +1,43 @@
+AI Tracker 開發日誌 2026-06-17
+======================================
+
+## Bug Fix：頁面卡在「載入最新資料中」
+
+### 根本原因
+`renderGlossary()` 中，`const histOv` 在 line 731 宣告，但 line 720 的
+`GLOSS_CATS.forEach` callback 內就已讀取它。
+JavaScript `const` 不會 hoist 初始化，形成 Temporal Dead Zone，
+每次呼叫 `renderGlossary` 就拋 `ReferenceError`。
+
+由於 `renderAll()` 的呼叫順序為：
+  renderHW → renderCorp → renderApp → renderGlossary（拋錯）→ renderInsights（跳過）→ renderHistory（跳過）
+
+gloss / ins / hist 三個 panel 永遠停在 loading 畫面。
+
+### 修法
+將 `const histOv = JSON.parse(...)` 從 line 731 移至 `allCatData` 初始化之後、
+`GLOSS_CATS.forEach` 之前（line 712）。兩處使用點（line 721 和 line 736）皆正確。
+
+### Commit
+44b234e  fix(gloss): move histOv declaration before use to fix temporal dead zone
+
+### 觸發條件
+上一 session 新增「base terms 也讀取 regen override」時，在 GLOSS_CATS.forEach 內
+加入 `histOv[t.term]` 的讀取，但 histOv 宣告位置沒有同步往前移。
+
+---
+
+## UI Fix：gloss-why 藍框間距 + 底部對齊
+
+### 問題
+`.gloss-why` 用 `margin-top:auto` 做底部對齊，但卡片內容較多時無留白，
+說明文字與藍框緊貼在一起。
+
+### 修法
+1. `margin-top:auto` → `margin-top:10px`（保留固定間距）
+2. 將 `.gloss-full` + `.gloss-def` 包入 `<div style="flex:1;min-height:0;">` wrapper，
+   由 wrapper 吸收多餘空間，使藍框固定在底部 + 永遠有 10px 間距。
+
+### Commit
+c30fade  fix(gloss): add margin-top to gloss-why box for breathing room
+544e371  fix(gloss): wrap content in flex:1 div so gloss-why stays at bottom with consistent gap
