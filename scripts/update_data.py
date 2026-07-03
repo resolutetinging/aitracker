@@ -626,6 +626,9 @@ FORBIDDEN_PATS = [
     re.compile(r'產生競爭壓力.{0,10}迫使'),
     # 幻覺成長率套話（「X業務正在快速增長，該公司預計在20XX年底前收入增加N%」，數字通常無來源）
     re.compile(r'業務.{0,4}正在(?:快速)?增長.{0,15}(?:預計|预计).{0,15}(?:在)?20\d\d年.{0,4}底?前.{0,20}(?:收入|營收).{0,4}增加\d+%'),
+    # insight/「注意方向」萬用競爭對手負面影響套話（任何公司都套得上，非具體推論）
+    re.compile(r'對其競爭對手的.{0,15}(?:業務)?產生(?:負面)?影響'),
+    re.compile(r'可能會(?:增加|提升).{0,15}業務收入.{0,10}並且可能會對'),
 ]
 
 def _contains_stale_date(text: str) -> bool:
@@ -636,22 +639,32 @@ def _contains_stale_date(text: str) -> bool:
     return False
 
 def downgrade_forbidden_phrases(data):
-    """body 含禁句或日期幻覺 → noise；impact 含模板 → 清除 impact（無論 rating）"""
+    """body/insight 含禁句或日期幻覺 → noise；impact 含模板 → 清除 impact（無論 rating）"""
     for section in ['hw', 'corp', 'app']:
         for item in data.get(section, []):
             body = item.get('body', '')
             impact = item.get('impact') or ''
+            insight = item.get('insight') or ''
             if item.get('rating') != 'noise':
                 # 日期幻覺：body 聲稱 2 年前的「發表於」年份
                 if _contains_stale_date(body):
                     print(f"  ↓ 日期幻覺→noise：{item.get('title','')[:50]}")
                     item['rating'] = 'noise'
                     continue
+                hit = False
                 for pat in FORBIDDEN_PATS:
                     if pat.search(body):
                         print(f"  ↓ 禁句降評→noise：{item.get('title','')[:50]}")
                         item['rating'] = 'noise'
+                        hit = True
                         break
+                # insight（注意方向）欄位過去從未被檢查，同一套通用套話會鑽這個漏洞
+                if not hit:
+                    for pat in FORBIDDEN_PATS:
+                        if pat.search(insight):
+                            print(f"  ↓ insight 禁句降評→noise：{item.get('title','')[:50]}")
+                            item['rating'] = 'noise'
+                            break
             if impact:
                 for pat in FORBIDDEN_PATS:
                     if pat.search(impact):
