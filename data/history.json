@@ -1,5 +1,83 @@
 [
   {
+    "date": "2026-07-05",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "卡內基梅隆和加州大學洛杉磯研發新型晶片設計技術",
+        "layer": "晶片設計",
+        "body": "卡內基梅隆大學和加州大學洛杉磯的研究人員發表了一篇技術論文，介紹了一種新的晶片設計方法，稱為 AgRefactor，該方法使用 LLM-based 多代理工作流程來重構軟體以實現高級合成兼容性和性能。這種方法可以實現 6.51 倍的幾何平均速度提升。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "這種新型晶片設計技術可能會成為晶片設計業界的新趨勢，投資者應該關注這種技術的發展和應用。",
+        "source_label": "SemiEngineering",
+        "source": "https://semiengineering.com/llm-agents-to-refactor-software-for-high-level-synthesis-carnegie-mellon-ucla/",
+        "chain": [
+          {
+            "label": "AgRefactor 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "卡內基梅隆大學 研究成果↑",
+            "type": "up"
+          },
+          {
+            "label": "加州大學洛杉磯 合作項目↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Clearstone 計劃在英國肯特建造 300MW 數據中心",
+        "layer": "數據中心",
+        "body": "Clearstone 公司計劃在英國肯特建造一個 300MW 的數據中心，該數據中心將位於達特福德附近的新巴恩路。該項目將包括四棟建築，總面積約為 180,000 平方米，預計於 2030 年開始運營。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "這個數據中心項目可能會成為英國數據中心市場的新趨勢，投資者應該關注這個項目的發展和影響。",
+        "source_label": "Data Center Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/300mw-data-center-campus-proposed-in-kent-uk/",
+        "chain": [
+          {
+            "label": "Clearstone 數據中心規模↑",
+            "type": "up"
+          },
+          {
+            "label": "英國肯特 數據中心投資↑",
+            "type": "up"
+          },
+          {
+            "label": "達特福德 數據中心建設↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無足夠具體的應用新聞素材可供分析。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "AgRefactor",
+        "full": "AgRefactor",
+        "def": "一種新的晶片設計方法，使用 LLM-based 多代理工作流程來重構軟體以實現高級合成兼容性和性能。",
+        "why": "這種方法可以實現 6.51 倍的幾何平均速度提升，對於晶片設計業界具有重要意義。",
+        "category": "晶片設計"
+      }
+    ],
+    "weekly_summary": "HW：卡內基梅隆和加州大學洛杉磯研發新型晶片設計技術。\nCORP：Clearstone 計劃在英國肯特建造 300MW 數據中心。\nAPP：今日無相關應用新聞。\n下週看點：英國數據中心市場的發展趨勢。\n用戶洞察：投資者應該關注新型晶片設計技術和數據中心市場的發展和影響。"
+  },
+  {
     "date": "2026-07-04",
     "is_sunday": false,
     "hw": [
@@ -711,121 +789,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-06-28",
-    "is_sunday": true,
-    "hw": [
-      {
-        "title": "美國汽車監管機構希望取消機器人出租車的煞車踏板",
-        "layer": "汽車電子",
-        "body": "美國汽車監管機構希望取消機器人出租車的煞車踏板，理由是這會阻礙創新。據報導，美國國家公路交通安全管理局（NHTSA）認為，要求無人駕駛車輛保留人類煞車控制是沒有必要的。這一決定可能會影響汽車電子供應鏈，特別是對於無人駕駛車輛的零部件供應商。美國汽車監管機構的這一決定可能會在2026年內實施，屆時將對無人駕駛車輛的生產和銷售產生重大影響。據估計，無人駕駛車輛的市場規模將在2026年達到100億美元，美國汽車監管機構的決定將對這一市場產生重大影響。",
-        "impact": "美國汽車監管機構的決定將直接影響無人駕駛車輛的零部件供應商，例如煞車系統供應商。這一決定也將間接影響汽車電子供應鏈，特別是對於無人駕駛車輛的電子控制系統供應商。另外，美國汽車監管機構的決定也將對無人駕駛車輛的生產和銷售產生重大影響，特別是對於特斯拉等無人駛駛車輛製造商。",
-        "rating": "noise",
-        "insight": "美國汽車監管機構的決定將對無人駕駛車輛的生產和銷售產生重大影響，投資者應該關注這一市場的發展趨勢。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/offbeat/2026/06/26/us-auto-regulators-want-to-kill-robotaxi-brake-pedals/5263228",
-        "chain": [
-          {
-            "label": "NHTSA 決策↑",
-            "type": "up"
-          },
-          {
-            "label": "無人駕駛車輛產能↑",
-            "type": "up"
-          },
-          {
-            "label": "汽車電子供應鏈需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "ZTE和天翼數字生活共同推出旗艦級家用AI路由器",
-        "layer": "網絡設備",
-        "body": "ZTE和天翼數字生活共同推出旗艦級家用AI路由器，該路由器采用2000 Mbps Wi-Fi 7技術，具有核心AI連接、感知和控制能力。據報導，該路由器將於2026年內上市，屆時將對家用網絡設備市場產生重大影響。ZTE和天翼數字生活的合作將對家用AI路由器的生產和銷售產生重大影響，特別是對於中國電信的「Better Home」生態系統。據估計，家用AI路由器的市場規模將在2026年達到10億美元，ZTE和天翼數字生活的合作將對這一市場產生重大影響。",
-        "impact": "ZTE和天翼數字生活的合作將直接影響家用AI路由器的生產和銷售，特別是對於中國電信的「Better Home」生態系統。這一合作也將間接影響網絡設備供應鏈，特別是對於家用AI路由器的零部件供應商。另外，ZTE和天翼數字生活的合作也將對家用網絡設備市場產生重大影響，特別是對於華為等網絡設備製造商。",
-        "rating": "noise",
-        "insight": "ZTE和天翼數字生活的合作將對家用AI路由器的生產和銷售產生重大影響，投資者應該關注這一市場的發展趨勢。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/networks/2026/06/26/zte-and-tianyi-digital-life-jointly-unveil-flagship-home-ai-router/5263090",
-        "chain": [
-          {
-            "label": "ZTE 家用AI路由器銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "天翼數字生活 家用AI路由器市場份額↑",
-            "type": "up"
-          },
-          {
-            "label": "中國電信 Better Home 生態系統發展↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "谷歌希望AI監管，但要按照自己的方式",
-        "layer": "AI技術",
-        "body": "谷歌希望AI監管，但要按照自己的方式。據報導，谷歌認為AI監管應該按照自己的方式進行，否則將會阻礙創新。谷歌的這一表態將對AI技術的發展產生重大影響，特別是對於AI的應用和監管。據估計，AI的市場規模將在2026年達到1000億美元，谷歌的表態將對這一市場產生重大影響。谷歌的AI技術已經被廣泛應用於各個領域，包括搜索、廣告和雲計算等。",
-        "impact": "谷歌的表態將直接影響AI技術的發展，特別是對於AI的應用和監管。這一表態也將間接影響AI技術的供應鏈，特別是對於AI的零部件供應商。另外，谷歌的表態也將對AI的市場產生重大影響，特別是對於微軟等AI技術製造商。",
-        "rating": "noise",
-        "insight": "谷歌的表態將對AI技術的發展產生重大影響，投資者應該關注這一市場的發展趨勢。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/06/26/google-wants-ai-regulation-but-on-its-own-terms/5263276",
-        "chain": [
-          {
-            "label": "谷歌 AI技術發展↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 應用市場規模↑",
-            "type": "up"
-          },
-          {
-            "label": "谷歌雲計算服務需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "ZTE展示實用路徑到Level-4自主網絡",
-        "layer": "網絡技術",
-        "body": "ZTE展示實用路徑到Level-4自主網絡，該路徑采用代理AI和跨域創新技術。據報導，ZTE的展示將於2026年內實施，屆時將對網絡技術產生重大影響。ZTE的展示將對Level-4自主網絡的生產和銷售產生重大影響，特別是對於中國電信的「Better Home」生態系統。據估計，Level-4自主網絡的市場規模將在2026年達到10億美元，ZTE的展示將對這一市場產生重大影響。",
-        "impact": "ZTE的展示將直接影響Level-4自主網絡的生產和銷售，特別是對於中國電信的「Better Home」生態系統。這一展示也將間接影響網絡技術的供應鏈，特別是對於Level-4自主網絡的零部件供應商。另外，ZTE的展示也將對網絡技術的市場產生重大影響，特別是對於華為等網絡技術製造商。",
-        "rating": "noise",
-        "insight": "ZTE的展示將對Level-4自主網絡的生產和銷售產生重大影響，投資者應該關注這一市場的發展趨勢。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/networks/2026/06/26/zte-showcases-practical-path-to-level-4-autonomous-networks-through-agentic-ai-and-cross-domain-innovation-at-dtw-ignite-2026/5263080",
-        "chain": [
-          {
-            "label": "ZTE 網絡技術研發↑",
-            "type": "up"
-          },
-          {
-            "label": "Level-4自主網絡市場規模↑",
-            "type": "up"
-          },
-          {
-            "label": "中國電信 Better Home 生態系統發展↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Agentic AI",
-        "full": "代理AI",
-        "def": "代理AI是一種人工智能技術，能夠代理人類完成特定的任務。代理AI的應用包括客服、銷售和市場營銷等領域。",
-        "why": "代理AI的發展將對人工智能技術產生重大影響，特別是對於代理AI的應用和監管。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": "HW：美國汽車監管機構希望取消機器人出租車的煞車踏板，對無人駕駛車輛的生產和銷售產生重大影響。\nCORP：谷歌希望AI監管，但要按照自己的方式，對AI技術的發展產生重大影響。\nAPP：ZTE展示實用路徑到Level-4自主網絡，對Level-4自主網絡的生產和銷售產生重大影響。\n下週看點：無人駕駛車輛的市場發展趨勢，AI技術的應用和監管。\n用戶洞察：投資者應該關注無人駕駛車輛和AI技術的發展趨勢，特別是對於中國電信的「Better Home」生態系統。"
   }
 ]
