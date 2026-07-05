@@ -1,5 +1,69 @@
 [
   {
+    "date": "2026-07-06",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "卡內基梅隆大學和加州大學洛杉磯分校研發新型晶片設計技術",
+        "layer": "晶片設計",
+        "body": "卡內基梅隆大學和加州大學洛杉磯分校的研究人員發表了一篇技術論文，介紹了一種基於LLM的多代理人工作流程，用于將軟體重構為高級合成兼容的程序。這種技術可以實現6.51倍的幾何平均加速。",
+        "impact": "這項技術的發展可能會對晶片設計業界產生重大影響，尤其是對於高級合成兼容的晶片設計。這可能會增加晶片設計的效率和速度，從而對下游的晶片製造業界產生正面的影響。",
+        "rating": "core",
+        "insight": "卡內基梅隆大學和加州大學洛杉磯分校的研究人員開發了一種新型晶片設計技術，可能會對晶片設計業界產生重大影響。",
+        "source_label": "SemiEngineering",
+        "source": "https://semiengineering.com/llm-agents-to-refactor-software-for-high-level-synthesis-carnegie-mellon-ucla/"
+      }
+    ],
+    "corp": [
+      {
+        "title": "Clearstone計畫在英國肯特建造300MW的資料中心",
+        "layer": "資料中心",
+        "body": "Clearstone公司計畫在英國肯特建造一個300MW的資料中心，該資料中心將佔地145英畝，預計在2030年開始運營。該資料中心將提供多達180,000平方米的資料中心空間，將通過英國的電力傳輸網絡提供電力。",
+        "impact": "這項計畫的實施可能會對英國的資料中心業界產生重大影響，尤其是對於資料中心的供應和需求。這可能會增加資料中心的供應，從而對下游的雲計算業界產生正面的影響。",
+        "rating": "core",
+        "insight": "Clearstone公司計畫在英國肯特建造一個300MW的資料中心，可能會對英國的資料中心業界產生重大影響。",
+        "source_label": "Data Center Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/300mw-data-center-campus-proposed-in-kent-uk/",
+        "chain": [
+          {
+            "label": "AWS資料中心業務↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Cloud資料中心業務↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft Azure資料中心業務↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日該分類無足夠具體新聞素材可供分析。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "LLM",
+        "full": "Large Language Model",
+        "def": "一種基於深度學習的自然語言處理技術，用于文本生成、語言翻譯等任務。",
+        "why": "LLM技術的發展對於自然語言處理和人工智慧領域具有重要意義。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-05",
     "is_sunday": false,
     "hw": [
@@ -639,153 +703,6 @@
         "def": "一個為中小企業提供AI和連接性的解決方案，包括支持本地AI大型模型運行，從而降低了雲端成本和提高了企業數據的安全性。",
         "why": "這個解決方案可以幫助中小企業增加生產力和安全性，同時也可以幫助AI技術供應商增加銷量。",
         "category": "AI技術"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-29",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "晶片產業週報",
-        "layer": "晶片製造",
-        "body": "Onsemi即將收購Synaptics，IBM推出7Å晶片，具有40%更大的SRAM面積。同時，1nm MoS2奈米管的開發也在進行中。這些進展預計將在未來幾年內推動晶片產業的發展。Onsemi的收購案預計將在2026年完成，IBM的7Å晶片預計將在2027年量產。Synaptics的AI計算資產將為Onsemi的邊緣AI事業提供強大的支持。",
-        "impact": "Onsemi的收購案將直接影響到Synaptics的員工和客戶，同時也將對晶片產業的競爭格局產生影響。IBM的7Å晶片將對記憶體製造商產生壓力，促使他們提高生產效率和降低成本。1nm MoS2奈米管的開發將為未來的晶片設計提供新的可能性。",
-        "rating": "noise",
-        "insight": "Onsemi的收購案和IBM的7Å晶片將推動晶片產業的發展和創新。",
-        "source_label": "semiengineering.com",
-        "source": "https://semiengineering.com/chip-industry-week-in-review-144/",
-        "chain": [
-          {
-            "label": "Onsemi 收購↑",
-            "type": "up"
-          },
-          {
-            "label": "Synaptics 市值↑",
-            "type": "up"
-          },
-          {
-            "label": "IBM 7Å晶片 產能↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "記憶體市場的變化",
-        "layer": "記憶體製造",
-        "body": "Lenovo表示，記憶體市場的變化將是新的正常狀態。PNY的32GB DDR5-5600 RAM成為最便宜的2x16GB套件，價格降低了70美元。同時，Apple也在遊說美國政府批准購買中國的記憶體晶片。這些變化預計將對記憶體市場產生重大影響。Lenovo的說法預計將在2026年得到驗證，PNY的RAM套件預計將在2026年第三季度上市。Apple的遊說行動預計將在2026年第四季度結束。",
-        "impact": "記憶體市場的變化將直接影響到記憶體製造商和消費者，同時也將對整個電子產業產生影響。Lenovo的說法將促使記憶體製造商提高生產效率和降低成本，PNY的RAM套件將為消費者提供更便宜的選擇。Apple的遊說行動將對中國的記憶體製造商產生影響，可能會提高他們的市場份額。",
-        "rating": "noise",
-        "insight": "記憶體市場的變化將推動記憶體製造商提高生產效率和降低成本。",
-        "source_label": "tomshardware.com",
-        "source": "https://www.tomshardware.com/pc-components/pnys-performance-32gb-ddr5-5600-ram-becomes-the-cheapest-2x16gb-kit-ddr5-kit-gets-a-usd70-discount",
-        "chain": [
-          {
-            "label": "Lenovo 銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "PNY 32GB DDR5-5600 RAM 價格↓",
-            "type": "down"
-          },
-          {
-            "label": "Apple 記憶體採購↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "晶片設計的進展",
-        "layer": "晶片設計",
-        "body": "Jim Keller表示，AI仍然遵循傳統的計算規律。同時，IBM的7Å晶片和1nm MoS2奈米管的開發也在進行中。這些進展預計將在未來幾年內推動晶片設計的發展。Jim Keller的說法預計將在2026年得到驗證，IBM的7Å晶片預計將在2027年量產。1nm MoS2奈米管的開發將為未來的晶片設計提供新的可能性。",
-        "impact": "Jim Keller的說法將直接影響到AI的發展和晶片設計，同時也將對整個電子產業產生影響。IBM的7Å晶片將對記憶體製造商產生壓力，促使他們提高生產效率和降低成本。1nm MoS2奈米管的開發將為未來的晶片設計提供新的可能性。",
-        "rating": "noise",
-        "insight": "Jim Keller的說法和IBM的7Å晶片將推動晶片設計的發展和創新。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "Jim Keller 影響↑",
-            "type": "up"
-          },
-          {
-            "label": "IBM 7Å晶片 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "1nm MoS2 奈米管 開發↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "企業投資的變化",
-        "layer": "企業投資",
-        "body": "Apple正在遊說美國政府批准購買中國的記憶體晶片。同時，Onsemi也在收購Synaptics，IBM也在推出7Å晶片。這些變化預計將對企業投資產生重大影響。Apple的遊說行動預計將在2026年第四季度結束，Onsemi的收購案預計將在2026年完成。IBM的7Å晶片預計將在2027年量產。",
-        "impact": "企業投資的變化將直接影響到企業的發展和競爭格局，同時也將對整個電子產業產生影響。Apple的遊說行動將對中國的記憶體製造商產生影響，可能會提高他們的市場份額。Onsemi的收購案將為Onsemi的邊緣AI事業提供強大的支持。IBM的7Å晶片將對記憶體製造商產生壓力，促使他們提高生產效率和降低成本。",
-        "rating": "noise",
-        "insight": "企業投資的變化將推動企業的發展和創新。",
-        "source_label": "tomshardware.com",
-        "source": "https://www.tomshardware.com/tech-industry/apple-reportedly-lobbies-uncle-sam-for-access-to-chinese-memory-chips-tech-giant-allegedly-wants-to-buy-from-blacklisted-cxmt",
-        "chain": [
-          {
-            "label": "Apple 投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Onsemi 收購↑",
-            "type": "up"
-          },
-          {
-            "label": "IBM 研發↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "AI應用的變化",
-        "layer": "AI應用",
-        "body": "Jim Keller表示，AI仍然遵循傳統的計算規律。同時，Onsemi也在收購Synaptics，IBM也在推出7Å晶片。這些變化預計將對AI應用產生重大影響。Jim Keller的說法預計將在2026年得到驗證，Onsemi的收購案預計將在2026年完成。IBM的7Å晶片預計將在2027年量產。",
-        "impact": "AI應用的變化將直接影響到AI的發展和競爭格局，同時也將對整個電子產業產生影響。Jim Keller的說法將促使AI的發展更加注重傳統的計算規律，Onsemi的收購案將為Onsemi的邊緣AI事業提供強大的支持。IBM的7Å晶片將對記憶體製造商產生壓力，促使他們提高生產效率和降低成本。",
-        "rating": "noise",
-        "insight": "AI應用的變化將推動AI的發展和創新。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "Jim Keller 影響↑",
-            "type": "up"
-          },
-          {
-            "label": "Onsemi AI 計算↑",
-            "type": "up"
-          },
-          {
-            "label": "IBM 7Å晶片 AI應用↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "SRAM",
-        "full": "Static Random Access Memory",
-        "def": "一種電腦記憶體，能夠快速存取和儲存資料。",
-        "why": "SRAM是晶片設計中的一個重要元件，能夠提高晶片的性能和效率。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "MoS2奈米管",
-        "full": "Molybdenum Disulfide Nanotubes",
-        "def": "一種新型的奈米材料，具有高導電性和高強度。",
-        "why": "MoS2奈米管是一種潛在的晶片設計材料，能夠提高晶片的性能和效率。",
-        "category": "hardware"
       }
     ],
     "weekly_summary": null
