@@ -253,28 +253,55 @@ def enrich_with_full_text(snippets, max_fetch=8):
         print(f"  → 已抓取 {fetched} 篇完整內文取代薄摘要")
     return enriched + rest
 
-def filter_recent(snippets, recent_titles):
-    """過濾與近日已報道標題高度重疊的新聞摘要（code-level 去重）"""
-    if not recent_titles:
+def _title_tokens(text):
+    """混合 tokenizer：CJK bigram + 英文單詞（len>2），解決中文無空格的詞切分問題"""
+    cjk = re.sub(r'[^一-鿿]', '', text)
+    bigrams = set(cjk[i:i+2] for i in range(len(cjk) - 1))
+    eng = set(w for w in re.sub(r'[^\w]', ' ', text).lower().split()
+              if len(w) > 2 and not re.search(r'[一-鿿]', w))
+    return bigrams | eng
+
+def _norm_url(url):
+    """URL 最小正規化：去尾端斜線、去 utm_* query 參數"""
+    url = (url or '').strip()
+    if '?' in url:
+        base, _, query = url.partition('?')
+        kept = [p for p in query.split('&') if p and not p.lower().startswith('utm_')]
+        url = base + ('?' + '&'.join(kept) if kept else '')
+    return url.rstrip('/')
+
+_SOURCE_URL_PAT = re.compile(r'SOURCE_URL:(\S+)')
+
+def filter_recent(snippets, recent_titles, recent_urls=None):
+    """過濾與近日已報道標題高度重疊、或來源網址與近日完全相同的新聞摘要
+    （code-level 去重，不依賴 LLM 指令；使用者拍板：同一篇文章只分析一次）"""
+    if not recent_titles and not recent_urls:
         return snippets
-    recent_norm = [set(re.sub(r'[^\w]', ' ', rt).lower().split()) for rt in recent_titles]
-    filtered, dropped = [], 0
+    recent_norm = [_title_tokens(rt) for rt in (recent_titles or [])]
+    recent_urls = recent_urls or set()
+    filtered, dropped_t, dropped_u = [], 0, 0
     for s in snippets:
+        # URL 完全比對（正規化後）：同一篇文章不管標題怎麼改寫都會被丟棄
+        m = _SOURCE_URL_PAT.search(s)
+        if m and _norm_url(m.group(1)) in recent_urls:
+            dropped_u += 1
+            continue
         dash = s.find(' — ')
         bracket = s.find(']')
         title_part = s[bracket+1:dash if dash > 0 else bracket+80].strip()
-        words = set(w for w in re.sub(r'[^\w]', ' ', title_part).lower().split() if len(w) > 2)
-        # 門檻 2：「RTX Spark」等雙字產品名不漏網
-        if any(len(words & rn) >= 2 for rn in recent_norm):
-            dropped += 1
+        tokens = _title_tokens(title_part)
+        # ≥3 個 bigram/英文詞重疊才視為重複（CJK bigram 比單詞更精準）
+        is_dup = any(len(tokens & rn) >= 3 for rn in recent_norm) if tokens else False
+        if is_dup:
+            dropped_t += 1
         else:
             filtered.append(s)
-    if dropped:
-        print(f"  → 預過濾舊新聞 {dropped} 條（與近日標題重疊）")
+    if dropped_t or dropped_u:
+        print(f"  → 預過濾舊新聞 {dropped_t} 條（標題重疊）+ {dropped_u} 條（來源網址相同）")
     return filtered
 
 
-def fetch_news(recent_titles=None):
+def fetch_news(recent_titles=None, recent_urls=None):
     print("  → RSS feeds...")
     rss = fetch_rss()
     print(f"  → RSS 取得 {len(rss)} 條")
@@ -291,9 +318,9 @@ def fetch_news(recent_titles=None):
             seen.add(key)
             unique.append(s)
     print(f"  → 去重後 {len(unique)} 條")
-    # code-level 預過濾：移除與近三日標題高度重疊的摘要
-    if recent_titles:
-        unique = filter_recent(unique, recent_titles)
+    # code-level 預過濾：移除與近三日標題高度重疊、或來源網址相同的摘要
+    if recent_titles or recent_urls:
+        unique = filter_recent(unique, recent_titles, recent_urls)
         print(f"  → 預過濾後剩 {len(unique)} 條")
     # 對高信號候選抓取完整內文取代薄摘要，並移到最前面優先保留
     unique = enrich_with_full_text(unique)
@@ -323,6 +350,23 @@ def get_recent_titles(history, days=3, max_titles=30):
                 if t:
                     titles.append(t)
     return titles[:max_titles]
+
+def get_recent_urls(history, days=3):
+    """取得近 N 天所有條目的來源網址（含 noise、正規化後）用於 URL 完全比對去重；排除今日自身"""
+    urls = set()
+    count = 0
+    for entry in history:
+        if entry.get('date') == DATE_STR:
+            continue  # 跳過今日，防止自我封鎖
+        if count >= days:
+            break
+        count += 1
+        for section in ['hw', 'corp', 'app']:
+            for item in entry.get(section, []):
+                u = _norm_url(item.get('source', ''))
+                if u:
+                    urls.add(u)
+    return urls
 
 def load_notes():
     """讀取使用者存到 repo 的每日筆記"""
@@ -758,31 +802,77 @@ def downgrade_cross_item_duplicates(data):
                     print(f"  ↓ 跨條目重複降評→noise：{all_items[j].get('title','')[:50]} (overlap {overlap:.0%})")
                     all_items[j]['rating'] = 'noise'
 
-def downgrade_repeated_stories(data, recent_titles):
+PLACEHOLDER_SECTION_NAMES = {'hw': '晶片', 'corp': '巨頭', 'app': '應用'}
+
+def make_placeholder_item(section):
+    """程式生成標準佔位卡，結構仿照 LLM 版「今日無相關…新聞」noise 卡"""
+    name = PLACEHOLDER_SECTION_NAMES.get(section, '')
+    return {
+        "title": f"今日無相關{name}新聞",
+        "layer": "",
+        "body": f"今日無相關{name}新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": "",
+    }
+
+def _is_placeholder(item):
+    """無來源網址且標題為「今日無…」句式的 noise 佔位卡"""
+    return (not (item.get('source') or '').strip()
+            and '今日無' in item.get('title', ''))
+
+def remove_repeated_stories(data, recent_titles):
     """生成後 title-level 去重：LLM 改寫標題繞過 NO-REPEAT 指令時的最後一道 guard。
-    新 title 與近日 core/opp title 詞彙重疊率 ≥50% 且 ≥2 詞 → 降評 noise。"""
+    用 CJK bigram + 英文詞混合 token 比對（修正中文無空格全盲問題），
+    重疊 ≥3 token 且重疊率 ≥50% → 直接自當日資料移除（使用者拍板：
+    同一篇文章只分析一次，重複的完全不再出現）。分類被移除到全空時補標準佔位卡。"""
     if not recent_titles:
         return
-    recent_norm = [
-        set(w for w in re.sub(r'[^\w]', ' ', rt).lower().split() if len(w) > 1)
-        for rt in recent_titles
-    ]
+    recent_norm = [_title_tokens(rt) for rt in recent_titles]
     for section in ['hw', 'corp', 'app']:
+        if section not in data:
+            continue
+        kept = []
         for item in data.get(section, []):
-            if item.get('rating') == 'noise':
+            if _is_placeholder(item):
+                kept.append(item)  # 佔位卡天天同句式，不參與跨日比對
                 continue
             title = item.get('title', '')
-            t_words = set(w for w in re.sub(r'[^\w]', ' ', title).lower().split() if len(w) > 1)
-            if not t_words:
-                continue
-            for rn in recent_norm:
-                if not rn:
-                    continue
-                overlap = len(t_words & rn)
-                if overlap >= 2 and overlap / min(len(t_words), len(rn)) >= 0.5:
-                    print(f"  ↓ 跨日重複降評→noise：{title[:60]}")
-                    item['rating'] = 'noise'
-                    break
+            t_tokens = _title_tokens(title)
+            is_dup = False
+            if t_tokens:
+                for rn in recent_norm:
+                    if not rn:
+                        continue
+                    overlap = len(t_tokens & rn)
+                    if overlap >= 3 and overlap / min(len(t_tokens), len(rn)) >= 0.5:
+                        is_dup = True
+                        break
+            if is_dup:
+                print(f"  ✂ 跨日重複移除：{title[:60]}")
+            else:
+                kept.append(item)
+        if not kept and data.get(section):
+            kept.append(make_placeholder_item(section))
+            print(f"  ＋ {section} 分類移除後全空，補標準佔位卡")
+        data[section] = kept
+
+def drop_stale_placeholders(data):
+    """佔位卡攔截：分類內已有至少一張有來源網址的真實卡片時，
+    移除該分類所有無來源網址的 noise 佔位卡（防 LLM 佔位卡與真實卡並存）"""
+    for section in ['hw', 'corp', 'app']:
+        items = data.get(section, [])
+        if not any((it.get('source') or '').strip() for it in items):
+            continue  # 無真實卡，佔位卡保留
+        kept = [it for it in items
+                if not (it.get('rating') == 'noise'
+                        and not (it.get('source') or '').strip())]
+        removed = len(items) - len(kept)
+        if removed:
+            print(f"  ✂ {section} 移除 {removed} 張與真實卡並存的無來源 noise 佔位卡")
+            data[section] = kept
 
 
 def downgrade_hallucination_patterns(data):
@@ -1199,10 +1289,11 @@ if __name__ == '__main__':
             sys.exit(0)
 
     recent_titles = get_recent_titles(history, days=3)
-    print(f"  → 近三日 core/opp 標題 {len(recent_titles)} 條（NO-REPEAT 用）")
+    recent_urls = get_recent_urls(history, days=3)
+    print(f"  → 近三日標題 {len(recent_titles)} 條、來源網址 {len(recent_urls)} 條（NO-REPEAT 用）")
 
     print("📰 抓取新聞（含近日預過濾）...")
-    news = fetch_news(recent_titles)
+    news = fetch_news(recent_titles, recent_urls)
     total = len(news.splitlines())
     print(f"  → 合計 {total} 行新聞摘要")
 
@@ -1224,7 +1315,7 @@ if __name__ == '__main__':
     print("🔗 驗證 source URL...")
     validate_sources(data)
     print("📉 品質管線（降評低品質條目）...")
-    downgrade_repeated_stories(data, recent_titles)
+    remove_repeated_stories(data, recent_titles)
     downgrade_unsourced(data)
     print("🔍 body 品質檢核...")
     downgrade_low_quality(data)
@@ -1243,6 +1334,8 @@ if __name__ == '__main__':
     validate_impact(data)
     print("🔍 主角矛盾偵測...")
     fix_protagonist_as_competitor(data)
+    print("🧹 佔位卡攔截（真實卡存在時移除並存佔位卡）...")
+    drop_stale_placeholders(data)
 
     history = upsert(history, data)
     save_history(history)
