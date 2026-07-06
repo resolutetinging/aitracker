@@ -1089,6 +1089,16 @@ function loadNote(date) {
 
 let _noteSaveTimer = {};
 let _autoUploadTimer = null;
+let _autoUploadPending = false; // 是否有排程中或尚未同步的變動
+// djb2 簡易字串雜湊，用來判斷筆記內容是否真的變動，避免無意義的重複 commit
+function djb2Hash(str) {
+  let hash = 5381;
+  for (let i = 0; i < str.length; i++) {
+    hash = ((hash << 5) + hash) + str.charCodeAt(i);
+    hash = hash & hash; // 收斂為 32-bit 整數
+  }
+  return hash.toString(36);
+}
 function showToast(msg, duration=2800) {
   const t = document.getElementById('auto-upload-toast');
   if (!t) return;
@@ -1104,16 +1114,16 @@ function saveNote(date, text) {
     const el = document.getElementById('note-saved-'+date);
     if (el) { el.textContent = '已儲存'; setTimeout(()=>{ if(el) el.textContent=''; }, 2000); }
   }, 600);
-  // auto-upload to GitHub if token is set (debounce 10s)
+  // auto-upload to GitHub if token is set (debounce 2 分鐘，避免連環 commit)
   if (localStorage.getItem('gh_pat')) {
     clearTimeout(_autoUploadTimer);
-    _autoUploadTimer = setTimeout(autoUploadNotes, 10000);
+    _autoUploadPending = true;
+    _autoUploadTimer = setTimeout(autoUploadNotes, 120000);
   }
 }
-async function autoUploadNotes() {
+async function autoUploadNotes(opts) {
   const token = localStorage.getItem('gh_pat');
   if (!token) return;
-  showToast('📤 同步筆記中…', 5000);
   const notes = {};
   for (let i = 0; i < localStorage.length; i++) {
     const k = localStorage.key(i);
@@ -1122,6 +1132,14 @@ async function autoUploadNotes() {
       if (val && val.trim()) notes[k.replace('note_','')] = val.trim();
     }
   }
+  // 先算出不含 updated 時戳的穩定序列化字串，與上次成功同步的雜湊比對
+  const stableStr = JSON.stringify(notes);
+  const stableHash = djb2Hash(stableStr);
+  if (stableHash === localStorage.getItem('notes_last_synced_hash')) {
+    _autoUploadPending = false;
+    return; // 內容未變，不推
+  }
+  showToast('📤 同步筆記中…', 5000);
   notes.updated = new Date().toISOString();
   const content = btoa(unescape(encodeURIComponent(JSON.stringify(notes, null, 2))));
   try {
@@ -1131,9 +1149,14 @@ async function autoUploadNotes() {
     if (chk.ok) sha = (await chk.json()).sha;
     const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/data/notes.json`, {
       method:'PUT',
+      keepalive: !!(opts && opts.keepalive),
       headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
       body: JSON.stringify({message:'📝 Auto-sync weekly notes', content, ...(sha?{sha}:{})})
     });
+    if (res.ok) {
+      localStorage.setItem('notes_last_synced_hash', stableHash);
+      _autoUploadPending = false;
+    }
     showToast(res.ok ? '✅ 筆記已自動同步' : '❌ 同步失敗，請手動上傳');
     const st = document.getElementById('notes-save-status');
     if (st) { st.textContent = res.ok ? `✅ 已同步（${Object.keys(notes).filter(k=>k!=='updated').length} 天）` : '❌ 同步失敗'; setTimeout(()=>{ if(st) st.textContent=''; }, 3000); }
@@ -1141,6 +1164,19 @@ async function autoUploadNotes() {
     showToast('❌ 同步失敗：' + e.message);
   }
 }
+// 頁面隱藏或關閉前，若有排程中或未同步的變動，立即補推一次（keepalive 提高關頁時送達率）
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'hidden' && _autoUploadPending) {
+    clearTimeout(_autoUploadTimer);
+    autoUploadNotes({keepalive:true});
+  }
+});
+window.addEventListener('pagehide', function() {
+  if (_autoUploadPending) {
+    clearTimeout(_autoUploadTimer);
+    autoUploadNotes({keepalive:true});
+  }
+});
 
 function tog(i) {
   const b = document.getElementById('hb'+i);
