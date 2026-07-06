@@ -4,74 +4,76 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "卡內基梅隆和加州大學洛杉磯研發新型晶片設計技術",
-        "layer": "晶片設計",
-        "body": "卡內基梅隆和加州大學洛杉磯的研究人員發表了一篇技術論文，介紹了一種新的晶片設計技術，稱為 AgRefactor，該技術可以將軟件重構為高級合成兼容的程序，實現了 6.51 倍的幾何平均速度提升。",
+        "title": "Equinix 資料中心在英國曼徹斯特被出售",
+        "layer": "資料中心",
+        "body": "Equinix 資料中心在英國曼徹斯特被 Schroders Capital 收購，該資料中心由 Invesco 擁有，價格為 £15.35 million。該資料中心位於 Trafford Park 區，於 2012 年由 Telecity 啟用，2016 年被 Equinix 收購。該資料中心提供 30,000 平方英尺的技術空間，能夠提供高達 20kW 的伺服器密度。",
         "impact": null,
-        "rating": "core",
-        "insight": "這項技術的發展對於晶片設計業界具有重要意義，可能會帶來新的商業機會和挑戰。",
-        "source_label": "SemiEngineering",
-        "source": "https://semiengineering.com/llm-agents-to-refactor-software-for-high-level-synthesis-carnegie-mellon-ucla/",
+        "rating": "noise",
+        "insight": "Equinix 資料中心在英國曼徹斯特被出售，反映出資料中心市場的變化和投資機會。",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/equinix-occupied-data-center-in-manchester-uk-sold-to-a-new-landlord-report/",
         "chain": [
           {
-            "label": "卡內基梅隆 AgRefactor 產能↑",
+            "label": "Equinix 資產價值↑",
             "type": "up"
           },
           {
-            "label": "加州大學洛杉磯 AgRefactor 研究↑",
+            "label": "Schroders Capital 收購案↑",
             "type": "up"
+          },
+          {
+            "label": "Invesco 資產價值↓",
+            "type": "down"
           }
         ]
       },
       {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
+        "title": "CPP Investments 將投資 17.5 億美元於 EQT 和 EdgeConneX 的 AI 資料中心建設",
+        "layer": "AI 資料中心",
+        "body": "CPP Investments 將投資 17.5 億美元於 EQT 和 EdgeConneX 的 AI 資料中心建設，該項目將發展 AI 基礎設施。EdgeConneX 宣布其發展管道達 10GW，該投資將支持公司的全球業務擴張。",
+        "impact": "這次投資將直接影響 EQT 和 EdgeConneX 的業務，可能會導致公司的收入和利潤出現增長。",
+        "rating": "core",
+        "insight": "CPP Investments 將投資 17.5 億美元於 EQT 和 EdgeConneX 的 AI 資料中心建設，反映出 AI 資料中心市場的發展機會。",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/cpp-investments-to-pump-175-billion-into-eqt-and-edgeconnexs-ai-data-center-build-out/",
+        "chain": [
+          {
+            "label": "EQT 資金籌措↑",
+            "type": "up"
+          },
+          {
+            "label": "EdgeConneX 業務擴張↑",
+            "type": "up"
+          },
+          {
+            "label": "CPP Investments 投資回報↑",
+            "type": "up"
+          }
+        ]
       }
     ],
     "corp": [
       {
-        "title": "Clearstone 計劃在英國肯特建造 300MW 數據中心",
-        "layer": "數據中心",
-        "body": "Clearstone 公司計劃在英國肯特建造一個 300MW 的數據中心，該數據中心將佔地 145 英畝，預計於 2030 年開始運營。",
-        "impact": null,
+        "title": "新澤西州通過法案建立大型負載資料中心費率",
+        "layer": "資料中心",
+        "body": "新澤西州通過法案建立大型負載資料中心費率，該法案將指導州公共事業委員會（PUC）為 50MW 或以上的資料中心設立專用費率。這將有助於保護其他用戶免受新建資料中心的成本增加影響。",
+        "impact": "這次法案通過將直接影響新澤西州的資料中心市場，可能會導致資料中心的建設和投資出現變化。同時，這也可能會影響相關企業的供應鏈，從而導致資料中心和能源的發展出現變化。",
         "rating": "noise",
-        "insight": "這項計劃對於英國的數據中心市場具有重要意義，可能會帶來新的商業機會和挑戰。",
-        "source_label": "DataCenterDynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/300mw-data-center-campus-proposed-in-kent-uk/",
+        "insight": "新澤西州通過法案建立大型負載資料中心費率，反映出資料中心市場的發展和監管的變化。",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/new-jersey-lawmakers-pass-bill-to-establish-large-load-data-center-tariff/",
         "chain": [
           {
-            "label": "Clearstone 數據中心建設↑",
+            "label": "新澤西州資料中心發展↑",
             "type": "up"
           },
           {
-            "label": "英國肯特數據中心產能↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Equinix-occupied 數據中心在曼徹斯特被出售",
-        "layer": "數據中心",
-        "body": "Equinix-occupied 數據中心在曼徹斯特被出售給了一個新的房東，該數據中心的面積約為 30,000 平方英尺，能夠提供高達 20kW 的密度。",
-        "impact": "這項出售可能會對數據中心的市場產生影響，特別是對於大型數據中心的需求，可能會提高數據中心的供應和競爭。同時，這項出售也可能會對相關的供應鏈產生影響，例如數據中心的設備供應商和能源供應商。",
-        "rating": "noise",
-        "insight": "這項出售對於數據中心市場具有重要意義，可能會帶來新的商業機會和挑戰。",
-        "source_label": "DataCenterDynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/equinix-occupied-data-center-in-manchester-uk-sold-to-a-new-landlord-report/",
-        "chain": [
-          {
-            "label": "Equinix-occupied 數據中心銷售↑",
+            "label": "州公共事業委員會監管↑",
             "type": "up"
           },
           {
-            "label": "曼徹斯特數據中心交易↑",
-            "type": "up"
+            "label": "資料中心運營成本↓",
+            "type": "down"
           }
         ]
       }
@@ -79,22 +81,22 @@
     "app": [
       {
         "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
+        "layer": "應用",
+        "body": "今日無相關應用新聞，無法提供具體的應用案例和發展趨勢。",
+        "impact": null,
         "rating": "noise",
-        "insight": "",
+        "insight": "今日無相關應用新聞，無法提供具體的應用案例和發展趨勢。",
         "source_label": "",
         "source": ""
       }
     ],
     "glossary_new": [
       {
-        "term": "AgRefactor",
-        "full": "AgRefactor",
-        "def": "一種新的晶片設計技術，能夠將軟件重構為高級合成兼容的程序",
-        "why": "這項技術的發展對於晶片設計業界具有重要意義，可能會帶來新的商業機會和挑戰",
-        "category": "晶片設計"
+        "term": "資料中心",
+        "full": "Data Center",
+        "def": "是一種為了提供數據存儲、處理和傳輸而設計的設施，通常包括伺服器、儲存設備、網絡設備和其他相關的硬件和軟件。",
+        "why": "資料中心是當代數據處理和存儲的核心設施，對於各種行業和應用具有重要意義。",
+        "category": "hardware"
       }
     ],
     "weekly_summary": null
