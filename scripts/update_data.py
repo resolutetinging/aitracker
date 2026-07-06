@@ -369,11 +369,34 @@ def get_recent_urls(history, days=3):
     return urls
 
 def load_notes():
-    """讀取使用者存到 repo 的每日筆記"""
-    if os.path.exists('data/notes.json'):
-        with open('data/notes.json', encoding='utf-8') as f:
-            return json.load(f)
+    """讀取每日筆記：優先用當日 Gist 快照 notes_backup.json，退回舊 notes.json"""
+    for path in ('data/notes_backup.json', 'data/notes.json'):
+        if os.path.exists(path):
+            with open(path, encoding='utf-8') as f:
+                return json.load(f)
     return {}
+
+def snapshot_notes_backup():
+    """每日快照：從 Gist 抓 notes.json 寫入 data/notes_backup.json（config 缺失則靜默跳過）"""
+    cfg_path = 'data/notes_config.json'
+    if not os.path.exists(cfg_path):
+        return
+    try:
+        with open(cfg_path, encoding='utf-8') as f:
+            gist_id = json.load(f).get('gist_id')
+        if not gist_id:
+            return
+        url = f"https://gist.githubusercontent.com/resolutetinging/{gist_id}/raw/notes.json"
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, timeout=10) as r:
+            content = r.read().decode('utf-8')
+        json.loads(content)  # 確認 JSON 合法再落地
+        os.makedirs('data', exist_ok=True)
+        with open('data/notes_backup.json', 'w', encoding='utf-8') as f:
+            f.write(content)
+        print("  → 筆記快照已更新 data/notes_backup.json")
+    except Exception as e:
+        print(f"  → 筆記快照失敗（略過）：{e}")
 
 # ══════════════════════════════════════════════════════════════════
 #  2. PROMPT
@@ -1301,6 +1324,9 @@ def push_notion(data):
 # ══════════════════════════════════════════════════════════════════
 if __name__ == '__main__':
     print(f"🚀 開始更新 AI Tracker（{DATE_STR}）...")
+
+    print("📋 筆記 Gist 快照備份...")
+    snapshot_notes_backup()
 
     history = load_history()
 

@@ -1121,6 +1121,125 @@ function saveNote(date, text) {
     _autoUploadTimer = setTimeout(autoUploadNotes, 120000);
   }
 }
+// ══════════════════════════════════════════════════════════════════
+//  NOTES GIST 同步（筆記改存私有 Gist，避免 repo 連環 commit 觸發部署限流）
+// ══════════════════════════════════════════════════════════════════
+let _gistIdPromise = null;
+function resolveNotesGistId() {
+  const cached = localStorage.getItem('notes_gist_id');
+  if (cached) return Promise.resolve(cached);
+  if (!_gistIdPromise) {
+    _gistIdPromise = _resolveGistIdUncached();
+    _gistIdPromise.finally(() => { _gistIdPromise = null; });
+  }
+  return _gistIdPromise;
+}
+async function _resolveGistIdUncached() {
+  // 1. repo 內的 notes_config.json（其他裝置已建立過）
+  try {
+    const res = await fetch(`./data/notes_config.json?v=${Date.now()}`);
+    if (res.ok) {
+      const cfg = await res.json();
+      if (cfg && cfg.gist_id) {
+        localStorage.setItem('notes_gist_id', cfg.gist_id);
+        return cfg.gist_id;
+      }
+    }
+  } catch(e) {}
+  // 2. 首次建立（需 token）：種子＝舊 data/notes.json ＋本地 note_* 覆蓋（本地較新優先）
+  const token = localStorage.getItem('gh_pat');
+  if (!token) return null; // 唯讀模式
+  let seed = {};
+  try {
+    const res = await fetch(`./data/notes.json?v=${Date.now()}`);
+    if (res.ok) seed = await res.json();
+  } catch(e) {}
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith('note_')) {
+      const val = localStorage.getItem(k);
+      if (val && val.trim()) seed[k.replace('note_','')] = val.trim();
+    }
+  }
+  seed.updated = new Date().toISOString();
+  try {
+    const res = await fetch('https://api.github.com/gists', {
+      method:'POST',
+      headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
+      body: JSON.stringify({description:'AI Tracker weekly notes', public:false,
+        files:{'notes.json':{content: JSON.stringify(seed, null, 2)}}})
+    });
+    if (!res.ok) { showToast('❌ ' + gistErrMsg(res)); return null; }
+    const gistId = (await res.json()).id;
+    localStorage.setItem('notes_gist_id', gistId);
+    // 一次性把 gist id 寫回 repo 的 data/notes_config.json（供無 token 裝置與每日快照使用）
+    try {
+      const cfgContent = btoa(unescape(encodeURIComponent(JSON.stringify({gist_id: gistId}, null, 2))));
+      let sha;
+      const chk = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/data/notes_config.json`,
+        {headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github+json'}});
+      if (chk.ok) sha = (await chk.json()).sha;
+      await fetch(`https://api.github.com/repos/${GH_REPO}/contents/data/notes_config.json`, {
+        method:'PUT',
+        headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
+        body: JSON.stringify({message:'🔧 notes gist id', content: cfgContent, ...(sha?{sha}:{})})
+      });
+    } catch(e) {}
+    return gistId;
+  } catch(e) { return null; }
+}
+function gistErrMsg(res) {
+  const s = res && res.status;
+  return (s===401 || s===403 || s===404)
+    ? '同步失敗：PAT 可能缺 gist 權限或 gist 遺失'
+    : '同步失敗，請稍後再試';
+}
+// PATCH notes 到 Gist（Gist API 的 content 是純文字，不做 base64）
+async function gistWriteNotes(notes, opts) {
+  const token = localStorage.getItem('gh_pat');
+  if (!token) return {ok:false, status:0};
+  const gistId = await resolveNotesGistId();
+  if (!gistId) return {ok:false, status:404};
+  return fetch(`https://api.github.com/gists/${gistId}`, {
+    method:'PATCH',
+    keepalive: !!(opts && opts.keepalive),
+    headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
+    body: JSON.stringify({files:{'notes.json':{content: JSON.stringify(notes, null, 2)}}})
+  });
+}
+// 讀取 notes：Gist API → Gist raw → 每日快照備份 → 舊 repo 檔（四層 fallback）
+async function fetchRemoteNotes() {
+  const token = localStorage.getItem('gh_pat');
+  let gistId = null;
+  try { gistId = await resolveNotesGistId(); } catch(e) {}
+  if (token && gistId) {
+    try {
+      const res = await fetch(`https://api.github.com/gists/${gistId}`,
+        {headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github+json'}});
+      if (res.ok) {
+        const f = (await res.json()).files;
+        if (f && f['notes.json'] && f['notes.json'].content && !f['notes.json'].truncated) {
+          return JSON.parse(f['notes.json'].content);
+        }
+      }
+    } catch(e) {}
+  }
+  if (gistId) {
+    try {
+      const res = await fetch(`https://gist.githubusercontent.com/resolutetinging/${gistId}/raw/notes.json?v=${Date.now()}`);
+      if (res.ok) return await res.json();
+    } catch(e) {}
+  }
+  try {
+    const res = await fetch(`./data/notes_backup.json?v=${Date.now()}`);
+    if (res.ok) return await res.json();
+  } catch(e) {}
+  try {
+    const res = await fetch(`./data/notes.json?v=${Date.now()}`);
+    if (res.ok) return await res.json();
+  } catch(e) {}
+  return {};
+}
 async function autoUploadNotes(opts) {
   const token = localStorage.getItem('gh_pat');
   if (!token) return;
@@ -1141,23 +1260,13 @@ async function autoUploadNotes(opts) {
   }
   showToast('📤 同步筆記中…', 5000);
   notes.updated = new Date().toISOString();
-  const content = btoa(unescape(encodeURIComponent(JSON.stringify(notes, null, 2))));
   try {
-    let sha;
-    const chk = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/data/notes.json`,
-      {headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github+json'}});
-    if (chk.ok) sha = (await chk.json()).sha;
-    const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/data/notes.json`, {
-      method:'PUT',
-      keepalive: !!(opts && opts.keepalive),
-      headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
-      body: JSON.stringify({message:'📝 Auto-sync weekly notes', content, ...(sha?{sha}:{})})
-    });
+    const res = await gistWriteNotes(notes, opts);
     if (res.ok) {
       localStorage.setItem('notes_last_synced_hash', stableHash);
       _autoUploadPending = false;
     }
-    showToast(res.ok ? '✅ 筆記已自動同步' : '❌ 同步失敗，請手動上傳');
+    showToast(res.ok ? '✅ 筆記已自動同步' : '❌ ' + gistErrMsg(res));
     const st = document.getElementById('notes-save-status');
     if (st) { st.textContent = res.ok ? `✅ 已同步（${Object.keys(notes).filter(k=>k!=='updated').length} 天）` : '❌ 同步失敗'; setTimeout(()=>{ if(st) st.textContent=''; }, 3000); }
   } catch(e) {
@@ -1445,25 +1554,19 @@ async function saveNotesToGitHub() {
       if (val && val.trim()) notes[date] = val.trim();
     }
   }
+  const stableHash = djb2Hash(JSON.stringify(notes)); // 不含 updated 時戳
   notes.updated = new Date().toISOString();
 
-  const content = btoa(unescape(encodeURIComponent(JSON.stringify(notes, null, 2))));
   try {
-    let sha;
-    const chk = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/data/notes.json`,
-      {headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github+json'}});
-    if (chk.ok) sha = (await chk.json()).sha;
-
-    const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/data/notes.json`, {
-      method:'PUT',
-      headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
-      body: JSON.stringify({message:'📝 Update weekly notes', content, ...(sha?{sha}:{})})
-    });
-
+    const res = await gistWriteNotes(notes);
+    if (res.ok) {
+      localStorage.setItem('notes_last_synced_hash', stableHash);
+      _autoUploadPending = false;
+    }
     if (status) {
       status.textContent = res.ok
         ? `✅ 已儲存（${Object.keys(notes).filter(k=>k!=='updated').length} 天筆記）`
-        : '❌ 儲存失敗，請確認 Token 設定';
+        : '❌ ' + gistErrMsg(res);
       setTimeout(()=>{ if(status) status.textContent=''; }, 3000);
     }
   } catch(e) {
@@ -1480,12 +1583,9 @@ async function loadArchive() {
   if (_archiveLoaded) return;
   const el = document.getElementById('panel-archive');
   el.innerHTML = '<div style="padding:20px;color:var(--muted);font-size:13px;">載入中…</div>';
-  // 從 GitHub 讀取 notes.json（合併 localStorage）
+  // 從 Gist 讀取 notes（四層 fallback，合併 localStorage）
   let ghNotes = {};
-  try {
-    const res = await fetch(`./data/notes.json?v=${Date.now()}`);
-    if (res.ok) ghNotes = await res.json();
-  } catch(e) {}
+  try { ghNotes = await fetchRemoteNotes(); } catch(e) {}
   // 合併 localStorage（可能有未同步的新筆記）
   for (let i = 0; i < localStorage.length; i++) {
     const k = localStorage.key(i);
@@ -1602,10 +1702,7 @@ async function summarizeArchive() {
 
   // 收集筆記內容（依日期排序）
   const notes = {};
-  try {
-    const res = await fetch(`./data/notes.json?v=${Date.now()}`);
-    if (res.ok) Object.assign(notes, await res.json());
-  } catch(e) {}
+  try { Object.assign(notes, await fetchRemoteNotes()); } catch(e) {}
   for (let i = 0; i < localStorage.length; i++) {
     const k = localStorage.key(i);
     if (k && k.startsWith('note_')) {
@@ -1803,20 +1900,16 @@ async function saveArchiveToGitHub() {
       if (val.trim()) notes[date] = val.trim();
     }
   }
+  const stableHash = djb2Hash(JSON.stringify(notes)); // 不含 updated 時戳
   notes.updated = new Date().toISOString();
-  const content = btoa(unescape(encodeURIComponent(JSON.stringify(notes, null, 2))));
   try {
-    let sha;
-    const chk = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/data/notes.json`,
-      {headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github+json'}});
-    if (chk.ok) sha = (await chk.json()).sha;
-    const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/data/notes.json`, {
-      method:'PUT',
-      headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
-      body: JSON.stringify({message:'📝 Update archive notes', content, ...(sha?{sha}:{})})
-    });
+    const res = await gistWriteNotes(notes);
+    if (res.ok) {
+      localStorage.setItem('notes_last_synced_hash', stableHash);
+      _autoUploadPending = false;
+    }
     if (status) {
-      status.textContent = res.ok ? `✅ 已儲存（${Object.keys(notes).filter(k=>k!=='updated').length} 天）` : '❌ 儲存失敗';
+      status.textContent = res.ok ? `✅ 已儲存（${Object.keys(notes).filter(k=>k!=='updated').length} 天）` : '❌ ' + gistErrMsg(res);
       setTimeout(()=>{ if(status) status.textContent=''; }, 3000);
     }
   } catch(e) {
