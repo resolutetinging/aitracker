@@ -4,37 +4,73 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "卡內基梅隆大學和加州大學洛杉磯分校研發新型晶片設計技術",
+        "title": "卡內基梅隆和加州大學洛杉磯研發新型晶片設計技術",
         "layer": "晶片設計",
-        "body": "卡內基梅隆大學和加州大學洛杉磯分校的研究人員發表了一篇技術論文，介紹了一種基於LLM的多代理人工作流程，用于將軟體重構為高級合成兼容的程序。這種技術可以實現6.51倍的幾何平均加速。",
-        "impact": "這項技術的發展可能會對晶片設計業界產生重大影響，尤其是對於高級合成兼容的晶片設計。這可能會增加晶片設計的效率和速度，從而對下游的晶片製造業界產生正面的影響。",
+        "body": "卡內基梅隆和加州大學洛杉磯的研究人員發表了一篇技術論文，介紹了一種新的晶片設計技術，稱為 AgRefactor，該技術可以將軟件重構為高級合成兼容的程序，實現了 6.51 倍的幾何平均速度提升。",
+        "impact": null,
         "rating": "core",
-        "insight": "卡內基梅隆大學和加州大學洛杉磯分校的研究人員開發了一種新型晶片設計技術，可能會對晶片設計業界產生重大影響。",
+        "insight": "這項技術的發展對於晶片設計業界具有重要意義，可能會帶來新的商業機會和挑戰。",
         "source_label": "SemiEngineering",
-        "source": "https://semiengineering.com/llm-agents-to-refactor-software-for-high-level-synthesis-carnegie-mellon-ucla/"
+        "source": "https://semiengineering.com/llm-agents-to-refactor-software-for-high-level-synthesis-carnegie-mellon-ucla/",
+        "chain": [
+          {
+            "label": "卡內基梅隆 AgRefactor 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "加州大學洛杉磯 AgRefactor 研究↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
       }
     ],
     "corp": [
       {
-        "title": "Clearstone計畫在英國肯特建造300MW的資料中心",
-        "layer": "資料中心",
-        "body": "Clearstone公司計畫在英國肯特建造一個300MW的資料中心，該資料中心將佔地145英畝，預計在2030年開始運營。該資料中心將提供多達180,000平方米的資料中心空間，將通過英國的電力傳輸網絡提供電力。",
-        "impact": "這項計畫的實施可能會對英國的資料中心業界產生重大影響，尤其是對於資料中心的供應和需求。這可能會增加資料中心的供應，從而對下游的雲計算業界產生正面的影響。",
-        "rating": "core",
-        "insight": "Clearstone公司計畫在英國肯特建造一個300MW的資料中心，可能會對英國的資料中心業界產生重大影響。",
-        "source_label": "Data Center Dynamics",
+        "title": "Clearstone 計劃在英國肯特建造 300MW 數據中心",
+        "layer": "數據中心",
+        "body": "Clearstone 公司計劃在英國肯特建造一個 300MW 的數據中心，該數據中心將佔地 145 英畝，預計於 2030 年開始運營。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "這項計劃對於英國的數據中心市場具有重要意義，可能會帶來新的商業機會和挑戰。",
+        "source_label": "DataCenterDynamics",
         "source": "https://www.datacenterdynamics.com/en/news/300mw-data-center-campus-proposed-in-kent-uk/",
         "chain": [
           {
-            "label": "AWS資料中心業務↑",
+            "label": "Clearstone 數據中心建設↑",
             "type": "up"
           },
           {
-            "label": "Google Cloud資料中心業務↑",
+            "label": "英國肯特數據中心產能↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Equinix-occupied 數據中心在曼徹斯特被出售",
+        "layer": "數據中心",
+        "body": "Equinix-occupied 數據中心在曼徹斯特被出售給了一個新的房東，該數據中心的面積約為 30,000 平方英尺，能夠提供高達 20kW 的密度。",
+        "impact": "這項出售可能會對數據中心的市場產生影響，特別是對於大型數據中心的需求，可能會提高數據中心的供應和競爭。同時，這項出售也可能會對相關的供應鏈產生影響，例如數據中心的設備供應商和能源供應商。",
+        "rating": "noise",
+        "insight": "這項出售對於數據中心市場具有重要意義，可能會帶來新的商業機會和挑戰。",
+        "source_label": "DataCenterDynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/equinix-occupied-data-center-in-manchester-uk-sold-to-a-new-landlord-report/",
+        "chain": [
+          {
+            "label": "Equinix-occupied 數據中心銷售↑",
             "type": "up"
           },
           {
-            "label": "Microsoft Azure資料中心業務↑",
+            "label": "曼徹斯特數據中心交易↑",
             "type": "up"
           }
         ]
@@ -44,7 +80,7 @@
       {
         "title": "今日無相關應用新聞",
         "layer": "",
-        "body": "今日該分類無足夠具體新聞素材可供分析。",
+        "body": "今日無相關應用新聞。",
         "impact": "",
         "rating": "noise",
         "insight": "",
@@ -54,11 +90,11 @@
     ],
     "glossary_new": [
       {
-        "term": "LLM",
-        "full": "Large Language Model",
-        "def": "一種基於深度學習的自然語言處理技術，用于文本生成、語言翻譯等任務。",
-        "why": "LLM技術的發展對於自然語言處理和人工智慧領域具有重要意義。",
-        "category": "ai_technique"
+        "term": "AgRefactor",
+        "full": "AgRefactor",
+        "def": "一種新的晶片設計技術，能夠將軟件重構為高級合成兼容的程序",
+        "why": "這項技術的發展對於晶片設計業界具有重要意義，可能會帶來新的商業機會和挑戰",
+        "category": "晶片設計"
       }
     ],
     "weekly_summary": null
