@@ -905,6 +905,37 @@ def downgrade_hallucination_patterns(data):
         print(f"  → 共攔截 {count} 筆")
 
 
+# HW 區段不屬半導體/GPU/HBM/CoWoS/封裝/晶圓廠相關 → 降噪（自舊副本 v2.x 移植）
+HW_MUST_CONTAIN = re.compile(
+    r'TSMC|台積|CoWoS|HBM|OSAT|封裝|晶圓|半導體|GPU|ASIC|AI.?chip|Nvidia|AMD|晶片|'
+    r'HBM|Micron|SK.?Hynix|三星|Samsung|chiplet|wafer|fab|foundry|N\d[nN]|先進封裝',
+    re.IGNORECASE
+)
+def downgrade_hw_offtopic(data):
+    """hw 區若 title+body 不含半導體/封裝/HBM/GPU 關鍵字 → noise"""
+    for item in data.get('hw', []):
+        if item.get('rating') == 'noise':
+            continue
+        combined = item.get('title','') + item.get('body','')
+        if not HW_MUST_CONTAIN.search(combined):
+            print(f"  ↓ HW 跑偏降評→noise：{item.get('title','')[:60]}")
+            item['rating'] = 'noise'
+
+# body 幻覺偵測：無來源預測數字（未來+%）且無財報錨點 → noise（自舊副本 v2.x 移植）
+HALLUC_PAT = re.compile(r'(預計|估計|預期|將在未來).{0,15}(增加|成長|上升|達到).{0,8}\d+%')
+ANCHOR_PAT = re.compile(r'(財報|報告|Q[1-4]|法說|Earnings|季報|年報|白皮書|聲明|宣布)')
+def downgrade_hallucinated(data):
+    """body 含無來源預測數字（未來+%）且無財報錨點 → noise"""
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            if item.get('rating') == 'noise':
+                continue
+            body = item.get('body', '')
+            if HALLUC_PAT.search(body) and not ANCHOR_PAT.search(body):
+                print(f"  ↓ 幻覺預測降評→noise：{item.get('title','')[:60]}")
+                item['rating'] = 'noise'
+
+
 def validate_body(data, news_context):
     """LLM 二次驗證：body 聲明是否能在原始 RSS 摘要中找到支撐"""
     client = Groq(api_key=os.environ['GROQ_API_KEY'])
@@ -1321,6 +1352,9 @@ if __name__ == '__main__':
     downgrade_low_quality(data)
     print("🚨 幻覺 pattern 攔截...")
     downgrade_hallucination_patterns(data)
+    downgrade_hallucinated(data)
+    print("🎯 HW 區跑偏偵測...")
+    downgrade_hw_offtopic(data)
     print("🔤 禁句 pattern 攔截...")
     downgrade_forbidden_phrases(data)
     print("🔁 跨條目重複偵測...")
