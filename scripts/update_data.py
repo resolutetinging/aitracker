@@ -306,7 +306,9 @@ def fetch_news(recent_titles=None):
 
 
 def get_recent_titles(history, days=3, max_titles=30):
-    """取得近 N 天 core/opp 標題用於跨日去重；排除今日自身與 noise 條目"""
+    """取得近 N 天所有標題（含 noise）用於跨日去重；排除今日自身。
+    同一篇文章只分析一次，冷熱以第一次判定為準，noise 也需列入 NO-REPEAT
+    避免已判 noise 的新聞隔天原樣重現後被重新判成 core/opp。"""
     titles = []
     count = 0
     for entry in history:
@@ -317,8 +319,6 @@ def get_recent_titles(history, days=3, max_titles=30):
         count += 1
         for section in ['hw', 'corp', 'app']:
             for item in entry.get(section, []):
-                if item.get('rating') == 'noise':
-                    continue  # noise 不列入 NO-REPEAT，noise title 多為佔位符
                 t = item.get('title', '').strip()
                 if t:
                     titles.append(t)
@@ -412,9 +412,11 @@ def fix_chains(data):
 
     print(f"  → {len(bad)} 條 chain 不合格，重新生成…")
     client = Groq(api_key=os.environ['GROQ_API_KEY'])
+    # id 用 bad 列表的索引，回填時以 id 對應而非標題字串比對，
+    # 避免 LLM 在輸出中改寫標題導致回填時靜默漏掉該筆
     items_json = json.dumps(
-        [{"sec":sec,"title":item["title"],"body":item.get("body","")[:300]}
-         for sec,item in bad], ensure_ascii=False)
+        [{"id":i,"title":item["title"],"body":item.get("body","")[:1500]}
+         for i,(sec,item) in enumerate(bad)], ensure_ascii=False)
 
     prompt = (
         "以下新聞的 chain 使用了「受益↑」「受損↓」等泛稱或節點不足2個，請重新生成。\n"
@@ -422,8 +424,8 @@ def fix_chains(data):
         "例如「TSMC CoWoS 產能↑」「SK Hynix ASP↑」「Azure GPU 交期↓」「AMD 市占↓」；"
         "嚴禁使用「受益」「受損」「受壓」等泛稱。\n"
         f"條目：{items_json}\n"
-        '輸出純JSON陣列（直接從[開始）：'
-        '[{"title":"原標題","chain":[{"label":"具體公司+方向","type":"up"}]}]'
+        '輸出純JSON陣列（直接從[開始，id 必須原樣照抄輸入的 id，不得省略或改寫）：'
+        '[{"id":0,"chain":[{"label":"具體公司+方向","type":"up"}]}]'
     )
     try:
         resp = client.chat.completions.create(
@@ -439,14 +441,23 @@ def fix_chains(data):
             raw = raw.split('\n',1)[-1].rsplit('```',1)[0].strip()
         raw = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', ' ', raw)
         fixes = json.loads(raw)
+        sent_n, got_n = len(bad), len(fixes)
+        if sent_n != got_n:
+            print(f"  ⚠ 送出 {sent_n} 筆，LLM 回傳 {got_n} 筆，數量不符，僅回填可對應的 id，不整批失敗")
         fixed = 0
         for fix in fixes:
-            for sec in ['hw','corp','app']:
-                for item in data.get(sec,[]):
-                    if item['title'] == fix['title'] and fix.get('chain'):
-                        item['chain'] = fix['chain']
-                        fixed += 1
-                        print(f"  ✓ {item['title'][:45]}")
+            idx = fix.get('id')
+            if not isinstance(idx, int) or idx < 0 or idx >= len(bad):
+                print(f"  ⚠ 跳過無效/未知 id：{fix.get('id')!r}")
+                continue
+            if not fix.get('chain'):
+                continue
+            _, item = bad[idx]
+            item['chain'] = fix['chain']
+            fixed += 1
+            print(f"  ✓ {item['title'][:45]}")
+        if fixed < sent_n:
+            print(f"  ⚠ 仍有 {sent_n - fixed} 條未成功回填 chain")
         print(f"  → 共修正 {fixed} 條")
     except Exception as e:
         print(f"  → chain 修正失敗：{e}")
@@ -609,8 +620,11 @@ FORBIDDEN_PATS = [
     # impact 欄位模板偵測
     re.compile(r'的供應鏈影響是正面的'),
     re.compile(r'它可以增加.{1,20}的.{1,20}能力和市場份額'),
-    re.compile(r'對下游的.{1,30}需求產生正面的影響'),
+    # 放寬：「需求」二字改為可有可無，「的」在「正面(的)影響」中改為可有可無
+    re.compile(r'對下游的.{1,30}(?:需求)?產生正面的?影響'),
     re.compile(r'競爭對手.{1,30}難以跟上.{1,20}的技術進步'),
+    # 「可能會對…產生重大(的)影響」骨架（零資訊萬用句，任何新聞都套得上）
+    re.compile(r'可能會對.{1,30}產生重大的?影響'),
     # 空洞能力描述套話（無具體新聞事件）
     re.compile(r'人工智慧(?:可以|能夠|將可以).{0,20}(?:提高|改善|增強|優化).{0,20}(?:性能|效率|可靠性|安全性)'),
     re.compile(r'AI(?:可以|能夠|將可以).{0,20}(?:提高|改善|增強|優化).{0,20}(?:性能|效率|可靠性|安全性)'),
