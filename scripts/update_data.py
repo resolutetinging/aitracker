@@ -803,6 +803,58 @@ def strip_noise_impact(data):
             if item.get('rating') == 'noise' and item.get('impact'):
                 item['impact'] = None
 
+def remove_cross_item_url_duplicates(data):
+    """跨分類同一來源網址（正規化後）完全相同 → 只保留一張，其餘整筆移除
+    （使用者拍板：重複內容完全不再出現，不只是降評，比照 remove_repeated_stories）。
+    保留優先序：rating 較高者優先（core > opp > noise）；同 rating 時，
+    若某張在 hw 分類且 title+body 命中 HW_MUST_CONTAIN 則 hw 優先，
+    否則保留先出現者（依走訪順序 hw→corp→app，同分類內依原順序，判準明確不留裁量）。
+    僅處理「同 URL」完全重複；body 相似但 URL 不同者維持
+    downgrade_cross_item_duplicates 的降評行為，不整筆移除，避免誤殺不同事件。
+    移除後若分類全空，補標準佔位卡（沿用 make_placeholder_item）。"""
+    RATING_ORDER = {'core': 2, 'opp': 1, 'noise': 0}
+    groups = {}
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            u = _norm_url(item.get('source', ''))
+            if u:
+                groups.setdefault(u, []).append((section, item))
+
+    keep_id = {}
+    for u, entries in groups.items():
+        if len(entries) < 2:
+            continue
+        best = entries[0]
+        best_score = None
+        for entry in entries:
+            section, item = entry
+            rating_score = RATING_ORDER.get(item.get('rating'), 0)
+            combined = item.get('title', '') + item.get('body', '')
+            hw_fit = 1 if (section == 'hw' and HW_MUST_CONTAIN.search(combined)) else 0
+            score = (rating_score, hw_fit)
+            if best_score is None or score > best_score:
+                best_score = score
+                best = entry
+        keep_id[u] = id(best[1])
+
+    removed_count = 0
+    for section in ['hw', 'corp', 'app']:
+        items = data.get(section, [])
+        kept = []
+        for item in items:
+            u = _norm_url(item.get('source', ''))
+            if u and u in keep_id and id(item) != keep_id[u]:
+                print(f"  ✂ 跨分類同網址重複移除：[{section}] {item.get('title','')[:50]}")
+                removed_count += 1
+                continue
+            kept.append(item)
+        if not kept and items:
+            kept.append(make_placeholder_item(section))
+            print(f"  ＋ {section} 分類移除後全空，補標準佔位卡")
+        data[section] = kept
+    if removed_count == 0:
+        print("  → 跨分類同網址重複檢核通過")
+
 def downgrade_cross_item_duplicates(data):
     """跨條目 body+insight bigram 相似度 > 55% → 後者降評→noise"""
     all_items = []
@@ -1399,6 +1451,8 @@ if __name__ == '__main__':
     downgrade_forbidden_phrases(data)
     print("🔁 跨條目重複偵測...")
     downgrade_cross_item_duplicates(data)
+    print("🔗 跨分類同網址重複移除...")
+    remove_cross_item_url_duplicates(data)
     strip_noise_impact(data)
     print("🔎 body 聲明 LLM 驗證...")
     validate_body(data, news)
