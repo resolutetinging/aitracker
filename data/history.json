@@ -1,5 +1,107 @@
 [
   {
+    "date": "2026-07-07",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "AMD Ryzen AI Halo 啟動",
+        "layer": "晶片",
+        "body": "AMD 的 Ryzen AI Halo 是一款基於年前技術的 AI 工作站，具有 128 GB 的記憶體，售價約為 4,000 美元。該產品的主要賣點是其包裝和軟體，包括所有必要的軟體和文件，以便於運行和微調企業級別的 AI 模型和代理。",
+        "impact": "該產品的高價格可能會限制其市場份額，從而影響 AMD 的銷售收入。",
+        "rating": "core",
+        "insight": "AMD Ryzen AI Halo 的推出代表了晶片供應鏈的一個重要發展，特別是在 AI 工作站市場。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/07/06/amds-ryzen-ai-halo-makes-local-ai-look-easy-but-at-4k-easy-doesnt-come-cheap/5266711",
+        "chain": [
+          {
+            "label": "AMD Ryzen AI Halo 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "NVIDIA GPU 市占↓",
+            "type": "down"
+          },
+          {
+            "label": "TSMC CoWoS 產能↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Meta 重建 AI 儲存堆疊",
+        "layer": "CSP/CapEx",
+        "body": "Meta 公司重建了其 AI 儲存堆疊，以解決 GPU 處理能力和儲存速度之間的差距。該公司的工程師們重新設計了其 BLOB 儲存層，以提高儲存速度和效率。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "Meta 的 AI 儲存堆疊重建代表了 CSP/CapEx 市場的一個重要發展，特別是在 AI 研發領域。",
+        "source_label": "DatacenterDynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/meta-rebuilds-its-ai-storage-stack-from-the-ground-up-to-stop-gpus-sitting-idle/",
+        "chain": [
+          {
+            "label": "Meta AI 儲存堆疊效率↑",
+            "type": "up"
+          },
+          {
+            "label": "Seagate 硬碟銷量↓",
+            "type": "down"
+          },
+          {
+            "label": "Western Digital 硬碟銷量↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Microsoft 計劃裁員 4,800 人",
+        "layer": "CSP/CapEx",
+        "body": "Microsoft 公司計劃裁員 4,800 人，主要影響 Xbox 和雲端工作人員。該公司的裁員計劃可能會對其業務產生影響，特別是在雲端服務領域。",
+        "impact": "Microsoft 的裁員計劃可能會對雲端服務供應商產生影響，特別是對於提供雲端服務的公司。同時，該公司的裁員計劃也可能會影響其業務的發展。",
+        "rating": "noise",
+        "insight": "Microsoft 的裁員計劃代表了 CSP/CapEx 市場的一個重要發展，特別是在雲端服務領域。",
+        "source_label": "DatacenterDynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/microsoft-plans-to-cut-4800-jobs/",
+        "chain": [
+          {
+            "label": "Microsoft Azure 雲端服務交期↓",
+            "type": "down"
+          },
+          {
+            "label": "Amazon AWS 雲端服務市占↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Cloud 雲端服務市占↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "應用",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "BLOB",
+        "full": "Binary Large Object",
+        "def": "二進制大物件，指儲存大量二進制數據的儲存單元。",
+        "why": "BLOB 儲存層是 Meta 公司重建 AI 儲存堆疊的關鍵部分。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-06",
     "is_sunday": false,
     "hw": [
@@ -625,122 +727,6 @@
         "def": "HORIZON 是一個自我演化代理框架，該框架將硬體設計視為儲存庫級別的代碼演化。它可以用於設計和優化晶片架構，從而提高晶片的性能和效率。",
         "why": "HORIZON 可以用於設計和優化晶片架構，從而提高晶片的性能和效率。這對於需要高性能和低延遲的應用非常重要，例如資料中心和人工智慧應用。",
         "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-06-30",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "三星和SK Hynix投資520億美元擴大記憶體晶片領導地位",
-        "layer": "晶片製造",
-        "body": "南韓政府宣布了一項520億美元的投資計畫，與三星和SK Hynix合作，擴大記憶體晶片的領導地位。這項計畫將在2027年之前實施，預計會增加南韓的記憶體晶片產能。三星和SK Hynix將共同投資這項計畫，預計會創造數千個就業機會。",
-        "impact": "這項投資將直接影響南韓的晶片製造業，增加產能和就業機會。同時，也會對下游的電子產品製造業產生影響，例如智能手機和電腦的生產。另外，競爭對手如美光和海力士也會受到影響，可能會降低他們的市場份額。",
-        "rating": "noise",
-        "insight": "南韓政府的投資計畫將會增強該國的晶片製造業，並增加其在全球市場的競爭力。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/",
-        "chain": [
-          {
-            "label": "三星 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "南韓記憶體晶片產業就業機會↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "微軟繼續支持Windows Server 2022的hotpatching",
-        "layer": "晶片製造",
-        "body": "微軟宣布將繼續支持Windows Server 2022的hotpatching，直到2027年。這項功能允許用戶在不需要重啟伺服器的情況下更新系統。微軟表示，這項功能將會在Azure Edition中提供，預計會增加用戶的生產力和安全性。微軟的這項決定將會影響到下游的伺服器製造業，例如戴爾和惠普。",
-        "impact": "微軟的決定將會直接影響到下游的伺服器製造業，增加用戶的生產力和安全性。",
-        "rating": "opp",
-        "insight": "微軟的決定將會增強其在伺服器市場的競爭力，並增加其用戶的生產力和安全性。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/",
-        "chain": [
-          {
-            "label": "微軟 Azure Edition 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "戴爾 伺服器銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "惠普 伺服器銷量↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "谷歌希望在自己的條件下進行AI監管",
-        "layer": "AI技術",
-        "body": "谷歌表示希望在自己的條件下進行AI監管，認為這樣可以讓公司繼續發展AI技術。谷歌的這項表態引起了廣泛的關注和討論，預計會影響到AI的未來發展。谷歌的CEO表示，公司將會與監管機構合作，制定合適的AI監管規則。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "谷歌的表態將會增強其在AI市場的競爭力，並增加其AI技術的應用和普及。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/",
-        "chain": [
-          {
-            "label": "谷歌 AI 研發↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 技術應用領域擴張↑",
-            "type": "up"
-          },
-          {
-            "label": "監管機構與谷歌合作程度↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "ZTE發布全方位FTTR-B解決方案",
-        "layer": "AI應用",
-        "body": "ZTE發布了一個全方位的FTTR-B解決方案，旨在為中小企業提供AI和連接性的解決方案。這個解決方案包括了支持本地AI大型模型運行，從而降低了雲端成本和提高了企業數據的安全性。ZTE的這個解決方案將會影響到下游的中小企業，增加他們的生產力和安全性。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "ZTE的解決方案將會增強其在中小企業市場的競爭力，並增加其AI技術的應用和普及。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/",
-        "chain": [
-          {
-            "label": "ZTE FTTR-B 解決方案銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "中小企業生產力↑",
-            "type": "up"
-          },
-          {
-            "label": "中小企業數據安全性↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "FTTR-B",
-        "full": "全方位FTTR-B解決方案",
-        "def": "一個為中小企業提供AI和連接性的解決方案，包括支持本地AI大型模型運行，從而降低了雲端成本和提高了企業數據的安全性。",
-        "why": "這個解決方案可以幫助中小企業增加生產力和安全性，同時也可以幫助AI技術供應商增加銷量。",
-        "category": "AI技術"
       }
     ],
     "weekly_summary": null
