@@ -431,12 +431,13 @@ CATEGORIES:
 OUTPUT FORMAT:
 {{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[ITEMS],"corp":[ITEMS],"app":[ITEMS],"glossary_new":[{{"term":"","full":"","def":"2-3 sentences","why":"why it matters","category":"semiconductor|ai_technique|hardware|role"}}],"weekly_summary":{weekly_val}}}
 
-Each ITEM: {{"title":"Traditional Chinese title","layer":"sublayer","body":"1 to 3 sentences, ALL about the SAME single news event. Write ONLY as many sentences as the source material actually supports with a distinct fact — every sentence must contain at least one specific number, date, or named entity from the source AND must state a fact NOT already stated in a previous sentence. A single honest, fact-dense sentence is ALWAYS better than 3 sentences where sentences 2-3 restate sentence 1 in different words or add generic unsourced reasoning (e.g. speculation about competitors, job creation, timelines like 'will launch soon', or vague ambition/expansion framing) — that kind of padding gets the whole item rejected as noise, so never do it. If you cannot find even 1 sentence with a real fact, rate the item noise.","impact":"2-3 sentences in zh-TW tracing the upstream/downstream ripple effects on the SUPPLY CHAIN. Structure: (1) direct effect on the closest supply chain tier (e.g. TSMC capacity, HBM ASP, OSAT utilization); (2) second-order effect on the next tier; (3) if applicable, end-market or competitor implication. Every claim must be traceable to the news source — do NOT just rephrase the body. NEVER say '可能會影響X' without stating the direction (↑/↓) and mechanism. NEVER mention stock prices.","rating":"core|opp|noise","insight":"1-sentence investor takeaway","source_label":"source name","source":"use SOURCE_URL value or empty string"}}
+Each ITEM: {{"title":"Traditional Chinese title","layer":"sublayer","body":"1 to 3 sentences, ALL about the SAME single news event. Write ONLY as many sentences as the source material actually supports with a distinct fact — every sentence must contain at least one specific number, date, or named entity from the source AND must state a fact NOT already stated in a previous sentence. HARD MINIMUM BAR: the total body must be at least 60 Traditional Chinese characters long AND must contain at least 2 distinct concrete facts drawn from these categories (pick any two): specific numbers/quantities, technical specs, monetary amounts, timelines/dates, or place names/locations — a single bare sentence that just restates the headline (e.g. only company + one dollar figure, with no second fact such as capacity/location/timeline/spec) is NOT acceptable and must not be treated as done. A single honest, fact-dense sentence is ALWAYS better than 3 sentences where sentences 2-3 restate sentence 1 in different words or add generic unsourced reasoning (e.g. speculation about competitors, job creation, timelines like 'will launch soon', or vague ambition/expansion framing) — that kind of padding gets the whole item rejected as noise, so never do it. If the source material genuinely cannot support 60 characters with 2 distinct concrete facts, do NOT pad with generic reasoning to reach the length — rate the item noise instead.","impact":"2-3 sentences in zh-TW tracing the upstream/downstream ripple effects on the SUPPLY CHAIN. Structure: (1) direct effect on the closest supply chain tier (e.g. TSMC capacity, HBM ASP, OSAT utilization); (2) second-order effect on the next tier; (3) if applicable, end-market or competitor implication. Every claim must be traceable to the news source — do NOT just rephrase the body. NEVER say '可能會影響X' without stating the direction (↑/↓) and mechanism. NEVER mention stock prices.","rating":"core|opp|noise","insight":"1-sentence investor takeaway","source_label":"source name","source":"use SOURCE_URL value or empty string"}}
 
 RULES:
 - 2-4 items per section; if no relevant news → 1 noise item only, and that item's title/body must PLAINLY say so (e.g. title:"今日無相關新聞", body:"今日該分類無足夠具體新聞素材可供分析。") — do NOT invent a vague-sounding pseudo-headline like "AI 應用進步" or "產業趨勢觀察" with circular reasoning; a fake generic title is worse than admitting there is no news
 - ONE STORY PER CARD (critical): each item covers exactly one news event or announcement; if the source contains 2 unrelated stories, create 2 separate items; NEVER mix multiple unrelated events into one body — doing so is a format error
 - body LENGTH IS VARIABLE (1-3 sentences), NOT FIXED: write only as many sentences as you have distinct facts for; a true 1-sentence body outranks a padded 3-sentence one — padding is treated as noise regardless of sentence count, so there is no benefit to reaching 3
+- body MINIMUM BAR (hard requirement): body must total at least 60 characters AND include at least 2 distinct concrete facts (numbers/quantities, specs, monetary amounts, timelines/dates, or place names) — a thin one-fact summary like "X簽署合約，金額N美元" with no second fact (e.g. capacity, location, timeline, counterparty detail) fails this bar; if the source truly only supports 1 fact, rate the item noise rather than stretching it to 60 characters with filler
 - body FORBIDDEN: never write "這是X的重要趨勢" / "這將推動X發展" / "可能會帶來新的機會" — these add no facts; never combine two unrelated companies or events in the same body
 - body GENERIC REASONING FORBIDDEN: if you only have ONE concrete fact from the source, do NOT pad the remaining sentences with generic economic-impact reasoning that could apply to any company ("將迫使競爭對手提高服務質量和降低價格", "預計將創造大量的就業機會", "投資者應該關注...的發展", "對使用者/企業產生競爭壓力") — these are template filler, not facts; sentence 2 and 3 MUST cite a different concrete detail from the source text (another number, date, named entity, or quote) — if the source genuinely offers only one fact, rate the item noise instead of padding
 - SOURCE REQUIREMENT: every core or opp item MUST have a SOURCE_URL from the news; if no SOURCE_URL exists for a story, you MUST rate it noise — never assign core/opp to unsourced items
@@ -849,11 +850,16 @@ def _is_placeholder(item):
 def remove_repeated_stories(data, recent_titles):
     """生成後 title-level 去重：LLM 改寫標題繞過 NO-REPEAT 指令時的最後一道 guard。
     用 CJK bigram + 英文詞混合 token 比對（修正中文無空格全盲問題），
-    重疊 ≥3 token 且重疊率 ≥50% → 直接自當日資料移除（使用者拍板：
-    同一篇文章只分析一次，重複的完全不再出現）。分類被移除到全空時補標準佔位卡。"""
+    重疊率 ≥50% → 直接自當日資料移除（使用者拍板：
+    同一篇文章只分析一次，重複的完全不再出現）。分類被移除到全空時補標準佔位卡。
+    絕對重疊門檻動態化：短標題（雙方 token 數較小者 <6）overlap≥3 時重疊率
+    輕易衝到 75% 而結構性偏鬆，故短標題要求 overlap≥4；token 數 ≥6 維持原本 overlap≥3。
+    另外，標題正規化後完全相同（去空白/大小寫）一律視為重複，避免短標題因 token
+    數過少而永遠無法達到 overlap≥4 的邊界情況漏放重複稿。"""
     if not recent_titles:
         return
     recent_norm = [_title_tokens(rt) for rt in recent_titles]
+    recent_exact = {re.sub(r'\s+', '', rt).lower() for rt in recent_titles if rt}
     for section in ['hw', 'corp', 'app']:
         if section not in data:
             continue
@@ -863,14 +869,21 @@ def remove_repeated_stories(data, recent_titles):
                 kept.append(item)  # 佔位卡天天同句式，不參與跨日比對
                 continue
             title = item.get('title', '')
+            title_exact = re.sub(r'\s+', '', title).lower()
             t_tokens = _title_tokens(title)
             is_dup = False
-            if t_tokens:
+            if title_exact and title_exact in recent_exact:
+                is_dup = True
+            elif t_tokens:
                 for rn in recent_norm:
                     if not rn:
                         continue
                     overlap = len(t_tokens & rn)
-                    if overlap >= 3 and overlap / min(len(t_tokens), len(rn)) >= 0.5:
+                    min_len = min(len(t_tokens), len(rn))
+                    if min_len == 0:
+                        continue
+                    required_overlap = 4 if min_len < 6 else 3
+                    if overlap >= required_overlap and overlap / min_len >= 0.5:
                         is_dup = True
                         break
             if is_dup:
@@ -931,7 +944,8 @@ def downgrade_hallucination_patterns(data):
 # HW 區段不屬半導體/GPU/HBM/CoWoS/封裝/晶圓廠相關 → 降噪（自舊副本 v2.x 移植）
 HW_MUST_CONTAIN = re.compile(
     r'TSMC|台積|CoWoS|HBM|OSAT|封裝|晶圓|半導體|GPU|ASIC|AI.?chip|Nvidia|AMD|晶片|'
-    r'HBM|Micron|SK.?Hynix|三星|Samsung|chiplet|wafer|fab|foundry|N\d[nN]|先進封裝',
+    r'HBM|Micron|SK.?Hynix|三星|Samsung|chiplet|wafer|fab|foundry|N\d[nN]|先進封裝|'
+    r'資料中心|data.?center|datacenter|電力|算力|GW|MW|AI.?infrastructure|基礎設施',
     re.IGNORECASE
 )
 def downgrade_hw_offtopic(data):
@@ -1038,8 +1052,8 @@ def _cjk_prefix(text, n=5):
     return ''.join(c for c in text if '一' <= c <= '鿿')[:n]
 
 def _body_is_low_quality(body: str) -> bool:
-    """True = body 不達標（重複句 or 無具體數字）"""
-    if not body or len(body) < 30:
+    """True = body 不達標（重複句 or 無具體數字 or 過短無分析）"""
+    if not body or len(body) < 40:
         return True
     sentences = [s.strip() for s in re.split(r'[。！？]', body) if len(s.strip()) > 8]
     for i in range(len(sentences)):
