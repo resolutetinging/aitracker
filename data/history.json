@@ -4,60 +4,56 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "Nscale 獲得 9 億美元循環信用額度",
-        "layer": "CSP",
-        "body": "Nscale 獲得 9 億美元循環信用額度，將用於 AI 資料中心建設和基礎設施部署。該信用額度由多家金融機構提供，包括 J.P. Morgan、Goldman Sachs、Morgan Stanley 等。Nscale 將利用這筆資金加速其 AI 資料中心建設和基礎設施部署，進一步擴大其在 AI 領域的業務。",
-        "impact": null,
+        "title": "Nscale 獲得 9 億美元信貸額度",
+        "layer": "資料中心建設",
+        "body": "Nscale 獲得了一筆 9 億美元的信貸額度，將用於其 AI 資料中心建設和基礎設施部署。這筆信貸額度由多家金融機構提供，包括 J.P. Morgan、Goldman Sachs 和 Morgan Stanley。",
+        "impact": "Nscale 獲得的信貸額度將有助於其加速 AI 資料中心建設和基礎設施部署，同時也會促進其在全球市場的競爭力。",
         "rating": "noise",
-        "insight": "Nscale 的 AI 資料中心建設和基礎設施部署將進一步擴大其在 AI 領域的業務，投資者應該關注其未來的發展。",
-        "source_label": "DatacenterDynamics",
+        "insight": "Nscale 的信貸額度將促進其 AI 資料中心建設",
+        "source_label": "Data Center Dynamics",
         "source": "https://www.datacenterdynamics.com/en/news/nscale-closes-900m-revolving-credit-facility/",
         "chain": [
           {
-            "label": "Nscale 資金↑",
+            "label": "Nscale 資料中心建設↑",
             "type": "up"
           },
           {
-            "label": "J.P. Morgan 信用額度↑",
+            "label": "J.P. Morgan 信貸額度↑",
             "type": "up"
           },
           {
-            "label": "Goldman Sachs 信用額度↑",
+            "label": "Nscale 基礎設施部署↑",
             "type": "up"
           },
           {
-            "label": "Morgan Stanley 信用額度↑",
-            "type": "up"
+            "label": "Goldman Sachs 信貸風險↓",
+            "type": "down"
           }
         ]
       }
     ],
     "corp": [
       {
-        "title": "Nscale 獲得 9 億美元循環信用額度",
-        "layer": "CSP",
-        "body": "Nscale 獲得 9 億美元循環信用額度，將用於 AI 資料中心建設和基礎設施部署。該信用額度由多家金融機構提供，包括 J.P. Morgan、Goldman Sachs、Morgan Stanley 等。Nscale 將利用這筆資金加速其 AI 資料中心建設和基礎設施部署，進一步擴大其在 AI 領域的業務。",
+        "title": "英國科技主權面臨挑戰",
+        "layer": "企業科技採用",
+        "body": "英國政府被警告需要加強科技主權，否則將被冷落。英國下議院科學、創新和科技委員會發表的報告指出，英國在全球科技競爭中缺乏明確的戰略，包括人工智慧、太空和量子計算等領域。",
         "impact": null,
         "rating": "noise",
-        "insight": "Nscale 的 AI 資料中心建設和基礎設施部署將進一步擴大其在 AI 領域的業務，投資者應該關注其未來的發展。",
-        "source_label": "DatacenterDynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/nscale-closes-900m-revolving-credit-facility/",
+        "insight": "英國政府需要加強科技主權，以促進企業科技採用",
+        "source_label": "—",
+        "source": "",
         "chain": [
           {
-            "label": "Nscale 資金↑",
-            "type": "up"
+            "label": "英國科技主權↓",
+            "type": "down"
           },
           {
-            "label": "J.P. Morgan 信用額度↑",
-            "type": "up"
+            "label": "英國政府科技戰略↓",
+            "type": "down"
           },
           {
-            "label": "Goldman Sachs 信用額度↑",
-            "type": "up"
-          },
-          {
-            "label": "Morgan Stanley 信用額度↑",
-            "type": "up"
+            "label": "英國科技產業競爭力↓",
+            "type": "down"
           }
         ]
       }
@@ -65,28 +61,22 @@
     "app": [
       {
         "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞，無法提供具體的應用案例或進展。",
+        "layer": "應用進展",
+        "body": "今日無相關應用新聞",
         "impact": "",
         "rating": "noise",
         "insight": "",
         "source_label": "",
-        "source": "",
-        "chain": [
-          {
-            "label": "今日新聞量↓",
-            "type": "down"
-          }
-        ]
+        "source": ""
       }
     ],
     "glossary_new": [
       {
-        "term": "HPC",
-        "full": "High-Performance Computing",
-        "def": "高性能計算，是指使用高性能計算機或計算機集群進行科學計算、數據分析等任務的技術。",
-        "why": "HPC 技術在 AI 領域中非常重要，因為它可以提供快速的計算能力，從而加速 AI 模型的訓練和部署。",
-        "category": "hardware"
+        "term": "Anthropic",
+        "full": "Anthropic",
+        "def": "一家人工智慧公司",
+        "why": "因其 AI 模型被美國政府實施出口限制而受到關注",
+        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
