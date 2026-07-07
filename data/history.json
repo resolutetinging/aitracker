@@ -4,69 +4,29 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "Anthropic簽署20年租約",
-        "layer": "晶片供應鏈",
-        "body": "Anthropic簽署20年租約，租約金額達19億美元，租約期限為20年。",
+        "title": "Nscale 獲得 9 億美元循環信用額度",
+        "layer": "CSP",
+        "body": "Nscale 獲得 9 億美元循環信用額度，將用於 AI 資料中心建設和基礎設施部署。該信用額度由多家金融機構提供，包括 J.P. Morgan、Goldman Sachs、Morgan Stanley 等。Nscale 將利用這筆資金加速其 AI 資料中心建設和基礎設施部署，進一步擴大其在 AI 領域的業務。",
         "impact": null,
         "rating": "noise",
-        "insight": "Anthropic的租約簽署對其業務發展具有重要意義。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/07/07/ai-startup-thats-never-turned-a-profit-says-itll-totally-be-around-in-2047-to-close-its-19b-lease/5267385",
+        "insight": "Nscale 的 AI 資料中心建設和基礎設施部署將進一步擴大其在 AI 領域的業務，投資者應該關注其未來的發展。",
+        "source_label": "DatacenterDynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/nscale-closes-900m-revolving-credit-facility/",
         "chain": [
           {
-            "label": "Anthropic 租約金額↑",
+            "label": "Nscale 資金↑",
             "type": "up"
           },
           {
-            "label": "Anthropic 業務拓展↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "AMD Ryzen AI Halo發佈",
-        "layer": "晶片供應鏈",
-        "body": "AMD Ryzen AI Halo發佈，價格為4000美元。",
-        "impact": "這將對AMD的業務產生直接影響，增加其收入和市場份額。",
-        "rating": "core",
-        "insight": "AMD Ryzen AI Halo的發佈對其業務發展具有重要意義。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/07/06/amds-ryzen-ai-halo-makes-local-ai-look-easy-but-at-4k-easy-doesnt-come-cheap/5266711",
-        "chain": [
-          {
-            "label": "AMD Ryzen AI Halo 銷量↑",
+            "label": "J.P. Morgan 信用額度↑",
             "type": "up"
           },
           {
-            "label": "AMD 市占↑",
+            "label": "Goldman Sachs 信用額度↑",
             "type": "up"
           },
           {
-            "label": "AMD Ryzen AI Halo 產能↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Meta重建AI儲存堆疊",
-        "layer": "晶片供應鏈",
-        "body": "Meta重建AI儲存堆疊，減少GPU閒置時間。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "Meta的AI儲存堆疊重建對其業務發展具有重要意義。",
-        "source_label": "Datacenter Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/meta-rebuilds-its-ai-storage-stack-from-the-ground-up-to-stop-gpus-sitting-idle/",
-        "chain": [
-          {
-            "label": "Meta AI 儲存堆疊效率↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta GPU 閒置時間↓",
-            "type": "down"
-          },
-          {
-            "label": "Meta AI 研發能力↑",
+            "label": "Morgan Stanley 信用額度↑",
             "type": "up"
           }
         ]
@@ -74,45 +34,29 @@
     ],
     "corp": [
       {
-        "title": "Anthropic簽署20年租約",
-        "layer": "企業AI採用",
-        "body": "Anthropic簽署20年租約，租約金額達19億美元，租約期限為20年。",
+        "title": "Nscale 獲得 9 億美元循環信用額度",
+        "layer": "CSP",
+        "body": "Nscale 獲得 9 億美元循環信用額度，將用於 AI 資料中心建設和基礎設施部署。該信用額度由多家金融機構提供，包括 J.P. Morgan、Goldman Sachs、Morgan Stanley 等。Nscale 將利用這筆資金加速其 AI 資料中心建設和基礎設施部署，進一步擴大其在 AI 領域的業務。",
         "impact": null,
         "rating": "noise",
-        "insight": "Anthropic的租約簽署對其業務發展具有重要意義。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/07/07/ai-startup-thats-never-turned-a-profit-says-itll-totally-be-around-in-2047-to-close-its-19b-lease/5267385",
+        "insight": "Nscale 的 AI 資料中心建設和基礎設施部署將進一步擴大其在 AI 領域的業務，投資者應該關注其未來的發展。",
+        "source_label": "DatacenterDynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/nscale-closes-900m-revolving-credit-facility/",
         "chain": [
           {
-            "label": "Anthropic 租約金額↑",
+            "label": "Nscale 資金↑",
             "type": "up"
           },
           {
-            "label": "Anthropic 業務拓展↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Meta重建AI儲存堆疊",
-        "layer": "企業AI採用",
-        "body": "Meta重建AI儲存堆疊，減少GPU閒置時間。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "Meta的AI儲存堆疊重建對其業務發展具有重要意義。",
-        "source_label": "Datacenter Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/meta-rebuilds-its-ai-storage-stack-from-the-ground-up-to-stop-gpus-sitting-idle/",
-        "chain": [
-          {
-            "label": "Meta AI 儲存堆疊效率↑",
+            "label": "J.P. Morgan 信用額度↑",
             "type": "up"
           },
           {
-            "label": "Meta GPU 閒置時間↓",
-            "type": "down"
+            "label": "Goldman Sachs 信用額度↑",
+            "type": "up"
           },
           {
-            "label": "Meta AI 研發能力↑",
+            "label": "Morgan Stanley 信用額度↑",
             "type": "up"
           }
         ]
@@ -121,22 +65,28 @@
     "app": [
       {
         "title": "今日無相關應用新聞",
-        "layer": "應用領域",
-        "body": "今日無相關應用新聞。",
+        "layer": "",
+        "body": "今日無相關應用新聞，無法提供具體的應用案例或進展。",
         "impact": "",
         "rating": "noise",
         "insight": "",
         "source_label": "",
-        "source": ""
+        "source": "",
+        "chain": [
+          {
+            "label": "今日新聞量↓",
+            "type": "down"
+          }
+        ]
       }
     ],
     "glossary_new": [
       {
-        "term": "Anthropic",
-        "full": "Anthropic是一家AI初創公司",
-        "def": "Anthropic是一家AI初創公司，專注於開發AI技術。",
-        "why": "Anthropic的租約簽署對其業務發展具有重要意義。",
-        "category": "AI技術"
+        "term": "HPC",
+        "full": "High-Performance Computing",
+        "def": "高性能計算，是指使用高性能計算機或計算機集群進行科學計算、數據分析等任務的技術。",
+        "why": "HPC 技術在 AI 領域中非常重要，因為它可以提供快速的計算能力，從而加速 AI 模型的訓練和部署。",
+        "category": "hardware"
       }
     ],
     "weekly_summary": null
