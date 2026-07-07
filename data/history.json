@@ -1,5 +1,69 @@
 [
   {
+    "date": "2026-07-08",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Anthropic 公司簽署 20 年租約",
+        "layer": "晶片產業",
+        "body": "Anthropic 公司簽署了 20 年租約，租用 TeraWulf 公司的數據中心。這項租約表明 Anthropic 公司對於其業務的長期發展充滿信心，同時也反映出 Anthropic 公司對於數據中心的需求正在增加。 Anthropic 公司的 CEO Dario Amodei 表示，公司將繼續發展其人工智慧技術，並致力於提供更好的服務。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "Anthropic 公司簽署 20 年租約，表明公司對於其業務的長期發展充滿信心。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/07/07/ai-startup-thats-never-turned-a-profit-says-itll-totally-be-around-in-2047-to-close-its-19b-lease/5267385",
+        "chain": [
+          {
+            "label": "Anthropic 業績↑",
+            "type": "up"
+          },
+          {
+            "label": "TeraWulf 租金收入↑",
+            "type": "up"
+          },
+          {
+            "label": "Anthropic 資料中心需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "今日無相關企業新聞",
+        "layer": "企業應用",
+        "body": "今日無相關企業新聞，無法提供具體的分析和評估。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "應用進展",
+        "body": "今日無相關應用新聞，無法提供具體的分析和評估。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Anthropic",
+        "full": "Anthropic 公司",
+        "def": "一家人工智慧公司，主要從事人工智慧技術的研究和開發。",
+        "why": "Anthropic 公司是人工智慧領域的一家重要公司，其技術和產品對於人工智慧的發展具有重要的影響。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-07",
     "is_sunday": false,
     "hw": [
@@ -591,122 +655,6 @@
         "def": "GPU 虛擬化是一種技術，允許多個虛擬機器共享同一個 GPU 資源，提高 GPU 的利用率和性能。",
         "why": "GPU 虛擬化是下一代 GPU 技術的重要趨勢，可以提高 GPU 的利用率和性能。",
         "category": "hardware"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-07-01",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Nvidia 研究院發表新技術論文",
-        "layer": "晶片設計",
-        "body": "Nvidia 研究院發表了一篇新的技術論文，題為《Agentic Hardware Design as Repository-Level Code Evolution》。這篇論文介紹了一個名為 HORIZON 的自我演化代理框架，該框架將硬體設計視為儲存庫級別的代碼演化。論文發表於 2023 年 6 月 30 日。Nvidia 研究院的研究人員使用這個框架來設計和優化晶片架構，從而提高晶片的性能和效率。",
-        "impact": "這個新技術可能會對晶片設計和製造業產生重大影響，特別是對於那些需要高性能和低延遲的應用。例如，資料中心和人工智慧應用可能會受益於這種新技術。",
-        "rating": "core",
-        "insight": "Nvidia 研究院的新技術可能會對晶片設計和製造業產生重大影響，投資者應該關注這個領域的發展。",
-        "source_label": "SemiEngineering",
-        "source": "https://semiengineering.com/a-self-evolving-agent-framework-that-treats-hardware-design-as-repository-level-code-evolution-nvidia-research/",
-        "chain": [
-          {
-            "label": "Nvidia 研究院 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia GPU 性能↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia 市占↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "晶片產業技術論文匯總",
-        "layer": "晶片製造",
-        "body": "SemiEngineering 網站發表了一篇文章，匯總了最近的晶片產業技術論文。這些論文涵蓋了多個領域，包括 DRAM 干擾、原子級別等離子體加工、鎵氧化物相不穩定性等。文章發表於 2023 年 6 月 30 日。這些論文展示了晶片產業的最新技術進展和趨勢。例如，DRAM 干擾的研究可能會對晶片設計和製造業產生影響，特別是對於那些需要高性能和低延遲的應用。",
-        "impact": "這些新技術可能會對晶片設計和製造業產生重大影響，特別是對於那些需要高性能和低延遲的應用。例如，DRAM 干擾的研究可能會對晶片設計和製造業產生影響，特別是對於那些需要高性能和低延遲的應用。",
-        "rating": "core",
-        "insight": "晶片產業的技術進展可能會對相關產業產生重大影響，投資者應該關注這個領域的發展。",
-        "source_label": "SemiEngineering",
-        "source": "https://semiengineering.com/chip-industry-technical-paper-roundup-june-30/",
-        "chain": [
-          {
-            "label": "DRAM 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "鎵氧化物 相不穩定性↓",
-            "type": "down"
-          },
-          {
-            "label": "晶片產業 技術進步↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "美國關注中國在拉丁美洲的擴張",
-        "layer": "供應鏈",
-        "body": "根據 EETimes 網站的報導，美國關注中國在拉丁美洲的擴張。這可能會對供應鏈產生影響，特別是對於那些依賴拉丁美洲供應鏈的公司。美國政府已經開始關注這個問題，可能會採取措施來應對。例如，美國可能會增加對拉丁美洲供應鏈的投資，從而減少對中國的依賴。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "美國關注中國在拉丁美洲的擴張可能會對供應鏈產生重大影響，投資者應該關注這個領域的發展。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "美國供應鏈 安全性↑",
-            "type": "up"
-          },
-          {
-            "label": "中國在拉丁美洲 供應鏈↓",
-            "type": "down"
-          },
-          {
-            "label": "美國對拉丁美洲 投資↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "RISC-V 生態系統的成長",
-        "layer": "人工智慧",
-        "body": "根據 EETimes 網站的報導，RISC-V 生態系統正在成長。這可能會對人工智慧應用產生影響，特別是對於那些需要高性能和低延遲的應用。例如，資料中心和人工智慧應用可能會受益於 RISC-V 的成長。同時，這也可能會對相關產業的供應鏈產生影響，例如增加對 RISC-V 的需求，從而推動相關產業的發展。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "RISC-V 生態系統的成長可能會對人工智慧應用產生重大影響，投資者應該關注這個領域的發展。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "RISC-V 需求↑",
-            "type": "up"
-          },
-          {
-            "label": "人工智慧應用 性能↑",
-            "type": "up"
-          },
-          {
-            "label": "資料中心 供應鏈↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "HORIZON",
-        "full": "自我演化代理框架",
-        "def": "HORIZON 是一個自我演化代理框架，該框架將硬體設計視為儲存庫級別的代碼演化。它可以用於設計和優化晶片架構，從而提高晶片的性能和效率。",
-        "why": "HORIZON 可以用於設計和優化晶片架構，從而提高晶片的性能和效率。這對於需要高性能和低延遲的應用非常重要，例如資料中心和人工智慧應用。",
-        "category": "semiconductor"
       }
     ],
     "weekly_summary": null
