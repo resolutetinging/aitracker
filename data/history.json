@@ -4,55 +4,57 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "晶片公司 Anthropic 簽署 20 年租約",
+        "title": "Anthropic簽署20年租約",
         "layer": "晶片供應鏈",
-        "body": "Anthropic 簽署 20 年租約，預計在 2047 年前支付 190 億美元的租金給 TeraWulf。",
-        "impact": "這將直接影響 TeraWulf 的收入，間接影響 Anthropic 的晶片供應鏈。",
-        "rating": "core",
-        "insight": "Anthropic 的租約簽署對其晶片供應鏈有重大影響。",
+        "body": "Anthropic簽署20年租約，租約金額達19億美元，租約期限為20年。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "Anthropic的租約簽署對其業務發展具有重要意義。",
         "source_label": "The Register",
         "source": "https://www.theregister.com/ai-and-ml/2026/07/07/ai-startup-thats-never-turned-a-profit-says-itll-totally-be-around-in-2047-to-close-its-19b-lease/5267385",
         "chain": [
           {
-            "label": "Anthropic 租約金↑",
+            "label": "Anthropic 租約金額↑",
             "type": "up"
           },
           {
-            "label": "TeraWulf 租金收入↑",
+            "label": "Anthropic 業務拓展↑",
             "type": "up"
           }
         ]
       },
       {
-        "title": "AMD Ryzen AI Halo 的價格",
+        "title": "AMD Ryzen AI Halo發佈",
         "layer": "晶片供應鏈",
-        "body": "AMD Ryzen AI Halo 的價格為 4,000 美元，較去年的價格有所上漲。",
-        "impact": "這將影響 AMD 的晶片銷售",
+        "body": "AMD Ryzen AI Halo發佈，價格為4000美元。",
+        "impact": "這將對AMD的業務產生直接影響，增加其收入和市場份額。",
         "rating": "core",
-        "insight": "AMD Ryzen AI Halo 的價格上漲對其供應鏈有影響。",
+        "insight": "AMD Ryzen AI Halo的發佈對其業務發展具有重要意義。",
         "source_label": "The Register",
         "source": "https://www.theregister.com/ai-and-ml/2026/07/06/amds-ryzen-ai-halo-makes-local-ai-look-easy-but-at-4k-easy-doesnt-come-cheap/5266711",
         "chain": [
           {
-            "label": "AMD Ryzen AI Halo 價格↑",
+            "label": "AMD Ryzen AI Halo 銷量↑",
             "type": "up"
           },
           {
-            "label": "AMD 收入↑",
+            "label": "AMD 市占↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD Ryzen AI Halo 產能↑",
             "type": "up"
           }
         ]
-      }
-    ],
-    "corp": [
+      },
       {
-        "title": "Meta 重建其 AI 儲存堆疊",
-        "layer": "企業 AI 採用",
-        "body": "Meta 重建其 AI 儲存堆疊，以減少 GPU 的空閒時間。",
+        "title": "Meta重建AI儲存堆疊",
+        "layer": "晶片供應鏈",
+        "body": "Meta重建AI儲存堆疊，減少GPU閒置時間。",
         "impact": null,
         "rating": "noise",
-        "insight": "Meta 的 AI 儲存堆疊重建對其供應鏈有影響。",
-        "source_label": "DatacenterDynamics",
+        "insight": "Meta的AI儲存堆疊重建對其業務發展具有重要意義。",
+        "source_label": "Datacenter Dynamics",
         "source": "https://www.datacenterdynamics.com/en/news/meta-rebuilds-its-ai-storage-stack-from-the-ground-up-to-stop-gpus-sitting-idle/",
         "chain": [
           {
@@ -60,8 +62,58 @@
             "type": "up"
           },
           {
-            "label": "Meta GPU 空閒時間↓",
+            "label": "Meta GPU 閒置時間↓",
             "type": "down"
+          },
+          {
+            "label": "Meta AI 研發能力↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Anthropic簽署20年租約",
+        "layer": "企業AI採用",
+        "body": "Anthropic簽署20年租約，租約金額達19億美元，租約期限為20年。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "Anthropic的租約簽署對其業務發展具有重要意義。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/07/07/ai-startup-thats-never-turned-a-profit-says-itll-totally-be-around-in-2047-to-close-its-19b-lease/5267385",
+        "chain": [
+          {
+            "label": "Anthropic 租約金額↑",
+            "type": "up"
+          },
+          {
+            "label": "Anthropic 業務拓展↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Meta重建AI儲存堆疊",
+        "layer": "企業AI採用",
+        "body": "Meta重建AI儲存堆疊，減少GPU閒置時間。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "Meta的AI儲存堆疊重建對其業務發展具有重要意義。",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/meta-rebuilds-its-ai-storage-stack-from-the-ground-up-to-stop-gpus-sitting-idle/",
+        "chain": [
+          {
+            "label": "Meta AI 儲存堆疊效率↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta GPU 閒置時間↓",
+            "type": "down"
+          },
+          {
+            "label": "Meta AI 研發能力↑",
+            "type": "up"
           }
         ]
       }
@@ -69,7 +121,7 @@
     "app": [
       {
         "title": "今日無相關應用新聞",
-        "layer": "",
+        "layer": "應用領域",
         "body": "今日無相關應用新聞。",
         "impact": "",
         "rating": "noise",
@@ -81,10 +133,10 @@
     "glossary_new": [
       {
         "term": "Anthropic",
-        "full": "Anthropic 公司",
-        "def": "一家 AI 技術公司，簽署 20 年租約。",
-        "why": " Anthropic 的租約簽署對其供應鏈有影響。",
-        "category": "晶片供應鏈"
+        "full": "Anthropic是一家AI初創公司",
+        "def": "Anthropic是一家AI初創公司，專注於開發AI技術。",
+        "why": "Anthropic的租約簽署對其業務發展具有重要意義。",
+        "category": "AI技術"
       }
     ],
     "weekly_summary": null
