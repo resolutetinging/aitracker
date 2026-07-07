@@ -4,25 +4,41 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "AMD Ryzen AI Halo 啟動",
-        "layer": "晶片",
-        "body": "AMD 的 Ryzen AI Halo 是一款基於年前技術的 AI 工作站，具有 128 GB 的記憶體，售價約為 4,000 美元。該產品的主要賣點是其包裝和軟體，包括所有必要的軟體和文件，以便於運行和微調企業級別的 AI 模型和代理。",
-        "impact": "該產品的高價格可能會限制其市場份額，從而影響 AMD 的銷售收入。",
+        "title": "晶片公司 Anthropic 簽署 20 年租約",
+        "layer": "晶片供應鏈",
+        "body": "Anthropic 簽署 20 年租約，預計在 2047 年前支付 190 億美元的租金給 TeraWulf。",
+        "impact": "這將直接影響 TeraWulf 的收入，間接影響 Anthropic 的晶片供應鏈。",
         "rating": "core",
-        "insight": "AMD Ryzen AI Halo 的推出代表了晶片供應鏈的一個重要發展，特別是在 AI 工作站市場。",
+        "insight": "Anthropic 的租約簽署對其晶片供應鏈有重大影響。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/07/07/ai-startup-thats-never-turned-a-profit-says-itll-totally-be-around-in-2047-to-close-its-19b-lease/5267385",
+        "chain": [
+          {
+            "label": "Anthropic 租約金↑",
+            "type": "up"
+          },
+          {
+            "label": "TeraWulf 租金收入↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "AMD Ryzen AI Halo 的價格",
+        "layer": "晶片供應鏈",
+        "body": "AMD Ryzen AI Halo 的價格為 4,000 美元，較去年的價格有所上漲。",
+        "impact": "這將影響 AMD 的晶片銷售",
+        "rating": "core",
+        "insight": "AMD Ryzen AI Halo 的價格上漲對其供應鏈有影響。",
         "source_label": "The Register",
         "source": "https://www.theregister.com/ai-and-ml/2026/07/06/amds-ryzen-ai-halo-makes-local-ai-look-easy-but-at-4k-easy-doesnt-come-cheap/5266711",
         "chain": [
           {
-            "label": "AMD Ryzen AI Halo 產能↑",
+            "label": "AMD Ryzen AI Halo 價格↑",
             "type": "up"
           },
           {
-            "label": "NVIDIA GPU 市占↓",
-            "type": "down"
-          },
-          {
-            "label": "TSMC CoWoS 產能↑",
+            "label": "AMD 收入↑",
             "type": "up"
           }
         ]
@@ -30,12 +46,12 @@
     ],
     "corp": [
       {
-        "title": "Meta 重建 AI 儲存堆疊",
-        "layer": "CSP/CapEx",
-        "body": "Meta 公司重建了其 AI 儲存堆疊，以解決 GPU 處理能力和儲存速度之間的差距。該公司的工程師們重新設計了其 BLOB 儲存層，以提高儲存速度和效率。",
+        "title": "Meta 重建其 AI 儲存堆疊",
+        "layer": "企業 AI 採用",
+        "body": "Meta 重建其 AI 儲存堆疊，以減少 GPU 的空閒時間。",
         "impact": null,
         "rating": "noise",
-        "insight": "Meta 的 AI 儲存堆疊重建代表了 CSP/CapEx 市場的一個重要發展，特別是在 AI 研發領域。",
+        "insight": "Meta 的 AI 儲存堆疊重建對其供應鏈有影響。",
         "source_label": "DatacenterDynamics",
         "source": "https://www.datacenterdynamics.com/en/news/meta-rebuilds-its-ai-storage-stack-from-the-ground-up-to-stop-gpus-sitting-idle/",
         "chain": [
@@ -44,36 +60,8 @@
             "type": "up"
           },
           {
-            "label": "Seagate 硬碟銷量↓",
+            "label": "Meta GPU 空閒時間↓",
             "type": "down"
-          },
-          {
-            "label": "Western Digital 硬碟銷量↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Microsoft 計劃裁員 4,800 人",
-        "layer": "CSP/CapEx",
-        "body": "Microsoft 公司計劃裁員 4,800 人，主要影響 Xbox 和雲端工作人員。該公司的裁員計劃可能會對其業務產生影響，特別是在雲端服務領域。",
-        "impact": "Microsoft 的裁員計劃可能會對雲端服務供應商產生影響，特別是對於提供雲端服務的公司。同時，該公司的裁員計劃也可能會影響其業務的發展。",
-        "rating": "noise",
-        "insight": "Microsoft 的裁員計劃代表了 CSP/CapEx 市場的一個重要發展，特別是在雲端服務領域。",
-        "source_label": "DatacenterDynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/microsoft-plans-to-cut-4800-jobs/",
-        "chain": [
-          {
-            "label": "Microsoft Azure 雲端服務交期↓",
-            "type": "down"
-          },
-          {
-            "label": "Amazon AWS 雲端服務市占↑",
-            "type": "up"
-          },
-          {
-            "label": "Google Cloud 雲端服務市占↑",
-            "type": "up"
           }
         ]
       }
@@ -81,7 +69,7 @@
     "app": [
       {
         "title": "今日無相關應用新聞",
-        "layer": "應用",
+        "layer": "",
         "body": "今日無相關應用新聞。",
         "impact": "",
         "rating": "noise",
@@ -92,11 +80,11 @@
     ],
     "glossary_new": [
       {
-        "term": "BLOB",
-        "full": "Binary Large Object",
-        "def": "二進制大物件，指儲存大量二進制數據的儲存單元。",
-        "why": "BLOB 儲存層是 Meta 公司重建 AI 儲存堆疊的關鍵部分。",
-        "category": "hardware"
+        "term": "Anthropic",
+        "full": "Anthropic 公司",
+        "def": "一家 AI 技術公司，簽署 20 年租約。",
+        "why": " Anthropic 的租約簽署對其供應鏈有影響。",
+        "category": "晶片供應鏈"
       }
     ],
     "weekly_summary": null
