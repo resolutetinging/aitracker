@@ -4,25 +4,21 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "Anthropic 公司簽署 20 年租約",
-        "layer": "晶片產業",
-        "body": "Anthropic 公司簽署了 20 年租約，租用 TeraWulf 公司的數據中心。這項租約表明 Anthropic 公司對於其業務的長期發展充滿信心，同時也反映出 Anthropic 公司對於數據中心的需求正在增加。 Anthropic 公司的 CEO Dario Amodei 表示，公司將繼續發展其人工智慧技術，並致力於提供更好的服務。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "Anthropic 公司簽署 20 年租約，表明公司對於其業務的長期發展充滿信心。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/07/07/ai-startup-thats-never-turned-a-profit-says-itll-totally-be-around-in-2047-to-close-its-19b-lease/5267385",
+        "title": "加拿大公司Sato Technologies簽署意向書",
+        "layer": "CSP",
+        "body": "加拿大公司Sato Technologies簽署意向書，將在不丹發展AI數據中心，首階段將建設5MW的數據中心，未來可能擴展至500MW。該數據中心將使用不丹的水力發電資源。",
+        "impact": "這將對不丹的能源消耗產生影響，可能會占用不丹20%的電力。",
+        "rating": "core",
+        "insight": "加拿大公司Sato Technologies的AI數據中心項目可能會推動不丹的AI產業發展。",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/former-cryptominer-sato-inks-preliminary-agreement-to-develop-ai-data-center-in-bhutan/",
         "chain": [
           {
-            "label": "Anthropic 業績↑",
+            "label": "Sato Technologies 產能↑",
             "type": "up"
           },
           {
-            "label": "TeraWulf 租金收入↑",
-            "type": "up"
-          },
-          {
-            "label": "Anthropic 資料中心需求↑",
+            "label": "不丹水力發電資源供應↑",
             "type": "up"
           }
         ]
@@ -30,21 +26,35 @@
     ],
     "corp": [
       {
-        "title": "今日無相關企業新聞",
-        "layer": "企業應用",
-        "body": "今日無相關企業新聞，無法提供具體的分析和評估。",
-        "impact": "",
+        "title": "意大利銀行集團Intesa Sanpaolo遷移核心IT系統至Google Cloud",
+        "layer": "CSP",
+        "body": "意大利銀行集團Intesa Sanpaolo已完成核心IT系統遷移至Google Cloud，利用Google Cloud的雲區域，位於TIM數據中心的意大利都靈和米蘭。",
+        "impact": null,
         "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
+        "insight": "意大利銀行集團Intesa Sanpaolo遷移核心IT系統至Google Cloud可能會提高其雲計算能力。",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/intesa-sanpaolo-group-migrates-core-it-systems-to-google-cloud/",
+        "chain": [
+          {
+            "label": "Intesa Sanpaolo 核心IT系統遷移↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Cloud 雲區域使用率↑",
+            "type": "up"
+          },
+          {
+            "label": "TIM 數據中心租用↑",
+            "type": "up"
+          }
+        ]
       }
     ],
     "app": [
       {
         "title": "今日無相關應用新聞",
-        "layer": "應用進展",
-        "body": "今日無相關應用新聞，無法提供具體的分析和評估。",
+        "layer": "",
+        "body": "今日無足夠具體的應用新聞素材可供分析。",
         "impact": "",
         "rating": "noise",
         "insight": "",
@@ -54,11 +64,11 @@
     ],
     "glossary_new": [
       {
-        "term": "Anthropic",
-        "full": "Anthropic 公司",
-        "def": "一家人工智慧公司，主要從事人工智慧技術的研究和開發。",
-        "why": "Anthropic 公司是人工智慧領域的一家重要公司，其技術和產品對於人工智慧的發展具有重要的影響。",
-        "category": "ai_technique"
+        "term": "水力發電",
+        "full": "hydroelectric power",
+        "def": "利用水力發電的能源形式，通常通過水力發電機組將水能轉化為電能。",
+        "why": "水力發電是清潔能源的一種，對環境影響較小。",
+        "category": "能源"
       }
     ],
     "weekly_summary": null
