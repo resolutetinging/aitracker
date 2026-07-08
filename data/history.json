@@ -1,5 +1,69 @@
 [
   {
+    "date": "2026-07-09",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "晶片技術論文匯總",
+        "layer": "晶片技術",
+        "body": "Schottky 阻障在 Si/金屬界面；代理人式 HLS；概率記憶體適用於邊緣計算；代理人式 HW 設計自動化作為儲存庫級別的代碼演化；HW 指紋識別適用於光子 IC；功能安全；開源、可自定義的 RISC-V SoC 平台。最近新增到 Semiconductor Engineering 的圖書館中。",
+        "impact": "",
+        "rating": "core",
+        "insight": "晶片技術的進步將推動 AI 應用的發展",
+        "source_label": "Semiconductor Engineering",
+        "source": "https://semiengineering.com/chip-industry-technical-paper-roundup-july-8-2/"
+      }
+    ],
+    "corp": [
+      {
+        "title": "Edged 計劃在賓夕法尼亞州建設 725MW 資料中心",
+        "layer": "資料中心建設",
+        "body": "Edged 公司計劃在賓夕法尼亞州的 South Whitehall Township 建設一個 725MW 的資料中心，佔地 410 英畝，投資約 9 億美元。",
+        "impact": "這將直接影響資料中心的供應鏈和建設進度，同時也可能會影響當地的經濟和就業市場；另外，資料中心的建設也可能會促進相關的硬體和軟體公司的發展。",
+        "rating": "noise",
+        "insight": "資料中心的建設將推動相關產業的發展",
+        "source_label": "DatacenterDynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/edged-eyes-725mw-data-center-campus-in-pennsylvania/",
+        "chain": [
+          {
+            "label": "Edged 資料中心建設↑",
+            "type": "up"
+          },
+          {
+            "label": "South Whitehall Township 投資↑",
+            "type": "up"
+          },
+          {
+            "label": "賓夕法尼亞州 GDP↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "應用新聞",
+        "body": "今日該分類無足夠具體新聞素材可供分析。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Schottky 阻障",
+        "full": "Schottky 阻障是一種金屬和半導體之間的接觸阻障",
+        "def": "Schottky 阻障是一種金屬和半導體之間的接觸阻障，常用於晶片設計中",
+        "why": "了解 Schottky 阻障的概念有助於理解晶片設計和製造的原理",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-08",
     "is_sunday": false,
     "hw": [
@@ -542,129 +606,6 @@
         "def": "一種利用 AI 技術進行的勒索軟件攻擊",
         "why": "AI 驅動的勒索軟件攻擊具有自我敘述和目標優先的能力，對企業和個人構成重大威脅",
         "category": "晶片"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-07-02",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "晶片產業的觀察性設計",
-        "layer": "晶片設計",
-        "body": "下一代矽晶中，人工智慧可以在大規模解釋系統行為，但只有當觀察性設計被納入為第一類架構能力時才可實現。晶片產業的觀察性設計是下一代晶片設計的重要趨勢，預計在2026年底前會有更多的晶片製造商採用這種設計。觀察性設計可以讓晶片製造商更好地了解晶片的行為，從而提高晶片的性能和可靠性，例如提高晶片的運算速度和降低晶片的功耗。",
-        "impact": "這個趨勢將直接影響晶片製造商的設計流程，例如台積電和三星等公司需要升級其設計工具和流程以支持觀察性設計。同時，這也會影響下游的晶片使用者，例如蘋果和華為等公司需要與晶片製造商合作以確保其產品的兼容性和性能。另外，這也會推動相關的設計工具和服務的發展，例如 Cadence 和 Synopsys 等公司的設計工具和服務將會受到更多的需求。",
-        "rating": "noise",
-        "insight": "晶片產業的觀察性設計是下一代晶片設計的重要趨勢，投資者應該關注相關的設計工具和服務的發展。",
-        "source_label": "Semiconductor Engineering",
-        "source": "https://semiengineering.com/observability-is-a-missing-layer-in-ai-era-chiplet-design/",
-        "chain": [
-          {
-            "label": "TSMC 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Intel 市占↓",
-            "type": "down"
-          },
-          {
-            "label": "晶片產業績效↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "GPU 虛擬化技術",
-        "layer": "GPU 技術",
-        "body": "HyperLane 是一種 GPU 虛擬化技術，提供更強的隔離和資源利用率，同時也可以整合更多的軟體功能到相同的硬體平台上。這種技術預計在2026年中期前會被廣泛採用，例如 Nvidia 和 AMD 等公司已經開始開發相關的技術。GPU 虛擬化技術可以提高 GPU 的利用率和性能，例如提高 GPU 的運算速度和降低 GPU 的功耗。HyperLane 技術也可以提高 GPU 的安全性和兼容性，例如提供更強的隔離和訪問控制。",
-        "impact": "這個趨勢將直接影響 GPU 製造商的設計流程，例如 Nvidia 和 AMD 等公司需要升級其設計工具和流程以支持 GPU 虛擬化技術。同時，這也會影響下游的 GPU 使用者，例如 Google 和 Facebook 等公司需要與 GPU 製造商合作以確保其產品的兼容性和性能。另外，這也會推動相關的設計工具和服務的發展，例如 Cadence 和 Synopsys 等公司的設計工具和服務將會受到更多的需求。",
-        "rating": "noise",
-        "insight": "GPU 虛擬化技術是下一代 GPU 技術的重要趨勢，投資者應該關注相關的設計工具和服務的發展。",
-        "source_label": "Semiconductor Engineering",
-        "source": "https://semiengineering.com/hyperlane-gpu-virtualization-with-imagination/",
-        "chain": [
-          {
-            "label": "Nvidia GPU 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "AMD 市占↓",
-            "type": "down"
-          },
-          {
-            "label": "HyperLane 技術交期↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Oxmiq 獲得 3500 萬美元投資",
-        "layer": "公司投資",
-        "body": "Oxmiq 是一家 GPU IP 公司，最近獲得了 3500 萬美元的投資，預計會用於開發新的 GPU IP 產品。這個投資將會推動 Oxmiq 的業務發展，例如提高其 GPU IP 產品的性能和兼容性。Oxmiq 的 GPU IP 產品預計在2026年底前會被廣泛採用，例如在資料中心和人工智慧應用中。Oxmiq 的 CEO Raja Koduri 表示，這個投資將會幫助公司加速其業務發展和技術創新。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "Oxmiq 的投資是公司發展的重要機會，投資者應該關注其業務發展和技術創新。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "Oxmiq 獲投資↑",
-            "type": "up"
-          },
-          {
-            "label": "GPU IP 產品銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "競爭對手市占↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "人工智慧應用",
-        "layer": "人工智慧",
-        "body": "人工智慧應用預計在2026年中期前會被廣泛採用，例如在資料中心和邊緣計算中。人工智慧可以提高系統的性能和可靠性，例如提高系統的運算速度和降低系統的功耗。人工智慧也可以提高系統的安全性和兼容性，例如提供更強的隔離和訪問控制。例如，Google 和 Facebook 等公司已經開始使用人工智慧技術來提高其系統的性能和可靠性。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "人工智慧應用是下一代系統技術的重要趨勢，投資者應該關注相關的設計工具和服務的發展。",
-        "source_label": "Semiconductor Engineering",
-        "source": "https://semiengineering.com/observability-is-a-missing-layer-in-ai-era-chiplet-design/",
-        "chain": [
-          {
-            "label": "Google 人工智慧技術↑",
-            "type": "up"
-          },
-          {
-            "label": "Facebook 系統安全性↑",
-            "type": "up"
-          },
-          {
-            "label": "傳統系統交期↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "觀察性設計",
-        "full": "Observability Design",
-        "def": "觀察性設計是一種晶片設計技術，允許晶片製造商更好地了解晶片的行為，從而提高晶片的性能和可靠性。",
-        "why": "觀察性設計是下一代晶片設計的重要趨勢，可以提高晶片的性能和可靠性。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "GPU 虛擬化",
-        "full": "GPU Virtualization",
-        "def": "GPU 虛擬化是一種技術，允許多個虛擬機器共享同一個 GPU 資源，提高 GPU 的利用率和性能。",
-        "why": "GPU 虛擬化是下一代 GPU 技術的重要趨勢，可以提高 GPU 的利用率和性能。",
-        "category": "hardware"
       }
     ],
     "weekly_summary": null
