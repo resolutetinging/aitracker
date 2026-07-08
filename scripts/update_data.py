@@ -1116,7 +1116,11 @@ def _cjk_prefix(text, n=5):
 # 或命中精簡常見科技新聞地名清單 → 視為具備具名地名/機構的具體事實
 # （對齊 make_prompt RULES：1 個具體事實(含地名) + 1 個具名主體即達標，
 #  不應只認阿拉伯數字，避免合格內容被 _body_is_low_quality 誤殺）
+# ⚠ 2026-07-08 補強：排除英文常見冠詞/代名詞開頭（The/This/That/A/An/Our/Their/Its等）
+# 起首的兩字組——這類是句子語法產物（如 "The Company"／"The Google Team"），
+# 不代表真的具名實體，若不排除會讓空泛英文句子誤判為「已有具體事實」而放行。
 NAMED_ENTITY_PAT = re.compile(
+    r'\b(?!(?:The|This|That|These|Those|A|An|Our|Their|Its|His|Her|My|Your)\s)'
     r'[A-Z][a-zA-Z]+\s+[A-Z][a-zA-Z]+|'
     r'都靈|米蘭|東京|首爾|矽谷|新加坡|深圳|北京|上海|香港|台北|倫敦|紐約|柏林|巴黎|'
     r'阿姆斯特丹|杜拜|雪梨|多倫多|奧斯汀|班加羅爾|不丹|'
