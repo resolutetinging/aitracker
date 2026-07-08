@@ -80,7 +80,16 @@ HIGH_SIGNAL_PAT = re.compile(
     r'openai|anthropic|gemini|gpt-\d|claude|llama|mistral|'
     r'robot|humanoid|autonomous vehicle|physical ai|agentic|'
     r'export (?:ban|control|restriction)|supply chain disruption|'
-    r'chip ban|wafer capacity|foundry capacity',
+    r'chip ban|wafer capacity|foundry capacity|'
+    # 應用領域關鍵字：企業導入/垂直行業落地，避免應用類新聞永遠低信號
+    r'healthcare|clinical|hospital|diagnos|medical ai|drug discovery|pharma|醫療|臨床|'
+    r'fintech|fraud detection|financial services|insurance ai|金融科技|詐欺偵測|'
+    r'manufacturing|industrial automation|factory automation|製造|工廠自動化|'
+    r'enterprise deployment|enterprise adoption|企業導入|企業部署|'
+    r'retail|e-commerce|零售|'
+    r'logistics|supply chain automation|物流|'
+    r'legal tech|legaltech|法律科技|'
+    r'edtech|education technology|教育科技',
     re.IGNORECASE
 )
 
@@ -1103,8 +1112,21 @@ def _cjk_bigrams(text):
 def _cjk_prefix(text, n=5):
     return ''.join(c for c in text if '一' <= c <= '鿿')[:n]
 
+# 具名事實偵測：兩個連續大寫開頭英文單字（如 Google Cloud / Intesa Sanpaolo）
+# 或命中精簡常見科技新聞地名清單 → 視為具備具名地名/機構的具體事實
+# （對齊 make_prompt RULES：1 個具體事實(含地名) + 1 個具名主體即達標，
+#  不應只認阿拉伯數字，避免合格內容被 _body_is_low_quality 誤殺）
+NAMED_ENTITY_PAT = re.compile(
+    r'[A-Z][a-zA-Z]+\s+[A-Z][a-zA-Z]+|'
+    r'都靈|米蘭|東京|首爾|矽谷|新加坡|深圳|北京|上海|香港|台北|倫敦|紐約|柏林|巴黎|'
+    r'阿姆斯特丹|杜拜|雪梨|多倫多|奧斯汀|班加羅爾|不丹|'
+    r'Turin|Milan|Tokyo|Seoul|Silicon Valley|Beijing|Shenzhen|Shanghai|Hong Kong|'
+    r'Taipei|London|New York|Berlin|Amsterdam|Dubai|Singapore|Sydney|Toronto|'
+    r'Austin|Bangalore|Bhutan'
+)
+
 def _body_is_low_quality(body: str) -> bool:
-    """True = body 不達標（重複句 or 無具體數字 or 過短無分析）"""
+    """True = body 不達標（重複句 or 無具體數字/具名地名機構 or 過短無分析）"""
     if not body or len(body) < 40:
         return True
     sentences = [s.strip() for s in re.split(r'[。！？]', body) if len(s.strip()) > 8]
@@ -1123,7 +1145,9 @@ def _body_is_low_quality(body: str) -> bool:
     if len(prefixes) != len(set(prefixes)):
         return True
     # core/opp body 必須含數字（%, $, 億, 倍, 具體數量；含中文數字如「四個」「第一」）
-    if not re.search(r'\d|%|億|兆|倍|萬|百億|千億|[一二三四五六七八九十兩]+[個家款次項座台支波批輪席人年月日]|第[一二三四五六七八九十]', body):
+    # 或具名地名/機構（NAMED_ENTITY_PAT）——兩者擇一即達標，對齊 make_prompt RULES
+    has_number = re.search(r'\d|%|億|兆|倍|萬|百億|千億|[一二三四五六七八九十兩]+[個家款次項座台支波批輪席人年月日]|第[一二三四五六七八九十]', body)
+    if not has_number and not NAMED_ENTITY_PAT.search(body):
         return True
     return False
 
