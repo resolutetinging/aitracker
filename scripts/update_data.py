@@ -175,9 +175,23 @@ CATEGORY_ROUTE_PATS = {
     ),
 }
 
+# corp 桶選材 80/20 原則用：全球市占領先巨頭清單（中英文皆收，命中即視為「巨頭」）。
+# 用於 route_snippets 內把 corp 桶排序、讓 enrich_with_full_text 的 round-robin
+# 優先分到巨頭文章的全文抓取名額，避免區域性小型雜訊擠佔巨頭動態的版面。
+MAJOR_PLAYERS_PAT = re.compile(
+    r'\baws\b|amazon|microsoft|\bazure\b|\bgoogle\b|alphabet|\bmeta\b|\bapple\b|'
+    r'\bnvidia\b|openai|anthropic|\boracle\b|\bxai\b|\btesla\b|'
+    r'alibaba|阿里|tencent|騰訊|bytedance|字節|samsung|三星|'
+    r'tsmc|台積|broadcom|\bamd\b|\bintel\b|英特爾|softbank|軟銀|coreweave',
+    re.IGNORECASE
+)
+
 def route_snippets(snippets):
     """把新聞摘要分流到 hw/corp/app 三桶；可同時命中多桶（不互斥）；
-    三桶都沒命中的進素材最少的那個桶，避免被浪費掉。"""
+    三桶都沒命中的進素材最少的那個桶，避免被浪費掉。
+    corp 桶另依 80/20 選材原則排序：命中 MAJOR_PLAYERS_PAT（全球市占領先巨頭）
+    的文章排到最前面，讓後續 enrich_with_full_text 的全文抓取名額與
+    enrich 揀選都優先落在巨頭動態上，抑制區域性小型雜訊。"""
     buckets = {'hw': [], 'corp': [], 'app': []}
     unmatched = []
     for s in snippets:
@@ -191,6 +205,7 @@ def route_snippets(snippets):
     for s in unmatched:
         target = min(buckets, key=lambda k: len(buckets[k]))
         buckets[target].append(s)
+    buckets['corp'].sort(key=lambda s: 0 if MAJOR_PLAYERS_PAT.search(s) else 1)
     print(f"  → 分類分流：hw {len(buckets['hw'])} / corp {len(buckets['corp'])} / app {len(buckets['app'])} 條"
           + (f"（其中 {len(unmatched)} 條無命中，已分配至素材最少的桶）" if unmatched else ""))
     try:
@@ -558,7 +573,7 @@ def snapshot_notes_backup():
 # ══════════════════════════════════════════════════════════════════
 CATEGORY_DESC = {
     'hw':   "hw: AI infrastructure supply chain signals — capacity commitments (CoWoS/HBM/OSAT/fab), strategic supplier decisions, export controls that shift production geography; prioritize financial/strategic signals over technical specifications; NOT GPU architecture analysis, chip benchmark comparisons, or speculative roadmap commentary",
-    'corp': "corp: industry AI adoption signals — CSP CapEx, major enterprise AI contracts, vertical-sector deployments (healthcare/automotive/finance/manufacturing) by large incumbents, model commercialization milestones that show where AI is being adopted at scale; NOT stock prices",
+    'corp': "corp (巨頭角力 — 80/20 選材原則): roughly 80% of items should be moves by globally dominant incumbents (AWS/Amazon, Microsoft/Azure, Google/Alphabet, Meta, Apple, NVIDIA, OpenAI, Anthropic, Oracle, xAI, Tesla, Alibaba, Tencent, ByteDance, Samsung, TSMC, Broadcom, AMD, Intel, SoftBank, CoreWeave) — CSP CapEx, major enterprise AI contracts, vertical-sector deployments, acquisitions, mega-round financing, model commercialization milestones that show where AI is being adopted at scale; the remaining roughly 20% may cover emerging/challenger companies whose moves could realistically shift market share away from those incumbents; a small regional data-center story with no major player involved, under 100MW, or a project that was rejected/abandoned should be rated noise (or simply not selected) unless it carries clear strategic significance; NOT stock prices",
     'app':  "app: real-world AI application advances — deployed products and services across any industry (healthcare, finance, manufacturing, legal, creative, education, logistics), measurable commercial traction, new business models enabled by AI; prefer concrete launched products over research-stage announcements",
 }
 
@@ -604,6 +619,7 @@ Each ITEM: {{"title":"Traditional Chinese title","layer":"sublayer","body":"1 to
 
 RULES:
 - 2-4 items per section; if no relevant news → 1 noise item only, and that item's title/body must PLAINLY say so (e.g. title:"今日無相關新聞", body:"今日該分類無足夠具體新聞素材可供分析。") — do NOT invent a vague-sounding pseudo-headline like "AI 應用進步" or "產業趨勢觀察" with circular reasoning; a fake generic title is worse than admitting there is no news
+- RATING PHILOSOPHY (materiality over phrasing strictness): weigh real-world significance over how strictly the wording matches a checklist — a story that is clearly a big deal should not be rated noise just because its phrasing is informal. CORE examples: a major or challenger company reducing supplier dependency via a self-developed chip (e.g. DeepSeek developing its own AI chip to cut reliance on Nvidia) -> core; a billion-dollar-scale financing round or acquisition (e.g. SambaNova closing an approximately 1.1 billion USD Series F) -> core; a 100MW-plus data-center build or firm commitment -> core or opp. NOISE examples: a small regional project that was abandoned or rejected (e.g. a 29MW project dropped in a Montana county, a Texas county rejecting a bitcoin-mining data center) -> noise; an intent-only announcement with no concrete scale or timeline -> noise. When a story clearly matches a CORE example, write the body around whichever facts ARE available (named entity plus amount/spec) rather than defaulting to noise merely because the wording is informal — the 60-character / named-entity / concrete-fact bar below still applies, but do not let phrasing strictness override obvious real-world materiality
 - ONE STORY PER CARD (critical): each item covers exactly one news event or announcement; if the source contains 2 unrelated stories, create 2 separate items; NEVER mix multiple unrelated events into one body — doing so is a format error
 - body LENGTH IS VARIABLE (1-3 sentences), NOT FIXED: write only as many sentences as you have distinct facts for; a true 1-sentence body outranks a padded 3-sentence one — padding is treated as noise regardless of sentence count, so there is no benefit to reaching 3
 - body MINIMUM BAR (hard requirement): body must total at least 60 characters AND include at least 1 concrete fact (numbers/quantities, specs, monetary amounts, timelines/dates, or place names) PLUS at least 1 named entity (a specific company, institution, or product name) — e.g. "X簽署合約，金額N美元" DOES pass this bar (X = named entity, N美元 = concrete fact); a body with neither a concrete fact nor a named entity fails this bar; if the source truly supports neither, rate the item noise rather than stretching it to 60 characters with filler
@@ -1620,6 +1636,7 @@ if __name__ == '__main__':
         try:
             RUN_STATS['llm_items'] = {'hw': 0, 'corp': 0, 'app': 0}
             RUN_STATS['llm_failed'] = {'hw': False, 'corp': False, 'app': False}
+            RUN_STATS['llm_ratings'] = {c: {'core': 0, 'opp': 0, 'noise': 0} for c in ('hw', 'corp', 'app')}
             RUN_STATS['final'] = {c: {'core': 0, 'opp': 0, 'noise': 0} for c in ('hw', 'corp', 'app')}
             RUN_STATS['placeholders'] = 0
             save_run_stats(RUN_STATS)
@@ -1678,6 +1695,21 @@ if __name__ == '__main__':
     data['glossary_new'] = deduped_glossary
 
     print(f"  → 硬體 {len(data.get('hw',[]))} / 巨頭 {len(data.get('corp',[]))} / 應用 {len(data.get('app',[]))} 則")
+
+    # 閘門管線執行前先採集 LLM 剛生成時的評級分佈，與稍後的 final 對照，
+    # 用來分辨「模型自己判冷」vs「被閘門翻冷」（凍結期調參歸因用）
+    try:
+        llm_ratings = {}
+        for section in ['hw', 'corp', 'app']:
+            tally = {'core': 0, 'opp': 0, 'noise': 0}
+            for item in data.get(section, []):
+                rating = item.get('rating')
+                if rating in tally:
+                    tally[rating] += 1
+            llm_ratings[section] = tally
+        RUN_STATS['llm_ratings'] = llm_ratings
+    except Exception as e:
+        print(f"  ⚠ 漏斗統計收集失敗（llm_ratings，不影響資料生成）：{e}")
 
     print("🔗 驗證 source URL...")
     validate_sources(data)
