@@ -108,6 +108,55 @@ def count_high_signal(news_text: str) -> int:
     return sum(1 for line in news_text.splitlines()
                if line.strip() and HIGH_SIGNAL_PAT.search(line))
 
+# ══════════════════════════════════════════════════════════════════
+#  分類路由：把 enrich 後的新聞素材分流到 hw/corp/app 三個桶，
+#  取代舊版「單一素材池、先到先贏」的設計——一篇文章可同時命中多桶（不互斥），
+#  三桶都沒命中的進「其餘」桶，附加到當下素材最少的那個桶，避免浪費。
+# ══════════════════════════════════════════════════════════════════
+CATEGORY_ROUTE_PATS = {
+    'hw': re.compile(
+        r'nvidia|tsmc|台積|hbm|cowos|micron|sk.?hynix|samsung foundry|amd|\bintel\b|\barm\b|'
+        r'半導體|晶片|封裝|晶圓|foundry|\bwafer\b|\bfab\b|osat|asic|chiplet|\btsv\b|emib|reticle|'
+        r'export (?:ban|control|restriction)|chip ban|供應鏈|supply chain',
+        re.IGNORECASE
+    ),
+    'corp': re.compile(
+        r'data.?center|資料中心|\bcsp\b|capex|\bcloud\b|hyperscaler|\bmw\b|\bgw\b|'
+        r'收購|acquisition|merger|融資|funding|投資|microsoft|google|meta|amazon|apple|'
+        r'openai|anthropic|infrastructure investment',
+        re.IGNORECASE
+    ),
+    'app': re.compile(
+        r'healthcare|clinical|hospital|diagnos|medical ai|drug discovery|pharma|醫療|臨床|'
+        r'fintech|fraud|financial services|insurance ai|金融科技|詐欺|'
+        r'manufacturing|industrial automation|factory automation|製造|工廠自動化|'
+        r'enterprise deployment|enterprise adoption|企業導入|企業部署|'
+        r'retail|e-commerce|零售|logistics|物流|legal.?tech|法律科技|'
+        r'edtech|education technology|教育科技',
+        re.IGNORECASE
+    ),
+}
+
+def route_snippets(snippets):
+    """把新聞摘要分流到 hw/corp/app 三桶；可同時命中多桶（不互斥）；
+    三桶都沒命中的進素材最少的那個桶，避免被浪費掉。"""
+    buckets = {'hw': [], 'corp': [], 'app': []}
+    unmatched = []
+    for s in snippets:
+        hit_any = False
+        for cat, pat in CATEGORY_ROUTE_PATS.items():
+            if pat.search(s):
+                buckets[cat].append(s)
+                hit_any = True
+        if not hit_any:
+            unmatched.append(s)
+    for s in unmatched:
+        target = min(buckets, key=lambda k: len(buckets[k]))
+        buckets[target].append(s)
+    print(f"  → 分類分流：hw {len(buckets['hw'])} / corp {len(buckets['corp'])} / app {len(buckets['app'])} 條"
+          + (f"（其中 {len(unmatched)} 條無命中，已分配至素材最少的桶）" if unmatched else ""))
+    return buckets
+
 def make_empty_day() -> dict:
     """素材不足時回傳空日結構，不呼叫 LLM"""
     return {
@@ -251,27 +300,54 @@ def fetch_article_text(url, max_chars=1100, timeout=6):
     except Exception:
         return None
 
-def enrich_with_full_text(snippets, max_fetch=8):
-    """對高信號候選（有 SOURCE_URL 且命中 HIGH_SIGNAL_PAT）抓取真實內文取代薄摘要；
-    成功抓到內文的條目移到最前面，確保後續 3500 字截斷時優先保留高密度素材。"""
+def enrich_with_full_text(buckets, max_fetch=12):
+    """三分類輪流分配全文抓取名額（round-robin：hw桶第1篇→corp桶第1篇→app桶第1篇→hw桶第2篇…），
+    取代舊版「單一素材池、先到先贏」（hw 類新聞源強勢佔滿、app 類永遠擠不進）。
+    只對高信號候選（有 SOURCE_URL 且命中 HIGH_SIGNAL_PAT）抓取真實內文取代薄摘要；
+    同一 URL 若重複出現於多桶（一篇文章可同時進多桶），只實際抓取一次並快取結果，
+    避免重複網路請求。成功抓到內文的條目移到該桶最前面，確保後續 3500 字截斷時
+    優先保留高密度素材（沿用舊版行為）。"""
+    cats = ['hw', 'corp', 'app']
+    lists = {c: list(buckets.get(c, [])) for c in cats}
+    eligible = {c: [i for i, s in enumerate(lists[c])
+                    if 'SOURCE_URL:' in s and HIGH_SIGNAL_PAT.search(s)] for c in cats}
+    cursor = {c: 0 for c in cats}
+    enriched_idx = {c: set() for c in cats}
+    cache = {}
     fetched = 0
-    enriched, rest = [], []
-    for s in snippets:
-        if fetched < max_fetch and 'SOURCE_URL:' in s and HIGH_SIGNAL_PAT.search(s):
+    active = True
+    while fetched < max_fetch and active:
+        active = False
+        for c in cats:
+            if fetched >= max_fetch:
+                break
+            elist = eligible[c]
+            if cursor[c] >= len(elist):
+                continue
+            active = True
+            i = elist[cursor[c]]
+            cursor[c] += 1
+            s = lists[c][i]
             m = re.search(r'SOURCE_URL:(\S+)', s)
-            text = fetch_article_text(m.group(1)) if m else None
+            url = m.group(1) if m else None
+            if url not in cache:
+                cache[url] = fetch_article_text(url) if url else None
+            text = cache[url]
             if text:
                 head = s.split(' — ', 1)[0]
                 url_part = s[s.find(' | SOURCE_URL:'):]
                 # SOURCE_URL 緊接標題之後，不放在長內文最後面——內文拉長到 1100 字後，
                 # LLM 常常讀到文末前就已經寫完 JSON，導致 source 欄位留空或抓錯
-                enriched.append(f"{head}{url_part} — {text}")
+                lists[c][i] = f"{head}{url_part} — {text}"
+                enriched_idx[c].add(i)
                 fetched += 1
-                continue
-        rest.append(s)
+    for c in cats:
+        front = [lists[c][i] for i in range(len(lists[c])) if i in enriched_idx[c]]
+        rest  = [lists[c][i] for i in range(len(lists[c])) if i not in enriched_idx[c]]
+        lists[c] = front + rest
     if fetched:
-        print(f"  → 已抓取 {fetched} 篇完整內文取代薄摘要")
-    return enriched + rest
+        print(f"  → 已抓取 {fetched} 篇完整內文取代薄摘要（三分類輪流分配，非先到先贏）")
+    return lists
 
 def _title_tokens(text):
     """混合 tokenizer：CJK bigram + 英文單詞（len>2），解決中文無空格的詞切分問題"""
@@ -322,6 +398,9 @@ def filter_recent(snippets, recent_titles, recent_urls=None):
 
 
 def fetch_news(recent_titles=None, recent_urls=None):
+    """回傳 {'hw':str,'corp':str,'app':str} 三分類各自的新聞素材文字（一分類一次 LLM 呼叫架構）。
+    每篇文章先分流到 hw/corp/app 桶（可同時進多桶），全文抓取名額三分類輪流分配，
+    取代舊版「單一素材池、先到先贏、3500 字硬砍」造成 app 類永遠擠不進的結構性瓶頸。"""
     print("  → RSS feeds...")
     rss = fetch_rss()
     print(f"  → RSS 取得 {len(rss)} 條")
@@ -342,14 +421,11 @@ def fetch_news(recent_titles=None, recent_urls=None):
     if recent_titles or recent_urls:
         unique = filter_recent(unique, recent_titles, recent_urls)
         print(f"  → 預過濾後剩 {len(unique)} 條")
-    # 對高信號候選抓取完整內文取代薄摘要，並移到最前面優先保留
-    unique = enrich_with_full_text(unique)
-    # 限制總字數，避免超過 Groq TPM 限制
-    joined = "\n\n".join(unique)
-    if len(joined) > 8000:
-        joined = joined[:8000]
-        print(f"  → 截斷至 8000 字元")
-    return joined
+    # 分類分流：一篇文章可同時進多桶，三桶都沒命中的進素材最少的桶
+    buckets = route_snippets(unique)
+    # 對高信號候選抓取完整內文取代薄摘要，三分類輪流分配名額（不再先到先贏）
+    buckets = enrich_with_full_text(buckets, max_fetch=12)
+    return {cat: "\n\n".join(buckets[cat]) for cat in ['hw', 'corp', 'app']}
 
 
 def get_recent_titles(history, days=3, max_titles=30):
@@ -421,14 +497,29 @@ def snapshot_notes_backup():
 # ══════════════════════════════════════════════════════════════════
 #  2. PROMPT
 # ══════════════════════════════════════════════════════════════════
-def make_prompt(news_context, recent_titles=None):
+CATEGORY_DESC = {
+    'hw':   "hw: AI infrastructure supply chain signals — capacity commitments (CoWoS/HBM/OSAT/fab), strategic supplier decisions, export controls that shift production geography; prioritize financial/strategic signals over technical specifications; NOT GPU architecture analysis, chip benchmark comparisons, or speculative roadmap commentary",
+    'corp': "corp: industry AI adoption signals — CSP CapEx, major enterprise AI contracts, vertical-sector deployments (healthcare/automotive/finance/manufacturing) by large incumbents, model commercialization milestones that show where AI is being adopted at scale; NOT stock prices",
+    'app':  "app: real-world AI application advances — deployed products and services across any industry (healthcare, finance, manufacturing, legal, creative, education, logistics), measurable commercial traction, new business models enabled by AI; prefer concrete launched products over research-stage announcements",
+}
+
+# 一分類一次呼叫架構下，weekly_summary 拆成三段，各分類只負責自己那一行，
+# main 流程合併三次呼叫結果時用 \n 接回原本的多行格式；
+# 「下週看點」放在 corp（CSP/CapEx 視角最貼近總體展望）、
+# 「用戶洞察」放在 app（三次呼叫中順序最後，象徵彙整收尾）。
+CATEGORY_WEEKLY_TEMPLATE = {
+    'hw':   'HW：[半導體本週最重要一句摘要]',
+    'corp': 'CORP：[CSP/CapEx本週一句摘要]\\n下週看點：[下週最值得追蹤的一個指標或事件]',
+    'app':  'APP：[新興AI本週一句摘要]',
+}
+
+def make_prompt(news_context, category, recent_titles=None):
     notes = load_notes() if IS_SUNDAY else {}
     notes_text = "; ".join(f"{d}:{n}" for d, n in sorted(notes.items()) if n.strip()) if notes else ""
-    weekly_val = (
-        '"HW：[半導體本週最重要一句摘要]\\nCORP：[CSP/CapEx本週一句摘要]\\nAPP：[新興AI本週一句摘要]\\n下週看點：[下週最值得追蹤的一個指標或事件]'
-        + ('\\n用戶洞察：[根據用戶筆記的核心洞察]' if notes_text else '') + '"'
-        if IS_SUNDAY else 'null'
-    )
+    weekly_line = CATEGORY_WEEKLY_TEMPLATE[category]
+    if category == 'app' and notes_text:
+        weekly_line += '\\n用戶洞察：[根據用戶筆記的核心洞察]'
+    weekly_val = f'"{weekly_line}"' if IS_SUNDAY else 'null'
     no_repeat_str = ("NO-REPEAT (STRICT): these topics were covered in recent days — do NOT generate any item about the same story or event even with a different headline; only include if there is a significant new development with wholly new facts not present before: " + "; ".join(recent_titles)) if recent_titles else ""
     notes_ctx = ("User notes context: " + notes_text[:200]) if notes_text else ""
     news_short = news_context[:3500]
@@ -437,19 +528,18 @@ def make_prompt(news_context, recent_titles=None):
         if IS_SUNDAY else
         'MUST be null — today is NOT Sunday; outputting any non-null value is an error'
     )
+    category_desc = CATEGORY_DESC[category]
 
     return f"""You are an AI supply chain analyst. Analyze the news below and output pure JSON (start directly with {{).
 
 NEWS:
 {news_short}
 
-CATEGORIES:
-- hw: AI infrastructure supply chain signals — capacity commitments (CoWoS/HBM/OSAT/fab), strategic supplier decisions, export controls that shift production geography; prioritize financial/strategic signals over technical specifications; NOT GPU architecture analysis, chip benchmark comparisons, or speculative roadmap commentary
-- corp: industry AI adoption signals — CSP CapEx, major enterprise AI contracts, vertical-sector deployments (healthcare/automotive/finance/manufacturing) by large incumbents, model commercialization milestones that show where AI is being adopted at scale; NOT stock prices
-- app: real-world AI application advances — deployed products and services across any industry (healthcare, finance, manufacturing, legal, creative, education, logistics), measurable commercial traction, new business models enabled by AI; prefer concrete launched products over research-stage announcements
+TARGET CATEGORY (generate items for THIS category only):
+- {category_desc}
 
 OUTPUT FORMAT:
-{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"hw":[ITEMS],"corp":[ITEMS],"app":[ITEMS],"glossary_new":[{{"term":"","full":"","def":"2-3 sentences","why":"why it matters","category":"semiconductor|ai_technique|hardware|role"}}],"weekly_summary":{weekly_val}}}
+{{"date":"{DATE_STR}","is_sunday":{str(IS_SUNDAY).lower()},"{category}":[ITEMS],"glossary_new":[{{"term":"","full":"","def":"2-3 sentences","why":"why it matters","category":"semiconductor|ai_technique|hardware|role"}}],"weekly_summary":{weekly_val}}}
 
 Each ITEM: {{"title":"Traditional Chinese title","layer":"sublayer","body":"1 to 3 sentences, ALL about the SAME single news event. Write ONLY as many sentences as the source material actually supports with a distinct fact — every sentence must contain at least one specific number, date, or named entity from the source AND must state a fact NOT already stated in a previous sentence. HARD MINIMUM BAR: the total body must be at least 60 Traditional Chinese characters long AND must contain at least 1 distinct concrete fact (pick one: specific numbers/quantities, technical specs, monetary amounts, timelines/dates, or place names/locations) PLUS at least 1 clearly named entity (a specific company, institution, or product name) — a sentence with neither a concrete fact nor a named entity (pure vague restatement of the headline) is NOT acceptable and must not be treated as done. A single honest, fact-dense sentence is ALWAYS better than 3 sentences where sentences 2-3 restate sentence 1 in different words or add generic unsourced reasoning (e.g. speculation about competitors, job creation, timelines like 'will launch soon', or vague ambition/expansion framing) — that kind of padding gets the whole item rejected as noise, so never do it. If the source material genuinely cannot support 60 characters with 1 concrete fact and 1 named entity, do NOT pad with generic reasoning to reach the length — rate the item noise instead.","impact":"2-3 sentences in zh-TW tracing the upstream/downstream ripple effects on the SUPPLY CHAIN. Structure: (1) direct effect on the closest supply chain tier (e.g. TSMC capacity, HBM ASP, OSAT utilization); (2) second-order effect on the next tier; (3) if applicable, end-market or competitor implication. Every claim must be traceable to the news source — do NOT just rephrase the body. NEVER say '可能會影響X' without stating the direction (↑/↓) and mechanism. NEVER mention stock prices.","rating":"core|opp|noise","insight":"1-sentence investor takeaway","source_label":"source name","source":"use SOURCE_URL value or empty string"}}
 
@@ -1454,12 +1544,13 @@ if __name__ == '__main__':
     recent_urls = get_recent_urls(history, days=3)
     print(f"  → 近三日標題 {len(recent_titles)} 條、來源網址 {len(recent_urls)} 條（NO-REPEAT 用）")
 
-    print("📰 抓取新聞（含近日預過濾）...")
-    news = fetch_news(recent_titles, recent_urls)
-    total = len(news.splitlines())
+    print("📰 抓取新聞（含近日預過濾、分類分流）...")
+    news_by_cat = fetch_news(recent_titles, recent_urls)  # {'hw':str,'corp':str,'app':str}
+    news_combined = "\n\n".join(news_by_cat[c] for c in ['hw', 'corp', 'app'])
+    total = len(news_combined.splitlines())
     print(f"  → 合計 {total} 行新聞摘要")
 
-    hs_count = count_high_signal(news)
+    hs_count = count_high_signal(news_combined)
     print(f"  → 高信號素材 {hs_count} 條（門檻：3）")
     if hs_count < 3 and not FORCE_REGEN:
         print("  → 素材不足，跳過 LLM 生成，存為空日（零捏造模式）")
@@ -1470,8 +1561,44 @@ if __name__ == '__main__':
         print("✅ 完成（空日）")
         sys.exit(0)
 
-    print("🤖 呼叫 Groq API...")
-    data = call_groq(make_prompt(news, recent_titles))
+    # ── 一分類一次 LLM 呼叫，避開 Groq 免費額度 6000 TPM/分鐘 限流 ──
+    # 每次呼叫間隔 65 秒；單一分類失敗（例外/限流）時 fallback 為空清單，
+    # 不影響其他分類、不整體失敗（會自然走佔位卡邏輯）。
+    print("🤖 呼叫 Groq API（hw→corp→app，一分類一次）...")
+    data = {
+        'date': DATE_STR, 'is_sunday': IS_SUNDAY,
+        'hw': [], 'corp': [], 'app': [],
+        'glossary_new': [], 'weekly_summary': None,
+    }
+    weekly_parts = []
+    categories = ['hw', 'corp', 'app']
+    for i, cat in enumerate(categories):
+        try:
+            result = call_groq(make_prompt(news_by_cat[cat], cat, recent_titles))
+            data[cat] = result.get(cat, [])
+            data['glossary_new'].extend(result.get('glossary_new') or [])
+            if IS_SUNDAY and result.get('weekly_summary'):
+                weekly_parts.append(result['weekly_summary'])
+            print(f"  → {cat} 完成，{len(data[cat])} 則")
+        except Exception as e:
+            print(f"  ⚠ {cat} 分類呼叫失敗，fallback 為空清單（不影響其他分類）：{e}")
+            data[cat] = []
+        if i < len(categories) - 1:
+            print("  → 避開 TPM 限流，休息 65 秒...")
+            time.sleep(65)
+
+    if IS_SUNDAY and weekly_parts:
+        data['weekly_summary'] = '\n'.join(weekly_parts)
+
+    # glossary_new 三次呼叫各自產生，依 term 去重（大小寫不分）
+    seen_terms, deduped_glossary = set(), []
+    for g in data['glossary_new']:
+        t = (g.get('term') or '').strip().lower()
+        if t and t not in seen_terms:
+            seen_terms.add(t)
+            deduped_glossary.append(g)
+    data['glossary_new'] = deduped_glossary
+
     print(f"  → 硬體 {len(data.get('hw',[]))} / 巨頭 {len(data.get('corp',[]))} / 應用 {len(data.get('app',[]))} 則")
 
     print("🔗 驗證 source URL...")
@@ -1494,7 +1621,7 @@ if __name__ == '__main__':
     remove_cross_item_url_duplicates(data)
     strip_noise_impact(data)
     print("🔎 body 聲明 LLM 驗證...")
-    validate_body(data, news)
+    validate_body(data, news_combined)
     print("🔗 supply chain 品質檢核...")
     fix_chains(data)
     print("🔎 impact 因果驗證...")
