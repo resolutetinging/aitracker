@@ -39,6 +39,16 @@ RSS_FEEDS = [
     ("App/AI",       "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
     ("App/AI",       "https://techcrunch.com/category/artificial-intelligence/feed/"),
     ("App/AI",       "https://venturebeat.com/category/ai/feed/"),  # 企業 AI 採用與垂直行業落地
+    # ── Google News RSS 主題查詢（覆蓋面大，補齊 app 類長期擠不進的缺口）───
+    ("gnews-chip", "https://news.google.com/rss/search?q=AI+chip+OR+semiconductor+when:1d&hl=en-US&gl=US&ceid=US:en"),
+    ("gnews-dc",   "https://news.google.com/rss/search?q=%22data+center%22+AI+when:1d&hl=en-US&gl=US&ceid=US:en"),
+    ("gnews-app",  "https://news.google.com/rss/search?q=AI+adoption+enterprise+OR+healthcare+OR+fintech+when:1d&hl=en-US&gl=US&ceid=US:en"),
+    # ── 垂直媒體補強（實測有效者）───────────────────────────────────
+    ("Semiconductor", "https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss"),  # IEEE Spectrum AI
+    ("App/AI",        "https://www.technologyreview.com/feed/"),        # MIT Technology Review
+    ("CSP/CapEx",      "https://www.datacenterknowledge.com/rss.xml"),   # Data Center Knowledge
+    ("Semiconductor", "https://www.tomshardware.com/feeds/all"),        # Tom's Hardware（301→200，urllib 預設會跟隨轉址）
+    # 註：HPCwire（https://www.hpcwire.com/feed/）實測回傳 403 Cloudflare 人機驗證頁，非有效 RSS，捨棄不加入
 ]
 
 # 硬體供應鏈關鍵字（hw 分類必須命中其中之一）
@@ -135,6 +145,7 @@ DIGEST_TITLE_PATS = re.compile(
     r'(?:literature digest|research digest|technical digest|chip industry.*digest|'
     r'\bweek\s+in\s+review\b|weekly\s+(?:digest|roundup|update|wrap)|'
     r'daily\s+(?:digest|roundup|briefing)|'
+    r'\broundup\b|'
     r'論文匯總|技術論文|研究簡報|每週.*摘要|週報|每日簡報)',
     re.IGNORECASE
 )
