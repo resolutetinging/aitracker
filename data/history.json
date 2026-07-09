@@ -1,5 +1,139 @@
 [
   {
+    "date": "2026-07-10",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "美光宣布在美國投資晶片製造",
+        "layer": "晶片製造",
+        "body": "美光宣布了一輪新的投資，以提升美國的半導體供應鏈。這項投資將幫助美光增加其在美國的晶片製造能力。美光的股票價格因此上漲了7%。",
+        "impact": "這項投資將直接影響美國的半導體供應鏈，增加美光在美國的晶片製造能力。",
+        "rating": "core",
+        "insight": "美光的投資將有助於提升美國的半導體供應鏈的競爭力。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/07/09/micron-stock-us-chipmaking.html",
+        "chain": [
+          {
+            "label": "Micron 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Micron 股價↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "SambaNova 獲得 110 億美元的投資",
+        "layer": "AI 晶片",
+        "body": "SambaNova 獲得了 110 億美元的投資，領投者為 General Atlantic。這項投資將幫助 SambaNova 開發其 AI 晶片技術。",
+        "impact": "這項投資將直接影響 SambaNova 的 AI 晶片業務，增加其開發和生產能力。",
+        "rating": "core",
+        "insight": "SambaNova 的投資將有助於提升其在 AI 晶片市場的競爭力。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/07/08/sambanova-ai-chip-funding-valuation.html",
+        "chain": [
+          {
+            "label": "SambaNova 資金↑",
+            "type": "up"
+          },
+          {
+            "label": "SambaNova AI 晶片技術↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Google Cloud 任命 Hussein Shell 領導石油和天然氣事業部",
+        "layer": "雲計算",
+        "body": "Google Cloud 任命 Hussein Shell 為其石油和天然氣事業部的領導。Hussein Shell 曾在 Amazon Web Services 的能源團隊工作，負責雲遷移和技術創新工作。現在，他將領導 Google Cloud 的全球石油和天然氣戰略。",
+        "impact": "這項任命可能會加強 Google Cloud 在石油和天然氣領域的實力和影響力，同時也可能會對其他雲計算平台產生一定的競爭壓力。Hussein Shell 的任命也可能會推動 Google Cloud 的技術和服務在石油和天然氣領域的應用和發展。",
+        "rating": "noise",
+        "insight": "Google Cloud 的這項任命可能會成為公司在石油和天然氣領域的一個重要發展方向，值得關注和研究。",
+        "source_label": "DatacenterDynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/google-cloud-names-hussein-shell-to-lead-oil-gas-unit/",
+        "chain": [
+          {
+            "label": "Google Cloud 石油和天然氣事業部領導↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Cloud 全球石油和天然氣戰略↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Meta 計劃在加拿大阿爾伯塔省建造 1GW 數據中心",
+        "layer": "數據中心",
+        "body": "Meta 計劃在加拿大阿爾伯塔省的 Sturgeon County 建造一個 1GW 的數據中心。這個數據中心將會是 Meta 的第 33 個全球設施，預計將會投資 13 億加元（約 9.17 億美元）。",
+        "impact": "這項投資可能會加強 Meta 在加拿大的實力和影響力，同時也可能會對其他數據中心運營商產生一定的競爭壓力。Meta 的這項投資也可能會推動加拿大數據中心的發展和應用。",
+        "rating": "noise",
+        "insight": "Meta 的這項投資可能會成為公司在加拿大的重要發展方向，值得關注和研究。",
+        "source_label": "DatacenterDynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/meta-plans-917bn-gigawatt-scale-data-center-in-alberta-canada/",
+        "chain": [
+          {
+            "label": "Meta 數據中心投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta 全球設施數量↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Meta 將在九月投產 AI 晶片",
+        "layer": "AI晶片",
+        "body": "Meta 將在九月投產 AI 晶片，目標是將計算能力加倍。根據消息來源，Meta 的 AI 晶片將用於其數據中心，提高其 AI 處理能力。Meta 的這一舉動可能會對其供應鏈產生影響，特別是對其晶片供應商。",
+        "impact": "Meta 投產 AI 晶片可能會對其晶片供應商產生影響，特別是對其供應鏈的下游客戶。",
+        "rating": "noise",
+        "insight": "Meta 投產 AI 晶片是其加強 AI 能力的重要一步，對其供應鏈和競爭對手都可能產生影響。",
+        "source_label": "Global Banking & Finance Review",
+        "source": "https://www.globalbankingandfinance.com/exclusive-meta-put-ai-chip-production-september-looks-double/",
+        "chain": [
+          {
+            "label": "Meta AI 晶片計算能力↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta AI 處理能力↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "半導體",
+        "full": "半導體材料",
+        "def": "一種具有導電性和絕緣性之間的材料，常用於電子元件的製造。",
+        "why": "半導體材料是電子元件的基礎，對電子產業具有重要意義。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "GPT-Live",
+        "full": "GPT-Live 是 OpenAI 推出的聊天機器人技術，能夠實現人聲對話和網路搜索。",
+        "def": "GPT-Live 是一個全雙工的聊天機器人技術，能夠在對話中表現出關注的語句和進行快速的對話。",
+        "why": "GPT-Live 的推出可能會提升聊天機器人的對話體驗，增加用戶的滿意度和依賴度。",
+        "category": "AI 技術"
+      },
+      {
+        "term": "AI晶片",
+        "full": "人工智慧晶片",
+        "def": "一種專門用於人工智慧計算的晶片。",
+        "why": "AI晶片是Meta加強AI能力的重要一步。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-09",
     "is_sunday": false,
     "hw": [
@@ -635,115 +769,6 @@
         "def": "一種可以智能控制電源的晶片，廣泛應用於電子設備中。",
         "why": "智能電源晶片可以提高電子設備的效率和可靠性，減少能耗和熱量。",
         "category": "半導體"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-07-03",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "人形機器人視覺和運動技術進展",
-        "layer": "晶片",
-        "body": "人形機器人仍需改善其在各種環境中的安全移動能力，包括醫院和家庭。目前，攝像頭和雷達技術已能提供良好的視覺效果，但仍需要進一步改善以避免事故。Infineon Technologies 的 Adam White 表示，機器人可以分解為多個元素，包括主計算、區域控制、馬達控制、電池、充電和環境感知等。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "人形機器人視覺和運動技術的進展將推動晶片供應鏈的發展和創新。",
-        "source_label": "semiengineering",
-        "source": "https://semiengineering.com/fine-tuning-humanoid-vision-and-movement/",
-        "chain": [
-          {
-            "label": "Infineon Technologies 主計算能力↑",
-            "type": "up"
-          },
-          {
-            "label": "攝像頭技術視覺效果↑",
-            "type": "up"
-          },
-          {
-            "label": "雷達技術感知能力↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "AI 驅動的勒索軟件攻擊",
-        "layer": "晶片",
-        "body": "Sysdig 的研究團隊發現了一種新的 AI 驅動的勒索軟件攻擊，該攻擊利用 Langflow 實例的漏洞進行攻擊。該攻擊被稱為 JadePuffer，具有自我敘述和目標優先的能力。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "AI 驅動的勒索軟件攻擊將推動晶片供應鏈的安全性和創新。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/security/2026/07/02/smooth-ai-criminal-drives-first-end-to-end-agentic-ransomware-attack/5266073",
-        "chain": [
-          {
-            "label": "Sysdig 研究團隊發現能力↑",
-            "type": "up"
-          },
-          {
-            "label": "Langflow 實例漏洞利用↑",
-            "type": "up"
-          },
-          {
-            "label": "JadePuffer 攻擊能力↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google 計劃在南非建立連接中心",
-        "layer": "企業",
-        "body": "Google 宣布計劃在南非建立四個連接中心，作為其「Building for Africa」計畫的一部分。這些連接中心將作為數字交換港，直接連接非洲和澳洲、印度等地區。",
-        "impact": "Google 的連接中心計畫將直接影響企業的供應鏈，特別是數據中心和雲計算服務的需求。同時，該計畫也將間接影響相關的上游供應商，例如數據中心和雲計算服務提供商。最後，Google 的連接中心計畫也將對下游的行業，例如金融和服務業，產生一定的影響。",
-        "rating": "noise",
-        "insight": "Google 的連接中心計畫將推動企業的供應鏈和創新。",
-        "source_label": "Datacenter Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/esds/",
-        "chain": [
-          {
-            "label": "Google 連接中心數量↑",
-            "type": "up"
-          },
-          {
-            "label": "非洲數字交換能力↑",
-            "type": "up"
-          },
-          {
-            "label": "Google Building for Africa 計畫進展↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "應用",
-        "body": "今日該分類無足夠具體新聞素材可供分析。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "人形機器人",
-        "full": "Humanoid Robot",
-        "def": "一種模擬人類外觀和運動的機器人",
-        "why": "人形機器人可以模擬人類的運動和感知，具有廣泛的應用前景",
-        "category": "晶片"
-      },
-      {
-        "term": "AI 驅動的勒索軟件攻擊",
-        "full": "AI-Driven Ransomware Attack",
-        "def": "一種利用 AI 技術進行的勒索軟件攻擊",
-        "why": "AI 驅動的勒索軟件攻擊具有自我敘述和目標優先的能力，對企業和個人構成重大威脅",
-        "category": "晶片"
       }
     ],
     "weekly_summary": null
