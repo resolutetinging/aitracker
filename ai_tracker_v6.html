@@ -407,6 +407,11 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
     </div>
     <input class="pat-input" id="pat-input" type="password" placeholder="github_pat_xxxxxxxxxx...">
     <div style="font-size:11.5px;color:var(--muted);margin-bottom:10px;">Token 只存在你的瀏覽器，不會上傳到任何地方。</div>
+    <div style="height:1px;background:var(--border);margin:12px 0;"></div>
+    <div class="pat-sub" style="margin-bottom:8px;">
+      AI Tracker Repo Token（選填）：建議填入 fine-grained token（僅授權 aitracker repo 的 Contents 與 Actions 權限），與備份用 gist token 分離降低風險；留空則沿用上方 Token。
+    </div>
+    <input class="pat-input" id="repo-token-input" type="password" placeholder="github_pat_xxxxxxxxxx...（選填）">
     <div class="pat-row">
       <button class="pat-save-btn" onclick="savePat()">儲存 Token</button>
       <button class="pat-cancel-btn" onclick="closePatModal()">取消</button>
@@ -1208,14 +1213,15 @@ async function _resolveGistIdUncached() {
     localStorage.setItem('notes_gist_id', gistId);
     // 一次性把 gist id 寫回 repo 的 data/notes_config.json（供無 token 裝置與每日快照使用）
     try {
+      const repoToken = getRepoToken();
       const cfgContent = btoa(unescape(encodeURIComponent(JSON.stringify({gist_id: gistId}, null, 2))));
       let sha;
       const chk = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/data/notes_config.json`,
-        {headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github+json'}});
+        {headers:{'Authorization':`token ${repoToken}`,'Accept':'application/vnd.github+json'}});
       if (chk.ok) sha = (await chk.json()).sha;
       await fetch(`https://api.github.com/repos/${GH_REPO}/contents/data/notes_config.json`, {
         method:'PUT',
-        headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
+        headers:{'Authorization':`token ${repoToken}`,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
         body: JSON.stringify({message:'🔧 notes gist id', content: cfgContent, ...(sha?{sha}:{})})
       });
     } catch(e) {}
@@ -1362,6 +1368,10 @@ function importJSON() {
 // ══════════════════════════════════════════════════════════════════
 const GH_REPO  = 'resolutetinging/aitracker';
 const GH_PATH  = 'data/gloss_config.json';
+// repo 級操作（contents PUT / actions dispatch）優先用專屬 at_repo_token，未設定則沿用 gh_pat（向後相容）
+function getRepoToken() {
+  return localStorage.getItem('at_repo_token') || localStorage.getItem('gh_pat') || '';
+}
 
 async function loadGlossConfig() {
   try {
@@ -1382,7 +1392,7 @@ async function loadGlossConfig() {
 }
 
 async function saveGlossConfig() {
-  const token = localStorage.getItem('gh_pat');
+  const token = getRepoToken();
   if (!token) { openPatModal(); return; }
 
   const btn = document.getElementById('gloss-save-btn');
@@ -1453,7 +1463,7 @@ async function fetchEmailConfig() {
 }
 
 async function saveEmailConfig() {
-  const token = localStorage.getItem('gh_pat');
+  const token = getRepoToken();
   if (!token) { closeEmailModal(); openPatModal(); return; }
   const raw = document.getElementById('email-recipients-input').value;
   const recipients = raw.split(/[\n,]/).map(s => s.trim()).filter(Boolean);
@@ -1479,7 +1489,7 @@ async function saveEmailConfig() {
 }
 
 async function manualDispatchEmail() {
-  const token = localStorage.getItem('gh_pat');
+  const token = getRepoToken();
   if (!token) { closeEmailModal(); openPatModal(); return; }
   const btn = document.getElementById('email-manual-push-btn');
   const statusEl = document.getElementById('email-save-status');
@@ -1559,6 +1569,8 @@ async function pollWorkflowStatus(token, triggerTime, statusEl, btn) {
 function openPatModal() {
   const saved = localStorage.getItem('gh_pat');
   document.getElementById('pat-input').value = saved || '';
+  const savedRepoToken = localStorage.getItem('at_repo_token');
+  document.getElementById('repo-token-input').value = savedRepoToken || '';
   document.getElementById('pat-modal').classList.remove('hidden');
 }
 function closePatModal() { document.getElementById('pat-modal').classList.add('hidden'); }
@@ -1566,6 +1578,9 @@ function savePat() {
   const val = document.getElementById('pat-input').value.trim();
   if (val) localStorage.setItem('gh_pat', val);
   else localStorage.removeItem('gh_pat');
+  const repoVal = document.getElementById('repo-token-input').value.trim();
+  if (repoVal) localStorage.setItem('at_repo_token', repoVal);
+  else localStorage.removeItem('at_repo_token');
   closePatModal();
   renderGlossary(HISTORY); // refresh to update button state
 }
