@@ -4,37 +4,43 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "晶片技術論文匯總",
-        "layer": "晶片技術",
-        "body": "Schottky 阻障在 Si/金屬界面；代理人式 HLS；概率記憶體適用於邊緣計算；代理人式 HW 設計自動化作為儲存庫級別的代碼演化；HW 指紋識別適用於光子 IC；功能安全；開源、可自定義的 RISC-V SoC 平台。最近新增到 Semiconductor Engineering 的圖書館中。",
-        "impact": "",
+        "title": "晶片產業技術論文匯總",
+        "layer": "技術論文",
+        "body": "Schottky 阻障在 Si/金屬介面；代理人 HLS；概率記憶體適用於邊緣計算；代理人 HW 設計自動化作為儲存庫級別代碼演化；HW 指紋識別適用於光子 IC；功能安全；開源、可自訂的 RISC-V SoC 平台。新技術論文最近添加到 Semiconductor Engineering 的圖書館中。",
+        "impact": "這將直接影響晶片產業的技術發展，進一步推動 HW 設計自動化和功能安全的研究；同時，對於光子 IC 和邊緣計算的應用也會產生一定的影響。",
         "rating": "core",
-        "insight": "晶片技術的進步將推動 AI 應用的發展",
+        "insight": "晶片產業的技術發展對於 AI 基礎設施的建設具有重要意義。",
         "source_label": "Semiconductor Engineering",
-        "source": "https://semiengineering.com/chip-industry-technical-paper-roundup-july-8-2/"
+        "source": "https://semiengineering.com/chip-industry-technical-paper-roundup-july-8-2/",
+        "chain": [
+          {
+            "label": "RISC-V SoC 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Semiconductor Engineering 收入↑",
+            "type": "up"
+          }
+        ]
       }
     ],
     "corp": [
       {
-        "title": "Edged 計劃在賓夕法尼亞州建設 725MW 資料中心",
-        "layer": "資料中心建設",
-        "body": "Edged 公司計劃在賓夕法尼亞州的 South Whitehall Township 建設一個 725MW 的資料中心，佔地 410 英畝，投資約 9 億美元。",
-        "impact": "這將直接影響資料中心的供應鏈和建設進度，同時也可能會影響當地的經濟和就業市場；另外，資料中心的建設也可能會促進相關的硬體和軟體公司的發展。",
+        "title": "蒙大拿州邦納市資料中心計畫被放棄",
+        "layer": "資料中心投資",
+        "body": "資料中心開發商 Krambu 原本計畫在蒙大拿州邦納市的 Bonner Mill Industrial Park 開發一個資料中心，但由於 Mike Heisey 的反對而被放棄。該資料中心原計畫提供 7MW 的容量，第一階段將提供 29MW 的容量。",
+        "impact": "這將直接影響資料中心的供應鏈，特別是對於 Krambu 和邦納市的經濟發展；同時，對於資料中心的投資和建設也會產生一定的影響。",
         "rating": "noise",
-        "insight": "資料中心的建設將推動相關產業的發展",
-        "source_label": "DatacenterDynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/edged-eyes-725mw-data-center-campus-in-pennsylvania/",
+        "insight": "資料中心的投資和建設對於地區經濟的發展具有重要意義。",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/plans-for-29mw-data-center-in-bonner-montana-dropped/",
         "chain": [
           {
-            "label": "Edged 資料中心建設↑",
-            "type": "up"
+            "label": "Krambu 資料中心容量↓",
+            "type": "down"
           },
           {
-            "label": "South Whitehall Township 投資↑",
-            "type": "up"
-          },
-          {
-            "label": "賓夕法尼亞州 GDP↑",
+            "label": "Mike Heisey 地產價值↑",
             "type": "up"
           }
         ]
@@ -43,7 +49,7 @@
     "app": [
       {
         "title": "今日無相關應用新聞",
-        "layer": "應用新聞",
+        "layer": "",
         "body": "今日該分類無足夠具體新聞素材可供分析。",
         "impact": "",
         "rating": "noise",
@@ -55,10 +61,10 @@
     "glossary_new": [
       {
         "term": "Schottky 阻障",
-        "full": "Schottky 阻障是一種金屬和半導體之間的接觸阻障",
-        "def": "Schottky 阻障是一種金屬和半導體之間的接觸阻障，常用於晶片設計中",
-        "why": "了解 Schottky 阻障的概念有助於理解晶片設計和製造的原理",
-        "category": "semiconductor"
+        "full": "Schottky 阻障是一種在金屬和半導體之間形成的能量障礙",
+        "def": "Schottky 阻障是指在金屬和半導體之間形成的能量障礙，影響電子流動的能力。",
+        "why": "了解 Schottky 阻障對於晶片產業的技術發展具有重要意義。",
+        "category": "半導體"
       }
     ],
     "weekly_summary": null
