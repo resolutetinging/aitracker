@@ -21,6 +21,44 @@ KNOWN_TERMS = ["HBM","CoWoS","CSP","OSAT","VLA 模型",
                "Reticle Limit","CapEx","Agentic AI","Physical AI","TSV"]
 
 # ══════════════════════════════════════════════════════════════════
+#  漏斗可觀測性：各管線邊界計數收集，跑完寫入 data/run_stats.json
+#  （鐵律：統計收集本身絕不可讓主管線崩潰——所有寫入點需 try/except，
+#   失敗只印警告，資料照樣往下生成）
+# ══════════════════════════════════════════════════════════════════
+RUN_STATS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'run_stats.json')
+
+RUN_STATS = {
+    'feeds': {},
+    'digest_filtered': 0,
+    'after_dedup': 0,
+    'buckets': {},
+    'enriched': 0,
+    'llm_items': {},
+    'llm_failed': {},
+    'final': {},
+    'placeholders': 0,
+}
+
+def save_run_stats(stats):
+    """把本次執行的漏斗計數寫入 data/run_stats.json：新到舊排列、同日覆寫、
+    最近 14 筆上限。呼叫端必須自行包 try/except（本函式的檔案寫入可能失敗，
+    但絕不可因此中斷主管線）。"""
+    entry = dict(stats)
+    entry['date'] = DATE_STR
+    entry['generated_at'] = datetime.now(TW).isoformat()
+    try:
+        with open(RUN_STATS_PATH, 'r', encoding='utf-8') as f:
+            existing = json.load(f)
+        runs = existing.get('runs', [])
+    except Exception:
+        runs = []
+    runs = [r for r in runs if r.get('date') != entry['date']]
+    runs.insert(0, entry)
+    runs = runs[:14]
+    with open(RUN_STATS_PATH, 'w', encoding='utf-8') as f:
+        json.dump({'runs': runs}, f, ensure_ascii=False, indent=2)
+
+# ══════════════════════════════════════════════════════════════════
 #  1. RSS FEEDS（主要新聞來源，穩定免費）
 # ══════════════════════════════════════════════════════════════════
 RSS_FEEDS = [
@@ -155,6 +193,10 @@ def route_snippets(snippets):
         buckets[target].append(s)
     print(f"  → 分類分流：hw {len(buckets['hw'])} / corp {len(buckets['corp'])} / app {len(buckets['app'])} 條"
           + (f"（其中 {len(unmatched)} 條無命中，已分配至素材最少的桶）" if unmatched else ""))
+    try:
+        RUN_STATS['buckets'] = {c: len(buckets[c]) for c in ('hw', 'corp', 'app')}
+    except Exception as e:
+        print(f"  ⚠ 漏斗統計收集失敗（route_snippets，不影響資料生成）：{e}")
     return buckets
 
 def make_empty_day() -> dict:
@@ -202,6 +244,8 @@ DIGEST_TITLE_PATS = re.compile(
 def fetch_rss():
     cutoff = datetime.now(timezone.utc) - timedelta(hours=72)
     snippets = []
+    feed_counts = {}
+    digest_filtered = 0
     for label, url in RSS_FEEDS:
         try:
             req = urllib.request.Request(url, headers={'User-Agent':'Mozilla/5.0'})
@@ -218,6 +262,7 @@ def fetch_rss():
                          item.findtext('atom:summary',namespaces=ns) or '').strip()
                 # 跳過彙整型 meta-post（論文匯總、每週/每日摘要等）
                 if DIGEST_TITLE_PATS.search(title):
+                    digest_filtered += 1
                     continue
                 # 擷取真實 URL（RSS <link> 或 Atom <link href>）
                 link = item.findtext('link') or ''
@@ -239,9 +284,15 @@ def fetch_rss():
                     url_part = f" | SOURCE_URL:{link}" if link else ""
                     snippets.append(f"[{label}] {title} — {desc}{url_part}")
                     kept += 1
+            feed_counts[label] = feed_counts.get(label, 0) + kept
             print(f"  RSS {label}({url.split('/')[2]}): {len(items)} items, {kept} kept (72h filter)")
         except Exception as e:
             print(f"  RSS failed ({url.split('/')[2]}): {e}")
+    try:
+        RUN_STATS['feeds'] = feed_counts
+        RUN_STATS['digest_filtered'] = digest_filtered
+    except Exception as e:
+        print(f"  ⚠ 漏斗統計收集失敗（fetch_rss，不影響資料生成）：{e}")
     return snippets
 
 def fetch_ddg():
@@ -347,6 +398,10 @@ def enrich_with_full_text(buckets, max_fetch=12):
         lists[c] = front + rest
     if fetched:
         print(f"  → 已抓取 {fetched} 篇完整內文取代薄摘要（三分類輪流分配，非先到先贏）")
+    try:
+        RUN_STATS['enriched'] = fetched
+    except Exception as e:
+        print(f"  ⚠ 漏斗統計收集失敗（enrich_with_full_text，不影響資料生成）：{e}")
     return lists
 
 def _title_tokens(text):
@@ -421,6 +476,10 @@ def fetch_news(recent_titles=None, recent_urls=None):
     if recent_titles or recent_urls:
         unique = filter_recent(unique, recent_titles, recent_urls)
         print(f"  → 預過濾後剩 {len(unique)} 條")
+    try:
+        RUN_STATS['after_dedup'] = len(unique)
+    except Exception as e:
+        print(f"  ⚠ 漏斗統計收集失敗（fetch_news/after_dedup，不影響資料生成）：{e}")
     # 分類分流：一篇文章可同時進多桶，三桶都沒命中的進素材最少的桶
     buckets = route_snippets(unique)
     # 對高信號候選抓取完整內文取代薄摘要，三分類輪流分配名額（不再先到先贏）
@@ -1558,6 +1617,15 @@ if __name__ == '__main__':
         history = upsert(history, data)
         save_history(history)
         print(f"  → data/history.json 已更新（空日）")
+        try:
+            RUN_STATS['llm_items'] = {'hw': 0, 'corp': 0, 'app': 0}
+            RUN_STATS['llm_failed'] = {'hw': False, 'corp': False, 'app': False}
+            RUN_STATS['final'] = {c: {'core': 0, 'opp': 0, 'noise': 0} for c in ('hw', 'corp', 'app')}
+            RUN_STATS['placeholders'] = 0
+            save_run_stats(RUN_STATS)
+            print("  → data/run_stats.json 已更新（空日）")
+        except Exception as e:
+            print(f"  ⚠ run_stats 寫入失敗（不影響主流程）：{e}")
         print("✅ 完成（空日）")
         sys.exit(0)
 
@@ -1580,9 +1648,19 @@ if __name__ == '__main__':
             if IS_SUNDAY and result.get('weekly_summary'):
                 weekly_parts.append(result['weekly_summary'])
             print(f"  → {cat} 完成，{len(data[cat])} 則")
+            try:
+                RUN_STATS['llm_items'][cat] = len(data[cat])
+                RUN_STATS['llm_failed'][cat] = False
+            except Exception as e:
+                print(f"  ⚠ 漏斗統計收集失敗（LLM/{cat}，不影響資料生成）：{e}")
         except Exception as e:
             print(f"  ⚠ {cat} 分類呼叫失敗，fallback 為空清單（不影響其他分類）：{e}")
             data[cat] = []
+            try:
+                RUN_STATS['llm_items'][cat] = 0
+                RUN_STATS['llm_failed'][cat] = True
+            except Exception as e2:
+                print(f"  ⚠ 漏斗統計收集失敗（LLM/{cat}，不影響資料生成）：{e2}")
         if i < len(categories) - 1:
             print("  → 避開 TPM 限流，休息 65 秒...")
             time.sleep(65)
@@ -1630,6 +1708,26 @@ if __name__ == '__main__':
     fix_protagonist_as_competitor(data)
     print("🧹 佔位卡攔截（真實卡存在時移除並存佔位卡）...")
     drop_stale_placeholders(data)
+
+    try:
+        final = {}
+        placeholders = 0
+        for section in ['hw', 'corp', 'app']:
+            items = data.get(section, [])
+            tally = {'core': 0, 'opp': 0, 'noise': 0}
+            for item in items:
+                rating = item.get('rating')
+                if rating in tally:
+                    tally[rating] += 1
+                if _is_placeholder(item):
+                    placeholders += 1
+            final[section] = tally
+        RUN_STATS['final'] = final
+        RUN_STATS['placeholders'] = placeholders
+        save_run_stats(RUN_STATS)
+        print("  → data/run_stats.json 已更新")
+    except Exception as e:
+        print(f"  ⚠ run_stats 寫入失敗（不影響主流程）：{e}")
 
     history = upsert(history, data)
     save_history(history)
