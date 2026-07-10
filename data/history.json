@@ -1,5 +1,231 @@
 [
   {
+    "date": "2026-07-11",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "美光增加美國晶片投資至2500億美元",
+        "layer": "晶片製造",
+        "body": "美光宣布將在美國投資2500億美元，同時宣布與GlobalWafers合作，投資500萬美元。這項投資將支持美光的長期製造計劃，並提供GlobalWafers的原生矽晶圓製造能力。美光還承諾投資30億美元加強國內晶片供應鏈。",
+        "impact": "美光的投資將直接影響其供應鏈的穩定性，同時也會間接影響其下游客戶的晶片供應。這項投資還會促進GlobalWafers的原生矽晶圓製造能力的發展，從而影響整個晶片製造業的供應鏈。",
+        "rating": "noise",
+        "insight": "美光的投資將加強其在美國的晶片製造能力，同時也會促進整個晶片製造業的發展。",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/micron-increases-total-us-chip-investment-to-250bn-announces-500m-partnership-with-globalwafers/",
+        "chain": [
+          {
+            "label": "Micron 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "GlobalWafers 原生矽晶圓供應↑",
+            "type": "up"
+          },
+          {
+            "label": "美國晶片供應鏈強化↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Gradium籌集1億美元種子輪融資",
+        "layer": "AI技術",
+        "body": "Gradium，一家巴黎的AI語音初創公司，籌集了1億美元的種子輪融資，Nvidia參與了這輪融資。Gradium將利用這筆資金在灣區開設辦公室，競爭人才。",
+        "impact": "Gradium的融資將直接影響其AI語音技術的發展",
+        "rating": "opp",
+        "insight": "Gradium的融資將加強其在AI語音技術領域的競爭力，同時也會促進整個AI產業的發展。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/09/paris-based-ai-voice-startup-gradium-raises-100m-seed-backed-by-nvidia/",
+        "chain": [
+          {
+            "label": "Gradium 資金↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Gradium 人才競爭力↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Nvidia受其創建的計算市場影響",
+        "layer": "AI技術",
+        "body": "Nvidia的股票價格在過去幾個月下跌了15%，儘管其收入預計仍在增長。這是由於Nvidia創建的計算市場導致的。",
+        "impact": "Nvidia的股票價格下跌將直接影響其供應鏈的穩定性，同時也會間接影響其下游客戶的AI應用。這項影響還會促進其他AI技術公司的發展，從而影響整個AI產業的供應鏈。",
+        "rating": "noise",
+        "insight": "Nvidia的股票價格下跌將加強其在AI技術領域的競爭力，同時也會促進整個AI產業的發展。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/09/nvidia-is-a-victim-of-the-compute-marketplace-it-created/",
+        "chain": [
+          {
+            "label": "Nvidia 股價↓",
+            "type": "down"
+          },
+          {
+            "label": "Nvidia 收入預期↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 計算市場競爭力↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 結束 Atlas 瀏覽器實驗",
+        "layer": "AI 瀏覽器",
+        "body": "OpenAI 宣布結束其 Atlas 瀏覽器實驗，該瀏覽器於去年 10 月推出，旨在將 ChatGPT 直接整合到網頁上。Atlas 瀏覽器將於 8 月 9 日停止運作，其瀏覽器基礎的代理功能將整合到 ChatGPT 和 Codex 中。",
+        "impact": "Atlas 瀏覽器的結束可能會影響 OpenAI 的用戶體驗，同時也可能會對其他 AI 瀏覽器開發商產生影響，例如 Anthropic。",
+        "rating": "noise",
+        "insight": "OpenAI 結束 Atlas 瀏覽器實驗，可能是為了專注於更核心的 AI 技術開發。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/07/10/openais-atlas-browser-doesnt-make-it-to-its-first-birthday/5269818",
+        "chain": [
+          {
+            "label": "OpenAI Atlas 瀏覽器停止運作↓",
+            "type": "down"
+          },
+          {
+            "label": "ChatGPT 整合↑",
+            "type": "up"
+          },
+          {
+            "label": "Codex 整合↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Microsoft 碳排放量增加 25%",
+        "layer": "數據中心",
+        "body": "Microsoft 的碳排放量增加 25%，主要是由於數據中心的擴張。該公司的 Scope 1、2 和 3 排放量達到 2029 萬公噸，較去年增加 39 萬公噸。",
+        "impact": "Microsoft 的碳排放量增加可能會對其數據中心供應商產生影響，例如 TSMC 和 Samsung。同時，也可能會對其他雲計算提供商，例如 Amazon 和 Google，產生競爭壓力。",
+        "rating": "noise",
+        "insight": "Microsoft 的碳排放量增加，可能是由於其數據中心的快速擴張，同時也反映出其在可持續性方面的挑戰。",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/microsoft-reports-25-percent-increase-in-co2-emissions-on-back-on-data-center-growth/",
+        "chain": [
+          {
+            "label": "Microsoft 碳排放量↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft 數據中心擴張↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft 環境影響↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "TeraWulf 尋求 35 億美元融資",
+        "layer": "數據中心",
+        "body": "TeraWulf 尋求 35 億美元融資，用于建設位於肯塔基州的數據中心。該數據中心將被 Anthropic 租用，預計將創造大量的就業機會。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "TeraWulf 的融資，可能是為了滿足 Anthropic 日益增長的數據中心需求。",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/terawulf-seeks-35bn-in-funding-for-construction-of-data-center-for-anthropic/",
+        "chain": [
+          {
+            "label": "TeraWulf 融資↑",
+            "type": "up"
+          },
+          {
+            "label": "Anthropic 租用↑",
+            "type": "up"
+          },
+          {
+            "label": "就業機會創造↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "AI Token 成本必須降低 90% 以實現企業採用：Palo Alto CEO",
+        "layer": "AI 應用",
+        "body": "Palo Alto CEO 表示，AI Token 成本必須降低 90% 以實現企業採用。根據 MIT Sloan Management Review Middle East 報導，Palo Alto CEO 指出，目前的 AI Token 成本太高，企業無法承擔。因此，需要降低成本以實現企業採用。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "企業採用 AI Token 需要降低成本，供應商需要降低成本以保持競爭力。",
+        "source_label": "MIT Sloan Management Review Middle East",
+        "source": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNQVJhbXd1S2JaSzg2VUlrSTJEVktHcHUzOUhhSVFDdHR3dlFvWndvdFduYWVVRGRZeFVmMVlpQ1RtTE02QU94dVBlYnFlaUZWenpCNlB4clV1RkQ1eC1Ed3BWMGVnOE5xOFZUZnVtUXBZWlZUUEhsbW8yMFN5UUJRRTE4Yk4xWkJtQjlfQ3JrenRUemFEd0lnd2hzVk9iV3I5WlhwaFFvZU0?oc=5",
+        "chain": [
+          {
+            "label": "AI Token 成本↓",
+            "type": "down"
+          },
+          {
+            "label": "企業採用↑",
+            "type": "up"
+          },
+          {
+            "label": "Palo Alto CEO 預測↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "AI 投資正在轉向推理和企業採用：高盛",
+        "layer": "AI 應用",
+        "body": "高盛表示，AI 投資正在轉向推理和企業採用。根據高盛的報導，AI 投資正在從研究和開發轉向推理和企業採用。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "AI 投資正在轉向推理和企業採用，供應商需要提供更好的解決方案以保持競爭力。",
+        "source_label": "Goldman Sachs",
+        "source": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPdjJxRzNBVlFTeFpSV2ZtZEE3Y2xpMW45MWtnSnZTNFkyOEFDMnpERkFuZEk0Sl9zVXE0Ni1yRkI1WmJQcXJObGFEdHZTRmV4dmdaOWdic05NaVlyNjBwMi0xcjllVzZIOVI4NlllWXBrWnVIUVFxUXQxcHFQYjZ5Y3pFUDNwTUdIQ29wNkJuUklMSS1BS19RakhPdmxGbzZESW1WOF9hc0hCZ0JkS29mSi1QcFVZdjg?oc=5",
+        "chain": [
+          {
+            "label": "AI 投資轉向推理↑",
+            "type": "up"
+          },
+          {
+            "label": "企業採用↑",
+            "type": "up"
+          },
+          {
+            "label": "高盛 預測↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "GlobalWafers",
+        "full": "環球晶圓",
+        "def": "一家晶圓製造公司",
+        "why": "美光與GlobalWafers合作，投資500萬美元",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Atlas 瀏覽器",
+        "full": "Atlas 瀏覽器是一種由 OpenAI 開發的 AI 瀏覽器，旨在將 ChatGPT 直接整合到網頁上。",
+        "def": "Atlas 瀏覽器是一種基於 AI 的瀏覽器，旨在提供更智能的用戶體驗。",
+        "why": "Atlas 瀏覽器的結束可能是為了專注於更核心的 AI 技術開發。",
+        "category": "AI 瀏覽器"
+      },
+      {
+        "term": "AI Token",
+        "full": "人工智慧令牌",
+        "def": "用於人工智慧應用的令牌",
+        "why": "AI Token 是人工智慧應用的重要組成部分",
+        "category": "AI 應用"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-10",
     "is_sunday": false,
     "hw": [
@@ -670,107 +896,5 @@
       }
     ],
     "weekly_summary": "HW：卡內基梅隆和加州大學洛杉磯研發新型晶片設計技術。\nCORP：Clearstone 計劃在英國肯特建造 300MW 數據中心。\nAPP：今日無相關應用新聞。\n下週看點：英國數據中心市場的發展趨勢。\n用戶洞察：投資者應該關注新型晶片設計技術和數據中心市場的發展和影響。"
-  },
-  {
-    "date": "2026-07-04",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "南韓全力推動AI和半導體投資",
-        "layer": "晶片產業",
-        "body": "南韓政府計劃推動三個與半導體、物理AI/機器人和AI數據中心相關的巨型項目，預計將得到政府對區域晶片集群、封裝能力、電力、水資源、場地和勞動力發展的支持。其中包括在日本，Kioxia和Sandisk開始在Kioxia的Kitakami工廠的Fab2生產第10代3D閃存記憶體。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "南韓政府的投資計劃可能會促進其半導體產業的快速發展，從而增強其在全球市場的競爭力。",
-        "source_label": "SemiEngineering",
-        "source": "https://semiengineering.com/chip-industry-week-in-review-145/",
-        "chain": [
-          {
-            "label": "Kioxia 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Sandisk 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "南韓半導體產業發展↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "英飛凌在德國德累斯頓開設智能電源晶片工廠",
-        "layer": "晶片產業",
-        "body": "英飛凌在德國德累斯頓開設了一家智能電源晶片工廠，該工廠的產能將達到每年1,000萬個單位，預計將為當地創造1,000個就業機會。這是英飛凌在歐洲的第一家智能電源晶片工廠，也是全球最大的智能電源晶片工廠之一。",
-        "impact": "這將直接影響英飛凌在歐洲的市場份額，增加其在智能電源晶片市場的競爭力。同時，也會間接影響相關的上游供應商和下游客戶，例如晶片設計公司和終端設備製造商。這可能會導致英飛凌的智能電源晶片產能和出貨量增加，從而對全球智能電源晶片市場產生一定的影響。",
-        "rating": "noise",
-        "insight": "英飛凌在德國德累斯頓開設智能電源晶片工廠，可能會增強其在歐洲的市場份額和競爭力。",
-        "source_label": "SemiEngineering",
-        "source": "https://semiengineering.com/chip-industry-week-in-review-145/",
-        "chain": [
-          {
-            "label": "英飛凌 智能電源晶片產能↑",
-            "type": "up"
-          },
-          {
-            "label": "德國半導體產業發展↑",
-            "type": "up"
-          },
-          {
-            "label": "英飛凌 市占↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "GM確保記憶體供應",
-        "layer": "企業新聞",
-        "body": "GM確保了記憶體供應，預計將為其在全球市場的競爭力提供支持。這是GM在半導體產業的又一項重要投資，預計將為其帶來更大的市場份額和更強的競爭力。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "GM確保記憶體供應，可能會增強其在全球市場的競爭力和市場份額。",
-        "source_label": "SemiEngineering",
-        "source": "https://semiengineering.com/chip-industry-week-in-review-145/",
-        "chain": [
-          {
-            "label": "GM 半導體供應保障↑",
-            "type": "up"
-          },
-          {
-            "label": "GM 市場競爭力↑",
-            "type": "up"
-          },
-          {
-            "label": "GM 市占↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "應用新聞",
-        "body": "今日無相關應用新聞可供分析。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "智能電源晶片",
-        "full": "Smart Power Chip",
-        "def": "一種可以智能控制電源的晶片，廣泛應用於電子設備中。",
-        "why": "智能電源晶片可以提高電子設備的效率和可靠性，減少能耗和熱量。",
-        "category": "半導體"
-      }
-    ],
-    "weekly_summary": null
   }
 ]
