@@ -1,5 +1,127 @@
 [
   {
+    "date": "2026-07-12",
+    "is_sunday": true,
+    "hw": [
+      {
+        "title": "SK Hynix 籌集 265 億美元進行美國晶片製造投資",
+        "layer": "晶片製造",
+        "body": "SK Hynix 籌集 265 億美元進行美國晶片製造投資，該公司將在美國建立新的晶片製造廠。SK Hynix 籌集的資金為 265 億美元，創下了美國外國公司最大的 IPO 紀錄。該公司的股票在納斯達克交易所上市，股票代碼為 SKHY。",
+        "impact": "SK Hynix 籌集的資金將用於在美國建立新的晶片製造廠，從而增加美國的晶片供應量，對於美國的晶片產業將產生正面的影響。同時，SK Hynix 的投資也將對其供應鏈產生影響，增加其供應商的業務量。",
+        "rating": "noise",
+        "insight": "SK Hynix 籌集的資金將對美國的晶片產業產生正面的影響，增加美國的晶片供應量。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/10/sk-hynix-raises-26-5b-in-the-biggest-foreign-ipo-in-us-history-is-urged-to-build-new-us-fabs/",
+        "chain": [
+          {
+            "label": "SK Hynix 籌資↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix 美國晶片製造產能↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix 股價↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "SK Hynix 首日上市，股價上漲 13%",
+        "layer": "晶片製造",
+        "body": "SK Hynix 首日上市，股價上漲 13%。該公司的股票在納斯達克交易所上市，股票代碼為 SKHY。SK Hynix 籌集的資金為 265 億美元，創下了美國外國公司最大的 IPO 紀錄。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "SK Hynix 首日上市的股價上漲將對其在美國的業務產生正面的影響，增加其在美國的供應鏈業務。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/07/10/sk-hynix-skhy-stock-nasdaq.html",
+        "chain": [
+          {
+            "label": "SK Hynix 股價↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix 籌資↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix 市值↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Meta移除爭議的AI功能",
+        "layer": "社交媒體",
+        "body": "Meta移除了一個爭議的AI功能，該功能允許用戶修改公眾Instagram帳戶的照片。該功能是在本週早些時候推出的，隨後引發了用戶的強烈反對。Meta表示，該功能「沒有達到預期的效果」，因此決定將其移除。",
+        "impact": "這一事件可能會對Meta的AI開發產生直接影響，可能會導致公司重新評估其AI功能的設計和部署。同時，也可能會對其他社交媒體平台的AI功能開發產生間接影響，可能會導致他們更加謹慎地對待AI功能的設計和部署。",
+        "rating": "noise",
+        "insight": "Meta的AI功能開發需要更加謹慎和用戶導向。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/10/meta-removes-controversial-ai-feature-on-instagram-after-backlash/",
+        "chain": [
+          {
+            "label": "Meta AI 功能↓",
+            "type": "down"
+          },
+          {
+            "label": "Meta 用戶滿意度↓",
+            "type": "down"
+          },
+          {
+            "label": "Meta 股價↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Apple起訴OpenAI",
+        "layer": "AI技術",
+        "body": "Apple起訴OpenAI，指控其竊取商業秘密和違反合同。Apple指控OpenAI的高級領導，包括Chief Hardware Officer Tang Tan，涉嫌竊取Apple的商業秘密。",
+        "impact": "這一事件可能會對OpenAI的AI技術開發產生直接影響，可能會導致公司面臨法律和財務上的挑戰。同時，也可能會對其他AI技術公司的商業秘密保護產生間接影響，可能會導致他們更加重視商業秘密的保護。",
+        "rating": "noise",
+        "insight": "AI技術公司需要更加重視商業秘密的保護。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/10/apple-sues-openai-over-alleged-trade-secret-theft/",
+        "chain": [
+          {
+            "label": "Apple 起訴↑",
+            "type": "up"
+          },
+          {
+            "label": "OpenAI 商業秘密↓",
+            "type": "down"
+          },
+          {
+            "label": "Apple 股價↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [],
+    "glossary_new": [
+      {
+        "term": "EMIB",
+        "full": "局部橋接、多晶粒互連的封裝方法",
+        "def": "EMIB 是一種封裝方法，能夠實現多個晶粒之間的互連。",
+        "why": "EMIB 對於 AI晶片的發展具有重要意義。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "EMIB-T",
+        "full": "局部橋接、多晶粒互連的封裝方法升級版",
+        "def": "EMIB-T是在EMIB的基礎上加上更強的垂直供電與更高密度互連能力，讓它更能對應AI大封裝需求。",
+        "why": "EMIB-T的升級可以提高AI晶片的性能和效率。",
+        "category": "半導體技術"
+      }
+    ],
+    "weekly_summary": "HW：SK Hynix 籌集 265 億美元進行美國晶片製造投資，創下了美國外國公司最大的 IPO 紀錄。\nHW：蘋果公司投資 300 億美元於 Broadcom，擴大其在 AI 和美國供應鏈的業務。\nHW：SK Hynix 首日上市，股價上漲 13%。\nCORP：本週Meta移除爭議的AI功能，Apple起訴OpenAI，SK Hynix籌集265億美元。\n下週看點：下週將繼續關注AI技術和半導體產業的發展。\nAPP：今日無相關新聞\n用戶洞察：今日該分類無足夠具體新聞素材可供分析。"
+  },
+  {
     "date": "2026-07-11",
     "is_sunday": false,
     "hw": [
@@ -818,83 +940,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-07-05",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "卡內基梅隆和加州大學洛杉磯研發新型晶片設計技術",
-        "layer": "晶片設計",
-        "body": "卡內基梅隆大學和加州大學洛杉磯的研究人員發表了一篇技術論文，介紹了一種新的晶片設計方法，稱為 AgRefactor，該方法使用 LLM-based 多代理工作流程來重構軟體以實現高級合成兼容性和性能。這種方法可以實現 6.51 倍的幾何平均速度提升。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "這種新型晶片設計技術可能會成為晶片設計業界的新趨勢，投資者應該關注這種技術的發展和應用。",
-        "source_label": "SemiEngineering",
-        "source": "https://semiengineering.com/llm-agents-to-refactor-software-for-high-level-synthesis-carnegie-mellon-ucla/",
-        "chain": [
-          {
-            "label": "AgRefactor 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "卡內基梅隆大學 研究成果↑",
-            "type": "up"
-          },
-          {
-            "label": "加州大學洛杉磯 合作項目↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Clearstone 計劃在英國肯特建造 300MW 數據中心",
-        "layer": "數據中心",
-        "body": "Clearstone 公司計劃在英國肯特建造一個 300MW 的數據中心，該數據中心將位於達特福德附近的新巴恩路。該項目將包括四棟建築，總面積約為 180,000 平方米，預計於 2030 年開始運營。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "這個數據中心項目可能會成為英國數據中心市場的新趨勢，投資者應該關注這個項目的發展和影響。",
-        "source_label": "Data Center Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/300mw-data-center-campus-proposed-in-kent-uk/",
-        "chain": [
-          {
-            "label": "Clearstone 數據中心規模↑",
-            "type": "up"
-          },
-          {
-            "label": "英國肯特 數據中心投資↑",
-            "type": "up"
-          },
-          {
-            "label": "達特福德 數據中心建設↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無足夠具體的應用新聞素材可供分析。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "AgRefactor",
-        "full": "AgRefactor",
-        "def": "一種新的晶片設計方法，使用 LLM-based 多代理工作流程來重構軟體以實現高級合成兼容性和性能。",
-        "why": "這種方法可以實現 6.51 倍的幾何平均速度提升，對於晶片設計業界具有重要意義。",
-        "category": "晶片設計"
-      }
-    ],
-    "weekly_summary": "HW：卡內基梅隆和加州大學洛杉磯研發新型晶片設計技術。\nCORP：Clearstone 計劃在英國肯特建造 300MW 數據中心。\nAPP：今日無相關應用新聞。\n下週看點：英國數據中心市場的發展趨勢。\n用戶洞察：投資者應該關注新型晶片設計技術和數據中心市場的發展和影響。"
   }
 ]
