@@ -1,5 +1,176 @@
 [
   {
+    "date": "2026-07-13",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "蘋果30億美元收購Broadcom，擴大AI和美國供應鏈",
+        "layer": "晶片製造",
+        "body": "蘋果公司以30億美元收購Broadcom，將AI數據中心和美國晶片製造納入其供應鏈。這項收購可能會給Intel帶來新的機會。蘋果的這一舉動表明其對AI和晶片製造的重視，同時也反映出美國晶片製造業的重要性。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "蘋果的這一舉動表明其對AI和晶片製造的重視，投資者應該關注相關企業的發展。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "蘋果市占↑",
+            "type": "up"
+          },
+          {
+            "label": "Broadcom 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Intel 市場份額↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 客戶逐漸接受小型晶片的想法",
+        "layer": "晶片製造",
+        "body": "OpenAI 和 Anthropic 建立了 AI 瑞士軍刀，但未來可能是小型、專用工具。根據 Tobias Mann 的報導，OpenAI 和 Anthropic 建立了大型模型，以滿足最廣泛的市場需求，但這些模型可能不適合所有任務。小型、專用模型可以更有效地完成特定任務，例如摘要電子郵件、草擬回覆或摘要會議記錄。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "投資者應該關注小型、專用晶片的發展趨勢",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/07/11/ai-customers-are-coming-around-to-the-idea-that-small-is-beautiful/5268070",
+        "chain": [
+          {
+            "label": "OpenAI 客戶數↑",
+            "type": "up"
+          },
+          {
+            "label": "Anthropic 市場份額↑",
+            "type": "up"
+          },
+          {
+            "label": "小型晶片需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 的 Sam Altman 指控 Elon Musk 向公眾市場投資者出售短期太空數據中心",
+        "layer": "CSP CapEx",
+        "body": "OpenAI 的 Sam Altman 指控 Elon Musk 向公眾市場投資者出售短期太空數據中心。根據報導，Musk 的 SpaceX 公司計劃建立太空數據中心，但 Altman 認為這個計劃不切實際。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "投資者應該關注太空數據中心的發展趨勢",
+        "source_label": "DatacenterDynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/openais-sam-altman-accuses-musk-of-selling-public-market-investors-on-short-term-space-data-centers/",
+        "chain": [
+          {
+            "label": "SpaceX 太空數據中心投資↓",
+            "type": "down"
+          },
+          {
+            "label": "OpenAI 信用度↑",
+            "type": "up"
+          },
+          {
+            "label": "Elon Musk 信用度↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 將 ChatGPT 推廣到家庭用戶",
+        "layer": "AI 應用",
+        "body": "OpenAI 將 ChatGPT 推廣到家庭用戶。根據報導，OpenAI 正在招聘一名專門的產品經理，負責開發適合家庭用戶的產品。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "投資者應該關注 AI 應用市場的發展趨勢",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/11/openai-bets-on-families-as-chatgpt-goes-deeper-into-households/",
+        "chain": [
+          {
+            "label": "OpenAI ChatGPT 用戶數↑",
+            "type": "up"
+          },
+          {
+            "label": "家庭用戶AI應用↑",
+            "type": "up"
+          },
+          {
+            "label": "ChatGPT 市場份額↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "護理師在醫療領域定義AI的應用",
+        "layer": "醫療",
+        "body": "護理師在醫療領域定義AI的應用，根據Shoppe Black的報導，護理師正在定義AI在醫療領域的應用，包括開發新的AI工具和技術。這些工具和技術可以幫助護理師更好地照顧患者，同時也可以幫助醫療機構改善效率和降低成本。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "醫療領域的AI應用將會是未來的一個重要趨勢，護理師需要具備更強的AI知識和技能來適應這個變化。",
+        "source_label": "Shoppe Black",
+        "source": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOS2U2YVVYR0N1VTUwRWZnLW5VVzZHaTVTNVp2bm9renpvUFVwY04wekJrNmZkdkdXY0NIWVFlSWpITVo0N2dfTVhBdTNMaGJiTV9MOVROa0lKc0JYWGFTajJBNWpqamhaZXBrUktKcWVHQWc5UVpfaU9DNVR5S09UWXJuQQ?oc=5",
+        "chain": [
+          {
+            "label": "護理師AI工具使用率↑",
+            "type": "up"
+          },
+          {
+            "label": "醫療領域AI應用↑",
+            "type": "up"
+          },
+          {
+            "label": "醫療機構效率↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "自動化在美國製造業的採用",
+        "layer": "製造業",
+        "body": "自動化在美國製造業的採用正在擴大，根據MarketScale的報導，美國製造業的自動化採用正在擴大，特別是在醫療器械領域。這個發展可能會對美國製造業的效率和競爭力產生正面的影響。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "自動化在美國製造業的採用將會是未來的一個重要趨勢，需要工人具備更強的自動化知識和技能來適應這個變化。",
+        "source_label": "MarketScale",
+        "source": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOSGhHSWxLbUFydWZJQWsyNzBfTmxkbGJWakVQSUNndHMzWXVnQlRyMEZJNURqdnFueXBTeUJfMFZZUTNuZ0NaYUgtdE8zRmZiMXNfS1BDMUMzazVrLXVnNlZpTTRKVmhxVU5obERtcllkZ1c4VE1ydXRwUlBPaFh5SExkaEtnQ3I3WGlrWXg0dWtXdjJvbzQ5T2o4MEtwakRndERSOE84QzRKTzhfWkVsZWIzbkZuWXJ4eEt3NzNMampDWTA?oc=5",
+        "chain": [
+          {
+            "label": "美國製造業自動化率↑",
+            "type": "up"
+          },
+          {
+            "label": "醫療器械產業效率↑",
+            "type": "up"
+          },
+          {
+            "label": "美國製造業競爭力↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "晶片製造",
+        "full": "晶片製造業",
+        "def": "一種將晶片設計轉化為實際晶片的過程",
+        "why": "晶片製造業是電子產業的基礎，蘋果的收購行動可能會影響這一行業的發展",
+        "category": "hardware"
+      },
+      {
+        "term": "AI",
+        "full": "Artificial Intelligence",
+        "def": "人工智慧，指的是使用機器模擬人類智慧的技術。",
+        "why": "AI是目前的一個重要趨勢，正在被廣泛應用於各個領域。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-12",
     "is_sunday": true,
     "hw": [
@@ -835,108 +1006,6 @@
         "def": "一家人工智慧公司",
         "why": "因其 AI 模型被美國政府實施出口限制而受到關注",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-07-06",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Equinix 資料中心在英國曼徹斯特被出售",
-        "layer": "資料中心",
-        "body": "Equinix 資料中心在英國曼徹斯特被 Schroders Capital 收購，該資料中心由 Invesco 擁有，價格為 £15.35 million。該資料中心位於 Trafford Park 區，於 2012 年由 Telecity 啟用，2016 年被 Equinix 收購。該資料中心提供 30,000 平方英尺的技術空間，能夠提供高達 20kW 的伺服器密度。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "Equinix 資料中心在英國曼徹斯特被出售，反映出資料中心市場的變化和投資機會。",
-        "source_label": "Datacenter Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/equinix-occupied-data-center-in-manchester-uk-sold-to-a-new-landlord-report/",
-        "chain": [
-          {
-            "label": "Equinix 資產價值↑",
-            "type": "up"
-          },
-          {
-            "label": "Schroders Capital 收購案↑",
-            "type": "up"
-          },
-          {
-            "label": "Invesco 資產價值↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "CPP Investments 將投資 17.5 億美元於 EQT 和 EdgeConneX 的 AI 資料中心建設",
-        "layer": "AI 資料中心",
-        "body": "CPP Investments 將投資 17.5 億美元於 EQT 和 EdgeConneX 的 AI 資料中心建設，該項目將發展 AI 基礎設施。EdgeConneX 宣布其發展管道達 10GW，該投資將支持公司的全球業務擴張。",
-        "impact": "這次投資將直接影響 EQT 和 EdgeConneX 的業務，可能會導致公司的收入和利潤出現增長。",
-        "rating": "core",
-        "insight": "CPP Investments 將投資 17.5 億美元於 EQT 和 EdgeConneX 的 AI 資料中心建設，反映出 AI 資料中心市場的發展機會。",
-        "source_label": "Datacenter Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/cpp-investments-to-pump-175-billion-into-eqt-and-edgeconnexs-ai-data-center-build-out/",
-        "chain": [
-          {
-            "label": "EQT 資金籌措↑",
-            "type": "up"
-          },
-          {
-            "label": "EdgeConneX 業務擴張↑",
-            "type": "up"
-          },
-          {
-            "label": "CPP Investments 投資回報↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "新澤西州通過法案建立大型負載資料中心費率",
-        "layer": "資料中心",
-        "body": "新澤西州通過法案建立大型負載資料中心費率，該法案將指導州公共事業委員會（PUC）為 50MW 或以上的資料中心設立專用費率。這將有助於保護其他用戶免受新建資料中心的成本增加影響。",
-        "impact": "這次法案通過將直接影響新澤西州的資料中心市場，可能會導致資料中心的建設和投資出現變化。同時，這也可能會影響相關企業的供應鏈，從而導致資料中心和能源的發展出現變化。",
-        "rating": "noise",
-        "insight": "新澤西州通過法案建立大型負載資料中心費率，反映出資料中心市場的發展和監管的變化。",
-        "source_label": "Datacenter Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/new-jersey-lawmakers-pass-bill-to-establish-large-load-data-center-tariff/",
-        "chain": [
-          {
-            "label": "新澤西州資料中心發展↑",
-            "type": "up"
-          },
-          {
-            "label": "州公共事業委員會監管↑",
-            "type": "up"
-          },
-          {
-            "label": "資料中心運營成本↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "應用",
-        "body": "今日無相關應用新聞，無法提供具體的應用案例和發展趨勢。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "今日無相關應用新聞，無法提供具體的應用案例和發展趨勢。",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "資料中心",
-        "full": "Data Center",
-        "def": "是一種為了提供數據存儲、處理和傳輸而設計的設施，通常包括伺服器、儲存設備、網絡設備和其他相關的硬件和軟件。",
-        "why": "資料中心是當代數據處理和存儲的核心設施，對於各種行業和應用具有重要意義。",
-        "category": "hardware"
       }
     ],
     "weekly_summary": null
