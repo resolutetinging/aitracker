@@ -858,7 +858,10 @@ _STALE_DATE_PAT = re.compile(
 )
 
 FORBIDDEN_PATS = [
-    re.compile(r'根據.{0,25}報導[，,。]'),
+    # 只攔「根據報導，」這種無具名來源的空泛歸因；「根據 Tobias Mann 的報導」
+    # 「根據MarketScale的報導」等具名記者/媒體屬正常新聞寫法，不得誤殺
+    # （2026-07-13 診斷：舊 pattern 根據.{0,25}報導 連具名歸因一起翻殺 core 卡）
+    re.compile(r'根據報導[，,。]'),
     re.compile(r'已.{0,4}被多家.{0,15}公司採用.{0,10}包括'),
     re.compile(r'預計在20\d\d年底前將達到每月'),
     re.compile(r'正在助力.{0,20}的發展'),
@@ -1210,8 +1213,14 @@ def downgrade_hallucinated(data):
                 item['rating'] = 'noise'
 
 
-def validate_body(data, news_context):
-    """LLM 二次驗證：body 聲明是否能在原始 RSS 摘要中找到支撐"""
+def validate_body(data, news_by_cat):
+    """LLM 二次驗證：body 聲明是否能在原始 RSS 摘要中找到支撐。
+    ⚠ 2026-07-13 修正：入參從合併字串改為 {'hw':str,'corp':str,'app':str} 分類字典。
+    舊版把三桶合併後才截 [:2500]，corp/app 素材幾乎必落在截點之外——LLM 驗證時
+    實際上只看得到 hw 的摘要，corp/app 的 core 卡在其眼中「摘要中找不到對應文字」
+    而被系統性誤判幻覺翻 noise（7/10 僅 hw 倖存、7/11-7/13 全滅的主因之一）。
+    改為：只擷取「有 core/opp 待驗條目」的分類，各分類均分 3000 字預算，
+    保證每個受驗分類的素材都出現在 LLM 眼前。"""
     client = Groq(api_key=os.environ['GROQ_API_KEY'])
     items = [
         {"sec": sec, "title": item["title"], "body": item.get("body", "")}
@@ -1222,7 +1231,12 @@ def validate_body(data, news_context):
     if not items:
         print("  → body 聲明驗證：無 core/opp 條目"); return
 
-    news_short = news_context[:2500]
+    cats_present = [c for c in ['hw', 'corp', 'app'] if any(it['sec'] == c for it in items)]
+    per_cat_budget = 3000 // max(len(cats_present), 1)
+    news_short = "\n\n".join(
+        f"【{c} 分類摘要】\n{(news_by_cat.get(c) or '')[:per_cat_budget]}"
+        for c in cats_present
+    )
     items_json = json.dumps(items, ensure_ascii=False)
     prompt = (
         "以下是今日 RSS 新聞摘要（原始來源）：\n"
@@ -1295,9 +1309,16 @@ def _cjk_prefix(text, n=5):
 # ⚠ 2026-07-08 補強：排除英文常見冠詞/代名詞開頭（The/This/That/A/An/Our/Their/Its等）
 # 起首的兩字組——這類是句子語法產物（如 "The Company"／"The Google Team"），
 # 不代表真的具名實體，若不排除會讓空泛英文句子誤判為「已有具體事實」而放行。
+# ⚠ 2026-07-13 修正：開頭錨點 \b 改為 (?<![A-Za-z])——Python unicode regex 下
+# CJK 字元也算 \w，「根據Shoppe Black的報導」這種中文緊貼英文專有名詞的寫法
+# \b 不成立導致完全匹配失敗（連 07-08 動機案例「由Intesa Sanpaolo遷移」都漏抓），
+# 造成 7/11-7/13 合格 core 卡被 _body_is_low_quality 連環誤殺。
+# 另補 CamelCase 單字品牌名（OpenAI/ChatGPT/MarketScale/DeepSeek），
+# 這類實體只有一個「單字」，舊的「兩個連續大寫詞」判準永遠抓不到。
 NAMED_ENTITY_PAT = re.compile(
-    r'\b(?!(?:The|This|That|These|Those|A|An|Our|Their|Its|His|Her|My|Your)\s)'
+    r'(?<![A-Za-z])(?!(?:The|This|That|These|Those|A|An|Our|Their|Its|His|Her|My|Your)\s)'
     r'[A-Z][a-zA-Z]+\s+[A-Z][a-zA-Z]+|'
+    r'(?<![A-Za-z])[A-Z][a-z]+[A-Z][a-zA-Z]*|'
     r'都靈|米蘭|東京|首爾|矽谷|新加坡|深圳|北京|上海|香港|台北|倫敦|紐約|柏林|巴黎|'
     r'阿姆斯特丹|杜拜|雪梨|多倫多|奧斯汀|班加羅爾|不丹|'
     r'Turin|Milan|Tokyo|Seoul|Silicon Valley|Beijing|Shenzhen|Shanghai|Hong Kong|'
@@ -1731,7 +1752,7 @@ if __name__ == '__main__':
     remove_cross_item_url_duplicates(data)
     strip_noise_impact(data)
     print("🔎 body 聲明 LLM 驗證...")
-    validate_body(data, news_combined)
+    validate_body(data, news_by_cat)
     print("🔗 supply chain 品質檢核...")
     fix_chains(data)
     print("🔎 impact 因果驗證...")
