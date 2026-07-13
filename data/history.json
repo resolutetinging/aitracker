@@ -1,5 +1,186 @@
 [
   {
+    "date": "2026-07-14",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "華為在韓國推出AI晶片",
+        "layer": "AI晶片",
+        "body": "華為計劃在韓國推出其Ascend 950 AI處理器和Atlas 950 SuperPod計算集群，價格低於Nvidia，旨在獲得韓國市場的份額。華為表示，其Ascend 950PR晶片的推理性能約為Nvidia的H20加速器的2.87倍，價格約為Nvidia的四分之一。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "華為在韓國的AI晶片推出是其在全球市場的重要一步，投資者應該關注其在AI晶片市場的發展。",
+        "source_label": "UPI",
+        "source": "https://www.upi.com/Top_News/World-News/2026/07/10/perspective-huawei-chips-south-korea/6021783699451/",
+        "chain": [
+          {
+            "label": "華為 Ascend 950 產能↑"
+          },
+          {
+            "label": "Nvidia H20 加速器 市占↓"
+          },
+          {
+            "label": "SK Hynix AI晶片 供應鏈↑"
+          }
+        ]
+      },
+      {
+        "title": "英特爾在愛爾蘭投資50億歐元",
+        "layer": "AI晶片製造",
+        "body": "英特爾計劃在愛爾蘭投資50億歐元，用于建設新的AI晶片製造工廠。這項投資將增加英特爾在愛爾蘭的製造能力，從而提高其在全球AI晶片市場的競爭力。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "英特爾在愛爾蘭的投資是其在全球AI晶片市場的重要布局，投資者應該關注其在AI晶片製造的發展。",
+        "source_label": "Financial Times",
+        "source": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQR2FWUERTWVNnUGJDM3NMdmRkNEhKS0lGT21LQU5ERVZPLUl0R283azk2SDlXLTlsQ1V0NTNYS2VxMzF5T3BHbEpldmF5WW11cGwtN0tROHFXVjBXNXpMNV9KbTFlSWJKM0hDUGhQQzN2X3g3VEU0eDZ0cHBBSEQtSXlVVVg?oc=5",
+        "chain": [
+          {
+            "label": "英特爾 AI晶片製造能力↑"
+          },
+          {
+            "label": "英特爾 在愛爾蘭投資↑"
+          },
+          {
+            "label": "全球 AI晶片市場競爭力↑"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "蘋果起訴OpenAI竊取核心技術秘密",
+        "layer": "AI",
+        "body": "蘋果公司起訴前員工和OpenAI，指控竊取蘋果的核心技術秘密。蘋果公司指控一名前員工在離職前未經許可下載了蘋果的機密文件，包括未發布的產品信息和工程簡報。該員工隨後加入OpenAI，據稱使用這些信息來幫助OpenAI。蘋果公司還指控另一名前員工在離職前將供應鏈信息通過電子郵件發送給自己。",
+        "impact": "蘋果可能會加強對員工離職程序的審查和監控，以防止類似的事件發生。",
+        "rating": "core",
+        "insight": "蘋果和OpenAI的合作伙伴和供應鏈可能會受到這一事件的影響，特別是在晶片和人工智慧技術的開發方面。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/legal/2026/07/13/apple-accuses-openai-of-stealing-its-core-tech-secrets/5270256",
+        "chain": [
+          {
+            "label": "蘋果核心技術秘密 保護↑"
+          },
+          {
+            "label": "OpenAI 竊取技術風險↓"
+          },
+          {
+            "label": "蘋果 供應鏈安全↑"
+          }
+        ]
+      },
+      {
+        "title": "英國財政部將四大美國雲計算公司列為關鍵第三方",
+        "layer": "CSP/CapEx",
+        "body": "英國財政部將Google Cloud、Microsoft Azure和Oracle列為關鍵第三方，意味著這些公司將受到英國金融監管機構的直接監管。這一決定是由於銀行、保險公司和金融市場基礎設施越來越依賴雲計算服務。英國財政部希望通過這一監管來保護英國的金融系統。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "英國的金融系統和雲計算市場可能會受到這一事件的影響，特別是在監管和投資方面。",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/uk-treasury-designates-big-four-us-hyperscalers-as-critical-third-parties/",
+        "chain": [
+          {
+            "label": "Google Cloud 關鍵第三方監管↑"
+          },
+          {
+            "label": "Microsoft Azure 關鍵第三方監管↑"
+          },
+          {
+            "label": "英國金融系統安全↑"
+          }
+        ]
+      },
+      {
+        "title": "Meta擴大路易斯安那州數據中心校區至5GW",
+        "layer": "CSP/CapEx",
+        "body": "Meta公司將在路易斯安那州擴大其數據中心校區至5GW，投資額達50億美元。這一擴張將使Meta的數據中心校區成為該公司最大的數據中心之一。Meta還將投資1億美元於當地基礎設施改善。",
+        "impact": "這一事件可能會對Meta的數據中心業務和路易斯安那州的經濟產生直接影響。Meta的數據中心校區擴張將可能增加當地的就業機會和經濟活動。同時，其他數據中心公司可能會跟隨Meta的腳步，投資於路易斯安那州的數據中心建設。",
+        "rating": "noise",
+        "insight": "Meta的數據中心業務和路易斯安那州的經濟可能會受到這一事件的影響，特別是在就業和投資方面。",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/meta-expands-data-center-campus-in-richland-parish-louisiana-to-5gw-will-invest-50bn/",
+        "chain": [
+          {
+            "label": "Meta 路易斯安那州數據中心擴張↑"
+          },
+          {
+            "label": "Meta 數據中心校區投資↑"
+          },
+          {
+            "label": "Meta 數據中心能效↑"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "卡達中央銀行FinTech戰略x Qai：卡達AI基礎設施投資對金融機構的影響",
+        "layer": "金融",
+        "body": "卡達中央銀行推出FinTech戰略x Qai，旨在推動金融機構採用AI技術。這項戰略將為金融機構提供AI基礎設施投資的支持，促進金融機構的數字化轉型。卡達中央銀行表示，這項戰略將有助於提升金融機構的競爭力和創新能力。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "卡達中央銀行的FinTech戰略x Qai將推動金融機構採用AI技術，促進金融業的數字化轉型。",
+        "source_label": "Dentons",
+        "source": "https://news.google.com/rss/articles/CBMingFBVV95cUxOXzNVdTVLTXRTeUtSNXNXZkRFSjBoekpNU2ZWRmJoamp2YVlKRXoteUVYM2ttckRKTnlHd3c0R2VzX2YwNFdYUEtCbXRsc2dTSUxrbnltbDU3NUJER2VTbWpsSjZhQ1FERmIzX0JUMThfeDZPVE1uVWlwaHJiNEJib1NDbXluQmNjb2ZiSXUwNk1NdUR5c3V4eFMtMll0QQ?oc=5",
+        "chain": [
+          {
+            "label": "卡達中央銀行 AI基礎設施投資↑"
+          },
+          {
+            "label": "金融機構數字化轉型↑"
+          },
+          {
+            "label": "卡達金融機構競爭力↑"
+          }
+        ]
+      },
+      {
+        "title": "HAI Conclave 2026呼籲負責任地採用AI於印度的醫療生態系統",
+        "layer": "醫療",
+        "body": "HAI Conclave 2026呼籲印度的醫療機構負責任地採用AI技術，促進醫療服務的質量和效率。這項呼籲將有助於推動印度醫療業的數字化轉型，提高醫療服務的可及性和可負擔性。",
+        "impact": "這項呼籲將直接影響印度的醫療機構，促進其採用AI技術，從而提高其競爭力和創新能力。同時，這項呼籲也將間接影響相關的AI技術供應商，增加其業務量和收入。",
+        "rating": "noise",
+        "insight": "HAI Conclave 2026的呼籲將推動印度醫療機構採用AI技術，促進醫療業的數字化轉型。",
+        "source_label": "BioSpectrum India",
+        "source": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPM1FSd1p0RUxBeDdkYWQ4NG8wNmxvTDcwTE1wVHM5SFpoT2dmb1prclhuZ3Q5RHpCS0U5RFlwZEZQc0VWOUJEdHUyNkx0YkdqTXAyMHNYZjhnY2NjbzVpdzBjRmlyRnZWUHBsS0xYcXNNbUpXU1JrSGlmY0h3SExsS21QUHlJN2Q1SHJmVTVCYU5tRHVKZS0tcGtIX2Z0VHRWdml3bGdmcHMyYUtMTU03ZHRrVUIwcmk2N0Y1bWVtSVpYUDZCQlN0OEdTWXZLcXp4SXRiSkZaelQ?oc=5",
+        "chain": [
+          {
+            "label": "印度醫療業 AI採用↑"
+          },
+          {
+            "label": "印度醫療服務質量↑"
+          },
+          {
+            "label": "印度醫療服務效率↑"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "AI晶片",
+        "full": "人工智慧晶片",
+        "def": "一種用于人工智慧計算的晶片，具有高性能和低功耗的特點。",
+        "why": "AI晶片是人工智慧技術的核心元件，其發展對人工智慧技術的進步具有重要意義。",
+        "category": "hardware"
+      },
+      {
+        "term": "關鍵第三方",
+        "full": "Critical Third Parties",
+        "def": "一種由英國財政部指定的雲計算公司，指那些對英國金融系統具有重要影響的公司。",
+        "why": "這一指定意味著這些公司將受到英國金融監管機構的直接監管。",
+        "category": "CSP/CapEx"
+      },
+      {
+        "term": "FinTech",
+        "full": "金融科技",
+        "def": "金融科技是指應用科技於金融業的各個領域，包括支付、投資、貸款等。",
+        "why": "FinTech可以提高金融業的效率和競爭力，同時也可以提供更好的金融服務給用戶。",
+        "category": "金融"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-13",
     "is_sunday": false,
     "hw": [
@@ -924,88 +1105,6 @@
         "def": "利用水力發電的能源形式，通常通過水力發電機組將水能轉化為電能。",
         "why": "水力發電是清潔能源的一種，對環境影響較小。",
         "category": "能源"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-07-07",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Nscale 獲得 9 億美元信貸額度",
-        "layer": "資料中心建設",
-        "body": "Nscale 獲得了一筆 9 億美元的信貸額度，將用於其 AI 資料中心建設和基礎設施部署。這筆信貸額度由多家金融機構提供，包括 J.P. Morgan、Goldman Sachs 和 Morgan Stanley。",
-        "impact": "Nscale 獲得的信貸額度將有助於其加速 AI 資料中心建設和基礎設施部署，同時也會促進其在全球市場的競爭力。",
-        "rating": "noise",
-        "insight": "Nscale 的信貸額度將促進其 AI 資料中心建設",
-        "source_label": "Data Center Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/nscale-closes-900m-revolving-credit-facility/",
-        "chain": [
-          {
-            "label": "Nscale 資料中心建設↑",
-            "type": "up"
-          },
-          {
-            "label": "J.P. Morgan 信貸額度↑",
-            "type": "up"
-          },
-          {
-            "label": "Nscale 基礎設施部署↑",
-            "type": "up"
-          },
-          {
-            "label": "Goldman Sachs 信貸風險↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "英國科技主權面臨挑戰",
-        "layer": "企業科技採用",
-        "body": "英國政府被警告需要加強科技主權，否則將被冷落。英國下議院科學、創新和科技委員會發表的報告指出，英國在全球科技競爭中缺乏明確的戰略，包括人工智慧、太空和量子計算等領域。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "英國政府需要加強科技主權，以促進企業科技採用",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "英國科技主權↓",
-            "type": "down"
-          },
-          {
-            "label": "英國政府科技戰略↓",
-            "type": "down"
-          },
-          {
-            "label": "英國科技產業競爭力↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "應用進展",
-        "body": "今日無相關應用新聞",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Anthropic",
-        "full": "Anthropic",
-        "def": "一家人工智慧公司",
-        "why": "因其 AI 模型被美國政府實施出口限制而受到關注",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
