@@ -1,5 +1,145 @@
 [
   {
+    "date": "2026-07-15",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "SK Hynix 研發近記憶體去量化架構",
+        "layer": "晶片製造",
+        "body": "SK Hynix 研究人員發表了一篇技術論文，提出了 StreamDQ 這一近記憶體去量化架構，該架構可以實現高吞吐量和大批量 LLM 推理加速，實現了最高 7.08 倍的速度提升和 90.23% 的能耗降低。該論文發表在 arXiv 上，作者包括 Jeong, Minki, Daegun Yoon, Soohong Ahn 等人。",
+        "impact": "這項技術的開發可能會對 SK Hynix 的晶片製造業務產生正面的影響，提高其在 AI 推理加速器市場的競爭力。",
+        "rating": "core",
+        "insight": "SK Hynix 的近記憶體去量化架構開發可能會提高其在 AI 推理加速器市場的競爭力。",
+        "source_label": "semiengineering",
+        "source": "https://semiengineering.com/near-memory-dequantization-architecture-in-custom-hbm-for-llm-inference-sk-hynix/",
+        "chain": [
+          {
+            "label": "SK Hynix 研發能力↑",
+            "type": "up"
+          },
+          {
+            "label": "StreamDQ 架構性能↑",
+            "type": "up"
+          },
+          {
+            "label": "LLM 推理加速效率↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "EdgeMode 出售西班牙數據中心開發項目",
+        "layer": "數據中心建設",
+        "body": "EdgeMode 公司將出售其在西班牙的數據中心開發項目，包括 Cordoba, Palma del Río, Vianos 和 Cáceres 等地的土地，Pure Data Centers 將支付 1.5 百萬歐元的購買價格。",
+        "impact": "這項出售可能會對 EdgeMode 公司的業務產生一定的影響，同時也可能會對 Pure Data Centers 的數據中心建設業務產生正面的影響。",
+        "rating": "noise",
+        "insight": "EdgeMode 公司的數據中心開發項目出售可能會對其業務產生一定的影響。",
+        "source_label": "datacenterdynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/edgemode-looks-to-sell-multiple-data-center-development-sites-in-spain/",
+        "chain": [
+          {
+            "label": "EdgeMode 資產價值↓",
+            "type": "down"
+          },
+          {
+            "label": "Pure Data Centers 收購能力↑",
+            "type": "up"
+          },
+          {
+            "label": "西班牙數據中心市場競爭↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "微軟警告企業保護智慧財產",
+        "layer": "AI",
+        "body": "微軟CEO Satya Nadella 警告企業在使用 AI 時要保護自己的智慧財產，避免將商業秘密洩露給 AI 廠商。Nadella 指出，企業在購買 AI 產品時，實際上是付了兩次價格：一次是金錢，另一次是商業知識。",
+        "impact": "這個警告可能會增加企業對 AI 廠商的警惕性，導致企業更加謹慎地選擇 AI 供應商，同時也可能促使 AI 廠商更加注重保護客戶的智慧財產。",
+        "rating": "core",
+        "insight": "企業在使用 AI 時需要更加注意保護自己的智慧財產",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/07/13/microsoft-chief-turns-hostile-on-frontier-ai-labs-warns-companies-to-guard-their-ip/5270628",
+        "chain": [
+          {
+            "label": "微軟智慧財產保護意識↑",
+            "type": "up"
+          },
+          {
+            "label": "企業商業秘密安全性↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 廠商商業知識獲取↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Google 在懷俄明州建造 2.7GW 數據中心",
+        "layer": "CSP/CapEx",
+        "body": "Google 宣布在懷俄明州建造 2.7GW 數據中心，該項目被命名為 Project Tembo。",
+        "impact": "這個數據中心可能會增加 Google 在美國的數據中心容量，同時也可能促進當地的經濟發展。",
+        "rating": "noise",
+        "insight": "Google 的投資表明其對數據中心產業的重視",
+        "source_label": "Datacenter Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/google-is-customer-behind-27gw-data-center-campus-near-cheyenne-wyoming/",
+        "chain": [
+          {
+            "label": "Google 數據中心建設能力↑",
+            "type": "up"
+          },
+          {
+            "label": "Project Tembo 項目規模↑",
+            "type": "up"
+          },
+          {
+            "label": "懷俄明州數據中心市場發展↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關新聞",
+        "layer": "",
+        "body": "今日該分類無足夠具體新聞素材可供分析。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "近記憶體去量化",
+        "full": "Near-Memory Dequantization",
+        "def": "一種晶片架構技術，實現高吞吐量和大批量 LLM 推理加速",
+        "why": "提高晶片的推理加速能力",
+        "category": "晶片製造"
+      },
+      {
+        "term": "Xeon",
+        "full": "Intel Xeon",
+        "def": "英特爾的一種處理器",
+        "why": "英特爾在愛爾蘭投資 57 億美元，擴大其 Leixlip 校區的半導體生產能力，包括生產 Intel Xeon 處理器。",
+        "category": "hardware"
+      },
+      {
+        "term": "Xeon處理器",
+        "full": "Intel Xeon",
+        "def": "英特爾公司出品的伺服器和工作站用的CPU",
+        "why": "Xeon處理器是英特爾公司的高端CPU產品，廣泛用於伺服器和工作站市場",
+        "category": "晶片製造"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-14",
     "is_sunday": false,
     "hw": [
@@ -1031,80 +1171,6 @@
         "def": "一種使用人工智慧技術的工具，旨在提高醫療保健服務的效率和質量。",
         "why": "AI 採用工具可以幫助醫療機構更好地管理患者數據，優化治療方案，和提高醫療服務的質量。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-07-08",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "加拿大公司Sato Technologies簽署意向書",
-        "layer": "CSP",
-        "body": "加拿大公司Sato Technologies簽署意向書，將在不丹發展AI數據中心，首階段將建設5MW的數據中心，未來可能擴展至500MW。該數據中心將使用不丹的水力發電資源。",
-        "impact": "這將對不丹的能源消耗產生影響，可能會占用不丹20%的電力。",
-        "rating": "core",
-        "insight": "加拿大公司Sato Technologies的AI數據中心項目可能會推動不丹的AI產業發展。",
-        "source_label": "Datacenter Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/former-cryptominer-sato-inks-preliminary-agreement-to-develop-ai-data-center-in-bhutan/",
-        "chain": [
-          {
-            "label": "Sato Technologies 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "不丹水力發電資源供應↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "意大利銀行集團Intesa Sanpaolo遷移核心IT系統至Google Cloud",
-        "layer": "CSP",
-        "body": "意大利銀行集團Intesa Sanpaolo已完成核心IT系統遷移至Google Cloud，利用Google Cloud的雲區域，位於TIM數據中心的意大利都靈和米蘭。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "意大利銀行集團Intesa Sanpaolo遷移核心IT系統至Google Cloud可能會提高其雲計算能力。",
-        "source_label": "Datacenter Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/intesa-sanpaolo-group-migrates-core-it-systems-to-google-cloud/",
-        "chain": [
-          {
-            "label": "Intesa Sanpaolo 核心IT系統遷移↑",
-            "type": "up"
-          },
-          {
-            "label": "Google Cloud 雲區域使用率↑",
-            "type": "up"
-          },
-          {
-            "label": "TIM 數據中心租用↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無足夠具體的應用新聞素材可供分析。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "水力發電",
-        "full": "hydroelectric power",
-        "def": "利用水力發電的能源形式，通常通過水力發電機組將水能轉化為電能。",
-        "why": "水力發電是清潔能源的一種，對環境影響較小。",
-        "category": "能源"
       }
     ],
     "weekly_summary": null
