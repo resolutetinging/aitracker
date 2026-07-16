@@ -419,6 +419,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
   </div>
 </div>
 
+<script src="https://resolutetinging.github.io/control-center/cc_zht.js"></script>
 <script>
 // ══════════════════════════════════════════════════════════════════
 //  GLOSSARY (分三類)
@@ -463,7 +464,9 @@ async function fetchHistory() {
   try {
     const res = await fetch('./data/history.json?v=' + Date.now());
     if (!res.ok) throw new Error('fetch failed');
-    const data = await res.json();
+    let data = await res.json();
+    // Groq 偶爾混入簡體字/日文漢字新字體，繁中保底（cc_zht.js，全站共用）
+    if (typeof s2tDeep === 'function') data = s2tDeep(data);
     HISTORY = data;
     try { localStorage.setItem('aitracker_cache', JSON.stringify(data)); } catch(e){}
     document.getElementById('auto-badge').style.display = '';

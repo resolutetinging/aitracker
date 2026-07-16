@@ -746,7 +746,7 @@ def validate_impact(data):
         resp = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[
-                {"role": "system", "content": "只輸出純JSON陣列，不加任何說明或markdown。"},
+                {"role": "system", "content": "只輸出純JSON陣列，不加任何說明或markdown。全程繁體中文：合併（非合並）、晶片（非芯片）、記憶體（非内存）。"},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.1, max_tokens=1200,
@@ -778,7 +778,7 @@ def call_groq(prompt):
     from groq import APIStatusError as GroqAPIStatusError
     client = Groq(api_key=os.environ['GROQ_API_KEY'])
     sys_msg = (
-        "你是AI供應鏈分析師。只輸出純JSON，不加說明。全程繁體中文：晶片（非芯片）、記憶體（非内存）、當機（非宕機）。"
+        "你是AI供應鏈分析師。只輸出純JSON，不加說明。全程繁體中文：晶片（非芯片）、記憶體（非内存）、當機（非宕機）、合併（非合並，例如「合併了一個拉取請求」不可寫成「合並」）。"
         "【noise 鐵律】某分區若已有任何 core 或 opp 條目，該分區嚴禁再加 noise 條目。"
         "noise 條目的 title 必須是『本日無相關[分區名稱]新聞』，不得使用任何具體或看似具體的新聞標題（例如「AI 應用進步」「產業趨勢觀察」皆為違規）。"
         "【body 句數】body 是 1 到 3 句，句數視你實際掌握的具體事實數量而定，不得為了湊句數而重述前一句或加入未經證實的推論；"
