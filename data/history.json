@@ -1,5 +1,135 @@
 [
   {
+    "date": "2026-07-17",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Nvidia推出新AI模型和擴展日本的物理AI生態系統",
+        "layer": "AI技術",
+        "body": "Nvidia宣佈推出新AI模型Cosmos 3 Edge，並擴展日本的物理AI生態系統。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "Nvidia的新AI模型和擴展的物理AI生態系統可能會對AI技術的發展產生正面的影響，投資者應該關注其發展。",
+        "source_label": "cnbc",
+        "source": "https://www.cnbc.com/2026/07/16/nvidia-reveals-new-ai-model-and-expands-japans-physical-ai-ecosystem.html",
+        "chain": [
+          {
+            "label": "Nvidia AI 模型↑",
+            "type": "up"
+          },
+          {
+            "label": "Cosmos 3 Edge 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "日本物理AI生態系統↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Google AI Mode新增應用連結功能",
+        "layer": "AI應用",
+        "body": "Google宣布其AI Mode現在允許用戶連結和與選定的應用程序進行交互，包括Instacart、Canva和YouTube。這項更新使Google的AI Mode擴展到回答問題和完成任務的范圍。",
+        "impact": "這項更新可能會增加Google AI Mode的使用率，同時，這也可能會促進相關應用程序的發展和使用。",
+        "rating": "core",
+        "insight": "Google的AI Mode更新可能會加強其在AI平台市場的競爭力。",
+        "source_label": "techcrunch",
+        "source": "https://techcrunch.com/2026/07/16/googles-ai-mode-now-lets-you-link-and-interact-with-select-apps/",
+        "chain": [
+          {
+            "label": "Google AI Mode 連結功能↑",
+            "type": "up"
+          },
+          {
+            "label": "Instacart 互動↑",
+            "type": "up"
+          },
+          {
+            "label": "Canva 互動↑",
+            "type": "up"
+          },
+          {
+            "label": "YouTube 互動↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "RXNT 獲得 50 多項產業獎項",
+        "layer": "healthcare",
+        "body": "RXNT 獲得 50 多項產業獎項，包括 Black Book Market Research、G2、Forbes Advisor、TrustRadius 等的認可，凸顯其在醫療技術領域的創新和滿意度。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "RXNT 的成長是醫療技術產業的一個重要趨勢，投資者應該關注其未來的發展。",
+        "source_label": "markets.businessinsider.com",
+        "source": "https://markets.businessinsider.com/news/stocks/driving-healthcare-innovation-rxnt-continues-growth-in-2026-with-50-industry-awards-1036332323",
+        "chain": [
+          {
+            "label": "RXNT 獲獎↑",
+            "type": "up"
+          },
+          {
+            "label": "Black Book Market Research 認可↑",
+            "type": "up"
+          },
+          {
+            "label": "G2 認可↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "BayCare 與 United Healthcare 簽署新合約",
+        "layer": "healthcare",
+        "body": "BayCare Health System 與 United Healthcare 簽署新合約，確保患者可以繼續在 BayCare 的醫院和設施接受治療，同時也會繼續提供高質量的醫療服務。",
+        "impact": "BayCare 與 United Healthcare 的新合約將對醫療服務產業產生正面的影響，可能會增加患者的選擇和滿意度，同時也會對其他醫療服務公司產生一定的競爭壓力。",
+        "rating": "noise",
+        "insight": "BayCare 與 United Healthcare 的新合約是醫療服務產業的一個重要發展，投資者應該關注其未來的合作。",
+        "source_label": "baynews9.com",
+        "source": "https://baynews9.com/fl/tampa/news/2026/05/29/baycare-reaches-new-multi-year-agreement-with-united-healthcare",
+        "chain": [
+          {
+            "label": "BayCare 合約↑",
+            "type": "up"
+          },
+          {
+            "label": "United Healthcare 合約↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "晶片",
+        "full": "晶片製造",
+        "def": "晶片的設計、製造和測試。",
+        "why": "晶片是電子產品的核心元件，晶片製造是電子產業的重要環節。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "AI Mode",
+        "full": "Artificial Intelligence Mode",
+        "def": "Google的一種對話式搜索體驗，允許用戶與AI交互。",
+        "why": "這項技術可以提高用戶的搜索體驗和效率。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "RXNT",
+        "full": "RXNT 是一家醫療技術公司",
+        "def": "RXNT 是一家醫療技術公司，提供醫療技術解決方案和服務",
+        "why": "RXNT 的成長是醫療技術產業的一個重要趨勢",
+        "category": "healthcare"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-16",
     "is_sunday": false,
     "hw": [
@@ -972,140 +1102,6 @@
         "def": "用於人工智慧應用的令牌",
         "why": "AI Token 是人工智慧應用的重要組成部分",
         "category": "AI 應用"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-07-10",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "美光宣布在美國投資晶片製造",
-        "layer": "晶片製造",
-        "body": "美光宣布了一輪新的投資，以提升美國的半導體供應鏈。這項投資將幫助美光增加其在美國的晶片製造能力。美光的股票價格因此上漲了7%。",
-        "impact": "這項投資將直接影響美國的半導體供應鏈，增加美光在美國的晶片製造能力。",
-        "rating": "core",
-        "insight": "美光的投資將有助於提升美國的半導體供應鏈的競爭力。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/07/09/micron-stock-us-chipmaking.html",
-        "chain": [
-          {
-            "label": "Micron 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Micron 股價↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "SambaNova 獲得 110 億美元的投資",
-        "layer": "AI 晶片",
-        "body": "SambaNova 獲得了 110 億美元的投資，領投者為 General Atlantic。這項投資將幫助 SambaNova 開發其 AI 晶片技術。",
-        "impact": "這項投資將直接影響 SambaNova 的 AI 晶片業務，增加其開發和生產能力。",
-        "rating": "core",
-        "insight": "SambaNova 的投資將有助於提升其在 AI 晶片市場的競爭力。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/07/08/sambanova-ai-chip-funding-valuation.html",
-        "chain": [
-          {
-            "label": "SambaNova 資金↑",
-            "type": "up"
-          },
-          {
-            "label": "SambaNova AI 晶片技術↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google Cloud 任命 Hussein Shell 領導石油和天然氣事業部",
-        "layer": "雲計算",
-        "body": "Google Cloud 任命 Hussein Shell 為其石油和天然氣事業部的領導。Hussein Shell 曾在 Amazon Web Services 的能源團隊工作，負責雲遷移和技術創新工作。現在，他將領導 Google Cloud 的全球石油和天然氣戰略。",
-        "impact": "這項任命可能會加強 Google Cloud 在石油和天然氣領域的實力和影響力，同時也可能會對其他雲計算平台產生一定的競爭壓力。Hussein Shell 的任命也可能會推動 Google Cloud 的技術和服務在石油和天然氣領域的應用和發展。",
-        "rating": "noise",
-        "insight": "Google Cloud 的這項任命可能會成為公司在石油和天然氣領域的一個重要發展方向，值得關注和研究。",
-        "source_label": "DatacenterDynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/google-cloud-names-hussein-shell-to-lead-oil-gas-unit/",
-        "chain": [
-          {
-            "label": "Google Cloud 石油和天然氣事業部領導↑",
-            "type": "up"
-          },
-          {
-            "label": "Google Cloud 全球石油和天然氣戰略↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Meta 計劃在加拿大阿爾伯塔省建造 1GW 數據中心",
-        "layer": "數據中心",
-        "body": "Meta 計劃在加拿大阿爾伯塔省的 Sturgeon County 建造一個 1GW 的數據中心。這個數據中心將會是 Meta 的第 33 個全球設施，預計將會投資 13 億加元（約 9.17 億美元）。",
-        "impact": "這項投資可能會加強 Meta 在加拿大的實力和影響力，同時也可能會對其他數據中心運營商產生一定的競爭壓力。Meta 的這項投資也可能會推動加拿大數據中心的發展和應用。",
-        "rating": "noise",
-        "insight": "Meta 的這項投資可能會成為公司在加拿大的重要發展方向，值得關注和研究。",
-        "source_label": "DatacenterDynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/meta-plans-917bn-gigawatt-scale-data-center-in-alberta-canada/",
-        "chain": [
-          {
-            "label": "Meta 數據中心投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta 全球設施數量↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Meta 將在九月投產 AI 晶片",
-        "layer": "AI晶片",
-        "body": "Meta 將在九月投產 AI 晶片，目標是將計算能力加倍。根據消息來源，Meta 的 AI 晶片將用於其數據中心，提高其 AI 處理能力。Meta 的這一舉動可能會對其供應鏈產生影響，特別是對其晶片供應商。",
-        "impact": "Meta 投產 AI 晶片可能會對其晶片供應商產生影響，特別是對其供應鏈的下游客戶。",
-        "rating": "noise",
-        "insight": "Meta 投產 AI 晶片是其加強 AI 能力的重要一步，對其供應鏈和競爭對手都可能產生影響。",
-        "source_label": "Global Banking & Finance Review",
-        "source": "https://www.globalbankingandfinance.com/exclusive-meta-put-ai-chip-production-september-looks-double/",
-        "chain": [
-          {
-            "label": "Meta AI 晶片計算能力↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta AI 處理能力↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "半導體",
-        "full": "半導體材料",
-        "def": "一種具有導電性和絕緣性之間的材料，常用於電子元件的製造。",
-        "why": "半導體材料是電子元件的基礎，對電子產業具有重要意義。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "GPT-Live",
-        "full": "GPT-Live 是 OpenAI 推出的聊天機器人技術，能夠實現人聲對話和網路搜索。",
-        "def": "GPT-Live 是一個全雙工的聊天機器人技術，能夠在對話中表現出關注的語句和進行快速的對話。",
-        "why": "GPT-Live 的推出可能會提升聊天機器人的對話體驗，增加用戶的滿意度和依賴度。",
-        "category": "AI 技術"
-      },
-      {
-        "term": "AI晶片",
-        "full": "人工智慧晶片",
-        "def": "一種專門用於人工智慧計算的晶片。",
-        "why": "AI晶片是Meta加強AI能力的重要一步。",
-        "category": "hardware"
       }
     ],
     "weekly_summary": null
