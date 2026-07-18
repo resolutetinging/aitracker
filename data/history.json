@@ -1,5 +1,210 @@
 [
   {
+    "date": "2026-07-19",
+    "is_sunday": true,
+    "hw": [
+      {
+        "title": "台積電擴大2026年資本支出預算",
+        "layer": "晶片製造",
+        "body": "台積電宣布將其2026年資本支出預算提高至640億美元，並將在美國投資1000億美元以發展AI晶片。這項投資將有助於增強台積電在全球半導體產業的競爭力。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "台積電的投資將推動全球半導體產業的發展，並增強其在AI晶片領域的競爭力。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "TSMC 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC 市占↑",
+            "type": "up"
+          },
+          {
+            "label": "台積電 AI晶片 產能↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "TYLsemi推出新商業模式",
+        "layer": "晶片設計",
+        "body": "TYLsemi是一家專門從事晶片設計的公司，最近推出了一種新商業模式，旨在解決AI基礎設施客戶的晶片供應問題。這種模式將有助於增強TYLsemi在全球晶片設計市場的競爭力。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "TYLsemi的新商業模式將推動全球晶片設計產業的發展，並增強其在AI基礎設施領域的競爭力。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "TYLsemi 市占↑",
+            "type": "up"
+          },
+          {
+            "label": "TYLsemi 客戶數↑",
+            "type": "up"
+          },
+          {
+            "label": "TYLsemi 營收↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "印度加強電子供應鏈建設",
+        "layer": "電子產業",
+        "body": "印度政府近年來一直致力於加強電子供應鏈建設，包括增加對OSAT和PCB的投資。這項努力將有助於增強印度在全球電子產業的競爭力。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "印度的電子供應鏈建設將推動全球電子產業的發展，並增強其在電子產業領域的競爭力。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "印度電子產業 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "OSAT 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "PCB 產能↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "晶片製造",
+        "body": "今日該分類無足夠具體新聞素材可供分析。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "Agility Robotics在Tesla的後院設立新工廠",
+        "layer": "機器人製造",
+        "body": "Agility Robotics在Tesla的後院設立新工廠，該工廠將用於訓練其人形機器人Digit，該機器人已經被Amazon、GXO、Schaeffler和Toyota Motor Manufacturing Canada等公司采用。該工廠的設立可能會對Tesla的Optimus機器人計劃產生影響。",
+        "impact": "這個工廠的設立可能會增加Agility Robotics的產能和市場份額，同時也可能會對Tesla的Optimus機器人計劃產生影響。",
+        "rating": "opp",
+        "insight": "Agility Robotics的新工廠設立可能會增加其在機器人市場的競爭力，同時也可能會對Tesla的Optimus機器人計劃產生挑戰。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/17/agility-robotics-plants-its-flag-in-teslas-backyard/",
+        "chain": [
+          {
+            "label": "Agility Robotics 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Tesla Optimus 機器人 產能↓",
+            "type": "down"
+          },
+          {
+            "label": "Digit 機器人 產能↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Apple對OpenAI提出訴訟",
+        "layer": "知識產權訴訟",
+        "body": "Apple對OpenAI提出訴訟，指控OpenAI侵犯其商業秘密，該訴訟可能會對OpenAI的IPO計劃產生影響。該訴訟也可能會對OpenAI的商業模式和合作伙伴關係產生影響。",
+        "impact": "這個訴訟可能會對OpenAI的信譽和商業模式產生負面影響，同時也可能會對其合作伙伴和客戶產生影響。",
+        "rating": "core",
+        "insight": "OpenAI需要盡快解決這個訴訟，以恢復其在市場上的信譽和競爭力。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/video/how-apples-big-lawsuit-could-disrupt-openais-ipo-plans/",
+        "chain": [
+          {
+            "label": "Apple 市占↑",
+            "type": "up"
+          },
+          {
+            "label": "OpenAI IPO 前景↓",
+            "type": "down"
+          },
+          {
+            "label": "OpenAI 商業模式↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "LTM與Anthropic合作擴大企業採用Claude AI",
+        "layer": "AI應用",
+        "body": "LTM與Anthropic合作，目的是擴大企業採用Claude AI，進一步推動AI在各行各業的應用。根據報導，LTM將與Anthropic合作，提供更好的AI解決方案給企業，進一步提高企業的生產力和效率。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "LTM和Anthropic的合作將推動AI在企業的採用，進一步提高企業的生產力和效率。",
+        "source_label": "BW Businessworld",
+        "source": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNbjJMdGRWdkZCWVFpQ2VjRkFzN0h1c2VhTl9pNDJGN1BjaG5Gdjd0MVp2RU8wY2VQQS1PWlNPVGp0QW82aDhXczhVRUxuU3lmMVMxLXBCeldDbDA3WGc1b2htWHN6c00tQ0JUa25PN3hjQ1VBYWFBU0YwNk16dW1oMWdoM3cyMnUtS0lLUVNGdlFSdHFZSnBNSDdGWGNiVm9aNjJBRzctcVV1QXl1MVB4ZzNtVQ?oc=5",
+        "chain": [
+          {
+            "label": "LTM 營收↑",
+            "type": "up"
+          },
+          {
+            "label": "Anthropic 營收↑",
+            "type": "up"
+          },
+          {
+            "label": "Claude AI 產能↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "CHAI支持公共衛生機構採用基於AI的解決方案",
+        "layer": "AI應用",
+        "body": "CHAI支持公共衛生機構採用基於AI的解決方案，進一步提高公共衛生機構的效率和生產力。根據報導，CHAI將提供基於AI的解決方案給公共衛生機構，進一步提高他們的工作效率和生產力。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "CHAI的支持將推動公共衛生機構採用基於AI的解決方案，進一步提高他們的工作效率和生產力。",
+        "source_label": "Healthcare IT News",
+        "source": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNVUpjLXFoZVRZekU4UzdEcl94bjRqeHpfdmVINGlqVGlhM3h3Rk5fSm8xbXR1MmV2ODMwV0F1bmNPQWtuWjZXS3pPbXdMUHBtVUo5cWFuQU9jZjdHSFNlam5kXzZfZS1NRFJHblFCWFBLWEtndGtGQ2Vad1dCWHhqelBFN2JMRlV4QUozV0p1X1phdFNN?oc=5",
+        "chain": [
+          {
+            "label": "CHAI 營收↑",
+            "type": "up"
+          },
+          {
+            "label": "公共衛生機構 效率↑",
+            "type": "up"
+          },
+          {
+            "label": "基於AI的解決方案 產能↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "EMIB-T",
+        "full": "局部橋接、多晶粒互連的封裝方法",
+        "def": "EMIB-T是一種在EMIB基礎上加上更強的垂直供電與更高密度互連能力的封裝方法，讓它更能對應AI大封裝需求。",
+        "why": "EMIB-T是一種重要的封裝技術，能夠提高晶片的性能和效率。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "基於AI的解決方案",
+        "full": "基於人工智慧的解決方案",
+        "def": "使用人工智慧技術來解決特定問題的方法或方案。",
+        "why": "基於AI的解決方案可以提高工作效率和生產力，進一步推動各行各業的發展。",
+        "category": "AI應用"
+      }
+    ],
+    "weekly_summary": "HW：台積電擴大2026年資本支出預算，將在美國投資1000億美元以發展AI晶片。\nTYLsemi推出新商業模式，旨在解決AI基礎設施客戶的晶片供應問題。\n印度加強電子供應鏈建設，包括增加對OSAT和PCB的投資。\nCORP：OpenAI旗艦模型GPT-5.6 Sol出現檔案刪除問題，Agility Robotics在Tesla的後院設立新工廠，Apple對OpenAI提出訴訟\n下週看點：OpenAI的IPO計劃是否會受到影響，Agility Robotics的新工廠設立是否會對Tesla的Optimus機器人計劃產生影響\nAPP：LTM與Anthropic合作擴大企業採用Claude AI，進一步推動AI在各行各業的應用。\n用戶洞察：CHAI支持公共衛生機構採用基於AI的解決方案，進一步提高公共衛生機構的效率和生產力。"
+  },
+  {
     "date": "2026-07-18",
     "is_sunday": false,
     "hw": [
@@ -911,127 +1116,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-07-12",
-    "is_sunday": true,
-    "hw": [
-      {
-        "title": "SK Hynix 籌集 265 億美元進行美國晶片製造投資",
-        "layer": "晶片製造",
-        "body": "SK Hynix 籌集 265 億美元進行美國晶片製造投資，該公司將在美國建立新的晶片製造廠。SK Hynix 籌集的資金為 265 億美元，創下了美國外國公司最大的 IPO 紀錄。該公司的股票在納斯達克交易所上市，股票代碼為 SKHY。",
-        "impact": "SK Hynix 籌集的資金將用於在美國建立新的晶片製造廠，從而增加美國的晶片供應量，對於美國的晶片產業將產生正面的影響。同時，SK Hynix 的投資也將對其供應鏈產生影響，增加其供應商的業務量。",
-        "rating": "noise",
-        "insight": "SK Hynix 籌集的資金將對美國的晶片產業產生正面的影響，增加美國的晶片供應量。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/07/10/sk-hynix-raises-26-5b-in-the-biggest-foreign-ipo-in-us-history-is-urged-to-build-new-us-fabs/",
-        "chain": [
-          {
-            "label": "SK Hynix 籌資↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix 美國晶片製造產能↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix 股價↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "SK Hynix 首日上市，股價上漲 13%",
-        "layer": "晶片製造",
-        "body": "SK Hynix 首日上市，股價上漲 13%。該公司的股票在納斯達克交易所上市，股票代碼為 SKHY。SK Hynix 籌集的資金為 265 億美元，創下了美國外國公司最大的 IPO 紀錄。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "SK Hynix 首日上市的股價上漲將對其在美國的業務產生正面的影響，增加其在美國的供應鏈業務。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/07/10/sk-hynix-skhy-stock-nasdaq.html",
-        "chain": [
-          {
-            "label": "SK Hynix 股價↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix 籌資↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix 市值↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Meta移除爭議的AI功能",
-        "layer": "社交媒體",
-        "body": "Meta移除了一個爭議的AI功能，該功能允許用戶修改公眾Instagram帳戶的照片。該功能是在本週早些時候推出的，隨後引發了用戶的強烈反對。Meta表示，該功能「沒有達到預期的效果」，因此決定將其移除。",
-        "impact": "這一事件可能會對Meta的AI開發產生直接影響，可能會導致公司重新評估其AI功能的設計和部署。同時，也可能會對其他社交媒體平台的AI功能開發產生間接影響，可能會導致他們更加謹慎地對待AI功能的設計和部署。",
-        "rating": "noise",
-        "insight": "Meta的AI功能開發需要更加謹慎和用戶導向。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/07/10/meta-removes-controversial-ai-feature-on-instagram-after-backlash/",
-        "chain": [
-          {
-            "label": "Meta AI 功能↓",
-            "type": "down"
-          },
-          {
-            "label": "Meta 用戶滿意度↓",
-            "type": "down"
-          },
-          {
-            "label": "Meta 股價↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Apple起訴OpenAI",
-        "layer": "AI技術",
-        "body": "Apple起訴OpenAI，指控其竊取商業秘密和違反合同。Apple指控OpenAI的高級領導，包括Chief Hardware Officer Tang Tan，涉嫌竊取Apple的商業秘密。",
-        "impact": "這一事件可能會對OpenAI的AI技術開發產生直接影響，可能會導致公司面臨法律和財務上的挑戰。同時，也可能會對其他AI技術公司的商業秘密保護產生間接影響，可能會導致他們更加重視商業秘密的保護。",
-        "rating": "noise",
-        "insight": "AI技術公司需要更加重視商業秘密的保護。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/07/10/apple-sues-openai-over-alleged-trade-secret-theft/",
-        "chain": [
-          {
-            "label": "Apple 起訴↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI 商業秘密↓",
-            "type": "down"
-          },
-          {
-            "label": "Apple 股價↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [],
-    "glossary_new": [
-      {
-        "term": "EMIB",
-        "full": "局部橋接、多晶粒互連的封裝方法",
-        "def": "EMIB 是一種封裝方法，能夠實現多個晶粒之間的互連。",
-        "why": "EMIB 對於 AI晶片的發展具有重要意義。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "EMIB-T",
-        "full": "局部橋接、多晶粒互連的封裝方法升級版",
-        "def": "EMIB-T是在EMIB的基礎上加上更強的垂直供電與更高密度互連能力，讓它更能對應AI大封裝需求。",
-        "why": "EMIB-T的升級可以提高AI晶片的性能和效率。",
-        "category": "半導體技術"
-      }
-    ],
-    "weekly_summary": "HW：SK Hynix 籌集 265 億美元進行美國晶片製造投資，創下了美國外國公司最大的 IPO 紀錄。\nHW：蘋果公司投資 300 億美元於 Broadcom，擴大其在 AI 和美國供應鏈的業務。\nHW：SK Hynix 首日上市，股價上漲 13%。\nCORP：本週Meta移除爭議的AI功能，Apple起訴OpenAI，SK Hynix籌集265億美元。\n下週看點：下週將繼續關注AI技術和半導體產業的發展。\nAPP：今日無相關新聞\n用戶洞察：今日該分類無足夠具體新聞素材可供分析。"
   }
 ]
