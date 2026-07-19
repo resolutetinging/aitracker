@@ -1,5 +1,139 @@
 [
   {
+    "date": "2026-07-20",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": "",
+        "chain": [
+          {
+            "label": "Google 解決漏洞數↑",
+            "type": "up"
+          },
+          {
+            "label": "Android 使用者滿意度↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Google 解決 Android 鎖屏漏洞",
+        "layer": "手機安全",
+        "body": "Google 即將修復 Android 鎖屏漏洞，該漏洞允許任何人在鎖屏的情況下使用 Gemini 發送 SMS 或 WhatsApp 訊息。這個漏洞是由於特定的多點觸控手勢可以繞過身份驗證提示。",
+        "impact": "這個漏洞的修復將直接影響 Google 的手機安全性，進而影響到下游的用戶體驗。",
+        "rating": "core",
+        "insight": "Google 的快速反應和修復將有助於維護用戶的信任和安全性。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/security/2026/07/17/google-fixing-android-lock-screen-bug-that-lets-gemini-send-sms-without-a-pin/5273027",
+        "chain": [
+          {
+            "label": "Google 安全性↑",
+            "type": "up"
+          },
+          {
+            "label": "Android 鎖屏漏洞數↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Dave Eggers 對 OpenAI 員工表示 ChatGPT 將沉默整整一代人",
+        "layer": "AI 技術",
+        "body": "Dave Eggers 對 OpenAI 員工表示，ChatGPT 將沉默整整一代人。這個言論可能會對 OpenAI 的發展和用戶體驗產生一定的影響。",
+        "impact": "這個言論將直接影響 OpenAI 的發展和用戶體驗，進而影響到下游的用戶和投資者的信任。同時，這也會對其他 AI 公司的用戶體驗產生一定的影響，促使他們加強用戶體驗的開發。",
+        "rating": "noise",
+        "insight": "Dave Eggers 的言論將對 OpenAI 的未來發展產生重要的影響。",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/ai-artificial-intelligence/967630/dave-eggers-openai-chatgpt-silencing-an-entire-generation",
+        "chain": [
+          {
+            "label": "OpenAI 員工信心↓",
+            "type": "down"
+          },
+          {
+            "label": "ChatGPT 使用率↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "醫療人工智慧應用進展",
+        "layer": "醫療",
+        "body": "根據MarketScale的報導，臨床人工智慧正處於一個十字路口，技能衰退、機器人手術和可穿戴數據前沿等領域都在快速發展。例如，人工智慧可以幫助醫生更好地診斷和治療疾病，同時也可以提高醫療的效率和質量。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "醫療人工智慧的發展為醫療行業帶來了新的機遇和挑戰，企業需要不斷創新和適應以保持競爭力。",
+        "source_label": "MarketScale",
+        "source": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNNVlhd2QtX3ZRdmJsOVJpeXBNc0NZTUVtd3dZbVNzUThtSFo2YzVKRWFnUjNTVVpEODJkLXdJNlVaVEdyWDM5MEprOV90bGJxR0dBandpdHhCNkJ1d1RXb2ZoRVNXT1VqY000VkNIZVZKY2s4QVVob0k4NThwSDZHbWNwVEdRUHZzSHhjSW9KeUV2RHdUMmZDR0ExMzVDaE40LWQ4Slp5a0VocXhWS3ZiSEdheU4wanVIZkFlSFI2Z1ROYWN2NktxM2xNMndZMThrWVE",
+        "chain": [
+          {
+            "label": "MarketScale 報導數↑",
+            "type": "up"
+          },
+          {
+            "label": "臨床人工智慧發展速度↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "印度醫療旅遊業迎來全球健康保健繁榮",
+        "layer": "醫療",
+        "body": "根據Travel And Tour World的報導，印度醫療旅遊業預計在2026年迎來全球健康保健的繁榮，人工智慧、數字簽證和二線城市的崛起等因素將重新定義患者的旅行體驗。例如，印度的醫療旅遊業可以提供高質量的醫療服務，同時也可以為患者提供便捷的旅行體驗。",
+        "impact": "這項發展可能會對印度的醫療供應鏈產生直接影響，例如提高醫療服務和設施的需求，同時也可能會對相關企業的營收和競爭力產生影響。例如，醫療服務提供商可能需要增加服務的質量和數量以滿足日益增長的需求，同時也需要不斷研發新技術以保持競爭力。",
+        "rating": "noise",
+        "insight": "印度醫療旅遊業的發展為醫療行業帶來了新的機遇和挑戰，企業需要不斷創新和適應以保持競爭力。",
+        "source_label": "Travel And Tour World",
+        "source": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBaWjJabVpGTzlWWFZKMEFwN0xhS3NOc3RxNnQ3ZkFSd1I1VDhrOHUxTVdVZF9MQXFva3hUVzB1XzhMM2ZPR21adHVDNzJTTldCS2p5YTJtamJpQ0Z6b3QtNFl2UlFHSUhvOW1ldGlB",
+        "chain": [
+          {
+            "label": "印度醫療旅遊業收入↑",
+            "type": "up"
+          },
+          {
+            "label": "Travel And Tour World 報導數↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoWoS",
+        "full": "Chip on Wafer on Substrate",
+        "def": "一種晶片製造技術，將晶片直接封裝在基板上。",
+        "why": "這種技術可以提高晶片的性能和可靠性，同時降低製造成本。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Gemini",
+        "full": "Google 的 AI 助手",
+        "def": "Gemini 是 Google 的 AI 助手，能夠幫助用戶完成各種任務。",
+        "why": "Gemini 的出現將對手機安全性和用戶體驗產生重要的影響。",
+        "category": "AI 技術"
+      },
+      {
+        "term": "機器人手術",
+        "full": "機器人輔助手術",
+        "def": "一種使用機器人技術進行的手術，旨在提高手術的精確度和安全性。",
+        "why": "機器人手術可以幫助醫生更好地診斷和治療疾病，同時也可以提高醫療的效率和質量。",
+        "category": "醫療"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-19",
     "is_sunday": true,
     "hw": [
@@ -942,177 +1076,6 @@
         "def": "金融科技是指應用科技於金融業的各個領域，包括支付、投資、貸款等。",
         "why": "FinTech可以提高金融業的效率和競爭力，同時也可以提供更好的金融服務給用戶。",
         "category": "金融"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-07-13",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "蘋果30億美元收購Broadcom，擴大AI和美國供應鏈",
-        "layer": "晶片製造",
-        "body": "蘋果公司以30億美元收購Broadcom，將AI數據中心和美國晶片製造納入其供應鏈。這項收購可能會給Intel帶來新的機會。蘋果的這一舉動表明其對AI和晶片製造的重視，同時也反映出美國晶片製造業的重要性。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "蘋果的這一舉動表明其對AI和晶片製造的重視，投資者應該關注相關企業的發展。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "蘋果市占↑",
-            "type": "up"
-          },
-          {
-            "label": "Broadcom 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Intel 市場份額↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 客戶逐漸接受小型晶片的想法",
-        "layer": "晶片製造",
-        "body": "OpenAI 和 Anthropic 建立了 AI 瑞士軍刀，但未來可能是小型、專用工具。根據 Tobias Mann 的報導，OpenAI 和 Anthropic 建立了大型模型，以滿足最廣泛的市場需求，但這些模型可能不適合所有任務。小型、專用模型可以更有效地完成特定任務，例如摘要電子郵件、草擬回覆或摘要會議記錄。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "投資者應該關注小型、專用晶片的發展趨勢",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/07/11/ai-customers-are-coming-around-to-the-idea-that-small-is-beautiful/5268070",
-        "chain": [
-          {
-            "label": "OpenAI 客戶數↑",
-            "type": "up"
-          },
-          {
-            "label": "Anthropic 市場份額↑",
-            "type": "up"
-          },
-          {
-            "label": "小型晶片需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI 的 Sam Altman 指控 Elon Musk 向公眾市場投資者出售短期太空數據中心",
-        "layer": "CSP CapEx",
-        "body": "OpenAI 的 Sam Altman 指控 Elon Musk 向公眾市場投資者出售短期太空數據中心。根據報導，Musk 的 SpaceX 公司計劃建立太空數據中心，但 Altman 認為這個計劃不切實際。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "投資者應該關注太空數據中心的發展趨勢",
-        "source_label": "DatacenterDynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/openais-sam-altman-accuses-musk-of-selling-public-market-investors-on-short-term-space-data-centers/",
-        "chain": [
-          {
-            "label": "SpaceX 太空數據中心投資↓",
-            "type": "down"
-          },
-          {
-            "label": "OpenAI 信用度↑",
-            "type": "up"
-          },
-          {
-            "label": "Elon Musk 信用度↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI 將 ChatGPT 推廣到家庭用戶",
-        "layer": "AI 應用",
-        "body": "OpenAI 將 ChatGPT 推廣到家庭用戶。根據報導，OpenAI 正在招聘一名專門的產品經理，負責開發適合家庭用戶的產品。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "投資者應該關注 AI 應用市場的發展趨勢",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/07/11/openai-bets-on-families-as-chatgpt-goes-deeper-into-households/",
-        "chain": [
-          {
-            "label": "OpenAI ChatGPT 用戶數↑",
-            "type": "up"
-          },
-          {
-            "label": "家庭用戶AI應用↑",
-            "type": "up"
-          },
-          {
-            "label": "ChatGPT 市場份額↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "護理師在醫療領域定義AI的應用",
-        "layer": "醫療",
-        "body": "護理師在醫療領域定義AI的應用，根據Shoppe Black的報導，護理師正在定義AI在醫療領域的應用，包括開發新的AI工具和技術。這些工具和技術可以幫助護理師更好地照顧患者，同時也可以幫助醫療機構改善效率和降低成本。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "醫療領域的AI應用將會是未來的一個重要趨勢，護理師需要具備更強的AI知識和技能來適應這個變化。",
-        "source_label": "Shoppe Black",
-        "source": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOS2U2YVVYR0N1VTUwRWZnLW5VVzZHaTVTNVp2bm9renpvUFVwY04wekJrNmZkdkdXY0NIWVFlSWpITVo0N2dfTVhBdTNMaGJiTV9MOVROa0lKc0JYWGFTajJBNWpqamhaZXBrUktKcWVHQWc5UVpfaU9DNVR5S09UWXJuQQ?oc=5",
-        "chain": [
-          {
-            "label": "護理師AI工具使用率↑",
-            "type": "up"
-          },
-          {
-            "label": "醫療領域AI應用↑",
-            "type": "up"
-          },
-          {
-            "label": "醫療機構效率↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "自動化在美國製造業的採用",
-        "layer": "製造業",
-        "body": "自動化在美國製造業的採用正在擴大，根據MarketScale的報導，美國製造業的自動化採用正在擴大，特別是在醫療器械領域。這個發展可能會對美國製造業的效率和競爭力產生正面的影響。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "自動化在美國製造業的採用將會是未來的一個重要趨勢，需要工人具備更強的自動化知識和技能來適應這個變化。",
-        "source_label": "MarketScale",
-        "source": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOSGhHSWxLbUFydWZJQWsyNzBfTmxkbGJWakVQSUNndHMzWXVnQlRyMEZJNURqdnFueXBTeUJfMFZZUTNuZ0NaYUgtdE8zRmZiMXNfS1BDMUMzazVrLXVnNlZpTTRKVmhxVU5obERtcllkZ1c4VE1ydXRwUlBPaFh5SExkaEtnQ3I3WGlrWXg0dWtXdjJvbzQ5T2o4MEtwakRndERSOE84QzRKTzhfWkVsZWIzbkZuWXJ4eEt3NzNMampDWTA?oc=5",
-        "chain": [
-          {
-            "label": "美國製造業自動化率↑",
-            "type": "up"
-          },
-          {
-            "label": "醫療器械產業效率↑",
-            "type": "up"
-          },
-          {
-            "label": "美國製造業競爭力↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "晶片製造",
-        "full": "晶片製造業",
-        "def": "一種將晶片設計轉化為實際晶片的過程",
-        "why": "晶片製造業是電子產業的基礎，蘋果的收購行動可能會影響這一行業的發展",
-        "category": "hardware"
-      },
-      {
-        "term": "AI",
-        "full": "Artificial Intelligence",
-        "def": "人工智慧，指的是使用機器模擬人類智慧的技術。",
-        "why": "AI是目前的一個重要趨勢，正在被廣泛應用於各個領域。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
