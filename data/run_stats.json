@@ -2,6 +2,71 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 38,
+        "CSP/CapEx": 34,
+        "App/AI": 11,
+        "gnews-chip": 21,
+        "gnews-dc": 24,
+        "gnews-app": 19
+      },
+      "digest_filtered": 1,
+      "after_dedup": 139,
+      "buckets": {
+        "hw": 29,
+        "corp": 105,
+        "app": 29
+      },
+      "enriched": 10,
+      "llm_items": {
+        "hw": 2,
+        "corp": 2,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 0,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "date": "2026-07-21",
+      "generated_at": "2026-07-21T00:03:31.874478+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 42,
         "CSP/CapEx": 35,
         "App/AI": 16,
