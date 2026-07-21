@@ -909,33 +909,51 @@ def _contains_stale_date(text: str) -> bool:
             return True
     return False
 
+def _drop_matching_sentences(text, pats):
+    """把 text 中命中任一 pat 的句子刪除，保留其餘句子。
+    回傳 (清理後文字, 是否有刪除)。用 (?<=[。！？]) 保留句尾標點切句，
+    比照 fix_protagonist_as_competitor 的切句寫法。無句尾標點時整段視為一句。"""
+    if not text:
+        return text, False
+    sentences = re.split(r'(?<=[。！？])', text)
+    kept = []
+    dropped = False
+    for sent in sentences:
+        if sent and any(pat.search(sent) for pat in pats):
+            dropped = True
+            continue
+        kept.append(sent)
+    return ''.join(kept).strip(), dropped
+
 def downgrade_forbidden_phrases(data):
-    """body/insight 含禁句或日期幻覺 → noise；impact 含模板 → 清除 impact（無論 rating）"""
+    """body/insight 含禁句 → 只刪除命中的句子、保留卡片（套話是生成端習慣，不代表新聞為假）；
+    刪句後 body 若過短/低品質才降級（→opp，非 noise）。日期幻覺 → 降 opp。
+    impact 含模板 → 清除 impact（無論 rating）。"""
     for section in ['hw', 'corp', 'app']:
         for item in data.get(section, []):
             body = item.get('body', '')
             impact = item.get('impact') or ''
             insight = item.get('insight') or ''
             if item.get('rating') != 'noise':
-                # 日期幻覺：body 聲稱 2 年前的「發表於」年份
+                # 日期幻覺：body 聲稱 2 年前的「發表於」年份 → 降 opp（不再整卡 noise）
                 if _contains_stale_date(body):
-                    print(f"  ↓ 日期幻覺→noise：{item.get('title','')[:50]}")
-                    item['rating'] = 'noise'
-                    continue
-                hit = False
-                for pat in FORBIDDEN_PATS:
-                    if pat.search(body):
-                        print(f"  ↓ 禁句降評→noise：{item.get('title','')[:50]}")
-                        item['rating'] = 'noise'
-                        hit = True
-                        break
-                # insight（注意方向）欄位過去從未被檢查，同一套通用套話會鑽這個漏洞
-                if not hit:
-                    for pat in FORBIDDEN_PATS:
-                        if pat.search(insight):
-                            print(f"  ↓ insight 禁句降評→noise：{item.get('title','')[:50]}")
-                            item['rating'] = 'noise'
-                            break
+                    print(f"  ↓ 日期幻覺→opp：{item.get('title','')[:50]}")
+                    item['rating'] = 'opp'
+                else:
+                    # 禁句：只刪除命中的句子，保留卡片
+                    new_body, body_dropped = _drop_matching_sentences(body, FORBIDDEN_PATS)
+                    if body_dropped:
+                        item['body'] = new_body
+                        print(f"  ✂ 禁句刪句（保留卡片）：{item.get('title','')[:50]}")
+                    # insight（注意方向）欄位同樣只刪命中句，不整卡降級
+                    new_insight, insight_dropped = _drop_matching_sentences(insight, FORBIDDEN_PATS)
+                    if insight_dropped:
+                        item['insight'] = new_insight or None
+                        print(f"  ✂ insight 禁句刪句：{item.get('title','')[:50]}")
+                    # 刪句後 body 若變得過短/低品質，才走降級（→opp，非 noise）
+                    if (body_dropped or insight_dropped) and _body_is_low_quality(item.get('body', '')):
+                        print(f"  ↓ 禁句刪句後 body 過短→opp：{item.get('title','')[:50]}")
+                        item['rating'] = 'opp'
             if impact:
                 for pat in FORBIDDEN_PATS:
                     if pat.search(impact):
@@ -1063,8 +1081,8 @@ def downgrade_cross_item_duplicates(data):
             if bi_i and bi_j and len(bi_i) > 5 and len(bi_j) > 5:
                 overlap = len(bi_i & bi_j) / min(len(bi_i), len(bi_j))
                 if overlap > 0.55:
-                    print(f"  ↓ 跨條目重複降評→noise：{all_items[j].get('title','')[:50]} (overlap {overlap:.0%})")
-                    all_items[j]['rating'] = 'noise'
+                    print(f"  ↓ 跨條目重複降評→opp：{all_items[j].get('title','')[:50]} (overlap {overlap:.0%})")
+                    all_items[j]['rating'] = 'opp'
 
 PLACEHOLDER_SECTION_NAMES = {'hw': '晶片', 'corp': '巨頭', 'app': '應用'}
 
@@ -1195,8 +1213,8 @@ def downgrade_hw_offtopic(data):
             continue
         combined = item.get('title','') + item.get('body','')
         if not HW_MUST_CONTAIN.search(combined):
-            print(f"  ↓ HW 跑偏降評→noise：{item.get('title','')[:60]}")
-            item['rating'] = 'noise'
+            print(f"  ↓ HW 跑偏降評→opp：{item.get('title','')[:60]}")
+            item['rating'] = 'opp'
 
 # body 幻覺偵測：無來源預測數字（未來+%）且無財報錨點 → noise（自舊副本 v2.x 移植）
 HALLUC_PAT = re.compile(r'(預計|估計|預期|將在未來).{0,15}(增加|成長|上升|達到).{0,8}\d+%')
@@ -1241,15 +1259,14 @@ def validate_body(data, news_by_cat):
     prompt = (
         "以下是今日 RSS 新聞摘要（原始來源）：\n"
         f"---\n{news_short}\n---\n\n"
-        "以下是根據這些摘要生成的新聞條目。請逐一檢查每條的 body，判斷是否存在幻覺：\n"
-        "1. body 中是否聲稱 Google/Microsoft/Amazon/Meta/Apple 已採用某技術，"
-        "但摘要中未明確提及該公司作為客戶或夥伴？→ downgrade=true\n"
-        "2. body 中是否出現「每月X個單位/晶圓的產能」，"
-        "但摘要中未出現此數字，或該公司並非晶圓廠？→ downgrade=true\n"
-        "3. body 中有無主要事實聲明（非推論）完全無法在摘要中找到對應文字？→ downgrade=true\n"
-        f"4. body 中若出現「發表於 20XX 年」的具體年份，該年份必須來自摘要原文；"
-        f"若摘要中沒有該年份，或年份明顯早於新聞發布時間（{NOW.year - 1}年以前），視為日期幻覺 → downgrade=true\n"
-        "若以上均無問題 → downgrade=false。\n"
+        "以下是根據這些摘要生成的新聞條目。請逐一檢查每條的 body，"
+        "只針對下列兩種「最明確的捏造型態」判斷，其餘一律放行（避免誤殺紮實內容）：\n"
+        "1. body 中是否聲稱 Google/Microsoft/Amazon/Meta/Apple 等大公司「已採用/已使用」某技術，"
+        "但摘要中完全未提及該公司作為客戶或夥伴（跨公司採用聲稱）？→ downgrade=true\n"
+        "2. body 中是否出現「每月X個單位/晶圓的產能」或明顯捏造的產能/財務數字，"
+        "且摘要中未出現此數字、或該公司並非晶圓廠？→ downgrade=true\n"
+        "重要：只要 body 有具體事實但摘要（已被截斷）中找不到逐字對應，"
+        "不算幻覺，一律 downgrade=false——摘要是節錄，內容比摘要更詳細屬正常。\n"
         f"條目：{items_json}\n"
         '只輸出純JSON陣列：[{"title":"原標題","downgrade":true或false}]'
     )
@@ -1273,9 +1290,9 @@ def validate_body(data, news_by_cat):
                 for sec in ['hw', 'corp', 'app']:
                     for item in data.get(sec, []):
                         if item['title'] == fix['title']:
-                            item['rating'] = 'noise'
+                            item['rating'] = 'opp'
                             count += 1
-                            print(f"  ↓ body聲明無來源支撐→noise：{item['title'][:50]}")
+                            print(f"  ↓ body聲明疑似捏造→opp：{item['title'][:50]}")
         if count == 0:
             print("  → body 聲明驗證通過")
         else:
@@ -1357,11 +1374,11 @@ def downgrade_low_quality(data):
     count = 0
     for section in ['hw', 'corp', 'app']:
         for item in data.get(section, []):
-            if item.get('rating') in ('core', 'opp') and _body_is_low_quality(item.get('body', '')):
-                item['rating'] = 'noise'
+            if item.get('rating') == 'core' and _body_is_low_quality(item.get('body', '')):
+                item['rating'] = 'opp'
                 count += 1
     if count:
-        print(f"  → {count} 筆低品質 body（重複句/無數字）已降級為 noise")
+        print(f"  → {count} 筆低品質 body（重複句/無數字）已降級為 opp")
     else:
         print("  → body 品質檢核通過")
 
