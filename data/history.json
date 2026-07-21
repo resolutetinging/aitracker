@@ -1,5 +1,177 @@
 [
   {
+    "date": "2026-07-22",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Nvidia 推出 Vera Rubin 平台",
+        "layer": "AI 基礎設施",
+        "body": "Nvidia 推出 Vera Rubin 平台，旨在優化 AI 計算效能。該平台由 Ian Buck 在 Nvidia 的 hyperscale 和 HPC 計算業務中介紹。Nvidia 還帶領記者參觀了一個工作中的實驗室，展示了 AI 基礎設施的實際應用。",
+        "impact": "Nvidia 的 Vera Rubin 平台可能會提高 AI 計算效能，從而增加對高性能晶片的需求。同時，該平台也可能會對其他 AI 基礎設施提供商產生競爭壓力。",
+        "rating": "core",
+        "insight": "Nvidia 的 Vera Rubin 平台是 AI 基礎設施發展的重要一步，投資者應該關注其對供應鏈和競爭格局的影響。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/07/21/nvidia-shows-off-vera-rubin-platform-for-tokenmaxxing/5275316",
+        "chain": [
+          {
+            "label": "Nvidia Vera Rubin 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia AI 計算效能↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Alphabet、Tesla 和 Intel 的財報將考驗 AI 資本支出",
+        "layer": "財報分析",
+        "body": "Alphabet、Tesla 和 Intel 的財報將是首個真正考驗 AI 資本支出的財報。這三家公司的財報將提供最全面的單周數據點，顯示 AI 資本支出是否能帶來實際的收益。分析師們正在關注這三家公司的財報，以評估 AI 資本支出是否正在產生實際的效果。",
+        "impact": null,
+        "rating": "opp",
+        "insight": "Alphabet、Tesla 和 Intel 的財報是 AI 資本支出發展的重要指標，投資者應該關注其對供應鏈和競爭格局的影響。",
+        "source_label": "Tech Times",
+        "source": "https://www.techtimes.com/articles/321101/20260720/alphabet-tesla-intel-earnings-are-first-real-test-ai-capex-scale.htm",
+        "chain": [
+          {
+            "label": "Alphabet AI 資本支出↑",
+            "type": "up"
+          },
+          {
+            "label": "Tesla AI 資本支出↑",
+            "type": "up"
+          },
+          {
+            "label": "Intel AI 資本支出↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Anthropic 獲得 15 億美元版權和解批准",
+        "layer": "版權和解",
+        "body": "Anthropic 獲得 15 億美元版權和解批准，該公司將向一群作者和書籍出版商支付 3000 美元每件作品，估計有 50 萬件作品。這是美國版權法歷史上最大的一次和解。Anthropic 將開始向作者和出版商支付款項。",
+        "impact": "這次和解將直接影響 Anthropic 的財務狀況，並可能間接影響其他 AI 公司的版權和解。同時，這也可能會增加作者和出版商對 AI 公司的版權保護意識，從而影響 AI 公司的商業模式。 Anthropic 的和解付款將對公司的現金流產生影響，可能會降低公司的資金儲備。",
+        "rating": "core",
+        "insight": "Anthropic 的版權和解批准對公司的財務狀況和商業模式產生了重大影響，其他 AI 公司也應該關注版權保護問題。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/20/anthropics-landmark-1-5b-copyright-settlement-is-approved/",
+        "chain": [
+          {
+            "label": "Anthropic 版權和解金額↑",
+            "type": "up"
+          },
+          {
+            "label": "Anthropic 作者補償金額↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Google 開發新 AI 晶片",
+        "layer": "AI 晶片",
+        "body": "Google 正在開發一款新 AI 晶片，稱為「Frozen v2」，預計於 2028 年發布。這款晶片可能比 Google 現有的 AI 晶片效率高 6-10 倍，將用于改善 Google 的 Gemini 模型的效率。",
+        "impact": "這款新 AI 晶片的發布可能會提高 Google 的 AI 計算效率，從而提高公司的競爭力。同時，這也可能會提高公司的資料中心效率，降低能源消耗。",
+        "rating": "opp",
+        "insight": "Google 的新 AI 晶片開發對公司的 AI 計算效率和競爭力產生了重大影響，其他 AI 公司也應該關注晶片開發和升級。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/20/google-is-working-on-a-new-ai-chip-designed-to-make-gemini-more-efficient/",
+        "chain": [
+          {
+            "label": "Google Frozen v2 晶片效率↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Gemini 模型效率↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 對開源模型的擔憂",
+        "layer": "開源模型",
+        "body": "OpenAI 對開源模型的擔憂日益增加，公司認為開源模型可能會對其商業模式產生影響。OpenAI 的戰略未來負責人 Dean W. Ball 表示，美國政府應該對開源模型採取規制措施。",
+        "impact": "OpenAI 對開源模型的擔憂可能會導致公司加強對開源模型的控制和規制，從而影響開源模型的發展和應用。同時，這也可能會提高公司對開源模型的審查和評估標準。",
+        "rating": "opp",
+        "insight": "OpenAI 對開源模型的擔憂對公司的商業模式和開源模型的發展產生了重大影響，其他 AI 公司也應該關注開源模型的風險和機會。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/20/openai-is-scared-of-open-weight-models-should-the-us-be/",
+        "chain": [
+          {
+            "label": "OpenAI 商業模式風險↑",
+            "type": "down"
+          },
+          {
+            "label": "OpenAI 規制需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "AI在醫療領域的應用進展",
+        "layer": "醫療",
+        "body": "根據KLAS Research的一份報告，57%的醫療組織將AI列為首要的投資優先事項，電子健康記錄（EHR）和數字化排名第二，26%的組織將IT和基礎設施列為優先事項。報告還指出，57%的受訪者認為ambient AI是最令人興奮的新興技術。",
+        "impact": "這一發展可能會推動醫療行業對AI的採用率上升，從而增加對AI相關技術和服務的需求。",
+        "rating": "core",
+        "insight": "醫療行業對AI的採用率上升，將推動相關技術和服務的發展。",
+        "source_label": "KLAS Research",
+        "source": "https://www.fiercehealthcare.com/ai-and-machine-learning/57-global-healthcare-orgs-top-it-priority-ai-klas-report",
+        "chain": [
+          {
+            "label": "AI 在醫療領域投資優先事項↑",
+            "type": "up"
+          },
+          {
+            "label": "電子健康記錄投資優先事項↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Vera Rubin",
+        "full": "Vera Rubin 平台",
+        "def": "Nvidia 推出的 AI 基礎設施平台，旨在優化 AI 計算效能。",
+        "why": "Vera Rubin 平台是 AI 基礎設施發展的重要一步，可能會提高 AI 計算效能和供應鏈的需求。",
+        "category": "AI 基礎設施"
+      },
+      {
+        "term": "版權和解",
+        "full": "版權和解",
+        "def": "指公司與版權持有者之間的和解協議，通常涉及金錢補償或其他形式的賠償。",
+        "why": "版權和解是公司保護其知識產權和避免法律糾紛的一種方式。",
+        "category": "法律"
+      },
+      {
+        "term": "AI 晶片",
+        "full": "AI 晶片",
+        "def": "指專門用于人工智慧計算的晶片，通常具有高效能和低功耗的特點。",
+        "why": "AI 晶片是人工智慧系統的核心組件，對於提高人工智慧的計算效率和降低能源消耗具有重要意義。",
+        "category": "科技"
+      },
+      {
+        "term": "開源模型",
+        "full": "開源模型",
+        "def": "指開放源代碼的模型，允許用戶自由使用、修改和分發。",
+        "why": "開源模型可以促進開發者之間的合作和創新，同時也可以提高模型的安全性和可靠性。",
+        "category": "科技"
+      },
+      {
+        "term": "ambient AI",
+        "full": "環境式人工智慧",
+        "def": "一種能夠在環境中感知和反應的AI技術，通常用於醫療、金融等領域。",
+        "why": "ambient AI能夠提高醫療行業的效率和準確性，從而改善患者的治療效果。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-21",
     "is_sunday": false,
     "hw": [
@@ -861,146 +1033,6 @@
         "def": "是一種使用機器學習算法和數據來進行預測和決策的數學模型。",
         "why": "AI 模型在藥物發現領域的應用可以增加新藥的開發速度和效率。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-07-15",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "SK Hynix 研發近記憶體去量化架構",
-        "layer": "晶片製造",
-        "body": "SK Hynix 研究人員發表了一篇技術論文，提出了 StreamDQ 這一近記憶體去量化架構，該架構可以實現高吞吐量和大批量 LLM 推理加速，實現了最高 7.08 倍的速度提升和 90.23% 的能耗降低。該論文發表在 arXiv 上，作者包括 Jeong, Minki, Daegun Yoon, Soohong Ahn 等人。",
-        "impact": "這項技術的開發可能會對 SK Hynix 的晶片製造業務產生正面的影響，提高其在 AI 推理加速器市場的競爭力。",
-        "rating": "core",
-        "insight": "SK Hynix 的近記憶體去量化架構開發可能會提高其在 AI 推理加速器市場的競爭力。",
-        "source_label": "semiengineering",
-        "source": "https://semiengineering.com/near-memory-dequantization-architecture-in-custom-hbm-for-llm-inference-sk-hynix/",
-        "chain": [
-          {
-            "label": "SK Hynix 研發能力↑",
-            "type": "up"
-          },
-          {
-            "label": "StreamDQ 架構性能↑",
-            "type": "up"
-          },
-          {
-            "label": "LLM 推理加速效率↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "EdgeMode 出售西班牙數據中心開發項目",
-        "layer": "數據中心建設",
-        "body": "EdgeMode 公司將出售其在西班牙的數據中心開發項目，包括 Cordoba, Palma del Río, Vianos 和 Cáceres 等地的土地，Pure Data Centers 將支付 1.5 百萬歐元的購買價格。",
-        "impact": "這項出售可能會對 EdgeMode 公司的業務產生一定的影響，同時也可能會對 Pure Data Centers 的數據中心建設業務產生正面的影響。",
-        "rating": "noise",
-        "insight": "EdgeMode 公司的數據中心開發項目出售可能會對其業務產生一定的影響。",
-        "source_label": "datacenterdynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/edgemode-looks-to-sell-multiple-data-center-development-sites-in-spain/",
-        "chain": [
-          {
-            "label": "EdgeMode 資產價值↓",
-            "type": "down"
-          },
-          {
-            "label": "Pure Data Centers 收購能力↑",
-            "type": "up"
-          },
-          {
-            "label": "西班牙數據中心市場競爭↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "微軟警告企業保護智慧財產",
-        "layer": "AI",
-        "body": "微軟CEO Satya Nadella 警告企業在使用 AI 時要保護自己的智慧財產，避免將商業秘密洩露給 AI 廠商。Nadella 指出，企業在購買 AI 產品時，實際上是付了兩次價格：一次是金錢，另一次是商業知識。",
-        "impact": "這個警告可能會增加企業對 AI 廠商的警惕性，導致企業更加謹慎地選擇 AI 供應商，同時也可能促使 AI 廠商更加注重保護客戶的智慧財產。",
-        "rating": "core",
-        "insight": "企業在使用 AI 時需要更加注意保護自己的智慧財產",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/07/13/microsoft-chief-turns-hostile-on-frontier-ai-labs-warns-companies-to-guard-their-ip/5270628",
-        "chain": [
-          {
-            "label": "微軟智慧財產保護意識↑",
-            "type": "up"
-          },
-          {
-            "label": "企業商業秘密安全性↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 廠商商業知識獲取↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Google 在懷俄明州建造 2.7GW 數據中心",
-        "layer": "CSP/CapEx",
-        "body": "Google 宣布在懷俄明州建造 2.7GW 數據中心，該項目被命名為 Project Tembo。",
-        "impact": "這個數據中心可能會增加 Google 在美國的數據中心容量，同時也可能促進當地的經濟發展。",
-        "rating": "noise",
-        "insight": "Google 的投資表明其對數據中心產業的重視",
-        "source_label": "Datacenter Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/google-is-customer-behind-27gw-data-center-campus-near-cheyenne-wyoming/",
-        "chain": [
-          {
-            "label": "Google 數據中心建設能力↑",
-            "type": "up"
-          },
-          {
-            "label": "Project Tembo 項目規模↑",
-            "type": "up"
-          },
-          {
-            "label": "懷俄明州數據中心市場發展↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關新聞",
-        "layer": "",
-        "body": "今日該分類無足夠具體新聞素材可供分析。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "近記憶體去量化",
-        "full": "Near-Memory Dequantization",
-        "def": "一種晶片架構技術，實現高吞吐量和大批量 LLM 推理加速",
-        "why": "提高晶片的推理加速能力",
-        "category": "晶片製造"
-      },
-      {
-        "term": "Xeon",
-        "full": "Intel Xeon",
-        "def": "英特爾的一種處理器",
-        "why": "英特爾在愛爾蘭投資 57 億美元，擴大其 Leixlip 校區的半導體生產能力，包括生產 Intel Xeon 處理器。",
-        "category": "hardware"
-      },
-      {
-        "term": "Xeon處理器",
-        "full": "Intel Xeon",
-        "def": "英特爾公司出品的伺服器和工作站用的CPU",
-        "why": "Xeon處理器是英特爾公司的高端CPU產品，廣泛用於伺服器和工作站市場",
-        "category": "晶片製造"
       }
     ],
     "weekly_summary": null
