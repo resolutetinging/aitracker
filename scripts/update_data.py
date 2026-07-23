@@ -1170,25 +1170,28 @@ def drop_stale_placeholders(data):
             data[section] = kept
 
 
+# 確定性幻覺 pattern：兩類最常見的 Llama 幻覺結構（模組層級，供 downgrade_hallucination_patterns
+# 與 validate_body 的二次佐證共用，避免同一份判準複製兩份導致日後改一邊漏一邊）
+HALLUCINATION_PATTERNS = [
+    # 跨公司採用幻覺：「已被 Google/Microsoft/… 採用」
+    (r'已(?:被|經).{0,25}(?:Google|Microsoft|Amazon|Meta|Apple|Nvidia|AMD).{0,25}採用',
+     '跨公司採用幻覺'),
+    (r'(?:Google|Microsoft|Amazon|Meta|Apple|Nvidia|AMD).{0,25}已(?:採用|導入|使用)',
+     '跨公司採用幻覺'),
+    # 產能模板幻覺：「每月X個單位/晶圓的產能」套用在非晶圓廠公司上
+    (r'每月\d[\d,]*\s*(?:個|萬|千)\s*(?:單位|晶圓)',
+     '非晶圓廠產能模板幻覺'),
+]
+
 def downgrade_hallucination_patterns(data):
     """pattern-based 幻覺攔截：兩類最常見的 Llama 幻覺結構"""
-    PATTERNS = [
-        # 跨公司採用幻覺：「已被 Google/Microsoft/… 採用」
-        (r'已(?:被|經).{0,25}(?:Google|Microsoft|Amazon|Meta|Apple|Nvidia|AMD).{0,25}採用',
-         '跨公司採用幻覺'),
-        (r'(?:Google|Microsoft|Amazon|Meta|Apple|Nvidia|AMD).{0,25}已(?:採用|導入|使用)',
-         '跨公司採用幻覺'),
-        # 產能模板幻覺：「每月X個單位/晶圓的產能」套用在非晶圓廠公司上
-        (r'每月\d[\d,]*\s*(?:個|萬|千)\s*(?:單位|晶圓)',
-         '非晶圓廠產能模板幻覺'),
-    ]
     count = 0
     for sec in ['hw', 'corp', 'app']:
         for item in data.get(sec, []):
             if item.get('rating') not in ('core', 'opp'):
                 continue
             body = item.get('body', '')
-            for pat, reason in PATTERNS:
+            for pat, reason in HALLUCINATION_PATTERNS:
                 if re.search(pat, body):
                     item['rating'] = 'noise'
                     count += 1
@@ -1230,6 +1233,19 @@ def downgrade_hallucinated(data):
             if HALLUC_PAT.search(body) and not ANCHOR_PAT.search(body):
                 print(f"  ↓ 幻覺預測降評→noise：{item.get('title','')[:60]}")
                 item['rating'] = 'noise'
+
+def _has_deterministic_hallucination_signal(body: str) -> bool:
+    """重跑 HALLUCINATION_PATTERNS／HALLUC_PAT+ANCHOR_PAT 這兩組確定性 pattern，
+    供 validate_body 二次佐證用——LLM 單方面說「摘要裡找不到對應」不足以砍掉有來源
+    URL 的核心新聞（摘要被截斷是常態，找不到≠捏造），需同時命中確定性紅旗才降評。"""
+    if not body:
+        return False
+    for pat, _reason in HALLUCINATION_PATTERNS:
+        if re.search(pat, body):
+            return True
+    if HALLUC_PAT.search(body) and not ANCHOR_PAT.search(body):
+        return True
+    return False
 
 
 def validate_body(data, news_by_cat):
@@ -1291,9 +1307,15 @@ def validate_body(data, news_by_cat):
                 for sec in ['hw', 'corp', 'app']:
                     for item in data.get(sec, []):
                         if item['title'] == fix['title']:
-                            item['rating'] = 'opp'
-                            count += 1
-                            print(f"  ↓ body聲明疑似捏造→opp：{item['title'][:50]}")
+                            # LLM 單方面說捏造不夠：摘要被截斷是常態，找不到逐字對應
+                            # ≠捏造。需同時命中確定性幻覺 pattern 才真的降評，否則只記錄
+                            # LLM 的懷疑、保留原評級（07-23 core 0 則事件的修法）。
+                            if _has_deterministic_hallucination_signal(item.get('body', '')):
+                                item['rating'] = 'opp'
+                                count += 1
+                                print(f"  ↓ body聲明疑似捏造→opp：{item['title'][:50]}")
+                            else:
+                                print(f"  ⚠ LLM懷疑捏造但無確定性佐證，保留原評級：{item['title'][:50]}")
         if count == 0:
             print("  → body 聲明驗證通過")
         else:
@@ -1355,9 +1377,10 @@ def _body_is_low_quality(body: str) -> bool:
             s1, s2 = set(sentences[i]), set(sentences[j])
             if len(s1 & s2) / max(len(s1), len(s2), 1) > 0.65:
                 return True
-            # CJK bigram 重疊率 > 45%（相同主題換句話說）
+            # CJK bigram 重疊率 > 55%（相同主題換句話說；07-23 前為 0.45，
+            # 「同主題不同事實」如營收句vs利潤句常在 45-50% 踩線誤殺，故放寬）
             b1, b2 = _cjk_bigrams(sentences[i]), _cjk_bigrams(sentences[j])
-            if b1 and b2 and len(b1 & b2) / max(len(b1), len(b2), 1) > 0.45:
+            if b1 and b2 and len(b1 & b2) / max(len(b1), len(b2), 1) > 0.55:
                 return True
     # 2+ 句共用相同前 5 個中文字 → 主語重複
     prefixes = [_cjk_prefix(s) for s in sentences if len(_cjk_prefix(s)) >= 5]
