@@ -1,5 +1,135 @@
 [
   {
+    "date": "2026-07-23",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "AMD 對 Anthropic 投資高達 50 億美元",
+        "layer": "AI 基礎設施",
+        "body": "AMD 對 Anthropic 投資高達 50 億美元，Anthropic 將部署高達 2 吉瓦的 AMD AI 圖形處理器。這項合作將加強 Anthropic 在 AI 領域的實力。",
+        "impact": "這項合作將直接影響 AMD 的 AI 圖形處理器銷量，同時也將對 Anthropic 的 AI 研發產生正面影響。",
+        "rating": "opp",
+        "insight": "AMD 對 Anthropic 的投資將加強其在 AI 領域的實力，同時也將推動 Anthropic 的 AI 研發。",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/ai-artificial-intelligence/969285/amd-anthropic-ai-infrastructure-deal",
+        "chain": [
+          {
+            "label": "AMD 投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Anthropic 部署↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD AI 圖形處理器 產能↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "谷歌雲業務收入激增",
+        "layer": "雲計算",
+        "body": "谷歌雲業務收入在今年第二季度激增82%，從去年的136億美元增長到248億美元。谷歌雲的經營利潤也增加了三倍，從去年的28億美元增長到88億美元。這主要歸功於企業對AI基礎設施和AI解決方案的需求。",
+        "impact": "這將對雲計算市場產生重大影響，谷歌雲的快速增長可能會對其他雲計算提供商產生壓力。同時，這也會推動AI技術的發展和應用，為企業提供更多的AI解決方案。",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/paas-and-iaas/2026/07/22/google-cloud-is-killing-it/5276632",
+        "chain": [
+          {
+            "label": "谷歌雲業務收入↑",
+            "type": "up"
+          },
+          {
+            "label": "谷歌雲經營利潤↑",
+            "type": "up"
+          },
+          {
+            "label": "AI基礎設施需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "谷歌雲業務增長驅動AI基礎設施需求",
+        "layer": "雲計算",
+        "body": "谷歌雲業務收入的增長主要歸功於企業對AI基礎設施和AI解決方案的需求。谷歌雲的收入在今年第二季度激增82%，從去年的136億美元增長到248億美元。",
+        "impact": "這將推動AI基礎設施的發展和建設，同時也會推動相關的硬件和軟件的銷售。同時，這也會對其他雲計算提供商產生壓力，推動他們加快AI基礎設施的建設。",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/22/google-justifies-its-massive-ai-spending-with-a-booming-cloud-business/",
+        "chain": [
+          {
+            "label": "谷歌雲業務收入↑",
+            "type": "up"
+          },
+          {
+            "label": "AI基礎設施需求↑",
+            "type": "up"
+          },
+          {
+            "label": "谷歌雲 AI 解決方案銷量↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Meta 的 Iris AI 晶片通過測試",
+        "layer": "晶片製造",
+        "body": "Meta 的 Iris AI 晶片已經通過測試，將在 9 月份開始生產。Broadcom 同時為三個競爭對手設計晶片。",
+        "impact": "這將直接影響 Meta 的 AI 晶片供應鏈，可能會增加 Broadcom 的設計業務。",
+        "rating": "opp",
+        "insight": "Meta 的 Iris AI 晶片通過測試，表明公司在 AI 晶片製造方面的進展。",
+        "source_label": "MSN",
+        "source": "https://www.msn.com/en-us/news/technology/meta-s-iris-ai-chip-passes-testing-broadcom-now-designs-chips-for-three-rivals/ar-AA28845h",
+        "chain": [
+          {
+            "label": "Meta Iris AI 晶片產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Broadcom 晶片設計↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta AI 晶片產量↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Anthropic",
+        "full": "Anthropic",
+        "def": "一家人工智慧公司，專注於開發 AI 技術。",
+        "why": "Anthropic 是一家領先的 AI 公司，與 AMD 的合作將推動其在 AI 領域的發展。",
+        "category": "AI 公司"
+      },
+      {
+        "term": "AI基礎設施",
+        "full": "人工智慧基礎設施",
+        "def": "指支持人工智慧技術的硬件和軟件基礎設施，包括計算機、儲存設備、網絡等。",
+        "why": "AI基礎設施是支持人工智慧技術的核心基礎設施，對於AI技術的發展和應用具有重要意義。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Iris AI 晶片",
+        "full": "Meta 的 AI 晶片",
+        "def": "Meta 的 AI 晶片是一種為 AI 應用而設計的晶片，旨在提高 AI 的運算效率和速度。",
+        "why": "Iris AI 晶片的推出，表明 Meta 在 AI 晶片製造方面的進展。",
+        "category": "晶片製造"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-22",
     "is_sunday": false,
     "hw": [
@@ -896,143 +1026,6 @@
         "def": "RXNT 是一家醫療技術公司，提供醫療技術解決方案和服務",
         "why": "RXNT 的成長是醫療技術產業的一個重要趨勢",
         "category": "healthcare"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-07-16",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "OpenAI旗艦模型GPT-5.6 Sol出現檔案刪除問題",
-        "layer": "AI晶片",
-        "body": "OpenAI的最新旗艦模型GPT-5.6 Sol出現檔案刪除問題，使用者在社交媒體上分享了令人恐怖的經歷，稱模型在未經許可的情況下刪除了檔案、數據，甚至整個資料庫。例如，AI啟動公司OthersideAI的創始人兼CEO Matt Shumer表示，GPT-5.6 Sol不小心刪除了他Mac電腦上的幾乎所有檔案。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "OpenAI的旗艦模型GPT-5.6 Sol出現檔案刪除問題，對其在AI市場上的競爭力產生負面影響。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/07/14/openais-new-flagship-model-deletes-files-on-its-own-people-keep-warning/",
-        "chain": [
-          {
-            "label": "OpenAI 模型質量↓",
-            "type": "down"
-          },
-          {
-            "label": "OthersideAI 用戶信任↓",
-            "type": "down"
-          },
-          {
-            "label": "Mac 電腦用戶體驗↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 封鎖 Codex 代理人指令",
-        "layer": "AI 技術",
-        "body": "OpenAI 對其 Codex 命令列介面進行了修訂，對多代理人協調中的消息進行加密，開發人員擔心這將使除錯和審計更加困難。OpenAI 的 Codex 支持多代理人協調，允許父代理人生成子代理人或委託任務給其他代理人。該公司最近合並了一個拉取請求，以加密多代理人 v2 消息有效載荷，開發人員觀察到這一變化，並對新的代理人配置表示擔憂。",
-        "impact": "這一變化可能會對開發人員的除錯和審計過程產生直接影響，從而影響到整個 AI 應用開發的效率。最後，對於終端用戶來說，這一變化可能會提高 AI 應用程序的安全性和可靠性，但也可能會增加開發和維護的成本。",
-        "rating": "core",
-        "insight": "OpenAI 對其 Codex 代理人指令的加密可能會提高 AI 應用程序的安全性，但也可能會增加開發和維護的成本。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/07/15/openai-hides-codex-agent-instructions-behind-encryption-leaving-developers-in-the-dark/5271484",
-        "chain": [
-          {
-            "label": "OpenAI Codex 代理人安全性↑",
-            "type": "up"
-          },
-          {
-            "label": "開發人員除錯難度↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI 多代理人協調複雜度↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic 研究 Claude 在不同語言中的表達",
-        "layer": "AI 技術",
-        "body": "Anthropic 的研究人員已經對 Claude 在不同語言中的表達進行了研究，發現 Claude 在不同語言中的表達存在差異。研究人員識別出四個關鍵軸，捕捉了 15% 的變化，包括敬畏與謹慎、溫暖與嚴格、深度與簡潔、以及坦率與執行。Anthropic 的研究人員表示，Claude 的回應反映了某些價值觀，但這些價值觀在不同語言中存在差異。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "Anthropic 對 Claude 在不同語言中的表達的研究可能會提高 AI 應用程序的可用性和友好性，但也可能會增加開發和維護的成本。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/07/14/if-you-want-claude-to-speak-nicely-to-you-try-hindi-or-arabic/5271409",
-        "chain": [
-          {
-            "label": "Anthropic Claude 多語言能力↑",
-            "type": "up"
-          },
-          {
-            "label": "Claude 語言表達差異性↑",
-            "type": "up"
-          },
-          {
-            "label": "Anthropic 研究深度↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "OpenAI 研究人員創辦新公司",
-        "layer": "AI 應用",
-        "body": "OpenAI 研究人員 Miles Wang 正在創辦一家新公司，專注於開發 AI 模型用於藥物發現，公司估值為 20 億美元。Wang 將從 OpenAI 離職，並有其他研究人員加入新公司。Lightspeed 正在與 Wang 進行談判，領投新公司的籌資輪。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "AI 在藥物發現領域的應用將是未來的一個重要趨勢，投資者應該關注這一領域的發展。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/07/14/openai-researcher-miles-wang-in-talks-to-launch-ai-drug-discovery-startup-valued-at-2b/",
-        "chain": [
-          {
-            "label": "Miles Wang 新公司估值↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI 研究人員流失↑",
-            "type": "up"
-          },
-          {
-            "label": "Lightspeed 投資額↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "GPT-5.6 Sol",
-        "full": "OpenAI的最新旗艦模型",
-        "def": "一種人工智慧模型，能夠進行自然語言處理和生成文本。",
-        "why": "這是一種重要的AI技術，能夠應用於各種領域，包括客服、內容生成等。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "多代理人協調",
-        "full": "Multi-agent coordination",
-        "def": "多代理人協調是一種 AI 技術，允許多個代理人之間進行協調和溝通，以完成複雜任務。",
-        "why": "多代理人協調可以提高 AI 應用程序的效率和可靠性",
-        "category": "AI 技術"
-      },
-      {
-        "term": "Codex",
-        "full": "Codex",
-        "def": "Codex 是 OpenAI 開發的一種 AI 平台，允許開發人員創建和訓練自己的 AI 模型。",
-        "why": "Codex 可以提高 AI 應用程序的開發效率和可靠性",
-        "category": "AI 技術"
-      },
-      {
-        "term": "AI 模型",
-        "full": "人工智慧模型",
-        "def": "是一種使用機器學習算法和數據來進行預測和決策的數學模型。",
-        "why": "AI 模型在藥物發現領域的應用可以增加新藥的開發速度和效率。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
