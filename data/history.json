@@ -1,5 +1,150 @@
 [
   {
+    "date": "2026-07-24",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Nvidia 將 GPU 送往月球",
+        "layer": "晶片供應鏈",
+        "body": "Nvidia 的 Jetson晶片將被用於 Lunar Outpost 的月球車的 lidar 系統，預計將成為第一個在月球表面的 GPU。Lunar Outpost 的 CEO Justin Cyrus 表示，公司正在比較 Nvidia Jetson 和自己的飛行計算平台，以評估其優缺點。",
+        "impact": "這將直接影響 Nvidia 的晶片供應鏈，可能增加其在太空應用的需求。同時，也可能對下游的太空應用客戶來說，這也可能帶來更高效的計算能力和更低的功耗。",
+        "rating": "core",
+        "insight": "Nvidia 的這一舉動可能會加速太空應用中的晶片技術發展，帶來新的商機和投資機會。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/23/nvidia-is-sending-gpus-to-the-moon/",
+        "chain": [
+          {
+            "label": "Nvidia Jetson 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Lunar Outpost 月球車交期↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Moonshot AI 獲得 Nvidia 晶片，儘管中國出口禁令",
+        "layer": "晶片供應鏈",
+        "body": "Moonshot AI 獲得 Nvidia 的 GB300 晶片，儘管中國對其實施了出口禁令。這一事件凸顯了晶片供應鏈的複雜性和全球政治的影響。",
+        "impact": "這將直接影響 Nvidia 的晶片供應鏈，可能增加其在中國市場的需求。",
+        "rating": "core",
+        "insight": "晶片供應鏈的複雜性和全球政治的影響可能會帶來新的商機和投資機會，但也需要公司們加速適應和應對。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/07/23/moonshot-kimi-nvidia-ai-chips-export-ban.html",
+        "chain": [
+          {
+            "label": "Moonshot AI 獲得Nvidia晶片數量↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 對中國出口禁令影響↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 工作空間代理人漏洞",
+        "layer": "安全",
+        "body": "研究人員發現OpenAI的工作空間代理人存在漏洞，可能允許攻擊者在用戶的ChatGPT工作空間中創建惡意代理人。該漏洞被稱為「AgentForger」，需要用戶屬於啟用代理人的工作空間，並具有創建代理人的許可。",
+        "impact": "這個漏洞可能會影響OpenAI的用戶安全，尤其是那些已經連接了其他服務和應用的用戶。這也可能會對OpenAI的聲譽和用戶信任度產生負面影響。",
+        "rating": "core",
+        "insight": "OpenAI需要盡快修復這個漏洞，以維護用戶的安全和信任。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/security/2026/07/23/one-chatgpt-link-could-smuggle-a-rogue-ai-agent-into-your-company/5275116",
+        "chain": [
+          {
+            "label": "OpenAI 工作空間代理人安全性↓",
+            "type": "down"
+          },
+          {
+            "label": "ChatGPT 使用者數量↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "中國K3模型涉嫌盜用Anthropic模型",
+        "layer": "AI模型",
+        "body": "美國白宮官員指控中國的Moonshot AI公司創建的K3模型涉嫌盜用Anthropic的Fable模型。K3模型是一個2.8萬億參數的開源模型，其質量引發了業界的關注。",
+        "impact": "這個事件可能會影響Anthropic和Moonshot AI之間的關係，也可能會對AI模型的開發和使用產生影響。這也可能會引發關於AI模型知識產權保護的討論。",
+        "rating": "core",
+        "insight": "AI模型的開發和使用需要更加注重知識產權保護和合法性。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/07/23/senior-white-house-official-claims-chinas-k3-model-stolen-from-anthropic/5276804",
+        "chain": [
+          {
+            "label": "Anthropic 模型質量↑",
+            "type": "up"
+          },
+          {
+            "label": "Moonshot AI K3模型質量↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "ServiceNow 投資 4000 萬美元於印度銀行軟體專家",
+        "layer": "金融服務",
+        "body": "ServiceNow 投資 4000 萬美元於印度銀行軟體專家 BusinessNext，估值 7 億美元，占股約 5%。BusinessNext 將獲得 ServiceNow 的全球銷售網絡，兩公司將擴大在金融服務 AI 的合作。BusinessNext 的客戶包括印度儲備銀行、印度國立銀行和 HDFC Bank 等。",
+        "impact": "這項投資將對金融服務 AI 的發展產生正面影響，ServiceNow 和 BusinessNext 的合作將推動金融服務 AI 的應用。這也將對印度的銀行業和金融服務產業產生影響，可能會增加對 AI 解決方案的需求。",
+        "rating": "core",
+        "insight": "ServiceNow 的投資表明了對金融服務 AI 的重視，BusinessNext 的技術和客戶基礎將幫助 ServiceNow 擴大在金融服務領域的影響力。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/22/servicenow-bets-40m-on-indian-firm-businessnext-at-700m-valuation-to-deepen-banking-ai-push/",
+        "chain": [
+          {
+            "label": "ServiceNow 投資額↑",
+            "type": "up"
+          },
+          {
+            "label": "BusinessNext 估值↑",
+            "type": "up"
+          },
+          {
+            "label": "ServiceNow 與 BusinessNext 合作深度↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Jetson",
+        "full": "Nvidia Jetson",
+        "def": "Nvidia 的嵌入式計算平台，適用於邊緣計算和人工智慧應用。",
+        "why": "Jetson 平台的應用範圍廣泛，包括機器人、無人機和智能家居等領域。",
+        "category": "硬體"
+      },
+      {
+        "term": "GB300",
+        "full": "Nvidia GB300",
+        "def": "Nvidia 的一種晶片，適用於人工智慧和高性能計算應用。",
+        "why": "GB300 晶片的性能和功耗比非常高，適合於高端伺服器和超級計算機等應用。",
+        "category": "晶片"
+      },
+      {
+        "term": "AgentForger",
+        "full": "OpenAI工作空間代理人漏洞",
+        "def": "一種允許攻擊者在用戶的ChatGPT工作空間中創建惡意代理人的漏洞。",
+        "why": "這個漏洞可能會影響OpenAI的用戶安全和信任。",
+        "category": "安全"
+      },
+      {
+        "term": "BusinessNext",
+        "full": "BusinessNext 是一家印度銀行軟體專家公司，提供金融服務 AI 解決方案。",
+        "def": "BusinessNext 是一家印度銀行軟體專家公司，提供金融服務 AI 解決方案，估值 7 億美元。",
+        "why": "BusinessNext 的技術和客戶基礎將幫助 ServiceNow 擴大在金融服務領域的影響力。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-23",
     "is_sunday": false,
     "hw": [
@@ -920,136 +1065,6 @@
         "def": "一個全球性的努力，旨在利用最先進的技術來提高電子製造設施的生產力和可持續發展性。",
         "why": "這一倡議對於晶片製造業的可持續發展具有重要意義，投資者應該關注這一趨勢的發展。",
         "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-07-17",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Nvidia推出新AI模型和擴展日本的物理AI生態系統",
-        "layer": "AI技術",
-        "body": "Nvidia宣佈推出新AI模型Cosmos 3 Edge，並擴展日本的物理AI生態系統。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "Nvidia的新AI模型和擴展的物理AI生態系統可能會對AI技術的發展產生正面的影響，投資者應該關注其發展。",
-        "source_label": "cnbc",
-        "source": "https://www.cnbc.com/2026/07/16/nvidia-reveals-new-ai-model-and-expands-japans-physical-ai-ecosystem.html",
-        "chain": [
-          {
-            "label": "Nvidia AI 模型↑",
-            "type": "up"
-          },
-          {
-            "label": "Cosmos 3 Edge 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "日本物理AI生態系統↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google AI Mode新增應用連結功能",
-        "layer": "AI應用",
-        "body": "Google宣布其AI Mode現在允許用戶連結和與選定的應用程式進行交互，包括Instacart、Canva和YouTube。這項更新使Google的AI Mode擴展到回答問題和完成任務的範圍。",
-        "impact": "這項更新可能會增加Google AI Mode的使用率，同時，這也可能會促進相關應用程式的發展和使用。",
-        "rating": "core",
-        "insight": "Google的AI Mode更新可能會加強其在AI平台市場的競爭力。",
-        "source_label": "techcrunch",
-        "source": "https://techcrunch.com/2026/07/16/googles-ai-mode-now-lets-you-link-and-interact-with-select-apps/",
-        "chain": [
-          {
-            "label": "Google AI Mode 連結功能↑",
-            "type": "up"
-          },
-          {
-            "label": "Instacart 互動↑",
-            "type": "up"
-          },
-          {
-            "label": "Canva 互動↑",
-            "type": "up"
-          },
-          {
-            "label": "YouTube 互動↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "RXNT 獲得 50 多項產業獎項",
-        "layer": "healthcare",
-        "body": "RXNT 獲得 50 多項產業獎項，包括 Black Book Market Research、G2、Forbes Advisor、TrustRadius 等的認可，凸顯其在醫療技術領域的創新和滿意度。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "RXNT 的成長是醫療技術產業的一個重要趨勢，投資者應該關注其未來的發展。",
-        "source_label": "markets.businessinsider.com",
-        "source": "https://markets.businessinsider.com/news/stocks/driving-healthcare-innovation-rxnt-continues-growth-in-2026-with-50-industry-awards-1036332323",
-        "chain": [
-          {
-            "label": "RXNT 獲獎↑",
-            "type": "up"
-          },
-          {
-            "label": "Black Book Market Research 認可↑",
-            "type": "up"
-          },
-          {
-            "label": "G2 認可↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "BayCare 與 United Healthcare 簽署新合約",
-        "layer": "healthcare",
-        "body": "BayCare Health System 與 United Healthcare 簽署新合約，確保患者可以繼續在 BayCare 的醫院和設施接受治療，同時也會繼續提供高品質的醫療服務。",
-        "impact": "BayCare 與 United Healthcare 的新合約將對醫療服務產業產生正面的影響，可能會增加患者的選擇和滿意度，同時也會對其他醫療服務公司產生一定的競爭壓力。",
-        "rating": "noise",
-        "insight": "BayCare 與 United Healthcare 的新合約是醫療服務產業的一個重要發展，投資者應該關注其未來的合作。",
-        "source_label": "baynews9.com",
-        "source": "https://baynews9.com/fl/tampa/news/2026/05/29/baycare-reaches-new-multi-year-agreement-with-united-healthcare",
-        "chain": [
-          {
-            "label": "BayCare 合約↑",
-            "type": "up"
-          },
-          {
-            "label": "United Healthcare 合約↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "晶片",
-        "full": "晶片製造",
-        "def": "晶片的設計、製造和測試。",
-        "why": "晶片是電子產品的核心元件，晶片製造是電子產業的重要環節。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "AI Mode",
-        "full": "Artificial Intelligence Mode",
-        "def": "Google的一種對話式搜索體驗，允許用戶與AI交互。",
-        "why": "這項技術可以提高用戶的搜索體驗和效率。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "RXNT",
-        "full": "RXNT 是一家醫療技術公司",
-        "def": "RXNT 是一家醫療技術公司，提供醫療技術解決方案和服務",
-        "why": "RXNT 的成長是醫療技術產業的一個重要趨勢",
-        "category": "healthcare"
       }
     ],
     "weekly_summary": null
