@@ -30,21 +30,21 @@
     ],
     "corp": [
       {
-        "title": "谷歌雲業務收入激增",
+        "title": "Google Cloud業務收入激增",
         "layer": "雲計算",
-        "body": "谷歌雲業務收入在今年第二季度激增82%，從去年的136億美元增長到248億美元。谷歌雲的經營利潤也增加了三倍，從去年的28億美元增長到88億美元。這主要歸功於企業對AI基礎設施和AI解決方案的需求。",
-        "impact": "這將對雲計算市場產生重大影響，谷歌雲的快速增長可能會對其他雲計算提供商產生壓力。同時，這也會推動AI技術的發展和應用，為企業提供更多的AI解決方案。",
+        "body": "Google Cloud業務收入在今年第二季度激增82%，從去年的136億美元增長到248億美元。Google Cloud的經營利潤也增加了三倍，從去年的28億美元增長到88億美元。這主要歸功於企業對AI基礎設施和AI解決方案的需求。",
+        "impact": "這將對雲計算市場產生重大影響，Google Cloud的快速增長可能會對其他雲計算提供商產生壓力。同時，這也會推動AI技術的發展和應用，為企業提供更多的AI解決方案。",
         "rating": "opp",
         "insight": "",
         "source_label": "The Register",
         "source": "https://www.theregister.com/paas-and-iaas/2026/07/22/google-cloud-is-killing-it/5276632",
         "chain": [
           {
-            "label": "谷歌雲業務收入↑",
+            "label": "Google Cloud業務收入↑",
             "type": "up"
           },
           {
-            "label": "谷歌雲經營利潤↑",
+            "label": "Google Cloud經營利潤↑",
             "type": "up"
           },
           {
@@ -54,17 +54,17 @@
         ]
       },
       {
-        "title": "谷歌雲業務增長驅動AI基礎設施需求",
+        "title": "Google Cloud業務增長驅動AI基礎設施需求",
         "layer": "雲計算",
-        "body": "谷歌雲業務收入的增長主要歸功於企業對AI基礎設施和AI解決方案的需求。谷歌雲的收入在今年第二季度激增82%，從去年的136億美元增長到248億美元。",
-        "impact": "這將推動AI基礎設施的發展和建設，同時也會推動相關的硬件和軟件的銷售。同時，這也會對其他雲計算提供商產生壓力，推動他們加快AI基礎設施的建設。",
+        "body": "Google Cloud業務收入的增長主要歸功於企業對AI基礎設施和AI解決方案的需求。Google Cloud的收入在今年第二季度激增82%，從去年的136億美元增長到248億美元。",
+        "impact": "這將推動AI基礎設施的發展和建設，同時也會推動相關的硬體和軟體的銷售。同時，這也會對其他雲計算提供商產生壓力，推動他們加快AI基礎設施的建設。",
         "rating": "opp",
         "insight": "",
         "source_label": "TechCrunch",
         "source": "https://techcrunch.com/2026/07/22/google-justifies-its-massive-ai-spending-with-a-booming-cloud-business/",
         "chain": [
           {
-            "label": "谷歌雲業務收入↑",
+            "label": "Google Cloud業務收入↑",
             "type": "up"
           },
           {
@@ -72,7 +72,7 @@
             "type": "up"
           },
           {
-            "label": "谷歌雲 AI 解決方案銷量↑",
+            "label": "Google Cloud AI 解決方案銷量↑",
             "type": "up"
           }
         ]
@@ -115,7 +115,7 @@
       {
         "term": "AI基礎設施",
         "full": "人工智慧基礎設施",
-        "def": "指支持人工智慧技術的硬件和軟件基礎設施，包括計算機、儲存設備、網絡等。",
+        "def": "指支持人工智慧技術的硬體和軟體基礎設施，包括電腦、儲存設備、網路等。",
         "why": "AI基礎設施是支持人工智慧技術的核心基礎設施，對於AI技術的發展和應用具有重要意義。",
         "category": "ai_technique"
       },
@@ -309,7 +309,7 @@
         "title": "ASML 提升 2026 年預期，歐洲 AI 晶片製造商目標 1 萬億美元市值",
         "layer": "晶片製造",
         "body": "ASML 將 2026 年預期提升至 430-450 億歐元，計劃在 2027 年前擴增 30% 的生產能力，進一步鞏固其在歐洲 AI 晶片製造領域的領導地位。ASML 的市值已經超過 7000 億美元，距離 1 萬億美元市值的目標越來越近。該公司的強勁表現主要歸功於對 AI 基礎設施的需求不斷增長。",
-        "impact": "ASML 的生產能力擴增將直接影響其下游客戶的供應鏈，例如蘋果和高通等公司可能會受益於更穩定的晶片供應。同時，ASML 的市值上升也可能會吸引更多投資者進入晶片製造業，從而促進整個行業的發展。然而，中國的出口限制仍然是 ASML 的一大商業風險，可能會對其供應鏈產生不利影響。",
+        "impact": "ASML 的生產能力擴增將直接影響其下游客戶的供應鏈，例如Apple和Qualcomm等公司可能會受益於更穩定的晶片供應。同時，ASML 的市值上升也可能會吸引更多投資者進入晶片製造業，從而促進整個行業的發展。然而，中國的出口限制仍然是 ASML 的一大商業風險，可能會對其供應鏈產生不利影響。",
         "rating": "noise",
         "insight": "ASML 的強勁表現和市值上升，表明 AI 晶片製造業的發展前景廣闊，投資者可以關注這一領域的發展動向。",
         "source_label": "ibtimes.sg",
@@ -478,7 +478,7 @@
       {
         "title": "醫療人工智慧應用進展",
         "layer": "醫療",
-        "body": "根據MarketScale的報導，臨床人工智慧正處於一個十字路口，技能衰退、機器人手術和可穿戴數據前沿等領域都在快速發展。例如，人工智慧可以幫助醫生更好地診斷和治療疾病，同時也可以提高醫療的效率和質量。",
+        "body": "根據MarketScale的報導，臨床人工智慧正處於一個十字路口，技能衰退、機器人手術和可穿戴數據前沿等領域都在快速發展。例如，人工智慧可以幫助醫生更好地診斷和治療疾病，同時也可以提高醫療的效率和品質。",
         "impact": null,
         "rating": "noise",
         "insight": "醫療人工智慧的發展為醫療行業帶來了新的機遇和挑戰，企業需要不斷創新和適應以保持競爭力。",
@@ -498,8 +498,8 @@
       {
         "title": "印度醫療旅遊業迎來全球健康保健繁榮",
         "layer": "醫療",
-        "body": "根據Travel And Tour World的報導，印度醫療旅遊業預計在2026年迎來全球健康保健的繁榮，人工智慧、數字簽證和二線城市的崛起等因素將重新定義患者的旅行體驗。例如，印度的醫療旅遊業可以提供高質量的醫療服務，同時也可以為患者提供便捷的旅行體驗。",
-        "impact": "這項發展可能會對印度的醫療供應鏈產生直接影響，例如提高醫療服務和設施的需求，同時也可能會對相關企業的營收和競爭力產生影響。例如，醫療服務提供商可能需要增加服務的質量和數量以滿足日益增長的需求，同時也需要不斷研發新技術以保持競爭力。",
+        "body": "根據Travel And Tour World的報導，印度醫療旅遊業預計在2026年迎來全球健康保健的繁榮，人工智慧、數字簽證和二線城市的崛起等因素將重新定義患者的旅行體驗。例如，印度的醫療旅遊業可以提供高品質的醫療服務，同時也可以為患者提供便捷的旅行體驗。",
+        "impact": "這項發展可能會對印度的醫療供應鏈產生直接影響，例如提高醫療服務和設施的需求，同時也可能會對相關企業的營收和競爭力產生影響。例如，醫療服務提供商可能需要增加服務的品質和數量以滿足日益增長的需求，同時也需要不斷研發新技術以保持競爭力。",
         "rating": "noise",
         "insight": "印度醫療旅遊業的發展為醫療行業帶來了新的機遇和挑戰，企業需要不斷創新和適應以保持競爭力。",
         "source_label": "Travel And Tour World",
@@ -535,7 +535,7 @@
         "term": "機器人手術",
         "full": "機器人輔助手術",
         "def": "一種使用機器人技術進行的手術，旨在提高手術的精確度和安全性。",
-        "why": "機器人手術可以幫助醫生更好地診斷和治療疾病，同時也可以提高醫療的效率和質量。",
+        "why": "機器人手術可以幫助醫生更好地診斷和治療疾病，同時也可以提高醫療的效率和品質。",
         "category": "醫療"
       }
     ],
@@ -779,10 +779,10 @@
       {
         "title": "Google Vids 新增自製數字化身功能",
         "layer": "AI應用",
-        "body": "Google Vids 現在允許用戶創建自製數字化身，基於用戶上傳的自拍照和語音錄音。Google 還將其多模態 AI 模型 Gemini Omni 引入 Vids，讓用戶可以使用文字提示和參考圖片創建 AI 視頻。",
+        "body": "Google Vids 現在允許用戶創建自製數字化身，基於用戶上傳的自拍照和語音錄音。Google 還將其多模態 AI 模型 Gemini Omni 引入 Vids，讓用戶可以使用文字提示和參考圖片創建 AI 影片。",
         "impact": "這個更新可能會增加 Google Vids 的使用率和用戶參與度，同時，Gemini Omni 的引入也可能會提高 AI 模型的開發和應用效率，推動 AI 技術的進一步發展。",
         "rating": "core",
-        "insight": "Google Vids 的更新可能會加速 AI 視頻創作的發展和應用，企業應該關注這個趨勢的發展。",
+        "insight": "Google Vids 的更新可能會加速 AI 影片創作的發展和應用，企業應該關注這個趨勢的發展。",
         "source_label": "TechCrunch",
         "source": "https://techcrunch.com/2026/07/16/google-vids-now-lets-you-star-in-your-own-ai-videos/",
         "chain": [
@@ -795,7 +795,7 @@
             "type": "up"
           },
           {
-            "label": "Google AI 視頻創建能力↑",
+            "label": "Google AI 影片創建能力↑",
             "type": "up"
           }
         ]
@@ -853,7 +853,7 @@
       {
         "title": "晶片製造業加速可持續發展",
         "layer": "製造業",
-        "body": "SEMI Smart Manufacturing Initiative是一個全球性的努力，旨在利用最先進的技術來提高電子製造設施的生產力。該倡議於2023年成立了「加速可持續發展的智能製造」任務小組，旨在基準行業最佳實踐，以便製造設施能夠更快地實現其可持續發展目標。",
+        "body": "SEMI Smart Manufacturing Initiative是一個全球性的努力，旨在利用最先進的技術來提高電子製造設施的生產力。該倡議於2023年成立了「加速可持續發展的智慧製造」任務小組，旨在基準行業最佳實踐，以便製造設施能夠更快地實現其可持續發展目標。",
         "impact": null,
         "rating": "noise",
         "insight": "晶片製造業的可持續發展對於電子產品製造業的未來發展具有重要意義，投資者應該關注這一趨勢的發展。",
@@ -861,7 +861,7 @@
         "source": "https://semiengineering.com/accelerating-sustainability-with-smart-manufacturing/",
         "chain": [
           {
-            "label": "SEMI 智能製造能力↑",
+            "label": "SEMI 智慧製造能力↑",
             "type": "up"
           },
           {
@@ -886,13 +886,13 @@
       {
         "term": "Gemini Omni",
         "full": "多模態 AI 模型",
-        "def": "一個可以使用文字提示和參考圖片創建 AI 視頻的模型",
+        "def": "一個可以使用文字提示和參考圖片創建 AI 影片的模型",
         "why": "這個模型可以提高 AI 模型的開發和應用效率，推動 AI 技術的進一步發展",
         "category": "AI技術"
       },
       {
         "term": "SEMI Smart Manufacturing Initiative",
-        "full": "半導體智能製造倡議",
+        "full": "半導體智慧製造倡議",
         "def": "一個全球性的努力，旨在利用最先進的技術來提高電子製造設施的生產力和可持續發展性。",
         "why": "這一倡議對於晶片製造業的可持續發展具有重要意義，投資者應該關注這一趨勢的發展。",
         "category": "semiconductor"
@@ -933,8 +933,8 @@
       {
         "title": "Google AI Mode新增應用連結功能",
         "layer": "AI應用",
-        "body": "Google宣布其AI Mode現在允許用戶連結和與選定的應用程序進行交互，包括Instacart、Canva和YouTube。這項更新使Google的AI Mode擴展到回答問題和完成任務的范圍。",
-        "impact": "這項更新可能會增加Google AI Mode的使用率，同時，這也可能會促進相關應用程序的發展和使用。",
+        "body": "Google宣布其AI Mode現在允許用戶連結和與選定的應用程式進行交互，包括Instacart、Canva和YouTube。這項更新使Google的AI Mode擴展到回答問題和完成任務的範圍。",
+        "impact": "這項更新可能會增加Google AI Mode的使用率，同時，這也可能會促進相關應用程式的發展和使用。",
         "rating": "core",
         "insight": "Google的AI Mode更新可能會加強其在AI平台市場的競爭力。",
         "source_label": "techcrunch",
@@ -987,7 +987,7 @@
       {
         "title": "BayCare 與 United Healthcare 簽署新合約",
         "layer": "healthcare",
-        "body": "BayCare Health System 與 United Healthcare 簽署新合約，確保患者可以繼續在 BayCare 的醫院和設施接受治療，同時也會繼續提供高質量的醫療服務。",
+        "body": "BayCare Health System 與 United Healthcare 簽署新合約，確保患者可以繼續在 BayCare 的醫院和設施接受治療，同時也會繼續提供高品質的醫療服務。",
         "impact": "BayCare 與 United Healthcare 的新合約將對醫療服務產業產生正面的影響，可能會增加患者的選擇和滿意度，同時也會對其他醫療服務公司產生一定的競爭壓力。",
         "rating": "noise",
         "insight": "BayCare 與 United Healthcare 的新合約是醫療服務產業的一個重要發展，投資者應該關注其未來的合作。",

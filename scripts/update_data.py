@@ -746,7 +746,7 @@ def validate_impact(data):
         resp = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[
-                {"role": "system", "content": "只輸出純JSON陣列，不加任何說明或markdown。全程繁體中文：合併（非合並）、晶片（非芯片）、記憶體（非内存）。"},
+                {"role": "system", "content": "只輸出純JSON陣列，不加任何說明或markdown。全程繁體中文：合併（非合並）、晶片（非芯片）、記憶體（非内存）、硬體（非硬件）、軟體（非軟件）、影片（非視頻）、程式（非程序，例如「應用程式」不可寫「應用程序」）、智慧（非智能，例如「人工智慧」不可寫「人工智能」）、範圍（非范圍）、電腦（非計算機）、網路（非網絡）、品質（非質量，例如「服務品質」不可寫「服務質量」）。公司名稱一律用原文品牌名（Google、Apple、Meta、Microsoft、Amazon、Qualcomm等），不可翻譯成中文（禁止「谷歌」「蘋果」「高通」等譯名）；台灣上市公司既有中文全名（如台積電、日月光）不受影響。"},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.1, max_tokens=1200,
@@ -778,7 +778,8 @@ def call_groq(prompt):
     from groq import APIStatusError as GroqAPIStatusError
     client = Groq(api_key=os.environ['GROQ_API_KEY'])
     sys_msg = (
-        "你是AI供應鏈分析師。只輸出純JSON，不加說明。全程繁體中文：晶片（非芯片）、記憶體（非内存）、當機（非宕機）、合併（非合並，例如「合併了一個拉取請求」不可寫成「合並」）。"
+        "你是AI供應鏈分析師。只輸出純JSON，不加說明。全程繁體中文：晶片（非芯片）、記憶體（非内存）、當機（非宕機）、合併（非合並，例如「合併了一個拉取請求」不可寫成「合並」）、硬體（非硬件）、軟體（非軟件）、影片（非視頻）、程式（非程序，例如「應用程式」不可寫「應用程序」）、智慧（非智能，例如「人工智慧」不可寫「人工智能」）、範圍（非范圍）、電腦（非計算機）、網路（非網絡）、品質（非質量，例如「服務品質」不可寫「服務質量」）。"
+        "【公司名稱】一律用原文品牌名（Google、Apple、Meta、Microsoft、Amazon、Qualcomm等），不可翻譯成中文（禁止「谷歌」「蘋果」「高通」等譯名）；台灣上市公司既有中文全名（如台積電、日月光）不受影響。"
         "【noise 鐵律】某分區若已有任何 core 或 opp 條目，該分區嚴禁再加 noise 條目。"
         "noise 條目的 title 必須是『本日無相關[分區名稱]新聞』，不得使用任何具體或看似具體的新聞標題（例如「AI 應用進步」「產業趨勢觀察」皆為違規）。"
         "【body 句數】body 是 1 到 3 句，句數視你實際掌握的具體事實數量而定，不得為了湊句數而重述前一句或加入未經證實的推論；"
