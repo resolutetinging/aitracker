@@ -7,20 +7,20 @@
         "App/AI": 22,
         "gnews-chip": 21,
         "gnews-dc": 24,
-        "gnews-app": 23
+        "gnews-app": 22
       },
       "digest_filtered": 1,
-      "after_dedup": 197,
+      "after_dedup": 195,
       "buckets": {
-        "hw": 39,
-        "corp": 150,
-        "app": 38
+        "hw": 37,
+        "corp": 149,
+        "app": 37
       },
       "enriched": 12,
       "llm_items": {
         "hw": 1,
         "corp": 3,
-        "app": 2
+        "app": 1
       },
       "llm_failed": {
         "hw": false,
@@ -29,18 +29,18 @@
       },
       "final": {
         "hw": {
-          "core": 0,
-          "opp": 1,
+          "core": 1,
+          "opp": 0,
           "noise": 0
         },
         "corp": {
-          "core": 0,
+          "core": 1,
           "opp": 2,
           "noise": 0
         },
         "app": {
-          "core": 0,
-          "opp": 1,
+          "core": 1,
+          "opp": 0,
           "noise": 0
         }
       },
@@ -53,17 +53,17 @@
         },
         "corp": {
           "core": 2,
-          "opp": 0,
-          "noise": 1
+          "opp": 1,
+          "noise": 0
         },
         "app": {
-          "core": 2,
+          "core": 1,
           "opp": 0,
           "noise": 0
         }
       },
       "date": "2026-07-23",
-      "generated_at": "2026-07-23T08:47:50.798361+08:00"
+      "generated_at": "2026-07-23T09:25:50.459156+08:00"
     },
     {
       "feeds": {

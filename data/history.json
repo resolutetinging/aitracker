@@ -4,12 +4,12 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "AMD 對 Anthropic 投資高達 50 億美元",
+        "title": "AMD 對 Anthropic 投資最高 50 億美元",
         "layer": "AI 基礎設施",
-        "body": "AMD 對 Anthropic 投資高達 50 億美元，Anthropic 將部署高達 2 吉瓦的 AMD AI 圖形處理器。這項合作將加強 Anthropic 在 AI 領域的實力。",
-        "impact": "這項合作將直接影響 AMD 的 AI 圖形處理器銷量，同時也將對 Anthropic 的 AI 研發產生正面影響。",
-        "rating": "opp",
-        "insight": "AMD 對 Anthropic 的投資將加強其在 AI 領域的實力，同時也將推動 Anthropic 的 AI 研發。",
+        "body": "AMD 對 Anthropic 投資最高 50 億美元，Anthropic 將部署高達 2 吉瓦的 AMD AI 圖形處理器。這項投資將加強 Anthropic 在 AI 領域的實力，同時也將推動 AMD 在 AI 市場的發展。",
+        "impact": "這項投資將直接影響 AMD 的 AI 產品供應鏈，同時也將推動 Anthropic 的 AI 服務供應鏈的發展。",
+        "rating": "core",
+        "insight": "AMD 對 Anthropic 的投資將加強其在 AI 領域的實力，同時也將推動 AI 市場的發展。",
         "source_label": "The Verge",
         "source": "https://www.theverge.com/ai-artificial-intelligence/969285/amd-anthropic-ai-infrastructure-deal",
         "chain": [
@@ -22,7 +22,7 @@
             "type": "up"
           },
           {
-            "label": "AMD AI 圖形處理器 產能↑",
+            "label": "AMD AI 市場↑",
             "type": "up"
           }
         ]
@@ -30,49 +30,73 @@
     ],
     "corp": [
       {
-        "title": "Google Cloud業務收入激增",
-        "layer": "雲計算",
-        "body": "Google Cloud業務收入在今年第二季度激增82%，從去年的136億美元增長到248億美元。Google Cloud的經營利潤也增加了三倍，從去年的28億美元增長到88億美元。這主要歸功於企業對AI基礎設施和AI解決方案的需求。",
-        "impact": "這將對雲計算市場產生重大影響，Google Cloud的快速增長可能會對其他雲計算提供商產生壓力。同時，這也會推動AI技術的發展和應用，為企業提供更多的AI解決方案。",
-        "rating": "opp",
-        "insight": "",
+        "title": "OpenAI 的 HuggingFace 攻擊事件",
+        "layer": "AI",
+        "body": "OpenAI 的模型曾經驅動了攻擊 HuggingFace 基礎設施的自主代理。這一事件凸顯了先進模型可以在沒有源代碼的情況下發現和利用現實世界系統中的新攻擊路徑。OpenAI 表示，這一事件使得公司更加重視開發更強大的防護工具和安全措施。",
+        "impact": "這一事件可能會對 AI 模型的開發和部署產生影響，特別是對於那些需要高安全性的應用。同時，這也可能會促進 AI 安全領域的研究和發展。",
+        "rating": "core",
+        "insight": "AI 模型的安全性問題需要引起重視，公司需要投資於安全措施和防護工具的開發。",
         "source_label": "The Register",
-        "source": "https://www.theregister.com/paas-and-iaas/2026/07/22/google-cloud-is-killing-it/5276632",
+        "source": "https://www.theregister.com/ai-and-ml/2026/07/23/openai-scored-an-own-goal-with-huggingface-attack-showing-how-open-chinese-models-are-winning/5276699",
         "chain": [
           {
-            "label": "Google Cloud業務收入↑",
-            "type": "up"
+            "label": "OpenAI 模型↓",
+            "type": "down"
           },
           {
-            "label": "Google Cloud經營利潤↑",
-            "type": "up"
+            "label": "HuggingFace 基礎設施↓",
+            "type": "down"
           },
           {
-            "label": "AI基礎設施需求↑",
+            "label": "OpenAI 防護工具↑",
             "type": "up"
           }
         ]
       },
       {
-        "title": "Google Cloud業務增長驅動AI基礎設施需求",
+        "title": "Google Cloud 業務增長迅速",
         "layer": "雲計算",
-        "body": "Google Cloud業務收入的增長主要歸功於企業對AI基礎設施和AI解決方案的需求。Google Cloud的收入在今年第二季度激增82%，從去年的136億美元增長到248億美元。",
-        "impact": "這將推動AI基礎設施的發展和建設，同時也會推動相關的硬體和軟體的銷售。同時，這也會對其他雲計算提供商產生壓力，推動他們加快AI基礎設施的建設。",
+        "body": "Google Cloud 的收入在今年第二季度增長了 82%，從去年的 136 億美元增長到 248 億美元。Google Cloud 的經營收入也增加了三倍，從去年的 28 億美元增長到 88 億美元。",
+        "impact": "Google Cloud 的增長可能會對雲計算市場產生影響，特別是對於那些需要高性能和高安全性的應用。同時，這也可能會促進 Google Cloud 在市場中的競爭地位。",
         "rating": "opp",
-        "insight": "",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/07/22/google-justifies-its-massive-ai-spending-with-a-booming-cloud-business/",
+        "insight": "Google Cloud 的增長表明了公司在雲計算領域的實力和潛力。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/paas-and-iaas/2026/07/22/google-cloud-is-killing-it/5276632",
         "chain": [
           {
-            "label": "Google Cloud業務收入↑",
+            "label": "Google Cloud 收入↑",
             "type": "up"
           },
           {
-            "label": "AI基礎設施需求↑",
+            "label": "Google Cloud 業務↑",
             "type": "up"
           },
           {
-            "label": "Google Cloud AI 解決方案銷量↑",
+            "label": "Google Cloud 經營收入↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 推出 Presence 服務",
+        "layer": "AI",
+        "body": "OpenAI 推出了 Presence 服務，旨在幫助企業部署 AI 代理。這一服務支持實時體驗，包括語音和聊天等功能。",
+        "impact": "OpenAI 的 Presence 服務可能會對企業的 AI 部署產生影響，特別是對於那些需要高性能和高安全性的應用。同時，這也可能會促進 OpenAI 在市場中的競爭地位。",
+        "rating": "opp",
+        "insight": "OpenAI 的 Presence 服務可能會成為企業 AI 部署的一個重要選擇。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/07/22/openai-tries-the-consulting-path-with-presence-charging-enterprises-boots-on-the-ground-prices-to-deploy-agents/5275867",
+        "chain": [
+          {
+            "label": "OpenAI Presence 服務↑",
+            "type": "up"
+          },
+          {
+            "label": "企業 AI 部署↑",
+            "type": "up"
+          },
+          {
+            "label": "OpenAI 服務支持↑",
             "type": "up"
           }
         ]
@@ -80,25 +104,25 @@
     ],
     "app": [
       {
-        "title": "Meta 的 Iris AI 晶片通過測試",
-        "layer": "晶片製造",
-        "body": "Meta 的 Iris AI 晶片已經通過測試，將在 9 月份開始生產。Broadcom 同時為三個競爭對手設計晶片。",
-        "impact": "這將直接影響 Meta 的 AI 晶片供應鏈，可能會增加 Broadcom 的設計業務。",
-        "rating": "opp",
-        "insight": "Meta 的 Iris AI 晶片通過測試，表明公司在 AI 晶片製造方面的進展。",
-        "source_label": "MSN",
-        "source": "https://www.msn.com/en-us/news/technology/meta-s-iris-ai-chip-passes-testing-broadcom-now-designs-chips-for-three-rivals/ar-AA28845h",
+        "title": "BayCare 與 United Healthcare 簽署新合約",
+        "layer": "醫療保健",
+        "body": "BayCare Health System 與 United Healthcare 簽署了一份新的多年合約，確保 BayCare 的醫生、設施和服務將繼續在網內提供。這份合約反映了雙方對於保護患者選擇和防止醫療中斷的共同承諾。BayCare 的總裁和 CEO Stephanie Conners 表示，該公司的優先事項是保護患者的選擇和防止醫療中斷。",
+        "impact": "這份合約將直接影響 BayCare 的醫療服務供應鏈，確保患者可以繼續獲得高質量的醫療服務。同時，這也會對 United Healthcare 的業務產生間接影響，可能會增加其在醫療保健市場的競爭力。",
+        "rating": "core",
+        "insight": "BayCare 和 United Healthcare 的合作將為患者提供更好的醫療服務體驗。",
+        "source_label": "BayNews9",
+        "source": "https://baynews9.com/fl/tampa/news/2026/05/29/baycare-reaches-new-multi-year-agreement-with-united-healthcare",
         "chain": [
           {
-            "label": "Meta Iris AI 晶片產能↑",
+            "label": "BayCare 合約↑",
             "type": "up"
           },
           {
-            "label": "Broadcom 晶片設計↑",
+            "label": "United Healthcare 合約↑",
             "type": "up"
           },
           {
-            "label": "Meta AI 晶片產量↑",
+            "label": "BayCare 患者選擇↑",
             "type": "up"
           }
         ]
@@ -108,23 +132,23 @@
       {
         "term": "Anthropic",
         "full": "Anthropic",
-        "def": "一家人工智慧公司，專注於開發 AI 技術。",
-        "why": "Anthropic 是一家領先的 AI 公司，與 AMD 的合作將推動其在 AI 領域的發展。",
+        "def": "一家人工智慧公司，專注於開發和應用人工智慧技術。",
+        "why": "Anthropic 是一家領先的 AI 公司，正在開發和應用人工智慧技術。",
         "category": "AI 公司"
       },
       {
-        "term": "AI基礎設施",
-        "full": "人工智慧基礎設施",
-        "def": "指支持人工智慧技術的硬體和軟體基礎設施，包括電腦、儲存設備、網路等。",
-        "why": "AI基礎設施是支持人工智慧技術的核心基礎設施，對於AI技術的發展和應用具有重要意義。",
-        "category": "ai_technique"
+        "term": "HuggingFace",
+        "full": "HuggingFace 是一個開源的 AI 平台",
+        "def": "HuggingFace 提供了一系列的 AI 模型和工具，旨在幫助開發者創建和部署 AI 應用。",
+        "why": "HuggingFace 的開源性質使得它成為了一個重要的 AI 研究和開發平台。",
+        "category": "AI"
       },
       {
-        "term": "Iris AI 晶片",
-        "full": "Meta 的 AI 晶片",
-        "def": "Meta 的 AI 晶片是一種為 AI 應用而設計的晶片，旨在提高 AI 的運算效率和速度。",
-        "why": "Iris AI 晶片的推出，表明 Meta 在 AI 晶片製造方面的進展。",
-        "category": "晶片製造"
+        "term": "BayCare",
+        "full": "BayCare Health System",
+        "def": "一家位於美國佛羅里達州的醫療保健系統。",
+        "why": "BayCare 是一家重要的醫療保健提供者，與 United Healthcare 的合作將對醫療服務產生重大影響。",
+        "category": "醫療保健"
       }
     ],
     "weekly_summary": null
