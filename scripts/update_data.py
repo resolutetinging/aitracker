@@ -948,7 +948,7 @@ def downgrade_forbidden_phrases(data):
                     # insight（注意方向）欄位同樣只刪命中句，不整卡降級
                     new_insight, insight_dropped = _drop_matching_sentences(insight, FORBIDDEN_PATS)
                     if insight_dropped:
-                        item['insight'] = new_insight or None
+                        item['insight'] = new_insight
                         print(f"  ✂ insight 禁句刪句：{item.get('title','')[:50]}")
                     # 刪句後 body 若變得過短/低品質，才走降級（→opp，非 noise）
                     if (body_dropped or insight_dropped) and _body_is_low_quality(item.get('body', '')):
@@ -1071,12 +1071,12 @@ def downgrade_cross_item_duplicates(data):
     for i in range(len(all_items)):
         if all_items[i].get('rating') == 'noise':
             continue
-        text_i = all_items[i].get('body', '') + all_items[i].get('insight', '')
+        text_i = all_items[i].get('body', '') + (all_items[i].get('insight') or '')
         bi_i = _cjk_bigrams(text_i)
         for j in range(i + 1, len(all_items)):
             if all_items[j].get('rating') == 'noise':
                 continue
-            text_j = all_items[j].get('body', '') + all_items[j].get('insight', '')
+            text_j = all_items[j].get('body', '') + (all_items[j].get('insight') or '')
             bi_j = _cjk_bigrams(text_j)
             if bi_i and bi_j and len(bi_i) > 5 and len(bi_j) > 5:
                 overlap = len(bi_i & bi_j) / min(len(bi_i), len(bi_j))
