@@ -1,5 +1,173 @@
 [
   {
+    "date": "2026-07-25",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "美國業界籲請不要對中國開源AI模型施加寬泛限制",
+        "layer": "AI 基礎設施",
+        "body": "美國業界籲請不要對中國開源AI模型施加寬泛限制，多家AI公司包括Hugging Face、Meta、Microsoft、Mistral和Nvidia聯署公開信，敦促政策制定者不要對開源AI模型施加「過早的寬泛限制」。這封信是在華盛頓就美國如何應對中國AI實驗室涉嫌竊取美國對應實驗室知識產權的指控進行辯論之際發出的。",
+        "impact": "這個事件可能會對美國和中國的AI產業供應鏈產生影響，特別是對於開源AI模型的開發和應用。美國業界的籲請可能會降低對中國AI模型的限制，從而增加兩國之間的AI技術合作和交流。然而，這也可能會增加美國AI產業的競爭壓力，迫使美國公司加快AI技術的研發和應用。",
+        "rating": "core",
+        "insight": "",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/24/as-us-weighs-response-to-chinese-ai-industry-urges-against-broad-open-weight-restrictions/",
+        "chain": [
+          {
+            "label": "Hugging Face 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta 市占↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft 研發↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "AMD 推出Helios AI機架級系統",
+        "layer": "AI 基礎設施",
+        "body": "AMD推出Helios AI機架級系統，該系統設計用於滿足世界上最大的AI實驗室的計算需求。AMD董事長兼CEO Lisa Su在公司的Advancing AI會議上推出了這個新系統，該系統將於今年晚些時候發貨。Su還推出了公司最新的晶片，該晶片設計用於滿足AI產業的計算需求。",
+        "impact": "這個事件可能會對AI產業的供應鏈產生影響，特別是對於AI機架級系統的開發和應用。AMD的Helios AI機架級系統可能會增加公司在AI產業的競爭力，從而增加對其他AI公司的競爭壓力。",
+        "rating": "core",
+        "insight": "",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/23/amd-takes-on-nvidia-with-its-helios-ai-rack-scale-system/",
+        "chain": [
+          {
+            "label": "AMD Helios 系統銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD 晶片供應↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 實驗室計算需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI更新ChatGPT桌面應用程序，新增語音模式",
+        "layer": "AI",
+        "body": "OpenAI更新了其ChatGPT桌面應用程序，新增了語音模式，允許用戶通過語音控制AI代理和執行任務。這個新功能使用OpenAI的新語音模型ChatGPT-Live，該模型於本月初推出。OpenAI表示，ChatGPT語音模式可以與ChatGPT Work和Codex合作，並可以使用計算機技能查找網站和應用程序。",
+        "impact": "這可能會對AI產業的語音技術發展產生影響，尤其是對於語音助手和語音控制的應用。同時，這也可能會影響到用戶對AI的使用方式，尤其是對於那些偏好語音控制的用戶。",
+        "rating": "core",
+        "insight": "OpenAI的語音模式更新可能會對AI產業的語音技術發展產生影響，尤其是對於語音助手和語音控制的應用。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/24/openais-new-voice-mode-makes-it-to-the-chatgpt-desktop-app/",
+        "chain": [
+          {
+            "label": "OpenAI ChatGPT 使用率↑",
+            "type": "up"
+          },
+          {
+            "label": "OpenAI 語音模式銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "ChatGPT Work 合作↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "AI守衛rail限制了攻擊性網絡安全研究人員的工作",
+        "layer": "AI",
+        "body": "AI巨頭公司為了限制惡意黑客的使用，設置了特殊的篩選程序和嚴格的限制。然而，這些限制現在正在限制合法的網絡防御者和攻擊性網絡安全研究人員的工作。在六月，美國政府對Anthropic的AI模型Mythos和Fable實施了出口控制限制，部分原因是因為有人報告可以繞過這些模型的限制。",
+        "impact": "這可能會對網絡安全產業的發展產生影響，尤其是對於攻擊性網絡安全研究人員的工作。同時，這也可能會影響到AI產業的發展，尤其是對於AI模型的安全性和可靠性。",
+        "rating": "core",
+        "insight": "AI守衛rail限制可能會對網絡安全產業的發展產生影響，尤其是對於攻擊性網絡安全研究人員的工作。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/23/how-ai-guardrails-are-impeding-the-work-of-offensive-cybersecurity-researchers/",
+        "chain": [
+          {
+            "label": "Anthropic Mythos 限制↑",
+            "type": "up"
+          },
+          {
+            "label": "Fable 安全性↑",
+            "type": "up"
+          },
+          {
+            "label": "美國政府出口控制↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Allegion提升全年預測",
+        "layer": "enterprise",
+        "body": "Allegion plc提升了2026年全年的收入和每股收益預測，主要受美國市場的高單位增長所推動。公司還報告了機構和商業領域的規格活動增加，預示著未來12至18個月內非住宅項目的正面動力。",
+        "impact": "這個發展可能會對Allegion的供應鏈產生直接影響，例如增加對其產品的需求。同時，也可能會對相關的技術供應商產生間接影響，例如增加對其電子存取技術的需求。",
+        "rating": "core",
+        "insight": "Allegion的預測提升為其帶來了新的機遇和挑戰。",
+        "source_label": "The Motley Fool",
+        "source": "https://www.fool.com/earnings/call-transcripts/2026/07/23/allegion-alle-q2-2026-earnings-call-transcript/",
+        "chain": [
+          {
+            "label": "Allegion 收入預測↑",
+            "type": "up"
+          },
+          {
+            "label": "Allegion 每股收益預測↑",
+            "type": "up"
+          },
+          {
+            "label": "美國市場單位增長↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "開源AI模型",
+        "full": "開源人工智慧模型",
+        "def": "開源人工智慧模型是指可以自由使用、修改和分發的AI模型。",
+        "why": "開源AI模型可以增加AI技術的開發和應用，從而推動AI產業的發展。",
+        "category": "AI 技術"
+      },
+      {
+        "term": "AI機架級系統",
+        "full": "人工智慧機架級系統",
+        "def": "AI機架級系統是指設計用於滿足大規模AI計算需求的機架級系統。",
+        "why": "AI機架級系統可以增加AI產業的計算能力，從而推動AI技術的發展。",
+        "category": "AI 基礎設施"
+      },
+      {
+        "term": "語音模式",
+        "full": "語音控制模式",
+        "def": "語音模式是指使用語音控制AI代理和執行任務的模式，通常使用語音模型和語音識別技術。",
+        "why": "語音模式可以提高用戶對AI的使用方式，尤其是對於那些偏好語音控制的用戶。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI守衛rail",
+        "full": "AI守衛rail限制",
+        "def": "AI守衛rail限制是指AI巨頭公司設置的特殊篩選程序和嚴格的限制，目的是限制惡意黑客的使用。",
+        "why": "AI守衛rail限制可以提高AI模型的安全性和可靠性，同時也可以限制合法的網絡防御者和攻擊性網絡安全研究人員的工作。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "邊緣計算",
+        "full": "Edge Computing",
+        "def": "一種將計算和儲存資源放在靠近用戶的位置，以減少延遲和提高效率的技術。",
+        "why": "邊緣計算在醫療領域的應用可以提高數據處理的效率和安全性。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-24",
     "is_sunday": false,
     "hw": [
@@ -914,159 +1082,5 @@
       }
     ],
     "weekly_summary": "HW：台積電擴大2026年資本支出預算，將在美國投資1000億美元以發展AI晶片。\nTYLsemi推出新商業模式，旨在解決AI基礎設施客戶的晶片供應問題。\n印度加強電子供應鏈建設，包括增加對OSAT和PCB的投資。\nCORP：OpenAI旗艦模型GPT-5.6 Sol出現檔案刪除問題，Agility Robotics在Tesla的後院設立新工廠，Apple對OpenAI提出訴訟\n下週看點：OpenAI的IPO計劃是否會受到影響，Agility Robotics的新工廠設立是否會對Tesla的Optimus機器人計劃產生影響\nAPP：LTM與Anthropic合作擴大企業採用Claude AI，進一步推動AI在各行各業的應用。\n用戶洞察：CHAI支持公共衛生機構採用基於AI的解決方案，進一步提高公共衛生機構的效率和生產力。"
-  },
-  {
-    "date": "2026-07-18",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "台積電擴大亞利桑那校區投資",
-        "layer": "晶片製造",
-        "body": "台積電宣布將在亞利桑那州投資額外100億美元，將其在美國的投資總額提高到2650億美元。這項投資將新增領先的半導體製造廠和先進封裝設施，進一步鞏固亞利桑那校區作為全球AI晶片製造中心的地位。台積電董事長暨CEO魏哲家表示，公司的客戶和客戶的客戶，主要是雲端服務提供商，繼續提供強烈的需求信號和積極的前景預測。",
-        "impact": "這項投資將直接影響台積電的生產能力和供應鏈，進一步鞏固其在全球半導體市場的地位。同時，這也將對下游客戶，例如雲端服務提供商，產生正面的影響，為其提供更多的AI晶片供應。",
-        "rating": "noise",
-        "insight": "台積電的投資將進一步鞏固其在全球半導體市場的地位，為下游客戶提供更多的AI晶片供應。",
-        "source_label": "Datacenter Knowledge",
-        "source": "https://www.datacenterknowledge.com/infrastructure/tsmc-expands-arizona-campus-to-265b-as-ai-demand-surges",
-        "chain": [
-          {
-            "label": "TSMC 亞利桑那投資↑",
-            "type": "up"
-          },
-          {
-            "label": "TSMC 半導體製造能力↑",
-            "type": "up"
-          },
-          {
-            "label": "雲端服務提供商需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google Vids 新增自製數字化身功能",
-        "layer": "AI應用",
-        "body": "Google Vids 現在允許用戶創建自製數字化身，基於用戶上傳的自拍照和語音錄音。Google 還將其多模態 AI 模型 Gemini Omni 引入 Vids，讓用戶可以使用文字提示和參考圖片創建 AI 影片。",
-        "impact": "這個更新可能會增加 Google Vids 的使用率和用戶參與度，同時，Gemini Omni 的引入也可能會提高 AI 模型的開發和應用效率，推動 AI 技術的進一步發展。",
-        "rating": "core",
-        "insight": "Google Vids 的更新可能會加速 AI 影片創作的發展和應用，企業應該關注這個趨勢的發展。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/07/16/google-vids-now-lets-you-star-in-your-own-ai-videos/",
-        "chain": [
-          {
-            "label": "Google Vids 用戶數↑",
-            "type": "up"
-          },
-          {
-            "label": "Google 多模態 AI 模型應用↑",
-            "type": "up"
-          },
-          {
-            "label": "Google AI 影片創建能力↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI 推出 ChatGPT 籃球",
-        "layer": "AI應用",
-        "body": "OpenAI 推出了一款 ChatGPT 籃球，售價 70 美元。這款籃球是由 100% 橡膠製成，適合戶外使用。",
-        "impact": "這個產品可能會增加 OpenAI 的品牌知名度和用戶參與度",
-        "rating": "opp",
-        "insight": "OpenAI 的 ChatGPT 籃球可能會成為一個新的 AI 應用場景，企業應該關注這個趨勢的發展。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/07/16/why-is-openai-selling-a-chatgpt-basketball/",
-        "chain": [
-          {
-            "label": "OpenAI ChatGPT 銷售↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI 籃球銷售收入↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI 產品多樣性↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Moonshot 的 Kimi 3 模型預計會與 Anthropic 的 Opus 4.8 相媲美",
-        "layer": "AI技術",
-        "body": "Moonshot 的 Kimi 3 模型預計會與 Anthropic 的 Opus 4.8 相媲美，具有 2-3 萬億參數。這個模型可能會在開源 AI 市場中佔據重要地位。",
-        "impact": "這個模型的推出可能會增加 Moonshot 的競爭力和市場份額，同時也可能會推動 AI 技術的進一步發展。",
-        "rating": "noise",
-        "insight": "Moonshot 的 Kimi 3 模型可能會成為一個新的 AI 技術領域，企業應該關注這個趨勢的發展。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/07/16/moonshots-upcoming-kimi-3-is-expected-to-close-the-gap-with-anthropics-opus-4-8/",
-        "chain": [
-          {
-            "label": "Moonshot Kimi 3 模型性能↑",
-            "type": "up"
-          },
-          {
-            "label": "Anthropic Opus 4.8 競爭力↓",
-            "type": "down"
-          },
-          {
-            "label": "開源 AI 市場競爭↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "晶片製造業加速可持續發展",
-        "layer": "製造業",
-        "body": "SEMI Smart Manufacturing Initiative是一個全球性的努力，旨在利用最先進的技術來提高電子製造設施的生產力。該倡議於2023年成立了「加速可持續發展的智慧製造」任務小組，旨在基準行業最佳實踐，以便製造設施能夠更快地實現其可持續發展目標。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "晶片製造業的可持續發展對於電子產品製造業的未來發展具有重要意義，投資者應該關注這一趨勢的發展。",
-        "source_label": "SEMI Smart Manufacturing Initiative",
-        "source": "https://semiengineering.com/accelerating-sustainability-with-smart-manufacturing/",
-        "chain": [
-          {
-            "label": "SEMI 智慧製造能力↑",
-            "type": "up"
-          },
-          {
-            "label": "電子製造設施生產力↑",
-            "type": "up"
-          },
-          {
-            "label": "晶片製造業可持續發展↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Address Translation Services (ATS)",
-        "full": "位址轉換服務",
-        "def": "一種快取技術，能夠快速地將記憶體位址轉換為實體位址，提高記憶體存取速度。",
-        "why": "ATS技術對於提高記憶體存取速度和降低延遲時間有重要作用。",
-        "category": "晶片製造"
-      },
-      {
-        "term": "Gemini Omni",
-        "full": "多模態 AI 模型",
-        "def": "一個可以使用文字提示和參考圖片創建 AI 影片的模型",
-        "why": "這個模型可以提高 AI 模型的開發和應用效率，推動 AI 技術的進一步發展",
-        "category": "AI技術"
-      },
-      {
-        "term": "SEMI Smart Manufacturing Initiative",
-        "full": "半導體智慧製造倡議",
-        "def": "一個全球性的努力，旨在利用最先進的技術來提高電子製造設施的生產力和可持續發展性。",
-        "why": "這一倡議對於晶片製造業的可持續發展具有重要意義，投資者應該關注這一趨勢的發展。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
   }
 ]
