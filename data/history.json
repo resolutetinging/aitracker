@@ -1,5 +1,128 @@
 [
   {
+    "date": "2026-07-26",
+    "is_sunday": true,
+    "hw": [
+      {
+        "title": "Nvidia鎖定記憶體供應",
+        "layer": "晶片供應鏈",
+        "body": "Nvidia與SK Hynix簽署了500億美元的AI合作協議，鎖定高頻寬記憶體的供應。這項合作將為Nvidia的GPU和系統提供穩定的記憶體供應。Nvidia的CEO表示，這項合作將有助於公司在AI領域的發展。",
+        "impact": "這項合作將直接影響Nvidia的GPU生產，提高其供應鏈的穩定性。同時，SK Hynix的記憶體供應將增加，可能會導致記憶體價格下降。",
+        "rating": "core",
+        "insight": "Nvidia鎖定記憶體供應，穩定其GPU生產，將對公司的AI發展產生積極影響。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/07/25/nvidia-locks-down-memory-from-sk-hynix-as-part-of-500-billion-ai-deal.html",
+        "chain": [
+          {
+            "label": "Nvidia GPU 供應↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix 高頻寬記憶體供應↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia AI 研發↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Intel創紀錄的收入增長",
+        "layer": "晶片供應鏈",
+        "body": "Intel的收入增長了25%，創下了近15年來最快的增長速度。這主要歸功於公司在AI領域的發展。Intel的CEO表示，公司將繼續在AI領域投入，推動公司的發展。",
+        "impact": "Intel的收入增長將直接影響公司的供應鏈，可能會導致公司的晶片供應增加。",
+        "rating": "opp",
+        "insight": "Intel的收入增長，表明公司在AI領域的發展取得了成果，將對公司的未來發展產生積極影響。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/07/23/intel-intc-earnings-report-q2-2026.html",
+        "chain": [
+          {
+            "label": "Intel 收入↑",
+            "type": "up"
+          },
+          {
+            "label": "Intel AI 研發↑",
+            "type": "up"
+          },
+          {
+            "label": "Intel 市占↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 推出 AI 鍵盤，與 ChatGPT 配對",
+        "layer": "AI 硬體",
+        "body": "OpenAI 推出了一款 AI 鍵盤，與 ChatGPT 配對。這款鍵盤由 OpenAI 與 Work Louder 合作開發，旨在為使用者提供更便捷的 ChatGPT 使用體驗。",
+        "impact": "這個事件可能會對 OpenAI 的市場份額產生正面影響，同時也可能會對其他 AI 硬體供應商產生競爭壓力。OpenAI 的 AI 鍵盤可能會吸引更多的使用者，從而增加 OpenAI 的收入。",
+        "rating": "opp",
+        "insight": "OpenAI 的 AI 鍵盤可能會成為使用者的首選，因為其便捷性和與 ChatGPT 的配對。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/24/i-tried-out-openais-new-ai-keypad-which-will-be-fun-for-coders-and-slightly-mystifying-to-everyone-else/",
+        "chain": [
+          {
+            "label": "OpenAI ChatGPT 供應↑",
+            "type": "up"
+          },
+          {
+            "label": "OpenAI AI 鍵盤供應↑",
+            "type": "up"
+          },
+          {
+            "label": "Work Louder 合作↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "PatientCentricCare.AI 推出 PCC Safety OS",
+        "layer": "healthcare",
+        "body": "PatientCentricCare.AI 推出 PCC Safety OS，旨在幫助醫療保健機構在整個照護過程中擴大信任的 AI 的應用。PCC Safety OS 提供了一個安全和可靠的平台，讓醫療保健機構可以開發和部署自己的 AI 解決方案。這個平台將幫助提高醫療保健的質量和安全性。",
+        "impact": "PCC Safety OS 的推出將對醫療保健業的 AI 解決方案市場產生直接影響，促進市場的發展和競爭。同時，也將對醫療保健機構的業務產生間接影響，幫助提高醫療保健的質量和安全性。",
+        "rating": "opp",
+        "insight": "PatientCentricCare.AI 的 PCC Safety OS 推出，表明了醫療保健 AI 的發展潛力和創新機會。",
+        "source_label": "markets.businessinsider.com",
+        "source": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxQcjRoaFRTUmdxcmV5V05hcGlvOFlfeFlrVTk5LUF4VGxZaGI3aXQ1UDVQU29GM1E3Uzl3eGN1UFV1eHo4bXR4UWZuUFkwOXM1YmNhVEVOQlZtUUxyYXZkeFpYaTU4Um95cWMzenhJTV9ud19Ra1l6dmNqSS1obnBrUmlETjhHWXBCSWxXa1NqSURUUG9BdF9xN2pJc1o1VDFhd1NkZ0JQc1lVbHIwdktGOE1aN1ZSeW9SeHZjWk5UYnNTdm5iUXRZbmdzRU9Mem9mbmtNWjJoc2xJa21qRzl5bnJLZGhQcF9CM2M3NmhxMEpkVXA0OXBhLWNCRVplSmM",
+        "chain": [
+          {
+            "label": "PatientCentricCare.AI PCC Safety OS 供應↑",
+            "type": "up"
+          },
+          {
+            "label": "PatientCentricCare.AI AI 解決方案供應↑",
+            "type": "up"
+          },
+          {
+            "label": "醫療保健機構信任↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "EMIB-T",
+        "full": "增強型局部橋接",
+        "def": "EMIB-T是EMIB的升級版，重點升級在TSV垂直供電、HBM4/4e相容性與更高整合密度。",
+        "why": "EMIB-T可以提高AI晶片的性能和效率。",
+        "category": "hardware"
+      },
+      {
+        "term": "Opus 5",
+        "full": "Anthropic 的 Opus 5 模型",
+        "def": "Anthropic 的 Opus 5 模型是一種 AI 模型，與 Fable 5 相比，價格降低了一半。",
+        "why": "Anthropic 的 Opus 5 模型可能會成為企業客戶的首選，因為其價格較低且性能優異。",
+        "category": "AI 模型"
+      }
+    ],
+    "weekly_summary": "Nvidia鎖定記憶體供應，穩定其GPU生產，將對公司的AI發展產生積極影響。\nIntel的收入增長，表明公司在AI領域的發展取得了成果，將對公司的未來發展產生積極影響。\nEtched的融資，表明公司在AI晶片領域的發展取得了成果，將對公司的未來發展產生積極影響。\nCORP：Anthropic 推出 Opus 5 模型，價格較 Fable 5 降低一半\n下週看點：OpenAI 的 AI 鍵盤是否會成為使用者的首選\nAPP：CARPL.ai 獲得 1000 萬美元資金，領投方為 IFC，目的是加速全球醫療保健 AI 的採用。\n用戶洞察：PatientCentricCare.AI 推出 PCC Safety OS，旨在幫助醫療保健機構在整個照護過程中擴大信任的 AI 的應用。"
+  },
+  {
     "date": "2026-07-25",
     "is_sunday": false,
     "hw": [
@@ -877,210 +1000,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-07-19",
-    "is_sunday": true,
-    "hw": [
-      {
-        "title": "台積電擴大2026年資本支出預算",
-        "layer": "晶片製造",
-        "body": "台積電宣布將其2026年資本支出預算提高至640億美元，並將在美國投資1000億美元以發展AI晶片。這項投資將有助於增強台積電在全球半導體產業的競爭力。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "台積電的投資將推動全球半導體產業的發展，並增強其在AI晶片領域的競爭力。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "TSMC 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "TSMC 市占↑",
-            "type": "up"
-          },
-          {
-            "label": "台積電 AI晶片 產能↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "TYLsemi推出新商業模式",
-        "layer": "晶片設計",
-        "body": "TYLsemi是一家專門從事晶片設計的公司，最近推出了一種新商業模式，旨在解決AI基礎設施客戶的晶片供應問題。這種模式將有助於增強TYLsemi在全球晶片設計市場的競爭力。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "TYLsemi的新商業模式將推動全球晶片設計產業的發展，並增強其在AI基礎設施領域的競爭力。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "TYLsemi 市占↑",
-            "type": "up"
-          },
-          {
-            "label": "TYLsemi 客戶數↑",
-            "type": "up"
-          },
-          {
-            "label": "TYLsemi 營收↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "印度加強電子供應鏈建設",
-        "layer": "電子產業",
-        "body": "印度政府近年來一直致力於加強電子供應鏈建設，包括增加對OSAT和PCB的投資。這項努力將有助於增強印度在全球電子產業的競爭力。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "印度的電子供應鏈建設將推動全球電子產業的發展，並增強其在電子產業領域的競爭力。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "印度電子產業 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "OSAT 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "PCB 產能↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "晶片製造",
-        "body": "今日該分類無足夠具體新聞素材可供分析。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "Agility Robotics在Tesla的後院設立新工廠",
-        "layer": "機器人製造",
-        "body": "Agility Robotics在Tesla的後院設立新工廠，該工廠將用於訓練其人形機器人Digit，該機器人已經被Amazon、GXO、Schaeffler和Toyota Motor Manufacturing Canada等公司采用。該工廠的設立可能會對Tesla的Optimus機器人計劃產生影響。",
-        "impact": "這個工廠的設立可能會增加Agility Robotics的產能和市場份額，同時也可能會對Tesla的Optimus機器人計劃產生影響。",
-        "rating": "opp",
-        "insight": "Agility Robotics的新工廠設立可能會增加其在機器人市場的競爭力，同時也可能會對Tesla的Optimus機器人計劃產生挑戰。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/07/17/agility-robotics-plants-its-flag-in-teslas-backyard/",
-        "chain": [
-          {
-            "label": "Agility Robotics 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Tesla Optimus 機器人 產能↓",
-            "type": "down"
-          },
-          {
-            "label": "Digit 機器人 產能↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Apple對OpenAI提出訴訟",
-        "layer": "知識產權訴訟",
-        "body": "Apple對OpenAI提出訴訟，指控OpenAI侵犯其商業秘密，該訴訟可能會對OpenAI的IPO計劃產生影響。該訴訟也可能會對OpenAI的商業模式和合作伙伴關係產生影響。",
-        "impact": "這個訴訟可能會對OpenAI的信譽和商業模式產生負面影響，同時也可能會對其合作伙伴和客戶產生影響。",
-        "rating": "core",
-        "insight": "OpenAI需要盡快解決這個訴訟，以恢復其在市場上的信譽和競爭力。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/video/how-apples-big-lawsuit-could-disrupt-openais-ipo-plans/",
-        "chain": [
-          {
-            "label": "Apple 市占↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI IPO 前景↓",
-            "type": "down"
-          },
-          {
-            "label": "OpenAI 商業模式↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "LTM與Anthropic合作擴大企業採用Claude AI",
-        "layer": "AI應用",
-        "body": "LTM與Anthropic合作，目的是擴大企業採用Claude AI，進一步推動AI在各行各業的應用。根據報導，LTM將與Anthropic合作，提供更好的AI解決方案給企業，進一步提高企業的生產力和效率。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "LTM和Anthropic的合作將推動AI在企業的採用，進一步提高企業的生產力和效率。",
-        "source_label": "BW Businessworld",
-        "source": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNbjJMdGRWdkZCWVFpQ2VjRkFzN0h1c2VhTl9pNDJGN1BjaG5Gdjd0MVp2RU8wY2VQQS1PWlNPVGp0QW82aDhXczhVRUxuU3lmMVMxLXBCeldDbDA3WGc1b2htWHN6c00tQ0JUa25PN3hjQ1VBYWFBU0YwNk16dW1oMWdoM3cyMnUtS0lLUVNGdlFSdHFZSnBNSDdGWGNiVm9aNjJBRzctcVV1QXl1MVB4ZzNtVQ?oc=5",
-        "chain": [
-          {
-            "label": "LTM 營收↑",
-            "type": "up"
-          },
-          {
-            "label": "Anthropic 營收↑",
-            "type": "up"
-          },
-          {
-            "label": "Claude AI 產能↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "CHAI支持公共衛生機構採用基於AI的解決方案",
-        "layer": "AI應用",
-        "body": "CHAI支持公共衛生機構採用基於AI的解決方案，進一步提高公共衛生機構的效率和生產力。根據報導，CHAI將提供基於AI的解決方案給公共衛生機構，進一步提高他們的工作效率和生產力。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "CHAI的支持將推動公共衛生機構採用基於AI的解決方案，進一步提高他們的工作效率和生產力。",
-        "source_label": "Healthcare IT News",
-        "source": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNVUpjLXFoZVRZekU4UzdEcl94bjRqeHpfdmVINGlqVGlhM3h3Rk5fSm8xbXR1MmV2ODMwV0F1bmNPQWtuWjZXS3pPbXdMUHBtVUo5cWFuQU9jZjdHSFNlam5kXzZfZS1NRFJHblFCWFBLWEtndGtGQ2Vad1dCWHhqelBFN2JMRlV4QUozV0p1X1phdFNN?oc=5",
-        "chain": [
-          {
-            "label": "CHAI 營收↑",
-            "type": "up"
-          },
-          {
-            "label": "公共衛生機構 效率↑",
-            "type": "up"
-          },
-          {
-            "label": "基於AI的解決方案 產能↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "EMIB-T",
-        "full": "局部橋接、多晶粒互連的封裝方法",
-        "def": "EMIB-T是一種在EMIB基礎上加上更強的垂直供電與更高密度互連能力的封裝方法，讓它更能對應AI大封裝需求。",
-        "why": "EMIB-T是一種重要的封裝技術，能夠提高晶片的性能和效率。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "基於AI的解決方案",
-        "full": "基於人工智慧的解決方案",
-        "def": "使用人工智慧技術來解決特定問題的方法或方案。",
-        "why": "基於AI的解決方案可以提高工作效率和生產力，進一步推動各行各業的發展。",
-        "category": "AI應用"
-      }
-    ],
-    "weekly_summary": "HW：台積電擴大2026年資本支出預算，將在美國投資1000億美元以發展AI晶片。\nTYLsemi推出新商業模式，旨在解決AI基礎設施客戶的晶片供應問題。\n印度加強電子供應鏈建設，包括增加對OSAT和PCB的投資。\nCORP：OpenAI旗艦模型GPT-5.6 Sol出現檔案刪除問題，Agility Robotics在Tesla的後院設立新工廠，Apple對OpenAI提出訴訟\n下週看點：OpenAI的IPO計劃是否會受到影響，Agility Robotics的新工廠設立是否會對Tesla的Optimus機器人計劃產生影響\nAPP：LTM與Anthropic合作擴大企業採用Claude AI，進一步推動AI在各行各業的應用。\n用戶洞察：CHAI支持公共衛生機構採用基於AI的解決方案，進一步提高公共衛生機構的效率和生產力。"
   }
 ]
