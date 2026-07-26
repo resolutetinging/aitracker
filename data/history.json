@@ -1,5 +1,186 @@
 [
   {
+    "date": "2026-07-27",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "英特爾CEO坦言需要超越ARM和AMD",
+        "layer": "晶片製造",
+        "body": "英特爾CEO Lip-Bu Tan 表示，公司需要超越ARM和AMD，同時也認為邊緣AI和機器人將成為一項與PC業務同等重要的業務。英特爾在第二季度的收入達到161億美元，同比增長25%。",
+        "impact": "英特爾的這一表態將直接影響其供應鏈合作伙伴，可能會增加對其晶片製造能力的需求。同時，英特爾的這一轉型也可能會對其下游客戶產生一定的影響，可能會促使其加速轉型向邊緣AI和機器人應用。",
+        "rating": "core",
+        "insight": "英特爾的轉型對其供應鏈合作伙伴和下游客戶都有重要影響，投資者應該關注其轉型進展。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/07/24/intel-knows-it-needs-to-leapfrog-arm-and-amd-says-ceo-lip-bu-tan/5277968",
+        "chain": [
+          {
+            "label": "英特爾收入↑"
+          },
+          {
+            "label": "ARM市占↓"
+          },
+          {
+            "label": "AMD市占↓"
+          }
+        ]
+      },
+      {
+        "title": "AMD發佈Helios AI系統和Epyc CPU",
+        "layer": "AI基礎設施",
+        "body": "AMD發佈了其最新的AI基礎設施解決方案，包括Helios AI系統和Epyc CPU，目的是挑戰Nvidia在AI基礎設施市場的主導地位。Helios AI系統是一個全面的機架級AI解決方案，包括Epyc CPU、Instinct MI455X GPU和ROCm軟體。",
+        "impact": "AMD的這一發佈將直接影響其供應鏈合作伙伴，可能會增加對其晶片製造能力的需求。同時，AMD的這一發佈也可能會對其下游客戶產生一定的影響，可能會促使其加速轉型向AI應用。",
+        "rating": "core",
+        "insight": "AMD的Helios AI系統和Epyc CPU發佈對其供應鏈合作伙伴和下游客戶都有重要影響，投資者應該關注其市場反應。",
+        "source_label": "Data Center Knowledge",
+        "source": "https://www.datacenterknowledge.com/data-center-chips/amd-fires-back-at-nvidia-with-helios-ai-system-epyc-cpus",
+        "chain": [
+          {
+            "label": "AMD Helios AI系統銷量↑"
+          },
+          {
+            "label": "Nvidia AI基礎設施市占↓"
+          },
+          {
+            "label": "Epyc CPU銷量↑"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Anthropic 推出 Opus 5 模型，價格較 Fable 低一半",
+        "layer": "AI 模型",
+        "body": "Anthropic 推出 Opus 5 模型，宣稱其性能接近 Fable 5，但價格較 Fable 低一半。Opus 5 的價格為每 MTok 輸入 5 美元，輸出 25 美元，而 Fable 5 的價格為每 MTok 輸入 10 美元，輸出 50 美元。",
+        "impact": null,
+        "rating": "core",
+        "insight": "Anthropic 的 Opus 5 模型可能會成為 AI 應用中的重要選擇，尤其是在成本敏感的領域。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/07/25/anthropic-debuts-opus-5-at-half-the-price-of-its-fable-sibling/5278630",
+        "chain": [
+          {
+            "label": "Anthropic Opus 5 模型銷量↑"
+          },
+          {
+            "label": "Fable 5銷量↓"
+          },
+          {
+            "label": "Anthropic市占↑"
+          }
+        ]
+      },
+      {
+        "title": "Google 被罰 890 萬歐元，違反歐盟數字市場法",
+        "layer": "法規",
+        "body": "Google 被歐盟罰款 890 萬歐元，原因是違反數字市場法，涉及搜索結果和應用商店的偏好待遇。這是歐盟對 Google 的第二次罰款，之前一次是 340 萬歐元。",
+        "impact": "這將直接影響 Google 的收入和聲譽。",
+        "rating": "core",
+        "insight": "Google 的罰款案例表明，科技公司必須嚴格遵守相關法規，以避免法律和聲譽風險。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/legal/2026/07/24/google-breaks-alibabas-record-for-europes-largest-dma-fine/5278017",
+        "chain": [
+          {
+            "label": "Google罰款↑"
+          },
+          {
+            "label": "Google歐盟市場份額↓"
+          },
+          {
+            "label": "Google搜索結果偏好待遇↓"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic 推出 Opus 5 模型，性能超越 Fable 5",
+        "layer": "AI 模型",
+        "body": "Anthropic 推出 Opus 5 模型，宣稱其性能超越 Fable 5。Opus 5 的發布距離 Opus 4.8 只有兩個月，表明 Anthropic 在 AI 模型開發上的進步。",
+        "impact": "這將直接影響 Anthropic 的客戶，可能會增加 Opus 5 的採用率。",
+        "rating": "opp",
+        "insight": "Anthropic 的 Opus 5 模型可能會成為 AI 應用中的重要選擇，尤其是在性能敏感的領域。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/24/anthropic-launches-opus-5/",
+        "chain": [
+          {
+            "label": "Anthropic Opus 5 模型性能↑"
+          },
+          {
+            "label": "Fable 5性能↓"
+          },
+          {
+            "label": "Anthropic AI模型開發速度↑"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "UVA Health 研究人員協助制定醫療保健中的人工智慧應用框架",
+        "layer": "醫療保健",
+        "body": "UVA Health 研究人員幫助制定醫療保健中的人工智慧應用框架，旨在提高醫療服務的效率和準確性。該框架將人工智慧技術應用於醫療保健領域，例如醫學影像分析和疾病診斷。UVA Health 研究人員的工作將有助於推動醫療保健中的人工智慧應用發展。",
+        "impact": "這項發展可能會對醫療保健業界產生正面的影響，提高醫療服務的質量和效率。",
+        "rating": "core",
+        "insight": "醫療保健業界正在積極探索人工智慧技術的應用，UVA Health 研究人員的工作是其中的一個重要例子。",
+        "source_label": "Augusta Free Press",
+        "source": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQNWcyUjg5alBGRGZaOFRzQXRfN2JUcXVVZjJ6SFpENDBFMVFoVmU0R2d0dzBScjJQSGhrNEVYR1oxOURsSURBYUpTSFR6QU5CRzJDZnkyUWNUWXFBT2JNRXhjMDNRWGZvYnR3SEV0cEt4S1JhbkZxRUlHLUhXOVg1U2kxZ1FPY1pjdmdHSFBZQTRXVEo0TkdOcUdQemZmQXY1bnZweWEzYWVGX1di",
+        "chain": [
+          {
+            "label": "UVA Health醫療保健人工智慧應用↑"
+          },
+          {
+            "label": "醫療服務效率↑"
+          },
+          {
+            "label": "醫療服務準確性↑"
+          }
+        ]
+      },
+      {
+        "title": "ASML 提高 2026 年收入預測至 45 億歐元",
+        "layer": "半導體",
+        "body": "ASML 提高 2026 年收入預測至 45 億歐元，主要受人工智慧晶片需求的推動。該公司計劃在 2027 年前擴大其光刻機生產能力 30%。ASML 的收入預測提高，反映出人工智慧晶片需求的增長。",
+        "impact": "這項發展可能會對ASML產生正面的影響，反映出人工智慧晶片需求的增長。",
+        "rating": "core",
+        "insight": "半導體業界正在積極應對人工智慧晶片需求的增長，ASML 的收入預測提高是其中的一個重要例子。",
+        "source_label": "IB Times",
+        "source": "https://www.ibtimes.sg/europes-ai-chip-maker-asml-lifts-2026-outlook-45-billion-races-toward-1-trillion-valuation-90115",
+        "chain": [
+          {
+            "label": "ASML收入預測↑"
+          },
+          {
+            "label": "ASML光刻機生產能力↑"
+          },
+          {
+            "label": "人工智慧晶片需求↑"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "邊緣AI",
+        "full": "Edge AI",
+        "def": "一種將AI應用於邊緣設備的技術，例如智能手機、智能家居設備等。",
+        "why": "邊緣AI可以實現更快的數據處理和分析，同時也可以減少對雲計算的依賴。",
+        "category": "AI技術"
+      },
+      {
+        "term": "Opus 5",
+        "full": "Anthropic 的 AI 模型",
+        "def": "Anthropic 推出的 AI 模型，性能接近 Fable 5，但價格較 Fable 低一半。",
+        "why": "Anthropic 的 Opus 5 模型可能會成為 AI 應用中的重要選擇，尤其是在成本敏感的領域。",
+        "category": "AI 模型"
+      },
+      {
+        "term": "ASML",
+        "full": "Advanced Semiconductor Materials Lithography",
+        "def": "一家領先的半導體製造設備公司，專門生產光刻機。",
+        "why": "ASML 的光刻機是半導體製造中的一個關鍵設備，該公司的收入預測提高反映出人工智慧晶片需求的增長。",
+        "category": "半導體"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-07-26",
     "is_sunday": true,
     "hw": [
@@ -863,140 +1044,6 @@
         "def": "FPT 的 MediSight 框架是一個利用 AI 技術來加速醫療和生命科學發展的框架。",
         "why": "該框架將為醫療和生命科學領域提供新的解決方案，從而推動該領域的創新和發展。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-07-20",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": "",
-        "chain": [
-          {
-            "label": "Google 解決漏洞數↑",
-            "type": "up"
-          },
-          {
-            "label": "Android 使用者滿意度↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google 解決 Android 鎖屏漏洞",
-        "layer": "手機安全",
-        "body": "Google 即將修復 Android 鎖屏漏洞，該漏洞允許任何人在鎖屏的情況下使用 Gemini 發送 SMS 或 WhatsApp 訊息。這個漏洞是由於特定的多點觸控手勢可以繞過身份驗證提示。",
-        "impact": "這個漏洞的修復將直接影響 Google 的手機安全性，進而影響到下游的用戶體驗。",
-        "rating": "core",
-        "insight": "Google 的快速反應和修復將有助於維護用戶的信任和安全性。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/security/2026/07/17/google-fixing-android-lock-screen-bug-that-lets-gemini-send-sms-without-a-pin/5273027",
-        "chain": [
-          {
-            "label": "Google 安全性↑",
-            "type": "up"
-          },
-          {
-            "label": "Android 鎖屏漏洞數↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Dave Eggers 對 OpenAI 員工表示 ChatGPT 將沉默整整一代人",
-        "layer": "AI 技術",
-        "body": "Dave Eggers 對 OpenAI 員工表示，ChatGPT 將沉默整整一代人。這個言論可能會對 OpenAI 的發展和用戶體驗產生一定的影響。",
-        "impact": "這個言論將直接影響 OpenAI 的發展和用戶體驗，進而影響到下游的用戶和投資者的信任。同時，這也會對其他 AI 公司的用戶體驗產生一定的影響，促使他們加強用戶體驗的開發。",
-        "rating": "noise",
-        "insight": "Dave Eggers 的言論將對 OpenAI 的未來發展產生重要的影響。",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/ai-artificial-intelligence/967630/dave-eggers-openai-chatgpt-silencing-an-entire-generation",
-        "chain": [
-          {
-            "label": "OpenAI 員工信心↓",
-            "type": "down"
-          },
-          {
-            "label": "ChatGPT 使用率↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "醫療人工智慧應用進展",
-        "layer": "醫療",
-        "body": "根據MarketScale的報導，臨床人工智慧正處於一個十字路口，技能衰退、機器人手術和可穿戴數據前沿等領域都在快速發展。例如，人工智慧可以幫助醫生更好地診斷和治療疾病，同時也可以提高醫療的效率和品質。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "醫療人工智慧的發展為醫療行業帶來了新的機遇和挑戰，企業需要不斷創新和適應以保持競爭力。",
-        "source_label": "MarketScale",
-        "source": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNNVlhd2QtX3ZRdmJsOVJpeXBNc0NZTUVtd3dZbVNzUThtSFo2YzVKRWFnUjNTVVpEODJkLXdJNlVaVEdyWDM5MEprOV90bGJxR0dBandpdHhCNkJ1d1RXb2ZoRVNXT1VqY000VkNIZVZKY2s4QVVob0k4NThwSDZHbWNwVEdRUHZzSHhjSW9KeUV2RHdUMmZDR0ExMzVDaE40LWQ4Slp5a0VocXhWS3ZiSEdheU4wanVIZkFlSFI2Z1ROYWN2NktxM2xNMndZMThrWVE",
-        "chain": [
-          {
-            "label": "MarketScale 報導數↑",
-            "type": "up"
-          },
-          {
-            "label": "臨床人工智慧發展速度↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "印度醫療旅遊業迎來全球健康保健繁榮",
-        "layer": "醫療",
-        "body": "根據Travel And Tour World的報導，印度醫療旅遊業預計在2026年迎來全球健康保健的繁榮，人工智慧、數字簽證和二線城市的崛起等因素將重新定義患者的旅行體驗。例如，印度的醫療旅遊業可以提供高品質的醫療服務，同時也可以為患者提供便捷的旅行體驗。",
-        "impact": "這項發展可能會對印度的醫療供應鏈產生直接影響，例如提高醫療服務和設施的需求，同時也可能會對相關企業的營收和競爭力產生影響。例如，醫療服務提供商可能需要增加服務的品質和數量以滿足日益增長的需求，同時也需要不斷研發新技術以保持競爭力。",
-        "rating": "noise",
-        "insight": "印度醫療旅遊業的發展為醫療行業帶來了新的機遇和挑戰，企業需要不斷創新和適應以保持競爭力。",
-        "source_label": "Travel And Tour World",
-        "source": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBaWjJabVpGTzlWWFZKMEFwN0xhS3NOc3RxNnQ3ZkFSd1I1VDhrOHUxTVdVZF9MQXFva3hUVzB1XzhMM2ZPR21adHVDNzJTTldCS2p5YTJtamJpQ0Z6b3QtNFl2UlFHSUhvOW1ldGlB",
-        "chain": [
-          {
-            "label": "印度醫療旅遊業收入↑",
-            "type": "up"
-          },
-          {
-            "label": "Travel And Tour World 報導數↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "CoWoS",
-        "full": "Chip on Wafer on Substrate",
-        "def": "一種晶片製造技術，將晶片直接封裝在基板上。",
-        "why": "這種技術可以提高晶片的性能和可靠性，同時降低製造成本。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Gemini",
-        "full": "Google 的 AI 助手",
-        "def": "Gemini 是 Google 的 AI 助手，能夠幫助用戶完成各種任務。",
-        "why": "Gemini 的出現將對手機安全性和用戶體驗產生重要的影響。",
-        "category": "AI 技術"
-      },
-      {
-        "term": "機器人手術",
-        "full": "機器人輔助手術",
-        "def": "一種使用機器人技術進行的手術，旨在提高手術的精確度和安全性。",
-        "why": "機器人手術可以幫助醫生更好地診斷和治療疾病，同時也可以提高醫療的效率和品質。",
-        "category": "醫療"
       }
     ],
     "weekly_summary": null
