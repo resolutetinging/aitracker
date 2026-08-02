@@ -1,5 +1,159 @@
 [
   {
+    "date": "2026-08-03",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "中國推動 AI 和供應鏈戰略",
+        "layer": "產業趨勢",
+        "body": "中國推動 AI 和供應鏈戰略，旨在加強其製造業的不可替代性和深化多維度的貿易合作。韓國應對中國的 AI 和供應鏈戰略，需要發展策略以擴大其製造業的不可替代性和深化多維度的貿易合作。",
+        "impact": "中國的 AI 和供應鏈戰略可能會對其供應鏈合作伙伴產生正面影響，例如其製造業的不可替代性增加可能會帶動其供應商的銷售額增加。同時，中國的 AI 和供應鏈戰略也可能會對其競爭對手產生一定的壓力，例如其製造業的不可替代性增加可能會使其競爭對手感到壓力，從而促使其競爭對手加快研發和創新。",
+        "rating": "opp",
+        "insight": "中國的 AI 和供應鏈戰略可能會對其供應鏈合作伙伴和競爭對手都產生一定的影響，值得關注。",
+        "source_label": "韓國經濟研究院",
+        "source": "https://biz.heraldcorp.com/article/10828110",
+        "chain": [
+          {
+            "label": "TSMC 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix ASP↑",
+            "type": "up"
+          },
+          {
+            "label": "Samsung Foundry 客戶數↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI CEO Sam Altman 推動 ChatGPT 家長應用",
+        "layer": "AI 應用",
+        "body": "OpenAI CEO Sam Altman 表示，ChatGPT 可以幫助家長管理孩子的日程和興趣，甚至可以製作每日播客。這一功能可能會吸引對 AI 感興趣的家長。Sam Altman 的這一想法引發了網友的熱烈討論，包括動畫系列《Gravity Falls》創作者 Alex Hirsch 的回應。",
+        "impact": "這一功能可能會增加 ChatGPT 的使用率，從而對 AI 技術的發展產生正面的影響。同時，也可能會提高家長對 AI 的接受度和依賴度，進而推動相關產業的發展。",
+        "rating": "core",
+        "insight": "OpenAI 的這一舉動可能會讓更多家長接觸到 AI 技術，從而推動 AI 在家庭中的應用。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/01/sam-altman-is-still-making-the-case-for-parenting-via-chatgpt/",
+        "chain": [
+          {
+            "label": "OpenAI ChatGPT 用戶數↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft Azure AI 服務↑",
+            "type": "up"
+          },
+          {
+            "label": "Anthropic AI 產業合作↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Sam Altman 和 Anthropic 支持 AI 產業自我調節",
+        "layer": "AI 產業",
+        "body": "OpenAI CEO Sam Altman 和 Anthropic 支持 AI 產業自我調節，認為這是確保 AI 技術安全和負責任發展的必要步驟。這一立場可能會影響 AI 產業的發展方向。",
+        "impact": "這一立場可能會促使 AI 產業更加注重安全和責任，從而提高 AI 技術的可靠性和公眾的信任度。同時，也可能會推動相關監管機構的政策制定和執行。",
+        "rating": "core",
+        "insight": "AI 產業的自我調節可能會成為未來 AI 發展的重要方向。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/video/sam-altman-isnt-the-only-one-who-wants-to-pump-the-brakes-on-ai/",
+        "chain": [
+          {
+            "label": "Sam Altman 支持 AI 產業自我調節↑",
+            "type": "up"
+          },
+          {
+            "label": "Google AI 產業合作↑",
+            "type": "up"
+          },
+          {
+            "label": "Facebook AI 服務↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Apple 的 Siri AI 可能會引入付費升級",
+        "layer": "AI 服務",
+        "body": "Apple 的 Siri AI 可能會引入付費升級，允許用戶購買更多的計算資源。這一功能可能會提高 Siri AI 的使用率和用戶體驗。",
+        "impact": "這一功能可能會增加 Apple 的收入和用戶忠誠度，同時也可能會提高 Siri AI 的競爭力和市場份額。",
+        "rating": "core",
+        "insight": "Apple 的這一舉動可能會讓更多用戶接觸到 AI 技術，從而推動 AI 在消費電子中的應用。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/07/31/siri-ai-could-come-with-a-paywall-for-power-users/",
+        "chain": [
+          {
+            "label": "Apple Siri AI 付費升級↑",
+            "type": "up"
+          },
+          {
+            "label": "Amazon Alexa AI 服務↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Assistant AI 服務↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Xtrip Inc. 推出三年戰略藍圖，打造全球酒店業的 AI 原生操作層",
+        "layer": "旅遊業",
+        "body": "Xtrip Inc. 宣布推出三年戰略藍圖，旨在打造全球酒店業的 AI 原生操作層。該公司將利用 AI 技術提升酒店業的運營效率和客戶體驗。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "Xtrip Inc. 的戰略藍圖可能會為酒店業帶來新的機遇和挑戰，投資者應該關注其發展。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "Xtrip Inc. AI 原生操作層↑",
+            "type": "up"
+          },
+          {
+            "label": "Hotel Industry AI 服務↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 原生操作層客戶數↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "堆疊技術路線圖",
+        "full": "堆疊技術路線圖是指一種用於解決 AI 記憶體和功率限制問題的技術路線圖。",
+        "def": "堆疊技術路線圖包括 3D 堆疊、Chiplet 和冷卻功率等。",
+        "why": "堆疊技術路線圖可以幫助解決 AI 記憶體和功率限制問題，從而提高 AI 的性能和效率。",
+        "category": "技術發展"
+      },
+      {
+        "term": "ChatGPT",
+        "full": "ChatGPT",
+        "def": "一種由 OpenAI 開發的 AI 聊天機器人，能夠理解和回應用戶的語言輸入。",
+        "why": "ChatGPT 的出現可能會推動 AI 在家庭中的應用。",
+        "category": "AI 應用"
+      },
+      {
+        "term": "AI 原生操作層",
+        "full": "Artificial Intelligence Native Operating Layer",
+        "def": "一種利用 AI 技術打造的運營平台，旨在提升企業的運營效率和客戶體驗。",
+        "why": "這是一種新的技術應用，可能會對企業的運營模式產生影響。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-02",
     "is_sunday": true,
     "hw": [
@@ -1058,187 +1212,6 @@
         "def": "一種將 AI 模型部署在邊緣設備上的技術，能夠實現實時的資料處理和分析。",
         "why": "邊緣 AI 能夠減少資料傳輸的延遲和提高資料的安全性，同時也能夠提高 AI 模型的準確性和效率。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-07-27",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "英特爾CEO坦言需要超越ARM和AMD",
-        "layer": "晶片製造",
-        "body": "英特爾CEO Lip-Bu Tan 表示，公司需要超越ARM和AMD，同時也認為邊緣AI和機器人將成為一項與PC業務同等重要的業務。英特爾在第二季度的收入達到161億美元，同比增長25%。",
-        "impact": "英特爾的這一表態將直接影響其供應鏈合作伙伴，可能會增加對其晶片製造能力的需求。同時，英特爾的這一轉型也可能會對其下游客戶產生一定的影響，可能會促使其加速轉型向邊緣AI和機器人應用。",
-        "rating": "core",
-        "insight": "英特爾的轉型對其供應鏈合作伙伴和下游客戶都有重要影響，投資者應該關注其轉型進展。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/07/24/intel-knows-it-needs-to-leapfrog-arm-and-amd-says-ceo-lip-bu-tan/5277968",
-        "chain": [
-          {
-            "label": "英特爾收入↑"
-          },
-          {
-            "label": "ARM市占↓"
-          },
-          {
-            "label": "AMD市占↓"
-          }
-        ]
-      },
-      {
-        "title": "AMD發佈Helios AI系統和Epyc CPU",
-        "layer": "AI基礎設施",
-        "body": "AMD發佈了其最新的AI基礎設施解決方案，包括Helios AI系統和Epyc CPU，目的是挑戰Nvidia在AI基礎設施市場的主導地位。Helios AI系統是一個全面的機架級AI解決方案，包括Epyc CPU、Instinct MI455X GPU和ROCm軟體。",
-        "impact": "AMD的這一發佈將直接影響其供應鏈合作伙伴，可能會增加對其晶片製造能力的需求。同時，AMD的這一發佈也可能會對其下游客戶產生一定的影響，可能會促使其加速轉型向AI應用。",
-        "rating": "core",
-        "insight": "AMD的Helios AI系統和Epyc CPU發佈對其供應鏈合作伙伴和下游客戶都有重要影響，投資者應該關注其市場反應。",
-        "source_label": "Data Center Knowledge",
-        "source": "https://www.datacenterknowledge.com/data-center-chips/amd-fires-back-at-nvidia-with-helios-ai-system-epyc-cpus",
-        "chain": [
-          {
-            "label": "AMD Helios AI系統銷量↑"
-          },
-          {
-            "label": "Nvidia AI基礎設施市占↓"
-          },
-          {
-            "label": "Epyc CPU銷量↑"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Anthropic 推出 Opus 5 模型，價格較 Fable 低一半",
-        "layer": "AI 模型",
-        "body": "Anthropic 推出 Opus 5 模型，宣稱其性能接近 Fable 5，但價格較 Fable 低一半。Opus 5 的價格為每 MTok 輸入 5 美元，輸出 25 美元，而 Fable 5 的價格為每 MTok 輸入 10 美元，輸出 50 美元。",
-        "impact": null,
-        "rating": "core",
-        "insight": "Anthropic 的 Opus 5 模型可能會成為 AI 應用中的重要選擇，尤其是在成本敏感的領域。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/07/25/anthropic-debuts-opus-5-at-half-the-price-of-its-fable-sibling/5278630",
-        "chain": [
-          {
-            "label": "Anthropic Opus 5 模型銷量↑"
-          },
-          {
-            "label": "Fable 5銷量↓"
-          },
-          {
-            "label": "Anthropic市占↑"
-          }
-        ]
-      },
-      {
-        "title": "Google 被罰 890 萬歐元，違反歐盟數字市場法",
-        "layer": "法規",
-        "body": "Google 被歐盟罰款 890 萬歐元，原因是違反數字市場法，涉及搜索結果和應用商店的偏好待遇。這是歐盟對 Google 的第二次罰款，之前一次是 340 萬歐元。",
-        "impact": "這將直接影響 Google 的收入和聲譽。",
-        "rating": "core",
-        "insight": "Google 的罰款案例表明，科技公司必須嚴格遵守相關法規，以避免法律和聲譽風險。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/legal/2026/07/24/google-breaks-alibabas-record-for-europes-largest-dma-fine/5278017",
-        "chain": [
-          {
-            "label": "Google罰款↑"
-          },
-          {
-            "label": "Google歐盟市場份額↓"
-          },
-          {
-            "label": "Google搜索結果偏好待遇↓"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic 推出 Opus 5 模型，性能超越 Fable 5",
-        "layer": "AI 模型",
-        "body": "Anthropic 推出 Opus 5 模型，宣稱其性能超越 Fable 5。Opus 5 的發布距離 Opus 4.8 只有兩個月，表明 Anthropic 在 AI 模型開發上的進步。",
-        "impact": "這將直接影響 Anthropic 的客戶，可能會增加 Opus 5 的採用率。",
-        "rating": "opp",
-        "insight": "Anthropic 的 Opus 5 模型可能會成為 AI 應用中的重要選擇，尤其是在性能敏感的領域。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/07/24/anthropic-launches-opus-5/",
-        "chain": [
-          {
-            "label": "Anthropic Opus 5 模型性能↑"
-          },
-          {
-            "label": "Fable 5性能↓"
-          },
-          {
-            "label": "Anthropic AI模型開發速度↑"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "UVA Health 研究人員協助制定醫療保健中的人工智慧應用框架",
-        "layer": "醫療保健",
-        "body": "UVA Health 研究人員幫助制定醫療保健中的人工智慧應用框架，旨在提高醫療服務的效率和準確性。該框架將人工智慧技術應用於醫療保健領域，例如醫學影像分析和疾病診斷。UVA Health 研究人員的工作將有助於推動醫療保健中的人工智慧應用發展。",
-        "impact": "這項發展可能會對醫療保健業界產生正面的影響，提高醫療服務的質量和效率。",
-        "rating": "core",
-        "insight": "醫療保健業界正在積極探索人工智慧技術的應用，UVA Health 研究人員的工作是其中的一個重要例子。",
-        "source_label": "Augusta Free Press",
-        "source": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQNWcyUjg5alBGRGZaOFRzQXRfN2JUcXVVZjJ6SFpENDBFMVFoVmU0R2d0dzBScjJQSGhrNEVYR1oxOURsSURBYUpTSFR6QU5CRzJDZnkyUWNUWXFBT2JNRXhjMDNRWGZvYnR3SEV0cEt4S1JhbkZxRUlHLUhXOVg1U2kxZ1FPY1pjdmdHSFBZQTRXVEo0TkdOcUdQemZmQXY1bnZweWEzYWVGX1di",
-        "chain": [
-          {
-            "label": "UVA Health醫療保健人工智慧應用↑"
-          },
-          {
-            "label": "醫療服務效率↑"
-          },
-          {
-            "label": "醫療服務準確性↑"
-          }
-        ]
-      },
-      {
-        "title": "ASML 提高 2026 年收入預測至 45 億歐元",
-        "layer": "半導體",
-        "body": "ASML 提高 2026 年收入預測至 45 億歐元，主要受人工智慧晶片需求的推動。該公司計劃在 2027 年前擴大其光刻機生產能力 30%。ASML 的收入預測提高，反映出人工智慧晶片需求的增長。",
-        "impact": "這項發展可能會對ASML產生正面的影響，反映出人工智慧晶片需求的增長。",
-        "rating": "core",
-        "insight": "半導體業界正在積極應對人工智慧晶片需求的增長，ASML 的收入預測提高是其中的一個重要例子。",
-        "source_label": "IB Times",
-        "source": "https://www.ibtimes.sg/europes-ai-chip-maker-asml-lifts-2026-outlook-45-billion-races-toward-1-trillion-valuation-90115",
-        "chain": [
-          {
-            "label": "ASML收入預測↑"
-          },
-          {
-            "label": "ASML光刻機生產能力↑"
-          },
-          {
-            "label": "人工智慧晶片需求↑"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "邊緣AI",
-        "full": "Edge AI",
-        "def": "一種將AI應用於邊緣設備的技術，例如智能手機、智能家居設備等。",
-        "why": "邊緣AI可以實現更快的數據處理和分析，同時也可以減少對雲計算的依賴。",
-        "category": "AI技術"
-      },
-      {
-        "term": "Opus 5",
-        "full": "Anthropic 的 AI 模型",
-        "def": "Anthropic 推出的 AI 模型，性能接近 Fable 5，但價格較 Fable 低一半。",
-        "why": "Anthropic 的 Opus 5 模型可能會成為 AI 應用中的重要選擇，尤其是在成本敏感的領域。",
-        "category": "AI 模型"
-      },
-      {
-        "term": "ASML",
-        "full": "Advanced Semiconductor Materials Lithography",
-        "def": "一家領先的半導體製造設備公司，專門生產光刻機。",
-        "why": "ASML 的光刻機是半導體製造中的一個關鍵設備，該公司的收入預測提高反映出人工智慧晶片需求的增長。",
-        "category": "半導體"
       }
     ],
     "weekly_summary": null
