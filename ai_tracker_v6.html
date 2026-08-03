@@ -582,16 +582,17 @@ function newsCard(item, ptype) {
 function renderHW(d) {
   document.getElementById('panel-hw').innerHTML = `
     <div class="metric-row">
-      <div class="metric-card"><div class="metric-label">HBM 供需比</div><div class="metric-value c-red">需求 3× 供應</div><div class="metric-sub">售罄至 2026 底 · 結構性缺口</div></div>
-      <div class="metric-card"><div class="metric-label">CoWoS 月產能（2026底）</div><div class="metric-value c-hw">12 萬片 / 月</div><div class="metric-sub">2025年 7.5 萬片 → +60%</div></div>
-      <div class="metric-card"><div class="metric-label">HBM 年需求成長</div><div class="metric-value c-warn">+70% YoY</div><div class="metric-sub">2025 曾達 +130%，仍超過供給增速</div></div>
+      <div class="metric-card"><div class="metric-label">HBM 供需</div><div class="metric-value c-red">全數售罄</div><div class="metric-sub">Micron 2026年產能fully committed · 持續緊繃</div></div>
+      <div class="metric-card"><div class="metric-label">CoWoS 月產能（2026底）</div><div class="metric-value c-hw">12–13 萬片 / 月</div><div class="metric-sub">TrendForce估計 · 供需缺口20%→10%收斂中</div></div>
+      <div class="metric-card"><div class="metric-label">Intel 18A 量產進度</div><div class="metric-value c-warn">產出超標 ~25%</div><div class="metric-sub">Q2 QoQ +50%以上 · 已登記400+項Series 3設計案</div></div>
     </div>
-    <div style="font-size:11px;color:var(--muted);margin:-6px 0 14px;padding-left:2px;">📌 上方數據為靜態參考值，每季財報後請告知 Claude 更新</div>
+    <div style="font-size:11px;color:var(--muted);margin:-6px 0 14px;padding-left:2px;">📌 上方數據為靜態參考值，每季財報後請告知 Claude 更新（最後更新：2026 Q2財報）</div>
     <div class="signal-strip">
       <div class="signal-pill pill-red">🔴 HBM 嚴重吃緊</div>
       <div class="signal-pill pill-red">🔴 CoWoS 售罄至2026底</div>
       <div class="signal-pill pill-yellow">🟡 台灣地緣集中風險</div>
-      <div class="signal-pill pill-yellow">🟡 散熱/供電新瓶頸浮現</div>
+      <div class="signal-pill pill-yellow">🟡 Tesla AI5晶片轉單Samsung 2nm</div>
+      <div class="signal-pill pill-green">🟢 Intel 18A放量、良率超標</div>
     </div>
 
     <div class="tw-chain">
@@ -619,19 +620,20 @@ function renderHW(d) {
 function renderCorp(d) {
   document.getElementById('panel-corp').innerHTML = `
     <div class="metric-row">
-      <div class="metric-card"><div class="metric-label">四大 CSP 2026 資本支出</div><div class="metric-value c-corp">$7,250 億</div><div class="metric-sub">2025年 $4,100 億 → +77% YoY</div></div>
-      <div class="metric-card"><div class="metric-label">AI 基礎設施佔比</div><div class="metric-value c-app">~75%</div><div class="metric-sub">約 $4,500 億直接流向 AI 硬體</div></div>
-      <div class="metric-card"><div class="metric-label">Google Cloud Q1 成長</div><div class="metric-value c-app">+63% YoY</div><div class="metric-sub">單季 $200 億 · 積壓訂單 $4,620 億</div></div>
+      <div class="metric-card"><div class="metric-label">3大CSP 資本支出指引</div><div class="metric-value c-corp">$558B</div><div class="metric-sub">Amazon+Google+Meta最新guidance合計（不含Microsoft，財年制不同）</div></div>
+      <div class="metric-card"><div class="metric-label">Microsoft Azure 全年營收</div><div class="metric-value c-app">突破 $100B</div><div class="metric-sub">FY26全年+41% · Q4單季+43%</div></div>
+      <div class="metric-card"><div class="metric-label">Google Cloud Q2 成長</div><div class="metric-value c-app">+82% YoY</div><div class="metric-sub">單季 $248 億 · 積壓訂單 $5,140 億</div></div>
     </div>
-    <div style="font-size:11px;color:var(--muted);margin:-6px 0 14px;padding-left:2px;">📌 上方數據為靜態參考值，每季財報後請告知 Claude 更新</div>
+    <div style="font-size:11px;color:var(--muted);margin:-6px 0 14px;padding-left:2px;">📌 上方數據為靜態參考值，每季財報後請告知 Claude 更新（最後更新：2026 Q2財報）</div>
     <div class="capex-section">
-      <div class="sec-title">2026 年資本支出競賽（十億美元）</div>
+      <div class="sec-title">最新資本支出 Guidance（十億美元）</div>
       <div class="capex-bars">
-        <div class="capex-row"><div class="capex-co">Amazon</div><div class="capex-track"><div class="capex-fill b-amz" style="width:100%">$200B</div></div><div class="capex-yoy">+60%</div></div>
-        <div class="capex-row"><div class="capex-co">Google</div><div class="capex-track"><div class="capex-fill b-goog" style="width:95%">$190B</div></div><div class="capex-yoy">+109%</div></div>
-        <div class="capex-row"><div class="capex-co">Microsoft</div><div class="capex-track"><div class="capex-fill b-ms" style="width:95%">$190B</div></div><div class="capex-yoy">+111%</div></div>
-        <div class="capex-row"><div class="capex-co">Meta</div><div class="capex-track"><div class="capex-fill b-meta" style="width:72%">$145B</div></div><div class="capex-yoy">+101%</div></div>
+        <div class="capex-row"><div class="capex-co">Amazon</div><div class="capex-track"><div class="capex-fill b-amz" style="width:86%">$220B</div></div><div class="capex-yoy">↑原$200B</div></div>
+        <div class="capex-row"><div class="capex-co">Google</div><div class="capex-track"><div class="capex-fill b-goog" style="width:78%">$195–205B</div></div><div class="capex-yoy">↑原$180–190B</div></div>
+        <div class="capex-row"><div class="capex-co">Microsoft</div><div class="capex-track"><div class="capex-fill b-ms" style="width:100%">$255–260B</div></div><div class="capex-yoy">FY27新揭露</div></div>
+        <div class="capex-row"><div class="capex-co">Meta</div><div class="capex-track"><div class="capex-fill b-meta" style="width:54%">$130–145B</div></div><div class="capex-yoy">原$125–145B窄化</div></div>
       </div>
+      <div style="font-size:10px;color:var(--muted);margin-top:6px;">*Microsoft財年為7月–隔年6月，FY27指引涵蓋2026/7–2027/6，與其他三家的2026日曆年guidance非同期，未列入左側合計</div>
     </div>
     <div class="sec-title">本日重點新聞 · ${fmtDate(d.date)}</div>
     ${newsGrid(d.corp, 'corp')}`;
@@ -645,13 +647,13 @@ const APP_LAYERS = [
    body:'AI 自主完成多步驟任務，從軟體開發到業務流程自動化。企業採用率快速上升，推論端算力需求同步拉升。',
    effect:'關注：哪些產業 / 公司宣布導入？落地後取代了哪些職位或流程？預期降低多少成本？'},
   {icon:'🦾',title:'Physical AI',tag:'physical',tagLabel:'實體 AI',
-   body:'AI 進入機器人、自動駕駛、工廠自動化場域。NVIDIA Cosmos 平台為訓練樞紐，VLA 模型負責現實感知與決策。',
+   body:'AI 進入機器人、自動駕駛、工廠自動化場域。NVIDIA Cosmos 平台為訓練樞紐，VLA 模型負責現實感知與決策。Tesla Optimus 2026 Q2尚未量產出貨，Fremont產線正轉換為首代量產線，目前僅用於訓練資料蒐集；AI5晶片改委由Samsung 2nm代工，預計2027量產。',
    effect:'關注：哪些製造商 / 物流公司開始試產？機器人年產量目標？替代的人力成本規模？'},
   {icon:'⚡',title:'推論端（Inference）',tag:'inference',tagLabel:'推論運算',
    body:'模型訓練完成後的「使用階段」。Agentic & Physical AI 的爆發讓推論端算力缺口開始追上訓練端，成為新的硬體需求驅動力。',
    effect:'關注：CSP 推論算力擴建計畫？邊緣 AI 晶片（車用 / 機器人端）出貨量？'},
   {icon:'🧠',title:'AI 晶片',tag:'chip',tagLabel:'AI 晶片',
-   body:'NVIDIA GPU 仍是主力，但 Google TPU、AWS Trainium、Meta / Broadcom ASIC 正快速追趕。客製矽晶片降低對 NVIDIA 的單一依賴。',
+   body:'NVIDIA GPU 仍是主力，但 Google TPU、AWS Trainium、Meta / Broadcom ASIC 正快速追趕。客製矽晶片降低對 NVIDIA 的單一依賴。Intel 18A製程2026 Q2已進入量產，良率優於預期、產出超標約25%，已登記400+項Series 3設計案，代工業務出現轉機。',
    effect:'關注：哪些公司宣布自研 ASIC 計畫？NVIDIA 市占是否出現結構性下滑？Broadcom 的合作夥伴名單？'},
 ];
 
