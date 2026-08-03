@@ -1367,6 +1367,13 @@ NAMED_ENTITY_PAT = re.compile(
     r'Austin|Bangalore|Bhutan'
 )
 
+# 具體數字判準（%, $, 億, 倍, 具體數量；含中文數字如「四個」「第一」）——
+# 抽成共用常數，供 _body_is_low_quality 與 _impact_is_shallow 共用同一套
+# 「重疊率+具體性」判準，不另開一套邏輯（2026-08-03）。
+NUMBER_PAT = re.compile(
+    r'\d|%|億|兆|倍|萬|百億|千億|[一二三四五六七八九十兩]+[個家款次項座台支波批輪席人年月日]|第[一二三四五六七八九十]'
+)
+
 def _body_is_low_quality(body: str) -> bool:
     """True = body 不達標（重複句 or 無具體數字/具名地名機構 or 過短無分析）"""
     if not body or len(body) < 40:
@@ -1389,10 +1396,55 @@ def _body_is_low_quality(body: str) -> bool:
         return True
     # core/opp body 必須含數字（%, $, 億, 倍, 具體數量；含中文數字如「四個」「第一」）
     # 或具名地名/機構（NAMED_ENTITY_PAT）——兩者擇一即達標，對齊 make_prompt RULES
-    has_number = re.search(r'\d|%|億|兆|倍|萬|百億|千億|[一二三四五六七八九十兩]+[個家款次項座台支波批輪席人年月日]|第[一二三四五六七八九十]', body)
-    if not has_number and not NAMED_ENTITY_PAT.search(body):
+    if not NUMBER_PAT.search(body) and not NAMED_ENTITY_PAT.search(body):
         return True
     return False
+
+# 2026-08-03 新增：impact 品質關卡。動機——Oracle/Gemini 案例（body 講
+# 「為客戶提供了更多的AI選擇」，impact 只把「選擇」換句話說成「能力」「選擇」
+# 重講一次）被評為 core，但 impact 沒有任何供應鏈影響分析的新資訊，導致
+# 「冷」判定（前端 coreCount）失真——看起來不冷，實際上沒有分析價值。
+# 判準沿用 _body_is_low_quality 同一套「重疊率+具體性」思路，但分母改用
+# impact 自身的 bigram 數（而非 _body_is_low_quality 句對句用的對稱 max
+# 分母）：impact 通常遠短於 body，若用對稱分母，重疊會被 body 的長度稀釋
+# 到抓不到（Oracle 案例對稱比僅 0.14，但 impact 有 24% 的內容字面重複自
+# body，用單向 containment 分母才抓得到）。門檻 0.20 是拿
+# data/history.json 全量 core/opp 回測校準出來的，見
+# scripts/README 或 dev log；不是憑感覺調的。
+IMPACT_OVERLAP_THRESHOLD = 0.20
+
+def _impact_is_shallow(body: str, impact: str) -> bool:
+    """True = impact 只是 body 的換句話說，沒有獨立供應鏈影響分析價值。
+    條件：(a) impact 與 body 的 CJK bigram 單向包含率（重疊 bigram數 /
+    impact 自身 bigram 數）> IMPACT_OVERLAP_THRESHOLD，且 (b) impact 本身
+    沒有補充具體數字（NUMBER_PAT）也沒有具名實體/地名（NAMED_ENTITY_PAT）
+    ——兩者都缺，代表 impact 沒有跳脫 body 既有內容，純屬重講一次。"""
+    if not impact or len(impact) < 10:
+        return False
+    b1, b2 = _cjk_bigrams(body), _cjk_bigrams(impact)
+    if not b2:
+        return False
+    containment = len(b1 & b2) / len(b2)
+    if containment <= IMPACT_OVERLAP_THRESHOLD:
+        return False
+    if NUMBER_PAT.search(impact) or NAMED_ENTITY_PAT.search(impact):
+        return False
+    return True
+
+def downgrade_shallow_impact(data):
+    """impact 只是 body 換句話說（無獨立分析價值）的 core 條目降級為 opp。
+    比照 downgrade_low_quality 的降級模式：只降評級，不刪除、不清空 impact，
+    讓「冷」判定的 coreCount 反映真實分析價值。"""
+    count = 0
+    for section in ['hw', 'corp', 'app']:
+        for item in data.get(section, []):
+            if item.get('rating') == 'core' and _impact_is_shallow(item.get('body', ''), item.get('impact', '')):
+                item['rating'] = 'opp'
+                count += 1
+    if count:
+        print(f"  → {count} 筆 impact 只是 body 換句話說（無獨立分析）已降級為 opp")
+    else:
+        print("  → impact 品質檢核通過")
 
 def downgrade_low_quality(data):
     """body 重複或無具體數字的 core/opp 條目降級為 noise"""
@@ -1781,6 +1833,8 @@ if __name__ == '__main__':
     downgrade_unsourced(data)
     print("🔍 body 品質檢核...")
     downgrade_low_quality(data)
+    print("🔍 impact 品質檢核（換句話說偵測）...")
+    downgrade_shallow_impact(data)
     print("🚨 幻覺 pattern 攔截...")
     downgrade_hallucination_patterns(data)
     downgrade_hallucinated(data)
