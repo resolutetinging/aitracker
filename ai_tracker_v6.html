@@ -1738,8 +1738,8 @@ function renderArchive(notes) {
       <button class="arc-search-clear" id="arc-search-clear" style="display:none" onclick="clearArchiveSearch()">✕</button>
     </div>
     <div id="archive-cards-wrap">${cards}</div>` : '<div class="archive-empty">尚無歷史筆記。在「本週紀錄」中撰寫並儲存後，會在此顯示。</div>'}`;
-  // 若已有快取分析結果，直接渲染（08-06：cache key改帶範圍後綴，見_arcRange）
-  const cached = sessionStorage.getItem('arc_summary_' + _arcRange);
+  // 若已有快取分析結果，直接渲染
+  const cached = sessionStorage.getItem('arc_summary');
   if (cached) { try { _renderSummaryResult(JSON.parse(cached)); } catch(e){} }
 }
 
@@ -1766,43 +1766,14 @@ function renderSummaryCard(notes) {
     <div class="arc-summary-hd">
       <span class="arc-summary-title">📊 筆記趨勢分析</span>
       <div style="display:flex;gap:6px;align-items:center;">
-        <select class="arc-analyze-btn secondary" id="arc-range-sel" onchange="_arcRange=this.value;_loadCachedOrPromptSummary();" style="padding:5px 8px;">
-          <option value="30"${_arcRange==='30'?' selected':''}>近30天</option>
-          <option value="60"${_arcRange==='60'?' selected':''}>近60天</option>
-          <option value="90"${_arcRange==='90'?' selected':''}>近90天</option>
-          <option value="all"${_arcRange==='all'?' selected':''}>全部</option>
-        </select>
         <button class="arc-analyze-btn secondary" onclick="clearGroqKey()" title="清除 Key">🔑</button>
         <button class="arc-analyze-btn" id="arc-analyze-btn" onclick="summarizeArchive()">✨ 分析趨勢</button>
       </div>
     </div>
     <div id="arc-summary-body" class="arc-summary-body">
-      <span class="arc-status">共 ${dates.length} 天筆記 — 分析範圍「${_arcRangeLabel()}」，點擊「✨ 分析趨勢」生成 AI 統整</span>
+      <span class="arc-status">共 ${dates.length} 天筆記，點擊「✨ 分析趨勢」生成 AI 統整（資料量較大時會自動聚焦最近日期，見分析結果內說明）</span>
     </div>
   </div>`;
-}
-// 08-06：分析範圍改可調整，原本永遠分析全部筆記，天數一多會稀釋近期重點且逼近LLM輸入上限
-let _arcRange = '60';
-// range參數可選，不傳時用當下的全域_arcRange（給renderSummaryCard()等即時UI用）；
-// summarizeArchive()會傳入分析開始當下的快照值，避免分析途中範圍被切換造成結果與cache key對不上
-function _arcRangeLabel(range) { range = range || _arcRange; return range==='all' ? '全部' : '近' + range + '天'; }
-function _arcFilterDates(dates, range) {
-  range = range || _arcRange;
-  if (range === 'all') return dates;
-  const cutoff = new Date();
-  cutoff.setDate(cutoff.getDate() - parseInt(range, 10));
-  const cutoffStr = _localDateStr(cutoff);
-  return dates.filter(d => d >= cutoffStr);
-}
-function _loadCachedOrPromptSummary() {
-  const body = document.getElementById('arc-summary-body');
-  if (!body) return;
-  const cached = sessionStorage.getItem('arc_summary_' + _arcRange);
-  if (cached) { try { _renderSummaryResult(JSON.parse(cached)); return; } catch(e) {} }
-  const dates = Object.keys(_currentArchiveNotes || {}).filter(k => k.match(/^\d{4}-\d{2}-\d{2}$/));
-  body.innerHTML = `<span class="arc-status">共 ${dates.length} 天筆記 — 分析範圍「${_arcRangeLabel()}」，點擊「✨ 分析趨勢」生成 AI 統整</span>`;
-  const btn = document.getElementById('arc-analyze-btn');
-  if (btn) { btn.disabled = false; btn.textContent = '✨ 分析趨勢'; }
 }
 
 function saveGroqKey() {
@@ -1813,8 +1784,7 @@ function saveGroqKey() {
 }
 function clearGroqKey() {
   localStorage.removeItem('groq_key');
-  // 08-06：cache key改帶範圍後綴（arc_summary_30/60/90/all），清Key時四種範圍的快取都要清乾淨
-  ['30','60','90','all'].forEach(r => sessionStorage.removeItem('arc_summary_' + r));
+  sessionStorage.removeItem('arc_summary');
   _replaceSummaryCard();
 }
 function _replaceSummaryCard() {
@@ -1833,14 +1803,9 @@ async function summarizeArchive() {
   if (!key) return;
   const btn = document.getElementById('arc-analyze-btn');
   const body = document.getElementById('arc-summary-body');
-  const sel = document.getElementById('arc-range-sel');
   if (!btn || !body) return;
-  // 08-06：分析途中鎖定範圍下拉選單並就地存一份快照，避免分析跑到一半使用者切換範圍，
-  // 導致結果用「新範圍」當cache key存檔卻是「舊範圍」的內容，兩者對不上
-  const analyzingRange = _arcRange;
   btn.disabled = true;
   btn.textContent = '分析中…';
-  if (sel) sel.disabled = true;
   body.innerHTML = '<span class="arc-status">🔄 正在分析所有筆記，請稍候…</span>';
 
   // 收集筆記內容（依日期排序）
@@ -1855,12 +1820,13 @@ async function summarizeArchive() {
     }
   }
   delete notes.updated;
-  const allDates = Object.keys(notes).filter(k => k.match(/^\d{4}-\d{2}-\d{2}$/)).sort();
-  const dates = _arcFilterDates(allDates, analyzingRange);
+  // 08-06：拿掉時間範圍選單——不論選30/60/90天，最後都會被下面的413自動縮減機制夾到
+  // 差不多同一個實際能塞進Groq免費額度的天數，範圍選擇形同虛設，乾脆一律嘗試全部筆記，
+  // 讓縮減機制自己找出塞得下的範圍即可
+  const dates = Object.keys(notes).filter(k => k.match(/^\d{4}-\d{2}-\d{2}$/)).sort();
   if (!dates.length) {
-    body.innerHTML = `<span class="arc-status">「${_arcRangeLabel(analyzingRange)}」範圍內尚無可分析的筆記。</span>`;
+    body.innerHTML = '<span class="arc-status">尚無可分析的筆記。</span>';
     btn.disabled = false; btn.textContent = '✨ 分析趨勢';
-    if (sel) sel.disabled = false;
     return;
   }
 
@@ -1884,10 +1850,11 @@ ${noteBlocks}
     ...（若有跨日定義類描述，整理出 3-5 條）
   ],
   "insight": [
-    "主軸方向：這段時間最主要的 AI 產業趨勢（1-2句）",
-    "關鍵決策：哪些公司做了什麼戰略決策，動機是什麼（2-3句，含具體公司名）",
-    "影響鏈：對上下游（供應商/開發者/用戶/監管）的連鎖影響（2-3句）",
-    "前瞻：從筆記觀察到的方向，接下來最值得關注的變化（1-2句）"
+    "主軸方向：這段時間最主要的 AI 產業趨勢，說明推論依據（3-4句，需引用至少1個具體日期佐證）",
+    "關鍵決策：哪些公司做了什麼戰略決策、動機是什麼、跟前面觀察到的趨勢有何關聯（3-4句，含具體公司名與日期）",
+    "影響鏈：對上下游（供應商/開發者/用戶/監管）的連鎖影響，說明傳導路徑而不只是列出受影響對象（3-4句）",
+    "矛盾與待驗證：筆記裡有沒有互相矛盾、方向不明、還需要繼續觀察才能確認的訊號（2-3句；若真的沒有就明講「暫無明顯矛盾訊號」，不可為了填內容硬湊）",
+    "前瞻：從筆記觀察到的方向，接下來最值得關注的變化，以及觀察指標是什麼（2-3句）"
   ]
 }
 
@@ -1895,7 +1862,8 @@ ${noteBlocks}
 - 只分析筆記中真實出現的內容，禁止捏造
 - keyword trend: 若後期（最近幾天）出現次數增加→up；減少→down；穩定→stable
 - definitions 只包含筆記中有實質描述的技術概念，不要生硬定義常識詞
-- insight 必須是恰好 4 個元素的 JSON 陣列，每個元素是一段純文字字串
+- insight 必須是恰好 5 個元素的 JSON 陣列，每個元素是一段純文字字串，要有推論過程不能只下結論
+- insight 每一句需盡量標注依據的具體日期（例如「（08-03觀察）」），讓人回頭查得到出處
 - 回傳純 JSON，不加任何 markdown 或說明文字`;
   }
 
@@ -1909,7 +1877,9 @@ ${noteBlocks}
         body: JSON.stringify({
           model: 'llama-3.3-70b-versatile',
           messages: [{role:'user', content: _buildAnalysisPrompt(useDates)}],
-          max_tokens: 1800,
+          // 08-06：insight從4項加到5項且要求每項附推論依據與日期佐證，1800不夠放，
+          // 提高到2600（仍在12,000 TPM預算內留給輸入的空間，只是縮減機制觸發的天數門檻會略降一點）
+          max_tokens: 2600,
           temperature: 0.3
         })
       });
@@ -1919,7 +1889,7 @@ ${noteBlocks}
       shrunk = true;
       const keepCount = Math.min(useDates.length - 1, Math.max(1, Math.ceil(useDates.length * 0.6)));
       useDates = useDates.slice(useDates.length - keepCount);
-      if (_arcRange === analyzingRange) body.innerHTML = `<span class="arc-status">🔄 範圍過大，縮減至最近 ${useDates.length} 天重試中…</span>`;
+      body.innerHTML = `<span class="arc-status">🔄 範圍過大，縮減至最近 ${useDates.length} 天重試中…</span>`;
     }
     if (!resp.ok) {
       let errMsg = `HTTP ${resp.status}`;
@@ -1934,20 +1904,16 @@ ${noteBlocks}
     raw = _sanitizeJson(raw);
     const result = JSON.parse(raw);
     // 08-06：若因413自動縮減過天數，把這件事存進結果本身，讓使用者事後(含session快取重讀時)
-    // 都看得到「實際分析的範圍比你選的還窄」，不要悄悄縮小卻不講
-    if (shrunk) result._rangeNote = `⚠️ 「${_arcRangeLabel(analyzingRange)}」資料量超過 Groq 免費額度單次請求上限，已自動縮減為最近 ${useDates.length} 天（${useDates[0]} ~ ${useDates[useDates.length-1]}）`;
-    sessionStorage.setItem('arc_summary_' + analyzingRange, JSON.stringify(result));
-    // 分析途中若使用者已切到別的範圍，畫面此刻該顯示的是「當下選的範圍」而非剛分析完的範圍，
-    // 直接渲染剛拿到的結果會把錯範圍的內容貼上去；改用同一套「有快取就顯示、沒有就給提示」的邏輯統一處理
-    if (_arcRange === analyzingRange) _renderSummaryResult(result);
-    else _loadCachedOrPromptSummary();
+    // 都看得到「實際分析的範圍比全部筆記還窄」，不要悄悄縮小卻不講
+    if (shrunk) result._rangeNote = `⚠️ 筆記資料量超過 Groq 免費額度單次請求上限，已自動聚焦最近 ${useDates.length} 天（${useDates[0]} ~ ${useDates[useDates.length-1]}）`;
+    sessionStorage.setItem('arc_summary', JSON.stringify(result));
+    _renderSummaryResult(result);
   } catch(e) {
     // e.message現在可能含Groq回傳的任意錯誤文字（原本只有裸狀態碼），插入innerHTML前跳脫避免注入
-    if (_arcRange === analyzingRange) body.innerHTML = `<span class="arc-status">❌ 分析失敗：${_arcEsc(e.message)}</span>`;
+    body.innerHTML = `<span class="arc-status">❌ 分析失敗：${_arcEsc(e.message)}</span>`;
   }
   btn.disabled = false;
   btn.textContent = '↻ 重新分析';
-  if (sel) sel.disabled = false;
 }
 
 function _sanitizeJson(str) {
@@ -1975,9 +1941,11 @@ function _renderSummaryResult(result) {
   const trendIcon = t => t === 'up' ? '↑' : t === 'down' ? '↓' : '→';
   const trendCls  = t => t === 'up' ? 'trend-up' : t === 'down' ? 'trend-dn' : '';
 
+  // 08-06：LLM回傳的term/note/def/insight都是模型生成文字，插入innerHTML前一律跳脫，避免
+  // 萬一內容含<>字元破版或（理論上）注入；這次要求insight寫更長、附日期佐證，出現尖括號機率上升
   const kwHTML = (result.keywords || []).map(k =>
-    `<span class="arc-kw ${trendCls(k.trend)}" title="${k.note || ''}">
-      ${k.term} <span class="kw-trend">${trendIcon(k.trend)}</span>
+    `<span class="arc-kw ${trendCls(k.trend)}" title="${_arcEsc(k.note || '')}">
+      ${_arcEsc(k.term)} <span class="kw-trend">${trendIcon(k.trend)}</span>
       <span style="font-size:11px;opacity:.7;">${k.count}天</span>
     </span>`
   ).join('');
@@ -1987,25 +1955,25 @@ function _renderSummaryResult(result) {
         <div class="arc-section-lbl">定義整理</div>
         <div class="arc-def-list">
           ${(result.definitions).map(d =>
-            `<div class="arc-def-item"><span class="arc-def-term">${d.term}</span>${d.def}</div>`
+            `<div class="arc-def-item"><span class="arc-def-term">${_arcEsc(d.term)}</span>${_arcEsc(d.def)}</div>`
           ).join('')}
         </div>
       </div>`
     : '';
 
   body.innerHTML = `
-    ${result._rangeNote ? `<div style="margin-bottom:10px;padding:8px 12px;background:rgba(230,126,34,.1);border-radius:8px;border-left:3px solid #e67e22;font-size:12px;color:var(--text2);">${result._rangeNote}</div>` : ''}
+    ${result._rangeNote ? `<div style="margin-bottom:10px;padding:8px 12px;background:rgba(230,126,34,.1);border-radius:8px;border-left:3px solid #e67e22;font-size:12px;color:var(--text2);">${_arcEsc(result._rangeNote)}</div>` : ''}
     <div>
       <div class="arc-section-lbl">高頻關鍵字趨勢</div>
       <div class="arc-kw-row">${kwHTML || '<span class="arc-status">無高頻關鍵字</span>'}</div>
     </div>
     ${defHTML}
-    ${result.insight ? `<div style="margin-top:12px;padding:10px 14px;background:rgba(120,96,160,.06);border-radius:8px;border-left:3px solid #8a60b0;font-size:12.5px;color:var(--text2);line-height:1.8;"><ul style="margin:0;padding-left:16px;display:flex;flex-direction:column;gap:8px;">${(Array.isArray(result.insight)?result.insight:result.insight.split(/\n+/)).filter(p=>p.trim()).map(p=>`<li>${p.trim()}</li>`).join('')}</ul></div>` : ''}
+    ${result.insight ? `<div style="margin-top:12px;padding:10px 14px;background:rgba(120,96,160,.06);border-radius:8px;border-left:3px solid #8a60b0;font-size:12.5px;color:var(--text2);line-height:1.8;"><ul style="margin:0;padding-left:16px;display:flex;flex-direction:column;gap:8px;">${(Array.isArray(result.insight)?result.insight:result.insight.split(/\n+/)).filter(p=>p.trim()).map(p=>`<li>${_arcEsc(p.trim())}</li>`).join('')}</ul></div>` : ''}
   `;
 }
 
 // ── Archive Search ──
-function _arcEsc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function _arcEsc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function _arcEscRx(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
 
 function _arcHighlight(text, query) {
