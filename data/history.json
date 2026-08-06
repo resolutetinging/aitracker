@@ -1,5 +1,159 @@
 [
   {
+    "date": "2026-08-07",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "前Intel CEO批評現有的AI硬體限制",
+        "layer": "AI晶片供應鏈",
+        "body": "前Intel CEO Pat Gelsinger批評現有的AI硬體限制，認為AI的未來發展需要更高的功率效率、基礎設施和經濟效益。",
+        "impact": "這將對AI硬體製造商產生壓力，促使他們改進產品的功率效率和基礎設施。同時，這也可能導致AI硬體的價格下降，從而促進AI技術的普及。",
+        "rating": "opp",
+        "insight": "AI硬體製造商需要改進產品的功率效率和基礎設施，以滿足未來的發展需求。",
+        "source_label": "Data Center Knowledge",
+        "source": "https://www.datacenterknowledge.com/data-center-chips/gpus-suck-former-intel-ceo-slams-data-center-hardware-limitations",
+        "chain": [
+          {
+            "label": "Intel AI 硬體銷量↓",
+            "type": "down"
+          },
+          {
+            "label": "AI 硬體需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "IBM的Agentic AI平台遭到攻擊",
+        "layer": "AI晶片供應鏈",
+        "body": "IBM的Agentic AI平台遭到攻擊，攻擊者可以遠程執行代碼。IBM已經發布了補丁，建議用戶盡快更新。",
+        "impact": "這將對IBM的用戶產生影響，可能導致數據泄露或其他安全問題。",
+        "rating": "opp",
+        "insight": "AI平台的安全性需要引起重視，公司需要加強平台的安全措施以防止攻擊。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/security/2026/08/05/ibms-agentic-ai-platform-is-under-active-attack-patch-now/5283535",
+        "chain": [
+          {
+            "label": "IBM Agentic AI 平台安全性↓",
+            "type": "down"
+          },
+          {
+            "label": "IBM 客戶信任↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 說 Apple 的安全措施削弱了其商業秘密案件",
+        "layer": "AI",
+        "body": "OpenAI 對 Apple 的商業秘密案件提出異議，認為 Apple 的安全措施和離職程序削弱了其商業秘密主張。Apple 指控 OpenAI 動員了一個計劃來獲得其前員工的機密硬件信息。",
+        "impact": "這個事件可能會影響 Apple 和 OpenAI 的商業秘密案件，導致法院重新評估 Apple 的主張。",
+        "rating": "core",
+        "insight": "OpenAI 的商業秘密案件提醒我們，公司的安全措施和離職程序是非常重要的。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/06/openai-says-apples-own-security-practices-undermine-its-trade-secrets-case/",
+        "chain": [
+          {
+            "label": "OpenAI 商業秘密案件↑",
+            "type": "up"
+          },
+          {
+            "label": "Apple 安全措施↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Mirendil 簽署 1 億美元以上的 Google Cloud 合約",
+        "layer": "AI",
+        "body": "Mirendil 簽署了一個多年期的合作協議，與 Google Cloud 合作開發自我改進的 AI 研究。這個合約反映了兩個趨勢：雲端巨頭正在吸引初創公司，AI 公司正在搶佔基礎設施。",
+        "impact": "這個事件可能會影響 Mirendil 和 Google Cloud 的合作，導致它們加強基礎設施和 AI 研究。",
+        "rating": "core",
+        "insight": "Mirendil 的 Google Cloud 合約提醒我們，雲端公司和 AI 公司的合作是非常重要的。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/06/exclusive-mirendil-inks-100m-google-cloud-deal-to-scale-self-improving-ai/",
+        "chain": [
+          {
+            "label": "Mirendil 合作協議↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Cloud 市占↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "UpToDate Expert AI 擴展至 2,500 家美國醫院和健康系統",
+        "layer": "醫療應用",
+        "body": "UpToDate Expert AI 已經擴展至 2,500 家美國醫院和健康系統，提供最新的醫療知識和決策支持。這項技術由 Wolters Kluwer 開發，旨在幫助醫療人員做出更好的決策。UpToDate Expert AI 的擴展表明了人工智慧在醫療領域的應用潛力。",
+        "impact": "UpToDate Expert AI 的擴展可能會增加醫療人員對人工智慧的需求，從而推動醫療領域的人工智慧發展。同時，其他醫療技術公司可能會跟進，開發自己的人工智慧解決方案，從而增加市場競爭。",
+        "rating": "core",
+        "insight": "",
+        "source_label": "Wolters Kluwer",
+        "source": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNb1VuajV5b1UwUmdhR1VxN0J3b2RWUHVZRGI3YXlFcWk5bWQ4d082M1ZyQlBDSU5tWUd5UWVNN2g4UXNxWHlrcy03eGhIVURnb2hHSFVPRHVDU2szUUtlcW9YR1E0VTF3bGxZRnM0LVptYTZrdGg2WHJQRUh1UXhOdlhRX245X0w1ZUlSODUxZ2NPOXpUdFBaWDVvSXRkN2ZNVGtxRmdZM21qTjBod1hkbUFBUWJSQTRMYUNxSkVB",
+        "chain": [
+          {
+            "label": "UpToDate Expert AI 應用↑",
+            "type": "up"
+          },
+          {
+            "label": "Wolters Kluwer 業務拓展↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "NiCE 獲得大型客戶服務 AI 合約",
+        "layer": "客戶服務",
+        "body": "NiCE 獲得大型客戶服務 AI 合約，將為企業提供客戶服務解決方案。這項合約表明了人工智慧在客戶服務領域的應用潛力。NiCE 的客戶服務 AI 解決方案可以幫助企業提高客戶滿意度和降低成本。",
+        "impact": "NiCE 獲得大型客戶服務 AI 合約可能會增加企業對人工智慧的需求，從而推動客戶服務領域的人工智慧發展。同時，其他客戶服務公司可能會跟進，開發自己的人工智慧解決方案，從而增加市場競爭。",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "CX Today",
+        "source": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPMkttWmhFc2UxVGhabktuSU9lMERkNWhXV0RJWU5tUjlEcTZfV0s3RDlfZkV4X09JekM4VnBpaFlCa0x3bWZfQnBGejRrbGg3VmE4TDQwQlNacTF5UldKUzVCU2tjdDNEb0VoM2Y0bFFqZ1FZX082dV9rY0hlb2VfVg",
+        "chain": [
+          {
+            "label": "NiCE 客戶服務 AI 合約↑",
+            "type": "up"
+          },
+          {
+            "label": "NiCE 業務收入↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "LLM",
+        "full": "Large Language Model",
+        "def": "一種人工智慧模型，能夠處理和理解大量語言數據。",
+        "why": "LLM能夠用於自然語言處理、文本生成等領域。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "代理群體",
+        "full": "Agent Swarm",
+        "def": "一群代理的集合，能夠合作和溝通以完成任務。",
+        "why": "代理群體的安全性和監控是非常重要的。",
+        "category": "AI"
+      },
+      {
+        "term": "UpToDate Expert AI",
+        "full": "UpToDate Expert AI 是一種醫療知識和決策支持平台，旨在幫助醫療人員做出更好的決策。",
+        "def": "UpToDate Expert AI 是一種醫療知識和決策支持平台，旨在幫助醫療人員做出更好的決策。",
+        "why": "UpToDate Expert AI 的發展表明了人工智慧在醫療領域的應用潛力。",
+        "category": "app"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-06",
     "is_sunday": false,
     "hw": [
@@ -1021,232 +1175,6 @@
         "def": "專門負責AI技術的開發和應用",
         "why": "推動AI技術在企業中的應用和發展",
         "category": "AI應用"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-07-31",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "美國政府投資GlobalFoundries開發矽光子技術",
-        "layer": "晶片製造",
-        "body": "美國政府將向GlobalFoundries提供3億美元的資金，用於開發矽光子技術，同時獲得GlobalFoundries 1%的股份。這項投資旨在推動矽光子技術的發展，以滿足AI產業對於數據中心的需求。GlobalFoundries的Silicon Photonics Co-Packaged Advanced Light Engine（SCALE）技術是其中一項關鍵技術，旨在支持每條通道400 Gb/s的傳輸速率。",
-        "impact": "這項投資將直接影響GlobalFoundries的矽光子技術開發，同時也可能會增加對矽光子技術的需求，從而推動相關產業的發展。",
-        "rating": "opp",
-        "insight": "美國政府的投資將推動矽光子技術的發展，從而滿足AI產業對於數據中心的需求。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/public-sector/2026/07/29/uncle-sam-sees-the-light-offers-globalfoundries-300m-to-pursue-silicon-photonics-while-taking-1-stake/5280620",
-        "chain": [
-          {
-            "label": "GlobalFoundries 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "GlobalFoundries 股價↑",
-            "type": "up"
-          },
-          {
-            "label": "美國政府投資回報↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "FormFactor公司公佈2026年第二季度財報",
-        "layer": "測試和檢驗",
-        "body": "FormFactor公司公佈2026年第二季度財報，收入達2.58億美元，比去年同期增長31.9%。公司的非GAAP毛利率達54.1%，比去年同期增長1,500個基點。FormFactor公司的CEO Mike Slessor表示，公司的收入增長反映了公司在高性能計算和先進封裝技術上的投資和執行力。",
-        "impact": "FormFactor公司的財報表明公司的業務正在增長，這可能會對公司的供應鏈合作伙伴和客戶產生正面的影響。同時，這也可能會增加對測試和檢驗設備的需求，從而推動相關產業的發展。",
-        "rating": "core",
-        "insight": "FormFactor公司的財報表明公司的業務正在增長，從而推動相關產業的發展。",
-        "source_label": "GlobeNewswire",
-        "source": "https://pr.cullmantimes.com/article/FormFactor-Inc-Reports-2026-Second-Quarter-Results/6a6a5c9f0b3f8c6777521034",
-        "chain": [
-          {
-            "label": "FormFactor 收入↑",
-            "type": "up"
-          },
-          {
-            "label": "FormFactor 毛利率↑",
-            "type": "up"
-          },
-          {
-            "label": "FormFactor 股價↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "研究人員開發可部署的3D結構",
-        "layer": "晶片製造",
-        "body": "來自休斯頓大學、豐田和倫敦帝國學院的研究人員開發了一種可部署的3D結構技術，使用晶圓製造的預製件。這種技術可以用於製造複雜的3D結構，從而應用於各種領域。",
-        "impact": "這種技術的開發可能會對相關材料和設備的需求產生影響，從而推動相關產業的發展。",
-        "rating": "opp",
-        "insight": "可部署的3D結構技術的開發將推動晶片製造產業的發展，從而滿足各種應用的需求。",
-        "source_label": "SemiEngineering",
-        "source": "https://semiengineering.com/deployable-3d-structures-from-wafer-fabricated-precursors-u-of-houston-toyota-imperial-college-london/",
-        "chain": [
-          {
-            "label": "豐田技術研發↑",
-            "type": "up"
-          },
-          {
-            "label": "倫敦帝國學院研究成果↑",
-            "type": "up"
-          },
-          {
-            "label": "休斯頓大學合作項目↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Meta 使用 AI 加速新應用程式開發",
-        "layer": "AI 應用",
-        "body": "Meta 的 CEO Mark Zuckerberg 表示，該公司使用 AI 技術可以更快速地開發新應用程式，例如最近推出的 Instagram Instants、Forum 和 Seller 等。這些應用程式的開發得益於大型語言模型 (LLMs) 的支持，允許 Meta 更快速地測試新想法。",
-        "impact": "Meta 的 AI 驅動開發模式可能會增加其應用程式的市場份額，同時也可能推動 AI 技術在軟體開發領域的應用，從而帶來新的商業機會。",
-        "rating": "core",
-        "insight": "",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/07/30/meta-says-ai-is-making-it-easier-to-build-new-apps-and-more-are-coming/",
-        "chain": [
-          {
-            "label": "Meta AI 研發↑",
-            "type": "up"
-          },
-          {
-            "label": "Instagram Instants 使用率↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta 股價↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Amazon、Replit 和 Tether 領導人將出席 TechCrunch Disrupt 2026",
-        "layer": "產業趨勢",
-        "body": "TechCrunch Disrupt 2026 的大會上將有 Amazon 的 Panos Panay、Replit 的 Amjad Masad 和 Tether 的 Paolo Ardoino 等領導人出席，討論 AI 和其他技術的最新發展和趨勢。",
-        "impact": "這次大會可能會推動 AI 和其他技術的發展，同時也可能帶來新的商業機會和合作。參與大會的領導人可能會分享他們的見解和經驗，從而影響產業的未來發展。",
-        "rating": "opp",
-        "insight": "TechCrunch Disrupt 2026 的大會可能會成為 AI 和其他技術發展的重要里程碑，投資者應該關注這次大會的議程和成果。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/07/30/techcrunch-disrupt-2026s-biggest-stage-features-leaders-from-amazon-replit-tether-with-much-more-to-come/",
-        "chain": [
-          {
-            "label": "Amazon 參會影響↑",
-            "type": "up"
-          },
-          {
-            "label": "Replit 技術分享↑",
-            "type": "up"
-          },
-          {
-            "label": "Tether 合作項目↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Microsoft 公開競爭 OpenAI 和 Anthropic",
-        "layer": "AI 競爭",
-        "body": "Microsoft 正在公開競爭 OpenAI 和 Anthropic，兩家公司都是 AI 技術的領導者。Microsoft 的 CEO 表示，該公司將繼續投資 AI 技術，同時也將與其他公司合作開發新技術。",
-        "impact": "Microsoft 的競爭策略可能會增加 AI 技術的發展速度，同時也可能帶來新的商業機會和合作。這種競爭還可能推動 AI 技術在各個領域的應用，從而帶來新的產業機會。",
-        "rating": "core",
-        "insight": "",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/07/29/microsoft-is-openly-competing-with-openai-anthropic-more-than-ever",
-        "chain": [
-          {
-            "label": "Microsoft AI 投資↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI 競爭力↓",
-            "type": "down"
-          },
-          {
-            "label": "Anthropic 市占↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "數字健康AI投資達74億美元",
-        "layer": "醫療業",
-        "body": "數字健康AI投資在2026年上半年達74億美元，CMS、醫院和初創公司都在加速採用。MarketScale報導，數字健康AI投資的增長是由於AI技術在醫療業的應用日益廣泛。",
-        "impact": "這將對醫療業的供應鏈產生直接影響，尤其是對於AI技術的開發和應用。同時，也會對初創公司和投資者產生間接影響，促進醫療AI的發展和投資。",
-        "rating": "core",
-        "insight": "",
-        "source_label": "MarketScale",
-        "source": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOZXc2VzRDaHdRUS1XeGRIN291YkkwT3lQQkRvVTd2bURQN3hBVHZvN3pQQjFGMHJUWHRVYlp3d3Y1SGVtd1laYXhaU3otSkpoVDJxcVB5WmtobE1ubURYU3IyZVFuRXIyV0MtWFB5TXpDelgtU1U1bTJfNDhySjBOWUtMcFpzeVVHT1YyelpoU2RscTBRU3pDc2h6RDU5dktMTVh4VmJfSkd1RUhlQ3dUZnZxTnliX0k2NlQ2V05BeGVEZ0FuSkNJRHUzR1IyeG9zdk9JTV9IclFaMVBFVDAyVjlHcndwNFE?oc=5",
-        "chain": [
-          {
-            "label": "數字健康AI 投資↑",
-            "type": "up"
-          },
-          {
-            "label": "CMS 採用率↑",
-            "type": "up"
-          },
-          {
-            "label": "醫院數字化轉型↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "AI醫療股票有真正的採用里程碑",
-        "layer": "醫療業",
-        "body": "AI醫療股票有真正的採用里程碑，投資者可以關注。simplywall.st報導，AI醫療股票的採用里程碑是投資者評估這個領域的重要指標。",
-        "impact": "這將對AI醫療股票的供應鏈產生直接影響，尤其是對於AI技術的開發和應用。同時，也會對投資者產生間接影響，促進AI醫療股票的發展和投資。",
-        "rating": "opp",
-        "insight": "",
-        "source_label": "simplywall.st",
-        "source": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNTDUwMlJ5V1N0ZFVHTVZrczIzMWJrb0lBWFV3RjhsTFFZTTA3MWdvcDU1VG14dGNWTnVRUEs1TlhVaTRSNDQ0LWlGMmtfM2s4OXA2dW05bkJHNk9xV05mRlhJYzFSYXMzY0RRNER1cDZZZXlWeEdGQV9KTDliVzl0MmJkTkdxX1pUZG82ZThDQkE2cFNXY2drdzdPNWFybm5pUUZfRzNzLVJzQ05GQUctRm82RDFLQ21zc2pGNUF6c3Z1eXZFTkhsNkdGNElLR1c1dHIyZ285Y1NqdkFBZUpCTjl3M3d4dDR6UnVsWEtuMEfSAfYBQVVfeXFMTUttZVAxdGw2VFNDWWRFUWpxM1F2UVA2dURFUEVWQ1U2TEJfT0pfVXBaMDBpeDFrZ3o0MEVGVy1EdllBdGlheEczeW9qRlRzZ25qY0N0N3Zwc3NFaE5RUEUtd0dfVFJOUlpJZG5SME5JSnc2dVpuRWJ5WWlMX3czQnd0UngydW9iQUpIckNfbk5veWNOVjZuUXkxSF9qTFVNcDdJVkhvYURWODNaYWl2alVFV29aTUd1b2taZndJOWxjbGhNX3RuRnFULXN0Q0lUeEVxQk93SDZYTTZ3Q3FGR0FhMVhDeE5lTFJuVzR3NDdmeUt2MG1R?oc=5",
-        "chain": [
-          {
-            "label": "AI 醫療股票價格↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 醫療採用率↑",
-            "type": "up"
-          },
-          {
-            "label": "simplywall.st 報導影響↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "矽光子技術",
-        "full": "Silicon Photonics",
-        "def": "一種使用矽材料製造的光子技術，主要用於製造光互連和光通信設備。",
-        "why": "矽光子技術可以提高數據中心的傳輸速率和效率，從而滿足AI產業的需求。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "LLMs",
-        "full": "Large Language Models",
-        "def": "是一種大型語言模型，能夠處理和理解大量的語言數據。",
-        "why": "LLMs 可以用於自然語言處理、語言翻譯和文本生成等領域。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "數字健康",
-        "full": "數字健康AI",
-        "def": "利用AI技術改善醫療業的效率和質量",
-        "why": "數字健康AI可以幫助醫療業更好地診斷和治療疾病",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
