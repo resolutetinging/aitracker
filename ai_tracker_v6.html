@@ -1240,7 +1240,28 @@ function gistErrMsg(res) {
     ? '同步失敗：PAT 可能缺 gist 權限或 gist 遺失'
     : '同步失敗，請稍後再試';
 }
+// 本地日期字串（YYYY-MM-DD），不透過toISOString()避免UTC轉換造成的時區偏移
+// （note_ key本身就是本地日期，cutoff比對基準要用同一種算法才不會多刪或少刪一天）
+function _localDateStr(d) {
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
 // PATCH notes 到 Gist（Gist API 的 content 是純文字，不做 base64）
+// 08-06：本機note_*確認同步Gist成功後才清掉7天前的，Gist已是完整備份，「本週紀錄」畫面本來就只顯示
+// 近7天、「歷史筆記」/「分析趨勢」都優先讀Gist，體驗不受影響。只有「已確認同步」才清，同步失敗則保留。
+function _pruneOldLocalNotes() {
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - 7);
+  const cutoffStr = _localDateStr(cutoff);
+  for (let i = localStorage.length - 1; i >= 0; i--) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith('note_')) {
+      const d = k.replace('note_', '');
+      if (/^\d{4}-\d{2}-\d{2}$/.test(d) && d < cutoffStr) {
+        localStorage.removeItem(k);
+      }
+    }
+  }
+}
 async function gistWriteNotes(notes, opts) {
   const token = localStorage.getItem('gh_pat');
   if (!token) return {ok:false, status:0};
@@ -1289,28 +1310,46 @@ async function fetchRemoteNotes() {
 async function autoUploadNotes(opts) {
   const token = localStorage.getItem('gh_pat');
   if (!token) return;
-  const notes = {};
+  const localNotes = {};
   for (let i = 0; i < localStorage.length; i++) {
     const k = localStorage.key(i);
     if (k && k.startsWith('note_')) {
       const val = localStorage.getItem(k);
-      if (val && val.trim()) notes[k.replace('note_','')] = val.trim();
+      if (val && val.trim()) localNotes[k.replace('note_','')] = val.trim();
     }
   }
-  // 先算出不含 updated 時戳的穩定序列化字串，與上次成功同步的雜湊比對
-  const stableStr = JSON.stringify(notes);
+  // 先算出不含 updated 時戳的穩定序列化字串，與上次成功同步的雜湊比對——只看「本機內容」有沒有變動，
+  // 藉此判斷值不值得同步；不能拿合併遠端後的內容比對雜湊，那樣每次都含遠端歷史會失去節流意義。
+  const stableStr = JSON.stringify(localNotes);
   const stableHash = djb2Hash(stableStr);
   if (stableHash === localStorage.getItem('notes_last_synced_hash')) {
     _autoUploadPending = false;
     return; // 內容未變，不推
   }
   showToast('📤 同步筆記中…', 5000);
+  // 08-06：上傳前先抓遠端完整資料合併，本機值蓋過遠端同一天（本機是剛編輯過的最新版本）。
+  // 沒有這一步的話，本機因_pruneOldLocalNotes()只剩近7天時，會整份覆蓋掉Gist裡的完整歷史。
+  let remote = {};
+  try { remote = await fetchRemoteNotes(); } catch(e) {}
+  // 安全檢查：檢查「遠端本身」抓回來的天數，不能拿合併後跟本機比——Object.assign(notes,localNotes)
+  // 之後notes必然是localNotes的超集，那樣比較恆為false等於沒防護。用「曾經成功同步過」
+  // （notes_last_synced_hash存在）當旗標：如果抓回0天卻曾經同步成功過，代表這次fetchRemoteNotes()
+  // 四層fallback可能全部靜默落空（不拋例外），不是遠端真的被清空，此時寧可跳過不寫，避免覆蓋歷史。
+  // 用旗標而非「一律要求遠端非空」是為了不擋到真正的第一次同步（那時遠端本來就合法地是空的）。
+  const remoteDayCount = Object.keys(remote).filter(k => /^\d{4}-\d{2}-\d{2}$/.test(k)).length;
+  if (remoteDayCount === 0 && localStorage.getItem('notes_last_synced_hash')) {
+    showToast('❌ 讀取遠端資料異常，已跳過本次同步以避免覆蓋歷史');
+    _autoUploadPending = false;
+    return;
+  }
+  const notes = Object.assign({}, remote, localNotes);
   notes.updated = new Date().toISOString();
   try {
     const res = await gistWriteNotes(notes, opts);
     if (res.ok) {
       localStorage.setItem('notes_last_synced_hash', stableHash);
       _autoUploadPending = false;
+      _pruneOldLocalNotes();
     }
     showToast(res.ok ? '✅ 筆記已自動同步' : '❌ ' + gistErrMsg(res));
     const st = document.getElementById('notes-save-status');
@@ -1600,16 +1639,29 @@ async function saveNotesToGitHub() {
   if (status) status.textContent = '儲存中...';
 
   // Collect all notes from localStorage
-  const notes = {};
+  const localNotes = {};
   for (let i = 0; i < localStorage.length; i++) {
     const k = localStorage.key(i);
     if (k && k.startsWith('note_')) {
       const date = k.replace('note_', '');
       const val = localStorage.getItem(k);
-      if (val && val.trim()) notes[date] = val.trim();
+      if (val && val.trim()) localNotes[date] = val.trim();
     }
   }
-  const stableHash = djb2Hash(JSON.stringify(notes)); // 不含 updated 時戳
+  const stableHash = djb2Hash(JSON.stringify(localNotes)); // 不含 updated 時戳，只看本機內容判斷節流
+
+  // 08-06：同autoUploadNotes()，上傳前先抓遠端完整資料合併，本機值蓋過遠端同一天，
+  // 避免本機因_pruneOldLocalNotes()只剩近7天時，一鍵儲存整份覆蓋掉Gist裡的完整歷史。
+  let remote = {};
+  try { remote = await fetchRemoteNotes(); } catch(e) {}
+  // 安全檢查：檢查「遠端本身」抓回來的天數（不能拿合併後跟本機比，合併後必是本機的超集恆不成立）。
+  // 用「曾經成功同步過」（notes_last_synced_hash存在）當旗標，避免擋到真正的第一次同步。
+  const remoteDayCount = Object.keys(remote).filter(k => /^\d{4}-\d{2}-\d{2}$/.test(k)).length;
+  if (remoteDayCount === 0 && localStorage.getItem('notes_last_synced_hash')) {
+    if (status) { status.textContent = '❌ 讀取遠端資料異常，已中止儲存以避免覆蓋歷史'; setTimeout(()=>{ if(status) status.textContent=''; }, 4000); }
+    return;
+  }
+  const notes = Object.assign({}, remote, localNotes);
   notes.updated = new Date().toISOString();
 
   try {
@@ -1617,6 +1669,7 @@ async function saveNotesToGitHub() {
     if (res.ok) {
       localStorage.setItem('notes_last_synced_hash', stableHash);
       _autoUploadPending = false;
+      _pruneOldLocalNotes();
     }
     if (status) {
       status.textContent = res.ok
@@ -1685,8 +1738,8 @@ function renderArchive(notes) {
       <button class="arc-search-clear" id="arc-search-clear" style="display:none" onclick="clearArchiveSearch()">✕</button>
     </div>
     <div id="archive-cards-wrap">${cards}</div>` : '<div class="archive-empty">尚無歷史筆記。在「本週紀錄」中撰寫並儲存後，會在此顯示。</div>'}`;
-  // 若已有快取分析結果，直接渲染
-  const cached = sessionStorage.getItem('arc_summary');
+  // 若已有快取分析結果，直接渲染（08-06：cache key改帶範圍後綴，見_arcRange）
+  const cached = sessionStorage.getItem('arc_summary_' + _arcRange);
   if (cached) { try { _renderSummaryResult(JSON.parse(cached)); } catch(e){} }
 }
 
@@ -1712,15 +1765,44 @@ function renderSummaryCard(notes) {
   return `<div class="arc-summary" id="arc-summary-card">
     <div class="arc-summary-hd">
       <span class="arc-summary-title">📊 筆記趨勢分析</span>
-      <div style="display:flex;gap:6px;">
+      <div style="display:flex;gap:6px;align-items:center;">
+        <select class="arc-analyze-btn secondary" id="arc-range-sel" onchange="_arcRange=this.value;_loadCachedOrPromptSummary();" style="padding:5px 8px;">
+          <option value="30"${_arcRange==='30'?' selected':''}>近30天</option>
+          <option value="60"${_arcRange==='60'?' selected':''}>近60天</option>
+          <option value="90"${_arcRange==='90'?' selected':''}>近90天</option>
+          <option value="all"${_arcRange==='all'?' selected':''}>全部</option>
+        </select>
         <button class="arc-analyze-btn secondary" onclick="clearGroqKey()" title="清除 Key">🔑</button>
         <button class="arc-analyze-btn" id="arc-analyze-btn" onclick="summarizeArchive()">✨ 分析趨勢</button>
       </div>
     </div>
     <div id="arc-summary-body" class="arc-summary-body">
-      <span class="arc-status">共 ${dates.length} 天筆記 — 點擊「✨ 分析趨勢」生成 AI 統整</span>
+      <span class="arc-status">共 ${dates.length} 天筆記 — 分析範圍「${_arcRangeLabel()}」，點擊「✨ 分析趨勢」生成 AI 統整</span>
     </div>
   </div>`;
+}
+// 08-06：分析範圍改可調整，原本永遠分析全部筆記，天數一多會稀釋近期重點且逼近LLM輸入上限
+let _arcRange = '60';
+// range參數可選，不傳時用當下的全域_arcRange（給renderSummaryCard()等即時UI用）；
+// summarizeArchive()會傳入分析開始當下的快照值，避免分析途中範圍被切換造成結果與cache key對不上
+function _arcRangeLabel(range) { range = range || _arcRange; return range==='all' ? '全部' : '近' + range + '天'; }
+function _arcFilterDates(dates, range) {
+  range = range || _arcRange;
+  if (range === 'all') return dates;
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - parseInt(range, 10));
+  const cutoffStr = _localDateStr(cutoff);
+  return dates.filter(d => d >= cutoffStr);
+}
+function _loadCachedOrPromptSummary() {
+  const body = document.getElementById('arc-summary-body');
+  if (!body) return;
+  const cached = sessionStorage.getItem('arc_summary_' + _arcRange);
+  if (cached) { try { _renderSummaryResult(JSON.parse(cached)); return; } catch(e) {} }
+  const dates = Object.keys(_currentArchiveNotes || {}).filter(k => k.match(/^\d{4}-\d{2}-\d{2}$/));
+  body.innerHTML = `<span class="arc-status">共 ${dates.length} 天筆記 — 分析範圍「${_arcRangeLabel()}」，點擊「✨ 分析趨勢」生成 AI 統整</span>`;
+  const btn = document.getElementById('arc-analyze-btn');
+  if (btn) { btn.disabled = false; btn.textContent = '✨ 分析趨勢'; }
 }
 
 function saveGroqKey() {
@@ -1731,7 +1813,8 @@ function saveGroqKey() {
 }
 function clearGroqKey() {
   localStorage.removeItem('groq_key');
-  sessionStorage.removeItem('arc_summary');
+  // 08-06：cache key改帶範圍後綴（arc_summary_30/60/90/all），清Key時四種範圍的快取都要清乾淨
+  ['30','60','90','all'].forEach(r => sessionStorage.removeItem('arc_summary_' + r));
   _replaceSummaryCard();
 }
 function _replaceSummaryCard() {
@@ -1750,9 +1833,14 @@ async function summarizeArchive() {
   if (!key) return;
   const btn = document.getElementById('arc-analyze-btn');
   const body = document.getElementById('arc-summary-body');
+  const sel = document.getElementById('arc-range-sel');
   if (!btn || !body) return;
+  // 08-06：分析途中鎖定範圍下拉選單並就地存一份快照，避免分析跑到一半使用者切換範圍，
+  // 導致結果用「新範圍」當cache key存檔卻是「舊範圍」的內容，兩者對不上
+  const analyzingRange = _arcRange;
   btn.disabled = true;
   btn.textContent = '分析中…';
+  if (sel) sel.disabled = true;
   body.innerHTML = '<span class="arc-status">🔄 正在分析所有筆記，請稍候…</span>';
 
   // 收集筆記內容（依日期排序）
@@ -1767,14 +1855,16 @@ async function summarizeArchive() {
     }
   }
   delete notes.updated;
-  const dates = Object.keys(notes).filter(k => k.match(/^\d{4}-\d{2}-\d{2}$/)).sort();
+  const allDates = Object.keys(notes).filter(k => k.match(/^\d{4}-\d{2}-\d{2}$/)).sort();
+  const dates = _arcFilterDates(allDates, analyzingRange);
   if (!dates.length) {
-    body.innerHTML = '<span class="arc-status">尚無可分析的筆記。</span>';
+    body.innerHTML = `<span class="arc-status">「${_arcRangeLabel(analyzingRange)}」範圍內尚無可分析的筆記。</span>`;
     btn.disabled = false; btn.textContent = '✨ 分析趨勢';
+    if (sel) sel.disabled = false;
     return;
   }
 
-  // 建立 prompt（依時間序列整理）
+  // 建立 prompt（依時間序列整理，只取選定範圍內的天數，避免筆記越積越多時稀釋近期重點、逼近LLM輸入上限）
   const noteBlocks = dates.map(d => `【${d}】\n${notes[d]}`).join('\n\n---\n\n');
   const prompt = `以下是 AI 產業觀察日誌，按日期排列（共 ${dates.length} 天，${dates[0]} ~ ${dates[dates.length-1]}）：
 
@@ -1824,13 +1914,17 @@ ${noteBlocks}
     // LLM 有時在 JSON 字串值裡放真實換行，需先做字元級清理
     raw = _sanitizeJson(raw);
     const result = JSON.parse(raw);
-    sessionStorage.setItem('arc_summary', JSON.stringify(result));
-    _renderSummaryResult(result);
+    sessionStorage.setItem('arc_summary_' + analyzingRange, JSON.stringify(result));
+    // 分析途中若使用者已切到別的範圍，畫面此刻該顯示的是「當下選的範圍」而非剛分析完的範圍，
+    // 直接渲染剛拿到的結果會把錯範圍的內容貼上去；改用同一套「有快取就顯示、沒有就給提示」的邏輯統一處理
+    if (_arcRange === analyzingRange) _renderSummaryResult(result);
+    else _loadCachedOrPromptSummary();
   } catch(e) {
-    body.innerHTML = `<span class="arc-status">❌ 分析失敗：${e.message}</span>`;
+    if (_arcRange === analyzingRange) body.innerHTML = `<span class="arc-status">❌ 分析失敗：${e.message}</span>`;
   }
   btn.disabled = false;
   btn.textContent = '↻ 重新分析';
+  if (sel) sel.disabled = false;
 }
 
 function _sanitizeJson(str) {
@@ -1946,22 +2040,36 @@ async function saveArchiveToGitHub() {
   const status = document.getElementById('archive-save-status');
   if (status) status.textContent = '儲存中…';
   // 收集所有 localStorage note_*
-  const notes = {};
+  const localNotes = {};
   for (let i = 0; i < localStorage.length; i++) {
     const k = localStorage.key(i);
     if (k && k.startsWith('note_')) {
       const date = k.replace('note_','');
       const val = localStorage.getItem(k) || '';
-      if (val.trim()) notes[date] = val.trim();
+      if (val.trim()) localNotes[date] = val.trim();
     }
   }
-  const stableHash = djb2Hash(JSON.stringify(notes)); // 不含 updated 時戳
+  const stableHash = djb2Hash(JSON.stringify(localNotes)); // 不含 updated 時戳，只看本機內容判斷節流
+  // 08-06：同autoUploadNotes()/saveNotesToGitHub()，上傳前先抓遠端完整資料合併，避免本機因
+  // _pruneOldLocalNotes()只剩近7天時，這個「歷史筆記」頁的儲存按鈕（畫面明明列著全部歷史）
+  // 一鍵把Gist洗成只剩7天。這是本機被裁切後仍會誤觸的第三個寫入入口，必須跟前兩處同一套邏輯。
+  let remote = {};
+  try { remote = await fetchRemoteNotes(); } catch(e) {}
+  // 安全檢查：檢查「遠端本身」抓回來的天數（不能拿合併後跟本機比，合併後必是本機的超集恆不成立）。
+  // 用「曾經成功同步過」（notes_last_synced_hash存在）當旗標，避免擋到真正的第一次同步。
+  const remoteDayCount = Object.keys(remote).filter(k => /^\d{4}-\d{2}-\d{2}$/.test(k)).length;
+  if (remoteDayCount === 0 && localStorage.getItem('notes_last_synced_hash')) {
+    if (status) { status.textContent = '❌ 讀取遠端資料異常，已中止儲存以避免覆蓋歷史'; setTimeout(()=>{ if(status) status.textContent=''; }, 4000); }
+    return;
+  }
+  const notes = Object.assign({}, remote, localNotes);
   notes.updated = new Date().toISOString();
   try {
     const res = await gistWriteNotes(notes);
     if (res.ok) {
       localStorage.setItem('notes_last_synced_hash', stableHash);
       _autoUploadPending = false;
+      _pruneOldLocalNotes();
     }
     if (status) {
       status.textContent = res.ok ? `✅ 已儲存（${Object.keys(notes).filter(k=>k!=='updated').length} 天）` : '❌ ' + gistErrMsg(res);
