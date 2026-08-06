@@ -1864,9 +1864,12 @@ async function summarizeArchive() {
     return;
   }
 
-  // 建立 prompt（依時間序列整理，只取選定範圍內的天數，避免筆記越積越多時稀釋近期重點、逼近LLM輸入上限）
-  const noteBlocks = dates.map(d => `【${d}】\n${notes[d]}`).join('\n\n---\n\n');
-  const prompt = `以下是 AI 產業觀察日誌，按日期排列（共 ${dates.length} 天，${dates[0]} ~ ${dates[dates.length-1]}）：
+  // 08-06：Groq免費方案llama-3.3-70b-versatile限制12,000 TPM（來源：console.groq.com/docs/rate-limits），
+  // 選的天數範圍再小，只要單日筆記夠長還是可能整包超過這個上限被回413。改成失敗就自動縮減天數
+  // （從最舊的開始砍，優先保留最近的）重試，而不是靠猜一個固定字數上限一次到位。
+  function _buildAnalysisPrompt(useDates) {
+    const noteBlocks = useDates.map(d => `【${d}】\n${notes[d]}`).join('\n\n---\n\n');
+    return `以下是 AI 產業觀察日誌，按日期排列（共 ${useDates.length} 天，${useDates[0]} ~ ${useDates[useDates.length-1]}）：
 
 ${noteBlocks}
 
@@ -1894,19 +1897,35 @@ ${noteBlocks}
 - definitions 只包含筆記中有實質描述的技術概念，不要生硬定義常識詞
 - insight 必須是恰好 4 個元素的 JSON 陣列，每個元素是一段純文字字串
 - 回傳純 JSON，不加任何 markdown 或說明文字`;
+  }
 
+  let useDates = dates;
+  let resp, shrunk = false;
   try {
-    const resp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
-        messages: [{role:'user', content: prompt}],
-        max_tokens: 1800,
-        temperature: 0.3
-      })
-    });
-    if (!resp.ok) throw new Error(`Groq ${resp.status}`);
+    for (let attempt = 0; attempt < 10; attempt++) {
+      resp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          model: 'llama-3.3-70b-versatile',
+          messages: [{role:'user', content: _buildAnalysisPrompt(useDates)}],
+          max_tokens: 1800,
+          temperature: 0.3
+        })
+      });
+      if (resp.status !== 413 || useDates.length <= 1) break;
+      // 413（請求過大）：保留最近60%的天數重試，捨棄最舊的部分。keepCount要比目前天數
+      // 至少少1天，否則天數縮到2時ceil(2*0.6)=2會卡住不再變小、迴圈次數用完仍是2天原地重試
+      shrunk = true;
+      const keepCount = Math.min(useDates.length - 1, Math.max(1, Math.ceil(useDates.length * 0.6)));
+      useDates = useDates.slice(useDates.length - keepCount);
+      if (_arcRange === analyzingRange) body.innerHTML = `<span class="arc-status">🔄 範圍過大，縮減至最近 ${useDates.length} 天重試中…</span>`;
+    }
+    if (!resp.ok) {
+      let errMsg = `HTTP ${resp.status}`;
+      try { const errBody = await resp.json(); errMsg = errBody.error?.message || errMsg; } catch(e) {}
+      throw new Error(errMsg);
+    }
     const data = await resp.json();
     let raw = data.choices?.[0]?.message?.content || '';
     // 清除可能的 markdown code fence
@@ -1914,13 +1933,17 @@ ${noteBlocks}
     // LLM 有時在 JSON 字串值裡放真實換行，需先做字元級清理
     raw = _sanitizeJson(raw);
     const result = JSON.parse(raw);
+    // 08-06：若因413自動縮減過天數，把這件事存進結果本身，讓使用者事後(含session快取重讀時)
+    // 都看得到「實際分析的範圍比你選的還窄」，不要悄悄縮小卻不講
+    if (shrunk) result._rangeNote = `⚠️ 「${_arcRangeLabel(analyzingRange)}」資料量超過 Groq 免費額度單次請求上限，已自動縮減為最近 ${useDates.length} 天（${useDates[0]} ~ ${useDates[useDates.length-1]}）`;
     sessionStorage.setItem('arc_summary_' + analyzingRange, JSON.stringify(result));
     // 分析途中若使用者已切到別的範圍，畫面此刻該顯示的是「當下選的範圍」而非剛分析完的範圍，
     // 直接渲染剛拿到的結果會把錯範圍的內容貼上去；改用同一套「有快取就顯示、沒有就給提示」的邏輯統一處理
     if (_arcRange === analyzingRange) _renderSummaryResult(result);
     else _loadCachedOrPromptSummary();
   } catch(e) {
-    if (_arcRange === analyzingRange) body.innerHTML = `<span class="arc-status">❌ 分析失敗：${e.message}</span>`;
+    // e.message現在可能含Groq回傳的任意錯誤文字（原本只有裸狀態碼），插入innerHTML前跳脫避免注入
+    if (_arcRange === analyzingRange) body.innerHTML = `<span class="arc-status">❌ 分析失敗：${_arcEsc(e.message)}</span>`;
   }
   btn.disabled = false;
   btn.textContent = '↻ 重新分析';
@@ -1971,6 +1994,7 @@ function _renderSummaryResult(result) {
     : '';
 
   body.innerHTML = `
+    ${result._rangeNote ? `<div style="margin-bottom:10px;padding:8px 12px;background:rgba(230,126,34,.1);border-radius:8px;border-left:3px solid #e67e22;font-size:12px;color:var(--text2);">${result._rangeNote}</div>` : ''}
     <div>
       <div class="arc-section-lbl">高頻關鍵字趨勢</div>
       <div class="arc-kw-row">${kwHTML || '<span class="arc-status">無高頻關鍵字</span>'}</div>
