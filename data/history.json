@@ -4,83 +4,99 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "前Intel CEO批評現有的AI硬體限制",
-        "layer": "AI晶片供應鏈",
-        "body": "前Intel CEO Pat Gelsinger批評現有的AI硬體限制，認為AI的未來發展需要更高的功率效率、基礎設施和經濟效益。",
-        "impact": "這將對AI硬體製造商產生壓力，促使他們改進產品的功率效率和基礎設施。同時，這也可能導致AI硬體的價格下降，從而促進AI技術的普及。",
-        "rating": "opp",
-        "insight": "AI硬體製造商需要改進產品的功率效率和基礎設施，以滿足未來的發展需求。",
-        "source_label": "Data Center Knowledge",
+        "title": "前英特爾CEO批評資料中心硬體限制",
+        "layer": "晶片",
+        "body": "前英特爾CEO帕特·蓋爾辛格（Pat Gelsinger）在Ai4會議上表示，AI的未來取決於提高功率效率、基礎設施和經濟效益，而不是簡單地部署更多的GPU。他指出，GPU的功率效率很低，計算能力有限。蓋爾辛格強調，AI的突破將取決於解決計算、記憶體、網路、能源和經濟等基本限制。",
+        "impact": "這個消息可能會影響英特爾的業務，促使他們關注功率效率和基礎設施的改善。同時，也可能會影響資料中心的建設和運營，推動業者尋找更高效的解決方案。",
+        "rating": "core",
+        "insight": "AI的未來發展取決於解決基本限制，業者需要關注功率效率和基礎設施的改善。",
+        "source_label": "Datacenter Knowledge",
         "source": "https://www.datacenterknowledge.com/data-center-chips/gpus-suck-former-intel-ceo-slams-data-center-hardware-limitations",
         "chain": [
           {
-            "label": "Intel AI 硬體銷量↓",
+            "label": "英特爾GPU功率效率↓",
             "type": "down"
           },
           {
-            "label": "AI 硬體需求↑",
+            "label": "英特爾GPU計算能力↓",
+            "type": "down"
+          },
+          {
+            "label": "英特爾AI解決方案↑",
             "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "IBM的Agentic AI平台遭到攻擊",
-        "layer": "AI晶片供應鏈",
-        "body": "IBM的Agentic AI平台遭到攻擊，攻擊者可以遠程執行代碼。IBM已經發布了補丁，建議用戶盡快更新。",
-        "impact": "這將對IBM的用戶產生影響，可能導致數據泄露或其他安全問題。",
-        "rating": "opp",
-        "insight": "AI平台的安全性需要引起重視，公司需要加強平台的安全措施以防止攻擊。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/security/2026/08/05/ibms-agentic-ai-platform-is-under-active-attack-patch-now/5283535",
-        "chain": [
-          {
-            "label": "IBM Agentic AI 平台安全性↓",
-            "type": "down"
-          },
-          {
-            "label": "IBM 客戶信任↓",
-            "type": "down"
           }
         ]
       }
     ],
     "corp": [
       {
-        "title": "OpenAI 說 Apple 的安全措施削弱了其商業秘密案件",
-        "layer": "AI",
-        "body": "OpenAI 對 Apple 的商業秘密案件提出異議，認為 Apple 的安全措施和離職程序削弱了其商業秘密主張。Apple 指控 OpenAI 動員了一個計劃來獲得其前員工的機密硬件信息。",
-        "impact": "這個事件可能會影響 Apple 和 OpenAI 的商業秘密案件，導致法院重新評估 Apple 的主張。",
+        "title": "OpenAI 推出新 AI 智慧喇叭，售價約 300 至 400 美元",
+        "layer": "硬體",
+        "body": "OpenAI 的新 AI 智慧喇叭將會在市面上出售，售價約 300 至 400 美元。這款智慧喇叭將會是 ChatGPT 的實體化身，具有高品質的金屬外殼和獨特的設計。",
+        "impact": "這款智慧喇叭的推出可能會對高端智能音箱市場產生影響。同時，這也可能會推動其他公司開發類似的智慧喇叭，從而增加市場競爭。",
         "rating": "core",
-        "insight": "OpenAI 的商業秘密案件提醒我們，公司的安全措施和離職程序是非常重要的。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/06/openai-says-apples-own-security-practices-undermine-its-trade-secrets-case/",
+        "insight": "OpenAI 的新 AI 智慧喇叭可能會成為智能音箱市場的一個新玩家，值得投資者關注。",
+        "source_label": "techcrunch",
+        "source": "https://techcrunch.com/2026/08/06/openais-new-ai-smart-speaker-will-reportedly-sell-for-between-300-and-400/",
         "chain": [
           {
-            "label": "OpenAI 商業秘密案件↑",
+            "label": "OpenAI智慧喇叭銷量↑",
             "type": "up"
           },
           {
-            "label": "Apple 安全措施↓",
-            "type": "down"
+            "label": "OpenAI ChatGPT用戶數↑",
+            "type": "up"
+          },
+          {
+            "label": "OpenAI收入↑",
+            "type": "up"
           }
         ]
       },
       {
-        "title": "Mirendil 簽署 1 億美元以上的 Google Cloud 合約",
-        "layer": "AI",
-        "body": "Mirendil 簽署了一個多年期的合作協議，與 Google Cloud 合作開發自我改進的 AI 研究。這個合約反映了兩個趨勢：雲端巨頭正在吸引初創公司，AI 公司正在搶佔基礎設施。",
-        "impact": "這個事件可能會影響 Mirendil 和 Google Cloud 的合作，導致它們加強基礎設施和 AI 研究。",
+        "title": "OpenAI 對 ChatGPT 用戶提供無限文字聊天服務",
+        "layer": "軟體",
+        "body": "OpenAI 對 ChatGPT 用戶提供無限文字聊天服務，包括免費用戶和付費用戶。這項服務將由新推出的 GPT-5.6 Luna 模型提供支持。",
+        "impact": "這項服務的推出可能會增加 ChatGPT 的用戶數量和用戶粘性。同時，這也可能會推動其他公司開發類似的聊天機器人平台。",
         "rating": "core",
-        "insight": "Mirendil 的 Google Cloud 合約提醒我們，雲端公司和 AI 公司的合作是非常重要的。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/06/exclusive-mirendil-inks-100m-google-cloud-deal-to-scale-self-improving-ai/",
+        "insight": "OpenAI 的無限文字聊天服務可能會成為聊天機器人市場的一個新標準，值得投資者關注。",
+        "source_label": "techcrunch",
+        "source": "https://techcrunch.com/2026/08/06/openai-brings-unlimited-chatgpt-text-chats-to-free-users/",
         "chain": [
           {
-            "label": "Mirendil 合作協議↑",
+            "label": "OpenAI用戶體驗↑",
             "type": "up"
           },
           {
-            "label": "Google Cloud 市占↑",
+            "label": "OpenAI ChatGPT功能↑",
+            "type": "up"
+          },
+          {
+            "label": "OpenAI GPT-5.6 Luna模型↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 對 Apple 的商業秘密訴訟提出異議",
+        "layer": "法律",
+        "body": "OpenAI 對 Apple 的商業秘密訴訟提出異議，認為 Apple 的安全措施不足以保護其商業秘密。",
+        "impact": "這項訴訟的結果可能會對 Apple 的商業秘密保護措施產生影響。同時，這也可能會推動其他公司加強商業秘密保護。",
+        "rating": "opp",
+        "insight": "OpenAI 對 Apple 的商業秘密訴訟可能會成為一場重要的法律戰，值得投資者關注。",
+        "source_label": "techcrunch",
+        "source": "https://techcrunch.com/2026/08/06/openai-says-apples-own-security-practices-undermine-its-trade-secrets-case/",
+        "chain": [
+          {
+            "label": "OpenAI商業秘密保護↓",
+            "type": "down"
+          },
+          {
+            "label": "Apple商業秘密保護↓",
+            "type": "down"
+          },
+          {
+            "label": "OpenAI訴訟勝率↑",
             "type": "up"
           }
         ]
@@ -89,40 +105,48 @@
     "app": [
       {
         "title": "UpToDate Expert AI 擴展至 2,500 家美國醫院和健康系統",
-        "layer": "醫療應用",
-        "body": "UpToDate Expert AI 已經擴展至 2,500 家美國醫院和健康系統，提供最新的醫療知識和決策支持。這項技術由 Wolters Kluwer 開發，旨在幫助醫療人員做出更好的決策。UpToDate Expert AI 的擴展表明了人工智慧在醫療領域的應用潛力。",
-        "impact": "UpToDate Expert AI 的擴展可能會增加醫療人員對人工智慧的需求，從而推動醫療領域的人工智慧發展。同時，其他醫療技術公司可能會跟進，開發自己的人工智慧解決方案，從而增加市場競爭。",
-        "rating": "core",
-        "insight": "",
+        "layer": "醫療領域",
+        "body": "UpToDate Expert AI 已經擴展至 2,500 家美國醫院和健康系統，提供先進的醫療資訊和決策支持。這項技術由 Wolters Kluwer 開發，旨在幫助醫療人員做出更好的決策和改善患者治療效果。",
+        "impact": "這項技術的擴展將對醫療業的供應鏈產生正面的影響，特別是對於醫療資訊和決策支持的需求。同時，也將促進醫療業的數字化轉型和人工智慧的應用。",
+        "rating": "opp",
+        "insight": "UpToDate Expert AI 的擴展是醫療業人工智慧應用的重要里程碑，表明人工智慧在醫療領域的應用前景廣闊。",
         "source_label": "Wolters Kluwer",
         "source": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNb1VuajV5b1UwUmdhR1VxN0J3b2RWUHVZRGI3YXlFcWk5bWQ4d082M1ZyQlBDSU5tWUd5UWVNN2g4UXNxWHlrcy03eGhIVURnb2hHSFVPRHVDU2szUUtlcW9YR1E0VTF3bGxZRnM0LVptYTZrdGg2WHJQRUh1UXhOdlhRX245X0w1ZUlSODUxZ2NPOXpUdFBaWDVvSXRkN2ZNVGtxRmdZM21qTjBod1hkbUFBUWJSQTRMYUNxSkVB",
         "chain": [
           {
-            "label": "UpToDate Expert AI 應用↑",
+            "label": "UpToDate Expert AI醫療資訊↑",
             "type": "up"
           },
           {
-            "label": "Wolters Kluwer 業務拓展↑",
+            "label": "Wolters Kluwer技術↑",
+            "type": "up"
+          },
+          {
+            "label": "美國醫院健康系統↑",
             "type": "up"
           }
         ]
       },
       {
         "title": "NiCE 獲得大型客戶服務 AI 合約",
-        "layer": "客戶服務",
-        "body": "NiCE 獲得大型客戶服務 AI 合約，將為企業提供客戶服務解決方案。這項合約表明了人工智慧在客戶服務領域的應用潛力。NiCE 的客戶服務 AI 解決方案可以幫助企業提高客戶滿意度和降低成本。",
-        "impact": "NiCE 獲得大型客戶服務 AI 合約可能會增加企業對人工智慧的需求，從而推動客戶服務領域的人工智慧發展。同時，其他客戶服務公司可能會跟進，開發自己的人工智慧解決方案，從而增加市場競爭。",
+        "layer": "客戶服務領域",
+        "body": "NiCE 獲得大型客戶服務 AI 合約，將為企業提供先進的客戶服務解決方案。這項技術將幫助企業提高客戶滿意度和降低運營成本。",
+        "impact": "這項技術的應用將對客戶服務業的供應鏈產生正面的影響，特別是對於客戶服務解決方案的需求。同時，也將促進客戶服務業的數字化轉型和人工智慧的應用。",
         "rating": "opp",
-        "insight": "",
+        "insight": "NiCE 獲得大型客戶服務 AI 合約是客戶服務業人工智慧應用的重要里程碑，表明人工智慧在客戶服務領域的應用前景廣闊。",
         "source_label": "CX Today",
         "source": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPMkttWmhFc2UxVGhabktuSU9lMERkNWhXV0RJWU5tUjlEcTZfV0s3RDlfZkV4X09JekM4VnBpaFlCa0x3bWZfQnBGejRrbGg3VmE4TDQwQlNacTF5UldKUzVCU2tjdDNEb0VoM2Y0bFFqZ1FZX082dV9rY0hlb2VfVg",
         "chain": [
           {
-            "label": "NiCE 客戶服務 AI 合約↑",
+            "label": "NiCE客戶服務解決方案↑",
             "type": "up"
           },
           {
-            "label": "NiCE 業務收入↑",
+            "label": "NiCE AI技術↑",
+            "type": "up"
+          },
+          {
+            "label": "企業客戶滿意度↑",
             "type": "up"
           }
         ]
@@ -130,25 +154,25 @@
     ],
     "glossary_new": [
       {
-        "term": "LLM",
-        "full": "Large Language Model",
-        "def": "一種人工智慧模型，能夠處理和理解大量語言數據。",
-        "why": "LLM能夠用於自然語言處理、文本生成等領域。",
+        "term": "GPU",
+        "full": "Graphics Processing Unit",
+        "def": "圖形處理器，常用於AI計算和圖形渲染。",
+        "why": "GPU是AI計算的重要元件，了解其功能和限制對於AI的發展至關重要。",
+        "category": "晶片"
+      },
+      {
+        "term": "GPT-5.6 Luna",
+        "full": "GPT-5.6 Luna 模型",
+        "def": "一種由 OpenAI 開發的聊天機器人模型，提供無限文字聊天服務。",
+        "why": "這種模型可以提供更好的聊天體驗，增加用戶粘性。",
         "category": "ai_technique"
       },
       {
-        "term": "代理群體",
-        "full": "Agent Swarm",
-        "def": "一群代理的集合，能夠合作和溝通以完成任務。",
-        "why": "代理群體的安全性和監控是非常重要的。",
-        "category": "AI"
-      },
-      {
-        "term": "UpToDate Expert AI",
-        "full": "UpToDate Expert AI 是一種醫療知識和決策支持平台，旨在幫助醫療人員做出更好的決策。",
-        "def": "UpToDate Expert AI 是一種醫療知識和決策支持平台，旨在幫助醫療人員做出更好的決策。",
-        "why": "UpToDate Expert AI 的發展表明了人工智慧在醫療領域的應用潛力。",
-        "category": "app"
+        "term": "AI-Augmented Data Insights",
+        "full": "人工智慧增強數據洞察",
+        "def": "使用人工智慧技術對數據進行分析和洞察，從而幫助企業做出更好的決策。",
+        "why": "這項技術可以幫助企業提高數據分析的效率和準確性，從而提高決策的質量。",
+        "category": "ai_technique"
       }
     ],
     "weekly_summary": null

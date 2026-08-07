@@ -2,24 +2,24 @@
   "runs": [
     {
       "feeds": {
-        "Semiconductor": 73,
-        "CSP/CapEx": 55,
+        "Semiconductor": 53,
+        "CSP/CapEx": 49,
         "App/AI": 19,
-        "gnews-chip": 22,
+        "gnews-chip": 18,
         "gnews-dc": 23,
         "gnews-app": 22
       },
       "digest_filtered": 0,
-      "after_dedup": 195,
+      "after_dedup": 168,
       "buckets": {
-        "hw": 39,
-        "corp": 141,
-        "app": 39
+        "hw": 32,
+        "corp": 127,
+        "app": 31
       },
       "enriched": 12,
       "llm_items": {
         "hw": 4,
-        "corp": 3,
+        "corp": 4,
         "app": 3
       },
       "llm_failed": {
@@ -29,32 +29,32 @@
       },
       "final": {
         "hw": {
-          "core": 0,
-          "opp": 2,
+          "core": 1,
+          "opp": 0,
           "noise": 0
         },
         "corp": {
           "core": 2,
-          "opp": 0,
+          "opp": 1,
           "noise": 0
         },
         "app": {
-          "core": 1,
-          "opp": 1,
+          "core": 0,
+          "opp": 2,
           "noise": 0
         }
       },
       "placeholders": 0,
       "llm_ratings": {
         "hw": {
-          "core": 2,
-          "opp": 1,
+          "core": 3,
+          "opp": 0,
           "noise": 1
         },
         "corp": {
           "core": 3,
           "opp": 0,
-          "noise": 0
+          "noise": 1
         },
         "app": {
           "core": 1,
@@ -63,7 +63,7 @@
         }
       },
       "date": "2026-08-07",
-      "generated_at": "2026-08-07T00:04:25.079220+08:00"
+      "generated_at": "2026-08-07T09:34:53.710700+08:00"
     },
     {
       "feeds": {
