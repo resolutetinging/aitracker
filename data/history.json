@@ -1,5 +1,107 @@
 [
   {
+    "date": "2026-08-10",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Nvidia 中國 AI 晶片市場份額預計下降",
+        "layer": "AI晶片",
+        "body": "Nvidia 的中國 AI 晶片市場份額預計從 40% 下降到 8%，主要是因為 Huawei 的擴張。",
+        "impact": "此變化可能會對 Nvidia 的中國市場策略產生影響。對於 Huawei 來說，這可能會提高其在中國 AI 晶片市場的競爭力。",
+        "rating": "core",
+        "insight": "Nvidia 的中國市場份額下降可能會對其全球 AI 晶片市場份額產生影響，投資者應該關注其未來的市場策略。",
+        "source_label": "MarketScale",
+        "source": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPc3FYTkRuQWUta3dBcWc4U3IyUFB0YlBuZGlkdWF2a2MycjNER19uX2JFVlNtS1Q2b0NRZWNuVDI0WWlYNGdPRkRDSF9wNFRUYkwwWFpkTi1wemRfOHFyY0UxOVl1SVVYVUR2eElsN3B1LXBVWTllaXBnelE2aWJLN2s5cjdGNGFXU0NYM3JJSThtQlB4RlQzRTNQeFhzNEREcDd3X21SQWh4c2xKTEhORWdCNVlkSktZSUFDSDZOYmFLZzV0TGw0TW9aZzdjR0I4?oc=5",
+        "chain": [
+          {
+            "label": "Nvidia 市占↓",
+            "type": "down"
+          },
+          {
+            "label": "Huawei 市占↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "亞馬遜計劃在美國建造最大碳排放數據中心",
+        "layer": "CSP",
+        "body": "亞馬遜計劃在美國德克薩斯州的佩科斯縣建造一個數據中心，該數據中心可能會成為美國最大的碳排放源。根據《紐約時報》的報導，該數據中心將由一個燃燒天然氣的發電廠提供動力，該發電廠每年可排放3300萬噸二氧化碳。亞馬遜的發言人表示，該數據中心將由新的現場發電設施提供動力，不會增加德克薩斯州家庭的電費。",
+        "impact": "這將直接影響亞馬遜的碳排放量，從而影響其供應鏈中的能源供應商和環境保護組織。",
+        "rating": "core",
+        "insight": "亞馬遜的數據中心建設對其碳排放量和供應鏈將產生重大影響。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/08/planned-amazon-data-center-could-become-the-biggest-climate-polluter-in-the-u-s/",
+        "chain": [
+          {
+            "label": "亞馬遜數據中心建設↑",
+            "type": "up"
+          },
+          {
+            "label": "亞馬遜碳排放量↑",
+            "type": "up"
+          },
+          {
+            "label": "德克薩斯州環境質量↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "農村地區農民使用AI技術提高農業生產效率",
+        "layer": "農業",
+        "body": "在孟加拉國農村地區，一位農民使用AI技術來決定作物、天氣和市場的相關決策，從而提高農業生產效率。這項技術可以幫助農民更好地管理農業生產，提高產量和質量。",
+        "impact": "這項技術的應用可以提高孟加拉國農業產業的效率，從而帶動當地經濟的發展。",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "tbsnews",
+        "source": "https://www.tbsnews.net/thoughts/ai-driven-economic-flywheel-1509691",
+        "chain": [
+          {
+            "label": "農民AI技術應用↑",
+            "type": "up"
+          },
+          {
+            "label": "農業生產效率↑",
+            "type": "up"
+          },
+          {
+            "label": "孟加拉國農業產量↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "LLM",
+        "full": "Large Language Model",
+        "def": "一種大型語言模型，能夠處理和生成自然語言文本。",
+        "why": "LLM 能夠用於各種自然語言處理任務，例如文本分類、情感分析等。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Astra",
+        "full": "Astra 模型",
+        "def": "OpenAI 的一個 AI 模型，目前正在開發中。",
+        "why": "Astra 模型的開發可能會對 AI 技術和應用產生重大影響。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI-driven economic flywheel",
+        "full": "AI驅動的經濟飛輪",
+        "def": "利用AI技術來推動經濟發展的概念",
+        "why": "這項技術可以幫助提高農業生產效率，帶動當地經濟的發展",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-09",
     "is_sunday": true,
     "hw": [
@@ -985,160 +1087,6 @@
         "def": "使用人工智慧技術來改善醫療服務的質量和效率。",
         "why": "AI醫療應用可以幫助醫療機構提高病人管理和醫療服務的質量和效率。",
         "category": "醫療"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-03",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "中國推動 AI 和供應鏈戰略",
-        "layer": "產業趨勢",
-        "body": "中國推動 AI 和供應鏈戰略，旨在加強其製造業的不可替代性和深化多維度的貿易合作。韓國應對中國的 AI 和供應鏈戰略，需要發展策略以擴大其製造業的不可替代性和深化多維度的貿易合作。",
-        "impact": "中國的 AI 和供應鏈戰略可能會對其供應鏈合作伙伴產生正面影響，例如其製造業的不可替代性增加可能會帶動其供應商的銷售額增加。同時，中國的 AI 和供應鏈戰略也可能會對其競爭對手產生一定的壓力，例如其製造業的不可替代性增加可能會使其競爭對手感到壓力，從而促使其競爭對手加快研發和創新。",
-        "rating": "opp",
-        "insight": "中國的 AI 和供應鏈戰略可能會對其供應鏈合作伙伴和競爭對手都產生一定的影響，值得關注。",
-        "source_label": "韓國經濟研究院",
-        "source": "https://biz.heraldcorp.com/article/10828110",
-        "chain": [
-          {
-            "label": "TSMC 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix ASP↑",
-            "type": "up"
-          },
-          {
-            "label": "Samsung Foundry 客戶數↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI CEO Sam Altman 推動 ChatGPT 家長應用",
-        "layer": "AI 應用",
-        "body": "OpenAI CEO Sam Altman 表示，ChatGPT 可以幫助家長管理孩子的日程和興趣，甚至可以製作每日播客。這一功能可能會吸引對 AI 感興趣的家長。Sam Altman 的這一想法引發了網友的熱烈討論，包括動畫系列《Gravity Falls》創作者 Alex Hirsch 的回應。",
-        "impact": "這一功能可能會增加 ChatGPT 的使用率，從而對 AI 技術的發展產生正面的影響。同時，也可能會提高家長對 AI 的接受度和依賴度，進而推動相關產業的發展。",
-        "rating": "core",
-        "insight": "OpenAI 的這一舉動可能會讓更多家長接觸到 AI 技術，從而推動 AI 在家庭中的應用。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/01/sam-altman-is-still-making-the-case-for-parenting-via-chatgpt/",
-        "chain": [
-          {
-            "label": "OpenAI ChatGPT 用戶數↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft Azure AI 服務↑",
-            "type": "up"
-          },
-          {
-            "label": "Anthropic AI 產業合作↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Sam Altman 和 Anthropic 支持 AI 產業自我調節",
-        "layer": "AI 產業",
-        "body": "OpenAI CEO Sam Altman 和 Anthropic 支持 AI 產業自我調節，認為這是確保 AI 技術安全和負責任發展的必要步驟。這一立場可能會影響 AI 產業的發展方向。",
-        "impact": "這一立場可能會促使 AI 產業更加注重安全和責任，從而提高 AI 技術的可靠性和公眾的信任度。同時，也可能會推動相關監管機構的政策制定和執行。",
-        "rating": "core",
-        "insight": "AI 產業的自我調節可能會成為未來 AI 發展的重要方向。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/video/sam-altman-isnt-the-only-one-who-wants-to-pump-the-brakes-on-ai/",
-        "chain": [
-          {
-            "label": "Sam Altman 支持 AI 產業自我調節↑",
-            "type": "up"
-          },
-          {
-            "label": "Google AI 產業合作↑",
-            "type": "up"
-          },
-          {
-            "label": "Facebook AI 服務↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Apple 的 Siri AI 可能會引入付費升級",
-        "layer": "AI 服務",
-        "body": "Apple 的 Siri AI 可能會引入付費升級，允許用戶購買更多的計算資源。這一功能可能會提高 Siri AI 的使用率和用戶體驗。",
-        "impact": "這一功能可能會增加 Apple 的收入和用戶忠誠度，同時也可能會提高 Siri AI 的競爭力和市場份額。",
-        "rating": "core",
-        "insight": "Apple 的這一舉動可能會讓更多用戶接觸到 AI 技術，從而推動 AI 在消費電子中的應用。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/07/31/siri-ai-could-come-with-a-paywall-for-power-users/",
-        "chain": [
-          {
-            "label": "Apple Siri AI 付費升級↑",
-            "type": "up"
-          },
-          {
-            "label": "Amazon Alexa AI 服務↑",
-            "type": "up"
-          },
-          {
-            "label": "Google Assistant AI 服務↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Xtrip Inc. 推出三年戰略藍圖，打造全球酒店業的 AI 原生操作層",
-        "layer": "旅遊業",
-        "body": "Xtrip Inc. 宣布推出三年戰略藍圖，旨在打造全球酒店業的 AI 原生操作層。該公司將利用 AI 技術提升酒店業的運營效率和客戶體驗。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "Xtrip Inc. 的戰略藍圖可能會為酒店業帶來新的機遇和挑戰，投資者應該關注其發展。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "Xtrip Inc. AI 原生操作層↑",
-            "type": "up"
-          },
-          {
-            "label": "Hotel Industry AI 服務↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 原生操作層客戶數↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "堆疊技術路線圖",
-        "full": "堆疊技術路線圖是指一種用於解決 AI 記憶體和功率限制問題的技術路線圖。",
-        "def": "堆疊技術路線圖包括 3D 堆疊、Chiplet 和冷卻功率等。",
-        "why": "堆疊技術路線圖可以幫助解決 AI 記憶體和功率限制問題，從而提高 AI 的性能和效率。",
-        "category": "技術發展"
-      },
-      {
-        "term": "ChatGPT",
-        "full": "ChatGPT",
-        "def": "一種由 OpenAI 開發的 AI 聊天機器人，能夠理解和回應用戶的語言輸入。",
-        "why": "ChatGPT 的出現可能會推動 AI 在家庭中的應用。",
-        "category": "AI 應用"
-      },
-      {
-        "term": "AI 原生操作層",
-        "full": "Artificial Intelligence Native Operating Layer",
-        "def": "一種利用 AI 技術打造的運營平台，旨在提升企業的運營效率和客戶體驗。",
-        "why": "這是一種新的技術應用，可能會對企業的運營模式產生影響。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
