@@ -1,5 +1,146 @@
 [
   {
+    "date": "2026-08-11",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "世界最大晶片製造商 TSMC 銷售額激增 45%",
+        "layer": "晶片製造",
+        "body": "TSMC 的銷售額在今年第二季度激增 45%，主要是由於 AI晶片需求的增長。TSMC 是大型科技公司的重要供應商，例如 Nvidia 和 Google。這項銷售額的增長，表明了 AI 技術的快速發展和對晶片的需求增加。",
+        "impact": "TSMC 銷售額的增長，可能會對其供應鏈合作夥伴產生正面的影響，例如晶片設計公司和材料供應商。",
+        "rating": "opp",
+        "insight": "TSMC 銷售額的增長，表明了 AI 技術的快速發展和對晶片的需求增加，對於晶片製造業來說是一個重要的機會。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/08/10/tsmc-revenue-surge-ai-chip-big-tech.html",
+        "chain": [
+          {
+            "label": "TSMC 銷售額↑"
+          },
+          {
+            "label": "Nvidia 晶片需求↑"
+          },
+          {
+            "label": "Google 晶片採購↑"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Anthropic 啟用 Claude Code 的自動模式",
+        "layer": "AI 技術",
+        "body": "Anthropic 宣佈將啟用 Claude Code 的自動模式，該模式可以在不需要人工審核的情況下進行編程，從 8 月 14 日開始，Pro、Max 和 Team 帳戶將默認啟用自動模式。根據 Anthropic 的說明，當 Claude Code 啟用自動模式時，它將在不需要人工審核的情況下進行編程，除非某些動作被認為是不可逆轉、破壞性或針對環境外的。",
+        "impact": "這個事件可能會對 Anthropic 的用戶和開發者產生影響，提高他們的編程效率和安全性。",
+        "rating": "core",
+        "insight": "Anthropic 啟用 Claude Code 的自動模式，可能會提高用戶的編程效率和安全性，同時也可能會對其他 AI 技術公司產生競爭壓力。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default/",
+        "chain": [
+          {
+            "label": "Anthropic Claude Code 自動模式啟用↑"
+          },
+          {
+            "label": "Pro、Max 和 Team 帳戶使用率↑"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 收購 NextSlide",
+        "layer": "AI 技術",
+        "body": "OpenAI 宣佈收購 NextSlide，一家專門開發演示文稿工具的公司。NextSlide 的團隊將加入 OpenAI，繼續開發 AI 產品，以幫助用戶創建、溝通和實現自己的想法。",
+        "impact": "這個事件可能會對 OpenAI 的用戶和開發者產生影響，提高他們的創作和溝通能力。",
+        "rating": "core",
+        "insight": "OpenAI 收購 NextSlide，可能會提高用戶的創作和溝通能力，同時也可能會對其他 AI 技術公司產生競爭壓力。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/08/openai-acquires-presentation-startup-nextslide/",
+        "chain": [
+          {
+            "label": "OpenAI 收購次數↑"
+          },
+          {
+            "label": "NextSlide 團隊規模↑"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Doximity 擴大醫院採用企業 AI",
+        "layer": "醫療",
+        "body": "Doximity 擴大醫院採用企業 AI，同時增加技術支出。根據 fiercehealthcare.com 報導，Doximity 正在醫療領域推動企業 AI 的採用。",
+        "impact": "這可能會增加對 AI 解決方案的需求，從而促進相關供應商的業務增長。同時，醫院和醫療機構也可能會受益於更加高效的運營和更好的患者護理。",
+        "rating": "opp",
+        "insight": "Doximity 的動作可能會推動醫療領域 AI 的發展和採用。",
+        "source_label": "fiercehealthcare.com",
+        "source": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOVnRIR21SeUI1UjJ0bG52THBfaElaVnFQcno2b2xMVHJ5VndlWnZvMDRDNHhTVXpPQmdoVzFfZTA0QlgwSjg5YVlVR2UxY05uSnBRLWd3ZlBkM0k4SXY2bmc3WFJHWklwVGN3cjF5NG5jMldaeDh1d1E5eUFBQ0lTQlhWV0dfMkdLQjhucTR1djgzakctUXdTSGtCRF84bEswTWZMVGN3allrdGRXOGVPYm5Zc1VkdjZBdXl1bFpMc25EcmdLcGNQMjdfR1U?oc=5",
+        "chain": [
+          {
+            "label": "Doximity 醫院採用率↑"
+          },
+          {
+            "label": "企業 AI 技術支出↑"
+          }
+        ]
+      },
+      {
+        "title": "AI 在醫療領域的挑戰",
+        "layer": "醫療",
+        "body": "AI 在醫療領域的挑戰不在於採用，而在於連接。根據 Healthcare Dive 報導，AI 在醫療領域的挑戰是如何將其與現有的系統和流程連接起來。",
+        "impact": "這可能會增加對 AI 解決方案的需求，從而促進相關供應商的業務增長。同時，醫院和醫療機構也可能會受益於更加高效的運營和更好的患者護理。",
+        "rating": "opp",
+        "insight": "AI 在醫療領域的挑戰可能會推動醫療領域 AI 的發展和採用。",
+        "source_label": "Healthcare Dive",
+        "source": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOSVhHOHJiQkYybUN5YnNhbmhkQWE5X3d5RVVXcUotZVBSV18wTERTY0FPdUNWUXFzbDFkbkVyLXdOZEZKQ2FBenh0UWt4eXFROFF6XzdFalcyYjhKTThOTmkzVkZMdTdIV01FbmM1V2FDS2hVV3UzY3V4SkNmLXBoV2doUm9rcFdKcFpISlhmWVEta3B4elpSMXpoNWRYTzdJQlIzZEs4cllJbEZWcEQ0bkRjSQ?oc=5",
+        "chain": [
+          {
+            "label": "AI 在醫療領域的挑戰↓"
+          },
+          {
+            "label": "醫療領域系統和流程連接率↓"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Source Foundry",
+        "full": "Source Foundry",
+        "def": "一家由史丹福研究人員創立的晶片初創公司，旨在加速晶片製造速度並降低成本。",
+        "why": "Source Foundry 的創立和 Situational Awareness 的投資，表明了對晶片製造業的信心和對 AI 技術的重視。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "TSMC",
+        "full": "TSMC",
+        "def": "世界最大晶片製造商，主要供應商為大型科技公司，例如 Nvidia 和 Google。",
+        "why": "TSMC 的銷售額的增長，表明了 AI 技術的快速發展和對晶片的需求增加。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Nvidia",
+        "full": "Nvidia",
+        "def": "一家領先的晶片製造公司，主要生產 AI 晶片和圖形處理器。",
+        "why": "Nvidia 的晶片被廣泛應用於 AI 技術和數據中心，對於 AI 技術的發展和數據中心的需求增加具有重要意義。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Astra 模型",
+        "full": "Astra 模型是一個仍在開發中的 AI 模型，已經達到了一個關鍵的安全門檻，可能會對傳統的安全系統產生威脅。",
+        "def": "Astra 模型是一個 AI 模型，具有高安全風險，可能會對傳統的安全系統產生威脅。",
+        "why": "Astra 模型的開發可能會對 AI 技術產生重大影響，提高安全性和風險意識。",
+        "category": "AI 技術"
+      },
+      {
+        "term": "technoPLUS",
+        "full": "ROLEC 的 technoPLUS 塑膠外殼",
+        "def": "適用於 IoT 和工廠自動化的塑膠外殼，獲得 IP 66、IP 67 和 IP 69K 認證。",
+        "why": "ROLEC 的 technoPLUS 塑膠外殼可能會推動 IoT 和工廠自動化的發展。",
+        "category": "電子"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-10",
     "is_sunday": false,
     "hw": [
@@ -913,180 +1054,6 @@
         "def": "一種可以自主學習和決策的人工智慧技術，常用於醫療和金融等領域。",
         "why": "Agentic AI可以幫助醫護人員更好地診斷和治療疾病，同時也可以幫助金融機構更好地管理風險。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-04",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Cathie Wood購買Cerebras Systems股份",
-        "layer": "晶片供應鏈",
-        "body": "Cathie Wood購買了Cerebras Systems的股份，該公司是一家AI晶片初創企業，股份價格在首日IPO後下跌了58%。Cerebras Systems是一家專門開發AI晶片的公司，Cathie Wood的投資可能會對公司的發展產生影響。",
-        "impact": "這項投資可能會對Cerebras Systems的供應鏈產生直接影響，公司可能會增加生產量以滿足需求。",
-        "rating": "opp",
-        "insight": "Cathie Wood的投資可能會推動Cerebras Systems的發展，同時也會增加AI晶片市場的競爭壓力。",
-        "source_label": "The Motley Fool",
-        "source": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNbk9ZMjdlTDFYektCei1LY3hNUXFfUGw0M1lZVWI3UXB3ZEM5X2lvbHNWN3lfZ2h3bHRUekdUWE5ENnd0azZTQllwQWhQT0tEV3lEVDVUUmJCLVBMUUJ6SlNBUFJVLU9kOWFvb0VoWDBTcWYwNGRidURmUTJQUzV6SExiRnh1WlhNUFlzVkdHdEQ3S2FZamdvOA?oc=5",
-        "chain": [
-          {
-            "label": "Cerebras Systems 股價↓",
-            "type": "down"
-          },
-          {
-            "label": "Cathie Wood 資產↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Olix籌集3.12億美元資金",
-        "layer": "晶片供應鏈",
-        "body": "Olix籌集了3.12億美元的資金，該公司是一家開發光子AI晶片的初創企業。Olix的光子AI晶片可以提高AI計算效率，減少能耗。",
-        "impact": "這項籌集資金可能會對Olix的供應鏈產生直接影響，公司可能會增加生產量以滿足需求。",
-        "rating": "core",
-        "insight": "Olix的籌集資金可能會推動公司的發展，同時也會增加AI晶片市場的競爭壓力。",
-        "source_label": "Tech Times",
-        "source": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOTll6dEt2ZVRYd0ZXQUtoOVZaR3VWa0dBTDhsYzd1amlPMUJ0QWFncjN1V3EyMm5ObVBwVHNZUmhEN0lRamVOamtSdjdxWWhYYUpYWERYdkswU2pXSkdOTXNYNGgzRm02MFpxTXhFTXhkaGx2QTJ2UjBkMTlieEN1TXZ1b2pxOWxSVGFwNWJSTzhRRUJjRjVPOFZtZDVfU0VYSEdwd2hpTC11eG0wci1tRmExQmY1YW5YZWxyX21HWE01NHJDT1NwSEFucTg2S3cwMHlxbWJfdw?oc=5",
-        "chain": [
-          {
-            "label": "Olix 資金↑",
-            "type": "up"
-          },
-          {
-            "label": "Olix 光子AI晶片供應量↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "NVIDIA的50億美元租約",
-        "layer": "資料中心供應鏈",
-        "body": "NVIDIA的50億美元租約可能會對公司的資料中心供應鏈產生影響。NVIDIA的資料中心業務可能會增加，公司可能會需要更多的伺服器和儲存設備。",
-        "impact": "這項租約可能會對NVIDIA的供應鏈產生直接影響，公司可能會增加伺服器和儲存設備的購買量。",
-        "rating": "opp",
-        "insight": "NVIDIA的租約可能會推動公司的資料中心業務，同時也會增加資料中心市場的競爭壓力。",
-        "source_label": "Data Center Frontier",
-        "source": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNU3pGOGpOUXN2WjhDa3FiblhpdGQ1MFFrVjgzR3VDNnJsRmg2R05JQ0hCcXg5TmZaUkpxV0lhUVN6N09ORUNLWUIwYlppYkxQX2tLWWZsZDVzYVVqX1pmS3ptOGdTaHRsZjE4cU1WSzAzSzNjNmFhLTBuT1FzN1ZiYkl6WUFyYi1Sak5ka1pvM3N2QmxXYzRMaW9keU1ZLW56RnlDZU1xMWNHYkNaUmNuTk5ZcVpQa1RXVGt4bk0tU21BZw?oc=5",
-        "chain": [
-          {
-            "label": "NVIDIA 資料中心業務↑",
-            "type": "up"
-          },
-          {
-            "label": "NVIDIA 伺服器需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "阿里巴巴推出新AI模型挑戰Anthropic",
-        "layer": "AI",
-        "body": "阿里巴巴宣布其最新的AI模型Qwen Max可以與Anthropic的Claude Fable 5競爭。這是阿里巴巴在AI領域的一大突破，表明其在AI技術上的實力。阿里巴巴的這一舉動可能會對Anthropic和其他AI公司產生一定的影響。",
-        "impact": "阿里巴巴的新AI模型可能會提高其在AI領域的競爭力，對Anthropic產生一定的壓力。同時，阿里巴巴的這一舉動也可能會促進AI技術的進一步發展。",
-        "rating": "opp",
-        "insight": "",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/ai-artificial-intelligence/974342/alibaba-qwen-max-open-weight-ai",
-        "chain": [
-          {
-            "label": "阿里巴巴 AI 技術實力↑",
-            "type": "up"
-          },
-          {
-            "label": "Anthropic 競爭力↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Marc Benioff投資的初創公司June推出AI解決方案",
-        "layer": "AI",
-        "body": "June是一家由Marc Benioff投資的初創公司，推出了一個AI解決方案，旨在幫助企業更好地部署AI技術。June的這一解決方案可能會對AI產業產生一定的影響，尤其是在AI部署方面。",
-        "impact": "June的AI解決方案可能會提高企業在AI部署方面的效率。同時，June的這一舉動也可能會對AI產業產生一定的促進作用。",
-        "rating": "opp",
-        "insight": "",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/03/a-marc-benioff-backed-startup-thinks-ai-can-solve-the-ai-deployment-problem/",
-        "chain": [
-          {
-            "label": "June AI 解決方案供應量↑",
-            "type": "up"
-          },
-          {
-            "label": "Marc Benioff 投資收益↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Mastek與Innovaccer合作推動AI醫療應用",
-        "layer": "醫療",
-        "body": "Mastek與Innovaccer合作，旨在推動AI醫療應用的發展，該合作將結合Mastek的技術能力和Innovaccer的醫療專業知識，為醫療機構提供更好的AI解決方案。Mastek的股價因此上漲。該合作將涉及多個醫療領域，包括病人管理和醫療服務優化。",
-        "impact": "該合作將直接影響Mastek和Innovaccer的業務，同時也將提高AI醫療應用的發展速度，從而推動醫療服務的質量和效率的提升。",
-        "rating": "opp",
-        "insight": "",
-        "source_label": "HDFC Sky",
-        "source": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQcmI1WjZBektJT29mV2FNOVFTbVJkNS1oZkdTNERGU2Q5Rm5PdFVqY01WT2hHU2tzTGVxaDExXzdIaXU5OE8xZ0N2dU4weG1xMzJyUFlMVWUxVW5jUXl2d3c5REF5ZGw0NWVadFVwRGRfa3g0R2s5dTZhZ1JtUm5fRDdVcmUteW5pMlpzV1hZT2pGZE0?oc=5",
-        "chain": [
-          {
-            "label": "Mastek 股價↑",
-            "type": "up"
-          },
-          {
-            "label": "Innovaccer 醫療應用合作↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "AI可能使醫療收入週期危機更加嚴重",
-        "layer": "醫療",
-        "body": "根據PR Newswire的報導，AI可能使醫療收入週期危機更加嚴重。該報導指出，AI的應用可能會增加醫療機構的收入，但也可能會增加相關的成本和複雜性。因此，醫療機構需要謹慎評估AI的應用和相關的風險。",
-        "impact": "AI的應用將直接影響醫療機構的收入和成本，同時也可能會提高醫療服務的質量和效率，但也可能會增加相關的成本和複雜性。",
-        "rating": "opp",
-        "insight": "",
-        "source_label": "PR Newswire",
-        "source": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQZHV2ZmlUS1I2NFR6c3lHNnpaaDJNZmNNTld2M05IdmoteENRdlpmVXpYRVBaalUyS1NUakY4Zk9Pdkl4bmcyLW9ESWN2ZkJvb1ZuaElTSmgtSUVmbEhwREJfbEFqd2pEOUttem1XT2FqeFJ0SWxHeVkweWVUTUx4VVM0TUVpN2dzSkkxX19hcVVyaWdKWW1reGwxcnp6TTg0alU1aWdlZ0d1Z0szalZLUQ?oc=5",
-        "chain": [
-          {
-            "label": "AI 醫療應用風險↑",
-            "type": "up"
-          },
-          {
-            "label": "醫療機構收入不確定性↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "光子AI晶片",
-        "full": "光子AI晶片是一種使用光子技術的AI晶片，能夠提高AI計算效率，減少能耗。",
-        "def": "光子AI晶片的優點在於其高效率和低能耗，能夠應用於各種AI領域。",
-        "why": "光子AI晶片的發展可能會推動AI技術的進步，同時也會增加AI晶片市場的競爭壓力。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Qwen Max",
-        "full": "阿里巴巴的新AI模型",
-        "def": "阿里巴巴推出的新AI模型，旨在挑戰Anthropic的Claude Fable 5",
-        "why": "阿里巴巴在AI領域的進一步發展",
-        "category": "AI"
-      },
-      {
-        "term": "AI醫療應用",
-        "full": "人工智慧醫療應用",
-        "def": "使用人工智慧技術來改善醫療服務的質量和效率。",
-        "why": "AI醫療應用可以幫助醫療機構提高病人管理和醫療服務的質量和效率。",
-        "category": "醫療"
       }
     ],
     "weekly_summary": null
