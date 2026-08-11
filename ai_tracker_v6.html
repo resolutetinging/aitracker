@@ -2033,10 +2033,27 @@ ${noteBlocks}
     _renderSummaryResult(result);
   } catch(e) {
     // e.message現在可能含Groq回傳的任意錯誤文字（原本只有裸狀態碼），插入innerHTML前跳脫避免注入
-    body.innerHTML = `<span class="arc-status">❌ 分析失敗：${_arcEsc(e.message)}</span>`;
+    body.innerHTML = `<span class="arc-status">❌ 分析失敗：${_arcEsc(_friendlyGroqError(e.message))}</span>`;
   }
   btn.disabled = false;
   btn.textContent = '↻ 重新分析';
+}
+
+// 08-11：使用者遇到「tokens per day (TPD)」每日額度打滿，跟413的單次請求過大是不同錯誤，
+// 縮減天數重試機制對TPD無效（同一天內任何請求都會繼續被擋），改成辨識TPD錯誤訊息、
+// 換成中文說明「這是整個Groq帳號的每日共用額度」（groq_key跟English Sandbox共用同一把key，
+// 不是AI Tracker這個功能單獨的額度），並把官方回傳的等待時間換算成好讀的中文
+function _friendlyGroqError(msg){
+  if(!/tokens per day|TPD/i.test(msg||'')) return msg;
+  const m = (msg||'').match(/try again in\s+(?:(\d+)h)?(?:(\d+)m)?([\d.]+)s/i);
+  let waitStr = '';
+  if(m){
+    const h = parseInt(m[1]||'0',10), mi = parseInt(m[2]||'0',10);
+    if(h>0) waitStr = `約 ${h} 小時 ${mi} 分鐘後`;
+    else if(mi>0) waitStr = `約 ${mi} 分鐘後`;
+    else waitStr = '稍後';
+  }
+  return `今日 Groq 帳號額度已用完（每日共用上限，跟 English Sandbox 等其他頁面共用同一把 API key，不是這個功能單獨的限制），請${waitStr||'稍後'}再試，重新分析或縮小範圍都無法繞過此限制。`;
 }
 
 function _sanitizeJson(str) {
