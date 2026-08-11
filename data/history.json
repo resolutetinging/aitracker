@@ -1,5 +1,231 @@
 [
   {
+    "date": "2026-08-12",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "高頻寬記憶體成為3D堆疊測試的試驗場",
+        "layer": "記憶體",
+        "body": "高頻寬記憶體（HBM）已成為3D堆疊測試、設計-for-測試和可靠性的試驗場。由於資料中心中的故障成本高昂，設計-for-測試正在發生重大變化，允許晶片製造商識別即將發生的故障並消除互連和芯片間的弱點。HBM以其對資料密集型任務的巨大益處而聞名，例如人工智慧、高清圖形處理和其他需要大量資料處理和高速資料傳輸的應用。",
+        "impact": "這一發展可能會直接影響晶片製造商的設計-for-測試策略，從而間接影響資料中心的可靠性和效率。同時，HBM的複雜結構也可能會對晶片製造商的生產能力和成本產生影響。",
+        "rating": "opp",
+        "insight": "高頻寬記憶體的發展對於資料中心的可靠性和效率具有重要意義，投資者應該關注相關晶片製造商的設計-for-測試策略和生產能力。",
+        "source_label": "SemiEngineering",
+        "source": "https://semiengineering.com/hbm-becomes-testbed-for-3d-assembly-yield/",
+        "chain": [
+          {
+            "label": "HBM 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC 3D堆疊技術↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix 高頻寬記憶體供應↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Situational Awareness 投資 4 億美元於晶片創新公司 Source Foundry",
+        "layer": "創新公司",
+        "body": "Situational Awareness，一家人工智慧專注的對沖基金，投資了 4 億美元於晶片創新公司 Source Foundry。這家公司由斯坦福研究人員創立，旨在使晶片製造更快、更便宜。",
+        "impact": "這一投資可能會直接影響 Source Foundry 的研發能力和生產成本。",
+        "rating": "core",
+        "insight": "Situational Awareness 對於晶片創新公司的投資，表明了人工智慧和晶片製造業的緊密關係，投資者應該關注相關公司的研發能力和生產成本。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/09/embattled-hedge-fund-situational-awareness-invests-400m-in-chip-startup-source-foundry/",
+        "chain": [
+          {
+            "label": "Source Foundry 資金↑",
+            "type": "up"
+          },
+          {
+            "label": "Situational Awareness 投資回報↑",
+            "type": "up"
+          },
+          {
+            "label": "晶片創新公司發展↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Amkor 考慮出售中國晶片業務",
+        "layer": "晶片製造",
+        "body": "Amkor Technology，一家全球最大的外包晶片組裝和測試公司，正在考慮出售其中國業務。這一業務的估值可能在 10 億美元至 15 億美元之間。",
+        "impact": "這一出售可能會直接影響 Amkor 的中國業務的運營和發展。",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "The Next Web",
+        "source": "https://thenextweb.com/news/amkor-china-unit-stake-sale/",
+        "chain": [
+          {
+            "label": "Amkor 中國業務估值↑",
+            "type": "up"
+          },
+          {
+            "label": "Amkor 資產處置效率↑",
+            "type": "up"
+          },
+          {
+            "label": "外包晶片組裝和測試產業競爭↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Anthropic 將在 EU 推出嵌入水印的 AI 模型",
+        "layer": "AI",
+        "body": "Anthropic 將在 EU 推出嵌入水印的 AI 模型，以幫助區分 AI 生成的內容。該公司表示，生成的文本將包含嵌入的水印，生成的檔案將包含數位簽名的來源元數據。",
+        "impact": "這將直接影響 Anthropic 的客戶，特別是那些使用 AI 生成內容的企業。",
+        "rating": "opp",
+        "insight": "Anthropic 的做法可能會成為 AI 行業的新標準，企業需要考慮如何在 AI 生成的內容中嵌入水印。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/08/11/anthropic-pledges-to-embed-watermarks-to-help-discern-ai-slop-in-sop-to-eu/5285792",
+        "chain": [
+          {
+            "label": "Anthropic EU 市場份額↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 水印技術應用↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 生成內容識別率↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 推出新商業版 SKU",
+        "layer": "AI",
+        "body": "OpenAI 推出新商業版 SKU，提供更高的使用限制和更大的容量。該 SKU 的價格為每月 125 美元，相比標準商業版 SKU貴了 100 美元。",
+        "impact": "這將直接影響 OpenAI 的客戶，特別是那些需要更高使用限制和更大容量的企業。",
+        "rating": "core",
+        "insight": "OpenAI 的做法可能會成為 AI 行業的新標準，企業需要考慮如何提供更高的使用限制和更大的容量。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/08/10/hey-big-spender-openai-has-a-new-sku-just-for-you/5285727",
+        "chain": [
+          {
+            "label": "OpenAI 商業版 SKU 銷量↑",
+            "type": "up"
+          },
+          {
+            "label": "OpenAI 收入↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 模型使用限制↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Meta 推出新開源 AI 模型 Muse Glimmer",
+        "layer": "AI",
+        "body": "Meta 推出新開源 AI 模型 Muse Glimmer，該模型具有 30 億參數。Muse Glimmer 是 Meta 首個在過去一年中推出的開源 AI 模型。",
+        "impact": "這將直接影響 Meta 的客戶，特別是那些使用 AI 生成內容的企業。",
+        "rating": "opp",
+        "insight": "Meta 的做法可能會成為 AI 行業的新標準，企業需要考慮如何推出開源 AI 模型。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/08/10/zuck-rekindles-open-weights-llama-drama-with-muse-glimmer/5285666",
+        "chain": [
+          {
+            "label": "Meta 開源 AI 模型數量↑",
+            "type": "up"
+          },
+          {
+            "label": "Muse Glimmer 模型參數↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 研究開發效率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "醫療業者加速採用AI技術",
+        "layer": "醫療業",
+        "body": "根據UPMC報告，醫療業者正在比預期更快地採用AI技術，71%的印度醫療專業人士表示AI幫助他們看更多的病人。Emirates NBD和DFDF合作加速金融科技和AI採用，旨在提高醫療服務質量和效率。",
+        "impact": "這將直接影響醫療業的供應鏈，提高對AI技術和相關服務的需求。",
+        "rating": "core",
+        "insight": "醫療業者加速採用AI技術，將帶來新的商機和挑戰，投資者應關注相關公司的發展。",
+        "source_label": "BW Healthcare World",
+        "source": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPV0Y2X0VGVFk0cXV6Y2ZPaTdDNm9yamFfSUI5cUxTTjZsVjlDTUJCSkdfZ0sxZFgySG9oeVA2YWljakJsT0cxVjYtc3UzN3A4Z29UWFpReXNpR3VrZW1LdW93WlVSTkhEbzEybkJOV0w4MHpwMDIyZlJCbFQ5dUNBeHRVYkUwb1BPOHRWNHJHdFZjS1lyUFVuQzVpamhsVVpqckVGM2RMb1o1Wlk2WkYzZFhDNzJacGpBbzNXN0hCWQ",
+        "chain": [
+          {
+            "label": "醫療業者 AI 採用率↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 技術應用於醫療服務↑",
+            "type": "up"
+          },
+          {
+            "label": "醫療服務質量和效率↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "AI技術應用於金融服務",
+        "layer": "金融服務",
+        "body": "Emirates NBD和DFDF合作加速金融科技和AI採用，旨在提高金融服務質量和效率。這將直接影響金融業的供應鏈，提高對AI技術和相關服務的需求。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "AI技術的應用於金融服務，將帶來新的商機和挑戰，投資者應關注相關公司的發展。",
+        "source_label": "IBS Intelligence",
+        "source": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOOVJUX0lycFRheXBKcGoyQnFtYW5lX1dyUHU3ZU92T1V2bjkxbnBnN0Nvb2Y4V2dZcGxlVDlkbDg4S0dsdk4tR2VsTGtIQks5YW53a2ViMGdRb3h1c0gwaHREbFBrMV9Ddm5VbE5EckJiUXYtcm83YVNJU1JRNHhJNXhHemJLOFZORXdBZXVCUmRwSmlYREliWjFPMWkyc3JQNE1SRw",
+        "chain": [
+          {
+            "label": "Emirates NBD 和 DFDF 合作↑",
+            "type": "up"
+          },
+          {
+            "label": "金融科技和 AI 採用率↑",
+            "type": "up"
+          },
+          {
+            "label": "金融服務質量和效率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "HBM",
+        "full": "High-Bandwidth Memory",
+        "def": "一種高頻寬記憶體技術，常用於資料密集型應用。",
+        "why": "HBM 的發展對於資料中心的可靠性和效率具有重要意義。",
+        "category": "記憶體"
+      },
+      {
+        "term": "水印",
+        "full": "嵌入在 AI 生成的內容中的數位簽名",
+        "def": "用於區分 AI 生成的內容和人工生成的內容",
+        "why": "這是因為 AI 生成的內容可能會被誤認為人工生成的內容",
+        "category": "AI"
+      },
+      {
+        "term": "AI",
+        "full": "人工智慧",
+        "def": "一種模擬人類智慧的技術，能夠學習和解決問題。",
+        "why": "AI技術的發展將帶來新的商機和挑戰，投資者應關注相關公司的發展。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-11",
     "is_sunday": false,
     "hw": [
@@ -851,208 +1077,6 @@
         "full": "Natural Language Processing",
         "def": "自然語言處理是一種人工智慧技術，允許電腦系統理解和生成人類語言。",
         "why": "自然語言處理技術正在被廣泛應用於各個領域，包括語音助手和聊天機器人等。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-05",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "亞洲四個經濟體為人工智慧時代做準備",
-        "layer": "晶片製造",
-        "body": "台灣、南韓、日本和越南等亞洲四個經濟體正在為人工智慧時代做準備，試圖掌控人工智慧價值鏈的關鍵部分，例如晶片製造、計算基礎設施和物理人工智慧應用。台灣半導體製造公司（TSMC）是世界上最先進的半導體製造商，占據了最強的戰略位置。",
-        "impact": "",
-        "rating": "core",
-        "insight": "亞洲四個經濟體為人工智慧時代做準備，台灣半導體製造公司（TSMC）占據了最強的戰略位置。",
-        "source_label": "Yahoo News",
-        "source": "https://uk.news.yahoo.com/four-asian-economies-positioning-themselves-141321115.html",
-        "chain": [
-          {
-            "label": "TSMC 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "南韓晶片製造能力↓",
-            "type": "down"
-          },
-          {
-            "label": "日本計算基礎設施投資↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "模擬速度限制了Chiplet的發展",
-        "layer": "晶片設計",
-        "body": "模擬速度已經成為Chiplet設計的瓶頸，工具鏈的能力已經不再是限制因素，計算成本已經成為了限制因素。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "模擬速度限制了Chiplet的發展，晶片設計公司需要增加研發投入。",
-        "source_label": "SemiEngineering",
-        "source": "https://semiengineering.com/why-simulation-speed-is-holding-chiplets-back/",
-        "chain": [
-          {
-            "label": "Chiplet 設計速度↓",
-            "type": "down"
-          },
-          {
-            "label": "工具鏈能力↑",
-            "type": "up"
-          },
-          {
-            "label": "計算成本↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "中國的電子市場對Apple供應鏈的影響",
-        "layer": "供應鏈",
-        "body": "中國的電子市場對Apple供應鏈的影響，例如Huaqiangbei市場的技術人員缺乏Apple最新手機的零件。",
-        "impact": "這將直接影響到Apple的供應鏈",
-        "rating": "opp",
-        "insight": "中國的電子市場對Apple供應鏈的影響，供應鏈公司需要增加備貨。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/08/04/china-apple-india-tata-electronics.html",
-        "chain": [
-          {
-            "label": "Apple 供應鏈穩定性↓",
-            "type": "down"
-          },
-          {
-            "label": "Huaqiangbei 市場零件供應↑",
-            "type": "up"
-          },
-          {
-            "label": "中國電子市場需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "特斯拉的AI和機器人發展",
-        "layer": "AI應用",
-        "body": "特斯拉的CEO埃隆·馬斯克在公司的季度財報會議上花了半數時間討論AI和機器人，包括Optimus機器人和全自主機器人出租車。根據TechCrunch和Hudson Labs的研究，馬斯克在過去七年裡的財報會議上討論AI和機器人的時間越來越多。",
-        "impact": "這可能會對特斯拉的供應鏈產生影響，特別是在AI和機器人零件的採購上",
-        "rating": "core",
-        "insight": "特斯拉的AI和機器人發展可能會帶來新的商業機會和挑戰。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/04/elon-musk-spends-half-his-time-talking-robots-and-ai-on-tesla-earnings-calls/",
-        "chain": [
-          {
-            "label": "特斯拉 AI 研發投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Optimus 機器人生產能力↑",
-            "type": "up"
-          },
-          {
-            "label": "全自主機器人出租車需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "蘋果公司的前員工可能將機密資料帶到了OpenAI",
-        "layer": "AI安全",
-        "body": "蘋果公司正在尋求對OpenAI的臨時禁令，指控OpenAI的前員工可能將蘋果公司的機密資料帶到了OpenAI。蘋果公司表示，已經發現11名前員工可能涉及此事。",
-        "impact": "這可能會對蘋果公司的供應鏈安全產生影響，特別是在員工離職和資料保護方面",
-        "rating": "core",
-        "insight": "蘋果公司的AI安全問題可能會對其供應鏈產生影響。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/04/apple-says-more-ex-employees-may-have-taken-confidential-data-to-openai/",
-        "chain": [
-          {
-            "label": "蘋果公司機密資料安全性↓",
-            "type": "down"
-          },
-          {
-            "label": "OpenAI 研發能力↑",
-            "type": "up"
-          },
-          {
-            "label": "蘋果公司與 OpenAI 合作可能性↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "AWS與Superblocks的合作",
-        "layer": "雲計算",
-        "body": "AWS與Superblocks簽署了一份多年期的合作協議，允許Superblocks的工具嵌入AWS的私有雲中。這意味著AWS的客戶可以使用Superblocks的工具來開發自己的應用程序。",
-        "impact": "這可能會對AWS的供應鏈產生影響，特別是在雲計算服務的提供上",
-        "rating": "opp",
-        "insight": "AWS與Superblocks的合作可能會帶來新的商業機會和挑戰。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/03/aws-is-helping-vibe-coding-startup-superblocks-and-the-implications-are-big/",
-        "chain": [
-          {
-            "label": "AWS 私有雲服務能力↑",
-            "type": "up"
-          },
-          {
-            "label": "Superblocks 工具嵌入能力↑",
-            "type": "up"
-          },
-          {
-            "label": "AWS 客戶滿意度↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "人工智慧在醫院中的挑戰",
-        "layer": "醫療應用",
-        "body": "根據Healthcare IT News的報導，人工智慧在醫院中的挑戰不在於演算法，而在於資料。90%的NHS醫護人員使用人工智慧在臨床工作中，然而資料的質量和可用性卻是限制人工智慧發揮的關鍵因素。",
-        "impact": "這個挑戰可能會影響醫院的資訊系統供應商，例如Epic Systems和Cerner Corporation，他們需要提供更好的資料管理和分析工具，以支持人工智慧的應用",
-        "rating": "core",
-        "insight": "醫院需要投資於資料管理和分析工具，以支持人工智慧的應用，同時也需要升級IT基礎設施，以支持人工智慧的運算需求。",
-        "source_label": "Healthcare IT News",
-        "source": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOaWdOX2l4Y2lkQUhRWnBkOG96Y25JMTNySFNSMUR2TUN0Tk9vUXlyUUx5ejAwa0FQVnl2WjJzaWVaclNkaW5mbmdPQVlDY3FQeTktOG9VNVgtcFZIQzNlclJxTVRrVUJEeXAxQ0V6ZTJCTWhkMENTbEJrZ3lHcEMxVl95bzQyUmx5YzBpRThrc0kyVFFINXpSX1BR",
-        "chain": [
-          {
-            "label": "NHS 醫護人員人工智慧使用率↑",
-            "type": "up"
-          },
-          {
-            "label": "人工智慧在醫院中的挑戰↓",
-            "type": "down"
-          },
-          {
-            "label": "資料質量和可用性↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Chiplet",
-        "full": "晶片設計中的Chiplet",
-        "def": "Chiplet是一種晶片設計中的技術，指的是在一個晶片上集成多個小型晶片。",
-        "why": "Chiplet技術可以提高晶片的性能和效率。",
-        "category": "晶片設計"
-      },
-      {
-        "term": "Optimus機器人",
-        "full": "Optimus robot",
-        "def": "特斯拉公司開發的機器人，旨在實現全自主機器人出租車。",
-        "why": "Optimus機器人的開發可能會對特斯拉的供應鏈產生影響。",
-        "category": "AI應用"
-      },
-      {
-        "term": "Agentic AI",
-        "full": "代理人工智慧",
-        "def": "一種可以自主學習和決策的人工智慧技術，常用於醫療和金融等領域。",
-        "why": "Agentic AI可以幫助醫護人員更好地診斷和治療疾病，同時也可以幫助金融機構更好地管理風險。",
         "category": "ai_technique"
       }
     ],
