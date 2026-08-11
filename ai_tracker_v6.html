@@ -92,6 +92,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 
 /* ── Metrics ── */
 .metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px;}
+.metric-row-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
 .metric-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;box-shadow:var(--shadow);}
 .metric-label{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);margin-bottom:5px;}
 .metric-value{font-size:20px;font-weight:700;}
@@ -138,11 +139,18 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .card-source a:hover{text-decoration:underline;}
 
 /* ── NVIDIA 專區 ── */
-.nv-pyramid{display:flex;flex-direction:column;align-items:center;gap:5px;margin:8px 0 4px;}
-.nv-pyr-layer{width:100%;border:1px solid var(--border2);border-left:4px solid var(--nv);background:var(--card2);border-radius:8px;padding:9px 14px;box-sizing:border-box;}
+.nv-pyramid-wrap{display:flex;gap:22px;align-items:center;margin:10px 0 6px;flex-wrap:wrap;}
+.nv-pyramid-visual{display:flex;flex-direction:column;width:170px;flex-shrink:0;}
+.nv-pyr-band{height:46px;}
+.nv-pyramid-legend{flex:1;min-width:260px;display:flex;flex-direction:column;}
+.nv-pyr-legend-row{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);}
+.nv-pyr-legend-row:last-child{border-bottom:none;}
+.nv-pyr-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;margin-top:4px;}
 .nv-pyr-label{font-size:11.5px;font-weight:700;color:var(--nv);margin-bottom:2px;}
 .nv-pyr-items{font-size:11px;color:var(--muted);line-height:1.5;}
-.nv-case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:10px;}
+.nv-case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:10px;}
+.nv-case-scope{font-size:10.5px;color:var(--nv);margin-bottom:2px;font-weight:600;}
+.nv-case-time{font-size:10.5px;color:var(--muted2);margin-bottom:6px;}
 .nv-case-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px 15px;box-shadow:var(--shadow);}
 .nv-case-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
 .nv-case-desc{font-size:12px;color:var(--text2);line-height:1.62;margin-bottom:6px;}
@@ -333,9 +341,10 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 #import-msg{margin-top:10px;font-size:13px;text-align:center;min-height:20px;}
 .msg-error{color:#884040;}.msg-ok{color:#3a7050;}
 
-@media(max-width:900px){.gloss-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:900px){.gloss-grid{grid-template-columns:repeat(2,1fr);}.nv-case-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:680px){
   .metric-row{grid-template-columns:1fr 1fr;}
+  .metric-row-4{grid-template-columns:1fr 1fr;}
   .gloss-grid{grid-template-columns:1fr;}
   .app-sector-grid{grid-template-columns:1fr;}
   .nv-case-grid{grid-template-columns:1fr;}
@@ -601,10 +610,12 @@ function newsCard(item, ptype) {
 // ══════════════════════════════════════════════════════════════════
 function renderHW(d) {
   document.getElementById('panel-hw').innerHTML = `
-    <div class="metric-row">
+    <div class="sec-title" style="margin-top:-6px;">供應鏈瓶頸 · 晶片 → 製程 → 整機 → 資料中心</div>
+    <div class="metric-row-4">
       <div class="metric-card"><div class="metric-label">HBM 供需</div><div class="metric-value c-red">三大廠皆售罄</div><div class="metric-sub">SK Hynix／Samsung／Micron 2026年產能均全數預訂，市占最大的SK Hynix：DRAM/NAND/HBM明年產能已全部訂光</div></div>
       <div class="metric-card"><div class="metric-label">CoWoS 月產能（2026底）</div><div class="metric-value c-hw">12–13 萬片 / 月</div><div class="metric-sub">TrendForce估計 · 供需缺口20%→10%收斂中</div></div>
-      <div class="metric-card"><div class="metric-label">Intel 18A 量產進度</div><div class="metric-value c-warn">產出超標 ~25%</div><div class="metric-sub">Q2 QoQ +50%以上 · 已登記400+項Series 3設計案</div></div>
+      <div class="metric-card"><div class="metric-label">AI伺服器缺口</div><div class="metric-value c-warn">出貨年增31%創新高</div><div class="metric-sub">TrendForce 2026/08上修全年出貨年增；Dell單季AI訂單積壓達513億美元，記憶體為首要瓶頸</div></div>
+      <div class="metric-card"><div class="metric-label">資料中心電力瓶頸</div><div class="metric-value c-red">美國用電2026達41GW</div><div class="metric-sub">Goldman Sachs估算，2026排定新增產能僅約6成如期完工，2027將飆至66GW</div></div>
     </div>
     <div class="sec-title" style="margin-top:-6px;">重點廠商財報 · TSMC / SK Hynix / AMD</div>
     <div class="metric-row">
@@ -624,10 +635,11 @@ function renderHW(d) {
       <div class="signal-pill pill-red">🔴 CoWoS 售罄至2026底</div>
       <div class="signal-pill pill-yellow">🟡 台灣地緣集中風險</div>
       <div class="signal-pill pill-yellow">🟡 Tesla AI5流片完成，Samsung 2nm量產倒數</div>
-      <div class="signal-pill pill-green">🟢 Intel 18A放量、良率超標</div>
       <div class="signal-pill pill-red">🔴 TSMC Arizona加碼擴產因應CoWoS吃緊</div>
       <div class="signal-pill pill-green">🟢 AMD Helios機櫃平台出貨Meta/OpenAI/Oracle</div>
       <div class="signal-pill pill-yellow">🟡 Broadcom AI backlog破$300億，2027展望上修</div>
+      <div class="signal-pill pill-red">🔴 AI伺服器積壓訂單創新高，記憶體卡脖子</div>
+      <div class="signal-pill pill-red">🔴 資料中心電力恐成2027最大瓶頸</div>
     </div>
 
     <div class="tw-chain">
@@ -725,11 +737,18 @@ function renderApp(d) {
 //  等使用者告知Claude人工複核後才正式套用進nv_status.json）
 // ══════════════════════════════════════════════════════════════════
 function nvSrcLink(url){
-  return url ? `<div class="card-source">來源：<a href="${url}" target="_blank" rel="noopener">${new URL(url).hostname}</a></div>` : '';
+  if(!url) return '';
+  // 08-11：週查證pipeline未來可能寫入非標準URL（缺scheme等），new URL()會拋例外，
+  // 若沒包住會讓整個renderNvidia()中斷、面板全空白且無錯誤提示，改成失敗時退回顯示原字串
+  let label = url;
+  try{ label = new URL(url).hostname; }catch(e){ /* 非標準URL就直接顯示原字串，不中斷渲染 */ }
+  return `<div class="card-source">來源：<a href="${url}" target="_blank" rel="noopener">${label}</a></div>`;
 }
 function nvCaseCard(item, statusCls, statusText){
   return `<div class="nv-case-card">
     <div class="nv-case-name">${item.name}</div>
+    ${item.scope ? `<div class="nv-case-scope">📁 ${item.scope}</div>` : ''}
+    ${item.timeline ? `<div class="nv-case-time">🕐 ${item.timeline}</div>` : ''}
     <div class="nv-case-desc">${item.desc}</div>
     ${item.note ? `<div class="nv-case-status warn">${item.note}</div>` : ''}
     ${statusText ? `<div class="nv-case-status ${statusCls}">${statusText}</div>` : ''}
@@ -749,18 +768,37 @@ async function renderNvidia(){
     return;
   }
 
-  const pyramidHtml = (nv.pyramid||[]).map((l,i)=>{
-    const widthPct = 100 - i*15; // 底層100%，往上每層窄15%，做出金字塔視覺
-    return `<div class="nv-pyr-layer" style="max-width:${widthPct}%;">
-      <div class="nv-pyr-label">${l.label}</div>
-      <div class="nv-pyr-items">${l.items}</div>
+  // 08-11：金字塔改真三角形視覺——用clip-path畫trapezoid色帶疊出三角形（純視覺，
+  // 不放文字，因為頂層寬度只有20%塞不下文字會被裁切），文字改放右側legend列表，
+  // 用同一組顏色深淺對應每一層，色帶跟文字仍是同一份pyramid資料算出來的
+  const pLayers = nv.pyramid||[];
+  const n = pLayers.length || 1;
+  const bandsHtml = pLayers.map((l,i)=>{
+    const topFrac = i/n, botFrac = (i+1)/n;
+    const clip = `polygon(${50-topFrac*50}% 0%, ${50+topFrac*50}% 0%, ${50+botFrac*50}% 100%, ${50-botFrac*50}% 100%)`;
+    const opacity = (0.22 + (i/(Math.max(n-1,1)))*0.68).toFixed(2);
+    return `<div class="nv-pyr-band" style="clip-path:${clip};background:rgba(106,138,32,${opacity});"></div>`;
+  }).join('');
+  const legendHtml = pLayers.map((l,i)=>{
+    const opacity = (0.22 + (i/(Math.max(n-1,1)))*0.68).toFixed(2);
+    return `<div class="nv-pyr-legend-row">
+      <span class="nv-pyr-dot" style="background:rgba(106,138,32,${opacity});"></span>
+      <div><div class="nv-pyr-label">${l.label}</div><div class="nv-pyr-items">${l.items}</div></div>
     </div>`;
   }).join('');
+  const pyramidSrcHtml = (nv.pyramid_sources||[]).map(s=>
+    `<a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>`
+  ).join('、');
 
   const liveHtml = (nv.cases_live||[]).map(c=>nvCaseCard(c,'live','✅ 已上線／實際部署')).join('');
   const pocHtml = (nv.cases_poc||[]).map(c=>nvCaseCard(c,'poc','🔵 概念驗證／導入進行中')).join('');
   const roadmapHtml = (nv.roadmap||[]).map(c=>nvCaseCard(c, (c.status||'').startsWith('⚠️')?'warn':'poc', c.status)).join('');
   const allianceHtml = (nv.alliances||[]).map(c=>nvCaseCard(c, (c.status||'').startsWith('⚠️')?'warn':'live', c.status)).join('');
+  const allianceOverviewHtml = nv.alliance_overview
+    ? `<div class="impact-box" style="margin-bottom:12px;"><div class="impact-title">聯盟生態系整體動態</div>
+       <div style="font-size:12.5px;color:var(--text2);line-height:1.7;">${nv.alliance_overview}</div>
+       ${nvSrcLink(nv.alliance_overview_src)}</div>`
+    : '';
 
   // 週查證若有候選異動會寫進nv_pending_review.json，這裡只顯示一個提示banner，
   // 不自動套用內容——避免LLM幻覺的異動未經人工確認就直接改掉參考頁
@@ -769,9 +807,9 @@ async function renderNvidia(){
     const pr = await fetch('data/nv_pending_review.json?v='+Date.now());
     if(pr.ok){
       const pending = await pr.json();
-      const n = (pending.items||[]).length;
-      if(n > 0){
-        pendingHtml = `<div class="ethic-alert">🔔 本週查證偵測到 ${n} 項可能需要更新的內容（尚未套用，僅供參考），請告知 Claude 複核後正式更新</div>`;
+      const n2 = (pending.items||[]).length;
+      if(n2 > 0){
+        pendingHtml = `<div class="ethic-alert">🔔 本週查證偵測到 ${n2} 項可能需要更新的內容（尚未套用，僅供參考），請告知 Claude 複核後正式更新</div>`;
       }
     }
   } catch(e){ /* 沒有pending檔或抓取失敗都當作沒有待複核項目，靜默略過 */ }
@@ -779,8 +817,11 @@ async function renderNvidia(){
   panel.innerHTML = `
     ${pendingHtml}
     <div class="sec-title">產品應用鏈 — 官方技術堆疊（金字塔）</div>
-    <div class="nv-pyramid">${pyramidHtml}</div>
-    <div style="font-size:11px;color:var(--muted);margin:2px 0 14px;padding-left:2px;">📌 綜合NVIDIA官方GTC 2026 keynote與技術文件整理，非單一官方圖表逐字翻譯；來源：blogs.nvidia.com/blog/gtc-2026-news/、docs.nvidia.com/ai-enterprise</div>
+    <div class="nv-pyramid-wrap">
+      <div class="nv-pyramid-visual">${bandsHtml}</div>
+      <div class="nv-pyramid-legend">${legendHtml}</div>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin:2px 0 14px;padding-left:2px;">📌 綜合NVIDIA官方GTC 2026 keynote與技術文件整理，非單一官方圖表逐字翻譯${pyramidSrcHtml?`；來源：${pyramidSrcHtml}`:''}</div>
 
     <div class="sec-title">已導入實際應用場域</div>
     <div class="nv-sub-title">✅ 已上線／實際部署</div>
@@ -792,6 +833,7 @@ async function renderNvidia(){
     <div class="nv-case-grid">${roadmapHtml}</div>
 
     <div class="sec-title">聯盟發展狀況</div>
+    ${allianceOverviewHtml}
     <div class="nv-case-grid">${allianceHtml}</div>
 
     <div style="font-size:11px;color:var(--muted);margin:4px 0 4px;padding-left:2px;">📌 每週由排程自動查證是否過時（候選異動需人工複核才會套用），最後查證：${nv.last_checked||'—'}</div>`;
