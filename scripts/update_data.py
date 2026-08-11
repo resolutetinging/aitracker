@@ -1594,26 +1594,6 @@ def send_email(data):
           <div style="font-size:13px;color:#9e9890;margin-top:4px;">{DATE_STR}{"（週報）" if data.get("is_sunday") else ""} &nbsp;·&nbsp; 自動更新</div>
         </div>
 
-        <!-- Stats bar -->
-        <div style="display:flex;gap:12px;margin-bottom:24px;">
-          <div style="background:#eef3f8;border:1px solid #c8d8e8;border-radius:8px;padding:10px 16px;flex:1;text-align:center;">
-            <div style="font-size:18px;font-weight:700;color:#5a7fa8;">{len(data["hw"])}</div>
-            <div style="font-size:11px;color:#7a8898;">硬體缺口</div>
-          </div>
-          <div style="background:#f8f3ee;border:1px solid #e0c8a0;border-radius:8px;padding:10px 16px;flex:1;text-align:center;">
-            <div style="font-size:18px;font-weight:700;color:#a07040;">{len(data["corp"])}</div>
-            <div style="font-size:11px;color:#887060;">巨頭角力</div>
-          </div>
-          <div style="background:#eef5f0;border:1px solid #b0d0b8;border-radius:8px;padding:10px 16px;flex:1;text-align:center;">
-            <div style="font-size:18px;font-weight:700;color:#4a8a6a;">{len(data["app"])}</div>
-            <div style="font-size:11px;color:#608070;">新興應用</div>
-          </div>
-          <div style="background:#f0f5f8;border:1px solid #b8c8d8;border-radius:8px;padding:10px 16px;flex:1;text-align:center;">
-            <div style="font-size:18px;font-weight:700;color:#3a5a7a;">{core_count} CORE / {opp_count} OPP</div>
-            <div style="font-size:11px;color:#607080;">訊號分類</div>
-          </div>
-        </div>
-
         {weekly}
         {section_html(data["hw"], "#5a7fa8", "🔩", "硬體缺口")}
         {section_html(data["corp"],"#a07040", "💰", "巨頭角力")}
