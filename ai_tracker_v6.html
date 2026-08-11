@@ -717,47 +717,13 @@ function renderApp(d) {
 }
 
 // ══════════════════════════════════════════════════════════════════
-//  NVIDIA 專區（靜態策展內容，比照GLOSSARY非daily pipeline驅動，
-//  08-11新增；資料由研究subagent查證，每季/每逢重大進展請告知Claude更新）
+//  NVIDIA 專區（08-11新增；資料存 data/nv_status.json，比照HW/CORP/APP從
+//  JSON讀取而非寫死JS——08-11晚間改為「每週查證」：scripts/update_nvidia.py
+//  由獨立的GitHub Actions週排程觸發，比對本檔內容跟過去一週NVIDIA新聞，
+//  但為避免LLM幻覺污染這種「看起來權威」的參考頁，週查證絕不直接改寫
+//  nv_status.json，只會把候選異動寫進 data/nv_pending_review.json，
+//  等使用者告知Claude人工複核後才正式套用進nv_status.json）
 // ══════════════════════════════════════════════════════════════════
-const NV_PYRAMID = [
-  {label:'應用層（Industries）', items:'汽車 · 醫療 · 工業 · 機器人 · 金融服務'},
-  {label:'AI 模型層（Foundation Models）', items:'Nemotron（語言/推理）· Cosmos（世界模型）· Isaac GR00T（機器人）'},
-  {label:'軟體／平台層（Software Platform）', items:'CUDA · CUDA-X 函式庫 · NeMo · NIM 微服務 · Omniverse 函式庫'},
-  {label:'網路層（Networking）', items:'NVLink（Kyber 銅纜／共封裝光學）· Spectrum-X 光學擴展'},
-  {label:'晶片層（Chips）', items:'Vera CPU · Rosa CPU · Blackwell Ultra GPU · Grace Blackwell · BlueField-4/5'},
-];
-
-const NV_CASES_LIVE = [
-  {name:'Foxconn', desc:'FODT（Fii Omniverse Digital Twin）平台，設計/管理生產GB200 Grace Blackwell的實體工廠', src:'https://www.nvidia.com/en-us/case-studies/foxconn-develops-physical-ai-enabled-smart-factories-with-digital-twins/', note:'⚠️ 官方案例頁面查證時無法連線，資訊來自搜尋摘要，建議人工複查'},
-  {name:'KION（與Accenture、Siemens合作，客戶GXO）', desc:'用Mega Omniverse Blueprint建大型倉儲數位孿生，訓練/測試Jetson自主叉車車隊，官方描述為導入實際倉儲營運', src:'https://blogs.nvidia.com/blog/gtc-2026-virtual-worlds-physical-ai/'},
-  {name:'ABB Robotics／KUKA／Yaskawa', desc:'用Omniverse函式庫+Isaac模擬框架驗證機器人應用，並已將Jetson模組整合進控制器做即時AI推論（非模擬階段）', src:'https://blogs.nvidia.com/blog/gtc-2026-virtual-worlds-physical-ai/'},
-  {name:'FANUC', desc:'用CAD-to-OpenUSD工作流程加速機器人系統設計驗證，已導入實際工業機器人流程', src:'https://blogs.nvidia.com/blog/gtc-2026-virtual-worlds-physical-ai/'},
-  {name:'Rockwell Automation', desc:'Emulate3D Factory Test，用OpenUSD+Omniverse做工廠規模數位孿生（遠端設計/測試/調試）', src:'https://www.nvidia.com/en-us/case-studies/rockwell-automation/'},
-];
-const NV_CASES_POC = [
-  {name:'BMW集團', desc:'Omniverse Enterprise + FactoryExplorer，30+全球生產基地即時數位孿生；官方頁面用詞偏未來式，判斷為導入中未全面上線', src:'https://www.nvidia.com/en-us/customer-stories/paving-the-future-of-factories-with-nvidia-omniverse-enterprise/'},
-  {name:'Siemens（Erlangen廠）+ Humanoid公司HMND 01', desc:'用Jetson Thor + Isaac Sim/Isaac Lab，官方文字明確標示「completed autonomous logistics operations in a first proof of concept」', src:'https://blogs.nvidia.com/blog/ai-manufacturing-hannover-messe/'},
-  {name:'Isaac GR00T人形機器人參考設計', desc:'2026年6月發布，預計2026年底才由Unitree供貨，AGIBOT/LG/NEURA Robotics等宣稱正加速導入但未見已完成部署案例', src:'https://nvidianews.nvidia.com/news/nvidia-open-humanoid-robot-reference-design'},
-  {name:'Amazon Robotics', desc:'用Omniverse做倉儲自動化規劃/模擬（部署前）及Proteus機器人能力優化，屬模擬/規劃工具使用階段', src:''},
-];
-
-const NV_ROADMAP = [
-  {name:'Vera Rubin 平台（R100/VR200）', desc:'Blackwell後繼平台，7顆晶片+5套機架系統+1台超級電腦整合方案，HBM4 22TB/s、6th-gen NVLink，TSMC 3nm量產爬坡中', status:'⚠️ 是否已正式出貨各方說法不一：官方稱剛發表；供應鏈消息稱7月已交付北美科技巨頭', src:'https://blogs.nvidia.com/blog/gtc-2026-news/'},
-  {name:'Rubin Ultra', desc:'四顆運算晶粒＋1TB HBM4E，搭配Kyber NVL576機架', status:'規劃2027下半年推出，尚未出貨', src:'https://www.tweaktown.com/news/110521/'},
-  {name:'Feynman 架構＋新 Rosa CPU', desc:'導入3D堆疊，搭LP40次世代LPU、BlueField-5、CX10，透過Kyber與Spectrum-class光學互連', status:'規劃2028推出，尚未量產', src:'https://blogs.nvidia.com/blog/gtc-2026-news/'},
-  {name:'NVIDIA Space-1（太空運算）', desc:'把AI資料中心帶上軌道的計畫', status:'早期前瞻項目，尚無實際發射時程', src:'https://blogs.nvidia.com/blog/gtc-2026-news/'},
-];
-
-const NV_ALLIANCES = [
-  {name:'OpenAI', desc:'擬建至少10GW資料中心，NVIDIA承諾最高$1000億漸進式投資', status:'⚠️ 2026/2實際僅完成$300億投資，較原框架大幅縮水；Huang暗示因OpenAI/Anthropic即將IPO類似投資可能已是最後一輪', src:'https://investor.nvidia.com/news/press-release-details/2025/OpenAI-and-NVIDIA-Announce-Strategic-Partnership-to-Deploy-10-Gigawatts-of-NVIDIA-Systems/default.aspx'},
-  {name:'Anthropic', desc:'NVIDIA與Microsoft共同宣布分別投資最高$100億／$50億，Anthropic同步承諾採購$300億Azure運算量', status:'2025/11宣布', src:'https://tagteam.harvard.edu/hub_feeds/3415/feed_items/16904726'},
-  {name:'CoreWeave', desc:'NVIDIA投資$20億助其擴充5GW算力，另有$63億容量保底協議（NVIDIA承諾買下未用容量，合約至2032）', status:'2026/1宣布', src:'https://techcrunch.com/2026/01/26/nvidia-invests-2b-to-help-debt-ridden-coreweave-add-5gw-of-ai-compute/'},
-  {name:'沙烏地阿拉伯（HUMAIN／SDAIA）', desc:'HUMAIN背後為PIF，規劃投資逾$1000億，11座資料中心共2200MW；NVIDIA與SDAIA部署最多5000顆Blackwell GPU建主權AI工廠', status:'', src:'https://nvidianews.nvidia.com/news/saudi-arabia-and-nvidia-to-build-ai-factories-to-power-next-wave-of-intelligence-for-the-age-of-reasoning'},
-  {name:'日本（SoftBank／44家企業聯盟）', desc:'與SoftBank合建日本最強AI超級電腦(Grace Blackwell)+AI原生5G網路；SoftBank主權AI GPU雲2026/10商轉；SoftBank/Sony/Honda領軍44家日企7/16啟動主權AI基礎模型計畫', status:'', src:'https://nvidianews.nvidia.com/news/nvidia-and-softbank-accelerate-japans-journey-to-global-ai-powerhouse'},
-  {name:'TSMC／Foxconn', desc:'TSMC 3nm量產Rubin晶片，NVIDIA預計占TSMC 2026營收逾20%；Foxconn針對Vera Rubin液冷機櫃工程驗證，H2 2026量產', status:'', src:'https://www.trendforce.com/news/2026/06/01/'},
-];
-
 function nvSrcLink(url){
   return url ? `<div class="card-source">來源：<a href="${url}" target="_blank" rel="noopener">${new URL(url).hostname}</a></div>` : '';
 }
@@ -771,8 +737,19 @@ function nvCaseCard(item, statusCls, statusText){
   </div>`;
 }
 
-function renderNvidia(){
-  const pyramidHtml = NV_PYRAMID.map((l,i)=>{
+async function renderNvidia(){
+  const panel = document.getElementById('panel-nv');
+  let nv;
+  try {
+    const r = await fetch('data/nv_status.json?v='+Date.now());
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    nv = await r.json();
+  } catch(e){
+    panel.innerHTML = '<div class="empty-state">⚠️ 無法載入 NVIDIA 專區資料（data/nv_status.json）</div>';
+    return;
+  }
+
+  const pyramidHtml = (nv.pyramid||[]).map((l,i)=>{
     const widthPct = 100 - i*15; // 底層100%，往上每層窄15%，做出金字塔視覺
     return `<div class="nv-pyr-layer" style="max-width:${widthPct}%;">
       <div class="nv-pyr-label">${l.label}</div>
@@ -780,12 +757,27 @@ function renderNvidia(){
     </div>`;
   }).join('');
 
-  const liveHtml = NV_CASES_LIVE.map(c=>nvCaseCard(c,'live','✅ 已上線／實際部署')).join('');
-  const pocHtml = NV_CASES_POC.map(c=>nvCaseCard(c,'poc','🔵 概念驗證／導入進行中')).join('');
-  const roadmapHtml = NV_ROADMAP.map(c=>nvCaseCard(c, c.status.startsWith('⚠️')?'warn':'poc', c.status)).join('');
-  const allianceHtml = NV_ALLIANCES.map(c=>nvCaseCard(c, c.status.startsWith('⚠️')?'warn':'live', c.status)).join('');
+  const liveHtml = (nv.cases_live||[]).map(c=>nvCaseCard(c,'live','✅ 已上線／實際部署')).join('');
+  const pocHtml = (nv.cases_poc||[]).map(c=>nvCaseCard(c,'poc','🔵 概念驗證／導入進行中')).join('');
+  const roadmapHtml = (nv.roadmap||[]).map(c=>nvCaseCard(c, (c.status||'').startsWith('⚠️')?'warn':'poc', c.status)).join('');
+  const allianceHtml = (nv.alliances||[]).map(c=>nvCaseCard(c, (c.status||'').startsWith('⚠️')?'warn':'live', c.status)).join('');
 
-  document.getElementById('panel-nv').innerHTML = `
+  // 週查證若有候選異動會寫進nv_pending_review.json，這裡只顯示一個提示banner，
+  // 不自動套用內容——避免LLM幻覺的異動未經人工確認就直接改掉參考頁
+  let pendingHtml = '';
+  try {
+    const pr = await fetch('data/nv_pending_review.json?v='+Date.now());
+    if(pr.ok){
+      const pending = await pr.json();
+      const n = (pending.items||[]).length;
+      if(n > 0){
+        pendingHtml = `<div class="ethic-alert">🔔 本週查證偵測到 ${n} 項可能需要更新的內容（尚未套用，僅供參考），請告知 Claude 複核後正式更新</div>`;
+      }
+    }
+  } catch(e){ /* 沒有pending檔或抓取失敗都當作沒有待複核項目，靜默略過 */ }
+
+  panel.innerHTML = `
+    ${pendingHtml}
     <div class="sec-title">產品應用鏈 — 官方技術堆疊（金字塔）</div>
     <div class="nv-pyramid">${pyramidHtml}</div>
     <div style="font-size:11px;color:var(--muted);margin:2px 0 14px;padding-left:2px;">📌 綜合NVIDIA官方GTC 2026 keynote與技術文件整理，非單一官方圖表逐字翻譯；來源：blogs.nvidia.com/blog/gtc-2026-news/、docs.nvidia.com/ai-enterprise</div>
@@ -802,7 +794,7 @@ function renderNvidia(){
     <div class="sec-title">聯盟發展狀況</div>
     <div class="nv-case-grid">${allianceHtml}</div>
 
-    <div style="font-size:11px;color:var(--muted);margin:4px 0 4px;padding-left:2px;">📌 本分頁為靜態策展內容（非每日新聞管線自動產生），每逢重大進展或財報更新請告知 Claude 更新（最後更新：2026-08-11）</div>`;
+    <div style="font-size:11px;color:var(--muted);margin:4px 0 4px;padding-left:2px;">📌 每週由排程自動查證是否過時（候選異動需人工複核才會套用），最後查證：${nv.last_checked||'—'}</div>`;
 }
 
 // ══════════════════════════════════════════════════════════════════
