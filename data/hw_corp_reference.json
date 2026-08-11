@@ -1,0 +1,44 @@
+{
+  "last_updated": "2026 Q2財報",
+  "hw": {
+    "bottleneck_cards": [
+      {"label": "HBM 供需", "value": "三大廠皆售罄", "value_cls": "c-red", "sub": "SK Hynix／Samsung／Micron 2026年產能均全數預訂，市占最大的SK Hynix：DRAM/NAND/HBM明年產能已全部訂光"},
+      {"label": "CoWoS 月產能（2026底）", "value": "12–13 萬片 / 月", "value_cls": "c-hw", "sub": "TrendForce估計 · 供需缺口20%→10%收斂中"},
+      {"label": "AI伺服器缺口", "value": "出貨年增31%創新高", "value_cls": "c-warn", "sub": "TrendForce 2026/08上修全年出貨年增；Dell單季AI訂單積壓達513億美元，記憶體為首要瓶頸"},
+      {"label": "資料中心電力瓶頸", "value": "美國用電2026達41GW", "value_cls": "c-red", "sub": "Goldman Sachs估算，2026排定新增產能僅約6成如期完工，2027將飆至66GW"}
+    ],
+    "vendor_cards": [
+      {"label": "TSMC 營收YoY", "value": "+36% YoY", "value_cls": "c-hw", "sub": "2026 Q2財報 · $402億美元 · 晶圓代工市占72.3%（TrendForce）"},
+      {"label": "SK Hynix 營收YoY", "value": "+257% YoY", "value_cls": "c-red", "sub": "2026 Q2財報 · $552億美元 · HBM市占約50–62%（來源估計不一）"},
+      {"label": "AMD 營收YoY", "value": "+50% YoY", "value_cls": "c-warn", "sub": "2026 Q2財報 · $115億美元（總營收）· AI GPU市占約5–7%（NVIDIA占75–81%）"},
+      {"label": "ASML 營收YoY", "value": "+21% YoY", "value_cls": "c-hw", "sub": "2026 Q2財報 · $106.5億美元 · EUV微影機100%獨家供應"},
+      {"label": "Broadcom 營收YoY", "value": "+79% YoY", "value_cls": "c-warn", "sub": "2026 Q2財報 · $151億美元（半導體部門，不含VMware軟體）· 客製AI ASIC市占70%+"},
+      {"label": "Samsung DS部門營收", "value": "QoQ +56%", "value_cls": "c-red", "sub": "2026 Q2財報 · $888億美元 · HBM市占約21%（2026全年估上看30%+）· YoY未查到可信來源"}
+    ],
+    "signal_pills": [
+      {"text": "🔴 HBM 嚴重吃緊", "color": "red"},
+      {"text": "🔴 CoWoS 售罄至2026底", "color": "red"},
+      {"text": "🔴 TSMC Arizona加碼擴產因應CoWoS吃緊", "color": "red"},
+      {"text": "🔴 AI伺服器積壓訂單創新高，記憶體卡脖子", "color": "red"},
+      {"text": "🔴 資料中心電力恐成2027最大瓶頸", "color": "red"},
+      {"text": "🟡 台灣地緣集中風險", "color": "yellow"},
+      {"text": "🟡 Tesla AI5流片完成，Samsung 2nm量產倒數", "color": "yellow"},
+      {"text": "🟡 Broadcom AI backlog破$300億，2027展望上修", "color": "yellow"},
+      {"text": "🟢 AMD Helios機櫃平台出貨Meta/OpenAI/Oracle", "color": "green"}
+    ]
+  },
+  "corp": {
+    "metric_cards": [
+      {"label": "3大CSP 資本支出指引", "value": "$558B", "value_cls": "c-corp", "sub": "Amazon+Google+Meta最新guidance合計（不含Microsoft，財年制不同）"},
+      {"label": "Microsoft Azure 全年營收", "value": "突破 $100B", "value_cls": "c-app", "sub": "FY26全年+41% · Q4單季+43%"},
+      {"label": "Google Cloud Q2 成長", "value": "+82% YoY", "value_cls": "c-app", "sub": "單季 $248 億 · 積壓訂單 $5,140 億"}
+    ],
+    "capex_bars": [
+      {"company": "Amazon", "guidance": "$220B", "pct": 86, "bar_cls": "b-amz", "note": "↑原$200B", "qoq": "Q2較Q1實際+$9.9B"},
+      {"company": "Google", "guidance": "$195–205B", "pct": 78, "bar_cls": "b-goog", "note": "↑原$180–190B", "qoq": "Q2較Q1實際+$9.2B"},
+      {"company": "Microsoft", "guidance": "$255–260B", "pct": 100, "bar_cls": "b-ms", "note": "FY27新揭露", "qoq": "Q2較Q1實際+$9.1B"},
+      {"company": "Meta", "guidance": "$130–145B", "pct": 54, "bar_cls": "b-meta", "note": "原$125–145B窄化", "qoq": "Q2較Q1實際+$11.3B"}
+    ],
+    "capex_note": "*Microsoft財年為7月–隔年6月，FY27指引涵蓋2026/7–2027/6，與其他三家的2026日曆年guidance非同期，未列入左側合計；QoQ列的Q1/Q2對Microsoft指FY26 Q3(1–3月)/Q4(4–6月)，非日曆季"
+  }
+}

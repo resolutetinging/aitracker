@@ -586,39 +586,49 @@ function newsCard(item, ptype, showInsight) {
 // ══════════════════════════════════════════════════════════════════
 //  HW PANEL
 // ══════════════════════════════════════════════════════════════════
-function renderHW(d) {
+// 08-11：HW/Corp財報卡資料改從data/hw_corp_reference.json讀取（原本寫死在HTML），
+// 目的是讓Python寄信程式也能讀到同一份資料，季底才能在信件裡帶出財報banner，
+// 不用維護兩份容易失去同步的數字。跟NVIDIA專區同一套「JSON單一來源」架構。
+let _hwCorpRef = null;
+async function loadHwCorpRef(){
+  if(_hwCorpRef) return _hwCorpRef;
+  try{
+    const r = await fetch('data/hw_corp_reference.json?v='+Date.now());
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    _hwCorpRef = await r.json();
+  }catch(e){ _hwCorpRef = null; }
+  return _hwCorpRef;
+}
+function hwCorpCard(c){
+  return `<div class="metric-card"><div class="metric-label">${c.label}</div><div class="metric-value ${c.value_cls||''}">${c.value}</div><div class="metric-sub">${c.sub}</div></div>`;
+}
+function hwCorpPill(p){
+  return `<div class="signal-pill pill-${p.color}">${p.text}</div>`;
+}
+
+async function renderHW(d) {
+  const ref = await loadHwCorpRef();
+  if(!ref){
+    document.getElementById('panel-hw').innerHTML = '<div class="empty-state">⚠️ 無法載入財報參考資料（data/hw_corp_reference.json）</div>';
+    return;
+  }
+  const bottleneckHtml = (ref.hw.bottleneck_cards||[]).map(hwCorpCard).join('');
+  const vendors = ref.hw.vendor_cards||[];
+  const vendorHtml1 = vendors.slice(0,3).map(hwCorpCard).join('');
+  const vendorHtml2 = vendors.slice(3,6).map(hwCorpCard).join('');
+  const vendorNames1 = vendors.slice(0,3).map(c=>c.label.replace(/ 營收YoY| DS部門營收/,'')).join(' / ');
+  const vendorNames2 = vendors.slice(3,6).map(c=>c.label.replace(/ 營收YoY| DS部門營收/,'')).join(' / ');
+  const pillsHtml = (ref.hw.signal_pills||[]).map(hwCorpPill).join('');
+
   document.getElementById('panel-hw').innerHTML = `
     <div class="sec-title" style="margin-top:-6px;">供應鏈瓶頸 · 晶片 → 製程 → 整機 → 資料中心</div>
-    <div class="metric-row-4">
-      <div class="metric-card"><div class="metric-label">HBM 供需</div><div class="metric-value c-red">三大廠皆售罄</div><div class="metric-sub">SK Hynix／Samsung／Micron 2026年產能均全數預訂，市占最大的SK Hynix：DRAM/NAND/HBM明年產能已全部訂光</div></div>
-      <div class="metric-card"><div class="metric-label">CoWoS 月產能（2026底）</div><div class="metric-value c-hw">12–13 萬片 / 月</div><div class="metric-sub">TrendForce估計 · 供需缺口20%→10%收斂中</div></div>
-      <div class="metric-card"><div class="metric-label">AI伺服器缺口</div><div class="metric-value c-warn">出貨年增31%創新高</div><div class="metric-sub">TrendForce 2026/08上修全年出貨年增；Dell單季AI訂單積壓達513億美元，記憶體為首要瓶頸</div></div>
-      <div class="metric-card"><div class="metric-label">資料中心電力瓶頸</div><div class="metric-value c-red">美國用電2026達41GW</div><div class="metric-sub">Goldman Sachs估算，2026排定新增產能僅約6成如期完工，2027將飆至66GW</div></div>
-    </div>
-    <div class="sec-title" style="margin-top:-6px;">重點廠商財報 · TSMC / SK Hynix / AMD</div>
-    <div class="metric-row">
-      <div class="metric-card"><div class="metric-label">TSMC 營收YoY</div><div class="metric-value c-hw">+36% YoY</div><div class="metric-sub">2026 Q2財報 · $402億美元 · 晶圓代工市占72.3%（TrendForce）</div></div>
-      <div class="metric-card"><div class="metric-label">SK Hynix 營收YoY</div><div class="metric-value c-red">+257% YoY</div><div class="metric-sub">2026 Q2財報 · $552億美元 · HBM市占約50–62%（來源估計不一）</div></div>
-      <div class="metric-card"><div class="metric-label">AMD 營收YoY</div><div class="metric-value c-warn">+50% YoY</div><div class="metric-sub">2026 Q2財報 · $115億美元（總營收）· AI GPU市占約5–7%（NVIDIA占75–81%）</div></div>
-    </div>
-    <div class="sec-title" style="margin-top:-6px;">重點廠商財報 · ASML / Broadcom / Samsung</div>
-    <div class="metric-row">
-      <div class="metric-card"><div class="metric-label">ASML 營收YoY</div><div class="metric-value c-hw">+21% YoY</div><div class="metric-sub">2026 Q2財報 · $106.5億美元 · EUV微影機100%獨家供應</div></div>
-      <div class="metric-card"><div class="metric-label">Broadcom 營收YoY</div><div class="metric-value c-warn">+79% YoY</div><div class="metric-sub">2026 Q2財報 · $151億美元（半導體部門，不含VMware軟體）· 客製AI ASIC市占70%+</div></div>
-      <div class="metric-card"><div class="metric-label">Samsung DS部門營收</div><div class="metric-value c-red">QoQ +56%</div><div class="metric-sub">2026 Q2財報 · $888億美元 · HBM市占約21%（2026全年估上看30%+）· YoY未查到可信來源</div></div>
-    </div>
-    <div style="font-size:11px;color:var(--muted);margin:-6px 0 14px;padding-left:2px;">📌 上方數據為靜態參考值，每季財報後請告知 Claude 更新（最後更新：2026 Q2財報）</div>
-    <div class="signal-strip">
-      <div class="signal-pill pill-red">🔴 HBM 嚴重吃緊</div>
-      <div class="signal-pill pill-red">🔴 CoWoS 售罄至2026底</div>
-      <div class="signal-pill pill-red">🔴 TSMC Arizona加碼擴產因應CoWoS吃緊</div>
-      <div class="signal-pill pill-red">🔴 AI伺服器積壓訂單創新高，記憶體卡脖子</div>
-      <div class="signal-pill pill-red">🔴 資料中心電力恐成2027最大瓶頸</div>
-      <div class="signal-pill pill-yellow">🟡 台灣地緣集中風險</div>
-      <div class="signal-pill pill-yellow">🟡 Tesla AI5流片完成，Samsung 2nm量產倒數</div>
-      <div class="signal-pill pill-yellow">🟡 Broadcom AI backlog破$300億，2027展望上修</div>
-      <div class="signal-pill pill-green">🟢 AMD Helios機櫃平台出貨Meta/OpenAI/Oracle</div>
-    </div>
+    <div class="metric-row-4">${bottleneckHtml}</div>
+    <div class="sec-title" style="margin-top:-6px;">重點廠商財報 · ${vendorNames1}</div>
+    <div class="metric-row">${vendorHtml1}</div>
+    <div class="sec-title" style="margin-top:-6px;">重點廠商財報 · ${vendorNames2}</div>
+    <div class="metric-row">${vendorHtml2}</div>
+    <div style="font-size:11px;color:var(--muted);margin:-6px 0 14px;padding-left:2px;">📌 上方數據為靜態參考值，每季財報後請告知 Claude 更新（最後更新：${ref.last_updated||'—'}）</div>
+    <div class="signal-strip">${pillsHtml}</div>
 
     <div class="tw-chain">
       <div class="tw-chain-title">🇹🇼 台灣 AI 供應鏈 — 上下游關係</div>
@@ -642,23 +652,24 @@ function renderHW(d) {
 // ══════════════════════════════════════════════════════════════════
 //  CORP PANEL
 // ══════════════════════════════════════════════════════════════════
-function renderCorp(d) {
+async function renderCorp(d) {
+  const ref = await loadHwCorpRef();
+  if(!ref){
+    document.getElementById('panel-corp').innerHTML = '<div class="empty-state">⚠️ 無法載入財報參考資料（data/hw_corp_reference.json）</div>';
+    return;
+  }
+  const metricHtml = (ref.corp.metric_cards||[]).map(hwCorpCard).join('');
+  const capexHtml = (ref.corp.capex_bars||[]).map(r=>
+    `<div class="capex-row"><div class="capex-co">${r.company}</div><div class="capex-track"><div class="capex-fill ${r.bar_cls}" style="width:${r.pct}%">${r.guidance}</div></div><div class="capex-yoy">${r.note}<br><span class="capex-qoq">${r.qoq}</span></div></div>`
+  ).join('');
+
   document.getElementById('panel-corp').innerHTML = `
-    <div class="metric-row">
-      <div class="metric-card"><div class="metric-label">3大CSP 資本支出指引</div><div class="metric-value c-corp">$558B</div><div class="metric-sub">Amazon+Google+Meta最新guidance合計（不含Microsoft，財年制不同）</div></div>
-      <div class="metric-card"><div class="metric-label">Microsoft Azure 全年營收</div><div class="metric-value c-app">突破 $100B</div><div class="metric-sub">FY26全年+41% · Q4單季+43%</div></div>
-      <div class="metric-card"><div class="metric-label">Google Cloud Q2 成長</div><div class="metric-value c-app">+82% YoY</div><div class="metric-sub">單季 $248 億 · 積壓訂單 $5,140 億</div></div>
-    </div>
-    <div style="font-size:11px;color:var(--muted);margin:-6px 0 14px;padding-left:2px;">📌 上方數據為靜態參考值，每季財報後請告知 Claude 更新（最後更新：2026 Q2財報）</div>
+    <div class="metric-row">${metricHtml}</div>
+    <div style="font-size:11px;color:var(--muted);margin:-6px 0 14px;padding-left:2px;">📌 上方數據為靜態參考值，每季財報後請告知 Claude 更新（最後更新：${ref.last_updated||'—'}）</div>
     <div class="capex-section">
       <div class="sec-title">最新資本支出 Guidance（十億美元）</div>
-      <div class="capex-bars">
-        <div class="capex-row"><div class="capex-co">Amazon</div><div class="capex-track"><div class="capex-fill b-amz" style="width:86%">$220B</div></div><div class="capex-yoy">↑原$200B<br><span class="capex-qoq">Q2較Q1實際+$9.9B</span></div></div>
-        <div class="capex-row"><div class="capex-co">Google</div><div class="capex-track"><div class="capex-fill b-goog" style="width:78%">$195–205B</div></div><div class="capex-yoy">↑原$180–190B<br><span class="capex-qoq">Q2較Q1實際+$9.2B</span></div></div>
-        <div class="capex-row"><div class="capex-co">Microsoft</div><div class="capex-track"><div class="capex-fill b-ms" style="width:100%">$255–260B</div></div><div class="capex-yoy">FY27新揭露<br><span class="capex-qoq">Q2較Q1實際+$9.1B</span></div></div>
-        <div class="capex-row"><div class="capex-co">Meta</div><div class="capex-track"><div class="capex-fill b-meta" style="width:54%">$130–145B</div></div><div class="capex-yoy">原$125–145B窄化<br><span class="capex-qoq">Q2較Q1實際+$11.3B</span></div></div>
-      </div>
-      <div style="font-size:10px;color:var(--muted);margin-top:6px;">*Microsoft財年為7月–隔年6月，FY27指引涵蓋2026/7–2027/6，與其他三家的2026日曆年guidance非同期，未列入左側合計；QoQ列的Q1/Q2對Microsoft指FY26 Q3(1–3月)/Q4(4–6月)，非日曆季</div>
+      <div class="capex-bars">${capexHtml}</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:6px;">${ref.corp.capex_note||''}</div>
     </div>
     <div class="sec-title">本日重點新聞 · ${fmtDate(d.date)}</div>
     ${newsGrid(d.corp, 'corp')}`;

@@ -1581,6 +1581,40 @@ def send_email(data):
           <div style="font-size:13px;color:#4a4744;line-height:1.7;">{ws_html}</div>
         </div>'''
 
+    # 08-11：季底最後一天（3/31、6/30、9/30、12/31）在新聞上方加一段財報回顧banner，
+    # 資料來自data/hw_corp_reference.json——跟網頁HW/Corp面板同一份JSON單一來源，
+    # 不會有兩邊數字不同步的問題。banner一律誠實標示ref裡的last_updated季別，
+    # 不會假裝是「今天剛公布」的資料（本季財報通常季底後幾週才會公布，季底當天
+    # 能用的一定是上一季或更早的數字），這就是使用者要的「先依財報更新完成後再納入」
+    # ——banner只反映JSON目前實際被更新到的季別，沒更新就照實顯示舊季別，不是條件式隱藏
+    qbanner = ''
+    if (NOW.month, NOW.day) in [(3,31),(6,30),(9,30),(12,31)]:
+        ref_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'hw_corp_reference.json')
+        try:
+            with open(ref_path, 'r', encoding='utf-8') as f:
+                ref = json.load(f)
+
+            def _ref_card(c):
+                return f'''<div style="background:#faf9f7;border:1px solid #d8d4ce;border-radius:8px;padding:10px 14px;margin-bottom:8px;">
+                  <div style="font-size:11px;color:#7a756f;text-transform:uppercase;letter-spacing:.5px;">{c["label"]}</div>
+                  <div style="font-size:16px;font-weight:700;color:#2c2a28;margin:2px 0;">{c["value"]}</div>
+                  <div style="font-size:11.5px;color:#7a756f;line-height:1.5;">{c["sub"]}</div>
+                </div>'''
+
+            hw_cards = ''.join(_ref_card(c) for c in (ref.get('hw',{}).get('bottleneck_cards') or []) + (ref.get('hw',{}).get('vendor_cards') or []))
+            corp_cards = ''.join(_ref_card(c) for c in (ref.get('corp',{}).get('metric_cards') or []))
+            qbanner = f'''
+            <div style="background:#f0f5f8;border:1px solid #b8c8d8;border-radius:8px;padding:16px 20px;margin:20px 0;">
+              <div style="font-size:14px;font-weight:700;color:#3a5a7a;margin-bottom:4px;">📊 季底財報回顧（{ref.get("last_updated","—")}）</div>
+              <div style="font-size:11px;color:#9e9890;margin-bottom:12px;">本季最後一天彙整目前掌握的最新財報數字，僅供快速回顧；本季（今日）財報通常尚未公布，上方季別為實際最後更新的資料來源</div>
+              <div style="font-size:12px;font-weight:700;color:#5a7fa8;margin:10px 0 6px;">🔩 硬體缺口</div>
+              {hw_cards}
+              <div style="font-size:12px;font-weight:700;color:#a07040;margin:14px 0 6px;">💰 巨頭角力</div>
+              {corp_cards}
+            </div>'''
+        except Exception as e:
+            print(f"  ⚠ 季底banner讀取hw_corp_reference.json失敗（不影響信件其餘內容）：{e}")
+
     all_items = data['hw']+data['corp']+data['app']
     core_count = sum(1 for i in all_items if i.get('rating')=='core')
     opp_count  = sum(1 for i in all_items if i.get('rating')=='opp')
@@ -1595,6 +1629,7 @@ def send_email(data):
         </div>
 
         {weekly}
+        {qbanner}
         {section_html(data["hw"], "#5a7fa8", "🔩", "硬體缺口")}
         {section_html(data["corp"],"#a07040", "💰", "巨頭角力")}
         {section_html(data["app"], "#4a8a6a", "🤖", "新興應用")}
