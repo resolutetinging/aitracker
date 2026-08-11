@@ -275,33 +275,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .gloss-regen-btn:hover{background:rgba(74,104,128,.10);color:var(--gloss);}
 .gloss-regen-btn:disabled{opacity:.3;cursor:not-allowed;}
 
-/* ── Insight panel ── */
-.ins-legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
-.ins-legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);}
-.ins-legend-item .badge{font-size:10px;}
-.badge{font-size:10.5px;font-weight:800;padding:3px 9px;border-radius:12px;white-space:nowrap;flex-shrink:0;letter-spacing:.5px;border:1px solid;}
-.b-core {background:rgba(58,90,122,.10);color:var(--core);border-color:rgba(58,90,122,.3);}
-.b-noise{background:rgba(104,100,96,.10);color:var(--noise);border-color:rgba(104,100,96,.3);}
-.b-opp  {background:rgba(58,104,88,.10);color:var(--opp);border-color:rgba(58,104,88,.3);}
-
-/* ── Insight sub-tabs ── */
-.ins-subtabs{display:flex;gap:6px;margin-bottom:14px;}
-.ins-stab{padding:7px 18px;border-radius:7px;border:1px solid var(--border);background:var(--card);color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;}
-.ins-stab:hover{background:var(--card2);}
-.ins-stab.active-core{background:rgba(58,90,122,.10);border-color:var(--core);color:var(--core);}
-.ins-stab.active-noise{background:rgba(104,100,96,.10);border-color:var(--noise);color:var(--noise);}
-.ins-stab.active-opp{background:rgba(58,104,88,.10);border-color:var(--opp);color:var(--opp);}
-.ins-subpanel{display:none;}.ins-subpanel.active{display:block;}
-
-/* ── Insight accordion card ── */
-.ins-card{background:var(--card);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);margin-bottom:10px;overflow:hidden;}
-.ins-card-header{display:flex;align-items:center;gap:10px;padding:14px 16px;cursor:pointer;user-select:none;}
-.ins-card-header:hover{background:var(--card2);}
-.ins-title{font-size:14px;font-weight:700;flex:1;line-height:1.4;}
-.ins-toggle{font-size:12px;color:var(--muted);width:16px;text-align:center;flex-shrink:0;}
-.ins-body{border-top:1px solid var(--border);padding:14px 16px;display:none;}
-.ins-body.open{display:block;}
-.ins-chain{display:flex;align-items:center;flex-wrap:wrap;gap:5px;font-size:12px;margin-bottom:12px;}
+/* ── 注意方向（08-11：原個人洞察分頁專用，該分頁移除後改共用於本週記錄的newsCard） ── */
 .ins-insight{background:rgba(58,104,96,.07);border:1px solid rgba(58,104,96,.2);border-radius:6px;padding:9px 12px;font-size:13px;color:var(--insight);line-height:1.6;}
 .ins-insight-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--insight);margin-bottom:4px;}
 
@@ -376,7 +350,6 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
   <button class="tab-btn" id="btn-app"   onclick="sw('app')">🤖 新興應用</button>
   <button class="tab-btn" id="btn-nv"    onclick="sw('nv')">🟢 NVIDIA專區</button>
   <button class="tab-btn" id="btn-gloss" onclick="sw('gloss')">📚 專有名詞</button>
-  <button class="tab-btn" id="btn-ins"   onclick="sw('ins')">🎯 個人洞察</button>
   <button class="tab-btn" id="btn-hist"    onclick="sw('hist')">📅 本週紀錄</button>
   <button class="tab-btn" id="btn-archive" onclick="sw('archive');loadArchive()">📝 歷史筆記</button>
 </div>
@@ -386,7 +359,6 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 <div id="panel-app"     class="panel"></div>
 <div id="panel-nv"      class="panel"></div>
 <div id="panel-gloss"   class="panel"></div>
-<div id="panel-ins"     class="panel"></div>
 <div id="panel-hist"    class="panel"></div>
 <div id="panel-archive" class="panel"></div>
 
@@ -576,14 +548,17 @@ function isNoiseEmpty(item) {
   return !item.body || !item.body.trim();
 }
 function visibleItems(arr) { return (arr || []).filter(i => !isNoiseEmpty(i)); }
-function newsGrid(arr, ptype) {
+function newsGrid(arr, ptype, showInsight) {
   const v = visibleItems(arr);
   return v.length
-    ? `<div class="news-grid">${v.map(i => newsCard(i, ptype)).join('')}</div>`
+    ? `<div class="news-grid">${v.map(i => newsCard(i, ptype, showInsight)).join('')}</div>`
     : `<div class="empty-state" style="padding:32px 0;">📭 今日新聞素材不足，無法生成內容<br><span style="font-size:12px;margin-top:6px;display:block;">RSS 來源暫無高信號 AI / 半導體新聞，明日再看</span></div>`;
 }
 
-function newsCard(item, ptype) {
+// 08-11：showInsight參數（本週記錄頁傳true）——原本「個人洞察」分頁內容跟本週記錄
+// 完全重複（供應鏈影響分析/Safety Alert皆同），唯一不重複的是「注意方向」這段文字，
+// 移植進來後個人洞察分頁整個移除，不再維護兩份幾乎一樣的卡片
+function newsCard(item, ptype, showInsight) {
   const tc = ptype==='hw'?'tag-hw':ptype==='corp'?'tag-corp':'tag-app';
   const noiseBadge = item.rating === 'noise'
     ? `<span class="tag" style="background:rgba(104,100,96,.12);color:var(--muted);border:1px solid rgba(104,100,96,.3);">NOISE</span>` : '';
@@ -599,9 +574,12 @@ function newsCard(item, ptype) {
         ? `<div class="impact-box"><div class="impact-title">供應鏈影響鏈</div>
            <div class="impact-chain">${chainHtml(item.chain)}</div></div>`
         : '');
+  const insightBox = (showInsight && item.insight)
+    ? `<div class="ins-insight" style="margin-bottom:12px;"><div class="ins-insight-label">注意方向</div>${item.insight}</div>`
+    : '';
   return `<div class="news-card ${ptype}">
     <div class="card-top"><div class="card-title">${item.title}</div><span class="tag ${tc}">${item.layer}</span>${noiseBadge}</div>
-    <div class="card-body">${fmtBody(item.body)}</div>${eth}${impactBox}${src}
+    <div class="card-body">${fmtBody(item.body)}</div>${eth}${impactBox}${insightBox}${src}
   </div>`;
 }
 
@@ -1160,72 +1138,6 @@ async function regenerateUserTerm(term){
 }
 
 // ══════════════════════════════════════════════════════════════════
-//  INSIGHT PANEL — sub-tabs + accordion
-// ══════════════════════════════════════════════════════════════════
-function renderInsights(d) {
-  const all = [...visibleItems(d.hw), ...visibleItems(d.corp), ...visibleItems(d.app)];
-  const groups = {core:[], noise:[], opp:[]};
-  all.forEach(i => { if (groups[i.rating]) groups[i.rating].push(i); });
-
-  function accordionCards(items, prefix) {
-    if (!items.length) return '<div style="color:var(--muted);font-size:13px;padding:12px 0;">今日無此分類新聞。</div>';
-    return items.map((item, idx) => {
-      const eth = item.ethic
-        ? `<div class="ethic-alert" style="margin-top:10px;">⚠️ <strong>Safety Alert</strong>：${item.ethic}</div>` : '';
-      return `<div class="ins-card">
-        <div class="ins-card-header" onclick="togIns('${prefix}${idx}')">
-          <div class="ins-title">${item.title}</div>
-          <div class="ins-toggle" id="itog-${prefix}${idx}">▼</div>
-        </div>
-        <div class="ins-body" id="ibody-${prefix}${idx}">
-          ${item.impact
-            ? `<div class="impact-box" style="margin-bottom:10px;"><div class="impact-title">供應鏈影響分析</div><div style="font-size:12.5px;color:var(--text2);line-height:1.7;">${item.impact}</div></div>`
-            : (item.chain?.length ? `<div class="ins-chain">${chainHtml(item.chain)}</div>` : '')}
-          ${eth}
-          <div class="ins-insight">
-            <div class="ins-insight-label">注意方向</div>
-            ${item.insight}
-          </div>
-        </div>
-      </div>`;
-    }).join('');
-  }
-
-  document.getElementById('panel-ins').innerHTML = `
-    <div class="ins-legend">
-      <div class="ins-legend-item"><span class="badge b-core">CORE</span> 直接影響 AI 架構與算力，必須追蹤</div>
-      <div class="ins-legend-item"><span class="badge b-noise">NOISE</span> 短期雜訊或技術細節，了解即可</div>
-      <div class="ins-legend-item"><span class="badge b-opp">OPP</span> 與 AI 轉型直接相關的應用突破</div>
-    </div>
-    <div class="ins-subtabs">
-      <button class="ins-stab" id="istab-core"  onclick="swIns('core')">CORE（${groups.core.length}）</button>
-      <button class="ins-stab" id="istab-noise" onclick="swIns('noise')">NOISE（${groups.noise.length}）</button>
-      <button class="ins-stab" id="istab-opp"   onclick="swIns('opp')">OPP（${groups.opp.length}）</button>
-    </div>
-    <div class="ins-subpanel" id="isp-core">${accordionCards(groups.core,'c')}</div>
-    <div class="ins-subpanel" id="isp-noise">${accordionCards(groups.noise,'n')}</div>
-    <div class="ins-subpanel" id="isp-opp">${accordionCards(groups.opp,'o')}</div>`;
-
-  swIns('core');
-}
-
-function swIns(tab) {
-  ['core','noise','opp'].forEach(t => {
-    document.getElementById('isp-'+t).classList.remove('active');
-    document.getElementById('istab-'+t).classList.remove('active-core','active-noise','active-opp');
-  });
-  document.getElementById('isp-'+tab).classList.add('active');
-  document.getElementById('istab-'+tab).classList.add('active-'+tab);
-}
-
-function togIns(id) {
-  const body = document.getElementById('ibody-'+id);
-  const tog  = document.getElementById('itog-'+id);
-  body.classList.toggle('open');
-  tog.textContent = body.classList.contains('open') ? '▲' : '▼';
-}
-
-// ══════════════════════════════════════════════════════════════════
 //  HISTORY PANEL
 // ══════════════════════════════════════════════════════════════════
 function renderHistory(hist) {
@@ -1243,9 +1155,9 @@ function renderHistory(hist) {
       }).join('');
       return `<div class="weekly-box"><div class="ws-title">📊 本週摘要（週報）</div><div class="ws-body">${items}</div></div>`;
     })() : '';
-    const hw = visibleItems(d.hw).length ? `<div class="hist-sec">🔩 硬體缺口</div><div class="news-grid">${visibleItems(d.hw).map(x=>newsCard(x,'hw')).join('')}</div>` : '';
-    const co = visibleItems(d.corp).length ? `<div class="hist-sec">💰 巨頭角力</div><div class="news-grid">${visibleItems(d.corp).map(x=>newsCard(x,'corp')).join('')}</div>` : '';
-    const ap = visibleItems(d.app).length ? `<div class="hist-sec">🤖 新興應用</div><div class="news-grid">${visibleItems(d.app).map(x=>newsCard(x,'app')).join('')}</div>` : '';
+    const hw = visibleItems(d.hw).length ? `<div class="hist-sec">🔩 硬體缺口</div><div class="news-grid">${visibleItems(d.hw).map(x=>newsCard(x,'hw',true)).join('')}</div>` : '';
+    const co = visibleItems(d.corp).length ? `<div class="hist-sec">💰 巨頭角力</div><div class="news-grid">${visibleItems(d.corp).map(x=>newsCard(x,'corp',true)).join('')}</div>` : '';
+    const ap = visibleItems(d.app).length ? `<div class="hist-sec">🤖 新興應用</div><div class="news-grid">${visibleItems(d.app).map(x=>newsCard(x,'app',true)).join('')}</div>` : '';
     const savedNote = loadNote(d.date);
     const noteSection = `
       <div class="hist-note-section">
@@ -2249,7 +2161,7 @@ async function saveArchiveToGitHub() {
 // ══════════════════════════════════════════════════════════════════
 //  TAB SWITCHING
 // ══════════════════════════════════════════════════════════════════
-const TCLS = {hw:'t-hw',corp:'t-corp',app:'t-app',nv:'t-nv',gloss:'t-gloss',ins:'t-ins',hist:'t-hist',archive:'t-archive'};
+const TCLS = {hw:'t-hw',corp:'t-corp',app:'t-app',nv:'t-nv',gloss:'t-gloss',hist:'t-hist',archive:'t-archive'};
 function sw(tab) {
   Object.keys(TCLS).forEach(k => {
     document.getElementById('panel-'+k).classList.remove('active');
@@ -2270,14 +2182,13 @@ function renderAll(hist) {
   renderApp(hist[0]);
   renderNvidia();
   renderGlossary(hist);
-  renderInsights(hist[0]);
   renderHistory(hist);
 }
 
 async function init() {
   const savedTab = sessionStorage.getItem('at_tab');
   const initTab = savedTab && Object.keys(TCLS).includes(savedTab) ? savedTab : 'hw';
-  ['hw','corp','app','nv','gloss','ins','hist'].forEach(p => {
+  ['hw','corp','app','nv','gloss','hist'].forEach(p => {
     document.getElementById('panel-'+p).innerHTML =
       '<div class="loading-screen"><div class="spinner"></div><div class="loading-text">載入最新資料中...</div></div>';
   });
