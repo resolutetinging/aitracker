@@ -1,5 +1,193 @@
 [
   {
+    "date": "2026-08-13",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "HPE和NVIDIA合作推動主權AI發展",
+        "layer": "AI基礎設施",
+        "body": "HPE和NVIDIA合作推動主權AI發展，強調控制資料、基礎設施、模型、運營和政策的重要性。這項合作將有助於企業和政府建立安全、合規的AI環境。HPE的Thierry Pienaar和NVIDIA的Kaushik Shirhatti表示，主權AI是企業和政府的戰略基礎設施優先事項。",
+        "impact": "這項合作將對AI基礎設施供應鏈產生直接影響，特別是對於資料中心和雲端服務提供商。同時，也將對AI模型和算法的開發和部署產生間接影響，促進AI技術在各行業的應用。",
+        "rating": "core",
+        "insight": "HPE和NVIDIA的合作將推動主權AI的發展，為企業和政府提供安全、合規的AI解決方案。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/08/12/sponsored-sovereign-ai-overcomes-compliance-challenges-and-feeds-innovation-in-public-sector-and-other-regulated-industries-say-hpe-and-nvidia/5285522",
+        "chain": [
+          {
+            "label": "HPE 主權AI 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "NVIDIA 主權AI 產能↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Together AI與IBM Cloud合作",
+        "layer": "AI基礎設施",
+        "body": "Together AI與IBM Cloud合作，將在IBM Cloud上部署NVIDIA的HGX B300系統，總價值2.4億美元。這項合作將有助於Together AI加速AI應用和服務的開發和部署。",
+        "impact": "這項合作將對AI基礎設施供應鏈產生直接影響，特別是對於雲端服務提供商和資料中心。同時，也將對AI模型和算法的開發和部署產生間接影響，促進AI技術在各行業的應用。",
+        "rating": "core",
+        "insight": "Together AI與IBM Cloud的合作將推動AI基礎設施的發展，為企業和政府提供更好的AI解決方案。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/off-prem/2026/08/11/together-ai-embraces-the-competition-with-240m-ibm-cloud-deal/5286400",
+        "chain": [
+          {
+            "label": "Together AI AI應用↑",
+            "type": "up"
+          },
+          {
+            "label": "IBM Cloud 服務交期↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "AI晶片架構重新定義測試插入",
+        "layer": "AI晶片",
+        "body": "AI晶片架構的發展重新定義了測試插入的方式，強調了質量保證的重要性。這項發展將有助於AI晶片的設計和製造。",
+        "impact": "這項發展將對AI晶片供應鏈產生直接影響，特別是對於晶片設計和製造商。同時，也將對AI模型和算法的開發和部署產生間接影響，促進AI技術在各行業的應用。",
+        "rating": "opp",
+        "insight": "AI晶片架構的發展將推動AI技術的進步，為企業和政府提供更好的AI解決方案。",
+        "source_label": "Semicondu",
+        "source": "https://semiengineering.com/ai-chiplet-architectures-redefining-test-insertions/",
+        "chain": [
+          {
+            "label": "AI晶片設計質量↑",
+            "type": "up"
+          },
+          {
+            "label": "AI晶片製造效率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Google 推出 Pixel 11 和 Pixel Watch 5",
+        "layer": "消費電子",
+        "body": "Google 在其 Made by Google 2026 活動中推出 Pixel 11 和 Pixel Watch 5，同時也展示了新 Gemini 功能。這些新產品將配備 Google 的最新 AI 技術，包括 Live Transcribe 和 Rambler。",
+        "impact": "這些新產品將直接影響 Google 的消費電子業務，同時也會間接影響其他智能手機和可穿戴設備製造商的市場份額。由於 Google 的 AI 技術領先地位，這些新產品也可能會影響其他公司的 AI 研發計畫。",
+        "rating": "core",
+        "insight": "這些新產品表明 Google 正在不斷推動 AI 技術的發展和應用，同時也在擴大其消費電子產品線。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/12/google-unveils-pixel-11-lineup-new-airtag-rival-and-gemini-features-at-made-by-google-2026/",
+        "chain": [
+          {
+            "label": "Google Pixel 11 銷售↑",
+            "type": "up"
+          },
+          {
+            "label": "Google AI 技術應用↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 推出 ChatGPT 桌面應用程式",
+        "layer": "AI",
+        "body": "OpenAI 推出 ChatGPT 桌面應用程式，支持 Linux 平台。這項應用程式將允許用戶在桌面上使用 ChatGPT 和 Codex。",
+        "impact": "這項應用程式將直接影響 OpenAI 的用戶體驗，同時也會間接影響其他 AI 公司的桌面應用程式開發計畫。由於 Linux 平台的普遍性，這項應用程式也可能會影響其他公司的 Linux 支持計畫。",
+        "rating": "opp",
+        "insight": "這項應用程式表明 OpenAI 正在擴大其平台的支持範圍，同時也在提高用戶體驗。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/11/openai-launches-chatgpt-desktop-app-for-linux/",
+        "chain": [
+          {
+            "label": "OpenAI ChatGPT 桌面應用程式使用率↑",
+            "type": "up"
+          },
+          {
+            "label": "Linux 平台支援↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "VideoVerse 收購案崩潰",
+        "layer": "收購",
+        "body": "VideoVerse 的 2.5 億美元收購案在不到一年後就崩潰了，投資者仍在等待他們的 2.5 億美元分紅，創始人 Vinayak Shrivastav 正面臨多起法律訴訟。收購方 Minute Media 也似乎正在撤回，五月份時宣布終止與 VideoVerse 的合同。",
+        "impact": "這次收購案的崩潰可能會對 VideoVerse 的業務產生負面影響，同時也可能會影響 Minute Media 的收購策略。另外，投資者可能會更加謹慎地對待類似的收購案，從而影響整個科技產業的投資氣氛。",
+        "rating": "core",
+        "insight": "投資者應該關注收購案的風險和挑戰，同時也應該關注科技產業的投資氣氛。",
+        "source_label": "techcrunch",
+        "source": "https://techcrunch.com/2026/08/12/how-a-250-million-acquisition-collapsed-into-allegations-of-fraud-and-forged-signatures/",
+        "chain": [
+          {
+            "label": "VideoVerse 收購案交期↓",
+            "type": "down"
+          },
+          {
+            "label": "Minute Media 合同交期↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "美國國防部可能給予 Palantir 2.44 億美元合同",
+        "layer": "政府合同",
+        "body": "美國國防部的一份內部備忘錄顯示，可能會給予 Palantir 一份價值 2.44 億美元的合同，該合同將在 2027 年 3 月 31 日前完成。這份合同將用於軍事生產效率的分析和改善。",
+        "impact": "這份合同可能會對 Palantir 的業務產生正面影響，同時也可能會影響美國國防部的軍事生產效率。另外，其他科技公司可能會更加關注政府合同的機會，從而增加競爭。",
+        "rating": "opp",
+        "insight": "Palantir 的政府合同可能會帶來新的業務機會，同時也可能會增加競爭。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/public-sector/2026/08/11/palantir-could-receive-244m-pentagon-no-bid-contract/5286438",
+        "chain": [
+          {
+            "label": "Palantir 合同金額↑",
+            "type": "up"
+          },
+          {
+            "label": "美國國防部軍事生產效率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "主權AI",
+        "full": "Sovereign AI",
+        "def": "強調控制資料、基礎設施、模型、運營和政策的重要性，為企業和政府提供安全、合規的AI環境。",
+        "why": "主權AI是企業和政府的戰略基礎設施優先事項，能夠提供安全、合規的AI解決方案。",
+        "category": "AI基礎設施"
+      },
+      {
+        "term": "HGX B300",
+        "full": "Nvidia 的 HGX B300 系統",
+        "def": "Nvidia 的一種高性能計算系統，適用於 AI 和深度學習應用。",
+        "why": "這項技術是 AI 推理平台的核心組件，對於 Together AI 的業務擴張至關重要。",
+        "category": "硬體"
+      },
+      {
+        "term": "Gemini",
+        "full": "Google 的 Gemini 功能",
+        "def": "Google 的一種 AI 技術，適用於語音和文字處理。",
+        "why": "這項技術是 Google 新產品的核心組件，對於用戶體驗至關重要。",
+        "category": "AI 技術"
+      },
+      {
+        "term": "VideoVerse",
+        "full": "VideoVerse 是一家印度的科技公司，主要提供影片剪輯服務。",
+        "def": "VideoVerse 是一家印度的科技公司，主要提供影片剪輯服務。該公司在 2025 年被 Minute Media 收購，但收購案在 2026 年崩潰。",
+        "why": "VideoVerse 的收購案崩潰可能會對科技產業的投資氣氛產生負面影響。",
+        "category": "app"
+      },
+      {
+        "term": "Palantir",
+        "full": "Palantir 是一家美國的科技公司，主要提供數據分析和商業智能服務。",
+        "def": "Palantir 是一家美國的科技公司，主要提供數據分析和商業智能服務。該公司可能會獲得美國國防部的一份價值 2.44 億美元的合同。",
+        "why": "Palantir 的政府合同可能會帶來新的業務機會，同時也可能會增加競爭。",
+        "category": "app"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-12",
     "is_sunday": false,
     "hw": [
@@ -882,201 +1070,6 @@
         "full": "人工智慧增強數據洞察",
         "def": "使用人工智慧技術對數據進行分析和洞察，從而幫助企業做出更好的決策。",
         "why": "這項技術可以幫助企業提高數據分析的效率和準確性，從而提高決策的質量。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-06",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Nvidia推動開放AI產業聯盟進展",
-        "layer": "AI應用",
-        "body": "Nvidia推動的開放AI產業聯盟（OSAA）已經發展到超過120家公司，並成立了名為Shared AI Findings Exchange（SAFE）的工作小組，負責開發和分享AI安全相關的指南和最佳實踐。該工作小組已經提出了一些初步的提案，包括如何保密地報告AI安全事件、如何通知受影響的相關方以及如何進行無偏見的分析等。",
-        "impact": "這個發展可能會對AI安全產業的標準化和合作產生正面的影響（↑），因為它可以促進業界之間的資訊共享和經驗交流。同時，這也可能會對相關的AI安全解決方案供應商產生正面的影響（↑），因為它們可以藉助這些標準和指南來開發更好的產品和服務。",
-        "rating": "core",
-        "insight": "",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/04/nvidia-doesnt-mess-around-a-week-after-open-ai-industry-group-formed-its-already-showing-progress/",
-        "chain": [
-          {
-            "label": "Nvidia 會員數↑"
-          },
-          {
-            "label": "Nvidia 影響力↑"
-          },
-          {
-            "label": "OSAA 合作夥伴↑"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Shopify 表示 AI 搜索推動更多流量和銷售，不取代 Google",
-        "layer": "電子商務",
-        "body": "Shopify 總裁 Harley Finkelstein 表示，AI 已成為搜索的補充，而不是替代品，特別是對於電子商務的長尾效應有益。Shopify 的收益超出預期，收入大幅增加，部分歸功於 AI 搜索。",
-        "impact": "這可能會增加對 AI 搜索技術的需求，從而推動相關公司的業務發展。",
-        "rating": "core",
-        "insight": "Shopify 的成功表明 AI 搜索有潛力推動電子商務的發展，投資者應該關注這一趨勢。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/05/shopify-says-ai-search-is-driving-more-traffic-and-sales-not-replacing-google/",
-        "chain": [
-          {
-            "label": "Shopify 收入↑"
-          },
-          {
-            "label": "Shopify 流量↑"
-          },
-          {
-            "label": "Google 市場份額↓"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic 招聘 AI 晶片設計團隊",
-        "layer": "人工智慧",
-        "body": "Anthropic 正在招募 AI 晶片設計團隊，以設計自己的自定義晶片，目的是提高其技術的運行速度和效率。",
-        "impact": "這可能會推動晶片技術的發展。",
-        "rating": "opp",
-        "insight": "Anthropic 的舉動表明 AI 公司正在積極推動自己的晶片技術，投資者應該關注這一趨勢。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/05/anthropic-is-hiring-an-ai-chip-design-team/",
-        "chain": [
-          {
-            "label": "Anthropic 晶片設計能力↑"
-          },
-          {
-            "label": "Anthropic 自定義晶片產能↑"
-          },
-          {
-            "label": "Anthropic 技術運行速度↑"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic 簽署 100 億美元合約與 AI 雲計算初創公司 Volta",
-        "layer": "人工智慧",
-        "body": "Anthropic 簽署了一份 100 億美元的合約，與 AI 雲計算初創公司 Volta 合作，Volta 將為 Anthropic 提供雲計算服務。",
-        "impact": "這可能會推動雲計算技術的發展。",
-        "rating": "core",
-        "insight": "Anthropic 的舉動表明 AI 公司正在積極推動自己的雲計算技術，投資者應該關注這一趨勢。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/04/anthropic-signs-10-billion-deal-with-ai-cloud-startup-volta/",
-        "chain": [
-          {
-            "label": "Anthropic 雲計算服務↑"
-          },
-          {
-            "label": "Volta 合作夥伴↑"
-          },
-          {
-            "label": "Anthropic 合約金額↑"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "人工智慧應用於醫療領域",
-        "layer": "醫療",
-        "body": "HIMSS 擴大全球對於醫療人工智慧的研究， Healthcare IT News 報導。這項研究將有助於醫療機構更好地理解和應用人工智慧技術，從而提高醫療服務的質量和效率。HIMSS 的研究將涉及多個領域，包括人工智慧在醫學影像分析、臨床決策支持和病人資料管理中的應用。",
-        "impact": "這項研究將對醫療領域的供應鏈產生正面的影響，特別是對於醫學影像分析和臨床決策支持等領域的企業。同時，這也將推動醫療機構對人工智慧技術的採用和投資，從而帶來新的商機和合作機會。",
-        "rating": "opp",
-        "insight": "醫療領域的人工智慧應用將成為未來的一個重要趨勢，醫療機構和企業需要關注這個領域的發展和變化，以便抓住新的機會和挑戰。",
-        "source_label": "Healthcare IT News",
-        "source": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOMkw4YTZsRjVIU1ZickdvR1l2S1hRdXZKVWV4T1lqMUJSakZkMDRMRzdGZ0lfMzZPQi1XWUV2V01ycTdTa01RUkUyM0VZX2E4dGZJV3ZtM0RQWmw2VXdjckhMS281ejczSWgxTTFPREJfV1RVMGdfQmxmNWJFTmJnb1VrYVNyTmI1T2c?oc=5",
-        "chain": [
-          {
-            "label": "HIMSS 研究成果↑"
-          },
-          {
-            "label": "醫療人工智慧應用↑"
-          },
-          {
-            "label": "醫療服務質量↑"
-          }
-        ]
-      },
-      {
-        "title": "歐洲科技巨頭在人工智慧領域取得進展",
-        "layer": "科技",
-        "body": "根據 Arise News 報導，歐洲的科技巨頭在人工智慧領域取得了顯著的進展，尤其是在企業採用人工智慧技術方面。這些企業包括 Google、Microsoft 和 Amazon 等，這些公司正在積極地開發和應用人工智慧技術，以提高其在全球市場中的競爭力。同時，歐洲的科技巨頭也在積極地投資人工智慧研究和開發，包括在機器學習、自然語言處理和電腦視覺等領域。",
-        "impact": "這項進展將對歐洲的科技產業產生正面的影響，特別是對於人工智慧技術的開發和應用。",
-        "rating": "opp",
-        "insight": "歐洲的科技巨頭在人工智慧領域的進展將成為未來的一個重要趨勢，企業和投資者需要關注這個領域的發展和變化，以便抓住新的機會和挑戰。",
-        "source_label": "Arise News",
-        "source": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQU1ZXR1JNRVhhaWVtV0dZb1JXUG9ZOVBkWEZlQmJUdzNNdzJIRlJaRHR0YTN3dW1qOUs2WjFFUHg4LWVEemN6c0tQR1pTSDNyUjdFbEhuMDk2ZWk1X0hEaDZNYVVHNFpCS1E2TU1GcjlGd1NvaUVOSkdMMktFQk1peUh0am42VVdhZS1ZYTAxNlNKdzRt?oc=5",
-        "chain": [
-          {
-            "label": "Google 人工智慧技術↑"
-          },
-          {
-            "label": "Microsoft 人工智慧投資↑"
-          },
-          {
-            "label": "Amazon 市場競爭力↑"
-          }
-        ]
-      },
-      {
-        "title": "全球市場：歐洲科技巨頭在人工智慧領域取得進展",
-        "layer": "全球市場",
-        "body": "根據 The Economic Times 報導，歐洲的科技巨頭在人工智慧領域取得了顯著的進展，尤其是在企業採用人工智慧技術方面。這些企業包括 Google、Microsoft 和 Amazon 等，這些公司正在積極地開發和應用人工智慧技術，以提高其在全球市場中的競爭力。同時，歐洲的科技巨頭也在積極地投資人工智慧研究和開發，包括在機器學習、自然語言處理和電腦視覺等領域。",
-        "impact": "這項進展將對全球市場產生正面的影響，特別是對於人工智慧技術的開發和應用。",
-        "rating": "opp",
-        "insight": "全球市場中的科技巨頭在人工智慧領域的進展將成為未來的一個重要趨勢，企業和投資者需要關注這個領域的發展和變化，以便抓住新的機會和挑戰。",
-        "source_label": "The Economic Times",
-        "source": "https://news.google.com/rss/articles/CBMimgJBVV95cUxOdExvQ1BqTDJBRV9wX2ZZUHV6M0JaOHZWZlhuZlRScWhmbUhkcVdyRFJqZmppT0VkNlh2RzRDS1Q3WDA2M3lhd2Y0ZVA1VkRsdDZuOXJGZXhhdUlqdzFoTGRWN0VPWnJlZllueHBxcUkzaVZuM0NES0dqWmFZNzhJMXV6ZEpycnpudEdoR29zUnV6djRkSTBONjNFMElGeGVvU2Vnb3JZZ0tKWWs5cHBJOWpCSTRDR1I5RWs2S01DT3Zaa0hzUnFsRGFfRVJWMzJUOHU4eDIzMkF2eTFTUEdKU2N3Y01lYlo4aEdSQ3FnSHV5cmhSanhLWFNhcy1hNG1fcFk2QVl6SnpxOUVoVWFJSEhQTkRlcE1EQWfSAZoCQVVfeXFMTnRMb0NQakwyQUVfcF9mWVB1ejNCWjh2VmZYbmZUUnFoZm1IZHFXckRSamZqaU9FZDZYdkc0Q0tUN1gwNjN5YXdmNGVQNVZEbHQ2bjlyRmV4YXVJancxaExkVjdFT1pyZWZZbnhwcXFJM2lWbjNDREtHalphWTc4STF1emRKcnJ6bnRHaEdvc1J1enY0ZEkwTjYzRTBJRnhlb1NlZ29yWWdLSllrOXBwSTlqQkk0Q0dSOUVrNktNQ092WmtIc1JxbERhX0VSVjMyVDh1OHgyMzJBdnkxU1BHSlNjd2NNZWJaOGhHUkNxZ0h1eXJoUmp4S1hTYXMtYTRtX3BZNkFZekp6cTlFaFVhSUhIUE5EZXBNREFn?oc=5",
-        "chain": [
-          {
-            "label": "Google 全球市場份額↑"
-          },
-          {
-            "label": "Microsoft 人工智慧研究↑"
-          },
-          {
-            "label": "Amazon 電腦視覺技術↑"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "OSAA",
-        "full": "開放AI產業聯盟",
-        "def": "一個由Nvidia推動的開放AI產業聯盟，旨在促進AI安全相關的標準化和合作。",
-        "why": "這個聯盟可能會對AI安全產業的標準化和合作產生正面的影響。",
-        "category": "AI應用"
-      },
-      {
-        "term": "AI 搜索",
-        "full": "人工智慧搜索",
-        "def": "使用人工智慧技術進行搜索的方法，能夠更好地理解用戶的搜索意圖和需求。",
-        "why": "AI 搜索技術可以大幅提高搜索的準確度和效率，從而推動電子商務的發展。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "人工智慧",
-        "full": "Artificial Intelligence",
-        "def": "人工智慧是一種模擬人類智慧的技術，包括機器學習、自然語言處理和電腦視覺等領域。",
-        "why": "人工智慧技術正在被廣泛應用於各個領域，包括醫療、金融和製造業等。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "機器學習",
-        "full": "Machine Learning",
-        "def": "機器學習是一種人工智慧技術，允許電腦系統在沒有明確程式的情況下學習和改進。",
-        "why": "機器學習技術正在被廣泛應用於各個領域，包括圖像和語音識別等。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "自然語言處理",
-        "full": "Natural Language Processing",
-        "def": "自然語言處理是一種人工智慧技術，允許電腦系統理解和生成人類語言。",
-        "why": "自然語言處理技術正在被廣泛應用於各個領域，包括語音助手和聊天機器人等。",
         "category": "ai_technique"
       }
     ],
