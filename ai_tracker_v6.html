@@ -68,9 +68,6 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .arc-kw.trend-up{background:rgba(64,138,96,.10);border-color:rgba(64,138,96,.3);color:#306840;}
 .arc-kw.trend-dn{background:rgba(136,80,80,.10);border-color:rgba(136,80,80,.3);color:#884040;}
 .arc-section-lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);font-weight:700;margin-bottom:4px;}
-.arc-def-list{display:flex;flex-direction:column;gap:6px;}
-.arc-def-item{background:var(--card);border-radius:7px;padding:8px 11px;border:1px solid var(--border);font-size:12.5px;line-height:1.6;}
-.arc-def-term{font-weight:700;color:#7860a0;margin-right:5px;}
 .arc-groq-prompt{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
 .arc-groq-input{flex:1;min-width:180px;background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:7px 10px;font-size:12px;font-family:monospace;color:var(--text);}
 .arc-groq-input:focus{outline:none;border-color:#8a60b0;}
@@ -1851,7 +1848,7 @@ function renderSummaryCard(notes) {
       </div>
     </div>
     <div id="arc-summary-body" class="arc-summary-body">
-      <span class="arc-status">共 ${dates.length} 天筆記，點擊「✨ 分析趨勢」生成 AI 統整（資料量較大時會自動聚焦最近日期，見分析結果內說明）</span>
+      <span class="arc-status">共 ${dates.length} 天筆記，點擊「✨ 分析趨勢」生成 AI 統整（固定分析最近 7 天）</span>
     </div>
   </div>`;
 }
@@ -1886,7 +1883,7 @@ async function summarizeArchive() {
   if (!btn || !body) return;
   btn.disabled = true;
   btn.textContent = '分析中…';
-  body.innerHTML = '<span class="arc-status">🔄 正在分析所有筆記，請稍候…</span>';
+  body.innerHTML = '<span class="arc-status">🔄 正在分析最近 7 天筆記，請稍候…</span>';
 
   // 收集筆記內容（依日期排序）
   const notes = {};
@@ -1900,10 +1897,12 @@ async function summarizeArchive() {
     }
   }
   delete notes.updated;
-  // 08-06：拿掉時間範圍選單——不論選30/60/90天，最後都會被下面的413自動縮減機制夾到
-  // 差不多同一個實際能塞進Groq免費額度的天數，範圍選擇形同虛設，乾脆一律嘗試全部筆記，
-  // 讓縮減機制自己找出塞得下的範圍即可
-  const dates = Object.keys(notes).filter(k => k.match(/^\d{4}-\d{2}-\d{2}$/)).sort();
+  // 08-12：改回直接鎖定近7天（有筆記的最近7天，不含空白天），不再嘗試全部筆記讓413
+  // 自動縮減機制事後補救——縮減後還要在畫面上跟使用者解釋「已自動聚焦最近N天」，
+  // 這個提示本身沒有資訊價值（使用者只想要分析結果，不需要知道內部額度限制細節），
+  // 乾脆一開始就把範圍鎖在一個大機率塞得進Groq額度的可控天數，不需要再解釋
+  const allDates = Object.keys(notes).filter(k => k.match(/^\d{4}-\d{2}-\d{2}$/)).sort();
+  const dates = allDates.slice(-7);
   if (!dates.length) {
     body.innerHTML = '<span class="arc-status">尚無可分析的筆記。</span>';
     btn.disabled = false; btn.textContent = '✨ 分析趨勢';
@@ -1925,30 +1924,25 @@ ${noteBlocks}
     {"term": "關鍵字", "count": 出現天數, "trend": "up|stable|down", "note": "一句話說明趨勢方向"},
     ...（列出前 8 個最重要關鍵字，依頻率排序）
   ],
-  "definitions": [
-    {"term": "技術名詞", "def": "整合多日筆記後的精確定義（50字內）"},
-    ...（若有跨日定義類描述，整理出 3-5 條）
-  ],
   "insight": [
-    "主軸方向：這段時間最主要的 AI 產業趨勢，說明推論依據（3-4句，需引用至少1個具體日期佐證）",
-    "關鍵決策：哪些公司做了什麼戰略決策、動機是什麼、跟前面觀察到的趨勢有何關聯（3-4句，含具體公司名與日期）",
-    "影響鏈：對上下游（供應商/開發者/用戶/監管）的連鎖影響，說明傳導路徑而不只是列出受影響對象（3-4句）",
-    "矛盾與待驗證：筆記裡有沒有互相矛盾、方向不明、還需要繼續觀察才能確認的訊號（2-3句；若真的沒有就明講「暫無明顯矛盾訊號」，不可為了填內容硬湊）",
-    "前瞻：從筆記觀察到的方向，接下來最值得關注的變化，以及觀察指標是什麼（2-3句）"
+    "主軸方向：這段時間最主要的 AI 產業趨勢是什麼、判斷依據為何（4-6句，至少引用2個不同日期的具體觀察佐證，需點名至少1家公司或1項具體數字）",
+    "關鍵決策：哪些公司做了什麼戰略決策、動機是什麼、跟前面觀察到的趨勢有何關聯、對其上下游有何具體影響（4-6句，含至少2家具體公司名、日期、及可能的數字或規模）",
+    "影響鏈：對上下游（供應商/開發者/用戶/監管）的連鎖影響，逐段說明傳導路徑（第一層受影響對象→第二層→終端），不能只列出受影響對象而不解釋機制（4-6句）",
+    "矛盾與待驗證：筆記裡有沒有互相矛盾、方向不明、還需要繼續觀察才能確認的訊號，若有請具體點出是哪兩則觀察互相矛盾（2-4句；若真的沒有就明講「暫無明顯矛盾訊號」，不可為了填內容硬湊）",
+    "前瞻：從筆記觀察到的方向，接下來最值得關注的變化是什麼、為什麼、應該追蹤哪些具體觀察指標（例如某公司下一次財報、某產品發布時程）（3-5句）"
   ]
 }
 
 規則：
 - 只分析筆記中真實出現的內容，禁止捏造
 - keyword trend: 若後期（最近幾天）出現次數增加→up；減少→down；穩定→stable
-- definitions 只包含筆記中有實質描述的技術概念，不要生硬定義常識詞
-- insight 必須是恰好 5 個元素的 JSON 陣列，每個元素是一段純文字字串，要有推論過程不能只下結論
-- insight 每一句需盡量標注依據的具體日期（例如「（08-03觀察）」），讓人回頭查得到出處
+- insight 必須是恰好 5 個元素的 JSON 陣列，每個元素是一段純文字字串，要有完整推論過程不能只下結論；這是整份分析最重要的部分，寧可精簡keywords也要把篇幅留給insight
+- insight 每一句需標注依據的具體日期（例如「（08-03觀察）」），讓人回頭查得到出處，且需優先引用筆記中出現的具體數字/公司名/產品名，避免空泛沒有實質內容的推論
 - 回傳純 JSON，不加任何 markdown 或說明文字`;
   }
 
   let useDates = dates;
-  let resp, shrunk = false;
+  let resp;
   try {
     for (let attempt = 0; attempt < 10; attempt++) {
       resp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -1957,16 +1951,16 @@ ${noteBlocks}
         body: JSON.stringify({
           model: 'llama-3.3-70b-versatile',
           messages: [{role:'user', content: _buildAnalysisPrompt(useDates)}],
-          // 08-06：insight從4項加到5項且要求每項附推論依據與日期佐證，1800不夠放，
-          // 提高到2600（仍在12,000 TPM預算內留給輸入的空間，只是縮減機制觸發的天數門檻會略降一點）
-          max_tokens: 2600,
+          // 08-12：移除definitions欄位、範圍固定收斂到近7天後，輸入端省下的token空間
+          // 挪給insight要求更深的推論深度（4-6句/項），提高到3400（近7天輸入量遠小於
+          // 12,000 TPM預算，留給輸出的空間比之前「全部筆記」寬裕很多）
+          max_tokens: 3400,
           temperature: 0.3
         })
       });
       if (resp.status !== 413 || useDates.length <= 1) break;
       // 413（請求過大）：保留最近60%的天數重試，捨棄最舊的部分。keepCount要比目前天數
       // 至少少1天，否則天數縮到2時ceil(2*0.6)=2會卡住不再變小、迴圈次數用完仍是2天原地重試
-      shrunk = true;
       const keepCount = Math.min(useDates.length - 1, Math.max(1, Math.ceil(useDates.length * 0.6)));
       useDates = useDates.slice(useDates.length - keepCount);
       body.innerHTML = `<span class="arc-status">🔄 範圍過大，縮減至最近 ${useDates.length} 天重試中…</span>`;
@@ -1983,9 +1977,6 @@ ${noteBlocks}
     // LLM 有時在 JSON 字串值裡放真實換行，需先做字元級清理
     raw = _sanitizeJson(raw);
     const result = JSON.parse(raw);
-    // 08-06：若因413自動縮減過天數，把這件事存進結果本身，讓使用者事後(含session快取重讀時)
-    // 都看得到「實際分析的範圍比全部筆記還窄」，不要悄悄縮小卻不講
-    if (shrunk) result._rangeNote = `⚠️ 筆記資料量超過 Groq 免費額度單次請求上限，已自動聚焦最近 ${useDates.length} 天（${useDates[0]} ~ ${useDates[useDates.length-1]}）`;
     sessionStorage.setItem('arc_summary', JSON.stringify(result));
     _renderSummaryResult(result);
   } catch(e) {
@@ -2047,24 +2038,11 @@ function _renderSummaryResult(result) {
     </span>`
   ).join('');
 
-  const defHTML = (result.definitions || []).length
-    ? `<div style="margin-top:12px;">
-        <div class="arc-section-lbl">定義整理</div>
-        <div class="arc-def-list">
-          ${(result.definitions).map(d =>
-            `<div class="arc-def-item"><span class="arc-def-term">${_arcEsc(d.term)}</span>${_arcEsc(d.def)}</div>`
-          ).join('')}
-        </div>
-      </div>`
-    : '';
-
   body.innerHTML = `
-    ${result._rangeNote ? `<div style="margin-bottom:10px;padding:8px 12px;background:rgba(230,126,34,.1);border-radius:8px;border-left:3px solid #e67e22;font-size:12px;color:var(--text2);">${_arcEsc(result._rangeNote)}</div>` : ''}
     <div>
       <div class="arc-section-lbl">高頻關鍵字趨勢</div>
       <div class="arc-kw-row">${kwHTML || '<span class="arc-status">無高頻關鍵字</span>'}</div>
     </div>
-    ${defHTML}
     ${result.insight ? `<div style="margin-top:12px;padding:10px 14px;background:rgba(120,96,160,.06);border-radius:8px;border-left:3px solid #8a60b0;font-size:12.5px;color:var(--text2);line-height:1.8;"><ul style="margin:0;padding-left:16px;display:flex;flex-direction:column;gap:8px;">${(Array.isArray(result.insight)?result.insight:result.insight.split(/\n+/)).filter(p=>p.trim()).map(p=>`<li>${_arcEsc(p.trim())}</li>`).join('')}</ul></div>` : ''}
   `;
 }
