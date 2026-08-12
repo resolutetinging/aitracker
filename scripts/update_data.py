@@ -947,11 +947,16 @@ def downgrade_forbidden_phrases(data):
                     if body_dropped:
                         item['body'] = new_body
                         print(f"  ✂ 禁句刪句（保留卡片）：{item.get('title','')[:50]}")
-                    # insight（注意方向）欄位同樣只刪命中句，不整卡降級
+                    # insight（注意方向）只有1句（LLM prompt規定），跟body不同——body刪掉1句
+                    # 套話還有其他句子撐住，insight刪掉那1句就整欄變空字串，前端會判定「沒有insight」
+                    # 而整塊不顯示，信件模板卻沒做同樣判斷，兩邊顯示不一致，使用者才會看到內容缺失。
+                    # 修法：只有在刪句後insight還有剩才套用，刪空就保留原句——寧可套話也不要真空
                     new_insight, insight_dropped = _drop_matching_sentences(insight, FORBIDDEN_PATS)
-                    if insight_dropped:
+                    if insight_dropped and new_insight.strip():
                         item['insight'] = new_insight
                         print(f"  ✂ insight 禁句刪句：{item.get('title','')[:50]}")
+                    elif insight_dropped:
+                        print(f"  ⚠ insight 禁句刪句後會變空，保留原句：{item.get('title','')[:50]}")
                     # 刪句後 body 若變得過短/低品質，才走降級（→opp，非 noise）
                     if (body_dropped or insight_dropped) and _body_is_low_quality(item.get('body', '')):
                         print(f"  ↓ 禁句刪句後 body 過短→opp：{item.get('title','')[:50]}")
@@ -1546,9 +1551,7 @@ def send_email(data):
                 {item.get("impact") or chain_text(item.get("chain") or [])}
               </div>
               {eth}
-              <div style="margin-top:10px;font-size:12.5px;color:#3a6860;background:#f0f8f6;padding:8px 12px;border-radius:5px;border-left:2px solid #4a8a6a;">
-                注意方向：{item["insight"]}
-              </div>
+              {f'<div style="margin-top:10px;font-size:12.5px;color:#3a6860;background:#f0f8f6;padding:8px 12px;border-radius:5px;border-left:2px solid #4a8a6a;">注意方向：{item["insight"]}</div>' if item.get("insight") else ''}
               {src}
             </div>'''
         return f'''
@@ -1683,7 +1686,9 @@ def push_notion(data):
 
     def item_block(item):
         impact = item.get('impact') or ' → '.join(c['label'] for c in item.get('chain') or [])
-        text = f"▸ {item['title']}\n{item['body']}\n供應鏈影響：{impact}\n注意方向：{item['insight']}"
+        text = f"▸ {item['title']}\n{item['body']}\n供應鏈影響：{impact}"
+        if item.get('insight'):
+            text += f"\n注意方向：{item['insight']}"
         return para(text)
 
     blocks = [
