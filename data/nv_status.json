@@ -176,31 +176,101 @@
       "name": "NVLink Fusion 開放策略",
       "desc": "開放NVLink互聯技術給第三方（如Marvell、Qualcomm），讓非NVIDIA的CPU／加速器可接入其生態系，但底層通訊與運算架構仍須遵循NVIDIA規範——用開放換取全產業對NVIDIA技術標準的依賴",
       "status": "2026年持續推行",
-      "src": "https://iknow.stpi.niar.org.tw/Post/Read.aspx?PostID=23528"
+      "src": "https://iknow.stpi.niar.org.tw/Post/Read.aspx?PostID=23528",
+      "role_type": "技術標準制定者",
+      "focus": "開放標準綁定生態系（NVLink Fusion）"
     },
     {
       "name": "生態系資本布局（180億美元＋新創投資）",
       "desc": "鎖定高階GPU供應、先進封裝、光學模組、網通設備等關鍵供應鏈環節；2025年投資59家AI新創（多於2024年全年55家），涵蓋OpenAI、xAI、Mistral AI、Perplexity、Figure AI等，形成資金／算力／股權互相依賴的閉鎖循環",
       "status": "持續進行中",
-      "src": "https://techorange.com/2025/10/30/nvidia-ai-startup-investing/"
+      "src": "https://techorange.com/2025/10/30/nvidia-ai-startup-investing/",
+      "role_type": "資本與生態系綁定",
+      "focus": "供應鏈與新創投資組合"
     },
     {
       "name": "NVIDIA Inception 新創加速計畫",
       "desc": "提供新創公司資金、運算資源、工程師支持與全球技術網絡，即使小型公司也能藉此擴大客戶基礎，是生態系綁定策略的具體執行工具",
       "status": "",
-      "src": "https://techorange.com/2025/10/30/nvidia-ai-startup-investing/"
+      "src": "https://techorange.com/2025/10/30/nvidia-ai-startup-investing/",
+      "role_type": "資本與生態系綁定",
+      "focus": "新創客戶基礎擴張"
     },
     {
       "name": "NVIDIA AI Cloud 生態系擴展",
       "desc": "與AWS、Azure、GCP、Oracle及區域性雲服務商合作，建立「目的建構的雲」（purpose-built clouds）服務爆炸性成長的token需求，讓企業／新創／國家／AI實驗室都能擴展agentic AI應用",
       "status": "2026年5月擴展",
-      "src": "https://blogs.nvidia.com/blog/ai-cloud-ecosystem/"
+      "src": "https://blogs.nvidia.com/blog/ai-cloud-ecosystem/",
+      "role_type": "從硬體到平台的轉型",
+      "focus": "垂直應用滲透（purpose-built clouds）"
     },
     {
       "name": "從硬體供應商到AI規則制定者的角色轉型",
       "desc": "透過CUDA生態系鎖定（開發者轉換成本極高）、標準制定（NVLink規範）、資本綁定、平台化（AI Factory整合GPU／網路／儲存／軟體／安全）四個維度，NVIDIA逐步從單純硬體供應商轉型為AI時代基礎設施與規則制定者",
       "status": "",
-      "src": "https://iknow.stpi.niar.org.tw/Post/Read.aspx?PostID=23528"
+      "src": "https://iknow.stpi.niar.org.tw/Post/Read.aspx?PostID=23528",
+      "role_type": "整體策略綜合",
+      "focus": "技術／資本／平台／治理四維度整合布局"
+    }
+  ],
+  "governance_stages": [
+    {
+      "key": "standard",
+      "label": "①技術標準鎖定",
+      "desc": "CUDA生態系＋NVLink Fusion規範",
+      "influence": 9,
+      "maturity": 9,
+      "scale": 7
+    },
+    {
+      "key": "capital",
+      "label": "②資本綁定",
+      "desc": "生態系投資／Inception（2025年59家新創）",
+      "influence": 8,
+      "maturity": 7,
+      "scale": 9
+    },
+    {
+      "key": "platform",
+      "label": "③平台化",
+      "desc": "AI Factory／AI Cloud（GPU＋網路＋儲存＋軟體整合）",
+      "influence": 6,
+      "maturity": 6,
+      "scale": 8
+    },
+    {
+      "key": "governance",
+      "label": "④治理主導",
+      "desc": "OSAA治理聯盟／主權AI合規部署",
+      "influence": 5,
+      "maturity": 2,
+      "scale": 5
+    }
+  ],
+  "governance_links": [
+    {
+      "from": "standard",
+      "to": "capital",
+      "strength": "strong",
+      "note": "技術鎖定吸引資本與夥伴追隨進駐，開發者／硬體夥伴轉換成本越高，資本布局的確定性越強"
+    },
+    {
+      "from": "capital",
+      "to": "platform",
+      "strength": "strong",
+      "note": "受資本綁定的新創與客戶被導入NVIDIA平台生態，形成從投資到採用的直接轉換"
+    },
+    {
+      "from": "platform",
+      "to": "governance",
+      "strength": "medium",
+      "note": "平台規模擴大後取得參與治理／合規標準制定的話語權（如OSAA、主權AI合規框架）"
+    },
+    {
+      "from": "governance",
+      "to": "standard",
+      "strength": "strong",
+      "note": "治理與合規標準制定完成後，回頭鞏固並合法化既有技術規範，形成外部難以滲透的閉環"
     }
   ]
 }

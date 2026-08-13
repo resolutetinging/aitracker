@@ -146,14 +146,10 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .nv-pyr-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;margin-top:4px;}
 .nv-pyr-label{font-size:11.5px;font-weight:700;color:var(--nv);margin-bottom:2px;}
 .nv-pyr-items{font-size:11px;color:var(--muted);line-height:1.5;}
-/* 08-13：生態系權力布局四階段閉環——沿用.tw-chain同一套產業鏈視覺語言（node+arrow），
-   改直向排列因為這裡是跟金字塔並排的窄欄，橫向會被擠壓看不清楚 */
-.nv-chain-col{flex:1 1 260px;min-width:240px;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+/* 08-13：生態系權力布局——關係圖（節點+方向箭頭SVG）＋散佈圖（影響力×成熟度SVG），
+   並排放在金字塔旁邊；欄寬比之前的文字方框版加大，兩張SVG圖需要的可視面積比較大 */
+.nv-chain-col{flex:1 1 300px;min-width:280px;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
 .nv-chain-col-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:10px;}
-.nv-chain-node{background:var(--card);border:1px solid var(--border2);border-radius:8px;padding:8px 12px;}
-.nv-chain-node-label{font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px;}
-.nv-chain-node-sub{font-size:10.5px;color:var(--muted);line-height:1.5;}
-.nv-chain-arrow{text-align:center;font-size:15px;color:var(--nv);line-height:1;padding:2px 0;}
 .nv-chain-loop{margin-top:10px;font-size:10px;color:var(--muted);line-height:1.65;padding-top:9px;border-top:1px dashed var(--border2);}
 .nv-case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:10px;}
 .nv-case-scope{font-size:10.5px;color:var(--nv);margin-bottom:2px;font-weight:600;}
@@ -745,11 +741,79 @@ function nvCaseCard(item, statusCls, statusText){
     <div class="nv-case-name">${item.name}</div>
     ${item.scope ? `<div class="nv-case-scope">📁 ${item.scope}</div>` : ''}
     ${item.timeline ? `<div class="nv-case-time">🕐 ${item.timeline}</div>` : ''}
+    ${item.role_type ? `<div class="nv-case-scope">🧩 ${item.role_type}</div>` : ''}
+    ${item.focus ? `<div class="nv-case-time">🎯 佈局重點：${item.focus}</div>` : ''}
     <div class="nv-case-desc">${item.desc}</div>
     ${item.note ? `<div class="nv-case-status warn">${item.note}</div>` : ''}
     ${statusText ? `<div class="nv-case-status ${statusCls}">${statusText}</div>` : ''}
     ${nvSrcLink(item.src)}
   </div>`;
+}
+
+// 08-13：生態系權力布局四階段（standard/capital/platform/governance）固定用正方形四角
+// 排列，這樣「①→②→③→④→①」的敘事順序天生就是繞正方形一圈的封閉迴路，不用另外
+// 畫一條外圈回頭箭頭
+const NV_STAGE_POS = {standard:{x:150,y:52}, capital:{x:248,y:150}, platform:{x:150,y:248}, governance:{x:52,y:150}};
+const NV_STRENGTH_WIDTH = {strong:3.5, medium:2, weak:1.2};
+
+function nvGovernanceNetworkSvg(stages, links){
+  if(!stages.length) return '<div class="empty-state" style="font-size:12px;">尚無資料</div>';
+  const R = 34;
+  const nodesHtml = stages.map(s=>{
+    const p = NV_STAGE_POS[s.key];
+    if(!p) return '';
+    const m = /^([①②③④])(.+)$/.exec(s.label||'');
+    const num = m ? m[1] : '';
+    const name = m ? m[2] : (s.label||'');
+    return `<g>
+      <circle cx="${p.x}" cy="${p.y}" r="${R}" fill="rgba(106,138,32,.16)" stroke="#6a8a20" stroke-width="1.6"/>
+      <text x="${p.x}" y="${p.y+6}" text-anchor="middle" font-size="18" font-weight="700" fill="#4a6015">${num}</text>
+      <text x="${p.x}" y="${p.y+R+16}" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--text)">${name}</text>
+      <title>${s.desc||''}</title>
+    </g>`;
+  }).join('');
+  const edgesHtml = links.map(l=>{
+    const a = NV_STAGE_POS[l.from], b = NV_STAGE_POS[l.to];
+    if(!a || !b) return '';
+    const dx=b.x-a.x, dy=b.y-a.y, dist=Math.sqrt(dx*dx+dy*dy)||1;
+    const ux=dx/dist, uy=dy/dist;
+    const x1=a.x+ux*R, y1=a.y+uy*R, x2=b.x-ux*(R+9), y2=b.y-uy*(R+9);
+    const sw = NV_STRENGTH_WIDTH[l.strength]||2;
+    return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#6a8a20" stroke-width="${sw}" marker-end="url(#nvArrow)"><title>${l.note||''}</title></line>`;
+  }).join('');
+  return `<svg viewBox="0 0 300 300" style="width:100%;max-width:280px;height:auto;display:block;margin:0 auto;">
+    <defs><marker id="nvArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#6a8a20"/></marker></defs>
+    ${edgesHtml}
+    ${nodesHtml}
+  </svg>`;
+}
+
+function nvGovernanceScatterSvg(stages){
+  if(!stages.length) return '<div class="empty-state" style="font-size:12px;">尚無資料</div>';
+  const X0=44, X1=280, Y0=18, Y1=178; // 繪圖區邊界（1-10分兩軸線性映射）
+  const px = v => X0 + (v-1)/9*(X1-X0);
+  const py = v => Y1 - (v-1)/9*(Y1-Y0);
+  const ptsHtml = stages.map((s,i)=>{
+    const m = /^([①②③④])(.+)$/.exec(s.label||'');
+    const num = m ? m[1] : '';
+    const name = m ? m[2] : (s.label||'');
+    const cx = px(s.influence||5), cy = py(s.maturity||5);
+    const r = 10 + (s.scale||5)*1.5;
+    const op = (0.20 + i*0.16).toFixed(2);
+    return `<g>
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="rgba(106,138,32,${op})" stroke="#6a8a20" stroke-width="1.4"/>
+      <text x="${cx}" y="${cy+4}" text-anchor="middle" font-size="12" font-weight="700" fill="#4a6015">${num}</text>
+      <text x="${cx}" y="${cy-r-6}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--text)">${name}</text>
+      <title>${s.desc||''}</title>
+    </g>`;
+  }).join('');
+  return `<svg viewBox="0 0 300 200" style="width:100%;max-width:300px;height:auto;display:block;margin:0 auto;">
+    <line x1="${X0}" y1="${Y1}" x2="${X1}" y2="${Y1}" stroke="var(--border2)" stroke-width="1.2"/>
+    <line x1="${X0}" y1="${Y0}" x2="${X0}" y2="${Y1}" stroke="var(--border2)" stroke-width="1.2"/>
+    <text x="${(X0+X1)/2}" y="196" text-anchor="middle" font-size="10" fill="var(--muted)">影響力強度 →</text>
+    <text x="8" y="${(Y0+Y1)/2}" text-anchor="middle" font-size="10" fill="var(--muted)" transform="rotate(-90 8 ${(Y0+Y1)/2})">布局成熟度 →</text>
+    ${ptsHtml}
+  </svg>`;
 }
 
 async function renderNvidia(){
@@ -814,20 +878,18 @@ async function renderNvidia(){
     }
   } catch(e){ /* 沒有pending檔或抓取失敗都當作沒有待複核項目，靜默略過 */ }
 
-  // 08-13：生態系權力布局四階段閉環，跟金字塔並排顯示——技術標準鎖定吸引資本進駐，
-  // 資本綁定客戶採用平台，平台擴大治理話語權，治理標準又回頭鞏固技術規範，
-  // 對應governance分類資料背後的策略邏輯（節點文字為手動整理摘要，非逐筆對應JSON）
+  // 08-13：使用者反映原本的方框直向清單看不出「相關影響性及前後關係」，改成兩張圖：
+  // ①關係圖（節點+方向箭頭，箭頭粗細=影響強度，hover看具體影響機制）為主視角，
+  // ②散佈圖（影響力×成熟度，氣泡大小=布局規模）為輔助視角，資料共用nv.governance_stages/
+  // governance_links，兩者都清楚標註是相對強弱示意評估，不是逐一查證的精確量化指標
   const chainHtml = `
     <div class="nv-chain-col">
-      <div class="nv-chain-col-title">🔗 生態系權力布局 — 四階段閉環</div>
-      <div class="nv-chain-node"><div class="nv-chain-node-label">① 技術標準鎖定</div><div class="nv-chain-node-sub">CUDA生態系＋NVLink Fusion規範</div></div>
-      <div class="nv-chain-arrow">↓</div>
-      <div class="nv-chain-node"><div class="nv-chain-node-label">② 資本綁定</div><div class="nv-chain-node-sub">生態系投資／Inception（2025年59家新創）</div></div>
-      <div class="nv-chain-arrow">↓</div>
-      <div class="nv-chain-node"><div class="nv-chain-node-label">③ 平台化</div><div class="nv-chain-node-sub">AI Factory／AI Cloud（GPU＋網路＋儲存＋軟體整合）</div></div>
-      <div class="nv-chain-arrow">↓</div>
-      <div class="nv-chain-node"><div class="nv-chain-node-label">④ 治理主導</div><div class="nv-chain-node-sub">OSAA治理聯盟／主權AI合規部署</div></div>
-      <div class="nv-chain-loop">↺ 四階段互為強化：技術鎖定吸引資本進駐，資本綁定客戶採用平台，平台擴大治理話語權，治理標準又回頭鞏固技術規範——形成外部難以滲透的生態閉環</div>
+      <div class="nv-chain-col-title">🔗 生態系權力布局 — 四階段關係圖</div>
+      ${nvGovernanceNetworkSvg(nv.governance_stages||[], nv.governance_links||[])}
+      <div class="nv-chain-loop">箭頭方向＝影響流向，線條粗細＝影響強度（游標移到節點或箭頭可看具體說明）；④→①代表治理標準回頭鞏固技術規範，四階段互為強化形成外部難以滲透的生態閉環</div>
+      <div class="nv-chain-col-title" style="margin-top:16px;">📊 四階段相對定位（影響力 × 成熟度）</div>
+      ${nvGovernanceScatterSvg(nv.governance_stages||[])}
+      <div class="nv-chain-loop">氣泡大小＝布局規模；本圖為四階段相對強弱的示意評估，非逐一查證的精確量化數據</div>
     </div>`;
 
   panel.innerHTML = `
