@@ -2,7 +2,8 @@ name: 🟢 Weekly NVIDIA Section Update
 
 on:
   schedule:
-    - cron: '0 16 * * 1'  # 每週一 16:00 UTC（台北時間週二 00:00），跟daily-update同一時段對齊
+    - cron: '0 16 * * 0'  # 每週日 16:00 UTC（台北時間週一 00:00）；時間點沿用daily-update的16:00 UTC，
+                           # 但星期改成UTC週日才能讓台北時間落在週一（UTC週一16:00換算台北已經是週二）
   workflow_dispatch:        # 手動備用
 
 jobs:
