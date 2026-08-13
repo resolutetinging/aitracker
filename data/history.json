@@ -1,5 +1,169 @@
 [
   {
+    "date": "2026-08-14",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Nvidia 推出 NeMo Switchyard 軟體平台",
+        "layer": "AI 基礎設施",
+        "body": "Nvidia 推出 NeMo Switchyard 軟體平台，旨在減少企業 AI 成本。該平台可以配置以優化成本、延遲或輸出質量，通過路由請求到較小、較便宜的 AI 模型。Nvidia 宣布這一消息的同時，也宣布了其最新的開源模型 Nemotron 3.5-30B-A3B-Lightning。",
+        "impact": "NeMo Switchyard 對 Nvidia 的 AI 基礎設施供應鏈有直接影響，可能會增加其市場份額。另外，該平台的推出也可能會促進 AI 模型的開源和共享，從而推動整個 AI 行業的發展。",
+        "rating": "core",
+        "insight": "Nvidia 的 NeMo Switchyard 軟體平台是企業 AI 成本管理的一個重要發展，可能會對 AI 基礎設施供應鏈產生深遠影響。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/08/12/nvidias-latest-solution-for-soaring-enterprise-costs-nemo-switchyard-software-router/5286911",
+        "chain": [
+          {
+            "label": "Nvidia NeMo Switchyard 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia Nemotron 模型↓",
+            "type": "down"
+          },
+          {
+            "label": "企業 AI 成本↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Nvidia 的 5000 億美元計劃",
+        "layer": "AI 基礎設施",
+        "body": "Nvidia 宣布了一個 5000 億美元的計劃，旨在建立 AI 數據中心。該計劃包括與多家金融公司合作，例如 Apollo、BlackRock、Blackstone、Brookfield、Goldman Sachs 和 KKR。Nvidia 將保證其晶片的價值，作為這些交易的抵押。",
+        "impact": "Nvidia 的 5000 億美元計劃對其 AI 基礎設施供應鏈有直接影響，可能會增加其市場份額。另外，該計劃的推出也可能會促進 AI 數據中心的發展，從而推動整個 AI 行業的發展。",
+        "rating": "core",
+        "insight": "Nvidia 的 5000 億美元計劃是 AI 基礎設施供應鏈的一個重要發展，可能會對 AI 數據中心產業產生深遠影響。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/13/nvidias-new-500b-plan-is-risky-but-brilliant-especially-for-aging-gpus/",
+        "chain": [
+          {
+            "label": "Nvidia 晶片價值↑",
+            "type": "up"
+          },
+          {
+            "label": "Apollo 投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 5000 億美元計劃交期↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "瑞安航空與Google簽署五年協議",
+        "layer": "雲端服務",
+        "body": "瑞安航空與Google簽署五年協議，將使用Google Workspace和Google Cloud服務，涵蓋其35,000名員工。該協議還包括使用Gemini Enterprise平台，優化飛行機組人員的後勤和提高員工的生產力。瑞安航空同時也與AWS續簽五年協議，實現雙雲端戰略。",
+        "impact": "這將直接影響Google Cloud的市場份額。同時，瑞安航空的雙雲端戰略也會促使其他企業重新評估自己的雲端服務選擇，可能會帶來更多的市場機會。",
+        "rating": "core",
+        "insight": "企業應該關注雲端服務的發展趨勢和供應鏈的變化，以便更好地應對市場的變化。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/off-prem/2026/08/13/ryanair-adds-google-to-its-dual-cloud-flight-plan/5287336",
+        "chain": [
+          {
+            "label": "瑞安航空 Google Workspace 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Cloud 服務交期↓",
+            "type": "down"
+          },
+          {
+            "label": "AWS 雙雲端戰略市占↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI廣告服務存在計費問題",
+        "layer": "AI廣告",
+        "body": "OpenAI的廣告服務存在計費問題，可能會在用戶暫停廣告活動後仍然收取費用。這一問題可能會對OpenAI的收入產生影響，同時也會影響其用戶的信任度。OpenAI的廣告服務是其重要的收入來源之一，該公司需要解決這一問題以維持其業務的發展。",
+        "impact": "這將直接影響OpenAI的收入和用戶信任度，進一步影響其在AI廣告市場的競爭地位。",
+        "rating": "opp",
+        "insight": "企業應該關注其服務的質量和用戶體驗，以便更好地維持其業務的發展。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/08/13/openai-ad-service-can-bill-customers-for-up-to-one-day-after-they-pause-campaigns/5287110",
+        "chain": [
+          {
+            "label": "OpenAI 廣告服務收入↓",
+            "type": "down"
+          },
+          {
+            "label": "OpenAI 用戶信任度↓",
+            "type": "down"
+          },
+          {
+            "label": "OpenAI 廣告服務費用↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Microsoft終止不成功的AI功能",
+        "layer": "AI技術",
+        "body": "Microsoft終止不成功的AI功能，同時合併其Copilot應用程序。這一舉動表明Microsoft正在重新評估其AI戰略，集中資源於更有前途的項目。Microsoft的Copilot應用程序將整合其消費者和企業版本，提供更全面性的AI解決方案。",
+        "impact": "這將直接影響Microsoft的AI業務，進一步影響其在AI市場的競爭地位。同時，這一舉動也會對Microsoft的研發和創新的升級和維護產生影響。",
+        "rating": "opp",
+        "insight": "企業應該關注其業務的發展趨勢和供應鏈的變化，以便更好地應對市場的變化。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/13/microsoft-kills-off-unsuccessful-ai-features-while-merging-its-separate-copilot-apps/",
+        "chain": [
+          {
+            "label": "Microsoft Copilot 應用程序市占↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft AI 戰略重整↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft 消費者版本交期↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "無相關新聞",
+        "layer": "app",
+        "body": "今日無相關app新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "NeMo Switchyard",
+        "full": "Nvidia 的 NeMo Switchyard 軟體平台",
+        "def": "Nvidia 推出的軟體平台，旨在減少企業 AI 成本。該平台可以配置以優化成本、延遲或輸出質量，通過路由請求到較小、較便宜的 AI 模型。",
+        "why": "NeMo Switchyard 對 Nvidia 的 AI 基礎設施供應鏈有直接影響，可能會增加其市場份額。",
+        "category": "AI 基礎設施"
+      },
+      {
+        "term": "Gemini Enterprise",
+        "full": "Gemini Enterprise平台",
+        "def": "Gemini Enterprise是一個AI平台，提供優化飛行機組人員的後勤和提高員工的生產力的解決方案。",
+        "why": "Gemini Enterprise平台的應用可以提高企業的效率和競爭力。",
+        "category": "AI技術"
+      },
+      {
+        "term": "Co-packaged Optics",
+        "full": "共封裝光學",
+        "def": "一種將光學元件和電子元件封裝在一起的技術，用于提高資料傳輸速度和降低能耗。",
+        "why": "這種技術可以提高資料中心的效率和降低成本。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-13",
     "is_sunday": false,
     "hw": [
@@ -893,184 +1057,6 @@
         "def": "一群駭客組織，曾經攻擊過多個公司和機構，導致大量的資料被泄露。",
         "why": "了解ShinyHunters的背景和活動，可以幫助我們更好地防止類似的攻擊發生。",
         "category": "cyber-crime"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-07",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "前英特爾CEO批評資料中心硬體限制",
-        "layer": "晶片",
-        "body": "前英特爾CEO帕特·蓋爾辛格（Pat Gelsinger）在Ai4會議上表示，AI的未來取決於提高功率效率、基礎設施和經濟效益，而不是簡單地部署更多的GPU。他指出，GPU的功率效率很低，計算能力有限。蓋爾辛格強調，AI的突破將取決於解決計算、記憶體、網路、能源和經濟等基本限制。",
-        "impact": "這個消息可能會影響英特爾的業務，促使他們關注功率效率和基礎設施的改善。同時，也可能會影響資料中心的建設和運營，推動業者尋找更高效的解決方案。",
-        "rating": "core",
-        "insight": "AI的未來發展取決於解決基本限制，業者需要關注功率效率和基礎設施的改善。",
-        "source_label": "Datacenter Knowledge",
-        "source": "https://www.datacenterknowledge.com/data-center-chips/gpus-suck-former-intel-ceo-slams-data-center-hardware-limitations",
-        "chain": [
-          {
-            "label": "英特爾GPU功率效率↓",
-            "type": "down"
-          },
-          {
-            "label": "英特爾GPU計算能力↓",
-            "type": "down"
-          },
-          {
-            "label": "英特爾AI解決方案↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 推出新 AI 智慧喇叭，售價約 300 至 400 美元",
-        "layer": "硬體",
-        "body": "OpenAI 的新 AI 智慧喇叭將會在市面上出售，售價約 300 至 400 美元。這款智慧喇叭將會是 ChatGPT 的實體化身，具有高品質的金屬外殼和獨特的設計。",
-        "impact": "這款智慧喇叭的推出可能會對高端智能音箱市場產生影響。同時，這也可能會推動其他公司開發類似的智慧喇叭，從而增加市場競爭。",
-        "rating": "core",
-        "insight": "OpenAI 的新 AI 智慧喇叭可能會成為智能音箱市場的一個新玩家，值得投資者關注。",
-        "source_label": "techcrunch",
-        "source": "https://techcrunch.com/2026/08/06/openais-new-ai-smart-speaker-will-reportedly-sell-for-between-300-and-400/",
-        "chain": [
-          {
-            "label": "OpenAI智慧喇叭銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI ChatGPT用戶數↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI收入↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI 對 ChatGPT 用戶提供無限文字聊天服務",
-        "layer": "軟體",
-        "body": "OpenAI 對 ChatGPT 用戶提供無限文字聊天服務，包括免費用戶和付費用戶。這項服務將由新推出的 GPT-5.6 Luna 模型提供支持。",
-        "impact": "這項服務的推出可能會增加 ChatGPT 的用戶數量和用戶粘性。同時，這也可能會推動其他公司開發類似的聊天機器人平台。",
-        "rating": "core",
-        "insight": "OpenAI 的無限文字聊天服務可能會成為聊天機器人市場的一個新標準，值得投資者關注。",
-        "source_label": "techcrunch",
-        "source": "https://techcrunch.com/2026/08/06/openai-brings-unlimited-chatgpt-text-chats-to-free-users/",
-        "chain": [
-          {
-            "label": "OpenAI用戶體驗↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI ChatGPT功能↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI GPT-5.6 Luna模型↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI 對 Apple 的商業秘密訴訟提出異議",
-        "layer": "法律",
-        "body": "OpenAI 對 Apple 的商業秘密訴訟提出異議，認為 Apple 的安全措施不足以保護其商業秘密。",
-        "impact": "這項訴訟的結果可能會對 Apple 的商業秘密保護措施產生影響。同時，這也可能會推動其他公司加強商業秘密保護。",
-        "rating": "opp",
-        "insight": "OpenAI 對 Apple 的商業秘密訴訟可能會成為一場重要的法律戰，值得投資者關注。",
-        "source_label": "techcrunch",
-        "source": "https://techcrunch.com/2026/08/06/openai-says-apples-own-security-practices-undermine-its-trade-secrets-case/",
-        "chain": [
-          {
-            "label": "OpenAI商業秘密保護↓",
-            "type": "down"
-          },
-          {
-            "label": "Apple商業秘密保護↓",
-            "type": "down"
-          },
-          {
-            "label": "OpenAI訴訟勝率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "UpToDate Expert AI 擴展至 2,500 家美國醫院和健康系統",
-        "layer": "醫療領域",
-        "body": "UpToDate Expert AI 已經擴展至 2,500 家美國醫院和健康系統，提供先進的醫療資訊和決策支持。這項技術由 Wolters Kluwer 開發，旨在幫助醫療人員做出更好的決策和改善患者治療效果。",
-        "impact": "這項技術的擴展將對醫療業的供應鏈產生正面的影響，特別是對於醫療資訊和決策支持的需求。同時，也將促進醫療業的數字化轉型和人工智慧的應用。",
-        "rating": "opp",
-        "insight": "UpToDate Expert AI 的擴展是醫療業人工智慧應用的重要里程碑，表明人工智慧在醫療領域的應用前景廣闊。",
-        "source_label": "Wolters Kluwer",
-        "source": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNb1VuajV5b1UwUmdhR1VxN0J3b2RWUHVZRGI3YXlFcWk5bWQ4d082M1ZyQlBDSU5tWUd5UWVNN2g4UXNxWHlrcy03eGhIVURnb2hHSFVPRHVDU2szUUtlcW9YR1E0VTF3bGxZRnM0LVptYTZrdGg2WHJQRUh1UXhOdlhRX245X0w1ZUlSODUxZ2NPOXpUdFBaWDVvSXRkN2ZNVGtxRmdZM21qTjBod1hkbUFBUWJSQTRMYUNxSkVB",
-        "chain": [
-          {
-            "label": "UpToDate Expert AI醫療資訊↑",
-            "type": "up"
-          },
-          {
-            "label": "Wolters Kluwer技術↑",
-            "type": "up"
-          },
-          {
-            "label": "美國醫院健康系統↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "NiCE 獲得大型客戶服務 AI 合約",
-        "layer": "客戶服務領域",
-        "body": "NiCE 獲得大型客戶服務 AI 合約，將為企業提供先進的客戶服務解決方案。這項技術將幫助企業提高客戶滿意度和降低運營成本。",
-        "impact": "這項技術的應用將對客戶服務業的供應鏈產生正面的影響，特別是對於客戶服務解決方案的需求。同時，也將促進客戶服務業的數字化轉型和人工智慧的應用。",
-        "rating": "opp",
-        "insight": "NiCE 獲得大型客戶服務 AI 合約是客戶服務業人工智慧應用的重要里程碑，表明人工智慧在客戶服務領域的應用前景廣闊。",
-        "source_label": "CX Today",
-        "source": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPMkttWmhFc2UxVGhabktuSU9lMERkNWhXV0RJWU5tUjlEcTZfV0s3RDlfZkV4X09JekM4VnBpaFlCa0x3bWZfQnBGejRrbGg3VmE4TDQwQlNacTF5UldKUzVCU2tjdDNEb0VoM2Y0bFFqZ1FZX082dV9rY0hlb2VfVg",
-        "chain": [
-          {
-            "label": "NiCE客戶服務解決方案↑",
-            "type": "up"
-          },
-          {
-            "label": "NiCE AI技術↑",
-            "type": "up"
-          },
-          {
-            "label": "企業客戶滿意度↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "GPU",
-        "full": "Graphics Processing Unit",
-        "def": "圖形處理器，常用於AI計算和圖形渲染。",
-        "why": "GPU是AI計算的重要元件，了解其功能和限制對於AI的發展至關重要。",
-        "category": "晶片"
-      },
-      {
-        "term": "GPT-5.6 Luna",
-        "full": "GPT-5.6 Luna 模型",
-        "def": "一種由 OpenAI 開發的聊天機器人模型，提供無限文字聊天服務。",
-        "why": "這種模型可以提供更好的聊天體驗，增加用戶粘性。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI-Augmented Data Insights",
-        "full": "人工智慧增強數據洞察",
-        "def": "使用人工智慧技術對數據進行分析和洞察，從而幫助企業做出更好的決策。",
-        "why": "這項技術可以幫助企業提高數據分析的效率和準確性，從而提高決策的質量。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
