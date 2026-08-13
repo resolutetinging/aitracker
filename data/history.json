@@ -110,7 +110,7 @@
       {
         "title": "VideoVerse 收購案崩潰",
         "layer": "收購",
-        "body": "VideoVerse 的 2.5 億美元收購案在不到一年後就崩潰了，投資者仍在等待他們的 2.5 億美元分紅，創始人 Vinayak Shrivastav 正面臨多起法律訴訟。收購方 Minute Media 也似乎正在撤回，五月份時宣布終止與 VideoVerse 的合同。",
+        "body": "VideoVerse 的 2.5 億美元收購案在不到一年後就崩潰了，投資者仍在等待他們的 2.5 億美元分紅，創始人 Vinayak Shrivastav 正面臨多起法律訴訟。收購方 Minute Media 也似乎正在撤回，五月份時宣布終止與 VideoVerse 的合約。",
         "impact": "這次收購案的崩潰可能會對 VideoVerse 的業務產生負面影響，同時也可能會影響 Minute Media 的收購策略。另外，投資者可能會更加謹慎地對待類似的收購案，從而影響整個科技產業的投資氣氛。",
         "rating": "core",
         "insight": "投資者應該關注收購案的風險和挑戰，同時也應該關注科技產業的投資氣氛。",
@@ -122,23 +122,23 @@
             "type": "down"
           },
           {
-            "label": "Minute Media 合同交期↓",
+            "label": "Minute Media 合約交期↓",
             "type": "down"
           }
         ]
       },
       {
-        "title": "美國國防部可能給予 Palantir 2.44 億美元合同",
-        "layer": "政府合同",
-        "body": "美國國防部的一份內部備忘錄顯示，可能會給予 Palantir 一份價值 2.44 億美元的合同，該合同將在 2027 年 3 月 31 日前完成。這份合同將用於軍事生產效率的分析和改善。",
-        "impact": "這份合同可能會對 Palantir 的業務產生正面影響，同時也可能會影響美國國防部的軍事生產效率。另外，其他科技公司可能會更加關注政府合同的機會，從而增加競爭。",
+        "title": "美國國防部可能給予 Palantir 2.44 億美元合約",
+        "layer": "政府合約",
+        "body": "美國國防部的一份內部備忘錄顯示，可能會給予 Palantir 一份價值 2.44 億美元的合約，該合約將在 2027 年 3 月 31 日前完成。這份合約將用於軍事生產效率的分析和改善。",
+        "impact": "這份合約可能會對 Palantir 的業務產生正面影響，同時也可能會影響美國國防部的軍事生產效率。另外，其他科技公司可能會更加關注政府合約的機會，從而增加競爭。",
         "rating": "opp",
-        "insight": "Palantir 的政府合同可能會帶來新的業務機會，同時也可能會增加競爭。",
+        "insight": "Palantir 的政府合約可能會帶來新的業務機會，同時也可能會增加競爭。",
         "source_label": "The Register",
         "source": "https://www.theregister.com/public-sector/2026/08/11/palantir-could-receive-244m-pentagon-no-bid-contract/5286438",
         "chain": [
           {
-            "label": "Palantir 合同金額↑",
+            "label": "Palantir 合約金額↑",
             "type": "up"
           },
           {
@@ -180,8 +180,8 @@
       {
         "term": "Palantir",
         "full": "Palantir 是一家美國的科技公司，主要提供數據分析和商業智能服務。",
-        "def": "Palantir 是一家美國的科技公司，主要提供數據分析和商業智能服務。該公司可能會獲得美國國防部的一份價值 2.44 億美元的合同。",
-        "why": "Palantir 的政府合同可能會帶來新的業務機會，同時也可能會增加競爭。",
+        "def": "Palantir 是一家美國的科技公司，主要提供數據分析和商業智能服務。該公司可能會獲得美國國防部的一份價值 2.44 億美元的合約。",
+        "why": "Palantir 的政府合約可能會帶來新的業務機會，同時也可能會增加競爭。",
         "category": "app"
       }
     ],
