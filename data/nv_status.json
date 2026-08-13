@@ -191,7 +191,7 @@
     {
       "name": "NVIDIA Inception 新創加速計畫",
       "desc": "提供新創公司資金、運算資源、工程師支持與全球技術網絡，即使小型公司也能藉此擴大客戶基礎，是生態系綁定策略的具體執行工具",
-      "status": "",
+      "status": "已導入／持續執行",
       "src": "https://techorange.com/2025/10/30/nvidia-ai-startup-investing/",
       "role_type": "資本與生態系綁定",
       "focus": "新創客戶基礎擴張"
@@ -207,7 +207,7 @@
     {
       "name": "從硬體供應商到AI規則制定者的角色轉型",
       "desc": "透過CUDA生態系鎖定（開發者轉換成本極高）、標準制定（NVLink規範）、資本綁定、平台化（AI Factory整合GPU／網路／儲存／軟體／安全）四個維度，NVIDIA逐步從單純硬體供應商轉型為AI時代基礎設施與規則制定者",
-      "status": "",
+      "status": "已導入／持續進行中",
       "src": "https://iknow.stpi.niar.org.tw/Post/Read.aspx?PostID=23528",
       "role_type": "整體策略綜合",
       "focus": "技術／資本／平台／治理四維度整合布局"
