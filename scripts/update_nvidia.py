@@ -11,7 +11,7 @@ NVIDIA 專區週查證腳本
 寫進 data/nv_pending_review.json，前端只顯示「本週查證偵測到 N 項候選異動」的
 提示，實際套用需要使用者告知 Claude 人工複核後手動更新 nv_status.json。
 """
-import json, os, re, time
+import json, os, re, time, smtplib
 from datetime import datetime, timezone, timedelta
 from groq import Groq
 
@@ -22,6 +22,15 @@ DATE_STR = NOW.strftime('%Y-%m-%d')
 REPO_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 NV_STATUS_PATH = os.path.join(REPO_DIR, 'data', 'nv_status.json')
 NV_PENDING_PATH = os.path.join(REPO_DIR, 'data', 'nv_pending_review.json')
+
+CATEGORY_LABELS = {
+    'pyramid': '技術金字塔',
+    'cases_live': '應用案例（已上線）',
+    'cases_poc': '應用案例（POC）',
+    'roadmap': '產品 Roadmap',
+    'alliances': '聯盟／夥伴關係',
+}
+ACTION_LABELS = {'update': '更新既有項目', 'add': '新增項目'}
 
 
 def fetch_nvidia_news():
@@ -129,6 +138,87 @@ def call_groq_diff(current_status, news_snippets):
     return json.loads(raw)
 
 
+def send_email(items, no_change_summary):
+    """獨立信件，跟daily的AI產業動態信完全分開發送、不合併內容。
+    收件人只送GitHub Secret設定的NOTIFY_EMAIL（比照daily的secret_recipients），
+    不碰data/email_config.json的飛鴿公開名單——那份名單是給每日AI新聞訂閱的，
+    NVIDIA週查證是另一種性質的內容，不應該未經同意就多推給那些人。"""
+    user = os.environ.get('GMAIL_USER', '').replace('\xa0', '').replace(' ', '').strip()
+    pwd = os.environ.get('GMAIL_APP_PASSWORD', '').replace('\xa0', '').replace(' ', '').strip()
+    secret_to = os.environ.get('NOTIFY_EMAIL', user).replace('\xa0', '').replace(' ', '').strip()
+    recipients = [a.strip() for a in secret_to.split(',') if a.strip()]
+
+    if not user or not pwd or not recipients:
+        print("  → Email 未設定，略過。")
+        return
+
+    from email.mime.text import MIMEText
+    from email.mime.multipart import MIMEMultipart
+
+    if items:
+        subject = f'🟢 NVIDIA 週查證 {DATE_STR} — {len(items)} 項候選異動待複核'
+        cards = ''
+        for it in items:
+            cat = CATEGORY_LABELS.get(it.get('category', ''), it.get('category', ''))
+            act = ACTION_LABELS.get(it.get('action', ''), it.get('action', ''))
+            src = f'<div style="margin-top:6px;font-size:11px;"><a href="{it["source"]}" style="color:#6a8a20;">來源連結 →</a></div>' if it.get('source') else ''
+            status_line = f'<div style="font-size:12px;color:#6a6460;margin-top:4px;">狀態：{it["status"]}</div>' if it.get('status') else ''
+            cards += f'''
+            <div style="background:#faf9f7;border-left:3px solid #6a8a20;padding:14px 16px;margin:10px 0;border-radius:0 6px 6px 0;">
+              <div style="display:flex;gap:8px;margin-bottom:6px;">
+                <span style="font-size:11px;font-weight:700;color:#6a8a20;background:#6a8a2018;padding:2px 8px;border-radius:10px;">{cat}</span>
+                <span style="font-size:11px;color:#888;">{act}</span>
+              </div>
+              <div style="font-size:14px;font-weight:700;color:#2c2a28;margin-bottom:6px;">{it.get("name","")}</div>
+              <div style="font-size:13px;color:#4a4744;line-height:1.6;margin-bottom:6px;">{it.get("desc","")}</div>
+              {status_line}
+              <div style="background:#f0ede9;border-radius:5px;padding:8px 12px;font-size:12px;color:#6a6460;margin-top:8px;">
+                <span style="font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:#9e9890;display:block;margin-bottom:4px;">查證依據</span>
+                {it.get("reason","")}
+              </div>
+              {src}
+            </div>'''
+        body_html = f'''
+        <div style="background:#fdf8f0;border:1px solid #d4b060;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:12.5px;color:#8a6030;">
+          偵測到候選異動，尚未套用到頁面——需要人工複核後手動更新 nv_status.json。
+        </div>
+        {cards}'''
+    else:
+        subject = f'🟢 NVIDIA 週查證 {DATE_STR} — 本週無異動'
+        summary = no_change_summary or '本週查證後判斷現有資料仍準確。'
+        body_html = f'''
+        <div style="background:#faf9f7;border-left:3px solid #6a8a20;padding:14px 16px;border-radius:0 6px 6px 0;font-size:13px;color:#4a4744;line-height:1.6;">
+          {summary}
+        </div>'''
+
+    html = f'''<html><body style="font-family:'Segoe UI',sans-serif;max-width:620px;margin:auto;padding:0;background:#eceae6;color:#2c2a28;">
+      <div style="background:#faf9f7;padding:24px 28px;">
+        <div style="border-bottom:1px solid #d8d4ce;padding-bottom:16px;margin-bottom:20px;">
+          <div style="font-size:20px;font-weight:800;color:#2c2a28;">🟢 NVIDIA 專區週查證</div>
+          <div style="font-size:13px;color:#9e9890;margin-top:4px;">{DATE_STR} &nbsp;·&nbsp; 每週自動查證</div>
+        </div>
+        {body_html}
+        <div style="border-top:1px solid #d8d4ce;padding-top:16px;margin-top:20px;text-align:center;">
+          <a href="https://resolutetinging.github.io/aitracker/ai_tracker_v6.html" style="display:inline-block;background:#6a8a20;color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;">🔗 查看完整 Dashboard →</a>
+          <div style="font-size:11px;color:#b0b0b0;margin-top:12px;">AI Tracker · NVIDIA 週查證 · 自動產生 · {DATE_STR}</div>
+        </div>
+      </div>
+    </body></html>'''
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = subject
+    msg['From'] = user
+    msg['To'] = ','.join(recipients)
+    msg.attach(MIMEText(html, 'html', 'utf-8'))
+    try:
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as s:
+            s.login(user, pwd)
+            s.send_message(msg)
+        print(f"  → Email 已發送至 {', '.join(recipients)}")
+    except Exception as e:
+        print(f"  → Email 失敗：{e}")
+
+
 def main():
     print(f"\n{'='*50}")
     print(f"NVIDIA 專區週查證 — {NOW.strftime('%Y-%m-%d %H:%M')}")
@@ -150,6 +240,7 @@ def main():
         print("  → 本週未蒐集到任何新聞片段，跳過Groq呼叫（避免無佐證卻要求提出異動）")
         status['last_checked'] = DATE_STR
         save_json(NV_STATUS_PATH, status)
+        send_email([], '本週未蒐集到相關新聞片段，僅更新查證時間戳，未進行內容查證。')
         print("✅ 完成（本週無新聞片段，僅更新查證時間戳）\n")
         return
 
@@ -179,6 +270,7 @@ def main():
         print(f"  → 偵測到 {len(items)} 項候選異動，已寫入 data/nv_pending_review.json（未套用，待人工複核）")
     else:
         print(f"  → 本週查證後無需更新：{pending['no_change_summary']}")
+    send_email(items, pending['no_change_summary'])
     # git commit/push 交給 GitHub Actions 的 git-auto-commit-action 處理（比照
     # daily-update.yml 慣例），本腳本只負責寫檔案，不自己動 git
     print("✅ 完成\n")
