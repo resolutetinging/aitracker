@@ -145,13 +145,13 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .nv-pyr-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;margin-top:4px;}
 .nv-pyr-label{font-size:11.5px;font-weight:700;color:var(--nv);margin-bottom:2px;}
 .nv-pyr-items{font-size:11px;color:var(--muted);line-height:1.5;}
-/* 08-13：生態系權力布局關係圖／散佈圖——歸類在「產品應用鏈」這個sec-title底下，
-   放在金字塔下方分隔線（📌來源說明那行）之後，兩張圖左右並排；使用者要求底色跟
-   金字塔一樣不要有background，只留間距不用卡片框 */
+/* 08-13：生態系權力布局關係圖／散佈圖——結構上跟「官方技術堆疊」同級，都是
+   「產品應用鏈」這個sec-title底下的nv-sub-title子區塊；📌來源說明移到整個
+   產品應用鏈區塊最下方；兩張圖左右並排，底色跟金字塔一樣不要background；
+   nv-gov-tip給固定min-height讓兩欄的說明框無論文字長短都對齊 */
 .nv-gov-diagram-row{display:flex;gap:24px;flex-wrap:wrap;margin:6px 0 18px;}
 .nv-gov-diagram-col{flex:1 1 320px;min-width:280px;}
-.nv-gov-diagram-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:10px;}
-.nv-gov-tip{margin-top:10px;font-size:10.5px;color:var(--text2);line-height:1.65;padding:8px 10px;background:var(--card2);border-radius:6px;border-left:3px solid var(--nv);min-height:32px;}
+.nv-gov-tip{margin-top:10px;font-size:11px;color:var(--text2);line-height:1.7;padding:10px 12px;background:var(--card2);border-radius:6px;border-left:3px solid var(--nv);min-height:64px;display:flex;align-items:center;}
 .nv-gov-note{margin-top:8px;font-size:10px;color:var(--muted);line-height:1.6;}
 .nv-gov-node,.nv-gov-edge,.nv-gov-bubble{cursor:pointer;}
 .nv-case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:10px;}
@@ -160,7 +160,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .nv-case-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px 15px;box-shadow:var(--shadow);}
 .nv-case-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
 .nv-case-desc{font-size:12px;color:var(--text2);line-height:1.62;margin-bottom:6px;}
-.nv-case-status{font-size:10.5px;font-weight:600;}
+.nv-case-status{font-size:10.5px;font-weight:600;margin-bottom:6px;}
 .nv-case-status.live{color:var(--app);}
 .nv-case-status.poc{color:var(--corp);}
 .nv-case-status.warn{color:var(--ethic);}
@@ -740,23 +740,29 @@ function nvSrcLink(url){
   return `<div class="card-source">來源：<a href="${url}" target="_blank" rel="noopener">${label}</a></div>`;
 }
 function nvCaseCard(item, statusCls, statusText){
+  // 08-13：使用者要求emoji列點項目（📁🕐🧩🎯 + ✅/🔵/⚠️狀態）統一放標題正下方，
+  // 原本status/note是放在desc之後（卡片最下段），現在移到標題下方的metadata區塊裡，
+  // desc正文改放在metadata區塊之後、來源連結之前
   return `<div class="nv-case-card">
     <div class="nv-case-name">${item.name}</div>
     ${item.scope ? `<div class="nv-case-scope">📁 ${item.scope}</div>` : ''}
     ${item.timeline ? `<div class="nv-case-time">🕐 ${item.timeline}</div>` : ''}
     ${item.role_type ? `<div class="nv-case-scope">🧩 ${item.role_type}</div>` : ''}
     ${item.focus ? `<div class="nv-case-time">🎯 佈局重點：${item.focus}</div>` : ''}
-    <div class="nv-case-desc">${item.desc}</div>
-    ${item.note ? `<div class="nv-case-status warn">${item.note}</div>` : ''}
     ${statusText ? `<div class="nv-case-status ${statusCls}">${statusText}</div>` : ''}
+    ${item.note ? `<div class="nv-case-status warn">${item.note}</div>` : ''}
+    <div class="nv-case-desc">${item.desc}</div>
     ${nvSrcLink(item.src)}
   </div>`;
 }
 
 // 08-13：生態系權力布局四階段（standard/capital/platform/governance）固定用正方形四角
 // 排列，這樣「①→②→③→④→①」的敘事順序天生就是繞正方形一圈的封閉迴路，不用另外
-// 畫一條外圈回頭箭頭
-const NV_STAGE_POS = {standard:{x:150,y:52}, capital:{x:248,y:150}, platform:{x:150,y:248}, governance:{x:52,y:150}};
+// 畫一條外圈回頭箭頭。viewBox統一改成320x420（使用者要求關係圖與散佈圖高度統一，
+// 基準是原本關係圖高度再增加50%——原本300x300在max-width:280下等高280px，
+// 320x420在同寬度下約等高368px，考量兩欄實際可用寬度更寬，改用max-width:320讓
+// 高度落在約420px，兩張圖共用同一個viewBox尺寸，寬度縮放比例相同=渲染高度自動相等）
+const NV_STAGE_POS = {standard:{x:160,y:85}, capital:{x:250,y:210}, platform:{x:160,y:335}, governance:{x:70,y:210}};
 const NV_STRENGTH_WIDTH = {strong:3.5, medium:2, weak:1.2};
 
 // 08-13：原本用SVG原生<title>做hover說明，使用者實測browser原生tooltip沒有跳出來
@@ -768,7 +774,7 @@ function nvEscAttr(s){
 
 function nvGovernanceNetworkSvg(stages, links){
   if(!stages.length) return '<div class="empty-state" style="font-size:12px;">尚無資料</div>';
-  const R = 34;
+  const R = 42;
   const nodesHtml = stages.map(s=>{
     const p = NV_STAGE_POS[s.key];
     if(!p) return '';
@@ -777,8 +783,8 @@ function nvGovernanceNetworkSvg(stages, links){
     const name = m ? m[2] : (s.label||'');
     return `<g class="nv-gov-node" data-note="${nvEscAttr(s.desc)}">
       <circle cx="${p.x}" cy="${p.y}" r="${R}" fill="rgba(106,138,32,.16)" stroke="#6a8a20" stroke-width="1.6"/>
-      <text x="${p.x}" y="${p.y+6}" text-anchor="middle" font-size="18" font-weight="700" fill="#4a6015">${num}</text>
-      <text x="${p.x}" y="${p.y+R+16}" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--text)">${name}</text>
+      <text x="${p.x}" y="${p.y+7}" text-anchor="middle" font-size="20" font-weight="700" fill="#4a6015">${num}</text>
+      <text x="${p.x}" y="${p.y+R+18}" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text)">${name}</text>
     </g>`;
   }).join('');
   const edgesHtml = links.map(l=>{
@@ -795,8 +801,8 @@ function nvGovernanceNetworkSvg(stages, links){
       <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#6a8a20" stroke-width="${sw}" marker-end="url(#nvArrow)"/>
     </g>`;
   }).join('');
-  return `<svg viewBox="0 0 300 300" style="width:100%;max-width:280px;height:auto;display:block;margin:0 auto;">
-    <defs><marker id="nvArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#6a8a20"/></marker></defs>
+  return `<svg viewBox="0 0 320 420" style="width:100%;max-width:320px;height:auto;display:block;margin:0 auto;">
+    <defs><marker id="nvArrow" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#6a8a20"/></marker></defs>
     ${edgesHtml}
     ${nodesHtml}
   </svg>`;
@@ -804,7 +810,7 @@ function nvGovernanceNetworkSvg(stages, links){
 
 function nvGovernanceScatterSvg(stages){
   if(!stages.length) return '<div class="empty-state" style="font-size:12px;">尚無資料</div>';
-  const X0=44, X1=280, Y0=18, Y1=178; // 繪圖區邊界（1-10分兩軸線性映射）
+  const X0=55, X1=290, Y0=40, Y1=390; // 繪圖區邊界（1-10分兩軸線性映射），跟關係圖共用320x420viewBox讓兩圖渲染高度一致
   const px = v => X0 + (v-1)/9*(X1-X0);
   const py = v => Y1 - (v-1)/9*(Y1-Y0);
   const ptsHtml = stages.map((s,i)=>{
@@ -816,15 +822,15 @@ function nvGovernanceScatterSvg(stages){
     const op = (0.20 + i*0.16).toFixed(2);
     return `<g class="nv-gov-bubble" data-note="${nvEscAttr(s.desc)}">
       <circle cx="${cx}" cy="${cy}" r="${r}" fill="rgba(106,138,32,${op})" stroke="#6a8a20" stroke-width="1.4"/>
-      <text x="${cx}" y="${cy+4}" text-anchor="middle" font-size="12" font-weight="700" fill="#4a6015">${num}</text>
-      <text x="${cx}" y="${cy-r-6}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--text)">${name}</text>
+      <text x="${cx}" y="${cy+4}" text-anchor="middle" font-size="13" font-weight="700" fill="#4a6015">${num}</text>
+      <text x="${cx}" y="${cy-r-8}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">${name}</text>
     </g>`;
   }).join('');
-  return `<svg viewBox="0 0 300 200" style="width:100%;max-width:300px;height:auto;display:block;margin:0 auto;">
+  return `<svg viewBox="0 0 320 420" style="width:100%;max-width:320px;height:auto;display:block;margin:0 auto;">
     <line x1="${X0}" y1="${Y1}" x2="${X1}" y2="${Y1}" stroke="var(--border2)" stroke-width="1.2"/>
     <line x1="${X0}" y1="${Y0}" x2="${X0}" y2="${Y1}" stroke="var(--border2)" stroke-width="1.2"/>
-    <text x="${(X0+X1)/2}" y="196" text-anchor="middle" font-size="10" fill="var(--muted)">影響力強度 →</text>
-    <text x="8" y="${(Y0+Y1)/2}" text-anchor="middle" font-size="10" fill="var(--muted)" transform="rotate(-90 8 ${(Y0+Y1)/2})">布局成熟度 →</text>
+    <text x="${(X0+X1)/2}" y="408" text-anchor="middle" font-size="11" fill="var(--muted)">影響力強度 →</text>
+    <text x="18" y="${(Y0+Y1)/2}" text-anchor="middle" font-size="11" fill="var(--muted)" transform="rotate(-90 18 ${(Y0+Y1)/2})">布局成熟度 →</text>
     ${ptsHtml}
   </svg>`;
 }
@@ -913,18 +919,18 @@ async function renderNvidia(){
   // ①關係圖（節點+方向箭頭，箭頭粗細=影響強度，hover看具體影響機制）為主視角，
   // ②散佈圖（影響力×成熟度，氣泡大小=布局規模）為輔助視角，資料共用nv.governance_stages/
   // governance_links，兩者都清楚標註是相對強弱示意評估，不是逐一查證的精確量化指標。
-  // 08-13再調整：使用者要求這兩張圖歸類進「產品應用鏈」這個sec-title底下（不要另開
-  // 新分類），放在金字塔下方的📌來源說明分隔線之後，左右並排、底色跟金字塔一樣不上色
+  // 08-13再調整：使用者要求「官方技術堆疊」跟這兩張圖結構上同級，都是「產品應用鏈」
+  // 這個sec-title底下的nv-sub-title子區塊；📌來源說明移到整個產品應用鏈區塊最下方
   const govDiagramsHtml = `
     <div class="nv-gov-diagram-row">
       <div class="nv-gov-diagram-col">
-        <div class="nv-gov-diagram-title">🔗 生態系權力布局 — 四階段關係圖</div>
+        <div class="nv-sub-title">🔗 生態系權力布局 — 四階段關係圖</div>
         ${nvGovernanceNetworkSvg(nv.governance_stages||[], nv.governance_links||[])}
         <div id="nv-net-tip" class="nv-gov-tip">游標移到節點或箭頭，查看該階段／影響路徑的具體說明</div>
         <div class="nv-gov-note">箭頭方向＝影響流向，線條粗細＝影響強度；④→①代表治理標準回頭鞏固技術規範，四階段互為強化形成外部難以滲透的生態閉環</div>
       </div>
       <div class="nv-gov-diagram-col">
-        <div class="nv-gov-diagram-title">📊 四階段相對定位（影響力 × 成熟度）</div>
+        <div class="nv-sub-title">📊 四階段相對定位（影響力 × 成熟度）</div>
         ${nvGovernanceScatterSvg(nv.governance_stages||[])}
         <div id="nv-scatter-tip" class="nv-gov-tip">游標移到氣泡，查看該階段的具體說明</div>
         <div class="nv-gov-note">氣泡大小＝布局規模；本圖為四階段相對強弱的示意評估，非逐一查證的精確量化數據</div>
@@ -933,13 +939,14 @@ async function renderNvidia(){
 
   panel.innerHTML = `
     ${pendingHtml}
-    <div class="sec-title">產品應用鏈 — 官方技術堆疊（金字塔）</div>
+    <div class="sec-title">產品應用鏈</div>
+    <div class="nv-sub-title">官方技術堆疊</div>
     <div class="nv-pyramid-wrap">
       <div class="nv-pyramid-visual">${bandsHtml}</div>
       <div class="nv-pyramid-legend">${legendHtml}</div>
     </div>
-    <div style="font-size:11px;color:var(--muted);margin:2px 0 14px;padding-left:2px;">📌 綜合NVIDIA官方GTC 2026 keynote與技術文件整理，非單一官方圖表逐字翻譯${pyramidSrcHtml?`；來源：${pyramidSrcHtml}`:''}</div>
     ${govDiagramsHtml}
+    <div style="font-size:11px;color:var(--muted);margin:2px 0 14px;padding-left:2px;">📌 綜合NVIDIA官方GTC 2026 keynote與技術文件整理，非單一官方圖表逐字翻譯${pyramidSrcHtml?`；來源：${pyramidSrcHtml}`:''}</div>
 
     <div class="sec-title">已導入實際應用場域</div>
     <div class="nv-sub-title">✅ 已上線／實際部署</div>

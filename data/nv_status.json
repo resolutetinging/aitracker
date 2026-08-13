@@ -217,7 +217,7 @@
     {
       "key": "standard",
       "label": "①技術標準鎖定",
-      "desc": "CUDA生態系＋NVLink Fusion規範",
+      "desc": "透過CUDA生態系與NVLink Fusion規範建立技術標準，開發者與硬體夥伴一旦採用即面臨高轉換成本，讓其他業者即使開放自家架構、也難以真正脫離NVIDIA制定的技術規則。",
       "influence": 9,
       "maturity": 9,
       "scale": 7
@@ -225,7 +225,7 @@
     {
       "key": "capital",
       "label": "②資本綁定",
-      "desc": "生態系投資／Inception（2025年59家新創）",
+      "desc": "以生態系資本布局（180億美元＋2025年59家新創投資）與NVIDIA Inception加速計畫綁定客戶與供應鏈，形成資金、算力、股權互相依賴的閉鎖循環，強化下游廠商對NVIDIA的依存度。",
       "influence": 8,
       "maturity": 7,
       "scale": 9
@@ -233,7 +233,7 @@
     {
       "key": "platform",
       "label": "③平台化",
-      "desc": "AI Factory／AI Cloud（GPU＋網路＋儲存＋軟體整合）",
+      "desc": "透過AI Factory、AI Cloud等purpose-built cloud服務，把GPU、網路、儲存、軟體整合成一站式平台，讓企業、新創、國家級AI實驗室的應用垂直滲透進NVIDIA的技術堆疊裡。",
       "influence": 6,
       "maturity": 6,
       "scale": 8
@@ -241,7 +241,7 @@
     {
       "key": "governance",
       "label": "④治理主導",
-      "desc": "OSAA治理聯盟／主權AI合規部署",
+      "desc": "藉由OSAA治理聯盟、主權AI合規部署等機制，主動參與AI安全與法規標準的制定，讓監管機構與高度受管制市場（政府、金融、醫療）也需要仰賴NVIDIA的技術與合規框架。",
       "influence": 5,
       "maturity": 2,
       "scale": 5
