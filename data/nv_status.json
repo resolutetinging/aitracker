@@ -1,44 +1,206 @@
 {
   "last_checked": "2026-08-11",
   "pyramid": [
-    {"label": "應用層（Industries）", "items": "汽車 · 醫療 · 工業 · 機器人 · 金融服務"},
-    {"label": "AI 模型層（Foundation Models）", "items": "Nemotron（語言/推理）· Cosmos（世界模型）· Isaac GR00T（機器人）"},
-    {"label": "軟體／平台層（Software Platform）", "items": "CUDA · CUDA-X 函式庫 · NeMo · NIM 微服務 · Omniverse 函式庫"},
-    {"label": "網路層（Networking）", "items": "NVLink（Kyber 銅纜／共封裝光學）· Spectrum-X 光學擴展"},
-    {"label": "晶片層（Chips）", "items": "Vera CPU · Rosa CPU · Blackwell Ultra GPU · Grace Blackwell · BlueField-4/5"}
+    {
+      "label": "應用層（Industries）",
+      "items": "汽車 · 醫療 · 工業 · 機器人 · 金融服務"
+    },
+    {
+      "label": "AI 模型層（Foundation Models）",
+      "items": "Nemotron（語言/推理）· Cosmos（世界模型）· Isaac GR00T（機器人）"
+    },
+    {
+      "label": "軟體／平台層（Software Platform）",
+      "items": "CUDA · CUDA-X 函式庫 · NeMo · NIM 微服務 · Omniverse 函式庫"
+    },
+    {
+      "label": "網路層（Networking）",
+      "items": "NVLink（Kyber 銅纜／共封裝光學）· Spectrum-X 光學擴展"
+    },
+    {
+      "label": "晶片層（Chips）",
+      "items": "Vera CPU · Rosa CPU · Blackwell Ultra GPU · Grace Blackwell · BlueField-4/5"
+    }
   ],
   "pyramid_sources": [
-    {"label": "blogs.nvidia.com", "url": "https://blogs.nvidia.com/blog/gtc-2026-news/"},
-    {"label": "docs.nvidia.com/ai-enterprise", "url": "https://docs.nvidia.com/ai-enterprise/reference-architecture/latest/software-stack.html"}
+    {
+      "label": "blogs.nvidia.com",
+      "url": "https://blogs.nvidia.com/blog/gtc-2026-news/"
+    },
+    {
+      "label": "docs.nvidia.com/ai-enterprise",
+      "url": "https://docs.nvidia.com/ai-enterprise/reference-architecture/latest/software-stack.html"
+    }
   ],
   "cases_live": [
-    {"name": "Foxconn", "desc": "FODT（Fii Omniverse Digital Twin）平台，設計/管理生產GB200 Grace Blackwell的實體工廠", "scope": "智慧工廠／數位孿生", "timeline": "2026年（官方目標全面部署，無精確月份）", "src": "https://www.nvidia.com/en-us/case-studies/foxconn-develops-physical-ai-enabled-smart-factories-with-digital-twins/"},
-    {"name": "KION（與Accenture、Siemens合作，客戶GXO）", "desc": "用Mega Omniverse Blueprint建大型倉儲數位孿生，訓練/測試Jetson自主叉車車隊，官方描述為導入實際倉儲營運", "scope": "倉儲物流自動化", "timeline": "2026年3月（GTC 2026發布）", "src": "https://blogs.nvidia.com/blog/gtc-2026-virtual-worlds-physical-ai/"},
-    {"name": "ABB Robotics／KUKA／Yaskawa", "desc": "用Omniverse函式庫+Isaac模擬框架驗證機器人應用，並已將Jetson模組整合進控制器做即時AI推論（非模擬階段）", "scope": "機器人製造／工業自動化", "timeline": "2026年3月（GTC 2026發布）", "src": "https://blogs.nvidia.com/blog/gtc-2026-virtual-worlds-physical-ai/"},
-    {"name": "FANUC", "desc": "用CAD-to-OpenUSD工作流程加速機器人系統設計驗證，已導入實際工業機器人流程", "scope": "工業機器人設計驗證", "timeline": "2026年3月（GTC 2026發布）", "src": "https://blogs.nvidia.com/blog/gtc-2026-virtual-worlds-physical-ai/"},
-    {"name": "Rockwell Automation", "desc": "Emulate3D Factory Test，用OpenUSD+Omniverse做工廠規模數位孿生（遠端設計/測試/調試）", "scope": "工廠數位孿生／自動化模擬", "timeline": "未載明具體時間", "src": "https://www.nvidia.com/en-us/case-studies/rockwell-automation/"}
+    {
+      "name": "Foxconn",
+      "desc": "FODT（Fii Omniverse Digital Twin）平台，設計/管理生產GB200 Grace Blackwell的實體工廠",
+      "scope": "智慧工廠／數位孿生",
+      "timeline": "2026年（官方目標全面部署，無精確月份）",
+      "src": "https://www.nvidia.com/en-us/case-studies/foxconn-develops-physical-ai-enabled-smart-factories-with-digital-twins/"
+    },
+    {
+      "name": "KION（與Accenture、Siemens合作，客戶GXO）",
+      "desc": "用Mega Omniverse Blueprint建大型倉儲數位孿生，訓練/測試Jetson自主叉車車隊，官方描述為導入實際倉儲營運",
+      "scope": "倉儲物流自動化",
+      "timeline": "2026年3月（GTC 2026發布）",
+      "src": "https://blogs.nvidia.com/blog/gtc-2026-virtual-worlds-physical-ai/"
+    },
+    {
+      "name": "ABB Robotics／KUKA／Yaskawa",
+      "desc": "用Omniverse函式庫+Isaac模擬框架驗證機器人應用，並已將Jetson模組整合進控制器做即時AI推論（非模擬階段）",
+      "scope": "機器人製造／工業自動化",
+      "timeline": "2026年3月（GTC 2026發布）",
+      "src": "https://blogs.nvidia.com/blog/gtc-2026-virtual-worlds-physical-ai/"
+    },
+    {
+      "name": "FANUC",
+      "desc": "用CAD-to-OpenUSD工作流程加速機器人系統設計驗證，已導入實際工業機器人流程",
+      "scope": "工業機器人設計驗證",
+      "timeline": "2026年3月（GTC 2026發布）",
+      "src": "https://blogs.nvidia.com/blog/gtc-2026-virtual-worlds-physical-ai/"
+    },
+    {
+      "name": "Rockwell Automation",
+      "desc": "Emulate3D Factory Test，用OpenUSD+Omniverse做工廠規模數位孿生（遠端設計/測試/調試）",
+      "scope": "工廠數位孿生／自動化模擬",
+      "timeline": "未載明具體時間",
+      "src": "https://www.nvidia.com/en-us/case-studies/rockwell-automation/"
+    }
   ],
   "cases_poc": [
-    {"name": "BMW集團", "desc": "Omniverse Enterprise + FactoryExplorer，30+全球生產基地即時數位孿生；官方頁面用詞偏未來式，判斷為導入中未全面上線", "scope": "虛擬工廠／數位孿生", "timeline": "規劃中，官方用「aims to」等未來式措辭，未載明時程", "src": "https://www.nvidia.com/en-us/customer-stories/paving-the-future-of-factories-with-nvidia-omniverse-enterprise/"},
-    {"name": "Siemens（Erlangen廠）+ Humanoid公司HMND 01", "desc": "用Jetson Thor + Isaac Sim/Isaac Lab，官方文字明確標示「completed autonomous logistics operations in a first proof of concept」", "scope": "人形機器人／自主物流PoC", "timeline": "2026年4月20日（Hannover Messe 2026發布）", "src": "https://blogs.nvidia.com/blog/ai-manufacturing-hannover-messe/"},
-    {"name": "Isaac GR00T人形機器人參考設計", "desc": "2026年6月發布，預計2026年底才由Unitree供貨，AGIBOT/LG/NEURA Robotics等宣稱正加速導入但未見已完成部署案例", "scope": "人形機器人研發平台", "timeline": "2026年5月31日發布，Unitree預計2026年底供貨", "src": "https://nvidianews.nvidia.com/news/nvidia-open-humanoid-robot-reference-design"},
-    {"name": "Amazon Robotics", "desc": "用Omniverse做倉儲自動化規劃/模擬（部署前）及Proteus機器人能力優化，屬模擬/規劃工具使用階段", "scope": "倉儲自動化模擬／規劃", "timeline": "未查到具體時間", "src": ""}
+    {
+      "name": "BMW集團",
+      "desc": "Omniverse Enterprise + FactoryExplorer，30+全球生產基地即時數位孿生；官方頁面用詞偏未來式，判斷為導入中未全面上線",
+      "scope": "虛擬工廠／數位孿生",
+      "timeline": "規劃中，官方用「aims to」等未來式措辭，未載明時程",
+      "src": "https://www.nvidia.com/en-us/customer-stories/paving-the-future-of-factories-with-nvidia-omniverse-enterprise/"
+    },
+    {
+      "name": "Siemens（Erlangen廠）+ Humanoid公司HMND 01",
+      "desc": "用Jetson Thor + Isaac Sim/Isaac Lab，官方文字明確標示「completed autonomous logistics operations in a first proof of concept」",
+      "scope": "人形機器人／自主物流PoC",
+      "timeline": "2026年4月20日（Hannover Messe 2026發布）",
+      "src": "https://blogs.nvidia.com/blog/ai-manufacturing-hannover-messe/"
+    },
+    {
+      "name": "Isaac GR00T人形機器人參考設計",
+      "desc": "2026年6月發布，預計2026年底才由Unitree供貨，AGIBOT/LG/NEURA Robotics等宣稱正加速導入但未見已完成部署案例",
+      "scope": "人形機器人研發平台",
+      "timeline": "2026年5月31日發布，Unitree預計2026年底供貨",
+      "src": "https://nvidianews.nvidia.com/news/nvidia-open-humanoid-robot-reference-design"
+    },
+    {
+      "name": "Amazon Robotics",
+      "desc": "用Omniverse做倉儲自動化規劃/模擬（部署前）及Proteus機器人能力優化，屬模擬/規劃工具使用階段",
+      "scope": "倉儲自動化模擬／規劃",
+      "timeline": "未查到具體時間",
+      "src": ""
+    }
   ],
   "roadmap": [
-    {"name": "Vera Rubin 平台（R100/VR200）", "desc": "Blackwell後繼平台，7顆晶片+5套機架系統+1台超級電腦整合方案，HBM4 22TB/s、6th-gen NVLink，TSMC 3nm量產爬坡中", "status": "⚠️ 是否已正式出貨各方說法不一：官方稱剛發表；供應鏈消息稱7月已交付北美科技巨頭", "src": "https://blogs.nvidia.com/blog/gtc-2026-news/"},
-    {"name": "Rubin Ultra", "desc": "四顆運算晶粒＋1TB HBM4E，搭配Kyber NVL576機架", "status": "規劃2027下半年推出，尚未出貨", "src": "https://www.tweaktown.com/news/110521/"},
-    {"name": "Feynman 架構＋新 Rosa CPU", "desc": "導入3D堆疊，搭LP40次世代LPU、BlueField-5、CX10，透過Kyber與Spectrum-class光學互連", "status": "規劃2028推出，尚未量產", "src": "https://blogs.nvidia.com/blog/gtc-2026-news/"},
-    {"name": "NVIDIA Space-1（軌道AI資料中心）", "desc": "Vera Rubin Space-1 Module，訴求軌道AI資料中心算力達H100 25倍，合作對象含Axiom Space/Starcloud/Planet Labs/Aetherflux/Kepler Communications/Sophia Space；8/4與SpaceX宣布「Starmind AI1」衛星計畫，用Rubin GPU+Vera CPU打造百萬顆衛星構成的太空分散式AI超級電腦", "status": "Space-1 Module於GTC 2026發表；Starmind AI1原型測試訂2027年初", "src": "https://techstartups.com/2026/08/04/nvidia-partners-with-spacex-to-build-starmind-ai-orbital-data-centers-in-space/"},
-    {"name": "NVIDIA x Lunar Outpost（月面AI）", "desc": "NASA選定Lunar Outpost交付新一代Artemis月球車Pegasus LTV，合約2.2億美元，夥伴含Goodyear/General Motors/Leidos；NVIDIA Jetson平台+CUDA-X負責車載自主導航、月面測繪、LiDAR即時運算，近期具體任務「Lunar Voyage 2」預計2026年稍晚發射探勘月表磁異常區", "status": "⚠️ 查證更正：先前筆記記載2027年發射、Eagle車款，實際NASA已於2026/5/26選定Pegasus設計，2028年交付月球；Eagle為2025年競標階段原型車，已被Pegasus取代，未查到仍在推進的獨立時程", "src": "https://www.globenewswire.com/news-release/2026/05/26/3301400/0/en/nasa-selects-lunar-outpost-to-deliver-next-gen-crewed-lunar-terrain-vehicle-for-artemis-astronauts-and-moon-base.html"}
+    {
+      "name": "Vera Rubin 平台（R100/VR200）",
+      "desc": "Blackwell後繼平台，7顆晶片+5套機架系統+1台超級電腦整合方案，HBM4 22TB/s、6th-gen NVLink，TSMC 3nm量產爬坡中",
+      "status": "⚠️ 是否已正式出貨各方說法不一：官方稱剛發表；供應鏈消息稱7月已交付北美科技巨頭",
+      "src": "https://blogs.nvidia.com/blog/gtc-2026-news/"
+    },
+    {
+      "name": "Rubin Ultra",
+      "desc": "四顆運算晶粒＋1TB HBM4E，搭配Kyber NVL576機架",
+      "status": "規劃2027下半年推出，尚未出貨",
+      "src": "https://www.tweaktown.com/news/110521/"
+    },
+    {
+      "name": "Feynman 架構＋新 Rosa CPU",
+      "desc": "導入3D堆疊，搭LP40次世代LPU、BlueField-5、CX10，透過Kyber與Spectrum-class光學互連",
+      "status": "規劃2028推出，尚未量產",
+      "src": "https://blogs.nvidia.com/blog/gtc-2026-news/"
+    },
+    {
+      "name": "NVIDIA Space-1（軌道AI資料中心）",
+      "desc": "Vera Rubin Space-1 Module，訴求軌道AI資料中心算力達H100 25倍，合作對象含Axiom Space/Starcloud/Planet Labs/Aetherflux/Kepler Communications/Sophia Space；8/4與SpaceX宣布「Starmind AI1」衛星計畫，用Rubin GPU+Vera CPU打造百萬顆衛星構成的太空分散式AI超級電腦",
+      "status": "Space-1 Module於GTC 2026發表；Starmind AI1原型測試訂2027年初",
+      "src": "https://techstartups.com/2026/08/04/nvidia-partners-with-spacex-to-build-starmind-ai-orbital-data-centers-in-space/"
+    },
+    {
+      "name": "NVIDIA x Lunar Outpost（月面AI）",
+      "desc": "NASA選定Lunar Outpost交付新一代Artemis月球車Pegasus LTV，合約2.2億美元，夥伴含Goodyear/General Motors/Leidos；NVIDIA Jetson平台+CUDA-X負責車載自主導航、月面測繪、LiDAR即時運算，近期具體任務「Lunar Voyage 2」預計2026年稍晚發射探勘月表磁異常區",
+      "status": "⚠️ 查證更正：先前筆記記載2027年發射、Eagle車款，實際NASA已於2026/5/26選定Pegasus設計，2028年交付月球；Eagle為2025年競標階段原型車，已被Pegasus取代，未查到仍在推進的獨立時程",
+      "src": "https://www.globenewswire.com/news-release/2026/05/26/3301400/0/en/nasa-selects-lunar-outpost-to-deliver-next-gen-crewed-lunar-terrain-vehicle-for-artemis-astronauts-and-moon-base.html"
+    }
   ],
   "alliance_overview": "2026年前4個月NVIDIA已承諾超過$400億美元AI股權投資（最大單筆OpenAI $300億，原框架$1000億大幅縮水），另有Anthropic最高$100億等約7筆多億美元級交易及近20筆新創投資；FY2026主權AI營收逾$300億，占總營收約14%。歐洲/日本/沙烏地等主權AI合作案並行推進，各筆投資口徑（股權/採購承諾/資料中心建設）差異大，不宜直接加總。",
   "alliance_overview_src": "https://thenextweb.com/news/nvidia-40bn-ai-equity-investments-2026",
   "alliances": [
-    {"name": "OpenAI", "desc": "擬建至少10GW資料中心，NVIDIA承諾最高$1000億漸進式投資", "status": "⚠️ 2026/2實際僅完成$300億投資，較原框架大幅縮水；Huang暗示因OpenAI/Anthropic即將IPO類似投資可能已是最後一輪", "src": "https://investor.nvidia.com/news/press-release-details/2025/OpenAI-and-NVIDIA-Announce-Strategic-Partnership-to-Deploy-10-Gigawatts-of-NVIDIA-Systems/default.aspx"},
-    {"name": "Anthropic", "desc": "NVIDIA與Microsoft共同宣布分別投資最高$100億／$50億，Anthropic同步承諾採購$300億Azure運算量", "status": "2025/11宣布", "src": "https://tagteam.harvard.edu/hub_feeds/3415/feed_items/16904726"},
-    {"name": "CoreWeave", "desc": "NVIDIA投資$20億助其擴充5GW算力，另有$63億容量保底協議（NVIDIA承諾買下未用容量，合約至2032）", "status": "2026/1宣布", "src": "https://techcrunch.com/2026/01/26/nvidia-invests-2b-to-help-debt-ridden-coreweave-add-5gw-of-ai-compute/"},
-    {"name": "沙烏地阿拉伯（HUMAIN／SDAIA）", "desc": "HUMAIN背後為PIF，規劃投資逾$1000億，11座資料中心共2200MW；NVIDIA與SDAIA部署最多5000顆Blackwell GPU建主權AI工廠", "status": "", "src": "https://nvidianews.nvidia.com/news/saudi-arabia-and-nvidia-to-build-ai-factories-to-power-next-wave-of-intelligence-for-the-age-of-reasoning"},
-    {"name": "日本（SoftBank／44家企業聯盟）", "desc": "與SoftBank合建日本最強AI超級電腦(Grace Blackwell)+AI原生5G網路；SoftBank主權AI GPU雲2026/10商轉；SoftBank/Sony/Honda領軍44家日企7/16啟動主權AI基礎模型計畫", "status": "", "src": "https://nvidianews.nvidia.com/news/nvidia-and-softbank-accelerate-japans-journey-to-global-ai-powerhouse"},
-    {"name": "TSMC／Foxconn", "desc": "TSMC 3nm量產Rubin晶片，NVIDIA預計占TSMC 2026營收逾20%；Foxconn針對Vera Rubin液冷機櫃工程驗證，H2 2026量產", "status": "", "src": "https://www.trendforce.com/news/2026/06/01/"}
+    {
+      "name": "OpenAI",
+      "desc": "擬建至少10GW資料中心，NVIDIA承諾最高$1000億漸進式投資",
+      "status": "⚠️ 2026/2實際僅完成$300億投資，較原框架大幅縮水；Huang暗示因OpenAI/Anthropic即將IPO類似投資可能已是最後一輪",
+      "src": "https://investor.nvidia.com/news/press-release-details/2025/OpenAI-and-NVIDIA-Announce-Strategic-Partnership-to-Deploy-10-Gigawatts-of-NVIDIA-Systems/default.aspx"
+    },
+    {
+      "name": "Anthropic",
+      "desc": "NVIDIA與Microsoft共同宣布分別投資最高$100億／$50億，Anthropic同步承諾採購$300億Azure運算量",
+      "status": "2025/11宣布",
+      "src": "https://tagteam.harvard.edu/hub_feeds/3415/feed_items/16904726"
+    },
+    {
+      "name": "CoreWeave",
+      "desc": "NVIDIA投資$20億助其擴充5GW算力，另有$63億容量保底協議（NVIDIA承諾買下未用容量，合約至2032）",
+      "status": "2026/1宣布",
+      "src": "https://techcrunch.com/2026/01/26/nvidia-invests-2b-to-help-debt-ridden-coreweave-add-5gw-of-ai-compute/"
+    },
+    {
+      "name": "沙烏地阿拉伯（HUMAIN／SDAIA）",
+      "desc": "HUMAIN背後為PIF，規劃投資逾$1000億，11座資料中心共2200MW；NVIDIA與SDAIA部署最多5000顆Blackwell GPU建主權AI工廠",
+      "status": "",
+      "src": "https://nvidianews.nvidia.com/news/saudi-arabia-and-nvidia-to-build-ai-factories-to-power-next-wave-of-intelligence-for-the-age-of-reasoning"
+    },
+    {
+      "name": "日本（SoftBank／44家企業聯盟）",
+      "desc": "與SoftBank合建日本最強AI超級電腦(Grace Blackwell)+AI原生5G網路；SoftBank主權AI GPU雲2026/10商轉；SoftBank/Sony/Honda領軍44家日企7/16啟動主權AI基礎模型計畫",
+      "status": "",
+      "src": "https://nvidianews.nvidia.com/news/nvidia-and-softbank-accelerate-japans-journey-to-global-ai-powerhouse"
+    },
+    {
+      "name": "TSMC／Foxconn",
+      "desc": "TSMC 3nm量產Rubin晶片，NVIDIA預計占TSMC 2026營收逾20%；Foxconn針對Vera Rubin液冷機櫃工程驗證，H2 2026量產",
+      "status": "",
+      "src": "https://www.trendforce.com/news/2026/06/01/"
+    }
+  ],
+  "governance": [
+    {
+      "name": "NVLink Fusion 開放策略",
+      "desc": "開放NVLink互聯技術給第三方（如Marvell、Qualcomm），讓非NVIDIA的CPU／加速器可接入其生態系，但底層通訊與運算架構仍須遵循NVIDIA規範——用開放換取全產業對NVIDIA技術標準的依賴",
+      "status": "2026年持續推行",
+      "src": "https://iknow.stpi.niar.org.tw/Post/Read.aspx?PostID=23528"
+    },
+    {
+      "name": "生態系資本布局（180億美元＋新創投資）",
+      "desc": "鎖定高階GPU供應、先進封裝、光學模組、網通設備等關鍵供應鏈環節；2025年投資59家AI新創（多於2024年全年55家），涵蓋OpenAI、xAI、Mistral AI、Perplexity、Figure AI等，形成資金／算力／股權互相依賴的閉鎖循環",
+      "status": "持續進行中",
+      "src": "https://techorange.com/2025/10/30/nvidia-ai-startup-investing/"
+    },
+    {
+      "name": "NVIDIA Inception 新創加速計畫",
+      "desc": "提供新創公司資金、運算資源、工程師支持與全球技術網絡，即使小型公司也能藉此擴大客戶基礎，是生態系綁定策略的具體執行工具",
+      "status": "",
+      "src": "https://techorange.com/2025/10/30/nvidia-ai-startup-investing/"
+    },
+    {
+      "name": "NVIDIA AI Cloud 生態系擴展",
+      "desc": "與AWS、Azure、GCP、Oracle及區域性雲服務商合作，建立「目的建構的雲」（purpose-built clouds）服務爆炸性成長的token需求，讓企業／新創／國家／AI實驗室都能擴展agentic AI應用",
+      "status": "2026年5月擴展",
+      "src": "https://blogs.nvidia.com/blog/ai-cloud-ecosystem/"
+    },
+    {
+      "name": "從硬體供應商到AI規則制定者的角色轉型",
+      "desc": "透過CUDA生態系鎖定（開發者轉換成本極高）、標準制定（NVLink規範）、資本綁定、平台化（AI Factory整合GPU／網路／儲存／軟體／安全）四個維度，NVIDIA逐步從單純硬體供應商轉型為AI時代基礎設施與規則制定者",
+      "status": "",
+      "src": "https://iknow.stpi.niar.org.tw/Post/Read.aspx?PostID=23528"
+    }
   ]
 }

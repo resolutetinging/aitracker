@@ -136,7 +136,8 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .card-source a:hover{text-decoration:underline;}
 
 /* ── NVIDIA 專區 ── */
-.nv-pyramid-wrap{display:flex;gap:22px;align-items:center;margin:10px 0 6px;flex-wrap:wrap;}
+.nv-pyramid-row{display:flex;gap:22px;align-items:flex-start;margin:10px 0 6px;flex-wrap:wrap;}
+.nv-pyramid-wrap{display:flex;gap:22px;align-items:center;flex:1 1 460px;min-width:400px;flex-wrap:wrap;}
 .nv-pyramid-visual{display:flex;flex-direction:column;width:170px;flex-shrink:0;}
 .nv-pyr-band{height:46px;}
 .nv-pyramid-legend{flex:1;min-width:260px;display:flex;flex-direction:column;}
@@ -145,6 +146,15 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .nv-pyr-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;margin-top:4px;}
 .nv-pyr-label{font-size:11.5px;font-weight:700;color:var(--nv);margin-bottom:2px;}
 .nv-pyr-items{font-size:11px;color:var(--muted);line-height:1.5;}
+/* 08-13：生態系權力布局四階段閉環——沿用.tw-chain同一套產業鏈視覺語言（node+arrow），
+   改直向排列因為這裡是跟金字塔並排的窄欄，橫向會被擠壓看不清楚 */
+.nv-chain-col{flex:1 1 260px;min-width:240px;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.nv-chain-col-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:10px;}
+.nv-chain-node{background:var(--card);border:1px solid var(--border2);border-radius:8px;padding:8px 12px;}
+.nv-chain-node-label{font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.nv-chain-node-sub{font-size:10.5px;color:var(--muted);line-height:1.5;}
+.nv-chain-arrow{text-align:center;font-size:15px;color:var(--nv);line-height:1;padding:2px 0;}
+.nv-chain-loop{margin-top:10px;font-size:10px;color:var(--muted);line-height:1.65;padding-top:9px;border-top:1px dashed var(--border2);}
 .nv-case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:10px;}
 .nv-case-scope{font-size:10.5px;color:var(--nv);margin-bottom:2px;font-weight:600;}
 .nv-case-time{font-size:10.5px;color:var(--muted2);margin-bottom:6px;}
@@ -785,6 +795,10 @@ async function renderNvidia(){
        <div style="font-size:12.5px;color:var(--text2);line-height:1.7;">${nv.alliance_overview}</div>
        ${nvSrcLink(nv.alliance_overview_src)}</div>`
     : '';
+  // 08-13新增：生態系權力布局／合規治理——跟alliances（個別夥伴關係）性質不同，
+  // 這裡談的是NVIDIA跨技術標準/資本/平台/治理四個維度的整體布局策略，卡片schema
+  // 沿用同一份nvCaseCard（name/desc/status/src），只是資料來源獨立一個分類
+  const governanceHtml = (nv.governance||[]).map(c=>nvCaseCard(c, 'live', c.status)).join('');
 
   // 週查證若有候選異動會寫進nv_pending_review.json，這裡只顯示一個提示banner，
   // 不自動套用內容——避免LLM幻覺的異動未經人工確認就直接改掉參考頁
@@ -800,12 +814,31 @@ async function renderNvidia(){
     }
   } catch(e){ /* 沒有pending檔或抓取失敗都當作沒有待複核項目，靜默略過 */ }
 
+  // 08-13：生態系權力布局四階段閉環，跟金字塔並排顯示——技術標準鎖定吸引資本進駐，
+  // 資本綁定客戶採用平台，平台擴大治理話語權，治理標準又回頭鞏固技術規範，
+  // 對應governance分類資料背後的策略邏輯（節點文字為手動整理摘要，非逐筆對應JSON）
+  const chainHtml = `
+    <div class="nv-chain-col">
+      <div class="nv-chain-col-title">🔗 生態系權力布局 — 四階段閉環</div>
+      <div class="nv-chain-node"><div class="nv-chain-node-label">① 技術標準鎖定</div><div class="nv-chain-node-sub">CUDA生態系＋NVLink Fusion規範</div></div>
+      <div class="nv-chain-arrow">↓</div>
+      <div class="nv-chain-node"><div class="nv-chain-node-label">② 資本綁定</div><div class="nv-chain-node-sub">生態系投資／Inception（2025年59家新創）</div></div>
+      <div class="nv-chain-arrow">↓</div>
+      <div class="nv-chain-node"><div class="nv-chain-node-label">③ 平台化</div><div class="nv-chain-node-sub">AI Factory／AI Cloud（GPU＋網路＋儲存＋軟體整合）</div></div>
+      <div class="nv-chain-arrow">↓</div>
+      <div class="nv-chain-node"><div class="nv-chain-node-label">④ 治理主導</div><div class="nv-chain-node-sub">OSAA治理聯盟／主權AI合規部署</div></div>
+      <div class="nv-chain-loop">↺ 四階段互為強化：技術鎖定吸引資本進駐，資本綁定客戶採用平台，平台擴大治理話語權，治理標準又回頭鞏固技術規範——形成外部難以滲透的生態閉環</div>
+    </div>`;
+
   panel.innerHTML = `
     ${pendingHtml}
     <div class="sec-title">產品應用鏈 — 官方技術堆疊（金字塔）</div>
-    <div class="nv-pyramid-wrap">
-      <div class="nv-pyramid-visual">${bandsHtml}</div>
-      <div class="nv-pyramid-legend">${legendHtml}</div>
+    <div class="nv-pyramid-row">
+      <div class="nv-pyramid-wrap">
+        <div class="nv-pyramid-visual">${bandsHtml}</div>
+        <div class="nv-pyramid-legend">${legendHtml}</div>
+      </div>
+      ${chainHtml}
     </div>
     <div style="font-size:11px;color:var(--muted);margin:2px 0 14px;padding-left:2px;">📌 綜合NVIDIA官方GTC 2026 keynote與技術文件整理，非單一官方圖表逐字翻譯${pyramidSrcHtml?`；來源：${pyramidSrcHtml}`:''}</div>
 
@@ -821,6 +854,9 @@ async function renderNvidia(){
     <div class="sec-title">聯盟發展狀況</div>
     ${allianceOverviewHtml}
     <div class="nv-case-grid">${allianceHtml}</div>
+
+    <div class="sec-title">生態系權力布局／合規治理</div>
+    <div class="nv-case-grid">${governanceHtml}</div>
 
     <div style="font-size:11px;color:var(--muted);margin:4px 0 4px;padding-left:2px;">📌 每週由排程自動查證是否過時（候選異動需人工複核才會套用），最後查證：${nv.last_checked||'—'}</div>`;
 }

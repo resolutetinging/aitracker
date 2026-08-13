@@ -29,12 +29,13 @@ CATEGORY_LABELS = {
     'cases_poc': '應用案例（POC）',
     'roadmap': '產品 Roadmap',
     'alliances': '聯盟／夥伴關係',
+    'governance': '生態系權力布局／合規治理',
 }
 ACTION_LABELS = {'update': '更新既有項目', 'add': '新增項目'}
 
 
 def fetch_nvidia_news():
-    """用DDG查最近一週NVIDIA相關新聞，涵蓋4個分類分別對應頁面的4個區塊"""
+    """用DDG查最近一週NVIDIA相關新聞，涵蓋5個分類分別對應頁面的5個區塊"""
     try:
         from ddgs import DDGS
     except ImportError:
@@ -48,6 +49,9 @@ def fetch_nvidia_news():
         ("Omniverse應用案例", "NVIDIA Omniverse deployment customer case study"),
         ("聯盟/夥伴關係", "NVIDIA partnership investment alliance sovereign AI"),
         ("財報/產能", "NVIDIA earnings capacity supply chain update"),
+        # 08-13新增：生態系權力布局／合規治理維度（NVLink Fusion開放策略、CUDA鎖定、
+        # 生態系資本投資、AI治理聯盟、主權AI合規部署），對應governance分類
+        ("生態系布局/合規治理", "NVIDIA ecosystem strategy standard governance compliance sovereign AI investment"),
     ]
     snippets = []
     ddgs = DDGS()
@@ -113,12 +117,12 @@ def call_groq_diff(current_status, news_snippets):
 {{
   "items": [
     {{
-      "category": "pyramid|cases_live|cases_poc|roadmap|alliances",
+      "category": "pyramid|cases_live|cases_poc|roadmap|alliances|governance",
       "action": "update|add",
       "target_name": "若action=update，填現有資料裡對應項目的name或label文字；若action=add則留空",
       "name": "項目/公司名稱",
       "desc": "更新後或新增的描述文字",
-      "status": "狀態文字（cases/roadmap/alliances類別適用，pyramid類別留空）",
+      "status": "狀態文字（cases/roadmap/alliances/governance類別適用，pyramid類別留空）",
       "reason": "為何提出這個異動，具體說明新聞依據",
       "source": "新聞來源URL"
     }}
