@@ -138,7 +138,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 /* ── NVIDIA 專區 ── */
 .nv-pyramid-wrap{display:flex;gap:22px;align-items:center;margin:10px 0 6px;flex-wrap:wrap;}
 .nv-pyramid-visual{display:flex;flex-direction:column;width:170px;flex-shrink:0;}
-.nv-pyr-band{height:46px;}
+.nv-pyr-band{height:60px;}
 .nv-pyramid-legend{flex:1;min-width:260px;display:flex;flex-direction:column;}
 .nv-pyr-legend-row{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);}
 .nv-pyr-legend-row:last-child{border-bottom:none;}
@@ -757,11 +757,10 @@ function nvCaseCard(item, statusCls, statusText){
 }
 
 // 08-13：生態系權力布局四階段（standard/capital/platform/governance）固定用正方形四角
-// 排列，這樣「①→②→③→④→①」的敘事順序天生就是繞正方形一圈的封閉迴路，不用另外
-// 畫一條外圈回頭箭頭。viewBox統一改成320x420（使用者要求關係圖與散佈圖高度統一，
-// 基準是原本關係圖高度再增加50%——原本300x300在max-width:280下等高280px，
-// 320x420在同寬度下約等高368px，考量兩欄實際可用寬度更寬，改用max-width:320讓
-// 高度落在約420px，兩張圖共用同一個viewBox尺寸，寬度縮放比例相同=渲染高度自動相等）
+// 排列，這樣「①→②③→④→①」的敘事順序天生就是繞正方形一圈的封閉迴路，不用另外
+// 畫一條外圈回頭箭頭。viewBox維持320x420，但改用style固定height:300px（不再用
+// width:100%+max-width讓瀏覽器依欄寬縮放），跟金字塔（5層×60px=300px）同高，
+// 兩張圖viewBox比例相同=渲染高度自動相等；margin:0（不再auto置中）改成靠左對齊
 const NV_STAGE_POS = {standard:{x:160,y:85}, capital:{x:250,y:210}, platform:{x:160,y:335}, governance:{x:70,y:210}};
 const NV_STRENGTH_WIDTH = {strong:3.5, medium:2, weak:1.2};
 
@@ -801,7 +800,7 @@ function nvGovernanceNetworkSvg(stages, links){
       <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#6a8a20" stroke-width="${sw}" marker-end="url(#nvArrow)"/>
     </g>`;
   }).join('');
-  return `<svg viewBox="0 0 320 420" style="width:100%;max-width:320px;height:auto;display:block;margin:0 auto;">
+  return `<svg viewBox="0 0 320 420" style="height:300px;width:auto;display:block;margin:0;">
     <defs><marker id="nvArrow" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#6a8a20"/></marker></defs>
     ${edgesHtml}
     ${nodesHtml}
@@ -810,7 +809,7 @@ function nvGovernanceNetworkSvg(stages, links){
 
 function nvGovernanceScatterSvg(stages){
   if(!stages.length) return '<div class="empty-state" style="font-size:12px;">尚無資料</div>';
-  const X0=55, X1=290, Y0=40, Y1=390; // 繪圖區邊界（1-10分兩軸線性映射），跟關係圖共用320x420viewBox讓兩圖渲染高度一致
+  const X0=55, X1=290, Y0=40, Y1=390; // 繪圖區邊界（1-10分兩軸線性映射），跟關係圖共用320x420viewBox＋固定height:300px讓兩圖渲染高度一致
   const px = v => X0 + (v-1)/9*(X1-X0);
   const py = v => Y1 - (v-1)/9*(Y1-Y0);
   const ptsHtml = stages.map((s,i)=>{
@@ -826,7 +825,7 @@ function nvGovernanceScatterSvg(stages){
       <text x="${cx}" y="${cy-r-8}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">${name}</text>
     </g>`;
   }).join('');
-  return `<svg viewBox="0 0 320 420" style="width:100%;max-width:320px;height:auto;display:block;margin:0 auto;">
+  return `<svg viewBox="0 0 320 420" style="height:300px;width:auto;display:block;margin:0;">
     <line x1="${X0}" y1="${Y1}" x2="${X1}" y2="${Y1}" stroke="var(--border2)" stroke-width="1.2"/>
     <line x1="${X0}" y1="${Y0}" x2="${X0}" y2="${Y1}" stroke="var(--border2)" stroke-width="1.2"/>
     <text x="${(X0+X1)/2}" y="408" text-anchor="middle" font-size="11" fill="var(--muted)">影響力強度 →</text>
