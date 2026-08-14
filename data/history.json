@@ -1,5 +1,142 @@
 [
   {
+    "date": "2026-08-15",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "AI 數據中心面臨關鍵礦物供應鏈壓力",
+        "layer": "AI 數據中心",
+        "body": "AI 數據中心的發展需要大量的銅、鋰和稀土等關鍵礦物，但是供應鏈的壓力可能會影響這些礦物的供應。銅的供應尤其面臨挑戰，預計到 2040 年，銅的供應可能會出現 1000 萬公噸的短缺。",
+        "impact": "這個供應鏈的壓力可能會影響 AI 數據中心的發展，從而影響 AI 技術的推廣。同時，銅的供應短缺也可能會影響其他行業的發展，例如電力和電子行業。",
+        "rating": "opp",
+        "insight": "AI 數據中心的發展需要穩定的關鍵礦物供應，否則可能會影響 AI 技術的發展。",
+        "source_label": "Data Center Knowledge",
+        "source": "https://www.datacenterknowledge.com/supply-chain/the-critical-minerals-crisis-ai-data-centers-face-supply-chain-strain",
+        "chain": [
+          {
+            "label": "TSMC 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix 銅供應↓",
+            "type": "down"
+          },
+          {
+            "label": "Apple 晶片供應鏈↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "今日無相關新聞",
+        "layer": "",
+        "body": "今日該分類無足夠具體新聞素材可供分析。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "app": [
+      {
+        "title": "特朗普下令對外國製造的無人機零件徵稅",
+        "layer": "無人機產業",
+        "body": "美國總統特朗普下令對外國製造的無人機零件徵稅，目的是促進國內的無人機產業發展。這一措施預計將對中國的無人機產業產生影響。",
+        "impact": "這一措施將直接影響中國的無人機產業，例如 DJI。同時，也將間接影響下游客戶，例如美國的無人機使用者。",
+        "rating": "opp",
+        "insight": "特朗普下令對外國製造的無人機零件徵稅，是一種促進國內產業發展的策略，對供應鏈和下游客戶都有重要影響。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/08/14/drone-stocks-trump-tariffs.html",
+        "chain": [
+          {
+            "label": "美國無人機產業↑",
+            "type": "up"
+          },
+          {
+            "label": "中國無人機產業↓",
+            "type": "down"
+          },
+          {
+            "label": "特朗普關稅政策↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Apple 的 Tim Cook 和 Howard Lutnick 開設製造工廠",
+        "layer": "晶片製造",
+        "body": "Apple 的 Tim Cook 和 Howard Lutnick 剛剛開設了一家位於 Houston 的製造工廠。這一工廠將生產 Apple 的晶片和其他電子產品。",
+        "impact": "這一工廠將直接影響 Apple 的供應鏈。同時，也將間接影響下游客戶，例如 Apple 的用戶。",
+        "rating": "opp",
+        "insight": "Apple 的 Tim Cook 和 Howard Lutnick 開設製造工廠，是一種提高效率和降低成本的策略，對供應鏈和下游客戶都有重要影響。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/08/13/apples-tim-cook-and-howard-lutnick-open-houston-manufacturing-plant.html",
+        "chain": [
+          {
+            "label": "Apple 晶片產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Tim Cook 投資↑",
+            "type": "up"
+          },
+          {
+            "label": "Houston 制造工廠↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "關鍵礦物",
+        "full": "關鍵礦物是指對於 AI 技術的發展至關重要的礦物，例如銅、鋰和稀土等。",
+        "def": "關鍵礦物的供應鏈壓力可能會影響 AI 技術的發展。",
+        "why": "關鍵礦物的供應鏈壓力可能會影響 AI 數據中心的發展，從而影響 AI 技術的推廣。",
+        "category": "AI 技術"
+      },
+      {
+        "term": "Glimmer",
+        "full": "Meta 的新開源 AI 模型",
+        "def": "Meta 釋出的新開源 AI 模型，允許任何人下載和在自己的硬體上運行。",
+        "why": "這個模型可能會增加 Meta 在 AI 研發方面的競爭力和影響力。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Ultrafast",
+        "full": "OpenAI 的新模式",
+        "def": "OpenAI 推出的新模式，能夠加速公司最新和最強大的模型 GPT-5.6 Sol 的運行速度。",
+        "why": "這個模式可能會增加 OpenAI 在 AI 研發方面的競爭力和影響力。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "建造到印刷製造",
+        "full": "build-to-print",
+        "def": "一種製造方式，根據客戶的設計和規格進行生產。",
+        "why": "這種製造方式可以提高效率和降低成本。",
+        "category": "晶片製造"
+      },
+      {
+        "term": "無人機零件",
+        "full": "drone components",
+        "def": "無人機的零件，包括機身、馬達、電池等。",
+        "why": "無人機零件的製造和供應對無人機產業的發展有重要影響。",
+        "category": "無人機產業"
+      },
+      {
+        "term": "晶片製造",
+        "full": "semiconductor manufacturing",
+        "def": "一種製造晶片的過程，包括設計、製造和測試。",
+        "why": "晶片製造是電子產品的核心元件，對電子產業的發展有重要影響。",
+        "category": "晶片製造"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-14",
     "is_sunday": false,
     "hw": [
@@ -942,123 +1079,5 @@
       }
     ],
     "weekly_summary": "HW：SK Hynix 投資 380 億美元建造新記憶體晶片工廠。\nHW：AMD 收購 AI 晶片初創公司 Taalas。\nHW：Indosat 加強 AI 能力，與 Nvidia 和 Nokia 合作。\nCORP：OpenAI 暫停 Astra 模型開發，出於安全顧慮\n下週看點：Mirendil 與 Google Cloud 的合作可能會成為業界的標準，從而影響其他公司的計算能力投資。\nAPP：SpaceX和Tesla選擇德州設立AI晶片製造工廠，將為AI產業帶來新的機會和挑戰。\n用戶洞察：AI模型的智慧化將為AI產業帶來新的挑戰和機會。"
-  },
-  {
-    "date": "2026-08-08",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "AMD 收購 AI 晶片初創公司 Taalas",
-        "layer": "晶片供應鏈",
-        "body": "AMD 收購了 AI 晶片初創公司 Taalas，該公司的晶片技術可以將模型權重直接刻錄到矽晶中，從而提高推理性能。Taalas 的晶片技術與傳統的 GPU 或 Groq 的 LPU 和 Cerebras 的晶片架構不同。",
-        "impact": "這次收購可能會提高 AMD 在 AI 硬體市場的競爭力，特別是在高性能推理服務方面。",
-        "rating": "opp",
-        "insight": "",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/08/06/amd-acquires-ai-chip-startup-taalas-to-boost-inference-performance-by-etching-models-into-silicon/5284344",
-        "chain": [
-          {
-            "label": "AMD 市占↑",
-            "type": "up"
-          },
-          {
-            "label": "Taalas 晶片技術↑",
-            "type": "up"
-          },
-          {
-            "label": "Groq LPU 競爭力↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Meta被新墨西哥法院判罰5.67億美元",
-        "layer": "社交媒體",
-        "body": "Meta被新墨西哥法院判罰5.67億美元，原因是社交媒體對兒童的安全問題。這是Meta今年第三度被判罰，之前已被判罰3.75億美元。Meta需要對其平台進行改變，包括移除Like數量，限制兒童使用時間等。",
-        "impact": "這次判罰可能會對Meta的營收產生影響，同時也會對其他社交媒體平台的安全問題提出更高的要求。",
-        "rating": "opp",
-        "insight": "Meta的安全問題可能會對其營收產生影響，投資者需要關注這個問題。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/07/new-mexico-court-orders-meta-to-pay-additional-567m-in-child-safety-case/",
-        "chain": [
-          {
-            "label": "Meta 社交媒體安全性↓",
-            "type": "down"
-          },
-          {
-            "label": "Meta 平台改變↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "癌症診斷業務遭駭客攻擊",
-        "layer": "醫療",
-        "body": "駭客組織ShinyHunters攻擊了Abbott的癌症診斷業務，導致10.9百萬個電子郵件地址和個人健康信息被泄露。這次攻擊發生在今年早些時候，Abbott於7月16日首次披露了這次攻擊。據悉，駭客可能已經獲得了包含個人信息和個人健康信息的文件。 ",
-        "impact": "這次攻擊可能會對Abbott的業務產生負面影響。",
-        "rating": "core",
-        "insight": "醫療機構需要加強資料安全措施，以防止類似的攻擊發生。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/cyber-crime/2026/08/07/shinyhunters-called-cancer-diagnostics-biz-and-tricked-staffers-into-giving-them-access-now-theyve-dumped-109m-email-addresses/5284857",
-        "chain": [
-          {
-            "label": "Abbott 癌症診斷業務安全性↓",
-            "type": "down"
-          },
-          {
-            "label": "個人健康信息安全性↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "美國醫療軟體提供商遭駭客攻擊",
-        "layer": "醫療",
-        "body": "美國醫療軟體提供商Unlimited Technology Systems遭駭客攻擊，可能導致3,803,750人的人員健康信息被泄露。這次攻擊發生在2025年10月，公司於今年7月披露了這次攻擊。據悉，駭客可能已經獲得了包含姓名、社會安全號碼、診斷和保險詳情等信息。 ",
-        "impact": "這次攻擊可能會對Unlimited Technology Systems的業務產生負面影響。",
-        "rating": "opp",
-        "insight": "醫療機構需要加強資料安全措施，以防止類似的攻擊發生。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/cyber-crime/2026/08/07/intrusion-at-us-healthcare-software-provider-puts-38m-peoples-data-at-risk/5284609",
-        "chain": [
-          {
-            "label": "Unlimited Technology Systems 人員健康信息安全性↓",
-            "type": "down"
-          },
-          {
-            "label": "美國醫療軟體提供商安全性↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Taalas",
-        "full": "Taalas",
-        "def": "一家 AI 晶片初創公司，該公司的晶片技術可以將模型權重直接刻錄到矽晶中。",
-        "why": "Taalas 的晶片技術可能會提高 AI 硬體的性能和競爭力。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "社交媒體安全",
-        "full": "社交媒體安全問題",
-        "def": "社交媒體平台對用戶的安全問題，包括兒童安全、隱私保護等。",
-        "why": "社交媒體安全問題對用戶的權益和公司的聲譽都有重要影響。",
-        "category": "社交媒體"
-      },
-      {
-        "term": "ShinyHunters",
-        "full": "ShinyHunters",
-        "def": "一群駭客組織，曾經攻擊過多個公司和機構，導致大量的資料被泄露。",
-        "why": "了解ShinyHunters的背景和活動，可以幫助我們更好地防止類似的攻擊發生。",
-        "category": "cyber-crime"
-      }
-    ],
-    "weekly_summary": null
   }
 ]
