@@ -759,9 +759,12 @@ function nvCaseCard(item, statusCls, statusText){
 // 08-13：生態系權力布局四階段（standard/capital/platform/governance）固定用正方形四角
 // 排列，這樣「①→②③→④→①」的敘事順序天生就是繞正方形一圈的封閉迴路，不用另外
 // 畫一條外圈回頭箭頭。viewBox維持320x420。
-// 08-14：使用者反映改成固定height:300px後圖表寬度被壓縮、資訊擠在一起，改回
-// width:100%+max-width（跟著欄寬縮放，不再跟金字塔高度綁死），欄寬夠時圖會明顯
-// 放大、文字比例跟著viewBox一起放大不會顯得擠；margin:0維持靠左對齊不置中
+// 08-14：使用者反映改成固定height:300px後圖表寬度被壓縮、資訊擠在一起，改用
+// width:100%+max-width;第一版max-width設480px想讓圖明顯放大，結果viewBox整個
+// 等比例放大、文字（12/20px viewBox單位）也跟著放大到遠超過旁邊nv-gov-tip提示
+// 文字（11px）的視覺份量，使用者反映「太大了」。改成max-width:300px，貼近
+// viewBox原始寬度320（scale≈0.94），文字自然落在接近11px、跟提示文字同一個量級，
+// 不用額外調整字級數值；margin:0維持靠左對齊不置中
 const NV_STAGE_POS = {standard:{x:160,y:85}, capital:{x:250,y:210}, platform:{x:160,y:335}, governance:{x:70,y:210}};
 const NV_STRENGTH_WIDTH = {strong:3.5, medium:2, weak:1.2};
 
@@ -801,7 +804,7 @@ function nvGovernanceNetworkSvg(stages, links){
       <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#6a8a20" stroke-width="${sw}" marker-end="url(#nvArrow)"/>
     </g>`;
   }).join('');
-  return `<svg viewBox="0 0 320 420" style="width:100%;max-width:480px;height:auto;display:block;margin:0;">
+  return `<svg viewBox="0 0 320 420" style="width:100%;max-width:300px;height:auto;display:block;margin:0;">
     <defs><marker id="nvArrow" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#6a8a20"/></marker></defs>
     ${edgesHtml}
     ${nodesHtml}
@@ -826,7 +829,7 @@ function nvGovernanceScatterSvg(stages){
       <text x="${cx}" y="${cy-r-8}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">${name}</text>
     </g>`;
   }).join('');
-  return `<svg viewBox="0 0 320 420" style="width:100%;max-width:480px;height:auto;display:block;margin:0;">
+  return `<svg viewBox="0 0 320 420" style="width:100%;max-width:300px;height:auto;display:block;margin:0;">
     <line x1="${X0}" y1="${Y1}" x2="${X1}" y2="${Y1}" stroke="var(--border2)" stroke-width="1.2"/>
     <line x1="${X0}" y1="${Y0}" x2="${X0}" y2="${Y1}" stroke="var(--border2)" stroke-width="1.2"/>
     <text x="${(X0+X1)/2}" y="408" text-anchor="middle" font-size="11" fill="var(--muted)">影響力強度 →</text>
