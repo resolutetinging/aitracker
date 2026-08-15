@@ -1,5 +1,152 @@
 [
   {
+    "date": "2026-08-16",
+    "is_sunday": true,
+    "hw": [
+      {
+        "title": "Nvidia推出5000億美元AI基礎設施融資計畫",
+        "layer": "AI基礎設施",
+        "body": "Nvidia與Apollo、BlackRock、Blackstone、Brookfield、Goldman Sachs和KKR合作，推出5000億美元的AI基礎設施融資計畫，旨在降低Nvidia基礎設施的融資成本，將更多的GPU支出轉移到第三方資本上。該計畫可能會使電力和互連成為AI基礎設施部署的關鍵瓶頸。",
+        "impact": "該計畫可能會增加AI基礎設施的供應，從而推動AI技術的發展，並可能會對電力和互連產業產生影響。同時，該計畫也可能會使Nvidia在AI基礎設施市場中的地位更加穩固。",
+        "rating": "opp",
+        "insight": "Nvidia的5000億美元AI基礎設施融資計畫可能會對AI基礎設施市場產生重大影響，投資者應該關注該計畫的進展。",
+        "source_label": "Datacenter Knowledge",
+        "source": "https://www.datacenterknowledge.com/investing/nvidia-s-500b-ai-infrastructure-bet-raises-power-stakes",
+        "chain": [
+          {
+            "label": "Nvidia 5000億美元AI基礎設施融資計畫 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia GPU 支出↑",
+            "type": "up"
+          },
+          {
+            "label": "Apollo 投資↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Zayo與Nvidia合作，打造超過8000英里的長距離光纖網路",
+        "layer": "AI基礎設施",
+        "body": "Zayo與Nvidia合作，打造超過8000英里的長距離光纖網路，旨在滿足AI基礎設施對於專用連接性的需求。該網路將覆蓋北美的多個高需求市場，包括AI走廊等。",
+        "impact": "該網路的建成可能會增加AI基礎設施的連接性，從而推動AI技術的發展，並可能會對光纖產業產生影響。同時，該網路也可能會使Zayo在AI基礎設施市場中的地位更加穩固。",
+        "rating": "core",
+        "insight": "Zayo與Nvidia的合作可能會對AI基礎設施市場產生重大影響，投資者應該關注該網路的建成進展。",
+        "source_label": "Datacenter Knowledge",
+        "source": "https://www.datacenterknowledge.com/networking/zayo-nvidia-target-fiber-capacity-as-ai-infrastructure-spreads",
+        "chain": [
+          {
+            "label": "Zayo 長距離光纖網路 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 專用連接性需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Zayo 北美市場覆蓋率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Google 將允許用戶從其 AI 生成的內容中移除可見的水印",
+        "layer": "AI 生成內容",
+        "body": "Google 宣布將允許用戶從其 AI 生成的內容中移除可見的水印，包括圖像、影片和歌曲。這個功能將在 Gemini 和 Google 的影片編輯器 Flow 中提供，搜索功能也將在近期推出。這個變化反映了 Google 對於標記 AI 生成內容的方法的演變，旨在平衡創作控制和安全性。",
+        "impact": "這個變化可能會影響 AI 生成內容的使用和分佈，特別是在需要高品質和無水印內容的行業中。同時，這也可能會促使其他公司重新評估其對於 AI 生成內容的標記和使用政策。",
+        "rating": "opp",
+        "insight": "Google 對於 AI 生成內容的標記和使用政策的變化，可能會對整個 AI 產業產生深遠的影響，特別是在創作控制和安全性之間的平衡上。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/14/google-will-now-allow-users-to-remove-visible-watermark-from-its-ai-generations/",
+        "chain": [
+          {
+            "label": "Google AI 生成內容水印移除功能↑",
+            "type": "up"
+          },
+          {
+            "label": "Gemini 使用者體驗↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Flow 編輯器功能↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Mark Zuckerberg 認為 AI 應該是「為所有人」",
+        "layer": "AI 產業",
+        "body": "Mark Zuckerberg 在一封信中認為 AI 應該是「為所有人」而不是由少數實驗室控制的。他認為這個想法伴隨著一些附加條件，包括需要更多的開源和開放權重的 AI 模型。這個想法可能會影響 AI 產業的發展和使用，特別是在開源和開放權重的模型方面。",
+        "impact": "這個想法可能會影響 AI 產業的發展和使用，特別是在開源和開放權重的模型方面。同時，這也可能會促使其他公司重新評估其對於 AI 模型的開發和分享政策。",
+        "rating": "opp",
+        "insight": "Mark Zuckerberg 認為 AI 應該是「為所有人」而不是由少數實驗室控制的，可能會對 AI 產業產生深遠的影響，特別是在開源和開放權重的模型方面。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/video/does-mark-zuckerberg-really-believe-ai-is-for-everyone/",
+        "chain": [
+          {
+            "label": "Mark Zuckerberg 開源 AI 主張↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 產業開源發展↑",
+            "type": "up"
+          },
+          {
+            "label": "開放權重 AI 模型使用率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關新聞",
+        "layer": "app",
+        "body": "今日該分類無足夠具體新聞素材可供分析。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "今日無相關新聞",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "EMIB-T",
+        "full": "局部橋接、多晶粒互連的封裝方法，具有更強的垂直供電與更高密度互連能力",
+        "def": "EMIB-T是EMIB的升級版，重點升級在TSV垂直供電、HBM4/4e相容性與更高整合密度",
+        "why": "EMIB-T可以滿足AI大封裝的需求",
+        "category": "hardware"
+      },
+      {
+        "term": "Glimmer",
+        "full": "Glimmer",
+        "def": "Meta 釋出的開放權重的 AI 模型，任何人都可以下載和在自己的硬體上運行。",
+        "why": "Glimmer 是 Meta 釋出的開放權重的 AI 模型，可能會對 AI 產業產生深遠的影響，特別是在開源和開放權重的模型方面。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Muse Spark",
+        "full": "Muse Spark",
+        "def": "Meta 的更強大的 AI 模型，仍然鎖定在自己的 API 之後。",
+        "why": "Muse Spark 是 Meta 的更強大的 AI 模型，可能會對 AI 產業產生深遠的影響，特別是在開源和開放權重的模型方面。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "co-packaged optics",
+        "full": "共封裝光學",
+        "def": "一種將光學元件與電子元件封裝在一起的技術，能夠提高資料傳輸速度和效率",
+        "why": "這種技術對於未來的資料中心和人工智慧應用具有重要意義",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": "HW：Nvidia推出5000億美元AI基礎設施融資計畫，可能會對AI基礎設施市場產生重大影響。\nHW：Zayo與Nvidia合作，打造超過8000英里的長距離光纖網路，可能會增加AI基礎設施的連接性。\nCORP：Google 將允許用戶從其 AI 生成的內容中移除可見的水印，Meta 釋出 Glimmer，開放權重的 AI 模型。\n下週看點：Mark Zuckerberg 認為 AI 應該是「為所有人」而不是由少數實驗室控制的，可能會對 AI 產業產生深遠的影響，特別是在開源和開放權重的模型方面。\nAPP：今日無相關新聞\n用戶洞察：今日無相關新聞"
+  },
+  {
     "date": "2026-08-15",
     "is_sunday": false,
     "hw": [
@@ -956,128 +1103,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-08-09",
-    "is_sunday": true,
-    "hw": [
-      {
-        "title": "SK Hynix 投資 380 億美元建造新記憶體晶片工廠",
-        "layer": "記憶體產業",
-        "body": "SK Hynix 將投資 380 億美元建造新記憶體晶片工廠，以滿足日益增長的需求。該公司的記憶體晶片價格已經上漲，因為供應短缺和需求旺盛。",
-        "impact": "這將直接影響記憶體晶片的供應鏈，可能會使 SK Hynix 的市場份額上升。同時，下游的電子產品製造商也可能受益於增加的供應。",
-        "rating": "core",
-        "insight": "SK Hynix 的投資將加速記憶體晶片的供應，可能會使電子產品的價格下降。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/08/07/sk-hynix-memory-chips-ai-prices.html",
-        "chain": [
-          {
-            "label": "SK Hynix 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix ASP↑",
-            "type": "up"
-          },
-          {
-            "label": "記憶體晶片供應量↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 暫停 Astra 模型開發，出於安全顧慮",
-        "layer": "AI",
-        "body": "OpenAI 因安全顧慮而暫停 Astra 模型的開發，該模型具有高度的 agentic coding 和 cybersecurity 能力。OpenAI 的 Preparedness Framework 定義了「critical cybersecurity threshold」的概念，指出當模型達到這個門檻時，需要實施額外的安全措施。Astra 模型的開發暫停，反映了 OpenAI 對安全性的重視。",
-        "impact": "這個事件可能會對 OpenAI 的業務產生影響。OpenAI 的安全措施可能會成為業界的標準。",
-        "rating": "core",
-        "insight": "OpenAI 的安全措施可能會成為業界的標準，從而影響其他公司的安全投資。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/08/08/openai-pledges-to-add-astra-security-as-anthropic-loosens-fables-leash/5285161",
-        "chain": [
-          {
-            "label": "OpenAI Astra 模型開發進度↓",
-            "type": "down"
-          },
-          {
-            "label": "OpenAI Preparedness Framework 完善度↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 模型安全性要求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Mirendil 與 Google Cloud 簽署超過 1 億美元的合作協議",
-        "layer": "CSP",
-        "body": "Mirendil 與 Google Cloud 簽署了一份超過 1 億美元的合作協議，為其自我改進的 AI 研究提供計算能力。這個協議反映了雲計算巨頭對 AI 公司的支持，同時也反映了 AI 公司對計算能力的需求。",
-        "impact": "這個協議可能會對 Mirendil 的業務產生影響。Google Cloud 的支持可能會成為業界的標準。",
-        "rating": "core",
-        "insight": "Mirendil 與 Google Cloud 的合作可能會成為業界的標準，從而影響其他公司的計算能力投資。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/06/exclusive-mirendil-inks-100m-google-cloud-deal-to-scale-self-improving-ai/",
-        "chain": [
-          {
-            "label": "Mirendil AI 研究計算能力↑",
-            "type": "up"
-          },
-          {
-            "label": "Google Cloud 合作夥伴數量↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 公司對計算能力需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "前美國國家網路安全總監表示AI模型已經達到智慧的門檻",
-        "layer": "AI智慧",
-        "body": "前美國國家網路安全總監Chris Inglis表示，AI模型已經達到智慧的門檻，雖然它們尚未具有完全的自主性和意志力，但已經接近於智慧。",
-        "impact": "這個觀點將直接影響到AI的發展和應用，AI模型的智慧化將帶來新的挑戰和機會。",
-        "rating": "core",
-        "insight": "AI模型的智慧化將為AI產業帶來新的挑戰和機會。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/security/2026/08/07/asimov-was-right-about-rules-for-robots-says-ex-us-cyber-director/5284397",
-        "chain": [
-          {
-            "label": "AI 模型智慧程度↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 模型自主性↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 模型意志力↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "EMIB-T",
-        "full": "局部橋接、多晶粒互連的封裝方法，具有更強的垂直供電與更高密度互連能力",
-        "def": "EMIB-T 是 EMIB 的升級版，重點升級在 TSV 垂直供電、HBM4/4e 相容性與更高整合密度",
-        "why": "EMIB-T 可以提高 AI 晶片的性能和效率",
-        "category": "半導體"
-      },
-      {
-        "term": "agentic coding",
-        "full": "代理編碼",
-        "def": "一種 AI 模型的編碼方式，允許模型自主地進行編碼和決策。",
-        "why": "這種編碼方式可能會提高 AI 模型的安全性和智能性。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": "HW：SK Hynix 投資 380 億美元建造新記憶體晶片工廠。\nHW：AMD 收購 AI 晶片初創公司 Taalas。\nHW：Indosat 加強 AI 能力，與 Nvidia 和 Nokia 合作。\nCORP：OpenAI 暫停 Astra 模型開發，出於安全顧慮\n下週看點：Mirendil 與 Google Cloud 的合作可能會成為業界的標準，從而影響其他公司的計算能力投資。\nAPP：SpaceX和Tesla選擇德州設立AI晶片製造工廠，將為AI產業帶來新的機會和挑戰。\n用戶洞察：AI模型的智慧化將為AI產業帶來新的挑戰和機會。"
   }
 ]
