@@ -2,6 +2,71 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 48,
+        "CSP/CapEx": 44,
+        "App/AI": 18,
+        "gnews-chip": 18,
+        "gnews-dc": 20,
+        "gnews-app": 15
+      },
+      "digest_filtered": 1,
+      "after_dedup": 142,
+      "buckets": {
+        "hw": 29,
+        "corp": 105,
+        "app": 29
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 4,
+        "corp": 2,
+        "app": 3
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 2,
+          "noise": 0
+        },
+        "corp": {
+          "core": 0,
+          "opp": 2,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "llm_ratings": {
+        "hw": {
+          "core": 2,
+          "opp": 1,
+          "noise": 1
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 2,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "date": "2026-08-17",
+      "generated_at": "2026-08-17T00:03:39.336226+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 44,
         "CSP/CapEx": 51,
         "App/AI": 28,
@@ -844,71 +909,6 @@
       },
       "date": "2026-08-04",
       "generated_at": "2026-08-04T00:04:06.504796+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 51,
-        "CSP/CapEx": 54,
-        "App/AI": 22,
-        "gnews-chip": 15,
-        "gnews-dc": 22,
-        "gnews-app": 13
-      },
-      "digest_filtered": 2,
-      "after_dedup": 151,
-      "buckets": {
-        "hw": 22,
-        "corp": 117,
-        "app": 22
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 4,
-        "corp": 3,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 3,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 0,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 2,
-          "noise": 1
-        },
-        "corp": {
-          "core": 3,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "date": "2026-08-03",
-      "generated_at": "2026-08-03T00:03:43.948323+08:00"
     }
   ]
 }

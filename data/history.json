@@ -1,5 +1,159 @@
 [
   {
+    "date": "2026-08-17",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "中國占全球光學模組製造的56%",
+        "layer": "供應鏈",
+        "body": "根據最近的媒體報導，美國聯邦通信委員會（FCC）正在草擬一份提案，擬限制從中國製造的新型光學收發器的進口。中國占全球光學模組製造的56%，因此這項提案可能會對供應鏈產生影響。TrendForce指出，該提案尚未正式發布，仍有多個關鍵問題未明確，包括「新型號」的定義、判斷「中國製造商」的標準等。",
+        "impact": "如果美國限制從中國進口光學收發器，可能會對供應鏈產生一定的影響，特別是對於依賴中國製造的公司。另外，美國的資料中心運營商可能會尋求多元化的供應商，以減少對中國製造的依賴。",
+        "rating": "opp",
+        "insight": "中國在全球光學模組製造中的主導地位可能會受到美國的限制措施的影響，供應鏈可能會出現一定的變化。",
+        "source_label": "DQ India",
+        "source": "https://www.dqindia.com/semiconductors/china-accounts-for-56-of-global-optical-module-manufacturing-short-term-supply-chain-decoupling-unlikely-under-potential-us-restrictions-12238965",
+        "chain": [
+          {
+            "label": "TSMC 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix ASP↑",
+            "type": "up"
+          },
+          {
+            "label": "中國光學模組產量↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "ChainDrop 蠕蟲攻擊npm供應鏈",
+        "layer": "供應鏈",
+        "body": "ChainDrop是一種新的蠕蟲攻擊，該攻擊已經影響了npm的供應鏈，導致444個套件受到污染。該攻擊是通過tarballs和dev-tool hooks進行的，目前尚不清楚該攻擊的來源和目的。",
+        "impact": "如果ChainDrop蠕蟲攻擊不被及時處理，可能會導致npm的供應鏈受到更大的影響，同時也可能會對開發者和使用者產生一定的影響，特別是那些依賴npm的開發者和使用者。",
+        "rating": "opp",
+        "insight": "ChainDrop蠕蟲攻擊可能會對npm的供應鏈產生一定的影響，同時也可能會對其他供應鏈產生一定的影響，開發者和使用者需要及時關注和處理該攻擊。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/security/2026/08/15/chaindrop-worm-crawls-into-npm-supply-chain-evades-standard-defenses/5287958",
+        "chain": [
+          {
+            "label": "npm 供應鏈安全性↓",
+            "type": "down"
+          },
+          {
+            "label": "ChainDrop 蠕蟲攻擊次數↑",
+            "type": "up"
+          },
+          {
+            "label": "開源軟件安全性↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Anthropic 公佈文字水印方案",
+        "layer": "AI 技術",
+        "body": "Anthropic 公佈了一個文字水印方案，該方案通過修改其聊天機器人 Claude 的詞彙選擇來實現。這個方案的目的是為了遵守 EU AI 法規的透明度要求。",
+        "impact": "這個方案可能會影響 Anthropic 的聊天機器人 Claude 的使用者體驗，並可能會增加其聊天機器人的安全性和透明度。",
+        "rating": "opp",
+        "insight": "Anthropic 的文字水印方案是 AI 公司的一個重要發展，可能會對 AI 公司的透明度和安全性產生影響。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/08/15/anthropic-says-text-watermarking-scheme-relies-on-inconsequential-words/5288156",
+        "chain": [
+          {
+            "label": "Anthropic 文字水印技術↑",
+            "type": "up"
+          },
+          {
+            "label": "EU AI 法規遵守度↑",
+            "type": "up"
+          },
+          {
+            "label": "聊天機器人透明度↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Meta 釋放開源 AI 模型 Glimmer",
+        "layer": "AI 技術",
+        "body": "Meta 釋放了一個開源 AI 模型 Glimmer，該模型可以被任何人下載和運行在自己的硬件上。這個模型的釋放是 Meta 的一個重要發展，可能會對 AI 公司的開源趨勢產生影響。",
+        "impact": "Meta 的開源 AI 模型 Glimmer 可能會增加其在 AI 研究和開發中的影響力。",
+        "rating": "opp",
+        "insight": "Meta 的開源 AI 模型 Glimmer 是 AI 公司的一個重要發展，可能會對 AI 公司的開源趨勢產生影響。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/podcast/metas-open-ai-and-a-250m-deal-gone-very-wrong/",
+        "chain": [
+          {
+            "label": "Meta Glimmer 模型下載量↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 模型開源趨勢↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 研究與發展投資↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Agentic AI 將測試每個醫療工作流程",
+        "layer": "醫療",
+        "body": "Agentic AI 將測試每個醫療工作流程，根據 CEOWORLD 雜誌的報導，Agentic AI 將測試每個醫療工作流程，以提高醫療服務的效率和質量。這項技術將應用於各個醫療領域，包括診斷、治療和預防。Agentic AI 的這項舉動預計將對醫療產業產生重大影響，提高醫療服務的質量和效率。",
+        "impact": "Agentic AI 對醫療產業的影響將是正面的，提高醫療服務的質量和效率。這項技術將使醫療機構能夠更好地管理工作流程，減少錯誤和浪費，提高患者的滿意度。",
+        "rating": "core",
+        "insight": "Agentic AI 對醫療產業的影響將是深遠的，提高醫療服務的質量和效率，促進醫療產業的發展。",
+        "source_label": "CEOWORLD 雜誌",
+        "source": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOMGRHVFJLLXpDWGd2UHhVeWphdHozMXg0eFFWUzRKMHJqc2xmenBlbG03d0NzQV9kVjBvTzdlb2Z1cXA0LXlhVmRGbkxjNEVzekhaZU01eGhiLVpydVhrSEU5YXNJMXNCNkYyMGZ3eEkyaTNWREhodHVmM1p6NGRoOFdBbjhEdw",
+        "chain": [
+          {
+            "label": "Agentic AI 醫療工作流程效率↑",
+            "type": "up"
+          },
+          {
+            "label": "醫療服務質量↑",
+            "type": "up"
+          },
+          {
+            "label": "醫療成本↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "光學模組",
+        "full": "光學模組是指用於光通信和光學系統的模組，包括光收發器、光放大器等。",
+        "def": "光學模組是指用於光通信和光學系統的模組，包括光收發器、光放大器等。它們的主要功能是將光信號轉換為電信號或將電信號轉換為光信號。",
+        "why": "光學模組在光通信和光學系統中扮演著重要的角色，特別是在資料中心和人工智慧等領域中。",
+        "category": "半導體"
+      },
+      {
+        "term": "文字水印",
+        "full": "text watermarking",
+        "def": "一種技術，通過修改文字的詞彙選擇來實現文字的水印。",
+        "why": "這種技術可以用來識別 AI 生成的文字。",
+        "category": "AI 技術"
+      },
+      {
+        "term": "Agentic AI",
+        "full": "Agentic AI",
+        "def": "一種人工智慧技術，應用於各個領域，包括醫療和金融。",
+        "why": "Agentic AI 對醫療和金融產業的影響將是深遠的，提高服務的質量和效率，促進產業的發展。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-16",
     "is_sunday": true,
     "hw": [
@@ -998,108 +1152,6 @@
         "def": "適用於 IoT 和工廠自動化的塑膠外殼，獲得 IP 66、IP 67 和 IP 69K 認證。",
         "why": "ROLEC 的 technoPLUS 塑膠外殼可能會推動 IoT 和工廠自動化的發展。",
         "category": "電子"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-10",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Nvidia 中國 AI 晶片市場份額預計下降",
-        "layer": "AI晶片",
-        "body": "Nvidia 的中國 AI 晶片市場份額預計從 40% 下降到 8%，主要是因為 Huawei 的擴張。",
-        "impact": "此變化可能會對 Nvidia 的中國市場策略產生影響。對於 Huawei 來說，這可能會提高其在中國 AI 晶片市場的競爭力。",
-        "rating": "core",
-        "insight": "Nvidia 的中國市場份額下降可能會對其全球 AI 晶片市場份額產生影響，投資者應該關注其未來的市場策略。",
-        "source_label": "MarketScale",
-        "source": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPc3FYTkRuQWUta3dBcWc4U3IyUFB0YlBuZGlkdWF2a2MycjNER19uX2JFVlNtS1Q2b0NRZWNuVDI0WWlYNGdPRkRDSF9wNFRUYkwwWFpkTi1wemRfOHFyY0UxOVl1SVVYVUR2eElsN3B1LXBVWTllaXBnelE2aWJLN2s5cjdGNGFXU0NYM3JJSThtQlB4RlQzRTNQeFhzNEREcDd3X21SQWh4c2xKTEhORWdCNVlkSktZSUFDSDZOYmFLZzV0TGw0TW9aZzdjR0I4?oc=5",
-        "chain": [
-          {
-            "label": "Nvidia 市占↓",
-            "type": "down"
-          },
-          {
-            "label": "Huawei 市占↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "亞馬遜計劃在美國建造最大碳排放數據中心",
-        "layer": "CSP",
-        "body": "亞馬遜計劃在美國德克薩斯州的佩科斯縣建造一個數據中心，該數據中心可能會成為美國最大的碳排放源。根據《紐約時報》的報導，該數據中心將由一個燃燒天然氣的發電廠提供動力，該發電廠每年可排放3300萬噸二氧化碳。亞馬遜的發言人表示，該數據中心將由新的現場發電設施提供動力，不會增加德克薩斯州家庭的電費。",
-        "impact": "這將直接影響亞馬遜的碳排放量，從而影響其供應鏈中的能源供應商和環境保護組織。",
-        "rating": "core",
-        "insight": "亞馬遜的數據中心建設對其碳排放量和供應鏈將產生重大影響。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/08/planned-amazon-data-center-could-become-the-biggest-climate-polluter-in-the-u-s/",
-        "chain": [
-          {
-            "label": "亞馬遜數據中心建設↑",
-            "type": "up"
-          },
-          {
-            "label": "亞馬遜碳排放量↑",
-            "type": "up"
-          },
-          {
-            "label": "德克薩斯州環境質量↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "農村地區農民使用AI技術提高農業生產效率",
-        "layer": "農業",
-        "body": "在孟加拉國農村地區，一位農民使用AI技術來決定作物、天氣和市場的相關決策，從而提高農業生產效率。這項技術可以幫助農民更好地管理農業生產，提高產量和質量。",
-        "impact": "這項技術的應用可以提高孟加拉國農業產業的效率，從而帶動當地經濟的發展。",
-        "rating": "opp",
-        "insight": "",
-        "source_label": "tbsnews",
-        "source": "https://www.tbsnews.net/thoughts/ai-driven-economic-flywheel-1509691",
-        "chain": [
-          {
-            "label": "農民AI技術應用↑",
-            "type": "up"
-          },
-          {
-            "label": "農業生產效率↑",
-            "type": "up"
-          },
-          {
-            "label": "孟加拉國農業產量↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "LLM",
-        "full": "Large Language Model",
-        "def": "一種大型語言模型，能夠處理和生成自然語言文本。",
-        "why": "LLM 能夠用於各種自然語言處理任務，例如文本分類、情感分析等。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Astra",
-        "full": "Astra 模型",
-        "def": "OpenAI 的一個 AI 模型，目前正在開發中。",
-        "why": "Astra 模型的開發可能會對 AI 技術和應用產生重大影響。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI-driven economic flywheel",
-        "full": "AI驅動的經濟飛輪",
-        "def": "利用AI技術來推動經濟發展的概念",
-        "why": "這項技術可以幫助提高農業生產效率，帶動當地經濟的發展",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
