@@ -130,7 +130,7 @@ def call_groq_diff(current_status, news_snippets):
   "no_change_summary": "若items為空陣列，一句話說明本週查證後判斷現有資料仍準確；若items非空則留空字串"
 }}"""
     response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model="openai/gpt-oss-120b",
         messages=[{"role": "system", "content": sys_msg}, {"role": "user", "content": prompt}],
         temperature=0.2,
         max_tokens=3000,

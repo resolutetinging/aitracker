@@ -25,8 +25,8 @@ GitHub Actions (cron-job.org 觸發)
 
 | 參數 | 值 |
 |------|----|
-| 主模型 | `llama-3.3-70b-versatile` |
-| 備用模型 | `llama-3.1-8b-instant`（413 TPM 超限時切換） |
+| 主模型 | `openai/gpt-oss-120b` |
+| 備用模型 | `openai/gpt-oss-20b`（413 TPM 超限時切換） |
 | `temperature` | `0.3` |
 | `max_tokens` | `4000`（低於此值 JSON 中途截斷） |
 | 輸出格式 | 純 JSON，`finish_reason=length` 拋 ValueError |

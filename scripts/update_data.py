@@ -682,7 +682,7 @@ def fix_chains(data):
     )
     try:
         resp = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="openai/gpt-oss-120b",
             messages=[
                 {"role":"system","content":"只輸出純JSON陣列，不加任何說明或markdown。"},
                 {"role":"user","content":prompt}
@@ -744,7 +744,7 @@ def validate_impact(data):
     )
     try:
         resp = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="openai/gpt-oss-120b",
             messages=[
                 {"role": "system", "content": "只輸出純JSON陣列，不加任何說明或markdown。全程繁體中文：合併（非合並）、合約（非合同）、晶片（非芯片）、記憶體（非内存）、硬體（非硬件）、軟體（非軟件）、影片（非視頻）、程式（非程序，例如「應用程式」不可寫「應用程序」）、智慧（非智能，例如「人工智慧」不可寫「人工智能」）、範圍（非范圍）、電腦（非計算機）、網路（非網絡）、品質（非質量，例如「服務品質」不可寫「服務質量」）、資訊（非信息，例如「地理資訊」不可寫「地理信息」）。禁止出現任何非繁體中文、非英文專有名詞的字詞（如越南文、日文、韓文等語言片語混入句子）。公司名稱一律用原文品牌名（Google、Apple、Meta、Microsoft、Amazon、Qualcomm等），不可翻譯成中文（禁止「谷歌」「蘋果」「高通」等譯名）；台灣上市公司既有中文全名（如台積電、日月光）不受影響。"},
                 {"role": "user", "content": prompt}
@@ -786,7 +786,7 @@ def call_groq(prompt):
         "【body 句數】body 是 1 到 3 句，句數視你實際掌握的具體事實數量而定，不得為了湊句數而重述前一句或加入未經證實的推論；"
         "湊出來的句子無論句數多寡都會被視為空洞輸出。"
     )
-    models = ["llama-3.3-70b-versatile", "llama-3.1-8b-instant"]
+    models = ["openai/gpt-oss-120b", "openai/gpt-oss-20b"]
     response = None
     for model in models:
         try:
@@ -1295,7 +1295,7 @@ def validate_body(data, news_by_cat):
     )
     try:
         resp = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="openai/gpt-oss-120b",
             messages=[
                 {"role": "system", "content": "只輸出純JSON陣列，不加說明或markdown。"},
                 {"role": "user", "content": prompt}
