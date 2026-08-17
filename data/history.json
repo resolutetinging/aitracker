@@ -1,5 +1,109 @@
 [
   {
+    "date": "2026-08-18",
+    "is_sunday": false,
+    "hw": [],
+    "corp": [
+      {
+        "title": "Nvidia 向 SB Energy 投資 15 億美元，成為 OpenAI Ports‑Pike 數據中心唯一算力供應商",
+        "layer": "hardware",
+        "body": "2026 年 8 月 17 日，Nvidia 宣布向 SoftBank 旗下的 SB Energy 投資 15 億美元，並提供最高 1050 億美元的信用額度，以支援位於美國俄亥俄州辛辛那提附近的 OpenAI Ports‑Pike 數據中心建設。該中心初期規模為 4.25 GW，未來可擴充至 8 GW，並將配備 9.2 GW 天然氣發電廠，總造價約 330 億美元。",
+        "impact": "此投資直接提升 Nvidia 在美國 AI 計算基礎設施的出貨量，帶動其 GPU 及相關加速卡需求 ↑；上游晶圓代工廠（如 TSMC、三星）將因 Nvidia 訂單增加而提升先進製程晶圓供應量 ↑；下游雲端服務商與 AI 應用公司因獲得更大算力供應，能加速模型訓練與部署，進一步擴大 AI 服務市場份額。",
+        "rating": "core",
+        "insight": "Nvidia 透過巨額投資鎖定 OpenAI 計算需求，鞏固其在美國 AI 基礎設施市場的領導地位。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/17/nvidia-investing-1-5b-in-softbank-data-center-developer-behind-openai-project/",
+        "chain": [
+          {
+            "label": "Nvidia GPU 供應↑",
+            "type": "up"
+          },
+          {
+            "label": "OpenAI Ports‑Pike 計算需求↑",
+            "type": "up"
+          },
+          {
+            "label": "SB Energy 天然氣發電需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Zhipu 推出 GLM‑5.3 模型，於 CyberGym 基準測試中超越 Fable 5 與 GPT‑5.6 Sol",
+        "layer": "ai_technique",
+        "body": "2026 年 8 月 16 日，中國 AI 公司 Zhipu 公布全新模型 GLM‑5.3，並在 CyberGym 漏洞發掘基準測試中擊敗 Fable 5 與 GPT‑5.6 Sol。Zhipu 表示，GLM‑5.3 不僅能辨識單一缺陷，還能在利用鏈的多個階段推理，形成完整的利用計畫。",
+        "impact": "GLM‑5.3 的高效漏洞發掘能力將推動中國本土 AI 訓練平台對高性能 GPU（如 Nvidia A100）與高速記憶體的需求 ↑，進而刺激上游晶圓代工（如 TSMC、SMIC）相關先進製程晶圓產能分配 ↑；同時，國際安全測試服務供應商面臨來自 Zhipu 內部測試工具的競爭壓力，市場份額可能下降 ↓。",
+        "rating": "opp",
+        "insight": "Zhipu 的新模型若在安全測試領域取得領先，將提升中國 AI 訓練硬體需求，對 GPU 供應鏈形成新一波拉動。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/security/2026/08/17/chinese-ai-company-zhipu-claims-its-new-model-is-a-better-bug-finder-than-anthropic-openai/5288203",
+        "chain": [
+          {
+            "label": "Zhipu GLM‑5.3 性能↑",
+            "type": "up"
+          },
+          {
+            "label": "中國 AI 市場佔有率↑",
+            "type": "up"
+          },
+          {
+            "label": "GPT‑5.6 市占↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic CEO 稱 AI 反彈是「信任危機」，美國數據中心受阻",
+        "layer": "role",
+        "body": "2026 年 8 月 16 日，Anthropic 執行長 Dario Amodei 在接受採訪時指出，AI 反彈本質上是一場信任危機，並提及投資人 Gavin Baker 在 All‑In 播客與 X 平台上指責其警示言論加劇了美國對 AI 數據中心的抵制情緒。",
+        "impact": "此信任危機使美國新建 AI 數據中心的投資熱情下降，導致相關建設服務與電力供應商的訂單需求 ↓；上游的高效散熱與電源設備製造商（如 Vertiv、Schneider Electric）亦因需求減少而面臨產能利用率下降 ↓；相對地，已建成且具備成熟安全合規的既有數據中心將吸引更多客戶，提升其使用率 ↑。",
+        "rating": "opp",
+        "insight": "AI 信任危機可能抑制美國新數據中心建設，對相關硬體供應鏈產生短期需求縮減。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/16/anthropic-ceo-says-ai-backlash-is-fundamentally-a-crisis-of-trust/",
+        "chain": [
+          {
+            "label": "Anthropic 信任危機↓",
+            "type": "down"
+          },
+          {
+            "label": "美國 AI 數據中心建設受阻↓",
+            "type": "down"
+          },
+          {
+            "label": "Microsoft Azure GPU 交期↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [],
+    "glossary_new": [
+      {
+        "term": "GLM-5.3",
+        "full": "Zhipu 大規模語言模型第 5.3 版",
+        "def": "Zhipu 於 2026 年推出的 AI 大模型，專注於安全漏洞偵測與利用鏈推理，據稱在 CyberGym 基準測試中表現領先。",
+        "why": "其高效的漏洞發掘能力可能提升對高性能算力硬體的需求，影響 GPU 供應鏈。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "CyberGym",
+        "full": "AI 漏洞發掘基準測試平台",
+        "def": "一套用於評估 AI 模型在真實網路安全挑戰中發現與利用漏洞能力的測試框架。",
+        "why": "模型在此平台的表現直接反映其對算力與記憶體需求的強度，關聯硬體供應鏈。",
+        "category": "software"
+      },
+      {
+        "term": "Ports‑Pike",
+        "full": "OpenAI 位於美國俄亥俄州的 AI 計算數據中心",
+        "def": "由 OpenAI 與 SoftBank 合作開發的高功率 AI 計算設施，計畫規模最終可達 8 GW，將使用 Nvidia 提供的算力設備。",
+        "why": "此中心的建設與擴容將大幅拉動 GPU、電力與冷卻設備的需求，牽動多層供應鏈。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-17",
     "is_sunday": false,
     "hw": [
@@ -1011,147 +1115,6 @@
         "def": "一種模擬人類智慧的技術，能夠學習和解決問題。",
         "why": "AI技術的發展將帶來新的商機和挑戰，投資者應關注相關公司的發展。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-11",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "世界最大晶片製造商 TSMC 銷售額激增 45%",
-        "layer": "晶片製造",
-        "body": "TSMC 的銷售額在今年第二季度激增 45%，主要是由於 AI晶片需求的增長。TSMC 是大型科技公司的重要供應商，例如 Nvidia 和 Google。這項銷售額的增長，表明了 AI 技術的快速發展和對晶片的需求增加。",
-        "impact": "TSMC 銷售額的增長，可能會對其供應鏈合作夥伴產生正面的影響，例如晶片設計公司和材料供應商。",
-        "rating": "opp",
-        "insight": "TSMC 銷售額的增長，表明了 AI 技術的快速發展和對晶片的需求增加，對於晶片製造業來說是一個重要的機會。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/08/10/tsmc-revenue-surge-ai-chip-big-tech.html",
-        "chain": [
-          {
-            "label": "TSMC 銷售額↑"
-          },
-          {
-            "label": "Nvidia 晶片需求↑"
-          },
-          {
-            "label": "Google 晶片採購↑"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Anthropic 啟用 Claude Code 的自動模式",
-        "layer": "AI 技術",
-        "body": "Anthropic 宣佈將啟用 Claude Code 的自動模式，該模式可以在不需要人工審核的情況下進行編程，從 8 月 14 日開始，Pro、Max 和 Team 帳戶將默認啟用自動模式。根據 Anthropic 的說明，當 Claude Code 啟用自動模式時，它將在不需要人工審核的情況下進行編程，除非某些動作被認為是不可逆轉、破壞性或針對環境外的。",
-        "impact": "這個事件可能會對 Anthropic 的用戶和開發者產生影響，提高他們的編程效率和安全性。",
-        "rating": "core",
-        "insight": "Anthropic 啟用 Claude Code 的自動模式，可能會提高用戶的編程效率和安全性，同時也可能會對其他 AI 技術公司產生競爭壓力。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default/",
-        "chain": [
-          {
-            "label": "Anthropic Claude Code 自動模式啟用↑"
-          },
-          {
-            "label": "Pro、Max 和 Team 帳戶使用率↑"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI 收購 NextSlide",
-        "layer": "AI 技術",
-        "body": "OpenAI 宣佈收購 NextSlide，一家專門開發演示文稿工具的公司。NextSlide 的團隊將加入 OpenAI，繼續開發 AI 產品，以幫助用戶創建、溝通和實現自己的想法。",
-        "impact": "這個事件可能會對 OpenAI 的用戶和開發者產生影響，提高他們的創作和溝通能力。",
-        "rating": "core",
-        "insight": "OpenAI 收購 NextSlide，可能會提高用戶的創作和溝通能力，同時也可能會對其他 AI 技術公司產生競爭壓力。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/08/openai-acquires-presentation-startup-nextslide/",
-        "chain": [
-          {
-            "label": "OpenAI 收購次數↑"
-          },
-          {
-            "label": "NextSlide 團隊規模↑"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Doximity 擴大醫院採用企業 AI",
-        "layer": "醫療",
-        "body": "Doximity 擴大醫院採用企業 AI，同時增加技術支出。根據 fiercehealthcare.com 報導，Doximity 正在醫療領域推動企業 AI 的採用。",
-        "impact": "這可能會增加對 AI 解決方案的需求，從而促進相關供應商的業務增長。同時，醫院和醫療機構也可能會受益於更加高效的運營和更好的患者護理。",
-        "rating": "opp",
-        "insight": "Doximity 的動作可能會推動醫療領域 AI 的發展和採用。",
-        "source_label": "fiercehealthcare.com",
-        "source": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOVnRIR21SeUI1UjJ0bG52THBfaElaVnFQcno2b2xMVHJ5VndlWnZvMDRDNHhTVXpPQmdoVzFfZTA0QlgwSjg5YVlVR2UxY05uSnBRLWd3ZlBkM0k4SXY2bmc3WFJHWklwVGN3cjF5NG5jMldaeDh1d1E5eUFBQ0lTQlhWV0dfMkdLQjhucTR1djgzakctUXdTSGtCRF84bEswTWZMVGN3allrdGRXOGVPYm5Zc1VkdjZBdXl1bFpMc25EcmdLcGNQMjdfR1U?oc=5",
-        "chain": [
-          {
-            "label": "Doximity 醫院採用率↑"
-          },
-          {
-            "label": "企業 AI 技術支出↑"
-          }
-        ]
-      },
-      {
-        "title": "AI 在醫療領域的挑戰",
-        "layer": "醫療",
-        "body": "AI 在醫療領域的挑戰不在於採用，而在於連接。根據 Healthcare Dive 報導，AI 在醫療領域的挑戰是如何將其與現有的系統和流程連接起來。",
-        "impact": "這可能會增加對 AI 解決方案的需求，從而促進相關供應商的業務增長。同時，醫院和醫療機構也可能會受益於更加高效的運營和更好的患者護理。",
-        "rating": "opp",
-        "insight": "AI 在醫療領域的挑戰可能會推動醫療領域 AI 的發展和採用。",
-        "source_label": "Healthcare Dive",
-        "source": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOSVhHOHJiQkYybUN5YnNhbmhkQWE5X3d5RVVXcUotZVBSV18wTERTY0FPdUNWUXFzbDFkbkVyLXdOZEZKQ2FBenh0UWt4eXFROFF6XzdFalcyYjhKTThOTmkzVkZMdTdIV01FbmM1V2FDS2hVV3UzY3V4SkNmLXBoV2doUm9rcFdKcFpISlhmWVEta3B4elpSMXpoNWRYTzdJQlIzZEs4cllJbEZWcEQ0bkRjSQ?oc=5",
-        "chain": [
-          {
-            "label": "AI 在醫療領域的挑戰↓"
-          },
-          {
-            "label": "醫療領域系統和流程連接率↓"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Source Foundry",
-        "full": "Source Foundry",
-        "def": "一家由史丹福研究人員創立的晶片初創公司，旨在加速晶片製造速度並降低成本。",
-        "why": "Source Foundry 的創立和 Situational Awareness 的投資，表明了對晶片製造業的信心和對 AI 技術的重視。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "TSMC",
-        "full": "TSMC",
-        "def": "世界最大晶片製造商，主要供應商為大型科技公司，例如 Nvidia 和 Google。",
-        "why": "TSMC 的銷售額的增長，表明了 AI 技術的快速發展和對晶片的需求增加。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Nvidia",
-        "full": "Nvidia",
-        "def": "一家領先的晶片製造公司，主要生產 AI 晶片和圖形處理器。",
-        "why": "Nvidia 的晶片被廣泛應用於 AI 技術和數據中心，對於 AI 技術的發展和數據中心的需求增加具有重要意義。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Astra 模型",
-        "full": "Astra 模型是一個仍在開發中的 AI 模型，已經達到了一個關鍵的安全門檻，可能會對傳統的安全系統產生威脅。",
-        "def": "Astra 模型是一個 AI 模型，具有高安全風險，可能會對傳統的安全系統產生威脅。",
-        "why": "Astra 模型的開發可能會對 AI 技術產生重大影響，提高安全性和風險意識。",
-        "category": "AI 技術"
-      },
-      {
-        "term": "technoPLUS",
-        "full": "ROLEC 的 technoPLUS 塑膠外殼",
-        "def": "適用於 IoT 和工廠自動化的塑膠外殼，獲得 IP 66、IP 67 和 IP 69K 認證。",
-        "why": "ROLEC 的 technoPLUS 塑膠外殼可能會推動 IoT 和工廠自動化的發展。",
-        "category": "電子"
       }
     ],
     "weekly_summary": null
