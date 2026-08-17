@@ -143,30 +143,43 @@ def call_groq_diff(current_status, news_snippets):
 
 
 def build_overview_html(status):
-    """08-17：使用者反映本週沒有候選異動時信件內容太空洞（只有一句「本週無異動」），
-    要求即使沒有更新也要整理一份現況概況，不要讓信件沒內容。從nv_status.json既有
-    6大分類（不是重新查證，是現有資料的摘要）組出這個區塊，只在「無候選異動」的
-    信件情境使用，有候選異動時該次信件本身就有實質內容不需要這段。"""
-    def names(key):
-        return [it.get('name') or it.get('label') or '' for it in status.get(key, [])]
+    """08-17第二版：使用者澄清這封信要的是「一週總結」——不管本週有沒有偵測到候選異動，
+    都要讓使用者看一眼就了解NVIDIA各block（技術堆疊/案例/roadmap/聯盟/生態系布局）
+    當下的完整現況，週跟週之間本來就會有大量重複內容（架構圖平常不會變）是預期行為，
+    不是要避免的東西。所以這個區塊改成每週信件都固定包含，不是只有「無候選異動」
+    才出現的備案內容；且每個項目附一行實質desc/status，不是只列名字。"""
+    def item_lines(key, show_status=False):
+        rows = ''
+        for it in status.get(key, []):
+            name = it.get('name') or it.get('label') or ''
+            detail = it.get('items') or it.get('desc') or ''
+            status_txt = f'（{it["status"]}）' if show_status and it.get('status') else ''
+            rows += f'''<div style="margin:6px 0;font-size:12.5px;color:#4a4744;line-height:1.55;">
+              <span style="font-weight:700;color:#2c2a28;">{name}</span>{status_txt}
+              {f'<br><span style="color:#6a6460;">{detail}</span>' if detail else ''}
+            </div>'''
+        return rows
+
     sections = [
-        ('🔺 技術堆疊', f"{len(status.get('pyramid', []))}層：" + '→'.join(names('pyramid'))),
-        ('✅ 已上線案例', f"{len(status.get('cases_live', []))}個：" + '、'.join(names('cases_live'))),
-        ('🔵 概念驗證中', f"{len(status.get('cases_poc', []))}個：" + '、'.join(names('cases_poc'))),
-        ('🗺 產品 Roadmap', f"{len(status.get('roadmap', []))}項：" + '、'.join(names('roadmap'))),
-        ('🤝 聯盟／夥伴', f"{len(status.get('alliances', []))}個：" + '、'.join(names('alliances'))),
-        ('🔗 生態系布局', f"{len(status.get('governance', []))}個維度：" + '、'.join(names('governance'))),
+        ('🔺', '技術堆疊', 'pyramid', False),
+        ('✅', '已上線案例', 'cases_live', False),
+        ('🔵', '概念驗證中', 'cases_poc', False),
+        ('🗺', '產品 Roadmap', 'roadmap', True),
+        ('🤝', '聯盟／夥伴', 'alliances', True),
+        ('🔗', '生態系布局', 'governance', True),
     ]
-    rows = ''.join(
-        f'''<div style="margin:10px 0;">
-              <div style="font-size:11.5px;font-weight:700;color:#6a8a20;margin-bottom:2px;">{label}</div>
-              <div style="font-size:12.5px;color:#4a4744;line-height:1.6;">{text}</div>
-            </div>''' for label, text in sections
-    )
+    blocks = ''
+    for emoji, label, key, show_status in sections:
+        n = len(status.get(key, []))
+        blocks += f'''
+        <div style="margin:16px 0;">
+          <div style="font-size:11.5px;font-weight:700;color:#6a8a20;margin-bottom:6px;">{emoji} {label}（{n}）</div>
+          {item_lines(key, show_status)}
+        </div>'''
     return f'''
-    <div style="margin-top:16px;">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#9e9890;margin-bottom:8px;">📌 目前追蹤現況</div>
-      {rows}
+    <div style="margin-top:8px;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#9e9890;margin-bottom:4px;">📌 本週 NVIDIA 專區現況總結</div>
+      {blocks}
     </div>'''
 
 
@@ -188,6 +201,10 @@ def send_email(items, no_change_summary, status):
     from email.mime.multipart import MIMEMultipart
 
     subject = f'🟢 NVIDIA 概況 {DATE_STR}'
+    # 08-17第二版：使用者澄清這封信的定位是「每週固定總結」，不是「有異動才有內容」的
+    # 通知信——候選異動（如果有）只是額外補充在最上面，下面的現況總結每週都要有，
+    # 週跟週之間本來就會有大量重複（技術堆疊平常不會變）是預期行為
+    changes_html = ''
     if items:
         cards = ''
         for it in items:
@@ -210,18 +227,18 @@ def send_email(items, no_change_summary, status):
               </div>
               {src}
             </div>'''
-        body_html = f'''
-        <div style="background:#fdf8f0;border:1px solid #d4b060;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:12.5px;color:#8a6030;">
-          偵測到候選異動，尚未套用到頁面——需要人工複核後手動更新 nv_status.json。
-        </div>
-        {cards}'''
+        changes_html = f'''
+        <div style="margin-bottom:20px;">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#9e9890;margin-bottom:8px;">🆕 本週偵測到候選異動（待人工複核）</div>
+          {cards}
+        </div>'''
     else:
         summary = no_change_summary or '本週查證後判斷現有資料仍準確。'
-        body_html = f'''
-        <div style="background:#faf9f7;border-left:3px solid #6a8a20;padding:14px 16px;border-radius:0 6px 6px 0;font-size:13px;color:#4a4744;line-height:1.6;">
+        changes_html = f'''
+        <div style="background:#faf9f7;border-left:3px solid #6a8a20;padding:14px 16px;border-radius:0 6px 6px 0;font-size:13px;color:#4a4744;line-height:1.6;margin-bottom:20px;">
           {summary}
-        </div>
-        {build_overview_html(status)}'''
+        </div>'''
+    body_html = changes_html + build_overview_html(status)
 
     html = f'''<html><body style="font-family:'Segoe UI',sans-serif;max-width:620px;margin:auto;padding:0;background:#eceae6;color:#2c2a28;">
       <div style="background:#faf9f7;padding:24px 28px;">
