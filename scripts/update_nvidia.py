@@ -149,18 +149,20 @@ def build_overview_html(status):
     不是要避免的東西。所以這個區塊改成每週信件都固定包含，不是只有「無候選異動」
     才出現的備案內容；且每個項目附一行實質desc/status，不是只列名字。"""
     def item_lines(key, show_status=False):
-        # 08-17第三版：使用者反映文字全部擠在一起，改成bullet+縮排——標題跟內文分成
-        # 兩層，用position:absolute的圓點當bullet、內文再往內縮一階，靠留白跟階層
-        # 拉開視覺區隔，不再是一整段密密麻麻的文字牆
+        # 08-17第四版：使用者截圖回報bullet圓點跟標題掉成兩行——查根因是很多email
+        # client（尤其行動版信箱app）不支援position:absolute，第三版靠絕對定位讓
+        # 圓點疊在標題左邊，在瀏覽器（Playwright/Chromium）裡驗證正常，但email
+        # client會直接忽略position屬性，讓<span>退回正常inline flow、被後面的
+        # block級<div>換行擠開。改成bullet直接當文字前綴寫進標題那一行，不依賴任何
+        # 定位屬性，任何HTML渲染引擎都會照樣把它跟標題文字排在同一行
         rows = ''
         for it in status.get(key, []):
             name = it.get('name') or it.get('label') or ''
             detail = it.get('items') or it.get('desc') or ''
             status_txt = f'<span style="font-weight:400;color:#8a6030;">（{it["status"]}）</span>' if show_status and it.get('status') else ''
             detail_html = f'<div style="margin-top:3px;padding-left:14px;font-size:12px;color:#6a6460;line-height:1.6;">{detail}</div>' if detail else ''
-            rows += f'''<div style="margin:12px 0;padding-left:16px;position:relative;">
-              <span style="position:absolute;left:0;top:0;color:#6a8a20;font-weight:700;">•</span>
-              <div style="font-size:13px;font-weight:700;color:#2c2a28;line-height:1.5;">{name}{status_txt}</div>
+            rows += f'''<div style="margin:12px 0;">
+              <div style="font-size:13px;font-weight:700;color:#2c2a28;line-height:1.5;"><span style="color:#6a8a20;">•</span> {name}{status_txt}</div>
               {detail_html}
             </div>'''
         return rows
