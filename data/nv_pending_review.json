@@ -1,5 +1,26 @@
 {
   "checked_at": "2026-08-17",
-  "items": [],
-  "no_change_summary": "本週查證後判斷現有資料仍準確，無需進行任何更新。"
+  "items": [
+    {
+      "category": "roadmap",
+      "action": "update",
+      "target_name": "Vera Rubin 平台（R100/VR200）",
+      "name": "Vera Rubin 平台（R100/VR200）",
+      "desc": "Blackwell後繼平台，7顆晶片+5套機架系統+1台超級電腦整合方案，HBM4 22TB/s、6th-gen NVLink，TSMC 3nm量產爬坡中",
+      "status": "已出貨",
+      "reason": "Nvidia's Secret $21 Billion SpaceX Windfall新聞提到Nvidia已經出貨Vera Rubin平台",
+      "source": "https://247wallst.com/investing/2026/08/15/nvidias-secret-21-billion-spacex-windfall-how-one-chip-deal-turned-into-a-rocket-fortune/"
+    },
+    {
+      "category": "roadmap",
+      "action": "update",
+      "target_name": "Feynman 架構＋新 Rosa CPU",
+      "name": "Feynman 架構＋新 Rosa CPU",
+      "desc": "導入3D堆疊，搭LP40次世代LPU、BlueField-5、CX10，透過Kyber與Spectrum-class光學互連",
+      "status": "加速開發中",
+      "reason": "Nvidia's next-gen Feynman AI platform is ramping up新聞提到Nvidia正在加速開發Feynman平台",
+      "source": "https://www.msn.com/en-us/money/news/nvidia-s-next-gen-feynman-ai-platform-is-ramping-up-forcing-tsmc-to-race-ahead-report/ar-AA2a5Jr3"
+    }
+  ],
+  "no_change_summary": ""
 }
