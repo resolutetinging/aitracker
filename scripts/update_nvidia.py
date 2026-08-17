@@ -142,7 +142,35 @@ def call_groq_diff(current_status, news_snippets):
     return json.loads(raw)
 
 
-def send_email(items, no_change_summary):
+def build_overview_html(status):
+    """08-17：使用者反映本週沒有候選異動時信件內容太空洞（只有一句「本週無異動」），
+    要求即使沒有更新也要整理一份現況概況，不要讓信件沒內容。從nv_status.json既有
+    6大分類（不是重新查證，是現有資料的摘要）組出這個區塊，只在「無候選異動」的
+    信件情境使用，有候選異動時該次信件本身就有實質內容不需要這段。"""
+    def names(key):
+        return [it.get('name') or it.get('label') or '' for it in status.get(key, [])]
+    sections = [
+        ('🔺 技術堆疊', f"{len(status.get('pyramid', []))}層：" + '→'.join(names('pyramid'))),
+        ('✅ 已上線案例', f"{len(status.get('cases_live', []))}個：" + '、'.join(names('cases_live'))),
+        ('🔵 概念驗證中', f"{len(status.get('cases_poc', []))}個：" + '、'.join(names('cases_poc'))),
+        ('🗺 產品 Roadmap', f"{len(status.get('roadmap', []))}項：" + '、'.join(names('roadmap'))),
+        ('🤝 聯盟／夥伴', f"{len(status.get('alliances', []))}個：" + '、'.join(names('alliances'))),
+        ('🔗 生態系布局', f"{len(status.get('governance', []))}個維度：" + '、'.join(names('governance'))),
+    ]
+    rows = ''.join(
+        f'''<div style="margin:10px 0;">
+              <div style="font-size:11.5px;font-weight:700;color:#6a8a20;margin-bottom:2px;">{label}</div>
+              <div style="font-size:12.5px;color:#4a4744;line-height:1.6;">{text}</div>
+            </div>''' for label, text in sections
+    )
+    return f'''
+    <div style="margin-top:16px;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#9e9890;margin-bottom:8px;">📌 目前追蹤現況</div>
+      {rows}
+    </div>'''
+
+
+def send_email(items, no_change_summary, status):
     """獨立信件，跟daily的AI產業動態信完全分開發送、不合併內容。
     收件人只送GitHub Secret設定的NOTIFY_EMAIL（比照daily的secret_recipients），
     不碰data/email_config.json的飛鴿公開名單——那份名單是給每日AI新聞訂閱的，
@@ -159,8 +187,8 @@ def send_email(items, no_change_summary):
     from email.mime.text import MIMEText
     from email.mime.multipart import MIMEMultipart
 
+    subject = f'🟢 NVIDIA 概況 {DATE_STR}'
     if items:
-        subject = f'🟢 NVIDIA 週查證 {DATE_STR} — {len(items)} 項候選異動待複核'
         cards = ''
         for it in items:
             cat = CATEGORY_LABELS.get(it.get('category', ''), it.get('category', ''))
@@ -188,17 +216,17 @@ def send_email(items, no_change_summary):
         </div>
         {cards}'''
     else:
-        subject = f'🟢 NVIDIA 週查證 {DATE_STR} — 本週無異動'
         summary = no_change_summary or '本週查證後判斷現有資料仍準確。'
         body_html = f'''
         <div style="background:#faf9f7;border-left:3px solid #6a8a20;padding:14px 16px;border-radius:0 6px 6px 0;font-size:13px;color:#4a4744;line-height:1.6;">
           {summary}
-        </div>'''
+        </div>
+        {build_overview_html(status)}'''
 
     html = f'''<html><body style="font-family:'Segoe UI',sans-serif;max-width:620px;margin:auto;padding:0;background:#eceae6;color:#2c2a28;">
       <div style="background:#faf9f7;padding:24px 28px;">
         <div style="border-bottom:1px solid #d8d4ce;padding-bottom:16px;margin-bottom:20px;">
-          <div style="font-size:20px;font-weight:800;color:#2c2a28;">🟢 NVIDIA 專區週查證</div>
+          <div style="font-size:20px;font-weight:800;color:#2c2a28;">🟢 NVIDIA 概況</div>
           <div style="font-size:13px;color:#9e9890;margin-top:4px;">{DATE_STR} &nbsp;·&nbsp; 每週自動查證</div>
         </div>
         {body_html}
@@ -244,7 +272,7 @@ def main():
         print("  → 本週未蒐集到任何新聞片段，跳過Groq呼叫（避免無佐證卻要求提出異動）")
         status['last_checked'] = DATE_STR
         save_json(NV_STATUS_PATH, status)
-        send_email([], '本週未蒐集到相關新聞片段，僅更新查證時間戳，未進行內容查證。')
+        send_email([], '本週未蒐集到相關新聞片段，僅更新查證時間戳，未進行內容查證。', status)
         print("✅ 完成（本週無新聞片段，僅更新查證時間戳）\n")
         return
 
@@ -274,7 +302,7 @@ def main():
         print(f"  → 偵測到 {len(items)} 項候選異動，已寫入 data/nv_pending_review.json（未套用，待人工複核）")
     else:
         print(f"  → 本週查證後無需更新：{pending['no_change_summary']}")
-    send_email(items, pending['no_change_summary'])
+    send_email(items, pending['no_change_summary'], status)
     # git commit/push 交給 GitHub Actions 的 git-auto-commit-action 處理（比照
     # daily-update.yml 慣例），本腳本只負責寫檔案，不自己動 git
     print("✅ 完成\n")
