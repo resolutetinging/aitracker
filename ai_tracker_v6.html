@@ -2056,7 +2056,7 @@ async function summarizeArchive() {
     return;
   }
 
-  // 08-06：Groq免費方案llama-3.3-70b-versatile限制12,000 TPM（來源：console.groq.com/docs/rate-limits），
+  // 08-06：Groq免費方案（現用openai/gpt-oss-120b）限制12,000 TPM（來源：console.groq.com/docs/rate-limits），
   // 選的天數範圍再小，只要單日筆記夠長還是可能整包超過這個上限被回413。改成失敗就自動縮減天數
   // （從最舊的開始砍，優先保留最近的）重試，而不是靠猜一個固定字數上限一次到位。
   function _buildAnalysisPrompt(useDates) {
