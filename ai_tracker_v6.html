@@ -2008,6 +2008,8 @@ function saveGroqKey() {
 }
 function clearGroqKey() {
   localStorage.removeItem('groq_key');
+  localStorage.removeItem('tina_groq');
+  localStorage.removeItem('oasis_groq_key');
   sessionStorage.removeItem('arc_summary');
   _replaceSummaryCard();
 }
