@@ -1,5 +1,140 @@
 [
   {
+    "date": "2026-08-19",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Xen Project 推動 IEC‑61508 安全標準，以支援車用嵌入式虛擬化",
+        "layer": "安全與標準",
+        "body": "2026 年 8 月 18 日，Xen Project 宣布將正式遵循 IEC‑61508 安全標準，目標讓其開源虛擬化管理程式在汽車緊急剎車與碰撞避免等關鍵應用中取得安全認證；此舉同時回應車廠希望以單一硬體平台整合多項功能的需求，減少實體電腦數量；Xen 已在過去數年加強嵌入式工作負載支援，並與 Boeing、AMD、Renesas 等合作推動標準化。",
+        "impact": "Xen 取得 IEC‑61508 認證後，車用系統供應鏈將更傾向採用其虛擬化解決方案，導致對支援 Xen 的晶片（如 AMD、Renesas）需求 ↑，同時降低對傳統單一功能 MCU 的採購量 ↓。",
+        "rating": "opp",
+        "insight": "安全認證的 Xen 可能成為車用虛擬化的標準選項，帶動相關晶片與封測服務需求上升。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/virtualization/2026/08/18/xen-project-gets-serious-about-safety-in-push-to-possibly-partition-robot-brains/5288914",
+        "chain": [
+          {
+            "label": "Xen Project 車用嵌入式虛擬化安全認證↑",
+            "type": "up"
+          },
+          {
+            "label": "Renesas 車載晶片需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 推出針對青少年的安全版 ChatGPT",
+        "layer": "core",
+        "body": "OpenAI 於 2026 年 8 月 18 日正式發布名為 ChatGPT for Teens 的新產品，加入防止自殺與作弊的安全機制；該版本新增「Study Mode」功能，於青少年提問時提供引導問題與步驟說明；系統亦會在偵測到可能的作弊行為時彈出作業提醒，促使使用者自行完成作業。",
+        "impact": "",
+        "rating": "core",
+        "insight": "OpenAI 以安全功能切入青少年市場，將刺激 GPU 與雲端算力需求，提升上游晶片供應鏈營收。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/",
+        "chain": [
+          {
+            "label": "OpenAI ChatGPT for Teens 訂閱用戶增長↑",
+            "type": "up"
+          },
+          {
+            "label": "家長監管平台合作收入↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic 年化營收突破 650 億美元",
+        "layer": "core",
+        "body": "Anthropic 於 2026 年 7 月底公布其年化營收跑道達 650 億美元，較 5 月的 470 億美元提升約 38%；公司預計全年營收將介於 1000 至 1200 億美元之間，並已提交機密 IPO 申請文件；同時，競爭對手 OpenAI 的年度營收亦從 2025 年底的 200 億美元增至 400 億美元。",
+        "impact": "營收大幅成長將驅動 Anthropic 加速自研算力平台，提升對資料中心建設的投資，帶動相關建築與能源供應鏈需求。",
+        "rating": "core",
+        "insight": "Anthropic 營收突破新高，將加速算力採購與資料中心擴建，提升上游晶片與代工產能需求。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/17/anthropics-annualized-revenue-surges-to-65b/",
+        "chain": [
+          {
+            "label": "Anthropic 年化營收↑",
+            "type": "up"
+          },
+          {
+            "label": "OpenAI 競爭壓力↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Whisker 推出 AI 智慧貓砂機 Litter‑Robot 5 Pro",
+        "layer": "consumer‑smart‑home",
+        "body": "Whisker 於 2026 年 8 月發布全新 Litter‑Robot 5 Pro，售價 899 美元，內建 AI 演算法自動偵測貓咪排泄並清理貓砂。該機型宣稱能透過影像辨識辨識貓咪行為，但多位測評者指出在實際使用中 AI 判斷不準確，導致清理失效。產品於 The Verge 評測報導中被批評「看似先進卻無法正常運作」。",
+        "impact": "下游方面，智慧家居平台與零售通路需調整庫存與售後服務，可能導致物流與維修服務需求 ↑。若市場對 AI 功能失望，競爭對手的非 AI 傳統貓砂機將受惠，市場份額可能向傳統品牌轉移。",
+        "rating": "core",
+        "insight": "AI 功能未達預期可能抑制智慧家居產品的採用速度。",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/tech/978323/whisker-litter-robot-5-pro-review",
+        "chain": [
+          {
+            "label": "Whisker Litter‑Robot 5 Pro 銷售量↓",
+            "type": "down"
+          },
+          {
+            "label": "寵物用品零售商庫存壓力↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "IEC‑61508",
+        "full": "國際功能安全標準 IEC‑61508",
+        "def": "IEC‑61508 為電氣/電子/可程式化系統的功能安全國際標準，規範軟硬體在可能危及人身安全的環境中的開發與驗證流程。",
+        "why": "取得此標準認證可讓軟體平台如 Xen 在車用、工業等高安全需求領域獲得合規資格，提升市場接受度。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Neocloud",
+        "full": "新型雲端 AI 基礎設施服務",
+        "def": "Neocloud 指的是結合高效能 GPU、專用 AI 加速器與彈性雲端資源的服務模式，提供即時 AI 推理與訓練能力。",
+        "why": "Groq 轉型為 Neocloud 供應商意味著對 GPU 及相關高帶寬記憶體的需求將顯著提升，影響上游晶圓與封測產能配置。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Hypervisor",
+        "full": "虛擬化管理程式",
+        "def": "Hypervisor 是一種軟體層，允許在同一硬體上同時執行多個作業系統或工作負載，常用於伺服器與嵌入式系統的資源隔離。",
+        "why": "Xen 作為開源 Hypervisor 若符合 IEC‑61508，將促使車用系統採用虛擬化以降低硬體成本與提升安全性。",
+        "category": "hardware"
+      },
+      {
+        "term": "Study Mode",
+        "full": "學習模式",
+        "def": "OpenAI 為青少年版 ChatGPT 設計的功能，提供分步驟引導與問題提示，協助使用者自行解題。",
+        "why": "此功能提升產品安全性與教育價值，可能成為 AI 教育工具的標準配置。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "annualized revenue run rate",
+        "full": "年化營收跑道",
+        "def": "根據近期營收數據推算的全年營收預估值，常用於快速評估公司成長速度。",
+        "why": "Anthropic 公布的 650 億美元年化營收顯示其市場擴張速度遠超競爭對手。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI 感測模組",
+        "full": "Artificial Intelligence Sensor Module",
+        "def": "內建機器學習演算法的感測器，可即時分析影像或聲音資料，並根據結果自動執行控制指令。",
+        "why": "此技術是智慧家居產品實現自動化與個人化服務的關鍵，影響上下游硬體與軟體供應鏈。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-18",
     "is_sunday": false,
     "hw": [],
@@ -889,232 +1024,6 @@
         "def": "Palantir 是一家美國的科技公司，主要提供數據分析和商業智能服務。該公司可能會獲得美國國防部的一份價值 2.44 億美元的合約。",
         "why": "Palantir 的政府合約可能會帶來新的業務機會，同時也可能會增加競爭。",
         "category": "app"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-12",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "高頻寬記憶體成為3D堆疊測試的試驗場",
-        "layer": "記憶體",
-        "body": "高頻寬記憶體（HBM）已成為3D堆疊測試、設計-for-測試和可靠性的試驗場。由於資料中心中的故障成本高昂，設計-for-測試正在發生重大變化，允許晶片製造商識別即將發生的故障並消除互連和芯片間的弱點。HBM以其對資料密集型任務的巨大益處而聞名，例如人工智慧、高清圖形處理和其他需要大量資料處理和高速資料傳輸的應用。",
-        "impact": "這一發展可能會直接影響晶片製造商的設計-for-測試策略，從而間接影響資料中心的可靠性和效率。同時，HBM的複雜結構也可能會對晶片製造商的生產能力和成本產生影響。",
-        "rating": "opp",
-        "insight": "高頻寬記憶體的發展對於資料中心的可靠性和效率具有重要意義，投資者應該關注相關晶片製造商的設計-for-測試策略和生產能力。",
-        "source_label": "SemiEngineering",
-        "source": "https://semiengineering.com/hbm-becomes-testbed-for-3d-assembly-yield/",
-        "chain": [
-          {
-            "label": "HBM 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "TSMC 3D堆疊技術↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix 高頻寬記憶體供應↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Situational Awareness 投資 4 億美元於晶片創新公司 Source Foundry",
-        "layer": "創新公司",
-        "body": "Situational Awareness，一家人工智慧專注的對沖基金，投資了 4 億美元於晶片創新公司 Source Foundry。這家公司由斯坦福研究人員創立，旨在使晶片製造更快、更便宜。",
-        "impact": "這一投資可能會直接影響 Source Foundry 的研發能力和生產成本。",
-        "rating": "core",
-        "insight": "Situational Awareness 對於晶片創新公司的投資，表明了人工智慧和晶片製造業的緊密關係，投資者應該關注相關公司的研發能力和生產成本。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/09/embattled-hedge-fund-situational-awareness-invests-400m-in-chip-startup-source-foundry/",
-        "chain": [
-          {
-            "label": "Source Foundry 資金↑",
-            "type": "up"
-          },
-          {
-            "label": "Situational Awareness 投資回報↑",
-            "type": "up"
-          },
-          {
-            "label": "晶片創新公司發展↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Amkor 考慮出售中國晶片業務",
-        "layer": "晶片製造",
-        "body": "Amkor Technology，一家全球最大的外包晶片組裝和測試公司，正在考慮出售其中國業務。這一業務的估值可能在 10 億美元至 15 億美元之間。",
-        "impact": "這一出售可能會直接影響 Amkor 的中國業務的運營和發展。",
-        "rating": "opp",
-        "insight": "若最終以10-15億美元估值成交，Amkor可望取得資產處置收益並聚焦非中國產能布局，後續買方身份與既有OSAT訂單能否延續是觀察重點。",
-        "source_label": "The Next Web",
-        "source": "https://thenextweb.com/news/amkor-china-unit-stake-sale/",
-        "chain": [
-          {
-            "label": "Amkor 中國業務估值↑",
-            "type": "up"
-          },
-          {
-            "label": "Amkor 資產處置效率↑",
-            "type": "up"
-          },
-          {
-            "label": "外包晶片組裝和測試產業競爭↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Anthropic 將在 EU 推出嵌入水印的 AI 模型",
-        "layer": "AI",
-        "body": "Anthropic 將在 EU 推出嵌入水印的 AI 模型，以幫助區分 AI 生成的內容。該公司表示，生成的文本將包含嵌入的水印，生成的檔案將包含數位簽名的來源元數據。",
-        "impact": "這將直接影響 Anthropic 的客戶，特別是那些使用 AI 生成內容的企業。",
-        "rating": "opp",
-        "insight": "Anthropic 的做法可能會成為 AI 行業的新標準，企業需要考慮如何在 AI 生成的內容中嵌入水印。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/08/11/anthropic-pledges-to-embed-watermarks-to-help-discern-ai-slop-in-sop-to-eu/5285792",
-        "chain": [
-          {
-            "label": "Anthropic EU 市場份額↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 水印技術應用↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 生成內容識別率↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI 推出新商業版 SKU",
-        "layer": "AI",
-        "body": "OpenAI 推出新商業版 SKU，提供更高的使用限制和更大的容量。該 SKU 的價格為每月 125 美元，相比標準商業版 SKU貴了 100 美元。",
-        "impact": "這將直接影響 OpenAI 的客戶，特別是那些需要更高使用限制和更大容量的企業。",
-        "rating": "core",
-        "insight": "OpenAI 的做法可能會成為 AI 行業的新標準，企業需要考慮如何提供更高的使用限制和更大的容量。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/08/10/hey-big-spender-openai-has-a-new-sku-just-for-you/5285727",
-        "chain": [
-          {
-            "label": "OpenAI 商業版 SKU 銷量↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI 收入↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 模型使用限制↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Meta 推出新開源 AI 模型 Muse Glimmer",
-        "layer": "AI",
-        "body": "Meta 推出新開源 AI 模型 Muse Glimmer，該模型具有 30 億參數。Muse Glimmer 是 Meta 首個在過去一年中推出的開源 AI 模型。",
-        "impact": "這將直接影響 Meta 的客戶，特別是那些使用 AI 生成內容的企業。",
-        "rating": "opp",
-        "insight": "Meta 的做法可能會成為 AI 行業的新標準，企業需要考慮如何推出開源 AI 模型。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/08/10/zuck-rekindles-open-weights-llama-drama-with-muse-glimmer/5285666",
-        "chain": [
-          {
-            "label": "Meta 開源 AI 模型數量↑",
-            "type": "up"
-          },
-          {
-            "label": "Muse Glimmer 模型參數↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 研究開發效率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "醫療業者加速採用AI技術",
-        "layer": "醫療業",
-        "body": "根據UPMC報告，醫療業者正在比預期更快地採用AI技術，71%的印度醫療專業人士表示AI幫助他們看更多的病人。Emirates NBD和DFDF合作加速金融科技和AI採用，旨在提高醫療服務質量和效率。",
-        "impact": "這將直接影響醫療業的供應鏈，提高對AI技術和相關服務的需求。",
-        "rating": "core",
-        "insight": "醫療業者加速採用AI技術，將帶來新的商機和挑戰，投資者應關注相關公司的發展。",
-        "source_label": "BW Healthcare World",
-        "source": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPV0Y2X0VGVFk0cXV6Y2ZPaTdDNm9yamFfSUI5cUxTTjZsVjlDTUJCSkdfZ0sxZFgySG9oeVA2YWljakJsT0cxVjYtc3UzN3A4Z29UWFpReXNpR3VrZW1LdW93WlVSTkhEbzEybkJOV0w4MHpwMDIyZlJCbFQ5dUNBeHRVYkUwb1BPOHRWNHJHdFZjS1lyUFVuQzVpamhsVVpqckVGM2RMb1o1Wlk2WkYzZFhDNzJacGpBbzNXN0hCWQ",
-        "chain": [
-          {
-            "label": "醫療業者 AI 採用率↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 技術應用於醫療服務↑",
-            "type": "up"
-          },
-          {
-            "label": "醫療服務質量和效率↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "AI技術應用於金融服務",
-        "layer": "金融服務",
-        "body": "Emirates NBD和DFDF合作加速金融科技和AI採用，旨在提高金融服務質量和效率。這將直接影響金融業的供應鏈，提高對AI技術和相關服務的需求。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "AI技術的應用於金融服務，將帶來新的商機和挑戰，投資者應關注相關公司的發展。",
-        "source_label": "IBS Intelligence",
-        "source": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOOVJUX0lycFRheXBKcGoyQnFtYW5lX1dyUHU3ZU92T1V2bjkxbnBnN0Nvb2Y4V2dZcGxlVDlkbDg4S0dsdk4tR2VsTGtIQks5YW53a2ViMGdRb3h1c0gwaHREbFBrMV9Ddm5VbE5EckJiUXYtcm83YVNJU1JRNHhJNXhHemJLOFZORXdBZXVCUmRwSmlYREliWjFPMWkyc3JQNE1SRw",
-        "chain": [
-          {
-            "label": "Emirates NBD 和 DFDF 合作↑",
-            "type": "up"
-          },
-          {
-            "label": "金融科技和 AI 採用率↑",
-            "type": "up"
-          },
-          {
-            "label": "金融服務質量和效率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "HBM",
-        "full": "High-Bandwidth Memory",
-        "def": "一種高頻寬記憶體技術，常用於資料密集型應用。",
-        "why": "HBM 的發展對於資料中心的可靠性和效率具有重要意義。",
-        "category": "記憶體"
-      },
-      {
-        "term": "水印",
-        "full": "嵌入在 AI 生成的內容中的數位簽名",
-        "def": "用於區分 AI 生成的內容和人工生成的內容",
-        "why": "這是因為 AI 生成的內容可能會被誤認為人工生成的內容",
-        "category": "AI"
-      },
-      {
-        "term": "AI",
-        "full": "人工智慧",
-        "def": "一種模擬人類智慧的技術，能夠學習和解決問題。",
-        "why": "AI技術的發展將帶來新的商機和挑戰，投資者應關注相關公司的發展。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
