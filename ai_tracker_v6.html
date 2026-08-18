@@ -2099,6 +2099,7 @@ ${noteBlocks}
         headers: {'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json'},
         body: JSON.stringify({
           model: 'openai/gpt-oss-120b',
+          reasoning_format: 'hidden',
           messages: [{role:'user', content: _buildAnalysisPrompt(useDates)}],
           // 08-12：移除definitions欄位、範圍固定收斂到近7天後，輸入端省下的token空間
           // 挪給insight要求更深的推論深度（4-6句/項），提高到3400（近7天輸入量遠小於

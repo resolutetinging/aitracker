@@ -131,6 +131,7 @@ def call_groq_diff(current_status, news_snippets):
 }}"""
     response = client.chat.completions.create(
         model="openai/gpt-oss-120b",
+        reasoning_format="hidden",
         messages=[{"role": "system", "content": sys_msg}, {"role": "user", "content": prompt}],
         temperature=0.2,
         max_tokens=3000,
