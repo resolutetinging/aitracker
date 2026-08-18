@@ -1196,7 +1196,7 @@ async function addUserTerm(){
   if(!input)return;
   const term=input.value.trim();
   if(!term){status.textContent='請輸入術語名稱';return;}
-  const key=localStorage.getItem('groq_key');
+  const key=(localStorage.getItem('groq_key')||localStorage.getItem('tina_groq')||localStorage.getItem('oasis_groq_key'));
   if(!key){status.textContent='請先設定 Groq Key';return;}
   // 避免重複
   const existing=loadUserTerms();
@@ -1246,7 +1246,7 @@ async function addUserTerm(){
 }
 
 async function regenerateUserTerm(term){
-  const key=localStorage.getItem('groq_key');
+  const key=(localStorage.getItem('groq_key')||localStorage.getItem('tina_groq')||localStorage.getItem('oasis_groq_key'));
   if(!key){alert('請先在「⚙ 設定」區儲存 Groq Key');return;}
   const btn=document.getElementById('regen-'+term.replace(/'/g,"\\'"));
   if(btn){btn.disabled=true;btn.textContent='⏳';}
@@ -1968,7 +1968,7 @@ function renderArchive(notes) {
 }
 
 function renderSummaryCard(notes) {
-  const hasGroq = !!localStorage.getItem('groq_key');
+  const hasGroq = !!(localStorage.getItem('groq_key')||localStorage.getItem('tina_groq')||localStorage.getItem('oasis_groq_key'));
   const dates = Object.keys(notes).filter(k => k.match(/^\d{4}-\d{2}-\d{2}$/));
   if (!dates.length) return '';
   if (!hasGroq) {
@@ -2023,7 +2023,7 @@ function _replaceSummaryCard() {
 let _currentArchiveNotes = {};
 
 async function summarizeArchive() {
-  const key = localStorage.getItem('groq_key');
+  const key = (localStorage.getItem('groq_key')||localStorage.getItem('tina_groq')||localStorage.getItem('oasis_groq_key'));
   if (!key) return;
   const btn = document.getElementById('arc-analyze-btn');
   const body = document.getElementById('arc-summary-body');
