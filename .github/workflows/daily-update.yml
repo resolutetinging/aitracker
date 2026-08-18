@@ -47,12 +47,14 @@ jobs:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           NOTION_TOKEN:       ${{ secrets.NOTION_TOKEN }}
           NOTION_DB_ID:       ${{ secrets.NOTION_DB_ID }}
+          PIGEON_ONLY_INPUT:  ${{ github.event.inputs.pigeon_only }}
+          FORCE_INPUT:        ${{ github.event.inputs.force }}
         run: |
           EXTRA=""
-          if [ "${{ github.event.inputs.pigeon_only }}" = "true" ]; then
+          if [ "$PIGEON_ONLY_INPUT" = "true" ]; then
             EXTRA="$EXTRA --pigeon-only"
           fi
-          if [ "${{ github.event.inputs.force }}" = "true" ]; then
+          if [ "$FORCE_INPUT" = "true" ]; then
             EXTRA="$EXTRA --force"
           fi
           python scripts/update_data.py $EXTRA
