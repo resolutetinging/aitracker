@@ -1211,7 +1211,6 @@ async function addUserTerm(){
       headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
       body:JSON.stringify({
         model:'openai/gpt-oss-120b',
-        reasoning_format:'hidden',
         reasoning_effort:'low',
         messages:[{role:'user',content:
           `Generate a detailed glossary card for the AI/semiconductor supply chain term: "${term}"\nOutput ONLY pure JSON, no markdown:\n{"term":"${term}","full":"English Full Name　繁體中文名稱","def":"必須寫滿3句繁體中文定義，每句需包含具體數字、產品規格或公司名稱，禁止只寫一句短語","why":"📌 對AI供應鏈投資者的重要性：具體說明影響哪些公司（如TSMC/NVIDIA/SK Hynix等）及上下游供應鏈效應，2句繁體中文","category":"${catList}"}`
@@ -1258,7 +1257,6 @@ async function regenerateUserTerm(term){
       headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
       body:JSON.stringify({
         model:'openai/gpt-oss-120b',
-        reasoning_format:'hidden',
         reasoning_effort:'low',
         messages:[{role:'user',content:
           `Generate a detailed glossary card for the AI/semiconductor supply chain term: "${term}"\nOutput ONLY pure JSON, no markdown:\n{"term":"${term}","full":"English Full Name　繁體中文名稱","def":"必須寫滿3句繁體中文定義，每句需包含具體數字、產品規格或公司名稱","why":"📌 對AI供應鏈投資者的重要性：具體說明影響哪些公司及上下游供應鏈效應，2句繁體中文","category":"${catList}"}`
@@ -2101,7 +2099,6 @@ ${noteBlocks}
         headers: {'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json'},
         body: JSON.stringify({
           model: 'openai/gpt-oss-120b',
-          reasoning_format: 'hidden',
           reasoning_effort: 'low',
           messages: [{role:'user', content: _buildAnalysisPrompt(useDates)}],
           // 08-12：移除definitions欄位、範圍固定收斂到近7天後，輸入端省下的token空間
