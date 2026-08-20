@@ -1,5 +1,166 @@
 [
   {
+    "date": "2026-08-21",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "客製化 HBM4 基底晶片商業模式出現新變數",
+        "layer": "memory",
+        "body": "HBM4 允許客製化基底晶片（cHBM），此舉由 Synopsys 產品管理總監 Rob Kruger 表示將成為差異化策略之一。客製化基底晶片的設計、製造與堆疊組裝均需在協商後由不同供應商分工完成，顯示供應鏈將出現多方合作模式。此模式在記憶體供應緊張時仍能維持產能，因為客製化需求不會額外加劇一般 HBM 供應壓力。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "客製化 HBM4 為 AI 加速卡提供差異化路徑，同時分散記憶體供應鏈風險。",
+        "source_label": "Semiconductor Engineering",
+        "source": "https://semiengineering.com/how-will-the-custom-hbm-business-work/",
+        "chain": [
+          {
+            "label": "Synopsys cHBM 設計↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC cHBM 製造↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix HBM4 供應↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Meta 發布支援全系統語音輸入的 Mac 應用程式",
+        "layer": "CSP/CapEx",
+        "body": "Meta 於 2026 年 8 月 20 日在 TechCrunch 公布新 Mac 應用程式，內建系統全域語音輸入功能，可在所有應用程式中即時轉寫文字。該應用程式同時使用 Muse Spark 模型，能根據螢幕內容提供即時問答，並支援將 Instagram、Facebook、Google Workspace 等帳號連結至 AI 助理。Meta 表示企業用戶可透過此功能查詢廣告成效、受眾互動指標以及公開競爭對手資訊。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Meta 以系統級語音與螢幕感知功能深化 AI 服務，將拉動 GPU 與語音晶片需求。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/20/meta-ais-new-mac-app-wants-you-to-talk-to-your-apps/",
+        "chain": [
+          {
+            "label": "Meta Mac 語音輸入功能↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta Instagram 整合↑",
+            "type": "up"
+          },
+          {
+            "label": "Azure GPU 需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 推出「Private Safety Processing」隱私安全服務",
+        "layer": "CSP/CapEx",
+        "body": "OpenAI 於 2026 年 8 月 19 日在 TechCrunch 宣布為選定企業客戶預覽「Private Safety Processing」服務，該自動化系統在偵測潛在濫用行為時不會保留任何客戶資料。此舉被視為 OpenAI 針對 Anthropic 近期資料保留政策的回應，並強調不會將客戶數據用於模型訓練。OpenAI 同時指出此服務已在部分大型企業環境中測試，未公開具體客戶名單。",
+        "impact": "",
+        "rating": "core",
+        "insight": "OpenAI 的隱私安全服務有望吸引更多企業客戶，推動雲端算力與加密硬體需求。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/19/openai-seeks-to-one-up-anthropic-with-new-customer-privacy-protections/",
+        "chain": [
+          {
+            "label": "OpenAI Private Safety Processing 服務↑",
+            "type": "up"
+          },
+          {
+            "label": "Anthropic 資料保留政策↓",
+            "type": "down"
+          },
+          {
+            "label": "Microsoft Azure AI 安全服務需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Cognition CEO 否認 SpaceX 收購傳聞",
+        "layer": "CSP/CapEx",
+        "body": "2026 年 8 月 19 日 Bloomberg 報導稱 SpaceX 有意收購 AI 程式碼生成新創 Cognition，Cognition 執行長 Scott Wu 隨即於 X（Twitter）回應稱該報導不實，並指出公司「不在出售」且與 SpaceX 無任何談判。此回應同日於 TechCrunch 轉載，未提供其他收購細節或金額。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "SpaceX 對 AI 編碼新創的興趣顯示航太與 AI 的交叉需求，將帶動高效能 GPU 供應鏈的成長。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/19/cognition-ceo-denies-report-that-spacex-tried-to-acquire-the-startup/",
+        "chain": [
+          {
+            "label": "SpaceX 收購意向↓",
+            "type": "down"
+          },
+          {
+            "label": "Cognition 市占↑",
+            "type": "up"
+          },
+          {
+            "label": "Cognition 融資需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "本日無相關app新聞",
+        "layer": "app",
+        "body": "今日該分類無足夠具體新聞素材可供分析。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "cHBM",
+        "full": "custom High-Bandwidth Memory",
+        "def": "客製化的高頻寬記憶體堆疊，允許客戶在 HBM 基底晶片上加入特定功能或規格，以配合自家 AI 加速器需求。",
+        "why": "提供 AI 硬體差異化與供應鏈彈性。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "HBM4",
+        "full": "High-Bandwidth Memory 第四代",
+        "def": "最新一代的高頻寬記憶體標準，具備更高的資料傳輸速率與更低的功耗，常用於 AI 加速卡與高效能運算平台。",
+        "why": "是 AI 基礎設施的關鍵記憶體技術。",
+        "category": "hardware"
+      },
+      {
+        "term": "system-wide dictation",
+        "full": "系統全域語音輸入",
+        "def": "一種在作業系統層面提供語音轉文字功能的技術，允許使用者在任何應用程式中直接說話並即時產生文字。",
+        "why": "Meta 將此功能整合至 Mac 應用程式，提升 AI 交互的便利性，將驅動語音晶片與相關軟硬體需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Private Safety Processing",
+        "full": "私密安全處理",
+        "def": "OpenAI 為企業客戶推出的服務，能在不保留客戶資料的前提下自動偵測並阻止模型濫用行為。",
+        "why": "此服務直接回應企業對資料隱私的關切，可能加速企業採用 OpenAI 平台，提升算力需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Muse Spark",
+        "full": "Muse Spark 模型",
+        "def": "Meta AI 內部開發的語言模型，具備根據螢幕內容提供即時問答與資訊摘要的能力。",
+        "why": "作為 Meta 新 Mac 應用的核心引擎，將推動相關 GPU 與記憶體供應鏈需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "前饋控制",
+        "full": "Feedforward Control",
+        "def": "在製程中於前一工序測量結果後，立即調整後續工序參數以抵消變異的控制策略。此方法可在缺陷產生前即修正，降低晶圓報廢率。",
+        "why": "降低製程變異直接提升良率，對晶圓代工廠與其上下游供應鏈都有成本與產能效益。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-20",
     "is_sunday": false,
     "hw": [
@@ -792,170 +953,6 @@
         "def": "一種製造晶片的過程，包括設計、製造和測試。",
         "why": "晶片製造是電子產品的核心元件，對電子產業的發展有重要影響。",
         "category": "晶片製造"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-14",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Nvidia 推出 NeMo Switchyard 軟體平台",
-        "layer": "AI 基礎設施",
-        "body": "Nvidia 推出 NeMo Switchyard 軟體平台，旨在減少企業 AI 成本。該平台可以配置以優化成本、延遲或輸出質量，通過路由請求到較小、較便宜的 AI 模型。Nvidia 宣布這一消息的同時，也宣布了其最新的開源模型 Nemotron 3.5-30B-A3B-Lightning。",
-        "impact": "NeMo Switchyard 對 Nvidia 的 AI 基礎設施供應鏈有直接影響，可能會增加其市場份額。另外，該平台的推出也可能會促進 AI 模型的開源和共享，從而推動整個 AI 行業的發展。",
-        "rating": "core",
-        "insight": "Nvidia 的 NeMo Switchyard 軟體平台是企業 AI 成本管理的一個重要發展，可能會對 AI 基礎設施供應鏈產生深遠影響。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/08/12/nvidias-latest-solution-for-soaring-enterprise-costs-nemo-switchyard-software-router/5286911",
-        "chain": [
-          {
-            "label": "Nvidia NeMo Switchyard 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia Nemotron 模型↓",
-            "type": "down"
-          },
-          {
-            "label": "企業 AI 成本↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Nvidia 的 5000 億美元計劃",
-        "layer": "AI 基礎設施",
-        "body": "Nvidia 宣布了一個 5000 億美元的計劃，旨在建立 AI 數據中心。該計劃包括與多家金融公司合作，例如 Apollo、BlackRock、Blackstone、Brookfield、Goldman Sachs 和 KKR。Nvidia 將保證其晶片的價值，作為這些交易的抵押。",
-        "impact": "Nvidia 的 5000 億美元計劃對其 AI 基礎設施供應鏈有直接影響，可能會增加其市場份額。另外，該計劃的推出也可能會促進 AI 數據中心的發展，從而推動整個 AI 行業的發展。",
-        "rating": "core",
-        "insight": "Nvidia 的 5000 億美元計劃是 AI 基礎設施供應鏈的一個重要發展，可能會對 AI 數據中心產業產生深遠影響。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/13/nvidias-new-500b-plan-is-risky-but-brilliant-especially-for-aging-gpus/",
-        "chain": [
-          {
-            "label": "Nvidia 晶片價值↑",
-            "type": "up"
-          },
-          {
-            "label": "Apollo 投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia 5000 億美元計劃交期↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "瑞安航空與Google簽署五年協議",
-        "layer": "雲端服務",
-        "body": "瑞安航空與Google簽署五年協議，將使用Google Workspace和Google Cloud服務，涵蓋其35,000名員工。該協議還包括使用Gemini Enterprise平台，優化飛行機組人員的後勤和提高員工的生產力。瑞安航空同時也與AWS續簽五年協議，實現雙雲端戰略。",
-        "impact": "這將直接影響Google Cloud的市場份額。同時，瑞安航空的雙雲端戰略也會促使其他企業重新評估自己的雲端服務選擇，可能會帶來更多的市場機會。",
-        "rating": "core",
-        "insight": "企業應該關注雲端服務的發展趨勢和供應鏈的變化，以便更好地應對市場的變化。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/off-prem/2026/08/13/ryanair-adds-google-to-its-dual-cloud-flight-plan/5287336",
-        "chain": [
-          {
-            "label": "瑞安航空 Google Workspace 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Google Cloud 服務交期↓",
-            "type": "down"
-          },
-          {
-            "label": "AWS 雙雲端戰略市占↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI廣告服務存在計費問題",
-        "layer": "AI廣告",
-        "body": "OpenAI的廣告服務存在計費問題，可能會在用戶暫停廣告活動後仍然收取費用。這一問題可能會對OpenAI的收入產生影響，同時也會影響其用戶的信任度。OpenAI的廣告服務是其重要的收入來源之一，該公司需要解決這一問題以維持其業務的發展。",
-        "impact": "這將直接影響OpenAI的收入和用戶信任度，進一步影響其在AI廣告市場的競爭地位。",
-        "rating": "opp",
-        "insight": "企業應該關注其服務的質量和用戶體驗，以便更好地維持其業務的發展。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/08/13/openai-ad-service-can-bill-customers-for-up-to-one-day-after-they-pause-campaigns/5287110",
-        "chain": [
-          {
-            "label": "OpenAI 廣告服務收入↓",
-            "type": "down"
-          },
-          {
-            "label": "OpenAI 用戶信任度↓",
-            "type": "down"
-          },
-          {
-            "label": "OpenAI 廣告服務費用↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Microsoft終止不成功的AI功能",
-        "layer": "AI技術",
-        "body": "Microsoft終止不成功的AI功能，同時合併其Copilot應用程序。這一舉動表明Microsoft正在重新評估其AI戰略，集中資源於更有前途的項目。Microsoft的Copilot應用程序將整合其消費者和企業版本，提供更全面性的AI解決方案。",
-        "impact": "這將直接影響Microsoft的AI業務，進一步影響其在AI市場的競爭地位。同時，這一舉動也會對Microsoft的研發和創新的升級和維護產生影響。",
-        "rating": "opp",
-        "insight": "企業應該關注其業務的發展趨勢和供應鏈的變化，以便更好地應對市場的變化。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/13/microsoft-kills-off-unsuccessful-ai-features-while-merging-its-separate-copilot-apps/",
-        "chain": [
-          {
-            "label": "Microsoft Copilot 應用程序市占↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft AI 戰略重整↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft 消費者版本交期↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "無相關新聞",
-        "layer": "app",
-        "body": "今日無相關app新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "NeMo Switchyard",
-        "full": "Nvidia 的 NeMo Switchyard 軟體平台",
-        "def": "Nvidia 推出的軟體平台，旨在減少企業 AI 成本。該平台可以配置以優化成本、延遲或輸出質量，通過路由請求到較小、較便宜的 AI 模型。",
-        "why": "NeMo Switchyard 對 Nvidia 的 AI 基礎設施供應鏈有直接影響，可能會增加其市場份額。",
-        "category": "AI 基礎設施"
-      },
-      {
-        "term": "Gemini Enterprise",
-        "full": "Gemini Enterprise平台",
-        "def": "Gemini Enterprise是一個AI平台，提供優化飛行機組人員的後勤和提高員工的生產力的解決方案。",
-        "why": "Gemini Enterprise平台的應用可以提高企業的效率和競爭力。",
-        "category": "AI技術"
-      },
-      {
-        "term": "Co-packaged Optics",
-        "full": "共封裝光學",
-        "def": "一種將光學元件和電子元件封裝在一起的技術，用于提高資料傳輸速度和降低能耗。",
-        "why": "這種技術可以提高資料中心的效率和降低成本。",
-        "category": "semiconductor"
       }
     ],
     "weekly_summary": null
