@@ -1,5 +1,107 @@
 [
   {
+    "date": "2026-08-22",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "阿里雲加速使用自研晶片以縮短 AI 伺服器回本期",
+        "layer": "CSP/CapEx",
+        "body": "阿里雲財務長 Toby Xu 在 2026 年 8 月 20 日的財報電話會議中指出，AI 伺服器的投資回收期已從原本的三年縮短至 2.5 年，主要因為 AI 服務毛利率持續上升。公司仍在 2018 年與 2020 年採購的搭載 Nvidia V100 與 A100 加速卡的伺服器，於 2026 年仍以近滿載狀態供客戶使用。阿里雲同時宣佈將增加自研晶片的使用比例，以降低對西方晶片的依賴。",
+        "impact": "下游：AI 服務毛利率提升將使使用阿里雲 AI 服務的企業客戶獲得更低的使用成本，進一步促進雲端 AI 應用的擴散。",
+        "rating": "core",
+        "insight": "自研晶片降低對外部供應依賴，同時提升 AI 服務毛利，提升阿里雲競爭力。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/off-prem/2026/08/21/alibaba-cloud-plans-to-use-fewer-western-chips-to-boost-its-already-huge-ai-margins/5290815",
+        "chain": [
+          {
+            "label": "Alibaba Cloud 自研晶片 使用↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 加速卡 需求↓",
+            "type": "down"
+          },
+          {
+            "label": "AI 伺服器 毛利率↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 推出零資料保留承諾以吸引企業客戶",
+        "layer": "ai_technique",
+        "body": "OpenAI 於 2026 年 8 月 20 日宣布「Private Safety Processing」機制，允許企業客戶在不保留任何提示與回應資料的前提下，仍能自動化安全風險掃描，並明確表示資料保留期限為 0 天。相較之下，Anthropic 仍在其 Mythos 5 與 Fable 5 模型上保留 30 天的資料以支援安全審查。此政策旨在解決企業對資料隱私的顧慮，並可能成為爭取商業客戶的關鍵差異化因素。",
+        "impact": "",
+        "rating": "core",
+        "insight": "零資料保留政策為 OpenAI 贏得企業客戶提供了明確的隱私保護優勢。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/08/20/openai-chases-anthropics-biz-customers-with-zero-data-retention-pledge/5290609",
+        "chain": [
+          {
+            "label": "OpenAI 零資料保留 吸引企業↑",
+            "type": "up"
+          },
+          {
+            "label": "Anthropic 資料保留 30天 競爭↓",
+            "type": "down"
+          },
+          {
+            "label": "企業 客戶採購 OpenAI 服務↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Private Safety Processing",
+        "full": "Private Safety Processing",
+        "def": "OpenAI 提供的一種機制，能在不保留客戶提示與回應資料的情況下，自動掃描並評估模型交互的安全風險。",
+        "why": "解決企業對資料隱私的顧慮，提升商業模型的合規性與吸引力。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "自研晶片",
+        "full": "自研晶片",
+        "def": "由阿里巴巴自行設計與開發的 AI 加速晶片，用於取代部分 Nvidia 加速卡，以降低對外部供應的依賴。",
+        "why": "降低供應鏈風險並提升毛利率，是雲端服務商提升競爭力的關鍵策略。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "前饋控制",
+        "full": "Feedforward Control",
+        "def": "在製程中於前一工序測量結果後，立即調整後續工序參數，以補償變異並降低缺陷的控制策略。",
+        "why": "可在晶圓製程早期即修正偏差，提升良率並減少材料浪費。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-21",
     "is_sunday": false,
     "hw": [
@@ -819,142 +921,5 @@
       }
     ],
     "weekly_summary": "HW：Nvidia推出5000億美元AI基礎設施融資計畫，可能會對AI基礎設施市場產生重大影響。\nHW：Zayo與Nvidia合作，打造超過8000英里的長距離光纖網路，可能會增加AI基礎設施的連接性。\nCORP：Google 將允許用戶從其 AI 生成的內容中移除可見的水印，Meta 釋出 Glimmer，開放權重的 AI 模型。\n下週看點：Mark Zuckerberg 認為 AI 應該是「為所有人」而不是由少數實驗室控制的，可能會對 AI 產業產生深遠的影響，特別是在開源和開放權重的模型方面。\nAPP：今日無相關新聞\n用戶洞察：今日無相關新聞"
-  },
-  {
-    "date": "2026-08-15",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "AI 數據中心面臨關鍵礦物供應鏈壓力",
-        "layer": "AI 數據中心",
-        "body": "AI 數據中心的發展需要大量的銅、鋰和稀土等關鍵礦物，但是供應鏈的壓力可能會影響這些礦物的供應。銅的供應尤其面臨挑戰，預計到 2040 年，銅的供應可能會出現 1000 萬公噸的短缺。",
-        "impact": "這個供應鏈的壓力可能會影響 AI 數據中心的發展，從而影響 AI 技術的推廣。同時，銅的供應短缺也可能會影響其他行業的發展，例如電力和電子行業。",
-        "rating": "opp",
-        "insight": "AI 數據中心的發展需要穩定的關鍵礦物供應，否則可能會影響 AI 技術的發展。",
-        "source_label": "Data Center Knowledge",
-        "source": "https://www.datacenterknowledge.com/supply-chain/the-critical-minerals-crisis-ai-data-centers-face-supply-chain-strain",
-        "chain": [
-          {
-            "label": "TSMC 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix 銅供應↓",
-            "type": "down"
-          },
-          {
-            "label": "Apple 晶片供應鏈↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "今日無相關新聞",
-        "layer": "",
-        "body": "今日該分類無足夠具體新聞素材可供分析。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "app": [
-      {
-        "title": "特朗普下令對外國製造的無人機零件徵稅",
-        "layer": "無人機產業",
-        "body": "美國總統特朗普下令對外國製造的無人機零件徵稅，目的是促進國內的無人機產業發展。這一措施預計將對中國的無人機產業產生影響。",
-        "impact": "這一措施將直接影響中國的無人機產業，例如 DJI。同時，也將間接影響下游客戶，例如美國的無人機使用者。",
-        "rating": "opp",
-        "insight": "特朗普下令對外國製造的無人機零件徵稅，是一種促進國內產業發展的策略，對供應鏈和下游客戶都有重要影響。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/08/14/drone-stocks-trump-tariffs.html",
-        "chain": [
-          {
-            "label": "美國無人機產業↑",
-            "type": "up"
-          },
-          {
-            "label": "中國無人機產業↓",
-            "type": "down"
-          },
-          {
-            "label": "特朗普關稅政策↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Apple 的 Tim Cook 和 Howard Lutnick 開設製造工廠",
-        "layer": "晶片製造",
-        "body": "Apple 的 Tim Cook 和 Howard Lutnick 剛剛開設了一家位於 Houston 的製造工廠。這一工廠將生產 Apple 的晶片和其他電子產品。",
-        "impact": "這一工廠將直接影響 Apple 的供應鏈。同時，也將間接影響下游客戶，例如 Apple 的用戶。",
-        "rating": "opp",
-        "insight": "Apple 的 Tim Cook 和 Howard Lutnick 開設製造工廠，是一種提高效率和降低成本的策略，對供應鏈和下游客戶都有重要影響。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/08/13/apples-tim-cook-and-howard-lutnick-open-houston-manufacturing-plant.html",
-        "chain": [
-          {
-            "label": "Apple 晶片產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Tim Cook 投資↑",
-            "type": "up"
-          },
-          {
-            "label": "Houston 制造工廠↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "關鍵礦物",
-        "full": "關鍵礦物是指對於 AI 技術的發展至關重要的礦物，例如銅、鋰和稀土等。",
-        "def": "關鍵礦物的供應鏈壓力可能會影響 AI 技術的發展。",
-        "why": "關鍵礦物的供應鏈壓力可能會影響 AI 數據中心的發展，從而影響 AI 技術的推廣。",
-        "category": "AI 技術"
-      },
-      {
-        "term": "Glimmer",
-        "full": "Meta 的新開源 AI 模型",
-        "def": "Meta 釋出的新開源 AI 模型，允許任何人下載和在自己的硬體上運行。",
-        "why": "這個模型可能會增加 Meta 在 AI 研發方面的競爭力和影響力。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Ultrafast",
-        "full": "OpenAI 的新模式",
-        "def": "OpenAI 推出的新模式，能夠加速公司最新和最強大的模型 GPT-5.6 Sol 的運行速度。",
-        "why": "這個模式可能會增加 OpenAI 在 AI 研發方面的競爭力和影響力。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "建造到印刷製造",
-        "full": "build-to-print",
-        "def": "一種製造方式，根據客戶的設計和規格進行生產。",
-        "why": "這種製造方式可以提高效率和降低成本。",
-        "category": "晶片製造"
-      },
-      {
-        "term": "無人機零件",
-        "full": "drone components",
-        "def": "無人機的零件，包括機身、馬達、電池等。",
-        "why": "無人機零件的製造和供應對無人機產業的發展有重要影響。",
-        "category": "無人機產業"
-      },
-      {
-        "term": "晶片製造",
-        "full": "semiconductor manufacturing",
-        "def": "一種製造晶片的過程，包括設計、製造和測試。",
-        "why": "晶片製造是電子產品的核心元件，對電子產業的發展有重要影響。",
-        "category": "晶片製造"
-      }
-    ],
-    "weekly_summary": null
   }
 ]
