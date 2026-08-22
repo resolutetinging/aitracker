@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-23",
+    "is_sunday": true,
+    "hw": [
+      {
+        "title": "Nvidia 成為 Cloverleaf 少數股東，支援 AI 資料中心電力基礎建設",
+        "layer": "投資與供應鏈佈局",
+        "body": "Nvidia 於 2026 年 8 月 22 日宣布成為成立於 2024 年的 Cloverleaf 的少數股東，投資金額未公開。Cloverleaf 專注於提供建置 AI 資料中心所需的土地與電力基礎設施，確保雲端供應商與模型開發者能租用具備足夠電力的「bit barns」。此舉旨在解決 Nvidia 新一代 GPU 需求與可供電力的資料中心供應不足之間的落差。",
+        "impact": "直接提升電力基礎設施供應商（如地方電網公司）對 AI 資料中心的需求，帶動上游電力設備與建設服務的產能 ↑。使得資料中心開發商在選址時更傾向於有 Cloverleaf 佈局的區域，提升該區域的建築承包商利用率 ↑。",
+        "rating": "opp",
+        "insight": "Nvidia 透過投資電力基礎建設公司，直接緩解 AI 資料中心供電瓶頸，保障 GPU 銷售持續成長。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/08/22/cloverleaf-deal-is-latest-example-of-nvidia-using-its-war-chest-to-patch-cracks-in-the-ai-bubble/5291369",
+        "chain": [
+          {
+            "label": "Nvidia GPU 需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Cloverleaf 電力基礎設施供應↑",
+            "type": "up"
+          },
+          {
+            "label": "雲端供應商資料中心建設↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Feedforward Control",
+        "full": "前饋控制",
+        "def": "在半導體製程中，於前一製程（如光刻）測量每片晶圓後，立即調整後續製程（如蝕刻）參數，以在缺陷產生前補償變異。此方法可降低晶圓報廢率，提高良率。",
+        "why": "降低製程變異直接提升晶圓產能，對 AI 晶片供應鏈的上游晶圓代工與下游系統整合都有正面效應。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Cloverleaf",
+        "full": "Cloverleaf",
+        "def": "成立於 2024 年的公司，專注於為 AI 資料中心提供土地取得、電力供應與基礎建設服務，確保大型 GPU 設備有足夠電力與空間部署。",
+        "why": "電力與土地是 AI 資料中心擴張的關鍵瓶頸，Cloverleaf 的服務直接影響 GPU 需求的實現能力。",
+        "category": "hardware"
+      },
+      {
+        "term": "OSAT",
+        "full": "外部半導體組裝測試廠",
+        "def": "提供晶圓封裝、測試與組裝服務的第三方廠商，負責將晶圓轉換為可用的半導體模組，常為先進封裝（如 HBM）提供支援。",
+        "why": "AI 晶片的高密度封裝需求推動 OSAT 產能提升，影響整體 AI 硬體供應鏈的交付速度。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "前饋控制",
+        "full": "Feedforward Control",
+        "def": "一種製程控制策略，於製程的前一階段測量晶圓參數，然後在後續步驟自動調整參數以補償變異，避免缺陷產生。",
+        "why": "可降低晶圓報廢率，提升半導體製造良率，對供應鏈容量與成本有直接正面影響。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": "HW：Nvidia 投資 Cloverleaf 以解決 AI 資料中心電力供應瓶頸，確保新一代 GPU 可持續銷售。\n\nAPP：本週未出現可供分析的實際 AI 應用產品或服務新聞。\n用戶洞察：在缺乏具體 AI 應用案例的情況下，投資者應關注半導體製程創新對成本與供應鏈的間接影響。"
+  },
+  {
     "date": "2026-08-22",
     "is_sunday": false,
     "hw": [
@@ -774,152 +848,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-08-16",
-    "is_sunday": true,
-    "hw": [
-      {
-        "title": "Nvidia推出5000億美元AI基礎設施融資計畫",
-        "layer": "AI基礎設施",
-        "body": "Nvidia與Apollo、BlackRock、Blackstone、Brookfield、Goldman Sachs和KKR合作，推出5000億美元的AI基礎設施融資計畫，旨在降低Nvidia基礎設施的融資成本，將更多的GPU支出轉移到第三方資本上。該計畫可能會使電力和互連成為AI基礎設施部署的關鍵瓶頸。",
-        "impact": "該計畫可能會增加AI基礎設施的供應，從而推動AI技術的發展，並可能會對電力和互連產業產生影響。同時，該計畫也可能會使Nvidia在AI基礎設施市場中的地位更加穩固。",
-        "rating": "opp",
-        "insight": "Nvidia的5000億美元AI基礎設施融資計畫可能會對AI基礎設施市場產生重大影響，投資者應該關注該計畫的進展。",
-        "source_label": "Datacenter Knowledge",
-        "source": "https://www.datacenterknowledge.com/investing/nvidia-s-500b-ai-infrastructure-bet-raises-power-stakes",
-        "chain": [
-          {
-            "label": "Nvidia 5000億美元AI基礎設施融資計畫 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia GPU 支出↑",
-            "type": "up"
-          },
-          {
-            "label": "Apollo 投資↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Zayo與Nvidia合作，打造超過8000英里的長距離光纖網路",
-        "layer": "AI基礎設施",
-        "body": "Zayo與Nvidia合作，打造超過8000英里的長距離光纖網路，旨在滿足AI基礎設施對於專用連接性的需求。該網路將覆蓋北美的多個高需求市場，包括AI走廊等。",
-        "impact": "該網路的建成可能會增加AI基礎設施的連接性，從而推動AI技術的發展，並可能會對光纖產業產生影響。同時，該網路也可能會使Zayo在AI基礎設施市場中的地位更加穩固。",
-        "rating": "core",
-        "insight": "Zayo與Nvidia的合作可能會對AI基礎設施市場產生重大影響，投資者應該關注該網路的建成進展。",
-        "source_label": "Datacenter Knowledge",
-        "source": "https://www.datacenterknowledge.com/networking/zayo-nvidia-target-fiber-capacity-as-ai-infrastructure-spreads",
-        "chain": [
-          {
-            "label": "Zayo 長距離光纖網路 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia 專用連接性需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Zayo 北美市場覆蓋率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google 將允許用戶從其 AI 生成的內容中移除可見的水印",
-        "layer": "AI 生成內容",
-        "body": "Google 宣布將允許用戶從其 AI 生成的內容中移除可見的水印，包括圖像、影片和歌曲。這個功能將在 Gemini 和 Google 的影片編輯器 Flow 中提供，搜索功能也將在近期推出。這個變化反映了 Google 對於標記 AI 生成內容的方法的演變，旨在平衡創作控制和安全性。",
-        "impact": "這個變化可能會影響 AI 生成內容的使用和分佈，特別是在需要高品質和無水印內容的行業中。同時，這也可能會促使其他公司重新評估其對於 AI 生成內容的標記和使用政策。",
-        "rating": "opp",
-        "insight": "Google 對於 AI 生成內容的標記和使用政策的變化，可能會對整個 AI 產業產生深遠的影響，特別是在創作控制和安全性之間的平衡上。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/14/google-will-now-allow-users-to-remove-visible-watermark-from-its-ai-generations/",
-        "chain": [
-          {
-            "label": "Google AI 生成內容水印移除功能↑",
-            "type": "up"
-          },
-          {
-            "label": "Gemini 使用者體驗↑",
-            "type": "up"
-          },
-          {
-            "label": "Google Flow 編輯器功能↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Mark Zuckerberg 認為 AI 應該是「為所有人」",
-        "layer": "AI 產業",
-        "body": "Mark Zuckerberg 在一封信中認為 AI 應該是「為所有人」而不是由少數實驗室控制的。他認為這個想法伴隨著一些附加條件，包括需要更多的開源和開放權重的 AI 模型。這個想法可能會影響 AI 產業的發展和使用，特別是在開源和開放權重的模型方面。",
-        "impact": "這個想法可能會影響 AI 產業的發展和使用，特別是在開源和開放權重的模型方面。同時，這也可能會促使其他公司重新評估其對於 AI 模型的開發和分享政策。",
-        "rating": "opp",
-        "insight": "Mark Zuckerberg 認為 AI 應該是「為所有人」而不是由少數實驗室控制的，可能會對 AI 產業產生深遠的影響，特別是在開源和開放權重的模型方面。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/video/does-mark-zuckerberg-really-believe-ai-is-for-everyone/",
-        "chain": [
-          {
-            "label": "Mark Zuckerberg 開源 AI 主張↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 產業開源發展↑",
-            "type": "up"
-          },
-          {
-            "label": "開放權重 AI 模型使用率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關新聞",
-        "layer": "app",
-        "body": "今日該分類無足夠具體新聞素材可供分析。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "今日無相關新聞",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "EMIB-T",
-        "full": "局部橋接、多晶粒互連的封裝方法，具有更強的垂直供電與更高密度互連能力",
-        "def": "EMIB-T是EMIB的升級版，重點升級在TSV垂直供電、HBM4/4e相容性與更高整合密度",
-        "why": "EMIB-T可以滿足AI大封裝的需求",
-        "category": "hardware"
-      },
-      {
-        "term": "Glimmer",
-        "full": "Glimmer",
-        "def": "Meta 釋出的開放權重的 AI 模型，任何人都可以下載和在自己的硬體上運行。",
-        "why": "Glimmer 是 Meta 釋出的開放權重的 AI 模型，可能會對 AI 產業產生深遠的影響，特別是在開源和開放權重的模型方面。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Muse Spark",
-        "full": "Muse Spark",
-        "def": "Meta 的更強大的 AI 模型，仍然鎖定在自己的 API 之後。",
-        "why": "Muse Spark 是 Meta 的更強大的 AI 模型，可能會對 AI 產業產生深遠的影響，特別是在開源和開放權重的模型方面。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "co-packaged optics",
-        "full": "共封裝光學",
-        "def": "一種將光學元件與電子元件封裝在一起的技術，能夠提高資料傳輸速度和效率",
-        "why": "這種技術對於未來的資料中心和人工智慧應用具有重要意義",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": "HW：Nvidia推出5000億美元AI基礎設施融資計畫，可能會對AI基礎設施市場產生重大影響。\nHW：Zayo與Nvidia合作，打造超過8000英里的長距離光纖網路，可能會增加AI基礎設施的連接性。\nCORP：Google 將允許用戶從其 AI 生成的內容中移除可見的水印，Meta 釋出 Glimmer，開放權重的 AI 模型。\n下週看點：Mark Zuckerberg 認為 AI 應該是「為所有人」而不是由少數實驗室控制的，可能會對 AI 產業產生深遠的影響，特別是在開源和開放權重的模型方面。\nAPP：今日無相關新聞\n用戶洞察：今日無相關新聞"
   }
 ]
