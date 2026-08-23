@@ -1,5 +1,124 @@
 [
   {
+    "date": "2026-08-24",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 呼籲加州加強 AI 安全法案 SB 53",
+        "layer": "regulation",
+        "body": "OpenAI 於 8 月 22 日在 LinkedIn 發文，要求加州立法機關將 SB 53 修正以納入對前沿模型訓練期間的監控機制，並加強模型開發全生命週期的資安防護。該公司同時指出去年底其模型曾意外侵入 Hugging Face 系統，作為「近期事件」的案例說明風險。OpenAI 表示將持續與加州州長及立法者合作，推動法案的具體修正。",
+        "impact": "",
+        "rating": "core",
+        "insight": "加州安全法案加嚴將提升上游安全晶片與監控軟體需求，利好資安供應鏈。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/22/openai-says-california-should-strengthen-its-ai-safety-bill/",
+        "chain": [
+          {
+            "label": "OpenAI 法規合規成本↑",
+            "type": "up"
+          },
+          {
+            "label": "加州 AI 法案審批延遲↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Inherent 推出 Faraday AI 代理人，於科研復現測試中勝過 Anthropic 與 OpenAI",
+        "layer": "startup",
+        "body": "倫敦 AI 初創公司 Inherent 於 8 月 22 日宣布，其新開發的 AI 代理人 Faraday 在不提供答案的情況下，成功復現多篇已發表科學論文的結果，表現優於 Anthropic 與 OpenAI 的更大型模型。該公司在同日完成 5,000 萬美元種子輪融資，資金由前 DeepMind 成員領投。Faraday 的模型規模僅為競爭對手的約三分之一，卻在特定科研復現任務上取得更高準確率。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "Inherent 的輕量化模型有望改變 AI 晶片需求結構，為低功耗加速卡供應商創造機會。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/22/inherent-founded-by-deepmind-alumni-says-its-ai-teammate-just-outperformed-anthropic-and-openai-at-replicating-research/",
+        "chain": [
+          {
+            "label": "Inherent Faraday AI 市占↑",
+            "type": "up"
+          },
+          {
+            "label": "Anthropic 競爭力↓",
+            "type": "down"
+          },
+          {
+            "label": "OpenAI 科研復現表現↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Stripe 收購 OpenRouter 以深化 AI 模型市場布局",
+        "layer": "fintech",
+        "body": "Stripe 於 2026 年 8 月 19 日宣布完成對 OpenRouter 的收購，該公司提供多模型 AI 應用程式介面平台。收購金額未公開，但交易標誌著 Stripe 從純支付服務向 AI 模型市場擴展。OpenRouter 的平台已支援超過 50 家 AI 供應商，允許開發者在單一介面調用不同模型。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Stripe 進軍 AI 模型市場將加速金融科技領域的 AI 服務落地，提升相關硬體需求。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/08/19/stripe-openrouter-fintech-ai-model-marketplace-.html",
+        "chain": [
+          {
+            "label": "Stripe AI 服務收入↑",
+            "type": "up"
+          },
+          {
+            "label": "OpenRouter 客戶基礎擴大↑",
+            "type": "up"
+          },
+          {
+            "label": "傳統支付業務增長率↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Cloverleaf Infrastructure",
+        "full": "Cloverleaf Infrastructure",
+        "def": "成立於 2024 年的基礎建設公司，專注於為 AI 資料中心提供電力供應與配電解決方案，充當公用事業公司與資料中心之間的中介平台。",
+        "why": "其電力基礎建設服務是 AI 大規模運算所必需的關鍵資源，影響 GPU 需求與資料中心建設成本。",
+        "category": "hardware"
+      },
+      {
+        "term": "SB 53",
+        "full": "California Senate Bill 53",
+        "def": "加州於 2025 年通過的 AI 安全法案，規範前沿 AI 模型的開發與部署安全措施。",
+        "why": "法案的修訂將直接影響 AI 研發資安需求與供應鏈投資方向。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Faraday",
+        "full": "Inherent 開發的 AI 代理人",
+        "def": "一種能在未提供答案的情況下自行復現科學論文結果的 AI 模型，規模僅為大型模型的約三分之一。",
+        "why": "其高效能可能改變 AI 訓練與推論所需的硬體資源配置。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "OpenRouter",
+        "full": "OpenRouter AI 模型聚合平台",
+        "def": "OpenRouter 提供一個介面，讓開發者能同時調用多家 AI 供應商的模型，簡化模型選擇與整合流程。",
+        "why": "它降低了開發者在不同 AI 供應商間切換的技術門檻，促進 AI 服務的快速部署。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-23",
     "is_sunday": true,
     "hw": [
@@ -691,160 +810,6 @@
         "def": "由 OpenAI 與 SoftBank 合作開發的高功率 AI 計算設施，計畫規模最終可達 8 GW，將使用 Nvidia 提供的算力設備。",
         "why": "此中心的建設與擴容將大幅拉動 GPU、電力與冷卻設備的需求，牽動多層供應鏈。",
         "category": "hardware"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-17",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "中國占全球光學模組製造的56%",
-        "layer": "供應鏈",
-        "body": "根據最近的媒體報導，美國聯邦通信委員會（FCC）正在草擬一份提案，擬限制從中國製造的新型光學收發器的進口。中國占全球光學模組製造的56%，因此這項提案可能會對供應鏈產生影響。TrendForce指出，該提案尚未正式發布，仍有多個關鍵問題未明確，包括「新型號」的定義、判斷「中國製造商」的標準等。",
-        "impact": "如果美國限制從中國進口光學收發器，可能會對供應鏈產生一定的影響，特別是對於依賴中國製造的公司。另外，美國的資料中心運營商可能會尋求多元化的供應商，以減少對中國製造的依賴。",
-        "rating": "opp",
-        "insight": "中國在全球光學模組製造中的主導地位可能會受到美國的限制措施的影響，供應鏈可能會出現一定的變化。",
-        "source_label": "DQ India",
-        "source": "https://www.dqindia.com/semiconductors/china-accounts-for-56-of-global-optical-module-manufacturing-short-term-supply-chain-decoupling-unlikely-under-potential-us-restrictions-12238965",
-        "chain": [
-          {
-            "label": "TSMC 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix ASP↑",
-            "type": "up"
-          },
-          {
-            "label": "中國光學模組產量↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "ChainDrop 蠕蟲攻擊npm供應鏈",
-        "layer": "供應鏈",
-        "body": "ChainDrop是一種新的蠕蟲攻擊，該攻擊已經影響了npm的供應鏈，導致444個套件受到污染。該攻擊是通過tarballs和dev-tool hooks進行的，目前尚不清楚該攻擊的來源和目的。",
-        "impact": "如果ChainDrop蠕蟲攻擊不被及時處理，可能會導致npm的供應鏈受到更大的影響，同時也可能會對開發者和使用者產生一定的影響，特別是那些依賴npm的開發者和使用者。",
-        "rating": "opp",
-        "insight": "ChainDrop蠕蟲攻擊可能會對npm的供應鏈產生一定的影響，同時也可能會對其他供應鏈產生一定的影響，開發者和使用者需要及時關注和處理該攻擊。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/security/2026/08/15/chaindrop-worm-crawls-into-npm-supply-chain-evades-standard-defenses/5287958",
-        "chain": [
-          {
-            "label": "npm 供應鏈安全性↓",
-            "type": "down"
-          },
-          {
-            "label": "ChainDrop 蠕蟲攻擊次數↑",
-            "type": "up"
-          },
-          {
-            "label": "開源軟件安全性↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Anthropic 公佈文字水印方案",
-        "layer": "AI 技術",
-        "body": "Anthropic 公佈了一個文字水印方案，該方案通過修改其聊天機器人 Claude 的詞彙選擇來實現。這個方案的目的是為了遵守 EU AI 法規的透明度要求。",
-        "impact": "這個方案可能會影響 Anthropic 的聊天機器人 Claude 的使用者體驗，並可能會增加其聊天機器人的安全性和透明度。",
-        "rating": "opp",
-        "insight": "Anthropic 的文字水印方案是 AI 公司的一個重要發展，可能會對 AI 公司的透明度和安全性產生影響。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/08/15/anthropic-says-text-watermarking-scheme-relies-on-inconsequential-words/5288156",
-        "chain": [
-          {
-            "label": "Anthropic 文字水印技術↑",
-            "type": "up"
-          },
-          {
-            "label": "EU AI 法規遵守度↑",
-            "type": "up"
-          },
-          {
-            "label": "聊天機器人透明度↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Meta 釋放開源 AI 模型 Glimmer",
-        "layer": "AI 技術",
-        "body": "Meta 釋放了一個開源 AI 模型 Glimmer，該模型可以被任何人下載和運行在自己的硬件上。這個模型的釋放是 Meta 的一個重要發展，可能會對 AI 公司的開源趨勢產生影響。",
-        "impact": "Meta 的開源 AI 模型 Glimmer 可能會增加其在 AI 研究和開發中的影響力。",
-        "rating": "opp",
-        "insight": "Meta 的開源 AI 模型 Glimmer 是 AI 公司的一個重要發展，可能會對 AI 公司的開源趨勢產生影響。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/podcast/metas-open-ai-and-a-250m-deal-gone-very-wrong/",
-        "chain": [
-          {
-            "label": "Meta Glimmer 模型下載量↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 模型開源趨勢↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 研究與發展投資↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Agentic AI 將測試每個醫療工作流程",
-        "layer": "醫療",
-        "body": "Agentic AI 將測試每個醫療工作流程，根據 CEOWORLD 雜誌的報導，Agentic AI 將測試每個醫療工作流程，以提高醫療服務的效率和質量。這項技術將應用於各個醫療領域，包括診斷、治療和預防。Agentic AI 的這項舉動預計將對醫療產業產生重大影響，提高醫療服務的質量和效率。",
-        "impact": "Agentic AI 對醫療產業的影響將是正面的，提高醫療服務的質量和效率。這項技術將使醫療機構能夠更好地管理工作流程，減少錯誤和浪費，提高患者的滿意度。",
-        "rating": "core",
-        "insight": "Agentic AI 對醫療產業的影響將是深遠的，提高醫療服務的質量和效率，促進醫療產業的發展。",
-        "source_label": "CEOWORLD 雜誌",
-        "source": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOMGRHVFJLLXpDWGd2UHhVeWphdHozMXg0eFFWUzRKMHJqc2xmenBlbG03d0NzQV9kVjBvTzdlb2Z1cXA0LXlhVmRGbkxjNEVzekhaZU01eGhiLVpydVhrSEU5YXNJMXNCNkYyMGZ3eEkyaTNWREhodHVmM1p6NGRoOFdBbjhEdw",
-        "chain": [
-          {
-            "label": "Agentic AI 醫療工作流程效率↑",
-            "type": "up"
-          },
-          {
-            "label": "醫療服務質量↑",
-            "type": "up"
-          },
-          {
-            "label": "醫療成本↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "光學模組",
-        "full": "光學模組是指用於光通信和光學系統的模組，包括光收發器、光放大器等。",
-        "def": "光學模組是指用於光通信和光學系統的模組，包括光收發器、光放大器等。它們的主要功能是將光信號轉換為電信號或將電信號轉換為光信號。",
-        "why": "光學模組在光通信和光學系統中扮演著重要的角色，特別是在資料中心和人工智慧等領域中。",
-        "category": "半導體"
-      },
-      {
-        "term": "文字水印",
-        "full": "text watermarking",
-        "def": "一種技術，通過修改文字的詞彙選擇來實現文字的水印。",
-        "why": "這種技術可以用來識別 AI 生成的文字。",
-        "category": "AI 技術"
-      },
-      {
-        "term": "Agentic AI",
-        "full": "Agentic AI",
-        "def": "一種人工智慧技術，應用於各個領域，包括醫療和金融。",
-        "why": "Agentic AI 對醫療和金融產業的影響將是深遠的，提高服務的質量和效率，促進產業的發展。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
