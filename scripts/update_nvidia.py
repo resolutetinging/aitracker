@@ -14,6 +14,7 @@ NVIDIA 專區週查證腳本
 import json, os, re, time, smtplib
 from datetime import datetime, timezone, timedelta
 from groq import Groq
+from groq import APIStatusError as GroqAPIStatusError
 
 TW = timezone(timedelta(hours=8))
 NOW = datetime.now(TW)
@@ -129,16 +130,37 @@ def call_groq_diff(current_status, news_snippets):
   ],
   "no_change_summary": "若items為空陣列，一句話說明本週查證後判斷現有資料仍準確；若items非空則留空字串"
 }}"""
-    response = client.chat.completions.create(
-        model="openai/gpt-oss-120b",
-        reasoning_effort="low",
-        messages=[{"role": "system", "content": sys_msg}, {"role": "user", "content": prompt}],
-        temperature=0.2,
-        max_tokens=3000,
-    )
+    # 2026-08-24：比照 update_data.py 的 call_groq() 補上容錯——原本沒有 fallback
+    # model 也沒查 finish_reason，current_status（含pyramid/cases/roadmap/alliances/
+    # governance全部內容）+一週新聞片段一起塞進prompt，內容量會隨資料累積越來越大，
+    # 一旦撞413或輸出被截斷，json.loads會拋例外，而main()原本的except只print不寄信，
+    # 使用者當週完全收不到信也不會發現（8/24週一才被抓到：Action顯示success但
+    # last_checked停在8/17，整整一週靜默失敗）。
+    models = ["openai/gpt-oss-120b", "openai/gpt-oss-20b"]
+    response = None
+    for model in models:
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                reasoning_effort="low",
+                messages=[{"role": "system", "content": sys_msg}, {"role": "user", "content": prompt}],
+                temperature=0.2,
+                max_tokens=3000,
+            )
+            if model != models[0]:
+                print(f"  → 使用備用模型 {model}")
+            break
+        except GroqAPIStatusError as e:
+            if e.status_code == 413 and model != models[-1]:
+                print(f"  → {model} 超出 TPM，切換備用模型…")
+                continue
+            raise
     raw = response.choices[0].message.content.strip()
     if raw.startswith('```'):
         raw = raw.split('\n', 1)[-1].rsplit('```', 1)[0].strip()
+    finish_reason = response.choices[0].finish_reason
+    if finish_reason == 'length':
+        raise ValueError(f"Groq回應被截斷（finish_reason=length，{len(raw)}字元）")
     raw = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', ' ', raw)
     return json.loads(raw)
 
@@ -307,7 +329,12 @@ def main():
         if not isinstance(diff, dict):
             raise ValueError(f"Groq回傳非預期格式（非dict）：{type(diff)}")
     except Exception as e:
+        # 2026-08-24：原本這裡只print就return，job本身不會失敗（exit 0，Actions顯示
+        # success），但完全沒寄信也沒更新last_checked——使用者連續一週看不出異常。
+        # 改成照樣寄信告知失敗原因（沿用no_change路徑的信件版型），last_checked刻意
+        # 不更新，讓nv_pending_review.json/nv_status.json誠實反映「這週其實沒查證成功」。
         print(f"  ⚠ Groq 呼叫失敗，本次不更新任何內容：{e}")
+        send_email([], f'本週自動查證因技術問題失敗（{e}），現有資料未變動，將於下次排程自動重試。', status)
         return
 
     items = diff.get('items') or []
