@@ -48,6 +48,11 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .t-ins  {background:rgba(58,104,96,.10);  border-color:var(--insight);color:var(--insight);}
 .t-hist    {background:rgba(96,112,128,.10);  border-color:var(--hist);    color:var(--hist);}
 .t-archive {background:rgba(120,96,160,.10);  border-color:#8a60b0;        color:#8a60b0;}
+/* 08-24：分頁上標示「本週有待複核異動」——用box-shadow擴散/淡出做外框脈動，
+   不動文字本身（不用閃爍色塊或斜體，符合鐵律），顏色沿用ethic-alert同一組
+   （--ethic警示色），跟頁面內既有的🔔 pending banner語意一致 */
+@keyframes tabPulse{0%{box-shadow:0 0 0 0 rgba(144,96,48,.5);}70%{box-shadow:0 0 0 6px rgba(144,96,48,0);}100%{box-shadow:0 0 0 0 rgba(144,96,48,0);}}
+.tab-btn.tab-alert{border-color:var(--ethic);animation:tabPulse 1.8s ease-out infinite;}
 .archive-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:10px;}
 .archive-date{font-size:13px;font-weight:700;color:#8a60b0;margin-bottom:8px;}
 .archive-ta{width:100%;min-height:80px;resize:vertical;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:9px 11px;font-size:13px;color:var(--text);font-family:inherit;line-height:1.6;box-sizing:border-box;}
@@ -922,6 +927,9 @@ async function renderNvidia(){
       if(n2 > 0){
         pendingHtml = `<div class="ethic-alert">🔔 本週查證偵測到 ${n2} 項可能需要更新的內容（尚未套用，僅供參考），請告知 Claude 複核後正式更新</div>`;
       }
+      // 08-24：分頁按鈕本身也標示待複核，不用先點進NVIDIA分頁才看得到
+      const btnNv = document.getElementById('btn-nv');
+      if(btnNv) btnNv.classList.toggle('tab-alert', n2 > 0);
     }
   } catch(e){ /* 沒有pending檔或抓取失敗都當作沒有待複核項目，靜默略過 */ }
 
