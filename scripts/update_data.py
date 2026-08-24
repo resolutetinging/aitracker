@@ -538,6 +538,28 @@ def get_recent_urls(history, days=3):
                     urls.add(u)
     return urls
 
+def get_recent_items(history, days=3, max_items=30):
+    """取得近 N 天非佔位卡條目的 title+body（排除今日自身），供語意層跨日
+    去重／新鮮度判斷用。get_recent_titles 只給標題，字面改寫就比不出來，
+    這裡多帶 body 讓 LLM 判斷『是否為同一真實世界事件』而非比對字面。"""
+    items = []
+    count = 0
+    for entry in history:
+        if entry.get('date') == DATE_STR:
+            continue  # 跳過今日，防止自我封鎖
+        if count >= days:
+            break
+        count += 1
+        for section in ['hw', 'corp', 'app']:
+            for item in entry.get(section, []):
+                if _is_placeholder(item):
+                    continue
+                title = item.get('title', '').strip()
+                if not title:
+                    continue
+                items.append({'title': title, 'body': item.get('body', '')[:200]})
+    return items[:max_items]
+
 def load_notes():
     """讀取每日筆記：優先用當日 Gist 快照 notes_backup.json，退回舊 notes.json"""
     for path in ('data/notes_backup.json', 'data/notes.json'):
@@ -775,6 +797,96 @@ def validate_impact(data):
             print(f"  → 共修正 {fixed} 筆 impact")
     except Exception as e:
         print(f"  → impact 驗證失敗：{e}")
+
+# 2026-08-24 新增：語意層跨日去重 + 新鮮度判斷。動機——8/22 案例：
+# 「OpenAI 零資料保留承諾」8/21 已用 TechCrunch 來源報導過一次，8/22 換
+# The Register 來源、換標題角度（服務名稱→效果描述）重報一次，remove_
+# repeated_stories() 的標題 bigram 重疊率只有 18%（門檻 50%），完全沒
+# 攔下來；同一天「阿里雲加速使用自研晶片」則是財報電話會議引用既有數據
+# 的背景陳述，_body_is_low_quality 只查「有沒有具體數字/具名實體」，
+# 查得到就放行，抓不到「是不是新決策」這種語意層次。兩者都不是字面
+# pattern 能攔的問題，改用 LLM 語意判斷取代/補強字面比對。
+def dedup_and_freshness_check(data, recent_items):
+    """單一次 LLM 呼叫同時做兩件事（省 TPM，比照 validate_impact 的做法）：
+    1. 語意去重：目前條目是否與近三日條目描述同一真實世界事件/決策/宣布
+       （即使來源、標題、角度不同）——是則整筆移除（比照 remove_repeated_
+       stories 的「同一事件只分析一次」規則）。
+    2. 新鮮度判斷：目前 core 條目的 body 是否只是重述既有/持續中狀態、
+       背景說明，沒有本次陳述時間點的新決策/新動作——是則降級為 opp
+       （比照 downgrade_shallow_impact 的「降評不刪除」模式）。
+    只對 core/opp 條目跑（noise 佔位卡不需要）；items 或 recent_items
+    任一為空就跳過，失敗不影響主流程。"""
+    client = Groq(api_key=os.environ['GROQ_API_KEY'])
+    current = [
+        {"sec": sec, "title": item["title"], "body": item.get("body", "")[:400]}
+        for sec in ['hw', 'corp', 'app']
+        for item in data.get(sec, [])
+        if item.get('rating') in ('core', 'opp') and not _is_placeholder(item)
+    ]
+    if not current or not recent_items:
+        print("  → 語意去重/新鮮度檢核：無需處理"); return
+
+    prompt = (
+        "以下是「目前條目」與「近三日已報導條目」，每條包含 title、body。\n"
+        "任務1（語意重複）：找出「目前條目」中，是否有任何一筆與「近三日已報導條目」"
+        "描述的是同一個真實世界事件、決策、或宣布——即使來源、標題措辭、切入角度不同"
+        "（例如一篇聚焦服務名稱、另一篇聚焦效果描述，但講的是同一次宣布），仍算同一事件。"
+        "純粹同公司同領域但不同事件不算重複。\n"
+        "任務2（新鮮度）：對「目前條目」中 rating 為 core 的每一筆，判斷 body 描述的是"
+        "『本次陳述時間點的新決策/新動作/新宣布』，還是『單純重述既有或持續中的狀態、"
+        "背景說明，沒有新決策內容』（例如財報電話會議引用過去已發生的數據或既有政策）。"
+        "後者才算 stale_background。\n"
+        f"目前條目：{json.dumps(current, ensure_ascii=False)}\n"
+        f"近三日已報導條目：{json.dumps(recent_items, ensure_ascii=False)}\n"
+        '輸出純JSON（直接從{開始）：{"duplicates":["目前條目中重複的title"],'
+        '"stale_background":["目前條目中屬於背景陳述的core title"]}'
+    )
+    try:
+        resp = client.chat.completions.create(
+            model="openai/gpt-oss-120b",
+            reasoning_effort="low",
+            messages=[
+                {"role": "system", "content": "只輸出純JSON物件，不加任何說明或markdown。"},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.1, max_tokens=1000,
+        )
+        raw = resp.choices[0].message.content.strip()
+        if raw.startswith('```'):
+            raw = raw.split('\n', 1)[-1].rsplit('```', 1)[0].strip()
+        raw = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', ' ', raw)
+        result = json.loads(raw)
+        dup_titles = set(result.get('duplicates') or [])
+        stale_titles = set(result.get('stale_background') or [])
+
+        removed = 0
+        for section in ['hw', 'corp', 'app']:
+            if section not in data:
+                continue
+            kept = []
+            for item in data.get(section, []):
+                if not _is_placeholder(item) and item.get('title') in dup_titles:
+                    removed += 1
+                    print(f"  ✂ 語意重複移除：{item['title'][:60]}")
+                    continue
+                kept.append(item)
+            if not kept and data.get(section):
+                kept.append(make_placeholder_item(section))
+                print(f"  ＋ {section} 分類語意去重後全空，補標準佔位卡")
+            data[section] = kept
+
+        downgraded = 0
+        for section in ['hw', 'corp', 'app']:
+            for item in data.get(section, []):
+                if item.get('rating') == 'core' and item.get('title') in stale_titles:
+                    item['rating'] = 'opp'
+                    downgraded += 1
+                    print(f"  ↓ 背景陳述降評→opp：{item['title'][:60]}")
+
+        if not removed and not downgraded:
+            print("  → 語意去重/新鮮度檢核通過")
+    except Exception as e:
+        print(f"  → 語意去重/新鮮度檢核失敗：{e}")
 
 def call_groq(prompt):
     from groq import APIStatusError as GroqAPIStatusError
@@ -1756,6 +1868,7 @@ if __name__ == '__main__':
 
     recent_titles = get_recent_titles(history, days=3)
     recent_urls = get_recent_urls(history, days=3)
+    recent_items = get_recent_items(history, days=3)
     print(f"  → 近三日標題 {len(recent_titles)} 條、來源網址 {len(recent_urls)} 條（NO-REPEAT 用）")
 
     print("📰 抓取新聞（含近日預過濾、分類分流）...")
@@ -1877,6 +1990,8 @@ if __name__ == '__main__':
     fix_chains(data)
     print("🔎 impact 因果驗證...")
     validate_impact(data)
+    print("🧠 語意去重/新鮮度檢核...")
+    dedup_and_freshness_check(data, recent_items)
     print("🔍 主角矛盾偵測...")
     fix_protagonist_as_competitor(data)
     print("🧹 佔位卡攔截（真實卡存在時移除並存佔位卡）...")
