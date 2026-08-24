@@ -101,14 +101,17 @@ def call_groq_diff(current_status, news_snippets):
         "多數週查證後的正確答案就是「沒有任何異動」，回傳空items陣列是完全正常且被期待的結果，"
         "不需要為了顯得有查證成果而硬湊出候選異動。"
     )
-    prompt = f"""以下是NVIDIA相關結構化參考資料的現況（JSON）：
+    def build_prompt(news_list):
+        status_json = json.dumps(current_status, ensure_ascii=False, separators=(',', ':'))
+        news_text = chr(10).join(news_list) if news_list else '（本週未蒐集到相關新聞片段）'
+        return f"""以下是NVIDIA相關結構化參考資料的現況（JSON）：
 
-{json.dumps(current_status, ensure_ascii=False, indent=2)}
+{status_json}
 
 以下是過去一週蒐集到的NVIDIA相關新聞片段，每則片段結尾若有「| SOURCE_URL:網址」就是該則新聞的
 原始來源網址；source欄位只能填這裡實際出現過的SOURCE_URL，禁止自己編造或憑記憶生成網址：
 
-{chr(10).join(news_snippets) if news_snippets else '（本週未蒐集到相關新聞片段）'}
+{news_text}
 
 請核對上述新聞是否讓現有資料的任何欄位過時或不準確，只針對有明確新聞佐證的部分提出候選異動。
 不要因為沒有新聞佐證就自己推測任何欄位「應該」要改；找不到能對應到具體新聞的變化就不要提出，
@@ -130,31 +133,45 @@ def call_groq_diff(current_status, news_snippets):
   ],
   "no_change_summary": "若items為空陣列，一句話說明本週查證後判斷現有資料仍準確；若items非空則留空字串"
 }}"""
-    # 2026-08-24：比照 update_data.py 的 call_groq() 補上容錯——原本沒有 fallback
-    # model 也沒查 finish_reason，current_status（含pyramid/cases/roadmap/alliances/
-    # governance全部內容）+一週新聞片段一起塞進prompt，內容量會隨資料累積越來越大，
-    # 一旦撞413或輸出被截斷，json.loads會拋例外，而main()原本的except只print不寄信，
-    # 使用者當週完全收不到信也不會發現（8/24週一才被抓到：Action顯示success但
-    # last_checked停在8/17，整整一週靜默失敗）。
+    # 2026-08-24：8/24第一次修復（fallback model 120b→20b）實測時被使用者截圖
+    # 抓到反效果——120b失敗後fallback到20b，但20b的TPM上限（實測8000）比120b
+    # 更小，對「內容太大」的413錯誤來說換小模型只會更早爆掉，方向錯了。
+    # 真正該做的是縮減內容本身，比照JS summarizeArchive()「413自動重試+縮減」
+    # 的既有模式：(a) current_status改用compact JSON（無indent），單這項就省
+    # 約17%字元數，且不損失任何資訊；(b) 413時砍news_snippets數量對半重試，
+    # news是輔助佐證、砍了只是佐證變少（機制設計上證據不足本來就會判無異動，
+    # 不會產生錯誤結果），current_status結構化資料本身不能砍，砍了會讓LLM
+    # 拿不到完整既有資料去比對，可能漏判真正過時的欄位。最多縮5輪，5輪都失敗
+    # 才真的放棄並拋出例外（讓main()寄失敗通知信）。
     models = ["openai/gpt-oss-120b", "openai/gpt-oss-20b"]
+    news_list = list(news_snippets)
     response = None
-    for model in models:
-        try:
-            response = client.chat.completions.create(
-                model=model,
-                reasoning_effort="low",
-                messages=[{"role": "system", "content": sys_msg}, {"role": "user", "content": prompt}],
-                temperature=0.2,
-                max_tokens=3000,
-            )
-            if model != models[0]:
-                print(f"  → 使用備用模型 {model}")
+    shrink_round = 0
+    for shrink_round in range(5):
+        for model in models:
+            try:
+                response = client.chat.completions.create(
+                    model=model,
+                    reasoning_effort="low",
+                    messages=[{"role": "system", "content": sys_msg},
+                              {"role": "user", "content": build_prompt(news_list)}],
+                    temperature=0.2,
+                    max_tokens=3000,
+                )
+                break
+            except GroqAPIStatusError as e:
+                if e.status_code == 413:
+                    print(f"  → {model} 超出TPM（目前新聞{len(news_list)}則）...")
+                    continue
+                raise
+        if response is not None:
             break
-        except GroqAPIStatusError as e:
-            if e.status_code == 413 and model != models[-1]:
-                print(f"  → {model} 超出 TPM，切換備用模型…")
-                continue
-            raise
+        if not news_list:
+            break
+        news_list = news_list[:len(news_list)//2]
+        print(f"  → 縮減新聞片段至{len(news_list)}則重試...")
+    if response is None:
+        raise ValueError(f"連續{shrink_round+1}輪（含縮減新聞片段至{len(news_list)}則）仍超出Groq TPM限制，current_status本身可能已過大")
     raw = response.choices[0].message.content.strip()
     if raw.startswith('```'):
         raw = raw.split('\n', 1)[-1].rsplit('```', 1)[0].strip()
