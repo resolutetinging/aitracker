@@ -763,14 +763,18 @@ function nvCaseCard(item, statusCls, statusText){
 
 // 08-13：生態系權力布局四階段（standard/capital/platform/governance）固定用正方形四角
 // 排列，這樣「①→②③→④→①」的敘事順序天生就是繞正方形一圈的封閉迴路，不用另外
-// 畫一條外圈回頭箭頭。viewBox維持320x420。
+// 畫一條外圈回頭箭頭。
 // 08-14：使用者反映改成固定height:300px後圖表寬度被壓縮、資訊擠在一起，改用
 // width:100%+max-width;第一版max-width設480px想讓圖明顯放大，結果viewBox整個
 // 等比例放大、文字（12/20px viewBox單位）也跟著放大到遠超過旁邊nv-gov-tip提示
 // 文字（11px）的視覺份量，使用者反映「太大了」。改成max-width:300px，貼近
 // viewBox原始寬度320（scale≈0.94），文字自然落在接近11px、跟提示文字同一個量級，
 // 不用額外調整字級數值；margin:0維持靠左對齊不置中
-const NV_STAGE_POS = {standard:{x:160,y:85}, capital:{x:250,y:210}, platform:{x:160,y:335}, governance:{x:70,y:210}};
+// 08-24第二版：viewBox從320拓寬到400（中心200,210），四角改用中心往外推的座標，
+// 讓name標籤能真正拉到圓外側（見nvGovernanceNetworkSvg內的方向計算）且不撞
+// viewBox邊界；連帶max-width調到340（與散佈圖對齊）讓兩張圖視覺份量更平衡。
+const NV_STAGE_POS = {standard:{x:200,y:75}, capital:{x:295,y:210}, platform:{x:200,y:345}, governance:{x:105,y:210}};
+const NV_DIAMOND_CENTER = {x:200, y:210};
 const NV_STRENGTH_WIDTH = {strong:3.5, medium:2, weak:1.2};
 
 // 08-13：原本用SVG原生<title>做hover說明，使用者實測browser原生tooltip沒有跳出來
@@ -789,17 +793,28 @@ function nvGovernanceNetworkSvg(stages, links){
     const m = /^([①②③④])(.+)$/.exec(s.label||'');
     const num = m ? m[1] : '';
     const name = m ? m[2] : (s.label||'');
-    // 08-24：四階段是正方形排列，節點下方的name標籤跟「相鄰節點間對角連線」
-    // 距離很近，使用者反映文字跟箭頭疊在一起。標籤位置不動（換成放射狀外推
-    // 會讓文字跑出viewBox），改在文字後面墊一塊跟頁面背景同色的底色矩形，
-    // 讓穿過附近的線條視覺上在標籤範圍內被蓋掉，不會跟文字糊在一起。
-    // 寬度用「字數×13+8」粗估（CJK字近似正方形，font-size12下單字寬約12-13）。
-    const nameW = name.length * 13 + 8;
+    // 08-24第二版：上一版是標籤固定在節點正下方、墊背景色矩形蓋掉穿過的線條
+    // （治標）；使用者接著要求文字直接拉到圓的外側（治本）。改成用「diamond
+    // 中心→節點」的方向向量算outward，水平為主的節點（capital/governance）
+    // 標籤推到圓的左/右外側（anchor隨方向切start/end，避免文字往diamond內部
+    // 長回去）；垂直為主的節點（standard/platform）標籤推到圓的上/下外側
+    // （anchor維持middle）。四階段本來就是正方形四角＝標準的上下左右方向，
+    // 這個判斷式對這個資料結構是通用的，不是四個角各寫一次特例。
+    const dx = p.x - NV_DIAMOND_CENTER.x, dy = p.y - NV_DIAMOND_CENTER.y;
+    let lx, ly, anchor;
+    if (Math.abs(dx) >= Math.abs(dy)) {
+      anchor = dx >= 0 ? 'start' : 'end';
+      lx = p.x + (dx >= 0 ? R + 10 : -(R + 10));
+      ly = p.y + 4;
+    } else {
+      anchor = 'middle';
+      lx = p.x;
+      ly = p.y + (dy >= 0 ? R + 22 : -(R + 14));
+    }
     return `<g class="nv-gov-node" data-note="${nvEscAttr(s.desc)}">
       <circle cx="${p.x}" cy="${p.y}" r="${R}" fill="rgba(106,138,32,.16)" stroke="#6a8a20" stroke-width="1.6"/>
       <text x="${p.x}" y="${p.y+7}" text-anchor="middle" font-size="20" font-weight="700" fill="#4a6015">${num}</text>
-      <rect x="${p.x-nameW/2}" y="${p.y+R+6}" width="${nameW}" height="17" rx="3" fill="var(--bg)"/>
-      <text x="${p.x}" y="${p.y+R+18}" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text)">${name}</text>
+      <text x="${lx}" y="${ly}" text-anchor="${anchor}" font-size="12" font-weight="700" fill="var(--text)">${name}</text>
     </g>`;
   }).join('');
   const edgesHtml = links.map(l=>{
@@ -816,7 +831,7 @@ function nvGovernanceNetworkSvg(stages, links){
       <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#6a8a20" stroke-width="${sw}" marker-end="url(#nvArrow)"/>
     </g>`;
   }).join('');
-  return `<svg viewBox="0 0 320 420" style="width:100%;max-width:300px;height:auto;display:block;margin:0;">
+  return `<svg viewBox="0 0 400 420" style="width:100%;max-width:340px;height:auto;display:block;margin:0;">
     <defs><marker id="nvArrow" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#6a8a20"/></marker></defs>
     ${edgesHtml}
     ${nodesHtml}
@@ -825,7 +840,8 @@ function nvGovernanceNetworkSvg(stages, links){
 
 function nvGovernanceScatterSvg(stages){
   if(!stages.length) return '<div class="empty-state" style="font-size:12px;">尚無資料</div>';
-  const X0=55, X1=290, Y0=40, Y1=390; // 繪圖區邊界（1-10分兩軸線性映射），跟關係圖共用320x420viewBox讓兩圖比例一致
+  const X0=55, X1=290, Y0=40, Y1=390; // 繪圖區邊界（1-10分兩軸線性映射）。viewBox本身維持320x420不動（軸線座標already算好），
+  // 08-24：關係圖那邊為了讓標籤能拉到圓外側改寬到400，兩圖改用相近的max-width（340）讓視覺份量對齊，不再要求viewBox完全相同
   const px = v => X0 + (v-1)/9*(X1-X0);
   const py = v => Y1 - (v-1)/9*(Y1-Y0);
   const ptsHtml = stages.map((s,i)=>{
@@ -841,7 +857,7 @@ function nvGovernanceScatterSvg(stages){
       <text x="${cx}" y="${cy-r-8}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">${name}</text>
     </g>`;
   }).join('');
-  return `<svg viewBox="0 0 320 420" style="width:100%;max-width:300px;height:auto;display:block;margin:0;">
+  return `<svg viewBox="0 0 320 420" style="width:100%;max-width:340px;height:auto;display:block;margin:0;">
     <line x1="${X0}" y1="${Y1}" x2="${X1}" y2="${Y1}" stroke="var(--border2)" stroke-width="1.2"/>
     <line x1="${X0}" y1="${Y0}" x2="${X0}" y2="${Y1}" stroke="var(--border2)" stroke-width="1.2"/>
     <text x="${(X0+X1)/2}" y="408" text-anchor="middle" font-size="11" fill="var(--muted)">影響力強度 →</text>
