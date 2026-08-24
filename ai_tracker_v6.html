@@ -772,7 +772,10 @@ function nvCaseCard(item, statusCls, statusText){
 // 不用額外調整字級數值；margin:0維持靠左對齊不置中
 // 08-24第二版：viewBox從320拓寬到400（中心200,210），四角改用中心往外推的座標，
 // 讓name標籤能真正拉到圓外側（見nvGovernanceNetworkSvg內的方向計算）且不撞
-// viewBox邊界；連帶max-width調到340（與散佈圖對齊）讓兩張圖視覺份量更平衡。
+// viewBox邊界；max-width改算成425px——viewBox寬高比跟散佈圖(320x420)不同，
+// 若直接套同一個max-width數字，算出來的實際渲染高度會不一樣，導致兩張圖
+// 下方的nv-gov-tip提示框沒對齊（使用者截圖抓到過），425px是讓兩圖渲染高度
+// 一致所需的比例換算值，不可隨意改成整數或跟散佈圖用同一個數字。
 const NV_STAGE_POS = {standard:{x:200,y:75}, capital:{x:295,y:210}, platform:{x:200,y:345}, governance:{x:105,y:210}};
 const NV_DIAMOND_CENTER = {x:200, y:210};
 const NV_STRENGTH_WIDTH = {strong:3.5, medium:2, weak:1.2};
@@ -831,7 +834,7 @@ function nvGovernanceNetworkSvg(stages, links){
       <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#6a8a20" stroke-width="${sw}" marker-end="url(#nvArrow)"/>
     </g>`;
   }).join('');
-  return `<svg viewBox="0 0 400 420" style="width:100%;max-width:340px;height:auto;display:block;margin:0;">
+  return `<svg viewBox="0 0 400 420" style="width:100%;max-width:425px;height:auto;display:block;margin:0;">
     <defs><marker id="nvArrow" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#6a8a20"/></marker></defs>
     ${edgesHtml}
     ${nodesHtml}
@@ -840,8 +843,10 @@ function nvGovernanceNetworkSvg(stages, links){
 
 function nvGovernanceScatterSvg(stages){
   if(!stages.length) return '<div class="empty-state" style="font-size:12px;">尚無資料</div>';
-  const X0=55, X1=290, Y0=40, Y1=390; // 繪圖區邊界（1-10分兩軸線性映射）。viewBox本身維持320x420不動（軸線座標already算好），
-  // 08-24：關係圖那邊為了讓標籤能拉到圓外側改寬到400，兩圖改用相近的max-width（340）讓視覺份量對齊，不再要求viewBox完全相同
+  const X0=55, X1=290, Y0=40, Y1=390; // 繪圖區邊界（1-10分兩軸線性映射）。viewBox本身維持320x420不動（軸線座標已算好），
+  // 08-24：max-width維持340px；關係圖那邊viewBox改寬到400（為了讓標籤拉到圓外側），
+  // 其max-width已換算成425px讓兩圖渲染高度一致，兩圖下方nv-gov-tip提示框才會對齊，
+  // 這是spec要求，不要因為想讓兩個數字一樣就改動任一邊。
   const px = v => X0 + (v-1)/9*(X1-X0);
   const py = v => Y1 - (v-1)/9*(Y1-Y0);
   const ptsHtml = stages.map((s,i)=>{
