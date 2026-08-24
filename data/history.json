@@ -1,5 +1,135 @@
 [
   {
+    "date": "2026-08-25",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "AI 廠商轉向自訂晶片以減少對 Nvidia GPU 的依賴",
+        "layer": "custom_silicon",
+        "body": "本週 Register Systems 主持的 Kettle 節目透露，多家 AI 供應商已開始採用 Cerebras 與 Marvell 的自訂矽晶片，以取代傳統 Nvidia GPU。 同時，Waymo 宣布在其自駕計程車平台上自行設計專用晶片，放棄使用 Intel 現成矽片，顯示車載 AI 也走向客製化硬體。",
+        "impact": "Cerebras 與 Marvell 需求上升 (↑)；Nvidia GPU 訂單可能下降 (↓)。整體而言，客製化矽片的興起可能改變 AI 伺服器供應鏈格局，促使資料中心廠商重新評估 GPU 與自訂 ASIC 的採購比例。",
+        "rating": "core",
+        "insight": "AI 供應商加速自訂矽片布局，將分散對 Nvidia GPU 的依賴並提升代工與封測廠商需求。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/08/24/ai-vendors-are-turning-to-custom-hardware-as-microsoft-winds-back-the-clock-on-windows/5291293",
+        "chain": [
+          {
+            "label": "Cerebras 自訂晶片 采納↑",
+            "type": "up"
+          },
+          {
+            "label": "Marvell 自訂晶片 采納↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia GPU 需求↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 推出具全域存取權限的 ChatGPT Work 桌面應用",
+        "layer": "CSP/CapEx",
+        "body": "OpenAI 於 2026 年 8 月 24 日在 TechCrunch 報導，其桌面應用 ChatGPT Work 已取得使用者收件匣、Slack、手機及 Notion 等多項服務的存取權限，以測試 AI 代理人在日常工作中的實際效能。",
+        "impact": "安全與隱私解決方案供應商將受益於企業對資料保護的需求提升 (↑)。最終，企業端對 AI 代理人的接受度提升，可能加速 AI 軟體平台的商業化部署。",
+        "rating": "core",
+        "insight": "全域存取的 AI 代理人將推動企業對高效能雲端資源的需求，提升主要雲服務供應商的市場份額。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/24/openai-is-building-an-ai-agent-for-everything-will-everyone-use-them/",
+        "chain": [
+          {
+            "label": "ChatGPT Work 桌面應用 功能擴張↑",
+            "type": "up"
+          },
+          {
+            "label": "使用者收件匣存取權限↑",
+            "type": "up"
+          },
+          {
+            "label": "Slack 整合使用率↑",
+            "type": "up"
+          },
+          {
+            "label": "Notion 整合使用率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": "",
+        "chain": [
+          {
+            "label": "無相關應用新聞 無影響↔",
+            "type": "neutral"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "自訂矽晶片",
+        "full": "Custom Silicon Chip",
+        "def": "針對特定 AI 工作負載設計的專用晶片，通常由廠商自行開發或委託代工製造，以提升效能與功耗比。",
+        "why": "企業轉向自訂矽片可降低對單一 GPU 供應商的依賴，改變晶圓代工與封測市場需求結構。",
+        "category": "hardware"
+      },
+      {
+        "term": "OSAT",
+        "full": "Outsourced Semiconductor Assembly and Test",
+        "def": "提供晶圓封裝與測試服務的第三方廠商，負責將裸晶片組裝成最終可使用的封裝形態。",
+        "why": "自訂矽片需求上升會直接帶動 OSAT 產能利用率提升，影響其營收與產能規劃。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Cloverleaf Infrastructure",
+        "full": "Cloverleaf Infrastructure Ltd.",
+        "def": "一家專注於資料中心電力與基礎設施開發的公司，充當公用事業與資料中心之間的中介，提供電源供應與相關建設服務。",
+        "why": "其與 Nvidia 的合作顯示電力基礎建設已成為 AI 資料中心擴張的關鍵瓶頸。",
+        "category": "role"
+      },
+      {
+        "term": "Cerebras",
+        "full": "Cerebras Systems",
+        "def": "美國公司，專注於開發大型 AI 推論晶片，提供比傳統 GPU 更高的計算密度。",
+        "why": "其自研晶片正被多家 AI 供應商採用，可能改變 GPU 市場結構。",
+        "category": "hardware"
+      },
+      {
+        "term": "ChatGPT Work",
+        "full": "OpenAI ChatGPT Work 桌面應用",
+        "def": "OpenAI 推出的桌面程式，允許 AI 代理人直接存取使用者的電子郵件、即時通訊與生產力工具，以自動化工作流程。",
+        "why": "此應用示範了 AI 在企業內部深度整合的可能性，將驅動雲端計算需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI 伺服器",
+        "full": "Artificial Intelligence Server",
+        "def": "專門設計用於執行大型人工智慧模型與推論的高效能伺服器，通常配備多顆加速卡與高速記憶體。",
+        "why": "AI 伺服器是支撐生成式 AI 服務與企業 AI 應用的核心硬體，供應鏈需求直接影響晶片與散熱解決方案。",
+        "category": "hardware"
+      },
+      {
+        "term": "逆向合併",
+        "full": "Reverse Merger",
+        "def": "一家未上市公司透過併購已上市公司，使其快速取得上市地位的企業重組方式。",
+        "why": "逆向合併可讓新興數位基礎建設公司快速取得資本市場資金，影響資料中心與相關供應鏈投資。",
+        "category": "role"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-24",
     "is_sunday": false,
     "hw": [
@@ -706,110 +836,6 @@
         "def": "內建機器學習演算法的感測器，可即時分析影像或聲音資料，並根據結果自動執行控制指令。",
         "why": "此技術是智慧家居產品實現自動化與個人化服務的關鍵，影響上下游硬體與軟體供應鏈。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-18",
-    "is_sunday": false,
-    "hw": [],
-    "corp": [
-      {
-        "title": "Nvidia 向 SB Energy 投資 15 億美元，成為 OpenAI Ports‑Pike 數據中心唯一算力供應商",
-        "layer": "hardware",
-        "body": "2026 年 8 月 17 日，Nvidia 宣布向 SoftBank 旗下的 SB Energy 投資 15 億美元，並提供最高 1050 億美元的信用額度，以支援位於美國俄亥俄州辛辛那提附近的 OpenAI Ports‑Pike 數據中心建設。該中心初期規模為 4.25 GW，未來可擴充至 8 GW，並將配備 9.2 GW 天然氣發電廠，總造價約 330 億美元。",
-        "impact": "此投資直接提升 Nvidia 在美國 AI 計算基礎設施的出貨量，帶動其 GPU 及相關加速卡需求 ↑；上游晶圓代工廠（如 TSMC、三星）將因 Nvidia 訂單增加而提升先進製程晶圓供應量 ↑；下游雲端服務商與 AI 應用公司因獲得更大算力供應，能加速模型訓練與部署，進一步擴大 AI 服務市場份額。",
-        "rating": "core",
-        "insight": "Nvidia 透過巨額投資鎖定 OpenAI 計算需求，鞏固其在美國 AI 基礎設施市場的領導地位。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/17/nvidia-investing-1-5b-in-softbank-data-center-developer-behind-openai-project/",
-        "chain": [
-          {
-            "label": "Nvidia GPU 供應↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI Ports‑Pike 計算需求↑",
-            "type": "up"
-          },
-          {
-            "label": "SB Energy 天然氣發電需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Zhipu 推出 GLM‑5.3 模型，於 CyberGym 基準測試中超越 Fable 5 與 GPT‑5.6 Sol",
-        "layer": "ai_technique",
-        "body": "2026 年 8 月 16 日，中國 AI 公司 Zhipu 公布全新模型 GLM‑5.3，並在 CyberGym 漏洞發掘基準測試中擊敗 Fable 5 與 GPT‑5.6 Sol。Zhipu 表示，GLM‑5.3 不僅能辨識單一缺陷，還能在利用鏈的多個階段推理，形成完整的利用計畫。",
-        "impact": "GLM‑5.3 的高效漏洞發掘能力將推動中國本土 AI 訓練平台對高性能 GPU（如 Nvidia A100）與高速記憶體的需求 ↑，進而刺激上游晶圓代工（如 TSMC、SMIC）相關先進製程晶圓產能分配 ↑；同時，國際安全測試服務供應商面臨來自 Zhipu 內部測試工具的競爭壓力，市場份額可能下降 ↓。",
-        "rating": "opp",
-        "insight": "Zhipu 的新模型若在安全測試領域取得領先，將提升中國 AI 訓練硬體需求，對 GPU 供應鏈形成新一波拉動。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/security/2026/08/17/chinese-ai-company-zhipu-claims-its-new-model-is-a-better-bug-finder-than-anthropic-openai/5288203",
-        "chain": [
-          {
-            "label": "Zhipu GLM‑5.3 性能↑",
-            "type": "up"
-          },
-          {
-            "label": "中國 AI 市場佔有率↑",
-            "type": "up"
-          },
-          {
-            "label": "GPT‑5.6 市占↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic CEO 稱 AI 反彈是「信任危機」，美國數據中心受阻",
-        "layer": "role",
-        "body": "2026 年 8 月 16 日，Anthropic 執行長 Dario Amodei 在接受採訪時指出，AI 反彈本質上是一場信任危機，並提及投資人 Gavin Baker 在 All‑In 播客與 X 平台上指責其警示言論加劇了美國對 AI 數據中心的抵制情緒。",
-        "impact": "此信任危機使美國新建 AI 數據中心的投資熱情下降，導致相關建設服務與電力供應商的訂單需求 ↓；上游的高效散熱與電源設備製造商（如 Vertiv、Schneider Electric）亦因需求減少而面臨產能利用率下降 ↓；相對地，已建成且具備成熟安全合規的既有數據中心將吸引更多客戶，提升其使用率 ↑。",
-        "rating": "opp",
-        "insight": "AI 信任危機可能抑制美國新數據中心建設，對相關硬體供應鏈產生短期需求縮減。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/16/anthropic-ceo-says-ai-backlash-is-fundamentally-a-crisis-of-trust/",
-        "chain": [
-          {
-            "label": "Anthropic 信任危機↓",
-            "type": "down"
-          },
-          {
-            "label": "美國 AI 數據中心建設受阻↓",
-            "type": "down"
-          },
-          {
-            "label": "Microsoft Azure GPU 交期↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [],
-    "glossary_new": [
-      {
-        "term": "GLM-5.3",
-        "full": "Zhipu 大規模語言模型第 5.3 版",
-        "def": "Zhipu 於 2026 年推出的 AI 大模型，專注於安全漏洞偵測與利用鏈推理，據稱在 CyberGym 基準測試中表現領先。",
-        "why": "其高效的漏洞發掘能力可能提升對高性能算力硬體的需求，影響 GPU 供應鏈。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "CyberGym",
-        "full": "AI 漏洞發掘基準測試平台",
-        "def": "一套用於評估 AI 模型在真實網路安全挑戰中發現與利用漏洞能力的測試框架。",
-        "why": "模型在此平台的表現直接反映其對算力與記憶體需求的強度，關聯硬體供應鏈。",
-        "category": "software"
-      },
-      {
-        "term": "Ports‑Pike",
-        "full": "OpenAI 位於美國俄亥俄州的 AI 計算數據中心",
-        "def": "由 OpenAI 與 SoftBank 合作開發的高功率 AI 計算設施，計畫規模最終可達 8 GW，將使用 Nvidia 提供的算力設備。",
-        "why": "此中心的建設與擴容將大幅拉動 GPU、電力與冷卻設備的需求，牽動多層供應鏈。",
-        "category": "hardware"
       }
     ],
     "weekly_summary": null
