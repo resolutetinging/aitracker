@@ -784,9 +784,16 @@ function nvGovernanceNetworkSvg(stages, links){
     const m = /^([①②③④])(.+)$/.exec(s.label||'');
     const num = m ? m[1] : '';
     const name = m ? m[2] : (s.label||'');
+    // 08-24：四階段是正方形排列，節點下方的name標籤跟「相鄰節點間對角連線」
+    // 距離很近，使用者反映文字跟箭頭疊在一起。標籤位置不動（換成放射狀外推
+    // 會讓文字跑出viewBox），改在文字後面墊一塊跟頁面背景同色的底色矩形，
+    // 讓穿過附近的線條視覺上在標籤範圍內被蓋掉，不會跟文字糊在一起。
+    // 寬度用「字數×13+8」粗估（CJK字近似正方形，font-size12下單字寬約12-13）。
+    const nameW = name.length * 13 + 8;
     return `<g class="nv-gov-node" data-note="${nvEscAttr(s.desc)}">
       <circle cx="${p.x}" cy="${p.y}" r="${R}" fill="rgba(106,138,32,.16)" stroke="#6a8a20" stroke-width="1.6"/>
       <text x="${p.x}" y="${p.y+7}" text-anchor="middle" font-size="20" font-weight="700" fill="#4a6015">${num}</text>
+      <rect x="${p.x-nameW/2}" y="${p.y+R+6}" width="${nameW}" height="17" rx="3" fill="var(--bg)"/>
       <text x="${p.x}" y="${p.y+R+18}" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text)">${name}</text>
     </g>`;
   }).join('');
