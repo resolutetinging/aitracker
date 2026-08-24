@@ -189,20 +189,22 @@ def build_overview_html(status):
     不是要避免的東西。所以這個區塊改成每週信件都固定包含，不是只有「無候選異動」
     才出現的備案內容；且每個項目附一行實質desc/status，不是只列名字。"""
     def item_lines(key, show_status=False):
-        # 08-17第四版：使用者截圖回報bullet圓點跟標題掉成兩行——查根因是很多email
-        # client（尤其行動版信箱app）不支援position:absolute，第三版靠絕對定位讓
-        # 圓點疊在標題左邊，在瀏覽器（Playwright/Chromium）裡驗證正常，但email
-        # client會直接忽略position屬性，讓<span>退回正常inline flow、被後面的
-        # block級<div>換行擠開。改成bullet直接當文字前綴寫進標題那一行，不依賴任何
-        # 定位屬性，任何HTML渲染引擎都會照樣把它跟標題文字排在同一行
+        # 08-24第五版：使用者截圖回報status文字（尤其⚠️查證更正這類長句）直接接在
+        # 標題後面同一行，長句一多整行就疊字擠壓、看不出標題跟狀態的分界。改成比照
+        # daily新聞信（update_data.py send_email的section_html）的卡片寫法——每則
+        # 左側加border-left色條當引用線，標題單獨一行，狀態、內文各自退縮在自己的
+        # 引用線下一行，形成標題→狀態→內文的階層（比照使用者手繪的樹狀縮排）。
+        # border-left在email client普遍支援（不像position:absolute會被忽略，見
+        # 上一版註解教訓），是email安全的階層表現法。
         rows = ''
         for it in status.get(key, []):
             name = it.get('name') or it.get('label') or ''
             detail = it.get('items') or it.get('desc') or ''
-            status_txt = f'<span style="font-weight:400;color:#8a6030;">（{it["status"]}）</span>' if show_status and it.get('status') else ''
-            detail_html = f'<div style="margin-top:3px;padding-left:14px;font-size:12px;color:#6a6460;line-height:1.6;">{detail}</div>' if detail else ''
-            rows += f'''<div style="margin:12px 0;">
-              <div style="font-size:13px;font-weight:700;color:#2c2a28;line-height:1.5;"><span style="color:#6a8a20;">•</span> {name}{status_txt}</div>
+            status_html = f'<div style="margin-top:5px;padding:2px 0 2px 10px;border-left:2px solid #d4b060;font-size:12px;color:#8a6030;line-height:1.6;">{it["status"]}</div>' if show_status and it.get('status') else ''
+            detail_html = f'<div style="margin-top:5px;padding:2px 0 2px 10px;border-left:2px solid #d8d4ce;font-size:12px;color:#6a6460;line-height:1.6;">{detail}</div>' if detail else ''
+            rows += f'''<div style="background:#faf9f7;border-left:3px solid #6a8a20;border-radius:0 6px 6px 0;padding:10px 14px;margin:8px 0;">
+              <div style="font-size:13px;font-weight:700;color:#2c2a28;line-height:1.5;">{name}</div>
+              {status_html}
               {detail_html}
             </div>'''
         return rows
