@@ -194,14 +194,15 @@ def build_overview_html(status):
         # daily新聞信（update_data.py send_email的section_html）的卡片寫法——每則
         # 左側加border-left色條當引用線，標題單獨一行，狀態、內文各自退縮在自己的
         # 引用線下一行，形成標題→狀態→內文的階層（比照使用者手繪的樹狀縮排）。
-        # border-left在email client普遍支援（不像position:absolute會被忽略，見
-        # 上一版註解教訓），是email安全的階層表現法。
+        # 08-24第六版：使用者截圖回報巢狀引用線太多層（卡片外層綠色+狀態amber+
+        # 內文灰色三條），要求只留最外層綠色那條，狀態/內文改純縮排、不再各自加
+        # border-left，靠顏色（amber/灰）跟縮排本身區分階層即可，不需要疊三層線。
         rows = ''
         for it in status.get(key, []):
             name = it.get('name') or it.get('label') or ''
             detail = it.get('items') or it.get('desc') or ''
-            status_html = f'<div style="margin-top:5px;padding:2px 0 2px 10px;border-left:2px solid #d4b060;font-size:12px;color:#8a6030;line-height:1.6;">{it["status"]}</div>' if show_status and it.get('status') else ''
-            detail_html = f'<div style="margin-top:5px;padding:2px 0 2px 10px;border-left:2px solid #d8d4ce;font-size:12px;color:#6a6460;line-height:1.6;">{detail}</div>' if detail else ''
+            status_html = f'<div style="margin-top:5px;padding-left:12px;font-size:12px;color:#8a6030;line-height:1.6;">{it["status"]}</div>' if show_status and it.get('status') else ''
+            detail_html = f'<div style="margin-top:5px;padding-left:12px;font-size:12px;color:#6a6460;line-height:1.6;">{detail}</div>' if detail else ''
             rows += f'''<div style="background:#faf9f7;border-left:3px solid #6a8a20;border-radius:0 6px 6px 0;padding:10px 14px;margin:8px 0;">
               <div style="font-size:13px;font-weight:700;color:#2c2a28;line-height:1.5;">{name}</div>
               {status_html}
