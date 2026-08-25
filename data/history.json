@@ -1,5 +1,113 @@
 [
   {
+    "date": "2026-08-26",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "IBM 宣布開發同時執行 Arm 與 Z 指令的二納米晶片",
+        "layer": "strategic_supplier_decision",
+        "body": "IBM 表示將在二納米製程上打造一顆未命名晶片，內含 11 顆主頻超過 5.7 GHz 的高效能核心，並整合 AI 推論加速器以支援交易內偵測詐欺。該晶片同時支援 IBM 自家大型主機指令集（Z）與 Arm 架構，亦可在 LinuxONE 系統上運行。IBM 暫未透露晶圓代工廠商，但二納米節點暗示可能向台積電或三星等先進代工訂購產能。",
+        "impact": "",
+        "rating": "core",
+        "insight": "IBM 自研二納米異構晶片將推高先進代工與高階封裝需求，提升相關供應鏈的產能利用率。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/08/25/ibm-announces-chip-that-natively-executes-arm-and-z-instructions-concurrently/5292059",
+        "chain": [
+          {
+            "label": "TSMC 2nm 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "IBM 高效能核心 效能↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 公布 Jalapeño 晶片於 Hot Chips 會議的效能基準",
+        "layer": "CSP/CapEx",
+        "body": "2026 年 8 月 25 日，OpenAI 在 Hot Chips 會議上展示了新一代 Jalapeño 晶片，並以 SemiAnalysis 的 InferenceX 基準測試其效能。測試結果顯示，Jalapeño 在每瓦特吞吐量與每使用者產生的 token 數上均優於 Nvidia 的 Blackwell 系統。OpenAI 硬體負責人 Richard Ho 在新聞發布會上稱此為「非常顯著的性能突破」。",
+        "impact": "Jalapeño 晶片的效能優於 Nvidia 的 Blackwell 系統，可能對 Nvidia 供應鏈形成競爭壓力。",
+        "rating": "core",
+        "insight": "Jalapeño 晶片的功耗與效能優勢將驅動晶圓代工需求上升，同時對 Nvidia GPU 市場形成直接競爭。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/",
+        "chain": [
+          {
+            "label": "OpenAI Jalapeño 每瓦特吞吐量↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia Blackwell 市占↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Airbound 以 3,700 萬美元 A 輪融資加速商業化無人機製造",
+        "layer": "dronetech",
+        "body": "Airbound Bags 在 2026 年 8 月完成 3,700 萬美元（約 355 億盧比）A 輪融資，由 Greenoaks 主導，DoorDash、Lightspeed 等投資者參與。公司計畫將資金投入工程研發、商業規模製造與市場推廣，提升其自主飛行無人機的產能。Airbound 自 2023 年成立以來累計融資接近 5,000 萬美元，將於 2027 年前在印度與東南亞部署首批物流服務。",
+        "impact": "",
+        "rating": "core",
+        "insight": "大規模融資將加速自主物流無人機商業化，提升相關供應鏈上游需求並為物流平台帶來成本優勢。",
+        "source_label": "Inc42",
+        "source": "https://inc42.com/buzz/airbound-bags-37-mn-from-greenoaks-doordash-to-scale-drone-manufacturing/",
+        "chain": [
+          {
+            "label": "Airbound 無人機產能↑",
+            "type": "up"
+          },
+          {
+            "label": "競爭對手 DroneCo 市占↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "二納米製程",
+        "full": "二納米製程 (2 nm process)",
+        "def": "指晶圓製造的最先進節點，晶體管尺寸約為 2 奈米，能提供更高的效能與能效。此節點主要由台積電與三星提供，供應鏈包括光刻機、化學機與封裝服務。",
+        "why": "IBM 採用此節點意味著其晶片將大量依賴先進代工與高階封裝，對相關供應鏈產生顯著需求。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "AI 推論加速器",
+        "full": "人工智慧推論加速器 (AI inference accelerator)",
+        "def": "專為執行已訓練模型的推論工作負載而設計的硬體單元，通常具備大量矩陣運算單元以提升效能。常見於資料中心與邊緣運算設備。",
+        "why": "IBM 在晶片內整合此加速器，顯示其欲在主機環境中提供即時詐欺偵測等 AI 服務，牽動 AI 晶片供應鏈。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "LinuxONE",
+        "full": "LinuxONE 系統",
+        "def": "IBM 為大型主機平台推出的 Linux 環境，結合主機的可靠性與 Linux 的開放生態，常用於高效能運算與企業關鍵工作負載。",
+        "why": "此晶片同時支援 LinuxONE，說明其目標客群包括傳統大型主機使用者，可能改變這些客戶對外部加速卡的需求結構。",
+        "category": "hardware"
+      },
+      {
+        "term": "Jalapeño 晶片",
+        "full": "OpenAI 自研的 AI 推理專用晶片",
+        "def": "Jalapeño 晶片是 OpenAI 於 2026 年推出的高效能推理晶片，設計目標是提升每瓦特的 AI 推理吞吐量，並在 SemiAnalysis InferenceX 基準上超越 Nvidia Blackwell 系統。",
+        "why": "其功耗與效能的雙重優勢可能改變 AI 推理硬體的供應鏈格局，提升對先進製程的需求。",
+        "category": "hardware"
+      },
+      {
+        "term": "自主飛行無人機",
+        "full": "Autonomous Drone",
+        "def": "具備 AI 演算法與感測器的無人機，可自行規劃航線並完成貨物運輸，無需人工遠端操控。",
+        "why": "是 Airbound 主要產品，影響物流與供應鏈的最後一哩配送效率。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-25",
     "is_sunday": false,
     "hw": [
@@ -701,141 +809,6 @@
         "def": "工作流程自動化平台（如 Relay、Zapier）允許使用者透過圖形化介面串接多種服務，實現資料搬移與觸發動作的自動化。",
         "why": "Relay 的關閉可能改變市場供需格局，提升其他平台的使用率。",
         "category": "software"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-19",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Xen Project 推動 IEC‑61508 安全標準，以支援車用嵌入式虛擬化",
-        "layer": "安全與標準",
-        "body": "2026 年 8 月 18 日，Xen Project 宣布將正式遵循 IEC‑61508 安全標準，目標讓其開源虛擬化管理程式在汽車緊急剎車與碰撞避免等關鍵應用中取得安全認證；此舉同時回應車廠希望以單一硬體平台整合多項功能的需求，減少實體電腦數量；Xen 已在過去數年加強嵌入式工作負載支援，並與 Boeing、AMD、Renesas 等合作推動標準化。",
-        "impact": "Xen 取得 IEC‑61508 認證後，車用系統供應鏈將更傾向採用其虛擬化解決方案，導致對支援 Xen 的晶片（如 AMD、Renesas）需求 ↑，同時降低對傳統單一功能 MCU 的採購量 ↓。",
-        "rating": "opp",
-        "insight": "安全認證的 Xen 可能成為車用虛擬化的標準選項，帶動相關晶片與封測服務需求上升。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/virtualization/2026/08/18/xen-project-gets-serious-about-safety-in-push-to-possibly-partition-robot-brains/5288914",
-        "chain": [
-          {
-            "label": "Xen Project 車用嵌入式虛擬化安全認證↑",
-            "type": "up"
-          },
-          {
-            "label": "Renesas 車載晶片需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 推出針對青少年的安全版 ChatGPT",
-        "layer": "core",
-        "body": "OpenAI 於 2026 年 8 月 18 日正式發布名為 ChatGPT for Teens 的新產品，加入防止自殺與作弊的安全機制；該版本新增「Study Mode」功能，於青少年提問時提供引導問題與步驟說明；系統亦會在偵測到可能的作弊行為時彈出作業提醒，促使使用者自行完成作業。",
-        "impact": "",
-        "rating": "core",
-        "insight": "OpenAI 以安全功能切入青少年市場，將刺激 GPU 與雲端算力需求，提升上游晶片供應鏈營收。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/",
-        "chain": [
-          {
-            "label": "OpenAI ChatGPT for Teens 訂閱用戶增長↑",
-            "type": "up"
-          },
-          {
-            "label": "家長監管平台合作收入↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic 年化營收突破 650 億美元",
-        "layer": "core",
-        "body": "Anthropic 於 2026 年 7 月底公布其年化營收跑道達 650 億美元，較 5 月的 470 億美元提升約 38%；公司預計全年營收將介於 1000 至 1200 億美元之間，並已提交機密 IPO 申請文件；同時，競爭對手 OpenAI 的年度營收亦從 2025 年底的 200 億美元增至 400 億美元。",
-        "impact": "營收大幅成長將驅動 Anthropic 加速自研算力平台，提升對資料中心建設的投資，帶動相關建築與能源供應鏈需求。",
-        "rating": "core",
-        "insight": "Anthropic 營收突破新高，將加速算力採購與資料中心擴建，提升上游晶片與代工產能需求。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/17/anthropics-annualized-revenue-surges-to-65b/",
-        "chain": [
-          {
-            "label": "Anthropic 年化營收↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI 競爭壓力↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Whisker 推出 AI 智慧貓砂機 Litter‑Robot 5 Pro",
-        "layer": "consumer‑smart‑home",
-        "body": "Whisker 於 2026 年 8 月發布全新 Litter‑Robot 5 Pro，售價 899 美元，內建 AI 演算法自動偵測貓咪排泄並清理貓砂。該機型宣稱能透過影像辨識辨識貓咪行為，但多位測評者指出在實際使用中 AI 判斷不準確，導致清理失效。產品於 The Verge 評測報導中被批評「看似先進卻無法正常運作」。",
-        "impact": "下游方面，智慧家居平台與零售通路需調整庫存與售後服務，可能導致物流與維修服務需求 ↑。若市場對 AI 功能失望，競爭對手的非 AI 傳統貓砂機將受惠，市場份額可能向傳統品牌轉移。",
-        "rating": "core",
-        "insight": "AI 功能未達預期可能抑制智慧家居產品的採用速度。",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/tech/978323/whisker-litter-robot-5-pro-review",
-        "chain": [
-          {
-            "label": "Whisker Litter‑Robot 5 Pro 銷售量↓",
-            "type": "down"
-          },
-          {
-            "label": "寵物用品零售商庫存壓力↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "IEC‑61508",
-        "full": "國際功能安全標準 IEC‑61508",
-        "def": "IEC‑61508 為電氣/電子/可程式化系統的功能安全國際標準，規範軟硬體在可能危及人身安全的環境中的開發與驗證流程。",
-        "why": "取得此標準認證可讓軟體平台如 Xen 在車用、工業等高安全需求領域獲得合規資格，提升市場接受度。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Neocloud",
-        "full": "新型雲端 AI 基礎設施服務",
-        "def": "Neocloud 指的是結合高效能 GPU、專用 AI 加速器與彈性雲端資源的服務模式，提供即時 AI 推理與訓練能力。",
-        "why": "Groq 轉型為 Neocloud 供應商意味著對 GPU 及相關高帶寬記憶體的需求將顯著提升，影響上游晶圓與封測產能配置。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Hypervisor",
-        "full": "虛擬化管理程式",
-        "def": "Hypervisor 是一種軟體層，允許在同一硬體上同時執行多個作業系統或工作負載，常用於伺服器與嵌入式系統的資源隔離。",
-        "why": "Xen 作為開源 Hypervisor 若符合 IEC‑61508，將促使車用系統採用虛擬化以降低硬體成本與提升安全性。",
-        "category": "hardware"
-      },
-      {
-        "term": "Study Mode",
-        "full": "學習模式",
-        "def": "OpenAI 為青少年版 ChatGPT 設計的功能，提供分步驟引導與問題提示，協助使用者自行解題。",
-        "why": "此功能提升產品安全性與教育價值，可能成為 AI 教育工具的標準配置。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "annualized revenue run rate",
-        "full": "年化營收跑道",
-        "def": "根據近期營收數據推算的全年營收預估值，常用於快速評估公司成長速度。",
-        "why": "Anthropic 公布的 650 億美元年化營收顯示其市場擴張速度遠超競爭對手。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI 感測模組",
-        "full": "Artificial Intelligence Sensor Module",
-        "def": "內建機器學習演算法的感測器，可即時分析影像或聲音資料，並根據結果自動執行控制指令。",
-        "why": "此技術是智慧家居產品實現自動化與個人化服務的關鍵，影響上下游硬體與軟體供應鏈。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
