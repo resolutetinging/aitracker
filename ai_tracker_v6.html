@@ -569,10 +569,15 @@ function newsGrid(arr, ptype, showInsight) {
 // 08-11：showInsight參數（本週記錄頁傳true）——原本「個人洞察」分頁內容跟本週記錄
 // 完全重複（供應鏈影響分析/Safety Alert皆同），唯一不重複的是「注意方向」這段文字，
 // 移植進來後個人洞察分頁整個移除，不再維護兩份幾乎一樣的卡片
+// 08-25：使用者截圖回報email裡有CORE/OPP/NOISE燈號徽章、html卻只在noise時
+// 才顯示，core/opp完全沒有——加齊三種評級都顯示，顏色沿用CSS root既有的
+// --core/--opp/--noise token，跟email的🔵🟢⚫用色邏輯一致
+const RATING_BADGE_CFG = {core:{label:'CORE',hex:'#3a5a7a'},opp:{label:'OPP',hex:'#3a6858'},noise:{label:'NOISE',hex:'#686460'}};
 function newsCard(item, ptype, showInsight) {
   const tc = ptype==='hw'?'tag-hw':ptype==='corp'?'tag-corp':'tag-app';
-  const noiseBadge = item.rating === 'noise'
-    ? `<span class="tag" style="background:rgba(104,100,96,.12);color:var(--muted);border:1px solid rgba(104,100,96,.3);">NOISE</span>` : '';
+  const rbCfg = RATING_BADGE_CFG[item.rating];
+  const ratingBadge = rbCfg
+    ? `<span class="tag" style="background:${rbCfg.hex}1f;color:${rbCfg.hex};border:1px solid ${rbCfg.hex}4d;">${rbCfg.label}</span>` : '';
   const eth = item.ethic
     ? `<div class="ethic-alert">⚠️ <strong>Safety Alert</strong>：${item.ethic}</div>` : '';
   const validUrl = item.source && /^https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i.test(item.source);
@@ -589,7 +594,7 @@ function newsCard(item, ptype, showInsight) {
     ? `<div class="ins-insight" style="margin-bottom:12px;"><div class="ins-insight-label">注意方向</div>${item.insight}</div>`
     : '';
   return `<div class="news-card ${ptype}">
-    <div class="card-top"><div class="card-title">${item.title}</div><span class="tag ${tc}">${item.layer}</span>${noiseBadge}</div>
+    <div class="card-top"><div class="card-title">${item.title}</div><span class="tag ${tc}">${item.layer}</span>${ratingBadge}</div>
     <div class="card-body">${fmtBody(item.body)}</div>${eth}${impactBox}${insightBox}${src}
   </div>`;
 }

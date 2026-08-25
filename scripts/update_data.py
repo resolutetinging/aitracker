@@ -1656,8 +1656,8 @@ def send_email(data):
             src = f'<div style="margin-top:6px;font-size:11px;"><a href="{item["source"]}" style="color:{color};">{item.get("source_label","來源連結")} →</a></div>' if item.get('source') else ''
             cards += f'''
             <div style="background:#faf9f7;border-left:3px solid {color};padding:14px 16px;margin:10px 0;border-radius:0 6px 6px 0;">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-                <span style="font-size:11px;font-weight:700;color:{color};background:{color}18;padding:2px 8px;border-radius:10px;border:1px solid {color}44;">{item["layer"]}</span>
+              <div style="display:flex;align-items:center;margin-bottom:6px;">
+                <span style="font-size:11px;font-weight:700;color:{color};background:{color}18;padding:2px 8px;border-radius:10px;border:1px solid {color}44;margin-right:8px;">{item["layer"]}</span>
                 <span style="font-size:11px;color:#888;">{rating_badge(item.get("rating",""))}</span>
               </div>
               <div style="font-size:14px;font-weight:700;color:#2c2a28;margin-bottom:8px;line-height:1.4;">{item["title"]}</div>
