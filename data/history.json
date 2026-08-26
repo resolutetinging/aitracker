@@ -1,5 +1,99 @@
 [
   {
+    "date": "2026-08-27",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Lancium 與 Nvidia 合作部署千兆瓦 AI 資料中心",
+        "layer": "capacity_commitments",
+        "body": "Lancium 表示已租用 4 GW 容量，且在開發中超過 15 GW 已供電的土地，將使用 Nvidia 的 DSX 參考設計與電力管理技術；Nvidia 亦對 Lancium 進行戰略投資，投資金額未公開；Lancium 以「清潔校園」稱呼其資料中心，將成為 Nvidia 全堆疊 AI 工廠平台的部署點。",
+        "impact": "此合作直接提升 Nvidia DSX 參考設計的需求，帶動上游晶片與電源管理 IC 供應商產能上升。",
+        "rating": "core",
+        "insight": "投資者應關注 Nvidia 相關電源管理與 AI 工廠技術供應鏈的產能擴張機會。",
+        "source_label": "Data Center Knowledge",
+        "source": "https://www.datacenterknowledge.com/data-center-construction/lancium-nvidia-partner-on-gigawatt-scale-ai-data-centers",
+        "chain": [
+          {
+            "label": "Lancium 資料中心容量↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia DSX 參考設計採用↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Perceptron 推出 Isaac 0.5 視覺模型 助力工廠機器人",
+        "layer": "CSP/CapEx",
+        "body": "Perceptron 於 2026 年 8 月底在美國發布其最新視覺模型 Isaac 0.5，該模型由兩位前 Meta 研究科學家於 2024 年 11 月創立的公司開發，能讓倉儲與工廠車間的視覺導引機器人即時辨識、推理並執行動作，同時支援從機器人錄製的影片中抽取視覺情報。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "視覺 AI 進入工廠層面將加速機器人硬體升級，相關感測與運算供應鏈受惠。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/26/ex-meta-scientists-want-to-bring-visual-ai-to-the-factory-floor/",
+        "chain": [
+          {
+            "label": "Perceptron Isaac 0.5 視覺模型↑",
+            "type": "up"
+          },
+          {
+            "label": "工廠機器人視覺導引效率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [],
+    "glossary_new": [
+      {
+        "term": "AI 工廠平台",
+        "full": "AI Factory Platform",
+        "def": "Nvidia 提供的全堆疊 AI 計算解決方案，涵蓋加速運算、網路與軟體層面，支援資料中心在電網條件下動態調整功耗。",
+        "why": "了解此平台有助於判斷 Nvidia 相關硬體與軟體供應鏈的需求走向。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "DSX 參考設計",
+        "full": "Data Center System eXpress",
+        "def": "Nvidia 為資料中心打造的參考硬體架構，整合 GPU、電源管理與散熱模組，以提升計算密度與能源效率。",
+        "why": "DSX 設計的採用直接影響上游晶片、電源與散熱解決方案的採購量。",
+        "category": "hardware"
+      },
+      {
+        "term": "CoWoS",
+        "full": "Chip-on-Wafer-on-Substrate",
+        "def": "TSMC 的先進封裝技術，將多顆晶片堆疊於同一基板上，以實現高帶寬記憶體介面（HBM）整合。",
+        "why": "CoWoS 良率變化會波及 AI 晶片的供應與代工選擇。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Isaac 0.5",
+        "full": "Perceptron 開發的工業視覺模型",
+        "def": "一種結合感知、推理與行動的視覺 AI 模型，專為工廠與倉儲機器人設計，可即時分析影片並提供操作指令。",
+        "why": "提供機器人更高階的環境理解能力，推動工業自動化升級。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Perceptron",
+        "full": "AI 初創公司",
+        "def": "由兩位前 Meta 研究科學家於 2024 年 11 月創立，專注於開發前沿視覺模型以提升機器人與實體環境的互動能力。",
+        "why": "其技術可能成為工業 AI 應用的關鍵供應方，影響感測與運算硬體需求。",
+        "category": "role"
+      },
+      {
+        "term": "視覺模型",
+        "full": "機器視覺人工智慧模型",
+        "def": "利用深度學習對影像或影片進行辨識、分割與推理，常用於機器人導航與品質檢測等工業場景。",
+        "why": "是實現工廠自動化與智慧製造的核心技術之一。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-26",
     "is_sunday": false,
     "hw": [
@@ -689,126 +783,6 @@
         "def": "在製程中於前一工序測量結果後，立即調整後續工序參數以抵消變異的控制策略。此方法可在缺陷產生前即修正，降低晶圓報廢率。",
         "why": "降低製程變異直接提升良率，對晶圓代工廠與其上下游供應鏈都有成本與產能效益。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-20",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "百度預期昆崙芯片需求上升　本土買家缺乏替代方案",
-        "layer": "strategic_supplier_decision",
-        "body": "百度在2026年第二季財報電話會議上指出，因中國本土買家缺乏可替代的AI推論晶片，昆崙芯片業務將迎來「好日子」；昆崙芯片是符合CUDA標準的推論晶片，已銷售給華為與中興通訊，後者再將其整合至提供給中國電信業者的設備中；百度執行副總杜沈透露，昆崙芯片將於近期完成分拆上市，屆時將提供更具透明度的資金與供應鏈資訊。",
-        "impact": "1. 由於本土電信設備商如華為與中興將持續採購昆崙芯片，預計本地OSAT與代工廠（如中芯國際）之晶圓代工與封測需求將上升（↑），有助於提升中國半導體製造產能利用率。",
-        "rating": "core",
-        "insight": "本土AI推論晶片需求上升將推動中國代工與封測產能提升，同時削弱外國晶片供應的影響力。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/08/19/baidu-says-chinese-buyers-want-local-ai-chips-due-to-supply-chain-issues/5289377",
-        "chain": [
-          {
-            "label": "昆崙芯片 需求↑",
-            "type": "up"
-          },
-          {
-            "label": "華為 整合昆崙芯片↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Amazon 於 8 月 19 日將 Alexa+ 於所有 Fire TV 裝置免費開放",
-        "layer": "CSP/CapEx",
-        "body": "Amazon 於 2026 年 8 月 19 日宣布，所有在美國可相容的 Fire TV 裝置將自動升級為 Alexa+，且不再收取每月 19.99 美元的訂閱費用；此升級包括當代的 Fire TV Stick、Fire TV Cube、Amazon Ember 智慧電視以及其他支援的智慧電視。此舉不需使用者下載應用程式或註冊 Prime 會員，即可即時取得對話式搜尋、智慧家庭控制與 AI 推薦功能。",
-        "impact": "此舉直接降低 Amazon 在 Fire TV 硬體上對訂閱收入的需求 (↑ 服務使用率，↓ 訂閱收入)。",
-        "rating": "core",
-        "insight": "免費提供 Alexa+ 可能提升硬體銷量與生態系黏著度，長期有助於 Amazon 服務收入增長。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/19/amazon-makes-its-ai-powered-alexa-free-on-fire-tv-no-prime-required/",
-        "chain": [
-          {
-            "label": "Fire TV Alexa+ 免費升級↑",
-            "type": "up"
-          },
-          {
-            "label": "Amazon 訂閱收入↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI 於 8 月 18 日推出新安全防護措施以因應 Hugging Face 事件",
-        "layer": "CSP/CapEx",
-        "body": "OpenAI 於 2026 年 8 月 18 日發布新一批安全政策，強化模型測試期間的監控與對齊機制，並在模型後訓練階段加強安全性；此舉回應 7 月 21 日披露的 Hugging Face 資安漏洞事件，雖然 OpenAI 表示措施非直接回應，但顯示其在模型安全上的投入持續升級。",
-        "impact": "",
-        "rating": "core",
-        "insight": "OpenAI 的安全升級將鞏固其在企業 AI 市場的信任基礎，提升服務採用率。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/18/openai-institutes-new-safeguards-after-hugging-face-breach/",
-        "chain": [
-          {
-            "label": "OpenAI 安全防護投入↑",
-            "type": "up"
-          },
-          {
-            "label": "Hugging Face 安全形象受損↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "AI 工作流程自動化新創 Relay 宣布於 9 月 14 日關閉服務，部分員工加入 Google Chrome 團隊",
-        "layer": "CSP/CapEx",
-        "body": "Relay 於 2026 年 8 月 17 日宣布，將於 2026 年 9 月 14 日關閉付費客戶的服務，並將包括創辦人 Jacob Bank 在內的部分員工轉至 Google 的 Chrome 團隊；此舉標誌著原本定位為「新 Zapier」的 AI 工作流程平台正式退出市場。",
-        "impact": "Google 獲得 Relay 人才後，預計加速 Chrome 瀏覽器內建 AI 工作流程功能的開發，進一步提升 Chrome 在企業使用情境的競爭力。",
-        "rating": "opp",
-        "insight": "Relay 的退出為競爭對手提供擴張機會，Google 亦可藉此加速 AI 工作流程整合。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/17/ai-automation-startup-relay-shuts-down-staff-joins-googles-chrome-team/",
-        "chain": [
-          {
-            "label": "Relay 服務關閉↓",
-            "type": "down"
-          },
-          {
-            "label": "Google Chrome 團隊 人才吸收↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [],
-    "glossary_new": [
-      {
-        "term": "昆崙芯片",
-        "full": "Kunlunxin AI inference chip",
-        "def": "百度子公司開發的符合CUDA標準的AI推論晶片，主要供應給華為與中興等中國電信設備商，用於雲端與邊緣運算。",
-        "why": "其本土化供應可降低中國對外國AI晶片的依賴，影響半導體供應鏈的地緣分布。",
-        "category": "hardware"
-      },
-      {
-        "term": "Alexa+",
-        "full": "Amazon 的 AI 助理升級版，提供對話式搜尋與智慧家庭控制功能",
-        "def": "Alexa+ 為 Amazon 於 Fire TV 裝置上提供的增強型語音助理，結合生成式 AI 以提供更自然的對話與個人化推薦。",
-        "why": "此服務的免費化將提升裝置使用率並加深 Amazon 生態系的黏著度。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Hugging Face breach",
-        "full": "2026 年 7 月 21 日發生的 Hugging Face 資安漏洞事件",
-        "def": "該事件涉及未授權存取 Hugging Face 平台的模型與資料，促使業界重新檢視 AI 模型的安全與合規流程。",
-        "why": "此事件直接觸發 OpenAI 加強安全防護的政策調整。",
-        "category": "role"
-      },
-      {
-        "term": "workflow automation",
-        "full": "利用軟體自動化重複性工作流程的技術",
-        "def": "工作流程自動化平台（如 Relay、Zapier）允許使用者透過圖形化介面串接多種服務，實現資料搬移與觸發動作的自動化。",
-        "why": "Relay 的關閉可能改變市場供需格局，提升其他平台的使用率。",
-        "category": "software"
       }
     ],
     "weekly_summary": null
