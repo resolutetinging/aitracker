@@ -1,5 +1,152 @@
 [
   {
+    "date": "2026-08-29",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "中國稀土許可管制削減 yttrium 出口 75%，衝擊資料中心關鍵元件供應鏈",
+        "layer": "export_controls",
+        "body": "IEEE Spectrum 報導指出，2025 年中國首次將 yttrium 列入七種受強制許可管制的稀土，2026 年至今出口量已下降約 75%。同時，Erbium 亦受相同政策限制，兩者皆是白光 LED、顯示器、微波濾波器及光纖放大器等關鍵元件的核心材料。中國政府將於 2026 年 11 月重新審議此項稀土出口管制政策，屆時可能進一步調整許可條件。",
+        "impact": "受限的 yttrium 與 erbium 直接降低供應給顯示面板製造商與光纖放大器的原料供應，導致相關產能受阻。",
+        "rating": "core",
+        "insight": "投資者應關注受限稀土的供應替代方案與相關 OSAT 廠商的採購策略變化。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/08/28/datacenters-face-direct-hit-from-china-rare-earth-curbs-as-clock-runs-out-on-escalated-licensing-chokeoff/5293257",
+        "chain": [
+          {
+            "label": "LED 製造商 Cree LED 供應↑",
+            "type": "up"
+          },
+          {
+            "label": "光纖放大器供應商 Lumentum 需求↑",
+            "type": "up"
+          },
+          {
+            "label": "微波濾波器廠商 Qorvo 訂單↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "五角大樓將 Anthropic 列為供應鏈風險的裁決被推翻",
+        "layer": "legal",
+        "body": "2026 年 8 月 28 日，美國加州地方法官 Rita Lin 在 59 頁裁決書中認定國防部長 Pete Hegseth 以「Claude」模型的虛構威脅將 Anthropic 標為供應鏈風險違法，並指出政府在三天最後期限前未給予公司正當程序。判決指出，Pentagon 的國安理由在 Hegseth 已決定將 Anthropic 視為威脅後才被組織，屬於任意且武斷的行為。此裁決同時撤銷了對 Anthropic 的供應鏈風險標籤，並要求政府重新審視相關程序。",
+        "impact": "此裁決直接影響美國國防部對 AI 供應商的審核流程，可能降低未來對類似模型的風險標籤需求。其他 AI 初創公司因此判例可降低被列為供應鏈風險的可能性，提升市場競爭力。",
+        "rating": "core",
+        "insight": "法律勝訴提升 Anthropic 市場信任，投資者可關注其合約擴張與資金流入。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/08/28/pentagon-blacklisted-anthropic-over-claude-powers-it-didnt-have/5293266",
+        "chain": [
+          {
+            "label": "Anthropic 訂閱收入↑",
+            "type": "up"
+          },
+          {
+            "label": "美國國防部 AI 供應鏈審查成本↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic 推出模型硬體標準（MHS）以連接實驗室設備",
+        "layer": "tech",
+        "body": "2026 年 8 月 28 日，Anthropic 公布尚未發表的 Model Hardware Standard（MHS）協議，旨在讓 Claude 或其他模型安全控制實驗室、工廠與機器人硬體；首批測試在馬里蘭州 Howard Hughes Medical Institute 的 Janelia Research Campus 進行。MHS 的概念與先前的 Model Context Protocol（MCP）相似，但聚焦於實體裝置的即時指令傳遞。Anthropic 表示此標準將協助科研人員避免 2010 年離心機失控等事故，並計畫在未來一年內擴展至更多實驗室與製造廠。",
+        "impact": "1) 上游硬體供應商（如傳感器與驅動電路製造商）將因 MHS 需求增加而提升出貨量 (↑)；2) 中游系統整合商需開發符合 MHS 的介面軟體，推動新一代 AI‑硬體整合服務 (↑)；3) 下游科研機構與製造業者可直接透過 AI 模型監控設備，降低設備故障率 (↓) 並提升產能，對傳統自動化供應商形成競爭壓力。",
+        "rating": "core",
+        "insight": "MHS 為 AI 與實體硬體的首次標準化橋接，相關硬體供應鏈將受益。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/08/28/anthropic-proposes-plumbing-spec-to-link-ai-agents-to-lab-kit-and-robots/5293135",
+        "chain": [
+          {
+            "label": "Anthropic MHS 標準採用率↑",
+            "type": "up"
+          },
+          {
+            "label": "實驗室自動化設備廠商 Siemens Healthineers 銷售↑",
+            "type": "up"
+          },
+          {
+            "label": "傳統實驗室儀器供應商 Agilent 訂單↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Lam Research 在美國俄勒岡州落成 AI 晶片研發實驗室",
+        "layer": "manufacturing",
+        "body": "Lam Research 於 2026 年在美國俄勒岡州破土動工，建立專門用於 AI 晶片製程優化的實驗室。該實驗室將結合 AI 演算法與先進製程設備，協助客戶加速 AI 晶片的設計驗證與良率提升。此舉顯示半導體供應鏈正加速導入 AI 技術以縮短新產品上市時間。",
+        "impact": "此實驗室的建立將直接提升 Lam Research 向晶圓代工廠提供的 AI 優化設備需求，導致上游材料供應商（光刻膠、化學藥劑）需求↑。隨著設備效能提升，代工廠的製程良率↑，進一步降低下游系統整合商取得高良率 AI 晶片的成本。長遠看，AI 晶片的快速交付將促進資料中心與邊緣運算市場的擴張，提升相關伺服器供應鏈的需求。",
+        "rating": "core",
+        "insight": "AI 優化設備的需求上升將帶動半導體製程供應鏈整體效能提升。",
+        "source_label": "Lam Research",
+        "source": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOTDBldFZQRVdScFFBX3IxQ2lETnRHdWRuWGpHRGRWQVNyZF9rY2tlQzRxcWJpUjVrREpucWJVRGI1VXpKTXZZeG1CQXQ2eFljSER4Q2tYVVA4SWg1ZnM3S0o0QlRmRDNKYlU1NmNVR0FGXzBnZFZicW0xWDRGUE1odDM4NURfVXhLdlVIVy1TSVVkQWR2Rlh1MnpnV3BIbkNSQnc?oc=5",
+        "chain": [
+          {
+            "label": "Lam Research AI 晶片研發服務需求↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 晶片設計公司 Nvidia 設計驗證加速↑",
+            "type": "up"
+          },
+          {
+            "label": "競爭廠商 GlobalFoundries 晶圓代工交期↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "yttrium",
+        "full": "釔",
+        "def": "釔是一種中重稀土金屬，常用於白光 LED、顯示器、微波濾波器以及陶瓷電容等關鍵電子元件。",
+        "why": "其供應受中國出口許可限制，直接影響相關半導體與光通訊元件的製造成本與供應穩定性。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "erbium",
+        "full": "鉺",
+        "def": "鉺是稀土金屬，主要應用於光纖放大器的增益介質，用於提升長距離光纖傳輸的信號強度。",
+        "why": "中國對鉺的出口管制同樣限制了光通訊設備的原料來源，對資料中心的光網路建設產生連鎖影響。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Model Hardware Standard (MHS)",
+        "full": "模型硬體標準",
+        "def": "Anthropic 提出的協議，用於讓大型語言模型安全地指令實體硬體設備，如實驗室儀器或工廠機器人。",
+        "why": "提供 AI 與硬體的標準化介面，降低整合成本並提升安全性。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Model Context Protocol (MCP)",
+        "full": "模型上下文協議",
+        "def": "Anthropic 先前推出的協議，允許 AI 模型連接並查詢外部資料來源，以提供上下文資訊。",
+        "why": "是 MHS 的概念前身，說明 Anthropic 在 AI 與外部系統整合上的持續布局。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Supply‑chain risk label",
+        "full": "供應鏈風險標籤",
+        "def": "美國國防部對被認為可能危害國家安全的 AI 供應商所貼的官方標記，會限制其在政府合約中的參與。",
+        "why": "此標籤的撤銷直接影響 AI 公司的市場准入與合約機會。",
+        "category": "role"
+      },
+      {
+        "term": "AI 晶片研發實驗室",
+        "full": "Artificial Intelligence Semiconductor Lab",
+        "def": "結合人工智慧演算法與半導體製程設備的研發設施，用於優化 AI 晶片的設計、驗證與製造流程。",
+        "why": "可縮短 AI 晶片開發週期、提升良率，對整個半導體供應鏈的效率與成本具有顯著影響。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-28",
     "is_sunday": false,
     "hw": [
@@ -662,107 +809,5 @@
       }
     ],
     "weekly_summary": "HW：Nvidia 投資 Cloverleaf 以解決 AI 資料中心電力供應瓶頸，確保新一代 GPU 可持續銷售。\n\nAPP：本週未出現可供分析的實際 AI 應用產品或服務新聞。\n用戶洞察：在缺乏具體 AI 應用案例的情況下，投資者應關注半導體製程創新對成本與供應鏈的間接影響。"
-  },
-  {
-    "date": "2026-08-22",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "阿里雲加速使用自研晶片以縮短 AI 伺服器回本期",
-        "layer": "CSP/CapEx",
-        "body": "阿里雲財務長 Toby Xu 在 2026 年 8 月 20 日的財報電話會議中指出，AI 伺服器的投資回收期已從原本的三年縮短至 2.5 年，主要因為 AI 服務毛利率持續上升。公司仍在 2018 年與 2020 年採購的搭載 Nvidia V100 與 A100 加速卡的伺服器，於 2026 年仍以近滿載狀態供客戶使用。阿里雲同時宣佈將增加自研晶片的使用比例，以降低對西方晶片的依賴。",
-        "impact": "下游：AI 服務毛利率提升將使使用阿里雲 AI 服務的企業客戶獲得更低的使用成本，進一步促進雲端 AI 應用的擴散。",
-        "rating": "core",
-        "insight": "自研晶片降低對外部供應依賴，同時提升 AI 服務毛利，提升阿里雲競爭力。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/off-prem/2026/08/21/alibaba-cloud-plans-to-use-fewer-western-chips-to-boost-its-already-huge-ai-margins/5290815",
-        "chain": [
-          {
-            "label": "Alibaba Cloud 自研晶片 使用↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia 加速卡 需求↓",
-            "type": "down"
-          },
-          {
-            "label": "AI 伺服器 毛利率↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI 推出零資料保留承諾以吸引企業客戶",
-        "layer": "ai_technique",
-        "body": "OpenAI 於 2026 年 8 月 20 日宣布「Private Safety Processing」機制，允許企業客戶在不保留任何提示與回應資料的前提下，仍能自動化安全風險掃描，並明確表示資料保留期限為 0 天。相較之下，Anthropic 仍在其 Mythos 5 與 Fable 5 模型上保留 30 天的資料以支援安全審查。此政策旨在解決企業對資料隱私的顧慮，並可能成為爭取商業客戶的關鍵差異化因素。",
-        "impact": "",
-        "rating": "core",
-        "insight": "零資料保留政策為 OpenAI 贏得企業客戶提供了明確的隱私保護優勢。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/08/20/openai-chases-anthropics-biz-customers-with-zero-data-retention-pledge/5290609",
-        "chain": [
-          {
-            "label": "OpenAI 零資料保留 吸引企業↑",
-            "type": "up"
-          },
-          {
-            "label": "Anthropic 資料保留 30天 競爭↓",
-            "type": "down"
-          },
-          {
-            "label": "企業 客戶採購 OpenAI 服務↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Private Safety Processing",
-        "full": "Private Safety Processing",
-        "def": "OpenAI 提供的一種機制，能在不保留客戶提示與回應資料的情況下，自動掃描並評估模型交互的安全風險。",
-        "why": "解決企業對資料隱私的顧慮，提升商業模型的合規性與吸引力。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "自研晶片",
-        "full": "自研晶片",
-        "def": "由阿里巴巴自行設計與開發的 AI 加速晶片，用於取代部分 Nvidia 加速卡，以降低對外部供應的依賴。",
-        "why": "降低供應鏈風險並提升毛利率，是雲端服務商提升競爭力的關鍵策略。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "前饋控制",
-        "full": "Feedforward Control",
-        "def": "在製程中於前一工序測量結果後，立即調整後續工序參數，以補償變異並降低缺陷的控制策略。",
-        "why": "可在晶圓製程早期即修正偏差，提升良率並減少材料浪費。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
   }
 ]
