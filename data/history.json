@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-08-30",
+    "is_sunday": true,
+    "hw": [
+      {
+        "title": "Lambda 取得 10 億美元債務以大量採購 Nvidia AI 晶片",
+        "layer": "capacity_commitments",
+        "body": "Lambda 於 2026 年 8 月 28 日完成 10 億美元短期私募債務，專門用於向 Nvidia 採購 AI 晶片以租給 Microsoft。此筆債務由 JP Morgan Chase 安排，顯示 Lambda 計畫在短期內快速部署這批晶片並以租賃收入償還。Lambda 先前已於 5 月完成 10 億美元有擔保信貸額度，並在本週再度宣布 9.26 億美元貸款以支援相同目的。",
+        "impact": "Nvidia 的 AI 晶片需求因 Lambda 大量採購而直接上升。Lambda 將這些晶片租給 Microsoft。",
+        "rating": "core",
+        "insight": "投資者可關注 Lambda 的資金使用效率與 Nvidia 晶片供應情況，若租賃收入快速回收，將提升 AI 基礎設施供應鏈的資金循環。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/28/neocloud-lambda-secures-1b-in-debt-to-buy-more-chips/",
+        "chain": [
+          {
+            "label": "Lambda Nvidia AI 晶片 採購↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft Azure GPU 租賃收入↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia AI 晶片 需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [],
+    "app": [
+      {
+        "title": "本日無相關app新聞",
+        "layer": "app",
+        "body": "今日該分類無足夠具體新聞素材可供分析。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "無可供投資者參考的AI應用資訊。",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "AI 雲端租賃",
+        "full": "AI Cloud Leasing",
+        "def": "指雲端服務供應商或第三方公司購買 AI 加速器硬體後，以租賃方式提供給客戶使用的商業模式。此模式可降低客戶前期資本支出，並加速算力部署。",
+        "why": "隨著 AI 應用需求激增，租賃模式成為加速算力供應的關鍵，影響晶圓代工與記憶體供應鏈的需求波動。",
+        "category": "hardware"
+      },
+      {
+        "term": "短期私募債務",
+        "full": "Short-term Private Debt",
+        "def": "公司向特定投資者發行的、期限較短且通常不在公開市場交易的債務工具，用於快速籌集資金。",
+        "why": "此類資金可快速支援大規模硬體採購，直接影響供應鏈上游的產能安排。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "出口管制",
+        "full": "Export Control",
+        "def": "政府對特定技術、產品或服務的跨境轉移設定的限制與許可制度，旨在防止敏感技術被不當使用或流向敵對國家。",
+        "why": "涉及AI伺服器等高階晶片時，出口管制直接影響供應鏈的國際物流與合規成本。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "AI 伺服器",
+        "full": "Artificial Intelligence Server",
+        "def": "內建高效能GPU或加速卡的伺服器，用於訓練與推論大型語言模型等人工智慧工作負載。",
+        "why": "AI 伺服器是AI應用的硬體基礎，其供應與運輸受出口管制影響，會波及相關晶片與散熱解決方案供應商。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": "HW：Lambda 以 10 億美元債務大量採購 Nvidia AI 晶片，提升上游晶圓代工與 HBM 供應需求。\nAPP：本週未出現具體的AI應用產品或服務發布。\n用戶洞察：目前市場焦點仍在合規與物流層面的風險管理，而非新AI應用的商業化。"
+  },
+  {
     "date": "2026-08-29",
     "is_sunday": false,
     "hw": [
@@ -735,79 +809,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-08-23",
-    "is_sunday": true,
-    "hw": [
-      {
-        "title": "Nvidia 成為 Cloverleaf 少數股東，支援 AI 資料中心電力基礎建設",
-        "layer": "投資與供應鏈佈局",
-        "body": "Nvidia 於 2026 年 8 月 22 日宣布成為成立於 2024 年的 Cloverleaf 的少數股東，投資金額未公開。Cloverleaf 專注於提供建置 AI 資料中心所需的土地與電力基礎設施，確保雲端供應商與模型開發者能租用具備足夠電力的「bit barns」。此舉旨在解決 Nvidia 新一代 GPU 需求與可供電力的資料中心供應不足之間的落差。",
-        "impact": "直接提升電力基礎設施供應商（如地方電網公司）對 AI 資料中心的需求，帶動上游電力設備與建設服務的產能 ↑。使得資料中心開發商在選址時更傾向於有 Cloverleaf 佈局的區域，提升該區域的建築承包商利用率 ↑。",
-        "rating": "opp",
-        "insight": "Nvidia 透過投資電力基礎建設公司，直接緩解 AI 資料中心供電瓶頸，保障 GPU 銷售持續成長。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/08/22/cloverleaf-deal-is-latest-example-of-nvidia-using-its-war-chest-to-patch-cracks-in-the-ai-bubble/5291369",
-        "chain": [
-          {
-            "label": "Nvidia GPU 需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Cloverleaf 電力基礎設施供應↑",
-            "type": "up"
-          },
-          {
-            "label": "雲端供應商資料中心建設↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Feedforward Control",
-        "full": "前饋控制",
-        "def": "在半導體製程中，於前一製程（如光刻）測量每片晶圓後，立即調整後續製程（如蝕刻）參數，以在缺陷產生前補償變異。此方法可降低晶圓報廢率，提高良率。",
-        "why": "降低製程變異直接提升晶圓產能，對 AI 晶片供應鏈的上游晶圓代工與下游系統整合都有正面效應。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Cloverleaf",
-        "full": "Cloverleaf",
-        "def": "成立於 2024 年的公司，專注於為 AI 資料中心提供土地取得、電力供應與基礎建設服務，確保大型 GPU 設備有足夠電力與空間部署。",
-        "why": "電力與土地是 AI 資料中心擴張的關鍵瓶頸，Cloverleaf 的服務直接影響 GPU 需求的實現能力。",
-        "category": "hardware"
-      },
-      {
-        "term": "OSAT",
-        "full": "外部半導體組裝測試廠",
-        "def": "提供晶圓封裝、測試與組裝服務的第三方廠商，負責將晶圓轉換為可用的半導體模組，常為先進封裝（如 HBM）提供支援。",
-        "why": "AI 晶片的高密度封裝需求推動 OSAT 產能提升，影響整體 AI 硬體供應鏈的交付速度。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "前饋控制",
-        "full": "Feedforward Control",
-        "def": "一種製程控制策略，於製程的前一階段測量晶圓參數，然後在後續步驟自動調整參數以補償變異，避免缺陷產生。",
-        "why": "可降低晶圓報廢率，提升半導體製造良率，對供應鏈容量與成本有直接正面影響。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": "HW：Nvidia 投資 Cloverleaf 以解決 AI 資料中心電力供應瓶頸，確保新一代 GPU 可持續銷售。\n\nAPP：本週未出現可供分析的實際 AI 應用產品或服務新聞。\n用戶洞察：在缺乏具體 AI 應用案例的情況下，投資者應關注半導體製程創新對成本與供應鏈的間接影響。"
   }
 ]
