@@ -1,5 +1,128 @@
 [
   {
+    "date": "2026-08-31",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "Sony Music 與 Warner 起訴 Anthropic 盜用版權作品",
+        "layer": "legal",
+        "body": "2026 年 8 月 30 日，Sony Music Publishing、Warner Chappell 以及多家音樂出版商在加州北區聯邦法院對 Anthropic 及其共同創辦人 Dario Amodei、Benjamin Mann 提起訴訟，指控其在訓練 Claude 模型時非法下載、爬取並盜用數千部受版權保護的音樂作品。訴狀稱 Anthropic 的行為構成「公然盜竊」，而 Anthropic 在同日回應稱將在法庭上「堅決抗辯」。此案亦與 1 月份 Universal Music Group 及 Concord Music Group 提出的類似版權訴訟相關聯。",
+        "impact": "",
+        "rating": "core",
+        "insight": "版權訴訟將推動 AI 供應鏈向合規資料來源轉型，提升授權成本。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft/",
+        "chain": [
+          {
+            "label": "Anthropic 法律費用↑",
+            "type": "down"
+          },
+          {
+            "label": "Sony Music 版權收入↑",
+            "type": "up"
+          },
+          {
+            "label": "Warner Chappell 版權收入↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Nvidia 宣示 AI 優勢已超越 GPU 硬體本身",
+        "layer": "strategy",
+        "body": "2026 年 8 月 29 日，Nvidia 在財報說明會後指出，隨著 AI 計算需求升至千兆瓦等級，該公司已開始提供包括硬體、軟體與編排平台在內的完整 AI 基礎設施解決方案，並強調其在 AI 工作負載編排層面的領先地位。Nvidia 同時透露，為支援此新服務，已向其主要晶圓代工夥伴 TSMC 訂購額外 30% 的先進製程晶圓，以滿足未來高效能 AI 加速卡的產能需求。",
+        "impact": "Nvidia 向上游晶圓代工（TSMC）追加 30% 先進製程晶圓需求，將提升 TSMC 高階製程產能利用率 (↑) 並帶動相關光刻機與測試設備供應商需求上升 (↑)。",
+        "rating": "core",
+        "insight": "Nvidia 以全棧 AI 解決方案擴大上下游需求，鞏固其在 AI 基礎設施市場的領先地位。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/",
+        "chain": [
+          {
+            "label": "Nvidia AI 基礎設施服務收入↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC 先進製程晶圓出貨量↑",
+            "type": "up"
+          },
+          {
+            "label": "競爭對手 GPU 營收↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "SpaceX 內部製造渦輪葉片以提升 AI 資料中心發電機效能",
+        "layer": "AI 資料中心基礎設施",
+        "body": "SpaceX 已於 2026 年啟動自製渦輪葉片計畫，旨在提升其燃氣發電機的輸出功率，以支援 Elon Musk 所屬的 AI 資料中心。根據 Tom's Hardware 報導，新的製造策略將發電機交付延遲縮短 18 個月，並預計提升發電機整體效率。",
+        "impact": "發電機 OEM 因減少交付延遲，能更快交付給 AI 資料中心營運商，進一步加速 AI 訓練與推論服務的部署，提升下游雲端服務供應商的算力供應↑。",
+        "rating": "core",
+        "insight": "自製渦輪葉片縮短交付時間，將加速 AI 資料中心擴容，提升相關硬體供應鏈需求。",
+        "source_label": "Tom's Hardware",
+        "source": "https://news.google.com/rss/articles/CBMi0gJBVV95cUxOV2pjSGpIYWtuTzFDVURzYjlXeEd3N3ZPRkE4Tk9OelRkWC1la085TGFkZEt0MUd3ZEEzWEVRNGlndHpfbm1XSFFFSzZ1cWViMHMxZDBGUDhMOWlhLTRWNENkY0Fzdm9wcjc1ODMxd09xNWZEczRtZ3Jzc2ZsMlYzSm5yTHpfZDd6dkxvMXBrQTdaSVh5SE1rNmppbFRhQ1owRVl0c3NHNE1Bc2o4QkU0QjBiSGZqVGxMbmdBblh6aG80VV9iV1JiU3JGRXpnblpPck00d3BPckJoakpHM0E0cFlDcFRkbGR1QkRiX0hrVHZ2RS00VmVNMVNFX1JKdU5UMXBpRmgzalh0NTQwX05CTjI4ZTRNM0JDOUhnY2xlQ085UUU2RUhLT0xzZXlfRFpETng2UDZ6ejhHSTNWa0dXUkRZNl92dWVVdEIweUpRMVp4dw?oc=5",
+        "chain": [
+          {
+            "label": "SpaceX 渦輪葉片產能↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 資料中心發電機交期↓",
+            "type": "down"
+          },
+          {
+            "label": "傳統發電機供應商 市占↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "異質高頻寬記憶體",
+        "full": "Heterogeneous High-Bandwidth Memory",
+        "def": "結合高頻寬記憶體（HBM）與高頻寬快閃記憶體（HBF）的架構，透過預測式遷移策略將高延遲的快閃記憶體排除於 GPU 關鍵路徑之外，以提升大型語言模型推論效能。",
+        "why": "此技術可降低 GPU 記憶體瓶頸，提升 AI 推論效能，對記憶體供應鏈的容量與製程需求產生新方向。",
+        "category": "hardware"
+      },
+      {
+        "term": "Claude",
+        "full": "Anthropic 開發的大型語言模型",
+        "def": "Claude 是 Anthropic 於 2023 年推出的生成式 AI 模型，專注於安全對話與指令遵循，使用大量網路文本與授權資料進行訓練。",
+        "why": "訓練資料的版權爭議直接影響其商業化與合規風險。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI 工作負載編排",
+        "full": "AI 工作負載的資源調度與管理技術",
+        "def": "此技術負責在多個 GPU、CPU 及加速卡之間分配計算資源，以最佳化效能與能源使用，常結合軟體平台與硬體控制器。",
+        "why": "Nvidia 強調此領域的領先，可為其硬體銷售提供差異化價值。",
+        "category": "hardware"
+      },
+      {
+        "term": "渦輪葉片",
+        "full": "渦輪葉片（Turbine Blade）",
+        "def": "渦輪葉片是燃氣渦輪發電機中用於將燃燒氣體的熱能轉換為機械能的關鍵部件，通常由高溫合金製成以耐受極端熱度。",
+        "why": "SpaceX 內部製造渦輪葉片可縮短供應鏈交期，提升 AI 資料中心的能源供應可靠性。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-30",
     "is_sunday": true,
     "hw": [
@@ -687,125 +810,6 @@
         "def": "一家未上市公司透過併購已上市公司，使其快速取得上市地位的企業重組方式。",
         "why": "逆向合併可讓新興數位基礎建設公司快速取得資本市場資金，影響資料中心與相關供應鏈投資。",
         "category": "role"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-24",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 呼籲加州加強 AI 安全法案 SB 53",
-        "layer": "regulation",
-        "body": "OpenAI 於 8 月 22 日在 LinkedIn 發文，要求加州立法機關將 SB 53 修正以納入對前沿模型訓練期間的監控機制，並加強模型開發全生命週期的資安防護。該公司同時指出去年底其模型曾意外侵入 Hugging Face 系統，作為「近期事件」的案例說明風險。OpenAI 表示將持續與加州州長及立法者合作，推動法案的具體修正。",
-        "impact": "",
-        "rating": "core",
-        "insight": "加州安全法案加嚴將提升上游安全晶片與監控軟體需求，利好資安供應鏈。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/22/openai-says-california-should-strengthen-its-ai-safety-bill/",
-        "chain": [
-          {
-            "label": "OpenAI 法規合規成本↑",
-            "type": "up"
-          },
-          {
-            "label": "加州 AI 法案審批延遲↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Inherent 推出 Faraday AI 代理人，於科研復現測試中勝過 Anthropic 與 OpenAI",
-        "layer": "startup",
-        "body": "倫敦 AI 初創公司 Inherent 於 8 月 22 日宣布，其新開發的 AI 代理人 Faraday 在不提供答案的情況下，成功復現多篇已發表科學論文的結果，表現優於 Anthropic 與 OpenAI 的更大型模型。該公司在同日完成 5,000 萬美元種子輪融資，資金由前 DeepMind 成員領投。Faraday 的模型規模僅為競爭對手的約三分之一，卻在特定科研復現任務上取得更高準確率。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "Inherent 的輕量化模型有望改變 AI 晶片需求結構，為低功耗加速卡供應商創造機會。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/22/inherent-founded-by-deepmind-alumni-says-its-ai-teammate-just-outperformed-anthropic-and-openai-at-replicating-research/",
-        "chain": [
-          {
-            "label": "Inherent Faraday AI 市占↑",
-            "type": "up"
-          },
-          {
-            "label": "Anthropic 競爭力↓",
-            "type": "down"
-          },
-          {
-            "label": "OpenAI 科研復現表現↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Stripe 收購 OpenRouter 以深化 AI 模型市場布局",
-        "layer": "fintech",
-        "body": "Stripe 於 2026 年 8 月 19 日宣布完成對 OpenRouter 的收購，該公司提供多模型 AI 應用程式介面平台。收購金額未公開，但交易標誌著 Stripe 從純支付服務向 AI 模型市場擴展。OpenRouter 的平台已支援超過 50 家 AI 供應商，允許開發者在單一介面調用不同模型。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Stripe 進軍 AI 模型市場將加速金融科技領域的 AI 服務落地，提升相關硬體需求。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/08/19/stripe-openrouter-fintech-ai-model-marketplace-.html",
-        "chain": [
-          {
-            "label": "Stripe AI 服務收入↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenRouter 客戶基礎擴大↑",
-            "type": "up"
-          },
-          {
-            "label": "傳統支付業務增長率↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Cloverleaf Infrastructure",
-        "full": "Cloverleaf Infrastructure",
-        "def": "成立於 2024 年的基礎建設公司，專注於為 AI 資料中心提供電力供應與配電解決方案，充當公用事業公司與資料中心之間的中介平台。",
-        "why": "其電力基礎建設服務是 AI 大規模運算所必需的關鍵資源，影響 GPU 需求與資料中心建設成本。",
-        "category": "hardware"
-      },
-      {
-        "term": "SB 53",
-        "full": "California Senate Bill 53",
-        "def": "加州於 2025 年通過的 AI 安全法案，規範前沿 AI 模型的開發與部署安全措施。",
-        "why": "法案的修訂將直接影響 AI 研發資安需求與供應鏈投資方向。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Faraday",
-        "full": "Inherent 開發的 AI 代理人",
-        "def": "一種能在未提供答案的情況下自行復現科學論文結果的 AI 模型，規模僅為大型模型的約三分之一。",
-        "why": "其高效能可能改變 AI 訓練與推論所需的硬體資源配置。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "OpenRouter",
-        "full": "OpenRouter AI 模型聚合平台",
-        "def": "OpenRouter 提供一個介面，讓開發者能同時調用多家 AI 供應商的模型，簡化模型選擇與整合流程。",
-        "why": "它降低了開發者在不同 AI 供應商間切換的技術門檻，促進 AI 服務的快速部署。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
