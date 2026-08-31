@@ -1,5 +1,58 @@
 [
   {
+    "date": "2026-09-01",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Nvidia 投資 35 億美元於 MediaTek 加速 AI 晶片設計",
+        "layer": "strategic_investment",
+        "body": "Nvidia 於 2026 年 8 月 31 日宣布投入 35 億美元資金給台灣晶片製造商 MediaTek，協助其採用 Nvidia 技術設計客製化 AI 晶片。MediaTek 將利用此資金開發可直接插入 Nvidia 資料中心的 AI 加速卡，並預計在 2027 年上半年向 Amazon、Google、Microsoft 等大型雲端服務商供貨。",
+        "impact": "此筆投資將提升 MediaTek 的 AI 晶片設計與加速卡開發需求。",
+        "rating": "core",
+        "insight": "Nvidia 透過資金與技術支援 MediaTek，擴大 AI 晶片供應鏈，降低單一供應商風險。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/31/nvidias-3-5b-mediatek-bet-reveals-its-plan-for-tackling-big-techs-ai-chip-buildout/"
+      }
+    ],
+    "corp": [
+      {
+        "title": "今日無相關巨頭新聞",
+        "layer": "",
+        "body": "今日無相關巨頭新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "app": [],
+    "glossary_new": [
+      {
+        "term": "HBM",
+        "full": "High-Bandwidth Memory",
+        "def": "高頻寬記憶體，提供極低延遲與高資料傳輸速率，常與 GPU 搭配使用以加速 AI 推論。",
+        "why": "HBM 是 AI 加速卡的關鍵記憶體元件，供應緊張會直接影響資料中心的運算效能。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "MediaTek AI 加速卡",
+        "full": "MediaTek AI Accelerator Card",
+        "def": "MediaTek 基於 Nvidia 技術開發的客製化 AI 加速卡，設計可直接插入 Nvidia 架構的資料中心伺服器。",
+        "why": "此卡的推出將為 AI 晶片市場帶來新供應來源，減少對單一晶片供應商的依賴。",
+        "category": "hardware"
+      },
+      {
+        "term": "AI晶片建置",
+        "full": "Artificial Intelligence Chip Deployment",
+        "def": "指企業或雲端服務商為了執行大規模 AI 工作負載，部署自研或客製化的專用晶片，以提升運算效能並降低對通用 GPU 的依賴。",
+        "why": "隨著 AI 模型規模持續擴大，客製化晶片成為降低成本與提升效能的關鍵策略。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-08-31",
     "is_sunday": false,
     "hw": [
@@ -680,136 +733,6 @@
         "def": "具備 AI 演算法與感測器的無人機，可自行規劃航線並完成貨物運輸，無需人工遠端操控。",
         "why": "是 Airbound 主要產品，影響物流與供應鏈的最後一哩配送效率。",
         "category": "hardware"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-25",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "AI 廠商轉向自訂晶片以減少對 Nvidia GPU 的依賴",
-        "layer": "custom_silicon",
-        "body": "本週 Register Systems 主持的 Kettle 節目透露，多家 AI 供應商已開始採用 Cerebras 與 Marvell 的自訂矽晶片，以取代傳統 Nvidia GPU。 同時，Waymo 宣布在其自駕計程車平台上自行設計專用晶片，放棄使用 Intel 現成矽片，顯示車載 AI 也走向客製化硬體。",
-        "impact": "Cerebras 與 Marvell 需求上升 (↑)；Nvidia GPU 訂單可能下降 (↓)。整體而言，客製化矽片的興起可能改變 AI 伺服器供應鏈格局，促使資料中心廠商重新評估 GPU 與自訂 ASIC 的採購比例。",
-        "rating": "core",
-        "insight": "AI 供應商加速自訂矽片布局，將分散對 Nvidia GPU 的依賴並提升代工與封測廠商需求。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/08/24/ai-vendors-are-turning-to-custom-hardware-as-microsoft-winds-back-the-clock-on-windows/5291293",
-        "chain": [
-          {
-            "label": "Cerebras 自訂晶片 采納↑",
-            "type": "up"
-          },
-          {
-            "label": "Marvell 自訂晶片 采納↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia GPU 需求↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 推出具全域存取權限的 ChatGPT Work 桌面應用",
-        "layer": "CSP/CapEx",
-        "body": "OpenAI 於 2026 年 8 月 24 日在 TechCrunch 報導，其桌面應用 ChatGPT Work 已取得使用者收件匣、Slack、手機及 Notion 等多項服務的存取權限，以測試 AI 代理人在日常工作中的實際效能。",
-        "impact": "安全與隱私解決方案供應商將受益於企業對資料保護的需求提升 (↑)。最終，企業端對 AI 代理人的接受度提升，可能加速 AI 軟體平台的商業化部署。",
-        "rating": "core",
-        "insight": "全域存取的 AI 代理人將推動企業對高效能雲端資源的需求，提升主要雲服務供應商的市場份額。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/24/openai-is-building-an-ai-agent-for-everything-will-everyone-use-them/",
-        "chain": [
-          {
-            "label": "ChatGPT Work 桌面應用 功能擴張↑",
-            "type": "up"
-          },
-          {
-            "label": "使用者收件匣存取權限↑",
-            "type": "up"
-          },
-          {
-            "label": "Slack 整合使用率↑",
-            "type": "up"
-          },
-          {
-            "label": "Notion 整合使用率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": "",
-        "chain": [
-          {
-            "label": "無相關應用新聞 無影響↔",
-            "type": "neutral"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "自訂矽晶片",
-        "full": "Custom Silicon Chip",
-        "def": "針對特定 AI 工作負載設計的專用晶片，通常由廠商自行開發或委託代工製造，以提升效能與功耗比。",
-        "why": "企業轉向自訂矽片可降低對單一 GPU 供應商的依賴，改變晶圓代工與封測市場需求結構。",
-        "category": "hardware"
-      },
-      {
-        "term": "OSAT",
-        "full": "Outsourced Semiconductor Assembly and Test",
-        "def": "提供晶圓封裝與測試服務的第三方廠商，負責將裸晶片組裝成最終可使用的封裝形態。",
-        "why": "自訂矽片需求上升會直接帶動 OSAT 產能利用率提升，影響其營收與產能規劃。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Cloverleaf Infrastructure",
-        "full": "Cloverleaf Infrastructure Ltd.",
-        "def": "一家專注於資料中心電力與基礎設施開發的公司，充當公用事業與資料中心之間的中介，提供電源供應與相關建設服務。",
-        "why": "其與 Nvidia 的合作顯示電力基礎建設已成為 AI 資料中心擴張的關鍵瓶頸。",
-        "category": "role"
-      },
-      {
-        "term": "Cerebras",
-        "full": "Cerebras Systems",
-        "def": "美國公司，專注於開發大型 AI 推論晶片，提供比傳統 GPU 更高的計算密度。",
-        "why": "其自研晶片正被多家 AI 供應商採用，可能改變 GPU 市場結構。",
-        "category": "hardware"
-      },
-      {
-        "term": "ChatGPT Work",
-        "full": "OpenAI ChatGPT Work 桌面應用",
-        "def": "OpenAI 推出的桌面程式，允許 AI 代理人直接存取使用者的電子郵件、即時通訊與生產力工具，以自動化工作流程。",
-        "why": "此應用示範了 AI 在企業內部深度整合的可能性，將驅動雲端計算需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI 伺服器",
-        "full": "Artificial Intelligence Server",
-        "def": "專門設計用於執行大型人工智慧模型與推論的高效能伺服器，通常配備多顆加速卡與高速記憶體。",
-        "why": "AI 伺服器是支撐生成式 AI 服務與企業 AI 應用的核心硬體，供應鏈需求直接影響晶片與散熱解決方案。",
-        "category": "hardware"
-      },
-      {
-        "term": "逆向合併",
-        "full": "Reverse Merger",
-        "def": "一家未上市公司透過併購已上市公司，使其快速取得上市地位的企業重組方式。",
-        "why": "逆向合併可讓新興數位基礎建設公司快速取得資本市場資金，影響資料中心與相關供應鏈投資。",
-        "category": "role"
       }
     ],
     "weekly_summary": null
