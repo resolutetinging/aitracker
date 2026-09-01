@@ -1734,10 +1734,6 @@ def send_email(data):
         except Exception as e:
             print(f"  ⚠ 季底banner讀取hw_corp_reference.json失敗（不影響信件其餘內容）：{e}")
 
-    all_items = data['hw']+data['corp']+data['app']
-    core_count = sum(1 for i in all_items if i.get('rating')=='core')
-    opp_count  = sum(1 for i in all_items if i.get('rating')=='opp')
-
     html = f'''<html><body style="font-family:'Segoe UI',sans-serif;max-width:620px;margin:auto;padding:0;background:#eceae6;color:#2c2a28;">
       <div style="background:#faf9f7;padding:24px 28px;">
 
@@ -1764,7 +1760,7 @@ def send_email(data):
 
     footer_with = '<a href="https://resolutetinging.github.io/aitracker/ai_tracker_v6.html" style="display:inline-block;background:#5a7fa8;color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;">🔗 查看完整 Dashboard →</a>'
 
-    subject = f'📡 AI 動態 {DATE_STR}{"（週報）" if data.get("is_sunday") else ""} — {core_count} CORE · {opp_count} OPP'
+    subject = f'📡 AI Tracker {DATE_STR}{"（週報）" if data.get("is_sunday") else ""}'
 
     def do_send(recipients, include_dashboard):
         if not recipients: return
