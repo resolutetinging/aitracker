@@ -1,5 +1,133 @@
 [
   {
+    "date": "2026-09-02",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Oxford 提出 HMA 架構以降低 HBM 需求",
+        "layer": "memory",
+        "body": "Oxford 大學於 2026 年 8 月發表的技術論文指出，高頻寬快閃記憶體 (HBF) 每堆疊可提供 16 倍於 HBM 的容量；然而直接以 HBF 取代 HBM 會因其較長的尾端延遲使 GPU 排程器飢餓。為解決此問題，研究團隊提出異質記憶體架構 (HMA)，透過預測式遷移策略將高延遲的 HBF 保持在 GPU 關鍵路徑之外。",
+        "impact": "若此技術被採用，將直接降低對HBM的需求。",
+        "rating": "opp",
+        "insight": "HMA 架構可能削減 HBM 需求，提升 HBF 市場機會。",
+        "source_label": "Semiconductor",
+        "source": "https://semiengineering.com/hybrid-hbm-hbf-architecture-in-llm-inference-university-of-oxford/",
+        "chain": [
+          {
+            "label": "NVIDIA GPU 排程效率↑",
+            "type": "up"
+          },
+          {
+            "label": "Oxford HMA 架構採用率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Anthropic 於 2026 年 8 月底封鎖被盜用的 Claude 帳號",
+        "layer": "sublayer",
+        "body": "Anthropic 在 2026‑08‑31 發現有駭客利用 infostealer 惡意程式竊取使用者的 Claude 登入資訊與會話 Cookie，並已將至少一名受影響使用者登出帳號，同時刪除其已儲存的付款方式以阻止未授權的 AI 代幣消耗。",
+        "impact": "此舉直接降低惡意使用者對Anthropic付費算力的需求，暫緩相關雲端運算資源使用率。",
+        "rating": "core",
+        "insight": "投資者應關注 Anthropic 加強帳號安全的舉措，因其可減少未授權算力消耗並提升付費用戶留存。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/security/2026/08/31/anthropic-cracks-down-on-hijacked-user-accounts-mining-ai-tokens/5293461",
+        "chain": [
+          {
+            "label": "Anthropic Claude 帳號安全措施↑",
+            "type": "up"
+          },
+          {
+            "label": "用戶信任度↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Apple 提交「驚人證據」指控前員工向 OpenAI 竊取機密電路設計",
+        "layer": "sublayer",
+        "body": "Apple 在 2026‑08‑31 向法院提交證據，指出前員工 Chang Liu 在 2026 年 8 月初交還其舊有 Apple 工作筆記本後，該筆記本被發現含有機密電路設計檔案，且 Liu 已於同月加入 OpenAI。",
+        "impact": "此案使Apple供應鏈中負責高階晶片設計的子公司面臨知識產權外洩風險。",
+        "rating": "core",
+        "insight": "投資者需留意 Apple 在知識產權保護上的強硬立場，因其可能影響與 AI 供應商的合作格局。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/08/31/apple-shares-shocking-evidence-against-former-employee-accused-of-stealing-company-data-for-openai/",
+        "chain": [
+          {
+            "label": "Apple 機密電路設計保護↑",
+            "type": "up"
+          },
+          {
+            "label": "OpenAI 招募風險↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Fambot 推出家庭 AI 首席幕僚服務",
+        "layer": "AI 服務",
+        "body": "Fambot 於 2026 年 9 月 1 日正式上線「AI 首席幕僚」產品，由前 Instagram 工程師 Greg Karlin 擔任 CTO、David Reich 擔任 CEO，旨在協助家長管理子女行程、學校活動與家庭事務。",
+        "impact": "此服務將提升對雲端運算平台之計算資源需求。",
+        "rating": "core",
+        "insight": "AI 助手進入家庭市場將驅動雲端與 GPU 供應鏈需求上升，相關供應商受惠。",
+        "source_label": "The Register",
+        "source": "https://techcrunch.com/2026/09/01/fambot-introduces-an-ai-chief-of-staff-for-families/",
+        "chain": [
+          {
+            "label": "Fambot AI 首席幕僚 付費用戶↑",
+            "type": "up"
+          },
+          {
+            "label": "家庭 AI 服務市場佔有率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "高頻寬快閃記憶體",
+        "full": "High-Bandwidth Flash (HBF)",
+        "def": "相較於傳統高頻寬記憶體 (HBM)，HBF 以快閃技術提供更高的容量密度，單堆疊容量可達 HBM 的 16 倍，同時維持相近的頻寬表現。",
+        "why": "在 AI 推論系統中，容量瓶頸是限制模型規模的關鍵因素，HBF 的高容量特性可緩解此問題。",
+        "category": "hardware"
+      },
+      {
+        "term": "infostealer malware",
+        "full": "資訊竊取惡意程式",
+        "def": "一種惡意軟體，專門竊取使用者的登入資訊、瀏覽器 Cookie 與其他認證資料，以便在受害者帳號上執行未授權操作。",
+        "why": "此類惡意程式直接威脅 AI 服務平台的付費使用模型，影響平台收入與資安防護成本。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Claude",
+        "full": "Anthropic 的大型語言模型",
+        "def": "Anthropic 所開發的對話式 AI 模型，提供付費 API 服務，常被企業用於客服、內容生成等應用。",
+        "why": "Claude 的使用量直接關聯到雲端算力需求與相關硬體供應鏈的負載。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI token",
+        "full": "人工智慧計算代幣",
+        "def": "用於計量與結算 AI 服務使用量的虛擬代幣，使用者購買後可在平台上消耗算力。",
+        "why": "代幣被盜用會造成平台收入流失，進而影響上游算力供應商的訂單量。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI 首席幕僚",
+        "full": "Artificial Intelligence Chief of Staff",
+        "def": "一種以 AI 代理人形式提供家庭日常事務管理、行程協調與資訊整合的服務，類似企業內部的 AI 助手，但針對家長與子女需求設計。",
+        "why": "隨著家庭事務數位化，AI 助手可降低家長的認知負荷，提升服務平台的使用黏著度與付費轉化率。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-09-01",
     "is_sunday": false,
     "hw": [
@@ -625,114 +753,6 @@
         "def": "利用深度學習對影像或影片進行辨識、分割與推理，常用於機器人導航與品質檢測等工業場景。",
         "why": "是實現工廠自動化與智慧製造的核心技術之一。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-26",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "IBM 宣布開發同時執行 Arm 與 Z 指令的二納米晶片",
-        "layer": "strategic_supplier_decision",
-        "body": "IBM 表示將在二納米製程上打造一顆未命名晶片，內含 11 顆主頻超過 5.7 GHz 的高效能核心，並整合 AI 推論加速器以支援交易內偵測詐欺。該晶片同時支援 IBM 自家大型主機指令集（Z）與 Arm 架構，亦可在 LinuxONE 系統上運行。IBM 暫未透露晶圓代工廠商，但二納米節點暗示可能向台積電或三星等先進代工訂購產能。",
-        "impact": "",
-        "rating": "core",
-        "insight": "IBM 自研二納米異構晶片將推高先進代工與高階封裝需求，提升相關供應鏈的產能利用率。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/08/25/ibm-announces-chip-that-natively-executes-arm-and-z-instructions-concurrently/5292059",
-        "chain": [
-          {
-            "label": "TSMC 2nm 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "IBM 高效能核心 效能↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 公布 Jalapeño 晶片於 Hot Chips 會議的效能基準",
-        "layer": "CSP/CapEx",
-        "body": "2026 年 8 月 25 日，OpenAI 在 Hot Chips 會議上展示了新一代 Jalapeño 晶片，並以 SemiAnalysis 的 InferenceX 基準測試其效能。測試結果顯示，Jalapeño 在每瓦特吞吐量與每使用者產生的 token 數上均優於 Nvidia 的 Blackwell 系統。OpenAI 硬體負責人 Richard Ho 在新聞發布會上稱此為「非常顯著的性能突破」。",
-        "impact": "Jalapeño 晶片的效能優於 Nvidia 的 Blackwell 系統，可能對 Nvidia 供應鏈形成競爭壓力。",
-        "rating": "core",
-        "insight": "Jalapeño 晶片的功耗與效能優勢將驅動晶圓代工需求上升，同時對 Nvidia GPU 市場形成直接競爭。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/",
-        "chain": [
-          {
-            "label": "OpenAI Jalapeño 每瓦特吞吐量↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia Blackwell 市占↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Airbound 以 3,700 萬美元 A 輪融資加速商業化無人機製造",
-        "layer": "dronetech",
-        "body": "Airbound Bags 在 2026 年 8 月完成 3,700 萬美元（約 355 億盧比）A 輪融資，由 Greenoaks 主導，DoorDash、Lightspeed 等投資者參與。公司計畫將資金投入工程研發、商業規模製造與市場推廣，提升其自主飛行無人機的產能。Airbound 自 2023 年成立以來累計融資接近 5,000 萬美元，將於 2027 年前在印度與東南亞部署首批物流服務。",
-        "impact": "",
-        "rating": "core",
-        "insight": "大規模融資將加速自主物流無人機商業化，提升相關供應鏈上游需求並為物流平台帶來成本優勢。",
-        "source_label": "Inc42",
-        "source": "https://inc42.com/buzz/airbound-bags-37-mn-from-greenoaks-doordash-to-scale-drone-manufacturing/",
-        "chain": [
-          {
-            "label": "Airbound 無人機產能↑",
-            "type": "up"
-          },
-          {
-            "label": "競爭對手 DroneCo 市占↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "二納米製程",
-        "full": "二納米製程 (2 nm process)",
-        "def": "指晶圓製造的最先進節點，晶體管尺寸約為 2 奈米，能提供更高的效能與能效。此節點主要由台積電與三星提供，供應鏈包括光刻機、化學機與封裝服務。",
-        "why": "IBM 採用此節點意味著其晶片將大量依賴先進代工與高階封裝，對相關供應鏈產生顯著需求。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "AI 推論加速器",
-        "full": "人工智慧推論加速器 (AI inference accelerator)",
-        "def": "專為執行已訓練模型的推論工作負載而設計的硬體單元，通常具備大量矩陣運算單元以提升效能。常見於資料中心與邊緣運算設備。",
-        "why": "IBM 在晶片內整合此加速器，顯示其欲在主機環境中提供即時詐欺偵測等 AI 服務，牽動 AI 晶片供應鏈。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "LinuxONE",
-        "full": "LinuxONE 系統",
-        "def": "IBM 為大型主機平台推出的 Linux 環境，結合主機的可靠性與 Linux 的開放生態，常用於高效能運算與企業關鍵工作負載。",
-        "why": "此晶片同時支援 LinuxONE，說明其目標客群包括傳統大型主機使用者，可能改變這些客戶對外部加速卡的需求結構。",
-        "category": "hardware"
-      },
-      {
-        "term": "Jalapeño 晶片",
-        "full": "OpenAI 自研的 AI 推理專用晶片",
-        "def": "Jalapeño 晶片是 OpenAI 於 2026 年推出的高效能推理晶片，設計目標是提升每瓦特的 AI 推理吞吐量，並在 SemiAnalysis InferenceX 基準上超越 Nvidia Blackwell 系統。",
-        "why": "其功耗與效能的雙重優勢可能改變 AI 推理硬體的供應鏈格局，提升對先進製程的需求。",
-        "category": "hardware"
-      },
-      {
-        "term": "自主飛行無人機",
-        "full": "Autonomous Drone",
-        "def": "具備 AI 演算法與感測器的無人機，可自行規劃航線並完成貨物運輸，無需人工遠端操控。",
-        "why": "是 Airbound 主要產品，影響物流與供應鏈的最後一哩配送效率。",
-        "category": "hardware"
       }
     ],
     "weekly_summary": null
