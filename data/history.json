@@ -1,5 +1,127 @@
 [
   {
+    "date": "2026-09-03",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "Anthropic 任命 Matt Clifford 為國際事務董事總經理，同時保留 ARIA 主席身分",
+        "layer": "strategic_hiring",
+        "body": "Anthropic 於 2026 年 9 月 2 日宣布聘請前英國先進研究與發明署（ARIA）主席 Matt Clifford 為公司國際事務董事總經理，負責公司在北美以外的政府合作。Clifford 同時保留 ARIA 主席以及在英國創投公司 Entrepreneurs First 的職務，並將於 2026 年底前完成所有既有職務的交接。Clifford 於 2024 年 7 月受英國政府委託撰寫《AI Opportunities Action Plan》，該計畫於 2025 年 1 月正式發布並被全部 50 項建議採納。",
+        "impact": "Anthropic 透過 Clifford 的雙重身分，將提升其在英國與歐洲的政府採購機會。",
+        "rating": "opp",
+        "insight": "Anthropic 透過高階政策人物加強英國政府關係，將快速擴大其在歐洲的企業合約與供應鏈布局。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/public-sector/2026/09/02/anthropic-hires-architect-of-uk-ai-policy-as-mps-warn-of-clear-conflict-of-interest/5293903",
+        "chain": [
+          {
+            "label": "Anthropic 國際事務合作↑",
+            "type": "up"
+          },
+          {
+            "label": "英國政府 AI 項目資金↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic 推出 Enterprise Frontier Safeguards，承諾企業客戶零資料保留",
+        "layer": "product_launch",
+        "body": "Anthropic 於 2026 年 9 月 2 日公布其新服務 Enterprise Frontier Safeguards（EFS），允許使用 Fable 5.1 與 Mythos 5.1 模型的企業客戶申請零資料保留（ZDR）協議，並同時提供模型濫用偵測功能。EFS 並非自動授予，企業必須於 2026 年 9 月底前提交申請表格，審核通過後方可生效。此舉旨在符合歐盟 GDPR 以及英國 AI 法規的資料最小化要求。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Anthropic 以零資料保留作為合規賣點，將在歐洲企業 AI 採購中取得先機。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/09/02/anthropic-promises-zero-data-retention-but-customers-must-check-it-worked/5293789",
+        "chain": [
+          {
+            "label": "Anthropic Enterprise Frontier Safeguards 服務↑",
+            "type": "up"
+          },
+          {
+            "label": "歐盟 GDPR 合規需求↑",
+            "type": "up"
+          },
+          {
+            "label": "企業客戶資料保留成本↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Amazon 推出 AI 防詐訊息服務 Alexa for Shopping",
+        "layer": "consumer AI",
+        "body": "Amazon 表示每年約有 360,000 名顧客會詢問訊息真偽，現在可透過 Alexa for Shopping 直接驗證。該服務會比對全球數十億封 Amazon 發送的訊息，分析寄件者資訊、內容、時間與訊息中繼資料，以「確定」判斷是否為官方訊息。系統會隨著使用者回報的可疑訊息持續學習，提升未來偵測詐騙的準確度。",
+        "impact": "",
+        "rating": "core",
+        "insight": "AI 驗訊服務將減少客服成本並提升消費者信任，對 Amazon 及其雲端基礎設施形成正向循環。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/02/psa-amazons-shopping-ai-can-now-tell-you-if-that-message-is-a-scam/",
+        "chain": [
+          {
+            "label": "Amazon Alexa for Shopping 防詐功能↑",
+            "type": "up"
+          },
+          {
+            "label": "用戶詐騙訊息投訴量↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Arm 伺服器",
+        "full": "Arm 架構的伺服器硬體",
+        "def": "使用 Arm 處理器架構的伺服器，因其低功耗特性在資料中心有潛在應用，但目前在企業市場的佔有率仍有限。",
+        "why": "了解 Arm 伺服器的發展階段有助於評估未來供應鏈上游晶片製造與下游資料中心設備的需求變化。",
+        "category": "hardware"
+      },
+      {
+        "term": "零資料保留",
+        "full": "Zero Data Retention (ZDR)",
+        "def": "指服務提供者在處理客戶資料後不保留任何原始或衍生資料的政策，通常用於符合嚴格的隱私與合規要求。",
+        "why": "在歐洲與英國的資料保護法規下，零資料保留可降低合規成本並提升客戶信任。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI Opportunities Action Plan",
+        "full": "AI Opportunities Action Plan",
+        "def": "英國政府於 2025 年 1 月發布的 AI 發展藍圖，包含 50 項具體建議，旨在促進國內 AI 產業與公共部門的合作。",
+        "why": "此計畫為 AI 企業提供政策指引與資金支持，影響供應鏈上下游的投資決策。",
+        "category": "role"
+      },
+      {
+        "term": "先進研究與發明署",
+        "full": "Advanced Research and Invention Agency (ARIA)",
+        "def": "英國的高風險高回報研究機構，類似美國 DARPA，負責資助前瞻性科技專案，包括 AI 晶片與軟體研發。",
+        "why": "ARIA 的資金分配直接影響本地半導體與 AI 供應鏈的研發投入與產能需求。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Alexa for Shopping",
+        "full": "Amazon 針對購物情境的語音 AI 服務",
+        "def": "一種整合於 Alexa 的 AI 功能，能即時辨識與回覆與 Amazon 相關的訊息真偽，利用大量歷史訊息資料庫進行比對。",
+        "why": "此服務示範 AI 在防詐領域的實際商業化應用，提升平台安全性與使用者體驗。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-09-02",
     "is_sunday": false,
     "hw": [
@@ -659,100 +781,6 @@
         "def": "相較於散裝或 OEM 包裝，零售包裝提供標準化的外盒與說明書，方便在一般零售與電商平台直接銷售。",
         "why": "擴大產品的市場觸及範圍，降低渠道採購門檻。",
         "category": "hardware"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-27",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Lancium 與 Nvidia 合作部署千兆瓦 AI 資料中心",
-        "layer": "capacity_commitments",
-        "body": "Lancium 表示已租用 4 GW 容量，且在開發中超過 15 GW 已供電的土地，將使用 Nvidia 的 DSX 參考設計與電力管理技術；Nvidia 亦對 Lancium 進行戰略投資，投資金額未公開；Lancium 以「清潔校園」稱呼其資料中心，將成為 Nvidia 全堆疊 AI 工廠平台的部署點。",
-        "impact": "此合作直接提升 Nvidia DSX 參考設計的需求，帶動上游晶片與電源管理 IC 供應商產能上升。",
-        "rating": "core",
-        "insight": "投資者應關注 Nvidia 相關電源管理與 AI 工廠技術供應鏈的產能擴張機會。",
-        "source_label": "Data Center Knowledge",
-        "source": "https://www.datacenterknowledge.com/data-center-construction/lancium-nvidia-partner-on-gigawatt-scale-ai-data-centers",
-        "chain": [
-          {
-            "label": "Lancium 資料中心容量↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia DSX 參考設計採用↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Perceptron 推出 Isaac 0.5 視覺模型 助力工廠機器人",
-        "layer": "CSP/CapEx",
-        "body": "Perceptron 於 2026 年 8 月底在美國發布其最新視覺模型 Isaac 0.5，該模型由兩位前 Meta 研究科學家於 2024 年 11 月創立的公司開發，能讓倉儲與工廠車間的視覺導引機器人即時辨識、推理並執行動作，同時支援從機器人錄製的影片中抽取視覺情報。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "視覺 AI 進入工廠層面將加速機器人硬體升級，相關感測與運算供應鏈受惠。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/26/ex-meta-scientists-want-to-bring-visual-ai-to-the-factory-floor/",
-        "chain": [
-          {
-            "label": "Perceptron Isaac 0.5 視覺模型↑",
-            "type": "up"
-          },
-          {
-            "label": "工廠機器人視覺導引效率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [],
-    "glossary_new": [
-      {
-        "term": "AI 工廠平台",
-        "full": "AI Factory Platform",
-        "def": "Nvidia 提供的全堆疊 AI 計算解決方案，涵蓋加速運算、網路與軟體層面，支援資料中心在電網條件下動態調整功耗。",
-        "why": "了解此平台有助於判斷 Nvidia 相關硬體與軟體供應鏈的需求走向。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "DSX 參考設計",
-        "full": "Data Center System eXpress",
-        "def": "Nvidia 為資料中心打造的參考硬體架構，整合 GPU、電源管理與散熱模組，以提升計算密度與能源效率。",
-        "why": "DSX 設計的採用直接影響上游晶片、電源與散熱解決方案的採購量。",
-        "category": "hardware"
-      },
-      {
-        "term": "CoWoS",
-        "full": "Chip-on-Wafer-on-Substrate",
-        "def": "TSMC 的先進封裝技術，將多顆晶片堆疊於同一基板上，以實現高帶寬記憶體介面（HBM）整合。",
-        "why": "CoWoS 良率變化會波及 AI 晶片的供應與代工選擇。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Isaac 0.5",
-        "full": "Perceptron 開發的工業視覺模型",
-        "def": "一種結合感知、推理與行動的視覺 AI 模型，專為工廠與倉儲機器人設計，可即時分析影片並提供操作指令。",
-        "why": "提供機器人更高階的環境理解能力，推動工業自動化升級。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Perceptron",
-        "full": "AI 初創公司",
-        "def": "由兩位前 Meta 研究科學家於 2024 年 11 月創立，專注於開發前沿視覺模型以提升機器人與實體環境的互動能力。",
-        "why": "其技術可能成為工業 AI 應用的關鍵供應方，影響感測與運算硬體需求。",
-        "category": "role"
-      },
-      {
-        "term": "視覺模型",
-        "full": "機器視覺人工智慧模型",
-        "def": "利用深度學習對影像或影片進行辨識、分割與推理，常用於機器人導航與品質檢測等工業場景。",
-        "why": "是實現工廠自動化與智慧製造的核心技術之一。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
