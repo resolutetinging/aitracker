@@ -186,6 +186,17 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .ind-region-note{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:6px;}
 @media(max-width:900px){.ind-region-grid{grid-template-columns:1fr;}}
 
+/* ── 09-03新增：案例AI運用情境流程圖（緊接在nvCaseCard之後渲染，同一個
+   .ind-case-block裡上下堆疊；配色沿用.t-industry同一組token） ── */
+.ind-case-block{display:flex;flex-direction:column;}
+.ind-flow-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-top:8px;box-shadow:var(--shadow);}
+.ind-flow-title{font-size:10.5px;font-weight:700;color:var(--industry);margin-bottom:8px;}
+.ind-flow-steps{display:flex;align-items:center;flex-wrap:wrap;gap:6px;}
+.ind-flow-chip{display:flex;flex-direction:column;gap:2px;background:rgba(74,120,104,.10);border:1px solid var(--industry);border-radius:12px;padding:6px 10px;max-width:100%;}
+.ind-flow-label{font-size:9px;font-weight:600;color:var(--muted);}
+.ind-flow-text{font-size:11.5px;font-weight:600;color:var(--text);line-height:1.4;}
+.ind-flow-arrow{font-size:14px;font-weight:700;color:var(--muted2);}
+
 /* ── Glossary category editor ── */
 .gloss-cat-row{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2px;}
 .gloss-cat-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;border:1px solid;cursor:pointer;background:rgba(74,104,128,.08);color:var(--gloss);border-color:rgba(74,104,128,.3);white-space:nowrap;}
@@ -1054,11 +1065,42 @@ function indRegionCard(item){
   </div>`;
 }
 
+// 09-03新增：案例的「AI運用情境流程圖」，用既有desc/scope文字重新拆解成
+// 輸入→AI處理→輸出→人類角色四步驟橫向串接呈現。每個step字串格式是
+// 「標籤：內容」（例如「輸入：CT影像」），用第一個全形冒號切開，標籤用較淡
+// 較小的字級呈現、跟內容本身區分視覺權重；沒有冒號的字串就整段當內容顯示，
+// 不強制格式。只是既有已驗證desc/scope內容重組成步驟形式，不加入新技術細節。
+function indFlowChart(steps){
+  if(!steps || !steps.length) return '';
+  const chips = steps.map((s,i)=>{
+    const str = String(s||'');
+    const idx = str.indexOf('：');
+    const label = idx >= 0 ? str.slice(0, idx) : '';
+    const text = idx >= 0 ? str.slice(idx+1) : str;
+    const arrow = i < steps.length-1 ? '<span class="ind-flow-arrow">→</span>' : '';
+    return `<div class="ind-flow-chip">
+      ${label ? `<span class="ind-flow-label">${label}</span>` : ''}
+      <span class="ind-flow-text">${text}</span>
+    </div>${arrow}`;
+  }).join('');
+  return `<div class="ind-flow-card">
+    <div class="ind-flow-title">🔗 AI運用情境流程</div>
+    <div class="ind-flow-steps">${chips}</div>
+  </div>`;
+}
+
 function indRenderIndustry(industry){
   // 直接重用NVIDIA專區的nvCaseCard/nvSrcLink渲染cases_live/cases_poc/roadmap，
-  // 三者schema（name/scope/timeline/desc/src/status）完全相容，不另外重寫
-  const liveHtml = (industry.cases_live||[]).map(c=>nvCaseCard(c,'live','✅ 已規模化運作')).join('');
-  const pocHtml = (industry.cases_poc||[]).map(c=>nvCaseCard(c,'poc','🔵 試點階段')).join('');
+  // 三者schema（name/scope/timeline/desc/src/status）完全相容，不另外重寫。
+  // 09-03：cases_live/cases_poc若有flow欄位，緊接在nvCaseCard輸出後面用
+  // indFlowChart渲染，兩者包在同一個.ind-case-block裡維持grid排列不散開；
+  // roadmap沒有flow欄位，維持原樣不套用
+  const liveHtml = (industry.cases_live||[]).map(c=>
+    `<div class="ind-case-block">${nvCaseCard(c,'live','✅ 已規模化運作')}${c.flow ? indFlowChart(c.flow) : ''}</div>`
+  ).join('');
+  const pocHtml = (industry.cases_poc||[]).map(c=>
+    `<div class="ind-case-block">${nvCaseCard(c,'poc','🔵 試點階段')}${c.flow ? indFlowChart(c.flow) : ''}</div>`
+  ).join('');
   const roadmapHtml = (industry.roadmap||[]).map(c=>nvCaseCard(c, (c.status||'').startsWith('⚠️')?'warn':'poc', c.status)).join('');
   const regionHtml = (industry.adoption_by_region||[]).map(indRegionCard).join('');
   const regionNoteHtml = industry.adoption_by_region_note

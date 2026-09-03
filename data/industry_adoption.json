@@ -11,28 +11,32 @@
           "desc": "分析CT影像自動偵測大血管阻塞（LVO）中風徵象，加速轉診與治療決策",
           "scope": "FDA 2018年首個「臨床醫療AI決策支持」De Novo核准；166家機構17州多中心研究（14,116例），到院至神經介入醫師通知時間縮短39.5分鐘（44.13%）",
           "timeline": "FDA核准2018年，多中心研究2020年代陸續發表",
-          "src": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12802620/"
+          "src": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12802620/",
+          "flow": ["輸入：CT影像","AI處理：自動分析影像偵測大血管阻塞（LVO）徵象","輸出：即時警示標記","人類角色：通知神經介入醫師加速轉診與治療決策"]
         },
         {
           "name": "LumineticsCore（原IDx-DR）糖尿病視網膜病變自主AI診斷",
           "desc": "無需醫師判讀，AI直接自主判定糖尿病視網膜病變，用於基層照護",
           "scope": "2018年FDA De Novo核准，史上第一個獲FDA核准的自主AI診斷演算法（未查到精確採用診所數）",
           "timeline": "2018年核准，商業化5年但學術文獻稱採用仍相對有限",
-          "src": "https://www.digitaldiagnostics.com/fda-permits-marketing-of-lumineticscore-formerly-known-as-idx-dr-for-automated-detection-of-diabetic-retinopathy-in-primary-care/"
+          "src": "https://www.digitaldiagnostics.com/fda-permits-marketing-of-lumineticscore-formerly-known-as-idx-dr-for-automated-detection-of-diabetic-retinopathy-in-primary-care/",
+          "flow": ["輸入：眼底影像","AI處理：自主判讀是否有糖尿病視網膜病變","輸出：陽性／陰性判定結果（無需醫師二次判讀）","人類角色：基層照護人員依判定結果轉診至眼科"]
         },
         {
           "name": "Paige Prostate 病理科AI輔助攝護腺癌偵測",
           "desc": "標示切片影像最可能有癌細胞區域，供病理醫師複核",
           "scope": "2021年9月FDA核准，病理科第一個獲FDA核准的AI產品；輔助複核後病理醫師敏感度達90%-96.9%（較未輔助前提升2.9-16個百分點）",
           "timeline": "2021年9月",
-          "src": "https://www.ncbi.nlm.nih.gov/books/NBK608438/"
+          "src": "https://www.ncbi.nlm.nih.gov/books/NBK608438/",
+          "flow": ["輸入：攝護腺切片數位化影像","AI處理：標示最可能有癌細胞的區域","輸出：癌細胞區域標記","人類角色：病理醫師依標記複核確認診斷"]
         },
         {
           "name": "Sepsis ImmunoScore 敗血症風險預測",
           "desc": "用22項病人數據預測24小時內敗血症風險",
           "scope": "2024年4月FDA核准，首個獲FDA授權的敗血症AI/ML診斷工具（未查到具體導入醫院數）",
           "timeline": "2024年4月",
-          "src": "https://ai.nejm.org/doi/full/10.1056/AIoa2400867"
+          "src": "https://ai.nejm.org/doi/full/10.1056/AIoa2400867",
+          "flow": ["輸入：22項病人生化／生命徵象／人口學數據","AI處理：模型計算敗血症風險分數","輸出：24小時內敗血症風險預測","人類角色：醫療團隊依風險等級調整照護強度"]
         },
         {
           "name": "Epic Sepsis Model 敗血症預警演算法",
@@ -40,14 +44,16 @@
           "scope": "已部署美國數百家醫院；JAMA Internal Medicine 2021年密西根大學外部驗證研究（27,697名病人）發現AUC僅0.63、敏感度僅33%，遠低於原廠宣稱",
           "timeline": "部署已久，驗證研究2021年8月發表",
           "src": "https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2781307",
-          "note": "⚠️ 效能受學術質疑：獨立外部驗證結果遠低於原廠宣稱數字，適合作為大規模部署不等於高效能的對照案例"
+          "note": "⚠️ 效能受學術質疑：獨立外部驗證結果遠低於原廠宣稱數字，適合作為大規模部署不等於高效能的對照案例",
+          "flow": ["輸入：電子病歷即時數據","AI處理：演算法計算預警分數","輸出：敗血症風險警示","人類角色：醫護人員依警示評估，惟學術驗證顯示準確度不如預期（AUC僅0.63），需留意誤判風險"]
         },
         {
           "name": "Kaiser Permanente北加州(TPMG) Ambient AI臨床紀錄語音轉錄",
           "desc": "AI自動聆聽診間對話生成病歷；醫師共節省15,700小時文書時間，84%醫師認為改善醫病溝通，82%工作滿意度提升",
           "scope": "部署於17個醫療中心、7,260名醫師",
           "timeline": "部署2023-2024年，研究2026年1月發表於JAMA Network Open",
-          "src": "https://permanente.org/quality-assurance-informs-large-scale-use-of-ambient-ai-clinical-documentation/"
+          "src": "https://permanente.org/quality-assurance-informs-large-scale-use-of-ambient-ai-clinical-documentation/",
+          "flow": ["輸入：診間醫病對話語音","AI處理：語音辨識＋自然語言理解生成病歷草稿","輸出：結構化病歷紀錄草稿","人類角色：醫師複核確認後正式歸檔，取代手動記錄"]
         }
       ],
       "cases_poc": [
@@ -57,21 +63,24 @@
           "scope": "Phase IIa（GENESIS-IPF試驗，71名病人、中國22個試驗場址）已完成，達成主要安全性終點",
           "timeline": "Phase I結果2023年1月，Phase IIa發表2025年6月",
           "src": "https://www.nature.com/articles/s41591-025-03743-2",
-          "note": "公司稱已啟動Phase III但尚無獨立文獻佐證"
+          "note": "公司稱已啟動Phase III但尚無獨立文獻佐證",
+          "flow": ["輸入：疾病標靶與化合物資料庫","AI處理：生成式AI進行標靶發現與候選分子設計","輸出：候選藥物分子（ISM001-055）","人類角色：臨床試驗團隊執行人體試驗驗證安全性／療效"]
         },
         {
           "name": "NHS-Galleri多癌早期偵測血液檢測（Galleri MCED test）",
           "desc": "一管血液篩檢50種癌症訊號；篩檢組臨床發現癌症減少21%、急診發現減少25%，特異度99.3%",
           "scope": "大型RCT，140,000名50-77歲無症狀受試者，英格蘭NHS合作",
           "timeline": "主要結果2026年5月發表（ASCO JCO）",
-          "src": "https://www.nhs-galleri.org/trial-updates/screening-with-a-multi-cancer-blood-test-reduced-the-most-advanced-cancers"
+          "src": "https://www.nhs-galleri.org/trial-updates/screening-with-a-multi-cancer-blood-test-reduced-the-most-advanced-cancers",
+          "flow": ["輸入：單管血液樣本","AI處理：分析血液中50種癌症訊號特徵","輸出：多癌症風險篩檢結果","人類角色：醫療團隊依陽性結果安排進一步影像／切片確診"]
         },
         {
           "name": "MASAI試驗 AI輔助乳房攝影篩檢（瑞典）",
           "desc": "AI輔助放射科醫師判讀乳房攝影取代雙重判讀；完整結果顯示AI組偵測到81%癌症病例(338/420) vs.對照組74%(262/355)，判讀工作量減少44%",
           "scope": "大型RCT，逾100,000名瑞典女性、4個篩檢站點",
           "timeline": "中期結果2023年，完整結果2026年",
-          "src": "https://www.eurekalert.org/news-releases/1114399"
+          "src": "https://www.eurekalert.org/news-releases/1114399",
+          "flow": ["輸入：乳房攝影影像","AI處理：AI輔助判讀取代傳統雙重判讀（第二位醫師）","輸出：疑似異常標記","人類角色：放射科醫師確認診斷，減少人力判讀工作量"]
         }
       ],
       "adoption_by_region": [
