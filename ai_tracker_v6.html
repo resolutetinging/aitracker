@@ -202,6 +202,13 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .ind-flow-text{font-size:11.5px;font-weight:600;color:var(--text);line-height:1.4;}
 .ind-flow-arrow{font-size:14px;font-weight:700;color:var(--muted2);}
 
+/* ── 09-03新增：案例卡擴增5個內容維度（目標/成效/事件/風險/未來發展），
+   接在flow區塊之後；風險用--ethic警示色跟其他4個標籤區隔 ── */
+.ind-detail-block{margin-top:8px;}
+.ind-detail-label{font-size:10.5px;font-weight:700;color:var(--industry);display:block;margin-bottom:2px;}
+.ind-detail-label.risk{color:var(--ethic);}
+.ind-detail-text{font-size:12px;color:var(--text2);line-height:1.6;}
+
 /* ── Glossary category editor ── */
 .gloss-cat-row{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2px;}
 .gloss-cat-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;border:1px solid;cursor:pointer;background:rgba(74,104,128,.08);color:var(--gloss);border-color:rgba(74,104,128,.3);white-space:nowrap;}
@@ -1094,6 +1101,16 @@ function indFlowSteps(steps){
     <div class="ind-flow-steps">${chips}</div>`;
 }
 
+// 09-03新增：目標/成效/事件/風險/未來發展5個內容區塊的共用render helper，
+// 空值不渲染；risk區塊用--ethic警示色跟其他4個標籤區隔
+function indDetailBlock(icon, label, text, isRisk){
+  if(!text) return '';
+  return `<div class="ind-detail-block">
+    <span class="ind-detail-label${isRisk?' risk':''}">${icon} ${label}</span>
+    <div class="ind-detail-text">${text}</div>
+  </div>`;
+}
+
 // 09-03再改：cases_live/cases_poc案例卡跟流程圖是同一件事，合併成一張卡
 // （不再各自獨立bordered card），沿用.nv-case-card同一套視覺樣式維持風格
 // 一致，flow內容接在desc/來源連結之後、用ind-flow-divider分隔線區隔
@@ -1106,6 +1123,11 @@ function indCaseCard(item, statusCls, statusText){
     <div class="nv-case-desc">${item.desc}</div>
     ${nvSrcLink(item.src)}
     ${item.flow ? `<div class="ind-flow-divider"></div>${indFlowSteps(item.flow)}` : ''}
+    ${item.goal ? indDetailBlock('🎯','目標',item.goal) : ''}
+    ${item.effect ? indDetailBlock('📊','成效',item.effect) : ''}
+    ${item.events ? indDetailBlock('📅','事件',item.events) : ''}
+    ${item.risk ? indDetailBlock('⚠️','風險',item.risk,true) : ''}
+    ${item.future ? indDetailBlock('🔮','未來發展',item.future) : ''}
   </div>`;
 }
 
