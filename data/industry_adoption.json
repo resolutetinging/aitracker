@@ -187,6 +187,187 @@
           "src": "https://www.oecd.org/en/publications/scaling-artificial-intelligence-in-health_a436e12d-en/full-report/current-state-of-implementation-of-ai-in-health-across-oecd-members_2deacbc5.html"
         }
       ]
+    },
+    {
+      "key": "supply_chain",
+      "label": "供應鏈",
+      "icon": "🚚",
+      "last_checked": "2026-09-03",
+      "cases_live": [
+        {
+          "name": "Amazon 倉儲機器人網路 + DeepFleet AI車隊調度",
+          "desc": "AI基礎模型DeepFleet協調倉儲機器人車隊移動，降低壅塞、縮短行進時間",
+          "scope": "累計部署100萬台機器人，橫跨300多個廠區；DeepFleet使車隊行進時間縮短10%",
+          "timeline": "機器人計畫始於2012年，DeepFleet於2025年7月發布",
+          "src": "https://www.aboutamazon.com/news/operations/amazon-million-robots-ai-foundation-model",
+          "flow": ["輸入：倉儲即時機器人位置與訂單任務資料","AI處理：DeepFleet基礎模型即時運算車隊調度路徑","輸出：降低壅塞的最適移動路徑指令","人類角色：工程／維護人力監督系統運作並處理例外狀況"],
+          "goal": "以AI調度降低機器人間壅塞、縮短行進時間，提升倉儲吞吐量",
+          "effect": "DeepFleet使機器人車隊行進時間縮短10%；官方稱可帶來更快配送、更低營運成本與能耗；2019年來已培訓70萬名員工技能轉型",
+          "events": "2012年啟動機器人化，2021年達35萬台，2023年達75萬台，2025年7月達100萬台並發布DeepFleet",
+          "risk": "美國OSHA 2023-2024年對多處倉儲中心開出人體工學危害罰單；美國參議院HELP委員會2024年報告指出機器人化廠區2020-2021年嚴重傷害率較非機器人廠區高28%（經新聞媒體轉述官方調查數據）",
+          "future": "官方稱DeepFleet將持續學習優化；次世代履行中心規劃機器人密度為現行10倍，同時需增加30%可靠度／維護／工程人力"
+        },
+        {
+          "name": "UPS ORION 路線優化系統",
+          "desc": "AI／機器學習路線規劃系統，2024年升級為動態即時路線調整",
+          "scope": "涵蓋美國、加拿大、歐洲逾6.6萬條路線；截至2015年已省下逾3.2億美元，全面部署後預估年省3-4億美元",
+          "timeline": "2012年首次部署，2024年動態升級",
+          "src": "https://www.globenewswire.com/news-release/2020/01/29/1977072/0/en/UPS-To-Enhance-Orion-With-Continuous-Delivery-Route-Optimization.html",
+          "flow": ["輸入：包裹配送地址與即時路況資料","AI處理：演算法排除左轉、優化停靠順序與路線","輸出：每位司機的最適配送路線","人類角色：司機依系統建議路線執行配送，可視情況調整"],
+          "goal": "以演算法排除左轉、優化停靠順序，降低里程與油耗",
+          "effect": "每年省約1億英里、1000萬加侖燃油；2024動態升級後每位司機每日再省2-4英里",
+          "events": "2012年首次部署，2015年省下3.2億美元，2020年宣布導入動態持續優化，2024年動態ORION升級",
+          "risk": "未查到官方機構記載之風險；有基層司機工會對路線僵化的抱怨，但非官方機構來源，僅供參考",
+          "future": "持續朝即時動態路線演算法擴充，2024年已實現路線動態調整"
+        },
+        {
+          "name": "Ocado On-Grid Robotic Pick（OGRP）機械臂揀貨",
+          "desc": "網格倉儲機器人結合機械臂揀貨，運用電腦視覺與機器學習辨識抓取點",
+          "scope": "2024年單年以OGRP揀選逾3000萬件商品；單筆50件訂單可於數分鐘內完成，錯誤率低於1%",
+          "timeline": "官方報導發布於2025年4月",
+          "src": "https://www.ocadogroup.com/newsroom/stories/ocado-robotic-arms",
+          "flow": ["輸入：訂單品項與倉儲網格內商品位置","AI處理：電腦視覺辨識抓取點，模仿學習+強化學習決定機械臂動作","輸出：完成揀貨的訂單商品","人類角色：處理機器人無法辨識或抓取失敗的例外商品"],
+          "goal": "以機器學習取代部分人工揀貨、突破倉儲人力產能上限",
+          "effect": "2024年單年揀選逾3000萬件、生產力大幅提升；機器人可於離峰時段持續作業，延長可揀貨時段",
+          "events": "技術以模仿學習+強化學習持續迭代，2024年為量產規模關鍵年",
+          "risk": "官方自承機器人缺乏人類等級的感知與認知能力；2019年Andover倉儲曾發生電氣故障引發火災，損失逾1億英鎊，高密度倉儲的鋰電池與塑膠貨架設計增加滅火複雜度",
+          "future": "官方稱2025年起將探索擴散模型（生成式AI技術）以擴展揀貨能力範圍"
+        },
+        {
+          "name": "DHL Supply Chain 機器人化倉儲投資",
+          "desc": "大規模投資自動化，含協作型移動機器人、人形機器人試點、貨櫃卸貨機器人",
+          "scope": "2025年宣布投資5.5億英鎊，新增部署逾1000台機器人，聚焦電商與生命科學／醫療供應鏈；此前3年已在英國／愛爾蘭及EMEA投入逾10億歐元自動化",
+          "timeline": "2025年7月官方宣布",
+          "src": "https://group.dhl.com/en/media-relations/press-releases/2025/dhl-to-deploy-1000-additional-robots-across-uk-operations.html",
+          "flow": ["輸入：倉儲貨物入庫與訂單出貨需求","AI處理：機器人協作系統規劃搬運、揀貨與卸貨任務","輸出：自動化完成的入庫／揀貨／卸貨作業","人類角色：管理人員監督機器人隊列並處理複雜或非標準貨物"],
+          "goal": "擴大合約物流產能，特別是電商與醫療保健供應鏈",
+          "effect": "查證未見官方公開具體效率數字；第三方轉述的生產力提升35%／準確率99.7%數字未能追溯到官方原始出處，不予採信",
+          "events": "2024年起與Robust.AI試點Carter機器人，2025年7月宣布擴大投資",
+          "risk": "未查到官方揭露風險",
+          "future": "持續擴大機器人部署規模，聚焦電商與健康照護供應鏈"
+        },
+        {
+          "name": "Walmart AI供應鏈系統（Self-Healing Inventory）",
+          "desc": "AI驅動的預測倉儲與運輸管理系統，自動偵測庫存失衡並重新調度",
+          "scope": "已上線美國、哥斯大黎加、墨西哥、加拿大、智利、南非、印度等市場",
+          "timeline": "2025年7月官方發布",
+          "src": "https://corporate.walmart.com/news/2025/07/17/walmarts-us-supply-chain-playbook-goes-global-and-its-reinventing-retail-at-scale",
+          "flow": ["輸入：跨通路即時庫存與銷售資料","AI處理：自動偵測庫存失衡模式並計算調度方案","輸出：庫存重新調度指令","人類角色：供應鏈團隊監督系統建議並處理特殊個案"],
+          "goal": "以AI自動偵測並修正庫存失衡、減少食物浪費與缺貨",
+          "effect": "Self-Healing Inventory已為Walmart節省逾5500萬美元；原本需數季度完成的規劃專案縮短至數週；訂單錯誤減少、出貨加快",
+          "events": "2025年7月官方宣布美國供應鏈playbook正式推向全球市場",
+          "risk": "官方新聞稿未討論任何風險或挑戰",
+          "future": "官方僅表示將持續向全球擴大規模，未提供具體時間表或量化目標"
+        },
+        {
+          "name": "阿里巴巴菜鳥網絡（Cainiao）智慧倉儲",
+          "desc": "運用AGV、IoT、AI路徑規劃的智慧倉儲系統，避免碰撞並智慧分配包裹",
+          "scope": "無錫Future Park倉儲部署700台AGV，為中國最大機器人智慧倉儲；官方目標3年內連結1億台智慧設備",
+          "timeline": "精確啟用年份未查到，為菜鳥Future Park計畫早期案例",
+          "src": "https://www.alizila.com/video/new-cainiao-warehouse-wuxi/",
+          "flow": ["輸入：包裹訂單與倉儲即時貨況","AI處理：AGV路徑規劃演算法避免碰撞、智慧分配包裹","輸出：自動化完成的包裹分揀與搬運","人類角色：園區管理人員監督系統運作並處理異常"],
+          "goal": "以IoT+AI規模化管理物流園區，服務中國境內24小時、全球72小時到貨承諾",
+          "effect": "第三方轉述指出導入智慧機器人使倉儲生產力提升70%，惟未能追溯到官方一手原始數字，不予採信",
+          "events": "Future Park計畫作為菜鳥物流數位化旗艦專案推出",
+          "risk": "未查到官方揭露風險",
+          "future": "第三方轉述指出2026年計畫於香港、中國、荷蘭、西班牙、法國、德國、美國部署全球AI機器人倉儲網路，惟未能定位Alibaba／Cainiao官方一手公告連結，此計畫待進一步查證"
+        }
+      ],
+      "cases_poc": [
+        {
+          "name": "BMW × Figure AI／Hexagon AEON 人形機器人試點",
+          "desc": "美國Spartanburg廠與Figure AI合作試點人形機器人執行鈑金件取放上料；德國萊比錫廠與Hexagon Robotics試點AEON人形機器人",
+          "scope": "Spartanburg試點為期10個月，協助生產逾3萬輛BMW X3，累計搬運逾9萬個零件、運作約1250小時",
+          "timeline": "Spartanburg試點2025年執行完畢；萊比錫廠2025年12月AEON首測，2026年夏季進入正式試點",
+          "src": "https://www.press.bmwgroup.com/global/article/detail/T0455864EN/",
+          "flow": ["輸入：待取放的鈑金零件與產線任務指令","AI處理：人形機器人視覺辨識+動作規劃執行取放上料","輸出：完成上料的產線工位","人類角色：產線人員監督機器人並處理機器人無法完成的任務"],
+          "goal": "評估人形機器人在真實產線的可行性，聚焦鈑金取放、電池組裝等任務",
+          "effect": "官方稱從實驗室到實際產線環境的轉換速度比預期快，暗示初期整合疑慮低於預期，未提供具體效率提升數字",
+          "events": "2025年Spartanburg試點完成，成立生產物理AI能力中心整合經驗，2025年12月萊比錫廠AEON首測",
+          "risk": "官方未針對個案公開具體風險或事故記錄；人形機器人於製造業產線部署普遍面臨長期可靠度、安全防護規範尚未成熟等產業共識性議題",
+          "future": "BMW明確表示將透過新設能力中心把試點經驗規模化推廣至全球產線；萊比錫廠預計2026年夏季進入正式試點"
+        },
+        {
+          "name": "Aurora Innovation 無人駕駛卡車商業化",
+          "desc": "SAE L4自駕系統於德州啟動無安全駕駛員商業貨運服務，為全球首例重型卡車無人商業服務",
+          "scope": "初期單一路線（Dallas-Houston），啟動首週完成逾1200英里無人駕駛里程；此前4年有安全駕駛員監督試營運已完成逾300萬英里、交付逾1萬趟貨載",
+          "timeline": "2025年5月1日正式launch，計畫年底前擴展至2個新路線",
+          "src": "https://ir.aurora.tech/news-events/press-releases/detail/119/",
+          "flow": ["輸入：路況、車輛感測器、地圖與貨運任務資料","AI處理：L4自駕系統即時感知決策、規劃行駛路徑","輸出：無安全駕駛員的自主貨運行駛","人類角色：遠端監控中心監督車隊狀態，處理系統無法自主排除的異常"],
+          "goal": "驗證L4無人卡車在真實高速公路長途貨運的安全性與商業可行性",
+          "effect": "完成安全案例流程並發布正式Driverless Safety Report；合作夥伴含Uber Freight等貨運公司及Continental、FedEx、NVIDIA等生態系夥伴",
+          "events": "2025年3月發布安全報告，2025年5月1日正式無人商業化上路，計畫年底擴展至2個新路線",
+          "risk": "德州交通安全專家質疑安全報告缺乏自動化系統失效頻率或人工介入情況的具體細節；存在無故緊急煞停（幻影煞車）風險；美國FMCSA 2024年12月駁回Aurora提出的無人車故障警示裝置豁免申請；2025年1月Aurora曾控告美國運輸部相關安全規則爭議",
+          "future": "2025年底前擴展至El Paso（德州）、鳳凰城（亞利桑那州）兩條新路線"
+        },
+        {
+          "name": "Amazon Prime Air 無人機配送",
+          "desc": "MK30無人機執行最後一哩包裹配送，持有FAA Part 135認證",
+          "scope": "目前11個營運據點、橫跨7州10個都會區；2026年迄今已配送數十萬件包裹；規劃2026年底前擴展至近500個城鎮",
+          "timeline": "2024年獲FAA超視距飛行豁免，擴展公告發布於2026年",
+          "src": "https://www.aboutamazon.com/news/transportation/amazon-prime-air-drone-delivery-expansion",
+          "flow": ["輸入：訂單商品與配送地址","AI處理：無人機自主導航規劃飛行路徑與投遞點","輸出：最快30分鐘送達的包裹配送","人類角色：地面營運人員監督機隊狀態並處理配送例外"],
+          "goal": "以無人機縮短最後一哩配送時間、擴大電商快速配送覆蓋",
+          "effect": "MK30比前代航程加倍、噪音減半；最快30分鐘送達（一般約60分鐘）；可承載5磅以下商品，涵蓋常購商品逾60%品項",
+          "events": "2024年獲FAA超視距飛行豁免，目前11站營運，官方宣布2026年底擴展至近500城鎮",
+          "risk": "官方僅提及並非所有列出郵遞區號範圍內的地址均可配送；未查到官方揭露之安全事故或監理爭議",
+          "future": "官方明確目標為2026年底達成近500城鎮覆蓋，自現行11站約6倍擴張"
+        },
+        {
+          "name": "富士康（Foxconn）× NVIDIA Omniverse 數位孿生工廠",
+          "desc": "與NVIDIA合作建立3D數位孿生以規劃／模擬自動化產線，並擴展導入Isaac機器人平台與Modulus AI模擬工具",
+          "scope": "初期新竹廠導入，官方宣布將擴展至全球所有富士康廠區",
+          "timeline": "2024年11月官方宣布，技術於2023年Hon Hai Tech Day首次亮相",
+          "src": "https://www.foxconn.com/en-us/press-center/press-releases/latest-news/1484",
+          "flow": ["輸入：產線設計參數與供應鏈情境模擬條件","AI處理：數位孿生模擬產線調整、資源配置與需求變化情境","輸出：虛擬驗證後的產線調整方案","人類角色：工程團隊依模擬結果決定實體產線導入方式"],
+          "goal": "透過數位孿生在導入實體產線前先行虛擬模擬，強化製造彈性與供應鏈韌性",
+          "effect": "官方未提供具體效率量化數字；官方強調面對供應鏈中斷或市場需求驟變時，可快速模擬產線調整、彈性配置跨區資源",
+          "events": "2023年Hon Hai Tech Day首次展示，2024年11月正式宣布新竹廠部署並規劃全球擴展",
+          "risk": "官方未揭露風險或挑戰",
+          "future": "官方明確表示新竹廠經驗將擴展至全球富士康廠區，鎖定策略市場快速複製產線"
+        }
+      ],
+      "adoption_by_region": [
+        {
+          "region": "高所得 vs 低／中低所得經濟體",
+          "pct_or_status": "高所得經濟體66%企業已導入AI；低／中低所得經濟體僅27%，差距達39個百分點；已導入AI企業中近90%表示在貿易相關活動中獲得實質效益",
+          "note": "WTO-ICC企業調查（158家跨產業企業），涵蓋貿易相關活動整體（含通關／合規），非供應鏈產業專屬統計，2025年12月發布",
+          "src": "https://www.wto.org/english/news_e/news25_e/ecom_11dec25_240_e.htm"
+        },
+        {
+          "region": "WEF全球燈塔網絡（30+國，35產業別）",
+          "pct_or_status": "累計201個製造／供應鏈場域獲認證，分析型AI／機器學習占2025年解決方案62%，生成式AI快速成長至23%",
+          "note": "WEF官方認證計畫（與麥肯錫合作執行方法論），為獲認證場域的技術組成統計，非產業母體整體導入率，2025年9月發布",
+          "src": "https://www.weforum.org/press/2025/09/global-lighthouse-network-2025-world-economic-forum-recognizes-12-new-sites-driving-holistic-transformation-in-manufacturing/"
+        },
+        {
+          "region": "全球前沿科技準備度（UNCTAD，170國排名）",
+          "pct_or_status": "前5名：美國、瑞典、荷蘭、瑞士、新加坡（亞洲唯一入前5）；印度排名第36，較2022年進步",
+          "note": "涵蓋AI等前沿科技整體準備度指數，非供應鏈產業專屬統計，2025年UNCTAD報告",
+          "src": "https://unctad.org/publication/technology-and-innovation-report-2025"
+        }
+      ],
+      "adoption_by_region_note": "未查到WTO／World Bank／OECD／UNCTAD發布過針對供應鏈／物流產業單一產業別、跨國並列比較的量化採用率統計表，以上為貿易活動整體、獲認證場域技術組成、或前沿科技整體準備度的替代指標，非供應鏈產業母體的嚴格跨國比較",
+      "roadmap": [
+        {
+          "name": "WTO《World Trade Report 2025》全球貿易成長預測",
+          "status": "情境預測，取決於技術基礎設施落差是否縮小",
+          "desc": "在AI普及與技術落差彌合的情境下，2040年前全球貿易量可望成長34-37%、全球GDP成長12-13%；樂觀情境下全球實質貿易成長可望額外增加近14個百分點",
+          "src": "https://www.wto.org/english/news_e/news25_e/wtr_15sep25_e.htm"
+        },
+        {
+          "name": "中國「人工智慧+」行動意見",
+          "status": "官方既定政策目標，供應鏈專屬子目標未查到",
+          "desc": "國務院2025年8月發布，目標2027年新一代智慧終端與智慧體滲透率超過70%、2030年超過90%，僅概念性提及智慧供應鏈，未見產業專屬量化目標",
+          "src": "https://cset.georgetown.edu/publication/china-ai-plus-opinions-2025/"
+        },
+        {
+          "name": "歐盟Apply AI Strategy",
+          "status": "已核定政策，執行時程明確",
+          "desc": "歐盟執委會COM(2025)723，2025年10月發布，10億歐元投資10大戰略產業（含製造業），供應鏈優化／預測性維護／品質管控列為高影響應用案例；2025年Q4成立Apply AI Alliance，2026年Q2建立AI Observatory",
+          "src": ""
+        }
+      ]
     }
   ]
 }
