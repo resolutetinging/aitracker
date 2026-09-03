@@ -180,16 +180,21 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .ind-nav-btn{padding:6px 14px;border-radius:16px;border:1px solid var(--border);background:var(--card);color:var(--muted);font-size:12.5px;font-weight:600;cursor:pointer;}
 .ind-nav-btn.active{border-color:var(--industry);background:rgba(74,120,104,.10);color:var(--industry);}
 .ind-region-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:10px;}
+/* 09-03再改：cases_live/cases_poc案例卡併入流程圖後改用2欄（原本3欄的nv-case-grid
+   給流程圖的空間不夠），只套用在有flow內容的這兩區塊，roadmap仍用3欄nv-case-grid */
+.ind-case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:10px;}
+@media(max-width:900px){.ind-case-grid{grid-template-columns:1fr;}}
 .ind-region-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px 15px;box-shadow:var(--shadow);}
 .ind-region-name{font-size:13px;font-weight:700;color:var(--industry);margin-bottom:4px;}
 .ind-region-pct{font-size:12.5px;color:var(--text);font-weight:600;margin-bottom:6px;line-height:1.5;}
 .ind-region-note{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:6px;}
 @media(max-width:900px){.ind-region-grid{grid-template-columns:1fr;}}
 
-/* ── 09-03新增：案例AI運用情境流程圖（緊接在nvCaseCard之後渲染，同一個
-   .ind-case-block裡上下堆疊；配色沿用.t-industry同一組token） ── */
-.ind-case-block{display:flex;flex-direction:column;}
-.ind-flow-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-top:8px;box-shadow:var(--shadow);}
+/* ── 09-03新增，09-03再改：案例AI運用情境流程圖是同一件事的一部分，改成
+   跟案例卡合併成同一張卡（indCaseCard），不再各自獨立bordered card；用
+   ind-flow-divider畫一條分隔線區隔說明文字跟流程圖兩段。配色沿用.t-industry
+   同一組token ── */
+.ind-flow-divider{border-top:1px solid var(--border);margin:10px 0 8px;}
 .ind-flow-title{font-size:10.5px;font-weight:700;color:var(--industry);margin-bottom:8px;}
 .ind-flow-steps{display:flex;align-items:center;flex-wrap:wrap;gap:6px;}
 .ind-flow-chip{display:flex;flex-direction:column;gap:2px;background:rgba(74,120,104,.10);border:1px solid var(--industry);border-radius:12px;padding:6px 10px;max-width:100%;}
@@ -1065,12 +1070,14 @@ function indRegionCard(item){
   </div>`;
 }
 
-// 09-03新增：案例的「AI運用情境流程圖」，用既有desc/scope文字重新拆解成
-// 輸入→AI處理→輸出→人類角色四步驟橫向串接呈現。每個step字串格式是
-// 「標籤：內容」（例如「輸入：CT影像」），用第一個全形冒號切開，標籤用較淡
-// 較小的字級呈現、跟內容本身區分視覺權重；沒有冒號的字串就整段當內容顯示，
-// 不強制格式。只是既有已驗證desc/scope內容重組成步驟形式，不加入新技術細節。
-function indFlowChart(steps){
+// 09-03新增，09-03再改（使用者要求同一件事併同一張卡）：案例的「AI運用情境
+// 流程圖」，用既有desc/scope文字重新拆解成輸入→AI處理→輸出→人類角色四步驟
+// 橫向串接呈現。每個step字串格式是「標籤：內容」（例如「輸入：CT影像」），
+// 用第一個全形冒號切開，標籤用較淡較小的字級呈現、跟內容本身區分視覺權重；
+// 沒有冒號的字串就整段當內容顯示，不強制格式。只是既有已驗證desc/scope內容
+// 重組成步驟形式，不加入新技術細節。indFlowSteps只回傳內層內容（標題+步驟），
+// 不含外層card容器，供indCaseCard嵌入同一張卡使用。
+function indFlowSteps(steps){
   if(!steps || !steps.length) return '';
   const chips = steps.map((s,i)=>{
     const str = String(s||'');
@@ -1083,24 +1090,30 @@ function indFlowChart(steps){
       <span class="ind-flow-text">${text}</span>
     </div>${arrow}`;
   }).join('');
-  return `<div class="ind-flow-card">
-    <div class="ind-flow-title">🔗 AI運用情境流程</div>
-    <div class="ind-flow-steps">${chips}</div>
+  return `<div class="ind-flow-title">🔗 AI運用情境流程</div>
+    <div class="ind-flow-steps">${chips}</div>`;
+}
+
+// 09-03再改：cases_live/cases_poc案例卡跟流程圖是同一件事，合併成一張卡
+// （不再各自獨立bordered card），沿用.nv-case-card同一套視覺樣式維持風格
+// 一致，flow內容接在desc/來源連結之後、用ind-flow-divider分隔線區隔
+function indCaseCard(item, statusCls, statusText){
+  return `<div class="nv-case-card">
+    <div class="nv-case-name">${item.name}</div>
+    ${item.scope ? `<div class="nv-case-scope">📁 ${item.scope}</div>` : ''}
+    ${item.timeline ? `<div class="nv-case-time">🕐 ${item.timeline}</div>` : ''}
+    ${statusText ? `<div class="nv-case-status ${statusCls}">${statusText}</div>` : ''}
+    <div class="nv-case-desc">${item.desc}</div>
+    ${nvSrcLink(item.src)}
+    ${item.flow ? `<div class="ind-flow-divider"></div>${indFlowSteps(item.flow)}` : ''}
   </div>`;
 }
 
 function indRenderIndustry(industry){
-  // 直接重用NVIDIA專區的nvCaseCard/nvSrcLink渲染cases_live/cases_poc/roadmap，
-  // 三者schema（name/scope/timeline/desc/src/status）完全相容，不另外重寫。
-  // 09-03：cases_live/cases_poc若有flow欄位，緊接在nvCaseCard輸出後面用
-  // indFlowChart渲染，兩者包在同一個.ind-case-block裡維持grid排列不散開；
-  // roadmap沒有flow欄位，維持原樣不套用
-  const liveHtml = (industry.cases_live||[]).map(c=>
-    `<div class="ind-case-block">${nvCaseCard(c,'live','✅ 已規模化運作')}${c.flow ? indFlowChart(c.flow) : ''}</div>`
-  ).join('');
-  const pocHtml = (industry.cases_poc||[]).map(c=>
-    `<div class="ind-case-block">${nvCaseCard(c,'poc','🔵 試點階段')}${c.flow ? indFlowChart(c.flow) : ''}</div>`
-  ).join('');
+  // cases_live/cases_poc用indCaseCard（案例說明+流程圖合併一張卡，09-03改），
+  // roadmap沒有flow概念，繼續重用NVIDIA專區的nvCaseCard，schema相容不另外重寫
+  const liveHtml = (industry.cases_live||[]).map(c=>indCaseCard(c,'live','✅ 已規模化運作')).join('');
+  const pocHtml = (industry.cases_poc||[]).map(c=>indCaseCard(c,'poc','🔵 試點階段')).join('');
   const roadmapHtml = (industry.roadmap||[]).map(c=>nvCaseCard(c, (c.status||'').startsWith('⚠️')?'warn':'poc', c.status)).join('');
   const regionHtml = (industry.adoption_by_region||[]).map(indRegionCard).join('');
   const regionNoteHtml = industry.adoption_by_region_note
@@ -1108,9 +1121,9 @@ function indRenderIndustry(industry){
   return `
     <div class="sec-title">已導入實際應用場域</div>
     <div class="nv-sub-title">✅ 已規模化運作</div>
-    <div class="nv-case-grid">${liveHtml || '<div class="empty-state">尚無資料</div>'}</div>
+    <div class="ind-case-grid">${liveHtml || '<div class="empty-state">尚無資料</div>'}</div>
     <div class="nv-sub-title">🔵 試點階段（尚未全面規模化）</div>
-    <div class="nv-case-grid">${pocHtml || '<div class="empty-state">尚無資料</div>'}</div>
+    <div class="ind-case-grid">${pocHtml || '<div class="empty-state">尚無資料</div>'}</div>
 
     <div class="sec-title">各國／地區導入占比狀態</div>
     <div class="ind-region-grid">${regionHtml || '<div class="empty-state">尚無資料</div>'}</div>
