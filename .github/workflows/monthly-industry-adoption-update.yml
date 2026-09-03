@@ -1,0 +1,41 @@
+name: 🏥 Monthly Industry Adoption Update
+
+on:
+  schedule:
+    - cron: '0 16 1 * *'  # 每月1號 16:00 UTC（台北時間每月2號 00:00）；時間點沿用
+                           # weekly-nvidia-update的16:00 UTC慣例，改成每月查證一次
+  workflow_dispatch:        # 手動備用
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Pull latest (clean tree)
+        run: git pull --rebase origin main
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install groq ddgs
+
+      - name: Run industry adoption monthly check
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python scripts/update_industry_adoption.py
+
+      - name: Commit updated data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "🏥 Industry adoption monthly check"
+          file_pattern: 'data/industry_adoption.json data/industry_adoption_pending_review.json'

@@ -14,6 +14,7 @@
   --hw:#5a7fa8;--corp:#a07040;--app:#4a8a6a;
   --gloss:#4a6880;--insight:#3a6860;--hist:#607080;--nv:#6a8a20;
   --core:#3a5a7a;--noise:#686460;--opp:#3a6858;--ethic:#906030;
+  --industry:#4a7868;
   --shadow:0 1px 4px rgba(0,0,0,.08);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -45,6 +46,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .t-app  {background:rgba(74,138,106,.10); border-color:var(--app);  color:var(--app);}
 .t-gloss{background:rgba(74,104,128,.10); border-color:var(--gloss);color:var(--gloss);}
 .t-nv   {background:rgba(106,138,32,.10); border-color:var(--nv);   color:var(--nv);}
+.t-industry {background:rgba(74,120,104,.10); border-color:var(--industry); color:var(--industry);}
 .t-ins  {background:rgba(58,104,96,.10);  border-color:var(--insight);color:var(--insight);}
 .t-hist    {background:rgba(96,112,128,.10);  border-color:var(--hist);    color:var(--hist);}
 .t-archive {background:rgba(120,96,160,.10);  border-color:#8a60b0;        color:#8a60b0;}
@@ -170,6 +172,19 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .nv-case-status.poc{color:var(--corp);}
 .nv-case-status.warn{color:var(--ethic);}
 .nv-sub-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin:14px 0 10px;}
+
+/* ── 產業導入專區（09-03新增；資料存data/industry_adoption.json，多產業結構，
+   目前只有醫療產業一筆；卡片重用.nv-case-card/.nv-case-grid，region卡片另開
+   小型樣式）── */
+.ind-nav{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
+.ind-nav-btn{padding:6px 14px;border-radius:16px;border:1px solid var(--border);background:var(--card);color:var(--muted);font-size:12.5px;font-weight:600;cursor:pointer;}
+.ind-nav-btn.active{border-color:var(--industry);background:rgba(74,120,104,.10);color:var(--industry);}
+.ind-region-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:10px;}
+.ind-region-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px 15px;box-shadow:var(--shadow);}
+.ind-region-name{font-size:13px;font-weight:700;color:var(--industry);margin-bottom:4px;}
+.ind-region-pct{font-size:12.5px;color:var(--text);font-weight:600;margin-bottom:6px;line-height:1.5;}
+.ind-region-note{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:6px;}
+@media(max-width:900px){.ind-region-grid{grid-template-columns:1fr;}}
 
 /* ── Glossary category editor ── */
 .gloss-cat-row{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2px;}
@@ -360,6 +375,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
   <button class="tab-btn" id="btn-corp"  onclick="sw('corp')">💰 巨頭角力</button>
   <button class="tab-btn" id="btn-app"   onclick="sw('app')">🤖 新興應用</button>
   <button class="tab-btn" id="btn-nv"    onclick="sw('nv')">🟢 NVIDIA專區</button>
+  <button class="tab-btn" id="btn-industry" onclick="sw('industry')">🏭 產業導入</button>
   <button class="tab-btn" id="btn-gloss" onclick="sw('gloss')">📚 專有名詞</button>
   <button class="tab-btn" id="btn-hist"    onclick="sw('hist')">📅 本週紀錄</button>
   <button class="tab-btn" id="btn-archive" onclick="sw('archive');loadArchive()">📝 歷史筆記</button>
@@ -369,6 +385,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 <div id="panel-corp"    class="panel"></div>
 <div id="panel-app"     class="panel"></div>
 <div id="panel-nv"      class="panel"></div>
+<div id="panel-industry" class="panel"></div>
 <div id="panel-gloss"   class="panel"></div>
 <div id="panel-hist"    class="panel"></div>
 <div id="panel-archive" class="panel"></div>
@@ -1011,6 +1028,114 @@ async function renderNvidia(){
     <div style="font-size:11px;color:var(--muted);margin:4px 0 4px;padding-left:2px;">📌 每週由排程自動查證是否過時（候選異動需人工複核才會套用），最後查證：${nv.last_checked||'—'}</div>`;
 
   nvAttachGovernanceTooltips(panel);
+}
+
+// ══════════════════════════════════════════════════════════════════
+//  產業導入專區（09-03新增；資料存 data/industry_adoption.json，比照NVIDIA專區
+//  從JSON讀取而非寫死JS——頂層結構是industries陣列，目前只有醫療產業一筆，
+//  之後新增產業直接在陣列裡加新物件即可，不需要改這裡的渲染邏輯。查證機制
+//  比照NVIDIA週查證的安全模式（絕不自動覆蓋正式資料，人工複核才套用候選異動），
+//  但頻率改為月查證：scripts/update_industry_adoption.py 由獨立的GitHub Actions
+//  月排程觸發，候選異動只寫進 data/industry_adoption_pending_review.json）
+// ══════════════════════════════════════════════════════════════════
+let IND_DATA = null;
+let IND_ACTIVE_KEY = null;
+let IND_PENDING_HTML = '';
+
+function indRegionCard(item){
+  // nvCaseCard的schema（name/scope/timeline/desc/src/status）沒有region/pct概念，
+  // 這裡另開一個小型卡片；量化占比(pct_or_status)跟質化描述共用同一個欄位顯示，
+  // 有些地區只有質化描述沒有具體百分比，欄位裡直接放文字即可，不用另外判斷型別
+  return `<div class="ind-region-card">
+    <div class="ind-region-name">${item.region||''}</div>
+    ${item.pct_or_status ? `<div class="ind-region-pct">${item.pct_or_status}</div>` : ''}
+    ${item.note ? `<div class="ind-region-note">${item.note}</div>` : ''}
+    ${nvSrcLink(item.src)}
+  </div>`;
+}
+
+function indRenderIndustry(industry){
+  // 直接重用NVIDIA專區的nvCaseCard/nvSrcLink渲染cases_live/cases_poc/roadmap，
+  // 三者schema（name/scope/timeline/desc/src/status）完全相容，不另外重寫
+  const liveHtml = (industry.cases_live||[]).map(c=>nvCaseCard(c,'live','✅ 已規模化運作')).join('');
+  const pocHtml = (industry.cases_poc||[]).map(c=>nvCaseCard(c,'poc','🔵 試點階段')).join('');
+  const roadmapHtml = (industry.roadmap||[]).map(c=>nvCaseCard(c, (c.status||'').startsWith('⚠️')?'warn':'poc', c.status)).join('');
+  const regionHtml = (industry.adoption_by_region||[]).map(indRegionCard).join('');
+  const regionNoteHtml = industry.adoption_by_region_note
+    ? `<div style="font-size:11px;color:var(--muted);margin:2px 0 14px;padding-left:2px;">📌 ${industry.adoption_by_region_note}</div>` : '';
+  return `
+    <div class="sec-title">已導入實際應用場域</div>
+    <div class="nv-sub-title">✅ 已規模化運作</div>
+    <div class="nv-case-grid">${liveHtml || '<div class="empty-state">尚無資料</div>'}</div>
+    <div class="nv-sub-title">🔵 試點階段（尚未全面規模化）</div>
+    <div class="nv-case-grid">${pocHtml || '<div class="empty-state">尚無資料</div>'}</div>
+
+    <div class="sec-title">各國／地區導入占比狀態</div>
+    <div class="ind-region-grid">${regionHtml || '<div class="empty-state">尚無資料</div>'}</div>
+    ${regionNoteHtml}
+
+    <div class="sec-title">長期目標路線圖</div>
+    <div class="nv-case-grid">${roadmapHtml || '<div class="empty-state">尚無資料</div>'}</div>
+
+    <div style="font-size:11px;color:var(--muted);margin:4px 0 4px;padding-left:2px;">📌 每月由排程自動查證是否過時（候選異動需人工複核才會套用），最後查證：${industry.last_checked||'—'}</div>`;
+}
+
+// 產業切換：目前只有一個「🏥 醫療產業」按鈕，但切換邏輯本身通用——之後
+// industries陣列加第二個產業物件，這裡不需要改一行程式碼
+function indSwitch(key){
+  IND_ACTIVE_KEY = key;
+  indRenderPanel();
+}
+
+function indRenderPanel(){
+  const panel = document.getElementById('panel-industry');
+  if(!panel || !IND_DATA) return;
+  const industries = IND_DATA.industries||[];
+  const active = industries.find(i=>i.key===IND_ACTIVE_KEY) || industries[0];
+  const navHtml = industries.map(i=>
+    `<button class="ind-nav-btn ${active && i.key===active.key ? 'active' : ''}" onclick="indSwitch('${i.key}')">${i.icon||''} ${i.label||i.key}</button>`
+  ).join('');
+  panel.innerHTML = `
+    ${IND_PENDING_HTML}
+    <div class="ind-nav">${navHtml}</div>
+    ${active ? indRenderIndustry(active) : '<div class="empty-state">尚無產業資料</div>'}`;
+}
+
+async function renderIndustryAdoption(){
+  const panel = document.getElementById('panel-industry');
+  let data;
+  try {
+    const r = await fetch('data/industry_adoption.json?v='+Date.now());
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    data = await r.json();
+  } catch(e){
+    panel.innerHTML = '<div class="empty-state">⚠️ 無法載入產業導入專區資料（data/industry_adoption.json）</div>';
+    return;
+  }
+  IND_DATA = data;
+  if(!IND_ACTIVE_KEY || !(data.industries||[]).some(i=>i.key===IND_ACTIVE_KEY)){
+    IND_ACTIVE_KEY = (data.industries && data.industries[0] && data.industries[0].key) || null;
+  }
+
+  // 月查證若有候選異動會寫進industry_adoption_pending_review.json，這裡只顯示
+  // 一個提示banner，不自動套用內容——比照NVIDIA專區同一套安全機制（絕不自動
+  // 覆蓋正式資料，人工複核才套用）
+  IND_PENDING_HTML = '';
+  try {
+    const pr = await fetch('data/industry_adoption_pending_review.json?v='+Date.now());
+    if(pr.ok){
+      const pending = await pr.json();
+      const n2 = (pending.items||[]).length;
+      if(n2 > 0){
+        IND_PENDING_HTML = `<div class="ethic-alert">🔔 本月查證偵測到 ${n2} 項可能需要更新的內容（尚未套用，僅供參考），請告知 Claude 複核後正式更新</div>`;
+      }
+      // 分頁按鈕本身也標示待複核，不用先點進產業導入分頁才看得到（比照btn-nv做法）
+      const btnInd = document.getElementById('btn-industry');
+      if(btnInd) btnInd.classList.toggle('tab-alert', n2 > 0);
+    }
+  } catch(e){ /* 沒有pending檔或抓取失敗都當作沒有待複核項目，靜默略過 */ }
+
+  indRenderPanel();
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -2341,7 +2466,7 @@ async function saveArchiveToGitHub() {
 // ══════════════════════════════════════════════════════════════════
 //  TAB SWITCHING
 // ══════════════════════════════════════════════════════════════════
-const TCLS = {hw:'t-hw',corp:'t-corp',app:'t-app',nv:'t-nv',gloss:'t-gloss',hist:'t-hist',archive:'t-archive'};
+const TCLS = {hw:'t-hw',corp:'t-corp',app:'t-app',nv:'t-nv',industry:'t-industry',gloss:'t-gloss',hist:'t-hist',archive:'t-archive'};
 function sw(tab) {
   Object.keys(TCLS).forEach(k => {
     document.getElementById('panel-'+k).classList.remove('active');
@@ -2361,6 +2486,7 @@ function renderAll(hist) {
   renderCorp(hist[0]);
   renderApp(hist[0]);
   renderNvidia();
+  renderIndustryAdoption();
   renderGlossary(hist);
   renderHistory(hist);
 }
@@ -2368,7 +2494,7 @@ function renderAll(hist) {
 async function init() {
   const savedTab = sessionStorage.getItem('at_tab');
   const initTab = savedTab && Object.keys(TCLS).includes(savedTab) ? savedTab : 'hw';
-  ['hw','corp','app','nv','gloss','hist'].forEach(p => {
+  ['hw','corp','app','nv','industry','gloss','hist'].forEach(p => {
     document.getElementById('panel-'+p).innerHTML =
       '<div class="loading-screen"><div class="spinner"></div><div class="loading-text">載入最新資料中...</div></div>';
   });

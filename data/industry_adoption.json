@@ -1,0 +1,138 @@
+{
+  "industries": [
+    {
+      "key": "medical",
+      "label": "醫療產業",
+      "icon": "🏥",
+      "last_checked": "2026-09-03",
+      "cases_live": [
+        {
+          "name": "Viz.ai LVO 腦中風偵測平台",
+          "desc": "分析CT影像自動偵測大血管阻塞（LVO）中風徵象，加速轉診與治療決策",
+          "scope": "FDA 2018年首個「臨床醫療AI決策支持」De Novo核准；166家機構17州多中心研究（14,116例），到院至神經介入醫師通知時間縮短39.5分鐘（44.13%）",
+          "timeline": "FDA核准2018年，多中心研究2020年代陸續發表",
+          "src": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12802620/"
+        },
+        {
+          "name": "LumineticsCore（原IDx-DR）糖尿病視網膜病變自主AI診斷",
+          "desc": "無需醫師判讀，AI直接自主判定糖尿病視網膜病變，用於基層照護",
+          "scope": "2018年FDA De Novo核准，史上第一個獲FDA核准的自主AI診斷演算法（未查到精確採用診所數）",
+          "timeline": "2018年核准，商業化5年但學術文獻稱採用仍相對有限",
+          "src": "https://www.digitaldiagnostics.com/fda-permits-marketing-of-lumineticscore-formerly-known-as-idx-dr-for-automated-detection-of-diabetic-retinopathy-in-primary-care/"
+        },
+        {
+          "name": "Paige Prostate 病理科AI輔助攝護腺癌偵測",
+          "desc": "標示切片影像最可能有癌細胞區域，供病理醫師複核",
+          "scope": "2021年9月FDA核准，病理科第一個獲FDA核准的AI產品；輔助複核後病理醫師敏感度達90%-96.9%（較未輔助前提升2.9-16個百分點）",
+          "timeline": "2021年9月",
+          "src": "https://www.ncbi.nlm.nih.gov/books/NBK608438/"
+        },
+        {
+          "name": "Sepsis ImmunoScore 敗血症風險預測",
+          "desc": "用22項病人數據預測24小時內敗血症風險",
+          "scope": "2024年4月FDA核准，首個獲FDA授權的敗血症AI/ML診斷工具（未查到具體導入醫院數）",
+          "timeline": "2024年4月",
+          "src": "https://ai.nejm.org/doi/full/10.1056/AIoa2400867"
+        },
+        {
+          "name": "Epic Sepsis Model 敗血症預警演算法",
+          "desc": "內建於Epic電子病歷系統的敗血症預警演算法，已部署美國數百家醫院",
+          "scope": "已部署美國數百家醫院；JAMA Internal Medicine 2021年密西根大學外部驗證研究（27,697名病人）發現AUC僅0.63、敏感度僅33%，遠低於原廠宣稱",
+          "timeline": "部署已久，驗證研究2021年8月發表",
+          "src": "https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2781307",
+          "note": "⚠️ 效能受學術質疑：獨立外部驗證結果遠低於原廠宣稱數字，適合作為大規模部署不等於高效能的對照案例"
+        },
+        {
+          "name": "Kaiser Permanente北加州(TPMG) Ambient AI臨床紀錄語音轉錄",
+          "desc": "AI自動聆聽診間對話生成病歷；醫師共節省15,700小時文書時間，84%醫師認為改善醫病溝通，82%工作滿意度提升",
+          "scope": "部署於17個醫療中心、7,260名醫師",
+          "timeline": "部署2023-2024年，研究2026年1月發表於JAMA Network Open",
+          "src": "https://permanente.org/quality-assurance-informs-large-scale-use-of-ambient-ai-clinical-documentation/"
+        }
+      ],
+      "cases_poc": [
+        {
+          "name": "Rentosertib（ISM001-055）首個生成式AI設計並進入臨床的藥物",
+          "desc": "Insilico Medicine AI平台從標靶發現到候選分子全程AI設計，治療特發性肺纖維化",
+          "scope": "Phase IIa（GENESIS-IPF試驗，71名病人、中國22個試驗場址）已完成，達成主要安全性終點",
+          "timeline": "Phase I結果2023年1月，Phase IIa發表2025年6月",
+          "src": "https://www.nature.com/articles/s41591-025-03743-2",
+          "note": "公司稱已啟動Phase III但尚無獨立文獻佐證"
+        },
+        {
+          "name": "NHS-Galleri多癌早期偵測血液檢測（Galleri MCED test）",
+          "desc": "一管血液篩檢50種癌症訊號；篩檢組臨床發現癌症減少21%、急診發現減少25%，特異度99.3%",
+          "scope": "大型RCT，140,000名50-77歲無症狀受試者，英格蘭NHS合作",
+          "timeline": "主要結果2026年5月發表（ASCO JCO）",
+          "src": "https://www.nhs-galleri.org/trial-updates/screening-with-a-multi-cancer-blood-test-reduced-the-most-advanced-cancers"
+        },
+        {
+          "name": "MASAI試驗 AI輔助乳房攝影篩檢（瑞典）",
+          "desc": "AI輔助放射科醫師判讀乳房攝影取代雙重判讀；完整結果顯示AI組偵測到81%癌症病例(338/420) vs.對照組74%(262/355)，判讀工作量減少44%",
+          "scope": "大型RCT，逾100,000名瑞典女性、4個篩檢站點",
+          "timeline": "中期結果2023年，完整結果2026年",
+          "src": "https://www.eurekalert.org/news-releases/1114399"
+        }
+      ],
+      "adoption_by_region": [
+        {
+          "region": "歐盟27國",
+          "pct_or_status": "74%已在診斷中使用AI；63%部署聊天機器人支援病人互動；81%已讓利害關係人參與AI治理",
+          "note": "WHO歐洲區域辦公室報告，資料蒐集期間2024/6-2025/3，發布2026/4/20",
+          "src": "https://www.who.int/europe/news/item/20-04-2026-new-who-europe-report-provides-first-ever-snapshot-of-ai-in-health-care-across-european-union-member-states"
+        },
+        {
+          "region": "OECD會員國",
+          "pct_or_status": "72%已制定支持健康資料運用政策；僅29%國家已針對人力量能採取行動；僅18%國家在AI監督面向有具體政策",
+          "note": "OECD《Scaling Artificial Intelligence in Health》報告，2024年OECD衛生部長背書",
+          "src": "https://www.oecd.org/en/publications/scaling-artificial-intelligence-in-health_a436e12d-en/full-report/current-state-of-implementation-of-ai-in-health-across-oecd-members_2deacbc5.html"
+        },
+        {
+          "region": "美國（FDA監理數字，非採用率但可作規模間接指標）",
+          "pct_or_status": "累計逾1,400項FDA核准AI/ML醫療器材（截至2026年3月），2025年單年核准331項為歷年最高，放射科約占75-80%",
+          "note": "FDA官方清單持續更新",
+          "src": "https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-enabled-medical-devices"
+        },
+        {
+          "region": "東南亞7國（汶萊/印尼/緬甸/新加坡/泰國/越南/菲律賓）",
+          "pct_or_status": "質化資料，未提供量化採用率；區域發展不均，缺乏系統性研究",
+          "note": "JMIR學術期刊2025年6月，31位深度訪談",
+          "src": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12209719/"
+        }
+      ],
+      "adoption_by_region_note": "未查到WHO/OECD發布過可逐國直接橫向比較的量化統計表，以上為區域整體平均值或特定國家監理數字，非嚴格逐國比較",
+      "roadmap": [
+        {
+          "name": "AI於藥物研發",
+          "status": "試點/臨床試驗中，邁向量產前",
+          "desc": "Insilico Medicine的rentosertib從AI假說到臨床候選藥物僅耗時約18個月，已進入Phase IIa/III臨床試驗",
+          "src": "https://www.nature.com/articles/s41591-025-03743-2"
+        },
+        {
+          "name": "居家照護機器人",
+          "status": "政策推動中，原型至試點並行",
+          "desc": "日本厚生勞働省與經濟產業省《介護技術優先領域》政策（2024年6月最新修訂），日本機器人戰略設定「願意使用照護機器人」民眾比例由約60%提升至80%的量化目標",
+          "src": "https://www.meti.go.jp/english/press/2024/0628_004.html"
+        },
+        {
+          "name": "AI治理與倫理框架全球建置",
+          "status": "框架已發布，執行中",
+          "desc": "WHO《Ethics and governance of artificial intelligence for health》2021年6月發布，20位跨領域專家耗時18個月完成，提出6項共識原則，涵蓋194個WHO會員國",
+          "src": "https://iris.who.int/handle/10665/350567"
+        },
+        {
+          "name": "全球AI醫療治理協調機制（GI-AI4H）",
+          "status": "機制建置中，正在擴大實施",
+          "desc": "WHO、ITU、WIPO 2023年7月共同成立，2025年npj Digital Medicine發表策略方向，聚焦中低所得國家可持續AI導入",
+          "src": "https://www.nature.com/articles/s41746-025-01618-x"
+        },
+        {
+          "name": "AI規模化部署系統性政策框架（OECD四大支柱）",
+          "status": "政策制定中，尚未全面落地",
+          "desc": "OECD 2024年報告提出四大支柱：資料基礎與量能、監督問責機制、與利害關係人有意義互動、部署可信賴AI；報告承認信任建立、資料品質、領導力仍為缺口",
+          "src": "https://www.oecd.org/en/publications/scaling-artificial-intelligence-in-health_a436e12d-en/full-report/current-state-of-implementation-of-ai-in-health-across-oecd-members_2deacbc5.html"
+        }
+      ]
+    }
+  ]
+}
