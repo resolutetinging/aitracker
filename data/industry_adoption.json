@@ -368,6 +368,212 @@
           "src": ""
         }
       ]
+    },
+    {
+      "key": "finance",
+      "label": "金融業",
+      "icon": "💳",
+      "last_checked": "2026-09-03",
+      "cases_live": [
+        {
+          "name": "Mastercard Decision Intelligence（AI詐欺偵測）",
+          "desc": "即時AI風控系統，為銀行核准／攔截交易評分，新一代生成式AI模型稱為Decision Intelligence Pro",
+          "scope": "官方稱協助銀行每年核准1,430億筆交易；DI Pro訓練資料涵蓋約1,250億筆年度交易、分析1兆個數據點",
+          "timeline": "DI Pro於2024年5月發布公告",
+          "src": "https://www.mastercard.com/us/en/news-and-trends/press/2024/may/mastercard-accelerates-card-fraud-detection-with-generative-ai-technology.html",
+          "flow": ["輸入：即時交易資料與歷史消費模式","AI處理：生成式AI模型即時評分交易真偽風險","輸出：核准或攔截交易的即時判斷","人類角色：風控團隊監督模型表現並處理申訴案件"],
+          "goal": "即時判斷交易真偽，降低詐欺損失與誤攔（false positive）",
+          "effect": "官方稱初步模型測試顯示詐欺偵測率平均提升20%、部分情境最高達300%，誤判減少逾85%（Mastercard自家公告數字，非第三方驗證）",
+          "events": "2024年2月發布消費者保護生成式AI擴充，2024年5月發布DI Pro新一代模型",
+          "risk": "FSB 2024年報告泛稱AI驅動詐欺偵測系統存在模型風險與治理的一般性擔憂；未查到監理機構對此系統本身的具體監理個案",
+          "future": "DI Pro持續擴大部署，官方未公布具體時間表以外的量化目標"
+        },
+        {
+          "name": "HSBC × Google Cloud「AML AI」（反洗錢監控）",
+          "desc": "Google Cloud官方AI反洗錢產品，HSBC為完成試驗並採用的launch客戶",
+          "scope": "Google Cloud官方引述HSBC結果：可偵測到2至4倍的真陽性洗錢風險，警示量減少逾60%",
+          "timeline": "產品官方發布於2023年6月",
+          "src": "https://www.prnewswire.com/news-releases/google-cloud-launches-ai-powered-anti-money-laundering-product-for-financial-institutions-301856403.html",
+          "flow": ["輸入：跨帳戶交易紀錄與客戶行為資料","AI處理：AI模型取代傳統規則式監控辨識可疑洗錢模式","輸出：洗錢風險警示（alert）","人類角色：合規團隊複核警示並決定通報與否"],
+          "goal": "以AI取代傳統規則式AML監控，降低誤報、提升真實風險偵測率",
+          "effect": "2-4倍真陽性偵測、警示量降逾60%（Google Cloud/HSBC聯合公告數字，未見獨立第三方覆核）",
+          "events": "2023年6月正式產品發布，HSBC列為launch customer",
+          "risk": "未查到監理機構針對此特定系統的具體風險意見；BIS Project Aurora研究間接指出傳統孤立式規則系統偵測不足的結構性問題",
+          "future": "未查到Google/HSBC官方公布下一階段擴展計畫的具體時間表"
+        },
+        {
+          "name": "Bank of America「Erica」虛擬助理",
+          "desc": "BofA官方行動銀行內建AI虛擬助理，2018年上線",
+          "scope": "累計突破30億次客戶互動（2025年8月），每月平均逾5,800萬次互動，近5,000萬用戶使用過",
+          "timeline": "2018年6月上線，2025年8月突破30億次互動",
+          "src": "https://newsroom.bankofamerica.com/content/newsroom/press-releases/2025/08/a-decade-of-ai-innovation--bofa-s-virtual-assistant-erica-surpas.html",
+          "flow": ["輸入：客戶語音／文字查詢與帳戶資料","AI處理：AI理解查詢意圖並生成回應或主動洞察","輸出：解答、交易協助或主動理財提醒","人類角色：複雜案件轉接真人客服處理"],
+          "goal": "以AI取代／分流部分人工客服流程，提供主動理財提醒",
+          "effect": "累計傳遞逾17億則主動個人化洞察；公司高層曾公開表示Erica工作量相當於11,000名員工（此為高層發言轉述，非審計數字）",
+          "events": "2018上線，2022年達10億次互動，其後每18個月左右增加10億次，成長明顯加速",
+          "risk": "CFPB 2023年6月官方對銀行聊天機器人整體發出風險警告；未查到針對Erica本身的具體執法個案",
+          "future": "官方新聞稿未提供具體量化的未來目標，僅強調持續擴充功能"
+        },
+        {
+          "name": "Wells Fargo「Fargo」虛擬助理",
+          "desc": "Wells Fargo官方AI虛擬助理，2023年整合進行動銀行App，由Google Cloud AI技術支援",
+          "scope": "累計處理逾10億次客戶互動（上線不到三年內達成）；西語互動累計逾1.6億次",
+          "timeline": "2023年上線，2026年3月突破10億次互動里程碑",
+          "src": "https://newsroom.wf.com/news-releases/news-details/2026/Wells-Fargo-Reaches-Major-Digital-Milestones/default.aspx",
+          "flow": ["輸入：客戶指令（轉帳／繳費／查詢等）","AI處理：Google Cloud AI技術理解並執行銀行任務","輸出：完成的轉帳、繳費或查詢結果","人類角色：例外案件由真人客服接手"],
+          "goal": "協助客戶完成Zelle轉帳、繳費、查詢路由號碼、檢視消費與餘額等日常銀行任務",
+          "effect": "行動銀行月活躍用戶逾3,300萬（2026年2月）；官方未公布具體成本節省或人力替代量化數字",
+          "events": "2021年公告重建App，2022年公告由Google Cloud AI支援，2023年西語功能上線，2026年3月達10億次互動",
+          "risk": "適用CFPB 2023年對銀行聊天機器人整體的風險警告；未查到OCC/CFPB/Fed對Fargo本身的具體執法個案",
+          "future": "官方公告未提供具體量化roadmap"
+        },
+        {
+          "name": "Upstart AI信用評分／貸款核保模型",
+          "desc": "美國上市金融科技公司以AI模型取代傳統FICO信用評分做貸款核保",
+          "scope": "模型變數從2014年23個增至2023年底逾1,600個；訓練資料涵蓋逾5,800萬筆還款事件，每個工作日新增約8.3萬筆",
+          "timeline": "2020年上市，最新公開資料至2024年報",
+          "src": "https://www.sec.gov/Archives/edgar/data/1647639/000164763925000018/upst-20241231.htm",
+          "flow": ["輸入：借款人財務與行為資料（逾1,600個變數）","AI處理：模型評估信用風險取代傳統FICO評分","輸出：貸款核准／拒絕決定與利率","人類角色：合規團隊確保拒貸理由符合法規要求"],
+          "goal": "擴大信用取得管道（尤其對傳統信用評分覆蓋不足族群），提升核准率同時控制違約風險",
+          "effect": "官方引述2024年內部研究稱，AI模型相較傳統核保多核准101%借款人、核准貸款平均APR低38%（公司自行揭露之內部研究，非獨立第三方驗證）",
+          "events": "2020年上市，2023年11月收到SEC傳票要求AI模型與貸款揭露文件，2025年5月SEC結案未提出指控",
+          "risk": "CFPB 2022年與2023年官方指引明確要求AI核保機構仍須提供具體真實的拒貸理由，並點名「黑箱信用模型」的消費者保護風險；2023年11月遭SEC傳票調查AI揭露（2025年5月結案未指控）",
+          "future": "持續擴大模型變數與訓練資料規模；CFPB／監理機構持續要求可解釋性揭露為前提條件"
+        },
+        {
+          "name": "Vanguard Digital Advisor（機器人理財顧問）",
+          "desc": "Vanguard官方數位理財顧問服務，低成本自動化投資組合管理",
+          "scope": "截至2024年7月，管理資產約3,119億美元、服務逾79.2萬名客戶（產業媒體轉述數字，非直接引自Vanguard官方揭露）",
+          "timeline": "年費最低0.20%，持續營運中",
+          "src": "https://www.financial-planning.com/news/vanguard-schwab-expected-to-dominate-robo-advisory-space",
+          "flow": ["輸入：客戶風險偏好與財務目標","AI處理：演算法建構並動態調整投資組合","輸出：自動化資產配置與再平衡","人類角色：客戶可選擇加購真人顧問諮詢服務"],
+          "goal": "低成本自動化投資組合管理",
+          "effect": "未查到官方逐年具體績效或客戶滿意度數字",
+          "events": "未查到重大官方公告時間軸",
+          "risk": "SEC 2024/2025年度檢查優先事項官方文件將自動化投資工具列為重點檢查對象，2024年對兩家投顧公司因「AI washing」（誇大AI能力）開罰（執法對象非Vanguard本身）",
+          "future": "未查到官方具體roadmap；產業層級SEC持續加強揭露規範是明確政策方向"
+        },
+        {
+          "name": "DBS銀行（新加坡）AI規模化部署",
+          "desc": "東南亞最大銀行DBS官方公布之全行AI應用規模",
+          "scope": "全行部署逾1,500個AI模型、涵蓋逾370項應用案例，預估2025年經濟效益逾新加坡幣10億元（約合美金7.4億元）",
+          "timeline": "2025年10月獲Global Finance「全球最佳AI銀行」獎",
+          "src": "https://www.dbs.com/newsroom/DBS_named_Worlds_Best_AI_Bank_2025",
+          "flow": ["輸入：跨行客戶與營運資料（370+應用案例）","AI處理：1,500+個AI模型分別處理各項營運／客服任務","輸出：效率提升與客戶體驗改善成果","人類角色：各業務團隊監督AI模型並持續優化應用案例"],
+          "goal": "全行導入AI提升營運效率、客戶體驗與生產力",
+          "effect": "SGD 10億元經濟效益（DBS官方自估數字，非第三方審計）",
+          "events": "2025年10月獲獎公告，同期發布生成式AI企業客戶聊天機器人DBS Joy",
+          "risk": "未查到MAS官方對DBS此AI規模化部署本身的具體風險意見或執法個案",
+          "future": "官方新聞稿未提供具體量化未來目標"
+        }
+      ],
+      "cases_poc": [
+        {
+          "name": "BIS Innovation Hub「Project Aurora」（跨機構反洗錢AI）",
+          "desc": "BIS創新中心與Lucinity合作的proof-of-concept，探索用支付資料與AI跨機構跨境打擊洗錢",
+          "scope": "Phase 1（2023年結案）：可多偵測至多3倍洗錢案件，誤報減少最多80%",
+          "timeline": "Phase 1於2023年結案，隨後啟動Phase 2",
+          "src": "https://www.bis.org/about/bisih/topics/fmis/aurora.htm",
+          "flow": ["輸入：跨機構支付資料（隱私強化技術處理）","AI處理：AI比對分析跨境交易網絡尋找洗錢模式","輸出：洗錢風險偵測結果","人類角色：監理機構與金融機構協作複核並決定跨機構行動"],
+          "goal": "驗證AI+跨機構資料協作是否比現行各機構孤立式規則型系統更能偵測洗錢網絡",
+          "effect": "可多偵測至多3倍洗錢案件（尤其複雜手法），誤報減少最多80%",
+          "events": "Phase 1於2023年結案，Phase 2目標從概念驗證邁向可規模化的實際試點",
+          "risk": "官方未在此階段公開具體風險清單，但隱含跨機構資料共享的隱私與治理挑戰待解決",
+          "future": "Phase 2目標為建立公私協作治理機制，產出可望擴展為正式試點的proof-of-concept"
+        },
+        {
+          "name": "BIS Innovation Hub「Project Raven」（AI輔助網路安全韌性評估）",
+          "desc": "BIS創新中心主導，用AI協助監理機構快速評估一國金融體系的網路安全韌性成熟度",
+          "scope": "官方頁面僅描述目標與方法，未查到量化成效數字，屬早期階段",
+          "timeline": "官方頁面未載明明確啟動／結案日期",
+          "src": "https://www.bis.org/about/bisih/topics/cyber_security/raven.htm",
+          "flow": ["輸入：一國金融體系的網路安全標準與指引資訊","AI處理：AI比對彙整複雜的網路安全成熟度指標","輸出：國家層級金融體系網路韌性評估","人類角色：監理機構依評估結果制定政策"],
+          "goal": "讓央行／監理機構能用AI快速取得、比對複雜的網路安全標準，評估國家層級金融體系韌性",
+          "effect": "未查到量化成效數字",
+          "events": "未查到明確時間軸",
+          "risk": "未查到官方針對此專案本身列出的具體風險項目",
+          "future": "未查到後續量化roadmap"
+        },
+        {
+          "name": "MAS「Veritas」倡議（新加坡，AI公平性評估）",
+          "desc": "新加坡金融管理局主導的產業聯盟倡議，發展信用風險評分與客戶行銷領域AI模型的公平性指標，落實FEAT原則",
+          "scope": "由31家業界機構組成的聯盟共同開發，第一階段聚焦信用風險評分（UOB與Element AI主責）與客戶行銷（HSBC等主責）",
+          "timeline": "2019年啟動框架合作，2023年6月發布Toolkit 2.0",
+          "src": "https://www.mas.gov.sg/news/media-releases/2023/toolkit-for-responsible-use-of-ai-in-the-financial-sector",
+          "flow": ["輸入：AI模型的信用評分或行銷決策輸出","AI處理：套用公平性指標方法論評估模型是否符合FEAT原則","輸出：可驗證的AI公平性評估報告","人類角色：金融機構依評估結果調整模型或決策流程"],
+          "goal": "讓金融機構能以可驗證方式評估AI／數據分析解決方案是否符合公平、倫理、當責、透明（FEAT）原則",
+          "effect": "2023年6月發布開源Veritas Toolkit 2.0，供金融機構實際運用評估方法論",
+          "events": "2019年宣布啟動框架合作，2020年發布首批公平性指標，2022年發布評估方法論，2023年6月發布Toolkit 2.0",
+          "risk": "未查到MAS官方針對此倡議本身列出的具體風險或失敗案例，倡議本身即為回應AI公平性／歧視風險而設計",
+          "future": "持續透過產業聯盟擴大方法論適用範圍，官方未提供具體下一階段量化時間表"
+        },
+        {
+          "name": "ECB銀行監理AI試點工作坊",
+          "desc": "歐洲央行銀行監理就AI用於信用評分與詐欺偵測，挑選13家銀行進行深入工作坊訪查",
+          "scope": "統計基礎為107家（2023年）與110家（2024年）受監理重要機構的申報數據，AI使用案例顯著增加",
+          "timeline": "2025年11月發布監理通訊公布工作坊發現",
+          "src": "https://www.bankingsupervision.europa.eu/press/supervisory-newsletters/newsletter/2025/html/ssm.nl251120_1.en.html",
+          "flow": ["輸入：受監理銀行申報的AI使用案例資料","AI治理處理：監理機構深入訪查銀行AI模型治理成熟度","輸出：監理政策制定依據","人類角色：ECB監理團隊依發現制定後續監理優先事項"],
+          "goal": "了解銀行AI模型治理成熟度、資料管理標準落實程度，作為監理政策制定依據",
+          "effect": "約半數受訪銀行已設立專責AI治理政策或委員會",
+          "events": "2025年11月20日發布監理通訊公布工作坊發現",
+          "risk": "官方明確指出少數銀行對AI模型內部運作流程缺乏完全透明度，僅少數銀行有效落實資料管理標準",
+          "future": "ECB 2026-2028監理優先事項已將AI治理、策略與風險管理列為持續監理重點"
+        }
+      ],
+      "adoption_by_region": [
+        {
+          "region": "英國（Bank of England × FCA第三次AI/ML調查）",
+          "pct_or_status": "75%機構已使用AI（2022年為72%），另10%計畫未來三年內採用；基礎模型占AI應用案例17%，多數屬低重要性部署；三分之一已部署應用案例為第三方導入（2022年為17%）",
+          "note": "118家受訪機構橫跨六大金融子產業，2024年11月發布，為本次查證中數字最完整精確的官方調查",
+          "src": "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024"
+        },
+        {
+          "region": "歐元區（ECB銀行監理）",
+          "pct_or_status": "受監理重要機構樣本從2023年107家增至2024年110家，AI應用案例（尤其信用評分與詐欺偵測）「顯著增加」",
+          "note": "官方文件未提供確切百分比成長數字，僅質性描述",
+          "src": "https://www.bankingsupervision.europa.eu/press/supervisory-newsletters/newsletter/2025/html/ssm.nl251120_1.en.html"
+        },
+        {
+          "region": "全球央行本身的AI採用（BIS 2024年央行調查，非金融業整體）",
+          "pct_or_status": "75%受訪央行完全同意或部分同意生成式AI效益大於風險，多數央行已採用或計畫採用生成式AI於網路安全等領域",
+          "note": "⚠️此為央行自身的AI採用調查，非銀行／保險／投資機構等金融業整體導入率，不可與上方兩項混淆比較",
+          "src": "https://www.bis.org/publications/aer-2024/artificial-intelligence-economy-implications-central-banks"
+        }
+      ],
+      "adoption_by_region_note": "未查到IMF／BIS／FSB發布過將美國、歐盟、英國、日本、中國、新加坡等多國金融業AI導入率並列比較的單一量化表格，中國人民銀行、美國聯準會官方亦查無同等量化調查，以上三項為個別司法管轄區或不同性質（央行自身vs金融業）的獨立調查，不構成嚴格跨國比較",
+      "roadmap": [
+        {
+          "name": "FSB（金融穩定委員會）AI監測框架",
+          "status": "官方已發布方向，跨國一致指標仍待建立",
+          "desc": "2024年11月報告要求各國監理機關強化AI發展監測、評估既有政策框架是否涵蓋AI新脆弱性；2025年10月後續報告呼籲建立跨國一致的AI監測指標",
+          "src": "https://www.fsb.org/2024/11/the-financial-stability-implications-of-artificial-intelligence/"
+        },
+        {
+          "name": "Basel Committee 數位化金融工作計畫",
+          "status": "已列入官方工作計畫，持續監控中",
+          "desc": "2023年發布AI/ML風險管理與監理高階考量文件；2025/26工作計畫將數位化金融列為四大主題之一，聚焦AI可解釋性、治理與金融穩定性",
+          "src": "https://www.bis.org/bcbs/bcbs_work.htm"
+        },
+        {
+          "name": "IMF 資本市場AI政策方向",
+          "status": "官方已提出政策方向，具體監理建議仍在發展",
+          "desc": "2024年10月GFSR報告警示AI可能導致資料寡占、加劇市場集中度與壓力時期不穩定性，呼籲密切監測與監督作為未來平衡式監理回應的基礎",
+          "src": "https://www.imf.org/en/Blogs/Articles/2024/10/15/artificial-intelligence-can-make-markets-more-efficient-and-more-volatile"
+        },
+        {
+          "name": "CFPB AI核貸法遵基準",
+          "status": "已生效的法遵要求，非未來式目標",
+          "desc": "2022年與2023年官方指引明確要求使用AI／複雜演算法核保的放款機構仍須提供具體真實的拒貸理由，作為長期法遵基準線",
+          "src": "https://www.consumerfinance.gov/about-us/newsroom/cfpb-issues-guidance-on-credit-denials-by-lenders-using-artificial-intelligence/"
+        },
+        {
+          "name": "ECB 2026-2028銀行監理優先事項",
+          "status": "已核定的三年期監理計畫",
+          "desc": "官方文件已將AI（策略、治理、風險管理）列為持續監理重點項目之一",
+          "src": "https://www.bankingsupervision.europa.eu/framework/priorities/html/ssm.supervisory_priorities202511.en.html"
+        }
+      ]
     }
   ]
 }
