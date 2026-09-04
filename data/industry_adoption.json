@@ -1192,6 +1192,218 @@
           "src": "https://www.gao.gov/products/gao-24-105962"
         }
       ]
+    },
+    {
+      "key": "transportation",
+      "label": "交通運輸",
+      "icon": "🚦",
+      "last_checked": "2026-09-04",
+      "cases_live": [
+        {
+          "name": "Waymo 全無人駕駛計程車服務（美國）",
+          "desc": "Google母公司Alphabet旗下Waymo在美國5個城市提供全無人（無安全駕駛員）付費載客服務，是全球規模最大的商用robotaxi營運商之一",
+          "scope": "自駕乘用車/計程車服務；2024年起陸續於鳳凰城、舊金山灣區、洛杉磯、奧斯汀、亞特蘭大5城市提供商用付費服務",
+          "timeline": "2020年鳳凰城首次全無人商用；持續擴張至2026",
+          "src": "https://waymo.com/safety/impact/",
+          "flow": ["感知：車載光達/攝影機/雷達多模態感測即時建構路況", "預測：AI模型預測周邊行人、車輛、自行車軌跡", "決策：路徑規劃引擎即時計算安全駕駛決策", "驗證：NHTSA Standing General Order強制通報機制持續監督安全表現"],
+          "goal": "以AI駕駛降低人為失誤造成的交通事故，提供全無人載客服務",
+          "effect": "截至2026年3月，累計220.6M英里全無人駕駛里程；較同路網人類駕駛人基準：嚴重傷亡以上車禍減少94%、造成受傷的車禍減少82%、安全氣囊觸發減少82%；行人受傷車禍減少93%、自行車受傷車禍減少84%（Waymo官方安全儀表板數字）",
+          "events": "2025年全年完成1500萬趟付費行程（較2024年成長逾3倍）",
+          "risk": "官方數據為Waymo自行依NHTSA SGO通報格式編製並發布於自有安全儀表板，屬企業官方揭露而非第三方獨立稽核；比較基準經過地理駕駛型態調整，方法論細節未完全公開",
+          "future": "持續向更多城市擴張"
+        },
+        {
+          "name": "Zoox（Amazon）無方向盤/踏板robotaxi商用服務",
+          "desc": "Amazon旗下Zoox取得NHTSA聯邦豁免，成為首家獲准對無方向盤、無煞車踏板專屬設計車輛收費載客的公司，已於拉斯維加斯開始商業營運",
+          "scope": "自駕乘用車/計程車服務；NHTSA豁免核准為期2年、最多2500輛車部署上限",
+          "timeline": "2025年9月申請豁免；2026年7月30日NHTSA核准；2026年8月10日拉斯維加斯正式商轉",
+          "src": "https://www.nhtsa.gov/press-releases/cutting-red-tape-safely-fast-track-automated-vehicle",
+          "flow": ["設計：專屬自駕車輛設計（雙向對坐座椅、無傳統駕駛控制介面）", "監理：向NHTSA申請並取得聯邦豁免（傳統車輛安全標準不適用於此類設計）", "營運：於拉斯維加斯劃定服務區域開始收費載客", "擴張：完成各州層級商業化要求後逐步擴大市場"],
+          "goal": "驗證無傳統人類駕駛控制介面之專屬自駕載具的商業可行性與安全性",
+          "effect": "為此類「無方向盤/踏板專屬設計」車輛首次獲得聯邦付費載客許可（NHTSA官方核准）",
+          "events": "2026年7月30日NHTSA核准豁免；2026年8月10日拉斯維加斯正式商轉",
+          "risk": "屬全新車輛設計類別，尚無長期道路安全實績數據可供驗證；豁免核准條件與延續性取決於後續安全報告",
+          "future": "計畫於完成各州法規要求後擴展至拉斯維加斯以外市場"
+        },
+        {
+          "name": "百度Apollo Go全無人計程車網路（中國及海外）",
+          "desc": "百度旗下Apollo Go是全球規模最大的全無人駕駛計程車營運商之一，已擴展至中國及海外共26個城市，並與Uber、Lyft等平台合作於杜拜、阿布達比、香港等地提供服務",
+          "scope": "自駕乘用車/計程車服務；服務足跡達26個城市",
+          "timeline": "2021年北京取得收費許可；持續擴張至2026年第4季全球26城市",
+          "src": "https://www.prnewswire.com/news-releases/baidu-announces-fourth-quarter-and-fiscal-year-2025-results-302698026.html",
+          "flow": ["路測累積：多城市封閉/開放道路測試累積駕駛數據", "監理取證：向地方政府申請並取得全無人商業許可（如北京、武漢、重慶）", "平台整合：與Uber、Lyft等既有叫車平台API串接擴大觸及", "國際輸出：技術與車隊輸出至杜拜、阿布達比、香港、瑞士等海外市場"],
+          "goal": "以規模化全無人車隊降低計程車服務邊際成本並拓展全球市場",
+          "effect": "2025年Q4單季340萬趟全無人行程（年增逾200%）；2025全年逾1000萬趟；累計服務超過2000萬趟（百度官方財報數字）",
+          "events": "2026年3月31日武漢發生逾百輛車同時當機的重大事故（詳見roadmap）；官方另公告阿布達比Yas Island全自駕載客服務啟動",
+          "risk": "2026年3月武漢當機事故後，據Bloomberg報導中國監管機關暫停新的自駕車輛許可核發，此為媒體引述消息人士報導，查無官方原始公告，須視為採信等級較低之訊息；財報數字為公司自行揭露，缺乏第三方獨立稽核",
+          "future": "持續全球化擴張，管理層預期AI相關業務占營收比重將持續上升"
+        },
+        {
+          "name": "Alaska Airlines Flyways AI 飛航路徑優化",
+          "desc": "Alaska Airlines與Air Space Intelligence合作的Flyways AI系統，協助飛航調度員即時優化航路以降低燃油消耗與碳排放，並提升準點率",
+          "scope": "航空業（機隊調度/燃油效率）",
+          "timeline": "2021年起導入；2024年續約擴大合作",
+          "src": "https://www.prnewswire.com/news-releases/alaska-airlines-renews-partnership-with-air-space-intelligence-solidifying-commitment-to-ai-powered-innovation--driving-fuel-efficiency-goals-302218646.html",
+          "flow": ["資料整合：即時彙整天氣、空域壅塞、飛行計畫等多來源資料", "AI建議：模型針對在途航班運算替代航路並評估燃油/時間效益", "調度員決策：飛航簽派員採納或拒絕AI建議並下達航路變更", "回饋優化：實際飛行結果回饋模型持續校準建議準確度"],
+          "goal": "降低長程航班燃油消耗與碳排放，同時改善準點率",
+          "effect": "為55%的Alaska航班提出優化路徑建議；4小時以上長程航班平均節省3-5%燃油與相應排放；2023年單年節省120萬加侖燃油（約合11,958公噸CO2排放，見官方企業新聞頁news.alaskaair.com）",
+          "events": "2024年正式續約Air Space Intelligence，確認長期合作",
+          "risk": "節省數字為航空公司與供應商聯合官方揭露，未見獨立第三方查核報告；效益高度依賴具體航線與天氣條件，非全航班均等適用",
+          "future": "ASI技術（Flyways）亦已成為FAA的SMART系統三家承包商之一，未來可能與聯邦空域管理系統整合"
+        },
+        {
+          "name": "德國鐵路（Deutsche Bahn）E-Check AI自動化ICE維修",
+          "desc": "德國國鐵投資5,500萬歐元建置AI驅動的E-Check系統，以相機門與AI影像辨識自動檢測ICE高速列車車廂外觀與底盤異常，並搭配機器人自動供水/排污",
+          "scope": "公共運輸（鐵路維護）；科隆-Nippes首座AI維修廠已啟用，柏林、多特蒙德、漢堡、慕尼黑陸續跟進",
+          "timeline": "科隆-Nippes首座AI維修廠已啟用；後續擴展至其他城市",
+          "src": "https://www.deutschebahn.com/de/presse/pressestart_zentrales_uebersicht/Digitale-ICE-Wartung-Deutsche-Bahn-investiert-55-Millionen-Euro-in-Roboter-und-kuenstliche-Intelligenz-12285750",
+          "flow": ["影像擷取：列車通過相機門（E-Check）自動拍攝車體外觀與底盤影像", "AI辨識：模型比對影像辨識異常（如螺絲鬆脫、外觀損傷）", "自動化作業：cobot機器人自動辨識不同車型接口位置，完成加水/排污作業", "人工複核：技術人員針對AI標記異常點進行最終確認與維修"],
+          "goal": "在車隊規模持續擴大下，提升維修效率與列車回歸營運速度",
+          "effect": "AI可辨識螺絲鬆脫等細微偏差及外觀損傷；官方新聞稿未提供具體維修時間縮短百分比等量化效益數字",
+          "events": "首座AI維修廠於科隆-Nippes啟用，後續擴展至柏林、多特蒙德、漢堡、慕尼黑",
+          "risk": "德鐵官方新聞稿未揭露量化的故障減少率或成本節省百分比（不同於SNCF案例），效益陳述較為定性",
+          "future": "官方規劃持續擴展AI維修站點至更多城市"
+        },
+        {
+          "name": "法國國鐵（SNCF）AI預測性維護",
+          "desc": "SNCF自2013年起投入資料科學團隊建置AI預測性維護系統，同時監控逾1,100列列車、分析逾8,000項變數，用於故障預測與維護排程優化",
+          "scope": "公共運輸（鐵路維護）；同時監控逾1,100列列車，另有2,500列裝設遠端診斷",
+          "timeline": "2013年組建資料科學團隊；持續運作至2026年，累積8年營運數據",
+          "src": "https://www.groupe-sncf.com/en/innovation/digitalization/predictive-maintenance",
+          "flow": ["感測蒐集：車輛感測器即時傳輸逾2,000項即時變數（總計逾8,000項變數）", "AI診斷：模型對多款車型進行故障預測，準確率達95%", "維護排程：依condition-based maintenance動態排定維護時機，取代固定週期保養", "營運回饋：減少調車與進廠次數，提高尖峰時段可用列車數"],
+          "goal": "以數據驅動的預測性維護取代傳統固定週期保養，減少突發故障與停駛",
+          "effect": "故障預測準確率95%；預測性維護消除50%技術問題；8年間遠端診斷車型故障減少逾半、預測性維護路線故障減少近三分之二；維護成本降低20%；調車與進廠次數減少30%（SNCF官方數字）",
+          "events": "自2013年資料科學團隊成立以來持續擴大部署範圍",
+          "risk": "數據為SNCF官方自行揭露，未標示是否經第三方稽核；效益數字橫跨不同車型與時間區間，部分為累積8年的區間效果而非單一年度成效",
+          "future": "官方頁面顯示持續擴大condition-based maintenance覆蓋車型與里程"
+        },
+        {
+          "name": "Mercedes-Benz Drive Pilot Level 3 有條件自動駕駛",
+          "desc": "Mercedes-Benz是全球首家取得UN-R157（ALKS）國際型式認證的車廠，其Drive Pilot系統已在德國核准於高速公路最高95km/h條件下之有條件自動駕駛（L3）",
+          "scope": "自駕乘用車（消費端量產車型）；已在美國加州、內華達州上路",
+          "timeline": "2021年UN-R157簽署生效；德國KBA核准量產後陸續擴展至美國市場",
+          "src": "https://group.mercedes-benz.com/innovation/product-innovation/autonomous-driving/system-approval-for-conditionally-automated-driving.html",
+          "flow": ["感知融合：光達、雷達、攝影機、麥克風多模態感測建構週邊環境模型", "型式認證：德國KBA依UN-R157進行國際型式認證審查並核准", "有條件自動：符合條件路段駕駛人可脫手且法律責任轉移至系統", "跨境擴展：取得美國加州、內華達州等地方監理核准後於當地上市"],
+          "goal": "提供符合國際法規框架、責任明確轉移至系統的量產等級L3自動駕駛",
+          "effect": "德國核准最高95km/h高速公路有條件自動駕駛（德國聯邦機動車輛管理局KBA核准，見TÜV Rheinland官方新聞稿）；為國際上首個完成型式認證的L3系統",
+          "events": "陸續於S-Class、EQS車型量產搭載，並擴展至美國加州、內華達州",
+          "risk": "L3系統適用範圍嚴格限定於特定道路類型、速度與天候條件，非全域自動駕駛；歐盟其他國家與美國多數州尚未完成對應法規銜接",
+          "future": "為歐盟/UNECE法規框架下自駕乘用車商用化最具體的先例，其他車廠依循同一UN-R157框架申請認證"
+        }
+      ],
+      "cases_poc": [
+        {
+          "name": "FAA SMART（航空空域路徑戰略管理系統）",
+          "desc": "FAA以12年、8.75億美元合約導入AI輔助的空域壅塞戰略管理系統，作為NextGen現代化的新技術骨幹，由Airspace Intelligence主導、Palantir與Thales參與競標",
+          "scope": "航空業（空中交通管理）",
+          "timeline": "合約已於2026年6月授予；初步營運規劃於2026年秋季",
+          "src": "https://www.nextgov.com/acquisition/2026/06/faa-awards-software-and-ai-contract-part-air-traffic-control-modernization/414354/",
+          "flow": ["資料匯集：整合天候、航班計畫、空域容量等多來源資料", "AI模擬：模型於起飛前推演國家空域系統壅塞情境", "戰略建議：向空中交通管理指揮中心提供路由與流量管理建議", "人工決策：管制員與流量管理專家保留最終決策權，AI僅提供決策支援"],
+          "goal": "在管制員人力短缺下，以AI強化事前戰略層級的空域壅塞管理能力",
+          "effect": "尚未正式營運，效益數字未知；官方定位為「非自主系統」，不會取代管制員發布分離指令",
+          "events": "2026年6月合約授予Airspace Intelligence；規劃2026年秋季開始初步營運",
+          "risk": "此案細節來自航空業界媒體（nextgov、theaircurrent）對聯邦合約授予案的報導，非FAA自行發布的新聞稿；屬全新系統，尚無實際營運數據，運輸部長公開強調「AI是工具，不會取代人類管理空域」",
+          "future": "若初步營運順利，將成為FAA空域現代化長期骨幹系統"
+        },
+        {
+          "name": "American Airlines × Google Research AI凝結尾避讓",
+          "desc": "Google Research與American Airlines合作，將AI凝結尾預測模型嵌入航空公司既有飛行計畫軟體，於跨大西洋航班進行大規模試驗，驗證AI導航避讓凝結尾以降低暖化效應的可行性",
+          "scope": "航空業（飛安/環境優化）",
+          "timeline": "2023年初步概念驗證（70架次）；2025年1-5月大規模試驗（2,400架次）；2026年3月19日發布結果",
+          "src": "https://blog.google/innovation-and-ai/models-and-research/google-research/contrail-avoidance-research/",
+          "flow": ["衛星觀測：分析歷史衛星影像建立凝結尾形成AI預測模型", "航路預測：AI於飛行計畫階段預測特定高度層是否會產生凝結尾", "系統整合：預測結果直接嵌入航空公司既有飛行計畫軟體，取代人工判讀", "驗證比對：以衛星影像比對實際執行避讓航班與對照組的凝結尾生成率"],
+          "goal": "驗證AI凝結尾避讓能否從概念驗證規模化整合進航空公司日常生產系統",
+          "effect": "2023年初步試驗：70架次降低54%凝結尾（需人工手動協調，多燒2%燃油）；2025年大規模試驗：2,400架次跨大西洋航班中112架次實際執行避讓計畫，凝結尾生成率較對照組降低62%，估計氣候暖化效應降低69%（Google官方部落格）",
+          "events": "2026年3月19日Google發布第二階段結果",
+          "risk": "官方部落格未提供具體規模化部署時間表或監管核准狀態；實際執行避讓的航班數（112）僅占試驗總航班數（2,400）的小部分",
+          "future": "Google表示將「擴大此項工作」並持續與業界合作推動凝結尾避讓自動化，但未提供具體時程"
+        },
+        {
+          "name": "紐約大都會運輸署（MTA）TrackInspect AI軌道檢測試點",
+          "desc": "MTA與Google Public Sector合作，將Google Pixel手機加裝於地鐵R46車廂，蒐集震動與音訊數據，透過雲端AI分析預測軌道缺陷",
+          "scope": "公共運輸（地鐵軌道維護）；2024-2025年完成6輛車試點",
+          "timeline": "2024年9月至2025年1月試點（6輛車）；後續發布擴大徵求意向書",
+          "src": "https://publicsector.google/ai/how-mta-uses-google-ai-for-predictive-track-maintenance/",
+          "flow": ["感測部署：將Pixel手機改裝加裝於R46地鐵車廂收集震動與音訊", "雲端傳輸：數據即時上傳雲端系統", "AI分析：機器學習模型分析震動/音訊訊號辨識潛在軌道缺陷模式", "人工複核：軌道檢查員審核AI標記的異常點並安排實地檢修"],
+          "goal": "在既有排程式軌道巡檢外，以低成本感測器＋AI建立早期缺陷預警機制",
+          "effect": "試點期間（2024年9月-2025年1月）6輛車累積3.35億筆感測器讀數、100萬個GPS定位點、1,200小時音訊資料",
+          "events": "試點結束後MTA發布擴大徵求意向書（RFEI），探索整合更多感測器技術",
+          "risk": "目前仍為6輛車的小規模試點，尚未擴展至全車隊；效益（如故障減少率、成本節省）官方案例研究未提供量化數字",
+          "future": "MTA正徵求意向書評估擴大感測器覆蓋範圍，尚無明確全面部署時程"
+        },
+        {
+          "name": "新加坡陸路交通管理局 CRUISE 新一代AI交通管理系統",
+          "desc": "新加坡LTA正在開發代號CRUISE的新一代交通管理系統，將在現行GLIDE號誌控制系統基礎上導入額外數據來源與AI預測能力",
+          "scope": "城市交通管理（號誌控制/壅塞預測）；現行GLIDE系統覆蓋全島約2,700個路口",
+          "timeline": "開發中，尚未部署",
+          "src": "https://www.mot.gov.sg/news-resources/newsroom/plans-to-enhance-traffic-management-systems-by-leveraging-ai-and-predictive-analytics/",
+          "flow": ["現況基礎：GLIDE系統以路面感測器即時偵測車流並用邏輯演算法動態調整全島約2,700個路口號誌", "數據擴充：CRUISE規劃納入額外數據來源", "AI預測：導入AI預測能力以強化壅塞預判，而非僅即時反應", "分階段部署：官方尚未公布具體部署時程"],
+          "goal": "從現行即時反應式號誌控制升級為具預測能力的AI交通管理系統",
+          "effect": "現行GLIDE系統本身以感測器與邏輯演算法運作（LTA官方頁面），CRUISE尚在開發中，無可回報之量化效益",
+          "events": "新加坡交通部官方新聞稿確認開發方向，未公布上線時間",
+          "risk": "GLIDE系統嚴格而言是規則式邏輯演算法而非機器學習/AI，若被誤植為「AI案例」需注意此區別；真正導入AI預測能力的CRUISE尚處開發階段，無實際運作數據",
+          "future": "待CRUISE開發完成後預期取代或強化GLIDE的即時反應式架構"
+        }
+      ],
+      "adoption_by_region": [
+        {
+          "region": "全球（robotaxi監理模式：美國/中國/歐盟比較，非採用率排名）",
+          "pct_or_status": "美國採聯邦豁免＋各州個別核准（NHTSA對Zoox核發2年、2500輛上限豁免）；中國採城市/省級試點許可制、已擴展至26個城市（百度官方數字）；歐盟尚無L4商用robotaxi核准案例，最先進進展為Mercedes-Benz在UN-R157框架下取得的L3型式認證",
+          "note": "三種監理路徑之定性比較，非量化跨國採用率排名；中國2026年4月因武漢事故暫停新許可一事僅見於Bloomberg媒體報導，查無官方原始公告，採信等級較低",
+          "src": "https://www.nhtsa.gov/press-releases/cutting-red-tape-safely-fast-track-automated-vehicle"
+        },
+        {
+          "region": "航空AI治理路徑：歐盟EASA vs 美國FAA vs ICAO全球協調",
+          "pct_or_status": "EASA已發布正式且逐年更新的《AI Roadmap 2.0》；FAA以大型現代化合約（SMART，8.75億美元/12年）推動導入，未見對應公開路線圖文件；ICAO於2025年第42屆大會提出多份工作文件，建立全球協調原則框架",
+          "note": "三大監理體系之治理模式比較，非採用率統計",
+          "src": "https://www.easa.europa.eu/en/newsroom-and-events/news/easa-artificial-intelligence-roadmap-20-published"
+        },
+        {
+          "region": "空中交通管理結構差異：美國單一聯邦ANSP vs 歐洲多國分散式ANSP",
+          "pct_or_status": "美國由單一聯邦機構FAA負責全境空管，2026年4月僅約11,000名合格管制員（遠低於12,563人目標，另4,000人在培訓中）；歐洲由多個國家級ANSP組成，由EUROCONTROL協調導入AI流量管理工具，早期試驗（2019年）顯示20-30%效率提升",
+          "note": "美國偏向以AI彌補人力缺口，歐洲偏向跨國協調效率，屬結構性差異比較而非採用率排名",
+          "src": "https://www.faa.gov/newsroom/faa-releases-bold-new-air-traffic-controller-hiring-plan"
+        },
+        {
+          "region": "跨國自駕車監理協調缺口（ITF/OECD觀察）",
+          "pct_or_status": "ITF（OECD體系下56會員國政府間組織）官方報告指出，自動駕駛車輛跨境營運目前缺乏國際協調監理框架，各國各自訂規則導致「規則拼盤」風險",
+          "note": "官方政策觀察性質，查無官方跨國robotaxi採用率量化排名數據，如實說明未硬湊",
+          "src": "https://www.itf-oecd.org/sites/default/files/docs/15cpb_autonomousdriving.pdf"
+        }
+      ],
+      "adoption_by_region_note": "未查到ICAO、ITF或其他官方/國際機構發布的跨國交通運輸AI採用率量化排名比較表，以上四項為robotaxi監理模式、航空治理路徑、空管結構差異、跨國監理協調缺口四種獨立的定性/政策比較，不構成量化跨國排名",
+      "roadmap": [
+        {
+          "name": "FAA SMART系統上線時程與NextGen現代化合約",
+          "status": "已授予之聯邦合約，初步營運規劃中",
+          "desc": "FAA規劃於2026年秋季開始SMART系統初步營運，做為航空交通管制系統指揮中心的新技術骨幹，屬8.75億美元、12年期合約的一部分",
+          "src": "https://www.nextgov.com/acquisition/2026/06/faa-awards-software-and-ai-contract-part-air-traffic-control-modernization/414354/"
+        },
+        {
+          "name": "EASA《AI Roadmap 2.0》逐年更新之規則制定優先順序",
+          "status": "官方已發布並每年更新之路線圖文件",
+          "desc": "EASA將AI Roadmap定位為「活文件」，每年修訂並隨AI開發實務調整，涵蓋安全、資安、AI保證、人因與倫理考量等規則制定優先事項",
+          "src": "https://www.easa.europa.eu/en/domains/research-innovation/ai"
+        },
+        {
+          "name": "ICAO第42屆大會全球AI整合框架",
+          "status": "官方大會決議與工作文件",
+          "desc": "ICAO於2025年第42屆大會提出多份官方工作文件，涵蓋空中交通管理、載人與無人航空器操作、預測性維護、機場營運等AI應用領域，並指示理事會採納「可信任AI」基本原則",
+          "src": "https://www.icao.int/sites/default/files/Meetings/a42/Documents/WP/wp_234_en.pdf"
+        },
+        {
+          "name": "美國空中交通管制員結構性人力短缺",
+          "status": "官方已識別之結構性風險，AI定位為輔助而非替代",
+          "desc": "FAA官方2026-2028人力計畫顯示，截至2026年4月僅約11,000名合格專業管制員，遠低於依需求預測訂定的12,563人目標；2024財年近三分之一管制設施人力低於模型標準10%以上",
+          "src": "https://www.faa.gov/newsroom/faa-releases-bold-new-air-traffic-controller-hiring-plan"
+        },
+        {
+          "name": "robotaxi監理信任與究責機制之結構性缺口（中國暫停許可＋Cruise究責先例並列）",
+          "status": "兩起獨立事件並列呈現同一結構性風險，非官方政策目標",
+          "desc": "美國Cruise（GM）於2023年10月發生行人拖行事故後，因向NHTSA提交隱匿關鍵事實的不實報告，2024年11月經美國司法部確認以暫緩起訴協議結案並支付50萬美元罰金，GM隨後全面終止Cruise業務；中國方面，2026年3月31日武漢發生逾百輛百度Apollo Go robotaxi同時當機事件，據Bloomberg報導中國其後暫停核發新的自駕車許可（此為媒體報導，查無官方原始公告，採信等級較低）。兩案共同顯示robotaxi產業快速擴張下，監理信任與究責機制仍是尚未成熟的結構性缺口",
+          "src": "https://www.justice.gov/usao-ndca/pr/cruise-admits-submitting-false-record-influence-federal-investigation-and-agrees-pay"
+        }
+      ]
     }
   ]
 }
