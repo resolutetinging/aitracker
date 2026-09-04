@@ -812,6 +812,174 @@
           "src": "https://au.int/en/documents/20240809/continental-artificial-intelligence-strategy"
         }
       ]
+    },
+    {
+      "key": "energy",
+      "label": "能源／電網",
+      "icon": "⚡",
+      "last_checked": "2026-09-04",
+      "cases_live": [
+        {
+          "name": "National Grid ESO/NESO（英國）AI太陽能出力預測",
+          "desc": "與Open Climate Fix、Alan Turing Institute合作開發機器學習模型讀取衛星雲圖，對太陽能出力做分鐘至小時級即時預測（nowcasting），已用於國家控制室",
+          "scope": "官方宣稱預測準確度提升約三分之一；2024年設立AI Centre of Excellence強化資料科學能力",
+          "timeline": "2023-2024年間陸續上線",
+          "src": "https://www.neso.energy/news/former-deepmind-experts-ai-tool-could-help-boost-national-grid-esos-solar-forecasts",
+          "flow": ["輸入：衛星雲圖與氣象資料","AI處理：機器學習模型即時預測太陽能出力（nowcasting）","輸出：分鐘至小時級太陽能出力預測","人類角色：國家控制室依預測調度電網平衡"],
+          "goal": "降低太陽能出力預測誤差，提升再生能源併網調度精準度",
+          "effect": "官方宣稱預測準確度提升約1/3（未查到原始百分比細節數據表）",
+          "events": "2023-2024年間陸續上線，2024年設立AI Centre of Excellence",
+          "risk": "未查到NESO官方對此工具本身風險／限制的公開說明",
+          "future": "持續擴大資料科學團隊與產學合作管線"
+        },
+        {
+          "name": "PJM × Google/Tapestry「HyperQ」併網申請審查",
+          "desc": "由Google Cloud/DeepMind支援的Tapestry開發AI工具，處理發電機組併網申請的資料驗證與整合，首次用AI管理整條併網排隊流程",
+          "scope": "已處理811件發電申請案，代表220GW潛在裝置容量；99%申請案1小時內完成初步審查，中位處理時間6分15秒（部分文件長達6,000頁）",
+          "timeline": "2025年4月宣布合作，Cycle 1實際部署於2025-2026年間",
+          "src": "https://insidelines.pjm.com/pjm-google-tapestry-join-forces-to-apply-ai-to-enhance-regional-planning-generation-interconnection/",
+          "flow": ["輸入：發電機組併網申請文件（部分長達6,000頁）","AI處理：AI驗證與整合申請資料","輸出：初步審查結果","人類角色：PJM工程團隊複核後續階段並做最終決定"],
+          "goal": "縮短併網審查時間，因應美國因AI資料中心暴增的併網排隊壅塞",
+          "effect": "811件申請、220GW容量初步審查於1小時內完成；IEA估計全面採用AI輔助影響分析可使排隊處理時間縮短60-80%（此為IEA產業級推估，非PJM單一案例官方數字）",
+          "events": "2025年4月10日合作公告，HyperQ於Cycle 1正式上線",
+          "risk": "PJM整體併網流程仍需1-2年，AI僅加速初步審查環節，未解決整體瓶頸；此案例背景本身反映美國電網因AI資料中心用電需求暴增而面臨的併網壅塞壓力",
+          "future": "PJM尚未正式承諾將AI工具納入標準併網流程，屬深度共同開發階段，後續是否全面制度化待觀察"
+        },
+        {
+          "name": "PG&E（美國加州）AI/機器學習野火防治",
+          "desc": "官方R&D策略報告將AI列為關鍵推動技術，應用於氣象預測、巡檢、監測、維護、客戶溝通，強化野火偵測、預防與應變能力",
+          "scope": "部署近1,600座氣象站（約1,400座具AI/ML功能）、逾650座高解析度野火監控攝影機可自動處理影像並發出告警；Enhanced Powerline Safety Settings可於偵測到野火危險時0.1秒內自動斷電",
+          "timeline": "2024年11月發布R&D策略報告，2025年4/6月發布野火季整備更新",
+          "src": "https://investor.pgecorp.com/news-events/press-releases/press-release-details/2024/PGE-2024-RD-Strategy-Report-The-AI-Enabled-Utility/default.aspx",
+          "flow": ["輸入：氣象站與監控攝影機即時資料","AI處理：AI分析野火風險並偵測異常影像","輸出：野火告警與自動斷電決策","人類角色：巡檢與應變團隊依告警採取行動"],
+          "goal": "強化野火偵測、預防與應變能力",
+          "effect": "EPSS措施使2024年可通報起火事件較2018-2020年平均減少逾65%（此為斷電安全機制整體成效，非純AI貢獻，但AI氣象站/攝影機是判斷觸發的關鍵輸入）",
+          "events": "2024年11月4日發布R&D策略報告，2025年4月7日提交2026-2028年野火減災計畫，2025年6月6日發布野火季整備更新",
+          "risk": "未查到PG&E官方公開討論AI系統本身的誤判率、資料品質等具體風險數字",
+          "future": "持續擴大AI氣象站與攝影機網絡，官方已提出電網升級計畫因應AI資料中心用電需求與野火防治雙重壓力（升級金額出自媒體報導非官方新聞稿逐字確認）"
+        },
+        {
+          "name": "Enel Green Power × ABB「PreSAGHO」水力發電廠預測性維護",
+          "desc": "透過ABB Ability Genix APM資產效能管理平台，對水力發電廠進行狀態監測與預測性維護",
+          "scope": "涵蓋33座Enel Green Power水力發電廠，自2018年啟動持續運作中",
+          "timeline": "2018年啟動",
+          "src": "https://new.abb.com/news/detail/98860/abbs-digital-technology-facilitates-predictive-maintenance-for-enel-green-power",
+          "flow": ["輸入：水力發電機組感測器即時資料","AI處理：資產效能管理平台分析設備狀態預測故障","輸出：預測性維護建議","人類角色：維護團隊依建議安排檢修排程"],
+          "goal": "降低維護成本、提升可靠度與效率",
+          "effect": "具體量化成效數字（如故障率下降百分比）未查到官方發布的精確數據；部分二手產業分析網站提及降低事故達90%、減少監測電纜停電15%，惟非Enel官方新聞稿逐字確認，不予採信",
+          "events": "2018年啟動，Enel官方頁面顯示AI已從試點階段擴展至全面商轉",
+          "risk": "未查到官方揭露之限制",
+          "future": "Enel投入數百億美元電網現代化作為基礎建設，AI應用持續擴大"
+        },
+        {
+          "name": "Sentient Energy「Ample Insights」配電網預測性停電分析",
+          "desc": "AI平台用於預測野火風險、植被管理需求、設備故障，透過智慧配電線路感測器運作",
+          "scope": "官方新聞稿稱在一家未具名電力公司已於2024年成功識別並預防逾700次客戶停電事件，相當於避免超過160,000分鐘的客戶停電分鐘數",
+          "timeline": "2025年3月25日正式發布",
+          "src": "https://sentientenergy.com/press/sentient-energy-launches-its-next-generation-ai-based-predictive-outage-analytics-ample-insights-for-distribution-utilities/",
+          "flow": ["輸入：智慧配電線路感測器資料","AI處理：AI預測野火風險、設備故障與植被管理需求","輸出：預測性停電風險警示","人類角色：電力公司依警示安排預防性維護"],
+          "goal": "預測並預防配電網停電事件",
+          "effect": "2024年成功識別並預防逾700次客戶停電事件，避免超過16萬分鐘客戶停電分鐘數（廠商官方發布，客戶身分未公開，數字未經第三方交叉驗證）",
+          "events": "2025年3月25日正式發布",
+          "risk": "此為供應商官方新聞稿而非電力公司官方揭露，具體客戶身分未公開，查證等級應留意",
+          "future": "未查到後續擴充計畫細節"
+        }
+      ],
+      "cases_poc": [
+        {
+          "name": "DOE「AI4IX」併網加速計畫",
+          "desc": "美國能源部提供最高3,000萬美元資金，鼓勵軟體開發商、電網營運商與能源專案開發商合作運用AI加速併網申請審查流程",
+          "scope": "現行新機組併網最長需時7年，DOE官方報告顯示未併網容量已達現有併網容量的兩倍",
+          "timeline": "2024年11月25日公告，首輪申請截止2025年1月10日，原訂2025年冬季公布獲選名單（查證時未查到獲選名單公告）",
+          "src": "https://www.energy.gov/gdo/ai-interconnection-ai4ix",
+          "flow": ["輸入：併網申請資料與電網容量限制","AI處理：AI輔助分析加速審查、核准、試運轉流程","輸出：縮短的併網審查時程","人類角色：DOE與電網營運商複核並最終核准"],
+          "goal": "大幅縮短併網審查、核准、試運轉時間",
+          "effect": "屬資金計畫尚在早期階段，尚無量化成效數字",
+          "events": "2024年11月公告資金，2025年1月申請截止",
+          "risk": "未查到官方對此計畫本身風險的討論",
+          "future": "待DOE公布獲選單位後進入實際部署階段"
+        },
+        {
+          "name": "歐盟「AI.grids」倡議",
+          "desc": "歐盟《能源產業數位化與AI戰略路線圖》旗艦倡議，目標由下而上開發、訓練並部署一個泛歐洲電網AI模型，優化電網運作效率與可靠度",
+          "scope": "屬「Tech Sovereignty Package」四項倡議之一，2026年6月3日簽署專案協議正式啟動",
+          "timeline": "2026年6月3日啟動",
+          "src": "https://energy.ec.europa.eu/publications/strategic-roadmap-digitalisation-and-ai-energy-sector_en",
+          "flow": ["輸入：各會員國電網營運資料","AI處理：由下而上訓練泛歐洲電網AI模型","輸出：電網優化建議","人類角色：各國電網營運商依模型建議調整運作"],
+          "goal": "加速數位方案（含歐洲主權AI方案）在電網優化、建築與工業能效、需量彈性等領域的推廣",
+          "effect": "剛啟動，尚無量化成效",
+          "events": "2026年6月3日簽署專案協議正式啟動，同日通過整體戰略路線圖",
+          "risk": "路線圖本身處理資料中心大規模部署AI於關鍵基礎設施可能帶來的挑戰",
+          "future": "歐盟資料中心能效評級制度預計2027年發出首批標籤，新建及既有資料中心最低能效標準預計2027年完成評估"
+        },
+        {
+          "name": "DCFlex倡議：亞利桑那州資料中心負載彈性示範案",
+          "desc": "由EPRI主導，超過60家電力公司、研究機構、超大規模資料中心業者與科技創新公司參與，示範資料中心負載彈性對電網的紓解效果",
+          "scope": "亞利桑那州示範案在3小時內實現25%用電量降低",
+          "timeline": "2025年",
+          "src": "https://www.utilitydive.com/news/ai-grid-data-center-epri/807800/",
+          "flow": ["輸入：資料中心即時負載與電網尖峰狀況","AI處理：協調資料中心彈性調整用電負載","輸出：尖峰時段用電降低","人類角色：資料中心與電力公司協調執行負載調整"],
+          "goal": "示範資料中心負載彈性對電網的紓解效果",
+          "effect": "亞利桑那州示範案3小時內實現25%用電量降低；研究指出負載彈性有機會在不需大幅新建發電/輸電設施下，釋放美國100GW額外資料中心容量",
+          "events": "2025年示範案執行",
+          "risk": "未查到官方對此示範案限制的討論；此案例本身反映AI資料中心用電需求對電網造成的結構性壓力",
+          "future": "擴大參與電力公司與應用場景"
+        },
+        {
+          "name": "Air Space Intelligence × National Grid AI電網規劃決策支援",
+          "desc": "合作將ASI的預測建模與情境優化能力應用於電網韌性規劃、故障偵測、儲能部署，融合電網拓樸、資產、可靠度、停電、預測、地理空間與環境數據",
+          "scope": "建立持續更新的電網預測「世界模型」，屬近期宣布的合作案",
+          "timeline": "2025年官方新聞稿發布",
+          "src": "https://www.prnewswire.com/news-releases/air-space-intelligence-and-national-grid-collaborate-to-deploy-operational-ai-to-the-electric-grid-302763810.html",
+          "flow": ["輸入：電網拓樸、資產、可靠度、停電、氣象與地理空間資料","AI處理：預測建模與情境優化計算電網韌性風險","輸出：電網規劃決策建議","人類角色：National Grid規劃團隊依建議調整電網韌性策略"],
+          "goal": "強化電網韌性規劃、故障偵測、儲能部署等關鍵議題的決策支援",
+          "effect": "屬剛宣布階段，尚無公開量化成效",
+          "events": "2025年官方新聞稿發布合作",
+          "risk": "未查到細節，屬早期合作宣布階段",
+          "future": "未查到細節，屬早期合作宣布階段"
+        }
+      ],
+      "adoption_by_region": [
+        {
+          "region": "全球（IEA能源業AI導入現況彙總，非跨國排名）",
+          "pct_or_status": "不到一半的全球能源需求被促進AI導入的政策框架涵蓋；全球僅10%電力消費受惠於開放電力資料政策；全球能源設備存量中不到一半已數位連網；數位技能不足是能源業AI導入的最大障礙",
+          "note": "IEA《Key Questions on Energy and AI》，2025年報告，為全球整體彙總指標，非逐國排名",
+          "src": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary"
+        },
+        {
+          "region": "中國（官方政策目標，非採用率統計）",
+          "pct_or_status": "2026年4月國家發改委/國家能源局/工信部/國家數據局聯合發布行動方案，設定2027年（初步建構AI能源保障體系、5個以上專業大模型深度應用）與2030年（AI能源技術達世界領先水平）兩階段目標",
+          "note": "官方政策文件而非採用率統計",
+          "src": "https://www.nea.gov.cn/20260508/4dae97ca01d348e4871bb8654be34b3a/c.html"
+        },
+        {
+          "region": "低收入國家（World Bank，電力接取作為AI導入前提）",
+          "pct_or_status": "低收入國家（肯亞、衣索比亞、尼日、烏干達等）因全國電網覆蓋率有限，AI應用集中於分散式微電網場景；撒哈拉以南非洲近三分之一鄉村學校仍無穩定供電，逾三分之二缺乏可靠網路；Mission 300計畫目標2030年前為3億人提供電力接取",
+          "note": "《世界發展報告2026》，非量化採用率，而是電力接取作為AI導入前提的敘事",
+          "src": "https://www.worldbank.org/en/publication/wdr2026"
+        }
+      ],
+      "adoption_by_region_note": "未查到IEA、IRENA或其他官方/國際機構發布的跨國能源業AI採用率量化排名比較表，以上三項為全球彙總指標、單一國家政策目標、低收入國家電力接取現況的獨立敘事，不構成跨國排名",
+      "roadmap": [
+        {
+          "name": "IEA《Energy and AI》廣泛採用情境（2035）",
+          "status": "IEA情境推估，非強制政策目標，同時伴隨資料中心用電需求風險",
+          "desc": "若廣泛採用現有AI應用，發電廠營運維護每年可節省高達1,100億美元，可釋放175GW輸電容量，AI相關成熟應用到2035年可節省逾13艾焦能源（相當於全球最終能源消費3%）；但同一情境下資料中心用電量恐較基準情境高45%，突破1,700 TWh，占全球用電量約4.4%",
+          "src": "https://www.iea.org/reports/energy-and-ai"
+        },
+        {
+          "name": "中國能源與AI雙向賦能行動方案",
+          "status": "官方已核定的2027/2030兩階段政策目標",
+          "desc": "2027年初步建構AI能源保障體系、推動5個以上專業大模型於電網等行業深度應用；2030年AI能源技術達世界領先水平，含省域電網態勢感知與協同調度決策、新型電力系統智能仿真分析等具體措施",
+          "src": "https://www.nea.gov.cn/20260508/4dae97ca01d348e4871bb8654be34b3a/c.html"
+        },
+        {
+          "name": "AI資料中心用電壓力與電網韌性（結構性風險，非傳統政策目標）",
+          "status": "官方機構已識別為關鍵風險，尚無單一解決方案",
+          "desc": "全球資料中心用電2024年約415 TWh，2025年AI最佳化資料中心用電暴增50%；2024年7月北維吉尼亞電壓擾動事件導致約60座資料中心同時斷開（NERC官方事故報告），促成NERC研擬強制建模標準PERC1；先進經濟體新建輸電線需時4-8年，變壓器等關鍵元件交貨等待時間近三年來已翻倍",
+          "src": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai"
+        }
+      ]
     }
   ]
 }
