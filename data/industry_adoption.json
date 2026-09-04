@@ -980,6 +980,218 @@
           "src": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai"
         }
       ]
+    },
+    {
+      "key": "agriculture",
+      "label": "農業",
+      "icon": "🌾",
+      "last_checked": "2026-09-04",
+      "cases_live": [
+        {
+          "name": "John Deere See & Spray（美國，精準除草）",
+          "desc": "AI+機器視覺鏡頭辨識雜草，僅對雜草噴藥而非整片農地噴灑，2021年上市後2025年成長季達500萬英畝規模使用",
+          "scope": "2025年成長季美國農民實際使用面積超過500萬英畝（約大於紐澤西州面積）",
+          "timeline": "2021年上市；2025年成長季規模化數據",
+          "src": "https://www.deere.com/en/news/all-news/see-spray-technology-across-five-million-acres/",
+          "flow": ["輸入：噴桿鏡頭即時影像（每秒可掃描超過2,500平方英尺）", "AI處理：機器學習模型即時辨識作物與雜草", "輸出：透過ExactApply噴嘴系統僅對辨識為雜草的位置精準噴藥", "人類角色：農民駕駛機具完成噴灑作業，依Application Savings Guarantee方案付費"],
+          "goal": "降低除草劑用量與投入成本，同時維持或提升除草效果與產量",
+          "effect": "2025年客戶平均減少非殘留性除草劑用量近50%，共節省近3,100萬加侖除草劑混合液（Deere官方數字）；田間試驗顯示平均每英畝增產2蒲式耳，上限達4.8蒲式耳（七州田間試驗數據，見globalagtechinitiative.com報導，非deere.com官方頁面本身）",
+          "events": "2021年：See & Spray技術上市；2025年：使用規模達500萬英畝，官方公布年度數據；2025年：推出Application Savings Guarantee按節省效果計費方案；2026年4月：Deere發表See & Scout田間偵察擴充工具",
+          "risk": "效果數據為Deere官方自行公布，田間增產試驗雖跨七州但未見獨立第三方（如USDA或大學推廣單位）重新驗證發表；屬單一廠商設備採用案例，非全國政策層級部署",
+          "future": "2026年推出See & Scout田間偵察工具，延伸至病蟲害/生長狀況掃描；持續擴大按效果付費模式覆蓋率"
+        },
+        {
+          "name": "歐盟共同農業政策（CAP）衛星AI監測系統（AMS）",
+          "desc": "歐盟以Copernicus Sentinel衛星影像結合AI/機器學習分析地塊耕作情形，取代傳統實地稽核，用於CAP補貼資格審核",
+          "scope": "IACS（整合行政管理與控制系統）涵蓋超過90%歐盟農地；2024年AMS修正超過300萬公頃案例",
+          "timeline": "Sen4CAP計畫（ESA與歐盟執委會DG-AGRI/DG-JRC合作）持續推進；2024年度數據為最新官方公布",
+          "src": "https://agriculture.ec.europa.eu/media/news/satellite-tech-and-smart-data-take-root-europes-farming-future-2025-09-19_en",
+          "flow": ["輸入：Copernicus Sentinel衛星定期影像＋地塊識別系統（LPIS）資料", "AI處理：機器學習/深度學習模型判讀地塊實際耕作活動是否符合申報", "輸出：以「以監測取代稽核」方式自動判定補貼資格，異常地塊標記", "人類角色：各會員國支付機構依系統標記結果決定是否需人工複查"],
+          "goal": "以自動化衛星監測取代高成本人工實地稽核，提升CAP補貼審核效率與透明度",
+          "effect": "2024年單一年度透過AMS修正超過300萬公頃案例；官方引述（DG-AGRI CAP策略計畫協調副處長Nicola Britta Holsten）指出會員國透過降低行政負擔獲得投資回報（技術架構詳見ESA Sen4CAP計畫官方頁面esa-sen4cap.org）",
+          "events": "Sen4CAP計畫啟動，ESA與歐盟執委會合作示範衛星監測；AMS與「以監測取代稽核」機制導入CAP 2023-27週期；2024年：AMS修正逾300萬公頃；2025年9月19日：Reims ICE Conference公布最新進展",
+          "risk": "官方資料聚焦「修正案例數」與行政效率，未見公開的AI模型誤判率/準確率統計；CAP post-2027架構仍在規劃中，現行制度是否延續存在政策不確定性",
+          "future": "規劃納入CAP post-2027架構，持續擴展歐洲土地監測系統（ELMS）覆蓋範圍"
+        },
+        {
+          "name": "印度YES-TECH衛星AI作物收成估算（PMFBY農作物保險）",
+          "desc": "印度農業部以AI/機器學習結合衛星遙測、氣象數據估算作物產量，用於PMFBY農作物保險理賠核定",
+          "scope": "2025年1月官方數據：已於9個邦採用，Madhya Pradesh已全面轉為技術本位估產；6個邦獲撥款₹1,076 crore推動相關任務",
+          "timeline": "2023年Kharif季於稻米、小麥率先導入；2024年Kharif季擴及大豆；2025年1月官方數據9個邦採用",
+          "src": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=157351&ModuleId=3&reg=48&lang=1",
+          "flow": ["輸入：衛星遙測影像＋地面氣象站數據＋田間實地資料", "AI處理：AI/機器學習分析模型比對五種收成估算模型", "輸出：YES-TECH估產結果占理賠核定最低30%權重（強制），與傳統實地估產並行採計", "人類角色：邦政府/保險公司依系統估產結果核定理賠金額並執行撥付"],
+          "goal": "以科技估產提升PMFBY理賠估產準確度與透明度，加快理賠核定速度",
+          "effect": "官方稱可提升估產準確度與理賠透明度；30%最低權重規定為官方強制政策",
+          "events": "2023年Kharif季：YES-TECH於稻米、小麥試行；2024年Kharif季：擴及大豆；2025年1月：官方公布9個邦採用；2026年3月：PMFBY dashboard資料顯示部分邦理賠金額大幅下滑",
+          "risk": "Down To Earth（引用PMFBY官方dashboard資料）報導指出Madhya Pradesh三縣理賠總額大幅下滑（Kharif從₹217.91 crore降至₹55.2 crore），2024-25年該邦多縣爆發農民抗議，質疑「衛星看不到肉眼能看到的損害」；此為媒體引用官方理賠dashboard數據的報導，非農業部官方對爭議的正式回應，農業部尚未公開說明，須視為現行制度已知爭議",
+          "future": "官方持續推動YES-TECH與CROPIC擴大覆蓋邦數；理賠爭議可能促使制度調整，尚待官方後續回應"
+        },
+        {
+          "name": "印度Kisan e-Mitra AI客服聊天機器人（PM-KISAN）",
+          "desc": "印度政府為PM-KISAN旗艦計畫推出的語音AI聊天機器人，協助農民以母語查詢政府福利計畫資訊",
+          "scope": "11種地方語言；截至2025年12月累計回應逾930萬則查詢；每日處理逾8,000則查詢",
+          "timeline": "2023年9月21日由農業部政務次長Kailash Choudhary正式啟動",
+          "src": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2227914&reg=3&lang=1",
+          "flow": ["輸入：農民以語音或文字提問（支援11種地方語言）", "AI處理：語音辨識＋自然語言理解，比對PM-KISAN／KCC／PMFBY等政府計畫知識庫", "輸出：即時語音/文字回覆查詢結果，全天候可用", "人類角色：無法解答之複雜案例轉介人工客服，農民依回覆自行申辦福利計畫"],
+          "goal": "降低農民取得政府福利資訊的語言與識字門檻，提升PM-KISAN等計畫申辦效率",
+          "effect": "每日處理逾8,000則農民查詢；截至2025年12月累計回應逾930萬則查詢（官方數字）",
+          "events": "2023年9月21日：正式啟動；陸續擴增至11種語言；2025年12月：累計查詢量突破930萬則",
+          "risk": "官方公布數字聚焦「查詢量」而非「解決率」或「準確率」，查無官方公開之回覆正確率統計；聲稱最終將支援全部22種官方語言，惟目前仍為11種，全面覆蓋時程未見官方公布",
+          "future": "官方規劃逐步擴增至印度全部22種官方語言"
+        },
+        {
+          "name": "PlantVillage Nuru AI 作物病蟲害辨識（肯亞，木薯／玉米）",
+          "desc": "賓州州立大學PlantVillage與FAO、IITA、CIMMYT等機構合作開發之離線AI手機App，供農民辨識木薯病毒病、秋行軍蟲等病蟲害",
+          "scope": "2024年數據：肯亞Rift Valley與東部地區觸及5萬名農民，並由200名農業部推廣人員支援使用",
+          "timeline": "2017年CGIAR Big Data Platform資助啟動；2018年起於非洲、東南亞廣泛使用；2024年最新規模數據",
+          "src": "https://bigdata.cgiar.org/digital-intervention/plantvillage-nuru-pest-and-disease-monitoring-using-ai/",
+          "flow": ["輸入：農民以手機拍攝木薯／玉米葉片（建議連拍6張葉片以提升準確度）", "AI處理：深度學習物件偵測模型（可離線運作）比對木薯嵌紋病毒病、褐條病毒病、秋行軍蟲等病徵", "輸出：即時顯示病蟲害辨識結果與建議", "人類角色：200名農業部推廣人員協助農民使用App並提供後續防治建議"],
+          "goal": "在缺乏網路與專家資源地區，提供接近專家水準的免費病蟲害快速診斷工具",
+          "effect": "peer-reviewed驗證（Frontiers期刊，2020年）顯示：單葉辨識準確率CMD 52-59%、CBSD僅21%；採建議之6葉多葉辨識法後準確率提升至CMD 93%、CBSD 73%；對照組顯示未受訓農民自行判斷準確率僅12-31%，顯示工具對一般農民有明顯輔助價值",
+          "events": "2017年：CGIAR INSPIRE Prize資助開發；2018年6月底：已於非洲及東南亞廣泛使用；2020年：Frontiers期刊發表準確率驗證研究；2024年：肯亞觸及5萬農民、200推廣人員支援",
+          "risk": "peer-reviewed研究明確顯示單張葉片辨識準確率偏低（CBSD僅21%），須採多葉拍攝法才能達到可用水準（73-93%），若農民僅拍單葉使用恐得到誤導性結果，此限制在官方推廣素材中較少被強調",
+          "future": "持續擴充可辨識病害種類（已延伸至玉米致死性壞疽病、馬鈴薯晚疫病等），朝支援本地語言問答互動發展"
+        },
+        {
+          "name": "IRRI 國際稻米基因庫 AI 篩選（菲律賓）",
+          "desc": "國際稻米研究所（IRRI，CGIAR體系機構）以AI加速國際稻米基因庫之種原篩選與性狀評估，被World Bank報告列為旗艦案例",
+          "scope": "基因庫典藏132,000份種原；過去僅約5%曾被實際運用；AI輔助下單一季即篩選約6萬份種原",
+          "timeline": "World Bank報告（2025年11月17日發布）列為案例；篩選全部典藏預估約需2年完成",
+          "src": "https://www.irri.org/news-and-events/news/new-world-bank-report-examines-ai-applications-global-agrifood-systems",
+          "flow": ["輸入：基因庫種原之基因型與表型歷史數據", "AI處理：AI模型分析種原性狀資料，預測優先篩選對象", "輸出：產出優先篩選種原清單，大幅提升單季可篩選之種原數量", "人類角色：育種研究人員依AI篩選結果決定後續田間驗證與育種利用"],
+          "goal": "提升稻米基因庫龐大種原資源之實際利用率，加速抗逆境/高產育種材料開發",
+          "effect": "單一季篩選約6萬份種原，為過去50年累計篩選量的3倍以上；預估以傳統方法1/6的成本完成全部典藏篩選，約2年內完成（World Bank報告／IRRI官方引述）",
+          "events": "World Bank與Gates基金會、Microsoft等合作完成AI農業轉型報告，收錄60個案例研究；2025年11月17日：報告正式發布，IRRI案例列為代表性案例",
+          "risk": "「2年內完成全部篩選」與「1/6成本」為報告發布時之預估／進行中專案數據，尚非已完成的最終成果；此案例屬於基因庫研發後端應用，非直接面向農民之田間工具",
+          "future": "篩選完成後預期加速抗病蟲害、耐旱耐鹽等性狀品種之選育與釋出"
+        },
+        {
+          "name": "中國智慧農業全國部署",
+          "desc": "中國農業農村部2024年發布《智慧農業發展》戰略指引，推動物聯網、大數據、AI、機器人技術於種植、畜牧、水產養殖之整合應用",
+          "scope": "官方統計：全國農業科技進步貢獻率超過62%；耕種收綜合機械化率超過73%",
+          "timeline": "2024年：農業農村部發布智慧農業發展戰略指引；官方統計數據為最新公布",
+          "src": "http://english.scio.gov.cn/in-depth/2025-09/23/content_118092892.html",
+          "flow": ["輸入：田間感測器（土壤濕度、氣象）、農業機器人巡田影像、衛星遙測數據", "AI處理：中央指揮中樞彙整即時數據，AI模型分析作物狀況、病蟲害風險、育種決策", "輸出：智慧農機自動化作業建議、育種選拔建議、風險預警", "人類角色：農戶依系統建議調整田間管理，政府推廣體系提供技術支援"],
+          "goal": "以AI、物聯網、機器人技術提升農業科技貢獻率與機械化率",
+          "effect": "官方統計：農業科技進步貢獻率超過62%、耕種收綜合機械化率超過73%（農業農村部官方數據，經國務院新聞辦公布）",
+          "events": "2024年：農業農村部發布《智慧農業發展》戰略指引；2025年：官方媒體報導全國智慧農場部署現況",
+          "risk": "62%與73%為全國農業科技與機械化綜合貢獻率之總體統計，並非專屬於AI技術本身的貢獻拆分，區域發展不均衡程度（東部沿海vs中西部）未見官方量化說明",
+          "future": "官方規劃持續推進AI育種系統、智慧農機感知與決策能力、農場管理與風險防範之AI整合三大方向"
+        }
+      ],
+      "cases_poc": [
+        {
+          "name": "Rwanda Tunga AI 語音助理（農業部call centre試辦）",
+          "desc": "盧安達農業與動物資源部與ICT部合作，以Kinyarwanda語AI語音助理Tunga在農業部客服中心試辦，回答農民提問",
+          "scope": "試辦階段（call centre測試中）；官方目標2029年前將農業推廣覆蓋率從2023年35%提升至69%，觸及逾250萬農民",
+          "timeline": "試辦中（2026年報導），目標年為2029年",
+          "src": "https://www.ktpress.rw/2026/09/here-is-our-ai-plan-to-reach-2-5-million-rwandan-farmers/",
+          "flow": ["輸入：農民以Kinyarwanda語向call centre語音提問", "AI處理：比對農業部與RAB建立之驗證知識庫", "輸出：AI直接回答，無法確定時自動轉介人工專家", "人類角色：人工專家處理AI無法確定之問題，確保回覆品質"],
+          "goal": "以本地語言AI語音服務彌補人力推廣員不足，擴大農業諮詢服務覆蓋率",
+          "effect": "試辦階段AI正確回答率為60%（官方／報導引述MINAGRI相關人員說明），其餘轉介人工",
+          "events": "MINAGRI與MINICT合作啟動Tunga試辦；2026年9月：官方公布2029年推廣覆蓋率35%→69%階段性目標",
+          "risk": "60%正確率仍屬試辦階段數據，尚未達可全面取代人工推廣之水準；「20%增產」等網路流傳數字（見於部分部落格轉載報導）查無官方原始出處，本案例不予採用該數字",
+          "future": "官方規劃逐步擴大部署以支撐2029年推廣覆蓋率目標"
+        },
+        {
+          "name": "肯亞土壤健康數位化與AI診斷挑戰賽（Data4Soil Summit）",
+          "desc": "肯亞農業與畜牧發展部與World Bank合作舉辦首屆Data for Soil Health and Scale Summit，徵選AI土壤診斷、行動諮詢等新創方案",
+          "scope": "2025年6月3-4日於奈洛比舉辦；24組決賽入圍團隊；官方稱65%國土土壤已退化",
+          "timeline": "2025年6月峰會；全國土壤分析計畫進行中",
+          "src": "https://smartfarmerkenya.com/kenya-calls-for-data-driven-farming-solutions-to-restore-soil-health-and-boost-food-security/",
+          "flow": ["輸入：土壤採樣數據（全國性分析計畫）與新創團隊之感測/影像資料", "AI處理：AI輔助土壤診斷模型分析土壤肥力、酸化、養分流失狀況", "輸出：開放式土壤數據平台＋行動諮詢建議", "人類角色：農業部推廣體系與新創團隊共同將診斷結果轉化為農民可執行建議"],
+          "goal": "透過開放土壤數據與AI診斷工具，因應65%國土土壤退化問題，指導精準施肥",
+          "effect": "尚屬挑戰賽與計畫啟動階段，官方未公布具體產量或收入改善之量化成效數字（24組決賽團隊展示AI診斷工具，見tv47.digital報導）",
+          "events": "2025年6月3-4日：首屆Data4Soil Summit於奈洛比舉行，24組決賽團隊展示AI土壤診斷等方案",
+          "risk": "屬新創挑戰賽與計畫啟動階段，AI工具尚未規模化部署，缺乏實際成效追蹤數據；65%退化數字為官方引述但未附原始調查方法論連結",
+          "future": "全國土壤分析計畫持續推進，預期後續將挑戰賽優勝方案導入實際推廣體系"
+        },
+        {
+          "name": "奈及利亞AI賦能數位推廣服務（FMAFS與IFAD）",
+          "desc": "奈及利亞聯邦農業與糧食安全部與IFAD等單位於Abuja舉辦工作坊，宣布加強部署AI賦能數位推廣服務於農業價值鏈",
+          "scope": "工作坊/政策宣示階段，尚未進入規模化部署",
+          "timeline": "2026年（近期，官方工作坊）",
+          "src": "https://tribuneonlineng.com/fg-ifad-stakeholders-push-ai-enabled-extension-to-transform-nigerias-agriculture/",
+          "flow": ["輸入：農民所在位置、作物種類、季節、天氣、病蟲害風險、市場機會等資料", "AI處理：AI模型客製化推廣訊息內容與時機", "輸出：即時性、在地化之農業推廣建議訊息", "人類角色：IFAD國家主任明確強調AI應「補充而非取代」既有公共推廣體系與人力顧問服務"],
+          "goal": "將AI導入既有農業政策與推廣體系，提升推廣訊息之即時性與在地相關性",
+          "effect": "尚無官方公布之量化成效數字，屬工作坊宣示與規劃階段（合作單位含FMAFS、IFAD-assisted SAPZ、LIFE-ND、VCDP等，見agronigeria.ng報導）",
+          "events": "官方工作坊「Leveraging Artificial Intelligence in Digital Extension」於Abuja舉行",
+          "risk": "目前僅為政策宣示與跨機構工作坊層級，尚未有具體部署規模、時程或預算之官方公告；效益數字完全空缺",
+          "future": "後續待FMAFS與IFAD公布具體實施計畫與時程"
+        },
+        {
+          "name": "FAO與Smart Africa「Innovate Africa Challenge」2026（跨5國）",
+          "desc": "FAO與Smart Africa秘書處合作舉辦第三屆Innovate Africa Challenge，主題「從構想到部署」，徵選已具備規模化條件之氣候智慧農業AI方案",
+          "scope": "部署鎖定Smart Africa五個會員國：盧安達、肯亞、迦納、馬拉威、烏干達",
+          "timeline": "2026年（第三屆挑戰賽，較前兩屆更聚焦「從試點到部署」）",
+          "src": "https://agrifocusafrica.com/2026/08/03/fao-and-smart-africa-launch-third-innovate-africa-challenge-to-push-ai-agriculture-tools-from-pilot-to-deployment/",
+          "flow": ["輸入：各國既有氣候與農業數據（衛星、氣象、市場價格等）", "AI處理：徵選方案涵蓋精準農業、產量預測、病蟲害早期預警、氣候風險建模、水資源管理五大領域", "輸出：具規模化條件之解決方案（非僅停留概念驗證）", "人類角色：FAO與Smart Africa秘書處協助優勝方案落地部署，當地農業部配合執行"],
+          "goal": "縮小AI農業方案「試點成功」與「大規模落地」之間的落差，加速氣候智慧農業普及",
+          "effect": "2026年剛啟動徵選，尚無部署成效數據",
+          "events": "2026年8月3日：FAO與Smart Africa官方發布第三屆挑戰賽",
+          "risk": "挑戰賽剛啟動，是否能真正從試點過渡到規模化部署仍待後續驗證；前兩屆優勝方案之實際落地追蹤數據未見官方公布",
+          "future": "預計2026年內選出優勝方案並於五個會員國展開部署"
+        }
+      ],
+      "adoption_by_region": [
+        {
+          "region": "歐盟（CAP監測系統覆蓋率）",
+          "pct_or_status": "IACS（含AI輔助之衛星監測系統AMS）涵蓋超過90%歐盟農業用地，為全球規模最大之AI輔助農業行政監測系統",
+          "note": "官方行政監測覆蓋率，非產量或收益層面的採用率統計",
+          "src": "https://agriculture.ec.europa.eu/media/news/satellite-tech-and-smart-data-take-root-europes-farming-future-2025-09-19_en"
+        },
+        {
+          "region": "OECD會員國（精準農業技術採用率差異）",
+          "pct_or_status": "丹麥2023年40%農場採用精準農業技術（2022年37%），匈牙利2020年僅12%農場採用部分此類技術",
+          "note": "OECD Agricultural Policy Monitoring and Evaluation 2025報告，顯示OECD內部採用率差距顯著",
+          "src": "https://www.oecd.org/en/publications/2025/10/agricultural-policy-monitoring-and-evaluation-2025_354e7040/full-report/developments-in-agricultural-policies-and-support-by-country_411a0245.html"
+        },
+        {
+          "region": "低中收入國家（World Bank數位農業放款規模）",
+          "pct_or_status": "World Bank已支援36國、53項數位農業相關計畫，放款規模約11.5億美元；2025年11月報告收錄60個AI農業案例研究",
+          "note": "放款規模與案例收錄數，非採用率百分比",
+          "src": "https://www.irri.org/news-and-events/news/new-world-bank-report-examines-ai-applications-global-agrifood-systems"
+        },
+        {
+          "region": "中國（農業科技貢獻率與機械化率）",
+          "pct_or_status": "官方統計全國農業科技進步貢獻率超過62%，耕種收綜合機械化率超過73%",
+          "note": "含AI在內之整體農業科技與機械化貢獻率，非AI單獨拆分數字",
+          "src": "http://english.scio.gov.cn/in-depth/2025-09/23/content_118092892.html"
+        }
+      ],
+      "adoption_by_region_note": "未查到FAO、World Bank或其他官方機構發布的跨國農業AI採用率量化排名比較表，以上四項為個別區域/國家的獨立指標（歐盟監測覆蓋率、OECD內部個案比較、World Bank放款規模、中國官方統計），不構成跨國排名",
+      "roadmap": [
+        {
+          "name": "FAO 數位農業與AI路徑圖",
+          "status": "官方倡議進行中，非強制政策目標",
+          "desc": "FAO創新辦公室數位農業單位於2025年4月召開Digital Agriculture and AI Innovation Dialogue，據此制定官方路徑圖，並延伸至Smart Africa Innovate Africa Challenge等區域行動",
+          "src": "https://www.fao.org/innovation/digital-agriculture-and-ai-innovation/en"
+        },
+        {
+          "name": "中國《智慧農業發展》戰略指引（2024）",
+          "status": "官方已發布之戰略指引",
+          "desc": "農業農村部2024年發布指引，訂定AI育種、智慧種養殖決策、智慧農機感知決策、農場管理與風險防範四大推進方向",
+          "src": "http://english.scio.gov.cn/in-depth/2025-09/23/content_118092892.html"
+        },
+        {
+          "name": "盧安達農業推廣覆蓋率目標（2023-2029）",
+          "status": "官方已核定的階段性數字目標，非既成事實",
+          "desc": "官方目標將農業推廣服務覆蓋率從2023年35%提升至2029年69%，藉AI語音助理等工具觸及逾250萬農民",
+          "src": "https://www.ktpress.rw/2026/09/here-is-our-ai-plan-to-reach-2-5-million-rwandan-farmers/"
+        },
+        {
+          "name": "結構性風險：小農數位落差",
+          "status": "官方機構已識別為關鍵風險，尚無單一解決方案",
+          "desc": "FAO《State of Food and Agriculture 2022》與World Bank相關分析均指出，AI/數位農業技術在低中收入國家小農中的採用，受限於數位素養、電力與網路基礎設施、資金門檻三大結構性障礙；官方對比數據顯示美國玉米單產常逾每公頃10公噸，撒哈拉以南非洲多數地區僅2-3公噸，凸顯若無配套基礎建設投資，AI農業效益恐加劇既有生產力落差而非縮小落差",
+          "src": "https://www.fao.org/family-farming/detail/en/c/1613700/"
+        },
+        {
+          "name": "USDA NIFA AI研究機構基礎投資",
+          "status": "已投入之研發前端基礎建設，非直接部署案例",
+          "desc": "USDA NIFA自2020年起策略性投資5個AI研究機構（NIFA與NSF合作之National AI Research Institutes體系一環），2017-2021財年USDA與NSF合計投入近2億美元於精準農業研發",
+          "src": "https://www.gao.gov/products/gao-24-105962"
+        }
+      ]
     }
   ]
 }
