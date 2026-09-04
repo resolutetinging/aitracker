@@ -1,5 +1,114 @@
 [
   {
+    "date": "2026-09-05",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 於 Daybreak 計畫提供 10 億美元 AI 信用額度支援前線資安防禦者",
+        "layer": "core",
+        "body": "OpenAI 宣布在 2026 年 9 月 4 日啟動 Daybreak for Frontline Defenders 計畫，向全球資源匱乏的資安防禦團隊提供高達 10 億美元的 AI 服務信用額度，預計在未來六個月內使用完畢。申請對象包括關鍵基礎設施、社區銀行、非營利組織與開源維護者，皆可於官方網站線上申請。",
+        "impact": "",
+        "rating": "core",
+        "insight": "投資者可關注雲端算力供應商與 GPU 晶片廠的訂單增長。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/security/2026/09/04/openai-commits-1b-in-ai-credits-to-frontline-cyber-defenders/5294382",
+        "chain": [
+          {
+            "label": "Microsoft Azure GPU 需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia H100 GPU 出貨↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC 7nm 產能↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 於 Trusted Access 計畫首發 GPT‑6 Astra 模型，定位為「Critical」級資安能力",
+        "layer": "core",
+        "body": "2026 年 9 月 3 日，OpenAI 於 Trusted Access Program 內部先行釋出 GPT‑6 Astra，並於同日公布其每百萬輸入代幣 10 美元、每百萬輸出代幣 50 美元的計費標準。Astra 被標示為首款達到 OpenAI 「Critical」資安能力等級的模型，具備先進的程式編寫、瀏覽與科學計算功能。此模型於兩天後與 Anthropic 的 Fable 5.1 同時上市，形成高階 AI 模型的價格競爭格局。",
+        "impact": "Anthropic 亦同步推出新模型，可能加劇價格競爭，迫使其他 AI 供應商調整授權費率，進一步影響整體 AI 產業的利潤結構。",
+        "rating": "core",
+        "insight": "高階模型的商業化將帶動算力與晶片需求，相關供應鏈有望受惠。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/09/03/openai-throws-astra-into-the-top-tier-model-ring/5294378",
+        "chain": [
+          {
+            "label": "Anthropic Fable 5.1 市占↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD Radeon GPU 市占↓",
+            "type": "down"
+          },
+          {
+            "label": "Intel Xeon AI 加速卡 需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "PAIR",
+        "full": "Personal AI Router",
+        "def": "Nvidia 推出的免費工具，可將閒置的桌上型電腦與筆記型電腦串聯，形成個人化的 AI 計算中心。",
+        "why": "說明 Nvidia 如何利用現有硬體資源降低 AI 訓練成本，對資料中心需求產生間接影響。",
+        "category": "hardware"
+      },
+      {
+        "term": "Daybreak for Frontline Defenders",
+        "full": "OpenAI 針對資源匱乏的資安防禦團隊提供 AI 信用額度的計畫",
+        "def": "此計畫於 2026 年 9 月啟動，提供最高 10 億美元的 AI 服務信用，目標客戶包括關鍵基礎設施、社區銀行、非營利組織與開源維護者。透過補貼模型與訓練資源，協助這些團隊提升資安防護能力。",
+        "why": "降低資安防禦門檻，可減少勒索軟體等攻擊對關鍵服務的衝擊，提升整體產業韌性。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "GPT‑6 Astra",
+        "full": "OpenAI 最新發布的 GPT‑6 系列模型，具備「Critical」資安能力等級",
+        "def": "Astra 於 2026 年 9 月 3 日在 Trusted Access Program 內部先行釋出，提供程式編寫、網頁瀏覽、科學計算等功能，計費標準為每百萬輸入代幣 10 美元、每百萬輸出代幣 50 美元。",
+        "why": "作為首款達到「Critical」資安等級的模型，Astra 為企業級 AI 應用提供更高安全性，可能成為高價值商業服務的核心。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI 製造智慧",
+        "full": "Artificial Intelligence Manufacturing Intelligence",
+        "def": "指在半導體製造流程中運用人工智慧、機器學習與預測分析等技術，以提升良率、偵測缺陷、最佳化製程參數並提升設備效率的應用。",
+        "why": "AI 製造智慧能降低製程變異、提升產能利用率，對供應鏈上游的設備供應商與下游的晶圓代工廠均有顯著效益。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-09-04",
     "is_sunday": false,
     "hw": [
@@ -633,152 +742,5 @@
       }
     ],
     "weekly_summary": "HW：Lambda 以 10 億美元債務大量採購 Nvidia AI 晶片，提升上游晶圓代工與 HBM 供應需求。\nAPP：本週未出現具體的AI應用產品或服務發布。\n用戶洞察：目前市場焦點仍在合規與物流層面的風險管理，而非新AI應用的商業化。"
-  },
-  {
-    "date": "2026-08-29",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "中國稀土許可管制削減 yttrium 出口 75%，衝擊資料中心關鍵元件供應鏈",
-        "layer": "export_controls",
-        "body": "IEEE Spectrum 報導指出，2025 年中國首次將 yttrium 列入七種受強制許可管制的稀土，2026 年至今出口量已下降約 75%。同時，Erbium 亦受相同政策限制，兩者皆是白光 LED、顯示器、微波濾波器及光纖放大器等關鍵元件的核心材料。中國政府將於 2026 年 11 月重新審議此項稀土出口管制政策，屆時可能進一步調整許可條件。",
-        "impact": "受限的 yttrium 與 erbium 直接降低供應給顯示面板製造商與光纖放大器的原料供應，導致相關產能受阻。",
-        "rating": "core",
-        "insight": "投資者應關注受限稀土的供應替代方案與相關 OSAT 廠商的採購策略變化。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/08/28/datacenters-face-direct-hit-from-china-rare-earth-curbs-as-clock-runs-out-on-escalated-licensing-chokeoff/5293257",
-        "chain": [
-          {
-            "label": "LED 製造商 Cree LED 供應↑",
-            "type": "up"
-          },
-          {
-            "label": "光纖放大器供應商 Lumentum 需求↑",
-            "type": "up"
-          },
-          {
-            "label": "微波濾波器廠商 Qorvo 訂單↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "五角大樓將 Anthropic 列為供應鏈風險的裁決被推翻",
-        "layer": "legal",
-        "body": "2026 年 8 月 28 日，美國加州地方法官 Rita Lin 在 59 頁裁決書中認定國防部長 Pete Hegseth 以「Claude」模型的虛構威脅將 Anthropic 標為供應鏈風險違法，並指出政府在三天最後期限前未給予公司正當程序。判決指出，Pentagon 的國安理由在 Hegseth 已決定將 Anthropic 視為威脅後才被組織，屬於任意且武斷的行為。此裁決同時撤銷了對 Anthropic 的供應鏈風險標籤，並要求政府重新審視相關程序。",
-        "impact": "此裁決直接影響美國國防部對 AI 供應商的審核流程，可能降低未來對類似模型的風險標籤需求。其他 AI 初創公司因此判例可降低被列為供應鏈風險的可能性，提升市場競爭力。",
-        "rating": "core",
-        "insight": "法律勝訴提升 Anthropic 市場信任，投資者可關注其合約擴張與資金流入。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/08/28/pentagon-blacklisted-anthropic-over-claude-powers-it-didnt-have/5293266",
-        "chain": [
-          {
-            "label": "Anthropic 訂閱收入↑",
-            "type": "up"
-          },
-          {
-            "label": "美國國防部 AI 供應鏈審查成本↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic 推出模型硬體標準（MHS）以連接實驗室設備",
-        "layer": "tech",
-        "body": "2026 年 8 月 28 日，Anthropic 公布尚未發表的 Model Hardware Standard（MHS）協議，旨在讓 Claude 或其他模型安全控制實驗室、工廠與機器人硬體；首批測試在馬里蘭州 Howard Hughes Medical Institute 的 Janelia Research Campus 進行。MHS 的概念與先前的 Model Context Protocol（MCP）相似，但聚焦於實體裝置的即時指令傳遞。Anthropic 表示此標準將協助科研人員避免 2010 年離心機失控等事故，並計畫在未來一年內擴展至更多實驗室與製造廠。",
-        "impact": "1) 上游硬體供應商（如傳感器與驅動電路製造商）將因 MHS 需求增加而提升出貨量 (↑)；2) 中游系統整合商需開發符合 MHS 的介面軟體，推動新一代 AI‑硬體整合服務 (↑)；3) 下游科研機構與製造業者可直接透過 AI 模型監控設備，降低設備故障率 (↓) 並提升產能，對傳統自動化供應商形成競爭壓力。",
-        "rating": "core",
-        "insight": "MHS 為 AI 與實體硬體的首次標準化橋接，相關硬體供應鏈將受益。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/08/28/anthropic-proposes-plumbing-spec-to-link-ai-agents-to-lab-kit-and-robots/5293135",
-        "chain": [
-          {
-            "label": "Anthropic MHS 標準採用率↑",
-            "type": "up"
-          },
-          {
-            "label": "實驗室自動化設備廠商 Siemens Healthineers 銷售↑",
-            "type": "up"
-          },
-          {
-            "label": "傳統實驗室儀器供應商 Agilent 訂單↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Lam Research 在美國俄勒岡州落成 AI 晶片研發實驗室",
-        "layer": "manufacturing",
-        "body": "Lam Research 於 2026 年在美國俄勒岡州破土動工，建立專門用於 AI 晶片製程優化的實驗室。該實驗室將結合 AI 演算法與先進製程設備，協助客戶加速 AI 晶片的設計驗證與良率提升。此舉顯示半導體供應鏈正加速導入 AI 技術以縮短新產品上市時間。",
-        "impact": "此實驗室的建立將直接提升 Lam Research 向晶圓代工廠提供的 AI 優化設備需求，導致上游材料供應商（光刻膠、化學藥劑）需求↑。隨著設備效能提升，代工廠的製程良率↑，進一步降低下游系統整合商取得高良率 AI 晶片的成本。長遠看，AI 晶片的快速交付將促進資料中心與邊緣運算市場的擴張，提升相關伺服器供應鏈的需求。",
-        "rating": "core",
-        "insight": "AI 優化設備的需求上升將帶動半導體製程供應鏈整體效能提升。",
-        "source_label": "Lam Research",
-        "source": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOTDBldFZQRVdScFFBX3IxQ2lETnRHdWRuWGpHRGRWQVNyZF9rY2tlQzRxcWJpUjVrREpucWJVRGI1VXpKTXZZeG1CQXQ2eFljSER4Q2tYVVA4SWg1ZnM3S0o0QlRmRDNKYlU1NmNVR0FGXzBnZFZicW0xWDRGUE1odDM4NURfVXhLdlVIVy1TSVVkQWR2Rlh1MnpnV3BIbkNSQnc?oc=5",
-        "chain": [
-          {
-            "label": "Lam Research AI 晶片研發服務需求↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 晶片設計公司 Nvidia 設計驗證加速↑",
-            "type": "up"
-          },
-          {
-            "label": "競爭廠商 GlobalFoundries 晶圓代工交期↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "yttrium",
-        "full": "釔",
-        "def": "釔是一種中重稀土金屬，常用於白光 LED、顯示器、微波濾波器以及陶瓷電容等關鍵電子元件。",
-        "why": "其供應受中國出口許可限制，直接影響相關半導體與光通訊元件的製造成本與供應穩定性。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "erbium",
-        "full": "鉺",
-        "def": "鉺是稀土金屬，主要應用於光纖放大器的增益介質，用於提升長距離光纖傳輸的信號強度。",
-        "why": "中國對鉺的出口管制同樣限制了光通訊設備的原料來源，對資料中心的光網路建設產生連鎖影響。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Model Hardware Standard (MHS)",
-        "full": "模型硬體標準",
-        "def": "Anthropic 提出的協議，用於讓大型語言模型安全地指令實體硬體設備，如實驗室儀器或工廠機器人。",
-        "why": "提供 AI 與硬體的標準化介面，降低整合成本並提升安全性。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Model Context Protocol (MCP)",
-        "full": "模型上下文協議",
-        "def": "Anthropic 先前推出的協議，允許 AI 模型連接並查詢外部資料來源，以提供上下文資訊。",
-        "why": "是 MHS 的概念前身，說明 Anthropic 在 AI 與外部系統整合上的持續布局。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Supply‑chain risk label",
-        "full": "供應鏈風險標籤",
-        "def": "美國國防部對被認為可能危害國家安全的 AI 供應商所貼的官方標記，會限制其在政府合約中的參與。",
-        "why": "此標籤的撤銷直接影響 AI 公司的市場准入與合約機會。",
-        "category": "role"
-      },
-      {
-        "term": "AI 晶片研發實驗室",
-        "full": "Artificial Intelligence Semiconductor Lab",
-        "def": "結合人工智慧演算法與半導體製程設備的研發設施，用於優化 AI 晶片的設計、驗證與製造流程。",
-        "why": "可縮短 AI 晶片開發週期、提升良率，對整個半導體供應鏈的效率與成本具有顯著影響。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
   }
 ]
