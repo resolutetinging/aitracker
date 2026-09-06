@@ -1,5 +1,137 @@
 [
   {
+    "date": "2026-09-07",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "西雅圖時報與 Newsday 起訴 OpenAI 與 Microsoft",
+        "layer": "legal",
+        "body": "2026 年 9 月 5 日，西雅圖時報與 Newsday 向美國加州法院提起訴訟，指控 OpenAI 與其投資者 Microsoft 未經授權使用其新聞內容訓練生成式 AI，並稱此舉可能「破壞」新聞產業。訴狀中引用 2023 年《紐約時報》對 OpenAI 的相同指控，顯示此類訴訟已形成連鎖效應。法院文件顯示原告要求撤銷相關 AI 服務並賠償未披露的版權損失。",
+        "impact": "",
+        "rating": "core",
+        "insight": "訴訟將推動大型 AI 企業加速建置合規資料管道，提升內容授權與合規服務需求。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/05/seattle-times-and-newsday-are-the-latest-publications-to-sue-openai-and-microsoft/",
+        "chain": [
+          {
+            "label": "Microsoft AI 服務需求↓",
+            "type": "down"
+          },
+          {
+            "label": "OpenAI 訴訟成本↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Google Gemini 失誤導致加州山上徒步者被救",
+        "layer": "product",
+        "body": "2026 年 9 月 4 日，三名年輕徒步者在加州 Mount Shasta 使用 Google Gemini 計畫行程，結果因 Gemini 建議攜帶的食物與水量不足，導致他們於傍晚 7 時登頂後在夜間迷路，最終於次日清晨被美國森林服務局救援。當地警長辦公室指出，Gemini 建議的補給量比實際需求少約 40%。此事件由《芝加哥論壇報》報導，並引發對 AI 旅遊規劃工具安全性的討論。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "Google 需加強 Gemini 的安全驗證功能，相關 GIS 與定位硬體供應鏈將受益。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/05/hikers-rescued-after-using-google-gemini-for-planning/",
+        "chain": [
+          {
+            "label": "Google Gemini 使用者信任↓",
+            "type": "down"
+          },
+          {
+            "label": "AI 旅遊規劃工具安全性檢討↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "富士康因 AI 伺服器需求提升第三季營收預期",
+        "layer": "AI 伺服器需求",
+        "body": "富士康於 2026 年 9 月 6 日宣布，受人工智慧基礎設施需求激增，預計第三季營收將超過市場預期。公司指出 AI 伺服器與網路設備訂單持續成長，且資訊與通訊科技產品已進入下半年季節性高峰。富士康同時表示，對第三季的可見度較上月改善，預計營運動能將逐步提升。",
+        "impact": "",
+        "rating": "core",
+        "insight": "AI 伺服器需求成長將直接帶動晶圓與記憶體供應鏈上游產能擴張。",
+        "source_label": "Tekedia",
+        "source": "https://www.tekedia.com/foxconn-raises-third-quarter-outlook-as-ai-server-demand-drives-record-revenue/",
+        "chain": [
+          {
+            "label": "富士康 AI 伺服器訂單↑",
+            "type": "up"
+          },
+          {
+            "label": "富士康 第三季營收預期↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "OSAT",
+        "full": "外包半導體組裝與測試",
+        "def": "提供晶圓封裝、測試與組裝服務的公司，為晶片製造後段的重要環節。",
+        "why": "AI 晶片的高階封裝需求增加，使 OSAT 廠商的產能利用率上升。",
+        "category": "hardware"
+      },
+      {
+        "term": "HBM",
+        "full": "高帶寬記憶體",
+        "def": "一種堆疊式記憶體技術，提供極高的資料傳輸速率，常用於 AI 加速器。",
+        "why": "AI 訓練與推論對記憶體頻寬需求大幅提升，推動 HBM 產能擴張。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "equity holdings",
+        "full": "股權持有",
+        "def": "公司持有其他企業的股份，以取得財務回報或策略性影響力。",
+        "why": "Nvidia 以 990 億美元的股權布局，能直接影響 AI 產業供應鏈的資金流向與技術整合。",
+        "category": "role"
+      },
+      {
+        "term": "生成式 AI",
+        "full": "Generative AI",
+        "def": "利用深度學習模型自動產生文字、圖像或音訊等內容的人工智慧技術，常以大規模語料庫訓練。",
+        "why": "生成式 AI 正在重塑內容創作與資料處理流程，影響供應鏈上游的算力與資料授權需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI 代理人",
+        "full": "AI Agent",
+        "def": "具備自主決策與執行任務能力的人工智慧程式，能在特定環境中自行學習與行動。",
+        "why": "代理人的不受控行為可能導致安全與合規風險，促使相關安全驗證與監控服務需求上升。",
+        "category": "role"
+      },
+      {
+        "term": "AI 伺服器",
+        "full": "人工智慧伺服器",
+        "def": "專為執行深度學習與機器學習工作負載設計的高效能伺服器，通常搭載多顆 GPU、ASIC 或 FPGA 以提供大量運算資源。",
+        "why": "隨著生成式 AI 與大模型應用普及，AI 伺服器成為資料中心擴充的關鍵設備，直接拉動晶圓、記憶體與高速互連元件需求。",
+        "category": "hardware"
+      },
+      {
+        "term": "季節性高峰期",
+        "full": "資訊與通訊科技產品季節性高峰期",
+        "def": "每年下半年，受學校開學與企業預算執行影響，ICT 產品（如伺服器、網路設備）需求會出現明顯上升。",
+        "why": "高峰期需求提升會加速供應鏈各環節的出貨與產能調度，對上游元件供應商形成短期需求刺激。",
+        "category": "role"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-09-06",
     "is_sunday": true,
     "hw": [
@@ -680,129 +812,6 @@
         "def": "指企業或雲端服務商為了執行大規模 AI 工作負載，部署自研或客製化的專用晶片，以提升運算效能並降低對通用 GPU 的依賴。",
         "why": "隨著 AI 模型規模持續擴大，客製化晶片成為降低成本與提升效能的關鍵策略。",
         "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-08-31",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "Sony Music 與 Warner 起訴 Anthropic 盜用版權作品",
-        "layer": "legal",
-        "body": "2026 年 8 月 30 日，Sony Music Publishing、Warner Chappell 以及多家音樂出版商在加州北區聯邦法院對 Anthropic 及其共同創辦人 Dario Amodei、Benjamin Mann 提起訴訟，指控其在訓練 Claude 模型時非法下載、爬取並盜用數千部受版權保護的音樂作品。訴狀稱 Anthropic 的行為構成「公然盜竊」，而 Anthropic 在同日回應稱將在法庭上「堅決抗辯」。此案亦與 1 月份 Universal Music Group 及 Concord Music Group 提出的類似版權訴訟相關聯。",
-        "impact": "",
-        "rating": "core",
-        "insight": "版權訴訟將推動 AI 供應鏈向合規資料來源轉型，提升授權成本。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft/",
-        "chain": [
-          {
-            "label": "Anthropic 法律費用↑",
-            "type": "down"
-          },
-          {
-            "label": "Sony Music 版權收入↑",
-            "type": "up"
-          },
-          {
-            "label": "Warner Chappell 版權收入↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Nvidia 宣示 AI 優勢已超越 GPU 硬體本身",
-        "layer": "strategy",
-        "body": "2026 年 8 月 29 日，Nvidia 在財報說明會後指出，隨著 AI 計算需求升至千兆瓦等級，該公司已開始提供包括硬體、軟體與編排平台在內的完整 AI 基礎設施解決方案，並強調其在 AI 工作負載編排層面的領先地位。Nvidia 同時透露，為支援此新服務，已向其主要晶圓代工夥伴 TSMC 訂購額外 30% 的先進製程晶圓，以滿足未來高效能 AI 加速卡的產能需求。",
-        "impact": "Nvidia 向上游晶圓代工（TSMC）追加 30% 先進製程晶圓需求，將提升 TSMC 高階製程產能利用率 (↑) 並帶動相關光刻機與測試設備供應商需求上升 (↑)。",
-        "rating": "core",
-        "insight": "Nvidia 以全棧 AI 解決方案擴大上下游需求，鞏固其在 AI 基礎設施市場的領先地位。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/",
-        "chain": [
-          {
-            "label": "Nvidia AI 基礎設施服務收入↑",
-            "type": "up"
-          },
-          {
-            "label": "TSMC 先進製程晶圓出貨量↑",
-            "type": "up"
-          },
-          {
-            "label": "競爭對手 GPU 營收↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "SpaceX 內部製造渦輪葉片以提升 AI 資料中心發電機效能",
-        "layer": "AI 資料中心基礎設施",
-        "body": "SpaceX 已於 2026 年啟動自製渦輪葉片計畫，旨在提升其燃氣發電機的輸出功率，以支援 Elon Musk 所屬的 AI 資料中心。根據 Tom's Hardware 報導，新的製造策略將發電機交付延遲縮短 18 個月，並預計提升發電機整體效率。",
-        "impact": "發電機 OEM 因減少交付延遲，能更快交付給 AI 資料中心營運商，進一步加速 AI 訓練與推論服務的部署，提升下游雲端服務供應商的算力供應↑。",
-        "rating": "core",
-        "insight": "自製渦輪葉片縮短交付時間，將加速 AI 資料中心擴容，提升相關硬體供應鏈需求。",
-        "source_label": "Tom's Hardware",
-        "source": "https://news.google.com/rss/articles/CBMi0gJBVV95cUxOV2pjSGpIYWtuTzFDVURzYjlXeEd3N3ZPRkE4Tk9OelRkWC1la085TGFkZEt0MUd3ZEEzWEVRNGlndHpfbm1XSFFFSzZ1cWViMHMxZDBGUDhMOWlhLTRWNENkY0Fzdm9wcjc1ODMxd09xNWZEczRtZ3Jzc2ZsMlYzSm5yTHpfZDd6dkxvMXBrQTdaSVh5SE1rNmppbFRhQ1owRVl0c3NHNE1Bc2o4QkU0QjBiSGZqVGxMbmdBblh6aG80VV9iV1JiU3JGRXpnblpPck00d3BPckJoakpHM0E0cFlDcFRkbGR1QkRiX0hrVHZ2RS00VmVNMVNFX1JKdU5UMXBpRmgzalh0NTQwX05CTjI4ZTRNM0JDOUhnY2xlQ085UUU2RUhLT0xzZXlfRFpETng2UDZ6ejhHSTNWa0dXUkRZNl92dWVVdEIweUpRMVp4dw?oc=5",
-        "chain": [
-          {
-            "label": "SpaceX 渦輪葉片產能↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 資料中心發電機交期↓",
-            "type": "down"
-          },
-          {
-            "label": "傳統發電機供應商 市占↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "異質高頻寬記憶體",
-        "full": "Heterogeneous High-Bandwidth Memory",
-        "def": "結合高頻寬記憶體（HBM）與高頻寬快閃記憶體（HBF）的架構，透過預測式遷移策略將高延遲的快閃記憶體排除於 GPU 關鍵路徑之外，以提升大型語言模型推論效能。",
-        "why": "此技術可降低 GPU 記憶體瓶頸，提升 AI 推論效能，對記憶體供應鏈的容量與製程需求產生新方向。",
-        "category": "hardware"
-      },
-      {
-        "term": "Claude",
-        "full": "Anthropic 開發的大型語言模型",
-        "def": "Claude 是 Anthropic 於 2023 年推出的生成式 AI 模型，專注於安全對話與指令遵循，使用大量網路文本與授權資料進行訓練。",
-        "why": "訓練資料的版權爭議直接影響其商業化與合規風險。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI 工作負載編排",
-        "full": "AI 工作負載的資源調度與管理技術",
-        "def": "此技術負責在多個 GPU、CPU 及加速卡之間分配計算資源，以最佳化效能與能源使用，常結合軟體平台與硬體控制器。",
-        "why": "Nvidia 強調此領域的領先，可為其硬體銷售提供差異化價值。",
-        "category": "hardware"
-      },
-      {
-        "term": "渦輪葉片",
-        "full": "渦輪葉片（Turbine Blade）",
-        "def": "渦輪葉片是燃氣渦輪發電機中用於將燃燒氣體的熱能轉換為機械能的關鍵部件，通常由高溫合金製成以耐受極端熱度。",
-        "why": "SpaceX 內部製造渦輪葉片可縮短供應鏈交期，提升 AI 資料中心的能源供應可靠性。",
-        "category": "hardware"
       }
     ],
     "weekly_summary": null
