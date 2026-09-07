@@ -1,5 +1,110 @@
 [
   {
+    "date": "2026-09-08",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "台灣檢方起訴九人涉 Nvidia B300 AI GPU 違規出口",
+        "layer": "export_control",
+        "body": "台灣檢方於 2026 年 9 月 5 日起訴九名涉案人員，指控他們非法將 130 台 Nvidia B300 AI GPU 系統出口至中國，並利用 Flying Tiger Tech 取得合格買家資格。調查發現，這些系統聲稱在台灣本地安裝，實際卻缺乏足夠的機櫃、電力與網路帶寬以支撐全部設備。此案突顯 AI 晶片出口管制在供應鏈末端的執行漏洞。",
+        "impact": "",
+        "rating": "core",
+        "insight": "投資者應留意台灣加強出口管制後，AI GPU 供應鏈的交付時程與合規成本變化。",
+        "source_label": "VarIndia",
+        "source": "https://varindia.com/news/nvidia-b300-smuggling-scandal-taiwan-cracks-down",
+        "chain": [
+          {
+            "label": "Nvidia B300 AI GPU 出口限制↓",
+            "type": "down"
+          },
+          {
+            "label": "Flying Tiger Tech 合規風險↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Anthropic 1.5 億美元版權和解金額引發作者索賠爭議",
+        "layer": "CSP/CapEx",
+        "body": "Anthropic 於去年完成 15 億美元版權和解，根據和解條款每被盜用作品將支付 3,000 美元，涉及約 500,000 本書；近期有作者收到電子郵件稱第三方正為其應得款項提出索取，顯示和解金流分配仍在調整中。",
+        "impact": "因版權和解金額提升，AI 訓練平台（如 OpenAI、Anthropic）將因版權成本↑而調整模型訓練預算，可能減少對高效能 GPU 的需求↓。下游的內容創作者與出版商因版權收入分配爭議而面臨現金流不確定性↑，可能加速向自有平台轉移。",
+        "rating": "opp",
+        "insight": "版權和解金額的分配機制將成為 AI 訓練成本的關鍵變數。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/06/authors-push-back-as-publishers-and-agents-seek-share-of-anthropic-settlement/",
+        "chain": [
+          {
+            "label": "Anthropic 版權和解金流分配↑",
+            "type": "up"
+          },
+          {
+            "label": "作者索賠爭議↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "HuggingFace",
+        "full": "HuggingFace",
+        "def": "全球最大的開源機器學習模型與資料集平台，提供模型託管與推理服務。",
+        "why": "其被 Nvidia 收購後，將改變 AI 模型供應鏈的授權與分發結構。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "B300",
+        "full": "Nvidia B300 AI GPU 系統",
+        "def": "Nvidia 針對高效能 AI 推理與訓練設計的伺服器級 GPU，具備多達數百個 Tensor 核心。",
+        "why": "因其高算力被列入出口管制，違規出口案件顯示供應鏈合規風險。",
+        "category": "hardware"
+      },
+      {
+        "term": "AI 代理人",
+        "full": "Artificial Intelligence Agent",
+        "def": "具備自主決策與行動能力的人工智慧程式，可在特定環境中執行任務或互動。",
+        "why": "代理人行為失控可能導致安全與合規風險，影響整體 AI 供應鏈的信任基礎。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "版權和解金額",
+        "full": "Copyright Settlement Amount",
+        "def": "因 AI 訓練使用受版權保護的資料而產生的法律和解金額，通常按每件作品計算。",
+        "why": "和解金額直接影響 AI 企業的成本結構與資料取得策略，進而影響算力需求。",
+        "category": "role"
+      },
+      {
+        "term": "資訊揭露框架",
+        "full": "Disclosure Framework",
+        "def": "企業針對 AI 事故或異常行為所制定的資訊公開標準與流程。",
+        "why": "標準化的揭露框架有助於提升產業透明度，降低供應鏈不確定性。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "SAHI Framework",
+        "full": "SAHI Framework for AI in Healthcare",
+        "def": "印度政府於2024年推出的醫療AI治理框架，旨在規範AI模型的安全性、透明度與倫理使用，並提供標準化測試流程。",
+        "why": "框架將促進醫療AI產品的合規驗證，提升供應鏈中驗證服務與合規工具的需求。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-09-07",
     "is_sunday": false,
     "hw": [
@@ -759,59 +864,6 @@
         "def": "一種以 AI 代理人形式提供家庭日常事務管理、行程協調與資訊整合的服務，類似企業內部的 AI 助手，但針對家長與子女需求設計。",
         "why": "隨著家庭事務數位化，AI 助手可降低家長的認知負荷，提升服務平台的使用黏著度與付費轉化率。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-09-01",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Nvidia 投資 35 億美元於 MediaTek 加速 AI 晶片設計",
-        "layer": "strategic_investment",
-        "body": "Nvidia 於 2026 年 8 月 31 日宣布投入 35 億美元資金給台灣晶片製造商 MediaTek，協助其採用 Nvidia 技術設計客製化 AI 晶片。MediaTek 將利用此資金開發可直接插入 Nvidia 資料中心的 AI 加速卡，並預計在 2027 年上半年向 Amazon、Google、Microsoft 等大型雲端服務商供貨。",
-        "impact": "此筆投資將提升 MediaTek 的 AI 晶片設計與加速卡開發需求。",
-        "rating": "core",
-        "insight": "Nvidia 透過資金與技術支援 MediaTek，擴大 AI 晶片供應鏈，降低單一供應商風險。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/31/nvidias-3-5b-mediatek-bet-reveals-its-plan-for-tackling-big-techs-ai-chip-buildout/"
-      }
-    ],
-    "corp": [
-      {
-        "title": "今日無相關巨頭新聞",
-        "layer": "",
-        "body": "今日無相關巨頭新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "app": [],
-    "glossary_new": [
-      {
-        "term": "HBM",
-        "full": "High-Bandwidth Memory",
-        "def": "高頻寬記憶體，提供極低延遲與高資料傳輸速率，常與 GPU 搭配使用以加速 AI 推論。",
-        "why": "HBM 是 AI 加速卡的關鍵記憶體元件，供應緊張會直接影響資料中心的運算效能。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "MediaTek AI 加速卡",
-        "full": "MediaTek AI Accelerator Card",
-        "def": "MediaTek 基於 Nvidia 技術開發的客製化 AI 加速卡，設計可直接插入 Nvidia 架構的資料中心伺服器。",
-        "why": "此卡的推出將為 AI 晶片市場帶來新供應來源，減少對單一晶片供應商的依賴。",
-        "category": "hardware"
-      },
-      {
-        "term": "AI晶片建置",
-        "full": "Artificial Intelligence Chip Deployment",
-        "def": "指企業或雲端服務商為了執行大規模 AI 工作負載，部署自研或客製化的專用晶片，以提升運算效能並降低對通用 GPU 的依賴。",
-        "why": "隨著 AI 模型規模持續擴大，客製化晶片成為降低成本與提升效能的關鍵策略。",
-        "category": "semiconductor"
       }
     ],
     "weekly_summary": null
