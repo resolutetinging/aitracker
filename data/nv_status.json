@@ -272,5 +272,87 @@
       "strength": "strong",
       "note": "治理與合規標準制定完成後，回頭鞏固並合法化既有技術規範，形成外部難以滲透的閉環"
     }
+  ],
+  "recent_events": [
+    {
+      "date": "2026-08-27",
+      "title": "美國調查新加坡貨運業者Apex Logistics涉嫌協助輝達晶片繞道走私中國",
+      "category": "政府調查",
+      "summary": "彭博社、海峽時報等多家媒體報導，美國政府正在調查新加坡貨運承攬業者Apex Logistics，懷疑其協助將受管制的輝達AI晶片經第三地轉運流入中國，這是本輪查緝行動首次將矛頭指向物流承攬業者本身而非晶片買賣雙方。Apex Logistics回應稱正全力配合調查。",
+      "src": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPbHM1WW1HVzA4Z2pOdTlheGp6aWY2UDhJMDRIR1pIaXJjR1JqM21BaUlmZFpiaEwzeDA5V1VUZWd0clhqTE1MMG5fX3JoR0szZzVFclpRZWtfbFNRQ1JqU0hvNHFhZUFGeW1MdHZWWHdLZTVhMFpEdHZuZGpxMEVYNmU3Q2pSUkV5ZThOVkxMbWdLc01rUlNwb0dKY1QxcXdETTM1ajhIbHJ2OGkwTkw5VDdRVWZpOHVoN21JUzNTd0lIVFB2?oc=5",
+      "src_note": "媒體報導（彭博社／The Straits Times／Yahoo Finance等多家轉載），查無美國商務部工業與安全局（BIS）或司法部的正式書面新聞稿；此連結為Google新聞聚合連結導向原始報導。"
+    },
+    {
+      "date": "2026-08-26",
+      "title": "輝達公布2027財年第二季財報，營收年增106%創新高，並聲明財測未計入中國營收",
+      "category": "財報動態",
+      "summary": "輝達正式公布2027財年第二季財報：營收達962億美元，季增18%、年增106%，其中資料中心營收890億美元、年增117%；下一季財測預估營收1080億美元。輝達在財報中明確聲明「並未將任何中國資料中心運算營收計入財測」，凸顯出口管制對中國市場業務的持續衝擊。",
+      "src": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx",
+      "src_note": ""
+    },
+    {
+      "date": "2026-08-24",
+      "title": "台灣基隆地檢署起訴9人涉嫌透過印尼、日本轉運輝達B300伺服器至中國",
+      "category": "出口管制",
+      "summary": "基隆地方檢察署偵結「不法出口高階伺服器案件」，起訴9名被告，其中包含輝達台灣分公司資深經理張登隆、美超微（Supermicro）台灣子公司2名主管等。檢方查出被告以偽造機房查核資料等方式規避輝達與美超微的客戶資格審查，取得130台B300高階AI伺服器出貨許可，其中74台經印尼、日本、香港等地轉運流入中國，56台遭台灣海關攔截，不法所得逾2120萬美元（約合新台幣6.75億元）。輝達回應表示一貫致力於與客戶合作確保遵守相關法規；美超微則表示自身並非本案調查對象。",
+      "src": "https://www.klc.moj.gov.tw/media/450456/1150824基檢偵結不法出口高階伺服器案件新聞稿.pdf?mediaDL=true",
+      "src_note": ""
+    },
+    {
+      "date": "2026-08-20",
+      "title": "美超微完成內部調查，未發現高層涉入輝達伺服器走私案",
+      "category": "法律訴訟",
+      "summary": "美超微（Supermicro）董事會委託的內部調查完成，結論指出公司高階管理層（含執行長）並不知情、亦未涉入其員工被控協助將輝達晶片伺服器走私至中國一案。此調查與美國司法部3月起訴的25億美元晶片走私案及台灣8月的起訴案屬同一走私網絡的不同調查支線，多家財經媒體（華爾街日報、Fortune、Seeking Alpha等）報導此一結果，公司股價隨後出現反應。",
+      "src": "https://news.google.com/rss/articles/CBMidkFVX3lxTE50bENoU2s0MDdXNlFKcUFmd1E2SDNrX0ZBYXA3Q3pqZ1BORkxqNWFkNjNTRTlrTmJSSndMNjd6YUhKanotaGpOX242bGxoZXZ6Yl9MbFphX2p5SFVmb2RoeFQ2ckEwNUJfREpZc3BhdkZtVUFvcFE",
+      "src_note": "媒體報導（華爾街日報／Fortune／Seeking Alpha等），查無Supermicro官方新聞稿原文；此連結為Google新聞聚合連結導向原始報導。"
+    },
+    {
+      "date": "2026-08-13",
+      "title": "知名放空投資人Michael Burry多次抨擊輝達500億美元AI融資計畫為「循環融資」",
+      "category": "市場爭議",
+      "summary": "以放空次貸危機聞名的投資人Michael Burry自7月底至輝達8月26日公布財報前後，多次公開抨擊輝達與華爾街六大金融機構籌組的逾5000億美元AI基建融資計畫，形容其為「拜占庭式資金迴圈」與「循環融資」，並將其比擬為安隆（Enron）式風險，質疑輝達身兼供應商、投資人與融資方三重角色可能掩蓋真實需求；Mark Cuban等其他市場人士亦表達類似疑慮。輝達與相關金融機構並未就此逐一正式回應。",
+      "src": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxORHBIS0FETHpWOGhEc3Vaa1dhTFdMenYzY3VUM3lteGRQVVVkYVZCd1E1R0lydlR2TVROcEx3aHJnY0tuU1R5X2Q2amxiMUEyZm5adjRHc2dIcE0tcFRuYlAtR3ZUY3VCYUh3ODVzd05qYkJHRHFEOVIxeUlaLW1jcVlyV3EtbWdNNVVsNll4N0l5cjg4dVBPR2JUdjUwWWZLM3l4aTRrdEJtQ28",
+      "src_note": "媒體報導（The Telegraph／Yahoo Finance／Business Insider／Benzinga等多家跟進），為投資人個人公開評論而非官方機構聲明；此連結為Google新聞聚合連結導向原始報導。"
+    },
+    {
+      "date": "2026-07-28",
+      "title": "輝達執行長黃仁勳與美國商務部長Lutnick會面，正值美中晶片出口爭議升溫之際",
+      "category": "高層動態",
+      "summary": "Axios率先報導輝達執行長黃仁勳與美國商務部長Howard Lutnick會面，時機正值白宮公開指控中國AI新創月之暗面違規取得輝達GB300晶片、美中晶片出口管制爭議升高之際；南華早報、Newsmax等媒體跟進報導。目前查無商務部或輝達就此次會談內容發布正式聲明或會談紀要。",
+      "src": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNWHNGZ0QteXloWVBnNC11c0VZVkkzX0ZOUEhwY2l3bHdiejBlcHVjRi1WRmJzeTZTMWhIbkh0WTRqdW5keEVBOWtJT0wwVjBudjhlLTZmY2I0X05ZWG85UGZaelhpWGFvX0JRaTdsMlVxRWtha2wwYkk0MERGdWNpLXZhMA",
+      "src_note": "媒體報導（Axios獨家披露，南華早報／Newsmax等跟進），查無美國商務部或輝達官方聲明；此連結為Google新聞聚合連結導向原始報導。"
+    },
+    {
+      "date": "2026-07-27",
+      "title": "中國官方回應月之暗面指控，指控美方「AI霸權主義」並揚言反制",
+      "category": "地緣政治",
+      "summary": "路透社報導，中國政府在美國白宮官員指控AI新創月之暗面違規取得輝達GB300晶片後，公開回應指控美方採取「AI霸權主義」（AI hegemonism），並揚言將採取反制措施；Firstpost、Crypto Briefing等媒體跟進報導。此為美中晶片出口管制爭端在該事件後的官方外交表態。",
+      "src": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPN2l6SXZVb29hZ244bE5rbTdWWkNINUw0VTN5TlhHemFDWG5VSmd3d0M2OTBnWUNDMUFRekpWOWwtME9MTTIwTTVvVFpuNVRmYnJ1eDFLVUR1bnVZVWNSdHJZOXhEZXBWdWpaT05JbHlhRXBVdUZlSE14M29ReDhHYTVvQmplZXhJYVNfeHNDZ0JxUmhIelFmbmROeWZudGwxXzJwRHgwV2RMVjVBdjJHSDQ0NmlmZXZoOU9YYjZCZkl5X1FB?oc=5",
+      "src_note": "媒體報導（路透社），查無中國外交部或商務部官方聲明全文；此連結為Google新聞聚合連結導向原始報導。"
+    },
+    {
+      "date": "2026-07-22",
+      "title": "白宮官員指控中國AI新創月之暗面（Moonshot AI）違規取得輝達GB300晶片",
+      "category": "出口管制",
+      "summary": "白宮科技政策辦公室（OSTP）主任Michael Kratsios於社群平台X公開發文，指控中國AI新創公司月之暗面（Moonshot AI）取得受美國出口管制禁止銷往中國的輝達GB300晶片，並透過泰國的伺服器基礎設施存取這些晶片以訓練其Kimi K3模型，藉此規避將實體晶片運入中國境內；Kratsios同時指控該公司蒸餾（distill）Anthropic的Fable模型。截至報導時，輝達與月之暗面均未公開回應相關指控。",
+      "src": "https://www.tftc.io/moonshot-ai-banned-nvidia-gb300-chips-kimi-k3-export-controls",
+      "src_note": "官方人員公開聲明（白宮OSTP主任Kratsios透過個人X帳號發布，非正式書面新聞稿），媒體（tftc.io／Bloomberg／CNBC等）廣泛引用其發文內容轉述。"
+    },
+    {
+      "date": "2026-07-14",
+      "title": "美國官員證實輝達H200晶片已獲授權小量出口中國，同期輝達大砍逾半數亞洲客戶名單因應合規審查",
+      "category": "出口管制",
+      "summary": "彭博社報導，美國官員證實輝達H200晶片已依商務部核發的授權開始小量出口至中國，但出貨量遭形容為「微不足道」（trivial）；南華早報、Yahoo Finance等媒體跟進。同一週內，多家媒體報導輝達因應美國商務部工業與安全局（BIS）合規審查範圍擴大，大幅削減逾半數的亞洲核准買家名單。",
+      "src": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOZ05ZeU5LTWJiNW11RnJnMjBlU2NLak5xYk43T0lxbUo5dG9HSVRHNTJBVU1SV05BZ2dkX0RKN2JBa1NVS3RGODZtQkdoMXFrdEFXcmNTci1raVVpcG1zbnZhaF85aDI4OEU2eVB2ODlpN1hxQTNCRUFPTXdseEg0dHd0VkxEUmZrZXU4bkFER1B5RVhRRWEyVUtIeDc2bFZfVFZrQkZPZ1g4ZlpWZ252N0ozemIzUGVFQjF2STc0Vm04UzlJMWc",
+      "src_note": "媒體報導（彭博社／南華早報／techtimes.com等），查無BIS或輝達官方書面聲明列出具體出貨數字；此連結為Google新聞聚合連結導向原始報導。"
+    },
+    {
+      "date": "2026-03-19",
+      "title": "美國司法部起訴3名與美超微關聯人士，涉嫌以25億美元伺服器走私輝達晶片至中國",
+      "category": "法律訴訟",
+      "summary": "美國司法部正式起訴3名人士——美超微共同創辦人廖益興（Wally Liaw，美籍）、張瑞祥（Steven Chang，台籍，在逃）、孫定緯（Willy Sun，台籍）——指控三人共謀將約25億美元、內含受管制輝達晶片（H100、H200、B200等）的伺服器銷往東南亞一家公司，再由該公司拆封重新包裝、移除識別標記後，將其中約5.1億美元的伺服器轉運至中國買家，違反出口管制改革法。此案是本輪美超微／輝達晶片走私網絡查緝的起點，直接牽動同年8月台灣基隆地檢署起訴案。國家安全事務助理檢察長John A. Eisenberg表示：「這些晶片是美國智慧的結晶，國家安全部門將持續執行出口管制法規以保護這項優勢。」",
+      "src": "https://www.justice.gov/opa/pr/three-charged-conspiring-unlawfully-divert-cutting-edge-us-artificial-intelligence",
+      "src_note": ""
+    }
   ]
 }

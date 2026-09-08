@@ -173,6 +173,18 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .nv-case-status.warn{color:var(--ethic);}
 .nv-sub-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin:14px 0 10px;}
 
+/* ── NVIDIA專區「近期事件」（09-08新增；資料存nv_status.json的recent_events，
+   跟cases_live/poc等「案例/路線圖」性質不同，這裡是有明確日期的具體新聞事件
+   時間軸，卡片另開一套樣式，不重用nv-case-card ── */
+.nv-event-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:10px;}
+.nv-event-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 15px;box-shadow:var(--shadow);}
+.nv-event-top{display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap;}
+.nv-event-date{font-size:10.5px;color:var(--muted2);font-weight:600;}
+.nv-event-cat{font-size:10px;font-weight:600;color:var(--text2);background:var(--card2);border-radius:20px;padding:2px 9px;}
+.nv-event-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px;line-height:1.5;}
+.nv-event-summary{font-size:12px;color:var(--text2);line-height:1.62;margin-bottom:6px;}
+.nv-event-note{font-size:10.5px;color:var(--ethic);line-height:1.6;margin-top:4px;}
+
 /* ── 產業導入專區（09-03新增；資料存data/industry_adoption.json，多產業結構，
    目前只有醫療產業一筆；卡片重用.nv-case-card/.nv-case-grid，region卡片另開
    小型樣式）── */
@@ -805,6 +817,21 @@ function nvCaseCard(item, statusCls, statusText){
     ${nvSrcLink(item.src)}
   </div>`;
 }
+// 09-08新增：近期事件卡片，跟nvCaseCard的「案例/路線圖」性質不同，這裡是
+// 有明確日期的具體新聞事件；src_note用來標註「僅媒體報導、查無官方原文」
+// 這類查證等級落差，不能省略或包裝成官方立場，比照產業導入分頁已確立的規範。
+function nvEventCard(ev){
+  return `<div class="nv-event-card">
+    <div class="nv-event-top">
+      <span class="nv-event-date">🗓 ${ev.date||''}</span>
+      ${ev.category ? `<span class="nv-event-cat">${ev.category}</span>` : ''}
+    </div>
+    <div class="nv-event-title">${ev.title||''}</div>
+    <div class="nv-event-summary">${ev.summary||''}</div>
+    ${nvSrcLink(ev.src)}
+    ${ev.src_note ? `<div class="nv-event-note">⚠️ ${ev.src_note}</div>` : ''}
+  </div>`;
+}
 
 // 08-13：生態系權力布局四階段（standard/capital/platform/governance）固定用正方形四角
 // 排列，這樣「①→②③→④→①」的敘事順序天生就是繞正方形一圈的封閉迴路，不用另外
@@ -968,6 +995,10 @@ async function renderNvidia(){
     `<a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>`
   ).join('、');
 
+  // 09-08新增：近期事件時間軸（出口管制/法律訴訟/財報動態等有明確日期的新聞），
+  // 資料已按日期新到舊排序，這裡不重新排序以維持資料檔的排序即為顯示順序
+  const eventsHtml = (nv.recent_events||[]).map(nvEventCard).join('');
+
   const liveHtml = (nv.cases_live||[]).map(c=>nvCaseCard(c,'live','✅ 已上線／實際部署')).join('');
   const pocHtml = (nv.cases_poc||[]).map(c=>nvCaseCard(c,'poc','🔵 概念驗證／導入進行中')).join('');
   const roadmapHtml = (nv.roadmap||[]).map(c=>nvCaseCard(c, (c.status||'').startsWith('⚠️')?'warn':'poc', c.status)).join('');
@@ -1023,6 +1054,9 @@ async function renderNvidia(){
 
   panel.innerHTML = `
     ${pendingHtml}
+    <div class="sec-title">近期事件</div>
+    <div class="nv-event-grid">${eventsHtml}</div>
+
     <div class="sec-title">產品應用鏈</div>
     <div class="nv-sub-title">官方技術堆疊</div>
     <div class="nv-pyramid-wrap">
