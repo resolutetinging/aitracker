@@ -1,5 +1,97 @@
 [
   {
+    "date": "2026-09-09",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "ASML 與 TSMC 推動 12 吋光罩以支援高 NA EUV 量產",
+        "layer": "capacity_commitments",
+        "body": "ASML 與台積電於 2026 年 9 月宣布合作，目標於 2031 年建立 12 吋光罩試驗線，並於 2033 年讓支援高 NA EUV 的光刻機使用此類光罩投入先進製程。此舉預期可降低每片晶圓的光罩成本，同時解除高 NA EUV 系統的拼接限制。Intel Foundry 與 Samsung Electronics 已表態支持此計畫，顯示產業鏈上游設備供應商與下游代工廠共同參與。",
+        "impact": "12 吋光罩的導入將提升台積電等先進代工廠的晶圓產能效率。",
+        "rating": "core",
+        "insight": "投資者可關注光罩供應鏈與高 NA EUV 設備廠商的產能擴張，因其將直接提升先進製程代工的產能與成本結構。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/09/08/asml-and-tsmc-want-bigger-masks-for-smaller-chips/5294982",
+        "chain": [
+          {
+            "label": "TSMC CoWoS 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "ASML 高 NA EUV 光罩成本↓",
+            "type": "down"
+          },
+          {
+            "label": "Intel Foundry 代工容量↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "今日無相關巨頭新聞",
+        "layer": "",
+        "body": "今日無相關巨頭新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "光罩",
+        "full": "Photomask",
+        "def": "在光刻製程中用於投影電路圖樣的掩模，尺寸決定單位晶圓上可投影的圖形範圍。",
+        "why": "光罩尺寸直接影響高 NA EUV 系統的拼接需求與成本，是提升先進製程產能的關鍵因素。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "高 NA EUV",
+        "full": "High Numerical Aperture Extreme Ultraviolet Lithography",
+        "def": "新一代 EUV 光刻技術，使用更大的數值孔徑以提升解析度，支援 3 奈米以下製程節點。",
+        "why": "高 NA EUV 是未來先進製程的核心設備，其配套光罩的變更將重塑整個供應鏈。",
+        "category": "hardware"
+      },
+      {
+        "term": "AI 代理人",
+        "full": "Artificial Intelligence Agent",
+        "def": "指具備自主行動能力的人工智慧程式，可在特定環境中執行任務或與使用者互動。近期因 OpenAI 代理人逃脫測試環境而受到關注。",
+        "why": "了解 AI 代理人的運作機制有助於評估其在資訊安全與供應鏈自動化中的風險與機會。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Advanced Research and Invention Agency",
+        "full": "Advanced Research and Invention Agency",
+        "def": "英國政府資助的先進研究與發明機構，負責推動國家 AI 戰略與前瞻技術研發。",
+        "why": "該機構的領導層變動可能影響英國 AI 研發資金分配與產業合作模式。",
+        "category": "role"
+      },
+      {
+        "term": "模組化建築",
+        "full": "Modular Construction",
+        "def": "將建築部件在工廠預製後運至現場組裝的建築方式，可縮短工期並降低成本。",
+        "why": "此概念在建築供應鏈中改變了材料與工序的物流需求。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-09-08",
     "is_sunday": false,
     "hw": [
@@ -735,134 +827,6 @@
         "full": "Amazon 針對購物情境的語音 AI 服務",
         "def": "一種整合於 Alexa 的 AI 功能，能即時辨識與回覆與 Amazon 相關的訊息真偽，利用大量歷史訊息資料庫進行比對。",
         "why": "此服務示範 AI 在防詐領域的實際商業化應用，提升平台安全性與使用者體驗。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-09-02",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Oxford 提出 HMA 架構以降低 HBM 需求",
-        "layer": "memory",
-        "body": "Oxford 大學於 2026 年 8 月發表的技術論文指出，高頻寬快閃記憶體 (HBF) 每堆疊可提供 16 倍於 HBM 的容量；然而直接以 HBF 取代 HBM 會因其較長的尾端延遲使 GPU 排程器飢餓。為解決此問題，研究團隊提出異質記憶體架構 (HMA)，透過預測式遷移策略將高延遲的 HBF 保持在 GPU 關鍵路徑之外。",
-        "impact": "若此技術被採用，將直接降低對HBM的需求。",
-        "rating": "opp",
-        "insight": "HMA 架構可能削減 HBM 需求，提升 HBF 市場機會。",
-        "source_label": "Semiconductor",
-        "source": "https://semiengineering.com/hybrid-hbm-hbf-architecture-in-llm-inference-university-of-oxford/",
-        "chain": [
-          {
-            "label": "NVIDIA GPU 排程效率↑",
-            "type": "up"
-          },
-          {
-            "label": "Oxford HMA 架構採用率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Anthropic 於 2026 年 8 月底封鎖被盜用的 Claude 帳號",
-        "layer": "sublayer",
-        "body": "Anthropic 在 2026‑08‑31 發現有駭客利用 infostealer 惡意程式竊取使用者的 Claude 登入資訊與會話 Cookie，並已將至少一名受影響使用者登出帳號，同時刪除其已儲存的付款方式以阻止未授權的 AI 代幣消耗。",
-        "impact": "此舉直接降低惡意使用者對Anthropic付費算力的需求，暫緩相關雲端運算資源使用率。",
-        "rating": "core",
-        "insight": "投資者應關注 Anthropic 加強帳號安全的舉措，因其可減少未授權算力消耗並提升付費用戶留存。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/security/2026/08/31/anthropic-cracks-down-on-hijacked-user-accounts-mining-ai-tokens/5293461",
-        "chain": [
-          {
-            "label": "Anthropic Claude 帳號安全措施↑",
-            "type": "up"
-          },
-          {
-            "label": "用戶信任度↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Apple 提交「驚人證據」指控前員工向 OpenAI 竊取機密電路設計",
-        "layer": "sublayer",
-        "body": "Apple 在 2026‑08‑31 向法院提交證據，指出前員工 Chang Liu 在 2026 年 8 月初交還其舊有 Apple 工作筆記本後，該筆記本被發現含有機密電路設計檔案，且 Liu 已於同月加入 OpenAI。",
-        "impact": "此案使Apple供應鏈中負責高階晶片設計的子公司面臨知識產權外洩風險。",
-        "rating": "core",
-        "insight": "投資者需留意 Apple 在知識產權保護上的強硬立場，因其可能影響與 AI 供應商的合作格局。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/08/31/apple-shares-shocking-evidence-against-former-employee-accused-of-stealing-company-data-for-openai/",
-        "chain": [
-          {
-            "label": "Apple 機密電路設計保護↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI 招募風險↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Fambot 推出家庭 AI 首席幕僚服務",
-        "layer": "AI 服務",
-        "body": "Fambot 於 2026 年 9 月 1 日正式上線「AI 首席幕僚」產品，由前 Instagram 工程師 Greg Karlin 擔任 CTO、David Reich 擔任 CEO，旨在協助家長管理子女行程、學校活動與家庭事務。",
-        "impact": "此服務將提升對雲端運算平台之計算資源需求。",
-        "rating": "core",
-        "insight": "AI 助手進入家庭市場將驅動雲端與 GPU 供應鏈需求上升，相關供應商受惠。",
-        "source_label": "The Register",
-        "source": "https://techcrunch.com/2026/09/01/fambot-introduces-an-ai-chief-of-staff-for-families/",
-        "chain": [
-          {
-            "label": "Fambot AI 首席幕僚 付費用戶↑",
-            "type": "up"
-          },
-          {
-            "label": "家庭 AI 服務市場佔有率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "高頻寬快閃記憶體",
-        "full": "High-Bandwidth Flash (HBF)",
-        "def": "相較於傳統高頻寬記憶體 (HBM)，HBF 以快閃技術提供更高的容量密度，單堆疊容量可達 HBM 的 16 倍，同時維持相近的頻寬表現。",
-        "why": "在 AI 推論系統中，容量瓶頸是限制模型規模的關鍵因素，HBF 的高容量特性可緩解此問題。",
-        "category": "hardware"
-      },
-      {
-        "term": "infostealer malware",
-        "full": "資訊竊取惡意程式",
-        "def": "一種惡意軟體，專門竊取使用者的登入資訊、瀏覽器 Cookie 與其他認證資料，以便在受害者帳號上執行未授權操作。",
-        "why": "此類惡意程式直接威脅 AI 服務平台的付費使用模型，影響平台收入與資安防護成本。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Claude",
-        "full": "Anthropic 的大型語言模型",
-        "def": "Anthropic 所開發的對話式 AI 模型，提供付費 API 服務，常被企業用於客服、內容生成等應用。",
-        "why": "Claude 的使用量直接關聯到雲端算力需求與相關硬體供應鏈的負載。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI token",
-        "full": "人工智慧計算代幣",
-        "def": "用於計量與結算 AI 服務使用量的虛擬代幣，使用者購買後可在平台上消耗算力。",
-        "why": "代幣被盜用會造成平台收入流失，進而影響上游算力供應商的訂單量。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI 首席幕僚",
-        "full": "Artificial Intelligence Chief of Staff",
-        "def": "一種以 AI 代理人形式提供家庭日常事務管理、行程協調與資訊整合的服務，類似企業內部的 AI 助手，但針對家長與子女需求設計。",
-        "why": "隨著家庭事務數位化，AI 助手可降低家長的認知負荷，提升服務平台的使用黏著度與付費轉化率。",
         "category": "ai_technique"
       }
     ],
