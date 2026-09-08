@@ -184,6 +184,21 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .nv-event-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px;line-height:1.5;}
 .nv-event-summary{font-size:12px;color:var(--text2);line-height:1.62;margin-bottom:6px;}
 .nv-event-note{font-size:10.5px;color:var(--ethic);line-height:1.6;margin-top:4px;}
+/* 09-08新增：段落索引（頁面頂部）＋事件分類tag篩選＋同故事線時間軸卡 */
+.nv-toc{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:14px;padding:9px 13px;background:var(--card2);border-radius:8px;font-size:11.5px;color:var(--muted);}
+.nv-toc a{color:var(--nv);cursor:pointer;font-weight:600;}
+.nv-toc a:hover{text-decoration:underline;}
+.nv-event-nav{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;}
+.nv-event-nav-btn{padding:5px 13px;border-radius:16px;border:1px solid var(--border);background:var(--card);color:var(--muted);font-size:12px;font-weight:600;cursor:pointer;}
+.nv-event-nav-btn.active{border-color:var(--nv);background:rgba(106,138,32,.12);color:var(--nv);}
+.nv-event-thread-card{padding:13px 15px 6px;}
+.nv-event-thread-header{display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;}
+.nv-event-thread-title{font-size:13px;font-weight:700;color:var(--text);}
+.nv-event-thread-range{font-size:10.5px;color:var(--muted2);margin-top:2px;}
+.nv-event-thread-timeline{border-left:2px solid var(--border);margin-left:4px;}
+.nv-event-thread-item{position:relative;padding:0 0 14px 18px;}
+.nv-event-thread-item:last-child{padding-bottom:2px;}
+.nv-event-thread-dot{position:absolute;left:-6px;top:3px;width:10px;height:10px;border-radius:50%;background:var(--nv);border:2px solid var(--card);}
 
 /* ── 產業導入專區（09-03新增；資料存data/industry_adoption.json，多產業結構，
    目前只有醫療產業一筆；卡片重用.nv-case-card/.nv-case-grid，region卡片另開
@@ -820,17 +835,86 @@ function nvCaseCard(item, statusCls, statusText){
 // 09-08新增：近期事件卡片，跟nvCaseCard的「案例/路線圖」性質不同，這裡是
 // 有明確日期的具體新聞事件；src_note用來標註「僅媒體報導、查無官方原文」
 // 這類查證等級落差，不能省略或包裝成官方立場，比照產業導入分頁已確立的規範。
-function nvEventCard(ev){
-  return `<div class="nv-event-card">
-    <div class="nv-event-top">
+// nvEventBody()是單則事件的內容（不含外層卡片框），獨立事件卡跟同故事線
+// 時間軸內的每一則更新都重用同一份內容，避免markup重複兩份要一起維護。
+function nvEventBody(ev){
+  return `<div class="nv-event-top">
       <span class="nv-event-date">🗓 ${ev.date||''}</span>
       ${ev.category ? `<span class="nv-event-cat">${ev.category}</span>` : ''}
     </div>
     <div class="nv-event-title">${ev.title||''}</div>
     <div class="nv-event-summary">${ev.summary||''}</div>
     ${nvSrcLink(ev.src)}
-    ${ev.src_note ? `<div class="nv-event-note">⚠️ ${ev.src_note}</div>` : ''}
+    ${ev.src_note ? `<div class="nv-event-note">⚠️ ${ev.src_note}</div>` : ''}`;
+}
+function nvEventCard(ev){
+  return `<div class="nv-event-card">${nvEventBody(ev)}</div>`;
+}
+// 09-08新增：把屬於同一條故事線（有共同thread欄位）的事件併成一張時間軸卡；
+// 沒有thread欄位的各自獨立成一組，維持原本單張卡片的呈現方式。
+function nvGroupEvents(events){
+  const groups = [];
+  const threadMap = {};
+  events.forEach(ev=>{
+    if(ev.thread){
+      if(!threadMap[ev.thread]){
+        const g = {type:'thread', title:ev.thread, items:[]};
+        threadMap[ev.thread] = g;
+        groups.push(g);
+      }
+      threadMap[ev.thread].items.push(ev);
+    } else {
+      groups.push({type:'single', items:[ev]});
+    }
+  });
+  groups.forEach(g=>g.items.sort((a,b)=>(b.date||'').localeCompare(a.date||'')));
+  groups.sort((a,b)=>(b.items[0].date||'').localeCompare(a.items[0].date||''));
+  return groups;
+}
+function nvEventGroupCard(group){
+  if(group.type==='single') return nvEventCard(group.items[0]);
+  const items = group.items;
+  const dateRange = items.length>1 ? `${items[items.length-1].date} ～ ${items[0].date}` : items[0].date;
+  const timelineHtml = items.map(ev=>`
+    <div class="nv-event-thread-item">
+      <div class="nv-event-thread-dot"></div>
+      <div class="nv-event-thread-body">${nvEventBody(ev)}</div>
+    </div>`).join('');
+  return `<div class="nv-event-card nv-event-thread-card">
+    <div class="nv-event-thread-header">
+      <span>🧵</span>
+      <div>
+        <div class="nv-event-thread-title">${group.title}</div>
+        <div class="nv-event-thread-range">${dateRange}　共${items.length}則更新</div>
+      </div>
+    </div>
+    <div class="nv-event-thread-timeline">${timelineHtml}</div>
   </div>`;
+}
+// 09-08新增：分類tag篩選——點擊分類只重繪#nv-events-body這個容器，不重跑
+// 整個renderNvidia()（避免SVG關係圖/散佈圖等昂貴渲染被無謂重繪）。篩選邏輯
+// 是「這一組（含同故事線的所有更新）只要有任一則符合選取分類就整組顯示」，
+// 避免把一條故事線攔腰截斷成不完整的片段。
+function nvEventFilter(cat){
+  NV_EVENT_CAT = cat;
+  nvRenderEventsBody();
+}
+function nvRenderEventsBody(){
+  const body = document.getElementById('nv-events-body');
+  if(!body || !NV_DATA) return;
+  const events = NV_DATA.recent_events||[];
+  const allCats = [...new Set(events.map(e=>e.category).filter(Boolean))];
+  const groups = nvGroupEvents(events);
+  const filtered = NV_EVENT_CAT==='all' ? groups : groups.filter(g=>g.items.some(e=>e.category===NV_EVENT_CAT));
+  const navHtml = ['all', ...allCats].map(c=>
+    `<button class="nv-event-nav-btn ${NV_EVENT_CAT===c?'active':''}" onclick="nvEventFilter('${c}')">${c==='all'?'全部':c}</button>`
+  ).join('');
+  const cardsHtml = filtered.map(nvEventGroupCard).join('') || '<div class="empty-state">此分類目前沒有事件</div>';
+  body.innerHTML = `<div class="nv-event-nav">${navHtml}</div><div class="nv-event-grid">${cardsHtml}</div>`;
+}
+function nvScrollTo(id){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 // 08-13：生態系權力布局四階段（standard/capital/platform/governance）固定用正方形四角
@@ -961,6 +1045,8 @@ function nvAttachGovernanceTooltips(panel){
   bind('.nv-gov-bubble', scatterTip, scatterDefault);
 }
 
+let NV_DATA = null;
+let NV_EVENT_CAT = 'all';
 async function renderNvidia(){
   const panel = document.getElementById('panel-nv');
   let nv;
@@ -972,6 +1058,10 @@ async function renderNvidia(){
     panel.innerHTML = '<div class="empty-state">⚠️ 無法載入 NVIDIA 專區資料（data/nv_status.json）</div>';
     return;
   }
+  // 09-08：近期事件改分類tag篩選+同故事線併成時間軸卡片，資料存NV_DATA供
+  // nvEventFilter()重新篩選時不必重新fetch；每次整頁重新render時重置回「全部」
+  NV_DATA = nv;
+  NV_EVENT_CAT = 'all';
 
   // 08-11：金字塔改真三角形視覺——用clip-path畫trapezoid色帶疊出三角形（純視覺，
   // 不放文字，因為頂層寬度只有20%塞不下文字會被裁切），文字改放右側legend列表，
@@ -994,10 +1084,6 @@ async function renderNvidia(){
   const pyramidSrcHtml = (nv.pyramid_sources||[]).map(s=>
     `<a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>`
   ).join('、');
-
-  // 09-08新增：近期事件時間軸（出口管制/法律訴訟/財報動態等有明確日期的新聞），
-  // 資料已按日期新到舊排序，這裡不重新排序以維持資料檔的排序即為顯示順序
-  const eventsHtml = (nv.recent_events||[]).map(nvEventCard).join('');
 
   const liveHtml = (nv.cases_live||[]).map(c=>nvCaseCard(c,'live','✅ 已上線／實際部署')).join('');
   const pocHtml = (nv.cases_poc||[]).map(c=>nvCaseCard(c,'poc','🔵 概念驗證／導入進行中')).join('');
@@ -1053,11 +1139,19 @@ async function renderNvidia(){
     </div>`;
 
   panel.innerHTML = `
+    <div class="nv-toc">📑
+      <a onclick="nvScrollTo('nv-sec-events')">近期事件</a>
+      <a onclick="nvScrollTo('nv-sec-chain')">產品應用鏈</a>
+      <a onclick="nvScrollTo('nv-sec-live')">已導入場域</a>
+      <a onclick="nvScrollTo('nv-sec-roadmap')">路線圖</a>
+      <a onclick="nvScrollTo('nv-sec-alliance')">聯盟動態</a>
+      <a onclick="nvScrollTo('nv-sec-gov')">生態治理</a>
+    </div>
     ${pendingHtml}
-    <div class="sec-title">近期事件</div>
-    <div class="nv-event-grid">${eventsHtml}</div>
+    <div class="sec-title" id="nv-sec-events">近期事件</div>
+    <div id="nv-events-body"></div>
 
-    <div class="sec-title">產品應用鏈</div>
+    <div class="sec-title" id="nv-sec-chain">產品應用鏈</div>
     <div class="nv-sub-title">官方技術堆疊</div>
     <div class="nv-pyramid-wrap">
       <div class="nv-pyramid-visual">${bandsHtml}</div>
@@ -1066,25 +1160,26 @@ async function renderNvidia(){
     ${govDiagramsHtml}
     <div style="font-size:11px;color:var(--muted);margin:2px 0 14px;padding-left:2px;">📌 綜合NVIDIA官方GTC 2026 keynote與技術文件整理，非單一官方圖表逐字翻譯${pyramidSrcHtml?`；來源：${pyramidSrcHtml}`:''}</div>
 
-    <div class="sec-title">已導入實際應用場域</div>
+    <div class="sec-title" id="nv-sec-live">已導入實際應用場域</div>
     <div class="nv-sub-title">✅ 已上線／實際部署</div>
     <div class="nv-case-grid">${liveHtml}</div>
     <div class="nv-sub-title">🔵 概念驗證／導入進行中（尚未全面上線）</div>
     <div class="nv-case-grid">${pocHtml}</div>
 
-    <div class="sec-title">進行中／規劃項（產品 Roadmap）</div>
+    <div class="sec-title" id="nv-sec-roadmap">進行中／規劃項（產品 Roadmap）</div>
     <div class="nv-case-grid">${roadmapHtml}</div>
 
-    <div class="sec-title">聯盟發展狀況</div>
+    <div class="sec-title" id="nv-sec-alliance">聯盟發展狀況</div>
     ${allianceOverviewHtml}
     <div class="nv-case-grid">${allianceHtml}</div>
 
-    <div class="sec-title">生態系權力布局／合規治理</div>
+    <div class="sec-title" id="nv-sec-gov">生態系權力布局／合規治理</div>
     <div class="nv-case-grid">${governanceHtml}</div>
 
     <div style="font-size:11px;color:var(--muted);margin:4px 0 4px;padding-left:2px;">📌 每週由排程自動查證是否過時（候選異動需人工複核才會套用），最後查證：${nv.last_checked||'—'}</div>`;
 
   nvAttachGovernanceTooltips(panel);
+  nvRenderEventsBody();
 }
 
 // ══════════════════════════════════════════════════════════════════
