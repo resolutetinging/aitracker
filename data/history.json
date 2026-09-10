@@ -1,5 +1,93 @@
 [
   {
+    "date": "2026-09-11",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "d‑Matrix 加入 Nvidia NVLink Fusion 授權行列",
+        "layer": "AI 基礎建設供應鏈",
+        "body": "2026 年 9 月 10 日，AI 基礎建設新創 d‑Matrix 宣布加入已授權 Nvidia NVLink Fusion 互連技術的公司名單，該名單亦包含 Qualcomm、Arm、Marvell、Amazon 與 MediaTek 等廠商。d‑Matrix 表示將於未來的 Raptor 加速器中整合 NVLink Fusion，以提升其高效能推論平台的晶片間高速連接能力。",
+        "impact": "d‑Matrix 整合 NVLink Fusion，將提升該技術的需求。",
+        "rating": "opp",
+        "insight": "NVLink Fusion 授權擴散將提升高頻寬互連晶片需求，利好相關代工與封測產能。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/09/10/d-matrix-drinks-the-nvidia-kool-aid-with-nvlink-fusion-and-mgx-rack-designs/5295403",
+        "chain": [
+          {
+            "label": "d‑Matrix NVLink Fusion 整合↑",
+            "type": "up"
+          },
+          {
+            "label": "Amazon 高速互連需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Samsung 協助 OpenAI 強化半導體供應鏈",
+        "layer": "core",
+        "body": "Samsung 於 2026 年 9 月 9 日宣布將為 OpenAI 提供包括晶片與記憶體在內的全套半導體供應，涵蓋其最新的 8 nm 先進製程與 HBM2E 記憶體。此舉同時包含 Samsung 在美國與韓國的代工廠，預計在 2026 年底前支援 OpenAI 的 GPT‑6 訓練需求。新聞稿指出，雙方已簽署為期三年的供應合約，金額未公開但預估超過 5 億美元。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Samsung 進入 OpenAI 供應鏈，將提升其在高階 AI 計算市場的營收貢獻。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/09/09/samsung-to-help-fortify-openais-semiconductor-supply-chain/5295374",
+        "chain": [
+          {
+            "label": "Samsung 8nm 晶片供應↑",
+            "type": "up"
+          },
+          {
+            "label": "Samsung HBM2E 記憶體供應↑",
+            "type": "up"
+          },
+          {
+            "label": "OpenAI GPT‑6 訓練成本↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "NVLink Fusion",
+        "full": "Nvidia 高速晶片間互連技術",
+        "def": "NVLink Fusion 是 Nvidia 授權的高速晶片間互連介面，提供比 PCIe 更高的帶寬與更低的延遲，常用於多晶片模組與大型 AI 推論平台。",
+        "why": "掌握此技術的公司可在 AI 基礎建設市場提供更高效能的解決方案，提升競爭力。",
+        "category": "hardware"
+      },
+      {
+        "term": "Raptor 加速器",
+        "full": "d‑Matrix 開發的 AI 推論加速器",
+        "def": "Raptor 是 d‑Matrix 計畫中的新一代 AI 推論加速器，將整合 NVLink Fusion 以提升晶片間資料傳輸效能。",
+        "why": "其採用 NVLink Fusion 代表未來 AI 推論平台將更依賴高速互連技術，影響相關供應鏈需求。",
+        "category": "hardware"
+      },
+      {
+        "term": "HBM2E 記憶體",
+        "full": "High Bandwidth Memory 2E",
+        "def": "HBM2E 是高帶寬記憶體的第二代升級版，提供每秒數百 GB 的資料傳輸速率，常與高效能 GPU 或 AI 加速器搭配使用。",
+        "why": "OpenAI 需求的高帶寬記憶體將推動 HBM2E 產能擴增，影響記憶體供應商的產能配置與價格走勢。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-09-10",
     "is_sunday": false,
     "hw": [
@@ -670,141 +758,6 @@
         "def": "指在半導體製造流程中運用人工智慧、機器學習與預測分析等技術，以提升良率、偵測缺陷、最佳化製程參數並提升設備效率的應用。",
         "why": "AI 製造智慧能降低製程變異、提升產能利用率，對供應鏈上游的設備供應商與下游的晶圓代工廠均有顯著效益。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-09-04",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Nvidia 以 129 億美元收購 Hugging Face 加強 AI 基礎設施供應鏈",
-        "layer": "strategic",
-        "body": "Nvidia 已於 2026 年 9 月 3 日簽署最終協議，以 129 億美元收購 AI 開發平台 Hugging Face，交易預計於 2027 年上半年完成。此收購將使 Nvidia 直接掌握超過 300 萬個模型與 500,000 個資料集的平台，並承諾保持平台開放供整個 AI 生態系使用。",
-        "impact": "平台保持開放，將持續促使下游雲端服務商與 AI 應用開發者採購 Nvidia 加速卡，鞏固其在 AI 基礎設施市場的領導地位。",
-        "rating": "core",
-        "insight": "收購將加速 Nvidia GPU 與記憶體需求，提升相關供應鏈上游產能利用率。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/09/03/nvidia-buys-hugging-face-for-129b-promises-not-to-squeeze-too-hard/5294208",
-        "chain": [
-          {
-            "label": "Nvidia 收購 Hugging Face 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Google Cloud AI 服務需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google 發布 WeatherNext 3 AI 天氣模型",
-        "layer": "CSP/CapEx",
-        "body": "Google DeepMind 與 Google Research 於 2026 年 9 月 3 日推出 WeatherNext 3，該模型在 Operational WeatherBench 基準測試中以溫度、風速、濕度等指標取得最高準確度；Google 高級工程師 Samier Merchant 表示此模型將於同日開始供應至 Google 搜尋、Google 地圖與 Gemini 服務；此外，Google 亦將在其雲平台向研究人員開放此模型的使用權。",
-        "impact": "此模型的高準確度將提升 Google 雲端 AI 服務對氣象資料的需求。",
-        "rating": "core",
-        "insight": "Google 以 WeatherNext 3 強化雲端天氣服務，將驅動 GPU 需求並提升其 AI 生態系統競爭力。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/03/googles-latest-ai-weather-model-gives-you-no-excuse-to-forget-your-umbrella/",
-        "chain": [
-          {
-            "label": "Google WeatherNext 3 模型部署↑",
-            "type": "up"
-          },
-          {
-            "label": "Google 搜尋與地圖流量↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Nvidia 完成 129 億美元收購 Hugging Face",
-        "layer": "CSP/CapEx",
-        "body": "Nvidia 於 2026 年 9 月 3 日宣布以 129.3 億美元收購開源模型平台 Hugging Face，該平台目前托管超過三百萬個模型、百萬級應用與五十萬筆資料集；CEO Jensen Huang 強調收購後 Hugging Face 將持續維持開放平台，並允許開發者選擇任意雲端或推論服務供應商；Nvidia 同時透露已在 Hugging Face 上發布逾 500 個模型與 250 個開源資料集。",
-        "impact": "收購將使 Nvidia 的 GPU 銷售需求上升，因更多開發者將在 Nvidia 硬體上部署大型語言模型。",
-        "rating": "core",
-        "insight": "Nvidia 透過收購 Hugging Face 強化模型生態，將直接推動 GPU 需求並加劇雲端 AI 競爭。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/03/nvidia-confirms-it-will-buy-hugging-face-for-12-9-billion/",
-        "chain": [
-          {
-            "label": "Nvidia Hugging Face 平台開放↑",
-            "type": "up"
-          },
-          {
-            "label": "競爭對手模型供應商 市占↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Hexagon 推出具 AI 輔助測量功能的下一代 OPTIV S 光學坐標測量機",
-        "layer": "real-world AI application advances",
-        "body": "Hexagon Manufacturing Intelligence 於 2026 年 9 月 3 日宣布，其新一代 OPTIV S 光學坐標測量機在機械動態上提升約 30%，測量週期縮短約 15%。此平台搭載更大的視野感測器，並透過 PC‑DMIS 引入 AI Edge Detection、Fast Auto‑Focus 與 AI Illumination，以降低程式編寫工作量。OPTIV S 將於 2026 年 9 月 14 日在 IMTS 與 AMB 展會正式上市，後續配置與 AI 功能將持續至 2027 年推出。",
-        "impact": "上游高解析度視覺感測器與光學鏡頭需求將因機器動態提升而上升，帶動相關零組件產能擴張。下游製造業者使用 OPTIV S 可縮短檢測時間約 15%，提升產線吞吐量，進一步降低製程成本。",
-        "rating": "core",
-        "insight": "Hexagon 的 AI 測量機可提升檢測效率，預期將推動高精度製造供應鏈需求上升。",
-        "source_label": "EuropaWire",
-        "source": "https://news.europawire.eu/hexagon-launches-next-generation-optiv-s-optical-cmm-with-ai-assisted-measurement-capabilities/eu-press-release/2026/09/03/16/24/25/180221/",
-        "chain": [
-          {
-            "label": "Hexagon OPTIV S 測量速度↑",
-            "type": "up"
-          },
-          {
-            "label": "製造業 AI 應用需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Hugging Face",
-        "full": "Hugging Face",
-        "def": "一個提供開放式 AI 模型與資料集的開發平台，類似於 AI 開發者的 GitHub，支援超過三百萬個模型與五十萬個資料集的共享與部署。",
-        "why": "平台的開放性使其成為 AI 生態系統的核心入口，影響硬體需求與供應鏈布局。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "WeatherNext 3",
-        "full": "Google 最新 AI 天氣預測模型",
-        "def": "利用深度學習技術對大氣變化進行高頻率預測的模型，已在 Operational WeatherBench 基準測試中取得最高準確度。",
-        "why": "提升天氣資訊的精確度，可驅動雲端計算資源需求並擴大 AI 服務應用。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Operational WeatherBench",
-        "full": "AI 天氣模型效能比較基準",
-        "def": "由新創公司 Brightband 開發，用於衡量不同 AI 天氣預測模型在溫度、風速、濕度等指標上的表現。",
-        "why": "提供客觀評估標準，協助平台選擇最適模型，影響硬體需求規模。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI Edge Detection",
-        "full": "人工智慧邊緣偵測技術",
-        "def": "利用深度學習模型自動辨識測量對象的邊緣，提高測量精度與速度。",
-        "why": "減少人工設定邊緣參數，提升測量一致性與效率。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "PC‑DMIS",
-        "full": "測量資料資訊系統",
-        "def": "Hexagon 提供的測量軟體平台，支援光學與觸覺坐標測量機的資料管理與分析。",
-        "why": "作為 OPTIV S 的軟體基礎，整合 AI 功能後可簡化程式編寫流程。",
-        "category": "software"
-      },
-      {
-        "term": "OPTIV S",
-        "full": "Hexagon 的光學坐標測量機型號",
-        "def": "新一代光學 CMM，具備更高機械動態、較大視野感測器與 AI 輔助測量功能。",
-        "why": "提升檢測速度與精度，符合高端製造業對測量效率的需求。",
-        "category": "hardware"
       }
     ],
     "weekly_summary": null
