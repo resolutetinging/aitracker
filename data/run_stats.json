@@ -2,6 +2,80 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 53,
+        "CSP/CapEx": 48,
+        "App/AI": 24,
+        "gnews-chip": 24,
+        "gnews-dc": 25,
+        "gnews-app": 20
+      },
+      "digest_filtered": 1,
+      "after_dedup": 170,
+      "buckets": {
+        "hw": 32,
+        "corp": 134,
+        "app": 31
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 1,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "dedup_audit": [
+        {
+          "title": "TSMC 8 月營收激增 53% 顯示 AI 晶圓需求強勁",
+          "section": "hw",
+          "action": "downgraded",
+          "matched_title": null,
+          "reason": "內容僅報告當月營收與產能利用率，屬於既有狀態的描述，未包含新決策或新宣布"
+        }
+      ],
+      "date": "2026-09-12",
+      "generated_at": "2026-09-12T00:03:43.561923+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 55,
         "CSP/CapEx": 46,
         "App/AI": 20,
@@ -841,71 +915,6 @@
       },
       "date": "2026-08-30",
       "generated_at": "2026-08-30T00:03:53.727071+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 61,
-        "CSP/CapEx": 63,
-        "App/AI": 33,
-        "gnews-chip": 21,
-        "gnews-dc": 23,
-        "gnews-app": 21
-      },
-      "digest_filtered": 1,
-      "after_dedup": 196,
-      "buckets": {
-        "hw": 45,
-        "corp": 141,
-        "app": 44
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 2,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "placeholders": 0,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "date": "2026-08-29",
-      "generated_at": "2026-08-29T00:04:55.292948+08:00"
     }
   ]
 }

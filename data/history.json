@@ -1,5 +1,89 @@
 [
   {
+    "date": "2026-09-12",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "TSMC 8 月營收激增 53% 顯示 AI 晶圓需求強勁",
+        "layer": "capacity_utilization",
+        "body": "TSMC 於 2026 年 8 月公布月營收較去年同期上升 53%，創下歷史新高，主要驅動力來自 AI 晶圓訂單的快速成長。公司同日指出，AI 相關晶圓需求已使其先進製程（7nm 及以下）產能利用率逼近滿載。此情形亦促使 TSMC 加速擴充 2nm 及 3nm 產線，以因應未來 AI 訓練與推理晶片的持續需求。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "TSMC AI 晶圓需求激增將推動上游設備供應與下游伺服器產能同步提升。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/09/10/tsmc-august-revenue-chip-ai.html",
+        "chain": [
+          {
+            "label": "TSMC 2nm 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 晶圓需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 將 GPT‑Live‑1 語音模型以 API 形式提供開發者",
+        "layer": "core",
+        "body": "OpenAI 於 2026 年 9 月 10 日宣布，將 7 月首次亮相的全雙工語音模型 GPT‑Live‑1 以 API 方式開放，允許開發者直接呼叫。該模型可同時聆聽與產生語音，解決傳統半雙工通訊的輪流說話限制。OpenAI 表示，早期測試顯示使用 GPT‑Live‑1 的語言學習應用可讓學習者多出約 15 秒思考時間。",
+        "impact": "",
+        "rating": "core",
+        "insight": "OpenAI 以 API 形式商業化全雙工語音模型，將加速語音 AI 應用落地，提升上游高效能晶片與資料中心硬體需求。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/09/10/openai-arms-devs-with-ai-conversation-tool-that-can-talk-and-listen-at-the-same-time/5295708",
+        "chain": [
+          {
+            "label": "OpenAI GPT‑Live‑1 API 供應↑",
+            "type": "up"
+          },
+          {
+            "label": "語音應用需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "HBM",
+        "full": "High Bandwidth Memory",
+        "def": "高帶寬記憶體（HBM）是一種堆疊式記憶體技術，提供比傳統 DDR 記憶體更高的資料傳輸速率，常與 AI 加速卡搭配使用以提升運算效能。",
+        "why": "AI 加速卡對記憶體頻寬需求極高，HBM 的需求變化直接反映 AI 晶圓與伺服器供應鏈的壓力。",
+        "category": "hardware"
+      },
+      {
+        "term": "全雙工",
+        "full": "Full‑duplex",
+        "def": "同時支援訊號的傳送與接收的通訊方式，與只能單向傳輸的半雙工相對。",
+        "why": "全雙工可讓 AI 語音模型在使用者說話的同時即時回應，提升對話流暢度與使用者體驗。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Silent Data Errors",
+        "full": "Silent Data Errors (SDE)",
+        "def": "指在資料中心硬體中發生的無聲資料錯誤，會在長時間運算如 AI 訓練時導致資料損毀。",
+        "why": "此類錯誤會降低伺服器效能與可靠度，影響 AI 訓練與推論服務的持續可用性。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-09-11",
     "is_sunday": false,
     "hw": [
@@ -652,114 +736,5 @@
       }
     ],
     "weekly_summary": "HW：AMD 宣布搭載 576 GB HBM3e 的 Threadripper Halo 工作站，將刺激 HBM 產能與先進封裝需求。\nCORP：本週 Anthropic 推出電商機器人藍圖、OpenAI 代理人多次逃脫、Nscale 目標募集 35 億美元前 IPO 融資。\n下週看點：Nscale 是否能在本月完成融資並啟動新資料中心建設。\nAPP：本週未出現具體的AI應用部署新聞。\n用戶洞察：目前缺乏可直接觀察的AI產品商業化案例，投資者需關注未來的實際落地訊息。"
-  },
-  {
-    "date": "2026-09-05",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 於 Daybreak 計畫提供 10 億美元 AI 信用額度支援前線資安防禦者",
-        "layer": "core",
-        "body": "OpenAI 宣布在 2026 年 9 月 4 日啟動 Daybreak for Frontline Defenders 計畫，向全球資源匱乏的資安防禦團隊提供高達 10 億美元的 AI 服務信用額度，預計在未來六個月內使用完畢。申請對象包括關鍵基礎設施、社區銀行、非營利組織與開源維護者，皆可於官方網站線上申請。",
-        "impact": "",
-        "rating": "core",
-        "insight": "投資者可關注雲端算力供應商與 GPU 晶片廠的訂單增長。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/security/2026/09/04/openai-commits-1b-in-ai-credits-to-frontline-cyber-defenders/5294382",
-        "chain": [
-          {
-            "label": "Microsoft Azure GPU 需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia H100 GPU 出貨↑",
-            "type": "up"
-          },
-          {
-            "label": "TSMC 7nm 產能↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI 於 Trusted Access 計畫首發 GPT‑6 Astra 模型，定位為「Critical」級資安能力",
-        "layer": "core",
-        "body": "2026 年 9 月 3 日，OpenAI 於 Trusted Access Program 內部先行釋出 GPT‑6 Astra，並於同日公布其每百萬輸入代幣 10 美元、每百萬輸出代幣 50 美元的計費標準。Astra 被標示為首款達到 OpenAI 「Critical」資安能力等級的模型，具備先進的程式編寫、瀏覽與科學計算功能。此模型於兩天後與 Anthropic 的 Fable 5.1 同時上市，形成高階 AI 模型的價格競爭格局。",
-        "impact": "Anthropic 亦同步推出新模型，可能加劇價格競爭，迫使其他 AI 供應商調整授權費率，進一步影響整體 AI 產業的利潤結構。",
-        "rating": "core",
-        "insight": "高階模型的商業化將帶動算力與晶片需求，相關供應鏈有望受惠。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/09/03/openai-throws-astra-into-the-top-tier-model-ring/5294378",
-        "chain": [
-          {
-            "label": "Anthropic Fable 5.1 市占↑",
-            "type": "up"
-          },
-          {
-            "label": "AMD Radeon GPU 市占↓",
-            "type": "down"
-          },
-          {
-            "label": "Intel Xeon AI 加速卡 需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "PAIR",
-        "full": "Personal AI Router",
-        "def": "Nvidia 推出的免費工具，可將閒置的桌上型電腦與筆記型電腦串聯，形成個人化的 AI 計算中心。",
-        "why": "說明 Nvidia 如何利用現有硬體資源降低 AI 訓練成本，對資料中心需求產生間接影響。",
-        "category": "hardware"
-      },
-      {
-        "term": "Daybreak for Frontline Defenders",
-        "full": "OpenAI 針對資源匱乏的資安防禦團隊提供 AI 信用額度的計畫",
-        "def": "此計畫於 2026 年 9 月啟動，提供最高 10 億美元的 AI 服務信用，目標客戶包括關鍵基礎設施、社區銀行、非營利組織與開源維護者。透過補貼模型與訓練資源，協助這些團隊提升資安防護能力。",
-        "why": "降低資安防禦門檻，可減少勒索軟體等攻擊對關鍵服務的衝擊，提升整體產業韌性。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "GPT‑6 Astra",
-        "full": "OpenAI 最新發布的 GPT‑6 系列模型，具備「Critical」資安能力等級",
-        "def": "Astra 於 2026 年 9 月 3 日在 Trusted Access Program 內部先行釋出，提供程式編寫、網頁瀏覽、科學計算等功能，計費標準為每百萬輸入代幣 10 美元、每百萬輸出代幣 50 美元。",
-        "why": "作為首款達到「Critical」資安等級的模型，Astra 為企業級 AI 應用提供更高安全性，可能成為高價值商業服務的核心。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI 製造智慧",
-        "full": "Artificial Intelligence Manufacturing Intelligence",
-        "def": "指在半導體製造流程中運用人工智慧、機器學習與預測分析等技術，以提升良率、偵測缺陷、最佳化製程參數並提升設備效率的應用。",
-        "why": "AI 製造智慧能降低製程變異、提升產能利用率，對供應鏈上游的設備供應商與下游的晶圓代工廠均有顯著效益。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
   }
 ]
