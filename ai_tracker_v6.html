@@ -411,10 +411,10 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 <div id="auto-upload-toast"></div>
 
 <header>
-  <div class="header-title">📡 AI 產業動態 <em>每日追蹤</em></div>
+  <div class="header-title">📡 AI 產業動態</div>
   <div class="header-right">
     <div class="date-badge" id="today-label">🗓 載入中...</div>
-    <div class="freq-badge" title="一般資料每日更新；NVIDIA週查證每週一00:00；產業導入分頁每月2號00:00">🕐 每日更新</div>
+    <div class="freq-badge" id="freq-badge">🕐 每日更新</div>
     <div class="update-badge" id="auto-badge" style="display:none">⚡ 自動更新</div>
     <button class="manual-btn" onclick="openModal()">手動匯入</button>
   </div>
@@ -2683,6 +2683,19 @@ function sw(tab) {
   document.getElementById('panel-'+tab).classList.add('active');
   document.getElementById('btn-'+tab).classList.add(TCLS[tab]);
   sessionStorage.setItem('at_tab', tab);
+  const freqBadge = document.getElementById('freq-badge');
+  if (freqBadge) {
+    if (tab === 'nv') {
+      freqBadge.textContent = '🕐 每週一 00:00 更新';
+      freqBadge.title = 'NVIDIA週查證每週一00:00更新';
+    } else if (tab === 'industry') {
+      freqBadge.textContent = '🕐 每月2號 00:00 更新';
+      freqBadge.title = '產業導入分頁每月2號00:00更新';
+    } else {
+      freqBadge.textContent = '🕐 每日更新';
+      freqBadge.title = '一般資料每日更新';
+    }
+  }
 }
 
 // ══════════════════════════════════════════════════════════════════
