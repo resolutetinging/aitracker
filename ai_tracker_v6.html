@@ -289,6 +289,15 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .hist-note-area:focus{outline:none;border-color:var(--insight);}
 .hist-note-saved{font-size:11.5px;color:var(--app);margin-top:5px;height:16px;}
 
+/* ── History dedup audit（篩選稽核，低調除錯資訊） ── */
+.hist-audit-section{margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.hist-audit-label{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);font-weight:700;margin-bottom:8px;}
+.hist-audit-item{background:var(--card2);border:1px solid var(--border);border-radius:7px;padding:8px 12px;margin-bottom:6px;font-size:12px;color:var(--muted);line-height:1.5;}
+.hist-audit-item strong{color:var(--text);font-size:12.5px;font-weight:600;margin-left:6px;}
+.hist-audit-action{font-size:10.5px;font-weight:700;letter-spacing:.3px;color:var(--muted);}
+.hist-audit-matched{font-size:11.5px;color:var(--muted);margin-top:2px;}
+.hist-audit-reason{font-size:11.5px;color:var(--muted);margin-top:2px;}
+
 /* ── Taiwan supply chain diagram (HW panel) ── */
 .tw-chain{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:18px;box-shadow:var(--shadow);}
 .tw-chain-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:14px;}
@@ -540,6 +549,7 @@ let EXTRA_GLOSSARY = [];
 //  DATA
 // ══════════════════════════════════════════════════════════════════
 let HISTORY = [];
+let LATEST_RUNS = [];
 
 async function fetchHistory() {
   try {
@@ -1696,6 +1706,19 @@ function renderHistory(hist) {
           oninput="saveNote('${d.date}',this.value)">${savedNote}</textarea>
         <div class="hist-note-saved" id="note-saved-${d.date}"></div>
       </div>`;
+    const runEntry = (LATEST_RUNS||[]).find(r => r.date === d.date);
+    const audit = (runEntry && runEntry.dedup_audit) || [];
+    const auditSection = audit.length ? `
+      <div class="hist-audit-section">
+        <div class="hist-audit-label">🔍 篩選稽核（${audit.length}筆）</div>
+        ${audit.map(a => `
+          <div class="hist-audit-item">
+            <span class="hist-audit-action">${a.action==='removed'?'✂ 移除':'↓ 降級'}</span>
+            <strong>${a.title||''}</strong>
+            ${a.matched_title ? `<div class="hist-audit-matched">比對到：${a.matched_title}</div>` : ''}
+            <div class="hist-audit-reason">${a.reason||'（無理由記錄）'}</div>
+          </div>`).join('')}
+      </div>` : '';
     const coreCount = [...(d.hw||[]),...(d.corp||[]),...(d.app||[])].filter(x=>x.rating==='core').length;
     const coldTag = coreCount < 2 ? '<span style="font-size:10px;color:var(--noise);font-weight:700;padding:1px 7px;border:1px solid rgba(104,100,96,.3);border-radius:8px;letter-spacing:.3px;">冷</span>' : '';
     return `<div class="hist-card ${d.is_sunday?'hist-sunday':''}">
@@ -1711,7 +1734,7 @@ function renderHistory(hist) {
           <span class="hist-toggle" id="ht${i}">▼</span>
         </div>
       </div>
-      <div class="hist-body hidden" id="hb${i}">${noteSection}${ws}${hw}${co}${ap}</div>
+      <div class="hist-body hidden" id="hb${i}">${noteSection}${auditSection}${ws}${hw}${co}${ap}</div>
     </div>`;
   }).join('');
   document.getElementById('panel-hist').innerHTML = `
@@ -2727,11 +2750,11 @@ async function init() {
     document.getElementById('panel-hw').innerHTML = '<div class="empty-state">⚠️ 無法載入資料。請確認 data/history.json 存在於 repo 中。</div>';
     return;
   }
+  let runs = [];
+  try { runs = await fetchRunStats(); } catch (e) {}
+  LATEST_RUNS = runs;
   renderAll(hist);
-  try {
-    const runs = await fetchRunStats();
-    renderFunnelStat(runs, hist[0].date);
-  } catch (e) {}
+  renderFunnelStat(runs, hist[0].date);
   sw(initTab);
   if (initTab === 'archive') loadArchive();
 }

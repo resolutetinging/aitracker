@@ -838,8 +838,9 @@ def dedup_and_freshness_check(data, recent_items):
         "後者才算 stale_background。\n"
         f"目前條目：{json.dumps(current, ensure_ascii=False)}\n"
         f"近三日已報導條目：{json.dumps(recent_items, ensure_ascii=False)}\n"
-        '輸出純JSON（直接從{開始）：{"duplicates":["目前條目中重複的title"],'
-        '"stale_background":["目前條目中屬於背景陳述的core title"]}'
+        '輸出純JSON（直接從{開始）：{"duplicates":[{"title":"目前條目中重複的title",'
+        '"matched_title":"近三日條目中對應到同一事件的那篇title","reason":"一句話說明為何判定同一事件"}],'
+        '"stale_background":[{"title":"目前條目中屬於背景陳述的core title","reason":"一句話說明為何是背景陳述"}]}'
     )
     try:
         resp = client.chat.completions.create(
@@ -856,8 +857,30 @@ def dedup_and_freshness_check(data, recent_items):
             raw = raw.split('\n', 1)[-1].rsplit('```', 1)[0].strip()
         raw = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', ' ', raw)
         result = json.loads(raw)
-        dup_titles = set(result.get('duplicates') or [])
-        stale_titles = set(result.get('stale_background') or [])
+
+        def _normalize_entries(raw_list):
+            """把 LLM 回傳的 duplicates/stale_background 陣列正規化：
+            元素可能是新schema的dict（含title/matched_title/reason），也可能是
+            舊schema的純字串（向下相容）。回傳 {title: {matched_title, reason}}。"""
+            out = {}
+            for entry in (raw_list or []):
+                if isinstance(entry, dict):
+                    title = entry.get('title')
+                    if not title:
+                        continue
+                    out[title] = {
+                        'matched_title': entry.get('matched_title'),
+                        'reason': entry.get('reason') or '(LLM未提供理由)',
+                    }
+                elif isinstance(entry, str):
+                    out[entry] = {'matched_title': None, 'reason': '(LLM未提供理由)'}
+            return out
+
+        dup_info = _normalize_entries(result.get('duplicates'))
+        stale_info = _normalize_entries(result.get('stale_background'))
+        dup_titles = set(dup_info.keys())
+        stale_titles = set(stale_info.keys())
+        audit = []
 
         removed = 0
         for section in ['hw', 'corp', 'app']:
@@ -868,6 +891,14 @@ def dedup_and_freshness_check(data, recent_items):
                 if not _is_placeholder(item) and item.get('title') in dup_titles:
                     removed += 1
                     print(f"  ✂ 語意重複移除：{item['title'][:60]}")
+                    info = dup_info.get(item['title'], {})
+                    audit.append({
+                        'title': item['title'],
+                        'section': section,
+                        'action': 'removed',
+                        'matched_title': info.get('matched_title'),
+                        'reason': info.get('reason'),
+                    })
                     continue
                 kept.append(item)
             if not kept and data.get(section):
@@ -882,6 +913,16 @@ def dedup_and_freshness_check(data, recent_items):
                     item['rating'] = 'opp'
                     downgraded += 1
                     print(f"  ↓ 背景陳述降評→opp：{item['title'][:60]}")
+                    info = stale_info.get(item['title'], {})
+                    audit.append({
+                        'title': item['title'],
+                        'section': section,
+                        'action': 'downgraded',
+                        'matched_title': info.get('matched_title'),
+                        'reason': info.get('reason'),
+                    })
+
+        RUN_STATS['dedup_audit'] = audit
 
         if not removed and not downgraded:
             print("  → 語意去重/新鮮度檢核通過")
