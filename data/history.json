@@ -1,5 +1,79 @@
 [
   {
+    "date": "2026-09-14",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "Anthropic 警告其 Claude 模型被用於自動化網路攻擊與生化武器研發",
+        "layer": "AI安全",
+        "body": "Anthropic 在 9 月 10 日的報告指出，俄羅斯自由職業者與 ShinyHunters 等黑客組織已利用 Claude 模型自動化製造自殺式無人機群，並嘗試設計更具傳染性的蚊媒病毒；報告同時提及自 2023 年 11 月以來，中國間諜已使用同一模型入侵多家關鍵機構並竊取敏感資料。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "AI 安全風險升高將推動雲端與晶片供應鏈加速安全化投資。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/09/10/latest-anthropic-horror-story-chills-with-tales-of-kamikaze-drone-swarms-and-bioweapons-research/5295702"
+      },
+      {
+        "title": "OpenAI CEO Altman 表示 2026 年不會 IPO，將待安全議題穩定後再行上市",
+        "layer": "資本市場",
+        "body": "OpenAI 在 9 月 12 日接受 Fortune 編輯 Alyson Shontell 採訪時透露，儘管已提交保密 IPO 申請，但因近期 OpenAI‑HuggingFace 資安事件與 AI 安全爭議，CEO Sam Altman 明確表示今年不會上市，預計在 2027 年或更晚時機才會考慮公開發行。",
+        "impact": "",
+        "rating": "core",
+        "insight": "OpenAI 延遲上市將加速其對硬體資源的直接投入，提升供應鏈上游需求。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/12/openais-sam-altman-says-it-would-be-ill-advised-to-go-public-in-2026/"
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Claude",
+        "full": "Anthropic 開發的大型語言模型",
+        "def": "Claude 是 Anthropic 於 2023 年推出的對話式 AI 模型，設計上強調安全與可控性，廣泛用於文本生成與程式碼輔助。",
+        "why": "本次被黑客濫用顯示大型語言模型在惡意應用上的風險，影響整體 AI 供應鏈的安全防護需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "自殺式無人機群",
+        "full": "Kamikaze drone swarms",
+        "def": "由多架小型無人機協同執行自毀式攻擊的系統，通常透過 AI 演算法即時決策路徑與目標。",
+        "why": "此技術的出現將刺激防禦系統與相關感測晶片的需求，牽動半導體供應鏈。",
+        "category": "hardware"
+      },
+      {
+        "term": "Fabships",
+        "full": "Fabships",
+        "def": "指利用太空真空環境進行化合物半導體基板製造的初創公司，已完成首次SpaceX飛行並回收晶圓樣本。",
+        "why": "太空真空可降低雜質，提高高階晶片良率，對先進半導體供應鏈具潛在突破性影響。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-09-13",
     "is_sunday": true,
     "hw": [
@@ -621,138 +695,6 @@
         "def": "印度政府於2024年推出的醫療AI治理框架，旨在規範AI模型的安全性、透明度與倫理使用，並提供標準化測試流程。",
         "why": "框架將促進醫療AI產品的合規驗證，提升供應鏈中驗證服務與合規工具的需求。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-09-07",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "西雅圖時報與 Newsday 起訴 OpenAI 與 Microsoft",
-        "layer": "legal",
-        "body": "2026 年 9 月 5 日，西雅圖時報與 Newsday 向美國加州法院提起訴訟，指控 OpenAI 與其投資者 Microsoft 未經授權使用其新聞內容訓練生成式 AI，並稱此舉可能「破壞」新聞產業。訴狀中引用 2023 年《紐約時報》對 OpenAI 的相同指控，顯示此類訴訟已形成連鎖效應。法院文件顯示原告要求撤銷相關 AI 服務並賠償未披露的版權損失。",
-        "impact": "",
-        "rating": "core",
-        "insight": "訴訟將推動大型 AI 企業加速建置合規資料管道，提升內容授權與合規服務需求。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/05/seattle-times-and-newsday-are-the-latest-publications-to-sue-openai-and-microsoft/",
-        "chain": [
-          {
-            "label": "Microsoft AI 服務需求↓",
-            "type": "down"
-          },
-          {
-            "label": "OpenAI 訴訟成本↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Google Gemini 失誤導致加州山上徒步者被救",
-        "layer": "product",
-        "body": "2026 年 9 月 4 日，三名年輕徒步者在加州 Mount Shasta 使用 Google Gemini 計畫行程，結果因 Gemini 建議攜帶的食物與水量不足，導致他們於傍晚 7 時登頂後在夜間迷路，最終於次日清晨被美國森林服務局救援。當地警長辦公室指出，Gemini 建議的補給量比實際需求少約 40%。此事件由《芝加哥論壇報》報導，並引發對 AI 旅遊規劃工具安全性的討論。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "Google 需加強 Gemini 的安全驗證功能，相關 GIS 與定位硬體供應鏈將受益。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/05/hikers-rescued-after-using-google-gemini-for-planning/",
-        "chain": [
-          {
-            "label": "Google Gemini 使用者信任↓",
-            "type": "down"
-          },
-          {
-            "label": "AI 旅遊規劃工具安全性檢討↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "富士康因 AI 伺服器需求提升第三季營收預期",
-        "layer": "AI 伺服器需求",
-        "body": "富士康於 2026 年 9 月 6 日宣布，受人工智慧基礎設施需求激增，預計第三季營收將超過市場預期。公司指出 AI 伺服器與網路設備訂單持續成長，且資訊與通訊科技產品已進入下半年季節性高峰。富士康同時表示，對第三季的可見度較上月改善，預計營運動能將逐步提升。",
-        "impact": "",
-        "rating": "core",
-        "insight": "AI 伺服器需求成長將直接帶動晶圓與記憶體供應鏈上游產能擴張。",
-        "source_label": "Tekedia",
-        "source": "https://www.tekedia.com/foxconn-raises-third-quarter-outlook-as-ai-server-demand-drives-record-revenue/",
-        "chain": [
-          {
-            "label": "富士康 AI 伺服器訂單↑",
-            "type": "up"
-          },
-          {
-            "label": "富士康 第三季營收預期↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "OSAT",
-        "full": "外包半導體組裝與測試",
-        "def": "提供晶圓封裝、測試與組裝服務的公司，為晶片製造後段的重要環節。",
-        "why": "AI 晶片的高階封裝需求增加，使 OSAT 廠商的產能利用率上升。",
-        "category": "hardware"
-      },
-      {
-        "term": "HBM",
-        "full": "高帶寬記憶體",
-        "def": "一種堆疊式記憶體技術，提供極高的資料傳輸速率，常用於 AI 加速器。",
-        "why": "AI 訓練與推論對記憶體頻寬需求大幅提升，推動 HBM 產能擴張。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "equity holdings",
-        "full": "股權持有",
-        "def": "公司持有其他企業的股份，以取得財務回報或策略性影響力。",
-        "why": "Nvidia 以 990 億美元的股權布局，能直接影響 AI 產業供應鏈的資金流向與技術整合。",
-        "category": "role"
-      },
-      {
-        "term": "生成式 AI",
-        "full": "Generative AI",
-        "def": "利用深度學習模型自動產生文字、圖像或音訊等內容的人工智慧技術，常以大規模語料庫訓練。",
-        "why": "生成式 AI 正在重塑內容創作與資料處理流程，影響供應鏈上游的算力與資料授權需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI 代理人",
-        "full": "AI Agent",
-        "def": "具備自主決策與執行任務能力的人工智慧程式，能在特定環境中自行學習與行動。",
-        "why": "代理人的不受控行為可能導致安全與合規風險，促使相關安全驗證與監控服務需求上升。",
-        "category": "role"
-      },
-      {
-        "term": "AI 伺服器",
-        "full": "人工智慧伺服器",
-        "def": "專為執行深度學習與機器學習工作負載設計的高效能伺服器，通常搭載多顆 GPU、ASIC 或 FPGA 以提供大量運算資源。",
-        "why": "隨著生成式 AI 與大模型應用普及，AI 伺服器成為資料中心擴充的關鍵設備，直接拉動晶圓、記憶體與高速互連元件需求。",
-        "category": "hardware"
-      },
-      {
-        "term": "季節性高峰期",
-        "full": "資訊與通訊科技產品季節性高峰期",
-        "def": "每年下半年，受學校開學與企業預算執行影響，ICT 產品（如伺服器、網路設備）需求會出現明顯上升。",
-        "why": "高峰期需求提升會加速供應鏈各環節的出貨與產能調度，對上游元件供應商形成短期需求刺激。",
-        "category": "role"
       }
     ],
     "weekly_summary": null

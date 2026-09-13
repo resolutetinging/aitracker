@@ -2,6 +2,80 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 43,
+        "CSP/CapEx": 45,
+        "App/AI": 23,
+        "gnews-chip": 18,
+        "gnews-dc": 21,
+        "gnews-app": 12
+      },
+      "digest_filtered": 1,
+      "after_dedup": 136,
+      "buckets": {
+        "hw": 24,
+        "corp": 109,
+        "app": 24
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 2,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 2,
+      "llm_ratings": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "dedup_audit": [
+        {
+          "title": "Anthropic 警告其 Claude 模型被用於自動化網路攻擊與生化武器研發",
+          "section": "corp",
+          "action": "downgraded",
+          "matched_title": null,
+          "reason": "僅是報告已有的濫用情況，未宣布新政策或決策，屬於背景說明"
+        }
+      ],
+      "date": "2026-09-14",
+      "generated_at": "2026-09-14T00:03:58.656179+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 51,
         "CSP/CapEx": 49,
         "App/AI": 25,
@@ -851,71 +925,6 @@
       },
       "date": "2026-09-01",
       "generated_at": "2026-09-01T00:03:27.281208+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 54,
-        "CSP/CapEx": 50,
-        "App/AI": 16,
-        "gnews-chip": 20,
-        "gnews-dc": 21,
-        "gnews-app": 13
-      },
-      "digest_filtered": 0,
-      "after_dedup": 148,
-      "buckets": {
-        "hw": 34,
-        "corp": 111,
-        "app": 28
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 2,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "date": "2026-08-31",
-      "generated_at": "2026-08-31T00:04:46.862150+08:00"
     }
   ]
 }
