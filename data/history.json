@@ -1,5 +1,129 @@
 [
   {
+    "date": "2026-09-15",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "莫基相位僅掩模提升 TSMC EUV 成像效能",
+        "layer": "advanced_packaging",
+        "body": "國立陽明交通大學與台積電共同發表的研究指出，採用鉬基 (Mo) 準相位僅掩模 (quasi‑POM) 可提升影像對比度最高 35%，焦點窗口寬度提升 5 倍，且峰值遠心誤差降低 92%。此技術在 0.33 數值孔徑 (NA) EUV 系統下可實現 12.5 nm 半節距解析度。研究於 2026 年 8 月發表於《Optics Express》期刊第 34 期，作者包括 Po‑Hsun Fang 等人。",
+        "impact": "直接提升台積電 EUV 成像良率，預期降低晶圓缺陷率，提升晶圓產能利用率 (↑)。使供應鏈上游的光罩製造商（如能製作高反射鉬基光罩的廠商）需求增加，帶動其產能擴張 (↑)。",
+        "rating": "opp",
+        "insight": "莫基相位僅掩模將提升台積電先進製程良率，帶動光罩與 EUV 設備供應鏈需求上升。",
+        "source_label": "Semiconductor Engineer",
+        "source": "https://semiengineering.com/molybdenum-quasi-phase-only-masks-improve-euv-imaging-nycu-tsmc/",
+        "chain": [
+          {
+            "label": "TSMC EUV 成像效能↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC 高階製程良率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 退出加州理工學院數學活動贊助",
+        "layer": "core",
+        "body": "2026年9月11日，OpenAI 因受到加州理工學院研究人員批評，於同日撤回其對該校舉辦的數學研討會的贊助金，金額未公開。此舉發生於 OpenAI 正在與 25 位菲爾茲獎得主簽署公開信的同時，顯示公司在學術合作上的風險管理升高。撤資行動同時伴隨公司對外聲明，稱將重新檢視與學術機構的合作模式。",
+        "impact": "OpenAI 撤回贊助直接降低了 CalTech 相關數學活動的資金流入 (↓)，迫使該校尋求其他企業或政府資助。",
+        "rating": "core",
+        "insight": "OpenAI 退出學術贊助顯示其在品牌風險管理上將更謹慎，供應鏈上游合作夥伴需調整策略。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/11/openais-feud-with-mathematicians-is-only-escalating/",
+        "chain": [
+          {
+            "label": "OpenAI 加州理工贊助金↓",
+            "type": "down"
+          },
+          {
+            "label": "OpenAI 學術合作風險↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Nscale 任命前 OpenAI 執行長 Fidji Simo 加入董事會",
+        "layer": "core",
+        "body": "2026年9月11日，英國 AI 資料中心新創 Nscale 公布前 OpenAI、Meta 及 Instacart 執行長 Fid​ji Simo 加入其董事會，並預計於 2026 年秋季完成首次公開發行。Simo 曾於 2023 年領導 Instacart 完成 IPO，並在 OpenAI 任職期間負責 AGI 部署。Nscale 創辦人 Josh Payne 稱 Simo 能協助公司在全球規模化 AI 服務時，應對數十億使用者的基礎設施需求。",
+        "impact": "Simo 的加入預期提升 Nscale 在 AI 計算需求上的技術規劃，將直接刺激其在英國及歐洲的資料中心建設需求 (↑)，帶動上游電力供應商與冷卻系統廠商的訂單增長 (↑)。最終，AI 應用企業將受益於更具彈性的算力供應，提升下游 SaaS 服務的可用性與成本效益。",
+        "rating": "opp",
+        "insight": "前 OpenAI 高層加入 Nscale，將加速其成為主流 AI 計算平台，提升相關硬體供應鏈需求。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/11/nscale-adds-former-openai-exec-fidji-simo-to-its-board-ahead-of-potential-ipo/",
+        "chain": [
+          {
+            "label": "Nscale 董事會加入 Fidji Simo↑",
+            "type": "up"
+          },
+          {
+            "label": "Nscale IPO 前景↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Microsoft 發布 37 頁《人本 AI 行為準則》",
+        "layer": "core",
+        "body": "2026年9月14日，Microsoft 公布一份長達 37 頁的《人本 AI 行為準則》，旨在回應近期 AI 安全疑慮，文件中明確列出員工與合作夥伴在開發與部署 AI 系統時的倫理與安全要求。此舉由 Microsoft 高階副總裁 Tom Warren 於 The Verge 報導中說明，並強調公司將以此指導未來所有 AI 產品的設計與測試流程。該準則同時要求供應鏈合作夥伴提供相應的風險評估與合規證明。",
+        "impact": "Microsoft 的新準則直接要求其雲端服務 Azure 的硬體供應商（如 NVIDIA、AMD）提供符合安全標準的 GPU 與加速卡，提升上游晶片製造商的合規測試需求 (↑)。合規要求亦迫使下游軟體開發商在模型訓練與部署階段加入更多安全檢查，增加對安全工具與驗證平台的需求，利好供應鏈中的安全軟體公司 (↑)。",
+        "rating": "core",
+        "insight": "Microsoft 的行為準則將推動整個 AI 硬體與軟體供應鏈提升安全合規標準。",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/news/994566/microsoft-humanist-ai-code-of-conduct",
+        "chain": [
+          {
+            "label": "Microsoft AI 行為準則↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft 合作夥伴合規要求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "quasi phase‑only mask",
+        "full": "準相位僅掩模",
+        "def": "一種利用高反射金屬（如鉬）製作的光罩，透過相位控制提升 EUV 成像對比度與焦點寬度，同時降低遠心誤差。",
+        "why": "此技術可顯著改善 EUV 光刻的圖形品質，對先進製程的良率與成本具有關鍵影響。",
+        "category": "hardware"
+      },
+      {
+        "term": "人本 AI 行為準則",
+        "full": "Humanist AI Code of Conduct",
+        "def": "Microsoft 為回應 AI 安全疑慮而制定的 37 頁文件，規範開發、部署與供應鏈合作夥伴在 AI 系統中的倫理與安全要求。",
+        "why": "此準則將成為大型平台公司制定 AI 安全政策的參考範本，影響上下游硬體與軟體供應鏈的合規需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AGI 部署",
+        "full": "Artificial General Intelligence Deployment",
+        "def": "指在 OpenAI 內部負責將通用人工智慧模型實際應用於產品與服務的職務，涵蓋算力規劃、系統整合與安全測試。",
+        "why": "掌握 AGI 部署的高層人員具備關鍵技術與市場洞見，其流動會影響相關資料中心與算力供應鏈的策略布局。",
+        "category": "role"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-09-14",
     "is_sunday": false,
     "hw": [
@@ -590,111 +714,6 @@
         "def": "將建築部件在工廠預製後運至現場組裝的建築方式，可縮短工期並降低成本。",
         "why": "此概念在建築供應鏈中改變了材料與工序的物流需求。",
         "category": "hardware"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-09-08",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "台灣檢方起訴九人涉 Nvidia B300 AI GPU 違規出口",
-        "layer": "export_control",
-        "body": "台灣檢方於 2026 年 9 月 5 日起訴九名涉案人員，指控他們非法將 130 台 Nvidia B300 AI GPU 系統出口至中國，並利用 Flying Tiger Tech 取得合格買家資格。調查發現，這些系統聲稱在台灣本地安裝，實際卻缺乏足夠的機櫃、電力與網路帶寬以支撐全部設備。此案突顯 AI 晶片出口管制在供應鏈末端的執行漏洞。",
-        "impact": "",
-        "rating": "core",
-        "insight": "投資者應留意台灣加強出口管制後，AI GPU 供應鏈的交付時程與合規成本變化。",
-        "source_label": "VarIndia",
-        "source": "https://varindia.com/news/nvidia-b300-smuggling-scandal-taiwan-cracks-down",
-        "chain": [
-          {
-            "label": "Nvidia B300 AI GPU 出口限制↓",
-            "type": "down"
-          },
-          {
-            "label": "Flying Tiger Tech 合規風險↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Anthropic 1.5 億美元版權和解金額引發作者索賠爭議",
-        "layer": "CSP/CapEx",
-        "body": "Anthropic 於去年完成 15 億美元版權和解，根據和解條款每被盜用作品將支付 3,000 美元，涉及約 500,000 本書；近期有作者收到電子郵件稱第三方正為其應得款項提出索取，顯示和解金流分配仍在調整中。",
-        "impact": "因版權和解金額提升，AI 訓練平台（如 OpenAI、Anthropic）將因版權成本↑而調整模型訓練預算，可能減少對高效能 GPU 的需求↓。下游的內容創作者與出版商因版權收入分配爭議而面臨現金流不確定性↑，可能加速向自有平台轉移。",
-        "rating": "opp",
-        "insight": "版權和解金額的分配機制將成為 AI 訓練成本的關鍵變數。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/06/authors-push-back-as-publishers-and-agents-seek-share-of-anthropic-settlement/",
-        "chain": [
-          {
-            "label": "Anthropic 版權和解金流分配↑",
-            "type": "up"
-          },
-          {
-            "label": "作者索賠爭議↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "HuggingFace",
-        "full": "HuggingFace",
-        "def": "全球最大的開源機器學習模型與資料集平台，提供模型託管與推理服務。",
-        "why": "其被 Nvidia 收購後，將改變 AI 模型供應鏈的授權與分發結構。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "B300",
-        "full": "Nvidia B300 AI GPU 系統",
-        "def": "Nvidia 針對高效能 AI 推理與訓練設計的伺服器級 GPU，具備多達數百個 Tensor 核心。",
-        "why": "因其高算力被列入出口管制，違規出口案件顯示供應鏈合規風險。",
-        "category": "hardware"
-      },
-      {
-        "term": "AI 代理人",
-        "full": "Artificial Intelligence Agent",
-        "def": "具備自主決策與行動能力的人工智慧程式，可在特定環境中執行任務或互動。",
-        "why": "代理人行為失控可能導致安全與合規風險，影響整體 AI 供應鏈的信任基礎。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "版權和解金額",
-        "full": "Copyright Settlement Amount",
-        "def": "因 AI 訓練使用受版權保護的資料而產生的法律和解金額，通常按每件作品計算。",
-        "why": "和解金額直接影響 AI 企業的成本結構與資料取得策略，進而影響算力需求。",
-        "category": "role"
-      },
-      {
-        "term": "資訊揭露框架",
-        "full": "Disclosure Framework",
-        "def": "企業針對 AI 事故或異常行為所制定的資訊公開標準與流程。",
-        "why": "標準化的揭露框架有助於提升產業透明度，降低供應鏈不確定性。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "SAHI Framework",
-        "full": "SAHI Framework for AI in Healthcare",
-        "def": "印度政府於2024年推出的醫療AI治理框架，旨在規範AI模型的安全性、透明度與倫理使用，並提供標準化測試流程。",
-        "why": "框架將促進醫療AI產品的合規驗證，提升供應鏈中驗證服務與合規工具的需求。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
