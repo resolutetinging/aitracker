@@ -504,6 +504,14 @@ def main():
     update_recent_events(status)
     save_json(NV_STATUS_PATH, status)
 
+    # 09-14發現的regression：update_recent_events()內部的call_groq_events()
+    # 若有候選就會呼叫一次Groq，緊接著下面call_groq_diff()又立刻呼叫一次，
+    # 兩次呼叫的token加總在同一分鐘內超出Groq免費額度6000TPM，導致
+    # call_groq_diff()連縮減3輪都還是失敗——問題出在累積用量，不是它自己的
+    # prompt太大。比照daily pipeline三分類呼叫間隔65秒的作法，固定睡滿一輪
+    # TPM窗口再進行下一次Groq呼叫。
+    time.sleep(65)
+
     print("📰 蒐集 NVIDIA 相關新聞（過去一週）...")
     news = fetch_nvidia_news()
     print(f"  → 共 {len(news)} 則片段")
