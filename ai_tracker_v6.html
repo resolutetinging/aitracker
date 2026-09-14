@@ -199,6 +199,14 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .nv-event-thread-item{position:relative;padding:0 0 14px 18px;}
 .nv-event-thread-item:last-child{padding-bottom:2px;}
 .nv-event-thread-dot{position:absolute;left:-6px;top:3px;width:10px;height:10px;border-radius:50%;background:var(--nv);border:2px solid var(--card);}
+/* 09-14新增：近期事件改成點選才跳出的獨立視圖，仿產業導入分頁的產業子tab
+   點法（.ind-nav/.ind-nav-btn），CSS規則照抄一份、換nv-前綴，不共用class名稱
+   但視覺規則一致；needs_review待確認徽章重用.tab-alert既有的醒目配色語彙 */
+.nv-view-nav{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
+.nv-view-nav-btn{padding:6px 14px;border-radius:16px;border:1px solid var(--border);background:var(--card);color:var(--muted);font-size:12.5px;font-weight:600;cursor:pointer;}
+.nv-view-nav-btn.active{border-color:var(--nv);background:rgba(106,138,32,.10);color:var(--nv);}
+.nv-view-nav-btn.has-review{border-color:var(--ethic);}
+.nv-event-review-badge{display:inline-block;font-size:10px;font-weight:700;color:var(--ethic);background:rgba(200,140,60,.14);border-radius:10px;padding:2px 8px;margin-left:6px;}
 
 /* ── 產業導入專區（09-03新增；資料存data/industry_adoption.json，多產業結構，
    目前只有醫療產業一筆；卡片重用.nv-case-card/.nv-case-grid，region卡片另開
@@ -849,9 +857,12 @@ function nvCaseCard(item, statusCls, statusText){
 // nvEventBody()是單則事件的內容（不含外層卡片框），獨立事件卡跟同故事線
 // 時間軸內的每一則更新都重用同一份內容，避免markup重複兩份要一起維護。
 function nvEventBody(ev){
+  // 09-14新增：needs_review=true代表週更自動分類信心不足，直接顯示待確認徽章
+  // 讓使用者瀏覽頁面時就看到，不需要另外開口問Claude有沒有東西要複核
   return `<div class="nv-event-top">
       <span class="nv-event-date">🗓 ${ev.date||''}</span>
       ${ev.category ? `<span class="nv-event-cat">${ev.category}</span>` : ''}
+      ${ev.needs_review ? `<span class="nv-event-review-badge">⚠️ 待確認</span>` : ''}
     </div>
     <div class="nv-event-title">${ev.title||''}</div>
     <div class="nv-event-summary">${ev.summary||''}</div>
@@ -1058,6 +1069,20 @@ function nvAttachGovernanceTooltips(panel){
 
 let NV_DATA = null;
 let NV_EVENT_CAT = 'all';
+// 09-14新增：近期事件改成點選才跳出的獨立視圖（仿產業導入分頁的產業子tab
+// 點法），預設'overview'（既有金字塔/案例/roadmap等內容），切到'events'時
+// 隱藏overview整塊、只顯示近期事件——用hidden屬性切換可見度，不重新渲染。
+let NV_VIEW = 'overview';
+function nvSwitchView(view){
+  NV_VIEW = view;
+  const ov = document.getElementById('nv-overview-wrap');
+  const ev = document.getElementById('nv-events-wrap');
+  if(ov) ov.hidden = (view !== 'overview');
+  if(ev) ev.hidden = (view !== 'events');
+  document.querySelectorAll('.nv-view-nav-btn').forEach(btn=>{
+    btn.classList.toggle('active', btn.dataset.view===view);
+  });
+}
 async function renderNvidia(){
   const panel = document.getElementById('panel-nv');
   let nv;
@@ -1149,45 +1174,56 @@ async function renderNvidia(){
       </div>
     </div>`;
 
+  // 09-14：近期事件改成點選才跳出的獨立視圖，跟pyramid/case/roadmap等「總覽」
+  // 內容分開；needsReviewCount>0時nav按鈕加醒目標記，不用另外開口提醒使用者
+  const needsReviewCount = (nv.recent_events||[]).filter(e=>e.needs_review).length;
+  NV_VIEW = 'overview';
+
   panel.innerHTML = `
-    <div class="nv-toc">📑
-      <a onclick="nvScrollTo('nv-sec-events')">近期事件</a>
-      <a onclick="nvScrollTo('nv-sec-chain')">產品應用鏈</a>
-      <a onclick="nvScrollTo('nv-sec-live')">已導入場域</a>
-      <a onclick="nvScrollTo('nv-sec-roadmap')">進行中／規劃項</a>
-      <a onclick="nvScrollTo('nv-sec-alliance')">聯盟動態</a>
-      <a onclick="nvScrollTo('nv-sec-gov')">生態治理</a>
+    <div class="nv-view-nav">
+      <button class="nv-view-nav-btn active" data-view="overview" onclick="nvSwitchView('overview')">📊 總覽</button>
+      <button class="nv-view-nav-btn${needsReviewCount>0?' has-review':''}" data-view="events" onclick="nvSwitchView('events')">🗓 近期事件${needsReviewCount>0?`<span class="nv-event-review-badge">${needsReviewCount}則待確認</span>`:''}</button>
     </div>
-    ${pendingHtml}
-    <div class="sec-title" id="nv-sec-events">近期事件</div>
-    <div id="nv-events-body"></div>
+    <div id="nv-overview-wrap">
+      <div class="nv-toc">📑
+        <a onclick="nvScrollTo('nv-sec-chain')">產品應用鏈</a>
+        <a onclick="nvScrollTo('nv-sec-live')">已導入場域</a>
+        <a onclick="nvScrollTo('nv-sec-roadmap')">進行中／規劃項</a>
+        <a onclick="nvScrollTo('nv-sec-alliance')">聯盟動態</a>
+        <a onclick="nvScrollTo('nv-sec-gov')">生態治理</a>
+      </div>
+      ${pendingHtml}
+      <div class="sec-title" id="nv-sec-chain">產品應用鏈</div>
+      <div class="nv-sub-title">官方技術堆疊</div>
+      <div class="nv-pyramid-wrap">
+        <div class="nv-pyramid-visual">${bandsHtml}</div>
+        <div class="nv-pyramid-legend">${legendHtml}</div>
+      </div>
+      ${govDiagramsHtml}
+      <div style="font-size:11px;color:var(--muted);margin:2px 0 14px;padding-left:2px;">📌 綜合NVIDIA官方GTC 2026 keynote與技術文件整理，非單一官方圖表逐字翻譯${pyramidSrcHtml?`；來源：${pyramidSrcHtml}`:''}</div>
 
-    <div class="sec-title" id="nv-sec-chain">產品應用鏈</div>
-    <div class="nv-sub-title">官方技術堆疊</div>
-    <div class="nv-pyramid-wrap">
-      <div class="nv-pyramid-visual">${bandsHtml}</div>
-      <div class="nv-pyramid-legend">${legendHtml}</div>
+      <div class="sec-title" id="nv-sec-live">已導入實際應用場域</div>
+      <div class="nv-sub-title">✅ 已上線／實際部署</div>
+      <div class="nv-case-grid">${liveHtml}</div>
+      <div class="nv-sub-title">🔵 概念驗證／導入進行中（尚未全面上線）</div>
+      <div class="nv-case-grid">${pocHtml}</div>
+
+      <div class="sec-title" id="nv-sec-roadmap">進行中／規劃項（產品 Roadmap）</div>
+      <div class="nv-case-grid">${roadmapHtml}</div>
+
+      <div class="sec-title" id="nv-sec-alliance">聯盟發展狀況</div>
+      ${allianceOverviewHtml}
+      <div class="nv-case-grid">${allianceHtml}</div>
+
+      <div class="sec-title" id="nv-sec-gov">生態系權力布局／合規治理</div>
+      <div class="nv-case-grid">${governanceHtml}</div>
+
+      <div style="font-size:11px;color:var(--muted);margin:4px 0 4px;padding-left:2px;">📌 每週由排程自動查證是否過時（候選異動需人工複核才會套用），最後查證：${nv.last_checked||'—'}</div>
     </div>
-    ${govDiagramsHtml}
-    <div style="font-size:11px;color:var(--muted);margin:2px 0 14px;padding-left:2px;">📌 綜合NVIDIA官方GTC 2026 keynote與技術文件整理，非單一官方圖表逐字翻譯${pyramidSrcHtml?`；來源：${pyramidSrcHtml}`:''}</div>
-
-    <div class="sec-title" id="nv-sec-live">已導入實際應用場域</div>
-    <div class="nv-sub-title">✅ 已上線／實際部署</div>
-    <div class="nv-case-grid">${liveHtml}</div>
-    <div class="nv-sub-title">🔵 概念驗證／導入進行中（尚未全面上線）</div>
-    <div class="nv-case-grid">${pocHtml}</div>
-
-    <div class="sec-title" id="nv-sec-roadmap">進行中／規劃項（產品 Roadmap）</div>
-    <div class="nv-case-grid">${roadmapHtml}</div>
-
-    <div class="sec-title" id="nv-sec-alliance">聯盟發展狀況</div>
-    ${allianceOverviewHtml}
-    <div class="nv-case-grid">${allianceHtml}</div>
-
-    <div class="sec-title" id="nv-sec-gov">生態系權力布局／合規治理</div>
-    <div class="nv-case-grid">${governanceHtml}</div>
-
-    <div style="font-size:11px;color:var(--muted);margin:4px 0 4px;padding-left:2px;">📌 每週由排程自動查證是否過時（候選異動需人工複核才會套用），最後查證：${nv.last_checked||'—'}</div>`;
+    <div id="nv-events-wrap" hidden>
+      <div class="sec-title">近期事件</div>
+      <div id="nv-events-body"></div>
+    </div>`;
 
   nvAttachGovernanceTooltips(panel);
   nvRenderEventsBody();

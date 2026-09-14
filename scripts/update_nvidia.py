@@ -23,6 +23,15 @@ DATE_STR = NOW.strftime('%Y-%m-%d')
 REPO_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 NV_STATUS_PATH = os.path.join(REPO_DIR, 'data', 'nv_status.json')
 NV_PENDING_PATH = os.path.join(REPO_DIR, 'data', 'nv_pending_review.json')
+HISTORY_PATH = os.path.join(REPO_DIR, 'data', 'history.json')
+
+# 09-14新增：NVIDIA相關daily新聞關鍵字（第一版，不追求完美，使用者原話「先跑
+# 起來觀察效果」）——比對title+body，只要出現任一關鍵字就視為候選。
+NVIDIA_KEYWORD_PAT = re.compile(
+    r'nvidia|輝達|黃仁勳|jensen\s*huang|geforce|cuda\b|cudnn|tensorrt|blackwell|'
+    r'\brubin\b|h100|h200|b200|gb200|nvlink|dgx\b|omniverse',
+    re.IGNORECASE
+)
 
 CATEGORY_LABELS = {
     'pyramid': '技術金字塔',
@@ -72,6 +81,169 @@ def fetch_nvidia_news():
                 else:
                     print(f"  DDG '{label}' failed after 3 attempts: {e}")
     return snippets
+
+
+def collect_nvidia_daily_items(history):
+    """09-14新增「近期事件」週更：跟其餘6大類不同，這裡不對外重新查證（不像
+    fetch_nvidia_news()那樣重新DDG搜尋），改成直接從data/history.json（daily
+    pipeline每天已經call_groq()驗證、分級過的hw/corp/app條目，目前保留近7天）
+    篩出NVIDIA相關候選。輸入源頭已經是每日驗證過的真實新聞，這正是下面
+    merge_recent_events()敢直接寫回nv_status.json（不用像其他6大類一樣進
+    nv_pending_review.json排隊等人工複核）的風險基礎——不是LLM自己上網查、
+    沒有查無實據的幻覺風險，只是把已知真實新聞做分類跟時間線排序。"""
+    items = []
+    seen = set()
+    for day in history:
+        for section in ('hw', 'corp', 'app'):
+            for it in day.get(section, []) or []:
+                src = it.get('source', '')
+                if not src or src in seen:
+                    continue  # 佔位卡(source空字串)或本週已收錄過的同一來源
+                if it.get('rating') == 'noise':
+                    continue
+                text = f"{it.get('title','')} {it.get('body','')}"
+                if NVIDIA_KEYWORD_PAT.search(text):
+                    seen.add(src)
+                    items.append({
+                        'date': day.get('date', ''),
+                        'title': it.get('title', ''),
+                        'body': it.get('body', ''),
+                        'source': src,
+                    })
+    return items
+
+
+def call_groq_events(existing_events, candidates):
+    """把篩出的NVIDIA相關daily新聞候選交給LLM，判斷歸入既有recent_events的
+    thread（同故事線延續）或建立新事件，並給confidence（high/low）。跟
+    call_groq_diff()的差異：這裡的news本身已經是daily pipeline驗證過的真實
+    新聞，不是LLM自己上網查來的，所以不需要「極度保守、沒證據就不提」那套
+    防幻覺邏輯，只需要做分類判斷。"""
+    client = Groq(api_key=os.environ['GROQ_API_KEY'])
+    sys_msg = (
+        "你是AI供應鏈分析師，任務是把已知為真實可信的NVIDIA相關新聞歸類進"
+        "「近期事件」時間軸。只輸出純JSON，不加任何說明文字或markdown。"
+        "全程繁體中文（禁止簡體字、日文、越南文等其他語言字詞混入）。"
+        "這些新聞的真實性不需要質疑，你的任務只有分類與判斷是否延續既有故事線。"
+        "confidence欄位：這則新聞明確屬於某個既有thread的延續、或明顯是獨立且"
+        "值得記錄的重要事件，填'high'；分類、故事線歸屬、或是否值得記錄有疑慮"
+        "時，填'low'（仍要輸出，不要因為不確定就整則捨棄）。"
+        "太瑣碎或明顯重複既有事件內容的新聞，直接不輸出該則即可。"
+    )
+    existing_threads = sorted(set(e.get('thread') for e in existing_events if e.get('thread')))
+
+    def build_prompt(cand_list):
+        cand_text = '\n'.join(
+            f"[{c['date']}] {c['title']} — {c['body'][:200]} | SOURCE:{c['source']}"
+            for c in cand_list
+        )
+        return f"""既有「近期事件」故事線名稱（thread）清單：{json.dumps(existing_threads, ensure_ascii=False)}
+
+以下是本週從每日新聞篩出的NVIDIA相關候選：
+{cand_text}
+
+針對每一則，判斷：
+1. thread：若屬於上面某個既有故事線的延續，填該故事線名稱（一字不差）；
+   若是全新獨立事件，thread留空字串
+2. category：簡短分類詞（例如：財報動態、產品發布、政府調查、合作聯盟、供應鏈）
+3. summary：2-3句話中文摘要，說明具體事實
+4. confidence：'high'或'low'
+
+輸出格式（純JSON）：
+{{"events":[{{"date":"YYYY-MM-DD","title":"...","thread":"","category":"...","summary":"...","confidence":"high|low","source":"..."}}]}}"""
+
+    models = ["openai/gpt-oss-120b", "openai/gpt-oss-20b"]
+    cand_list = list(candidates)
+    response = None
+    for shrink_round in range(3):
+        for model in models:
+            try:
+                response = client.chat.completions.create(
+                    model=model,
+                    reasoning_effort="low",
+                    messages=[{"role": "system", "content": sys_msg},
+                              {"role": "user", "content": build_prompt(cand_list)}],
+                    temperature=0.2,
+                    max_tokens=3000,
+                )
+                break
+            except GroqAPIStatusError as e:
+                if e.status_code == 413:
+                    continue
+                raise
+        if response is not None:
+            break
+        if not cand_list:
+            break
+        cand_list = cand_list[:len(cand_list)//2]
+    if response is None:
+        raise ValueError("call_groq_events: 連續縮減候選新聞後仍超出Groq TPM限制")
+    raw = response.choices[0].message.content.strip()
+    if raw.startswith('```'):
+        raw = raw.split('\n', 1)[-1].rsplit('```', 1)[0].strip()
+    if response.choices[0].finish_reason == 'length':
+        raise ValueError(f"Groq回應被截斷（finish_reason=length，{len(raw)}字元）")
+    raw = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', ' ', raw)
+    return json.loads(raw).get('events', [])
+
+
+def merge_recent_events(status, new_events):
+    """把LLM分類好的近期事件併進nv_status.json的recent_events。**09-14鐵律
+    例外**：跟其餘6大類「絕不直接改寫nv_status.json」不同，這裡高信心與
+    低信心的候選都直接寫入（不進nv_pending_review.json排隊）——因為輸入源頭
+    是daily pipeline已驗證的新聞而非LLM自行查證，風險本質不同，使用者已
+    明確同意。低信心的加needs_review:true讓前端直接顯示「待確認」徽章，
+    不需要另外開口問使用者，使用者瀏覽頁面時就能看到。
+    去重：用source URL比對，避免history.json近7天視窗跨週重疊造成重複收錄。
+    短期不做刪除/歸檔（archive），recent_events持續增長，這是使用者明確決定。
+    回傳新增筆數，供main()印log。"""
+    existing = status.setdefault('recent_events', [])
+    existing_sources = {e.get('source') or e.get('src') for e in existing if e.get('source') or e.get('src')}
+    added = 0
+    for ev in new_events:
+        src = ev.get('source', '')
+        if src and src in existing_sources:
+            continue
+        entry = {
+            'date': ev.get('date', ''),
+            'title': ev.get('title', ''),
+            'category': ev.get('category', ''),
+            'summary': ev.get('summary', ''),
+            'src': src,
+            'src_note': '',
+        }
+        if ev.get('thread'):
+            entry['thread'] = ev['thread']
+        if ev.get('confidence') == 'low':
+            entry['needs_review'] = True
+        existing.append(entry)
+        if src:
+            existing_sources.add(src)
+        added += 1
+    return added
+
+
+def update_recent_events(status):
+    """近期事件週更主流程，main()一開始就呼叫，跟後面6大類查證（DDG搜尋）
+    完全獨立、互不影響——即使DDG被限流或Groq call_groq_diff()失敗，近期事件
+    仍應該正常運作，因為兩者的資料來源、風險模型都不同。"""
+    history = load_json(HISTORY_PATH, [])
+    candidates = collect_nvidia_daily_items(history)
+    print(f"  → 從data/history.json篩出 {len(candidates)} 則NVIDIA相關daily新聞候選")
+    if not candidates:
+        print("  → 本週無NVIDIA相關daily新聞候選，略過近期事件更新")
+        return 0
+    try:
+        new_events = call_groq_events(status.get('recent_events', []), candidates)
+        added = merge_recent_events(status, new_events)
+        print(f"  → 近期事件新增 {added} 則（{sum(1 for e in new_events if e.get('confidence')=='low')} 則待確認）")
+        return added
+    except Exception as e:
+        # 近期事件失敗不可讓整個週查證中止，其餘6大類（DDG搜尋+call_groq_diff）
+        # 要照常執行；也不send_email告知失敗——這是輕量級的分類補充功能，
+        # 不像call_groq_diff()失敗那樣代表整週查證都沒發生
+        print(f"  ⚠ 近期事件分類失敗，本次略過（不影響其餘6大類查證）：{e}")
+        return 0
 
 
 def load_json(path, default):
@@ -327,6 +499,10 @@ def main():
     if status is None:
         print("  ⚠ 找不到 data/nv_status.json，中止")
         return
+
+    print("🗓 近期事件：從daily pipeline近7天資料篩選NVIDIA相關新聞...")
+    update_recent_events(status)
+    save_json(NV_STATUS_PATH, status)
 
     print("📰 蒐集 NVIDIA 相關新聞（過去一週）...")
     news = fetch_nvidia_news()
