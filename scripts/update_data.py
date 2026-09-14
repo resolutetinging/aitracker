@@ -32,6 +32,7 @@ RUN_STATS = {
     'digest_filtered': 0,
     'after_dedup': 0,
     'buckets': {},
+    'news_char_budget': {},
     'enriched': 0,
     'llm_items': {},
     'llm_failed': {},
@@ -609,6 +610,23 @@ CATEGORY_WEEKLY_TEMPLATE = {
     'app':  'APP：[新興AI本週一句摘要]',
 }
 
+BASE_NEWS_CHAR_BUDGET = 3500
+MAX_NEWS_CHAR_BUDGET = 8000
+REFERENCE_BUCKET_SIZE = 30  # hw/app 常態bucket大小
+
+def _category_char_budget(category):
+    """依當日該分類bucket大小動態調整送進LLM的新聞文字上限，取代原本三類
+    統一3500字的寫法。2026-09-14查證：corp類候選常態暴增到94-143條（hw/app
+    穩定22-37條），但enrich_with_full_text把最多12篇全文（每篇最多1100字）
+    優先塞到news_context最前面，corp只要輪到3-4篇全文就已吃光3500字，其餘
+    90幾條候選連LLM都看不到就被截斷丟棄——連續多天冷天的根因在此，跟去重
+    邏輯無關。上限8000字是為了不超出Groq免費額度6000 TPM/分鐘（見main()
+    註解），實際completion很少用滿max_tokens，仍有安全餘裕。"""
+    bucket_sizes = RUN_STATS.get('buckets', {})
+    size = bucket_sizes.get(category, REFERENCE_BUCKET_SIZE)
+    budget = int(BASE_NEWS_CHAR_BUDGET * (size / REFERENCE_BUCKET_SIZE))
+    return max(BASE_NEWS_CHAR_BUDGET, min(MAX_NEWS_CHAR_BUDGET, budget))
+
 def make_prompt(news_context, category, recent_titles=None):
     notes = load_notes() if IS_SUNDAY else {}
     notes_text = "; ".join(f"{d}:{n}" for d, n in sorted(notes.items()) if n.strip()) if notes else ""
@@ -618,7 +636,12 @@ def make_prompt(news_context, category, recent_titles=None):
     weekly_val = f'"{weekly_line}"' if IS_SUNDAY else 'null'
     no_repeat_str = ("NO-REPEAT (STRICT): these topics were covered in recent days — do NOT generate any item about the same story or event even with a different headline; only include if there is a significant new development with wholly new facts not present before: " + "; ".join(recent_titles)) if recent_titles else ""
     notes_ctx = ("User notes context: " + notes_text[:200]) if notes_text else ""
-    news_short = news_context[:3500]
+    char_budget = _category_char_budget(category)
+    news_short = news_context[:char_budget]
+    try:
+        RUN_STATS.setdefault('news_char_budget', {})[category] = char_budget
+    except Exception as e:
+        print(f"  ⚠ 漏斗統計收集失敗（news_char_budget，不影響資料生成）：{e}")
     weekly_rule = (
         'each distinct point must be its own line separated by \\n (one sentence per line, ending with 。); never merge multiple topics into one continuous paragraph'
         if IS_SUNDAY else
