@@ -626,15 +626,18 @@ function fmtDate(s) {
 
 // 句號後換行（。固定斷；英文 . 只在後接大寫字母或中文時斷，避免小數點誤判）
 function fmtBody(text) {
+  // 09-16稽核：item.body是daily pipeline LLM生成內容，未經人工複核，比照
+  // 下方_arcEsc()既有做法escape，防儲存型XSS（_arcEsc定義在本檔後段，
+  // function宣告會被hoist，呼叫順序不受影響）
   const lines = text.split(/(?<=[。])\s*|(?<=\.)\s+(?=[A-Z一-鿿])/);
-  return lines.filter(l=>l.trim()).map(l=>`<p>${l.trim()}</p>`).join('');
+  return lines.filter(l=>l.trim()).map(l=>`<p>${_arcEsc(l.trim())}</p>`).join('');
 }
 
 function chainHtml(chain) {
   return chain.map((c,i) => {
     const cls = c.type==='up'?'cn-up':c.type==='down'?'cn-down':'cn-warn';
     const arr = i < chain.length-1 ? '<span class="chain-arr">→</span>' : '';
-    return `<span class="cn ${cls}">${c.label}</span>${arr}`;
+    return `<span class="cn ${cls}">${_arcEsc(c.label)}</span>${arr}`;
   }).join('');
 }
 
@@ -665,22 +668,24 @@ function newsCard(item, ptype, showInsight) {
   const ratingBadge = rbCfg
     ? `<span class="tag" style="background:${rbCfg.hex}1f;color:${rbCfg.hex};border:1px solid ${rbCfg.hex}4d;">${rbCfg.label}</span>` : '';
   const eth = item.ethic
-    ? `<div class="ethic-alert">⚠️ <strong>Safety Alert</strong>：${item.ethic}</div>` : '';
+    ? `<div class="ethic-alert">⚠️ <strong>Safety Alert</strong>：${_arcEsc(item.ethic)}</div>` : '';
   const validUrl = item.source && /^https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i.test(item.source);
   const src = validUrl
-    ? `<div class="card-source">來源：<a href="${item.source}" target="_blank" rel="noopener">${item.source_label||new URL(item.source).hostname}</a></div>` : '';
+    ? `<div class="card-source">來源：<a href="${_arcEsc(item.source)}" target="_blank" rel="noopener">${_arcEsc(item.source_label||new URL(item.source).hostname)}</a></div>` : '';
   const impactBox = item.impact
     ? `<div class="impact-box"><div class="impact-title">供應鏈影響分析</div>
-       <div style="font-size:12.5px;color:var(--text2);line-height:1.7;">${item.impact}</div></div>`
+       <div style="font-size:12.5px;color:var(--text2);line-height:1.7;">${_arcEsc(item.impact)}</div></div>`
     : (item.chain?.length
         ? `<div class="impact-box"><div class="impact-title">供應鏈影響鏈</div>
            <div class="impact-chain">${chainHtml(item.chain)}</div></div>`
         : '');
   const insightBox = (showInsight && item.insight)
-    ? `<div class="ins-insight" style="margin-bottom:12px;"><div class="ins-insight-label">注意方向</div>${item.insight}</div>`
+    ? `<div class="ins-insight" style="margin-bottom:12px;"><div class="ins-insight-label">注意方向</div>${_arcEsc(item.insight)}</div>`
     : '';
+  // 09-16稽核：title/layer/body/ethic/source/impact/insight皆為daily pipeline
+  // LLM生成內容，未經人工複核，全數比照_arcEsc()escape，防儲存型XSS
   return `<div class="news-card ${ptype}">
-    <div class="card-top"><div class="card-title">${item.title}</div><span class="tag ${tc}">${item.layer}</span>${ratingBadge}</div>
+    <div class="card-top"><div class="card-title">${_arcEsc(item.title)}</div><span class="tag ${tc}">${_arcEsc(item.layer)}</span>${ratingBadge}</div>
     <div class="card-body">${fmtBody(item.body)}</div>${eth}${impactBox}${insightBox}${src}
   </div>`;
 }
@@ -839,15 +844,17 @@ function nvCaseCard(item, statusCls, statusText){
   // 08-13：使用者要求emoji列點項目（📁🕐🧩🎯 + ✅/🔵/⚠️狀態）統一放標題正下方，
   // 原本status/note是放在desc之後（卡片最下段），現在移到標題下方的metadata區塊裡，
   // desc正文改放在metadata區塊之後、來源連結之前
+  // 09-16稽核：roadmap/alliances/governance呼叫本函式時statusText其實是
+  // item.status（LLM生成，非固定字串），跟其餘欄位一併escape防儲存型XSS
   return `<div class="nv-case-card">
-    <div class="nv-case-name">${item.name}</div>
-    ${item.scope ? `<div class="nv-case-scope">📁 ${item.scope}</div>` : ''}
-    ${item.timeline ? `<div class="nv-case-time">🕐 ${item.timeline}</div>` : ''}
-    ${item.role_type ? `<div class="nv-case-scope">🧩 ${item.role_type}</div>` : ''}
-    ${item.focus ? `<div class="nv-case-time">🎯 佈局重點：${item.focus}</div>` : ''}
-    ${statusText ? `<div class="nv-case-status ${statusCls}">${statusText}</div>` : ''}
-    ${item.note ? `<div class="nv-case-status warn">${item.note}</div>` : ''}
-    <div class="nv-case-desc">${item.desc}</div>
+    <div class="nv-case-name">${_arcEsc(item.name)}</div>
+    ${item.scope ? `<div class="nv-case-scope">📁 ${_arcEsc(item.scope)}</div>` : ''}
+    ${item.timeline ? `<div class="nv-case-time">🕐 ${_arcEsc(item.timeline)}</div>` : ''}
+    ${item.role_type ? `<div class="nv-case-scope">🧩 ${_arcEsc(item.role_type)}</div>` : ''}
+    ${item.focus ? `<div class="nv-case-time">🎯 佈局重點：${_arcEsc(item.focus)}</div>` : ''}
+    ${statusText ? `<div class="nv-case-status ${statusCls}">${_arcEsc(statusText)}</div>` : ''}
+    ${item.note ? `<div class="nv-case-status warn">${_arcEsc(item.note)}</div>` : ''}
+    <div class="nv-case-desc">${_arcEsc(item.desc)}</div>
     ${nvSrcLink(item.src)}
   </div>`;
 }
@@ -1250,9 +1257,9 @@ function indRegionCard(item){
   // 這裡另開一個小型卡片；量化占比(pct_or_status)跟質化描述共用同一個欄位顯示，
   // 有些地區只有質化描述沒有具體百分比，欄位裡直接放文字即可，不用另外判斷型別
   return `<div class="ind-region-card">
-    <div class="ind-region-name">${item.region||''}</div>
-    ${item.pct_or_status ? `<div class="ind-region-pct">${item.pct_or_status}</div>` : ''}
-    ${item.note ? `<div class="ind-region-note">${item.note}</div>` : ''}
+    <div class="ind-region-name">${_arcEsc(item.region||'')}</div>
+    ${item.pct_or_status ? `<div class="ind-region-pct">${_arcEsc(item.pct_or_status)}</div>` : ''}
+    ${item.note ? `<div class="ind-region-note">${_arcEsc(item.note)}</div>` : ''}
     ${nvSrcLink(item.src)}
   </div>`;
 }
@@ -1273,8 +1280,8 @@ function indFlowSteps(steps){
     const text = idx >= 0 ? str.slice(idx+1) : str;
     const arrow = i < steps.length-1 ? '<span class="ind-flow-arrow">→</span>' : '';
     return `<div class="ind-flow-chip">
-      ${label ? `<span class="ind-flow-label">${label}</span>` : ''}
-      <span class="ind-flow-text">${text}</span>
+      ${label ? `<span class="ind-flow-label">${_arcEsc(label)}</span>` : ''}
+      <span class="ind-flow-text">${_arcEsc(text)}</span>
     </div>${arrow}`;
   }).join('');
   return `<div class="ind-flow-title">🔗 AI運用情境流程</div>
@@ -1287,7 +1294,7 @@ function indDetailBlock(icon, label, text, isRisk){
   if(!text) return '';
   return `<div class="ind-detail-block">
     <span class="ind-detail-label${isRisk?' risk':''}">${icon} ${label}</span>
-    <div class="ind-detail-text">${text}</div>
+    <div class="ind-detail-text">${_arcEsc(text)}</div>
   </div>`;
 }
 
@@ -1296,11 +1303,11 @@ function indDetailBlock(icon, label, text, isRisk){
 // 一致，flow內容接在desc/來源連結之後、用ind-flow-divider分隔線區隔
 function indCaseCard(item, statusCls, statusText){
   return `<div class="nv-case-card">
-    <div class="nv-case-name">${item.name}</div>
-    ${item.scope ? `<div class="nv-case-scope">📁 ${item.scope}</div>` : ''}
-    ${item.timeline ? `<div class="nv-case-time">🕐 ${item.timeline}</div>` : ''}
-    ${statusText ? `<div class="nv-case-status ${statusCls}">${statusText}</div>` : ''}
-    <div class="nv-case-desc">${item.desc}</div>
+    <div class="nv-case-name">${_arcEsc(item.name)}</div>
+    ${item.scope ? `<div class="nv-case-scope">📁 ${_arcEsc(item.scope)}</div>` : ''}
+    ${item.timeline ? `<div class="nv-case-time">🕐 ${_arcEsc(item.timeline)}</div>` : ''}
+    ${statusText ? `<div class="nv-case-status ${statusCls}">${_arcEsc(statusText)}</div>` : ''}
+    <div class="nv-case-desc">${_arcEsc(item.desc)}</div>
     ${nvSrcLink(item.src)}
     ${item.flow ? `<div class="ind-flow-divider"></div>${indFlowSteps(item.flow)}` : ''}
     ${item.goal ? indDetailBlock('🎯','目標',item.goal) : ''}
@@ -1319,7 +1326,7 @@ function indRenderIndustry(industry){
   const roadmapHtml = (industry.roadmap||[]).map(c=>nvCaseCard(c, (c.status||'').startsWith('⚠️')?'warn':'poc', c.status)).join('');
   const regionHtml = (industry.adoption_by_region||[]).map(indRegionCard).join('');
   const regionNoteHtml = industry.adoption_by_region_note
-    ? `<div style="font-size:11px;color:var(--muted);margin:2px 0 14px;padding-left:2px;">📌 ${industry.adoption_by_region_note}</div>` : '';
+    ? `<div style="font-size:11px;color:var(--muted);margin:2px 0 14px;padding-left:2px;">📌 ${_arcEsc(industry.adoption_by_region_note)}</div>` : '';
   return `
     <div class="sec-title">已導入實際應用場域</div>
     <div class="nv-sub-title">✅ 已規模化運作</div>
