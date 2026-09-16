@@ -833,7 +833,7 @@ function nvSrcLink(url){
   // 若沒包住會讓整個renderNvidia()中斷、面板全空白且無錯誤提示，改成失敗時退回顯示原字串
   let label = url;
   try{ label = new URL(url).hostname; }catch(e){ /* 非標準URL就直接顯示原字串，不中斷渲染 */ }
-  return `<div class="card-source">來源：<a href="${url}" target="_blank" rel="noopener">${label}</a></div>`;
+  return `<div class="card-source">來源：<a href="${_arcEsc(url)}" target="_blank" rel="noopener">${_arcEsc(label)}</a></div>`;
 }
 function nvCaseCard(item, statusCls, statusText){
   // 08-13：使用者要求emoji列點項目（📁🕐🧩🎯 + ✅/🔵/⚠️狀態）統一放標題正下方，
@@ -859,15 +859,19 @@ function nvCaseCard(item, statusCls, statusText){
 function nvEventBody(ev){
   // 09-14新增：needs_review=true代表週更自動分類信心不足，直接顯示待確認徽章
   // 讓使用者瀏覽頁面時就看到，不需要另外開口問Claude有沒有東西要複核
+  // 09-16稽核發現：ev.title/summary/category/src_note等欄位09-14起改由
+  // update_recent_events()自動寫入（來源是daily pipeline新聞經LLM改寫），
+  // 不再保證經人工複核，跟其他6大類（nv_pending_review人工核准後才上線）
+  // 風險層級不同，比照下方_arcEsc()既有做法補上escape，防儲存型XSS
   return `<div class="nv-event-top">
-      <span class="nv-event-date">🗓 ${ev.date||''}</span>
-      ${ev.category ? `<span class="nv-event-cat">${ev.category}</span>` : ''}
+      <span class="nv-event-date">🗓 ${_arcEsc(ev.date||'')}</span>
+      ${ev.category ? `<span class="nv-event-cat">${_arcEsc(ev.category)}</span>` : ''}
       ${ev.needs_review ? `<span class="nv-event-review-badge">⚠️ 待確認</span>` : ''}
     </div>
-    <div class="nv-event-title">${ev.title||''}</div>
-    <div class="nv-event-summary">${ev.summary||''}</div>
+    <div class="nv-event-title">${_arcEsc(ev.title||'')}</div>
+    <div class="nv-event-summary">${_arcEsc(ev.summary||'')}</div>
     ${nvSrcLink(ev.src)}
-    ${ev.src_note ? `<div class="nv-event-note">⚠️ ${ev.src_note}</div>` : ''}`;
+    ${ev.src_note ? `<div class="nv-event-note">⚠️ ${_arcEsc(ev.src_note)}</div>` : ''}`;
 }
 function nvEventCard(ev){
   return `<div class="nv-event-card">${nvEventBody(ev)}</div>`;
@@ -906,7 +910,7 @@ function nvEventGroupCard(group){
     <div class="nv-event-thread-header">
       <span>🧵</span>
       <div>
-        <div class="nv-event-thread-title">${group.title}</div>
+        <div class="nv-event-thread-title">${_arcEsc(group.title)}</div>
         <div class="nv-event-thread-range">${dateRange}　共${items.length}則更新</div>
       </div>
     </div>
