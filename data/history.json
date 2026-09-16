@@ -1,5 +1,157 @@
 [
   {
+    "date": "2026-09-17",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "SK 海力士與 Intel 討論在美國俄亥俄州租用廠房製造記憶體晶片",
+        "layer": "capacity commitments",
+        "body": "根據 Reuters 報導，韓國記憶體巨頭 SK 海力士於 2026 年 9 月 16 日透露正與 Intel 商討在美國俄亥俄州租用 Intel 計畫中的新廠廠房，以生產 DRAM 記憶體晶片。雙方亦在評估成立合資企業，可能納入雲端服務供應商作為合作夥伴。SK 海力士在同日的聲明中強調，相關選項仍在探索階段，尚未簽署最終協議。",
+        "impact": "此舉將直接提升美國本土 DRAM 供應鏈上游的晶圓代工需求。",
+        "rating": "core",
+        "insight": "投資者可關注 Intel 俄亥俄廠的產能擴張進度，因其將成為美國記憶體供應的關鍵節點。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/16/sk-hynix-reportedly-in-talks-with-intel-to-build-memory-chips-in-us/",
+        "chain": [
+          {
+            "label": "SK Hynix DRAM 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Intel 合資計畫進度↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Nvidia 於 TechCrunch Disrupt 2026 探討機器人 ChatGPT 時刻",
+        "layer": "core",
+        "body": "Nvidia Inception 全球實體 AI 負責人 Les Karpas 於 2026 年 9 月 16 日在 TechCrunch Disrupt 2026 的 Real World AI 舞台發表演說，指出機器人尚未迎來類似 2022 年 11 月 ChatGPT 的突破時刻。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "Nvidia 正以機器人領域的突破為新成長點，供應鏈上游晶圓與封裝需求將同步上升。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/16/robots-are-waiting-for-a-chatgpt-moment-nvidias-les-karpas-explains-why-at-techcrunch-disrupt-2026/",
+        "chain": [
+          {
+            "label": "Nvidia 機器人研發投入↑",
+            "type": "up"
+          },
+          {
+            "label": "ChatGPT 類似突破時機延遲↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Meta 推出 Threads 播客推廣功能",
+        "layer": "core",
+        "body": "Meta 於 2026 年 9 月 16 日宣布，Threads 將在使用者個人檔案與貼文中顯示播客個人檔案卡與橫幅，並在貼文內以可點擊卡片形式呈現播客連結。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Meta 以功能升級深化音訊生態，相關雲端與編碼供應鏈將受益。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/16/threads-new-features-let-podcasters-promote-shows-and-reach-listeners/",
+        "chain": [
+          {
+            "label": "Meta Threads 播客功能上線↑",
+            "type": "up"
+          },
+          {
+            "label": "平台廣告收入預期↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Amazon 在印度推出支援印地語的 Alexa+ 服務",
+        "layer": "core",
+        "body": "Amazon 於 2026 年 9 月 16 日宣布，Alexa+ 於印度正式上線，提供印地語與英語雙語對話，非 Prime 用戶每月收費 2,000 盧比（約 20.85 美元），並支援多步驟任務如 Amazon Now 訂購與智慧家庭控制。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Amazon 以本土語言深化印度市場，相關語音硬體與雲端供應鏈將受益。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/16/amazon-launches-alexa-in-india-with-hindi-support/",
+        "chain": [
+          {
+            "label": "Amazon Alexa+ 印地語支援↑",
+            "type": "up"
+          },
+          {
+            "label": "非 Prime 用戶月費收入↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "DRAM",
+        "full": "Dynamic Random-Access Memory",
+        "def": "一種易失性記憶體，用於暫時存取電腦與伺服器的資料，具高速讀寫特性。",
+        "why": "DRAM 是資料中心與雲端運算的核心元件，其供應緊張會直接影響算力成本。",
+        "category": "hardware"
+      },
+      {
+        "term": "OSAT",
+        "full": "Outsourced Semiconductor Assembly and Test",
+        "def": "指將晶圓封裝與測試外包給專業廠商的服務模式，涵蓋封裝、測試、組裝等流程。",
+        "why": "記憶體製造的封裝測試需求上升會提升 OSAT 廠商的產能利用率，影響整體供應鏈效率。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "ChatGPT 時刻",
+        "full": "ChatGPT 時刻",
+        "def": "指大型語言模型突破性應用，使 AI 從概念驗證階段進入大規模商業落地的關鍵時點。",
+        "why": "此概念說明為何機器人領域仍待類似突破，影響硬體與軟體供應鏈投資節點。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Alexa+",
+        "full": "Alexa+ 服務",
+        "def": "Amazon 在印度推出的升級版語音助理，支援印地語與英語雙語對話，並提供更長上下文保持與多步驟任務執行。",
+        "why": "本地化功能將刺激語音辨識晶片與雲端基礎建設需求。",
+        "category": "hardware"
+      },
+      {
+        "term": "Podcast profile card",
+        "full": "播客個人檔案卡",
+        "def": "Threads 在使用者檔案與貼文中顯示的可點擊卡片，提供播客節目資訊與直接播放入口。",
+        "why": "此功能提升音訊內容在社交平台的曝光，帶動相關編碼與傳輸服務需求。",
+        "category": "software"
+      },
+      {
+        "term": "代理人工智慧",
+        "full": "Agentic AI",
+        "def": "具備自主決策與行動能力的人工智慧系統，能在缺乏明確指令的情況下自行規劃與執行任務。",
+        "why": "此類技術在醫療與金融等高風險領域的採用受信任缺口限制，影響相關供應鏈的驗證與合規需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "記憶體晶片製造",
+        "full": "Memory Chip Manufacturing",
+        "def": "指生產用於儲存資料的記憶體晶片的製程，包括 DRAM、HBM 等類型。",
+        "why": "Intel 與 SK Hynix 討論在美國設廠，將改變全球記憶體供應鏈布局，提升本地化供應與降低運輸風險。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-09-16",
     "is_sunday": false,
     "hw": [
@@ -614,105 +766,6 @@
         "def": "HBM2E 是高帶寬記憶體的第二代升級版，提供每秒數百 GB 的資料傳輸速率，常與高效能 GPU 或 AI 加速器搭配使用。",
         "why": "OpenAI 需求的高帶寬記憶體將推動 HBM2E 產能擴增，影響記憶體供應商的產能配置與價格走勢。",
         "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-09-10",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "PIMCO 大幅增持 Samsung、SK Hynix 與 TSMC 以押注亞洲 AI 供應鏈",
-        "layer": "strategic_supplier",
-        "body": "PIMCO 基金經理 Emmanuel Sharef 於過去一年將約 60% 的股票配置投入 Samsung Electronics、SK Hynix 與 TSMC，顯示其資金已大幅轉向亞洲 AI 供應鏈。此舉是因 AI 資本支出持續上升，導致美國大型科技公司自由現金流受壓，PIMCO 因而減持多數雲端巨頭與 Magnificent Seven 成員。Sharef 認為資料中心擴建將帶動半導體元件、散熱設備、光纖與光學元件等多個子領域需求，亞洲的「pick-and-shovel」企業將成為下一波 AI 拉升的主要受益者。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "投資者可關注亞洲晶圓代工與記憶體供應商的產能擴張與訂單增長，因 AI 需求將持續推升其營收。",
-        "source_label": "BigGo",
-        "source": "https://finance.biggo.com/news/7e61a689-526c-47a6-b746-ab31074f94f0",
-        "chain": [
-          {
-            "label": "Samsung AI 伺服器需求↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix HBM 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "TSMC CoWoS 產能↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "GPU 仍占全球 AI 計算裝置 70% — Nvidia 仍主導市場",
-        "layer": "core",
-        "body": "根據 Epoch.ai 數據，2023 年全球已安裝 AI 計算容量中，GPU 佔 70%，而自訂矽晶片佔 30%，其中 Google 與 Amazon 為主要供應商。2023 年 Nvidia 仍持有 90% 市場份額，Google 佔 10%，顯示傳統 GPU 仍是主流。過去三年內，自訂 AI 計算的市場佔比已提升至 20%。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "投資者應關注 GPU 供應鏈的持續擴張，特別是先進製程與高頻寬記憶體的需求增長。",
-        "source_label": "Semiconductor",
-        "source": "https://semiengineering.com/can-gpus-continue-to-dominate-ai-compute/",
-        "chain": [
-          {
-            "label": "Nvidia GPU 市占↑",
-            "type": "up"
-          },
-          {
-            "label": "Google TPU 市占↑",
-            "type": "up"
-          },
-          {
-            "label": "Amazon Custom ASIC 市占↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "pick-and-shovel",
-        "full": "AI 供應鏈中的基礎硬體與零組件供應商",
-        "def": "指提供 AI 計算所需的晶片、散熱、光學與連接等基礎硬體的公司，類似於早期金礦開採中的鏟子與鋤頭供應商。",
-        "why": "這類公司在 AI 計算需求激增時能直接受惠，且相較於上層平台公司風險較低。",
-        "category": "hardware"
-      },
-      {
-        "term": "自訂矽晶片",
-        "full": "Custom silicon",
-        "def": "由大型雲端服務商自行設計的 AI 加速器晶片，旨在提升特定工作負載的效能與能源效率。",
-        "why": "自訂矽晶片正快速侵蝕傳統 GPU 市場份額，影響晶圓代工與記憶體供應鏈的需求結構。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "生成式AI",
-        "full": "Generative AI",
-        "def": "利用深度學習模型自動產生文字、圖像、音訊或程式碼等內容的人工智慧技術。常見於聊天機器人、圖像合成與程式自動化等應用。",
-        "why": "生成式AI可降低內容創作成本，提升產品差異化，成為多產業數位化轉型的關鍵工具。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI安全",
-        "full": "Artificial Intelligence Security",
-        "def": "針對AI模型與系統的漏洞、資料隱私與對抗性攻擊所制定的防護措施與治理框架。",
-        "why": "隨著AI應用於關鍵業務，安全風險上升，確保模型可信與資料安全成為企業部署AI的前提。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null

@@ -2,6 +2,85 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 57,
+        "CSP/CapEx": 46,
+        "App/AI": 26,
+        "gnews-chip": 20,
+        "gnews-dc": 25,
+        "gnews-app": 18
+      },
+      "digest_filtered": 0,
+      "after_dedup": 171,
+      "buckets": {
+        "hw": 37,
+        "corp": 131,
+        "app": 37
+      },
+      "news_char_budget": {
+        "hw": 4316,
+        "corp": 8000,
+        "app": 4316
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 4,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "dedup_audit": [
+        {
+          "title": "Nvidia 於 TechCrunch Disrupt 2026 探討機器人 ChatGPT 時刻",
+          "section": "corp",
+          "action": "downgraded",
+          "matched_title": null,
+          "reason": "內容僅為對機器人發展的評論，未宣布新決策或新產品，屬於背景說明"
+        }
+      ],
+      "date": "2026-09-17",
+      "generated_at": "2026-09-17T00:04:20.066529+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 54,
         "CSP/CapEx": 40,
         "App/AI": 20,
@@ -872,71 +951,6 @@
       },
       "date": "2026-09-04",
       "generated_at": "2026-09-04T00:04:41.960647+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 54,
-        "CSP/CapEx": 46,
-        "App/AI": 28,
-        "gnews-chip": 15,
-        "gnews-dc": 25,
-        "gnews-app": 22
-      },
-      "digest_filtered": 0,
-      "after_dedup": 173,
-      "buckets": {
-        "hw": 34,
-        "corp": 125,
-        "app": 33
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 2,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "date": "2026-09-03",
-      "generated_at": "2026-09-03T00:04:21.813987+08:00"
     }
   ]
 }
