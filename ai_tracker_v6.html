@@ -834,6 +834,12 @@ function renderApp(d) {
 // ══════════════════════════════════════════════════════════════════
 function nvSrcLink(url){
   if(!url) return '';
+  // 09-16二次複查發現：_arcEsc()只擋HTML標籤注入，擋不住javascript:/data:這類
+  // URL scheme本身（HTML entity escape不影響瀏覽器對href屬性值的URL解讀），
+  // 沒有這道scheme白名單的話，href可以是javascript:alert(document.cookie)
+  // 這種點擊才觸發的XSS。比照newsCard()原本就有的validUrl規則，只允許
+  // http(s)開頭的網址才做成可點連結，其餘一律當純文字顯示不做超連結。
+  if(!/^https?:\/\//i.test(url)) return `<div class="card-source">來源：${_arcEsc(url)}</div>`;
   // 08-11：週查證pipeline未來可能寫入非標準URL（缺scheme等），new URL()會拋例外，
   // 若沒包住會讓整個renderNvidia()中斷、面板全空白且無錯誤提示，改成失敗時退回顯示原字串
   let label = url;
@@ -1125,11 +1131,13 @@ async function renderNvidia(){
     const opacity = (0.22 + (i/(Math.max(n-1,1)))*0.68).toFixed(2);
     return `<div class="nv-pyr-legend-row">
       <span class="nv-pyr-dot" style="background:rgba(106,138,32,${opacity});"></span>
-      <div><div class="nv-pyr-label">${l.label}</div><div class="nv-pyr-items">${l.items}</div></div>
+      <div><div class="nv-pyr-label">${_arcEsc(l.label)}</div><div class="nv-pyr-items">${_arcEsc(l.items)}</div></div>
     </div>`;
   }).join('');
-  const pyramidSrcHtml = (nv.pyramid_sources||[]).map(s=>
-    `<a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>`
+  // 09-16二次複查：pyramid_sources/alliance_overview雖屬6大類human-review範圍
+  // （見上方nvCaseCard同一輪修法），仍比照escape＋scheme白名單防禦性補強
+  const pyramidSrcHtml = (nv.pyramid_sources||[]).filter(s=>/^https?:\/\//i.test(s.url||'')).map(s=>
+    `<a href="${_arcEsc(s.url)}" target="_blank" rel="noopener">${_arcEsc(s.label)}</a>`
   ).join('、');
 
   const liveHtml = (nv.cases_live||[]).map(c=>nvCaseCard(c,'live','✅ 已上線／實際部署')).join('');
@@ -1138,7 +1146,7 @@ async function renderNvidia(){
   const allianceHtml = (nv.alliances||[]).map(c=>nvCaseCard(c, (c.status||'').startsWith('⚠️')?'warn':'live', c.status)).join('');
   const allianceOverviewHtml = nv.alliance_overview
     ? `<div class="impact-box" style="margin-bottom:12px;"><div class="impact-title">聯盟生態系整體動態</div>
-       <div style="font-size:12.5px;color:var(--text2);line-height:1.7;">${nv.alliance_overview}</div>
+       <div style="font-size:12.5px;color:var(--text2);line-height:1.7;">${_arcEsc(nv.alliance_overview)}</div>
        ${nvSrcLink(nv.alliance_overview_src)}</div>`
     : '';
   // 08-13新增：生態系權力布局／合規治理——跟alliances（個別夥伴關係）性質不同，
@@ -1356,8 +1364,11 @@ function indRenderPanel(){
   if(!panel || !IND_DATA) return;
   const industries = IND_DATA.industries||[];
   const active = industries.find(i=>i.key===IND_ACTIVE_KEY) || industries[0];
+  // 09-16二次複查：industries來自data/industry_adoption.json（月查證pending_review
+  // 人工複核後才上線，風險等級同nvCaseCard），i.key另外用在單引號JS字串context
+  // （onclick裡），跟HTML內容context需要的escape規則不同，分開處理
   const navHtml = industries.map(i=>
-    `<button class="ind-nav-btn ${active && i.key===active.key ? 'active' : ''}" onclick="indSwitch('${i.key}')">${i.icon||''} ${i.label||i.key}</button>`
+    `<button class="ind-nav-btn ${active && i.key===active.key ? 'active' : ''}" onclick="indSwitch('${String(i.key).replace(/'/g,"\\'")}')">${_arcEsc(i.icon||'')} ${_arcEsc(i.label||i.key)}</button>`
   ).join('');
   panel.innerHTML = `
     ${IND_PENDING_HTML}
@@ -1542,9 +1553,12 @@ function renderGlossary(hist) {
     ).join('');
     const escapedTerm = g.term.replace(/'/g,"\\'");
     const delFn = g._user ? `deleteUserTerm('${escapedTerm}')` : `hideBaseTerm('${escapedTerm}')`;
+    // 09-16二次複查發現：g.term/g.full/g.def/g.why是daily pipeline LLM生成的
+    // 專有名詞內容（glossary_new），跟newsCard等其餘欄位同一風險等級，之前
+    // 兩輪escape修復都漏掉這個分頁，這次一併補上_arcEsc()
     return `<div class="gloss-card">
       <div class="gloss-cat-row">
-        <div class="gloss-term">${g.term}${g._new?'<span class="new-badge">NEW</span>':''}${g._user?`<span class="user-badge" onclick="deleteUserTerm('${escapedTerm}')">自添 ✕</span>`:''}</div>
+        <div class="gloss-term">${_arcEsc(g.term)}${g._new?'<span class="new-badge">NEW</span>':''}${g._user?`<span class="user-badge" onclick="deleteUserTerm('${escapedTerm}')">自添 ✕</span>`:''}</div>
         <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
           <div style="position:relative;display:inline-block;z-index:1;">
             <span class="gloss-cat-badge" onclick="togglePicker('${pid}')">${clabel} ▾</span>
@@ -1557,10 +1571,10 @@ function renderGlossary(hist) {
         </div>
       </div>
       <div style="flex:1;min-height:0;">
-        <div class="gloss-full">${g.full}</div>
-        <div class="gloss-def">${g.def}</div>
+        <div class="gloss-full">${_arcEsc(g.full)}</div>
+        <div class="gloss-def">${_arcEsc(g.def)}</div>
       </div>
-      <div class="gloss-why">${g.why ? (String(g.why).trimStart().startsWith('📌') ? g.why : '📌 ' + g.why) : ''}</div>
+      <div class="gloss-why">${g.why ? (String(g.why).trimStart().startsWith('📌') ? _arcEsc(g.why) : '📌 ' + _arcEsc(g.why)) : ''}</div>
     </div>`;
   }
 
@@ -1731,12 +1745,14 @@ function renderHistory(hist) {
     return;
   }
   const cards = hist.map((d,i) => {
+    // 09-16二次複查發現：weekly_summary是daily pipeline週日LLM生成的週摘要，
+    // 同樣未escape就進DOM，補上_arcEsc()
     const ws = d.weekly_summary ? (() => {
       const lines = d.weekly_summary.split('\n').filter(l=>l.trim());
       const items = lines.map(l=>{
         const m=l.trim().match(/^([^：]+)：(.+)$/);
-        if(m) return `<div class="ws-item"><strong class="ws-label">${m[1]}：</strong>${m[2]}</div>`;
-        return `<div class="ws-item">${l.trim()}</div>`;
+        if(m) return `<div class="ws-item"><strong class="ws-label">${_arcEsc(m[1])}：</strong>${_arcEsc(m[2])}</div>`;
+        return `<div class="ws-item">${_arcEsc(l.trim())}</div>`;
       }).join('');
       return `<div class="weekly-box"><div class="ws-title">📊 本週摘要（週報）</div><div class="ws-body">${items}</div></div>`;
     })() : '';
@@ -1760,9 +1776,9 @@ function renderHistory(hist) {
         ${audit.map(a => `
           <div class="hist-audit-item">
             <span class="hist-audit-action">${a.action==='removed'?'✂ 移除':'↓ 降級'}</span>
-            <strong>${a.title||''}</strong>
-            ${a.matched_title ? `<div class="hist-audit-matched">比對到：${a.matched_title}</div>` : ''}
-            <div class="hist-audit-reason">${a.reason||'（無理由記錄）'}</div>
+            <strong>${_arcEsc(a.title||'')}</strong>
+            ${a.matched_title ? `<div class="hist-audit-matched">比對到：${_arcEsc(a.matched_title)}</div>` : ''}
+            <div class="hist-audit-reason">${_arcEsc(a.reason||'（無理由記錄）')}</div>
           </div>`).join('')}
       </div>` : '';
     const coreCount = [...(d.hw||[]),...(d.corp||[]),...(d.app||[])].filter(x=>x.rating==='core').length;
