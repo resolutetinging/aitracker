@@ -1,5 +1,140 @@
 [
   {
+    "date": "2026-09-18",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "華為將於 2027 Q1 推出 Ascend 960DT AI 晶片",
+        "layer": "capacity_commitments",
+        "body": "華為在 2026 年 9 月 17 日的 Huawei Connect 大會上宣布，原訂於 2027 年第三季的 Ascend 960DT AI 晶片將提前至 2027 年第一季量產，預計在 2027 年上半年完成出貨。此舉顯示華為正加速自研 AI 晶片的供應鏈建置，以減少對美國供應商的依賴。華為同時透露，該晶片將採用內部設計的高效能記憶體介面，預計提升 30% 計算效能。",
+        "impact": "",
+        "rating": "core",
+        "insight": "華為提前推出新代 AI 晶片，將直接拉動記憶體與封裝供應鏈需求，對 Nvidia 形成供應鏈層面的競爭壓力。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/17/huawei-plans-q1-2027-launch-of-new-ai-chip-as-it-takes-on-nvidia/",
+        "chain": [
+          {
+            "label": "Huawei Ascend 960DT 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC 高階製程供應↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Google、Nvidia 與 Anthropic 組成 AI 能源管理聯盟 使用 Emerald AI 需求回應",
+        "layer": "strategic_supplier_decisions",
+        "body": "2026 年 9 月 17 日，Google、Nvidia 與 Anthropic 與新創公司 Emerald AI 共同成立 AI Energy Management Alliance，計畫透過需求回應技術在資料中心減少電力使用，預估可為電網額外釋放 100 GW 的容量。該聯盟已獲得美國大型電力公司 AES、Constellation、National Grid 與 NRG Energy 的參與，顯示供電端與 AI 基礎設施供應鏈的深度整合。需求回應將使資料中心在高峰時段暫停非關鍵工作負載，以換取電網穩定性。",
+        "impact": "其他資料中心營運商若未加入此聯盟，將面臨成本劣勢，可能加速採用類似技術。",
+        "rating": "core",
+        "insight": "AI 能源管理聯盟的需求回應方案將重塑資料中心電力供應鏈，提升相關半導體與感測器需求，同時改變傳統電力基礎設施的使用模式。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/17/google-nvidia-and-anthropic-want-emerald-ai-to-find-space-on-the-grid-for-more-data-centers/",
+        "chain": [
+          {
+            "label": "Nvidia GPU 需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Cloud AI 服務收入↑",
+            "type": "up"
+          },
+          {
+            "label": "AES 電網負載↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Instinct 新增通話功能 Instinct Concierge 以提升 AI 助理服務",
+        "layer": "CSP/CapEx",
+        "body": "新創 AI 助理 Instinct 在 9 月 17 日宣布推出 Instinct Concierge 通話功能，允許使用者透過語音指令預訂無線線上預約的餐廳與安排電話會議，創始人 Noah Shinn 於 X 平台發文說明。Instinct 目前估值約 100 億美元，並已獲得多家風投的持續投資。此功能的上線標誌著文字型 AI 助理向多模態服務的轉型，與 Meta 的 Muse 形成直接競爭。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "Instinct 的通話功能擴展了 AI 助理的應用場景，對傳統客服模式構成挑戰。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/17/rival-ai-agents-instinct-and-metas-muse-both-add-the-ability-to-make-calls/",
+        "chain": [
+          {
+            "label": "Instinct Concierge 服務使用率↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta Muse 市占↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": "",
+        "chain": [
+          {
+            "label": "無相關應用新聞",
+            "type": "neutral"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "需求回應",
+        "full": "Demand Response",
+        "def": "一種電網管理機制，透過暫時降低大型用戶（如資料中心）的電力需求，以平衡供需並避免電網過載。",
+        "why": "在 AI 資料中心大量用電的情況下，需求回應可減少峰值負載，提升電網穩定性並降低能源成本。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI 能源管理聯盟",
+        "full": "AI Energy Management Alliance (AEMA)",
+        "def": "由 Google、Nvidia、Anthropic 及 Emerald AI 組成的合作體，致力於開發 AI 驅動的電力需求回應解決方案，協助資料中心在高峰時段減少電力使用。",
+        "why": "該聯盟的技術將直接影響電力相關半導體與感測器供應鏈的需求規模。",
+        "category": "hardware"
+      },
+      {
+        "term": "Ascend 960DT",
+        "full": "華為 Ascend 960DT AI 晶片",
+        "def": "華為於 2027 年第一季推出的高效能 AI 晶片，宣稱效能提升兩倍，屬於 Ascend 系列的最新代產品。",
+        "why": "代表華為在 AI 硬體領域與 Nvidia 正面競爭的關鍵技術。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Emerald AI",
+        "full": "Emerald AI 電網管理平台",
+        "def": "一套利用 AI 進行電網需求回應的軟體平台，協助大型資料中心在高峰期調整電力使用。",
+        "why": "為資料中心擴容提供電力供應保障，影響電力供應鏈與雲端基礎設施布局。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Instinct Concierge",
+        "full": "Instinct Concierge 通話功能",
+        "def": "Instinct AI 助理新增的語音通話服務，可直接為使用者預訂餐廳與安排電話會議。",
+        "why": "擴大文字型 AI 助理的服務範圍，對傳統客服與通訊平台產生衝擊。",
+        "category": "software"
+      },
+      {
+        "term": "數位雙生",
+        "full": "Digital Twin",
+        "def": "在半導體封裝領域，數位雙生指的是以數位模型完整模擬封裝內部的機械、熱與電氣行為，以預測實際製程中的效能與可靠性。",
+        "why": "隨著先進封裝技術的複雜化，精準的數位雙生有助於縮短開發週期並降低失敗率，對供應鏈的成本與交付時間具有直接影響。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-09-17",
     "is_sunday": false,
     "hw": [
@@ -677,94 +812,6 @@
         "full": "Silent Data Errors (SDE)",
         "def": "指在資料中心硬體中發生的無聲資料錯誤，會在長時間運算如 AI 訓練時導致資料損毀。",
         "why": "此類錯誤會降低伺服器效能與可靠度，影響 AI 訓練與推論服務的持續可用性。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-09-11",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "d‑Matrix 加入 Nvidia NVLink Fusion 授權行列",
-        "layer": "AI 基礎建設供應鏈",
-        "body": "2026 年 9 月 10 日，AI 基礎建設新創 d‑Matrix 宣布加入已授權 Nvidia NVLink Fusion 互連技術的公司名單，該名單亦包含 Qualcomm、Arm、Marvell、Amazon 與 MediaTek 等廠商。d‑Matrix 表示將於未來的 Raptor 加速器中整合 NVLink Fusion，以提升其高效能推論平台的晶片間高速連接能力。",
-        "impact": "d‑Matrix 整合 NVLink Fusion，將提升該技術的需求。",
-        "rating": "opp",
-        "insight": "NVLink Fusion 授權擴散將提升高頻寬互連晶片需求，利好相關代工與封測產能。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/09/10/d-matrix-drinks-the-nvidia-kool-aid-with-nvlink-fusion-and-mgx-rack-designs/5295403",
-        "chain": [
-          {
-            "label": "d‑Matrix NVLink Fusion 整合↑",
-            "type": "up"
-          },
-          {
-            "label": "Amazon 高速互連需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Samsung 協助 OpenAI 強化半導體供應鏈",
-        "layer": "core",
-        "body": "Samsung 於 2026 年 9 月 9 日宣布將為 OpenAI 提供包括晶片與記憶體在內的全套半導體供應，涵蓋其最新的 8 nm 先進製程與 HBM2E 記憶體。此舉同時包含 Samsung 在美國與韓國的代工廠，預計在 2026 年底前支援 OpenAI 的 GPT‑6 訓練需求。新聞稿指出，雙方已簽署為期三年的供應合約，金額未公開但預估超過 5 億美元。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Samsung 進入 OpenAI 供應鏈，將提升其在高階 AI 計算市場的營收貢獻。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/09/09/samsung-to-help-fortify-openais-semiconductor-supply-chain/5295374",
-        "chain": [
-          {
-            "label": "Samsung 8nm 晶片供應↑",
-            "type": "up"
-          },
-          {
-            "label": "Samsung HBM2E 記憶體供應↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI GPT‑6 訓練成本↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "NVLink Fusion",
-        "full": "Nvidia 高速晶片間互連技術",
-        "def": "NVLink Fusion 是 Nvidia 授權的高速晶片間互連介面，提供比 PCIe 更高的帶寬與更低的延遲，常用於多晶片模組與大型 AI 推論平台。",
-        "why": "掌握此技術的公司可在 AI 基礎建設市場提供更高效能的解決方案，提升競爭力。",
-        "category": "hardware"
-      },
-      {
-        "term": "Raptor 加速器",
-        "full": "d‑Matrix 開發的 AI 推論加速器",
-        "def": "Raptor 是 d‑Matrix 計畫中的新一代 AI 推論加速器，將整合 NVLink Fusion 以提升晶片間資料傳輸效能。",
-        "why": "其採用 NVLink Fusion 代表未來 AI 推論平台將更依賴高速互連技術，影響相關供應鏈需求。",
-        "category": "hardware"
-      },
-      {
-        "term": "HBM2E 記憶體",
-        "full": "High Bandwidth Memory 2E",
-        "def": "HBM2E 是高帶寬記憶體的第二代升級版，提供每秒數百 GB 的資料傳輸速率，常與高效能 GPU 或 AI 加速器搭配使用。",
-        "why": "OpenAI 需求的高帶寬記憶體將推動 HBM2E 產能擴增，影響記憶體供應商的產能配置與價格走勢。",
         "category": "semiconductor"
       }
     ],
