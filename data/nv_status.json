@@ -359,6 +359,30 @@
       "summary": "美國司法部正式起訴3名人士——美超微共同創辦人廖益興（Wally Liaw，美籍）、張瑞祥（Steven Chang，台籍，在逃）、孫定緯（Willy Sun，台籍）——指控三人共謀將約25億美元、內含受管制輝達晶片（H100、H200、B200等）的伺服器銷往東南亞一家公司，再由該公司拆封重新包裝、移除識別標記後，將其中約5.1億美元的伺服器轉運至中國買家，違反出口管制改革法。此案是本輪美超微／輝達晶片走私網絡查緝的起點，直接牽動同年8月台灣基隆地檢署起訴案。國家安全事務助理檢察長John A. Eisenberg表示：「這些晶片是美國智慧的結晶，國家安全部門將持續執行出口管制法規以保護這項優勢。」",
       "src": "https://www.justice.gov/opa/pr/three-charged-conspiring-unlawfully-divert-cutting-edge-us-artificial-intelligence",
       "src_note": ""
+    },
+    {
+      "date": "2026-09-19",
+      "title": "Nvidia 執行長黃仁勳預測明年晶片出貨量將翻倍",
+      "category": "市場預測",
+      "summary": "Nvidia 執行長黃仁勳於 9 月 17 日表示，預計 2027 年 AI 晶片出貨量將是 2026 年的兩倍，並已與多家代工簽訂擴產協議。此預測基於 AI 訓練與推論需求持續增長。",
+      "src": "https://www.cnbc.com/2026/09/17/nvidia-huang-ai-chip-guidance.html",
+      "src_note": ""
+    },
+    {
+      "date": "2026-09-18",
+      "title": "Google、Nvidia 與 Anthropic 組成 AI 能源管理聯盟 使用 Emerald AI 需求回應",
+      "category": "合作聯盟",
+      "summary": "Google、Nvidia、Anthropic 與新創 Emerald AI 於 9 月 17 日共同成立 AI Energy Management Alliance，旨透過需求回應技術降低資料中心電力使用，預計為電網釋放額外 100 GW 容量，並獲多家美國大型電力公司支持。",
+      "src": "https://techcrunch.com/2026/09/17/google-nvidia-and-anthropic-want-emerald-ai-to-find-space-on-the-grid-for-more-data-centers/",
+      "src_note": ""
+    },
+    {
+      "date": "2026-09-17",
+      "title": "Nvidia 於 TechCrunch Disrupt 2026 探討機器人 ChatGPT 時刻",
+      "category": "產業觀點",
+      "summary": "Nvidia Inception 全球實體 AI 負責人 Les Karpas 於 9 月 16 日在 TechCrunch Disrupt 2026 的 Real World AI 舞台發表演說，指出機器人尚未迎來類似 2022 年 ChatGPT 的突破時刻。",
+      "src": "https://techcrunch.com/2026/09/16/robots-are-waiting-for-a-chatgpt-moment-nvidias-les-karpas-explains-why-at-techcrunch-disrupt-2026/",
+      "src_note": ""
     }
   ]
 }
