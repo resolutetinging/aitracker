@@ -2,6 +2,77 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 46,
+        "CSP/CapEx": 39,
+        "App/AI": 18,
+        "gnews-chip": 17,
+        "gnews-dc": 22,
+        "gnews-app": 14
+      },
+      "digest_filtered": 1,
+      "after_dedup": 139,
+      "buckets": {
+        "hw": 29,
+        "corp": 104,
+        "app": 29
+      },
+      "news_char_budget": {
+        "hw": 3500,
+        "corp": 8000,
+        "app": 3500
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 3,
+        "corp": 1,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 2,
+      "llm_ratings": {
+        "hw": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "dedup_audit": [],
+      "date": "2026-09-21",
+      "generated_at": "2026-09-21T00:03:59.954745+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 55,
         "CSP/CapEx": 42,
         "App/AI": 19,
@@ -907,71 +978,6 @@
       },
       "date": "2026-09-08",
       "generated_at": "2026-09-08T00:04:01.371375+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 39,
-        "CSP/CapEx": 45,
-        "App/AI": 24,
-        "gnews-chip": 19,
-        "gnews-dc": 21,
-        "gnews-app": 13
-      },
-      "digest_filtered": 1,
-      "after_dedup": 136,
-      "buckets": {
-        "hw": 29,
-        "corp": 107,
-        "app": 28
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 3,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "date": "2026-09-07",
-      "generated_at": "2026-09-07T00:04:03.806798+08:00"
     }
   ]
 }

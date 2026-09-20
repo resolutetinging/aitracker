@@ -1,5 +1,97 @@
 [
   {
+    "date": "2026-09-21",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Marvell 促使 GlobalFoundries 擴大晶圓產能",
+        "layer": "晶圓代工",
+        "body": "2026 年 9 月 18 日，Marvell 向 GlobalFoundries 表示將在未來 12 個月內下單超過 5000 片 AI 加速器晶圓，以支援其新一代資料中心 AI 基礎設施。",
+        "impact": "Marvell 大量訂單將直接提升 GlobalFoundries 先進製程晶圓產能利用率 ↑。",
+        "rating": "opp",
+        "insight": "Marvell 的訂單將提升 GlobalFoundries 在 AI 晶圓市場的佔有率，帶動相關上游供應鏈需求。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/09/18/marvell-pushes-globalfoundries-to-light-up-wafer-production/5297340"
+      }
+    ],
+    "corp": [
+      {
+        "title": "今日無相關巨頭新聞",
+        "layer": "",
+        "body": "今日無相關巨頭新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "High-NA EUV",
+        "full": "高數值孔徑極紫外光刻",
+        "def": "相較於傳統 EUV，High-NA EUV 具備更大的數值孔徑，可在更小的特徵尺寸上進行光刻，提升先進製程的解析度與良率。",
+        "why": "此技術是 5 奈米以下製程的關鍵，使 AI 加速器與高效能運算晶片的製造成本下降。",
+        "category": "hardware"
+      },
+      {
+        "term": "量子晶圓",
+        "full": "量子運算用矽晶圓",
+        "def": "專為量子位元 (qubit) 製造的高純度矽晶圓，需具備極低缺陷密度與特殊低溫製程特性。",
+        "why": "量子晶圓的供應是量子電腦商業化的瓶頸，政府資金投入可加速產業鏈本土化。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Chiplet",
+        "full": "晶粒模組化設計",
+        "def": "將大型晶片功能拆分為多個小型晶粒 (chiplet)，透過高速互連組合成完整系統，以降低設計成本與提升良率。",
+        "why": "Chiplet 架構可減少單一晶圓的製程風險，對 AI 加速器供應鏈的彈性具有正面影響。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Claude",
+        "full": "Anthropic 開發的大型語言模型",
+        "def": "Claude 是 Anthropic 研發的對話式 AI 模型，具備安全導向的回應機制，常用於研究與企業應用。",
+        "why": "本次安全研究利用 Claude 協助入侵 OpenAI 帳號，顯示模型在攻擊鏈結中的潛在風險。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Gemini",
+        "full": "Google 開發的生成式 AI 模型",
+        "def": "Gemini 為 Google 旗下的多模態大型模型，支援文字、影像等多種輸入，近期被測試自動化破解公司系統。",
+        "why": "Gemini 的自動化破解行為突顯大型模型在安全防護上的挑戰，對 AI 供應鏈的風險管理具指標意義。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Bugcrowd",
+        "full": "漏洞懸賞平台",
+        "def": "Bugcrowd 為全球漏洞懸賞與安全測試平台，協助企業管理外部安全研究者的回報。",
+        "why": "OpenAI 透過 Bugcrowd 發放 6,500 美元獎金，顯示大型 AI 企業正加強漏洞獎勵機制以提升供應鏈安全。",
+        "category": "role"
+      },
+      {
+        "term": "DRC-Aid",
+        "full": "Design-Rule Correction via Agentic Framework",
+        "def": "一種利用大型語言模型於驗證回饋迴路中自動修正設計規則違規的代理式框架，透過規則引擎將違規轉為可執行的幾何編輯選項。",
+        "why": "可降低半導體版圖驗證的人力成本與修正時間，提升設計流程效率。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-09-20",
     "is_sunday": true,
     "hw": [
@@ -823,80 +915,6 @@
         "def": "指在 OpenAI 內部負責將通用人工智慧模型實際應用於產品與服務的職務，涵蓋算力規劃、系統整合與安全測試。",
         "why": "掌握 AGI 部署的高層人員具備關鍵技術與市場洞見，其流動會影響相關資料中心與算力供應鏈的策略布局。",
         "category": "role"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-09-14",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "Anthropic 警告其 Claude 模型被用於自動化網路攻擊與生化武器研發",
-        "layer": "AI安全",
-        "body": "Anthropic 在 9 月 10 日的報告指出，俄羅斯自由職業者與 ShinyHunters 等黑客組織已利用 Claude 模型自動化製造自殺式無人機群，並嘗試設計更具傳染性的蚊媒病毒；報告同時提及自 2023 年 11 月以來，中國間諜已使用同一模型入侵多家關鍵機構並竊取敏感資料。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "AI 安全風險升高將推動雲端與晶片供應鏈加速安全化投資。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/09/10/latest-anthropic-horror-story-chills-with-tales-of-kamikaze-drone-swarms-and-bioweapons-research/5295702"
-      },
-      {
-        "title": "OpenAI CEO Altman 表示 2026 年不會 IPO，將待安全議題穩定後再行上市",
-        "layer": "資本市場",
-        "body": "OpenAI 在 9 月 12 日接受 Fortune 編輯 Alyson Shontell 採訪時透露，儘管已提交保密 IPO 申請，但因近期 OpenAI‑HuggingFace 資安事件與 AI 安全爭議，CEO Sam Altman 明確表示今年不會上市，預計在 2027 年或更晚時機才會考慮公開發行。",
-        "impact": "",
-        "rating": "core",
-        "insight": "OpenAI 延遲上市將加速其對硬體資源的直接投入，提升供應鏈上游需求。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/12/openais-sam-altman-says-it-would-be-ill-advised-to-go-public-in-2026/"
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Claude",
-        "full": "Anthropic 開發的大型語言模型",
-        "def": "Claude 是 Anthropic 於 2023 年推出的對話式 AI 模型，設計上強調安全與可控性，廣泛用於文本生成與程式碼輔助。",
-        "why": "本次被黑客濫用顯示大型語言模型在惡意應用上的風險，影響整體 AI 供應鏈的安全防護需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "自殺式無人機群",
-        "full": "Kamikaze drone swarms",
-        "def": "由多架小型無人機協同執行自毀式攻擊的系統，通常透過 AI 演算法即時決策路徑與目標。",
-        "why": "此技術的出現將刺激防禦系統與相關感測晶片的需求，牽動半導體供應鏈。",
-        "category": "hardware"
-      },
-      {
-        "term": "Fabships",
-        "full": "Fabships",
-        "def": "指利用太空真空環境進行化合物半導體基板製造的初創公司，已完成首次SpaceX飛行並回收晶圓樣本。",
-        "why": "太空真空可降低雜質，提高高階晶片良率，對先進半導體供應鏈具潛在突破性影響。",
-        "category": "semiconductor"
       }
     ],
     "weekly_summary": null
