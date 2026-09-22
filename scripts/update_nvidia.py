@@ -43,6 +43,23 @@ CATEGORY_LABELS = {
 }
 ACTION_LABELS = {'update': '更新既有項目', 'add': '新增項目'}
 
+# 2026-09-22修TPM超限bug：原本6大類一次打包送1次Groq請求，current_status整份
+# 序列化後約9,302字元／估算約6,200 token，已逼近甚至超過Groq免費tier 6,000 TPM
+# 上限；即使news_snippets縮到0則仍超限，證實問題根本在current_status本身太大，
+# 不在新聞多寡。比照Renewable Tracker 09-01同款修法（scripts/update_renewable.py
+# 的CATEGORY_CONFIG／call_groq_diff_one），把6大類拆成各自獨立的Groq請求，
+# category_enum限制Groq單次只能回傳這一類的category值，避免6類合併時enum混用。
+# news_snippets刻意不比照renewable依label拆分——NVIDIA新聞量本來就小（約7則
+# 上下），6類共用同一份完整news_snippets即可，不需要額外設計過濾邏輯。
+CATEGORY_CONFIG = [
+    {'label': '技術金字塔', 'keys': ['pyramid', 'pyramid_sources'], 'category_enum': 'pyramid'},
+    {'label': '應用案例（已上線）', 'keys': ['cases_live'], 'category_enum': 'cases_live'},
+    {'label': '應用案例（POC）', 'keys': ['cases_poc'], 'category_enum': 'cases_poc'},
+    {'label': '產品 Roadmap', 'keys': ['roadmap'], 'category_enum': 'roadmap'},
+    {'label': '聯盟／夥伴關係', 'keys': ['alliances', 'alliance_overview', 'alliance_overview_src'], 'category_enum': 'alliances'},
+    {'label': '生態系權力布局／合規治理', 'keys': ['governance', 'governance_stages', 'governance_links'], 'category_enum': 'governance'},
+]
+
 
 def fetch_nvidia_news():
     """用DDG查最近一週NVIDIA相關新聞，涵蓋5個分類分別對應頁面的5個區塊"""
@@ -259,14 +276,18 @@ def save_json(path, obj):
         json.dump(obj, f, ensure_ascii=False, indent=2)
 
 
-def call_groq_diff(current_status, news_snippets):
-    """核對現有結構化資料是否過時，只回報有明確新聞佐證的候選異動，
-    system prompt刻意要求極度保守，沒有證據支持的欄位一律維持原樣，
-    不可為了「看起來有更新」而臆測。"""
+def call_groq_diff_one(category_label, category_data, category_enum, news_snippets):
+    """核對「單一大類」的資料是否過時，只回報有明確新聞佐證的候選異動。
+    2026-09-22改造：原本call_groq_diff()一次打包6大類送1個Groq請求，current_status
+    整份序列化後約9,302字元／估算約6,200 token，逼近甚至超過Groq免費tier
+    6,000 TPM上限，即使news_snippets縮到0則仍超限——問題在current_status本身
+    太大，不在新聞多寡，比照Renewable Tracker 09-01同款修法（見上方
+    CATEGORY_CONFIG註解），拆成6類各自獨立呼叫本函式一次，每次只帶單一大類的
+    資料，system prompt/保守原則不變。"""
     client = Groq(api_key=os.environ['GROQ_API_KEY'])
     sys_msg = (
-        "你是AI供應鏈分析師，任務是核對一份既有的NVIDIA結構化參考資料是否過時。"
-        "只輸出純JSON，不加任何說明文字或markdown。"
+        "你是AI供應鏈分析師，任務是核對一份既有的NVIDIA結構化參考資料"
+        "（這次只給你其中一個大類）是否過時。只輸出純JSON，不加任何說明文字或markdown。"
         "全程繁體中文（禁止簡體字、日文、越南文等其他語言字詞混入）。"
         "極度保守：沒有明確新聞佐證的欄位一律維持原樣、不提出更新建議；"
         "禁止臆測、禁止捏造來源URL、禁止把不確定的傳聞當成確定事實。"
@@ -274,11 +295,12 @@ def call_groq_diff(current_status, news_snippets):
         "不需要為了顯得有查證成果而硬湊出候選異動。"
     )
     def build_prompt(news_list):
-        status_json = json.dumps(current_status, ensure_ascii=False, separators=(',', ':'))
+        data_json = json.dumps(category_data, ensure_ascii=False, separators=(',', ':'))
         news_text = chr(10).join(news_list) if news_list else '（本週未蒐集到相關新聞片段）'
-        return f"""以下是NVIDIA相關結構化參考資料的現況（JSON）：
+        return f"""以下是「{category_label}」這個大類目前的NVIDIA結構化參考資料現況（JSON，只含
+這一個大類，不含其他大類，那些不在本次查證範圍內，不要對它們提出異動）：
 
-{status_json}
+{data_json}
 
 以下是過去一週蒐集到的NVIDIA相關新聞片段，每則片段結尾若有「| SOURCE_URL:網址」就是該則新聞的
 原始來源網址；source欄位只能填這裡實際出現過的SOURCE_URL，禁止自己編造或憑記憶生成網址：
@@ -293,7 +315,7 @@ def call_groq_diff(current_status, news_snippets):
 {{
   "items": [
     {{
-      "category": "pyramid|cases_live|cases_poc|roadmap|alliances|governance",
+      "category": "{category_enum}",
       "action": "update|add",
       "target_name": "若action=update，填現有資料裡對應項目的name或label文字；若action=add則留空",
       "name": "項目/公司名稱",
@@ -303,18 +325,16 @@ def call_groq_diff(current_status, news_snippets):
       "source": "新聞來源URL"
     }}
   ],
-  "no_change_summary": "若items為空陣列，一句話說明本週查證後判斷現有資料仍準確；若items非空則留空字串"
+  "no_change_summary": "若items為空陣列，一句話說明本大類本週查證後判斷現有資料仍準確；若items非空則留空字串"
 }}"""
     # 2026-08-24：8/24第一次修復（fallback model 120b→20b）實測時被使用者截圖
     # 抓到反效果——120b失敗後fallback到20b，但20b的TPM上限（實測8000）比120b
     # 更小，對「內容太大」的413錯誤來說換小模型只會更早爆掉，方向錯了。
-    # 真正該做的是縮減內容本身，比照JS summarizeArchive()「413自動重試+縮減」
-    # 的既有模式：(a) current_status改用compact JSON（無indent），單這項就省
-    # 約17%字元數，且不損失任何資訊；(b) 413時砍news_snippets數量對半重試，
-    # news是輔助佐證、砍了只是佐證變少（機制設計上證據不足本來就會判無異動，
-    # 不會產生錯誤結果），current_status結構化資料本身不能砍，砍了會讓LLM
-    # 拿不到完整既有資料去比對，可能漏判真正過時的欄位。最多縮5輪，5輪都失敗
-    # 才真的放棄並拋出例外（讓main()寄失敗通知信）。
+    # 真正該做的是縮減內容本身：(a) category_data改用compact JSON（無indent）；
+    # (b) 413時砍news_snippets數量對半重試，news是輔助佐證，砍了只是佐證變少。
+    # 2026-09-22：既有這套413防護機制原封不動保留（拆成單一大類後現在幾乎不該
+    # 再觸發，但仍留著防禦單一大類本身也異常肥大的邊緣情況）。最多縮5輪，5輪
+    # 都失敗才真的放棄並拋出例外（讓main()記錄該大類失敗，其他大類照常繼續）。
     models = ["openai/gpt-oss-120b", "openai/gpt-oss-20b"]
     news_list = list(news_snippets)
     response = None
@@ -333,7 +353,7 @@ def call_groq_diff(current_status, news_snippets):
                 break
             except GroqAPIStatusError as e:
                 if e.status_code == 413:
-                    print(f"  → {model} 超出TPM（目前新聞{len(news_list)}則）...")
+                    print(f"    → {model} 超出TPM（目前新聞{len(news_list)}則）...")
                     continue
                 raise
         if response is not None:
@@ -341,9 +361,9 @@ def call_groq_diff(current_status, news_snippets):
         if not news_list:
             break
         news_list = news_list[:len(news_list)//2]
-        print(f"  → 縮減新聞片段至{len(news_list)}則重試...")
+        print(f"    → 縮減新聞片段至{len(news_list)}則重試...")
     if response is None:
-        raise ValueError(f"連續{shrink_round+1}輪（含縮減新聞片段至{len(news_list)}則）仍超出Groq TPM限制，current_status本身可能已過大")
+        raise ValueError(f"連續{shrink_round+1}輪（含縮減新聞片段至{len(news_list)}則）仍超出Groq TPM限制")
     raw = response.choices[0].message.content.strip()
     if raw.startswith('```'):
         raw = raw.split('\n', 1)[-1].rsplit('```', 1)[0].strip()
@@ -405,11 +425,14 @@ def build_overview_html(status):
     </div>'''
 
 
-def send_email(items, no_change_summary, status):
+def send_email(items, no_change_summary, status, category_failures=None):
     """獨立信件，跟daily的AI產業動態信完全分開發送、不合併內容。
     收件人只送GitHub Secret設定的NOTIFY_EMAIL（比照daily的secret_recipients），
     不碰data/email_config.json的飛鴿公開名單——那份名單是給每日AI新聞訂閱的，
-    NVIDIA週查證是另一種性質的內容，不應該未經同意就多推給那些人。"""
+    NVIDIA週查證是另一種性質的內容，不應該未經同意就多推給那些人。
+    2026-09-22新增category_failures：拆成6大類獨立查證後，若部分大類失敗，
+    比照Renewable Tracker send_email()的做法，獨立於items/no_change_summary
+    之外渲染一個提醒區塊，不管items是否為空都會顯示，避免失敗訊息被靜默吞掉。"""
     user = os.environ.get('GMAIL_USER', '').replace('\xa0', '').replace(' ', '').strip()
     pwd = os.environ.get('GMAIL_APP_PASSWORD', '').replace('\xa0', '').replace(' ', '').strip()
     secret_to = os.environ.get('NOTIFY_EMAIL', user).replace('\xa0', '').replace(' ', '').strip()
@@ -460,7 +483,14 @@ def send_email(items, no_change_summary, status):
         <div style="background:#faf9f7;border-left:3px solid #6a8a20;padding:14px 16px;border-radius:0 6px 6px 0;font-size:13px;color:#4a4744;line-height:1.6;margin-bottom:20px;">
           {summary}
         </div>'''
-    body_html = changes_html + build_overview_html(status)
+    fail_html = ''
+    if category_failures:
+        fail_note = '部分類別查證失敗（' + '；'.join(category_failures) + '），其餘分類查證結果如常。'
+        fail_html = f'''
+        <div style="background:#faf3ea;border-left:3px solid #c08040;padding:12px 16px;border-radius:0 6px 6px 0;font-size:12px;color:#8a5a30;line-height:1.6;margin-bottom:16px;">
+          ⚠️ {fail_note}
+        </div>'''
+    body_html = fail_html + changes_html + build_overview_html(status)
 
     html = f'''<html><body style="font-family:'Segoe UI',sans-serif;max-width:620px;margin:auto;padding:0;background:#eceae6;color:#2c2a28;">
       <div style="background:#faf9f7;padding:24px 28px;">
@@ -527,38 +557,70 @@ def main():
         print("✅ 完成（本週無新聞片段，僅更新查證時間戳）\n")
         return
 
-    print("🤖 Groq 核對現有資料是否過時...")
-    try:
-        diff = call_groq_diff(status, news)
-        if not isinstance(diff, dict):
-            raise ValueError(f"Groq回傳非預期格式（非dict）：{type(diff)}")
-    except Exception as e:
-        # 2026-08-24：原本這裡只print就return，job本身不會失敗（exit 0，Actions顯示
-        # success），但完全沒寄信也沒更新last_checked——使用者連續一週看不出異常。
-        # 改成照樣寄信告知失敗原因（沿用no_change路徑的信件版型），last_checked刻意
-        # 不更新，讓nv_pending_review.json/nv_status.json誠實反映「這週其實沒查證成功」。
-        print(f"  ⚠ Groq 呼叫失敗，本次不更新任何內容：{e}")
-        send_email([], f'本週自動查證因技術問題失敗（{e}），現有資料未變動，將於下次排程自動重試。', status)
+    print("🤖 Groq 依6大類逐一核對是否過時...")
+    # 2026-09-22改造：原本1次Groq請求打包6大類（current_status整份序列化後約
+    # 9,302字元），連縮到0則新聞片段仍超出Groq免費tier 6,000 TPM上限，證實問題
+    # 在current_status本身太大。現在改成6大類各自獨立呼叫call_groq_diff_one，
+    # 比照Renewable Tracker 09-01同款修法：單一大類失敗（try/except包住）不會讓
+    # 其他大類連坐失敗；只有6大類「全部」失敗才視同過去的全域例外處理（不更新
+    # last_checked、寄技術失敗信），否則即使有部分大類失敗，仍照常寫入其餘大類
+    # 的查證結果並更新last_checked，並在信件裡如實列出哪些大類失敗。
+    all_items = []
+    no_change_parts = []
+    category_failures = []
+    for idx, cfg in enumerate(CATEGORY_CONFIG):
+        cat_data = {k: status.get(k) for k in cfg['keys']}
+        print(f"  → 查證大類「{cfg['label']}」...")
+        try:
+            diff = call_groq_diff_one(cfg['label'], cat_data, cfg['category_enum'], news)
+            if not isinstance(diff, dict):
+                raise ValueError(f"Groq回傳非預期格式（非dict）：{type(diff)}")
+            cat_items = diff.get('items') or []
+            all_items.extend(cat_items)
+            if not cat_items and diff.get('no_change_summary'):
+                no_change_parts.append(diff['no_change_summary'])
+            print(f"    → {'偵測到'+str(len(cat_items))+'項候選異動' if cat_items else '無需更新'}")
+        except Exception as e:
+            print(f"    ⚠ 大類「{cfg['label']}」查證失敗，跳過此大類，其他大類繼續：{e}")
+            category_failures.append(f"{cfg['label']}：{e}")
+        # 大類間隔sleep：讓Groq TPM滾動視窗重置，非最後一類才需要等待
+        if idx < len(CATEGORY_CONFIG) - 1:
+            time.sleep(65)
+
+    if len(category_failures) == len(CATEGORY_CONFIG):
+        # 6大類全數查證失敗：視同過去的全域例外處理，不更新last_checked，讓
+        # nv_pending_review.json/nv_status.json誠實反映「這週其實沒查證成功」。
+        fail_summary = '；'.join(category_failures)
+        print(f"  ⚠ 6大類全數查證失敗，本次不更新任何內容：{fail_summary}")
+        send_email([], f'本週自動查證因技術問題失敗（{fail_summary}），現有資料未變動，將於下次排程自動重試。', status,
+                   category_failures=category_failures)
         return
 
-    items = diff.get('items') or []
+    # email只顯示一句固定摘要，不逐類拼接LLM各自產生的「沒變」句子——多句拼接
+    # 對讀者是純噪音，沒有額外資訊。各大類的原始no_change_summary仍完整存進
+    # pending.json的no_change_detail_by_category，供人工複核時參考。
+    no_change_summary = '本週查證後判斷現有資料仍準確。' if not all_items else ''
+
     pending = {
         'checked_at': DATE_STR,
-        'items': items,
-        'no_change_summary': diff.get('no_change_summary', ''),
+        'items': all_items,
+        'no_change_summary': no_change_summary,
+        'no_change_detail_by_category': no_change_parts,
+        'category_failures': category_failures,
     }
     save_json(NV_PENDING_PATH, pending)
 
-    # last_checked 時間戳寫回 nv_status.json 本身（這個欄位是唯一允許自動改寫的部分，
-    # 純粹是「上次查證時間」的紀錄用途，不影響任何實質內容）
+    # last_checked 時間戳寫回 nv_status.json 本身：只要至少1大類成功就更新，
+    # 不要求全部6大類都成功才更新——否則只要有1類持續失敗，就會讓其他5類明明
+    # 查證成功也被卡住永遠不更新時間戳。
     status['last_checked'] = DATE_STR
     save_json(NV_STATUS_PATH, status)
 
-    if items:
-        print(f"  → 偵測到 {len(items)} 項候選異動，已寫入 data/nv_pending_review.json（未套用，待人工複核）")
+    if all_items:
+        print(f"  → 共偵測到 {len(all_items)} 項候選異動，已寫入 data/nv_pending_review.json（未套用，待人工複核）")
     else:
-        print(f"  → 本週查證後無需更新：{pending['no_change_summary']}")
-    send_email(items, pending['no_change_summary'], status)
+        print(f"  → 本週查證後無需更新：{no_change_summary}")
+    send_email(all_items, no_change_summary, status, category_failures=category_failures)
     # git commit/push 交給 GitHub Actions 的 git-auto-commit-action 處理（比照
     # daily-update.yml 慣例），本腳本只負責寫檔案，不自己動 git
     print("✅ 完成\n")
