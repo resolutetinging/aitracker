@@ -279,7 +279,7 @@
       "title": "美國調查新加坡貨運業者Apex Logistics涉嫌協助輝達晶片繞道走私中國",
       "category": "政府調查",
       "thread": "美超微／輝達晶片走私網絡查緝",
-      "summary": "彭博社、海峽時報等多家媒體報導，美國政府正在調查新加坡貨運承攬業者Apex Logistics，懷疑其協助將受管制的輝達AI晶片經第三地轉運流入中國，這是本輪查緝行動首次將矛頭指向物流承攬業者本身而非晶片買賣雙方。Apex Logistics回應稱正全力配合調查。",
+      "summary": "美國政府調查新加坡貨運承攬業者Apex Logistics是否協助將受管制輝達晶片經第三地轉運流入中國，是本輪查緝行動首次將矛頭指向物流承攬業者本身。完整案情細節，請見「⚔️ 中美科技戰」分頁近期動態時間軸。",
       "src": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPbHM1WW1HVzA4Z2pOdTlheGp6aWY2UDhJMDRIR1pIaXJjR1JqM21BaUlmZFpiaEwzeDA5V1VUZWd0clhqTE1MMG5fX3JoR0szZzVFclpRZWtfbFNRQ1JqU0hvNHFhZUFGeW1MdHZWWHdLZTVhMFpEdHZuZGpxMEVYNmU3Q2pSUkV5ZThOVkxMbWdLc01rUlNwb0dKY1QxcXdETTM1ajhIbHJ2OGkwTkw5VDdRVWZpOHVoN21JUzNTd0lIVFB2?oc=5",
       "src_note": "媒體報導（彭博社／The Straits Times／Yahoo Finance等多家轉載），查無美國商務部工業與安全局（BIS）或司法部的正式書面新聞稿；此連結為Google新聞聚合連結導向原始報導。"
     },
@@ -296,7 +296,7 @@
       "title": "台灣基隆地檢署起訴9人涉嫌透過印尼、日本轉運輝達B300伺服器至中國",
       "category": "出口管制",
       "thread": "美超微／輝達晶片走私網絡查緝",
-      "summary": "基隆地方檢察署偵結「不法出口高階伺服器案件」，起訴9名被告，其中包含輝達台灣分公司資深經理張登隆、美超微（Supermicro）台灣子公司2名主管等。檢方查出被告以偽造機房查核資料等方式規避輝達與美超微的客戶資格審查，取得130台B300高階AI伺服器出貨許可，其中74台經印尼、日本、香港等地轉運流入中國，56台遭台灣海關攔截，不法所得逾2120萬美元（約合新台幣6.75億元）。輝達回應表示一貫致力於與客戶合作確保遵守相關法規；美超微則表示自身並非本案調查對象。",
+      "summary": "基隆地檢署起訴9名被告（含輝達台灣分公司資深經理張登隆），查出130台B300高階AI伺服器經印尼、日本、香港等地轉運流入中國，74台成功流出、56台遭台灣海關攔截，不法所得逾2120萬美元。完整案情與同系列其他事件，請見「⚔️ 中美科技戰」分頁近期動態時間軸。",
       "src": "https://www.klc.moj.gov.tw/media/450456/1150824基檢偵結不法出口高階伺服器案件新聞稿.pdf?mediaDL=true",
       "src_note": ""
     },
@@ -356,7 +356,7 @@
       "title": "美國司法部起訴3名與美超微關聯人士，涉嫌以25億美元伺服器走私輝達晶片至中國",
       "category": "法律訴訟",
       "thread": "美超微／輝達晶片走私網絡查緝",
-      "summary": "美國司法部正式起訴3名人士——美超微共同創辦人廖益興（Wally Liaw，美籍）、張瑞祥（Steven Chang，台籍，在逃）、孫定緯（Willy Sun，台籍）——指控三人共謀將約25億美元、內含受管制輝達晶片（H100、H200、B200等）的伺服器銷往東南亞一家公司，再由該公司拆封重新包裝、移除識別標記後，將其中約5.1億美元的伺服器轉運至中國買家，違反出口管制改革法。此案是本輪美超微／輝達晶片走私網絡查緝的起點，直接牽動同年8月台灣基隆地檢署起訴案。國家安全事務助理檢察長John A. Eisenberg表示：「這些晶片是美國智慧的結晶，國家安全部門將持續執行出口管制法規以保護這項優勢。」",
+      "summary": "美國司法部起訴美超微共同創辦人廖益興（Wally Liaw）等3人，涉嫌以約25億美元的伺服器走私輝達晶片至中國，違反出口管制改革法，為本輪美超微／輝達晶片走私網絡查緝的起點。完整案情細節與後續延伸案件（含台灣起訴案），請見「⚔️ 中美科技戰」分頁近期動態時間軸。",
       "src": "https://www.justice.gov/opa/pr/three-charged-conspiring-unlawfully-divert-cutting-edge-us-artificial-intelligence",
       "src_note": ""
     },
