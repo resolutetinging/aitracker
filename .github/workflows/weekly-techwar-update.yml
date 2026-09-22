@@ -1,0 +1,42 @@
+name: ⚔️ Weekly Tech War & Taiwan Role Update
+
+on:
+  schedule:
+    - cron: '0 16 * * 6'  # 每週六 16:00 UTC（台北時間週日 00:00）；故意跟NVIDIA週查證
+                           # （週日16:00 UTC＝台北週一00:00）錯開一整天，避免共用同一把
+                           # GROQ_API_KEY時，兩支週排程若時間點太接近可能疊加TPM額度
+  workflow_dispatch:        # 手動備用
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Pull latest (clean tree)
+        run: git pull --rebase origin main
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install groq ddgs
+
+      - name: Run tech war weekly check
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python scripts/update_techwar.py
+
+      - name: Commit updated data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "⚔️ Tech war weekly check"
+          file_pattern: 'data/techwar_status.json data/techwar_pending_review.json'

@@ -15,6 +15,7 @@
   --gloss:#4a6880;--insight:#3a6860;--hist:#607080;--nv:#6a8a20;
   --core:#3a5a7a;--noise:#686460;--opp:#3a6858;--ethic:#906030;
   --industry:#4a7868;
+  --techwar:#5a6f95;
   --shadow:0 1px 4px rgba(0,0,0,.08);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -47,6 +48,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .t-gloss{background:rgba(74,104,128,.10); border-color:var(--gloss);color:var(--gloss);}
 .t-nv   {background:rgba(106,138,32,.10); border-color:var(--nv);   color:var(--nv);}
 .t-industry {background:rgba(74,120,104,.10); border-color:var(--industry); color:var(--industry);}
+.t-techwar {background:rgba(90,111,149,.10); border-color:var(--techwar); color:var(--techwar);}
 .t-ins  {background:rgba(58,104,96,.10);  border-color:var(--insight);color:var(--insight);}
 .t-hist    {background:rgba(96,112,128,.10);  border-color:var(--hist);    color:var(--hist);}
 .t-archive {background:rgba(120,96,160,.10);  border-color:#8a60b0;        color:#8a60b0;}
@@ -444,6 +446,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
   <button class="tab-btn" id="btn-app"   onclick="sw('app')">🤖 新興應用</button>
   <button class="tab-btn" id="btn-nv"    onclick="sw('nv')">🟢 NVIDIA專區</button>
   <button class="tab-btn" id="btn-industry" onclick="sw('industry')">🏭 產業導入</button>
+  <button class="tab-btn" id="btn-techwar" onclick="sw('techwar')">⚔️ 中美科技戰</button>
   <button class="tab-btn" id="btn-gloss" onclick="sw('gloss')">📚 專有名詞</button>
   <button class="tab-btn" id="btn-hist"    onclick="sw('hist')">📅 本週紀錄</button>
   <button class="tab-btn" id="btn-archive" onclick="sw('archive');loadArchive()">📝 歷史筆記</button>
@@ -454,6 +457,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 <div id="panel-app"     class="panel"></div>
 <div id="panel-nv"      class="panel"></div>
 <div id="panel-industry" class="panel"></div>
+<div id="panel-techwar" class="panel"></div>
 <div id="panel-gloss"   class="panel"></div>
 <div id="panel-hist"    class="panel"></div>
 <div id="panel-archive" class="panel"></div>
@@ -1411,6 +1415,161 @@ async function renderIndustryAdoption(){
   } catch(e){ /* 沒有pending檔或抓取失敗都當作沒有待複核項目，靜默略過 */ }
 
   indRenderPanel();
+}
+
+// ══════════════════════════════════════════════════════════════════
+//  中美科技戰 & 台灣角色專區（09-22新增；資料存 data/techwar_status.json，
+//  組合既有兩套模式：①NVIDIA專區的週更+待複核banner+tab-alert脈動提示
+//  （這裡拿掉email，僅前端顯示提示，候選異動由使用者告知Claude人工複核後
+//  才寫回techwar_status.json，絕不自動套用）；②產業導入分頁的資料驅動
+//  render（零HTML改動即可擴充內容）。近期事件重用NVIDIA專區既有的
+//  nvGroupEvents/nvEventGroupCard/nvEventBody（schema相容：date/title/
+//  category/thread/summary/src/src_note），只是這裡另開TW_DATA/TW_EVENT_CAT
+//  獨立狀態＋tw-events-body容器，避免跟NVIDIA分頁的NV_DATA/NV_EVENT_CAT互相污染。
+//  查證排程：scripts/update_techwar.py 由獨立GitHub Actions週排程（週六16:00
+//  UTC，故意跟NVIDIA週日16:00UTC/產業導入每月2號錯開，避免同分鐘Groq TPM疊加）
+//  觸發，候選異動只寫進 data/techwar_pending_review.json。
+// ══════════════════════════════════════════════════════════════════
+let TW_DATA = null;
+let TW_EVENT_CAT = 'all';
+
+// role對應.tw-flow既有四種節點顏色class（n-hw藍/n-mem灰藍/n-pkg棕/n-end綠），
+// 白名單限制在這四種之內，避免candidate資料寫入非預期role時產生任意class名稱
+function twNodeRoleCls(role){
+  return ['hw','mem','pkg','end'].includes(role) ? 'n-'+role : 'n-end';
+}
+
+// 採購/供應流向圖卡——輸入{title,summary,nodes:[{label,sub,role}],arrows:[...],src,src_note}，
+// 動態產生跟既有.tw-flow（第740行附近台灣AI供應鏈那張寫死的圖）相同的node/arrow交替結構，
+// 外層用既有.tw-chain卡片容器（背景/圓角/陰影已定義），可重複呼叫渲染多筆flow
+function twFlowCard(flow){
+  const nodes = flow.nodes||[];
+  const arrows = flow.arrows||[];
+  const flowHtml = nodes.map((n,i)=>{
+    const nodeHtml = `<div class="tw-node ${twNodeRoleCls(n.role)}">
+      <div class="tw-node-label">${_arcEsc(n.label||'')}</div>
+      ${n.sub ? `<div class="tw-node-sub">${_arcEsc(n.sub)}</div>` : ''}
+    </div>`;
+    const arrowHtml = i < arrows.length
+      ? `<div class="tw-arrow"><div class="tw-arrow-line">→</div><div class="tw-arrow-label">${_arcEsc(arrows[i]||'')}</div></div>`
+      : '';
+    return nodeHtml + arrowHtml;
+  }).join('');
+  return `<div class="tw-chain">
+    <div class="tw-chain-title">${_arcEsc(flow.title||'')}</div>
+    ${flow.summary ? `<div class="nv-case-desc" style="margin-bottom:12px;">${_arcEsc(flow.summary)}</div>` : ''}
+    <div class="tw-flow">${flowHtml}</div>
+    ${nvSrcLink(flow.src)}
+    ${flow.src_note ? `<div class="nv-event-note">⚠️ ${_arcEsc(flow.src_note)}</div>` : ''}
+  </div>`;
+}
+
+// 關鍵企業卡——沿用.nv-case-card視覺樣式，欄位name/role/desc/exposure/policy_actions/risk/src/src_note，
+// exposure/policy_actions/risk三個補充區塊重用產業導入分頁既有的indDetailBlock()
+function twCompanyCard(item){
+  return `<div class="nv-case-card">
+    <div class="nv-case-name">${_arcEsc(item.name)}</div>
+    ${item.role ? `<div class="nv-case-scope">🧩 ${_arcEsc(item.role)}</div>` : ''}
+    <div class="nv-case-desc">${_arcEsc(item.desc)}</div>
+    ${item.exposure ? indDetailBlock('📍','受影響程度',item.exposure) : ''}
+    ${item.policy_actions ? indDetailBlock('📋','政策因應',item.policy_actions) : ''}
+    ${item.risk ? indDetailBlock('⚠️','風險',item.risk,true) : ''}
+    ${nvSrcLink(item.src)}
+    ${item.src_note ? `<div class="nv-event-note">⚠️ ${_arcEsc(item.src_note)}</div>` : ''}
+  </div>`;
+}
+
+// 資本／人才管制措施卡——欄位measure/scope/desc/src/src_note，比照nvCaseCard精簡版
+function twControlCard(item){
+  return `<div class="nv-case-card">
+    <div class="nv-case-name">${_arcEsc(item.measure)}</div>
+    ${item.scope ? `<div class="nv-case-scope">📁 ${_arcEsc(item.scope)}</div>` : ''}
+    <div class="nv-case-desc">${_arcEsc(item.desc)}</div>
+    ${nvSrcLink(item.src)}
+    ${item.src_note ? `<div class="nv-event-note">⚠️ ${_arcEsc(item.src_note)}</div>` : ''}
+  </div>`;
+}
+
+// 近期動態分類篩選——完全比照NVIDIA專區nvEventFilter()/nvRenderEventsBody()的做法，
+// 但用獨立的TW_DATA/TW_EVENT_CAT狀態＋tw-events-body容器，避免跟NV專區互相覆蓋；
+// 分組/單卡渲染直接重用nvGroupEvents()/nvEventGroupCard()（schema相容，不重寫）
+function twEventFilter(cat){
+  TW_EVENT_CAT = cat;
+  twRenderEventsBody();
+}
+function twRenderEventsBody(){
+  const body = document.getElementById('tw-events-body');
+  if(!body || !TW_DATA) return;
+  const events = TW_DATA.recent_events||[];
+  const allCats = [...new Set(events.map(e=>e.category).filter(Boolean))];
+  const groups = nvGroupEvents(events);
+  const filtered = TW_EVENT_CAT==='all' ? groups : groups.filter(g=>g.items.some(e=>e.category===TW_EVENT_CAT));
+  const navHtml = ['all', ...allCats].map(c=>
+    `<button class="nv-event-nav-btn ${TW_EVENT_CAT===c?'active':''}" onclick="twEventFilter('${String(c).replace(/'/g,"\\'")}')">${c==='all'?'全部':_arcEsc(c)}</button>`
+  ).join('');
+  const cardsHtml = filtered.map(nvEventGroupCard).join('') || '<div class="empty-state">此分類目前沒有事件</div>';
+  body.innerHTML = `<div class="nv-event-nav">${navHtml}</div><div class="nv-event-grid">${cardsHtml}</div>`;
+}
+
+async function renderTechwar(){
+  const panel = document.getElementById('panel-techwar');
+  let tw;
+  try {
+    const r = await fetch('data/techwar_status.json?v='+Date.now());
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    tw = await r.json();
+  } catch(e){
+    panel.innerHTML = '<div class="empty-state">⚠️ 無法載入中美科技戰專區資料（data/techwar_status.json）</div>';
+    return;
+  }
+  TW_DATA = tw;
+  TW_EVENT_CAT = 'all';
+
+  // 週查證若有候選異動會寫進techwar_pending_review.json，這裡只顯示一個提示banner，
+  // 不自動套用內容——完全比照NVIDIA/產業導入兩專區同一套安全機制
+  let pendingHtml = '';
+  try {
+    const pr = await fetch('data/techwar_pending_review.json?v='+Date.now());
+    if(pr.ok){
+      const pending = await pr.json();
+      const n2 = (pending.items||[]).length;
+      if(n2 > 0){
+        pendingHtml = `<div class="ethic-alert">🔔 本週查證偵測到 ${n2} 項可能需要更新的內容（尚未套用，僅供參考），請告知 Claude 複核後正式更新</div>`;
+      }
+      // 分頁按鈕本身也標示待複核，不用先點進分頁才看得到（比照btn-nv/btn-industry做法）
+      const btnTw = document.getElementById('btn-techwar');
+      if(btnTw) btnTw.classList.toggle('tab-alert', n2 > 0);
+    }
+  } catch(e){ /* 沒有pending檔或抓取失敗都當作沒有待複核項目，靜默略過 */ }
+
+  const flowsHtml = (tw.procurement_flows||[]).map(twFlowCard).join('') || '<div class="empty-state">尚無資料</div>';
+  const companyHtml = (tw.key_companies||[]).map(twCompanyCard).join('') || '<div class="empty-state">尚無資料</div>';
+  const controlHtml = (tw.capital_talent_controls||[]).map(twControlCard).join('') || '<div class="empty-state">尚無資料</div>';
+
+  panel.innerHTML = `
+    <div class="nv-toc">📑
+      <a onclick="nvScrollTo('tw-sec-events')">近期動態</a>
+      <a onclick="nvScrollTo('tw-sec-flow')">採購／供應流向</a>
+      <a onclick="nvScrollTo('tw-sec-company')">關鍵企業</a>
+      <a onclick="nvScrollTo('tw-sec-control')">資本／人才管制</a>
+    </div>
+    ${pendingHtml}
+
+    <div class="sec-title" id="tw-sec-events">近期動態</div>
+    <div id="tw-events-body"></div>
+
+    <div class="sec-title" id="tw-sec-flow">採購／供應流向</div>
+    ${flowsHtml}
+
+    <div class="sec-title" id="tw-sec-company">關鍵企業</div>
+    <div class="nv-case-grid">${companyHtml}</div>
+
+    <div class="sec-title" id="tw-sec-control">資本與人才管制</div>
+    <div class="nv-case-grid">${controlHtml}</div>
+
+    <div style="font-size:11px;color:var(--muted);margin:4px 0 4px;padding-left:2px;">📌 每週由排程自動查證是否過時（候選異動需人工複核才會套用），最後查證：${_arcEsc(tw.last_checked||'—')}</div>`;
+
+  twRenderEventsBody();
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -2759,7 +2918,7 @@ async function saveArchiveToGitHub() {
 // ══════════════════════════════════════════════════════════════════
 //  TAB SWITCHING
 // ══════════════════════════════════════════════════════════════════
-const TCLS = {hw:'t-hw',corp:'t-corp',app:'t-app',nv:'t-nv',industry:'t-industry',gloss:'t-gloss',hist:'t-hist',archive:'t-archive'};
+const TCLS = {hw:'t-hw',corp:'t-corp',app:'t-app',nv:'t-nv',industry:'t-industry',techwar:'t-techwar',gloss:'t-gloss',hist:'t-hist',archive:'t-archive'};
 function sw(tab) {
   Object.keys(TCLS).forEach(k => {
     document.getElementById('panel-'+k).classList.remove('active');
@@ -2776,6 +2935,9 @@ function sw(tab) {
     } else if (tab === 'industry') {
       freqBadge.textContent = '🕐 每月2號 00:00 更新';
       freqBadge.title = '產業導入分頁每月2號00:00更新';
+    } else if (tab === 'techwar') {
+      freqBadge.textContent = '🕐 每週日 00:00 更新';
+      freqBadge.title = '中美科技戰專區週查證每週日00:00更新';
     } else {
       freqBadge.textContent = '🕐 每日更新';
       freqBadge.title = '一般資料每日更新';
@@ -2793,6 +2955,7 @@ function renderAll(hist) {
   renderApp(hist[0]);
   renderNvidia();
   renderIndustryAdoption();
+  renderTechwar();
   renderGlossary(hist);
   renderHistory(hist);
 }
@@ -2800,7 +2963,7 @@ function renderAll(hist) {
 async function init() {
   const savedTab = sessionStorage.getItem('at_tab');
   const initTab = savedTab && Object.keys(TCLS).includes(savedTab) ? savedTab : 'hw';
-  ['hw','corp','app','nv','industry','gloss','hist'].forEach(p => {
+  ['hw','corp','app','nv','industry','techwar','gloss','hist'].forEach(p => {
     document.getElementById('panel-'+p).innerHTML =
       '<div class="loading-screen"><div class="spinner"></div><div class="loading-text">載入最新資料中...</div></div>';
   });
