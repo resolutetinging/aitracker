@@ -303,30 +303,77 @@
   ],
   "supply_chain_comparison": {
     "us": {
-      "key_players": [
-        "NVIDIA",
-        "Microsoft/OpenAI",
-        "Marvell",
-        "MediaTek",
-        "Ayar Labs/Lightmatter"
-      ],
-      "stage": "生態系整合與跨企業聯盟建構，並同步涉入出口管制規則制定的政策協商",
-      "desc": "NVIDIA的CUDA平台2026年迎來20週年，官方於GTC 2026強調其為全球GPU運算生態系基礎，累積CUDA相容GPU裝機量達數億片，形成裝機量、應用量、開發者三者自我強化的循環。2025至2026年NVIDIA透過NVLink Fusion平台建立跨企業聯盟：MediaTek自2025年起為早期夥伴，2026年3月NVIDIA對Marvell投資20億美元並整合矽光子技術，Ayar Labs、Lightmatter等共封裝光學公司也相繼加入，使NVIDIA的高速互連架構成為業界須相容的規格層。同時，NVIDIA每季投入約200萬美元遊說美國國會，議題涵蓋晶片出口管制與AI政策，2026年成功促使國會未將限制對中銷售AI晶片的GAIN AI Act條款納入國防授權法案，顯示其對美國晶片管制規則具實質影響力（旁證：legis1.com遊說支出追蹤）。",
-      "src": "https://nvidianews.nvidia.com/news/nvidia-ai-ecosystem-expands-as-marvell-joins-forces-through-nvlink-fusion",
-      "src_note": "NVIDIA官方新聞稿，屬公司自我揭露但為可查證的具體交易與合作事實；遊說金額另引用遊說支出追蹤網站legis1.com數據佐證，該類網站非主流媒體但屬公開遊說揭露資料整理"
+      "overview": "美國AI生態系由晶片硬體、雲端基礎設施、前沿模型研發三個環節的多家企業共同構成，彼此透過雲端採購協議、晶片供應與交叉投資關係緊密交織。",
+      "game_changers": [
+        {
+          "name": "NVIDIA",
+          "role": "AI運算硬體與開發者生態系鎖定的主導供應商",
+          "influence": "NVIDIA公布2026財年(FY2026)總營收2,159億美元，其中資料中心營收達1,973億美元（前一年為1,152億美元）；據產業分析機構估計，NVIDIA的AI加速器市場占有率在2026年約為75%至81%，雖較2024年高峰的87%略有下滑，但仍居絕對主導地位。除硬體外，CUDA軟體開發平台、NVLink與InfiniBand晶片互連技術構成的開發者生態系，使其成為前沿模型訓練的預設路徑，形成顯著的轉換成本與鎖定效應。",
+          "src": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026",
+          "src_note": "公司官方財報新聞稿"
+        },
+        {
+          "name": "OpenAI",
+          "role": "前沿大型語言模型開發者，消費級生成式AI應用的全球最大入口",
+          "influence": "OpenAI於2026年2月27日對外宣布ChatGPT週活躍使用者突破9億人，同時公布逾5,000萬消費級訂閱用戶與逾900萬付費企業用戶；此公告同時搭配一輪由Amazon、NVIDIA、SoftBank參與的1,100億美元募資。營收方面，OpenAI年化營收在2026年2月突破250億美元，據Bloomberg報導至2026年8月已攀升至400億美元以上，成長動能來自程式碼協作產品、訂閱與新興廣告業務。",
+          "src": "https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users",
+          "src_note": "主流科技媒體報導，內容轉述OpenAI官方揭露之數字"
+        },
+        {
+          "name": "Microsoft",
+          "role": "AI雲端基礎設施與企業級分銷通路的主導者",
+          "influence": "Microsoft在2026財年10-K文件中首度揭露，來自OpenAI合作關係的商業性收入達241億美元（約占Microsoft該財年總營收3,318億美元的7%），且OpenAI合作占Microsoft整體AI相關營收約70%。Microsoft已承諾對OpenAI投資130億美元（截至6月30日已撥款119億美元），OpenAI則承諾額外採購2,500億美元Azure雲端服務；2026年4月雙方重組合作關係後，Microsoft持有OpenAI Group PBC股權降至27%（估值約1,350億美元），但仍為OpenAI主要雲端合作夥伴。",
+          "src": "https://finance.yahoo.com/technology/ai/articles/microsoft-made-24-1-billion-031442842.html",
+          "src_note": "主流財經媒體報導，內容轉述Microsoft官方10-K(SEC文件)揭露數字"
+        },
+        {
+          "name": "Google DeepMind (Gemini)",
+          "role": "前沿模型研發與自研運算基礎設施(TPU)垂直整合的整合者",
+          "influence": "Alphabet在2025年第4季財報會議中揭露Gemini App月活躍使用者達7.5億人（單季新增1億），執行長Sundar Pichai指出使用強度與留存率在iOS、網頁、Android及全球各地皆顯著成長。Gemini 3模型透過API每分鐘處理超過100億個token（較前一季70億成長）。技術面上，Gemini系列模型訓練於Google自研TPU而非依賴NVIDIA GPU叢集，形成獨立於NVIDIA供應鏈之外的運算路徑；2026年第3季至2027年第4季期間，超過20%的TPU出貨量已對外銷售予Anthropic，顯示TPU業務同時具備自用與外部客戶兩種角色。",
+          "src": "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q4-2025/",
+          "src_note": "公司官方部落格（財報會議CEO發言紀錄）"
+        },
+        {
+          "name": "Anthropic",
+          "role": "安全導向前沿實驗室，高價值企業客戶滲透的領先者",
+          "influence": "Anthropic官方揭露，其年化營收由2025年初約10億美元，於8個月內（至2025年8月）成長至逾50億美元；公司服務逾30萬個企業客戶，其中年化營收貢獻超過10萬美元的「大型帳戶」數量在一年內成長近7倍。旗下程式碼協作產品Claude Code單獨的年化營收已超過5億美元，3個月內使用量成長逾10倍。此募資輪（Series F）將公司估值推升至1,830億美元，後續據多家財經媒體報導，Anthropic年化營收已於2026年持續攀升（4月突破300億美元、7月達650億美元），但此後續數字未見於本次查證所引用之官方公告，故僅標註於此作脈絡參考。",
+          "src": "https://www.anthropic.com/news/anthropic-raises-series-f-at-usd183b-post-money-valuation",
+          "src_note": "公司官方新聞稿"
+        }
+      ]
     },
     "china": {
-      "key_players": [
-        "阿里雲(Qwen)",
-        "華為(昇騰Ascend)",
-        "百度(崑崙芯)",
-        "字節跳動",
-        "中芯國際(SMIC)"
-      ],
-      "stage": "軟硬體兩層進度不一：模型/雲端層已具全球影響力，晶片與晶圓代工層仍在基礎建設與國產替代鋪陳階段",
-      "desc": "中國AI供應鏈呈現軟硬體兩層不同進度。模型層：阿里雲Qwen系列開源模型全球下載量於2026年8月突破30億次，超越Meta與Google同期模型下載量，旗下ModelScope開源社群用戶數超過1,800萬、託管10萬個模型，模型生態系已具全球影響力。晶片層：受美國出口管制推動國產替代，2026年中國國內AI晶片市場國產份額估計已達約90%，其中華為昇騰約占50%，但華為軟體工具鏈CANN、MindSpore預計2026年底才開源，業界評估其開發者體驗要達到CUDA同等水準恐須到2027年後。晶圓代工層：中芯國際(SMIC)5奈米製程2026年仍處試產階段、良率低於20%，中國以「大基金三期」（3,440億人民幣，約475億美元）挹注設備與材料自主化，反映整體供應鏈硬體端仍在基礎建設與良率提升階段，尚未如美國端完成跨層垂直整合。",
-      "src": "https://fortune.com/2026/08/15/alibaba-qwen-open-ai-models-3-billion-downloads-meta-google/",
-      "src_note": "主流財經媒體Fortune報導，下載量數字源自公開統計；晶片市占率與大基金金額另引用Tom's Hardware、Digitimes、TrendForce等半導體產業媒體佐證，此類市占數字多為產業分析師估計而非中國官方或企業逐一驗證的正式揭露數字"
+      "overview": "中國AI生態系呈現「開源模型生態（阿里雲Qwen）＋效率突破與全球關注度（DeepSeek）＋自主晶片替代（華為昇騰）＋消費級應用規模化（字節跳動豆包）」並行發展的樣貌；晶片自主之路仍受代工製程良率限制，且多數企業之用戶規模與產能數據並非企業官方揭露，而是依賴第三方數據分析機構或外媒報導。",
+      "game_changers": [
+        {
+          "name": "阿里雲 / 通義千問(Qwen)",
+          "role": "開源大型語言模型生態系的全球領先推動者",
+          "influence": "根據Hugging Face平台自家發布的《State of Open Source on Hugging Face: Spring 2026》報告，Qwen系列模型過去六個月內全球下載量累計超過30億次，超越Google（4.18億次）與Meta（2.27億次）兩者相加總和；Qwen已開源逾460個模型，衍生模型數超過30萬個，使其成為全球開發者微調與部署模型時的預設選項之一，構成開源AI開發的基礎設施地位。",
+          "src": "https://huggingface.co/blog/huggingface/state-of-os-hf-spring-2026",
+          "src_note": "平台方（Hugging Face）官方統計報告，非阿里巴巴自行揭露"
+        },
+        {
+          "name": "DeepSeek",
+          "role": "訓練效率突破與全球關注度的引爆點，開源實用主義路線的代表",
+          "influence": "DeepSeek官方技術報告（arXiv公開論文）揭露，V3模型完整訓練僅耗費278.8萬GPU小時，以H800每GPU小時2美元估算總訓練成本約557.6萬美元，此低成本高效能宣稱於2025年初引發全球AI股市震動與對美中AI競賽假設的重新討論。使用者規模方面，據QuestMobile 2026年5月數據，DeepSeek以1.3億月活躍使用者排名中國AI原生應用市場第三；據Similarweb/Sensor Tower等機構估計，DeepSeek在140個海外市場的下載量曾登頂第一，全球聊天機器人市場占有率約4%。",
+          "src": "https://arxiv.org/abs/2412.19437",
+          "src_note": "訓練成本數字出自公司官方技術論文；使用者規模與下載量數字則為第三方數據分析機構（QuestMobile/Sensor Tower/Similarweb）估計，非公司官方揭露"
+        },
+        {
+          "name": "華為 / 昇騰(Ascend)",
+          "role": "半導體晶片自主替代的旗艦廠商，中國AI硬體「去NVIDIA化」的關鍵支柱",
+          "influence": "據Bloomberg報導，華為計畫於2026年將昇騰910C晶片產量倍增至約60萬顆，若計入其他型號，昇騰系列晶粒總產能上看160萬顆；910C晶片主要客戶包括阿里巴巴、騰訊、DeepSeek。產業分析師估計，代工廠中芯國際（SMIC）目前良率約20%至40%，遠低於台積電同級製程80%至90%的水準，反映晶片自主替代仍受製程限制。華為亦公開表示目標於2028年滿足中國半數AI晶片需求。",
+          "src": "https://finance.yahoo.com/news/huawei-ramp-ai-chip-production-164141523.html",
+          "src_note": "主流財經媒體轉載Bloomberg原始報導，並引用產業分析師良率估計；華為本身未公開發布此產能數字之官方數據，資料完整度明顯低於美方企業的官方財報揭露"
+        },
+        {
+          "name": "字節跳動 / 豆包(Doubao)",
+          "role": "消費級AI應用規模化的領先者，中國國內滲透率最高的AI原生App",
+          "influence": "據QuestMobile 2026年5月數據（經主流科技媒體轉載），豆包以3.82億月活躍使用者穩居中國AI原生應用市場第一，領先第二名通義千問App（1.67億）逾兩倍；同期中國AI原生應用整體月活躍使用者達4.99億，年增85.4%，豆包占據其中最大宗份額。使用黏著度方面，AI原生應用平均每人每月使用92.7次，平均每月使用時長183分鐘（年增40%），豆包為此類高黏著度使用型態的主要貢獻者。",
+          "src": "https://technode.com/2026/07/14/questmobile-chinas-ai-native-apps-reach-499-million-monthly-active-users/",
+          "src_note": "主流科技媒體報導第三方數據分析機構（QuestMobile）統計，非字節跳動公司官方揭露"
+        }
+      ]
     }
   }
 }

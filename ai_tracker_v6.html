@@ -331,10 +331,13 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .tw-sc-wrap{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;}
 .tw-sc-col{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;box-shadow:var(--shadow);}
 .tw-sc-flag{font-size:13px;font-weight:700;color:var(--techwar);margin-bottom:8px;}
+.tw-gc-list{display:flex;flex-direction:column;gap:10px;margin-top:10px;}
+.tw-gc-card{background:var(--card2);border:1px solid var(--border2);border-radius:8px;padding:10px 12px;}
+.tw-gc-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px;}
 .tw-map-wrap{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:18px;box-shadow:var(--shadow);}
 .tw-map-svg-outer{width:100%;overflow-x:auto;}
-.tw-map-node-dot{fill:var(--techwar);stroke:var(--card);stroke-width:1.5;}
-.tw-map-node-label{font-size:9px;font-weight:700;fill:var(--text);}
+.tw-map-node-dot{fill:var(--techwar);stroke:var(--card);stroke-width:8;cursor:pointer;}
+.tw-map-node-label{font-size:80px;font-weight:700;fill:var(--text);paint-order:stroke;stroke:var(--card);stroke-width:10;stroke-linejoin:round;}
 .tw-map-arrow{fill:none;stroke:var(--techwar);stroke-width:2.6;opacity:.8;marker-end:url(#tw-map-arrowhead);}
 @media(max-width:700px){.tw-sc-wrap{grid-template-columns:1fr;}}
 
@@ -1541,16 +1544,24 @@ function twRenderCompanyBody(){
   body.innerHTML = `<div class="nv-event-nav">${navHtml}</div><div class="nv-case-grid">${cardsHtml}</div>`;
 }
 
-// 09-23：AI產業供應鏈比較——美中兩欄卡片，欄位key_players/stage/desc/src/src_note
+// 09-23改版：AI產業供應鏈比較——每欄放多個「game changer」玩家卡片(非單一
+// 企業範例)，欄位game_changers:[{name,role,influence,src,src_note}]+overview
+function twGameChangerCard(gc){
+  return `<div class="tw-gc-card">
+    <div class="tw-gc-name">${_arcEsc(gc.name||'')}</div>
+    <div class="nv-case-scope">🎯 ${_arcEsc(gc.role||'')}</div>
+    <div class="nv-case-desc">${_arcEsc(gc.influence||'')}</div>
+    ${nvSrcLink(gc.src)}
+    ${gc.src_note ? `<div class="nv-event-note">⚠️ ${_arcEsc(gc.src_note)}</div>` : ''}
+  </div>`;
+}
 function twSupplyChainCol(d, flagLabel){
   if(!d) return '';
+  const gcHtml = (d.game_changers||[]).map(twGameChangerCard).join('') || '<div class="empty-state">尚無資料</div>';
   return `<div class="tw-sc-col">
     <div class="tw-sc-flag">${flagLabel}</div>
-    <div class="nv-case-scope">🧩 ${_arcEsc((d.key_players||[]).join('、'))}</div>
-    <div class="nv-case-scope">📍 ${_arcEsc(d.stage||'')}</div>
-    <div class="nv-case-desc">${_arcEsc(d.desc||'')}</div>
-    ${nvSrcLink(d.src)}
-    ${d.src_note ? `<div class="nv-event-note">⚠️ ${_arcEsc(d.src_note)}</div>` : ''}
+    ${d.overview ? `<div class="nv-case-desc">${_arcEsc(d.overview)}</div>` : ''}
+    <div class="tw-gc-list">${gcHtml}</div>
   </div>`;
 }
 function twSupplyChainCard(sc){
@@ -1573,7 +1584,7 @@ const TW_MAP_COUNTRIES = {
   kr:{name:'韓國',lat:37.6,lon:127.0,role:'記憶體與晶圓代工重鎮',players:['Samsung Foundry']},
   jp:{name:'日本',lat:35.7,lon:139.7,role:'供應鏈轉運節點之一',players:[]},
   sg:{name:'新加坡',lat:1.35,lon:103.8,role:'疑似晶片轉運中介節點（Apex Logistics調查、Aperia集團案）',players:['Apex Logistics','Aperia集團']},
-  my:{name:'馬來西亞',lat:3.1,lon:101.7,role:'疑似轉運下游節點（Aperia集團案）',players:['Aperia集團']},
+  my:{name:'馬來西亞',lat:3.1,lon:101.7,role:'疑似轉運下游節點（Aperia集團案）',players:['Aperia集團'],labelPos:'below'},
   hk:{name:'香港',lat:22.3,lon:114.2,role:'轉運路徑之一',players:[]},
   cn:{name:'中國',lat:39.9,lon:116.4,role:'終端需求方，同步推動半導體國產替代',players:['阿里雲(Qwen)','華為(昇騰Ascend)','中芯國際(SMIC)']},
 };
@@ -1596,7 +1607,8 @@ function twSupplyChainMapSvg(){
     const [x,y] = twGeoXY(c.lat, c.lon);
     const playersLine = (c.players||[]).length ? `\n玩家：${c.players.join('、')}` : '';
     const hoverText = `${c.name}\n主角色：${c.role||''}${playersLine}`;
-    return `<circle class="tw-map-node-dot" cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="16"><title>${_arcEsc(hoverText)}</title></circle><text class="tw-map-node-label" x="${x.toFixed(0)}" y="${(y-22).toFixed(0)}" text-anchor="middle">${_arcEsc(c.name)}</text>`;
+    const labelY = c.labelPos === 'below' ? y + 106 : y - 74;
+    return `<circle class="tw-map-node-dot" cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="54"><title>${_arcEsc(hoverText)}</title></circle><text class="tw-map-node-label" x="${x.toFixed(0)}" y="${labelY.toFixed(0)}" text-anchor="middle"><title>${_arcEsc(hoverText)}</title>${_arcEsc(c.name)}</text>`;
   }).join('');
   const arrowsHtml = TW_MAP_FLOWS.map(f=>{
     const a = TW_MAP_COUNTRIES[f.from], b = TW_MAP_COUNTRIES[f.to];
