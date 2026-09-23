@@ -1,5 +1,177 @@
 [
   {
+    "date": "2026-09-24",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "美國半導體出口管制新規將影響 AI 晶片供應鏈布局",
+        "layer": "Export Controls",
+        "body": "路透社於 2026 年 9 月 22 日的評論指出，美國近期加嚴對高階 AI 晶片與相關製程設備的出口限制，明確將部分先進製程技術（如 3 nm 以上）限制出口至中國大陸。此舉預計在 2027 年全面實施，並要求美國本土企業在出口前取得額外許可。評論同時提到，受限企業包括 Nvidia、AMD 以及多家美國半導體設備供應商。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "出口管制將重塑 AI 晶片供應鏈，促使美國本土代工與友好國家產能受惠。",
+        "source_label": "Reuters",
+        "source": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOVy1RZjhpbWhZNDJ3Z3FvajRGbXdwamp6c192eUpWVHlKVC15RkoxbGpVUzc4RWxLVk80TEZqd2dodkg3T0xOUF9rM2lDUzVvTjAtRGhvYkZtQ2tjdllqVXNqWHU3dVJpM1hfSzJWMnlDUGhQYUx4cVN3aGtSOXNicUhjOER0NkVOdm5MT1NFaW5weGw4RDBLbnJIc3h0ekpGYll5TlQzVURRMnZjcXRFeQ?oc=5",
+        "chain": [
+          {
+            "label": "Nvidia AI 晶片 出口受限↓",
+            "type": "down"
+          },
+          {
+            "label": "AMD 高階製程 設備供應↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Nvidia AI 晶片供應受 Google 設計挑戰影響",
+        "layer": "AI Chip Supply",
+        "body": "根據 Barron's 報導，Nvidia 近期因 Google 內部開發的 AI 晶片未如預期採用 Nvidia 的 H100，導致 Nvidia 股價下跌。報導指出，Google 正在自研自家 AI 加速器，預計於 2027 年底前完成量產測試。此情況使 Nvidia 在美國與亞洲的 AI 晶片需求出現短期下降。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "Google 自研 AI 晶片削弱 Nvidia 訂單，將重新分配 HBM 與先進製程資源。",
+        "source_label": "Barron's",
+        "source": "https://news.google.com/rss/articles/CBMiggFBVV95cUxONFNKSXh1cWdKdlk1LVQ2WjZ5UUZrN0Npak92YkZRd2xfTlhZdTc3UkFNTXM1S05SMVJzdDBidmlqLTlCXy10TDZ3OUg2ckE4ZHhDT1BlVXYtWXBkaFlmNndrY2FRaWNlX0VKLWwxZE5Za0VEN19vQkROUVV5eGxzX3pB?oc=5",
+        "chain": [
+          {
+            "label": "Nvidia H100 需求↓",
+            "type": "down"
+          },
+          {
+            "label": "Google 自研 AI 加速器 產能↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Anthropic 發佈 Opus 5.5 模型，價格下調 20% 並提升效能",
+        "layer": "AI Model Release",
+        "body": "Anthropic 於 2026 年 9 月 22 日正式推出 Opus 5.5，宣稱其在編碼與知識工作基準測試中超越前代 Fable，且每百萬 token 價格降至 20 美元，較前一代 25 美元下降 20%。此模型於 9 月 12 日的「Pacing the Frontier」公開信後僅 10 天即上線，顯示 Anthropic 加速月度發佈節奏。公司同時指出 Opus 5.5 在多項非結構化任務的成功率提升約 15%。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Anthropic 以更低價格與更佳效能的 Opus 5.5 可能重新定價 AI 服務市場。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/22/anthropic-releases-opus-5-5-with-lower-prices-and-fable-level-performance/",
+        "chain": [
+          {
+            "label": "Anthropic Opus 5.5 價格↓",
+            "type": "down"
+          },
+          {
+            "label": "Anthropic Opus 5.5 效能↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 推出 GPT-6 Sol 與 Luna 兩款新模型，成本與錯誤率下降",
+        "layer": "AI Model Release",
+        "body": "OpenAI 於 2026 年 9 月 22 日發布 GPT-6 Sol 與 Luna，兩者分別針對複雜編碼與日常對話任務，宣稱相較於 GPT-6 Astra 成本降低約 30%，錯誤率下降 12%。Sol 與 Luna 均在 2026 年上半年先行測試，並於 9 月正式向企業客戶開放。OpenAI 表示此兩款模型將提升 AI 在企業工作流程中的可及性與可靠性。",
+        "impact": "",
+        "rating": "core",
+        "insight": "OpenAI 以成本與錯誤率雙優化的 GPT-6 系列，將加速企業 AI 部署。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/",
+        "chain": [
+          {
+            "label": "OpenAI GPT-6 Sol 成本↓",
+            "type": "down"
+          },
+          {
+            "label": "OpenAI GPT-6 Luna 錯誤率↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "AI 初創公司 Ema 完成 7700 萬美元 B 級融資，擴大企業自動化服務",
+        "layer": "Funding",
+        "body": "Ema 於 2026 年 9 月 23 日宣布完成 7700 萬美元 Series B 融資，由 Bengaluru 的 Creaegis 領投，Accel、Section 32 與 Prosus 亦增持股份，使其累計融資額達 1.4 億美元。公司表示將利用新資金擴展 AI 代理人於 HR、IT 與財務流程的自動化能力，並計畫在未來 12 個月內將客戶數提升至 500 家以上。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "Ema 大額融資將加速 AI 代理人商業化，挑戰傳統企業軟體供應商。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/23/ema-raises-77m-as-ai-starts-eating-into-enterprise-software-and-services/",
+        "chain": [
+          {
+            "label": "Ema 企業自動化服務 客戶數↑",
+            "type": "up"
+          },
+          {
+            "label": "Ema 融資額↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "HBM4E",
+        "full": "High Bandwidth Memory 4E",
+        "def": "HBM4E 為第 4 代高頻寬記憶體的增強版，提供更高的資料傳輸速率與更低的功耗，常用於 AI 加速卡與高效能運算平台。",
+        "why": "AI 晶片對記憶體頻寬需求持續提升，HBM4E 的出現將直接影響 AI 加速卡的效能與供應鏈布局。",
+        "category": "hardware"
+      },
+      {
+        "term": "Export Controls",
+        "full": "半導體出口管制",
+        "def": "美國政府對高階半導體與相關製程設備的出口實施限制，旨在防止先進技術流向特定國家。",
+        "why": "出口管制會改變全球 AI 晶片的供應鏈路徑，影響代工與設備供應商的產能配置。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "AI ASIC",
+        "full": "人工智慧專用積體電路",
+        "def": "針對人工智慧工作負載（如深度學習推論）設計的專用晶片，通常結合高效能記憶體與加速單元。",
+        "why": "AI ASIC 需求驅動先進製程與高頻寬記憶體（HBM）的產能擴張，是供應鏈的核心推動力。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Opus 5.5",
+        "full": "Anthropic 的最新大型語言模型",
+        "def": "Opus 5.5 是 Anthropic 於 2026 年推出的第三代 Claude 系列模型，具備比前代更高的編碼與知識工作效能，且每百萬 token 價格下降至 20 美元。",
+        "why": "價格與效能的雙重提升可能重新定價 AI 服務市場，影響雲端算力需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "GPT-6 Sol",
+        "full": "OpenAI 針對高階編碼任務的模型",
+        "def": "GPT-6 Sol 為 OpenAI 在 GPT-6 系列中專為複雜程式編寫設計的模型，宣稱相較於 Astra 成本降低約 30%，錯誤率下降 12%。",
+        "why": "降低成本與提升可靠性將促進企業對 AI 編碼輔助工具的採用。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Muse",
+        "full": "Meta 內部開發的 AI 代理人產品",
+        "def": "Muse 是 Meta 超級智慧實驗室推出的 AI 代理人，雖然受 OpenClaw 啟發，但完全由 Meta 自研，定位於企業自動化與對話應用。",
+        "why": "自研產品可減少對外部技術授權依賴，提升 Meta 在 AI 產品生態的掌控力。",
+        "category": "software"
+      },
+      {
+        "term": "人為錯誤",
+        "full": "Human error",
+        "def": "在資訊技術作業中，由於操作人員未遵循正確流程或設定錯誤，導致系統或資料意外受損的情況。",
+        "why": "此類錯誤常會造成資料遺失或服務中斷，對醫療、金融等高敏感產業的供應鏈安全構成風險。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-09-23",
     "is_sunday": false,
     "hw": [
@@ -751,158 +923,6 @@
         "full": "Digital Twin",
         "def": "在半導體封裝領域，數位雙生指的是以數位模型完整模擬封裝內部的機械、熱與電氣行為，以預測實際製程中的效能與可靠性。",
         "why": "隨著先進封裝技術的複雜化，精準的數位雙生有助於縮短開發週期並降低失敗率，對供應鏈的成本與交付時間具有直接影響。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-09-17",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "SK 海力士與 Intel 討論在美國俄亥俄州租用廠房製造記憶體晶片",
-        "layer": "capacity commitments",
-        "body": "根據 Reuters 報導，韓國記憶體巨頭 SK 海力士於 2026 年 9 月 16 日透露正與 Intel 商討在美國俄亥俄州租用 Intel 計畫中的新廠廠房，以生產 DRAM 記憶體晶片。雙方亦在評估成立合資企業，可能納入雲端服務供應商作為合作夥伴。SK 海力士在同日的聲明中強調，相關選項仍在探索階段，尚未簽署最終協議。",
-        "impact": "此舉將直接提升美國本土 DRAM 供應鏈上游的晶圓代工需求。",
-        "rating": "core",
-        "insight": "投資者可關注 Intel 俄亥俄廠的產能擴張進度，因其將成為美國記憶體供應的關鍵節點。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/16/sk-hynix-reportedly-in-talks-with-intel-to-build-memory-chips-in-us/",
-        "chain": [
-          {
-            "label": "SK Hynix DRAM 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Intel 合資計畫進度↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Nvidia 於 TechCrunch Disrupt 2026 探討機器人 ChatGPT 時刻",
-        "layer": "core",
-        "body": "Nvidia Inception 全球實體 AI 負責人 Les Karpas 於 2026 年 9 月 16 日在 TechCrunch Disrupt 2026 的 Real World AI 舞台發表演說，指出機器人尚未迎來類似 2022 年 11 月 ChatGPT 的突破時刻。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "Nvidia 正以機器人領域的突破為新成長點，供應鏈上游晶圓與封裝需求將同步上升。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/16/robots-are-waiting-for-a-chatgpt-moment-nvidias-les-karpas-explains-why-at-techcrunch-disrupt-2026/",
-        "chain": [
-          {
-            "label": "Nvidia 機器人研發投入↑",
-            "type": "up"
-          },
-          {
-            "label": "ChatGPT 類似突破時機延遲↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Meta 推出 Threads 播客推廣功能",
-        "layer": "core",
-        "body": "Meta 於 2026 年 9 月 16 日宣布，Threads 將在使用者個人檔案與貼文中顯示播客個人檔案卡與橫幅，並在貼文內以可點擊卡片形式呈現播客連結。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Meta 以功能升級深化音訊生態，相關雲端與編碼供應鏈將受益。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/16/threads-new-features-let-podcasters-promote-shows-and-reach-listeners/",
-        "chain": [
-          {
-            "label": "Meta Threads 播客功能上線↑",
-            "type": "up"
-          },
-          {
-            "label": "平台廣告收入預期↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Amazon 在印度推出支援印地語的 Alexa+ 服務",
-        "layer": "core",
-        "body": "Amazon 於 2026 年 9 月 16 日宣布，Alexa+ 於印度正式上線，提供印地語與英語雙語對話，非 Prime 用戶每月收費 2,000 盧比（約 20.85 美元），並支援多步驟任務如 Amazon Now 訂購與智慧家庭控制。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Amazon 以本土語言深化印度市場，相關語音硬體與雲端供應鏈將受益。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/16/amazon-launches-alexa-in-india-with-hindi-support/",
-        "chain": [
-          {
-            "label": "Amazon Alexa+ 印地語支援↑",
-            "type": "up"
-          },
-          {
-            "label": "非 Prime 用戶月費收入↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "DRAM",
-        "full": "Dynamic Random-Access Memory",
-        "def": "一種易失性記憶體，用於暫時存取電腦與伺服器的資料，具高速讀寫特性。",
-        "why": "DRAM 是資料中心與雲端運算的核心元件，其供應緊張會直接影響算力成本。",
-        "category": "hardware"
-      },
-      {
-        "term": "OSAT",
-        "full": "Outsourced Semiconductor Assembly and Test",
-        "def": "指將晶圓封裝與測試外包給專業廠商的服務模式，涵蓋封裝、測試、組裝等流程。",
-        "why": "記憶體製造的封裝測試需求上升會提升 OSAT 廠商的產能利用率，影響整體供應鏈效率。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "ChatGPT 時刻",
-        "full": "ChatGPT 時刻",
-        "def": "指大型語言模型突破性應用，使 AI 從概念驗證階段進入大規模商業落地的關鍵時點。",
-        "why": "此概念說明為何機器人領域仍待類似突破，影響硬體與軟體供應鏈投資節點。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Alexa+",
-        "full": "Alexa+ 服務",
-        "def": "Amazon 在印度推出的升級版語音助理，支援印地語與英語雙語對話，並提供更長上下文保持與多步驟任務執行。",
-        "why": "本地化功能將刺激語音辨識晶片與雲端基礎建設需求。",
-        "category": "hardware"
-      },
-      {
-        "term": "Podcast profile card",
-        "full": "播客個人檔案卡",
-        "def": "Threads 在使用者檔案與貼文中顯示的可點擊卡片，提供播客節目資訊與直接播放入口。",
-        "why": "此功能提升音訊內容在社交平台的曝光，帶動相關編碼與傳輸服務需求。",
-        "category": "software"
-      },
-      {
-        "term": "代理人工智慧",
-        "full": "Agentic AI",
-        "def": "具備自主決策與行動能力的人工智慧系統，能在缺乏明確指令的情況下自行規劃與執行任務。",
-        "why": "此類技術在醫療與金融等高風險領域的採用受信任缺口限制，影響相關供應鏈的驗證與合規需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "記憶體晶片製造",
-        "full": "Memory Chip Manufacturing",
-        "def": "指生產用於儲存資料的記憶體晶片的製程，包括 DRAM、HBM 等類型。",
-        "why": "Intel 與 SK Hynix 討論在美國設廠，將改變全球記憶體供應鏈布局，提升本地化供應與降低運輸風險。",
         "category": "semiconductor"
       }
     ],

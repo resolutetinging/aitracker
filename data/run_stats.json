@@ -2,6 +2,85 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 56,
+        "CSP/CapEx": 39,
+        "App/AI": 18,
+        "gnews-chip": 20,
+        "gnews-dc": 23,
+        "gnews-app": 18
+      },
+      "digest_filtered": 0,
+      "after_dedup": 171,
+      "buckets": {
+        "hw": 36,
+        "corp": 118,
+        "app": 36
+      },
+      "news_char_budget": {
+        "hw": 4200,
+        "corp": 8000,
+        "app": 4200
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 3,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 2,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 2,
+          "noise": 0
+        },
+        "corp": {
+          "core": 3,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "dedup_audit": [
+        {
+          "title": "Meta 承認 Muse 受 OpenClaw 啟發，產品自研但借鑒技術",
+          "section": "corp",
+          "action": "removed",
+          "matched_title": "Amazon 阻止 Meta Muse AI 代理人在其平台購物",
+          "reason": "兩篇皆在描述同一個 Meta Muse AI 代理人產品的相關事件"
+        }
+      ],
+      "date": "2026-09-24",
+      "generated_at": "2026-09-24T00:04:39.613993+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 55,
         "CSP/CapEx": 40,
         "App/AI": 18,
@@ -925,71 +1004,6 @@
       },
       "date": "2026-09-11",
       "generated_at": "2026-09-11T00:03:45.204443+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 60,
-        "CSP/CapEx": 43,
-        "App/AI": 24,
-        "gnews-chip": 24,
-        "gnews-dc": 24,
-        "gnews-app": 22
-      },
-      "digest_filtered": 2,
-      "after_dedup": 178,
-      "buckets": {
-        "hw": 31,
-        "corp": 143,
-        "app": 30
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 1,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "date": "2026-09-10",
-      "generated_at": "2026-09-10T00:04:12.093769+08:00"
     }
   ]
 }
