@@ -348,11 +348,14 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .tw-map-stage{position:relative;width:100%;aspect-ratio:2/1;}
 .tw-map-stage>svg{position:absolute;inset:0;width:100%;height:100%;display:block;}
 .tw-map-overlay{position:absolute;inset:0;}
-.tw-map-pin{position:absolute;transform:translate(-50%,-50%);}
+.tw-map-pin{position:absolute;transform:translate(-50%,-50%);width:26px;height:26px;display:flex;align-items:center;justify-content:center;cursor:pointer;}
 .tw-map-pin-dot{width:11px;height:11px;border-radius:50%;background:var(--techwar);border:2px solid var(--card);box-shadow:0 0 0 1px var(--border2);transition:transform .15s;}
 .tw-map-pin:hover .tw-map-pin-dot{transform:scale(1.3);}
-.tw-map-pin-label{position:absolute;left:50%;bottom:calc(100% + 4px);transform:translateX(-50%);white-space:nowrap;font-size:12px;font-weight:700;color:var(--text);background:var(--card);padding:1px 5px;border-radius:3px;border:1px solid var(--border2);pointer-events:none;}
-.tw-map-pin.labelBelow .tw-map-pin-label{bottom:auto;top:calc(100% + 4px);}
+.tw-map-pin-label{position:absolute;left:50%;bottom:calc(100% - 5px);transform:translateX(-50%);white-space:nowrap;font-size:12px;font-weight:700;color:var(--text);background:var(--card);padding:1px 5px;border-radius:3px;border:1px solid var(--border2);pointer-events:none;}
+.tw-map-pin.labelBelow .tw-map-pin-label{bottom:auto;top:calc(100% - 5px);}
+.tw-map-pin-tooltip{display:none;position:absolute;left:50%;top:calc(100% + 2px);transform:translateX(-50%);white-space:pre-line;background:rgba(35,32,28,.95);color:#fff;font-size:11.5px;line-height:1.65;padding:8px 10px;border-radius:6px;min-width:150px;max-width:230px;box-shadow:0 4px 14px rgba(0,0,0,.25);z-index:30;pointer-events:none;text-align:left;}
+.tw-map-pin.labelBelow .tw-map-pin-tooltip{top:auto;bottom:calc(100% + 2px);}
+.tw-map-pin:hover .tw-map-pin-tooltip,.tw-map-pin.tw-pin-open .tw-map-pin-tooltip{display:block;}
 .tw-map-arrow{fill:none;stroke:var(--techwar);stroke-width:2.6;opacity:.8;marker-end:url(#tw-map-arrowhead);}
 @media(max-width:700px){.tw-sc-wrap{grid-template-columns:1fr;}}
 
@@ -1635,15 +1638,21 @@ function twGeoXY(lat, lon){
 function twGeoPct(lat, lon){
   return [(lon+180)/360*100, (90-lat)/180*100];
 }
+function twToggleMapPin(el){
+  const wasOpen = el.classList.contains('tw-pin-open');
+  document.querySelectorAll('.tw-map-pin.tw-pin-open').forEach(p=>p.classList.remove('tw-pin-open'));
+  if(!wasOpen) el.classList.add('tw-pin-open');
+}
 function twSupplyChainMapSvg(){
   const pinsHtml = Object.values(TW_MAP_COUNTRIES).map(c=>{
     const [xPct, yPct] = twGeoPct(c.lat, c.lon);
     const playersLine = (c.players||[]).length ? `\n玩家：${c.players.join('、')}` : '';
     const hoverText = `${c.name}\n主角色：${c.role||''}${playersLine}`;
     const belowCls = c.labelPos === 'below' ? ' labelBelow' : '';
-    return `<div class="tw-map-pin${belowCls}" style="left:${xPct.toFixed(2)}%;top:${yPct.toFixed(2)}%;" title="${_arcEsc(hoverText)}">
+    return `<div class="tw-map-pin${belowCls}" style="left:${xPct.toFixed(2)}%;top:${yPct.toFixed(2)}%;" title="${_arcEsc(hoverText)}" onclick="twToggleMapPin(this)">
       <div class="tw-map-pin-dot"></div>
       <div class="tw-map-pin-label">${_arcEsc(c.name)}</div>
+      <div class="tw-map-pin-tooltip">${_arcEsc(hoverText).replace(/\n/g,'<br>')}</div>
     </div>`;
   }).join('');
   const arrowsHtml = TW_MAP_FLOWS.map(f=>{
