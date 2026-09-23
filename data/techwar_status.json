@@ -187,7 +187,8 @@
       "policy_actions": "2026年1月1日美國商務部核發台積電南京廠2026年度出口許可證，取代原本到期的VEU豁免資格；亞利桑那州三座晶圓廠持續興建中。",
       "risk": "高度曝險——身處美中科技戰核心，中國廠營運與美國供應鏈政策皆受年度許可證不確定性牽動。",
       "src": "https://www.cnbc.com/2026/01/01/us-grants-tsmc-licence-to-import-us-chipmaking-tools-into-china.html",
-      "src_note": "主流財經媒體報導（CNBC，引述路透消息來源），查無美國商務部就此個案核准之官方公告原文"
+      "src_note": "主流財經媒體報導（CNBC，引述路透消息來源），查無美國商務部就此個案核准之官方公告原文",
+      "country": "台灣"
     },
     {
       "name": "三星晶圓代工（Samsung Foundry）",
@@ -197,7 +198,8 @@
       "policy_actions": "2025年12月30日美國商務部核准三星與SK海力士2026年度中國廠設備出口許可證。",
       "risk": "中度曝險——中國廠以成熟製程與記憶體為主，非最先進製程首當其衝，但仍受年度許可證不確定性影響。",
       "src": "https://www.cnbc.com/2025/12/30/us-approves-samsung-sk-hynix-chipmaking-tool-shipments-to-china-for-2026-reuters.html",
-      "src_note": "主流通訊社報導（路透，經CNBC轉載），查無美國商務部個案核准之官方公告原文"
+      "src_note": "主流通訊社報導（路透，經CNBC轉載），查無美國商務部個案核准之官方公告原文",
+      "country": "韓國"
     },
     {
       "name": "英特爾晶圓代工（Intel Foundry）",
@@ -207,7 +209,8 @@
       "policy_actions": "2025年8月美國政府將CHIPS法案剩餘補助轉換為約9.9%股權（每股20.47美元，共4.333億股）；18A製程2026年1月進入高量產階段。",
       "risk": "中度曝險——風險來源主要是能否達成先進製程量產目標並回應美國政府持股後的政治期待，非直接受出口管制。",
       "src": "https://newsroom.intel.com/corporate/intel-and-trump-administration-reach-historic-agreement",
-      "src_note": "公司官方新聞稿"
+      "src_note": "公司官方新聞稿",
+      "country": "美國"
     },
     {
       "name": "日月光投控（ASE Technology）",
@@ -217,7 +220,8 @@
       "policy_actions": "近期無重大新增政策動作直接針對日月光本身；產業層面美國自2024年起已管制部分先進封裝製造設備輸往中國。",
       "risk": "中度曝險——目前未直接受制裁，但身處先進封裝供應鏈核心，未來管制範圍擴大時可能首當其衝。",
       "src": "https://sanctionsnews.bakermckenzie.com/us-department-of-commerce-significantly-expands-controls-targeting-indigenous-production-of-advanced-semiconductors-in-china/",
-      "src_note": "法律事務所產業分析部落格，屬產業層級之出口管制報導，非針對日月光個別公司之官方文件"
+      "src_note": "法律事務所產業分析部落格，屬產業層級之出口管制報導，非針對日月光個別公司之官方文件",
+      "country": "台灣"
     },
     {
       "name": "聯華電子（UMC）",
@@ -227,7 +231,8 @@
       "policy_actions": "近期無重大新增政策動作直接針對聯電；產業層面美國持續限制外資晶圓廠中國廠擴產或製程升級。",
       "risk": "低至中度曝險——成熟製程定位使其較不受最先進製程出口管制直接衝擊，主要風險來自中國國產替代競爭而非制裁本身。",
       "src": "https://www.bis.gov/press-release/department-commerce-closes-export-controls-loophole-foreign-owned-semiconductor-fabs-china",
-      "src_note": "美國商務部官方公告，屬一般性規則說明，非針對聯電個別公司之措施"
+      "src_note": "美國商務部官方公告，屬一般性規則說明，非針對聯電個別公司之措施",
+      "country": "台灣"
     },
     {
       "name": "艾司摩爾（ASML）",
@@ -237,7 +242,8 @@
       "policy_actions": "2026年8月有報導指美國準備進一步施壓荷蘭政府擴大限制ASML對中出口；美國國會審議中的MATCH Act若通過，將立法禁止ASML對中出口DUV微影設備（截至查證時尚未通過）。",
       "risk": "高度曝險——身處美中荷三方角力核心，限制範圍持續存在擴大可能，且非荷蘭或ASML單方可完全決定。",
       "src": "https://nltimes.nl/2026/08/20/us-preparing-force-netherlands-ban-asml-selling-china",
-      "src_note": "主流媒體報導（NL Times），荷蘭政府與美國官方尚未就此發布最終正式規則"
+      "src_note": "主流媒體報導（NL Times），荷蘭政府與美國官方尚未就此發布最終正式規則",
+      "country": "荷蘭"
     },
     {
       "name": "輝達（NVIDIA）",
@@ -247,7 +253,8 @@
       "policy_actions": "2026年1月15日BIS發布最終規則，H200/MI325X對中審查由推定拒絕改為個案審查（附關稅、出貨上限、KYC等條件）；2025年8月美方核准H20晶片出貨中國特定客戶；2025年第一季認列45億美元H20相關減損。",
       "risk": "高度曝險——身處美中晶片戰爭最前線，營收與股價高度受單一政策決定影響。",
       "src": "https://introl.com/blog/bis-export-policy-h200-mi325x-china-case-by-case-2026",
-      "src_note": "產業分析部落格報導；45億美元減損與H20核准出貨等數字另可見輝達官方10-Q/10-K申報文件佐證"
+      "src_note": "產業分析部落格報導；45億美元減損與H20核准出貨等數字另可見輝達官方10-Q/10-K申報文件佐證",
+      "country": "美國"
     }
   ],
   "capital_talent_controls": [
@@ -293,5 +300,33 @@
       "src": "https://www.presidency.ucsb.edu/documents/proclamation-10043-suspension-entry-nonimmigrants-certain-students-and-researchers-from",
       "src_note": "白宮公告原文存檔（The American Presidency Project）；2026年最新執行狀態則來自媒體與移民法律事務所報導，非官方即時確認"
     }
-  ]
+  ],
+  "supply_chain_comparison": {
+    "us": {
+      "key_players": [
+        "NVIDIA",
+        "Microsoft/OpenAI",
+        "Marvell",
+        "MediaTek",
+        "Ayar Labs/Lightmatter"
+      ],
+      "stage": "生態系整合與跨企業聯盟建構，並同步涉入出口管制規則制定的政策協商",
+      "desc": "NVIDIA的CUDA平台2026年迎來20週年，官方於GTC 2026強調其為全球GPU運算生態系基礎，累積CUDA相容GPU裝機量達數億片，形成裝機量、應用量、開發者三者自我強化的循環。2025至2026年NVIDIA透過NVLink Fusion平台建立跨企業聯盟：MediaTek自2025年起為早期夥伴，2026年3月NVIDIA對Marvell投資20億美元並整合矽光子技術，Ayar Labs、Lightmatter等共封裝光學公司也相繼加入，使NVIDIA的高速互連架構成為業界須相容的規格層。同時，NVIDIA每季投入約200萬美元遊說美國國會，議題涵蓋晶片出口管制與AI政策，2026年成功促使國會未將限制對中銷售AI晶片的GAIN AI Act條款納入國防授權法案，顯示其對美國晶片管制規則具實質影響力（旁證：legis1.com遊說支出追蹤）。",
+      "src": "https://nvidianews.nvidia.com/news/nvidia-ai-ecosystem-expands-as-marvell-joins-forces-through-nvlink-fusion",
+      "src_note": "NVIDIA官方新聞稿，屬公司自我揭露但為可查證的具體交易與合作事實；遊說金額另引用遊說支出追蹤網站legis1.com數據佐證，該類網站非主流媒體但屬公開遊說揭露資料整理"
+    },
+    "china": {
+      "key_players": [
+        "阿里雲(Qwen)",
+        "華為(昇騰Ascend)",
+        "百度(崑崙芯)",
+        "字節跳動",
+        "中芯國際(SMIC)"
+      ],
+      "stage": "軟硬體兩層進度不一：模型/雲端層已具全球影響力，晶片與晶圓代工層仍在基礎建設與國產替代鋪陳階段",
+      "desc": "中國AI供應鏈呈現軟硬體兩層不同進度。模型層：阿里雲Qwen系列開源模型全球下載量於2026年8月突破30億次，超越Meta與Google同期模型下載量，旗下ModelScope開源社群用戶數超過1,800萬、託管10萬個模型，模型生態系已具全球影響力。晶片層：受美國出口管制推動國產替代，2026年中國國內AI晶片市場國產份額估計已達約90%，其中華為昇騰約占50%，但華為軟體工具鏈CANN、MindSpore預計2026年底才開源，業界評估其開發者體驗要達到CUDA同等水準恐須到2027年後。晶圓代工層：中芯國際(SMIC)5奈米製程2026年仍處試產階段、良率低於20%，中國以「大基金三期」（3,440億人民幣，約475億美元）挹注設備與材料自主化，反映整體供應鏈硬體端仍在基礎建設與良率提升階段，尚未如美國端完成跨層垂直整合。",
+      "src": "https://fortune.com/2026/08/15/alibaba-qwen-open-ai-models-3-billion-downloads-meta-google/",
+      "src_note": "主流財經媒體Fortune報導，下載量數字源自公開統計；晶片市占率與大基金金額另引用Tom's Hardware、Digitimes、TrendForce等半導體產業媒體佐證，此類市占數字多為產業分析師估計而非中國官方或企業逐一驗證的正式揭露數字"
+    }
+  }
 }
