@@ -1,5 +1,145 @@
 [
   {
+    "date": "2026-09-25",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "Google 推出 Scan for Good 計畫，結合 Gemini 3.8 Flash Cyber 與 Wiz Red Agent 偵測關鍵基礎建設安全漏洞",
+        "layer": "AI安全服務",
+        "body": "2026 年 9 月 24 日，Google 宣布正式啟動 Scan for Good 計畫，使用針對軟體漏洞偵測調校的 Gemini 3.8 Flash Cyber 模型，並與 Wiz 的 Red Agent AI 滲透測試代理人合作。該計畫已在美國一家醫院、某市政府、公共鐵路營運商以及多家大型科技供應商自主發現並上報安全缺口。Google 表示此服務將持續全球擴展，無明確結束日期。",
+        "impact": "下游醫療、公共事業與大型科技公司因提前獲得漏洞修補，降低因資安事件導致的營運中斷風險，提升服務可靠度↑。",
+        "rating": "core",
+        "insight": "Google 以 AI 安全服務切入關鍵基礎建設，將推動 GPU 需求與雲端算力供應鏈成長。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/security/2026/09/24/google-to-critical-infra-orgs-our-ai-scanners-wont-be-evil-promise/5298685",
+        "chain": [
+          {
+            "label": "Google Gemini 3.8 Flash Cyber 服務↑",
+            "type": "up"
+          },
+          {
+            "label": "Wiz Red Agent AI 需求↑",
+            "type": "up"
+          },
+          {
+            "label": "醫院與公共基礎建設安全漏洞偵測支出↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Oracle 因 Project Jupiter 資料中心延期發出不可抗力通知，若 2028 年未上線將延遲付款",
+        "layer": "資料中心建設",
+        "body": "2026 年 9 月 24 日，Oracle 公布對 Project Jupiter 資料中心發出不可抗力（force majeure）通知，若該中心未於 2028 年前完成上線，Oracle 將延遲相關付款。此訊息同日導致 Oracle 股價下跌約 5%。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Oracle 的資料中心延期削弱短期硬體需求，對相關供應鏈產生下行壓力。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/09/24/oracle-data-center-force-majeure.html",
+        "chain": [
+          {
+            "label": "Oracle Project Jupiter 資料中心建設延遲↓",
+            "type": "down"
+          },
+          {
+            "label": "Oracle 2028 年付款延期↓",
+            "type": "down"
+          },
+          {
+            "label": "Oracle 股價下跌約5%↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "SoftBank 發行 111 億美元債券為 OpenAI 投資提供資金，股價上漲逾 7%",
+        "layer": "資金與投資",
+        "body": "2026 年 9 月 24 日，SoftBank 透過發行總額 111 億美元的債券為其在 OpenAI 的投資籌措資金，發行後公司股價即上漲超過 7%。此舉顯示 SoftBank 正加大對生成式 AI 產業的資金佈局。",
+        "impact": "",
+        "rating": "core",
+        "insight": "SoftBank 的巨額債券發行為 OpenAI 及整個 AI 計算硬體供應鏈注入新資金，預示需求將持續擴大。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/09/24/softbank-shares-bond-issuance-openai.html",
+        "chain": [
+          {
+            "label": "SoftBank 發行 111 億美元債券↑",
+            "type": "up"
+          },
+          {
+            "label": "SoftBank 對 OpenAI 投資資金↑",
+            "type": "up"
+          },
+          {
+            "label": "SoftBank 股價上漲逾7%↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "3D-IC",
+        "full": "三維積體電路",
+        "def": "將多個晶片或晶片組件以垂直堆疊方式整合於單一封裝內，提供更高的效能與密度。",
+        "why": "隨著 AI 加速器需求提升，3D-IC 成為降低訊號延遲與功耗的關鍵技術。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Scan for Good",
+        "full": "Google 針對關鍵基礎建設的 AI 安全偵測計畫",
+        "def": "Google 以 Gemini 3.8 Flash Cyber 與 Wiz Red Agent 結合，主動掃描醫院、公共事業等領域的資安漏洞，並交由人類研究員驗證修補。",
+        "why": "此計畫將提升 AI 在資安領域的實際應用，並帶動相關硬體與雲端算力需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Project Jupiter",
+        "full": "Oracle 計畫於美國建置的大型資料中心項目",
+        "def": "預計在 2028 年前完成上線的資料中心，因不可抗力因素被 Oracle 發出延期付款通知。",
+        "why": "資料中心的建設與啟用直接牽動伺服器、GPU、冷卻與電力設備的供應鏈。",
+        "category": "hardware"
+      },
+      {
+        "term": "Gemini 3.8 Flash Cyber",
+        "full": "Google 調校用於軟體漏洞偵測的 Gemini 3.8 版本",
+        "def": "此模型專為安全漏洞搜尋與修補流程設計，與 Wiz Red Agent 共同提供自動化滲透測試服務。",
+        "why": "模型的運算需求將推動高效能 GPU 與雲端算力資源的需求增長。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Red Agent",
+        "full": "Wiz Red Agent",
+        "def": "Wiz 所開發的 AI 驗證與滲透測試代理，與 Google 的 Gemini 模型結合，用於自動化資安測試。",
+        "why": "Red Agent 與 Gemini 共同提供端到端的漏洞發現與驗證流程，提升資安服務的自動化程度。",
+        "category": "role"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-09-24",
     "is_sunday": false,
     "hw": [
@@ -789,141 +929,6 @@
         "def": "具備特定任務執行能力的智能軟體，可根據使用者指令存取資料、執行分析並回應結果。",
         "why": "在科研、客服、製造等領域提供自動化決策與資訊服務，成為新興的軟體服務模式。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-09-18",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "華為將於 2027 Q1 推出 Ascend 960DT AI 晶片",
-        "layer": "capacity_commitments",
-        "body": "華為在 2026 年 9 月 17 日的 Huawei Connect 大會上宣布，原訂於 2027 年第三季的 Ascend 960DT AI 晶片將提前至 2027 年第一季量產，預計在 2027 年上半年完成出貨。此舉顯示華為正加速自研 AI 晶片的供應鏈建置，以減少對美國供應商的依賴。華為同時透露，該晶片將採用內部設計的高效能記憶體介面，預計提升 30% 計算效能。",
-        "impact": "",
-        "rating": "core",
-        "insight": "華為提前推出新代 AI 晶片，將直接拉動記憶體與封裝供應鏈需求，對 Nvidia 形成供應鏈層面的競爭壓力。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/17/huawei-plans-q1-2027-launch-of-new-ai-chip-as-it-takes-on-nvidia/",
-        "chain": [
-          {
-            "label": "Huawei Ascend 960DT 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "TSMC 高階製程供應↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Google、Nvidia 與 Anthropic 組成 AI 能源管理聯盟 使用 Emerald AI 需求回應",
-        "layer": "strategic_supplier_decisions",
-        "body": "2026 年 9 月 17 日，Google、Nvidia 與 Anthropic 與新創公司 Emerald AI 共同成立 AI Energy Management Alliance，計畫透過需求回應技術在資料中心減少電力使用，預估可為電網額外釋放 100 GW 的容量。該聯盟已獲得美國大型電力公司 AES、Constellation、National Grid 與 NRG Energy 的參與，顯示供電端與 AI 基礎設施供應鏈的深度整合。需求回應將使資料中心在高峰時段暫停非關鍵工作負載，以換取電網穩定性。",
-        "impact": "其他資料中心營運商若未加入此聯盟，將面臨成本劣勢，可能加速採用類似技術。",
-        "rating": "core",
-        "insight": "AI 能源管理聯盟的需求回應方案將重塑資料中心電力供應鏈，提升相關半導體與感測器需求，同時改變傳統電力基礎設施的使用模式。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/17/google-nvidia-and-anthropic-want-emerald-ai-to-find-space-on-the-grid-for-more-data-centers/",
-        "chain": [
-          {
-            "label": "Nvidia GPU 需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Google Cloud AI 服務收入↑",
-            "type": "up"
-          },
-          {
-            "label": "AES 電網負載↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Instinct 新增通話功能 Instinct Concierge 以提升 AI 助理服務",
-        "layer": "CSP/CapEx",
-        "body": "新創 AI 助理 Instinct 在 9 月 17 日宣布推出 Instinct Concierge 通話功能，允許使用者透過語音指令預訂無線線上預約的餐廳與安排電話會議，創始人 Noah Shinn 於 X 平台發文說明。Instinct 目前估值約 100 億美元，並已獲得多家風投的持續投資。此功能的上線標誌著文字型 AI 助理向多模態服務的轉型，與 Meta 的 Muse 形成直接競爭。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "Instinct 的通話功能擴展了 AI 助理的應用場景，對傳統客服模式構成挑戰。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/17/rival-ai-agents-instinct-and-metas-muse-both-add-the-ability-to-make-calls/",
-        "chain": [
-          {
-            "label": "Instinct Concierge 服務使用率↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta Muse 市占↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": "",
-        "chain": [
-          {
-            "label": "無相關應用新聞",
-            "type": "neutral"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "需求回應",
-        "full": "Demand Response",
-        "def": "一種電網管理機制，透過暫時降低大型用戶（如資料中心）的電力需求，以平衡供需並避免電網過載。",
-        "why": "在 AI 資料中心大量用電的情況下，需求回應可減少峰值負載，提升電網穩定性並降低能源成本。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI 能源管理聯盟",
-        "full": "AI Energy Management Alliance (AEMA)",
-        "def": "由 Google、Nvidia、Anthropic 及 Emerald AI 組成的合作體，致力於開發 AI 驅動的電力需求回應解決方案，協助資料中心在高峰時段減少電力使用。",
-        "why": "該聯盟的技術將直接影響電力相關半導體與感測器供應鏈的需求規模。",
-        "category": "hardware"
-      },
-      {
-        "term": "Ascend 960DT",
-        "full": "華為 Ascend 960DT AI 晶片",
-        "def": "華為於 2027 年第一季推出的高效能 AI 晶片，宣稱效能提升兩倍，屬於 Ascend 系列的最新代產品。",
-        "why": "代表華為在 AI 硬體領域與 Nvidia 正面競爭的關鍵技術。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Emerald AI",
-        "full": "Emerald AI 電網管理平台",
-        "def": "一套利用 AI 進行電網需求回應的軟體平台，協助大型資料中心在高峰期調整電力使用。",
-        "why": "為資料中心擴容提供電力供應保障，影響電力供應鏈與雲端基礎設施布局。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Instinct Concierge",
-        "full": "Instinct Concierge 通話功能",
-        "def": "Instinct AI 助理新增的語音通話服務，可直接為使用者預訂餐廳與安排電話會議。",
-        "why": "擴大文字型 AI 助理的服務範圍，對傳統客服與通訊平台產生衝擊。",
-        "category": "software"
-      },
-      {
-        "term": "數位雙生",
-        "full": "Digital Twin",
-        "def": "在半導體封裝領域，數位雙生指的是以數位模型完整模擬封裝內部的機械、熱與電氣行為，以預測實際製程中的效能與可靠性。",
-        "why": "隨著先進封裝技術的複雜化，精準的數位雙生有助於縮短開發週期並降低失敗率，對供應鏈的成本與交付時間具有直接影響。",
-        "category": "semiconductor"
       }
     ],
     "weekly_summary": null
