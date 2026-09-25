@@ -2,6 +2,77 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 60,
+        "CSP/CapEx": 45,
+        "App/AI": 21,
+        "gnews-chip": 15,
+        "gnews-dc": 24,
+        "gnews-app": 20
+      },
+      "digest_filtered": 1,
+      "after_dedup": 170,
+      "buckets": {
+        "hw": 31,
+        "corp": 129,
+        "app": 31
+      },
+      "news_char_budget": {
+        "hw": 3616,
+        "corp": 8000,
+        "app": 3616
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 1,
+          "opp": 2,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 2,
+      "llm_ratings": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 2,
+          "opp": 2,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "dedup_audit": [],
+      "date": "2026-09-26",
+      "generated_at": "2026-09-26T00:04:18.324192+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 59,
         "CSP/CapEx": 45,
         "App/AI": 22,
@@ -936,80 +1007,6 @@
       "dedup_audit": [],
       "date": "2026-09-13",
       "generated_at": "2026-09-13T00:03:56.612301+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 53,
-        "CSP/CapEx": 48,
-        "App/AI": 24,
-        "gnews-chip": 24,
-        "gnews-dc": 25,
-        "gnews-app": 20
-      },
-      "digest_filtered": 1,
-      "after_dedup": 170,
-      "buckets": {
-        "hw": 32,
-        "corp": 134,
-        "app": 31
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 1,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "dedup_audit": [
-        {
-          "title": "TSMC 8 月營收激增 53% 顯示 AI 晶圓需求強勁",
-          "section": "hw",
-          "action": "downgraded",
-          "matched_title": null,
-          "reason": "內容僅報告當月營收與產能利用率，屬於既有狀態的描述，未包含新決策或新宣布"
-        }
-      ],
-      "date": "2026-09-12",
-      "generated_at": "2026-09-12T00:03:43.561923+08:00"
     }
   ]
 }
