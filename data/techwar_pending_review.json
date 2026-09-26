@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-22",
+  "checked_at": "2026-09-27",
   "items": [],
-  "no_change_summary": "初次建立，尚未執行查證。"
+  "no_change_summary": "本週自動查證因技術問題失敗（連續5輪（含縮減新聞片段至0則）仍超出Groq TPM限制，current_status本身可能已過大），現有資料未變動，將於下次排程自動重試。"
 }
