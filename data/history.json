@@ -1,5 +1,171 @@
 [
   {
+    "date": "2026-09-27",
+    "is_sunday": true,
+    "hw": [
+      {
+        "title": "Nscale 取得 33.6 億美元可轉換票據資金 以擴建 AI 資料中心",
+        "layer": "資金與產能",
+        "body": "Nscale 於 2026 年 9 月 25 日完成 33.6 億美元的可轉換票據融資，其中 23.6 億美元可於當下提領，餘額 10 億美元由現有投資者 Nvidia 於 11 月中提供。此輪融資由對沖基金 Third Point 主導，並將於 Nscale 完成 IPO 後轉換為股權。Nscale 先前自澳洲加密礦業公司 Arkon Energy 分拆，現正籌備在美國建置多座 AI 資料中心，預估總估值達 350 億美元。",
+        "impact": "(1) 立即注入的 23.6 億美元資金將推動 Nscale 加速採購高階 HBM 記憶體與先進封裝服務，提升 OSAT 廠商的訂單量↑；(2) Nvidia 參與的 10 億美元投資顯示其供應鏈（GPU、HBM、封裝）需求將同步上升，促使上游晶圓代工如 TSMC、Samsung 的 AI 專用製程排程緊縮↑；(3) 隨著 Nscale 在美國擴建資料中心，相關電力與散熱基礎設施需求亦將提升，間接刺激電源模組與熱管理供應商的出貨量↑。",
+        "rating": "opp",
+        "insight": "大型資金注入將直接拉高 AI 專用 HBM 與先進封裝的需求，受惠於 Nvidia 參與的資金來源。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/25/ahead-of-u-s-ipo-british-ai-neocloud-nscale-secures-3-36b-in-convertible-finacing/",
+        "chain": [
+          {
+            "label": "Nscale 融資↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 資料中心建設↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia GPU 需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Meta 在 Connect 2026 展示全新智慧眼鏡，全面佈局穿戴式 AI 硬體",
+        "layer": "CSP/CapEx",
+        "body": "Meta 在 2026 年 9 月 25 日的 Connect 大會上，讓全體參與者佩戴新一代智慧眼鏡，並於同日示範多項以眼鏡為介面的 AI 應用。該智慧眼鏡包括未發表的僅音訊版型號，預計於 2026 年底前量產。Meta 亦透露已與多家光學鏡片供應商簽署長期採購合約，以確保鏡片與顯示模組的供應穩定。",
+        "impact": "上游光學鏡片與微顯示模組供應商（如日本光學公司）需求↑，訂單量將因 Meta 大量採購而提升；中游組裝廠商（如台灣精密組裝廠）產能利用率↑，有助於提升相關產線的營運效率；下游內容平台與廣告客戶將可透過智慧眼鏡開發沉浸式廣告，促使廣告技術供應商（如 Unity）需求↑。",
+        "rating": "core",
+        "insight": "Meta 大規模投入智慧眼鏡硬體，將推動光學與顯示供應鏈的產能擴張。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/25/at-meta-connect-the-companys-smart-glasses-were-everywhere/",
+        "chain": [
+          {
+            "label": "Meta 智慧眼鏡出貨↑",
+            "type": "up"
+          },
+          {
+            "label": "光學鏡片供應商出貨量↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Meta 推出 Muse AI 應用早期存取計畫，擴大 AI 服務需求",
+        "layer": "CSP/CapEx",
+        "body": "Meta 於 2026 年 9 月 25 日宣布，開放使用者透過 X 平台提交關鍵字，即可加入 Muse AI 應用的早期存取計畫，預計在 2026 年底前向 10 萬名測試者開放新功能。此舉同時伴隨多項後端運算資源升級，Meta 透露已向自家資料中心新增 5,000 台 GPU 伺服器以支援增長的運算需求。",
+        "impact": "上游 GPU 供應商（如 NVIDIA）訂單量↑，因 Meta 大量採購新 GPU；資料中心建設商（如 Equinix）將因新增伺服器需求而提升機櫃租用率；下游開發者與內容創作者可利用 Muse 新功能提升互動體驗，進一步刺激 AI 應用平台（如 Meta Horizon）的使用率↑。",
+        "rating": "opp",
+        "insight": "Muse 早期存取計畫將帶動 GPU 需求與資料中心擴容，提升供應鏈上游活躍度。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/25/meta-opens-early-access-program-for-new-muse-features/",
+        "chain": [
+          {
+            "label": "Meta Muse AI 服務需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta GPU 伺服器數量↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic 與 Akamai 簽署 11.6 億美元七年期雲端基礎建設合約",
+        "layer": "CSP/CapEx",
+        "body": "Anthropic 於 2026 年 9 月 25 日宣布，將在未來七年內向 Akamai 支付 116 億美元，用於其雲端基礎設施服務，合約金額是去年同類合約的六倍。此合約的條件包括 Akamai 必須滿足特定的服務可用性與交付指標，雙方亦保留在特定情況下終止合約的權利。",
+        "impact": "上游晶片供應商（如 Intel）將因 Akamai 需要更多 CPU 伺服器而受惠，訂單量↑；Akamai 的資料中心營運商（如 Equinix）將因擴充容量需求而提升機櫃租用率↑；Anthropic 的 AI 服務客戶（如大型企業）將受益於更穩定的雲端運算環境，提升其 AI 應用部署速度↑。",
+        "rating": "core",
+        "insight": "Anthropic 大額雲端合約將加速 CPU 需求與資料中心擴容，提升整體 AI 基礎設施供應鏈活力。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/25/anthropic-to-pay-akamai-11-6-billion-over-seven-years-in-cloud-deal/",
+        "chain": [
+          {
+            "label": "Anthropic 計算需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Akamai 雲端流量需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Kuehne+Nagel 預測 AI 資料中心物流需求至 2029 年持續成長",
+        "layer": "logistics",
+        "body": "Kuehne+Nagel 在 2026 年 9 月的報告中指出，AI 資料中心物流的年成長率將持續上升，預計至 2029 年仍保持正向擴張。該公司預測未來四年內，與 AI 資料中心相關的物流需求將比 2025 年提升約 35%。此成長將驅動更多倉儲自動化設備與智慧路徑規劃系統的採用。",
+        "impact": "(1) 上游供應鏈：AI 晶片與伺服器硬體製造商（如 Nvidia、AMD）將因物流需求 ↑ 而需提升出貨頻率，促使晶圓代工與封裝廠的產能利用率上升。 (2) 中游物流設備供應商：自動化倉儲系統與機器人供應商將因訂單增長 ↑，加速新產品開發與產能擴充。 (3) 下游雲端服務提供商：如 Amazon Web Services、Microsoft Azure 受益於更快速的設備部署，能縮短資料中心建設週期，提升服務交付速度。",
+        "rating": "opp",
+        "insight": "AI 資料中心物流需求的持續擴張將帶動上下游供應鏈的產能提升與技術升級。",
+        "source_label": "Investing.com",
+        "source": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPbUpvQmxzRmRMWjh5S0FUWUhRbnBwaUR2QktNanZlWU5EQTJxd050Mm8wRnNBRVpqZ2VnR1llcXJaYURlb2FOc1R6RDhNUU92aUllVGEtRjU0NHlYNWswZ1VXS0xyMjlMbXZNM211aTNmRy1KMVVtWXllX0w0YU1DSmtuS1oyUWtoMVMtRmVWdnRBSlRWRGJLV0ZEZ0RDOHRkc2hVV3hBSkZLSDVaNEhraW1oRmZoOFZVODZ6OURjbU1meTNr?oc=5",
+        "chain": [
+          {
+            "label": "AI 資料中心物流需求↑",
+            "type": "up"
+          },
+          {
+            "label": "倉儲自動化設備需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "neocloud",
+        "full": "新型雲端基礎設施模式",
+        "def": "指結合高效能 AI 加速器與彈性資源配置的雲端服務架構，通常需要大量的 GPU、HBM 記憶體與先進封裝技術支援。",
+        "why": "此類基礎設施的擴張直接拉高 AI 晶片、記憶體與封裝供應鏈的需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "可轉換票據",
+        "full": "Convertible Note",
+        "def": "一種債務工具，投資人在公司完成 IPO 後可將票據轉換為公司股權，常用於新創公司快速融資。",
+        "why": "此類融資方式能快速提供資金，促使公司加速建置硬體基礎設施。",
+        "category": "hardware"
+      },
+      {
+        "term": "智慧眼鏡",
+        "full": "Meta 智慧眼鏡（Smart Glasses）",
+        "def": "Meta 推出的可穿戴裝置，結合 AR 顯示與語音交互功能，支援 AI 應用與即時資訊呈現。",
+        "why": "作為 Meta 進軍穿戴式 AI 硬體的核心產品，將牽動光學鏡片、顯示模組與 AI 計算供應鏈的需求。",
+        "category": "hardware"
+      },
+      {
+        "term": "Muse AI",
+        "full": "Meta Muse 人工智慧助理應用",
+        "def": "Meta 開發的個人化 AI 助理，提供文字、語音與影像互動功能，近期加入多項新特性並開放早期存取。",
+        "why": "Muse 的功能擴充直接驅動 GPU、資料中心運算資源的需求，影響上游硬體供應鏈。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI資料中心物流",
+        "full": "Artificial Intelligence Data Center Logistics",
+        "def": "指利用人工智慧技術優化資料中心硬體設備的運輸、倉儲與部署流程，包括自動化倉儲、路徑規劃與需求預測。",
+        "why": "提升物流效率可縮短資料中心建設時間，降低運營成本，對 AI 硬體供應鏈具關鍵影響。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "量子鑄造",
+        "full": "Quantum Foundry",
+        "def": "專門為量子計算晶片提供製造服務的半導體代工廠，負責量子位元的製程與封裝。",
+        "why": "隨著量子計算需求上升，量子鑄造將成為新興半導體供應鏈的重要環節。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "微服務",
+        "full": "Microservices Architecture",
+        "def": "將大型應用程式拆解為可獨立部署與管理的細小服務，以提升彈性與可擴展性，常與雲端與 AI 結合使用。",
+        "why": "在醫療與其他產業中，微服務能加速 AI 功能的整合與部署，促進數位轉型。",
+        "category": "role"
+      }
+    ],
+    "weekly_summary": "HW：Nscale 獲得 33.6 億美元可轉換票據資金，將加速 AI 資料中心建設，提升 HBM 與先進封裝需求。\nCORP：本週大型 AI 及穿戴式硬體投資持續升溫，Meta 智慧眼鏡與 Muse 早期存取計畫推動硬體與運算資源需求，Anthropic 與 Akamai 簽署 11.6 億美元雲端合約，Nscale 完成 33.6 億美元融資備戰 IPO。\n下週看點：留意 Meta 是否公布智慧眼鏡量產時間表，以及 Akamai 是否達成服務可用性指標。\nAPP：Kuehne+Nagel 預測 AI 資料中心物流需求至 2029 年持續成長。\n用戶洞察：物流自動化與 AI 需求同步提升，將推動相關硬體與服務供應鏈的產能擴張。"
+  },
+  {
     "date": "2026-09-26",
     "is_sunday": false,
     "hw": [
@@ -718,165 +884,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-09-20",
-    "is_sunday": true,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": "",
-        "chain": [
-          {
-            "label": "無相關晶片新聞",
-            "type": "neutral"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Anthropic 與 Accenture 合作，投入 10 億美元於安全評估",
-        "layer": "CSP/CapEx",
-        "body": "Anthropic 宣布與顧問巨頭 Accenture 合作，於 2026 年 9 月簽署協議，雙方未來五年將共同投入至少 10 億美元於模型安全評估與紅隊測試。Accenture 旗下的 Faculty 將成為 Anthropic 首位嵌入式評估者，負責對模型進行對齊評估與防護機制測試。此筆投資預計提升 Anthropic 產品在企業客戶中的合規可信度，並可能加速其模型商業化步伐。",
-        "impact": "1) 直接提升 Anthropic 供應鏈上安全測試服務的需求，促使安全軟體供應商（如 Snyk、Palo Alto）訂單 ↑。2) 受益的下游企業客戶（金融、醫療）因安全認證取得更快，採購 AI 服務的門檻 ↓，加速模型部署。3) 競爭對手 OpenAI 需加大安全投入以維持市場信任，可能導致其安全研發預算 ↑。",
-        "rating": "core",
-        "insight": "安全評估巨額投入將提升 Anthropic 在企業 AI 市場的競爭力。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/18/anthropics-first-embedded-evaluator-is-accenture/",
-        "chain": [
-          {
-            "label": "Anthropic 企業客戶合規可信度↑",
-            "type": "up"
-          },
-          {
-            "label": "Accenture Faculty 評估服務需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic 在灣區設立生物實驗室，結合 AI 進行實體實驗",
-        "layer": "CSP/CapEx",
-        "body": "Anthropic 於 2026 年 9 月向 TechCrunch 確認，在美國舊金山灣區設立一座濕實驗室，利用自家 LLM 直接設計與執行生物實驗。該實驗室與外部生技合作夥伴共同運作，旨在驗證 AI 生成的醫療假說。此舉顯示 Anthropic 正將資金投入實體研發設施，以擴大 AI 在生技領域的應用。",
-        "impact": "1) 需求上游生技儀器供應商（如 Thermo Fisher）訂單 ↑，因實驗室需購置液相色譜與高通量篩選設備。2) 下游醫藥研發公司可透過 Anthropic 平台快速驗證新藥靶點，縮短研發週期，導致 AI 服務需求 ↑。3) 競爭對手如 Google DeepMind 可能加速其生技 AI 投資，以免失去市場先機，研發支出 ↑。",
-        "rating": "opp",
-        "insight": "AI 與生技結合的實驗室投資將開啟新興供應鏈需求。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/18/anthropic-is-operating-a-lab-that-conducts-biology-experiments/",
-        "chain": [
-          {
-            "label": "Anthropic 生技實驗室投資↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 生成醫療假說驗證成功率↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Microsoft 以 AI 代理人將 Copilot 執行階段遷移至 Rust，耗費 12 萬美元代幣",
-        "layer": "CSP/CapEx",
-        "body": "Microsoft 公布其 GitHub Copilot 執行階段已全部改寫為 Rust，遷移過程共使用約 12 萬美元的 AI 代幣，並耗時 14.5 週完成 135 次發行。AI 代理人每日開立約 1.3 個移植拉取請求，將 430,000 行 TypeScript 程式碼轉換為 800,000 行 Rust 程式碼。此舉旨在提升執行效能與安全性。",
-        "impact": "1) Rust 編譯器與相關工具鏈供應商（如 rustc、cargo）需求 ↑，因 Microsoft 大規模採用提升其開發者社群活躍度。2) 轉換後的 Copilot 執行階段效能提升，降低 Azure AI 服務的運算成本，雲端基礎設施資源使用率 ↓。3) 競爭對手如 Amazon CodeWhisperer 可能加速自家執行環境的效能優化，以維持市場份額，相關開發投入 ↑。",
-        "rating": "opp",
-        "insight": "Rust 重寫提升效能，同時刺激相關開發工具供應鏈需求。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/devops/2026/09/18/microsoft-agentically-ports-copilot-runtime-to-rust-for-120k/5297549",
-        "chain": [
-          {
-            "label": "Microsoft Copilot Rust 重寫效能↑",
-            "type": "up"
-          },
-          {
-            "label": "GitHub TypeScript 代碼遷移成本↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic 支援 OpenAI AGENTS.md 規範，簡化跨平台開發",
-        "layer": "CSP/CapEx",
-        "body": "Anthropic 於 2026 年 9 月 18 日在 Claude Code 2.1.277 版中加入對 OpenAI AGENTS.md 規範的支援，若資料夾內無 CLAUDE.md，Claude 會自動讀取 AGENTS.md。開發者可透過 /config 指令切換此行為，此舉減少了同時使用 Anthropic 與 OpenAI 服務時需維護的兩套 Markdown 指令檔案。",
-        "impact": "1) 開發工具鏈供應商（如 JetBrains、VS Code）可能因需求增加而提升相關插件支援度，插件下載量 ↑。2) 企業在同時部署 Anthropic 與 OpenAI 服務時的整合成本 ↓，促進雙平台 AI 服務的採用率 ↑。3) OpenAI 可能因兼容性提升而吸引更多 Anthropic 用戶，間接提升其 API 使用量 ↑。",
-        "rating": "opp",
-        "insight": "跨平台指令兼容降低開發成本，提升雙方服務的市場滲透。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/09/18/anthropic-decides-to-support-openais-markdown-instructions-spec/5297588",
-        "chain": [
-          {
-            "label": "Anthropic 對 OpenAI AGENTS.md 支援便利性↑",
-            "type": "up"
-          },
-          {
-            "label": "開發者跨平台維護成本↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": "",
-        "chain": [
-          {
-            "label": "無相關應用新聞",
-            "type": "neutral"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "CoWoS",
-        "full": "Chip-on-Wafer-on-Substrate",
-        "def": "一種先進封裝技術，將多顆晶片堆疊於同一基板上，以提升帶寬與效能，常用於高效能 AI 加速器。",
-        "why": "在 AI 基礎設施中，CoWoS 能降低資料傳輸延遲並提升運算密度，對供應鏈上游的晶圓代工與下游的伺服器製造都有重要影響。",
-        "category": "hardware"
-      },
-      {
-        "term": "AGENTS.md",
-        "full": "OpenAI 定義的 AI 代理指令檔案格式",
-        "def": "一種使用 Markdown 語法描述 AI 代理行為、工具使用與編碼慣例的檔案，供 OpenAI 及相容平台讀取。",
-        "why": "統一指令格式可減少跨平台開發的重複工作，提高開發效率。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Rust",
-        "full": "安全性與效能兼具的系統程式語言",
-        "def": "由 Mozilla 開發的編譯型語言，以所有權模型防止記憶體錯誤，廣泛應用於高效能後端與系統程式開發。",
-        "why": "Microsoft 將 Copilot 執行階段遷移至 Rust，可提升執行效能與安全性，降低雲端運算成本。",
-        "category": "software"
-      },
-      {
-        "term": "Accenture Faculty",
-        "full": "Accenture 收購的 AI 安全與評估公司",
-        "def": "專注於 AI 模型安全評估、紅隊測試與對齊分析的顧問服務單位，為大型企業提供 AI 風險管理。",
-        "why": "作為 Anthropic 首位嵌入式評估者，Faculty 的加入將提升 Anthropic 產品的安全合規性。",
-        "category": "role"
-      },
-      {
-        "term": "數位雙生",
-        "full": "Digital Twin",
-        "def": "在製造領域中，利用虛擬模型即時映射實體產品的狀態與行為，以支援設計、測試與優化。",
-        "why": "可提升封裝與系統層面的預測精度，降低實體測試成本。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": "HW：本週未出現具體的 AI 基礎設施供應鏈容量承諾或策略性供應商決策新聞。\nCORP：Anthropic 與 Accenture 投入 10 億美元安全評估，並在灣區設立 AI 生技實驗室；Microsoft 完成 Copilot 執行階段 Rust 重寫，耗費 12 萬美元代幣；Anthropic 支援 OpenAI AGENTS.md 降低跨平台開發成本。\n下週看點：觀察 Anthropic 生技實驗室的首次實驗成果與 Accenture 安全評估的具體執行進度。\nAPP：本週未出現具體的AI應用部署新聞。\n用戶洞察：投資者應持續關注AI在製造與材料創新領域的間接應用，而非直接的AI服務上市。"
   }
 ]
