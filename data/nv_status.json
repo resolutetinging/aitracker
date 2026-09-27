@@ -1,5 +1,5 @@
 {
-  "last_checked": "2026-09-07",
+  "last_checked": "2026-09-28",
   "pyramid": [
     {
       "label": "應用層（Industries）",
@@ -382,6 +382,38 @@
       "category": "產業觀點",
       "summary": "Nvidia Inception 全球實體 AI 負責人 Les Karpas 於 9 月 16 日在 TechCrunch Disrupt 2026 的 Real World AI 舞台發表演說，指出機器人尚未迎來類似 2022 年 ChatGPT 的突破時刻。",
       "src": "https://techcrunch.com/2026/09/16/robots-are-waiting-for-a-chatgpt-moment-nvidias-les-karpas-explains-why-at-techcrunch-disrupt-2026/",
+      "src_note": ""
+    },
+    {
+      "date": "2026-09-27",
+      "title": "Nscale 取得 33.6 億美元可轉換票據資金 以擴建 AI 資料中心",
+      "category": "融資與投資",
+      "summary": "Nscale 完成 33.6 億美元可轉換票據融資，其中 23.6 億美元即時提領，剩餘 10 億美元由現有投資者 Nvidia 於 11 月中提供，資金將用於美國多座 AI 資料中心建置。",
+      "src": "https://techcrunch.com/2026/09/25/ahead-of-u-s-ipo-british-ai-neocloud-nscale-secures-3-36b-in-convertible-finacing/",
+      "src_note": ""
+    },
+    {
+      "date": "2026-09-24",
+      "title": "美國半導體出口管制新規將影響 AI 晶片供應鏈布局",
+      "category": "政府政策",
+      "summary": "美國將加嚴高階 AI 晶片與製程設備的出口限制，限制 3 nm 以上技術出口至中國，涉及 Nvidia、AMD 等公司，預計 2027 年全面實施。",
+      "src": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOVy1RZjhpbWhZNDJ3Z3FvajRGbXdwamp6c192eUpWVHlKVC15RkoxbGpVUzc4RWxLVk80TEZqd2dodkg3T0xOUF9rM2lDUzVvTjAtRGhvYkZtQ2tjdllqVXNqWHU3dVJpM1hfSzJWMnlDUGhQYUx4cVN3aGtSOXNicUhjOER0NkVOdm5MT1NFaW5weGw4RDBLbnJIc3h0ekpGYll5TlQzVURRMnZjcXRFeQ?oc=5",
+      "src_note": ""
+    },
+    {
+      "date": "2026-09-24",
+      "title": "Nvidia AI 晶片供應受 Google 設計挑戰影響",
+      "category": "市場動態",
+      "summary": "Google 內部開發的 AI 晶片未採用 Nvidia H100，導致 Nvidia 股價下跌，預計 Google 於 2027 年底前完成自研 AI 加速器量產測試，短期內影響 Nvidia 在美國與亞洲的需求。",
+      "src": "https://news.google.com/rss/articles/CBMiggFBVV95cUxONFNKSXh1cWdKdlk1LVQ2WjZ5UUZrN0Npak92YkZRd2xfTlhZdTc3UkFNTXM1S05SMVJzdDBidmlqLTlCXy10TDZ3OUg2ckE4ZHhDT1BlVXYtWXBkaFlmNndrY2FRaWNlX0VKLWwxZE5Za0VEN19vQkROUVV5eGxzX3pB?oc=5",
+      "src_note": ""
+    },
+    {
+      "date": "2026-09-23",
+      "title": "Civo 計畫在英國建置 40 座邊緣資料中心，總容量 1 GW",
+      "category": "基礎建設",
+      "summary": "Civo 將於 2027 年在英國建置 40 座邊緣資料中心，首座配備 Nvidia Vera Rubin NVL72 系統，初始供電 8 MW，三年內總計算容量目標 1 GW。",
+      "src": "https://www.theregister.com/off-prem/2026/09/22/civo-plots-40-edge-datacenters-to-power-britains-sovereign-ai/5298141",
       "src_note": ""
     }
   ]
