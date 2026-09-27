@@ -2,6 +2,92 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 41,
+        "CSP/CapEx": 45,
+        "App/AI": 25,
+        "gnews-chip": 15,
+        "gnews-dc": 22,
+        "gnews-app": 19
+      },
+      "digest_filtered": 1,
+      "after_dedup": 146,
+      "buckets": {
+        "hw": 23,
+        "corp": 115,
+        "app": 23
+      },
+      "news_char_budget": {
+        "hw": 3500,
+        "corp": 8000,
+        "app": 3500
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 3,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 4,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "dedup_audit": [
+        {
+          "title": "Meta Muse AI 應用下載量突破 340 萬，受 Meta Connect 推廣加速",
+          "section": "corp",
+          "action": "downgraded",
+          "matched_title": null,
+          "reason": "僅報導下載量與成長，未包含新決策或新功能發布，屬於背景說明"
+        },
+        {
+          "title": "AI 輔助醫療保險理賠導致 9.42 億美元額外支出",
+          "section": "app",
+          "action": "downgraded",
+          "matched_title": null,
+          "reason": "描述過去的支出數據與分析，未提出新政策或新行動，屬於背景說明"
+        }
+      ],
+      "date": "2026-09-28",
+      "generated_at": "2026-09-28T00:04:19.769265+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 51,
         "CSP/CapEx": 51,
         "App/AI": 23,
@@ -938,80 +1024,6 @@
       "dedup_audit": [],
       "date": "2026-09-15",
       "generated_at": "2026-09-15T00:04:34.812469+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 43,
-        "CSP/CapEx": 45,
-        "App/AI": 23,
-        "gnews-chip": 18,
-        "gnews-dc": 21,
-        "gnews-app": 12
-      },
-      "digest_filtered": 1,
-      "after_dedup": 136,
-      "buckets": {
-        "hw": 24,
-        "corp": 109,
-        "app": 24
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 2,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 2,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "dedup_audit": [
-        {
-          "title": "Anthropic 警告其 Claude 模型被用於自動化網路攻擊與生化武器研發",
-          "section": "corp",
-          "action": "downgraded",
-          "matched_title": null,
-          "reason": "僅是報告已有的濫用情況，未宣布新政策或決策，屬於背景說明"
-        }
-      ],
-      "date": "2026-09-14",
-      "generated_at": "2026-09-14T00:03:58.656179+08:00"
     }
   ]
 }
