@@ -2,6 +2,85 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 44,
+        "CSP/CapEx": 43,
+        "App/AI": 21,
+        "gnews-chip": 19,
+        "gnews-dc": 22,
+        "gnews-app": 18
+      },
+      "digest_filtered": 1,
+      "after_dedup": 145,
+      "buckets": {
+        "hw": 28,
+        "corp": 118,
+        "app": 27
+      },
+      "news_char_budget": {
+        "hw": 3500,
+        "corp": 8000,
+        "app": 3500
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 2,
+        "app": 2
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "dedup_audit": [
+        {
+          "title": "華為 Ascend 晶片佔中國 AI 加速器市場約 50% 並計畫 2026 年產能提升至 160 萬顆晶圓",
+          "section": "hw",
+          "action": "downgraded",
+          "matched_title": null,
+          "reason": "內容僅描述市場份額與未來產能規劃，屬於背景說明，未包含當前新決策或新宣布"
+        }
+      ],
+      "date": "2026-09-29",
+      "generated_at": "2026-09-29T00:04:26.844220+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 41,
         "CSP/CapEx": 45,
         "App/AI": 25,
@@ -953,77 +1032,6 @@
       "dedup_audit": [],
       "date": "2026-09-16",
       "generated_at": "2026-09-16T00:04:11.475483+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 42,
-        "CSP/CapEx": 37,
-        "App/AI": 19,
-        "gnews-chip": 16,
-        "gnews-dc": 22,
-        "gnews-app": 20
-      },
-      "digest_filtered": 2,
-      "after_dedup": 146,
-      "buckets": {
-        "hw": 30,
-        "corp": 109,
-        "app": 29
-      },
-      "news_char_budget": {
-        "hw": 3500,
-        "corp": 8000,
-        "app": 3500
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 3,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 3,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "dedup_audit": [],
-      "date": "2026-09-15",
-      "generated_at": "2026-09-15T00:04:34.812469+08:00"
     }
   ]
 }
