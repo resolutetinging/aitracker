@@ -2,6 +2,85 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 61,
+        "CSP/CapEx": 50,
+        "App/AI": 25,
+        "gnews-chip": 20,
+        "gnews-dc": 22,
+        "gnews-app": 20
+      },
+      "digest_filtered": 0,
+      "after_dedup": 183,
+      "buckets": {
+        "hw": 36,
+        "corp": 131,
+        "app": 35
+      },
+      "news_char_budget": {
+        "hw": 4200,
+        "corp": 8000,
+        "app": 4083
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 2,
+      "llm_ratings": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 3,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "dedup_audit": [
+        {
+          "title": "Meta 推出針對小型企業的 Muse AI，目標 2 億家平台用戶",
+          "section": "corp",
+          "action": "removed",
+          "matched_title": "Meta Muse AI 應用下載量突破 340 萬，受 Meta Connect 推廣加速",
+          "reason": "兩篇皆描述同一 Muse AI 產品的發布與後續使用情況，屬同一事件"
+        }
+      ],
+      "date": "2026-10-01",
+      "generated_at": "2026-10-01T00:04:16.634149+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 56,
         "CSP/CapEx": 45,
         "App/AI": 22,
@@ -953,85 +1032,6 @@
       "dedup_audit": [],
       "date": "2026-09-18",
       "generated_at": "2026-09-18T00:04:01.336132+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 57,
-        "CSP/CapEx": 46,
-        "App/AI": 26,
-        "gnews-chip": 20,
-        "gnews-dc": 25,
-        "gnews-app": 18
-      },
-      "digest_filtered": 0,
-      "after_dedup": 171,
-      "buckets": {
-        "hw": 37,
-        "corp": 131,
-        "app": 37
-      },
-      "news_char_budget": {
-        "hw": 4316,
-        "corp": 8000,
-        "app": 4316
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 4,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "dedup_audit": [
-        {
-          "title": "Nvidia 於 TechCrunch Disrupt 2026 探討機器人 ChatGPT 時刻",
-          "section": "corp",
-          "action": "downgraded",
-          "matched_title": null,
-          "reason": "內容僅為對機器人發展的評論，未宣布新決策或新產品，屬於背景說明"
-        }
-      ],
-      "date": "2026-09-17",
-      "generated_at": "2026-09-17T00:04:20.066529+08:00"
     }
   ]
 }
