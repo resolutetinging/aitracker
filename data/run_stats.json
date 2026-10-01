@@ -2,6 +2,77 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 62,
+        "CSP/CapEx": 48,
+        "App/AI": 21,
+        "gnews-chip": 22,
+        "gnews-dc": 23,
+        "gnews-app": 19
+      },
+      "digest_filtered": 0,
+      "after_dedup": 183,
+      "buckets": {
+        "hw": 38,
+        "corp": 132,
+        "app": 37
+      },
+      "news_char_budget": {
+        "hw": 4433,
+        "corp": 8000,
+        "app": 4316
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 2,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 3,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 3,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "dedup_audit": [],
+      "date": "2026-10-02",
+      "generated_at": "2026-10-02T00:04:55.823608+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 61,
         "CSP/CapEx": 50,
         "App/AI": 25,
@@ -961,77 +1032,6 @@
       "dedup_audit": [],
       "date": "2026-09-19",
       "generated_at": "2026-09-19T00:04:25.324756+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 69,
-        "CSP/CapEx": 53,
-        "App/AI": 23,
-        "gnews-chip": 23,
-        "gnews-dc": 24,
-        "gnews-app": 20
-      },
-      "digest_filtered": 0,
-      "after_dedup": 188,
-      "buckets": {
-        "hw": 46,
-        "corp": 136,
-        "app": 46
-      },
-      "news_char_budget": {
-        "hw": 5366,
-        "corp": 8000,
-        "app": 5366
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 2,
-        "corp": 3,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "dedup_audit": [],
-      "date": "2026-09-18",
-      "generated_at": "2026-09-18T00:04:01.336132+08:00"
     }
   ]
 }

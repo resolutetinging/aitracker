@@ -1,5 +1,207 @@
 [
   {
+    "date": "2026-10-02",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Micron警告記憶體供應緊張將持續至2028年",
+        "layer": "capacity_commitments",
+        "body": "Micron執行長Sanjay Mehrotra於2026財年盈餘說明會上指出，2027及2028年記憶體需求將持續超過供應，且公司已預售2027年大部分將製造的DRAM，導致客戶將支付遠高於2026年的價格。",
+        "impact": "下游伺服器與資料中心製造商因DRAM價格上漲而面臨成本壓力，可能轉向其他記憶體供應商或調整產品規格。",
+        "rating": "core",
+        "insight": "記憶體供應緊張將推高上游代工與下游伺服器成本，供應鏈緊繃。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/10/01/ram-supply-set-to-worsen-says-micron-as-ceo-celebrates-much-higher-prices/5300346",
+        "chain": [
+          {
+            "label": "Micron DRAM 預售價格↑",
+            "type": "up"
+          },
+          {
+            "label": "客戶記憶體採購成本↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "HPE與NVIDIA合作打造AI工廠加速基礎建設",
+        "layer": "strategic_supplier_decisions",
+        "body": "HPE於2026年10月1日發布與NVIDIA的合作方案，提供加速運算、企業基礎設施、網路與控制平面等全套服務，以支援單一業務線或多租戶AI服務的部署需求。",
+        "impact": "上游NVIDIA的GPU與加速卡需求將因HPE方案而提升，帶動晶圓代工與封測廠的出貨量；下游企業客戶在建置AI工廠時將採購更多HPE伺服器與網路設備，推動相關硬體供應鏈的訂單增長。",
+        "rating": "opp",
+        "insight": "HPE與NVIDIA的聯手將加速AI基礎設施需求，提升相關硬體供應鏈活絡。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/10/01/sponsored-build-the-right-ai-factory-for-your-needs-partner-for-success/5300143",
+        "chain": [
+          {
+            "label": "HPE AI 伺服器出貨↑",
+            "type": "up"
+          },
+          {
+            "label": "NVIDIA GPU 需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 揭露中國 Moonshot AI 於七月發動模型蒸餾攻擊",
+        "layer": "CSP/CapEx",
+        "body": "OpenAI 在 7 月 1 日起偵測到一場持續整個七月的模型蒸餾攻擊，目標為其大型語言模型。該攻擊由與中國 Moonshot AI 相關的個人發起，透過大量查詢複製 OpenAI 模型的推理與功能。OpenAI 表示已於七月底成功中斷此攻擊行動。",
+        "impact": "",
+        "rating": "core",
+        "insight": "防範模型蒸餾攻擊將成為 AI 服務供應商的必備能力，相關安全硬體與加密技術需求將上升。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/security/2026/09/30/irony-alert-openai-whines-that-chinese-model-stole-its-special-ip-that-it-stole-from-everybody-else/5300285",
+        "chain": [
+          {
+            "label": "OpenAI LLM 安全防護投入↑",
+            "type": "up"
+          },
+          {
+            "label": "Moonshot AI 模型蒸餾攻擊失敗↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Google 發布 Gemini 4 Argon，聚焦防禦性網路安全",
+        "layer": "CSP/CapEx",
+        "body": "Google 母公司 Alphabet 於 2026 年 9 月 30 日推出 Gemini 4 Argon，宣稱此模型能自動發現、驗證並修補關鍵軟體漏洞。Argon 目前僅向少數合作的網路安全夥伴透過 Fairwind 計畫開放使用。Google 表示已在內部測試中成功修補多項已知漏洞。",
+        "impact": "",
+        "rating": "core",
+        "insight": "專為安全設計的 AI 模型將改變漏洞修補市場格局，相關硬體與安全服務供應鏈將受惠。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/30/google-releases-gemini-4-argon-called-its-most-powerful-model-yet/",
+        "chain": [
+          {
+            "label": "Google Gemini 4 Argon 漏洞修補效率↑",
+            "type": "up"
+          },
+          {
+            "label": "合作安全夥伴漏洞暴露率↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Satlyt 完成 800 萬美元融資，將 AI 部署於衛星邊緣運算",
+        "layer": "CSP/CapEx",
+        "body": "Satlyt 於 2026 年 10 月 1 日宣布完成 800 萬美元的融資，資金由前 Google 與 SpaceX 產品經理 Rama Afullo 領導的團隊募集。公司總部設於美國 Sunnyvale 與肯亞 Nairobi，目標開發可在衛星上共享計算工作的軟體平台。Satlyt 表示已與多家低軌道衛星營運商簽署概念驗證協議。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "衛星邊緣 AI 平台的興起將開啟新一代空間計算供應鏈，相關硬體與服務需求將快速成長。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/10/01/satlyt-founded-by-a-former-google-and-spacex-product-manager-raises-8m-to-run-ai-on-satellites/",
+        "chain": [
+          {
+            "label": "Satlyt 衛星邊緣運算平台融資↑",
+            "type": "up"
+          },
+          {
+            "label": "低軌道衛星運營商合作數量↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 發布 Decisions API，提供類似 Jev 的高效決策分類功能",
+        "layer": "CSP/CapEx",
+        "body": "OpenAI 在 2026 年 9 月 30 日的 Dev Day 透露其新推出的 Decisions API，功能與 TypeSafe AI 近期發表的 Jev 模型相似，能以低成本高速輸出選項機率。OpenAI 表示該 API 已內建於 Luna 模型，供開發者即時調用。此服務將於下月正式向合作夥伴開放測試。",
+        "impact": "",
+        "rating": "core",
+        "insight": "OpenAI 的決策 API 為企業提供即時分類能力，將加速 AI 應用落地並刺激算力與平台服務需求。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/09/30/openais-jev-clone-could-help-the-frontier-lab-stop-its-swarming-agents/",
+        "chain": [
+          {
+            "label": "OpenAI Decisions API 使用率↑",
+            "type": "up"
+          },
+          {
+            "label": "開發者成本降低↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "非揮發性記憶體支援類人機器人商業化出貨突破",
+        "layer": "AI應用",
+        "body": "Goldman Sachs 估計，類人機器人出貨量將從 2025 年的不足 15,000 台提升至 2035 年超過 6 百萬台。分散式非揮發性記憶體 (NVM) 可提供高耐久度遙測記錄與功能安全，滿足機器人對時間敏感網路的韌性需求。Hello Robot 等廠商正將此類記憶體整合至關節 MCU 與電池管理系統，以確保在工廠與倉儲環境中的可靠運作。",
+        "impact": "下游類人機器人整機廠商如 Hello Robot 受益於更可靠的記憶體，提升產品可用率，進一步加速在製造與物流領域的部署，對傳統自動化設備形成競爭壓力。",
+        "rating": "core",
+        "insight": "非揮發性記憶體需求將隨類人機器人商業化快速成長，相關供應鏈值得關注。",
+        "source_label": "Semiconductor",
+        "source": "https://semiengineering.com/memory-at-the-edge-non-volatile-memory-challenges-and-requirements-for-humanoid-robots/",
+        "chain": [
+          {
+            "label": "非揮發性記憶體在類人機器人中的採用↑",
+            "type": "up"
+          },
+          {
+            "label": "Hello Robot 產品可靠性↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "AI工廠",
+        "full": "Artificial Intelligence Factory",
+        "def": "將AI模型的研發、訓練、推論與部署全流程整合於同一套基礎設施，提供可彈性擴展的硬體與服務平台。",
+        "why": "說明企業如何透過統一平台降低多租戶AI服務的建置與營運成本。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "前沿模型",
+        "full": "Frontier Model",
+        "def": "規模極大、參數數量達千億以上的深度學習模型，通常需要專屬高效能運算資源與大量資料訓練。",
+        "why": "此類模型的訓練與推論需求直接拉高高性能GPU與記憶體的供應鏈壓力。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "DRAM",
+        "full": "Dynamic Random-Access Memory",
+        "def": "動態隨機存取記憶體，是伺服器與AI加速卡常用的高速記憶體類型。",
+        "why": "DRAM供應緊張會直接影響AI硬體成本與資料中心擴容速度。",
+        "category": "hardware"
+      },
+      {
+        "term": "模型蒸餾",
+        "full": "Model Distillation",
+        "def": "透過大量查詢大型模型的輸出，將其推理與能力轉移至較小模型的技術。此方法可在不取得原始模型權限的情況下複製功能。",
+        "why": "蒸餾攻擊可能繞過版權與安全防護，對 AI 供應鏈的知識產權構成威脅。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "防禦性AI模型",
+        "full": "Defensive AI Model",
+        "def": "專為資安防護設計的人工智慧模型，能自動偵測、驗證並修補軟體漏洞。",
+        "why": "此類模型提升企業資安防禦效率，成為安全服務供應鏈的新需求點。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "衛星邊緣運算",
+        "full": "Satellite Edge Computing",
+        "def": "在低軌道衛星上部署計算資源，使資料在來源端即時處理，減少傳回地面的延遲。",
+        "why": "可支援遠端感測與即時影像分析，開啟空間計算硬體與軟體的新市場。",
+        "category": "hardware"
+      },
+      {
+        "term": "非揮發性記憶體",
+        "full": "Non-Volatile Memory (NVM)",
+        "def": "在斷電後仍能保留資料的記憶體類型，常用於需要高耐久度與資料完整性的嵌入式系統。",
+        "why": "類人機器人需要持續記錄感測資料與安全指令，NVM 提供必要的可靠性與即時存取能力。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-01",
     "is_sunday": false,
     "hw": [
@@ -861,146 +1063,6 @@
         "def": "指企業價值鏈上游與下游的間接溫室氣體排放，包括供應商製造、物流、產品使用與廢棄等階段的排放量。",
         "why": "企業若能降低Scope 3排放，可減少整體碳足跡，提升永續形象並符合越來越嚴格的環保法規。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-09-25",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google 推出 Scan for Good 計畫，結合 Gemini 3.8 Flash Cyber 與 Wiz Red Agent 偵測關鍵基礎建設安全漏洞",
-        "layer": "AI安全服務",
-        "body": "2026 年 9 月 24 日，Google 宣布正式啟動 Scan for Good 計畫，使用針對軟體漏洞偵測調校的 Gemini 3.8 Flash Cyber 模型，並與 Wiz 的 Red Agent AI 滲透測試代理人合作。該計畫已在美國一家醫院、某市政府、公共鐵路營運商以及多家大型科技供應商自主發現並上報安全缺口。Google 表示此服務將持續全球擴展，無明確結束日期。",
-        "impact": "下游醫療、公共事業與大型科技公司因提前獲得漏洞修補，降低因資安事件導致的營運中斷風險，提升服務可靠度↑。",
-        "rating": "core",
-        "insight": "Google 以 AI 安全服務切入關鍵基礎建設，將推動 GPU 需求與雲端算力供應鏈成長。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/security/2026/09/24/google-to-critical-infra-orgs-our-ai-scanners-wont-be-evil-promise/5298685",
-        "chain": [
-          {
-            "label": "Google Gemini 3.8 Flash Cyber 服務↑",
-            "type": "up"
-          },
-          {
-            "label": "Wiz Red Agent AI 需求↑",
-            "type": "up"
-          },
-          {
-            "label": "醫院與公共基礎建設安全漏洞偵測支出↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Oracle 因 Project Jupiter 資料中心延期發出不可抗力通知，若 2028 年未上線將延遲付款",
-        "layer": "資料中心建設",
-        "body": "2026 年 9 月 24 日，Oracle 公布對 Project Jupiter 資料中心發出不可抗力（force majeure）通知，若該中心未於 2028 年前完成上線，Oracle 將延遲相關付款。此訊息同日導致 Oracle 股價下跌約 5%。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Oracle 的資料中心延期削弱短期硬體需求，對相關供應鏈產生下行壓力。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/09/24/oracle-data-center-force-majeure.html",
-        "chain": [
-          {
-            "label": "Oracle Project Jupiter 資料中心建設延遲↓",
-            "type": "down"
-          },
-          {
-            "label": "Oracle 2028 年付款延期↓",
-            "type": "down"
-          },
-          {
-            "label": "Oracle 股價下跌約5%↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "SoftBank 發行 111 億美元債券為 OpenAI 投資提供資金，股價上漲逾 7%",
-        "layer": "資金與投資",
-        "body": "2026 年 9 月 24 日，SoftBank 透過發行總額 111 億美元的債券為其在 OpenAI 的投資籌措資金，發行後公司股價即上漲超過 7%。此舉顯示 SoftBank 正加大對生成式 AI 產業的資金佈局。",
-        "impact": "",
-        "rating": "core",
-        "insight": "SoftBank 的巨額債券發行為 OpenAI 及整個 AI 計算硬體供應鏈注入新資金，預示需求將持續擴大。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/09/24/softbank-shares-bond-issuance-openai.html",
-        "chain": [
-          {
-            "label": "SoftBank 發行 111 億美元債券↑",
-            "type": "up"
-          },
-          {
-            "label": "SoftBank 對 OpenAI 投資資金↑",
-            "type": "up"
-          },
-          {
-            "label": "SoftBank 股價上漲逾7%↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "3D-IC",
-        "full": "三維積體電路",
-        "def": "將多個晶片或晶片組件以垂直堆疊方式整合於單一封裝內，提供更高的效能與密度。",
-        "why": "隨著 AI 加速器需求提升，3D-IC 成為降低訊號延遲與功耗的關鍵技術。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Scan for Good",
-        "full": "Google 針對關鍵基礎建設的 AI 安全偵測計畫",
-        "def": "Google 以 Gemini 3.8 Flash Cyber 與 Wiz Red Agent 結合，主動掃描醫院、公共事業等領域的資安漏洞，並交由人類研究員驗證修補。",
-        "why": "此計畫將提升 AI 在資安領域的實際應用，並帶動相關硬體與雲端算力需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Project Jupiter",
-        "full": "Oracle 計畫於美國建置的大型資料中心項目",
-        "def": "預計在 2028 年前完成上線的資料中心，因不可抗力因素被 Oracle 發出延期付款通知。",
-        "why": "資料中心的建設與啟用直接牽動伺服器、GPU、冷卻與電力設備的供應鏈。",
-        "category": "hardware"
-      },
-      {
-        "term": "Gemini 3.8 Flash Cyber",
-        "full": "Google 調校用於軟體漏洞偵測的 Gemini 3.8 版本",
-        "def": "此模型專為安全漏洞搜尋與修補流程設計，與 Wiz Red Agent 共同提供自動化滲透測試服務。",
-        "why": "模型的運算需求將推動高效能 GPU 與雲端算力資源的需求增長。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Red Agent",
-        "full": "Wiz Red Agent",
-        "def": "Wiz 所開發的 AI 驗證與滲透測試代理，與 Google 的 Gemini 模型結合，用於自動化資安測試。",
-        "why": "Red Agent 與 Gemini 共同提供端到端的漏洞發現與驗證流程，提升資安服務的自動化程度。",
-        "category": "role"
       }
     ],
     "weekly_summary": null
