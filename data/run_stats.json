@@ -2,6 +2,85 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 55,
+        "CSP/CapEx": 46,
+        "App/AI": 22,
+        "gnews-chip": 24,
+        "gnews-dc": 23,
+        "gnews-app": 12
+      },
+      "digest_filtered": 1,
+      "after_dedup": 171,
+      "buckets": {
+        "hw": 39,
+        "corp": 115,
+        "app": 38
+      },
+      "news_char_budget": {
+        "hw": 4550,
+        "corp": 8000,
+        "app": 4433
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 3,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 3,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 3,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "dedup_audit": [
+        {
+          "title": "Micron 執行長預測記憶體短缺將持續至 2028 年",
+          "section": "hw",
+          "action": "removed",
+          "matched_title": "Micron警告記憶體供應緊張將持續至2028年",
+          "reason": "兩篇皆報導 Micron 執行長在同一投資人說明會上預測記憶體供應緊張將持續至 2028 年"
+        }
+      ],
+      "date": "2026-10-03",
+      "generated_at": "2026-10-03T00:05:03.159215+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 62,
         "CSP/CapEx": 48,
         "App/AI": 21,
@@ -961,77 +1040,6 @@
       "dedup_audit": [],
       "date": "2026-09-20",
       "generated_at": "2026-09-20T00:04:18.844411+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 60,
-        "CSP/CapEx": 47,
-        "App/AI": 19,
-        "gnews-chip": 20,
-        "gnews-dc": 23,
-        "gnews-app": 20
-      },
-      "digest_filtered": 1,
-      "after_dedup": 167,
-      "buckets": {
-        "hw": 41,
-        "corp": 119,
-        "app": 41
-      },
-      "news_char_budget": {
-        "hw": 4783,
-        "corp": 8000,
-        "app": 4783
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 2,
-        "corp": 3,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 3,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "placeholders": 0,
-      "llm_ratings": {
-        "hw": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 3,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [],
-      "date": "2026-09-19",
-      "generated_at": "2026-09-19T00:04:25.324756+08:00"
     }
   ]
 }
