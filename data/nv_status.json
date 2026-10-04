@@ -1,5 +1,5 @@
 {
-  "last_checked": "2026-09-28",
+  "last_checked": "2026-10-05",
   "pyramid": [
     {
       "label": "應用層（Industries）",
@@ -414,6 +414,47 @@
       "category": "基礎建設",
       "summary": "Civo 將於 2027 年在英國建置 40 座邊緣資料中心，首座配備 Nvidia Vera Rubin NVL72 系統，初始供電 8 MW，三年內總計算容量目標 1 GW。",
       "src": "https://www.theregister.com/off-prem/2026/09/22/civo-plots-40-edge-datacenters-to-power-britains-sovereign-ai/5298141",
+      "src_note": ""
+    },
+    {
+      "date": "2026-10-05",
+      "title": "Nvidia 壓力致 Cerebras 股價跌 20% 反映 AI 晶片供應緊張",
+      "category": "供應鏈",
+      "summary": "因 Nvidia Blackwell 系列晶片需求強勁，Cerebras 的 wafer‑scale 產品需求下降，導致其股價在本週跌幅達 20%。",
+      "src": "https://www.cnbc.com/2026/10/02/cerebras-stock-hits-post-ipo-low-on-nvidia-pressure-lockup-expiration.html",
+      "src_note": ""
+    },
+    {
+      "date": "2026-10-04",
+      "title": "加州業者涉嫌未經授權向中國走私價值 3 億美元的 Nvidia 晶片",
+      "category": "政府調查",
+      "summary": "加州企業 Earthmade Computer Inc. 被指控非法將約 3 億美元的 Nvidia A100、H100、RTX 4090 與 RTX 5090 走私至中國，違反美國出口規定。",
+      "src": "https://www.theregister.com/security/2026/10/02/californian-accused-of-shipping-300m-worth-of-nvidia-chips-to-china-without-uncle-sams-approval/5300856",
+      "src_note": "",
+      "thread": "美超微／輝達晶片走私網絡查緝"
+    },
+    {
+      "date": "2026-10-03",
+      "title": "Nvidia 推出 4,999 美元 DGX Spark 低配版",
+      "category": "產品發布",
+      "summary": "Nvidia 宣布全新 DGX Spark 低配版，售價 4,999 美元，記憶體與儲存容量皆為原版的一半，並由多家硬體夥伴獨家販售。",
+      "src": "https://www.theregister.com/systems/2026/10/02/nvidia-debuts-4999-dgx-spark-with-half-the-ram-and-storage-amid-memory-crunch/5300622",
+      "src_note": ""
+    },
+    {
+      "date": "2026-10-03",
+      "title": "Amazon 以 80 億美元租回 Nvidia Grace Blackwell 晶片",
+      "category": "財報動態",
+      "summary": "Amazon 透過特殊目的載具將約 80 億美元的 Nvidia Grace Blackwell AI 晶片轉讓給投資者，並即時租回以支援 AWS 雲端基礎建設，減少資產負債表上的實體半導體資產。",
+      "src": "https://lapaasvoice.com/amazon-explores-offloading-8-billion-of-nvidia-ai-chips-via-spv-leaseback/",
+      "src_note": ""
+    },
+    {
+      "date": "2026-10-02",
+      "title": "HPE與NVIDIA合作打造AI工廠加速基礎建設",
+      "category": "合作聯盟",
+      "summary": "HPE 與 Nvidia 合作提供全套加速運算與企業基礎設施服務，支援單一業務線或多租戶 AI 服務的部署需求。",
+      "src": "https://www.theregister.com/ai-and-ml/2026/10/01/sponsored-build-the-right-ai-factory-for-your-needs-partner-for-success/5300143",
       "src_note": ""
     }
   ]
