@@ -2,6 +2,92 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 44,
+        "CSP/CapEx": 46,
+        "App/AI": 20,
+        "gnews-chip": 20,
+        "gnews-dc": 25,
+        "gnews-app": 11
+      },
+      "digest_filtered": 1,
+      "after_dedup": 142,
+      "buckets": {
+        "hw": 28,
+        "corp": 109,
+        "app": 27
+      },
+      "news_char_budget": {
+        "hw": 3500,
+        "corp": 8000,
+        "app": 3500
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 3,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 2,
+          "noise": 0
+        },
+        "corp": {
+          "core": 3,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 4,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "dedup_audit": [
+        {
+          "title": "OpenAI 以違規處理機密資訊解雇三名員工",
+          "section": "corp",
+          "action": "removed",
+          "matched_title": "OpenAI 因資訊外洩與三名安全研究員解約",
+          "reason": "兩篇皆報導同一天因機密資訊外洩而解雇同三名安全研究員的事件"
+        },
+        {
+          "title": "Micron 2028 年新潔淨室計畫仍無法緩解記憶體短缺",
+          "section": "hw",
+          "action": "downgraded",
+          "matched_title": null,
+          "reason": "內容僅說明記憶體供需持續緊張與未來潔淨室計畫，屬於持續狀況的背景說明"
+        }
+      ],
+      "date": "2026-10-05",
+      "generated_at": "2026-10-05T00:04:33.281910+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 58,
         "CSP/CapEx": 50,
         "App/AI": 21,
@@ -977,77 +1063,6 @@
       "dedup_audit": [],
       "date": "2026-09-22",
       "generated_at": "2026-09-22T00:04:06.830853+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 46,
-        "CSP/CapEx": 39,
-        "App/AI": 18,
-        "gnews-chip": 17,
-        "gnews-dc": 22,
-        "gnews-app": 14
-      },
-      "digest_filtered": 1,
-      "after_dedup": 139,
-      "buckets": {
-        "hw": 29,
-        "corp": 104,
-        "app": 29
-      },
-      "news_char_budget": {
-        "hw": 3500,
-        "corp": 8000,
-        "app": 3500
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 3,
-        "corp": 1,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 2,
-      "llm_ratings": {
-        "hw": {
-          "core": 2,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "dedup_audit": [],
-      "date": "2026-09-21",
-      "generated_at": "2026-09-21T00:03:59.954745+08:00"
     }
   ]
 }

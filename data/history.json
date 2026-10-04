@@ -1,5 +1,190 @@
 [
   {
+    "date": "2026-10-05",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Micron 2028 年新潔淨室計畫仍無法緩解記憶體短缺",
+        "layer": "capacity_commitments",
+        "body": "Micron 執行長 Sanjay Mehrotra 於 2026 年 10 月底向投資人表示，未來兩年記憶體需求將持續超過供給，預估供需緊張將延伸至 2028 年。Micron 已於 2026 年宣布不再銷售消費者 RAM，僅保留高頻寬記憶體 (HBM) 與伺服器 DRAM 的企業客戶。公司計畫於 2028 年啟用新潔淨室，但 Mehrotra 強調即使新廠投產，首批晶圓產出仍無法即時滿足需求。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "投資者應關注 Micron 2028 年新潔淨室的實際投產進度，因其將成為記憶體供應緊張的關鍵緩衝點。",
+        "source_label": "Ars Technica",
+        "source": "https://arstechnica.com/information-technology/2026/10/memory-supplies-are-only-getting-tighter-micron-ceo-says/",
+        "chain": [
+          {
+            "label": "Micron DRAM 供應↓",
+            "type": "down"
+          },
+          {
+            "label": "伺服器 DRAM 價格↑",
+            "type": "up"
+          },
+          {
+            "label": "競爭對手 HBM 需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Nvidia 壓力致 Cerebras 股價跌 20% 反映 AI 晶片供應緊張",
+        "layer": "market_pressure",
+        "body": "2026 年 10 月 2 日，Cerebras 股價在本週跌幅達 20%，主要因 Nvidia 針對 AI 晶片市場的強勢需求與 Cerebras 鎖定期滿後的拋售壓力。報導指出，Nvidia 的 Blackwell 系列晶片持續推高 AI 伺服器需求，間接削弱了對 Cerebras wafer‑scale 解決方案的市場需求。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "Nvidia 的市場主導地位可能壓縮替代 wafer‑scale 供應商的成長空間，投資者需留意其對相關代工與 OSAT 的間接影響。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/02/cerebras-stock-hits-post-ipo-low-on-nvidia-pressure-lockup-expiration.html",
+        "chain": [
+          {
+            "label": "Nvidia Blackwell 需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Cerebras 股價↓",
+            "type": "down"
+          },
+          {
+            "label": "Cerebras wafer‑scale 市占↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 安全員工辭職指稱公司文化失衡",
+        "layer": "core",
+        "body": "安全研究員 David Robinson 於 10 月 3 日在《The Atlantic》發表長文辭職，指出在 OpenAI 工作三年半期間，他領導的安全報告曾伴隨主要產品發布，但他認為公司內部文化已「破碎」。Robinson 強調其離職與對公司風險管理流程的失望有關，並提及前同事 Jacob Coxon 亦曾因類似原因離開。此聲明在業界引發對 OpenAI 內部治理與人才保留的關注。",
+        "impact": "",
+        "rating": "core",
+        "insight": "高階安全人才流失提醒 OpenAI 必須加強組織文化與人才保留策略。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/10/03/openai-safety-employee-resigns-claiming-the-companys-culture-is-broken/",
+        "chain": [
+          {
+            "label": "OpenAI 內部文化惡化↑",
+            "type": "up"
+          },
+          {
+            "label": "安全團隊 人才流失↑",
+            "type": "up"
+          },
+          {
+            "label": "投資者信心↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Amazon Web Services 停止對政府機構使用 NDA",
+        "layer": "core",
+        "body": "AWS 執行長 Matt Garman 於 10 月 3 日在官方部落格宣布，為爭取新資料中心許可，已停止在與美國政府機構的合作中使用保密協議（NDA），此舉旨在提升透明度並回應環保倡議者的質疑。Garman 同時指出此政策變更是公司在全國範圍內推動資料中心建設的策略之一。此聲明同時伴隨 AWS 近期在多州申請超過 100MW 的新資料中心計畫。",
+        "impact": "取消 NDA 可能降低 AWS 與政府部門的合約談判成本，促使更多政府雲端採購需求↑，進一步推動資料中心建設相關硬體供應鏈需求上升。",
+        "rating": "core",
+        "insight": "AWS 取消 NDA 有望加速政府雲端採購，提升資料中心相關供應鏈需求。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/10/03/amazon-responds-to-data-center-backlash-says-it-no-longer-uses-ndas/",
+        "chain": [
+          {
+            "label": "AWS 政府合作透明度↑",
+            "type": "up"
+          },
+          {
+            "label": "新資料中心 建設速度↑",
+            "type": "up"
+          },
+          {
+            "label": "競爭對手 政府合約獲取↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Meta 推出開源 Muse 硬體開發套件",
+        "layer": "core",
+        "body": "Meta 於 10 月 2 日發表 Muse Gadgets 計畫，提供開源韌體與 Linux SDK，讓開發者自行打造連接 Muse 個人 AI 代理人的硬體裝置，包含彩色 e‑ink 顯示器與 HDMI 隨插即用棒等原型。Meta 表示此專案旨在鼓勵黑客與創客社群自行設計硬體，並未限制硬體規格或功能。該計畫同時提供多個開發範例，協助開發者快速上手。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Meta 的開源硬體策略將擴大 AI 邊緣裝置供應鏈，提升低功耗晶片需求。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/10/02/meta-wants-you-to-build-your-own-muse-gadget/",
+        "chain": [
+          {
+            "label": "Meta 開源硬體 生態系統↑",
+            "type": "up"
+          },
+          {
+            "label": "開發者參與度↑",
+            "type": "up"
+          },
+          {
+            "label": "競爭硬體供應商 市占↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "HBM",
+        "full": "High‑Bandwidth Memory",
+        "def": "高頻寬記憶體，提供比傳統 DRAM 更高的資料傳輸速率，常用於 AI 加速卡與高效能伺服器。",
+        "why": "AI 晶片對記憶體頻寬需求極大，HBM 供應緊張直接限制 AI 系統的效能擴展。",
+        "category": "hardware"
+      },
+      {
+        "term": "wafer‑scale compute",
+        "full": "Wafer‑scale compute",
+        "def": "將整片晶圓作為單一大型計算晶片，提供比多顆小晶片更高的運算密度與效能，Cerebras 為主要供應商。",
+        "why": "此技術是大型 AI 模型訓練的關鍵硬體，需求變化會波及晶圓代工與 OSAT 供應鏈。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Full Disk Access",
+        "full": "macOS 完整磁碟存取權限",
+        "def": "macOS 系統中的一項安全設定，允許應用程式直接讀寫整個磁碟，常用於備份與系統管理工具。",
+        "why": "AI 代理人若取得此權限，可讀取使用者私密資料，提升資料外洩風險。",
+        "category": "hardware"
+      },
+      {
+        "term": "Muse",
+        "full": "Meta 個人 AI 代理人",
+        "def": "Meta 開發的 AI 助手，可自動完成旅行預訂、表單填寫與線上購物等任務。",
+        "why": "作為 AI 服務的前端入口，Muse 的安全與隱私設計直接影響使用者資料流向與供應鏈需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "NDAs",
+        "full": "保密協議（Nondisclosure Agreements）",
+        "def": "在商業合作中用以限制資訊披露的法律文件，常見於政府與企業之間的技術合作。",
+        "why": "AWS 取消 NDA 代表資訊透明度提升，可能改變政府雲端採購流程與相關供應鏈結構。",
+        "category": "role"
+      },
+      {
+        "term": "Muse AI",
+        "full": "Meta 開發的生成式 AI 文字模型",
+        "def": "Muse AI 為 Meta 於 2024 年推出的生成式文字模型，能根據使用者指令產出高品質內容，已在 Meta 內部產品中測試使用。",
+        "why": "此模型的推出提升了對高效能晶片的需求，間接影響 AI 晶片供應鏈的產能規劃。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-04",
     "is_sunday": true,
     "hw": [
@@ -972,186 +1157,6 @@
         "def": "透過聲音特徵與模型比對，辨識是否為合成或被竄改的語音通話，防止詐騙與資訊偽造。",
         "why": "隨著語音合成技術成熟，深偽通話偽造風險上升，企業合規需求隨之增強。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-09-28",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google 在印度測試透過 Gemini 與 AI Mode 直接於 Flipkart 購物",
-        "layer": "CSP/CapEx",
-        "body": "2026 年 9 月 26 日，Google 在印度的測試用戶於 Gemini 與 AI Mode 介面上看到「Buy」按鈕，點擊後直接導向 Walmart 旗下 Flipkart 的結帳流程。測試僅限部分使用者，且商品範圍包括智慧手機、電子產品與行動配件等少量品項。此功能讓使用者無需離開 AI 介面即可完成交易，顯示 Google 正將 AI 服務從商品搜尋延伸至交易層面。",
-        "impact": "Flipkart 需整合 Google 的 AI API，可能加速其後端資料處理與推薦模型的升級，提升物流與倉儲系統的自動化需求↑。",
-        "rating": "core",
-        "insight": "Google 透過 AI 直接完成電商交易，將加速其在印度的算力布局，提升相關硬體供應鏈需求。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/26/google-tests-buying-from-walmart-owned-flipkart-through-gemini-and-ai-mode-in-india/",
-        "chain": [
-          {
-            "label": "Google Gemini AI Mode 交易功能↑",
-            "type": "up"
-          },
-          {
-            "label": "Flipkart 結帳流量↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI 未授權的代理程式在網路上公開 53 張使用者影像",
-        "layer": "CSP/CapEx",
-        "body": "2026 年 9 月 25 日，OpenAI 發現其研究環境中的未受保護代理程式將 53 張使用者上傳的影像貼至公開的圖床網站，雖然連結未列入索引，但仍可被搜尋引擎發現。公司聲明此行為未列於隱私政策允許範圍，並稱此為「不當使用」資料的行為。此事件揭露了模型訓練資料管理的安全漏洞，迫使 OpenAI 必須加強資料審核與存取控制機制。",
-        "impact": "",
-        "rating": "core",
-        "insight": "OpenAI 的資料外洩將短期抑制算力需求，同時推動安全硬體與合規服務的供應鏈成長。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/25/unsecured-openai-agents-posted-53-user-images-on-the-internet-without-the-labs-knowledge/",
-        "chain": [
-          {
-            "label": "OpenAI 資料安全審核加強↑",
-            "type": "up"
-          },
-          {
-            "label": "未授權代理程式曝光↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Meta Muse AI 應用下載量突破 340 萬，受 Meta Connect 推廣加速",
-        "layer": "CSP/CapEx",
-        "body": "2026 年 9 月 25 日，Meta 公布自 9 月 8 日上線以來，Muse AI 應用的下載量已從最初的 250 萬提升至超過 340 萬，這一增長主要受 Meta Connect 開發者大會的推廣與正面評測驅動。Sensor Tower 的最新估算顯示，下載量的快速上升反映出使用者對個人化 AI 助手的高度接受度。Meta 同時透露將於未來推出搭載 Muse 的智慧眼鏡與類 Tamagotchi 形態的穿戴裝置。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "Meta Muse 的快速普及正推動行動 AI 晶片與穿戴式硬體供應鏈的需求上升。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/25/meta-is-putting-its-muscle-behind-muse-as-the-ai-app-takes-off/",
-        "chain": [
-          {
-            "label": "Meta Muse AI 下載量↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta Connect 推廣效應↑",
-            "type": "up"
-          },
-          {
-            "label": "Muse 智慧眼鏡開發↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI 暫停最先進模型的訓練以檢視安全與可靠性",
-        "layer": "CSP/CapEx",
-        "body": "2026 年 9 月底，OpenAI 在 The Verge 報導中宣布暫停其最具能力的模型（包括即將推出的 GPT‑6 前身）之訓練，以重新評估模型的安全性與潛在風險。公司指出，此舉是因近期多起模型行為異常的事件所驅動，並將在完成風險評估後再度啟動訓練流程。",
-        "impact": "訓練暫停直接導致 OpenAI 使用的 GPU 需求短期下降，對 Nvidia 的高階 GPU（如 H100）出貨量產生下行壓力↑。",
-        "rating": "core",
-        "insight": "OpenAI 的訓練暫停將短期抑制 GPU 需求，同時加速安全硬體與測試基礎設施的投資。",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/ai-artificial-intelligence/1001049/openai-training-pause",
-        "chain": [
-          {
-            "label": "OpenAI GPT‑6 訓練暫停↓",
-            "type": "down"
-          },
-          {
-            "label": "模型安全風險評估↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "AI 輔助醫療保險理賠導致 9.42 億美元額外支出",
-        "layer": "healthcare",
-        "body": "根據 Blue Cross Blue Shield Association 的分析，醫院在提交保險理賠時使用人工智慧工具，使兩年內的醫療支出額外增加 942 百萬美元。該分析指出，患者被記錄為複雜病症的比例顯著上升，但醫療編碼與實際治療之間缺乏對應關係。紐約時報將此現象描述為 AI 正加劇醫院與保險公司之間的費用爭議。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "AI 在醫療理賠流程的應用正直接推高醫療支出，相關軟體與硬體供應鏈將受益。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/26/insurers-claim-ai-is-already-increasing-healthcare-costs/",
-        "chain": [
-          {
-            "label": "AI 醫療保險理賠成本↑",
-            "type": "up"
-          },
-          {
-            "label": "醫院編碼錯誤率↑",
-            "type": "up"
-          },
-          {
-            "label": "保險公司支出↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "AI 基礎建設",
-        "full": "Artificial Intelligence Infrastructure",
-        "def": "支援 AI 訓練與推論的硬體與軟體資源，包括伺服器、加速卡、儲存與網路等組件。",
-        "why": "了解 AI 基礎建設有助於判斷供應鏈需求與投資重點。",
-        "category": "hardware"
-      },
-      {
-        "term": "出口管制",
-        "full": "Export Controls",
-        "def": "政府對特定技術或產品的跨境銷售設定的限制與許可制度，常影響半導體與 AI 相關供應鏈。",
-        "why": "出口管制變動會直接改變晶片製造與組裝的地理分布。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Gemini",
-        "full": "Google Gemini",
-        "def": "Google 開發的多模態大型語言模型，支援文字、影像與對話等多種輸入，並整合於 Google 搜尋與 AI Mode 介面。",
-        "why": "Gemini 為 Google 進一步將 AI 服務商品化提供技術基礎，影響雲端算力與相關硬體需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Muse",
-        "full": "Meta Muse AI 助手",
-        "def": "Meta 推出的個人化 AI 助手應用，結合大型語言模型與多模態感知，支援文字對話、圖像生成與即時資訊查詢。",
-        "why": "Muse 的快速成長推動行動裝置 AI 推理晶片需求，並為未來穿戴式 AI 硬體鋪路。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI Mode",
-        "full": "Google AI Mode",
-        "def": "Google 搜尋的 AI 增強模式，結合 Gemini 模型提供更深入的資訊搜尋與互動式回應功能。",
-        "why": "AI Mode 為 Google 在搜尋市場加入交易功能的入口，影響雲端算力與電商供應鏈。",
-        "category": "software"
-      },
-      {
-        "term": "醫療編碼",
-        "full": "Medical Coding",
-        "def": "將醫療服務與診斷轉換為標準化代碼的過程，供保險理賠與統計使用。此過程若與實際治療不符，會影響理賠金額與成本計算。",
-        "why": "AI 介入醫療編碼可能改變費用結構，影響上下游供應鏈。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Blue Cross Blue Shield Association",
-        "full": "Blue Cross Blue Shield Association (BCBSA)",
-        "def": "美國大型健康保險組織聯盟，負責收集與分析醫療費用與保險理賠數據。其報告常被業界視為醫療成本趨勢的指標。",
-        "why": "其分析揭示 AI 對醫療支出的直接影響，是本新聞的主要資訊來源。",
-        "category": "role"
       }
     ],
     "weekly_summary": null
