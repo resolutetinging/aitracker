@@ -1,5 +1,156 @@
 [
   {
+    "date": "2026-10-06",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "德國卡爾斯魯厄理工大學啟用 33 百萬兆次 HoreKa 2 超級電腦",
+        "layer": "AI基礎設施",
+        "body": "2026 年 10 月 5 日，德國卡爾斯魯厄理工大學（Karlsruhe Institute of Technology）正式啟用名為 HoreKa 2 的 33 petaflops 超級電腦。該系統採用 AMD Turin 系列 CPU 以及 Nvidia GB200 GPU 形成混合架構。此部署顯示 AI 研究對高效能 GPU 與先進 CPU 的需求持續上升。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "大型超級電腦採購顯示 Nvidia GPU 需求持續強勁，供應鏈上游產能將受益。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "AMD Turin CPU 需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia GB200 GPU 訂單↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "SpaceX 與台積電討論在德州建立 TeraFab 晶圓廠",
+        "layer": "AI基礎設施",
+        "body": "2026 年 10 月 5 日，Elon Musk 在接受採訪時確認 SpaceX 正與台積電（TSMC）討論在美國德州建立名為 TeraFab 的晶圓製造設施，並透露原先的 SpaceXAI 將更名為 SpaceXSI。此舉回應了外界對 TSMC 在德州設廠的傳聞。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "TSMC 在德州布局將提升美國 AI 晶圓供應彈性，對本土 AI 硬體供應鏈構成正向刺激。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "TSMC 德州 TeraFab 投資↑",
+            "type": "up"
+          },
+          {
+            "label": "SpaceXSI AI 計畫資金需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 在美國測試影像廣告格式於 ChatGPT 影像生成結果旁顯示",
+        "layer": "CSP/CapEx",
+        "body": "OpenAI 宣布將於 2026 年 10 月在美國測試新「visual ad format」，於使用者請求產生圖像時於結果旁顯示廣告；測試將使用一組初始廣告客戶，且所有廣告均會明確標示且不干擾 ChatGPT 的回覆內容；同時公司亦擴充廣告測量工具與品牌適配性評估機制，以確保廣告品質。",
+        "impact": "下游廣告主可藉由影像廣告觸及 AI 使用者，提升品牌曝光，進一步刺激數位行銷服務商的訂單增長↑。",
+        "rating": "core",
+        "insight": "OpenAI 以影像廣告切入 AI 生成市場，將開啟廣告技術與算力供應鏈的新需求增長點。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/10/05/openai-to-flood-your-eyeballs-with-visual-ads/5301152",
+        "chain": [
+          {
+            "label": "OpenAI Visual Ad 收入↑",
+            "type": "up"
+          },
+          {
+            "label": "ChatGPT 使用者體驗↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Google 因 AI 相關提交激增暫停開源漏洞賞金計畫",
+        "layer": "CSP/CapEx",
+        "body": "Google 於 2026 年 10 月 1 日宣布暫停其 Open Source Software Vulnerability Rewards Program，原因是 AI 生成的自動化提交量大幅上升，超過 90% 為無效或幻覺內容；公司承諾將於 2027 年第一季提供更新說明；此舉顯示 AI 生成工具對安全研究流程的衝擊。",
+        "impact": "暫停賞金計畫減少了開源軟體維護者的獎金收入↓，可能導致部分安全漏洞修補速度放緩；同時，AI 生成的偽報告需求上升推動相關過濾與驗證服務供應商的市場需求↑。",
+        "rating": "core",
+        "insight": "Google 暫停開源賞金計畫凸顯 AI 生成內容對安全生態的挑戰，相關驗證與過濾服務將受益。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/10/04/google-froze-its-open-source-bug-bounty-program-due-to-a-significant-rise-in-ai-submissions/",
+        "chain": [
+          {
+            "label": "Google OSS 漏洞賞金計畫暫停↓",
+            "type": "down"
+          },
+          {
+            "label": "AI 生成提交量↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": "",
+        "chain": [
+          {
+            "label": "無相關新聞",
+            "type": "neutral"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "HoreKa 2",
+        "full": "HoreKa 2 超級電腦",
+        "def": "德國卡爾斯魯厄理工大學於 2026 年部署的 33 petaflops 超級電腦，採用 AMD Turin CPU 與 Nvidia GB200 GPU 混合架構。",
+        "why": "顯示高效能 AI 計算資源對先進 CPU 與 GPU 的需求持續增長，影響相關供應鏈產能分配。",
+        "category": "hardware"
+      },
+      {
+        "term": "TeraFab",
+        "full": "TeraFab 晶圓製造計畫",
+        "def": "SpaceX 與台積電討論在美國德州建立的先進晶圓製造設施，旨在支援 SpaceXAI（未來更名為 SpaceXSI）的 AI 硬體需求。",
+        "why": "若落實將為美國本土 AI 晶圓供應鏈提供新產能，改變供應地理分布。",
+        "category": "hardware"
+      },
+      {
+        "term": "AI 基礎設施供應鏈",
+        "full": "人工智慧基礎設施供應鏈",
+        "def": "涵蓋從晶圓代工、封裝測試、GPU/CPU 製造到整合系統與資料中心建設的全流程供應鏈。",
+        "why": "任何大型採購或新建設計案都會在此鏈條上產生上下游效應，影響產能與成本。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "visual ad format",
+        "full": "視覺廣告格式",
+        "def": "在 AI 生成的圖像結果旁顯示的圖像廣告，允許廣告主以視覺方式傳遞品牌訊息。",
+        "why": "此格式為 OpenAI 首次將廣告嵌入生成式 AI 產出，開啟新廣告收入來源。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "bug bounty program",
+        "full": "漏洞賞金計畫",
+        "def": "企業向安全研究者提供金額獎勵，以回報發現的軟體漏洞。",
+        "why": "Google 暫停此計畫顯示 AI 生成的自動化提交對傳統安全流程的衝擊。",
+        "category": "role"
+      },
+      {
+        "term": "Agentic AI",
+        "full": "Agentic AI（具代理性的人工智慧）",
+        "def": "指具備自主決策與執行能力的人工智慧系統，能在缺乏即時人類指示的情況下完成任務並調整策略。此概念強調 AI 不僅生成內容，而是能主動規劃與實踐工作流程。",
+        "why": "Agentic AI 被視為下一波 AI 產業革命的核心，因其能大幅提升認知型勞動的生產力，對軟體開發、金融分析等高附加價值產業產生深遠影響。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-05",
     "is_sunday": false,
     "hw": [
@@ -1014,149 +1165,6 @@
         "def": "由 Palantir 提供的跨機構資料整合平台，允許多個組織在保留資料主權的前提下共享與分析資料。",
         "why": "平台的延伸合約金額高達 3.3 億英鎊，涉及大量伺服器與儲存設備採購，影響相關硬體供應鏈。",
         "category": "software"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-09-29",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "華為 Ascend 晶片佔中國 AI 加速器市場約 50% 並計畫 2026 年產能提升至 160 萬顆晶圓",
-        "layer": "capacity_commitments",
-        "body": "根據 Bernstein Research，華為 Ascend 系列晶片在 2026 年已佔中國 AI 加速器市場約 50% 的份額，較去年提升顯著。報告同時指出 Ascend 950PR 晶片的產能將於 2026 年提升至 1.6 百萬顆晶圓，以支撐市場需求。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "華為加速器產能擴張將提升本土代工與封裝需求，同時削弱 Nvidia 在中國的供應鏈份額。",
-        "source_label": "Bernstein Research",
-        "source": "https://startupfortune.com/huaweis-ascend-chips-have-overtaken-nvidia-in-chinas-ai-market/",
-        "chain": [
-          {
-            "label": "華為 Ascend 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "中國 AI 加速器市場佔有率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 代理程式兩個月持續測試 UNCTADstat API",
-        "layer": "opp",
-        "body": "研究員 Rowan H‑J 於 2026 年 4 月 13 日至 6 月 19 日期間分析了約 16,500 次對聯合國貿易與發展會議 (UNCTAD) 資料 API 的掃描，發現流量高度可能來自 OpenAI 代理程式，因其使用 Azure IP、標記 \"CHATGPTTEST1\" 與 \"OAI_META_1312\"；此行為顯示 OpenAI 在資料抓取與自動化測試上具備高度彈性與資源投入。",
-        "impact": "OpenAI 透過 Azure 大量發送 API 請求，提升 Azure 網路流量與計算資源使用率，短期內可能使 Azure 帶寬需求上升 3%；UNCTAD 服務供應商需加強防護與流量管理，可能導致其雲端防火牆與安全服務需求上升。",
-        "rating": "opp",
-        "insight": "OpenAI 大規模測試外部 API 可能刺激雲端安全服務需求上升。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/09/28/openai-agents-went-the-long-way-round-for-un-data/5299452",
-        "chain": [
-          {
-            "label": "OpenAI Azure IP 使用↑",
-            "type": "up"
-          },
-          {
-            "label": "UNCTADstat API 流量↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Modulate 完成 2500 萬美元新一輪融資，加速聲音模型與分析服務商用化",
-        "layer": "voice AI",
-        "body": "波士頓的聲音智慧新創 Modulate 於 2026 年 9 月 28 日完成 2500 萬美元融資，領投方為 Future Ventures，參與方包括 Hyperplane 與 Lakestar。該平台以多個小型模型提供企業語音轉錄、情緒分析、深偽與 AI 音樂偵測以及受規範產業的語音代理政策執行功能。Modulate 表示將利用本輪資金擴充模型庫與雲端基礎建設，提升即時偵測與合規服務的準確度與規模。",
-        "impact": "",
-        "rating": "core",
-        "insight": "投資者可關注 Modulate 的資金使用於模型擴充與雲端基礎建設，將直接帶動高效能運算晶片需求。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/28/modulate-raises-25m-for-its-voice-models-and-analysis-suite/",
-        "chain": [
-          {
-            "label": "Modulate 融資額↑",
-            "type": "up"
-          },
-          {
-            "label": "聲音模型商用化規模↑",
-            "type": "up"
-          },
-          {
-            "label": "雲端基礎建設投入↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Synthesia 推出互動式數位化身，提供即時問答的企業公關新工具",
-        "layer": "digital avatar",
-        "body": "2026 年 9 月 26 日，英國影片生成新創 Synthesia 在紐約辦公室展示其互動式虛擬化身，該化身由 AI 訓練能即時回應媒體提問，並已在公司公關團隊內部實際使用。此技術結合影片生成與自然語言處理，允許企業在不需真人出鏡的情況下提供即時資訊，並可於多語言環境下自動切換。Synthesia 表示此功能將於今年底向更多企業客戶開放，並計畫與雲端服務供應商合作擴展運算資源。",
-        "impact": "此類互動化身需求將拉高高效能 GPU 與雲端運算資源的採購，促使雲端供應商的運算容量需求上升。公關與行銷公司作為下游客戶，將減少真人出鏡與錄製成本，提升服務交付速度。",
-        "rating": "opp",
-        "insight": "投資者可留意雲端運算供應商與影像編解碼晶片廠商，因企業化身服務的擴張將帶動其需求。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/09/26/i-created-an-interactive-digital-avatar-of-myself-and-you-can-talk-to-it/",
-        "chain": [
-          {
-            "label": "Synthesia 互動式數位化身發布↑",
-            "type": "up"
-          },
-          {
-            "label": "企業公關即時問答能力↑",
-            "type": "up"
-          },
-          {
-            "label": "多語言支援與雲端資源合作↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "AI 加速器",
-        "full": "人工智慧加速器",
-        "def": "專為深度學習與推論工作負載設計的硬體晶片，提供高效能矩陣運算。",
-        "why": "市場份額變化直接影響晶圓代工與記憶體供應鏈需求。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "OSAT",
-        "full": "外部半導體組裝測試服務",
-        "def": "提供晶片封裝、測試與組裝的專業服務公司，為晶圓代工的下游環節。",
-        "why": "AI 加速器需求上升會帶動 OSAT 產能利用率提升。",
-        "category": "hardware"
-      },
-      {
-        "term": "misalignment report",
-        "full": "模型錯位報告",
-        "def": "OpenAI 內部文件，用於記錄 AI 代理程式或模型行為偏離預期安全與倫理標準的事件。",
-        "why": "揭示模型安全風險，影響算力需求與雲端資源配置。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "UNCTADstat API",
-        "full": "聯合國貿易與發展會議資料介面",
-        "def": "提供全球貿易、投資與發展統計資料的 API，供研究機構與企業查詢。",
-        "why": "被 OpenAI 代理程式大量存取，顯示 AI 系統對公共資料的自動化抓取能力。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "聲音模型",
-        "full": "Voice Model",
-        "def": "利用深度學習訓練的模型，可對語音進行轉錄、情緒辨識與語者辨識等功能，常用於客服、金融與醫療等領域。",
-        "why": "支撐語音 AI 服務的核心技術，決定服務的準確度與即時性。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "深偽通話偵測",
-        "full": "Deepfake Call Detection",
-        "def": "透過聲音特徵與模型比對，辨識是否為合成或被竄改的語音通話，防止詐騙與資訊偽造。",
-        "why": "隨著語音合成技術成熟，深偽通話偽造風險上升，企業合規需求隨之增強。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
