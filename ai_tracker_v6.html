@@ -747,11 +747,13 @@ async function loadHwCorpRef(){
   }catch(e){ _hwCorpRef = null; }
   return _hwCorpRef;
 }
+function _hwE(v){ return v==null?'':_arcEsc(v); }
+function _hwCls(v){ v=String(v==null?'':v); return /^[a-z0-9 _-]+$/i.test(v)?v:''; }
 function hwCorpCard(c){
-  return `<div class="metric-card"><div class="metric-label">${c.label}</div><div class="metric-value ${c.value_cls||''}">${c.value}</div><div class="metric-sub">${c.sub}</div></div>`;
+  return `<div class="metric-card"><div class="metric-label">${_hwE(c.label)}</div><div class="metric-value ${_hwCls(c.value_cls)}">${_hwE(c.value)}</div><div class="metric-sub">${_hwE(c.sub)}</div></div>`;
 }
 function hwCorpPill(p){
-  return `<div class="signal-pill pill-${p.color}">${p.text}</div>`;
+  return `<div class="signal-pill pill-${_hwCls(p.color)}">${_hwE(p.text)}</div>`;
 }
 
 async function renderHW(d) {
@@ -764,8 +766,8 @@ async function renderHW(d) {
   const vendors = ref.hw.vendor_cards||[];
   const vendorHtml1 = vendors.slice(0,3).map(hwCorpCard).join('');
   const vendorHtml2 = vendors.slice(3,6).map(hwCorpCard).join('');
-  const vendorNames1 = vendors.slice(0,3).map(c=>c.label.replace(/ 營收YoY| DS部門營收/,'')).join(' / ');
-  const vendorNames2 = vendors.slice(3,6).map(c=>c.label.replace(/ 營收YoY| DS部門營收/,'')).join(' / ');
+  const vendorNames1 = vendors.slice(0,3).map(c=>_hwE(String(c.label==null?'':c.label).replace(/ 營收YoY| DS部門營收/,''))).join(' / ');
+  const vendorNames2 = vendors.slice(3,6).map(c=>_hwE(String(c.label==null?'':c.label).replace(/ 營收YoY| DS部門營收/,''))).join(' / ');
   const pillsHtml = (ref.hw.signal_pills||[]).map(hwCorpPill).join('');
 
   document.getElementById('panel-hw').innerHTML = `
@@ -775,7 +777,7 @@ async function renderHW(d) {
     <div class="metric-row">${vendorHtml1}</div>
     <div class="sec-title" style="margin-top:-6px;">重點廠商財報 · ${vendorNames2}</div>
     <div class="metric-row">${vendorHtml2}</div>
-    <div style="font-size:11px;color:var(--muted);margin:-6px 0 14px;padding-left:2px;">📌 上方數據為靜態參考值，每季財報後請告知 Claude 更新（最後更新：${ref.last_updated||'—'}）</div>
+    <div style="font-size:11px;color:var(--muted);margin:-6px 0 14px;padding-left:2px;">📌 上方數據為靜態參考值，每季財報後請告知 Claude 更新（最後更新：${_hwE(ref.last_updated)||'—'}）</div>
     <div class="signal-strip">${pillsHtml}</div>
 
     <div class="tw-chain">
@@ -808,16 +810,16 @@ async function renderCorp(d) {
   }
   const metricHtml = (ref.corp.metric_cards||[]).map(hwCorpCard).join('');
   const capexHtml = (ref.corp.capex_bars||[]).map(r=>
-    `<div class="capex-row"><div class="capex-co">${r.company}</div><div class="capex-track"><div class="capex-fill ${r.bar_cls}" style="width:${r.pct}%">${r.guidance}</div></div><div class="capex-yoy">${r.note}<br><span class="capex-qoq">${r.qoq}</span></div></div>`
+    `<div class="capex-row"><div class="capex-co">${_hwE(r.company)}</div><div class="capex-track"><div class="capex-fill ${_hwCls(r.bar_cls)}" style="width:${Number.isFinite(Number(r.pct))?Number(r.pct):0}%">${_hwE(r.guidance)}</div></div><div class="capex-yoy">${_hwE(r.note)}<br><span class="capex-qoq">${_hwE(r.qoq)}</span></div></div>`
   ).join('');
 
   document.getElementById('panel-corp').innerHTML = `
     <div class="metric-row">${metricHtml}</div>
-    <div style="font-size:11px;color:var(--muted);margin:-6px 0 14px;padding-left:2px;">📌 上方數據為靜態參考值，每季財報後請告知 Claude 更新（最後更新：${ref.last_updated||'—'}）</div>
+    <div style="font-size:11px;color:var(--muted);margin:-6px 0 14px;padding-left:2px;">📌 上方數據為靜態參考值，每季財報後請告知 Claude 更新（最後更新：${_hwE(ref.last_updated)||'—'}）</div>
     <div class="capex-section">
       <div class="sec-title">最新資本支出 Guidance（十億美元）</div>
       <div class="capex-bars">${capexHtml}</div>
-      <div style="font-size:10px;color:var(--muted);margin-top:6px;">${ref.corp.capex_note||''}</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:6px;">${_hwE(ref.corp.capex_note)}</div>
     </div>
     <div class="sec-title">本日重點新聞 · ${fmtDate(d.date)}</div>
     ${newsGrid(d.corp, 'corp')}`;
