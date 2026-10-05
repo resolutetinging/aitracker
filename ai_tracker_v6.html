@@ -954,7 +954,7 @@ function nvGroupEvents(events){
 function nvEventGroupCard(group){
   if(group.type==='single') return nvEventCard(group.items[0]);
   const items = group.items;
-  const dateRange = items.length>1 ? `${items[items.length-1].date} ～ ${items[0].date}` : items[0].date;
+  const dateRange = _arcEsc(items.length>1 ? `${items[items.length-1].date} ～ ${items[0].date}` : items[0].date);
   const timelineHtml = items.map(ev=>`
     <div class="nv-event-thread-item">
       <div class="nv-event-thread-dot"></div>
@@ -1053,7 +1053,7 @@ function nvGovernanceNetworkSvg(stages, links){
     return `<g class="nv-gov-node" data-note="${nvEscAttr(s.desc)}">
       <circle cx="${p.x}" cy="${p.y}" r="${R}" fill="rgba(106,138,32,.16)" stroke="#6a8a20" stroke-width="1.6"/>
       <text x="${p.x}" y="${p.y+7}" text-anchor="middle" font-size="20" font-weight="700" fill="#4a6015">${num}</text>
-      <text x="${lx}" y="${ly}" text-anchor="${anchor}" font-size="12" font-weight="700" fill="var(--text)">${name}</text>
+      <text x="${lx}" y="${ly}" text-anchor="${anchor}" font-size="12" font-weight="700" fill="var(--text)">${_arcEsc(name)}</text>
     </g>`;
   }).join('');
   const edgesHtml = links.map(l=>{
@@ -1095,7 +1095,7 @@ function nvGovernanceScatterSvg(stages){
     return `<g class="nv-gov-bubble" data-note="${nvEscAttr(s.desc)}">
       <circle cx="${cx}" cy="${cy}" r="${r}" fill="rgba(106,138,32,${op})" stroke="#6a8a20" stroke-width="1.4"/>
       <text x="${cx}" y="${cy+4}" text-anchor="middle" font-size="13" font-weight="700" fill="#4a6015">${num}</text>
-      <text x="${cx}" y="${cy-r-8}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">${name}</text>
+      <text x="${cx}" y="${cy-r-8}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">${_arcEsc(name)}</text>
     </g>`;
   }).join('');
   return `<svg viewBox="0 0 320 420" style="width:100%;max-width:340px;height:auto;display:block;margin:0;">
@@ -1278,7 +1278,7 @@ async function renderNvidia(){
       <div class="sec-title" id="nv-sec-gov">生態系權力布局／合規治理</div>
       <div class="nv-case-grid">${governanceHtml}</div>
 
-      <div style="font-size:11px;color:var(--muted);margin:4px 0 4px;padding-left:2px;">📌 每週由排程自動查證是否過時（候選異動需人工複核才會套用），最後查證：${nv.last_checked||'—'}</div>
+      <div style="font-size:11px;color:var(--muted);margin:4px 0 4px;padding-left:2px;">📌 每週由排程自動查證是否過時（候選異動需人工複核才會套用），最後查證：${_arcEsc(nv.last_checked||'—')}</div>
     </div>
     <div id="nv-events-wrap" hidden>
       <div class="sec-title">近期事件</div>
@@ -1390,7 +1390,7 @@ function indRenderIndustry(industry){
     <div class="sec-title">長期目標路線圖</div>
     <div class="nv-case-grid">${roadmapHtml || '<div class="empty-state">尚無資料</div>'}</div>
 
-    <div style="font-size:11px;color:var(--muted);margin:4px 0 4px;padding-left:2px;">📌 每月由排程自動查證是否過時（候選異動需人工複核才會套用），最後查證：${industry.last_checked||'—'}</div>`;
+    <div style="font-size:11px;color:var(--muted);margin:4px 0 4px;padding-left:2px;">📌 每月由排程自動查證是否過時（候選異動需人工複核才會套用），最後查證：${_arcEsc(industry.last_checked||'—')}</div>`;
 }
 
 // 產業切換：目前只有一個「🏥 醫療產業」按鈕，但切換邏輯本身通用——之後
@@ -1409,7 +1409,7 @@ function indRenderPanel(){
   // 人工複核後才上線，風險等級同nvCaseCard），i.key另外用在單引號JS字串context
   // （onclick裡），跟HTML內容context需要的escape規則不同，分開處理
   const navHtml = industries.map(i=>
-    `<button class="ind-nav-btn ${active && i.key===active.key ? 'active' : ''}" onclick="indSwitch('${String(i.key).replace(/'/g,"\\'")}')">${_arcEsc(i.icon||'')} ${_arcEsc(i.label||i.key)}</button>`
+    `<button class="ind-nav-btn ${active && i.key===active.key ? 'active' : ''}" onclick="indSwitch(${_arcEsc(JSON.stringify(String(i.key)))})">${_arcEsc(i.icon||'')} ${_arcEsc(i.label||i.key)}</button>`
   ).join('');
   panel.innerHTML = `
     ${IND_PENDING_HTML}
@@ -1908,26 +1908,26 @@ function renderGlossary(hist) {
     const ckey = overrides[g.term] || g.category || '';
     const clabel = catDefs.find(c=>c.key===ckey)?.label || '分類';
     const pid = 'gp_' + (_pidSeq++);
-    const safeTermAttr = g.term.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+    const safeTermAttr = _arcEsc(g.term);
     const opts = catDefs.map(c =>
-      `<div class="gloss-picker-opt" data-term="${safeTermAttr}" data-catkey="${c.key}" data-pickerid="${pid}" onclick="setCatFromEl(this)">${c.label}</div>`
+      `<div class="gloss-picker-opt" data-term="${safeTermAttr}" data-catkey="${_arcEsc(c.key)}" data-pickerid="${pid}" onclick="setCatFromEl(this)">${_arcEsc(c.label)}</div>`
     ).join('');
-    const escapedTerm = g.term.replace(/'/g,"\\'");
-    const delFn = g._user ? `deleteUserTerm('${escapedTerm}')` : `hideBaseTerm('${escapedTerm}')`;
+    const jsTermArg = JSON.stringify(String(g.term));
+    const delFn = g._user ? `deleteUserTerm(${jsTermArg})` : `hideBaseTerm(${jsTermArg})`;
     // 09-16二次複查發現：g.term/g.full/g.def/g.why是daily pipeline LLM生成的
     // 專有名詞內容（glossary_new），跟newsCard等其餘欄位同一風險等級，之前
     // 兩輪escape修復都漏掉這個分頁，這次一併補上_arcEsc()
     return `<div class="gloss-card">
       <div class="gloss-cat-row">
-        <div class="gloss-term">${_arcEsc(g.term)}${g._new?'<span class="new-badge">NEW</span>':''}${g._user?`<span class="user-badge" onclick="deleteUserTerm('${escapedTerm}')">自添 ✕</span>`:''}</div>
+        <div class="gloss-term">${_arcEsc(g.term)}${g._new?'<span class="new-badge">NEW</span>':''}${g._user?`<span class="user-badge" onclick="${_arcEsc('deleteUserTerm('+jsTermArg+')')}">自添 ✕</span>`:''}</div>
         <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
           <div style="position:relative;display:inline-block;z-index:1;">
-            <span class="gloss-cat-badge" onclick="togglePicker('${pid}')">${clabel} ▾</span>
+            <span class="gloss-cat-badge" onclick="togglePicker('${pid}')">${_arcEsc(clabel)} ▾</span>
             <div class="gloss-cat-picker" id="${pid}">${opts}</div>
           </div>
           <div class="gloss-card-actions">
             <button class="gloss-regen-btn" data-regen="${safeTermAttr}" title="重新生成內容">↻</button>
-            <button class="gloss-del-btn" onclick="${delFn}" title="移除此卡片">×</button>
+            <button class="gloss-del-btn" onclick="${_arcEsc(delFn)}" title="移除此卡片">×</button>
           </div>
         </div>
       </div>
@@ -1965,9 +1965,9 @@ function renderGlossary(hist) {
     sections.map(sec => {
       const isCustom = customCats.includes(sec.label);
       const deleteBtn = isCustom
-        ? `<span class="gloss-cat-delete" onclick="deleteCustomCat('${sec.label}')" title="刪除此分類">✕</span>` : '';
+        ? `<span class="gloss-cat-delete" onclick="deleteCustomCat(${_arcEsc(JSON.stringify(String(sec.label)))})" title="刪除此分類">✕</span>` : '';
       return `
-        <div class="gloss-cat-header">${sec.label}（${sec.terms.length}）${deleteBtn}</div>
+        <div class="gloss-cat-header">${_arcEsc(sec.label)}（${sec.terms.length}）${deleteBtn}</div>
         <div class="gloss-grid">${sec.terms.map(cardHtml).join('')}</div>`;
     }).join('') +
     (uncategorized.length === 0 && sections.every(s=>s.terms.length>0) ? '' : '');
@@ -2121,13 +2121,14 @@ function renderHistory(hist) {
     const co = visibleItems(d.corp).length ? `<div class="hist-sec">💰 巨頭角力</div><div class="news-grid">${visibleItems(d.corp).map(x=>newsCard(x,'corp',true)).join('')}</div>` : '';
     const ap = visibleItems(d.app).length ? `<div class="hist-sec">🤖 新興應用</div><div class="news-grid">${visibleItems(d.app).map(x=>newsCard(x,'app',true)).join('')}</div>` : '';
     const savedNote = loadNote(d.date);
+    const dSafe = /^\d{4}-\d{2}-\d{2}$/.test(String(d.date)) ? String(d.date) : '';
     const noteSection = `
       <div class="hist-note-section">
         <div class="hist-note-label">📝 我的筆記</div>
-        <textarea class="hist-note-area" id="note-${d.date}"
+        <textarea class="hist-note-area" id="note-${dSafe}"
           placeholder="輸入今日觀察、想法、或貼上相關連結..."
-          oninput="saveNote('${d.date}',this.value)">${savedNote}</textarea>
-        <div class="hist-note-saved" id="note-saved-${d.date}"></div>
+          oninput="saveNote('${dSafe}',this.value)">${_arcEsc(savedNote)}</textarea>
+        <div class="hist-note-saved" id="note-saved-${dSafe}"></div>
       </div>`;
     const runEntry = (LATEST_RUNS||[]).find(r => r.date === d.date);
     const audit = (runEntry && runEntry.dedup_audit) || [];
@@ -2330,7 +2331,7 @@ async function fetchRemoteNotes() {
       if (res.ok) {
         const f = (await res.json()).files;
         if (f && f['notes.json'] && f['notes.json'].content && !f['notes.json'].truncated) {
-          return JSON.parse(f['notes.json'].content);
+          return _arcCleanNotes(JSON.parse(f['notes.json'].content));
         }
       }
     } catch(e) {}
@@ -2338,16 +2339,16 @@ async function fetchRemoteNotes() {
   if (gistId) {
     try {
       const res = await fetch(`https://gist.githubusercontent.com/resolutetinging/${gistId}/raw/notes.json?v=${Date.now()}`);
-      if (res.ok) return await res.json();
+      if (res.ok) return _arcCleanNotes(await res.json());
     } catch(e) {}
   }
   try {
     const res = await fetch(`./data/notes_backup.json?v=${Date.now()}`);
-    if (res.ok) return await res.json();
+    if (res.ok) return _arcCleanNotes(await res.json());
   } catch(e) {}
   try {
     const res = await fetch(`./data/notes.json?v=${Date.now()}`);
-    if (res.ok) return await res.json();
+    if (res.ok) return _arcCleanNotes(await res.json());
   } catch(e) {}
   return {};
 }
@@ -2633,13 +2634,13 @@ async function pollWorkflowStatus(token, triggerTime, statusEl, btn) {
           if (run.status === 'completed') {
             const ok = run.conclusion === 'success';
             statusEl.innerHTML = ok
-              ? `✅ 推送完成，Email 已送出 · <a href="${run.html_url}" target="_blank" style="color:var(--app);">查看記錄</a>`
-              : `❌ 執行失敗（${run.conclusion}） · <a href="${run.html_url}" target="_blank" style="color:#c05040;">查看詳情</a>`;
+              ? `✅ 推送完成，Email 已送出 · <a href="${_arcEsc(_arcSafeUrl(run.html_url))}" target="_blank" rel="noopener" style="color:var(--app);">查看記錄</a>`
+              : `❌ 執行失敗（${_arcEsc(run.conclusion)}） · <a href="${_arcEsc(_arcSafeUrl(run.html_url))}" target="_blank" rel="noopener" style="color:#c05040;">查看詳情</a>`;
             btn.disabled = false;
             return;
           }
           const label = { queued: '排隊中', in_progress: '執行中' }[run.status] || run.status;
-          statusEl.innerHTML = `⏳ ${label}… · <a href="${run.html_url}" target="_blank" style="color:var(--muted);font-size:11px;">查看</a>`;
+          statusEl.innerHTML = `⏳ ${_arcEsc(label)}… · <a href="${_arcEsc(_arcSafeUrl(run.html_url))}" target="_blank" rel="noopener" style="color:var(--muted);font-size:11px;">查看</a>`;
         } else {
           statusEl.textContent = `⏳ 等待啟動… (${n * 8}s)`;
         }
@@ -2762,7 +2763,7 @@ function renderArchive(notes) {
     return `<div class="archive-card">
       <div class="archive-date">${fmtDate(date)}</div>
       <textarea class="archive-ta" id="archta-${date}"
-        oninput="archiveNoteChanged('${date}',this.value)">${val}</textarea>
+        oninput="archiveNoteChanged('${date}',this.value)">${_arcEsc(val)}</textarea>
     </div>`;
   }).join('');
   // 摘要卡片（頂部）
@@ -3004,7 +3005,7 @@ function _renderSummaryResult(result) {
   const kwHTML = (result.keywords || []).map(k =>
     `<span class="arc-kw ${trendCls(k.trend)}" title="${_arcEsc(k.note || '')}">
       ${_arcEsc(k.term)} <span class="kw-trend">${trendIcon(k.trend)}</span>
-      <span style="font-size:11px;opacity:.7;">${k.count}天</span>
+      <span style="font-size:11px;opacity:.7;">${Number(k.count)||0}天</span>
     </span>`
   ).join('');
 
@@ -3018,13 +3019,22 @@ function _renderSummaryResult(result) {
 }
 
 // ── Archive Search ──
-function _arcEsc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function _arcEsc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+// 10-05 XSS：URL scheme 白名單（只准 http/https），不符回 '#'
+function _arcSafeUrl(u){ u=String(u==null?'':u); return /^https?:\/\//i.test(u) ? u : '#'; }
+// 10-05：遠端筆記匯入驗證——只留 YYYY-MM-DD 鍵且值為字串
+function _arcCleanNotes(o){
+  const out = {};
+  if (!o || typeof o !== 'object' || Array.isArray(o)) return out;
+  Object.keys(o).forEach(k => { if (/^\d{4}-\d{2}-\d{2}$/.test(k) && typeof o[k] === 'string') out[k] = o[k]; });
+  return out;
+}
 function _arcEscRx(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
 // 09-23：nv/twEventFilter與twCompanyFilter的onclick組裝原本只跳脫單引號，
 // 未處理雙引號——onclick屬性本身用雙引號包裹，值含"時可跳脫屬性注入任意內容
 // （獨立驗證subagent抓到，三處同款寫法一次修好，不留給下次踩雷才補）。
 // 先跳脫反斜線/單引號供JS字串字面值安全，再用_arcEsc()做HTML屬性escape
-function _arcEscJsAttr(s){ return _arcEsc(String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'")); }
+function _arcEscJsAttr(s){ return _arcEsc(String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\r/g,'\\r').replace(/\n/g,'\\n')); }
 
 function _arcHighlight(text, query) {
   const parts = text.split(new RegExp(`(${_arcEscRx(query)})`, 'gi'));

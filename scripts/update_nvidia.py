@@ -221,8 +221,11 @@ def merge_recent_events(status, new_events):
         src = ev.get('source', '')
         if src and src in existing_sources:
             continue
+        ev_date = ev.get('date', '')
+        if not (isinstance(ev_date, str) and re.fullmatch(r'\d{4}-\d{2}-\d{2}', ev_date)):
+            ev_date = ''  # 10-05 XSS：格式不合的日期清空，保留事件不中斷排程
         entry = {
-            'date': ev.get('date', ''),
+            'date': ev_date,
             'title': ev.get('title', ''),
             'category': ev.get('category', ''),
             'summary': ev.get('summary', ''),
