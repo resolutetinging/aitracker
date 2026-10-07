@@ -1,5 +1,194 @@
 [
   {
+    "date": "2026-10-08",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Lambda 目標於 2027 年 IPO 前募集 40 億美元資金",
+        "layer": "funding",
+        "body": "Lambda 正在以 145 億美元的前估值募集最高 40 億美元資金，由 Coatue Management 與 Blackstone 主導；根據《華爾街日報》文件，Lambda 的訂單積壓從 6 月的 150 億美元增至 9 月的 500 億美元，其中 350 億美元來自 Anthropic 的 350 億美元承諾。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "投資者可關注 Lambda 的資金使用與 GPU 供應鏈配置，以評估其在 AI 基礎設施市場的成長潛力。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/10/06/ai-computing-startup-lambda-to-raise-4b-ahead-of-planned-ipo/",
+        "chain": [
+          {
+            "label": "Lambda 募資額↑",
+            "type": "up"
+          },
+          {
+            "label": "Anthropic 訂單增↑",
+            "type": "up"
+          },
+          {
+            "label": "Coatue 投資參與↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Anthropic 將 Project Glasswing 與 CVP 合併為單一安全方案",
+        "layer": "AI 安全",
+        "body": "Anthropic 於 2026 年 4 月推出的 Project Glasswing 與 Cyber Verification Program（CVP）在同月整合為一個三層級威脅偵測平台，該平台允許合作夥伴在 Mythos 前沿模型正式發布前掃描系統漏洞；截至目前，Project Glasswing 只發現 225 件與 Anthropic 相關的漏洞，且其中低於 0.5% 被標記為高危。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Anthropic 整合安全方案將推動其前沿模型的商業化，同時刺激 GPU 供應鏈需求上升。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/security/2026/10/07/anthropic-reconfigures-its-cool-kids-security-program/5301509",
+        "chain": [
+          {
+            "label": "Anthropic Glasswing 安全平台部署↑",
+            "type": "up"
+          },
+          {
+            "label": "合作夥伴漏洞偵測能力↑",
+            "type": "up"
+          },
+          {
+            "label": "CVP 效能提升↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Google Labs 推出 AI 文字驅動遊戲平台 Playground",
+        "layer": "AI 生成內容",
+        "body": "Google 於 2026 年 10 月 7 日（星期五）在其公共實驗平台推出 Playground，使用者只需輸入文字提示即可在瀏覽器中生成 2D 或 3D 遊戲，支援即時選擇類型、單/多人模式與機制設定。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Google 的 AI 遊戲平台將加速雲端 GPU 需求，為晶圓代工帶來新訂單。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/10/07/google-experiments-with-an-ai-powered-gaming-platform/",
+        "chain": [
+          {
+            "label": "Google Playground 使用者數↑",
+            "type": "up"
+          },
+          {
+            "label": "瀏覽器遊戲開發需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Roblox 市占↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Meta 與多家公司合作制定 AI 機器人商務標準",
+        "layer": "AI 生態系統",
+        "body": "Meta 於 2026 年 10 月 6 日宣布加入由 OpenAI 董事長 Bret Taylor 所創立的 Sierra 企業聯盟，與多家業者共同制定 AI 機器人商務互動的技術標準，以降低跨平台整合的複雜度。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "Meta 參與標準制定將推動 AI 機器人市場快速擴張，帶動相關硬體與雲端服務需求。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/06/meta-joins-companies-to-tame-chaos-of-doing-business-with-ai-bots.html",
+        "chain": [
+          {
+            "label": "Meta AI 機器人標準制定↑",
+            "type": "up"
+          },
+          {
+            "label": "跨平台整合複雜度↓",
+            "type": "down"
+          },
+          {
+            "label": "OpenAI 影響力↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Healthleap 獲得 3800 萬美元資金加速 AI 病患風險偵測平台",
+        "layer": "healthcare",
+        "body": "Healthleap 於 2026 年 10 月獲得總額 3800 萬美元的種子與 A 輪融資，其中 800 萬美元由 Sequoia Capital 與 First Round Capital 共同領投，3000 萬美元則由 Hummingbird Ventures 主導。該公司於 2022 年在南非由 Jemima Meyer 與 Josiah Meyer 兄妹創立，最初提供臨床營養工具，後轉型為可讀取病歷並偵測未診斷疾病風險的 AI 平台。平台已開始在多家醫院部署，協助醫師在患者入院後即時標示高風險個案。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "投資者可關注 AI 醫療風險平台的市場潛力與其對醫院供應鏈的上下游效應。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/10/07/healthleap-raises-38m-for-its-ai-that-flags-hospital-patients-who-may-need-a-closer-look/",
+        "chain": [
+          {
+            "label": "Healthleap 資金募集↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 病患風險偵測平台部署↑",
+            "type": "up"
+          },
+          {
+            "label": "醫院診斷效率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "3D 鐵電記憶體",
+        "full": "三維鐵電式記憶體 (3D Ferroelectric Memory)",
+        "def": "一種利用鐵電材料的三維堆疊結構記憶體，可在每瓦特功耗下提供遠高於傳統 HBM 的資料傳輸帶寬。",
+        "why": "其高效能與低功耗特性對 AI 加速卡的能源需求具有顛覆性影響。",
+        "category": "hardware"
+      },
+      {
+        "term": "Coatue Management",
+        "full": "Coatue Management LP",
+        "def": "一家專注於科技與消費領域的全球投資管理公司，常為新興 AI 基礎設施公司提供大型融資。",
+        "why": "其參與 Lambda 融資顯示資本市場對 AI 計算基礎設施的高度關注。",
+        "category": "role"
+      },
+      {
+        "term": "HBM",
+        "full": "High Bandwidth Memory",
+        "def": "高帶寬記憶體，常與 GPU 結合使用以提供高速資料存取，廣泛應用於 AI 加速卡。",
+        "why": "Kepler 以新型 3D 鐵電記憶體取代 HBM，可能改變 AI 計算的記憶體供應鏈格局。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Project Glasswing",
+        "full": "Anthropic 的安全合作計畫",
+        "def": "Anthropic 於 2026 年 4 月推出的早期漏洞偵測計畫，讓合作夥伴在新模型 Mythos 發布前掃描系統弱點。",
+        "why": "提供前置安全防護，降低模型部署後的資安風險。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Playground",
+        "full": "Google AI 文字驅動遊戲創作平台",
+        "def": "使用者只需輸入文字描述，即可在瀏覽器生成 2D/3D 遊戲，支援即時設定類型與多人模式。",
+        "why": "降低遊戲開發門檻，擴大 AI 生成內容的應用範圍。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Sierra",
+        "full": "OpenAI 主導的 AI 機器人標準制定聯盟",
+        "def": "由 OpenAI 董事長 Bret Taylor 成立，聚集多家企業共同制定 AI 機器人商務互動的技術標準。",
+        "why": "標準化有助於跨平台整合，提升產業整體效率。",
+        "category": "role"
+      },
+      {
+        "term": "AI平台",
+        "full": "人工智慧平台",
+        "def": "結合機器學習模型與資料處理管線的軟體系統，可自動分析大量結構化或非結構化資料，提供決策或預測服務。",
+        "why": "平台化使不同醫院能快速導入 AI 功能，降低開發門檻，擴大市場規模。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "EHR",
+        "full": "Electronic Health Record（電子健康紀錄）",
+        "def": "以數位方式保存患者醫療資訊的系統，包含診斷、檢驗、用藥等資料，供醫護人員查閱與更新。",
+        "why": "AI 風險偵測依賴即時且完整的 EHR 資料，促使相關供應商提升資料整合與安全服務。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-07",
     "is_sunday": false,
     "hw": [
@@ -1033,94 +1222,6 @@
         "def": "在斷電後仍能保留資料的記憶體類型，常用於需要高耐久度與資料完整性的嵌入式系統。",
         "why": "類人機器人需要持續記錄感測資料與安全指令，NVM 提供必要的可靠性與即時存取能力。",
         "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-01",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 於 AWS Marketplace 加入 Baseten 夥伴，提供 32 家合作夥伴即時購買模型",
-        "layer": "AI 服務商業化",
-        "body": "OpenAI 在本週 DevDay 宣佈將 Baseten 加入其 Marketplace，首批列出 32 家合作夥伴，讓客戶可直接於平台上購買模型服務。此舉與 AWS Marketplace 多年來的做法相似，旨在以模型本身的競爭力取代強制使用。Baseten 於 2024 年成立，專注於模型部署即服務 (MaaS)。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "OpenAI 透過 Marketplace 直接把模型商品化，將加速上游 GPU 需求並削弱競爭對手的客戶黏著度。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/columnists/2026/09/30/openai-apes-aws-marketplace-while-anthropic-remains-stubbornly-microsoftian/5300056"
-      },
-      {
-        "title": "OpenAI 推出永續運作的 AI 代理人「Dots」，支援 4,000 款應用程式",
-        "layer": "AI 產品發布",
-        "body": "在 2026 年 9 月 29 日的 Dev Day 上，OpenAI 公布「Dots」為持續運作的 AI 代理人，使用 GPT‑6 Astra 模型並可透過 4,000 種連接器存取各類軟體工具。每個 Dot 皆配備獨立雲端計算資源，支援 24/7 長時間任務。此功能被視為與 Meta Muse 個人代理人直接競爭的產品。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Dots 的永續運算模式將拉高上游 GPU 需求，同時加劇企業 AI 代理人市場的競爭。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/09/29/openai-tries-disarming-ai-angst-with-cute-graphics-and-always-on-agents/5299915"
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "AI晶圓代工",
-        "full": "AI晶圓代工（AI Wafer Foundry）",
-        "def": "指專門為人工智慧加速器製造先進製程晶圓的代工服務，通常涉及高密度的HBM記憶體堆疊與先進封裝技術。",
-        "why": "AI晶圓代工需求驅動先進製程與封裝供應鏈擴張，影響晶圓代工廠、OSAT與HBM供應商的產能規劃。",
-        "category": "hardware"
-      },
-      {
-        "term": "Dots",
-        "full": "OpenAI 永續運作的 AI 代理人",
-        "def": "Dots 是 OpenAI 在 2026 年 Dev Day 推出的持續運算 AI 代理人，使用 GPT‑6 Astra 模型並可透過 4,000 種連接器存取各類軟體工具，支援 24/7 長時間任務。",
-        "why": "代表 OpenAI 從單次呼叫模型轉向長期服務，改變算力需求結構。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "CScale",
-        "full": "光學互連初創公司",
-        "def": "CScale 專注於 400G 以上速率的光模組開發，2026 年完成 1.45 億美元 Series C 融資，投資者包括 Nvidia 與 Intel。",
-        "why": "光互連是高效能運算資料中心提升帶寬的關鍵技術，將影響傳統銅線供應鏈。",
-        "category": "hardware"
-      },
-      {
-        "term": "Muse AI",
-        "full": "Meta 為小型企業打造的 AI 助手",
-        "def": "Muse AI 為 Meta 針對小型企業推出的 AI 助手，提供自動客服、行銷文案與日程安排等功能，利用平台上已有的 2 億小型企業用戶基礎。",
-        "why": "顯示大型平台正利用其用戶基礎切入企業 AI 市場，對上游算力需求產生拉動效應。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Physical AI",
-        "full": "Physical AI（實體人工智慧）",
-        "def": "將人工智慧模型與感測、決策、致動等硬體迴路結合，使系統能在受限的延遲、功耗與熱管理條件下即時回應實體環境的變化。",
-        "why": "此概念說明了 AI 技術向邊緣裝置延伸的技術挑戰，對半導體與系統整合供應鏈具有重要影響。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
