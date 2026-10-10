@@ -2,6 +2,85 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 66,
+        "CSP/CapEx": 49,
+        "App/AI": 25,
+        "gnews-chip": 13,
+        "gnews-dc": 21,
+        "gnews-app": 19
+      },
+      "digest_filtered": 1,
+      "after_dedup": 174,
+      "buckets": {
+        "hw": 38,
+        "corp": 124,
+        "app": 37
+      },
+      "news_char_budget": {
+        "hw": 4433,
+        "corp": 8000,
+        "app": 4316
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 2,
+        "corp": 2,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "dedup_audit": [
+        {
+          "title": "AI 代理購物服務 Muse 為消費者自動下單",
+          "section": "app",
+          "action": "downgraded",
+          "matched_title": null,
+          "reason": "內容僅描述已實施的服務功能與績效，未包含新決策或新宣布，屬於背景說明"
+        }
+      ],
+      "date": "2026-10-11",
+      "generated_at": "2026-10-11T00:04:17.916669+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 64,
         "CSP/CapEx": 51,
         "App/AI": 24,
@@ -984,77 +1063,6 @@
       ],
       "date": "2026-09-28",
       "generated_at": "2026-09-28T00:04:19.769265+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 51,
-        "CSP/CapEx": 51,
-        "App/AI": 23,
-        "gnews-chip": 17,
-        "gnews-dc": 23,
-        "gnews-app": 18
-      },
-      "digest_filtered": 1,
-      "after_dedup": 155,
-      "buckets": {
-        "hw": 30,
-        "corp": 126,
-        "app": 28
-      },
-      "news_char_budget": {
-        "hw": 3500,
-        "corp": 8000,
-        "app": 3500
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "placeholders": 0,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 3,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [],
-      "date": "2026-09-27",
-      "generated_at": "2026-09-27T00:04:50.965292+08:00"
     }
   ]
 }
