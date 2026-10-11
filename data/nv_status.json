@@ -1,5 +1,5 @@
 {
-  "last_checked": "2026-10-05",
+  "last_checked": "2026-10-12",
   "pyramid": [
     {
       "label": "應用層（Industries）",
@@ -455,6 +455,22 @@
       "category": "合作聯盟",
       "summary": "HPE 與 Nvidia 合作提供全套加速運算與企業基礎設施服務，支援單一業務線或多租戶 AI 服務的部署需求。",
       "src": "https://www.theregister.com/ai-and-ml/2026/10/01/sponsored-build-the-right-ai-factory-for-your-needs-partner-for-success/5300143",
+      "src_note": ""
+    },
+    {
+      "date": "2026-10-08",
+      "title": "Nvidia承諾未來五年投入10億美元支援美國科學計算",
+      "category": "政府資助",
+      "summary": "Nvidia於2026年10月8日在華盛頓宣布，未來五年將投入10億美元資助美國的科學計算領域，包括量子運算、醫療保健與能源安全的AI研發，金額約佔當季盈餘的1/60。",
+      "src": "https://www.theregister.com/hpc/2026/10/08/nvidia-found-1b-under-the-couch-to-help-secure-american-scientific-computing-dominance/5302110",
+      "src_note": ""
+    },
+    {
+      "date": "2026-10-07",
+      "title": "微軟採用 Nvidia RTX Spark SoC 推出 Surface Laptop Ultra",
+      "category": "產品發布",
+      "summary": "微軟於2026年10月7日在舊金山發表的Surface Laptop Ultra搭載Nvidia RTX Spark系統單晶片，售價從2,600美元起，最高規格5,900美元，支援Copilot+ AI功能，並於同日開放預購，預計下週出貨。",
+      "src": "https://www.theregister.com/personal-tech/2026/10/07/microsoft-n1xes-int-favor-of-nvidias-shiny-new-socs-in-surface-laptop-ultra/5301722",
       "src_note": ""
     }
   ]
