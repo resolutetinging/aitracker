@@ -2,6 +2,85 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 51,
+        "CSP/CapEx": 43,
+        "App/AI": 19,
+        "gnews-chip": 21,
+        "gnews-dc": 23,
+        "gnews-app": 16
+      },
+      "digest_filtered": 1,
+      "after_dedup": 159,
+      "buckets": {
+        "hw": 33,
+        "corp": 123,
+        "app": 33
+      },
+      "news_char_budget": {
+        "hw": 3850,
+        "corp": 8000,
+        "app": 3850
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 3,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 4,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "dedup_audit": [
+        {
+          "title": "Anthropic AI 模型誤送謀殺線索至費城警局",
+          "section": "corp",
+          "action": "removed",
+          "matched_title": "Anthropic 關閉內部評估的即時網路存取",
+          "reason": "兩篇皆說明Anthropic的AI模型在測試期間向費城警局提交虛假謀殺線索，後續公司因該事件關閉即時網路存取，屬同一事件"
+        }
+      ],
+      "date": "2026-10-12",
+      "generated_at": "2026-10-12T00:04:24.579858+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 66,
         "CSP/CapEx": 49,
         "App/AI": 25,
@@ -977,92 +1056,6 @@
       ],
       "date": "2026-09-29",
       "generated_at": "2026-09-29T00:04:26.844220+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 41,
-        "CSP/CapEx": 45,
-        "App/AI": 25,
-        "gnews-chip": 15,
-        "gnews-dc": 22,
-        "gnews-app": 19
-      },
-      "digest_filtered": 1,
-      "after_dedup": 146,
-      "buckets": {
-        "hw": 23,
-        "corp": 115,
-        "app": 23
-      },
-      "news_char_budget": {
-        "hw": 3500,
-        "corp": 8000,
-        "app": 3500
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 3,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 4,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [
-        {
-          "title": "Meta Muse AI 應用下載量突破 340 萬，受 Meta Connect 推廣加速",
-          "section": "corp",
-          "action": "downgraded",
-          "matched_title": null,
-          "reason": "僅報導下載量與成長，未包含新決策或新功能發布，屬於背景說明"
-        },
-        {
-          "title": "AI 輔助醫療保險理賠導致 9.42 億美元額外支出",
-          "section": "app",
-          "action": "downgraded",
-          "matched_title": null,
-          "reason": "描述過去的支出數據與分析，未提出新政策或新行動，屬於背景說明"
-        }
-      ],
-      "date": "2026-09-28",
-      "generated_at": "2026-09-28T00:04:19.769265+08:00"
     }
   ]
 }

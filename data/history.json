@@ -1,5 +1,178 @@
 [
   {
+    "date": "2026-10-12",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "AMD宣布2027年大幅提升AI晶片產能",
+        "layer": "capacity_commitment",
+        "body": "AMD執行長Lisa Su於2026年10月6日在台北表示，AMD將於2027年大幅提升AI晶片產能，預計在2027年提升供應量。她此行已與鴻海(Foxconn)會面，並將與台積電(TSMC)及其他本地夥伴討論供應鏈支援。",
+        "impact": "AMD提升AI晶片產能將直接促使台積電在2027年提升相關製程晶圓產能（↑），進一步帶動OSAT廠商的封裝測試需求增加（↑）。下游的AI伺服器與雲端服務供應商將因晶片供應更穩定而加速部署AI加速器（↑），同時對Nvidia的AI晶片需求形成競爭壓力（↓）。",
+        "rating": "core",
+        "insight": "AMD的2027產能擴張將提升AI晶片供應，利好下游伺服器與雲端業者。",
+        "source_label": "Reuters",
+        "source": "https://www.tradingpedia.com/2026/10/06/amd-targets-2027-capacity-boost-for-ai-chips/",
+        "chain": [
+          {
+            "label": "AMD AI晶片產能↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC CoWoS 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Foxconn 代工能量↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Microsoft Nadella 呼籲 AI 模型設置「緊急制動」機制",
+        "layer": "CSP/CapEx",
+        "body": "Microsoft 執行長 Satya Nadella 於 10 月 10 日在 X 發文，要求所有大型 AI 模型必須具備可由授權人員在任務執行中即時暫停或關閉的「緊急制動」功能，並要求每一次模型行動都留下防篡改的可讀證據。",
+        "impact": "提升 Microsoft Azure 在企業 AI 合約中的競爭力（↑）。",
+        "rating": "core",
+        "insight": "安全制動成為企業 AI 採購新門檻，Microsoft 可能取得先發優勢。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/10/10/microsofts-satya-nadella-says-ai-models-need-an-emergency-brake/",
+        "chain": [
+          {
+            "label": "Microsoft Azure GPU 交期↓",
+            "type": "down"
+          },
+          {
+            "label": "Microsoft AI模型安全規範↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Amazon 放棄資料中心 NDA，提升與地方政府合作透明度",
+        "layer": "CSP/CapEx",
+        "body": "Amazon 於 10 月 9 日宣布，與地方政府協商資料中心建設時將不再使用保密協議（NDA），此舉緊跟 Microsoft 今年早些時候的同樣政策，旨在減少社區對 AI 基礎設施的抵制。",
+        "impact": "透明度提升可能加速地方政府批准流程，縮短資料中心落地時間（↑）。",
+        "rating": "core",
+        "insight": "政策透明化將加速資料中心部署，提升 Amazon 在基礎設施市場的競爭力。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/video/amazon-and-others-are-done-keeping-data-center-deals-secret-is-it-enough-to-build-trust/",
+        "chain": [
+          {
+            "label": "Amazon 資料中心透明度↑",
+            "type": "up"
+          },
+          {
+            "label": "地方政府合作意願↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 公布實際營收比先前預估低 200 億美元",
+        "layer": "CSP/CapEx",
+        "body": "OpenAI 於 10 月 8 日向投資人透露，其年化營收約為 500 億美元，較先前媒體報導的 700 億美元低出約 200 億美元，財務資訊由《Financial Times》報導。",
+        "impact": "下游企業客戶在選擇 AI 服務時，可能重新評估成本效益，提升對多供應商策略的需求（↑）。",
+        "rating": "core",
+        "insight": "營收修正顯示市場預期過熱，OpenAI 可能調整供應鏈策略以降低成本。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/10/08/openais-revenue-is-reportedly-20-billion-less-than-previously-projected/",
+        "chain": [
+          {
+            "label": "OpenAI 營收預估↓",
+            "type": "down"
+          },
+          {
+            "label": "投資人信心↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "GitHub 重構 Git 儲存架構以因應 AI 代理大規模寫入需求",
+        "layer": "基礎設施",
+        "body": "GitHub 於 2026 年 10 月 9 日宣布，重新設計的 Git 儲存架構在內部測試中達到 35 倍寫入效能提升。此改寫將寫入作業與讀取分離，並委託物件儲存服務負責冗餘管理，以支援大量 AI 代理同時寫入的工作負載。GitHub 首席軟體工程師 Brian Celenza 表示，新的設計不會影響開發者的工作流程、程式碼審查或安全控制。",
+        "impact": "直接提升 GitHub 後端儲存供應鏈的寫入吞吐量（↑）。",
+        "rating": "core",
+        "insight": "GitHub 的儲存重構將加速 AI 代理在開發流程中的寫入，提升相關硬體與雲端儲存供應鏈需求。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/devops/2026/10/09/so-long-spokes-github-rewrites-storage-to-restore-reliability-just-in-time-for-agentic-hordes/5302148",
+        "chain": [
+          {
+            "label": "GitHub 儲存寫入效能↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 代理寫入需求支援↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "AI晶片",
+        "full": "Artificial Intelligence 晶片",
+        "def": "專為人工智慧運算設計的處理器，常具備大量矩陣運算單元以加速深度學習模型推論與訓練。",
+        "why": "AI晶片是支撐AI服務與應用的核心硬體，供應鏈變動直接影響整個AI產業的部署速度。",
+        "category": "hardware"
+      },
+      {
+        "term": "CPU",
+        "full": "Central Processing Unit 中央處理器",
+        "def": "電腦系統的主要運算單元，負責執行指令與控制資料流，亦是AI工作負載的基礎運算平台。",
+        "why": "CPU與AI晶片共同構成AI系統的計算層級，供應鏈瓶頸會波及兩者的產能規劃。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "GPU",
+        "full": "Graphics Processing Unit 圖形處理器",
+        "def": "最初用於圖形渲染的平行運算加速器，因其高效的矩陣運算能力被廣泛應用於AI模型的訓練與推論。",
+        "why": "GPU是目前AI加速的主流硬體，產能變化會直接影響AI服務的成本與可用性。",
+        "category": "hardware"
+      },
+      {
+        "term": "緊急制動",
+        "full": "Emergency Brake",
+        "def": "在 AI 模型執行過程中，授權人員可即時暫停或關閉模型的功能，以防止錯誤或危險的輸出。",
+        "why": "確保大型生成式 AI 在關鍵應用場景中的安全與可控性。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "NDA",
+        "full": "Non-Disclosure Agreement",
+        "def": "保密協議，常用於企業與政府或合作夥伴間的商業談判，以限制資訊公開。",
+        "why": "取消 NDA 可提升資料中心建設的透明度，減少社區抗議。",
+        "category": "role"
+      },
+      {
+        "term": "年化營收",
+        "full": "Annualized Revenue",
+        "def": "將公司當前的收入水平折算為全年預估的營收金額。",
+        "why": "營收數據直接影響公司對硬體供應鏈的採購規模與資金配置。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "OT",
+        "full": "Operational Technology（作業技術）",
+        "def": "指用於監控與管理工業設備與基礎設施的硬體與軟體系統，例如 SCADA 與工業控制系統。OT 與傳統 IT 系統分離，安全需求更為嚴格。",
+        "why": "AI 代理能直接攻擊 OT，顯示未來工業安全與供應鏈防護的緊迫性。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "寫入分離",
+        "full": "Write Decoupling",
+        "def": "將資料寫入操作與讀取操作分開處理，通常透過緩衝或物件儲存層實現，以提升寫入效能與系統彈性。",
+        "why": "GitHub 以寫入分離應對 AI 代理大量寫入需求，影響儲存硬體與雲端服務供應鏈。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-11",
     "is_sunday": true,
     "hw": [
@@ -885,191 +1058,6 @@
         "full": "Agentic AI（具代理性的人工智慧）",
         "def": "指具備自主決策與執行能力的人工智慧系統，能在缺乏即時人類指示的情況下完成任務並調整策略。此概念強調 AI 不僅生成內容，而是能主動規劃與實踐工作流程。",
         "why": "Agentic AI 被視為下一波 AI 產業革命的核心，因其能大幅提升認知型勞動的生產力，對軟體開發、金融分析等高附加價值產業產生深遠影響。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-05",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Micron 2028 年新潔淨室計畫仍無法緩解記憶體短缺",
-        "layer": "capacity_commitments",
-        "body": "Micron 執行長 Sanjay Mehrotra 於 2026 年 10 月底向投資人表示，未來兩年記憶體需求將持續超過供給，預估供需緊張將延伸至 2028 年。Micron 已於 2026 年宣布不再銷售消費者 RAM，僅保留高頻寬記憶體 (HBM) 與伺服器 DRAM 的企業客戶。公司計畫於 2028 年啟用新潔淨室，但 Mehrotra 強調即使新廠投產，首批晶圓產出仍無法即時滿足需求。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "投資者應關注 Micron 2028 年新潔淨室的實際投產進度，因其將成為記憶體供應緊張的關鍵緩衝點。",
-        "source_label": "Ars Technica",
-        "source": "https://arstechnica.com/information-technology/2026/10/memory-supplies-are-only-getting-tighter-micron-ceo-says/",
-        "chain": [
-          {
-            "label": "Micron DRAM 供應↓",
-            "type": "down"
-          },
-          {
-            "label": "伺服器 DRAM 價格↑",
-            "type": "up"
-          },
-          {
-            "label": "競爭對手 HBM 需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Nvidia 壓力致 Cerebras 股價跌 20% 反映 AI 晶片供應緊張",
-        "layer": "market_pressure",
-        "body": "2026 年 10 月 2 日，Cerebras 股價在本週跌幅達 20%，主要因 Nvidia 針對 AI 晶片市場的強勢需求與 Cerebras 鎖定期滿後的拋售壓力。報導指出，Nvidia 的 Blackwell 系列晶片持續推高 AI 伺服器需求，間接削弱了對 Cerebras wafer‑scale 解決方案的市場需求。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "Nvidia 的市場主導地位可能壓縮替代 wafer‑scale 供應商的成長空間，投資者需留意其對相關代工與 OSAT 的間接影響。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/02/cerebras-stock-hits-post-ipo-low-on-nvidia-pressure-lockup-expiration.html",
-        "chain": [
-          {
-            "label": "Nvidia Blackwell 需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Cerebras 股價↓",
-            "type": "down"
-          },
-          {
-            "label": "Cerebras wafer‑scale 市占↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 安全員工辭職指稱公司文化失衡",
-        "layer": "core",
-        "body": "安全研究員 David Robinson 於 10 月 3 日在《The Atlantic》發表長文辭職，指出在 OpenAI 工作三年半期間，他領導的安全報告曾伴隨主要產品發布，但他認為公司內部文化已「破碎」。Robinson 強調其離職與對公司風險管理流程的失望有關，並提及前同事 Jacob Coxon 亦曾因類似原因離開。此聲明在業界引發對 OpenAI 內部治理與人才保留的關注。",
-        "impact": "",
-        "rating": "core",
-        "insight": "高階安全人才流失提醒 OpenAI 必須加強組織文化與人才保留策略。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/10/03/openai-safety-employee-resigns-claiming-the-companys-culture-is-broken/",
-        "chain": [
-          {
-            "label": "OpenAI 內部文化惡化↑",
-            "type": "up"
-          },
-          {
-            "label": "安全團隊 人才流失↑",
-            "type": "up"
-          },
-          {
-            "label": "投資者信心↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Amazon Web Services 停止對政府機構使用 NDA",
-        "layer": "core",
-        "body": "AWS 執行長 Matt Garman 於 10 月 3 日在官方部落格宣布，為爭取新資料中心許可，已停止在與美國政府機構的合作中使用保密協議（NDA），此舉旨在提升透明度並回應環保倡議者的質疑。Garman 同時指出此政策變更是公司在全國範圍內推動資料中心建設的策略之一。此聲明同時伴隨 AWS 近期在多州申請超過 100MW 的新資料中心計畫。",
-        "impact": "取消 NDA 可能降低 AWS 與政府部門的合約談判成本，促使更多政府雲端採購需求↑，進一步推動資料中心建設相關硬體供應鏈需求上升。",
-        "rating": "core",
-        "insight": "AWS 取消 NDA 有望加速政府雲端採購，提升資料中心相關供應鏈需求。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/10/03/amazon-responds-to-data-center-backlash-says-it-no-longer-uses-ndas/",
-        "chain": [
-          {
-            "label": "AWS 政府合作透明度↑",
-            "type": "up"
-          },
-          {
-            "label": "新資料中心 建設速度↑",
-            "type": "up"
-          },
-          {
-            "label": "競爭對手 政府合約獲取↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Meta 推出開源 Muse 硬體開發套件",
-        "layer": "core",
-        "body": "Meta 於 10 月 2 日發表 Muse Gadgets 計畫，提供開源韌體與 Linux SDK，讓開發者自行打造連接 Muse 個人 AI 代理人的硬體裝置，包含彩色 e‑ink 顯示器與 HDMI 隨插即用棒等原型。Meta 表示此專案旨在鼓勵黑客與創客社群自行設計硬體，並未限制硬體規格或功能。該計畫同時提供多個開發範例，協助開發者快速上手。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Meta 的開源硬體策略將擴大 AI 邊緣裝置供應鏈，提升低功耗晶片需求。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/10/02/meta-wants-you-to-build-your-own-muse-gadget/",
-        "chain": [
-          {
-            "label": "Meta 開源硬體 生態系統↑",
-            "type": "up"
-          },
-          {
-            "label": "開發者參與度↑",
-            "type": "up"
-          },
-          {
-            "label": "競爭硬體供應商 市占↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "HBM",
-        "full": "High‑Bandwidth Memory",
-        "def": "高頻寬記憶體，提供比傳統 DRAM 更高的資料傳輸速率，常用於 AI 加速卡與高效能伺服器。",
-        "why": "AI 晶片對記憶體頻寬需求極大，HBM 供應緊張直接限制 AI 系統的效能擴展。",
-        "category": "hardware"
-      },
-      {
-        "term": "wafer‑scale compute",
-        "full": "Wafer‑scale compute",
-        "def": "將整片晶圓作為單一大型計算晶片，提供比多顆小晶片更高的運算密度與效能，Cerebras 為主要供應商。",
-        "why": "此技術是大型 AI 模型訓練的關鍵硬體，需求變化會波及晶圓代工與 OSAT 供應鏈。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Full Disk Access",
-        "full": "macOS 完整磁碟存取權限",
-        "def": "macOS 系統中的一項安全設定，允許應用程式直接讀寫整個磁碟，常用於備份與系統管理工具。",
-        "why": "AI 代理人若取得此權限，可讀取使用者私密資料，提升資料外洩風險。",
-        "category": "hardware"
-      },
-      {
-        "term": "Muse",
-        "full": "Meta 個人 AI 代理人",
-        "def": "Meta 開發的 AI 助手，可自動完成旅行預訂、表單填寫與線上購物等任務。",
-        "why": "作為 AI 服務的前端入口，Muse 的安全與隱私設計直接影響使用者資料流向與供應鏈需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "NDAs",
-        "full": "保密協議（Nondisclosure Agreements）",
-        "def": "在商業合作中用以限制資訊披露的法律文件，常見於政府與企業之間的技術合作。",
-        "why": "AWS 取消 NDA 代表資訊透明度提升，可能改變政府雲端採購流程與相關供應鏈結構。",
-        "category": "role"
-      },
-      {
-        "term": "Muse AI",
-        "full": "Meta 開發的生成式 AI 文字模型",
-        "def": "Muse AI 為 Meta 於 2024 年推出的生成式文字模型，能根據使用者指令產出高品質內容，已在 Meta 內部產品中測試使用。",
-        "why": "此模型的推出提升了對高效能晶片的需求，間接影響 AI 晶片供應鏈的產能規劃。",
         "category": "ai_technique"
       }
     ],
