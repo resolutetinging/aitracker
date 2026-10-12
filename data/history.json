@@ -1,5 +1,93 @@
 [
   {
+    "date": "2026-10-13",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Microsoft將加大自研Maia AI晶片使用，降低對Nvidia GPU依賴",
+        "layer": "strategic_supplier",
+        "body": "Microsoft宣佈自研Maia 300 AI晶片將於2027年投入生產，未來將主要用於AI推論工作，降低對Nvidia GPU的依賴。",
+        "impact": "由於Microsoft將自家晶片投入AI推論，對Nvidia GPU的需求將下降，可能導致Nvidia相關的HBM供應鏈需求↓。",
+        "rating": "core",
+        "insight": "自研AI晶片可減少對Nvidia供應鏈的依賴，提升Microsoft在AI基礎設施上的議價能力。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/12/microsoft-will-mainly-use-its-maia-chips-for-ai-inference.html"
+      }
+    ],
+    "corp": [
+      {
+        "title": "Apple 推出 HomeView 智慧家庭中樞",
+        "layer": "CSP/CapEx",
+        "body": "根據 Bloomberg 報導，Apple 於 2026 年 10 月 13 日（星期二）正式發表名為 HomeView 的智慧家庭中樞，內建 A18 晶片並配備 7 吋觸控螢幕。該產品將提供檯面版與壁掛版兩種形態，預計於同月下旬同步上市，並搭配 Siri 語音助理整合現有 HomeKit 生態系。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Apple 以自研 A18 晶片進軍智慧家庭，可拉動上游晶圓與顯示面板供應鏈，同時挑戰 Google Nest 市場地位。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/10/11/will-the-homeview-be-apples-first-smart-home-success/"
+      },
+      {
+        "title": "Microsoft 公布 Maia 300 AI 晶片 2027 年量產",
+        "layer": "CSP/CapEx",
+        "body": "Microsoft 於 2026 年 10 月 12 日宣布其自研的 Maia 300 AI 晶片將於 2027 年開始投入生產，該晶片設計以降低對 Nvidia GPU 的依賴，並支援每秒 300 TOPS 的推理效能。Maia 300 內建 7 奈米製程的自家記憶體介面，預計首批供應給 Azure AI 超大型模型服務。",
+        "impact": "同時減少 Nvidia GPU 在 Azure 數據中心的採購量（↓）。",
+        "rating": "core",
+        "insight": "Microsoft 自研 AI 晶片可削減對 Nvidia 的依賴，為台積電帶來新訂單，同時重塑雲端算力供應鏈格局。",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/news/1009465/microsoft-maia-300-chip-improvements-rollout"
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Maia 300",
+        "full": "Microsoft自研的AI推論晶片",
+        "def": "Maia 300是Microsoft開發的AI加速器晶片，計畫於2027年開始量產，主要用於資料中心的推論工作。",
+        "why": "代表大型平台公司自建AI硬體供應鏈，可能改變GPU市場需求結構。",
+        "category": "hardware"
+      },
+      {
+        "term": "Vera Rubin",
+        "full": "Nvidia的高密度液冷伺服器平台",
+        "def": "Vera Rubin是Nvidia推出的伺服器平台，採用先進液冷技術，MGX 1.2規格於2026年向OCP開放設計圖紙。",
+        "why": "開放設計促進OSAT與散熱供應鏈的產能擴張，影響資料中心硬體佈局。",
+        "category": "hardware"
+      },
+      {
+        "term": "OCP",
+        "full": "Open Compute Project",
+        "def": "OCP是一個開放式硬體設計標準組織，旨在推動資料中心硬體的模組化與標準化。",
+        "why": "Nvidia將Vera Rubin設計開放給OCP，可加速業界採用液冷解決方案，提升相關供應鏈需求。",
+        "category": "role"
+      },
+      {
+        "term": "HomeView",
+        "full": "Apple 智慧家庭中樞",
+        "def": "Apple 推出的具備螢幕與 Siri 整合功能的智慧家庭控制裝置，支援檯面版與壁掛版兩種形態。",
+        "why": "首次將自研 A18 晶片應用於智慧家庭，牽動上下游硬體與軟體供應鏈。",
+        "category": "hardware"
+      },
+      {
+        "term": "AI 晶片",
+        "full": "",
+        "def": "專門設計用於加速人工智慧模型運算的晶片，具備大量矩陣運算單元與高記憶體頻寬，以支援深度學習推論與訓練。",
+        "why": "AI 晶片是驅動各行業 AI 應用的核心硬體，影響供應鏈上下游的需求與投資布局。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-12",
     "is_sunday": false,
     "hw": [
@@ -907,157 +995,6 @@
         "full": "人工智慧生成的醫療處方",
         "def": "利用影像辨識與診斷模型，自動判斷患者病情並產出符合藥品規範的處方，患者可直接透過平台取得藥物。",
         "why": "此技術縮短診斷與用藥流程，對醫藥供應鏈的需求與物流模式產生直接影響。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-06",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "德國卡爾斯魯厄理工大學啟用 33 百萬兆次 HoreKa 2 超級電腦",
-        "layer": "AI基礎設施",
-        "body": "2026 年 10 月 5 日，德國卡爾斯魯厄理工大學（Karlsruhe Institute of Technology）正式啟用名為 HoreKa 2 的 33 petaflops 超級電腦。該系統採用 AMD Turin 系列 CPU 以及 Nvidia GB200 GPU 形成混合架構。此部署顯示 AI 研究對高效能 GPU 與先進 CPU 的需求持續上升。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "大型超級電腦採購顯示 Nvidia GPU 需求持續強勁，供應鏈上游產能將受益。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "AMD Turin CPU 需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia GB200 GPU 訂單↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "SpaceX 與台積電討論在德州建立 TeraFab 晶圓廠",
-        "layer": "AI基礎設施",
-        "body": "2026 年 10 月 5 日，Elon Musk 在接受採訪時確認 SpaceX 正與台積電（TSMC）討論在美國德州建立名為 TeraFab 的晶圓製造設施，並透露原先的 SpaceXAI 將更名為 SpaceXSI。此舉回應了外界對 TSMC 在德州設廠的傳聞。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "TSMC 在德州布局將提升美國 AI 晶圓供應彈性，對本土 AI 硬體供應鏈構成正向刺激。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "TSMC 德州 TeraFab 投資↑",
-            "type": "up"
-          },
-          {
-            "label": "SpaceXSI AI 計畫資金需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 在美國測試影像廣告格式於 ChatGPT 影像生成結果旁顯示",
-        "layer": "CSP/CapEx",
-        "body": "OpenAI 宣布將於 2026 年 10 月在美國測試新「visual ad format」，於使用者請求產生圖像時於結果旁顯示廣告；測試將使用一組初始廣告客戶，且所有廣告均會明確標示且不干擾 ChatGPT 的回覆內容；同時公司亦擴充廣告測量工具與品牌適配性評估機制，以確保廣告品質。",
-        "impact": "下游廣告主可藉由影像廣告觸及 AI 使用者，提升品牌曝光，進一步刺激數位行銷服務商的訂單增長↑。",
-        "rating": "core",
-        "insight": "OpenAI 以影像廣告切入 AI 生成市場，將開啟廣告技術與算力供應鏈的新需求增長點。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/10/05/openai-to-flood-your-eyeballs-with-visual-ads/5301152",
-        "chain": [
-          {
-            "label": "OpenAI Visual Ad 收入↑",
-            "type": "up"
-          },
-          {
-            "label": "ChatGPT 使用者體驗↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Google 因 AI 相關提交激增暫停開源漏洞賞金計畫",
-        "layer": "CSP/CapEx",
-        "body": "Google 於 2026 年 10 月 1 日宣布暫停其 Open Source Software Vulnerability Rewards Program，原因是 AI 生成的自動化提交量大幅上升，超過 90% 為無效或幻覺內容；公司承諾將於 2027 年第一季提供更新說明；此舉顯示 AI 生成工具對安全研究流程的衝擊。",
-        "impact": "暫停賞金計畫減少了開源軟體維護者的獎金收入↓，可能導致部分安全漏洞修補速度放緩；同時，AI 生成的偽報告需求上升推動相關過濾與驗證服務供應商的市場需求↑。",
-        "rating": "core",
-        "insight": "Google 暫停開源賞金計畫凸顯 AI 生成內容對安全生態的挑戰，相關驗證與過濾服務將受益。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/10/04/google-froze-its-open-source-bug-bounty-program-due-to-a-significant-rise-in-ai-submissions/",
-        "chain": [
-          {
-            "label": "Google OSS 漏洞賞金計畫暫停↓",
-            "type": "down"
-          },
-          {
-            "label": "AI 生成提交量↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": "",
-        "chain": [
-          {
-            "label": "無相關新聞",
-            "type": "neutral"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "HoreKa 2",
-        "full": "HoreKa 2 超級電腦",
-        "def": "德國卡爾斯魯厄理工大學於 2026 年部署的 33 petaflops 超級電腦，採用 AMD Turin CPU 與 Nvidia GB200 GPU 混合架構。",
-        "why": "顯示高效能 AI 計算資源對先進 CPU 與 GPU 的需求持續增長，影響相關供應鏈產能分配。",
-        "category": "hardware"
-      },
-      {
-        "term": "TeraFab",
-        "full": "TeraFab 晶圓製造計畫",
-        "def": "SpaceX 與台積電討論在美國德州建立的先進晶圓製造設施，旨在支援 SpaceXAI（未來更名為 SpaceXSI）的 AI 硬體需求。",
-        "why": "若落實將為美國本土 AI 晶圓供應鏈提供新產能，改變供應地理分布。",
-        "category": "hardware"
-      },
-      {
-        "term": "AI 基礎設施供應鏈",
-        "full": "人工智慧基礎設施供應鏈",
-        "def": "涵蓋從晶圓代工、封裝測試、GPU/CPU 製造到整合系統與資料中心建設的全流程供應鏈。",
-        "why": "任何大型採購或新建設計案都會在此鏈條上產生上下游效應，影響產能與成本。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "visual ad format",
-        "full": "視覺廣告格式",
-        "def": "在 AI 生成的圖像結果旁顯示的圖像廣告，允許廣告主以視覺方式傳遞品牌訊息。",
-        "why": "此格式為 OpenAI 首次將廣告嵌入生成式 AI 產出，開啟新廣告收入來源。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "bug bounty program",
-        "full": "漏洞賞金計畫",
-        "def": "企業向安全研究者提供金額獎勵，以回報發現的軟體漏洞。",
-        "why": "Google 暫停此計畫顯示 AI 生成的自動化提交對傳統安全流程的衝擊。",
-        "category": "role"
-      },
-      {
-        "term": "Agentic AI",
-        "full": "Agentic AI（具代理性的人工智慧）",
-        "def": "指具備自主決策與執行能力的人工智慧系統，能在缺乏即時人類指示的情況下完成任務並調整策略。此概念強調 AI 不僅生成內容，而是能主動規劃與實踐工作流程。",
-        "why": "Agentic AI 被視為下一波 AI 產業革命的核心，因其能大幅提升認知型勞動的生產力，對軟體開發、金融分析等高附加價值產業產生深遠影響。",
         "category": "ai_technique"
       }
     ],
