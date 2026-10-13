@@ -21,6 +21,25 @@ if os.environ.get('CROSS_BUCKET_AVOID', '').strip() == '0':
 CROSS_BUCKET_MAX_ITEMS = 15
 CROSS_BUCKET_TITLE_CHARS = 80
 
+# 傳聞寫成事實／補寫原文沒有的數字（2026-10-13 方案 A＋B）。三個開關全關時，
+# 擷取結果與 prompt 和 tag quality-baseline-20261013b 逐字相同。詳見 ../ROLLBACK_20261013.md
+# A1 擷取端：全文抓取時過濾樣板段落（同頁重複段、高連結密度、非句子、訂閱/cookie/活動廣告），
+#    不足再補 <article> 內段落與 og:description。回復：False 或環境變數 CLEAN_BOILERPLATE=0。
+CLEAN_BOILERPLATE = True
+if os.environ.get('CLEAN_BOILERPLATE', '').strip() == '0':
+    CLEAN_BOILERPLATE = False
+# A2 生成端：prompt 加「數字/日期/規格只能寫原文有的；預告/傳聞須用預計/據報導語氣」，
+#    並放寬「每句必含數字」與 body 最低字數。回復：False 或環境變數 STRICT_SOURCE_PROMPT=0。
+STRICT_SOURCE_PROMPT = True
+if os.environ.get('STRICT_SOURCE_PROMPT', '').strip() == '0':
+    STRICT_SOURCE_PROMPT = False
+# B 生成後比對：卡片數字/日期/型號是否出現在所掛 source 的素材原文。
+#    off＝不跑；log＝只寫 run_stats.fact_audit，不改卡片與評級（預設）；
+#    enforce＝刪除含疑似補寫的句子，刪完不達標 core→opp。環境變數 FACT_CHECK_MODE 覆寫。
+FACT_CHECK_MODE = 'log'
+if os.environ.get('FACT_CHECK_MODE', '').strip().lower() in ('off', 'log', 'enforce'):
+    FACT_CHECK_MODE = os.environ['FACT_CHECK_MODE'].strip().lower()
+
 TW = timezone(timedelta(hours=8))
 NOW = datetime.now(TW)
 DATE_STR = NOW.strftime('%Y-%m-%d')
@@ -358,8 +377,10 @@ def fetch_article_text(url, max_chars=1100, timeout=6):
     try:
         req = urllib.request.Request(url, headers={'User-Agent':'Mozilla/5.0'})
         with urllib.request.urlopen(req, timeout=timeout) as r:
-            raw = r.read(300_000)
+            raw = r.read(CLEAN_READ_BYTES if CLEAN_BOILERPLATE else 300_000)
         html = raw.decode('utf-8', errors='ignore')
+        if CLEAN_BOILERPLATE:
+            return extract_clean_text(html, max_chars)
         html = re.sub(r'<(script|style|noscript|nav|footer|header)[^>]*>.*?</\1>', ' ', html, flags=re.S|re.I)
         paras = re.findall(r'<p[^>]*>(.*?)</p>', html, flags=re.S|re.I)
         parts, total = [], 0
@@ -375,6 +396,91 @@ def fetch_article_text(url, max_chars=1100, timeout=6):
         return text if len(text) > 80 else None
     except Exception:
         return None
+
+# ── A1：樣板段落過濾（CLEAN_BOILERPLATE）──
+# 2026-10-13 實例：舊擷取把 The Verge 頁首「Posts from this topic will be added…」
+# 等追蹤按鈕文字、TechCrunch 活動廣告當成內文塞滿 1100 字，真正內文幾乎沒進素材，
+# 模型只好自己補規格。判準一律結構性（同頁重複、連結密度、非句子），只有
+# 訂閱/cookie/活動報名這類各站通用的片語用字串比對；不寫死任何特定網站。
+CLEAN_READ_BYTES = 1_200_000   # 新式網頁 <head> 內嵌腳本常超過 300KB，舊上限會讀不到內文
+CLEAN_MIN_CHARS = 300          # 文章範圍內過濾後少於此字數，改用整頁段落並補 og:description
+_P_TAG_PAT = re.compile(r'<p(?:\s[^>]*)?>(.*?)</p>', flags=re.S | re.I)   # 舊版 <p[^>]*> 會誤吃 <path>/<picture>
+_A_TAG_PAT = re.compile(r'<a\b[^>]*>(.*?)</a>', flags=re.S | re.I)
+_BOILER_PHRASE_PAT = re.compile(
+    r'subscribe|newsletter|sign up|sign in|log in|cookie|privacy policy|terms of (?:service|use)|'
+    r'all rights reserved|advertisement|email digest|homepage feed|follow (?:topics|authors|us)|'
+    r'register now|book (?:your|an?) |get (?:your|a) (?:pass|ticket)|tickets? (?:are|now)|'
+    r'early[- ]bird|% off|save \$|limited time|exhibit table|sponsored',
+    re.I)
+_SENTENCE_END_PAT = re.compile(r'[.!?。！？]["”’)]?(?:\s|$)')
+
+def _html_unescape(t):
+    import html as _h
+    return _h.unescape(t)
+
+def _para_text(inner):
+    t = re.sub(r'<[^>]+>', '', inner)
+    t = _html_unescape(t)
+    return re.sub(r'\s+', ' ', t).strip()
+
+def _clean_paragraphs(html_fragment):
+    """回傳過濾後段落清單。過濾：同頁重複段落（全部移除）、連結文字佔比>50%、
+    不像句子（無句尾標點且少於 12 個字詞）、含通用訂閱/cookie/活動廣告片語。"""
+    raw = []
+    for inner in _P_TAG_PAT.findall(html_fragment):
+        t = _para_text(inner)
+        if len(t) <= 40:
+            continue
+        link_txt = ''.join(_para_text(a) for a in _A_TAG_PAT.findall(inner))
+        raw.append((t, len(link_txt) / max(len(t), 1)))
+    counts = {}
+    for t, _ in raw:
+        k = t.lower()
+        counts[k] = counts.get(k, 0) + 1
+    out, seen = [], set()
+    for t, link_ratio in raw:
+        k = t.lower()
+        if counts[k] > 1 or k in seen:
+            continue
+        seen.add(k)
+        if link_ratio > 0.5:
+            continue
+        if not _SENTENCE_END_PAT.search(t + ' ') and len(t.split()) < 12:
+            continue
+        if _BOILER_PHRASE_PAT.search(t):
+            continue
+        out.append(t)
+    return out
+
+def _og_description(html):
+    m = re.search(r'<meta[^>]+(?:property|name)=["\'](?:og:description|description)["\'][^>]*>', html, flags=re.I)
+    if not m:
+        return ''
+    c = re.search(r'content=["\']([^"\']*)["\']', m.group(0), flags=re.I)
+    return re.sub(r'\s+', ' ', _html_unescape(c.group(1))).strip() if c else ''
+
+def extract_clean_text(html, max_chars=1100):
+    """CLEAN_BOILERPLATE 版擷取：先取 <article> 內過濾後段落，不足 CLEAN_MIN_CHARS
+    改用整頁過濾後段落；仍不足則把 og:description 放最前面補足。"""
+    og = _og_description(html)
+    html = re.sub(r'<(script|style|noscript|nav|footer|header|aside|form|figcaption|button|svg)\b[^>]*>.*?</\1>',
+                  ' ', html, flags=re.S | re.I)
+    paras = []
+    arts = re.findall(r'<article\b[^>]*>(.*?)</article>', html, flags=re.S | re.I)
+    if arts:
+        paras = _clean_paragraphs(' '.join(arts))
+    if sum(len(p) for p in paras) < CLEAN_MIN_CHARS:
+        paras = _clean_paragraphs(html)
+    if og and sum(len(p) for p in paras) < CLEAN_MIN_CHARS and not any(og[:60] in p for p in paras):
+        paras = [og] + paras
+    parts, total = [], 0
+    for p in paras:
+        parts.append(p)
+        total += len(p)
+        if total >= max_chars:
+            break
+    text = ' '.join(parts)[:max_chars]
+    return text if len(text) > 80 else None
 
 def enrich_with_full_text(buckets, max_fetch=12):
     """三分類輪流分配全文抓取名額（round-robin：hw桶第1篇→corp桶第1篇→app桶第1篇→hw桶第2篇…），
@@ -653,6 +759,39 @@ def build_cross_bucket_block(avoid_items):
             "the same event (same company, same product, same announcement) as any report below, do NOT "
             "output it; a different event is still allowed even from the same company:\n" + "\n".join(lines))
 
+# ── A2：STRICT_SOURCE_PROMPT ──
+# 以「對 baseline prompt 做逐字替換」實作，關閉時 prompt 一個字都不動。
+# 取捨：舊版「每句必含數字/日期/具名實體」＋「body ≥60 字」會逼素材只有一兩個事實的
+# 新聞補寫規格與日期（10-13 Maia 300 TOPS／7 奈米、HomeView 7 吋）。最低字數降到 40，
+# 對齊程式閘門 _body_is_low_quality（<40 字才判低品質），不會因此多降評；
+# 「至少 1 個具體事實」保留，但必須是原文出現過的。
+STRICT_PROMPT_REPLACEMENTS = [
+    ("every sentence must contain at least one specific number, date, or named entity from the source AND must state a fact NOT already stated in a previous sentence. HARD MINIMUM BAR: the total body must be at least 60 Traditional Chinese characters long AND must contain at least 1 distinct concrete fact (pick one: specific numbers/quantities, technical specs, monetary amounts, timelines/dates, or place names/locations) PLUS at least 1 clearly named entity (a specific company, institution, or product name)",
+     "every sentence must state a fact that appears in the source text AND that was NOT already stated in a previous sentence (a sentence does not need its own number or date). MINIMUM BAR: the total body should be at least 40 Traditional Chinese characters long AND must contain at least 1 concrete fact that appears in the source text (a number/quantity, spec, monetary amount, date/timeline, place, or a named company/institution/product doing something specific)"),
+    ("If the source material genuinely cannot support 60 characters with 1 concrete fact and 1 named entity, do NOT pad",
+     "If the source material genuinely cannot support 40 characters with 1 source-backed concrete fact, do NOT pad"),
+    ("the 60-character / named-entity / concrete-fact bar below still applies",
+     "the 40-character / source-backed-fact bar below still applies"),
+    ("- body MINIMUM BAR (hard requirement): body must total at least 60 characters AND include at least 1 concrete fact (numbers/quantities, specs, monetary amounts, timelines/dates, or place names) PLUS at least 1 named entity (a specific company, institution, or product name)",
+     "- body MINIMUM BAR (hard requirement): body must total at least 40 characters AND include at least 1 concrete fact that appears in the source text (numbers/quantities, specs, monetary amounts, timelines/dates, place names, or a named company/institution/product doing something specific)"),
+    ("rather than stretching it to 60 characters with filler",
+     "rather than stretching it to 40 characters with filler"),
+    ("- HALLUCINATION IS FORBIDDEN:",
+     "- SOURCE FIDELITY (numbers, dates, specs): every number, date, spec, model number, process node, screen size, launch/availability timing, and price in title/body/impact/insight MUST appear in the source text of that same news entry — if the source does not state it, leave it out; never fill in a plausible-sounding spec, date, or price from general knowledge or from other news entries\n"
+     "- SOURCE FIDELITY (tense): if the source reports something as upcoming, planned, reported, or unconfirmed (wording such as will, plans to, is expected to, reportedly, according to, sources say, may, could, rumored, or a question headline), write it in zh-TW with 預計／據報導／傳出 — never as something that has already happened or been officially announced; keep the attribution (e.g. 據 Bloomberg 報導) when the source gives one\n"
+     "- HALLUCINATION IS FORBIDDEN:"),
+]
+
+def apply_strict_source_prompt(prompt):
+    """把 STRICT_PROMPT_REPLACEMENTS 套到 baseline prompt；找不到的片段只印警告不中斷
+    （baseline 措辭若日後被改，代表這裡要同步更新）。"""
+    for old, new in STRICT_PROMPT_REPLACEMENTS:
+        if old in prompt:
+            prompt = prompt.replace(old, new, 1)
+        else:
+            print(f"  ⚠ STRICT_SOURCE_PROMPT 找不到要替換的片段（略過）：{old[:50]}")
+    return prompt
+
 def make_prompt(news_context, category, recent_titles=None, avoid_items=None):
     notes = load_notes() if IS_SUNDAY else {}
     notes_text = "; ".join(f"{d}:{n}" for d, n in sorted(notes.items()) if n.strip()) if notes else ""
@@ -676,7 +815,7 @@ def make_prompt(news_context, category, recent_titles=None, avoid_items=None):
     category_desc = CATEGORY_DESC[category]
     cross_block = build_cross_bucket_block(avoid_items) if (CROSS_BUCKET_AVOID and category == 'corp') else ""
 
-    return f"""You are an AI supply chain analyst. Analyze the news below and output pure JSON (start directly with {{).
+    prompt = f"""You are an AI supply chain analyst. Analyze the news below and output pure JSON (start directly with {{).
 
 NEWS:
 {news_short}
@@ -710,6 +849,7 @@ RULES:
 - weekly_summary: {weekly_rule}
 {no_repeat_str}
 {notes_ctx}{cross_block}"""
+    return apply_strict_source_prompt(prompt) if STRICT_SOURCE_PROMPT else prompt
 
 # ══════════════════════════════════════════════════════════════════
 #  3. GROQ API + CHAIN QUALITY FIX
@@ -1672,6 +1812,320 @@ def downgrade_low_quality(data):
         print("  → body 品質檢核通過")
 
 # ══════════════════════════════════════════════════════════════════
+#  4b. FACT AUDIT（方案 B，FACT_CHECK_MODE）
+#  卡片 body/insight 的數字＋單位、年份、日期、型號，逐一到該卡 source 網址
+#  對應的素材原文（news_by_cat 裡同一條，含標題）找出處。找不到＝疑似補寫；
+#  格式換算做不到（例如原文數字在但量級寫法不同）＝無法判定，不算違規。
+#  白名單：今天日期、今年年份、本月月份、素材標題（標題本來就在素材內）；近 7 天日期列無法判定。
+#  log 模式只寫 RUN_STATS['fact_audit']，絕不改卡片與評級。
+# ══════════════════════════════════════════════════════════════════
+_FA_NUM_WORDS = {
+    'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'seven': 7,
+    'eight': 8, 'nine': 9, 'ten': 10, 'eleven': 11, 'twelve': 12, 'fifteen': 15,
+    'twenty': 20, 'thirty': 30, 'forty': 40, 'fifty': 50, 'hundred': 100,
+    'dozen': 12, 'half': 0.5, 'single': 1, 'double': 2, 'triple': 3,
+}
+_FA_EN_SCALE = {'thousand': 1e3, 'k': 1e3, 'million': 1e6, 'mn': 1e6, 'm': 1e6,
+                'billion': 1e9, 'bn': 1e9, 'b': 1e9, 'trillion': 1e12, 'tn': 1e12, 't': 1e12}
+_FA_ZH_SCALE = {'千': 1e3, '萬': 1e4, '億': 1e8, '兆': 1e12}
+_FA_MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
+_FA_WEEKDAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+# 卡片單位 → 原文可能寫法（小寫、比對時忽略空白與連字號）
+_FA_UNITS = [
+    (r'%|％|個百分點', ['%', 'percent', 'per cent', 'percentage point', 'pct']),
+    (r'TOPS', ['tops']),
+    (r'[TPE]?FLOPS', ['flops', 'tflops', 'pflops', 'eflops']),
+    (r'奈米|nm', ['nm', 'nanometer', 'nanometre', 'nano']),
+    (r'英吋|吋|英寸|寸', ['inch', 'in.', '"', '”', "''"]),
+    (r'[KMGTP]B', None),     # None：原文寫同一個英文單位
+    (r'[kMG]W|瓦', ['w', 'watt', 'kw', 'mw', 'gw', 'kilowatt', 'megawatt', 'gigawatt']),
+    (r'[GM]Hz', None),
+    (r'倍', ['x', 'times', 'fold', '×']),
+    (r'核心', ['core', 'cores']),
+    (r'GPU|顆GPU|張GPU', ['gpu', 'gpus']),
+]
+_FA_UNIT_PAT = '|'.join('(?:' + u + ')' for u, _ in _FA_UNITS)
+_FA_CURRENCY = r'美元|美金|元|台幣|新台幣|歐元|日圓|日元|英鎊|人民幣|韓元|港元'
+_FA_HEDGE_SRC = re.compile(r'\b(will|plans? to|planning to|is expected to|are expected to|expected to|reportedly|'
+                           r'according to|rumou?red|sources? (?:say|said)|may|could|might|set to|poised to)\b', re.I)
+_FA_ASSERTIVE_BODY = re.compile(r'正式(?:發表|推出|發布|發佈|宣布|宣佈|上市)|已(?:經)?(?:推出|發表|發布|上市|開賣|量產)|已於')
+_FA_HEDGE_BODY = re.compile(r'預計|預期|據.{0,12}報導|傳出|傳聞|消息人士|計畫|計劃|擬|可能|有望|將')
+
+def _fa_norm_source(text):
+    t = _html_unescape(text or '').lower()
+    t = re.sub(r'(\d),(\d{3})', r'\1\2', t)
+    t = re.sub(r'(\d),(\d{3})', r'\1\2', t)
+    for w, n in _FA_NUM_WORDS.items():
+        t = re.sub(r'\b' + w + r'\b', str(n), t)
+    return t
+
+def _fa_source_numbers(src):
+    """原文每個數字出現：(數值, 量級換算後數值, 後接 20 字)。"""
+    out = []
+    for m in re.finditer(r'(?<![\w.])\$?(\d+(?:\.\d+)?)', src):
+        v = float(m.group(1))
+        tail = src[m.end():m.end() + 20]
+        sm = re.match(r'\s*-?\s*(thousand|million|billion|trillion|bn|mn|tn|k|m|b|t)\b', tail)
+        scaled = v * _FA_EN_SCALE[sm.group(1)] if sm else v
+        out.append((v, scaled, tail))
+    return out
+
+def _fa_num_in(src_nums, v):
+    return any(abs(sv - v) < 1e-9 for sv, _, _ in src_nums)
+
+def _fa_unit_supported(src_nums, v, unit):
+    alts = None
+    for upat, ualts in _FA_UNITS:
+        if re.fullmatch(upat, unit):
+            alts = ualts if ualts is not None else [unit.lower()]
+            break
+    alts = alts or [unit.lower()]
+    for sv, _, tail in src_nums:
+        if abs(sv - v) > 1e-9:
+            continue
+        t = re.sub(r'^[\s\-]+', '', tail)
+        if any(t.startswith(a) for a in alts):
+            return True
+    return False
+
+def _fa_date_supported(src, month, day):
+    mon = _FA_MONTHS[month - 1]
+    if re.search(r'\b' + mon + r'[a-z]*\.?\s+0?' + str(day) + r'\b', src):
+        return True
+    if re.search(r'(?<!\d)0?' + str(month) + r'[/.-]0?' + str(day) + r'(?!\d)', src):
+        return True
+    if re.search(r'\b' + str(day) + r'(?:st|nd|rd|th)?\s+(?:of\s+)?' + mon, src):
+        return True
+    # 相對日期：today/yesterday/tomorrow 與星期幾換算成實際日期（±7 天內）
+    try:
+        target = NOW.replace(month=month, day=day)
+    except ValueError:
+        return False
+    delta = (target.date() - NOW.date()).days
+    if 'today' in src and delta in (0, -1):
+        return True
+    if 'yesterday' in src and delta in (-1, -2):
+        return True
+    if 'tomorrow' in src and delta in (0, 1):
+        return True
+    if -7 <= delta <= 7 and re.search(r'\b' + _FA_WEEKDAYS[target.weekday()] + r'\b', src):
+        return True
+    return False
+
+def _fa_norm_body(text):
+    """卡片文字正規化：去千分位逗號、去數字與年月日之間的空白（疑似字串以此為準）。"""
+    body = re.sub(r'(?<=\d),(?=\d{3})', '', text or '')
+    return re.sub(r'(?<=\d)\s+(?=[年月日])|(?<=[年月])\s+(?=\d)', '', body)
+
+def audit_text_facts(text, source_text):
+    """回傳 (suspects, undetermined)：皆為 [{'token':原字串,'kind':類別}]。"""
+    src = _fa_norm_source(source_text)
+    src_compact = re.sub(r'[\s\-_]', '', src)
+    src_nums = _fa_source_numbers(src)
+    body = _fa_norm_body(text)
+    taken = [False] * len(body)
+    suspects, undetermined = [], []
+
+    def claim(m):
+        if any(taken[m.start():m.end()]):
+            return False
+        for i in range(m.start(), m.end()):
+            taken[i] = True
+        return True
+
+    def flag(lst, m, kind):
+        lst.append({'token': m.group(0).strip(), 'kind': kind})
+
+    today_md = (NOW.month, NOW.day)
+    # 1) 完整日期 M月D日 / M/D
+    for m in re.finditer(r'(?:(20\d{2})年)?(\d{1,2})月(\d{1,2})日|(?<![\d/])(\d{1,2})/(\d{1,2})(?![\d/])', body):
+        if not claim(m):
+            continue
+        mo, dy = (int(m.group(2)), int(m.group(3))) if m.group(2) else (int(m.group(4)), int(m.group(5)))
+        if not (1 <= mo <= 12 and 1 <= dy <= 31):
+            continue
+        if (mo, dy) == today_md or _fa_date_supported(src, mo, dy):
+            if m.group(1) and m.group(1) not in src and m.group(1) != str(NOW.year):
+                flag(suspects, m, 'year')
+            continue
+        # 近 7 天內的日期多半是文章發布日（RSS 素材不帶發布日，模型從別處得知），
+        # 對不上也無法判定是補寫，列無法判定不算違規
+        try:
+            back = (NOW.date() - NOW.replace(month=mo, day=dy).date()).days
+        except ValueError:
+            back = -1
+        if 0 < back <= 7:
+            flag(undetermined, m, 'recent_date')
+            continue
+        flag(suspects, m, 'date')
+    # 2) 型號：英文字母開頭緊接數字（Maia 300、A18、GPT-5、H100、Q3）
+    for m in re.finditer(r'(?<![A-Za-z0-9])([A-Za-z][A-Za-z]*)[ \-]?(\d+(?:\.\d+)?[A-Za-z0-9]*)(?![A-Za-z0-9])', body):
+        word = m.group(1)
+        if re.fullmatch(_FA_UNIT_PAT, word):
+            continue
+        if not claim(m):
+            continue
+        key = re.sub(r'[\s\-_]', '', m.group(0).lower())
+        if key in src_compact:
+            continue
+        qm = re.fullmatch(r'q([1-4])', key)
+        if qm and re.search(['first', 'second', 'third', 'fourth'][int(qm.group(1)) - 1] + r'[\s-]+quarter', src):
+            continue
+        flag(suspects, m, 'model')
+    # 3) 金額/量級：數字＋兆億萬千 或 ＋幣別 或 ＋英文量級
+    for m in re.finditer(r'(\d+(?:\.\d+)?)\s*(兆|億|萬|千)?\s*(billion|million|trillion)?\s*(' + _FA_CURRENCY + r')?', body):
+        if not (m.group(2) or m.group(3) or m.group(4)):
+            continue
+        if not claim(m):
+            continue
+        v = float(m.group(1))
+        scale = _FA_ZH_SCALE.get(m.group(2) or '', 1) * _FA_EN_SCALE.get((m.group(3) or '').lower(), 1)
+        target = v * scale
+        if any(abs(sc - target) <= 0.015 * max(target, 1) for _, sc, _ in src_nums):
+            continue
+        if _fa_num_in(src_nums, v):
+            flag(undetermined, m, 'amount')   # 數字在、量級對不上：可能是換算寫法差異
+        else:
+            flag(suspects, m, 'amount')
+    # 4) 數字＋規格單位
+    for m in re.finditer(r'(\d+(?:\.\d+)?)\s*(' + _FA_UNIT_PAT + r')', body):
+        if not claim(m):
+            continue
+        if _fa_unit_supported(src_nums, float(m.group(1)), m.group(2)):
+            continue
+        flag(suspects, m, 'spec')
+    # 5) 年份
+    for m in re.finditer(r'(?<!\d)((?:19|20)\d{2})(?:\s*年)?(?!\d)', body):
+        if not claim(m):
+            continue
+        if m.group(1) in src or m.group(1) == str(NOW.year):
+            continue
+        flag(suspects, m, 'year')
+    # 6) 月份（無日）：本月或原文有月名即可
+    for m in re.finditer(r'(?<!\d)(\d{1,2})月(?!\d)', body):
+        if not claim(m):
+            continue
+        mo = int(m.group(1))
+        if not 1 <= mo <= 12 or mo == NOW.month or re.search(r'\b' + _FA_MONTHS[mo - 1], src):
+            continue
+        flag(suspects, m, 'month')
+    # 7) 其餘數字（≥10 或含小數；個位數多為「兩家」這類計數，略過）
+    for m in re.finditer(r'(?<![\d.])(\d+(?:\.\d+)?)(?![\d.])', body):
+        if not claim(m):
+            continue
+        v = float(m.group(1))
+        if v < 10 and '.' not in m.group(1):
+            continue
+        if _fa_num_in(src_nums, v):
+            continue
+        flag(suspects, m, 'number')
+    return suspects, undetermined
+
+def _fa_index_materials(news_by_cat):
+    """{正規化網址: {'text': 標題+內文, 'title': 標題, 'full': 是否為抓到全文的素材}}"""
+    idx = {}
+    for cat in ('hw', 'corp', 'app'):
+        for entry in (news_by_cat.get(cat) or '').split('\n\n'):
+            m = re.search(r'SOURCE_URL:(\S+)', entry)
+            if not m:
+                continue
+            full = bool(re.search(r'SOURCE_URL:\S+ — ', entry))
+            text = re.sub(r'^\[[^\]]+\]\s*', '', entry).replace(m.group(0), ' ')
+            title = text.split(' — ', 1)[0].replace(' | ', ' ').strip()
+            key = _norm_url(m.group(1))
+            if key not in idx or (full and not idx[key]['full']):
+                idx[key] = {'text': text, 'title': title, 'full': full}
+    return idx
+
+def audit_card(item, material, other_text=''):
+    """單張卡片稽核結果（不改卡片）。material=None 代表找不到素材。
+    other_text＝當天其他素材全文：疑似字串若出現在別條素材，視為張冠李戴或素材截斷，
+    改列無法判定（other_source），不算補寫。"""
+    if material is None:
+        return {'status': 'no_material'}
+    joined = (item.get('body') or '') + '\n' + (item.get('insight') or '')
+    suspects, undetermined = audit_text_facts(joined, material['text'])
+    if suspects and other_text:
+        still = {s['token'] for s in audit_text_facts(joined, material['text'] + '\n' + other_text)[0]}
+        moved = [dict(s, kind='other_source') for s in suspects if s['token'] not in still]
+        suspects = [s for s in suspects if s['token'] in still]
+        undetermined = undetermined + moved
+    hedged_src = bool(_FA_HEDGE_SRC.search(material['text'][:700])) or material['title'].rstrip().endswith('?')
+    body = item.get('body') or ''
+    tense_flag = hedged_src and bool(_FA_ASSERTIVE_BODY.search(body))
+    return {
+        'status': 'checked',
+        'coverage': 'full' if material['full'] else 'low_coverage',
+        'suspects': suspects,
+        'undetermined': undetermined,
+        'tense_flag': tense_flag,
+    }
+
+def _fa_drop_sentences(text, tokens):
+    parts = re.split(r'(?<=[。！？])', text or '')
+    kept = [p for p in parts if p.strip() and not any(t in _fa_norm_body(p) for t in tokens)]
+    return ''.join(kept).strip()
+
+def fact_audit(data, news_by_cat, mode=None):
+    """方案 B。log：只記錄到 RUN_STATS['fact_audit']；enforce：刪含疑似補寫字串的句子，
+    刪完 body 不達標（_body_is_low_quality）的 core 降 opp；off：不跑。回傳 audit dict。"""
+    mode = mode or FACT_CHECK_MODE
+    if mode == 'off':
+        return None
+    idx = _fa_index_materials(news_by_cat)
+    all_text = '\n'.join(m['text'] for m in idx.values())
+    audit = {'mode': mode, 'checked': 0, 'suspect_cards': 0, 'tense_flags': 0, 'no_material': 0,
+             'low_coverage': {'checked': 0, 'suspect_cards': 0}, 'enforced': 0, 'items': []}
+    for sec in ('hw', 'corp', 'app'):
+        for item in data.get(sec, []):
+            if _is_placeholder(item) or item.get('rating') not in ('core', 'opp'):
+                continue
+            mat = idx.get(_norm_url(item.get('source') or ''))
+            res = audit_card(item, mat, all_text.replace(mat['text'], '') if mat else '')
+            if res['status'] != 'checked':
+                audit['no_material'] += 1
+                continue
+            audit['checked'] += 1
+            low = res['coverage'] == 'low_coverage'
+            if low:
+                audit['low_coverage']['checked'] += 1
+            if res['tense_flag']:
+                audit['tense_flags'] += 1
+            if res['suspects']:
+                audit['suspect_cards'] += 1
+                if low:
+                    audit['low_coverage']['suspect_cards'] += 1
+            if res['suspects'] or res['undetermined'] or res['tense_flag']:
+                rec = {'sec': sec, 'title': (item.get('title') or '')[:60], 'source': item.get('source', ''),
+                       'rating': item.get('rating'), 'coverage': res['coverage'],
+                       'suspects': [s['token'] for s in res['suspects']],
+                       'undetermined': [s['token'] for s in res['undetermined']],
+                       'tense_flag': res['tense_flag']}
+                if mode == 'enforce' and res['suspects']:
+                    toks = [s['token'] for s in res['suspects']]
+                    new_body = _fa_drop_sentences(item.get('body', ''), toks)
+                    item['insight'] = _fa_drop_sentences(item.get('insight', ''), toks)
+                    if new_body:
+                        item['body'] = new_body
+                    if item.get('rating') == 'core' and _body_is_low_quality(new_body):
+                        item['rating'] = 'opp'
+                        rec['downgraded'] = True
+                    audit['enforced'] += 1
+                if len(audit['items']) < 30:
+                    audit['items'].append(rec)
+                if res['suspects'] or res['tense_flag']:
+                    print(f"  ⚠ 疑似補寫[{sec}/{res['coverage']}] {rec['title'][:40]}：{rec['suspects']}"
+                          + ("（原文為預告/傳聞，卡片寫成已發生）" if res['tense_flag'] else ''))
+    print(f"  → 原文比對（{mode}）：檢查 {audit['checked']} 張，疑似補寫 {audit['suspect_cards']} 張"
+          f"（其中摘要素材 {audit['low_coverage']['suspect_cards']}/{audit['low_coverage']['checked']}），"
+          f"語氣疑慮 {audit['tense_flags']} 張，無素材 {audit['no_material']} 張")
+    try:
+        RUN_STATS['fact_audit'] = audit
+    except Exception as e:
+        print(f"  ⚠ 漏斗統計收集失敗（fact_audit，不影響資料生成）：{e}")
+    return audit
+
+# ══════════════════════════════════════════════════════════════════
 #  5. HISTORY
 # ══════════════════════════════════════════════════════════════════
 DATA_PATH = 'data/history.json'
@@ -2083,6 +2537,12 @@ if __name__ == '__main__':
     fix_protagonist_as_competitor(data)
     print("🧹 佔位卡攔截（真實卡存在時移除並存佔位卡）...")
     drop_stale_placeholders(data)
+    if FACT_CHECK_MODE != 'off':
+        print(f"🧾 原文比對稽核（FACT_CHECK_MODE={FACT_CHECK_MODE}）...")
+        try:
+            fact_audit(data, news_by_cat)
+        except Exception as e:
+            print(f"  ⚠ 原文比對稽核失敗（略過，不影響資料生成）：{e}")
 
     try:
         final = {}
