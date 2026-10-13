@@ -12,6 +12,15 @@ from groq import Groq
 FORCE_REGEN   = '--force' in sys.argv
 PIGEON_ONLY   = '--pigeon-only' in sys.argv
 
+# 跨分類生成端避重（2026-10-13）：corp 的 prompt 追加 hw 今日已產出條目清單，
+# 避免同一事件同日出現在兩個分類。回復：改成 False，或環境變數 CROSS_BUCKET_AVOID=0。
+# 關閉時 prompt 與改動前逐字相同。詳見 ../ROLLBACK_20261013.md
+CROSS_BUCKET_AVOID = True
+if os.environ.get('CROSS_BUCKET_AVOID', '').strip() == '0':
+    CROSS_BUCKET_AVOID = False
+CROSS_BUCKET_MAX_ITEMS = 15
+CROSS_BUCKET_TITLE_CHARS = 80
+
 TW = timezone(timedelta(hours=8))
 NOW = datetime.now(TW)
 DATE_STR = NOW.strftime('%Y-%m-%d')
@@ -627,7 +636,24 @@ def _category_char_budget(category):
     budget = int(BASE_NEWS_CHAR_BUDGET * (size / REFERENCE_BUCKET_SIZE))
     return max(BASE_NEWS_CHAR_BUDGET, min(MAX_NEWS_CHAR_BUDGET, budget))
 
-def make_prompt(news_context, category, recent_titles=None):
+def build_cross_bucket_block(avoid_items):
+    """把同次執行中先產生的分類條目（標題+來源網址）組成追加段落；無條目回傳空字串。"""
+    lines = []
+    for it in (avoid_items or []):
+        title = (it.get('title') or '').strip()[:CROSS_BUCKET_TITLE_CHARS]
+        if not title or _is_placeholder(it):
+            continue
+        src = (it.get('source') or '').strip()
+        lines.append("- " + title + (" (" + src + ")" if src else ""))
+        if len(lines) >= CROSS_BUCKET_MAX_ITEMS:
+            break
+    if not lines:
+        return ""
+    return ("\nALREADY COVERED TODAY IN ANOTHER CATEGORY (hardware): if a candidate news item reports "
+            "the same event (same company, same product, same announcement) as any report below, do NOT "
+            "output it; a different event is still allowed even from the same company:\n" + "\n".join(lines))
+
+def make_prompt(news_context, category, recent_titles=None, avoid_items=None):
     notes = load_notes() if IS_SUNDAY else {}
     notes_text = "; ".join(f"{d}:{n}" for d, n in sorted(notes.items()) if n.strip()) if notes else ""
     weekly_line = CATEGORY_WEEKLY_TEMPLATE[category]
@@ -648,6 +674,7 @@ def make_prompt(news_context, category, recent_titles=None):
         'MUST be null — today is NOT Sunday; outputting any non-null value is an error'
     )
     category_desc = CATEGORY_DESC[category]
+    cross_block = build_cross_bucket_block(avoid_items) if (CROSS_BUCKET_AVOID and category == 'corp') else ""
 
     return f"""You are an AI supply chain analyst. Analyze the news below and output pure JSON (start directly with {{).
 
@@ -682,7 +709,7 @@ RULES:
 - All titles, body, impact, insight in Traditional Chinese (zh-TW)
 - weekly_summary: {weekly_rule}
 {no_repeat_str}
-{notes_ctx}"""
+{notes_ctx}{cross_block}"""
 
 # ══════════════════════════════════════════════════════════════════
 #  3. GROQ API + CHAIN QUALITY FIX
@@ -1971,7 +1998,7 @@ if __name__ == '__main__':
     categories = ['hw', 'corp', 'app']
     for i, cat in enumerate(categories):
         try:
-            result = call_groq(make_prompt(news_by_cat[cat], cat, recent_titles))
+            result = call_groq(make_prompt(news_by_cat[cat], cat, recent_titles, avoid_items=data.get('hw')))
             data[cat] = result.get(cat, [])
             data['glossary_new'].extend(result.get('glossary_new') or [])
             if IS_SUNDAY and result.get('weekly_summary'):
