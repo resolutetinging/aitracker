@@ -1,5 +1,136 @@
 [
   {
+    "date": "2026-10-14",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "AMD 於 OCP 峰會公布 Helion AI 代理伺服器機架",
+        "layer": "capacity_commitments",
+        "body": "AMD 在 2026 年 10 月於加州聖荷西的 OCP 峰會推出名為 Helion 的 AI 代理機架參考設計，提供 CPU 僅或 CPU+GPU 兩種配置。該機架最高可整合 32,768 核心的 Zen 6 CPU，使用 256 核心的 Venice EPYC 處理器，並可搭載至多 16 顆 Instinct MI350P GPU 加速卡。",
+        "impact": "",
+        "rating": "core",
+        "insight": "AMD 以全棧 Helion 機架切入 AI 代理市場，顯示其在 AI 基礎設施供應鏈的資本與產能承諾將持續升溫。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/10/12/amd-unveils-helion-racks-for-ai-agents-at-ocp-summit/5302652",
+        "chain": [
+          {
+            "label": "AMD Helium AI 伺服器機架出貨↑",
+            "type": "up"
+          },
+          {
+            "label": "Intel Xeon 需求↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Anthropic 將於本週三向機構投資人披露第三季財報",
+        "layer": "finance",
+        "body": "Anthropic 計畫於本週三在舊金山與潛在機構投資人會面，首次公開第三季營收與盈餘數據。此會議由兩位熟悉內情且要求匿名的消息人士透露，並已由 Bloomberg 報導。Anthropic 目前正為可能成為史上最大規模的首次公開發行做準備。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Anthropic 財報公開將成為資金與硬體需求的風向標，投資人應關注其對 GPU 供應鏈的拉動效應。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/13/anthropic-q3-financials-ipo.html",
+        "chain": [
+          {
+            "label": "Anthropic IPO 計畫↑",
+            "type": "up"
+          },
+          {
+            "label": "傳統投資銀行承銷收入↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Meta 發布前沿模型 Muse Wonder 與 Wonder Full",
+        "layer": "model",
+        "body": "Meta 超級智慧實驗室於 10 月 12 日推出兩款新前沿模型 Muse Wonder 與 Muse Wonder Full，並以每百萬輸入代幣 4 美元、每百萬輸出代幣 20 美元的價格透過 Meta Model API 提供。官方測試顯示兩模型在基準測試上可與 Fable 5.1 與 GPT‑6 Astra 相媲美。Meta 表示此舉是向個人超智慧邁進的關鍵一步。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Meta 的模型上線將直接刺激高階 GPU 與 HBM 需求，相關供應商可望受惠。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/",
+        "chain": [
+          {
+            "label": "Meta Muse Wonder API 價格↑",
+            "type": "up"
+          },
+          {
+            "label": "OpenAI API 市占↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": "",
+        "chain": [
+          {
+            "label": "無相關應用新聞",
+            "type": "neutral"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Helion",
+        "full": "AMD Helion AI 代理機架參考設計",
+        "def": "AMD 在 OCP 峰會推出的全棧機架，支援 CPU 僅或 CPU+GPU 組合，用於 AI 代理的推理與執行。",
+        "why": "提供單機架內完整的 AI 代理運算平台，降低系統整合成本。",
+        "category": "hardware"
+      },
+      {
+        "term": "Instinct MI350P",
+        "full": "AMD Instinct MI350P GPU 加速卡",
+        "def": "AMD 針對高效能運算與 AI 推理設計的 GPU，加速卡可在 Helion 機架中配置至多 16 顆。",
+        "why": "提升 AI 工作負載的計算密度，對 GPU 供應鏈需求產生直接拉動。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "前沿模型",
+        "full": "Frontier Model",
+        "def": "指在規模、參數量或效能上位於業界最前端的人工智慧模型，通常需要極高的算力與大量資料訓練。",
+        "why": "前沿模型的推出會直接拉動高階 GPU、記憶體與高速互連的需求，影響整體 AI 硬體供應鏈。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "多吉瓦級",
+        "full": "Multi‑Gigawatt‑level",
+        "def": "形容資料中心或加速器系統的總功耗達到數十億瓦特等級，代表極高的能源與散熱需求。",
+        "why": "此等級的功耗需求會推動電力基礎建設與散熱解決方案的升級，影響能源供應鏈。",
+        "category": "hardware"
+      },
+      {
+        "term": "Azure Maia",
+        "full": "Microsoft Azure Maia AI Accelerator",
+        "def": "Microsoft 為雲端 AI 工作負載設計的專屬加速器晶片，採用多晶片模組以提升推理與訓練效能。",
+        "why": "Maia 的大規模部署將改變 GPU 市場格局，提升對先進製程晶圓的需求。",
+        "category": "hardware"
+      },
+      {
+        "term": "第三方評估機構",
+        "full": "",
+        "def": "指獨立於AI模型開發者之外，提供模型安全性與效能評估的組織，例如 Model Evaluation and Threat Research (METR) 與 Transluce。",
+        "why": "隨著AI安全關注提升，這類機構可協助產業建立可信任的模型驗證流程，降低部署風險。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-13",
     "is_sunday": false,
     "hw": [
@@ -863,139 +994,6 @@
         "def": "以數位方式保存患者醫療資訊的系統，包含診斷、檢驗、用藥等資料，供醫護人員查閱與更新。",
         "why": "AI 風險偵測依賴即時且完整的 EHR 資料，促使相關供應商提升資料整合與安全服務。",
         "category": "hardware"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-07",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 在歐盟為 ChatGPT 與 Codex 文本加入隱形水印",
-        "layer": "CSP/CapEx",
-        "body": "OpenAI 於 2026 年 10 月 5 日宣布，將在未來數週內於歐盟區域的 ChatGPT 與 Codex 輸出文字加入不可見的水印，以符合歐洲 AI 法規。此功能預設關閉，開發者可自 10 月 5 日起於全球 API 控制台自行啟用，並僅限於符合 EU AI Act 規範的模型。",
-        "impact": "",
-        "rating": "core",
-        "insight": "OpenAI 先行在 EU 部署水印功能，將加速合規服務需求，提升雲端基礎設施與晶片供應鏈的訂單量。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/10/06/openai-rolls-out-weak-sauce-watermarking-for-ai-text/5301257",
-        "chain": [
-          {
-            "label": "OpenAI ChatGPT 水印功能↑",
-            "type": "up"
-          },
-          {
-            "label": "歐盟開發者使用率↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic 為新創提供一年免費 Claude Team 及 1,000 美元 API 信用額度",
-        "layer": "CSP/CapEx",
-        "body": "Anthropic 於 2026 年 10 月 6 日宣布，擴大 Claude for Startups 計畫，為符合條件的公司提供最多五個座位的 Claude Team 方案一年免費，並額外贈送 1,000 美元的 API 使用額度。受惠公司還可使用 Claude Marketplace 建置插件，並可預約 Anthropic Applied AI 團隊的線上諮詢時段。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Anthropic 以免費方案加速模型滲透，將提升其在 AI 服務市場的佔有率與上游硬體需求。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/10/06/anthropic-gives-startups-a-free-year-of-enterprise-service-and-1000-in-token-credits/",
-        "chain": [
-          {
-            "label": "Anthropic Claude Team 免費方案↑",
-            "type": "up"
-          },
-          {
-            "label": "初創公司 AI 成本↓",
-            "type": "down"
-          },
-          {
-            "label": "Claude Marketplace 插件使用量↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Nolla Health 於猶他州獲批使用 AI 直接開立痤瘡處方",
-        "layer": "healthcare",
-        "body": "2026 年 10 月 5 日，猶他州衛生部批准 Nolla Health 的人工智慧系統掃描使用者面部並即時開立痤瘡藥物處方；該系統利用影像辨識技術自動判斷痤瘡嚴重度並對應 FDA 許可的藥品；此服務目前已在猶他州部分診所上線，預計第一季內服務超過 5,000 名患者。",
-        "impact": "此 AI 處方平台直接降低了皮膚科診所對藥品批發商的訂購頻率，短期內藥品供應鏈上游的製藥廠需求可能下降 (↓)；同時，診所與藥局的物流需求因即時電子處方而減少，物流公司運輸量亦可能下降 (↓)；長遠看，若其他州效仿，將促使醫療器材與藥品供應鏈重新配置，提升遠距醫療平台的市場佔有率。",
-        "rating": "core",
-        "insight": "AI 直接開處方可縮短患者就醫流程，同時改變藥品與醫療服務的供應鏈結構。",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/ai-artificial-intelligence/1005075/nolla-health-acne-ai-prescriptions",
-        "chain": [
-          {
-            "label": "Nolla Health AI 開立痤瘡處方↑",
-            "type": "up"
-          },
-          {
-            "label": "猶他州患者使用量↑",
-            "type": "up"
-          },
-          {
-            "label": "相關藥品需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "HBM",
-        "full": "High Bandwidth Memory",
-        "def": "高頻寬記憶體（HBM）是一種堆疊式記憶體技術，提供每秒數百 GB 的資料傳輸速率，常用於 AI 加速卡與高效能運算平台。",
-        "why": "HBM 是 AI 基礎設施的關鍵記憶體，供應緊張或技術替代會直接影響 AI 加速卡的效能與成本。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "AI資料主權",
-        "full": "Artificial Intelligence Data Sovereignty",
-        "def": "指在 AI 訓練與推論過程中，資料必須保留在特定國家或區域的法規與合規要求，避免跨境傳輸造成的法律風險。",
-        "why": "資料主權需求會驅動企業選擇本地化 AI 基礎設施供應商，影響伺服器與加速卡的採購與部署策略。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "隱形水印",
-        "full": "Invisible Watermark",
-        "def": "一種在 AI 生成文字中嵌入的不可見標記，機器可辨識以符合合規要求。此技術在 EU AI Act 下被要求標示 AI 生成內容。",
-        "why": "確保 AI 產出可被監管機構追蹤，影響模型服務供應商的合規成本與技術研發投入。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "API 信用額度",
-        "full": "API Credit Allocation",
-        "def": "平台提供給開發者的預付金額，用於抵扣使用 AI 服務時的計算資源費用。Anthropic 本次提供 1,000 美元的信用額度。",
-        "why": "降低新創使用門檻，促進模型使用量提升，間接拉動上游硬體需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "視覺廣告",
-        "full": "Visual Ads",
-        "def": "在 AI 生成圖像旁顯示的圖形廣告，與文字廣告不同，直接嵌入圖像輸出畫面。",
-        "why": "為 AI 服務平台開闢新營收來源，影響廣告生態與相關硬體需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI生成處方",
-        "full": "人工智慧生成的醫療處方",
-        "def": "利用影像辨識與診斷模型，自動判斷患者病情並產出符合藥品規範的處方，患者可直接透過平台取得藥物。",
-        "why": "此技術縮短診斷與用藥流程，對醫藥供應鏈的需求與物流模式產生直接影響。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null

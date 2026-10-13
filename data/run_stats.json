@@ -2,6 +2,111 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 51,
+        "CSP/CapEx": 37,
+        "App/AI": 16,
+        "gnews-chip": 15,
+        "gnews-dc": 24,
+        "gnews-app": 22
+      },
+      "digest_filtered": 2,
+      "after_dedup": 155,
+      "buckets": {
+        "hw": 36,
+        "corp": 106,
+        "app": 35
+      },
+      "news_char_budget": {
+        "hw": 4200,
+        "corp": 8000,
+        "app": 4083
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 4,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "dedup_audit": [
+        {
+          "title": "Microsoft 計畫於 2027 年前部署多吉瓦級 Azure Maia AI 加速器機架",
+          "section": "corp",
+          "action": "removed",
+          "matched_title": "Microsoft 公布 Maia 300 AI 晶片 2027 年量產",
+          "reason": "兩篇皆說明 Microsoft 2027 年前的 Maia AI 計畫，分別聚焦於機架部署與晶片量產，同屬同一 AI 基礎設施宣布"
+        }
+      ],
+      "fact_audit": {
+        "mode": "log",
+        "checked": 3,
+        "suspect_cards": 1,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0
+        },
+        "enforced": 0,
+        "items": [
+          {
+            "sec": "hw",
+            "title": "AMD 於 OCP 峰會公布 Helion AI 代理伺服器機架",
+            "source": "https://www.theregister.com/systems/2026/10/12/amd-unveils-helion-racks-for-ai-agents-at-ocp-summit/5302652",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [
+              "32768 核心"
+            ],
+            "undetermined": [],
+            "tense_flag": false
+          }
+        ]
+      },
+      "date": "2026-10-14",
+      "generated_at": "2026-10-14T00:04:17.496040+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 40,
         "CSP/CapEx": 40,
         "App/AI": 20,
@@ -977,77 +1082,6 @@
       ],
       "date": "2026-10-01",
       "generated_at": "2026-10-01T00:04:16.634149+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 56,
-        "CSP/CapEx": 45,
-        "App/AI": 22,
-        "gnews-chip": 18,
-        "gnews-dc": 23,
-        "gnews-app": 17
-      },
-      "digest_filtered": 2,
-      "after_dedup": 165,
-      "buckets": {
-        "hw": 33,
-        "corp": 126,
-        "app": 32
-      },
-      "news_char_budget": {
-        "hw": 3850,
-        "corp": 8000,
-        "app": 3733
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 4,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 4,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "dedup_audit": [],
-      "date": "2026-09-30",
-      "generated_at": "2026-09-30T00:05:12.035579+08:00"
     }
   ]
 }
