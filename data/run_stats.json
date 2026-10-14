@@ -2,6 +2,105 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 58,
+        "CSP/CapEx": 44,
+        "App/AI": 21,
+        "gnews-chip": 15,
+        "gnews-dc": 23,
+        "gnews-app": 24
+      },
+      "digest_filtered": 1,
+      "after_dedup": 177,
+      "buckets": {
+        "hw": 35,
+        "corp": 127,
+        "app": 34
+      },
+      "news_char_budget": {
+        "hw": 4083,
+        "corp": 8000,
+        "app": 3966
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 2,
+        "app": 2
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "app": {
+          "core": 0,
+          "opp": 2,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "dedup_audit": [
+        {
+          "title": "Microsoft 計畫於 2027 年部署 多晶片 Azure Maia AI 加速器 96 芯片組態",
+          "section": "corp",
+          "action": "removed",
+          "matched_title": "Microsoft 公布 Maia 300 AI 晶片 2027 年量產",
+          "reason": "兩篇皆宣布 2027 年開始量產自研 Maia AI 晶片，屬同一項目"
+        },
+        {
+          "title": "金融科技公司 63% 採用 AI 滲透測試加速程式部署",
+          "section": "app",
+          "action": "downgraded",
+          "matched_title": null,
+          "reason": "內容僅敘述已發生的採用比例，未揭示新決策或新宣布"
+        }
+      ],
+      "fact_audit": {
+        "mode": "log",
+        "checked": 2,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 1,
+        "low_coverage": {
+          "checked": 1,
+          "suspect_cards": 0
+        },
+        "enforced": 0,
+        "items": []
+      },
+      "date": "2026-10-15",
+      "generated_at": "2026-10-15T00:04:25.864165+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 51,
         "CSP/CapEx": 37,
         "App/AI": 16,
@@ -1003,85 +1102,6 @@
       "dedup_audit": [],
       "date": "2026-10-02",
       "generated_at": "2026-10-02T00:04:55.823608+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 61,
-        "CSP/CapEx": 50,
-        "App/AI": 25,
-        "gnews-chip": 20,
-        "gnews-dc": 22,
-        "gnews-app": 20
-      },
-      "digest_filtered": 0,
-      "after_dedup": 183,
-      "buckets": {
-        "hw": 36,
-        "corp": 131,
-        "app": 35
-      },
-      "news_char_budget": {
-        "hw": 4200,
-        "corp": 8000,
-        "app": 4083
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 2,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 3,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "dedup_audit": [
-        {
-          "title": "Meta 推出針對小型企業的 Muse AI，目標 2 億家平台用戶",
-          "section": "corp",
-          "action": "removed",
-          "matched_title": "Meta Muse AI 應用下載量突破 340 萬，受 Meta Connect 推廣加速",
-          "reason": "兩篇皆描述同一 Muse AI 產品的發布與後續使用情況，屬同一事件"
-        }
-      ],
-      "date": "2026-10-01",
-      "generated_at": "2026-10-01T00:04:16.634149+08:00"
     }
   ]
 }

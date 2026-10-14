@@ -1,5 +1,137 @@
 [
   {
+    "date": "2026-10-15",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Cisco 與 Nvidia 合作推出超高密度可插拔光模組",
+        "layer": "pluggable_optics",
+        "body": "Cisco 與 Nvidia 在 OCP 全球峰會宣布開發的超密度小型可插拔光模組（USFP）可容納 32 條 400 Gbps 的通道，總帶寬達 12.8 Tbps，約為現有最高 1.6 Tbps 模組的八倍。該模組尺寸與現行 OSFP 模組相當，預計可在 AI 資料中心內以單一埠取代多條光纖連接。",
+        "impact": "下游 AI 資料中心的布線複雜度將下降，減少光纖佈線數量，進而降低安裝與維護成本。迫使傳統 NIC 與交換機供應商加速支援 12.8 Tbps 以上的介面規格。",
+        "rating": "core",
+        "insight": "投資者可關注支援 USFP 標準的光學元件供應鏈，因其需求將因 Cisco‑Nvidia 合作而顯著上升。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/networks/2026/10/14/cisco-nvidia-team-up-to-build-fatter-faster-pluggable/5302970",
+        "chain": [
+          {
+            "label": "Cisco USFP 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia AI 資料中心需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "共封裝光學需求激增 2028 年規劃推動供應鏈升溫",
+        "layer": "industry",
+        "body": "在 Ayar Labs CPO 峰會上，Meta、Broadcom、AMD 等業者共同指出 2028 年將迎來共封裝光學 (Co‑Packaged Optics) 需求激增，並討論 OCI MSA 在供應鏈中的角色。此需求預計促使光學元件製造商的產能擴充，以支援高密度光模組的量產。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "共封裝光學需求上升將驅動光子元件供應鏈擴張，提升相關廠商營收機會。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "Meta Co‑Packaged Optics 需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Broadcom 光學元件產能↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD 高密度光模組供應↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Android 在 Google 訊息中導入 AI 防詐騙功能",
+        "layer": "行動裝置",
+        "body": "Android 正於 Google 訊息加入 AI 驅動的詐騙偵測與防護功能，旨在即時辨識並阻擋惡意訊息。此功能同時擴充至整體 Android 系統的防詐騙工具列，提升使用者在手機上的安全防護。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "AI 防詐騙功能將推動手機硬體安全加速器需求上升。",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/tech/1010928/android-scam-protection-enhanced-protection-google-messages",
+        "chain": [
+          {
+            "label": "Google Android AI 防詐騙功能↑",
+            "type": "up"
+          },
+          {
+            "label": "Android 使用者安全感↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "金融科技公司 63% 採用 AI 滲透測試加速程式部署",
+        "layer": "金融服務",
+        "body": "根據 FF News 報導，全球金融科技企業中有 63% 已導入 AI 滲透測試，以在保持安全的同時提升程式碼部署速度。此趨勢顯示 AI 已成為金融科技 DevSecOps 流程的核心工具。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "AI 滲透測試的廣泛採用將加速安全硬體與雲端服務需求。",
+        "source_label": "FF News",
+        "source": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOQXRIZ1VoSUoxbWlpNWcyTWo4eHRxT3NLWFMtUVUwRTR2Vl83NGNjQXI4WmpFZC1oa3p1VlR3cWl1T1NWdGI1WVZKQ1U0TllZaHdqcF9oTkNsV1NkQlU0WWNyTjl2X2pMclpZeXVJX0Fpa3hoY0h4bVFCaEluR28yeXYwbk04SktndktaSU84cDV4dENmN0xqZ2pMaFo1Zk1UMGY3SnFmWFZaX2FvY2VEUVZBcw",
+        "chain": [
+          {
+            "label": "金融科技 AI 滲透測試採用率↑",
+            "type": "up"
+          },
+          {
+            "label": "DevSecOps 部署速度↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "USFP",
+        "full": "Ultra‑dense Small Form‑factor Pluggable",
+        "def": "一種新型可插拔光模組，能在與傳統 OSFP 相同尺寸內整合多達 32 條 400 Gbps 通道，總帶寬可達 12.8 Tbps。",
+        "why": "此規格大幅提升單埠傳輸能力，將改變 AI 資料中心的光纖布線與交換機介面需求。",
+        "category": "hardware"
+      },
+      {
+        "term": "共封裝光學",
+        "full": "Co‑Packaged Optics",
+        "def": "將光學元件與晶片封裝於同一模組內，以降低訊號傳輸延遲並提升頻寬的技術。",
+        "why": "隨著資料中心對高效能互連需求增加，該技術成為提升 AI 訓練效能的關鍵。",
+        "category": "hardware"
+      },
+      {
+        "term": "Azure Maia AI 加速器",
+        "full": "Microsoft Azure Maia AI Accelerator",
+        "def": "Microsoft 自研的 AI 加速器平台，採用多晶片堆疊設計，提供高吞吐量的 token 處理能力。",
+        "why": "可減少對第三方 GPU 供應商的依賴，改變雲端 AI 計算供應鏈格局。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI 防詐騙",
+        "full": "人工智慧詐騙偵測與阻擋技術",
+        "def": "利用機器學習模型即時分析訊息內容與發送者行為，辨識並阻止可能的詐騙訊息。此技術常結合自然語言處理與行為分析，以提升偵測準確度。",
+        "why": "隨著行動詐騙手法日益複雜，AI 防詐騙成為提升使用者安全的關鍵防線。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI 滲透測試",
+        "full": "人工智慧驅動的安全漏洞測試",
+        "def": "透過 AI 演算法自動化掃描與模擬攻擊，快速找出系統或應用程式的安全弱點。相較於傳統手動測試，能在更短時間內完成大量測試。",
+        "why": "在金融科技等高頻部署環境中，AI 滲透測試可同時確保安全與加速上線速度。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-14",
     "is_sunday": false,
     "hw": [
@@ -805,195 +937,6 @@
         "def": "新加坡金融管理局制定的規範，要求金融機構在使用 AI 時必須評估模型透明度、資料治理與公平性，並接受獨立第三方審查。",
         "why": "確保金融服務的安全與合規，降低 AI 模型錯誤或偏見導致的金融風險。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-08",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Lambda 目標於 2027 年 IPO 前募集 40 億美元資金",
-        "layer": "funding",
-        "body": "Lambda 正在以 145 億美元的前估值募集最高 40 億美元資金，由 Coatue Management 與 Blackstone 主導；根據《華爾街日報》文件，Lambda 的訂單積壓從 6 月的 150 億美元增至 9 月的 500 億美元，其中 350 億美元來自 Anthropic 的 350 億美元承諾。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "投資者可關注 Lambda 的資金使用與 GPU 供應鏈配置，以評估其在 AI 基礎設施市場的成長潛力。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/10/06/ai-computing-startup-lambda-to-raise-4b-ahead-of-planned-ipo/",
-        "chain": [
-          {
-            "label": "Lambda 募資額↑",
-            "type": "up"
-          },
-          {
-            "label": "Anthropic 訂單增↑",
-            "type": "up"
-          },
-          {
-            "label": "Coatue 投資參與↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Anthropic 將 Project Glasswing 與 CVP 合併為單一安全方案",
-        "layer": "AI 安全",
-        "body": "Anthropic 於 2026 年 4 月推出的 Project Glasswing 與 Cyber Verification Program（CVP）在同月整合為一個三層級威脅偵測平台，該平台允許合作夥伴在 Mythos 前沿模型正式發布前掃描系統漏洞；截至目前，Project Glasswing 只發現 225 件與 Anthropic 相關的漏洞，且其中低於 0.5% 被標記為高危。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Anthropic 整合安全方案將推動其前沿模型的商業化，同時刺激 GPU 供應鏈需求上升。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/security/2026/10/07/anthropic-reconfigures-its-cool-kids-security-program/5301509",
-        "chain": [
-          {
-            "label": "Anthropic Glasswing 安全平台部署↑",
-            "type": "up"
-          },
-          {
-            "label": "合作夥伴漏洞偵測能力↑",
-            "type": "up"
-          },
-          {
-            "label": "CVP 效能提升↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Google Labs 推出 AI 文字驅動遊戲平台 Playground",
-        "layer": "AI 生成內容",
-        "body": "Google 於 2026 年 10 月 7 日（星期五）在其公共實驗平台推出 Playground，使用者只需輸入文字提示即可在瀏覽器中生成 2D 或 3D 遊戲，支援即時選擇類型、單/多人模式與機制設定。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Google 的 AI 遊戲平台將加速雲端 GPU 需求，為晶圓代工帶來新訂單。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/10/07/google-experiments-with-an-ai-powered-gaming-platform/",
-        "chain": [
-          {
-            "label": "Google Playground 使用者數↑",
-            "type": "up"
-          },
-          {
-            "label": "瀏覽器遊戲開發需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Roblox 市占↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Meta 與多家公司合作制定 AI 機器人商務標準",
-        "layer": "AI 生態系統",
-        "body": "Meta 於 2026 年 10 月 6 日宣布加入由 OpenAI 董事長 Bret Taylor 所創立的 Sierra 企業聯盟，與多家業者共同制定 AI 機器人商務互動的技術標準，以降低跨平台整合的複雜度。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "Meta 參與標準制定將推動 AI 機器人市場快速擴張，帶動相關硬體與雲端服務需求。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/06/meta-joins-companies-to-tame-chaos-of-doing-business-with-ai-bots.html",
-        "chain": [
-          {
-            "label": "Meta AI 機器人標準制定↑",
-            "type": "up"
-          },
-          {
-            "label": "跨平台整合複雜度↓",
-            "type": "down"
-          },
-          {
-            "label": "OpenAI 影響力↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Healthleap 獲得 3800 萬美元資金加速 AI 病患風險偵測平台",
-        "layer": "healthcare",
-        "body": "Healthleap 於 2026 年 10 月獲得總額 3800 萬美元的種子與 A 輪融資，其中 800 萬美元由 Sequoia Capital 與 First Round Capital 共同領投，3000 萬美元則由 Hummingbird Ventures 主導。該公司於 2022 年在南非由 Jemima Meyer 與 Josiah Meyer 兄妹創立，最初提供臨床營養工具，後轉型為可讀取病歷並偵測未診斷疾病風險的 AI 平台。平台已開始在多家醫院部署，協助醫師在患者入院後即時標示高風險個案。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "投資者可關注 AI 醫療風險平台的市場潛力與其對醫院供應鏈的上下游效應。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/10/07/healthleap-raises-38m-for-its-ai-that-flags-hospital-patients-who-may-need-a-closer-look/",
-        "chain": [
-          {
-            "label": "Healthleap 資金募集↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 病患風險偵測平台部署↑",
-            "type": "up"
-          },
-          {
-            "label": "醫院診斷效率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "3D 鐵電記憶體",
-        "full": "三維鐵電式記憶體 (3D Ferroelectric Memory)",
-        "def": "一種利用鐵電材料的三維堆疊結構記憶體，可在每瓦特功耗下提供遠高於傳統 HBM 的資料傳輸帶寬。",
-        "why": "其高效能與低功耗特性對 AI 加速卡的能源需求具有顛覆性影響。",
-        "category": "hardware"
-      },
-      {
-        "term": "Coatue Management",
-        "full": "Coatue Management LP",
-        "def": "一家專注於科技與消費領域的全球投資管理公司，常為新興 AI 基礎設施公司提供大型融資。",
-        "why": "其參與 Lambda 融資顯示資本市場對 AI 計算基礎設施的高度關注。",
-        "category": "role"
-      },
-      {
-        "term": "HBM",
-        "full": "High Bandwidth Memory",
-        "def": "高帶寬記憶體，常與 GPU 結合使用以提供高速資料存取，廣泛應用於 AI 加速卡。",
-        "why": "Kepler 以新型 3D 鐵電記憶體取代 HBM，可能改變 AI 計算的記憶體供應鏈格局。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Project Glasswing",
-        "full": "Anthropic 的安全合作計畫",
-        "def": "Anthropic 於 2026 年 4 月推出的早期漏洞偵測計畫，讓合作夥伴在新模型 Mythos 發布前掃描系統弱點。",
-        "why": "提供前置安全防護，降低模型部署後的資安風險。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Playground",
-        "full": "Google AI 文字驅動遊戲創作平台",
-        "def": "使用者只需輸入文字描述，即可在瀏覽器生成 2D/3D 遊戲，支援即時設定類型與多人模式。",
-        "why": "降低遊戲開發門檻，擴大 AI 生成內容的應用範圍。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Sierra",
-        "full": "OpenAI 主導的 AI 機器人標準制定聯盟",
-        "def": "由 OpenAI 董事長 Bret Taylor 成立，聚集多家企業共同制定 AI 機器人商務互動的技術標準。",
-        "why": "標準化有助於跨平台整合，提升產業整體效率。",
-        "category": "role"
-      },
-      {
-        "term": "AI平台",
-        "full": "人工智慧平台",
-        "def": "結合機器學習模型與資料處理管線的軟體系統，可自動分析大量結構化或非結構化資料，提供決策或預測服務。",
-        "why": "平台化使不同醫院能快速導入 AI 功能，降低開發門檻，擴大市場規模。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "EHR",
-        "full": "Electronic Health Record（電子健康紀錄）",
-        "def": "以數位方式保存患者醫療資訊的系統，包含診斷、檢驗、用藥等資料，供醫護人員查閱與更新。",
-        "why": "AI 風險偵測依賴即時且完整的 EHR 資料，促使相關供應商提升資料整合與安全服務。",
-        "category": "hardware"
       }
     ],
     "weekly_summary": null
