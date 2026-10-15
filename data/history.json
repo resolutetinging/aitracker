@@ -1,5 +1,194 @@
 [
   {
+    "date": "2026-10-16",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "TSMC 派員赴美檢視資料中心建設與電力供應",
+        "layer": "capacity_commitments",
+        "body": "TSMC 正派遣人員前往美國，實地檢查資料中心的建設進度與電力供應情況，以評估未來在美擴增晶圓代工產能的可行性。此行動與公司預計投入最高 640 億美元擴建資本支出相呼應，顯示其正積極規劃美國供應鏈布局。",
+        "impact": "",
+        "rating": "core",
+        "insight": "TSMC 佈局美國資料中心供電，將加速本土 AI 晶片供應鏈建設。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/10/15/tsmc-sends-scouts-to-check-whether-americas-datacenters-can-deliver/5303260",
+        "chain": [
+          {
+            "label": "TSMC 美國資料中心供應鏈布局↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC 美國晶圓代工產能擴增↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "TSMC 晶圓產能成 AI 客戶激烈爭奪焦點",
+        "layer": "capacity_commitments",
+        "body": "TSMC 在創紀錄的季報中透露，2026 年可提供超過 1700 萬片 12 吋等效晶圓，但 AI 客戶需求持續超出供應，導致晶圓排程競爭激烈。公司北美 CEO 表示每日接獲至少 10 通關於晶圓產能的詢問，顯示需求壓力持續升高。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "AI 晶片需求持續超過 TSMC 產能，將推高晶圓與相關原料價格。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/15/nvidia-apple-broadcom-in-fierce-battle-to-make-chips-at-tsmc.html",
+        "chain": [
+          {
+            "label": "TSMC AI 客戶晶圓需求↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC 晶圓排程競爭激烈↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "AWS 投入 10 億美元建置前端部署工程師團隊",
+        "layer": "AI 人才投資",
+        "body": "Amazon Web Services 宣布將投入 10 億美元於前端部署工程師（FDE）計畫，以加速企業 AI 應用落地。此舉旨在提供具備 AI 與軟體專業的工程師，協助客戶將大型語言模型轉化為可衡量的商業成果。",
+        "impact": "此資金將直接提升 AWS 供應鏈中高階 AI 人才的需求，帶動相關培訓機構與外包服務商的服務量↑。",
+        "rating": "core",
+        "insight": "AWS 大規模人才投入將加速企業 AI 轉型，提升雲端服務需求。",
+        "source_label": "The Register",
+        "source": "https://www.cnbc.com/2026/10/15/aws-anthropic-racing-to-deploy-army-of-specialized-ai-engineers.html",
+        "chain": [
+          {
+            "label": "AWS 前端部署工程師團隊投入↑",
+            "type": "up"
+          },
+          {
+            "label": "AWS 企業 AI 應用落地加速↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Amazon 發布 Bee 系列個人 AI 裝置，售價 75 美元與 100 美元",
+        "layer": "AI 硬體產品",
+        "body": "Amazon 推出新款 Bee Frontier 可穿戴手環，售價 75 美元，並推出配合智慧手機的 Bee Eclipse，售價 100 美元，兩者皆具備即時語音對話與 AI 助理功能。",
+        "impact": "新裝置的推出將刺激智慧穿戴硬體的零組件需求，提升晶片、感測器與電池供應商的出貨量↑。",
+        "rating": "core",
+        "insight": "Amazon 以低價 AI 穿戴設備切入消費市場，將帶動相關硬體供應鏈需求。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/15/amazon-bee-frontier-eclipse-ai-devices.html",
+        "chain": [
+          {
+            "label": "Amazon Bee Frontier 可穿戴 AI 裝置售價75美元↑",
+            "type": "up"
+          },
+          {
+            "label": "Amazon Bee Eclipse 智慧手機配件售價100美元↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Apate.ai 以千名 AI 代理人偽裝受害者收集詐騙情報",
+        "layer": "fraud_intelligence",
+        "body": "Apate.ai 成立於 2024 年，部署數千名 AI 代理人偽裝成不同年齡、性別與口音的受害者。這些代理人已完成 2.5 百萬次對話，累計讓詐騙者浪費約 17 年時間。公司服務的客戶包括銀行、電信、政府機關與公用事業，透過對話取得詐騙者的銀行帳號、加密錢包與惡意網站資訊。",
+        "impact": "下游：銀行與電信業者因能更早取得詐騙者資訊，減少詐騙損失，進一步提升客戶信任與服務品質。",
+        "rating": "opp",
+        "insight": "AI 代理人可大幅提升詐騙偵測資訊的取得速度與品質，為金融與電信業者帶來即時防護優勢。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/10/14/apate-sends-ai-agents-undercover-to-get-scammed-so-they-can-gather-fraud-intelligence/",
+        "chain": [
+          {
+            "label": "Apate.ai AI 代理人偽裝受害者收集詐騙情報↑",
+            "type": "up"
+          },
+          {
+            "label": "Apate.ai 為銀行電信等客戶提供詐騙情報服務↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Amazon 推出兩款全新 Bee 可穿戴 AI 裝置",
+        "layer": "wearable_ai",
+        "body": "Amazon 於去年收購 Bee 後，於本月發布 $74.99 的 Bee Frontier 與即將上市的 $99.99 Bee Eclipse，兩者皆具備全天候語音偵測與會議摘要功能。Bee 裝置可與 Gmail、Google Calendar、Outlook、Apple HealthKit 及相片服務整合，讓 AI 代為草擬郵件或建立行事曆邀請。此系列產品定位為提升使用者即時資訊掌握與行動效率的工具。",
+        "impact": "上游：麥克風、磁吸模組與電池等硬體元件需求 ↑，帶動相關供應商產能提升。中游：Amazon 雲端服務與 AI 平台將獲得更多裝置端資料回饋，促進模型訓練與服務升級。",
+        "rating": "core",
+        "insight": "結合語音偵測與 AI 助理的可穿戴裝置將推動硬體供應鏈與雲端服務的同步成長。",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/tech/1011475/amazon-bee-frontier-eclipse-price-specs",
+        "chain": [
+          {
+            "label": "Amazon Bee Frontier 可穿戴 AI 裝置售價74.99美元↑",
+            "type": "up"
+          },
+          {
+            "label": "Amazon Bee Eclipse 即將上市售價99.99美元↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "高頻寬記憶體",
+        "full": "High Bandwidth Memory (HBM)",
+        "def": "一種堆疊式記憶體技術，提供極高的資料傳輸速率，常用於 AI 加速器與高效能運算平台。",
+        "why": "HBM 的功耗與效能直接影響 AI 伺服器的能源成本與散熱設計。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "晶圓代工",
+        "full": "Foundry",
+        "def": "專門為其他半導體公司製造晶圓的廠商，提供製程技術與產能服務。",
+        "why": "代工廠的產能配置決定了 AI 晶片的供應速度與成本結構。",
+        "category": "hardware"
+      },
+      {
+        "term": "供應鏈布局",
+        "full": "Supply Chain Deployment",
+        "def": "企業在不同地域或階段配置資源與合作夥伴，以確保產品從原料到最終客戶的順暢流通。",
+        "why": "TSMC 在美國的布局將改變全球 AI 晶片供應鏈的地理分布與風險管理。",
+        "category": "role"
+      },
+      {
+        "term": "前端部署工程師（FDE）",
+        "full": "Forward-Deployed Engineer",
+        "def": "具備 AI 與企業運營知識的工程師，負責將大型語言模型直接部署於客戶的業務系統中，縮短技術落地時間。",
+        "why": "FDE 能將 AI 技術快速商業化，提升雲端服務供應商與模型提供商的收入。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Bee Frontier",
+        "full": "Amazon Bee Frontier 可穿戴手環",
+        "def": "Amazon 推出的智慧手環產品，具備即時語音對話與 AI 助理功能，售價 75 美元。",
+        "why": "作為低價 AI 穿戴裝置，將刺激感測器與低功耗晶片的需求。",
+        "category": "hardware"
+      },
+      {
+        "term": "AI 代理人",
+        "full": "Artificial Intelligence Agent",
+        "def": "利用人工智慧技術模擬人類行為的軟體程式，可在通訊、客服或偽裝任務中自動執行互動。",
+        "why": "在詐騙情報收集與自動化客服等領域提供大規模、低成本的互動能力。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "詐騙情報偵測",
+        "full": "Fraud Intelligence Gathering",
+        "def": "透過主動與詐騙者互動，取得其作案手法、資金流向與目標平台等資訊，以供防護系統使用。",
+        "why": "提升金融與電信業者的風險預警與損失減少能力。",
+        "category": "role"
+      },
+      {
+        "term": "可穿戴 AI 裝置",
+        "full": "Wearable AI Device",
+        "def": "具備語音偵測與人工智慧處理能力的穿戴式硬體，可即時轉錄、摘要並執行指令。",
+        "why": "結合硬體感測與雲端 AI，為使用者提供無縫的資訊助理服務。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-15",
     "is_sunday": false,
     "hw": [
@@ -805,138 +994,6 @@
         "def": "以稀土元素（如釹、鈷）製成的永久磁鐵，具備高磁能積，廣泛應用於電動車馬達與高效能電子硬體。",
         "why": "供應集中於中國，出口管制可能改變全球供應鏈布局。",
         "category": "hardware"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-09",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "微軟採用 Nvidia RTX Spark SoC 推出 Surface Laptop Ultra",
-        "layer": "supplier_decision",
-        "body": "微軟於 2026 年 10 月 7 日在舊金山發表的 Surface Laptop Ultra 搭載 Nvidia RTX Spark 系統單晶片（SoC），起售價格為 2,600 美元，最高規格售價達 5,900 美元。此機型同時支援 Copilot+ AI 功能，並於同日開放預購，預計下週開始出貨。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Nvidia AI SoC 需求上升將推動其晶圓代工與封裝產能擴張，投資者可關注相關上游供應鏈。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/personal-tech/2026/10/07/microsoft-n1xes-intel-in-favor-of-nvidias-shiny-new-socs-in-surface-laptop-ultra/5301722",
-        "chain": [
-          {
-            "label": "Nvidia RTX Spark SoC 供應↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft Surface Laptop Ultra 銷售↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "英國 ICO 促使十大 AI 巨頭加強個資保護承諾",
-        "layer": "core",
-        "body": "2026 年 10 月 8 日，英國資訊委員會 (ICO) 公布 Amazon、Google、Microsoft、OpenAI、Meta、Anthropic、Apple、Cohere、DeepSeek、Stability AI 及其他六家公司已承諾改善個人資料在 AI 模型訓練中的使用方式。承諾內容包括於 2026 年底前提供更明確的資料使用說明以及加強使用者資料權利行使機制。",
-        "impact": "",
-        "rating": "core",
-        "insight": "ICO 的合規壓力將推動 AI 產業加速落實資料治理，相關技術供應商受益。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/10/08/ai-giants-promise-to-play-nice-with-personal-data-after-uk-watchdog-scrutiny/5301966",
-        "chain": [
-          {
-            "label": "Amazon 個資合規成本↑",
-            "type": "up"
-          },
-          {
-            "label": "Google AI 研發支出↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta 用戶信任↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI Dots 服務遭遇連線失敗與安全限制問題",
-        "layer": "opp",
-        "body": "OpenAI 於 2026 年 10 月 7 日推出的 Dots 永續代理服務在多個使用者報告中出現連線中斷、代理消失與因防濫用機制被拒絕的情況。開發者社群亦指出部分 Dots 無法持續與雲端計算資源保持連線，導致任務失敗率上升至約 30%。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "OpenAI Dots 的穩定性問題為競爭對手提供切入點，市場對可靠永續代理的需求仍未滿足。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/10/07/openai-dots-inspire-open-source-imitators-amid-technical-difficulties/5301734",
-        "chain": [
-          {
-            "label": "OpenAI Dots 服務可用性↓",
-            "type": "down"
-          },
-          {
-            "label": "開發者對 OpenAI 信任↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "新加坡金融管理局要求所有金融科技 AI 用例須經獨立審查",
-        "layer": "finance",
-        "body": "新加坡金融管理局（MAS）於 2026 年 10 月 8 日發布《人工智慧風險管理指引》，規定本地金融機構在部署任何 AI 應用前必須取得獨立第三方審查批准。指引要求審查機構具備 AI 風險評估能力，並在審查報告中說明模型透明度、資料治理與公平性等要點。此規範同時適用於使用第三方 AI 服務的金融科技公司，違規將面臨罰款或營運限制。",
-        "impact": "AI 供應商需提供符合 MAS 指引的合規文件，導致其合規成本 ↑。",
-        "rating": "core",
-        "insight": "投資者應關注具備 AI 合規能力的供應商，因其將在新加坡金融市場獲得優先合作機會。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/10/08/singapores-central-bank-wants-all-fintech-ai-use-cases-subject-to-independent-review/5301798",
-        "chain": [
-          {
-            "label": "新加坡金融科技 AI 需求合規成本↑",
-            "type": "up"
-          },
-          {
-            "label": "金融機構 AI 部署速度↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "RTX Spark SoC",
-        "full": "Nvidia RTX Spark 系統單晶片",
-        "def": "Nvidia 為 AI 加速與混合運算設計的系統單晶片，內建 GPU、CPU 及 AI 加速單元，支援 Windows 11 Copilot+ 功能。",
-        "why": "此晶片是微軟新一代 AI PC 的核心，直接牽動晶圓代工與封裝產能需求。",
-        "category": "hardware"
-      },
-      {
-        "term": "Surface Laptop Ultra",
-        "full": "Microsoft Surface Laptop Ultra",
-        "def": "微軟於 2026 年推出的高階筆記型電腦，搭載 Nvidia RTX Spark SoC，提供 24 GB 記憶體起、最高 5,900 美元的規格選項。",
-        "why": "作為首批搭載 Nvidia AI SoC 的商用筆電，將影響 PC 市場的供應鏈布局。",
-        "category": "hardware"
-      },
-      {
-        "term": "N1X",
-        "full": "Nvidia RTX Spark N1X 系統單晶片",
-        "def": "Nvidia 為 AI 加速與混合運算設計的 SoC，整合 GPU、CPU 與 AI 加速器，支援即時工作負載切換。",
-        "why": "Microsoft 採用此晶片代表高效能 AI 筆電的趨勢，將推動相關晶圓與封裝需求。",
-        "category": "hardware"
-      },
-      {
-        "term": "Dots",
-        "full": "OpenAI 永續代理 (always‑on agents)",
-        "def": "一種在雲端持續運行的 AI 代理服務，允許使用者透過持久化的任務執行與資料存取。",
-        "why": "Dots 的技術成熟度直接影響企業對永續 AI 服務的採用意願。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI 風險管理指引",
-        "full": "Artificial Intelligence Risk Management Guidelines",
-        "def": "新加坡金融管理局制定的規範，要求金融機構在使用 AI 時必須評估模型透明度、資料治理與公平性，並接受獨立第三方審查。",
-        "why": "確保金融服務的安全與合規，降低 AI 模型錯誤或偏見導致的金融風險。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
