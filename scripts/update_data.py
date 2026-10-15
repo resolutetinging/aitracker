@@ -2153,6 +2153,19 @@ def upsert(history, data):
 # ══════════════════════════════════════════════════════════════════
 #  5. EMAIL（5/5 content quality）
 # ══════════════════════════════════════════════════════════════════
+import html as _html_mod
+
+
+def _esc(x):
+    """信件HTML插值用：外部來源／LLM文字一律escape。"""
+    return _html_mod.escape(str(x if x is not None else ''), quote=True)
+
+
+def _safe_url(u):
+    """href只准http(s)://開頭，其餘回傳空字串（呼叫端改為只顯示文字）。"""
+    u = str(u or '').strip()
+    return u if re.match(r'^https?://', u, re.I) else ''
+
 def send_email(data):
     user = os.environ.get('GMAIL_USER','').replace('\xa0','').replace(' ','').strip()
     pwd  = os.environ.get('GMAIL_APP_PASSWORD','').replace('\xa0','').replace(' ','').strip()
@@ -2188,7 +2201,7 @@ def send_email(data):
     from email.mime.multipart import MIMEMultipart
 
     def chain_text(chain):
-        return ' → '.join(c['label'] for c in chain)
+        return ' → '.join(_esc(c['label']) for c in chain)
 
     def rating_badge(r):
         return {'core':'🔵 CORE','noise':'⚫ NOISE','opp':'🟢 OPP'}.get(r,'')
@@ -2197,22 +2210,29 @@ def send_email(data):
         if not items: return ''
         cards = ''
         for item in items:
-            eth = f'<div style="background:#fff8f0;border-left:3px solid #c07030;padding:8px 12px;margin:8px 0;font-size:12px;color:#805020;">⚠️ {item["ethic"]}</div>' if item.get('ethic') else ''
-            src = f'<div style="margin-top:6px;font-size:11px;"><a href="{item["source"]}" style="color:{color};">{item.get("source_label","來源連結")} →</a></div>' if item.get('source') else ''
+            eth = f'<div style="background:#fff8f0;border-left:3px solid #c07030;padding:8px 12px;margin:8px 0;font-size:12px;color:#805020;">⚠️ {_esc(item["ethic"])}</div>' if item.get('ethic') else ''
+            src_url = _safe_url(item.get('source'))
+            src_lbl = _esc(item.get("source_label") or "來源連結")
+            if src_url:
+                src = f'<div style="margin-top:6px;font-size:11px;"><a href="{_esc(src_url)}" style="color:{color};">{src_lbl} →</a></div>'
+            elif item.get('source'):
+                src = f'<div style="margin-top:6px;font-size:11px;color:#9e9890;">{src_lbl}</div>'
+            else:
+                src = ''
             cards += f'''
             <div style="background:#faf9f7;border-left:3px solid {color};padding:14px 16px;margin:10px 0;border-radius:0 6px 6px 0;">
               <div style="display:flex;align-items:center;margin-bottom:6px;">
-                <span style="font-size:11px;font-weight:700;color:{color};background:{color}18;padding:2px 8px;border-radius:10px;border:1px solid {color}44;margin-right:8px;">{item["layer"]}</span>
+                <span style="font-size:11px;font-weight:700;color:{color};background:{color}18;padding:2px 8px;border-radius:10px;border:1px solid {color}44;margin-right:8px;">{_esc(item["layer"])}</span>
                 <span style="font-size:11px;color:#888;">{rating_badge(item.get("rating",""))}</span>
               </div>
-              <div style="font-size:14px;font-weight:700;color:#2c2a28;margin-bottom:8px;line-height:1.4;">{item["title"]}</div>
-              <div style="font-size:13px;color:#4a4744;line-height:1.65;margin-bottom:10px;">{item["body"]}</div>
+              <div style="font-size:14px;font-weight:700;color:#2c2a28;margin-bottom:8px;line-height:1.4;">{_esc(item["title"])}</div>
+              <div style="font-size:13px;color:#4a4744;line-height:1.65;margin-bottom:10px;">{_esc(item["body"])}</div>
               <div style="background:#f0ede9;border-radius:5px;padding:8px 12px;font-size:12px;color:#6a6460;">
                 <span style="font-size:10px;text-transform:uppercase;letter-spacing:0.6px;color:#9e9890;display:block;margin-bottom:4px;">供應鏈影響分析</span>
-                {item.get("impact") or chain_text(item.get("chain") or [])}
+                {_esc(item["impact"]) if item.get("impact") else chain_text(item.get("chain") or [])}
               </div>
               {eth}
-              {f'<div style="margin-top:10px;font-size:12.5px;color:#3a6860;background:#f0f8f6;padding:8px 12px;border-radius:5px;border-left:2px solid #4a8a6a;">注意方向：{item["insight"]}</div>' if item.get("insight") else ''}
+              {f'<div style="margin-top:10px;font-size:12.5px;color:#3a6860;background:#f0f8f6;padding:8px 12px;border-radius:5px;border-left:2px solid #4a8a6a;">注意方向：{_esc(item["insight"])}</div>' if item.get("insight") else ''}
               {src}
             </div>'''
         return f'''
@@ -2231,9 +2251,9 @@ def send_email(data):
             if '：' in ln:
                 sep = ln.index('：')
                 lbl, body = ln[:sep], ln[sep+1:]
-                rows.append(f'<div style="margin:5px 0;padding:3px 0 3px 10px;border-left:2px solid #d4b060;"><strong style="font-weight:700;color:#8a6030;">{lbl}：</strong>{body}</div>')
+                rows.append(f'<div style="margin:5px 0;padding:3px 0 3px 10px;border-left:2px solid #d4b060;"><strong style="font-weight:700;color:#8a6030;">{_esc(lbl)}：</strong>{_esc(body)}</div>')
             else:
-                rows.append(f'<div style="margin:5px 0;padding:3px 0 3px 10px;border-left:2px solid #d4b060;">{ln}</div>')
+                rows.append(f'<div style="margin:5px 0;padding:3px 0 3px 10px;border-left:2px solid #d4b060;">{_esc(ln)}</div>')
         return ''.join(rows)
 
     weekly = ''
@@ -2260,16 +2280,16 @@ def send_email(data):
 
             def _ref_card(c):
                 return f'''<div style="background:#faf9f7;border:1px solid #d8d4ce;border-radius:8px;padding:10px 14px;margin-bottom:8px;">
-                  <div style="font-size:11px;color:#7a756f;text-transform:uppercase;letter-spacing:.5px;">{c["label"]}</div>
-                  <div style="font-size:16px;font-weight:700;color:#2c2a28;margin:2px 0;">{c["value"]}</div>
-                  <div style="font-size:11.5px;color:#7a756f;line-height:1.5;">{c["sub"]}</div>
+                  <div style="font-size:11px;color:#7a756f;text-transform:uppercase;letter-spacing:.5px;">{_esc(c["label"])}</div>
+                  <div style="font-size:16px;font-weight:700;color:#2c2a28;margin:2px 0;">{_esc(c["value"])}</div>
+                  <div style="font-size:11.5px;color:#7a756f;line-height:1.5;">{_esc(c["sub"])}</div>
                 </div>'''
 
             hw_cards = ''.join(_ref_card(c) for c in (ref.get('hw',{}).get('bottleneck_cards') or []) + (ref.get('hw',{}).get('vendor_cards') or []))
             corp_cards = ''.join(_ref_card(c) for c in (ref.get('corp',{}).get('metric_cards') or []))
             qbanner = f'''
             <div style="background:#f0f5f8;border:1px solid #b8c8d8;border-radius:8px;padding:16px 20px;margin:20px 0;">
-              <div style="font-size:14px;font-weight:700;color:#3a5a7a;margin-bottom:4px;">📊 季底財報回顧（{ref.get("last_updated","—")}）</div>
+              <div style="font-size:14px;font-weight:700;color:#3a5a7a;margin-bottom:4px;">📊 季底財報回顧（{_esc(ref.get("last_updated","—"))}）</div>
               <div style="font-size:11px;color:#9e9890;margin-bottom:12px;">本季最後一天彙整目前掌握的最新財報數字，僅供快速回顧；本季（今日）財報通常尚未公布，上方季別為實際最後更新的資料來源</div>
               <div style="font-size:12px;font-weight:700;color:#5a7fa8;margin:10px 0 6px;">🔩 硬體缺口</div>
               {hw_cards}

@@ -377,6 +377,20 @@ def call_groq_diff_one(category_label, category_data, category_enum, news_snippe
     return json.loads(raw)
 
 
+import html as _html_mod
+
+
+def _esc(x):
+    """信件HTML插值用：外部來源／LLM文字一律escape。"""
+    return _html_mod.escape(str(x if x is not None else ''), quote=True)
+
+
+def _safe_url(u):
+    """href只准http(s)://開頭，其餘回傳空字串（呼叫端改為只顯示文字）。"""
+    u = str(u or '').strip()
+    return u if re.match(r'^https?://', u, re.I) else ''
+
+
 def build_overview_html(status):
     """08-17第二版：使用者澄清這封信要的是「一週總結」——不管本週有沒有偵測到候選異動，
     都要讓使用者看一眼就了解NVIDIA各block（技術堆疊/案例/roadmap/聯盟/生態系布局）
@@ -396,10 +410,10 @@ def build_overview_html(status):
         for it in status.get(key, []):
             name = it.get('name') or it.get('label') or ''
             detail = it.get('items') or it.get('desc') or ''
-            status_html = f'<div style="margin-top:5px;padding-left:12px;font-size:12px;color:#8a6030;line-height:1.6;">{it["status"]}</div>' if show_status and it.get('status') else ''
-            detail_html = f'<div style="margin-top:5px;padding-left:12px;font-size:12px;color:#6a6460;line-height:1.6;">{detail}</div>' if detail else ''
+            status_html = f'<div style="margin-top:5px;padding-left:12px;font-size:12px;color:#8a6030;line-height:1.6;">{_esc(it["status"])}</div>' if show_status and it.get('status') else ''
+            detail_html = f'<div style="margin-top:5px;padding-left:12px;font-size:12px;color:#6a6460;line-height:1.6;">{_esc(detail)}</div>' if detail else ''
             rows += f'''<div style="background:#faf9f7;border-left:3px solid #6a8a20;border-radius:0 6px 6px 0;padding:10px 14px;margin:8px 0;">
-              <div style="font-size:13px;font-weight:700;color:#2c2a28;line-height:1.5;">{name}</div>
+              <div style="font-size:13px;font-weight:700;color:#2c2a28;line-height:1.5;">{_esc(name)}</div>
               {status_html}
               {detail_html}
             </div>'''
@@ -456,22 +470,28 @@ def send_email(items, no_change_summary, status, category_failures=None):
     if items:
         cards = ''
         for it in items:
-            cat = CATEGORY_LABELS.get(it.get('category', ''), it.get('category', ''))
-            act = ACTION_LABELS.get(it.get('action', ''), it.get('action', ''))
-            src = f'<div style="margin-top:6px;font-size:11px;"><a href="{it["source"]}" style="color:#6a8a20;">來源連結 →</a></div>' if it.get('source') else ''
-            status_line = f'<div style="font-size:12px;color:#6a6460;margin-top:4px;">狀態：{it["status"]}</div>' if it.get('status') else ''
+            cat = _esc(CATEGORY_LABELS.get(it.get('category', ''), it.get('category', '')))
+            act = _esc(ACTION_LABELS.get(it.get('action', ''), it.get('action', '')))
+            src_url = _safe_url(it.get('source'))
+            if src_url:
+                src = f'<div style="margin-top:6px;font-size:11px;"><a href="{_esc(src_url)}" style="color:#6a8a20;">來源連結 →</a></div>'
+            elif it.get('source'):
+                src = '<div style="margin-top:6px;font-size:11px;color:#9e9890;">來源連結</div>'
+            else:
+                src = ''
+            status_line = f'<div style="font-size:12px;color:#6a6460;margin-top:4px;">狀態：{_esc(it["status"])}</div>' if it.get('status') else ''
             cards += f'''
             <div style="background:#faf9f7;border-left:3px solid #6a8a20;padding:14px 16px;margin:10px 0;border-radius:0 6px 6px 0;">
               <div style="display:flex;gap:8px;margin-bottom:6px;">
                 <span style="font-size:11px;font-weight:700;color:#6a8a20;background:#6a8a2018;padding:2px 8px;border-radius:10px;">{cat}</span>
                 <span style="font-size:11px;color:#888;">{act}</span>
               </div>
-              <div style="font-size:14px;font-weight:700;color:#2c2a28;margin-bottom:6px;">{it.get("name","")}</div>
-              <div style="font-size:13px;color:#4a4744;line-height:1.6;margin-bottom:6px;">{it.get("desc","")}</div>
+              <div style="font-size:14px;font-weight:700;color:#2c2a28;margin-bottom:6px;">{_esc(it.get("name",""))}</div>
+              <div style="font-size:13px;color:#4a4744;line-height:1.6;margin-bottom:6px;">{_esc(it.get("desc",""))}</div>
               {status_line}
               <div style="background:#f0ede9;border-radius:5px;padding:8px 12px;font-size:12px;color:#6a6460;margin-top:8px;">
                 <span style="font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:#9e9890;display:block;margin-bottom:4px;">查證依據</span>
-                {it.get("reason","")}
+                {_esc(it.get("reason",""))}
               </div>
               {src}
             </div>'''
@@ -484,14 +504,14 @@ def send_email(items, no_change_summary, status, category_failures=None):
         summary = no_change_summary or '本週查證後判斷現有資料仍準確。'
         changes_html = f'''
         <div style="background:#faf9f7;border-left:3px solid #6a8a20;padding:14px 16px;border-radius:0 6px 6px 0;font-size:13px;color:#4a4744;line-height:1.6;margin-bottom:20px;">
-          {summary}
+          {_esc(summary)}
         </div>'''
     fail_html = ''
     if category_failures:
         fail_note = '部分類別查證失敗（' + '；'.join(category_failures) + '），其餘分類查證結果如常。'
         fail_html = f'''
         <div style="background:#faf3ea;border-left:3px solid #c08040;padding:12px 16px;border-radius:0 6px 6px 0;font-size:12px;color:#8a5a30;line-height:1.6;margin-bottom:16px;">
-          ⚠️ {fail_note}
+          ⚠️ {_esc(fail_note)}
         </div>'''
     body_html = fail_html + changes_html + build_overview_html(status)
 
