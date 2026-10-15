@@ -712,7 +712,7 @@ function newsCard(item, ptype, showInsight) {
     ? `<div class="ethic-alert">⚠️ <strong>Safety Alert</strong>：${_arcEsc(item.ethic)}</div>` : '';
   const validUrl = item.source && /^https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i.test(item.source);
   const src = validUrl
-    ? `<div class="card-source">來源：<a href="${_arcEsc(item.source)}" target="_blank" rel="noopener">${_arcEsc(item.source_label||new URL(item.source).hostname)}</a></div>` : '';
+    ? `<div class="card-source">來源：<a href="${_arcEsc(item.source)}" target="_blank" rel="noopener">${_arcEsc(item.source_label||(()=>{try{return new URL(item.source).hostname;}catch(e){return item.source;}})())}</a></div>` : '';
   const impactBox = item.impact
     ? `<div class="impact-box"><div class="impact-title">供應鏈影響分析</div>
        <div style="font-size:12.5px;color:var(--text2);line-height:1.7;">${_arcEsc(item.impact)}</div></div>`
@@ -936,7 +936,7 @@ function nvEventCard(ev){
 // 沒有thread欄位的各自獨立成一組，維持原本單張卡片的呈現方式。
 function nvGroupEvents(events){
   const groups = [];
-  const threadMap = {};
+  const threadMap = Object.create(null);
   events.forEach(ev=>{
     if(ev.thread){
       if(!threadMap[ev.thread]){
@@ -1847,6 +1847,7 @@ function setCatFromEl(el) {
   setCat(el.dataset.term, el.dataset.catkey, el.dataset.pickerid);
 }
 
+function _own(o, k) { return Object.prototype.hasOwnProperty.call(o, k); }
 function renderGlossary(hist) {
   const overrides = loadCatOverrides();
   const catDefs = getAllCatDefs();
@@ -1854,7 +1855,7 @@ function renderGlossary(hist) {
   let _pidSeq = 0;
 
   // Build cat key → index map (all cats including custom)
-  const catKeyToIdx = {};
+  const catKeyToIdx = Object.create(null);
   catDefs.forEach((c,i) => catKeyToIdx[c.key] = i);
 
   // Start with base sections + custom sections
@@ -1865,10 +1866,10 @@ function renderGlossary(hist) {
   GLOSS_CATS.forEach((baseCat, bi) => {
     baseCat.terms.forEach(t => {
       if (hidden.has(t.term)) return;
-      const ov = overrides[t.term];
+      const ov = _own(overrides, t.term) ? overrides[t.term] : undefined;
       const destKey = ov || BASE_CAT_DEFS[bi].key;
       const destIdx = catKeyToIdx[destKey];
-      const base = histOv[t.term] ? {...histOv[t.term], _hist:true} : t;
+      const base = _own(histOv, t.term) && histOv[t.term] ? {...histOv[t.term], _hist:true} : t;
       if (destIdx !== undefined) allCatData[destIdx].terms.push(base);
       else allCatData[bi].terms.push(t); // fallback
     });
@@ -1883,9 +1884,9 @@ function renderGlossary(hist) {
     (d.glossary_new||[]).forEach(g => {
       if (seen.has(g.term) || hidden.has(g.term)) return;
       seen.add(g.term);
-      const base = histOv[g.term] || g; // 有 override 則用 override 內容
+      const base = (_own(histOv, g.term) && histOv[g.term]) || g; // 有 override 則用 override 內容
       const term = {...base, _new: d.date >= newThresh, _hist:true};
-      const destKey = overrides[g.term] || g.category || '';
+      const destKey = (_own(overrides, g.term) && overrides[g.term]) || g.category || '';
       const destIdx = catKeyToIdx[destKey];
       if (destIdx !== undefined) allCatData[destIdx].terms.push(term);
       else uncategorized.push(term);
@@ -1897,7 +1898,7 @@ function renderGlossary(hist) {
     if (seen.has(g.term)) return;
     seen.add(g.term);
     const term = {...g, _new: !!(g._addedAt && g._addedAt >= newThresh), _user:true};
-    const destKey = overrides[g.term] || g.category || '';
+    const destKey = (_own(overrides, g.term) && overrides[g.term]) || g.category || '';
     const destIdx = catKeyToIdx[destKey];
     if (destIdx !== undefined) allCatData[destIdx].terms.push(term);
     else uncategorized.push(term);
@@ -1907,7 +1908,7 @@ function renderGlossary(hist) {
   if (uncategorized.length) sections.push({key:'_new', label:'新增術語 New Terms', terms: uncategorized, _extra:true});
 
   function cardHtml(g) {
-    const ckey = overrides[g.term] || g.category || '';
+    const ckey = (_own(overrides, g.term) && overrides[g.term]) || g.category || '';
     const clabel = catDefs.find(c=>c.key===ckey)?.label || '分類';
     const pid = 'gp_' + (_pidSeq++);
     const safeTermAttr = _arcEsc(g.term);
@@ -2217,9 +2218,13 @@ function saveNote(date, text) {
 //  NOTES GIST 同步（筆記改存私有 Gist，避免 repo 連環 commit 觸發部署限流）
 // ══════════════════════════════════════════════════════════════════
 let _gistIdPromise = null;
+function _validGistId(id) { return typeof id === 'string' && /^[0-9a-f]{20,40}$/i.test(id); }
 function resolveNotesGistId() {
   const cached = localStorage.getItem('notes_gist_id');
-  if (cached) return Promise.resolve(cached);
+  if (cached) {
+    if (!_validGistId(cached)) { showToast('❌ Gist ID 格式不正確，已中止同步'); return Promise.resolve(null); }
+    return Promise.resolve(cached);
+  }
   if (!_gistIdPromise) {
     _gistIdPromise = _resolveGistIdUncached();
     _gistIdPromise.finally(() => { _gistIdPromise = null; });
@@ -2233,6 +2238,7 @@ async function _resolveGistIdUncached() {
     if (res.ok) {
       const cfg = await res.json();
       if (cfg && cfg.gist_id) {
+        if (!_validGistId(cfg.gist_id)) { showToast('❌ Gist ID 格式不正確，已中止同步'); return null; }
         localStorage.setItem('notes_gist_id', cfg.gist_id);
         return cfg.gist_id;
       }
