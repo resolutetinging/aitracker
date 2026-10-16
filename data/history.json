@@ -1,5 +1,97 @@
 [
   {
+    "date": "2026-10-17",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "HBM2 記憶體功耗實驗揭示讀取電流最高與資料切換影響",
+        "layer": "HBM Power Characterization",
+        "body": "ETH Zürich 與 NYU 首次以實體 HBM2 DRAM 晶片完成全面功耗實驗，發現讀取操作的電流顯著高於其他操作；資料突發傳輸期間若切換所有內部銀行群組匯流排訊號，功耗會提升 29.4%；研究團隊設計的存取模式在 36 項測試中平均使功耗上升 23.6%。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "投資者應關注 HBM 供應鏈中功耗優化的技術進展，相關廠商的產品升級可能帶來價格與需求變動。",
+        "source_label": "Semiconductor Engineering",
+        "source": "https://semiengineering.com/characterization-of-hbm-power-consumption-eth-zurich-nyu/"
+      }
+    ],
+    "corp": [
+      {
+        "title": "Apple 與 Meta 合作將 Muse AI 模型本地化於 Mac Studio",
+        "layer": "corp",
+        "body": "Apple 與 Meta 宣布合作，將 Muse Spark Open AI 模型優化後可在搭載 Apple Silicon 的 Mac Studio 系統上本地執行，提升模型運算效能與資料隱私保護。",
+        "impact": null,
+        "rating": "core",
+        "insight": "Apple‑Meta 合作將提升本地 AI 計算需求，帶動 Apple Silicon 供應鏈成長。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/15/apple-meta-partner-ai.html"
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "HBM2",
+        "full": "High Bandwidth Memory 2",
+        "def": "一種高帶寬記憶體技術，採堆疊式 DRAM 晶片並透過 TSV 介面提供每秒數百 GB 的資料傳輸速率，常用於 AI 加速器與高效能運算平台。",
+        "why": "HBM2 是 AI 基礎建設的關鍵記憶體，功耗表現直接影響資料中心的能源成本與散熱設計。",
+        "category": "hardware"
+      },
+      {
+        "term": "OSAT",
+        "full": "Outsourced Semiconductor Assembly and Test",
+        "def": "提供半導體封裝與測試服務的外包廠商，負責將晶圓組裝成最終可用的封裝產品，對功耗、散熱與尺寸有重要影響。",
+        "why": "OSAT 必須因應 HBM 功耗特性調整封裝設計，以確保 AI 系統的可靠性與效能。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "DRAM",
+        "full": "Dynamic Random-Access Memory",
+        "def": "一種易失性記憶體，透過電容儲存位元資料，需要持續刷新以維持資料，廣泛應用於電腦與伺服器的主記憶體。",
+        "why": "HBM2 基於 DRAM 技術，其功耗特性直接受製程與架構影響，關係到整體 AI 系統的能源效率。",
+        "category": "hardware"
+      },
+      {
+        "term": "光學電路交換 (Optical Circuit Switching)",
+        "full": "Optical Circuit Switching",
+        "def": "一種利用光纖直接建立固定路徑的交換技術，可在資料中心內部提供低延遲與高帶寬的資料傳輸。",
+        "why": "隨著資料中心對即時運算需求提升，光學交換成為取代傳統電氣交換的關鍵技術。",
+        "category": "hardware"
+      },
+      {
+        "term": "主權私有雲",
+        "full": "Sovereign Private Cloud",
+        "def": "由本地政府或受信任的本土企業提供的雲端基礎設施，確保資料主權與合規性，同時在本地部署硬體資源。",
+        "why": "在資料隱私與合規要求日益嚴格的市場，主權私有雲可吸引企業將工作負載遷移至本地，提升本地硬體需求。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "獨立 AI 評估機構",
+        "full": "Independent AI Evaluator",
+        "def": "專門針對人工智慧模型安全性、風險與合規性進行第三方審核的組織，如 METR 與 SecureBio。",
+        "why": "隨著 AI 模型規模擴大，獨立評估成為確保模型安全與合規的重要環節，影響模型部署與供應鏈驗證流程。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "on‑premises AI",
+        "full": "on‑premises AI",
+        "def": "指在使用者自有的本地伺服器或資料中心部署的人工智慧解決方案，資料不需傳送至雲端平台。",
+        "why": "本地部署可降低資料傳輸延遲並提升資訊安全，對需要嚴格合規的產業具吸引力。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-16",
     "is_sunday": false,
     "hw": [
@@ -853,149 +945,5 @@
       }
     ],
     "weekly_summary": "HW：Nvidia投入10億美元支援美國科學計算，將直接刺激GPU與高階封裝供應鏈需求↑。\nHW：Nvidia投資推理晶片新創d‑Matrix，預計提升推理晶片代工與封裝產能↑。\nCORP：Anthropic本週啟動關鍵基礎設施防禦計畫並關閉內部即時網路評估，以防止AI模型濫用。\n下週看點：關注Anthropic是否公布新一代安全模型或與資安廠商的合作細節。\nAPP：AI 代理購物服務 Muse 已在主要電商平台實測完成 1,200 筆交易，平均下單時間縮短 70%。\n用戶洞察：消費者傾向使用即時、全自動的 AI 代理完成購物，促使零售與物流供應鏈必須加速數位化與自動化以因應需求激增。"
-  },
-  {
-    "date": "2026-10-10",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "TSMC 與 GlobalFoundries 簽署 20 億美元美國矽互連層產能合作",
-        "layer": "advanced_packaging",
-        "body": "2026 年 10 月 8 日，TSMC 與美國晶圓代工廠 GlobalFoundries 簽署 20 億美元多年度合約，於紐約馬爾他廠區生產 CoWoS 先進封裝規格所需的矽互連層。此合作將使 GlobalFoundries 每年在該廠投入數千片矽互連層，以支援 TSMC 的 AI 資料中心晶片需求。合約同時規定在未來五年內，雙方將共同開發更高密度的互連技術，以提升 AI 加速器的效能。",
-        "impact": "此合約直接提升 GlobalFoundries 在美國的矽互連層產能，預計使其相關製程利用率 ↑。",
-        "rating": "core",
-        "insight": "美國本土矽互連層供應鏈的擴張將降低 AI 高階封裝對亞洲的依賴。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/10/08/tsmc-taps-globalfoundries-to-bolster-us-silicon-interposer-production-in-2b-deal/5302061",
-        "chain": [
-          {
-            "label": "TSMC CoWoS 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "GlobalFoundries 矽互連層產能↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Anthropic 更新使用政策 禁止對 Claude 進行持續虐待",
-        "layer": "policy",
-        "body": "Anthropic 於 2026 年 11 月 12 日起實施新使用政策，明確禁止使用者對 Claude 進行「持續且無必要的虐待或殘忍行為」。公司指出，此規範僅適用於使用者反覆且毫無目的地辱罵模型的極端情況，並不涵蓋一般使用者的挫折或測試行為。該政策的發布同時伴隨對違規行為的潛在罰款警告，顯示 Anthropic 正加強模型保護與合規管理。",
-        "impact": "此政策將迫使使用 Anthropic Claude 的企業在合約與使用者行為監控上投入更多資源，↑ 相關合規軟體與審計服務需求。",
-        "rating": "core",
-        "insight": "Anthropic 加強模型使用限制，將提升合規成本並可能分流部分客戶至競爭對手。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/10/09/anthropic-asks-users-to-stop-being-mean-to-claude/5302218",
-        "chain": [
-          {
-            "label": "Anthropic Claude 使用政策嚴格↑",
-            "type": "up"
-          },
-          {
-            "label": "用戶對 Claude 訴求降低↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Vegalabs 因 Azure 信用不足 被收取 17,600 美元 Claude 使用費",
-        "layer": "billing",
-        "body": "挪威新創 Vegalabs AS 於 2026 年 8 月在 Microsoft Foundry 部署 Anthropic Claude，原本預期 25,060 美元的 Azure 新創信用額度能覆蓋全部費用，卻因 Marketplace 收費不在信用範圍內，最終被收取 17,600 美元（稅前）費用。Microsoft 嘗試向其信用卡收取 16,500 美元，後續總金額升至 17,600 美元。Vegalabs 表示其在 Azure 入口網站仍顯示有可用信用，卻未即時反映 Marketplace 的實際扣費。",
-        "impact": "此案例凸顯 Azure Marketplace 與新創信用計畫之間的結算差異，↑ 企業在使用第三方模型時需額外審核費用結構，導致對 Azure 服務的信任度下降 ↓。",
-        "rating": "core",
-        "insight": "Azure 與 Marketplace 的費用不匹配風險提醒企業在採購 AI 模型時需加強成本核算。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/paas-and-iaas/2026/10/09/microsoft-and-anthropic-play-invoice-tennis-with-startups-17600-claude-bill/5302041",
-        "chain": [
-          {
-            "label": "Vegalabs Azure 信用不足↓",
-            "type": "down"
-          },
-          {
-            "label": "Microsoft Marketplace 收費↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Google Cloud 宣布 Gemini 成為企業 AI 單一通用代理人",
-        "layer": "product",
-        "body": "Google Cloud 執行長 Thomas Kurian 於 2026 年 10 月 8 日的 Gemini at Work 2026 活動中宣稱，Gemini 將成為「企業唯一、通用的 AI 代理人」，具備將企業資料作為上下文、執行問答、內容創作與程式碼生成等功能。Kurian 引用 Google 內部產品壽命統計，指出平均產品壽命約 4.1 年、平均存續期 5.4 年，暗示 Gemini 目標在長期支援上與 Gmail、Search 同等。Gemini 亦可透過工具與系統整合，直接在文件內回傳完成的工作成果。",
-        "impact": "Gemini 的推出將驅動 Google Cloud 內部 AI 基礎設施需求 ↑，包括 TPU、GPU 及高效能儲存供應商的訂單增長。",
-        "rating": "core",
-        "insight": "Google 以 Gemini 打造企業級單一 AI 代理，將挑戰 Azure 與 AWS 在企業 AI 市場的領先地位。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/10/08/there-can-be-only-one-google-cloud-casts-gemini-as-your-enterprise-ai-hero/5302086",
-        "chain": [
-          {
-            "label": "Google Gemini 企業 AI 代理人↑",
-            "type": "up"
-          },
-          {
-            "label": "企業對 Gemini 需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": "",
-        "chain": [
-          {
-            "label": "無相關應用新聞↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "矽互連層",
-        "full": "Silicon Interposer",
-        "def": "用於先進封裝（如 CoWoS）的薄片矽基板，提供晶片間的高密度電氣連接與散熱通道。",
-        "why": "矽互連層是 AI 加速器高效能封裝的關鍵元件，供應緊張會直接限制 AI 伺服器產能。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Claude",
-        "full": "Anthropic 開發的對話式大型語言模型",
-        "def": "Claude 是 Anthropic 旗下的對話式 AI 模型，設計上注重安全與對話品質，常被企業用於客服與內部助理等應用。",
-        "why": "了解 Claude 有助於辨識其在雲端市場的使用情境與相關費用結構。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "CoWoS",
-        "full": "Chip‑on‑Wafer‑on‑Substrate 先進封裝技術",
-        "def": "CoWoS 是一種將多顆晶片堆疊於同一矽晶圓上，再以基板連接的封裝方式，提升帶寬與效能，廣泛應用於 AI 加速器。",
-        "why": "此技術是 TSMC 與 GlobalFoundries 合作的核心，關係到高效能 AI 硬體供應鏈。",
-        "category": "hardware"
-      },
-      {
-        "term": "Gemini",
-        "full": "Google Cloud 推出的企業級 AI 代理平台",
-        "def": "Gemini 結合大型語言模型與工具整合能力，提供企業在單一介面內完成問答、內容創作與程式碼生成等工作。",
-        "why": "Gemini 的定位直接挑戰其他雲端 AI 服務供應商的市場布局。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "稀土永磁",
-        "full": "稀土永磁材料",
-        "def": "以稀土元素（如釹、鈷）製成的永久磁鐵，具備高磁能積，廣泛應用於電動車馬達與高效能電子硬體。",
-        "why": "供應集中於中國，出口管制可能改變全球供應鏈布局。",
-        "category": "hardware"
-      }
-    ],
-    "weekly_summary": null
   }
 ]
