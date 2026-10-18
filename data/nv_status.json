@@ -1,5 +1,5 @@
 {
-  "last_checked": "2026-10-12",
+  "last_checked": "2026-10-19",
   "pyramid": [
     {
       "label": "應用層（Industries）",
@@ -471,6 +471,30 @@
       "category": "產品發布",
       "summary": "微軟於2026年10月7日在舊金山發表的Surface Laptop Ultra搭載Nvidia RTX Spark系統單晶片，售價從2,600美元起，最高規格5,900美元，支援Copilot+ AI功能，並於同日開放預購，預計下週出貨。",
       "src": "https://www.theregister.com/personal-tech/2026/10/07/microsoft-n1xes-int-favor-of-nvidias-shiny-new-socs-in-surface-laptop-ultra/5301722",
+      "src_note": ""
+    },
+    {
+      "date": "2026-10-15",
+      "title": "Cisco 與 Nvidia 合作推出超高密度可插拔光模組",
+      "category": "合作聯盟",
+      "summary": "Cisco 與 Nvidia 在 OCP 全球峰會宣布共同開發可容納 32 條 400 Gbps 通道、總帶寬 12.8 Tbps 的超高密度可插拔光模組（USFP），尺寸與現行 OSFP 相當，預計在 AI 資料中心以單埠取代多條光纖連接。",
+      "src": "https://www.theregister.com/networks/2026/10/14/cisco-nvidia-team-up-to-build-fatter-faster-pluggable/5302970",
+      "src_note": ""
+    },
+    {
+      "date": "2026-10-13",
+      "title": "Microsoft將加大自研Maia AI晶片使用，降低對Nvidia GPU依賴",
+      "category": "產品發布",
+      "summary": "Microsoft 宣布其自研的 Maia 300 AI 晶片將於 2027 年投入量產，未來主要用於 AI 推論，以降低對 Nvidia GPU 的依賴。",
+      "src": "https://www.cnbc.com/2026/10/12/microsoft-will-mainly-use-its-maia-chips-for-ai-inference.html",
+      "src_note": ""
+    },
+    {
+      "date": "2026-10-13",
+      "title": "Microsoft 公布 Maia 300 AI 晶片 2027 年量產",
+      "category": "產品發布",
+      "summary": "Microsoft 於 2026 年 10 月 12 日公布其自研的 Maia 300 AI 晶片將於 2027 年開始量產，具備每秒 300 TOPS 推理效能，內建 7 奈米製程記憶體介面，首批供應給 Azure AI 超大型模型服務。",
+      "src": "https://www.theverge.com/news/1009465/microsoft-maia-300-chip-improvements-rollout",
       "src_note": ""
     }
   ]
