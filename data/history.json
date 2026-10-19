@@ -1,5 +1,183 @@
 [
   {
+    "date": "2026-10-20",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": "",
+        "chain": [
+          {
+            "label": "無相關晶片新聞",
+            "type": "neutral"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Google 宣稱其明尼蘇達 AI 資料中心將使用清潔能源",
+        "layer": "CSP/CapEx",
+        "body": "Google 表示其位於明尼蘇達的 AI 資料中心將向電網注入清潔能源，並稱此舉能保護用戶費率；同時，多位專家與在地居民對是否真的需要升級電網持懷疑態度。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "投資者應關注 Google 在美國擴建綠能資料中心的長期供電穩定性。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/19/how-data-centers-are-reshaping-americas-aging-grid-pine-island-minnesota-google.html",
+        "chain": [
+          {
+            "label": "Google AI 資料中心清潔能源使用↑",
+            "type": "up"
+          },
+          {
+            "label": "當地電網升級需求疑慮↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Nvidia 推出新開放模型以支援企業與 PC 端 AI 代理人",
+        "layer": "AI_technique",
+        "body": "Nvidia 宣布推出一系列開放模型，讓企業能在自有資料中心部署 AI 代理人，同時也支援在個人電腦上運行私密 AI 代理人；此舉顯示 Nvidia 正大力投入企業自建模型的趨勢。",
+        "impact": "上游 GPU 及相關硬體供應商需求上升 (↑) 因企業將自行部署模型需要高效能運算；下游企業客戶可降低對雲端服務的依賴，提升資料主權與隱私保護 (↑)。",
+        "rating": "opp",
+        "insight": "Nvidia 的開放模型策略將推動企業自建 AI 基礎設施，提升其硬體需求。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/10/19/nvidia-launches-new-open-models-to-run-agents-in-the-enterprise-and-on-pcs/",
+        "chain": [
+          {
+            "label": "Nvidia 開放模型支援企業部署↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 開放模型支援 PC 端 AI 代理人↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic 與 METR、SecureBio 合作評估 AI 風險與安全實務",
+        "layer": "CSP/CapEx",
+        "body": "Anthropic 宣布與非營利組織 METR 及 SecureBio 合作，協助評估其模型的風險與安全實務，並正與 Hugging Face 等其他機構討論合作；同時，Anthropic 已選定 Accenture 為首家合作夥伴。",
+        "impact": "上游安全評估與風險研究服務供應商需求上升 (↑) 以支援 Anthropic 的合規審查；下游 Anthropic 的模型部署因獲得第三方驗證而提升客戶信任度 (↑)。",
+        "rating": "core",
+        "insight": "Anthropic 加強第三方安全驗證，有助於提升其模型在企業市場的接受度。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/15/anthropic-metr-securebio-ai-safety-evaluators.html",
+        "chain": [
+          {
+            "label": "Anthropic 與 METR、SecureBio 合作評估 AI 風險↑",
+            "type": "up"
+          },
+          {
+            "label": "Anthropic 與 Accenture 首家合作夥伴關係↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "NTL Healthcare 推出本地部署 AI 子宮頸篩檢平台",
+        "layer": "healthcare",
+        "body": "NTL Healthcare 於 2026 年在亞太地區推出本地部署的 AI 子宮頸篩檢平台，強化醫院資料安全與患者隱私保護。",
+        "impact": "醫院採用後可減少將敏感影像上傳至雲端的需求，降低雲端儲存服務商的資料流量↓。",
+        "rating": "core",
+        "insight": "本地化 AI 醫療解決方案將推動高效能晶片與硬體服務的區域化需求。",
+        "source_label": "BioPharma APAC",
+        "source": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNVy1laXNlRkRnLVotb0Z0bXlDUE5yNlRjVXdOcG5GYkE0dWhvcUpHYW56ekxfcU9aMTNTYnhGTTZzaWpGVEZsemlxSmZnT2NYSjdlTVdERF9TT2c3M0owT3JOdndRc1Q1NnJHNDh0VjZyVjdnQ0pmSU9OTnIzWDd2QTEwblk2Q2w4NFBndTZnajNKZWM1NDM1T3JIMXd4aUlqdUxRRFNZeTVfcjVGdzVqVm4xSWN2UWpCS2VkN3F1SEpnbmRMODhlaGU1ODBUSndMREdnSQ",
+        "chain": [
+          {
+            "label": "NTL Healthcare 本地部署 AI 子宮頸篩檢平台↑",
+            "type": "up"
+          },
+          {
+            "label": "醫院資料安全與患者隱私保護提升↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Edvance 與 CWG 發布 RealRelay 金融 AI 代理服務",
+        "layer": "finance",
+        "body": "Edvance 與 CWG 於 2026 年共同推出 RealRelay Fintech，提供以信任為首的 AI 代理人，已在多家金融機構部署以提升客戶服務效率。",
+        "impact": "RealRelay 的部署促使金融軟體供應商對自然語言處理模型與安全驗證模組的需求↑，帶動相關 AI 演算法供應商與加密技術廠商的訂單增加；同時金融機構因使用本地化 AI 代理人而減少對外部雲端服務的依賴↓。",
+        "rating": "core",
+        "insight": "以信任為核心的金融 AI 代理人將重新分配 AI 演算法與安全模組的供應鏈資源。",
+        "source_label": "CXO Digitalpulse",
+        "source": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOWVFnTDRZVXhRNG1zNTlaSnRtdlVTUUc4dEZaaVllN2JvaEdMcEFjcHB5ajdnTXFObDFsQ1k1Uzg4WVZTVTJ2VXF3c0o2cmlEUEFzOTd4M3NLal81OVdPaGJMMUNJTFRaLV9WaHJrcnJPVkFaNVp3MVBVcWM4Qml0SmNISTBzZTU0bGU3Qm1PbzFSV3FfMzVoN0NSQlkxN1ZlckVZUi0xbzBmck1KRDJmNXhFM0pCa1pYb0lrbDlfMzVOR19TUmdFXw",
+        "chain": [
+          {
+            "label": "Edvance 與 CWG 推出 RealRelay 金融 AI 代理服務↑",
+            "type": "up"
+          },
+          {
+            "label": "金融機構客戶服務效率提升↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "嵌入式動態隨機存取記憶體",
+        "full": "Embedded Dynamic Random Access Memory",
+        "def": "一種將 DRAM 直接整合在晶片或模組內的記憶體技術，可提升資料存取速度並減少封裝空間。",
+        "why": "在高效能 AI 加速器與行動裝置中，提升記憶體密度與能效是關鍵需求。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Nanoelectromechanically Gated Gain Cell",
+        "full": "",
+        "def": "利用奈米機電開關控制增益電池的結構，可在嵌入式 DRAM 中提供更高的寫入效率與保持時間。",
+        "why": "此技術若量產，可能改變記憶體供應鏈中對 SRAM 的依賴，影響上游製程與下游系統設計。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "開放模型",
+        "full": "Open Model",
+        "def": "由廠商公開發布的人工智慧模型，允許使用者自行下載、部署與調整，常用於企業自建 AI 服務。",
+        "why": "開放模型降低企業對雲端服務的依賴，提升資料主權與成本控制。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "清潔能源資料中心",
+        "full": "Clean‑energy Data Center",
+        "def": "使用再生能源（如風力、太陽能）供電的資料中心，旨在減少碳排放並提升能源使用效率。",
+        "why": "隨著 ESG 要求提升，清潔能源資料中心成為大型雲端供應商爭取永續競爭優勢的關鍵。",
+        "category": "hardware"
+      },
+      {
+        "term": "AI 風險評估",
+        "full": "AI Risk Assessment",
+        "def": "針對人工智慧模型的安全性、偏見、濫用等風險進行系統性分析與驗證的服務。",
+        "why": "隨著 AI 應用擴大，合規與安全審查成為企業部署模型的必要前置作業。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "AI 子宮頸篩檢平台",
+        "full": "人工智慧子宮頸癌篩檢平台",
+        "def": "利用深度學習模型分析子宮頸影像，以自動化檢測異常細胞，提高篩檢效率與準確度。",
+        "why": "可減少醫師工作負荷並提升早期診斷率，對醫療器材與 AI 晶片需求產生直接拉動。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "RealRelay Fintech",
+        "full": "RealRelay 金融 AI 代理服務",
+        "def": "一套以信任為核心的 AI 代理人系統，結合自然語言處理與安全驗證，協助金融機構提供即時客戶服務。",
+        "why": "在金融業推動數位化與客戶體驗升級，同時對 AI 演算法與加密技術供應鏈形成新需求。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-19",
     "is_sunday": false,
     "hw": [
@@ -876,94 +1054,6 @@
         "def": "指獨立於AI模型開發者之外，提供模型安全性與效能評估的組織，例如 Model Evaluation and Threat Research (METR) 與 Transluce。",
         "why": "隨著AI安全關注提升，這類機構可協助產業建立可信任的模型驗證流程，降低部署風險。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-13",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Microsoft將加大自研Maia AI晶片使用，降低對Nvidia GPU依賴",
-        "layer": "strategic_supplier",
-        "body": "Microsoft宣佈自研Maia 300 AI晶片將於2027年投入生產，未來將主要用於AI推論工作，降低對Nvidia GPU的依賴。",
-        "impact": "由於Microsoft將自家晶片投入AI推論，對Nvidia GPU的需求將下降，可能導致Nvidia相關的HBM供應鏈需求↓。",
-        "rating": "core",
-        "insight": "自研AI晶片可減少對Nvidia供應鏈的依賴，提升Microsoft在AI基礎設施上的議價能力。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/12/microsoft-will-mainly-use-its-maia-chips-for-ai-inference.html"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Apple 推出 HomeView 智慧家庭中樞",
-        "layer": "CSP/CapEx",
-        "body": "根據 Bloomberg 報導，Apple 於 2026 年 10 月 13 日（星期二）正式發表名為 HomeView 的智慧家庭中樞，內建 A18 晶片並配備 7 吋觸控螢幕。該產品將提供檯面版與壁掛版兩種形態，預計於同月下旬同步上市，並搭配 Siri 語音助理整合現有 HomeKit 生態系。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Apple 以自研 A18 晶片進軍智慧家庭，可拉動上游晶圓與顯示面板供應鏈，同時挑戰 Google Nest 市場地位。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/10/11/will-the-homeview-be-apples-first-smart-home-success/"
-      },
-      {
-        "title": "Microsoft 公布 Maia 300 AI 晶片 2027 年量產",
-        "layer": "CSP/CapEx",
-        "body": "Microsoft 於 2026 年 10 月 12 日宣布其自研的 Maia 300 AI 晶片將於 2027 年開始投入生產，該晶片設計以降低對 Nvidia GPU 的依賴，並支援每秒 300 TOPS 的推理效能。Maia 300 內建 7 奈米製程的自家記憶體介面，預計首批供應給 Azure AI 超大型模型服務。",
-        "impact": "同時減少 Nvidia GPU 在 Azure 數據中心的採購量（↓）。",
-        "rating": "core",
-        "insight": "Microsoft 自研 AI 晶片可削減對 Nvidia 的依賴，為台積電帶來新訂單，同時重塑雲端算力供應鏈格局。",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/news/1009465/microsoft-maia-300-chip-improvements-rollout"
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Maia 300",
-        "full": "Microsoft自研的AI推論晶片",
-        "def": "Maia 300是Microsoft開發的AI加速器晶片，計畫於2027年開始量產，主要用於資料中心的推論工作。",
-        "why": "代表大型平台公司自建AI硬體供應鏈，可能改變GPU市場需求結構。",
-        "category": "hardware"
-      },
-      {
-        "term": "Vera Rubin",
-        "full": "Nvidia的高密度液冷伺服器平台",
-        "def": "Vera Rubin是Nvidia推出的伺服器平台，採用先進液冷技術，MGX 1.2規格於2026年向OCP開放設計圖紙。",
-        "why": "開放設計促進OSAT與散熱供應鏈的產能擴張，影響資料中心硬體佈局。",
-        "category": "hardware"
-      },
-      {
-        "term": "OCP",
-        "full": "Open Compute Project",
-        "def": "OCP是一個開放式硬體設計標準組織，旨在推動資料中心硬體的模組化與標準化。",
-        "why": "Nvidia將Vera Rubin設計開放給OCP，可加速業界採用液冷解決方案，提升相關供應鏈需求。",
-        "category": "role"
-      },
-      {
-        "term": "HomeView",
-        "full": "Apple 智慧家庭中樞",
-        "def": "Apple 推出的具備螢幕與 Siri 整合功能的智慧家庭控制裝置，支援檯面版與壁掛版兩種形態。",
-        "why": "首次將自研 A18 晶片應用於智慧家庭，牽動上下游硬體與軟體供應鏈。",
-        "category": "hardware"
-      },
-      {
-        "term": "AI 晶片",
-        "full": "",
-        "def": "專門設計用於加速人工智慧模型運算的晶片，具備大量矩陣運算單元與高記憶體頻寬，以支援深度學習推論與訓練。",
-        "why": "AI 晶片是驅動各行業 AI 應用的核心硬體，影響供應鏈上下游的需求與投資布局。",
-        "category": "semiconductor"
       }
     ],
     "weekly_summary": null

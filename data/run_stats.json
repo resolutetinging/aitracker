@@ -2,6 +2,90 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 42,
+        "CSP/CapEx": 38,
+        "App/AI": 12,
+        "gnews-chip": 18,
+        "gnews-dc": 25,
+        "gnews-app": 20
+      },
+      "digest_filtered": 1,
+      "after_dedup": 150,
+      "buckets": {
+        "hw": 32,
+        "corp": 107,
+        "app": 32
+      },
+      "news_char_budget": {
+        "hw": 3733,
+        "corp": 8000,
+        "app": 3733
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 2
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 1,
+          "opp": 2,
+          "noise": 0
+        },
+        "app": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 4,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "log",
+        "checked": 3,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 2,
+        "low_coverage": {
+          "checked": 1,
+          "suspect_cards": 0
+        },
+        "enforced": 0,
+        "items": []
+      },
+      "date": "2026-10-20",
+      "generated_at": "2026-10-20T00:04:12.856618+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 38,
         "CSP/CapEx": 43,
         "App/AI": 20,
@@ -1101,77 +1185,6 @@
       "dedup_audit": [],
       "date": "2026-10-07",
       "generated_at": "2026-10-07T00:04:21.547850+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 44,
-        "CSP/CapEx": 36,
-        "App/AI": 18,
-        "gnews-chip": 19,
-        "gnews-dc": 22,
-        "gnews-app": 20
-      },
-      "digest_filtered": 1,
-      "after_dedup": 144,
-      "buckets": {
-        "hw": 26,
-        "corp": 113,
-        "app": 26
-      },
-      "news_char_budget": {
-        "hw": 3500,
-        "corp": 8000,
-        "app": 3500
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 2,
-        "corp": 2,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 2
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "dedup_audit": [],
-      "date": "2026-10-06",
-      "generated_at": "2026-10-06T00:04:15.728246+08:00"
     }
   ]
 }
