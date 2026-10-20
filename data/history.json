@@ -1,5 +1,186 @@
 [
   {
+    "date": "2026-10-21",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "Anthropic 與 Nscale 商談第二筆約 450 億美元計算租賃合約",
+        "layer": "core",
+        "body": "Anthropic 正與英國 neocloud Nscale 商討在美國西維吉尼亞再租用一座 460 兆瓦資料中心，預估交易金額約 450 億美元。此合約將與去年簽署的同等規模合約相同地提供 AI 計算容量。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Anthropic 持續加碼大型計算租賃，顯示 AI 基礎設施需求仍在快速擴張。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/20/anthropic-nscale-data-center-deal.html",
+        "chain": [
+          {
+            "label": "Anthropic 計算租賃合約↑",
+            "type": "up"
+          },
+          {
+            "label": "Nscale 資料中心建設↑",
+            "type": "up"
+          },
+          {
+            "label": "美國西維吉尼亞電力需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic 承諾以 5% 股份設立公共利益基金應對 AI 工作取代",
+        "layer": "opp",
+        "body": "Anthropic 計畫將公司 5% 股份投入新設立的公共利益基金，未來若公司估值每提升 50% 可再追加 2% 股份。該基金將用於大額捐贈或直接分配，以緩解 AI 對就業的衝擊。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "Anthropic 以股份方式設基金，為 AI 企業提供可持續的社會責任範本。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/18/anthropic-ai-public-benefit-fund.html",
+        "chain": [
+          {
+            "label": "Anthropic 公益基金股份↓",
+            "type": "down"
+          },
+          {
+            "label": "AI 失業風險↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Amazon 承諾以未驗證核能技術供電印第安納資料中心",
+        "layer": "opp",
+        "body": "Amazon 宣布將與美國核能新創 X‑energy 合作，使用其尚未建成的核能技術為印第安納州資料中心供電。X‑energy 目前尚未建造任何運轉中的核反應爐。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "Amazon 以核能作為資料中心電力來源，顯示大型雲端業者正探索非常規能源以降低長期營運成本。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/offbeat/2026/10/19/amazon-makes-vague-commitment-to-unproven-nuclear-tech-to-power-indiana-datacenters/5303974",
+        "chain": [
+          {
+            "label": "X‑energy 核能技術商業化↑",
+            "type": "up"
+          },
+          {
+            "label": "Amazon 資料中心電力供應↑",
+            "type": "up"
+          },
+          {
+            "label": "核能安全風險↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Amazon 推出 TorchNeuron 開發工具以削減對 Nvidia 的依賴",
+        "layer": "core",
+        "body": "Amazon 發布新工具 TorchNeuron，旨在讓開發者在 PyTorch 上直接使用 Amazon 自研的 AI 加速晶片，降低對 Nvidia GPU 的需求。此舉是 Amazon 針對 AI 應用開發環境的重大布局。",
+        "impact": "TorchNeuron 的推出將降低 Nvidia GPU 的需求，可能影響其上游晶圓代工與記憶體供應鏈的訂單結構。",
+        "rating": "core",
+        "insight": "Amazon 以自研加速卡工具挑戰 Nvidia 市場領導地位，可能改變 AI 硬體供應鏈格局。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/10/19/amazon-is-taking-its-biggest-shot-at-nvidia-yet-with-new-torchneuron-dev-tool/",
+        "chain": [
+          {
+            "label": "Amazon TorchNeuron 推廣↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia GPU 需求↓",
+            "type": "down"
+          },
+          {
+            "label": "Amazon 自研 AI 加速晶片採用↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Arda 推出 AI 軟體平台協助製造工程師快速調整自動化",
+        "layer": "manufacturing",
+        "body": "Arda 已完成 2.3 億美元融資，估值 15 億美元，並於本月向軍事科技公司 Anduril 部署 AI 模型。該平台提供使用者介面與代理人，讓製造工程師在設計變更後可於一天內完成調整，較傳統自動化需三至六個月縮短 80%。",
+        "impact": "Arda 的 AI 軟體可在一天內完成設計變更調整，提升下游 OEM 的產能彈性。",
+        "rating": "core",
+        "insight": "AI 軟體可大幅縮短製造自動化調整週期，為供應鏈帶來彈性升級機會。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/20/ex-openai-executive-builds-1point5-billion-ai-manufacturing-startup-arda.html",
+        "chain": [
+          {
+            "label": "Arda AI 平台部署↑",
+            "type": "up"
+          },
+          {
+            "label": "Anduril 軍事科技合作↑",
+            "type": "up"
+          },
+          {
+            "label": "製造工程自動化週期縮短↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "nanoelectromechanical",
+        "full": "Nanoelectromechanical (NEMS)",
+        "def": "結合奈米尺度機械元件與電子元件的技術，可在極小體積內實現機械開關與電路功能。",
+        "why": "此技術用於提升嵌入式 DRAM 的密度與能效，可能改變記憶體製程供應鏈。",
+        "category": "hardware"
+      },
+      {
+        "term": "公共利益基金",
+        "full": "Public Benefit Fund",
+        "def": "由企業以股份形式設立的基金，用於資助社會公益項目或直接分配資金，以緩解技術變革帶來的社會衝擊。",
+        "why": "AI 企業透過此機制回饋社會，提升企業形象並降低監管風險。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "核能技術",
+        "full": "Advanced Nuclear Technology",
+        "def": "尚未商業化的核能發電方案，通常指小模組化反應爐或新型燃料循環技術，具備較低建設成本與更高安全性的特點。",
+        "why": "為資料中心提供低碳、穩定的電力供應，可能改變雲端業者的能源採購結構。",
+        "category": "hardware"
+      },
+      {
+        "term": "TorchNeuron",
+        "full": "TorchNeuron Development Toolkit",
+        "def": "Amazon 為 PyTorch 生態系統推出的開發套件，允許開發者直接在 Amazon 自研的 AI 加速晶片上執行模型，減少對 Nvidia GPU 的依賴。",
+        "why": "此工具有助於推動自家晶片生態，改變 AI 硬體供應鏈的競爭格局。",
+        "category": "software"
+      },
+      {
+        "term": "代理人",
+        "full": "AI 代理人（AI Agent）",
+        "def": "具備自主決策與執行能力的軟體實體，可根據使用者指令或環境變化自動完成任務。",
+        "why": "在製造領域，代理人能即時調整自動化流程，縮短設計變更的反應時間。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Anduril",
+        "full": "Anduril Industries",
+        "def": "美國軍事科技公司，專注於 AI 驅動的感測與防禦系統。",
+        "why": "其採用 Arda 的 AI 模型顯示該技術已在高安全性、快速迭代的軍事製造環境中驗證。",
+        "category": "role"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-20",
     "is_sunday": false,
     "hw": [
@@ -922,137 +1103,6 @@
         "full": "人工智慧驅動的安全漏洞測試",
         "def": "透過 AI 演算法自動化掃描與模擬攻擊，快速找出系統或應用程式的安全弱點。相較於傳統手動測試，能在更短時間內完成大量測試。",
         "why": "在金融科技等高頻部署環境中，AI 滲透測試可同時確保安全與加速上線速度。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-14",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "AMD 於 OCP 峰會公布 Helion AI 代理伺服器機架",
-        "layer": "capacity_commitments",
-        "body": "AMD 在 2026 年 10 月於加州聖荷西的 OCP 峰會推出名為 Helion 的 AI 代理機架參考設計，提供 CPU 僅或 CPU+GPU 兩種配置。該機架最高可整合 32,768 核心的 Zen 6 CPU，使用 256 核心的 Venice EPYC 處理器，並可搭載至多 16 顆 Instinct MI350P GPU 加速卡。",
-        "impact": "",
-        "rating": "core",
-        "insight": "AMD 以全棧 Helion 機架切入 AI 代理市場，顯示其在 AI 基礎設施供應鏈的資本與產能承諾將持續升溫。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/10/12/amd-unveils-helion-racks-for-ai-agents-at-ocp-summit/5302652",
-        "chain": [
-          {
-            "label": "AMD Helium AI 伺服器機架出貨↑",
-            "type": "up"
-          },
-          {
-            "label": "Intel Xeon 需求↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Anthropic 將於本週三向機構投資人披露第三季財報",
-        "layer": "finance",
-        "body": "Anthropic 計畫於本週三在舊金山與潛在機構投資人會面，首次公開第三季營收與盈餘數據。此會議由兩位熟悉內情且要求匿名的消息人士透露，並已由 Bloomberg 報導。Anthropic 目前正為可能成為史上最大規模的首次公開發行做準備。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Anthropic 財報公開將成為資金與硬體需求的風向標，投資人應關注其對 GPU 供應鏈的拉動效應。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/13/anthropic-q3-financials-ipo.html",
-        "chain": [
-          {
-            "label": "Anthropic IPO 計畫↑",
-            "type": "up"
-          },
-          {
-            "label": "傳統投資銀行承銷收入↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Meta 發布前沿模型 Muse Wonder 與 Wonder Full",
-        "layer": "model",
-        "body": "Meta 超級智慧實驗室於 10 月 12 日推出兩款新前沿模型 Muse Wonder 與 Muse Wonder Full，並以每百萬輸入代幣 4 美元、每百萬輸出代幣 20 美元的價格透過 Meta Model API 提供。官方測試顯示兩模型在基準測試上可與 Fable 5.1 與 GPT‑6 Astra 相媲美。Meta 表示此舉是向個人超智慧邁進的關鍵一步。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Meta 的模型上線將直接刺激高階 GPU 與 HBM 需求，相關供應商可望受惠。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/",
-        "chain": [
-          {
-            "label": "Meta Muse Wonder API 價格↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI API 市占↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": "",
-        "chain": [
-          {
-            "label": "無相關應用新聞",
-            "type": "neutral"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Helion",
-        "full": "AMD Helion AI 代理機架參考設計",
-        "def": "AMD 在 OCP 峰會推出的全棧機架，支援 CPU 僅或 CPU+GPU 組合，用於 AI 代理的推理與執行。",
-        "why": "提供單機架內完整的 AI 代理運算平台，降低系統整合成本。",
-        "category": "hardware"
-      },
-      {
-        "term": "Instinct MI350P",
-        "full": "AMD Instinct MI350P GPU 加速卡",
-        "def": "AMD 針對高效能運算與 AI 推理設計的 GPU，加速卡可在 Helion 機架中配置至多 16 顆。",
-        "why": "提升 AI 工作負載的計算密度，對 GPU 供應鏈需求產生直接拉動。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "前沿模型",
-        "full": "Frontier Model",
-        "def": "指在規模、參數量或效能上位於業界最前端的人工智慧模型，通常需要極高的算力與大量資料訓練。",
-        "why": "前沿模型的推出會直接拉動高階 GPU、記憶體與高速互連的需求，影響整體 AI 硬體供應鏈。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "多吉瓦級",
-        "full": "Multi‑Gigawatt‑level",
-        "def": "形容資料中心或加速器系統的總功耗達到數十億瓦特等級，代表極高的能源與散熱需求。",
-        "why": "此等級的功耗需求會推動電力基礎建設與散熱解決方案的升級，影響能源供應鏈。",
-        "category": "hardware"
-      },
-      {
-        "term": "Azure Maia",
-        "full": "Microsoft Azure Maia AI Accelerator",
-        "def": "Microsoft 為雲端 AI 工作負載設計的專屬加速器晶片，採用多晶片模組以提升推理與訓練效能。",
-        "why": "Maia 的大規模部署將改變 GPU 市場格局，提升對先進製程晶圓的需求。",
-        "category": "hardware"
-      },
-      {
-        "term": "第三方評估機構",
-        "full": "",
-        "def": "指獨立於AI模型開發者之外，提供模型安全性與效能評估的組織，例如 Model Evaluation and Threat Research (METR) 與 Transluce。",
-        "why": "隨著AI安全關注提升，這類機構可協助產業建立可信任的模型驗證流程，降低部署風險。",
         "category": "ai_technique"
       }
     ],

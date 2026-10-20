@@ -2,6 +2,114 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 46,
+        "CSP/CapEx": 47,
+        "App/AI": 17,
+        "gnews-chip": 15,
+        "gnews-dc": 24,
+        "gnews-app": 21
+      },
+      "digest_filtered": 3,
+      "after_dedup": 156,
+      "buckets": {
+        "hw": 34,
+        "corp": 109,
+        "app": 34
+      },
+      "news_char_budget": {
+        "hw": 3966,
+        "corp": 8000,
+        "app": 3966
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 2,
+          "opp": 2,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 2,
+          "opp": 2,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "fact_audit": {
+        "mode": "log",
+        "checked": 5,
+        "suspect_cards": 1,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 2,
+          "suspect_cards": 0
+        },
+        "enforced": 0,
+        "items": [
+          {
+            "sec": "corp",
+            "title": "Anthropic 與 Nscale 商談第二筆約 450 億美元計算租賃合約",
+            "source": "https://www.cnbc.com/2026/10/20/anthropic-nscale-data-center-deal.html",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [
+              "460 兆"
+            ],
+            "tense_flag": false
+          },
+          {
+            "sec": "app",
+            "title": "Arda 推出 AI 軟體平台協助製造工程師快速調整自動化",
+            "source": "https://www.cnbc.com/2026/10/20/ex-openai-executive-builds-1point5-billion-ai-manufacturing-startup-arda.html",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [
+              "80%"
+            ],
+            "undetermined": [],
+            "tense_flag": false
+          }
+        ]
+      },
+      "date": "2026-10-21",
+      "generated_at": "2026-10-21T00:03:58.570460+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 42,
         "CSP/CapEx": 38,
         "App/AI": 12,
@@ -1114,77 +1222,6 @@
       "dedup_audit": [],
       "date": "2026-10-08",
       "generated_at": "2026-10-08T00:04:29.050956+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 45,
-        "CSP/CapEx": 33,
-        "App/AI": 20,
-        "gnews-chip": 18,
-        "gnews-dc": 22,
-        "gnews-app": 20
-      },
-      "digest_filtered": 0,
-      "after_dedup": 154,
-      "buckets": {
-        "hw": 31,
-        "corp": 114,
-        "app": 31
-      },
-      "news_char_budget": {
-        "hw": 3616,
-        "corp": 8000,
-        "app": 3616
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 3,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 3,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [],
-      "date": "2026-10-07",
-      "generated_at": "2026-10-07T00:04:21.547850+08:00"
     }
   ]
 }
