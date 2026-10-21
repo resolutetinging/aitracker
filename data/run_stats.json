@@ -2,6 +2,103 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 63,
+        "CSP/CapEx": 54,
+        "App/AI": 21,
+        "gnews-chip": 20,
+        "gnews-dc": 21,
+        "gnews-app": 23
+      },
+      "digest_filtered": 1,
+      "after_dedup": 184,
+      "buckets": {
+        "hw": 47,
+        "corp": 131,
+        "app": 47
+      },
+      "news_char_budget": {
+        "hw": 5483,
+        "corp": 8000,
+        "app": 5483
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 1,
+          "opp": 2,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 2,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "log",
+        "checked": 4,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 1,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0
+        },
+        "enforced": 0,
+        "items": [
+          {
+            "sec": "hw",
+            "title": "Nvidia 宣布 DSX Pod 模組化資料中心部署方案",
+            "source": "https://www.theregister.com/on-prem/2026/10/21/nvidias-grand-plan-for-speeding-up-datacenter-deployments-ai-trailer-parks/5304303",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [
+              "14"
+            ],
+            "tense_flag": false
+          }
+        ]
+      },
+      "date": "2026-10-22",
+      "generated_at": "2026-10-22T00:04:02.133374+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 46,
         "CSP/CapEx": 47,
         "App/AI": 17,
@@ -1151,77 +1248,6 @@
       "dedup_audit": [],
       "date": "2026-10-09",
       "generated_at": "2026-10-09T00:04:28.484157+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 57,
-        "CSP/CapEx": 49,
-        "App/AI": 24,
-        "gnews-chip": 21,
-        "gnews-dc": 24,
-        "gnews-app": 20
-      },
-      "digest_filtered": 1,
-      "after_dedup": 179,
-      "buckets": {
-        "hw": 40,
-        "corp": 135,
-        "app": 39
-      },
-      "news_char_budget": {
-        "hw": 4666,
-        "corp": 8000,
-        "app": 4550
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 2,
-        "corp": 3,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "placeholders": 0,
-      "llm_ratings": {
-        "hw": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [],
-      "date": "2026-10-08",
-      "generated_at": "2026-10-08T00:04:29.050956+08:00"
     }
   ]
 }

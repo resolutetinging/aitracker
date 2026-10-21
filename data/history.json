@@ -1,5 +1,160 @@
 [
   {
+    "date": "2026-10-22",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Nvidia 宣布 DSX Pod 模組化資料中心部署方案",
+        "layer": "AI 基礎建設供應鏈",
+        "body": "Nvidia 於 GTC Berlin 公布 DSX Pod，為一種模組化容器化資料中心單元，內含七台 Vera Rubin NVL72 機架，合計 504 顆 GPU 與 252 顆 Vera CPU，重量約 28 噸。此容器化方案預計於 2027 年起由合作夥伴如 HPE、Dell、Schneider Electric 交付，並可在準備好的場址上於兩週內完成部署，較傳統六個月的建置時間縮短至 14 天。Nvidia 表示，透過此方式可在 AI 計算需求激增時快速擴充算力，並降低部署前的電力、網路與冷卻基礎建設準備時間。",
+        "impact": "此 DSX Pod 方案直接提升 Nvidia 硬體供應鏈上游的 GPU 需求，預計拉升 NVIDIA GPU 出貨量 (↑) 並刺激晶圓代工廠如 TSMC、Samsung 的高階製程產能使用率 (↑)。下游資料中心建設商與雲端服務供應商將因快速部署能力而加速 AI 服務擴張，進一步推高對高頻寬記憶體 (HBM) 與高速互連 (CoWoS) 的需求 (↑)。同時，模組化容器的標準化也可能降低傳統資料中心建設公司的競爭力，促使其轉向提供模組化解決方案。",
+        "rating": "core",
+        "insight": "Nvidia 的 DSX Pod 將加速 AI 計算基礎建設部署，提升 GPU 與相關高階封裝需求。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/on-prem/2026/10/21/nvidias-grand-plan-for-speeding-up-datacenter-deployments-ai-trailer-parks/5304303",
+        "chain": [
+          {
+            "label": "Nvidia DSX Pod 部署↑",
+            "type": "up"
+          },
+          {
+            "label": "HPE Dell Schneider Electric 交付量↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 將模型上架 Google Cloud",
+        "layer": "core",
+        "body": "OpenAI 宣布其 GPT 系列模型將於本月在 Google Cloud 上線，讓開發者可透過 Google Cloud 的模型園區與 Antigravity 編碼工具使用，這是繼 Microsoft 與 Amazon 之後的第三大公有雲平台合作。",
+        "impact": "Google Cloud 需要擴充 Nvidia GPU（如 H100）與自家 TPUs 的供應，導致相關晶片製造商需求 ↑；同時 OpenAI 的模型在多雲環境部署，促使雲端基礎設施供應商爭奪 AI 加速卡市場，可能提升 Nvidia 與 Google 自製加速卡的出貨量。下游 SaaS 供應商可利用多雲模型服務降低供應商鎖定風險，提升服務彈性。",
+        "rating": "core",
+        "insight": "OpenAI 跨三大雲平台部署，加速 AI 加速卡需求，提升供應鏈整體活躍度。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/21/openai-bring-its-ai-models-to-googles-cloud-expands-beyond-microsoft.html",
+        "chain": [
+          {
+            "label": "OpenAI GPT 模型上架 Google Cloud↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Cloud AI 服務需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Meta 超大規模 GPU 冗餘池待命",
+        "layer": "opp",
+        "body": "Meta 在俄亥俄州 New Albany 的 Prometheus 超級叢集中，有超過 11% 的 Nvidia GPU 處於待命或失效狀態，作為備援以應對未來故障。",
+        "impact": "大量待命 GPU 代表 Nvidia 需要持續供應高可靠性 GPU，提升其高階 GPU（如 H100）出貨量 ↑；同時 Meta 透過冗餘設計提升資料中心可用性，可能促使其他大型雲端業者也加大備援 GPU 採購，帶動上游晶圓與封測需求。下游 AI 研發團隊因可即時取得備援資源，縮短模型訓練中斷時間，提升研發效率。",
+        "rating": "opp",
+        "insight": "Meta 大規模 GPU 冗餘策略將推動高階 GPU 需求持續增長。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/10/20/tens-of-thousands-of-nvidia-gpus-sit-idle-in-metas-prometheus-supercluster-just-waiting-for-a-failure/5304269",
+        "chain": [
+          {
+            "label": "Meta Nvidia GPU 待命率↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta 超級叢集維護成本↑",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "SpaceX 與 Tesla 討論合併可能性",
+        "layer": "opp",
+        "body": "SpaceX 執行長 Elon Musk 在財報電話會議中暗示可能與 Tesla 合併，若成真將形成跨太空與電動車領域的超大型企業。",
+        "impact": "合併後的資本規模可能提升對高效能運算與 AI 需求，進一步刺激 Nvidia 與 AMD 高效能 GPU 的需求 ↑；同時兩家公司共同採購的電池與半導體供應鏈（如 LG Chem、Samsung）將面臨更大訂單，提升其產能利用率。下游太空任務與自動駕駛系統將受益於更整合的硬體平台與 AI 計算資源。",
+        "rating": "opp",
+        "insight": "若 SpaceX 與 Tesla 合併，將創造對高效能算力與半導體的大幅需求。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/21/spacex-spcx-stock-musk-merger-tesla.html",
+        "chain": [
+          {
+            "label": "SpaceX 與 Tesla 合併討論↑",
+            "type": "up"
+          },
+          {
+            "label": "跨領域整合風險↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "新加坡企業局撥款 4,500 萬新元加速 AI 在先進製造的應用",
+        "layer": "AI加速製造",
+        "body": "新加坡企業局（Enterprise Singapore）宣布將撥款 4,500 萬新加坡元（約合 3,300 萬美元）用於推動 AI 技術在先進製造領域的落地。資金將支援本地製造業者導入 AI 監控、預測維護與自動化優化等解決方案，以提升產能與良率。",
+        "impact": "此資金直接提升 AI 軟體供應商（如 Siemens MindSphere、Microsoft Azure AI）的需求，帶動其雲端運算與資料標註服務↑；隨著製造業者採用 AI 監控系統，相關感測器與高效能運算硬體供應鏈（如 NVIDIA GPU、Intel Xeon）需求亦將上升↑；長遠看，製造業的產能提升將降低成品成本，提升下游電子組裝與終端產品的競爭力。",
+        "rating": "opp",
+        "insight": "投資者可關注提供製造業 AI 解決方案的軟體與硬體供應商，因資金刺激將加速其營收成長。",
+        "source_label": "TNGlobal",
+        "source": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPcVRUUkNuQ1NrVVZLTFJ5ZW1BOGx6S0MwMFlFaC1HNWk2TXFJbUF1Y2ZrUWpPaVAtRi1YQlpHZEFrQ3JlNXdLT2E3eFpMMllTZFhlMUxvZlJlZFpMYlgwUnpVMGp1bFBRYmxkSnA4T0U2aXMweEtVWmx2dEd0c0JSelZxU1poTnhmcW1uQVNBamQ0TFRoYVhrZjR5VnBZSkZaU0ZhU1d2VUJGaTFOMUFsUjJVQ0l4LTJnaXc",
+        "chain": [
+          {
+            "label": "Enterprise Singapore AI 補助金額↑",
+            "type": "up"
+          },
+          {
+            "label": "本地製造業 AI 導入率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "DSX Pod",
+        "full": "Data Center Deployment eXpress Pod",
+        "def": "Nvidia 與合作夥伴共同開發的模組化容器化資料中心單元，內含完整的算力、電力、冷卻與網路配置，可在短時間內部署於客戶場址。",
+        "why": "提供快速、標準化的 AI 計算資源部署，降低建置時間與成本。",
+        "category": "hardware"
+      },
+      {
+        "term": "Vera Rubin",
+        "full": "Nvidia Vera Rubin 計算平台",
+        "def": "Nvidia 針對 AI 工作負載設計的高密度伺服器平台，結合多顆 GPU 與專用 CPU，支援大規模分散式運算。",
+        "why": "是 DSX Pod 內的核心算力模組，決定了整體效能與能源需求。",
+        "category": "hardware"
+      },
+      {
+        "term": "FTCO",
+        "full": "Fab Technology Co‑Optimization",
+        "def": "將製程變異納入光子積體電路設計與模擬的工作流程，結合 GDS 匯入、三維製程模擬與 AI 代理模型，以提升製造可預測性。",
+        "why": "雖非直接硬體供應鏈訊號，但顯示光子晶片製造對製程供應鏈的依賴與優化需求。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "GPT",
+        "full": "Generative Pre-trained Transformer",
+        "def": "OpenAI 開發的生成式預訓練變換模型系列，支援自然語言處理與多種 AI 應用。",
+        "why": "其在多雲平台的部署推動了高階 GPU 與加速卡需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "先進製造",
+        "full": "Advanced Manufacturing",
+        "def": "結合自動化、數位化與人工智慧等技術，以提升生產效率、品質與彈性的新型製造模式。",
+        "why": "AI 在先進製造中的應用可加速產能提升與成本下降，對供應鏈上下游均有顯著影響。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "S$",
+        "full": "新加坡元",
+        "def": "新加坡的法定貨幣，常用於政府資金與投資計畫的計價單位。",
+        "why": "了解資金規模有助於評估相關 AI 產業的投資規模與市場潛力。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-21",
     "is_sunday": false,
     "hw": [
@@ -972,138 +1127,6 @@
         "def": "具備語音偵測與人工智慧處理能力的穿戴式硬體，可即時轉錄、摘要並執行指令。",
         "why": "結合硬體感測與雲端 AI，為使用者提供無縫的資訊助理服務。",
         "category": "hardware"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-15",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Cisco 與 Nvidia 合作推出超高密度可插拔光模組",
-        "layer": "pluggable_optics",
-        "body": "Cisco 與 Nvidia 在 OCP 全球峰會宣布開發的超密度小型可插拔光模組（USFP）可容納 32 條 400 Gbps 的通道，總帶寬達 12.8 Tbps，約為現有最高 1.6 Tbps 模組的八倍。該模組尺寸與現行 OSFP 模組相當，預計可在 AI 資料中心內以單一埠取代多條光纖連接。",
-        "impact": "下游 AI 資料中心的布線複雜度將下降，減少光纖佈線數量，進而降低安裝與維護成本。迫使傳統 NIC 與交換機供應商加速支援 12.8 Tbps 以上的介面規格。",
-        "rating": "core",
-        "insight": "投資者可關注支援 USFP 標準的光學元件供應鏈，因其需求將因 Cisco‑Nvidia 合作而顯著上升。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/networks/2026/10/14/cisco-nvidia-team-up-to-build-fatter-faster-pluggable/5302970",
-        "chain": [
-          {
-            "label": "Cisco USFP 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia AI 資料中心需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "共封裝光學需求激增 2028 年規劃推動供應鏈升溫",
-        "layer": "industry",
-        "body": "在 Ayar Labs CPO 峰會上，Meta、Broadcom、AMD 等業者共同指出 2028 年將迎來共封裝光學 (Co‑Packaged Optics) 需求激增，並討論 OCI MSA 在供應鏈中的角色。此需求預計促使光學元件製造商的產能擴充，以支援高密度光模組的量產。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "共封裝光學需求上升將驅動光子元件供應鏈擴張，提升相關廠商營收機會。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "Meta Co‑Packaged Optics 需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Broadcom 光學元件產能↑",
-            "type": "up"
-          },
-          {
-            "label": "AMD 高密度光模組供應↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Android 在 Google 訊息中導入 AI 防詐騙功能",
-        "layer": "行動裝置",
-        "body": "Android 正於 Google 訊息加入 AI 驅動的詐騙偵測與防護功能，旨在即時辨識並阻擋惡意訊息。此功能同時擴充至整體 Android 系統的防詐騙工具列，提升使用者在手機上的安全防護。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "AI 防詐騙功能將推動手機硬體安全加速器需求上升。",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/tech/1010928/android-scam-protection-enhanced-protection-google-messages",
-        "chain": [
-          {
-            "label": "Google Android AI 防詐騙功能↑",
-            "type": "up"
-          },
-          {
-            "label": "Android 使用者安全感↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "金融科技公司 63% 採用 AI 滲透測試加速程式部署",
-        "layer": "金融服務",
-        "body": "根據 FF News 報導，全球金融科技企業中有 63% 已導入 AI 滲透測試，以在保持安全的同時提升程式碼部署速度。此趨勢顯示 AI 已成為金融科技 DevSecOps 流程的核心工具。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "AI 滲透測試的廣泛採用將加速安全硬體與雲端服務需求。",
-        "source_label": "FF News",
-        "source": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOQXRIZ1VoSUoxbWlpNWcyTWo4eHRxT3NLWFMtUVUwRTR2Vl83NGNjQXI4WmpFZC1oa3p1VlR3cWl1T1NWdGI1WVZKQ1U0TllZaHdqcF9oTkNsV1NkQlU0WWNyTjl2X2pMclpZeXVJX0Fpa3hoY0h4bVFCaEluR28yeXYwbk04SktndktaSU84cDV4dENmN0xqZ2pMaFo1Zk1UMGY3SnFmWFZaX2FvY2VEUVZBcw",
-        "chain": [
-          {
-            "label": "金融科技 AI 滲透測試採用率↑",
-            "type": "up"
-          },
-          {
-            "label": "DevSecOps 部署速度↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "USFP",
-        "full": "Ultra‑dense Small Form‑factor Pluggable",
-        "def": "一種新型可插拔光模組，能在與傳統 OSFP 相同尺寸內整合多達 32 條 400 Gbps 通道，總帶寬可達 12.8 Tbps。",
-        "why": "此規格大幅提升單埠傳輸能力，將改變 AI 資料中心的光纖布線與交換機介面需求。",
-        "category": "hardware"
-      },
-      {
-        "term": "共封裝光學",
-        "full": "Co‑Packaged Optics",
-        "def": "將光學元件與晶片封裝於同一模組內，以降低訊號傳輸延遲並提升頻寬的技術。",
-        "why": "隨著資料中心對高效能互連需求增加，該技術成為提升 AI 訓練效能的關鍵。",
-        "category": "hardware"
-      },
-      {
-        "term": "Azure Maia AI 加速器",
-        "full": "Microsoft Azure Maia AI Accelerator",
-        "def": "Microsoft 自研的 AI 加速器平台，採用多晶片堆疊設計，提供高吞吐量的 token 處理能力。",
-        "why": "可減少對第三方 GPU 供應商的依賴，改變雲端 AI 計算供應鏈格局。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI 防詐騙",
-        "full": "人工智慧詐騙偵測與阻擋技術",
-        "def": "利用機器學習模型即時分析訊息內容與發送者行為，辨識並阻止可能的詐騙訊息。此技術常結合自然語言處理與行為分析，以提升偵測準確度。",
-        "why": "隨著行動詐騙手法日益複雜，AI 防詐騙成為提升使用者安全的關鍵防線。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI 滲透測試",
-        "full": "人工智慧驅動的安全漏洞測試",
-        "def": "透過 AI 演算法自動化掃描與模擬攻擊，快速找出系統或應用程式的安全弱點。相較於傳統手動測試，能在更短時間內完成大量測試。",
-        "why": "在金融科技等高頻部署環境中，AI 滲透測試可同時確保安全與加速上線速度。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
