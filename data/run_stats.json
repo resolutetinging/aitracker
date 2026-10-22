@@ -2,6 +2,105 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 65,
+        "CSP/CapEx": 56,
+        "App/AI": 23,
+        "gnews-chip": 19,
+        "gnews-dc": 22,
+        "gnews-app": 17
+      },
+      "digest_filtered": 0,
+      "after_dedup": 183,
+      "buckets": {
+        "hw": 46,
+        "corp": 126,
+        "app": 45
+      },
+      "news_char_budget": {
+        "hw": 5366,
+        "corp": 8000,
+        "app": 5250
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 3,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "log",
+        "checked": 3,
+        "suspect_cards": 1,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 1,
+          "suspect_cards": 0
+        },
+        "enforced": 0,
+        "items": [
+          {
+            "sec": "corp",
+            "title": "Meta 宣布全年資本支出上限提升至 1450 億美元",
+            "source": "https://www.cnbc.com/2026/10/22/meta-stock-q3-earnings-free-cash-flow.html",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [
+              "1350"
+            ],
+            "undetermined": [
+              "150 億美元"
+            ],
+            "tense_flag": false
+          }
+        ]
+      },
+      "date": "2026-10-23",
+      "generated_at": "2026-10-23T00:04:14.664059+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 63,
         "CSP/CapEx": 54,
         "App/AI": 21,
@@ -1177,77 +1276,6 @@
       "dedup_audit": [],
       "date": "2026-10-10",
       "generated_at": "2026-10-10T00:04:41.448293+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 57,
-        "CSP/CapEx": 51,
-        "App/AI": 26,
-        "gnews-chip": 23,
-        "gnews-dc": 22,
-        "gnews-app": 21
-      },
-      "digest_filtered": 0,
-      "after_dedup": 183,
-      "buckets": {
-        "hw": 42,
-        "corp": 135,
-        "app": 42
-      },
-      "news_char_budget": {
-        "hw": 4900,
-        "corp": 8000,
-        "app": 4900
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 3,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "placeholders": 0,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [],
-      "date": "2026-10-09",
-      "generated_at": "2026-10-09T00:04:28.484157+08:00"
     }
   ]
 }

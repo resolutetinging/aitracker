@@ -1,5 +1,145 @@
 [
   {
+    "date": "2026-10-23",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Nvidia 於柏林 GTC 公布投入資金協助供應鏈以鞏固矽基板供應",
+        "layer": "capacity commitments",
+        "body": "Nvidia 在柏林 GTC 大會上宣布將動用巨額現金，協助其矽基板（wafer）供應商取得所需資源，以確保未來多年 GPU 與 AI 處理器的供應。此舉針對提供晶圓給代工廠（如 TSMC、Intel）的上游供應商，旨在提升其產能利用率。Nvidia 亦指出此投資有助於降低供應鏈金融風險，讓整體供應鏈更具韌性。",
+        "impact": "1. 上游矽基板供應商的產能利用率將上升，因為獲得 Nvidia 的資金支援可加速晶圓製程擴充；2. 受惠的代工廠（TSMC、Intel）將因晶圓需求穩定而受惠。",
+        "rating": "core",
+        "insight": "資金介入供應鏈可降低晶圓供應風險，支撐 Nvidia 長期 GPU 需求。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/10/22/to-help-world-gorge-on-gpus-nvidia-brings-cash-bucket-to-fatten-wafer-thin-supply-chain/5304623",
+        "chain": [
+          {
+            "label": "TSMC Wafer 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Intel Wafer 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia GPU 供應↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Meta 宣布全年資本支出上限提升至 1450 億美元",
+        "layer": "corp",
+        "body": "Meta 將 2026 年全年度資本支出上限調整至 1350–1450 億美元，較先前上限 1300 億美元上調 150 億美元；同時公布第三季自由現金流為負 21.2 億美元。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Meta 大幅提升資本支出將直接刺激 AI 硬體與資料中心供應鏈需求。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/22/meta-stock-q3-earnings-free-cash-flow.html",
+        "chain": [
+          {
+            "label": "Meta 資本支出上限↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta 數據中心建設↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta 廣告收入潛力↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Microsoft 揭露 ConnectWise 資安漏洞導致 2,250 個雲端租戶受影響",
+        "layer": "corp",
+        "body": "Microsoft 表示，ConnectWise 的資安漏洞使中國間諜在 2,250 個雲端租戶中取得特權存取，部分環境在三小時內被 AI 代理人完全控制。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "資安漏洞將推動雲端安全解決方案需求上升，影響相關硬體與服務供應鏈。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/security/2026/10/22/microsoft-says-connectwise-breach-let-chinese-spies-loose-on-2250-cloud-tenants/5304687",
+        "chain": [
+          {
+            "label": "ConnectWise 資安漏洞→Azure 雲端信任↓",
+            "type": "down"
+          },
+          {
+            "label": "Microsoft 安全服務聲譽↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "矽基板",
+        "full": "Silicon substrate",
+        "def": "用於製造晶圓的平板材料，供代工廠在其上刻蝕電路，是半導體製程的基礎。",
+        "why": "Nvidia 投資提升矽基板供應，可直接影響晶圓產能與成本。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "OSAT",
+        "full": "Outsourced Semiconductor Assembly and Test",
+        "def": "將晶圓交由第三方進行封裝與測試的服務，屬於半導體供應鏈的後段。",
+        "why": "矽基板供應穩定後，封測需求同步上升，影響 OSAT 廠商營運。",
+        "category": "hardware"
+      },
+      {
+        "term": "GTC",
+        "full": "GPU Technology Conference",
+        "def": "Nvidia 每年舉辦的技術與產品發布會，聚焦 GPU、AI 與資料中心等領域。",
+        "why": "本次供應鏈資金投入於 GTC 公布，顯示公司策略性重視供應鏈安全。",
+        "category": "role"
+      },
+      {
+        "term": "DSX POD",
+        "full": "Data Center Scale eXpress POD",
+        "def": "Nvidia 推出的模組化資料中心解決方案，將多台液冷計算機櫃與高速網路整合於可搬運的容器中，支援快速部署。",
+        "why": "縮短資料中心建設時間，降低部署成本，提升 AI 基礎設施彈性。",
+        "category": "hardware"
+      },
+      {
+        "term": "Vera Rubin 計算機櫃",
+        "full": "Vera Rubin liquid‑cooled compute rack",
+        "def": "Nvidia 以天文學家 Vera Rubin 命名的液冷伺服器櫃，提供高效散熱以支援大型 AI 工作負載。",
+        "why": "提升 GPU 效能與能源使用效率，符合大型 AI 訓練需求。",
+        "category": "hardware"
+      },
+      {
+        "term": "ConnectWise 漏洞",
+        "full": "ConnectWise security breach",
+        "def": "一項資安漏洞使攻擊者能在 Microsoft 雲端環境中取得特權存取，導致大量租戶資料被竊取或操控。",
+        "why": "突顯雲端服務供應鏈的資安薄弱點，促使安全防護技術需求激增。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "本地部署 AI 解決方案",
+        "full": "On-premises AI solution",
+        "def": "在使用者自有的硬體環境中直接執行的人工智慧軟體系統，無需依賴外部雲端平台。此類方案常用於需要高資料隱私或低延遲的應用，如醫療影像分析。",
+        "why": "可降低資料傳輸風險、提升即時處理能力，符合醫療法規與隱私要求。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-22",
     "is_sunday": false,
     "hw": [
@@ -938,195 +1078,6 @@
         "def": "指在使用者自有的本地伺服器或資料中心部署的人工智慧解決方案，資料不需傳送至雲端平台。",
         "why": "本地部署可降低資料傳輸延遲並提升資訊安全，對需要嚴格合規的產業具吸引力。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-16",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "TSMC 派員赴美檢視資料中心建設與電力供應",
-        "layer": "capacity_commitments",
-        "body": "TSMC 正派遣人員前往美國，實地檢查資料中心的建設進度與電力供應情況，以評估未來在美擴增晶圓代工產能的可行性。此行動與公司預計投入最高 640 億美元擴建資本支出相呼應，顯示其正積極規劃美國供應鏈布局。",
-        "impact": "",
-        "rating": "core",
-        "insight": "TSMC 佈局美國資料中心供電，將加速本土 AI 晶片供應鏈建設。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/10/15/tsmc-sends-scouts-to-check-whether-americas-datacenters-can-deliver/5303260",
-        "chain": [
-          {
-            "label": "TSMC 美國資料中心供應鏈布局↑",
-            "type": "up"
-          },
-          {
-            "label": "TSMC 美國晶圓代工產能擴增↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "TSMC 晶圓產能成 AI 客戶激烈爭奪焦點",
-        "layer": "capacity_commitments",
-        "body": "TSMC 在創紀錄的季報中透露，2026 年可提供超過 1700 萬片 12 吋等效晶圓，但 AI 客戶需求持續超出供應，導致晶圓排程競爭激烈。公司北美 CEO 表示每日接獲至少 10 通關於晶圓產能的詢問，顯示需求壓力持續升高。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "AI 晶片需求持續超過 TSMC 產能，將推高晶圓與相關原料價格。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/15/nvidia-apple-broadcom-in-fierce-battle-to-make-chips-at-tsmc.html",
-        "chain": [
-          {
-            "label": "TSMC AI 客戶晶圓需求↑",
-            "type": "up"
-          },
-          {
-            "label": "TSMC 晶圓排程競爭激烈↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "AWS 投入 10 億美元建置前端部署工程師團隊",
-        "layer": "AI 人才投資",
-        "body": "Amazon Web Services 宣布將投入 10 億美元於前端部署工程師（FDE）計畫，以加速企業 AI 應用落地。此舉旨在提供具備 AI 與軟體專業的工程師，協助客戶將大型語言模型轉化為可衡量的商業成果。",
-        "impact": "此資金將直接提升 AWS 供應鏈中高階 AI 人才的需求，帶動相關培訓機構與外包服務商的服務量↑。",
-        "rating": "core",
-        "insight": "AWS 大規模人才投入將加速企業 AI 轉型，提升雲端服務需求。",
-        "source_label": "The Register",
-        "source": "https://www.cnbc.com/2026/10/15/aws-anthropic-racing-to-deploy-army-of-specialized-ai-engineers.html",
-        "chain": [
-          {
-            "label": "AWS 前端部署工程師團隊投入↑",
-            "type": "up"
-          },
-          {
-            "label": "AWS 企業 AI 應用落地加速↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Amazon 發布 Bee 系列個人 AI 裝置，售價 75 美元與 100 美元",
-        "layer": "AI 硬體產品",
-        "body": "Amazon 推出新款 Bee Frontier 可穿戴手環，售價 75 美元，並推出配合智慧手機的 Bee Eclipse，售價 100 美元，兩者皆具備即時語音對話與 AI 助理功能。",
-        "impact": "新裝置的推出將刺激智慧穿戴硬體的零組件需求，提升晶片、感測器與電池供應商的出貨量↑。",
-        "rating": "core",
-        "insight": "Amazon 以低價 AI 穿戴設備切入消費市場，將帶動相關硬體供應鏈需求。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/15/amazon-bee-frontier-eclipse-ai-devices.html",
-        "chain": [
-          {
-            "label": "Amazon Bee Frontier 可穿戴 AI 裝置售價75美元↑",
-            "type": "up"
-          },
-          {
-            "label": "Amazon Bee Eclipse 智慧手機配件售價100美元↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Apate.ai 以千名 AI 代理人偽裝受害者收集詐騙情報",
-        "layer": "fraud_intelligence",
-        "body": "Apate.ai 成立於 2024 年，部署數千名 AI 代理人偽裝成不同年齡、性別與口音的受害者。這些代理人已完成 2.5 百萬次對話，累計讓詐騙者浪費約 17 年時間。公司服務的客戶包括銀行、電信、政府機關與公用事業，透過對話取得詐騙者的銀行帳號、加密錢包與惡意網站資訊。",
-        "impact": "下游：銀行與電信業者因能更早取得詐騙者資訊，減少詐騙損失，進一步提升客戶信任與服務品質。",
-        "rating": "opp",
-        "insight": "AI 代理人可大幅提升詐騙偵測資訊的取得速度與品質，為金融與電信業者帶來即時防護優勢。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/10/14/apate-sends-ai-agents-undercover-to-get-scammed-so-they-can-gather-fraud-intelligence/",
-        "chain": [
-          {
-            "label": "Apate.ai AI 代理人偽裝受害者收集詐騙情報↑",
-            "type": "up"
-          },
-          {
-            "label": "Apate.ai 為銀行電信等客戶提供詐騙情報服務↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Amazon 推出兩款全新 Bee 可穿戴 AI 裝置",
-        "layer": "wearable_ai",
-        "body": "Amazon 於去年收購 Bee 後，於本月發布 $74.99 的 Bee Frontier 與即將上市的 $99.99 Bee Eclipse，兩者皆具備全天候語音偵測與會議摘要功能。Bee 裝置可與 Gmail、Google Calendar、Outlook、Apple HealthKit 及相片服務整合，讓 AI 代為草擬郵件或建立行事曆邀請。此系列產品定位為提升使用者即時資訊掌握與行動效率的工具。",
-        "impact": "上游：麥克風、磁吸模組與電池等硬體元件需求 ↑，帶動相關供應商產能提升。中游：Amazon 雲端服務與 AI 平台將獲得更多裝置端資料回饋，促進模型訓練與服務升級。",
-        "rating": "core",
-        "insight": "結合語音偵測與 AI 助理的可穿戴裝置將推動硬體供應鏈與雲端服務的同步成長。",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/tech/1011475/amazon-bee-frontier-eclipse-price-specs",
-        "chain": [
-          {
-            "label": "Amazon Bee Frontier 可穿戴 AI 裝置售價74.99美元↑",
-            "type": "up"
-          },
-          {
-            "label": "Amazon Bee Eclipse 即將上市售價99.99美元↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "高頻寬記憶體",
-        "full": "High Bandwidth Memory (HBM)",
-        "def": "一種堆疊式記憶體技術，提供極高的資料傳輸速率，常用於 AI 加速器與高效能運算平台。",
-        "why": "HBM 的功耗與效能直接影響 AI 伺服器的能源成本與散熱設計。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "晶圓代工",
-        "full": "Foundry",
-        "def": "專門為其他半導體公司製造晶圓的廠商，提供製程技術與產能服務。",
-        "why": "代工廠的產能配置決定了 AI 晶片的供應速度與成本結構。",
-        "category": "hardware"
-      },
-      {
-        "term": "供應鏈布局",
-        "full": "Supply Chain Deployment",
-        "def": "企業在不同地域或階段配置資源與合作夥伴，以確保產品從原料到最終客戶的順暢流通。",
-        "why": "TSMC 在美國的布局將改變全球 AI 晶片供應鏈的地理分布與風險管理。",
-        "category": "role"
-      },
-      {
-        "term": "前端部署工程師（FDE）",
-        "full": "Forward-Deployed Engineer",
-        "def": "具備 AI 與企業運營知識的工程師，負責將大型語言模型直接部署於客戶的業務系統中，縮短技術落地時間。",
-        "why": "FDE 能將 AI 技術快速商業化，提升雲端服務供應商與模型提供商的收入。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Bee Frontier",
-        "full": "Amazon Bee Frontier 可穿戴手環",
-        "def": "Amazon 推出的智慧手環產品，具備即時語音對話與 AI 助理功能，售價 75 美元。",
-        "why": "作為低價 AI 穿戴裝置，將刺激感測器與低功耗晶片的需求。",
-        "category": "hardware"
-      },
-      {
-        "term": "AI 代理人",
-        "full": "Artificial Intelligence Agent",
-        "def": "利用人工智慧技術模擬人類行為的軟體程式，可在通訊、客服或偽裝任務中自動執行互動。",
-        "why": "在詐騙情報收集與自動化客服等領域提供大規模、低成本的互動能力。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "詐騙情報偵測",
-        "full": "Fraud Intelligence Gathering",
-        "def": "透過主動與詐騙者互動，取得其作案手法、資金流向與目標平台等資訊，以供防護系統使用。",
-        "why": "提升金融與電信業者的風險預警與損失減少能力。",
-        "category": "role"
-      },
-      {
-        "term": "可穿戴 AI 裝置",
-        "full": "Wearable AI Device",
-        "def": "具備語音偵測與人工智慧處理能力的穿戴式硬體，可即時轉錄、摘要並執行指令。",
-        "why": "結合硬體感測與雲端 AI，為使用者提供無縫的資訊助理服務。",
-        "category": "hardware"
       }
     ],
     "weekly_summary": null
