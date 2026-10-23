@@ -1,5 +1,144 @@
 [
   {
+    "date": "2026-10-24",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 近完成 300 億美元融資輪 估值 1.25 兆美元",
+        "layer": "融資",
+        "body": "OpenAI 正在進行最高可達 300 億美元的融資，估值約 1.25 兆美元，主要由阿聯酋投資者與 Coatue 領投，並計畫在下週完成簽署。此輪資金同時包含與阿聯酋的計算資源商業協議，將為 OpenAI 提供額外的算力供應。",
+        "impact": "",
+        "rating": "core",
+        "insight": "300 億美元融資將直接推升高階 GPU 需求，帶動上游晶圓代工產能擴張。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/22/openai-funding-round-uae-investors.html",
+        "chain": [
+          {
+            "label": "OpenAI 融資額↑",
+            "type": "up"
+          },
+          {
+            "label": "阿聯酋算力供應↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "PHP2Shell 安全漏洞波及 Google、OpenAI、Amazon 等巨頭",
+        "layer": "資安漏洞",
+        "body": "全球多家科技公司包括 Google、OpenAI 與 Amazon 正在緊急修補名為 PHP2Shell 的兩項關鍵漏洞，該漏洞允許遠端執行惡意程式碼，NSA 已警告企業立即部署更新。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "重大 PHP 漏洞推動雲端與安全硬體供應鏈的即時升級需求。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/22/php-google-openai-and-amazon-cyber.html",
+        "chain": [
+          {
+            "label": "Google 安全修補成本↑",
+            "type": "up"
+          },
+          {
+            "label": "Amazon 服務可用性↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Microsoft AI 診斷協調器在模擬測試中正確率達 83%",
+        "layer": "healthcare",
+        "body": "Microsoft 於《Science》期刊發表的研究顯示，其 AI 診斷協調器（MAI‑DxO）在使用新英格蘭醫學雜誌的複雜病例模擬測試時，正確率為 83%。同時，僅使用參考資料的普通內科醫師正確率為 36%。該系統透過多個 AI 代理人模擬醫師小組，完成問診、檢驗指示與診斷討論。",
+        "impact": "",
+        "rating": "core",
+        "insight": "投資者可關注 AI 診斷平台相關的算力與醫療設備供應鏈，因其商業化前景快速成長。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/10/22/microsofts-mustafa-suleyman-says-its-ai-outperforms-doctors-on-hard-cases-as-he-chases-medical-superintelligence/",
+        "chain": [
+          {
+            "label": "Microsoft MAI‑DxO 正確率↑",
+            "type": "up"
+          },
+          {
+            "label": "傳統醫師診斷正確率↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "GTC",
+        "full": "GPU Technology Conference",
+        "def": "Nvidia 每年舉辦的全球性人工智慧與高效能運算技術展示會，聚焦新產品發表與產業合作。",
+        "why": "了解此會議有助於掌握 Nvidia 供應鏈新動向與合作夥伴訊息。",
+        "category": "hardware"
+      },
+      {
+        "term": "Solidigm",
+        "full": "Solidigm Inc.",
+        "def": "由 Intel 分拆出的固態儲存與記憶體子公司，近期計畫在美國上市。",
+        "why": "其 IPO 計畫的變動會影響相關記憶體製造與供應鏈資金流向。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "AI 計算中心",
+        "full": "人工智慧計算中心",
+        "def": "提供大規模 GPU 或加速器資源的資料中心，支援深度學習模型訓練與推論。",
+        "why": "AI 計算中心的需求變化直接牽動晶圓代工、HBM 記憶體與 OSAT 供應鏈。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "合併",
+        "full": "企業合併",
+        "def": "兩家或多家公司透過法律與財務手段結合成為單一實體，以整合資源、擴大市場或提升競爭力。",
+        "why": "合併往往會改變供應鏈結構，影響上下游供應商的需求與合作模式。",
+        "category": "role"
+      },
+      {
+        "term": "融資輪",
+        "full": "資金募集輪次",
+        "def": "公司在成長階段向投資者募集資金的階段性活動，通常以輪次（Series A、B、C…）劃分，金額與估值會公開披露。",
+        "why": "大規模融資直接提升公司購買上游硬體與服務的能力，帶動相關產業需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "資安漏洞",
+        "full": "資訊安全漏洞",
+        "def": "軟體或系統中未被預期的缺陷，可能被惡意攻擊者利用以取得未授權存取或執行惡意程式。",
+        "why": "重大漏洞會迫使雲端與硬體供應商加速安全升級，影響產品出貨與服務可用性。",
+        "category": "hardware"
+      },
+      {
+        "term": "診斷協調器",
+        "full": "Diagnostic Orchestrator",
+        "def": "一種結合多個 AI 代理人，模擬醫師小組流程的系統，負責問診、檢驗指示與診斷推論。",
+        "why": "它是 Microsoft AI 在醫療領域的核心產品，直接影響醫療硬體與算力需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "MAI‑DxO",
+        "full": "Microsoft AI Diagnostic Orchestrator",
+        "def": "Microsoft 開發的 AI 診斷平台，於《Science》期刊報告中以 83% 的正確率超越普通醫師。",
+        "why": "作為商業化的 AI 醫療服務，將驅動相關硬體與雲端資源的採購。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-23",
     "is_sunday": false,
     "hw": [
@@ -989,97 +1128,5 @@
       }
     ],
     "weekly_summary": "HW：本週未出現 AI 基礎設施供應鏈的容量承諾或策略性供應商決策。\nCORP：本週 Apple 推出首支折疊式 iPhone Duo、Microsoft Defender 支援 Linux、Meta 獲授權抓取企業資料、Salience Labs 完成 1.25 億美元 B 輪融資，皆顯示大型平台與新創在硬體與資料層面的深度布局。\n下週看點：Apple 是否能持續維持高價位折疊機型的預購熱度，以及光學交換技術在實際資料中心部署的進度。\nAPP：LTM 與 Google Cloud 擴大合作，加速 Gemini Enterprise 企業版在雲端的部署與採用。\n用戶洞察：企業客戶可透過雲端即時取得高階生成式 AI 服務，降低自建基礎設施的門檻與成本。"
-  },
-  {
-    "date": "2026-10-17",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "HBM2 記憶體功耗實驗揭示讀取電流最高與資料切換影響",
-        "layer": "HBM Power Characterization",
-        "body": "ETH Zürich 與 NYU 首次以實體 HBM2 DRAM 晶片完成全面功耗實驗，發現讀取操作的電流顯著高於其他操作；資料突發傳輸期間若切換所有內部銀行群組匯流排訊號，功耗會提升 29.4%；研究團隊設計的存取模式在 36 項測試中平均使功耗上升 23.6%。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "投資者應關注 HBM 供應鏈中功耗優化的技術進展，相關廠商的產品升級可能帶來價格與需求變動。",
-        "source_label": "Semiconductor Engineering",
-        "source": "https://semiengineering.com/characterization-of-hbm-power-consumption-eth-zurich-nyu/"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Apple 與 Meta 合作將 Muse AI 模型本地化於 Mac Studio",
-        "layer": "corp",
-        "body": "Apple 與 Meta 宣布合作，將 Muse Spark Open AI 模型優化後可在搭載 Apple Silicon 的 Mac Studio 系統上本地執行，提升模型運算效能與資料隱私保護。",
-        "impact": null,
-        "rating": "core",
-        "insight": "Apple‑Meta 合作將提升本地 AI 計算需求，帶動 Apple Silicon 供應鏈成長。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/15/apple-meta-partner-ai.html"
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "HBM2",
-        "full": "High Bandwidth Memory 2",
-        "def": "一種高帶寬記憶體技術，採堆疊式 DRAM 晶片並透過 TSV 介面提供每秒數百 GB 的資料傳輸速率，常用於 AI 加速器與高效能運算平台。",
-        "why": "HBM2 是 AI 基礎建設的關鍵記憶體，功耗表現直接影響資料中心的能源成本與散熱設計。",
-        "category": "hardware"
-      },
-      {
-        "term": "OSAT",
-        "full": "Outsourced Semiconductor Assembly and Test",
-        "def": "提供半導體封裝與測試服務的外包廠商，負責將晶圓組裝成最終可用的封裝產品，對功耗、散熱與尺寸有重要影響。",
-        "why": "OSAT 必須因應 HBM 功耗特性調整封裝設計，以確保 AI 系統的可靠性與效能。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "DRAM",
-        "full": "Dynamic Random-Access Memory",
-        "def": "一種易失性記憶體，透過電容儲存位元資料，需要持續刷新以維持資料，廣泛應用於電腦與伺服器的主記憶體。",
-        "why": "HBM2 基於 DRAM 技術，其功耗特性直接受製程與架構影響，關係到整體 AI 系統的能源效率。",
-        "category": "hardware"
-      },
-      {
-        "term": "光學電路交換 (Optical Circuit Switching)",
-        "full": "Optical Circuit Switching",
-        "def": "一種利用光纖直接建立固定路徑的交換技術，可在資料中心內部提供低延遲與高帶寬的資料傳輸。",
-        "why": "隨著資料中心對即時運算需求提升，光學交換成為取代傳統電氣交換的關鍵技術。",
-        "category": "hardware"
-      },
-      {
-        "term": "主權私有雲",
-        "full": "Sovereign Private Cloud",
-        "def": "由本地政府或受信任的本土企業提供的雲端基礎設施，確保資料主權與合規性，同時在本地部署硬體資源。",
-        "why": "在資料隱私與合規要求日益嚴格的市場，主權私有雲可吸引企業將工作負載遷移至本地，提升本地硬體需求。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "獨立 AI 評估機構",
-        "full": "Independent AI Evaluator",
-        "def": "專門針對人工智慧模型安全性、風險與合規性進行第三方審核的組織，如 METR 與 SecureBio。",
-        "why": "隨著 AI 模型規模擴大，獨立評估成為確保模型安全與合規的重要環節，影響模型部署與供應鏈驗證流程。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "on‑premises AI",
-        "full": "on‑premises AI",
-        "def": "指在使用者自有的本地伺服器或資料中心部署的人工智慧解決方案，資料不需傳送至雲端平台。",
-        "why": "本地部署可降低資料傳輸延遲並提升資訊安全，對需要嚴格合規的產業具吸引力。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
   }
 ]

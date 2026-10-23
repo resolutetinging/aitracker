@@ -2,6 +2,98 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 58,
+        "CSP/CapEx": 54,
+        "App/AI": 25,
+        "gnews-chip": 20,
+        "gnews-dc": 23,
+        "gnews-app": 19
+      },
+      "digest_filtered": 1,
+      "after_dedup": 180,
+      "buckets": {
+        "hw": 40,
+        "corp": 125,
+        "app": 39
+      },
+      "news_char_budget": {
+        "hw": 4666,
+        "corp": 8000,
+        "app": 4550
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 3,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "dedup_audit": [
+        {
+          "title": "Elon Musk 暗示 SpaceX 與 Tesla 合併已進入專門委員會階段",
+          "section": "corp",
+          "action": "removed",
+          "matched_title": "SpaceX 與 Tesla 討論合併可能性",
+          "reason": "兩篇皆描述 Elon Musk 在財報電話會議中暗示 SpaceX 與 Tesla 合併的可能性，屬同一事件"
+        }
+      ],
+      "fact_audit": {
+        "mode": "log",
+        "checked": 3,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0
+        },
+        "enforced": 0,
+        "items": []
+      },
+      "date": "2026-10-24",
+      "generated_at": "2026-10-24T00:04:01.125711+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 65,
         "CSP/CapEx": 56,
         "App/AI": 23,
@@ -1205,77 +1297,6 @@
       ],
       "date": "2026-10-11",
       "generated_at": "2026-10-11T00:04:17.916669+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 64,
-        "CSP/CapEx": 51,
-        "App/AI": 24,
-        "gnews-chip": 19,
-        "gnews-dc": 23,
-        "gnews-app": 20
-      },
-      "digest_filtered": 2,
-      "after_dedup": 185,
-      "buckets": {
-        "hw": 39,
-        "corp": 138,
-        "app": 39
-      },
-      "news_char_budget": {
-        "hw": 4550,
-        "corp": 8000,
-        "app": 4550
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 3,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 4,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "dedup_audit": [],
-      "date": "2026-10-10",
-      "generated_at": "2026-10-10T00:04:41.448293+08:00"
     }
   ]
 }
