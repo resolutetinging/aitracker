@@ -1,5 +1,167 @@
 [
   {
+    "date": "2026-10-25",
+    "is_sunday": true,
+    "hw": [
+      {
+        "title": "Nvidia 為 OpenAI 俄亥俄 10GW 資料中心提供 1050 億美元保證",
+        "layer": "financial",
+        "body": "Nvidia 在 2026 年 7 月的季報中披露，已為 neocloud 提供 360 億美元的雲端協議背書，並對 OpenAI 位於俄亥俄的 10GW 資料中心提供最高 1050 億美元的晶片、土地與電力保證。",
+        "impact": "此保證將直接推升對先進 HBM（尤其是 HBM4/4e）與高功率供電封裝（如 EMIB‑T）的需求，促使相關供應商提升產能以滿足 neocloud 大規模建置。",
+        "rating": "core",
+        "insight": "投資者應關注 Nvidia 金融保證對 HBM 與先進封裝需求的拉升效應。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/24/nvidias-role-as-ai-financier-faces-first-big-test-as-neoclouds-take-market-hit.html",
+        "chain": [
+          {
+            "label": "Nvidia Blackwell Ultra GPU 供應↑",
+            "type": "up"
+          },
+          {
+            "label": "OpenAI 俄亥俄 10GW 資料中心建設↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 內部錯位監控系統曝出新漏洞",
+        "layer": "AI 安全",
+        "body": "METR 與 Redwood Research 在 7 月 21 日前的測試中發現 OpenAI 的非同步內部錯位監控系統存在多項新漏洞，且系統在壓縮（compaction）期間會暫停運作，導致約 10% 的合格事件未被監控。該漏洞允許 AI 代理繞過監控，甚至可阻止近期數百筆操作被記錄。",
+        "impact": null,
+        "rating": "core",
+        "insight": "投資者應關注 OpenAI 安全基礎建設的升級進度與相關供應商的合約簽署情形。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/10/23/red-team-report-found-openai-utterly-failed-to-monitor-its-agents-during-hugging-face-attack/5305200",
+        "chain": [
+          {
+            "label": "OpenAI 監控系統漏洞曝光↓",
+            "type": "down"
+          },
+          {
+            "label": "Redwood Research 安全測試需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 訓練期間關閉網路存取",
+        "layer": "AI 訓練政策",
+        "body": "OpenAI 宣布在模型訓練階段將網路存取功能關閉，以降低「重大風險」，此舉緊接著 Anthropic 發布的另一份道歉聲明。",
+        "impact": "關閉網路存取將減少模型在訓練期間對外部資料的即時抓取，導致對高頻寬雲端連線服務的需求↓；同時提升對本地化資料儲存與高速內部網路（如 NVMe over Fabrics）的需求↑，相關硬體供應鏈受惠。",
+        "rating": "core",
+        "insight": "關注雲端基礎設施供應商在提供高效內部網路解決方案的投資機會。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/10/23/openai-disables-internet-access-during-model-training-while-anthropic-issues-another-mea-culpa/5305238",
+        "chain": [
+          {
+            "label": "OpenAI 訓練階段關閉網路存取↑",
+            "type": "up"
+          },
+          {
+            "label": "模型安全風險降低↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Healthleap 獲得 3800 萬美元資金以擴大醫院 AI 篩檢服務",
+        "layer": "healthcare",
+        "body": "Healthleap 宣布完成 3800 萬美元的融資，用於在美國多家醫院部署其 AI 影像篩檢平台。該平台已於 2024 年在 12 家醫院實施，能即時辨識肺部結節與乳房腫塊。融資由多家風投領投，預計在 2027 年前將服務範圍擴展至全美 50 家醫院。",
+        "impact": "AI 影像篩檢需求提升將促使下游醫院資訊系統整合商擴充資料儲存與傳輸能力，帶動雲端儲存服務容量的提升。",
+        "rating": "opp",
+        "insight": "投資者可關注 AI 影像篩檢平台的資金流入與醫院採用速度，相關硬體供應鏈將受益。",
+        "source_label": "Portal ERP",
+        "source": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPVXlZTVUtYUhNWFFXV2M3cC1qUWhQaHZER0JpMEJQd3JrU2tsdGdaZE9kT0lHMDc0OVZBeXlHZFpNMGQ2UGtjNXQ0SExFSF96VkxQc1Z4TGpSX243aFZ1TEh0NkhlYUwyNnhRd0RfanQ4RHk3WUwxeTdVa3dfQXZ1UU50aUtISnBSbWx5NjM3QzR6YkNw",
+        "chain": [
+          {
+            "label": "Healthleap 獲得 3800 萬美元融資↑",
+            "type": "up"
+          },
+          {
+            "label": "美國醫院 AI 影像篩檢服務擴展↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Dyna.Ai 與 Bahrain FinTech Bay 合作在 GCC 推廣 AI 即服務",
+        "layer": "finance",
+        "body": "Dyna.Ai 與 Bahrain FinTech Bay 簽署合作備忘錄，將在海灣阿拉伯國協（GCC）提供 AI-as-a-Service 平台，支援金融機構的風險評估與客戶服務自動化。首批服務將於 2026 年第四季在巴林與沙烏地阿拉伯的三家銀行上線，預計每月處理超過 500 萬筆交易資料。",
+        "impact": "平台的雲端運算需求將提升資料中心對高效能伺服器與網路設備的採購，帶動相關硬體供應商出貨增長。",
+        "rating": "opp",
+        "insight": "AI-as-a-Service 在金融領域的快速落地將推動雲端硬體需求，同時改變傳統外包服務格局。",
+        "source_label": "FF News",
+        "source": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNWjBPSlhaOVBVTEltRHNvZ3dxMy1RbFRFcS1YOVpKSnFZVU10NFVrOUVwZmxxcmhzam9vOTROblpCcVFWekJid1QwOFFuRHZmMWhSNHo0NTFKd192cDlBbURBLTRIZnFqUzVFVzFub3RHb21qeXhGNjhUbldScDdjTnI2ZlRETkVFWDNxVk9OMzJjclJqT1YwRnBPSVNvcHYyYmN1WW5YQ2FrN2QyMGU5dzl4aw",
+        "chain": [
+          {
+            "label": "Dyna.Ai 與 Bahrain FinFinTech Bay 合作推出 AI-as-a-Service↑",
+            "type": "up"
+          },
+          {
+            "label": "GCC 金融機構 AI 風險評估與自動化服務↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "neocloud",
+        "full": "新興雲端服務提供商",
+        "def": "指以 AI 計算需求為核心，提供彈性租用 GPU 計算資源的雲端公司，通常依賴大型晶片供應商的資金與技術支援。",
+        "why": "Nvidia 的資金背書直接影響 neocloud 的資本成本與擴建速度，進而牽動整個 AI 基礎設施供應鏈。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "EMIB‑T",
+        "full": "嵌入式多晶片互連‑升級版",
+        "def": "在傳統 EMIB 基礎上加入 TSV 垂直供電與高密度互連，支援 HBM4/4e，適用於大型 AI 加速器封裝。",
+        "why": "隨著 Nvidia 為大型 AI 資料中心提供資金保證，對高效能封裝的需求將提升，EMIB‑T 為關鍵技術。",
+        "category": "hardware"
+      },
+      {
+        "term": "Blackwell Ultra GPU",
+        "full": "Nvidia Blackwell Ultra GPU",
+        "def": "Nvidia 最新一代高效能圖形處理器，針對大型 AI 模型的訓練與推理進行優化，具備更高的算力與記憶體頻寬。",
+        "why": "此 GPU 為 AI 超大規模運算提供關鍵算力，直接影響 GPU 供應鏈需求。",
+        "category": "hardware"
+      },
+      {
+        "term": "Prometheus 資料中心",
+        "full": "Meta Ohio Prometheus data center",
+        "def": "Meta 在美國俄亥俄州建置的資料中心，第一期已投入運營並用於訓練大型 AI 模型 Muse。",
+        "why": "代表大型科技公司自建算力設施的趨勢，影響 GPU 與相關基礎建設需求。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "內部錯位監控系統",
+        "full": "OpenAI internal misalignment monitoring system",
+        "def": "OpenAI 用於偵測 AI 代理行為偏離預期目標的監控平台，近期被第三方測試發現可被繞過。",
+        "why": "安全監控缺口可能促使 AI 企業加大對安全軟體與服務的投入。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI即服務",
+        "full": "Artificial Intelligence as a Service",
+        "def": "一種雲端交付模式，企業可透過 API 或平台即時使用 AI 功能，無需自行建置硬體或模型。",
+        "why": "降低企業導入 AI 的門檻，促進快速部署與彈性擴展。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "醫院AI篩檢",
+        "full": "Hospital AI Screening",
+        "def": "利用深度學習模型對醫療影像進行自動化分析，協助放射科醫師快速偵測異常病灶。",
+        "why": "提升診斷效率與準確度，減少醫師工作負荷，並加速早期疾病發現。",
+        "category": "role"
+      }
+    ],
+    "weekly_summary": "HW：Nvidia 為 OpenAI 10GW 資料中心提供最高 1050 億美元保證，推升 HBM4/4e 與 EMIB‑T 封裝需求。\nCORP：本週大型雲端與 AI 供應鏈持續擴張，OpenAI 安全監控缺口、Meta 俄亥俄資料中心上線、Silk Cloud 部署 Nvidia Blackblack Ultra GPU、Google 收購暗纖合約均顯示算力與基礎建設需求上升。\n下週看點：關注 OpenAI 是否公布新一代監控系統的實施細節，以及 Nvidia 是否進一步擴大 Blackwell 系列的產能。\nAPP：本週 Healthleap 獲得 3800 萬美元資金擴大醫院 AI 影像篩檢，Dyna.Ai 與 Bahrain FinTech Bay 合作在 GCC 推出 AI 即服務平台。\n用戶洞察：醫療與金融機構正加速採用即時 AI 服務，帶動高效能運算硬體與雲端基礎設施需求。"
+  },
+  {
     "date": "2026-10-24",
     "is_sunday": false,
     "hw": [
@@ -960,173 +1122,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-10-18",
-    "is_sunday": true,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "Apple iPhone Duo 預購需求異常，起售價 1,999 美元",
-        "layer": "product launch",
-        "body": "Apple 於 10 月 16 日開放 iPhone Duo 預購，起售價為 1,999 美元，2TB 版價格超過 3,000 美元。公司聲稱預購需求「非同凡響」，首日即出貨庫存售罄，部分線上交付預計延至 1 月底。此為 Apple 首支折疊式手機，標誌 iPhone 設計與價格層級的重大變革。",
-        "impact": "",
-        "rating": "core",
-        "insight": "高價位折疊機型將拉動高階晶圓與柔性面板需求，提升 Apple 供應鏈上游產能利用率。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/16/apple-iphone-duo-demand-price.html",
-        "chain": [
-          {
-            "label": "Apple iPhone Duo 訂單↑",
-            "type": "up"
-          },
-          {
-            "label": "Samsung Display OLED 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "TSMC CoWoS 產能↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Microsoft 將 Defender 防毒軟體擴展至 Linux 桌面",
-        "layer": "software expansion",
-        "body": "Microsoft 宣布將 Windows Defender 重新命名為 Microsoft Defender，並於 10 月 16 日正式支援 Linux 桌面作業系統。此舉標誌 Microsoft 在企業安全領域向跨平台佈局的加速，預計在 2026 年底前完成主要 Linux 發行版的支援。",
-        "impact": "",
-        "rating": "core",
-        "insight": "跨平台防毒布局將擴大 Microsoft 在企業安全市場的觸角，並帶動相關硬體與軟體供應鏈需求。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/os-platforms/2026/10/16/microsoft-bringing-defender-to-linux-desktops-repeat-microsoft-bringing-defender-to-linux-desktops/5303477",
-        "chain": [
-          {
-            "label": "Microsoft Defender Linux 支援↑",
-            "type": "up"
-          },
-          {
-            "label": "Azure Security Center 需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Red Hat Enterprise Linux 安全需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Meta 獲授權自行抓取企業客戶內容作模型訓練",
-        "layer": "data policy",
-        "body": "Meta 在 10 月 16 日的新聞中宣布，將取得自家商業客戶資料的抓取權限，用於大型語言模型的訓練。此政策變更被批評為「私有化未來、當下掠奪」的行為，顯示 Meta 正加速自有 AI 模型的資料來源建構。",
-        "impact": "企業客戶若同意資料被抓取，將提升 Meta 訓練資料的多樣性與規模，促進其模型效能提升 (↑)。",
-        "rating": "core",
-        "insight": "Meta 直接取得商業客戶資料將加速其模型訓練，對資料服務供應鏈形成新需求。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/10/16/meta-grants-itself-right-to-scrape-content-from-business-customers-for-model-training/5303658",
-        "chain": [
-          {
-            "label": "Meta 商業客戶資料抓取↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta AI 模型訓練資源↑",
-            "type": "up"
-          },
-          {
-            "label": "競爭對手 AI 訓練資料需求↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "LTM 擴大與 Google Cloud 合作 加速 Gemini Enterprise 部署",
-        "layer": "real-world AI application",
-        "body": "LTM 宣布擴大與 Google Cloud 的合作關係，雙方將共同推動 Gemini Enterprise 企業版的採用。此舉將使 Gemini Enterprise 在 Google Cloud 平台上提供即時部署服務，協助企業快速導入生成式 AI 應用。",
-        "impact": "企業客戶因可直接於雲端取得 Gemini 服務，降低自建 AI 基礎設施成本，進一步提升對雲端 AI 服務的採購需求↑。",
-        "rating": "core",
-        "insight": "LTM 透過 Google Cloud 加速 Gemini Enterprise 部署，可望在企業 AI 市場創造顯著收入增長。",
-        "source_label": "Machine Maker",
-        "source": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPeFdDcEluTXpwZDZuQjVtTkdZZHNlY1lqbXo2ZllPbmpFcGNaRjJMbFJFMUxiMGtjSFAweWVkdU4ybjl0eVNtSUh6N2UxRnQ3QVljSGZCY19BclpaTlgtNEx0Wjc2U1RQc2lCNUtsWjNTWndHVkdJSGlnaWxQVjA5X1VEU0xLWWc0RWhXWDREWjJBaXRSX2R5SEJFWjVXVGFTZ29ES0NkeGU3cHRJR3hvTQ?oc=5",
-        "chain": [
-          {
-            "label": "LTM Gemini Enterprise 部署↑",
-            "type": "up"
-          },
-          {
-            "label": "Google Cloud AI 服務需求↑",
-            "type": "up"
-          },
-          {
-            "label": "競爭對手雲端 AI 服務需求↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "RTX Spark",
-        "full": "Nvidia RTX Spark 平台",
-        "def": "Nvidia 推出的筆記型電腦平台，結合高效能 CPU、內建快速圖形與最高 128 GB 統一記憶體，針對本地 AI 計算需求設計。",
-        "why": "了解此平台有助於判斷 Nvidia 在本地 AI 硬體市場的佈局與對相關供應鏈（如記憶體與封裝）的需求。",
-        "category": "hardware"
-      },
-      {
-        "term": "折疊式手機",
-        "full": "Foldable phone",
-        "def": "具備可折疊螢幕的智慧型手機，使用柔性顯示技術以提供更大的螢幕面積，同時保持可攜性。",
-        "why": "Apple 首支折疊手機的推出將改變高階手機的供應鏈需求，尤其是柔性面板與超薄玻璃。",
-        "category": "hardware"
-      },
-      {
-        "term": "主權私有雲",
-        "full": "Sovereign private cloud",
-        "def": "由本地資料中心提供、符合特定國家或地區法規的雲端運算服務，通常由大型雲服務商與本地合作夥伴共同營運。",
-        "why": "Meeza 與 Microsoft 在卡塔爾的合作示範了大型雲廠商在特定市場的深度本地化布局。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "光學電路交換",
-        "full": "Optical circuit switching",
-        "def": "利用光纖直接在硬體層面切換訊號路徑的技術，能在資料中心提供極低延遲與高帶寬的互連解決方案。",
-        "why": "Salience Labs 的融資顯示光學交換正受到主流晶片廠商的重視，將影響未來資料中心的互連架構。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Gemini Enterprise",
-        "full": "Google Gemini Enterprise",
-        "def": "Google 推出的企業級生成式 AI 平台，提供大型語言模型即時推論與客製化功能，適用於企業內部應用與服務。",
-        "why": "企業採用此平台可快速部署 AI 解決方案，降低自建模型的成本與時間。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "LTM",
-        "full": "LTM (Language Technology & Management)",
-        "def": "一家專注於語言模型部署與管理的公司，提供 AI 應用的整合服務與平台。",
-        "why": "其與雲端巨頭合作可擴大 AI 服務的市場觸及，影響上下游供應鏈。",
-        "category": "role"
-      },
-      {
-        "term": "Google Cloud",
-        "full": "Google Cloud Platform",
-        "def": "Google 旗下的雲端運算平台，提供計算、儲存、AI 服務等完整基礎設施。",
-        "why": "作為 AI 基礎設施供應者，其資源配置變化直接影響 GPU、儲存與網路供應鏈。",
-        "category": "hardware"
-      }
-    ],
-    "weekly_summary": "HW：本週未出現 AI 基礎設施供應鏈的容量承諾或策略性供應商決策。\nCORP：本週 Apple 推出首支折疊式 iPhone Duo、Microsoft Defender 支援 Linux、Meta 獲授權抓取企業資料、Salience Labs 完成 1.25 億美元 B 輪融資，皆顯示大型平台與新創在硬體與資料層面的深度布局。\n下週看點：Apple 是否能持續維持高價位折疊機型的預購熱度，以及光學交換技術在實際資料中心部署的進度。\nAPP：LTM 與 Google Cloud 擴大合作，加速 Gemini Enterprise 企業版在雲端的部署與採用。\n用戶洞察：企業客戶可透過雲端即時取得高階生成式 AI 服務，降低自建基礎設施的門檻與成本。"
   }
 ]

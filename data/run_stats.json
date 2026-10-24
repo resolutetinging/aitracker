@@ -2,6 +2,103 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 45,
+        "CSP/CapEx": 50,
+        "App/AI": 23,
+        "gnews-chip": 20,
+        "gnews-dc": 23,
+        "gnews-app": 19
+      },
+      "digest_filtered": 1,
+      "after_dedup": 161,
+      "buckets": {
+        "hw": 33,
+        "corp": 119,
+        "app": 32
+      },
+      "news_char_budget": {
+        "hw": 3850,
+        "corp": 8000,
+        "app": 3733
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 5,
+        "app": 2
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 2,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 4,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "log",
+        "checked": 3,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 2,
+        "low_coverage": {
+          "checked": 1,
+          "suspect_cards": 0
+        },
+        "enforced": 0,
+        "items": [
+          {
+            "sec": "corp",
+            "title": "OpenAI 內部錯位監控系統曝出新漏洞",
+            "source": "https://www.theregister.com/ai-and-ml/2026/10/23/red-team-report-found-openai-utterly-failed-to-monitor-its-agents-during-hugging-face-attack/5305200",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [
+              "7月21日"
+            ],
+            "tense_flag": false
+          }
+        ]
+      },
+      "date": "2026-10-25",
+      "generated_at": "2026-10-25T00:04:17.508603+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 58,
         "CSP/CapEx": 54,
         "App/AI": 25,
@@ -1218,85 +1315,6 @@
       ],
       "date": "2026-10-12",
       "generated_at": "2026-10-12T00:04:24.579858+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 66,
-        "CSP/CapEx": 49,
-        "App/AI": 25,
-        "gnews-chip": 13,
-        "gnews-dc": 21,
-        "gnews-app": 19
-      },
-      "digest_filtered": 1,
-      "after_dedup": 174,
-      "buckets": {
-        "hw": 38,
-        "corp": 124,
-        "app": 37
-      },
-      "news_char_budget": {
-        "hw": 4433,
-        "corp": 8000,
-        "app": 4316
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 2,
-        "corp": 2,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "placeholders": 0,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [
-        {
-          "title": "AI 代理購物服務 Muse 為消費者自動下單",
-          "section": "app",
-          "action": "downgraded",
-          "matched_title": null,
-          "reason": "內容僅描述已實施的服務功能與績效，未包含新決策或新宣布，屬於背景說明"
-        }
-      ],
-      "date": "2026-10-11",
-      "generated_at": "2026-10-11T00:04:17.916669+08:00"
     }
   ]
 }
