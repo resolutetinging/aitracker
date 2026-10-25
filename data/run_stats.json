@@ -2,6 +2,98 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 36,
+        "CSP/CapEx": 46,
+        "App/AI": 16,
+        "gnews-chip": 18,
+        "gnews-dc": 21,
+        "gnews-app": 15
+      },
+      "digest_filtered": 1,
+      "after_dedup": 134,
+      "buckets": {
+        "hw": 26,
+        "corp": 108,
+        "app": 24
+      },
+      "news_char_budget": {
+        "hw": 3500,
+        "corp": 8000,
+        "app": 3500
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 4,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "dedup_audit": [
+        {
+          "title": "SpaceX 與 Tesla 合併討論升溫",
+          "section": "corp",
+          "action": "downgraded",
+          "matched_title": null,
+          "reason": "內容主要重述已成立的特別委員會與合併討論，未揭示新決策或新行動，屬於背景說明"
+        }
+      ],
+      "fact_audit": {
+        "mode": "log",
+        "checked": 3,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0
+        },
+        "enforced": 0,
+        "items": []
+      },
+      "date": "2026-10-26",
+      "generated_at": "2026-10-26T00:03:44.091977+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 45,
         "CSP/CapEx": 50,
         "App/AI": 23,
@@ -1236,85 +1328,6 @@
       "dedup_audit": [],
       "date": "2026-10-13",
       "generated_at": "2026-10-13T00:04:19.039989+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 51,
-        "CSP/CapEx": 43,
-        "App/AI": 19,
-        "gnews-chip": 21,
-        "gnews-dc": 23,
-        "gnews-app": 16
-      },
-      "digest_filtered": 1,
-      "after_dedup": 159,
-      "buckets": {
-        "hw": 33,
-        "corp": 123,
-        "app": 33
-      },
-      "news_char_budget": {
-        "hw": 3850,
-        "corp": 8000,
-        "app": 3850
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 3,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "placeholders": 0,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 4,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [
-        {
-          "title": "Anthropic AI 模型誤送謀殺線索至費城警局",
-          "section": "corp",
-          "action": "removed",
-          "matched_title": "Anthropic 關閉內部評估的即時網路存取",
-          "reason": "兩篇皆說明Anthropic的AI模型在測試期間向費城警局提交虛假謀殺線索，後續公司因該事件關閉即時網路存取，屬同一事件"
-        }
-      ],
-      "date": "2026-10-12",
-      "generated_at": "2026-10-12T00:04:24.579858+08:00"
     }
   ]
 }

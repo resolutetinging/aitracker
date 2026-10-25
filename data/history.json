@@ -1,5 +1,113 @@
 [
   {
+    "date": "2026-10-26",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "SK Hynix 停止審查 Solidigm 美國 IPO 計畫",
+        "layer": "strategic supplier decisions",
+        "body": "SK Hynix 於本週五宣布暫停對子公司 Solidigm 可能在美國上市的審查程序，該決策使公司股價在收盤時上漲 4.4%。此舉回應投資者對於 Solidigm IPO 可能帶來的治理風險的擔憂，並將 Solidigm 的價值保留在母公司內部。",
+        "impact": null,
+        "rating": "core",
+        "insight": "投資者可關注 SK Hynix 透過保留 Solidigm 內部價值降低治理風險，提升 AI 記憶體供應鏈穩定性。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/23/sk-hynix-solidigm-ipo-.html",
+        "chain": [
+          {
+            "label": "SK Hynix Solidigm IPO 暫停↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix 股價上漲↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "SpaceX 與 Tesla 合併討論升溫",
+        "layer": "corp",
+        "body": "Elon Musk 在 Tesla 股東會上表示已「說完所有該說的」關於與 SpaceX 合併的看法，並在第三季財報電話會議中肯定兩家公司已成立特別委員會以評估交易。Tesla 投資者關係主管亦透露，管理層不會在本次財報問答環節中回應合併議題。此舉使合併話題成為華爾街近期的焦點。",
+        "impact": "Tesla 供應鏈的電池與車用晶片需求可能因合併後的資金與技術整合而↑，同時 SpaceX 的火箭與衛星零件供應商亦可能因需求擴大而↑。合併若成行，兩家公司共享的 AI 與自動化平台將推動相關半導體與軟體供應商的產能提升，進一步影響下游車輛與太空服務市場的競爭格局。",
+        "rating": "opp",
+        "insight": "合併討論顯示兩大巨頭資源整合意圖，供應鏈上游廠商將受益於需求同步上升。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/23/spacex-tesla-merger-chatter-takes-center-stage-after-earnings.html",
+        "chain": [
+          {
+            "label": "Tesla 與 SpaceX 合併討論↑",
+            "type": "up"
+          },
+          {
+            "label": "Tesla 股價波動↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "CJ Logistics 獲 KT Cloud AI 資料中心建設合約",
+        "layer": "logistics",
+        "body": "CJ Logistics 簽署與 KT Cloud 的合約，將於 2026 年底前於韓國建置一座專用 AI 資料中心，預計投入伺服器與高速網路設備，以支援其物流 AI 應用。",
+        "impact": "上游供應商如伺服器製造商與 GPU 供應商的出貨量將上升 (↑)，因資料中心需求帶動硬體採購；中游建設公司與網路設備廠商亦將受惠於建置工程量增加 (↑)；下游 CJ Logistics 的物流 AI 系統可提升路徑規劃與倉儲自動化效率，預期降低配送成本並提升服務速度 (↑)。",
+        "rating": "core",
+        "insight": "投資 AI 資料中心將提升 CJ Logistics 在智慧物流領域的競爭力。",
+        "source_label": "조선일보",
+        "source": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPalFxNHNuclZtamhZemF4TzREVTJTZnVLeFhkcHZHNmh3N1VWa0x3UkFDd00xNEhCbGh4YWZjMGFsTUtNZjA1U2RmeDVHZHV0QXpCLUUteERFcHNCTExYZXFDTUJpanBKVmtyZWJVa1RnTXFsNkxzSjBFT1lLTlluZzNZM0xjSjhl?oc=5",
+        "chain": [
+          {
+            "label": "CJ Logistics 獲 KT Cloud AI 資料中心建設合約↑",
+            "type": "up"
+          },
+          {
+            "label": "CJ Logistics 物流 AI 能力提升↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Solidigm",
+        "full": "Solidigm Inc.",
+        "def": "Solidigm 為 SK Hynix 子公司，專注於高帶寬記憶體（HBM）與其他先進記憶體產品的研發與製造，供應 AI 伺服器與高效能運算市場。",
+        "why": "HBM 是 AI 加速器的關鍵元件，其供應變動直接影響 AI 基礎設施的建置與成本。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Blackwell Ultra GPU",
+        "full": "Nvidia Blackwell Ultra GPU",
+        "def": "Nvidia 推出的新一代高效能圖形處理器，專為 AI 訓練與推論設計，具備更高的運算密度與記憶體頻寬。",
+        "why": "此 GPU 的部署代表 AI 計算需求升級，將帶動上游記憶體與 PCB 供應鏈的產能擴張。",
+        "category": "hardware"
+      },
+      {
+        "term": "Prometheus 資料中心",
+        "full": "Meta Ohio Prometheus 資料中心",
+        "def": "Meta 在美國俄亥俄州建置的資料中心，旨在提供大規模 AI 訓練與雲端運算服務，已於 2026 年底完成第一階段建設。",
+        "why": "資料中心的啟用提升了伺服器與高效能儲存需求，對晶片與記憶體供應鏈產生直接拉動效應。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "暗光纖",
+        "full": "暗光纖租賃合約",
+        "def": "指未被即時使用的光纖資產，租賃給需要額外容量的服務供應商，以提升網路彈性與未來擴充能力。",
+        "why": "暗光纖的取得能快速提升區域寬頻供應，對光纖製造與佈線服務產業形成需求增長。",
+        "category": "hardware"
+      },
+      {
+        "term": "AI資料中心",
+        "full": "Artificial Intelligence Data Center",
+        "def": "專為人工智慧工作負載設計的資料中心，配備大量 GPU、TPU 或其他加速器，以及高速互聯網路，以支援模型訓練與推論。此類中心通常具備高效散熱與能源管理系統，以滿足 AI 計算的高功耗需求。",
+        "why": "AI 資料中心是支撐大規模機器學習與即時推論的基礎設施，對提升企業 AI 應用的效能與規模至關重要。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-25",
     "is_sunday": true,
     "hw": [
@@ -949,175 +1057,6 @@
         "full": "RealRelay 金融 AI 代理服務",
         "def": "一套以信任為核心的 AI 代理人系統，結合自然語言處理與安全驗證，協助金融機構提供即時客戶服務。",
         "why": "在金融業推動數位化與客戶體驗升級，同時對 AI 演算法與加密技術供應鏈形成新需求。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-19",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "Salience Labs 完成 1.25 億美元 B 級融資，AMD 與 Intel 參與投資",
-        "layer": "CSP/CapEx",
-        "body": "光學交換新創 Salience Labs 宣布完成 1.25 億美元的 B 級融資，資金由 AMD 與 Intel 共同參與。此輪融資將用於持續開發與部署光學電路交換技術。公司表示已獲得足夠資金加速產品商業化。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "光學交換資金注入顯示大型晶片廠正布局高速互連新技術，供應鏈將出現新一波資本與需求重組。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "Salience Labs 光學交換產能↑",
-            "type": "up"
-          },
-          {
-            "label": "AMD 投資回報↑",
-            "type": "up"
-          },
-          {
-            "label": "Intel 投資回報↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Meeza 與 Microsoft 在卡達推出主權私有雲服務 Azure Local",
-        "layer": "CSP/CapEx",
-        "body": "Meeza 與 Microsoft 合作，在卡達的 Meeza 資料中心部署 Azure Local，提供主權私有雲服務。此服務允許卡達政府與企業在本地使用 Microsoft Azure 的完整功能。部署計畫於 2026 年底前完成，預計支援多個關鍵公共部門應用。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "主權私有雲的本地部署將改變中東雲端供應鏈格局，帶動本地硬體與網路基礎建設需求。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "Microsoft Azure Local 交付↑",
-            "type": "up"
-          },
-          {
-            "label": "Meeza 私有雲服務收入↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "AWS 推出對話式 AI 服務支援醫療機構",
-        "layer": "healthcare",
-        "body": "AWS 在官方部落格宣布推出對話式 AI 服務，專為醫療機構提供患者互動與諮詢功能。此服務利用大型語言模型即時回應醫療相關問題，已於 2026 年 10 月上線測試環境。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "AI 驅動的醫療對話平台將推動雲端與晶片供應鏈需求同步上升。",
-        "source_label": "AWS",
-        "source": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNVy0yRU54N25GS01PLWZlb3lVY3QtYlJvODdrai1YbWlvNkZLU3BfdHliczVzcDRVeVZuU29ZZDZKYUNzN3VtNkpDZjVwRVpNRktvOEJ3aFJTRllQZWdYRWlRUXpIZ1hfLUNsTFBTQ1JDM3l6VWtFcUphV1luU01POVplWi15V2UyNjBEVXA5QQ",
-        "chain": [
-          {
-            "label": "AWS 醫療 AI 服務訂閱↑",
-            "type": "up"
-          },
-          {
-            "label": "醫療機構 AI 需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "美國零售商採用 AI 輔助定價工具引發消費者顧慮",
-        "layer": "retail",
-        "body": "Beaumont Enterprise 報導指出，多家美國大型零售商已在 2026 年上半年導入 AI 輔助定價工具，以即時調整商品價格。此舉導致部分消費者對價格波動產生不安，並在社群媒體上表達疑慮。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "AI 定價系統的擴散將刺激企業軟體與底層硬體供應鏈同步成長。",
-        "source_label": "Beaumont Enterprise",
-        "source": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQMlBOT3JaRkhET2gtYmVmWVhKWkloVUFoVVJua3ZCNDJqMnFoWU5UVk1JdFFxMmlrZTFWRWtJVlJ1MDBsZjhHUEQteldLZmVlXzZlYzFqZm1LZFlmRnJsaXlJWS1UQXMzS2ZCdGVJdDVOWGNIX05qU3ZHelY4ZThCemVvaWhWR2d5bmNwM1VFay11TW1BQVBoTk8yWmo1cF9ncDZvRnVBOXJ1dnZFUlc0UDBYYVc",
-        "chain": [
-          {
-            "label": "美國零售商 AI 定價工具採用↑",
-            "type": "up"
-          },
-          {
-            "label": "消費者價格敏感度↑",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Bangladesh 醫師使用 AI 輔助診斷的線上調查結果發表",
-        "layer": "healthcare",
-        "body": "Cureus 發表的研究顯示，2026 年 9 月進行的網路問卷調查中，超過 200 位孟加拉醫師使用 AI 輔助工具進行臨床決策，並認為此技術提升了醫學學習與研究效率。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "AI 在臨床診斷的實際使用將加速醫療軟硬體供應鏈的本地化需求。",
-        "source_label": "Cureus",
-        "source": "https://news.google.com/rss/articles/CBMimAJBVV95cUxPejYzTml5STJnZnB3MWdxSkdNOHc0YTkxYmNLWC1OQ1ZWRVlPVG05UHgwT3R3MDVqQkNEQ1V4SjBLQzd5LWEwR21nbmN2UktkVVNPdjhGYlUtOTFQZjk5QlZnZXFOMTlOeGU3OFRqRUp1Q1NwNzc2U2twWExGY1A3SldQZUExNVJac2NJSEEtTWloTVRlallmbWY4MTRXZzZxekxZMHBvM3hLRUtRc05yanlpR3lQVmhweE01UXR5OTdqVGkzYTdESjRacUVKS2NiM0hpN1haeXJ3Zmlrc2JQbTcyNGdVU0dlNlpHZE9vX1FlVjBieDI1T0U1RVJXenl0YmlsMFFlV3NWSVExdldmUUJTTlF3bWVz",
-        "chain": [
-          {
-            "label": "Bangladesh 醫師 AI 輔助診斷使用率↑",
-            "type": "up"
-          },
-          {
-            "label": "醫學研究效率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "RTX Spark",
-        "full": "Nvidia RTX Spark 平台",
-        "def": "Nvidia 推出的筆記型電腦平台，結合高效能 CPU、快速整合式圖形與最高 128 GB 統一記憶體，定位於本地 AI 計算需求。",
-        "why": "該平台的高記憶體與 CUDA 生態系統對 AI 研發者與創意專業人士具吸引力，可能影響相關硬體供應鏈的需求走向。",
-        "category": "hardware"
-      },
-      {
-        "term": "光學電路交換 (Optical Circuit Switching)",
-        "full": "Optical Circuit Switching",
-        "def": "一種利用光纖直接建立固定路徑的資料傳輸技術，可在資料中心內部提供低延遲與高帶寬的互連。",
-        "why": "隨著 AI 訓練與推論對互連速度的需求提升，光學交換被視為取代傳統電氣交換的關鍵技術。",
-        "category": "hardware"
-      },
-      {
-        "term": "主權私有雲",
-        "full": "Sovereign Private Cloud",
-        "def": "由本地資料中心提供、符合特定國家或地區資料主權要求的雲端服務，通常由大型雲端供應商與本地合作夥伴共同建置。",
-        "why": "主權雲可降低跨境資料傳輸風險，並促進本地硬體供應鏈的投資與發展。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "開放權重模型",
-        "full": "Open-weight Model",
-        "def": "模型的權重參數公開可取得，允許使用者在本地環境自行部署與微調的人工智慧模型。",
-        "why": "開放權重降低對雲端算力的依賴，推動本地硬體（如 Apple Silicon）需求上升。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "對話式 AI",
-        "full": "Conversational AI",
-        "def": "利用自然語言處理與生成模型，使機器能與使用者進行即時文字或語音對話的人工智慧技術。",
-        "why": "在醫療、客服與零售等領域，可提升互動效率與客戶體驗，成為新興服務平台的核心功能。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI 輔助定價工具",
-        "full": "AI-assisted pricing tool",
-        "def": "結合機器學習與即時市場數據，自動調整商品價格以最大化利潤或市場佔有率的軟體系統。",
-        "why": "能快速回應供需變化，提升零售商的價格競爭力，同時改變供應鏈的庫存與物流策略。",
         "category": "ai_technique"
       }
     ],
