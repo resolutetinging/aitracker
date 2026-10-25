@@ -1,5 +1,5 @@
 {
-  "last_checked": "2026-10-19",
+  "last_checked": "2026-10-26",
   "pyramid": [
     {
       "label": "應用層（Industries）",
@@ -495,6 +495,54 @@
       "category": "產品發布",
       "summary": "Microsoft 於 2026 年 10 月 12 日公布其自研的 Maia 300 AI 晶片將於 2027 年開始量產，具備每秒 300 TOPS 推理效能，內建 7 奈米製程記憶體介面，首批供應給 Azure AI 超大型模型服務。",
       "src": "https://www.theverge.com/news/1009465/microsoft-maia-300-chip-improvements-rollout",
+      "src_note": ""
+    },
+    {
+      "date": "2026-10-25",
+      "title": "Nvidia 為 OpenAI 俄亥俄 10GW 資料中心提供 1050 億美元保證",
+      "category": "財務承諾",
+      "summary": "Nvidia 在季報披露，為 OpenAI 位於俄亥俄的 10GW 資料中心提供最高 1050 億美元的晶片、土地與電力保證，並已為 neocloud 提供 360 億美元的雲端協議背書。",
+      "src": "https://www.cnbc.com/2026/10/24/nvidias-role-as-ai-financier-faces-first-big-test-as-neoclouds-take-market-hit.html",
+      "src_note": ""
+    },
+    {
+      "date": "2026-10-23",
+      "title": "Nvidia 於柏林 GTC 公布投入資金協助供應鏈以鞏固矽基板供應",
+      "category": "供應鏈投資",
+      "summary": "在柏林 GTC 大會上，Nvidia 宣布動用巨額資金協助矽基板供應商提升產能，降低供應鏈金融風險，確保 GPU 與 AI 處理器的長期供應。",
+      "src": "https://www.theregister.com/ai-and-ml/2026/10/22/to-help-world-gorge-on-gpus-nvidia-brings-cash-bucket-to-fatten-wafer-thin-supply-chain/5304623",
+      "src_note": ""
+    },
+    {
+      "date": "2026-10-22",
+      "title": "Nvidia 宣布 DSX Pod 模組化資料中心部署方案",
+      "category": "產品發布",
+      "summary": "Nvidia 在 GTC Berlin 公布 DSX Pod，為含 504 顆 GPU 與 252 顆 Vera CPU 的模組化容器資料中心單元，預計 2027 年起由合作夥伴交付，部署時間縮短至兩週。",
+      "src": "https://www.theregister.com/on-prem/2026/10/21/nvidias-grand-plan-for-speeding-up-datacenter-deployments-ai-trailer-parks/5304303",
+      "src_note": ""
+    },
+    {
+      "date": "2026-10-22",
+      "title": "Meta 超大規模 GPU 冗餘池待命",
+      "category": "運營狀況",
+      "summary": "Meta 在俄亥俄州 New Albany 的 Prometheus 超級叢集中，有超過 11% 的 Nvidia GPU 處於待命或失效狀態，作為備援以應對未來故障。",
+      "src": "https://www.theregister.com/systems/2026/10/20/tens-of-thousands-of-nvidia-gpus-sit-idle-in-metas-prometheus-supercluster-just-waiting-for-a-failure/5304269",
+      "src_note": ""
+    },
+    {
+      "date": "2026-10-21",
+      "title": "Amazon 推出 TorchNeuron 開發工具以削減對 Nvidia 的依賴",
+      "category": "競爭與合作",
+      "summary": "Amazon 發布 TorchNeuron，讓開發者在 PyTorch 上直接使用 Amazon 自研 AI 加速晶片，降低對 Nvidia GPU 的需求，顯示其在 AI 開發環境的布局。",
+      "src": "https://techcrunch.com/2026/10/19/amazon-is-taking-its-biggest-shot-at-nvidia-yet-with-new-torchneuron-dev-tool/",
+      "src_note": ""
+    },
+    {
+      "date": "2026-10-20",
+      "title": "Nvidia 推出新開放模型以支援企業與 PC 端 AI 代理人",
+      "category": "產品發布",
+      "summary": "Nvidia 發布一系列開放模型，允許企業在自有資料中心部署 AI 代理人，同時支援個人電腦上運行私密 AI 代理人，顯示其推動企業自建模型的策略。",
+      "src": "https://techcrunch.com/2026/10/19/nvidia-launches-new-open-models-to-run-agents-in-the-enterprise-and-on-pcs/",
       "src_note": ""
     }
   ]
