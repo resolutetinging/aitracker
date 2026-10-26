@@ -1,5 +1,141 @@
 [
   {
+    "date": "2026-10-27",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "Anthropic 申請 IPO 以 80.7 億美元淨虧損上市",
+        "layer": "IPO",
+        "body": "Anthropic 已於本週一向美國證券交易委員會提交 S‑1 註冊聲明，計畫在 Nasdaq 以代號 ANT 上市。公司披露 2026 上半年營收 163 億美元，較去年同期的 12 億美元大幅成長，同時報告淨虧損 807 億美元，其中 724 億美元為估值調整。除淨虧外，營運虧損為 6.93 億美元，較去年同期的 21 億美元下降。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Anthropic 大規模 IPO 與營收成長將加速 GPU 供應鏈需求，受惠於上游晶圓代工與下游雲端服務。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/10/26/trumpets-blare-and-skies-part-as-ai-hypefest-culminates-in-anthropic-ipo-filing/5305456",
+        "chain": [
+          {
+            "label": "Anthropic 營收↑",
+            "type": "up"
+          },
+          {
+            "label": "Anthropic 淨虧損↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Meta 計畫募集 95 億美元資金支援 AI 基礎建設",
+        "layer": "資金募集",
+        "body": "Meta 於本週一宣布將透過公開增發與 ATM 方式合計募集 950 億美元，以支援其 AI 基礎建設與超智慧計畫。首輪將以承銷方式募集 350 億美元，隨後再以市場增發方式募集 600 億美元；Nvidia、AMD 與 Broadcom 表示有意認購最高 50 億美元的股份。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Meta 大規模資金投入將成為 AI 硬體需求的主要驅動力，提升相關供應鏈的出貨量。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/26/meta-stock-offering-ai.html",
+        "chain": [
+          {
+            "label": "Meta 募資額↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia AI 晶片需求↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD AI 晶片需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "SoftBank 計畫投入 500 億美元於馬來西亞 AI 與資料中心",
+        "layer": "投資",
+        "body": "SoftBank Group 近日傳出將在馬來西亞科技領域投入 500 億美元，重點包括人工智慧與資料中心建設。此筆投資預計涵蓋 AI 研發、雲端基礎設施與相關硬體供應鏈的全方位布局。",
+        "impact": "巨額資金將刺激馬來西亞本地資料中心建設需求，帶動伺服器、網路設備與高效能晶片的採購。",
+        "rating": "core",
+        "insight": "SoftBank 的馬來西亞投資將為亞太 AI 硬體供應鏈注入新需求，提升相關製造與服務業的出貨量。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/26/softbank-masayoshi-son-malaysia-ai-billions.html",
+        "chain": [
+          {
+            "label": "SoftBank AI 投資↑",
+            "type": "up"
+          },
+          {
+            "label": "馬來西亞資料中心建設↑",
+            "type": "up"
+          },
+          {
+            "label": "相關硬體供應鏈需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "AI硬體在軌道",
+        "full": "AI硬體在軌道（AI hardware in orbit）",
+        "def": "指將人工智慧運算硬體部署於太空環境，以利用低重力與高輻射條件進行特殊計算或資料處理的技術。",
+        "why": "此技術可降低地面資料傳輸延遲，並為衛星影像分析與即時決策提供本地化 AI 能力。",
+        "category": "hardware"
+      },
+      {
+        "term": "ATM增發",
+        "full": "ATM增發（At‑the‑market offering）",
+        "def": "公司在公開市場上以不固定價格持續發行新股，以快速籌集資金的方式。",
+        "why": "Meta 透過 ATM 方式募集 600 億美元，顯示其對 AI 基礎建設的長期資金需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "IPO風險因素",
+        "full": "IPO風險因素（Risk factors disclosed in IPO filing）",
+        "def": "公司在首次公開募股文件中列示的可能影響未來營運與財務表現的風險項目。",
+        "why": "Anthropic 在 S‑1 中列出 94 頁風險因素，突顯其 AI 模型可能帶來的法律與倫理挑戰。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Pt‑W 合金",
+        "full": "鉑‑鎢合金 (Pt‑W alloy)",
+        "def": "一種用於高數值孔徑（High‑NA）極紫外光（EUV）掩模的低折射率吸收材料，可製作更薄的掩模層以提升成像解析度。",
+        "why": "降低掩模厚度有助於提升光刻效率與良率，對先進製程的光刻設備供應鏈產生正向影響。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Z2RAM",
+        "full": "Nagare Labs 開發的 Z2RAM 記憶體技術",
+        "def": "結合 SRAM、DRAM 與 NAND 儲存特性的氧化物半導體記憶體，宣稱具 SRAM 的速度、DRAM 的密度與 NAND 的可擴展性。",
+        "why": "若成功商業化，可改變記憶體供應鏈格局，減少對傳統 DRAM 供應商的依賴。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-26",
     "is_sunday": false,
     "hw": [
@@ -880,184 +1016,6 @@
         "def": "美國軍事科技公司，專注於 AI 驅動的感測與防禦系統。",
         "why": "其採用 Arda 的 AI 模型顯示該技術已在高安全性、快速迭代的軍事製造環境中驗證。",
         "category": "role"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-20",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": "",
-        "chain": [
-          {
-            "label": "無相關晶片新聞",
-            "type": "neutral"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google 宣稱其明尼蘇達 AI 資料中心將使用清潔能源",
-        "layer": "CSP/CapEx",
-        "body": "Google 表示其位於明尼蘇達的 AI 資料中心將向電網注入清潔能源，並稱此舉能保護用戶費率；同時，多位專家與在地居民對是否真的需要升級電網持懷疑態度。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "投資者應關注 Google 在美國擴建綠能資料中心的長期供電穩定性。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/19/how-data-centers-are-reshaping-americas-aging-grid-pine-island-minnesota-google.html",
-        "chain": [
-          {
-            "label": "Google AI 資料中心清潔能源使用↑",
-            "type": "up"
-          },
-          {
-            "label": "當地電網升級需求疑慮↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Nvidia 推出新開放模型以支援企業與 PC 端 AI 代理人",
-        "layer": "AI_technique",
-        "body": "Nvidia 宣布推出一系列開放模型，讓企業能在自有資料中心部署 AI 代理人，同時也支援在個人電腦上運行私密 AI 代理人；此舉顯示 Nvidia 正大力投入企業自建模型的趨勢。",
-        "impact": "上游 GPU 及相關硬體供應商需求上升 (↑) 因企業將自行部署模型需要高效能運算；下游企業客戶可降低對雲端服務的依賴，提升資料主權與隱私保護 (↑)。",
-        "rating": "opp",
-        "insight": "Nvidia 的開放模型策略將推動企業自建 AI 基礎設施，提升其硬體需求。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/10/19/nvidia-launches-new-open-models-to-run-agents-in-the-enterprise-and-on-pcs/",
-        "chain": [
-          {
-            "label": "Nvidia 開放模型支援企業部署↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia 開放模型支援 PC 端 AI 代理人↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic 與 METR、SecureBio 合作評估 AI 風險與安全實務",
-        "layer": "CSP/CapEx",
-        "body": "Anthropic 宣布與非營利組織 METR 及 SecureBio 合作，協助評估其模型的風險與安全實務，並正與 Hugging Face 等其他機構討論合作；同時，Anthropic 已選定 Accenture 為首家合作夥伴。",
-        "impact": "上游安全評估與風險研究服務供應商需求上升 (↑) 以支援 Anthropic 的合規審查；下游 Anthropic 的模型部署因獲得第三方驗證而提升客戶信任度 (↑)。",
-        "rating": "core",
-        "insight": "Anthropic 加強第三方安全驗證，有助於提升其模型在企業市場的接受度。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/15/anthropic-metr-securebio-ai-safety-evaluators.html",
-        "chain": [
-          {
-            "label": "Anthropic 與 METR、SecureBio 合作評估 AI 風險↑",
-            "type": "up"
-          },
-          {
-            "label": "Anthropic 與 Accenture 首家合作夥伴關係↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "NTL Healthcare 推出本地部署 AI 子宮頸篩檢平台",
-        "layer": "healthcare",
-        "body": "NTL Healthcare 於 2026 年在亞太地區推出本地部署的 AI 子宮頸篩檢平台，強化醫院資料安全與患者隱私保護。",
-        "impact": "醫院採用後可減少將敏感影像上傳至雲端的需求，降低雲端儲存服務商的資料流量↓。",
-        "rating": "core",
-        "insight": "本地化 AI 醫療解決方案將推動高效能晶片與硬體服務的區域化需求。",
-        "source_label": "BioPharma APAC",
-        "source": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNVy1laXNlRkRnLVotb0Z0bXlDUE5yNlRjVXdOcG5GYkE0dWhvcUpHYW56ekxfcU9aMTNTYnhGTTZzaWpGVEZsemlxSmZnT2NYSjdlTVdERF9TT2c3M0owT3JOdndRc1Q1NnJHNDh0VjZyVjdnQ0pmSU9OTnIzWDd2QTEwblk2Q2w4NFBndTZnajNKZWM1NDM1T3JIMXd4aUlqdUxRRFNZeTVfcjVGdzVqVm4xSWN2UWpCS2VkN3F1SEpnbmRMODhlaGU1ODBUSndMREdnSQ",
-        "chain": [
-          {
-            "label": "NTL Healthcare 本地部署 AI 子宮頸篩檢平台↑",
-            "type": "up"
-          },
-          {
-            "label": "醫院資料安全與患者隱私保護提升↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Edvance 與 CWG 發布 RealRelay 金融 AI 代理服務",
-        "layer": "finance",
-        "body": "Edvance 與 CWG 於 2026 年共同推出 RealRelay Fintech，提供以信任為首的 AI 代理人，已在多家金融機構部署以提升客戶服務效率。",
-        "impact": "RealRelay 的部署促使金融軟體供應商對自然語言處理模型與安全驗證模組的需求↑，帶動相關 AI 演算法供應商與加密技術廠商的訂單增加；同時金融機構因使用本地化 AI 代理人而減少對外部雲端服務的依賴↓。",
-        "rating": "core",
-        "insight": "以信任為核心的金融 AI 代理人將重新分配 AI 演算法與安全模組的供應鏈資源。",
-        "source_label": "CXO Digitalpulse",
-        "source": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOWVFnTDRZVXhRNG1zNTlaSnRtdlVTUUc4dEZaaVllN2JvaEdMcEFjcHB5ajdnTXFObDFsQ1k1Uzg4WVZTVTJ2VXF3c0o2cmlEUEFzOTd4M3NLal81OVdPaGJMMUNJTFRaLV9WaHJrcnJPVkFaNVp3MVBVcWM4Qml0SmNISTBzZTU0bGU3Qm1PbzFSV3FfMzVoN0NSQlkxN1ZlckVZUi0xbzBmck1KRDJmNXhFM0pCa1pYb0lrbDlfMzVOR19TUmdFXw",
-        "chain": [
-          {
-            "label": "Edvance 與 CWG 推出 RealRelay 金融 AI 代理服務↑",
-            "type": "up"
-          },
-          {
-            "label": "金融機構客戶服務效率提升↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "嵌入式動態隨機存取記憶體",
-        "full": "Embedded Dynamic Random Access Memory",
-        "def": "一種將 DRAM 直接整合在晶片或模組內的記憶體技術，可提升資料存取速度並減少封裝空間。",
-        "why": "在高效能 AI 加速器與行動裝置中，提升記憶體密度與能效是關鍵需求。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Nanoelectromechanically Gated Gain Cell",
-        "full": "",
-        "def": "利用奈米機電開關控制增益電池的結構，可在嵌入式 DRAM 中提供更高的寫入效率與保持時間。",
-        "why": "此技術若量產，可能改變記憶體供應鏈中對 SRAM 的依賴，影響上游製程與下游系統設計。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "開放模型",
-        "full": "Open Model",
-        "def": "由廠商公開發布的人工智慧模型，允許使用者自行下載、部署與調整，常用於企業自建 AI 服務。",
-        "why": "開放模型降低企業對雲端服務的依賴，提升資料主權與成本控制。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "清潔能源資料中心",
-        "full": "Clean‑energy Data Center",
-        "def": "使用再生能源（如風力、太陽能）供電的資料中心，旨在減少碳排放並提升能源使用效率。",
-        "why": "隨著 ESG 要求提升，清潔能源資料中心成為大型雲端供應商爭取永續競爭優勢的關鍵。",
-        "category": "hardware"
-      },
-      {
-        "term": "AI 風險評估",
-        "full": "AI Risk Assessment",
-        "def": "針對人工智慧模型的安全性、偏見、濫用等風險進行系統性分析與驗證的服務。",
-        "why": "隨著 AI 應用擴大，合規與安全審查成為企業部署模型的必要前置作業。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "AI 子宮頸篩檢平台",
-        "full": "人工智慧子宮頸癌篩檢平台",
-        "def": "利用深度學習模型分析子宮頸影像，以自動化檢測異常細胞，提高篩檢效率與準確度。",
-        "why": "可減少醫師工作負荷並提升早期診斷率，對醫療器材與 AI 晶片需求產生直接拉動。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "RealRelay Fintech",
-        "full": "RealRelay 金融 AI 代理服務",
-        "def": "一套以信任為核心的 AI 代理人系統，結合自然語言處理與安全驗證，協助金融機構提供即時客戶服務。",
-        "why": "在金融業推動數位化與客戶體驗升級，同時對 AI 演算法與加密技術供應鏈形成新需求。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null

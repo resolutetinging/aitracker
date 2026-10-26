@@ -3,6 +3,101 @@
     {
       "feeds": {
         "Semiconductor": 36,
+        "CSP/CapEx": 36,
+        "App/AI": 11,
+        "gnews-chip": 18,
+        "gnews-dc": 22,
+        "gnews-app": 22
+      },
+      "digest_filtered": 0,
+      "after_dedup": 144,
+      "buckets": {
+        "hw": 30,
+        "corp": 110,
+        "app": 29
+      },
+      "news_char_budget": {
+        "hw": 3500,
+        "corp": 8000,
+        "app": 3500
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 3,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 2,
+      "llm_ratings": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 4,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "log",
+        "checked": 3,
+        "suspect_cards": 0,
+        "tense_flags": 1,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 1,
+          "suspect_cards": 0
+        },
+        "enforced": 0,
+        "items": [
+          {
+            "sec": "corp",
+            "title": "Anthropic 申請 IPO 以 80.7 億美元淨虧損上市",
+            "source": "https://www.theregister.com/ai-and-ml/2026/10/26/trumpets-blare-and-skies-part-as-ai-hypefest-culminates-in-anthropic-ipo-filing/5305456",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [],
+            "tense_flag": true
+          }
+        ]
+      },
+      "date": "2026-10-27",
+      "generated_at": "2026-10-27T00:04:00.651543+08:00"
+    },
+    {
+      "feeds": {
+        "Semiconductor": 36,
         "CSP/CapEx": 46,
         "App/AI": 16,
         "gnews-chip": 18,
@@ -1257,77 +1352,6 @@
       },
       "date": "2026-10-14",
       "generated_at": "2026-10-14T00:04:17.496040+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 40,
-        "CSP/CapEx": 40,
-        "App/AI": 20,
-        "gnews-chip": 25,
-        "gnews-dc": 25,
-        "gnews-app": 21
-      },
-      "digest_filtered": 1,
-      "after_dedup": 165,
-      "buckets": {
-        "hw": 34,
-        "corp": 125,
-        "app": 33
-      },
-      "news_char_budget": {
-        "hw": 3966,
-        "corp": 8000,
-        "app": 3850
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 2,
-        "corp": 2,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "dedup_audit": [],
-      "date": "2026-10-13",
-      "generated_at": "2026-10-13T00:04:19.039989+08:00"
     }
   ]
 }
