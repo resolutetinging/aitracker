@@ -144,7 +144,7 @@
       "name": "Anthropic",
       "desc": "NVIDIA與Microsoft共同宣布分別投資最高$100億／$50億，Anthropic同步承諾採購$300億Azure運算量",
       "status": "2025/11宣布",
-      "src": "https://tagteam.harvard.edu/hub_feeds/3415/feed_items/16904726"
+      "src": "https://www.anthropic.com/news/microsoft-nvidia-anthropic-announce-strategic-partnerships"
     },
     {
       "name": "CoreWeave",
@@ -154,19 +154,19 @@
     },
     {
       "name": "沙烏地阿拉伯（HUMAIN／SDAIA）",
-      "desc": "HUMAIN背後為PIF，規劃投資逾$1000億，11座資料中心共2200MW；NVIDIA與SDAIA部署最多5000顆Blackwell GPU建主權AI工廠",
+      "desc": "HUMAIN（沙烏地PIF旗下）與NVIDIA建置最高500MW的AI工廠，五年內部署數十萬顆GPU，首期18,000顆GB300與InfiniBand",
       "status": "",
-      "src": "https://nvidianews.nvidia.com/news/saudi-arabia-and-nvidia-to-build-ai-factories-to-power-next-wave-of-intelligence-for-the-age-of-reasoning"
+      "src": "https://nvidianews.nvidia.com/news/humain-and-nvidia-announce-strategic-partnership-to-build-ai-factories-of-the-future-in-saudi-arabia"
     },
     {
-      "name": "日本（SoftBank／44家企業聯盟）",
-      "desc": "與SoftBank合建日本最強AI超級電腦(Grace Blackwell)+AI原生5G網路；SoftBank主權AI GPU雲2026/10商轉；SoftBank/Sony/Honda領軍44家日企7/16啟動主權AI基礎模型計畫",
+      "name": "日本（政府與產業界）",
+      "desc": "啟動日本國家級AI基礎設施；日本企業與研究機構以Nemotron開放模型建置產業專用模型",
       "status": "",
-      "src": "https://nvidianews.nvidia.com/news/nvidia-and-softbank-accelerate-japans-journey-to-global-ai-powerhouse"
+      "src": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000073/q2fy27pr.htm"
     },
     {
       "name": "TSMC／Foxconn",
-      "desc": "TSMC 3nm量產Rubin晶片，NVIDIA預計占TSMC 2026營收逾20%；2026年8月財報說明會後追加訂購30%先進製程晶圓產能，以支應未來高效能AI加速卡需求；Foxconn針對Vera Rubin液冷機櫃工程驗證，H2 2026量產",
+      "desc": "TSMC 3nm量產Rubin晶片；2026年8月財報說明會後追加訂購30%先進製程晶圓產能，以支應未來高效能AI加速卡需求；Foxconn針對Vera Rubin液冷機櫃工程驗證，H2 2026量產",
       "status": "",
       "src": "https://www.trendforce.com/news/2026/06/01/"
     }

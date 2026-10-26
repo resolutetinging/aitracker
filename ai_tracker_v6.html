@@ -356,6 +356,41 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .tw-map-pin-tooltip{display:none;position:absolute;left:50%;top:calc(100% + 2px);transform:translateX(-50%);white-space:pre-line;background:rgba(35,32,28,.95);color:#fff;font-size:11.5px;line-height:1.65;padding:8px 10px;border-radius:6px;min-width:150px;max-width:230px;box-shadow:0 4px 14px rgba(0,0,0,.25);z-index:30;pointer-events:none;text-align:left;}
 .tw-map-pin.labelBelow .tw-map-pin-tooltip{top:auto;bottom:calc(100% + 2px);}
 .tw-map-pin:hover .tw-map-pin-tooltip,.tw-map-pin.tw-pin-open .tw-map-pin-tooltip{display:block;}
+/* 10-26新增：NVIDIA生態系放射圖。stage用1:1鎖比例，節點為HTML疊加層（26px熱區，%定位），
+   連線與扇區底色在SVG（viewBox 100x100，non-scaling-stroke），tooltip依象限翻向避免出界 */
+.nv-eco-wrap{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 10px;margin-bottom:18px;box-shadow:var(--shadow);}
+.nv-eco-stage{position:relative;width:100%;max-width:760px;aspect-ratio:1/1;margin:0 auto;}
+.nv-eco-stage>svg{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.nv-eco-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;background:var(--nv);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px var(--card),0 0 0 5px var(--border2);z-index:3;}
+.nv-eco-sec{position:absolute;transform:translate(-50%,-50%);font-size:12px;font-weight:800;letter-spacing:1px;pointer-events:none;white-space:nowrap;opacity:.9;}
+.nv-eco-pin{position:absolute;transform:translate(-50%,-50%);width:26px;height:26px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;}
+.nv-eco-pin:hover,.nv-eco-pin.nv-eco-open{z-index:40;}
+.nv-eco-dot{width:11px;height:11px;border-radius:50%;background:var(--tc);border:2px solid var(--card);box-shadow:0 0 0 1px var(--tc);transition:transform .15s;}
+.nv-eco-pin.pending .nv-eco-dot{background:var(--card);border-color:var(--tc);}
+.nv-eco-pin:hover .nv-eco-dot,.nv-eco-pin.nv-eco-open .nv-eco-dot{transform:scale(1.35);}
+.nv-eco-lbl{position:absolute;white-space:nowrap;font-size:10.5px;font-weight:700;color:var(--text);pointer-events:none;line-height:1.2;text-shadow:0 0 3px var(--card),0 0 3px var(--card),0 0 3px var(--card);}
+.nv-eco-pin.lr .nv-eco-lbl{left:calc(50% + 7px);top:50%;transform:translateY(-50%);}
+.nv-eco-pin.ll .nv-eco-lbl{right:calc(50% + 7px);top:50%;transform:translateY(-50%);}
+.nv-eco-pin.lt .nv-eco-lbl{bottom:calc(50% + 6px);left:50%;transform:translateX(-50%);}
+.nv-eco-pin.lb .nv-eco-lbl{top:calc(50% + 6px);left:50%;transform:translateX(-50%);}
+.nv-eco-tip{display:none;position:absolute;width:236px;white-space:normal;background:rgba(35,32,28,.96);color:#fff;font-size:11.5px;line-height:1.6;padding:9px 11px;border-radius:6px;box-shadow:0 4px 14px rgba(0,0,0,.25);text-align:left;cursor:default;font-weight:400;}
+.nv-eco-pin:hover .nv-eco-tip,.nv-eco-pin.nv-eco-open .nv-eco-tip{display:block;}
+.nv-eco-pin.tdn .nv-eco-tip{top:100%;}
+.nv-eco-pin.tup .nv-eco-tip{bottom:100%;}
+.nv-eco-pin.tl .nv-eco-tip{left:2px;}
+.nv-eco-pin.tr .nv-eco-tip{right:2px;}
+.nv-eco-pin.tc .nv-eco-tip{left:50%;transform:translateX(-50%);}
+.nv-eco-tip b{font-size:12.5px;}
+.nv-eco-tip .te-tag{display:inline-block;font-size:10.5px;padding:0 6px;border-radius:8px;background:rgba(255,255,255,.18);margin-left:4px;}
+.nv-eco-tip .te-warn{background:#c8892b;color:#fff;}
+.nv-eco-tip .te-k{color:#c9d89a;font-weight:700;}
+.nv-eco-tip .card-source{margin-top:5px;font-size:11px;color:#bbb;}
+.nv-eco-tip .card-source a{color:#a9c4e8;text-decoration:underline;}
+.nv-eco-legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:11.5px;color:var(--text2);margin-top:10px;}
+.nv-eco-legend span{display:inline-flex;align-items:center;gap:5px;}
+.nv-eco-legend .dotk{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--tc);}
+.nv-eco-legend svg{width:30px;height:8px;}
+@media(max-width:520px){.nv-eco-lbl{font-size:9.5px;}.nv-eco-center{width:50px;height:50px;font-size:10px;}.nv-eco-sec{font-size:11px;}.nv-eco-tip{width:214px;}}
 .tw-map-arrow{fill:none;stroke:var(--techwar);stroke-width:2.6;opacity:.8;marker-end:url(#tw-map-arrowhead);}
 @media(max-width:700px){.tw-sc-wrap{grid-template-columns:1fr;}}
 
@@ -994,6 +1029,127 @@ function nvRenderEventsBody(){
   const cardsHtml = filtered.map(nvEventGroupCard).join('') || '<div class="empty-state">此分類目前沒有事件</div>';
   body.innerHTML = `<div class="nv-event-nav">${navHtml}</div><div class="nv-event-grid">${cardsHtml}</div>`;
 }
+// 10-26新增：NVIDIA生態系放射圖（資料 data/nv_ecosystem.json；載入失敗只影響本區塊）
+const NV_ECO_TIERS = {
+  upstream:   {label:'上游', color:'var(--hw)',  center:300},
+  midstream:  {label:'中游', color:'var(--corp)', center:60},
+  downstream: {label:'下游', color:'var(--app)', center:180}
+};
+const NV_ECO_REL = {investment:'投資', partnership:'合作', both:'投資＋合作'};
+async function loadNvEcosystem(){
+  try{
+    const r = await fetch('data/nv_ecosystem.json?v='+Date.now());
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const d = await r.json();
+    if(!d || !Array.isArray(d.nodes)) throw new Error('bad format');
+    return d;
+  }catch(e){ return null; }
+}
+function nvEcoToggle(el, ev){
+  if(ev && ev.target && ev.target.closest && ev.target.closest('.nv-eco-tip')) return;
+  const wasOpen = el.classList.contains('nv-eco-open');
+  document.querySelectorAll('.nv-eco-pin.nv-eco-open').forEach(p=>p.classList.remove('nv-eco-open'));
+  if(!wasOpen) el.classList.add('nv-eco-open');
+}
+document.addEventListener('click', e=>{
+  if(!e.target.closest || e.target.closest('.nv-eco-pin')) return;
+  document.querySelectorAll('.nv-eco-pin.nv-eco-open').forEach(p=>p.classList.remove('nv-eco-open'));
+});
+let NV_ECO_DATA = null, NV_ECO_LASTW = 0, NV_ECO_TIMER = null;
+// 視窗縮放：只重算放射圖版面（不重新 fetch、不動 NV 專區其他區塊）；全域只綁一次，寬度沒變就略過（手機網址列伸縮也會觸發 resize）
+window.addEventListener('resize', ()=>{
+  clearTimeout(NV_ECO_TIMER);
+  NV_ECO_TIMER = setTimeout(()=>{
+    const wrap = document.querySelector('.nv-eco-wrap'), pn = document.getElementById('panel-nv');
+    if(!NV_ECO_DATA || !wrap || !pn || !pn.clientWidth) return;
+    if(pn.clientWidth === NV_ECO_LASTW) return;
+    wrap.outerHTML = nvEcoSection(NV_ECO_DATA, true);
+  }, 200);
+});
+function nvEcoSection(eco, bodyOnly){
+  NV_ECO_DATA = eco;
+  const head = '<div class="sec-title" id="nv-sec-eco">生態系放射圖（上中下游投資／合作）</div>';
+  if(!eco || !eco.nodes || !eco.nodes.length){
+    return (bodyOnly?'':head) + '<div class="empty-state">⚠️ 無法載入生態系資料（data/nv_ecosystem.json）</div>';
+  }
+  const rad = d => d*Math.PI/180;
+  // 窄螢幕（<520px）：舞台拉高成 1:1.3、橫向壓縮並改三圈交錯，標籤一律放節點左右側，避免標籤重疊／出界
+  const compact = window.innerWidth < 520;
+  // 先估舞台像素尺寸，節點同角度下依序試多個半徑／標籤側，挑第一個與已放置標籤、圓點、中心圓不重疊且不出界的組合
+  const aspect = compact ? 1.15 : 1;
+  const W = Math.min(760, Math.max(280, (document.getElementById('panel-nv').clientWidth || window.innerWidth) - (compact?28:34)));
+  const H = W*aspect, fs = compact ? 9.5 : 10.5;
+  const pt = (deg, r) => [50 + r*50*Math.sin(rad(deg)), 50 - r*50*Math.cos(rad(deg))];
+  const lblW = t => Array.from(t).reduce((a,ch)=>a+(ch.charCodeAt(0)>255?fs:fs*0.6),0)+3;
+  const placed = [[W/2-34,H/2-34,W/2+34,H/2+34]];
+  const hit = (a,b) => a[0]<b[2] && b[0]<a[2] && a[1]<b[3] && b[1]<a[3];
+  const rings = compact ? [0.5,0.64,0.78,0.9,0.4,0.97] : [0.56,0.82,0.7,0.92,0.45];
+  const pinsArr = [], linesArr = [], sectorsArr = [], labelsArr = [];
+  Object.keys(NV_ECO_TIERS).forEach(tk=>{
+    const T = NV_ECO_TIERS[tk];
+    const nodes = eco.nodes.filter(n=>n.tier===tk);
+    const a0 = T.center-60, a1 = T.center+60;
+    const [sx0,sy0] = pt(a0, 0.96), [sx1,sy1] = pt(a1, 0.96);
+    sectorsArr.push(`<path d="M50 50 L${sx0.toFixed(2)} ${sy0.toFixed(2)} A48 48 0 0 1 ${sx1.toFixed(2)} ${sy1.toFixed(2)} Z" fill="${T.color}" fill-opacity=".09" stroke="${T.color}" stroke-opacity=".35" stroke-width="1" vector-effect="non-scaling-stroke"/>`);
+    const [lx,ly] = pt(T.center, 0.3);
+    placed.push([lx*W/100-16,ly*H/100-8,lx*W/100+16,ly*H/100+8]);
+    labelsArr.push(`<div class="nv-eco-sec" style="left:${lx.toFixed(2)}%;top:${ly.toFixed(2)}%;color:${T.color};">${_arcEsc(T.label)}</div>`);
+    const n = nodes.length;
+    nodes.forEach((nd,i)=>{
+      const deg = n>1 ? (T.center-46) + 92*i/(n-1) : T.center;
+      const s = Math.sin(rad(deg)), c = Math.cos(rad(deg));
+      const pref = compact ? (s>=0 ? 'lr' : 'll') : (s>0.5 ? 'lr' : (s<-0.5 ? 'll' : (c>0 ? 'lt' : 'lb')));
+      const sides = [pref, 'lr', 'll', 'lt', 'lb'].filter((v,k,a)=>a.indexOf(v)===k);
+      const lw = lblW(nd.short||nd.name), lh = fs*1.25+1;
+      const labelRect = (px,py,sd) => sd==='lr' ? [px+7,py-lh/2,px+7+lw,py+lh/2]
+        : sd==='ll' ? [px-7-lw,py-lh/2,px-7,py+lh/2]
+        : sd==='lt' ? [px-lw/2,py-6-lh,px+lw/2,py-6] : [px-lw/2,py+6,px+lw/2,py+6+lh];
+      let best = null;
+      search: for(const dj of [0,3,-3,6,-6]) for(const rr of rings){
+        const [bx,by] = pt(deg+dj, rr), px = bx*W/100, py = by*H/100;
+        for(const sd of sides){
+          const lr = labelRect(px,py,sd), dr = [px-10,py-10,px+10,py+10];
+          if(lr[0]<2 || lr[2]>W-2 || lr[1]<2 || lr[3]>H-2) continue;
+          if(placed.some(q=>hit(q,lr)||hit(q,dr))) continue;
+          best = {rr,sd,lr,dr,dj}; break search;
+        }
+      }
+      if(!best){ const rr = rings[0], [bx,by] = pt(deg, rr); best = {rr, dj:0, sd:pref, lr:labelRect(bx*W/100,by*H/100,pref), dr:[bx*W/100-10,by*H/100-10,bx*W/100+10,by*H/100+10]}; }
+      placed.push(best.lr, best.dr);
+      const [x,y] = pt(deg+best.dj, best.rr);
+      const lc = best.sd;
+      const tv = y>50 ? 'tup' : 'tdn';
+      const th = x<35 ? 'tl' : (x>65 ? 'tr' : 'tc');
+      const rel = nd.relation==='partnership' ? 'partnership' : 'invest';
+      linesArr.push(`<line x1="50" y1="50" x2="${x.toFixed(2)}" y2="${y.toFixed(2)}" stroke="${T.color}" stroke-opacity=".7" stroke-width="1.3" vector-effect="non-scaling-stroke"${rel==='partnership'?' stroke-dasharray="4 3"':''}/>`);
+      const tip = `<b>${_arcEsc(nd.name)}</b><span class="te-tag">${_arcEsc(NV_ECO_REL[nd.relation]||nd.relation||'')}</span>${nd.pending?'<span class="te-tag te-warn">待複核</span>':''}`
+        + (nd.amount?`<br><span class="te-k">金額</span> ${_arcEsc(nd.amount)}`:'')
+        + `<br><span class="te-k">合作項目</span> ${_arcEsc(nd.item||'')}`
+        + `<br><span class="te-k">戰略意義</span> ${_arcEsc(nd.significance||'')}`
+        + (nd.date?`<br><span class="te-k">日期</span> ${_arcEsc(nd.date)}`:'')
+        + nvSrcLink(nd.src);
+      pinsArr.push(`<div class="nv-eco-pin ${lc} ${tv} ${th}${nd.pending?' pending':''}" style="left:${x.toFixed(2)}%;top:${y.toFixed(2)}%;--tc:${T.color};" onclick="nvEcoToggle(this,event)">
+        <div class="nv-eco-dot"></div><div class="nv-eco-lbl">${_arcEsc(nd.short||nd.name)}</div>
+        <div class="nv-eco-tip">${tip}</div></div>`);
+    });
+  });
+  const cnt = k => eco.nodes.filter(n=>n.tier===k).length;
+  const legendTier = Object.keys(NV_ECO_TIERS).map(k=>`<span style="--tc:${NV_ECO_TIERS[k].color};"><span class="dotk"></span>${_arcEsc(NV_ECO_TIERS[k].label)}（${cnt(k)}）</span>`).join('');
+  const legend = `<div class="nv-eco-legend">${legendTier}
+    <span><svg viewBox="0 0 30 8"><line x1="0" y1="4" x2="30" y2="4" stroke="var(--muted)" stroke-width="2"/></svg>投資或投資＋合作</span>
+    <span><svg viewBox="0 0 30 8"><line x1="0" y1="4" x2="30" y2="4" stroke="var(--muted)" stroke-width="2" stroke-dasharray="5 3"/></svg>合作</span>
+    <span>空心點＝待複核</span></div>`;
+  NV_ECO_LASTW = document.getElementById('panel-nv').clientWidth;
+  return (bodyOnly?'':head) + `<div class="nv-eco-wrap">
+    <div class="nv-eco-stage"${compact?' style="aspect-ratio:1/1.15;"':''}>
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${sectorsArr.join('')}${linesArr.join('')}</svg>
+      ${labelsArr.join('')}${pinsArr.join('')}
+      <div class="nv-eco-center">NVIDIA</div>
+    </div>
+    ${legend}
+    <div style="font-size:11px;color:var(--muted);margin-top:8px;text-align:center;">滑鼠移到節點看合作項目與戰略意義；手機點一下開關。金額多為宣布上限或雙方合計，非交割口徑。最後複核：${_arcEsc(eco.last_reviewed||'')}</div>
+  </div>`;
+}
 function nvScrollTo(id){
   const el = document.getElementById(id);
   if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
@@ -1154,6 +1310,7 @@ async function renderNvidia(){
     panel.innerHTML = '<div class="empty-state">⚠️ 無法載入 NVIDIA 專區資料（data/nv_status.json）</div>';
     return;
   }
+  const ecoHtml = nvEcoSection(await loadNvEcosystem());
   // 09-08：近期事件改分類tag篩選+同故事線併成時間軸卡片，資料存NV_DATA供
   // nvEventFilter()重新篩選時不必重新fetch；每次整頁重新render時重置回「全部」
   NV_DATA = nv;
@@ -1251,6 +1408,7 @@ async function renderNvidia(){
         <a onclick="nvScrollTo('nv-sec-chain')">產品應用鏈</a>
         <a onclick="nvScrollTo('nv-sec-live')">已導入場域</a>
         <a onclick="nvScrollTo('nv-sec-roadmap')">進行中／規劃項</a>
+        <a onclick="nvScrollTo('nv-sec-eco')">生態系放射圖</a>
         <a onclick="nvScrollTo('nv-sec-alliance')">聯盟動態</a>
         <a onclick="nvScrollTo('nv-sec-gov')">生態治理</a>
       </div>
@@ -1272,6 +1430,8 @@ async function renderNvidia(){
 
       <div class="sec-title" id="nv-sec-roadmap">進行中／規劃項（產品 Roadmap）</div>
       <div class="nv-case-grid">${roadmapHtml}</div>
+
+      ${ecoHtml}
 
       <div class="sec-title" id="nv-sec-alliance">聯盟發展狀況</div>
       ${allianceOverviewHtml}
