@@ -1,5 +1,125 @@
 [
   {
+    "date": "2026-10-28",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 推出成本效益更高的 GPT-6.1 Terra 中階模型",
+        "layer": "模型商業化",
+        "body": "OpenAI 宣布在 GPT-6.1 系列中新增 Terra 中階模型，標稱 API 價格較 GPT-5.6 Terra 與 GPT-6.1 Sol 低 50%，相當於原價的 1/2。該模型在處理發票自動化等高容量工作時，成本僅為同類高階模型的三分之一。Artificial Analysis 評估其為首款 Terra 級別模型自 GPT-5.6 以來的升級版。",
+        "impact": "企業客戶可降低 AI 應用的運營成本，促進 AI 在財務與會計領域的滲透。",
+        "rating": "core",
+        "insight": "成本更低的中階模型將擴大 AI 服務的下游採用，帶動整體供應鏈需求上升。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/10/26/openai-rolls-out-budget-priced-mid-tier-gpt-61-terra/5305574",
+        "chain": [
+          {
+            "label": "OpenAI Terra 中階模型價格↓",
+            "type": "down"
+          },
+          {
+            "label": "企業 API 成本↓",
+            "type": "down"
+          },
+          {
+            "label": "發票自動化需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Tairex 推出多學科人機協作生態系統以加速臨床 AI 應用",
+        "layer": "healthcare",
+        "body": "Tairex 宣布於 2026 年推出一套多學科人機協作生態系統，旨在於真實臨床環境中推廣 AI 應用。該平台結合醫師、研究人員與 AI 代理人，提供即時決策支援與資料分析功能。",
+        "impact": "醫院與診所因可獲得即時 AI 輔助診斷工具，提升診斷效率與病患流量。醫療資訊系統供應商加速整合相關 API。",
+        "rating": "opp",
+        "insight": "投資提供醫療 AI 平台的公司，可受益於臨床 AI 需求快速成長。",
+        "source_label": "CEOWORLD magazine",
+        "source": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxONWN3aW5LVU5OV3UzYWMyejZXTUZCQ0xhdUxYZC1uX1BBdmswSjlGMzVpcEgzSXhhWGo3S1lxNDY3NkZOVXVMNktaWm1STDE5WGFaRVg3cVNmZjlCc1FaOXI5bnVObEtaay1va2M4ZjlQYzAzdFhSTW96TnVRR2IwY2VkbmVLb2Q4dWRha1d0aEdpU1J1aWVlTjJDQXlhMk1qNHFyRnplc016dU84YXBGa21Mam9FZGNBT0dtRlJJOUlxRnVkTWIxeVlQdGlzbmtleWdfWXFOdWJBbnpGM3NYUDg4UkxYUnFSZjJOWlF3?oc=5",
+        "chain": [
+          {
+            "label": "Tairex 多學科協作平台↑",
+            "type": "up"
+          },
+          {
+            "label": "臨床 AI 應用採用率↑",
+            "type": "up"
+          },
+          {
+            "label": "醫師決策支援需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "3D Volumetric DRAM-on-GPU",
+        "full": "三維體積式 DRAM 直接堆疊於 GPU 之上",
+        "def": "一種將 DRAM 晶片垂直堆疊於圖形處理器之上，並在其間設置冷卻腔的封裝技術，可提升熱設計彈性與記憶體容量。",
+        "why": "此技術可減少傳統 HBM 2.5D 封裝的熱瓶頸，對高效能運算與 AI 加速卡的散熱需求具重要意義。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "HBM",
+        "full": "High Bandwidth Memory",
+        "def": "高頻寬記憶體，通常以 2.5D 方式與 GPU 透過硅通孔 (TSV) 直接相連，提供極高的資料傳輸速率。",
+        "why": "HBM 是目前 AI 加速卡與高效能運算平台的主流記憶體解決方案，供應鏈變動會直接影響記憶體製造與封裝產能。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "OSAT",
+        "full": "Outsourced Semiconductor Assembly and Test",
+        "def": "委外半導體封裝與測試服務廠商，負責將晶圓組裝成最終產品並執行測試。",
+        "why": "AI 伺服器與加速卡的先進封裝需求提升，將帶動 OSAT 廠商的產能利用率上升。",
+        "category": "hardware"
+      },
+      {
+        "term": "基礎模型",
+        "full": "Foundation Model",
+        "def": "大型預訓練 AI 模型，具備廣泛的語言或視覺理解能力，可作為多種下游應用的基礎。",
+        "why": "基礎模型是 AI 供應鏈的核心驅動力，決定算力與晶片需求規模。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "GPT-6.1 Terra",
+        "full": "Generative Pre-trained Transformer 6.1 Terra",
+        "def": "OpenAI 推出的中階語言模型，定位於成本效益平衡，API 價格較高階模型低 50%。",
+        "why": "其低成本特性將擴大企業對 AI 服務的採用，直接影響算力需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI 基礎建設",
+        "full": "Artificial Intelligence Infrastructure",
+        "def": "支撐 AI 訓練與推理的硬體與軟體資源，包括 GPU、加速卡、資料中心與網路連接。",
+        "why": "大量資本投入於 AI 基礎建設會帶動晶片、伺服器與電力供應鏈的需求增長。",
+        "category": "hardware"
+      },
+      {
+        "term": "Human-Agent Collaboration Ecosystem",
+        "full": "多學科人機協作生態系統",
+        "def": "結合醫療專業人員與 AI 代理人，提供即時決策支援、資料分析與工作流程自動化的整合平台。",
+        "why": "可降低臨床決策時間、提升診斷準確度，並加速 AI 技術在醫療場域的落地。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-27",
     "is_sunday": false,
     "hw": [
@@ -835,187 +955,6 @@
         "def": "新加坡的法定貨幣，常用於政府資金與投資計畫的計價單位。",
         "why": "了解資金規模有助於評估相關 AI 產業的投資規模與市場潛力。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-21",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "Anthropic 與 Nscale 商談第二筆約 450 億美元計算租賃合約",
-        "layer": "core",
-        "body": "Anthropic 正與英國 neocloud Nscale 商討在美國西維吉尼亞再租用一座 460 兆瓦資料中心，預估交易金額約 450 億美元。此合約將與去年簽署的同等規模合約相同地提供 AI 計算容量。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Anthropic 持續加碼大型計算租賃，顯示 AI 基礎設施需求仍在快速擴張。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/20/anthropic-nscale-data-center-deal.html",
-        "chain": [
-          {
-            "label": "Anthropic 計算租賃合約↑",
-            "type": "up"
-          },
-          {
-            "label": "Nscale 資料中心建設↑",
-            "type": "up"
-          },
-          {
-            "label": "美國西維吉尼亞電力需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic 承諾以 5% 股份設立公共利益基金應對 AI 工作取代",
-        "layer": "opp",
-        "body": "Anthropic 計畫將公司 5% 股份投入新設立的公共利益基金，未來若公司估值每提升 50% 可再追加 2% 股份。該基金將用於大額捐贈或直接分配，以緩解 AI 對就業的衝擊。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "Anthropic 以股份方式設基金，為 AI 企業提供可持續的社會責任範本。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/18/anthropic-ai-public-benefit-fund.html",
-        "chain": [
-          {
-            "label": "Anthropic 公益基金股份↓",
-            "type": "down"
-          },
-          {
-            "label": "AI 失業風險↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Amazon 承諾以未驗證核能技術供電印第安納資料中心",
-        "layer": "opp",
-        "body": "Amazon 宣布將與美國核能新創 X‑energy 合作，使用其尚未建成的核能技術為印第安納州資料中心供電。X‑energy 目前尚未建造任何運轉中的核反應爐。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "Amazon 以核能作為資料中心電力來源，顯示大型雲端業者正探索非常規能源以降低長期營運成本。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/offbeat/2026/10/19/amazon-makes-vague-commitment-to-unproven-nuclear-tech-to-power-indiana-datacenters/5303974",
-        "chain": [
-          {
-            "label": "X‑energy 核能技術商業化↑",
-            "type": "up"
-          },
-          {
-            "label": "Amazon 資料中心電力供應↑",
-            "type": "up"
-          },
-          {
-            "label": "核能安全風險↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Amazon 推出 TorchNeuron 開發工具以削減對 Nvidia 的依賴",
-        "layer": "core",
-        "body": "Amazon 發布新工具 TorchNeuron，旨在讓開發者在 PyTorch 上直接使用 Amazon 自研的 AI 加速晶片，降低對 Nvidia GPU 的需求。此舉是 Amazon 針對 AI 應用開發環境的重大布局。",
-        "impact": "TorchNeuron 的推出將降低 Nvidia GPU 的需求，可能影響其上游晶圓代工與記憶體供應鏈的訂單結構。",
-        "rating": "core",
-        "insight": "Amazon 以自研加速卡工具挑戰 Nvidia 市場領導地位，可能改變 AI 硬體供應鏈格局。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/10/19/amazon-is-taking-its-biggest-shot-at-nvidia-yet-with-new-torchneuron-dev-tool/",
-        "chain": [
-          {
-            "label": "Amazon TorchNeuron 推廣↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia GPU 需求↓",
-            "type": "down"
-          },
-          {
-            "label": "Amazon 自研 AI 加速晶片採用↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Arda 推出 AI 軟體平台協助製造工程師快速調整自動化",
-        "layer": "manufacturing",
-        "body": "Arda 已完成 2.3 億美元融資，估值 15 億美元，並於本月向軍事科技公司 Anduril 部署 AI 模型。該平台提供使用者介面與代理人，讓製造工程師在設計變更後可於一天內完成調整，較傳統自動化需三至六個月縮短 80%。",
-        "impact": "Arda 的 AI 軟體可在一天內完成設計變更調整，提升下游 OEM 的產能彈性。",
-        "rating": "core",
-        "insight": "AI 軟體可大幅縮短製造自動化調整週期，為供應鏈帶來彈性升級機會。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/20/ex-openai-executive-builds-1point5-billion-ai-manufacturing-startup-arda.html",
-        "chain": [
-          {
-            "label": "Arda AI 平台部署↑",
-            "type": "up"
-          },
-          {
-            "label": "Anduril 軍事科技合作↑",
-            "type": "up"
-          },
-          {
-            "label": "製造工程自動化週期縮短↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "nanoelectromechanical",
-        "full": "Nanoelectromechanical (NEMS)",
-        "def": "結合奈米尺度機械元件與電子元件的技術，可在極小體積內實現機械開關與電路功能。",
-        "why": "此技術用於提升嵌入式 DRAM 的密度與能效，可能改變記憶體製程供應鏈。",
-        "category": "hardware"
-      },
-      {
-        "term": "公共利益基金",
-        "full": "Public Benefit Fund",
-        "def": "由企業以股份形式設立的基金，用於資助社會公益項目或直接分配資金，以緩解技術變革帶來的社會衝擊。",
-        "why": "AI 企業透過此機制回饋社會，提升企業形象並降低監管風險。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "核能技術",
-        "full": "Advanced Nuclear Technology",
-        "def": "尚未商業化的核能發電方案，通常指小模組化反應爐或新型燃料循環技術，具備較低建設成本與更高安全性的特點。",
-        "why": "為資料中心提供低碳、穩定的電力供應，可能改變雲端業者的能源採購結構。",
-        "category": "hardware"
-      },
-      {
-        "term": "TorchNeuron",
-        "full": "TorchNeuron Development Toolkit",
-        "def": "Amazon 為 PyTorch 生態系統推出的開發套件，允許開發者直接在 Amazon 自研的 AI 加速晶片上執行模型，減少對 Nvidia GPU 的依賴。",
-        "why": "此工具有助於推動自家晶片生態，改變 AI 硬體供應鏈的競爭格局。",
-        "category": "software"
-      },
-      {
-        "term": "代理人",
-        "full": "AI 代理人（AI Agent）",
-        "def": "具備自主決策與執行能力的軟體實體，可根據使用者指令或環境變化自動完成任務。",
-        "why": "在製造領域，代理人能即時調整自動化流程，縮短設計變更的反應時間。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Anduril",
-        "full": "Anduril Industries",
-        "def": "美國軍事科技公司，專注於 AI 驅動的感測與防禦系統。",
-        "why": "其採用 Arda 的 AI 模型顯示該技術已在高安全性、快速迭代的軍事製造環境中驗證。",
-        "category": "role"
       }
     ],
     "weekly_summary": null

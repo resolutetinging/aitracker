@@ -2,6 +2,118 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 44,
+        "CSP/CapEx": 45,
+        "App/AI": 23,
+        "gnews-chip": 22,
+        "gnews-dc": 24,
+        "gnews-app": 19
+      },
+      "digest_filtered": 1,
+      "after_dedup": 165,
+      "buckets": {
+        "hw": 28,
+        "corp": 131,
+        "app": 27
+      },
+      "news_char_budget": {
+        "hw": 3500,
+        "corp": 8000,
+        "app": 3500
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 3,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 3,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "dedup_audit": [
+        {
+          "title": "Nvidia 與 AMD 合計投資 40 億美元於 Meta AI 基礎建設",
+          "section": "hw",
+          "action": "removed",
+          "matched_title": "Meta 計畫募集 95 億美元資金支援 AI 基礎建設",
+          "reason": "兩篇皆描述 Nvidia、AMD、Broadcom 對 Meta AI 基礎建設的投資與募集計畫，同一事件"
+        },
+        {
+          "title": "Anthropic IPO 招股說明書揭露逾 5,000 億美元十年計算支出",
+          "section": "corp",
+          "action": "removed",
+          "matched_title": "Anthropic 申請 IPO 以 80.7 億美元淨虧損上市",
+          "reason": "皆關於 Anthropic 提交 IPO 註冊文件並披露未來計算支出，屬同一次 IPO 申請事件"
+        }
+      ],
+      "fact_audit": {
+        "mode": "log",
+        "checked": 2,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0
+        },
+        "enforced": 0,
+        "items": [
+          {
+            "sec": "corp",
+            "title": "OpenAI 推出成本效益更高的 GPT-6.1 Terra 中階模型",
+            "source": "https://www.theregister.com/ai-and-ml/2026/10/26/openai-rolls-out-budget-priced-mid-tier-gpt-61-terra/5305574",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [
+              "1/2"
+            ],
+            "tense_flag": false
+          }
+        ]
+      },
+      "date": "2026-10-28",
+      "generated_at": "2026-10-28T00:04:09.748860+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 36,
         "CSP/CapEx": 36,
         "App/AI": 11,
@@ -1247,111 +1359,6 @@
       },
       "date": "2026-10-15",
       "generated_at": "2026-10-15T00:04:25.864165+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 51,
-        "CSP/CapEx": 37,
-        "App/AI": 16,
-        "gnews-chip": 15,
-        "gnews-dc": 24,
-        "gnews-app": 22
-      },
-      "digest_filtered": 2,
-      "after_dedup": 155,
-      "buckets": {
-        "hw": 36,
-        "corp": 106,
-        "app": 35
-      },
-      "news_char_budget": {
-        "hw": 4200,
-        "corp": 8000,
-        "app": 4083
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 4,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "dedup_audit": [
-        {
-          "title": "Microsoft 計畫於 2027 年前部署多吉瓦級 Azure Maia AI 加速器機架",
-          "section": "corp",
-          "action": "removed",
-          "matched_title": "Microsoft 公布 Maia 300 AI 晶片 2027 年量產",
-          "reason": "兩篇皆說明 Microsoft 2027 年前的 Maia AI 計畫，分別聚焦於機架部署與晶片量產，同屬同一 AI 基礎設施宣布"
-        }
-      ],
-      "fact_audit": {
-        "mode": "log",
-        "checked": 3,
-        "suspect_cards": 1,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 0,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": [
-          {
-            "sec": "hw",
-            "title": "AMD 於 OCP 峰會公布 Helion AI 代理伺服器機架",
-            "source": "https://www.theregister.com/systems/2026/10/12/amd-unveils-helion-racks-for-ai-agents-at-ocp-summit/5302652",
-            "rating": "core",
-            "coverage": "full",
-            "suspects": [
-              "32768 核心"
-            ],
-            "undetermined": [],
-            "tense_flag": false
-          }
-        ]
-      },
-      "date": "2026-10-14",
-      "generated_at": "2026-10-14T00:04:17.496040+08:00"
     }
   ]
 }
