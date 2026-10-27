@@ -390,6 +390,22 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .nv-eco-legend span{display:inline-flex;align-items:center;gap:5px;}
 .nv-eco-legend .dotk{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--tc);}
 .nv-eco-legend svg{width:30px;height:8px;}
+/* 10-27：放射圖 hover 方塊的影響方向 pill 與總部國家；聯盟卡（多方組織）欄位 */
+.nv-eco-tip .te-ctry{font-size:11px;color:#ddd;margin-left:5px;white-space:nowrap;}
+.nv-eco-tip .te-pills{margin:4px 0 2px;}
+.nv-eco-tip .te-pill{display:inline-block;font-size:10.5px;line-height:1.5;padding:0 7px;margin:2px 4px 0 0;border-radius:9px;background:rgba(201,216,154,.2);color:#e3ecc6;border:1px solid rgba(201,216,154,.5);}
+.nv-ally-head{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;margin-bottom:6px;}
+.nv-ally-type{font-size:10.5px;padding:1px 7px;border-radius:9px;background:var(--card2);border:1px solid var(--border);color:var(--nv);font-weight:600;}
+.nv-ally-partial{font-size:10.5px;padding:1px 7px;border-radius:9px;background:#f3e6d2;border:1px solid #dfc39a;color:var(--ethic);font-weight:700;}
+.nv-ally-row{font-size:11.5px;color:var(--text2);line-height:1.6;margin-bottom:4px;}
+.nv-ally-k{font-weight:700;color:var(--muted);margin-right:5px;}
+.nv-ally-date{display:inline-block;margin-left:6px;font-size:10.5px;color:var(--muted2);white-space:nowrap;}
+.nv-ally-evi{font-size:10.5px;color:var(--muted);line-height:1.6;margin-top:6px;padding-top:6px;border-top:1px dashed var(--border);overflow-wrap:anywhere;}
+.nv-ally-evi a,.nv-ally-ov a{color:var(--hw);}
+.nv-ally-ov ul{margin:0;padding-left:18px;}
+.nv-ally-ov li{font-size:12.5px;color:var(--text2);line-height:1.7;margin-bottom:3px;}
+.nv-ally-ov li a{font-size:11px;margin-left:4px;white-space:nowrap;}
+.nv-sec-note{font-size:11px;color:var(--muted);margin:-4px 0 10px;padding-left:2px;line-height:1.6;}
 @media(max-width:520px){.nv-eco-lbl{font-size:9.5px;}.nv-eco-center{width:50px;height:50px;font-size:10px;}.nv-eco-sec{font-size:11px;}.nv-eco-tip{width:214px;}}
 .tw-map-arrow{fill:none;stroke:var(--techwar);stroke-width:2.6;opacity:.8;marker-end:url(#tw-map-arrowhead);}
 @media(max-width:700px){.tw-sc-wrap{grid-template-columns:1fr;}}
@@ -942,6 +958,48 @@ function nvCaseCard(item, statusCls, statusText){
     ${nvSrcLink(item.src)}
   </div>`;
 }
+// 10-27：聯盟發展狀況改定義為「NVIDIA 加入或主導的多方聯盟、產業組織、標準與政策聯盟」，
+// 雙邊合作改由生態系放射圖呈現。member_evidence 是含網址的自由文字：只把 http(s) 網址
+// 做成連結（顯示 hostname），其餘片段一律 _arcEsc()，防儲存型／點擊型 XSS
+function nvLinkifyText(s){
+  return String(s||'').split(/(https?:\/\/[^\s；，、。（）()<>"']+)/i).map((p,i)=>{
+    if(i%2===0) return _arcEsc(p);
+    let label = p;
+    try{ label = new URL(p).hostname; }catch(e){ /* 非標準網址就顯示原字串 */ }
+    return `<a href="${_arcEsc(p)}" target="_blank" rel="noopener">${_arcEsc(label)}</a>`;
+  }).join('');
+}
+function nvAllianceCard(a){
+  a = a || {};
+  const row = (k, v) => v ? `<div class="nv-ally-row"><span class="nv-ally-k">${k}</span>${_arcEsc(v)}</div>` : '';
+  const partial = a.verify==='partial' ? '<span class="nv-ally-partial" title="部分內容未取得官方原文逐字核對，詳見成員證據">⚠️ 部分核對</span>' : '';
+  return `<div class="nv-case-card">
+    <div class="nv-case-name">${_arcEsc(a.name||'')}</div>
+    ${(a.type||partial) ? `<div class="nv-ally-head">${a.type?`<span class="nv-ally-type">${_arcEsc(a.type)}</span>`:''}${partial}</div>` : ''}
+    ${row('NVIDIA 角色', a.nv_role)}
+    ${row('代表成員', a.members_note)}
+    ${a.progress ? `<div class="nv-ally-row"><span class="nv-ally-k">最近推進</span>${_arcEsc(a.progress)}${a.date?`<span class="nv-ally-date">🗓 ${_arcEsc(a.date)}</span>`:''}</div>` : ''}
+    ${row('意義', a.significance)}
+    ${nvSrcLink(a.src)}
+    ${a.member_evidence ? `<div class="nv-ally-evi"><span class="nv-ally-k">成員證據</span>${nvLinkifyText(a.member_evidence)}</div>` : ''}
+  </div>`;
+}
+function nvAllianceOverviewHtml(ov){
+  // 新格式為 [{text, src}]；舊格式（單一字串）也相容，避免資料與頁面不同步時整區空白
+  const list = Array.isArray(ov) ? ov : (ov ? [{text:String(ov), src:''}] : []);
+  const lis = list.map(o=>{
+    const t = typeof o==='string' ? o : ((o&&o.text)||'');
+    const u = (o && typeof o==='object' && o.src) ? String(o.src) : '';
+    if(!t) return '';
+    let link = '';
+    if(/^https?:\/\//i.test(u)){
+      let label = u; try{ label = new URL(u).hostname; }catch(e){}
+      link = `<a href="${_arcEsc(u)}" target="_blank" rel="noopener">來源：${_arcEsc(label)}</a>`;
+    }
+    return `<li>${_arcEsc(t)}${link}</li>`;
+  }).join('');
+  return lis ? `<div class="impact-box nv-ally-ov" style="margin-bottom:12px;"><div class="impact-title">聯盟生態系整體動態</div><ul>${lis}</ul></div>` : '';
+}
 // 09-08新增：近期事件卡片，跟nvCaseCard的「案例/路線圖」性質不同，這裡是
 // 有明確日期的具體新聞事件；src_note用來標註「僅媒體報導、查無官方原文」
 // 這類查證等級落差，不能省略或包裝成官方立場，比照產業導入分頁已確立的規範。
@@ -1036,6 +1094,19 @@ const NV_ECO_TIERS = {
   downstream: {label:'下游', color:'var(--app)', center:180}
 };
 const NV_ECO_REL = {investment:'投資', partnership:'合作', both:'投資＋合作'};
+// 10-27：節點影響方向（impact，白名單內最多 2 個）與總部國家（country：ISO-2 或「多國」）；
+// 不合格的值一律忽略不顯示（資料可能來自週查證候選的人工套用，前端仍做格式驗證）
+const NV_ECO_IMPACTS = ['用電能源','晶圓','記憶體','載板封測','光通訊','網路互連','伺服器系統','雲端算力','軟體工具','資本融資','AI 模型','產業應用'];
+function nvEcoImpacts(nd){
+  if(!nd || !Array.isArray(nd.impact)) return [];
+  return nd.impact.filter((x,i,a)=>typeof x==='string' && NV_ECO_IMPACTS.includes(x) && a.indexOf(x)===i).slice(0,2);
+}
+function nvEcoCountry(nd){
+  const c = nd && nd.country;
+  if(c==='多國') return '🌐 多國';
+  if(typeof c!=='string' || !/^[A-Z]{2}$/.test(c)) return '';
+  return String.fromCodePoint(...Array.from(c).map(ch=>0x1F1E6 + ch.charCodeAt(0) - 65)) + ' ' + c;
+}
 async function loadNvEcosystem(){
   try{
     const r = await fetch('data/nv_ecosystem.json?v='+Date.now());
@@ -1068,7 +1139,7 @@ window.addEventListener('resize', ()=>{
 });
 function nvEcoSection(eco, bodyOnly){
   NV_ECO_DATA = eco;
-  const head = '<div class="sec-title" id="nv-sec-eco">生態系放射圖（上中下游投資／合作）</div>';
+  const head = '<div class="sec-title" id="nv-sec-eco">生態系放射圖與權力布局</div><div class="nv-sub-title">🌐 上中下游投資／合作</div>';
   if(!eco || !eco.nodes || !eco.nodes.length){
     return (bodyOnly?'':head) + '<div class="empty-state">⚠️ 無法載入生態系資料（data/nv_ecosystem.json）</div>';
   }
@@ -1076,11 +1147,14 @@ function nvEcoSection(eco, bodyOnly){
   // 窄螢幕（<520px）：舞台拉高成 1:1.3、橫向壓縮並改三圈交錯，標籤一律放節點左右側，避免標籤重疊／出界
   const compact = window.innerWidth < 520;
   // 先估舞台像素尺寸，節點同角度下依序試多個半徑／標籤側，挑第一個與已放置標籤、圓點、中心圓不重疊且不出界的組合
-  const aspect = compact ? 1.15 : 1;
+  const aspect = compact ? 1.3 : 1;
   const W = Math.min(760, Math.max(280, (document.getElementById('panel-nv').clientWidth || window.innerWidth) - (compact?28:34)));
   const H = W*aspect, fs = compact ? 9.5 : 10.5;
   const pt = (deg, r) => [50 + r*50*Math.sin(rad(deg)), 50 - r*50*Math.cos(rad(deg))];
-  const lblW = t => Array.from(t).reduce((a,ch)=>a+(ch.charCodeAt(0)>255?fs:fs*0.6),0)+3;
+  // 10-27：標籤加了國旗＋國家代碼後變長，字寬估算誤差會造成窄螢幕標籤重疊；改用 canvas 實測字寬（失敗才退回估算）
+  let mctx = null;
+  try{ mctx = document.createElement('canvas').getContext('2d'); if(mctx) mctx.font = `700 ${fs}px ${getComputedStyle(document.body).fontFamily}`; }catch(e){ mctx = null; }
+  const lblW = t => (mctx ? mctx.measureText(t).width : Array.from(t).reduce((a,ch)=>a+(ch.charCodeAt(0)>255?fs:fs*0.6),0)) + 3;
   const placed = [[W/2-34,H/2-34,W/2+34,H/2+34]];
   const hit = (a,b) => a[0]<b[2] && b[0]<a[2] && a[1]<b[3] && b[1]<a[3];
   const rings = compact ? [0.5,0.64,0.78,0.9,0.4,0.97] : [0.56,0.82,0.7,0.92,0.45];
@@ -1100,12 +1174,14 @@ function nvEcoSection(eco, bodyOnly){
       const s = Math.sin(rad(deg)), c = Math.cos(rad(deg));
       const pref = compact ? (s>=0 ? 'lr' : 'll') : (s>0.5 ? 'lr' : (s<-0.5 ? 'll' : (c>0 ? 'lt' : 'lb')));
       const sides = [pref, 'lr', 'll', 'lt', 'lb'].filter((v,k,a)=>a.indexOf(v)===k);
-      const lw = lblW(nd.short||nd.name), lh = fs*1.25+1;
+      const ctry = nvEcoCountry(nd), imps = nvEcoImpacts(nd);
+      const lblText = (nd.short||nd.name||'') + (ctry ? ' '+ctry : '');
+      const lw = lblW(lblText), lh = fs*1.25+1;
       const labelRect = (px,py,sd) => sd==='lr' ? [px+7,py-lh/2,px+7+lw,py+lh/2]
         : sd==='ll' ? [px-7-lw,py-lh/2,px-7,py+lh/2]
         : sd==='lt' ? [px-lw/2,py-6-lh,px+lw/2,py-6] : [px-lw/2,py+6,px+lw/2,py+6+lh];
       let best = null;
-      search: for(const dj of [0,3,-3,6,-6]) for(const rr of rings){
+      search: for(const dj of (compact ? [0,3,-3,6,-6,9,-9,12,-12] : [0,3,-3,6,-6])) for(const rr of rings){
         const [bx,by] = pt(deg+dj, rr), px = bx*W/100, py = by*H/100;
         for(const sd of sides){
           const lr = labelRect(px,py,sd), dr = [px-10,py-10,px+10,py+10];
@@ -1122,14 +1198,15 @@ function nvEcoSection(eco, bodyOnly){
       const th = x<35 ? 'tl' : (x>65 ? 'tr' : 'tc');
       const rel = nd.relation==='partnership' ? 'partnership' : 'invest';
       linesArr.push(`<line x1="50" y1="50" x2="${x.toFixed(2)}" y2="${y.toFixed(2)}" stroke="${T.color}" stroke-opacity=".7" stroke-width="1.3" vector-effect="non-scaling-stroke"${rel==='partnership'?' stroke-dasharray="4 3"':''}/>`);
-      const tip = `<b>${_arcEsc(nd.name)}</b><span class="te-tag">${_arcEsc(NV_ECO_REL[nd.relation]||nd.relation||'')}</span>${nd.pending?'<span class="te-tag te-warn">待複核</span>':''}`
+      const tip = `<b>${_arcEsc(nd.name)}</b>${ctry?`<span class="te-ctry">${_arcEsc(ctry)}</span>`:''}<span class="te-tag">${_arcEsc(NV_ECO_REL[nd.relation]||nd.relation||'')}</span>${nd.pending?'<span class="te-tag te-warn">待複核</span>':''}`
+        + (imps.length?`<div class="te-pills">${imps.map(x=>`<span class="te-pill">${_arcEsc(x)}</span>`).join('')}</div>`:'')
         + (nd.amount?`<br><span class="te-k">金額</span> ${_arcEsc(nd.amount)}`:'')
         + `<br><span class="te-k">合作項目</span> ${_arcEsc(nd.item||'')}`
         + `<br><span class="te-k">戰略意義</span> ${_arcEsc(nd.significance||'')}`
         + (nd.date?`<br><span class="te-k">日期</span> ${_arcEsc(nd.date)}`:'')
         + nvSrcLink(nd.src);
       pinsArr.push(`<div class="nv-eco-pin ${lc} ${tv} ${th}${nd.pending?' pending':''}" style="left:${x.toFixed(2)}%;top:${y.toFixed(2)}%;--tc:${T.color};" onclick="nvEcoToggle(this,event)">
-        <div class="nv-eco-dot"></div><div class="nv-eco-lbl">${_arcEsc(nd.short||nd.name)}</div>
+        <div class="nv-eco-dot"></div><div class="nv-eco-lbl">${_arcEsc(lblText)}</div>
         <div class="nv-eco-tip">${tip}</div></div>`);
     });
   });
@@ -1141,13 +1218,13 @@ function nvEcoSection(eco, bodyOnly){
     <span>空心點＝待複核</span></div>`;
   NV_ECO_LASTW = document.getElementById('panel-nv').clientWidth;
   return (bodyOnly?'':head) + `<div class="nv-eco-wrap">
-    <div class="nv-eco-stage"${compact?' style="aspect-ratio:1/1.15;"':''}>
+    <div class="nv-eco-stage"${compact?' style="aspect-ratio:1/1.3;"':''}>
       <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${sectorsArr.join('')}${linesArr.join('')}</svg>
       ${labelsArr.join('')}${pinsArr.join('')}
       <div class="nv-eco-center">NVIDIA</div>
     </div>
     ${legend}
-    <div style="font-size:11px;color:var(--muted);margin-top:8px;text-align:center;">滑鼠移到節點看合作項目與戰略意義；手機點一下開關。金額多為宣布上限或雙方合計，非交割口徑。最後複核：${_arcEsc(eco.last_reviewed||'')}</div>
+    <div style="font-size:11px;color:var(--muted);margin-top:8px;text-align:center;">滑鼠移到節點看合作項目、影響方向與戰略意義；手機點一下開關。標籤旁為總部國家（ISO 代碼，跨國合併節點標「多國」）。金額多為宣布上限或雙方合計，非交割口徑。最後複核：${_arcEsc(eco.last_reviewed||'')}</div>
   </div>`;
 }
 function nvScrollTo(id){
@@ -1343,13 +1420,10 @@ async function renderNvidia(){
   const liveHtml = (nv.cases_live||[]).map(c=>nvCaseCard(c,'live','✅ 已上線／實際部署')).join('');
   const pocHtml = (nv.cases_poc||[]).map(c=>nvCaseCard(c,'poc','🔵 概念驗證／導入進行中')).join('');
   const roadmapHtml = (nv.roadmap||[]).map(c=>nvCaseCard(c, (c.status||'').startsWith('⚠️')?'warn':'poc', c.status)).join('');
-  const allianceHtml = (nv.alliances||[]).map(c=>nvCaseCard(c, (c.status||'').startsWith('⚠️')?'warn':'live', c.status)).join('');
-  const allianceOverviewHtml = nv.alliance_overview
-    ? `<div class="impact-box" style="margin-bottom:12px;"><div class="impact-title">聯盟生態系整體動態</div>
-       <div style="font-size:12.5px;color:var(--text2);line-height:1.7;">${_arcEsc(nv.alliance_overview)}</div>
-       ${nvSrcLink(nv.alliance_overview_src)}</div>`
-    : '';
-  // 08-13新增：生態系權力布局／合規治理——跟alliances（個別夥伴關係）性質不同，
+  // 10-27：alliances 改為多方聯盟／產業組織卡（nvAllianceCard），alliance_overview 改為 [{text,src}] 條列
+  const allianceHtml = (nv.alliances||[]).map(nvAllianceCard).join('');
+  const allianceOverviewHtml = nvAllianceOverviewHtml(nv.alliance_overview);
+  // 08-13新增：生態系權力布局／合規治理——跟alliances（10-27起為多方聯盟／產業組織）性質不同，
   // 這裡談的是NVIDIA跨技術標準/資本/平台/治理四個維度的整體布局策略，卡片schema
   // 沿用同一份nvCaseCard（name/desc/status/src），只是資料來源獨立一個分類
   const governanceHtml = (nv.governance||[]).map(c=>nvCaseCard(c, 'live', c.status)).join('');
@@ -1361,9 +1435,15 @@ async function renderNvidia(){
     const pr = await fetch('data/nv_pending_review.json?v='+Date.now());
     if(pr.ok){
       const pending = await pr.json();
-      const n2 = (pending.items||[]).length;
+      const pItems = Array.isArray(pending.items) ? pending.items : [];
+      const n2 = pItems.length;
       if(n2 > 0){
-        pendingHtml = `<div class="ethic-alert">🔔 本週查證偵測到 ${n2} 項可能需要更新的內容（尚未套用，僅供參考），請告知 Claude 複核後正式更新</div>`;
+        // 10-27：依類別列出件數（含第 7 類「生態系夥伴」ecosystem），類別名稱只取白名單對照
+        const NV_PENDING_CAT = {pyramid:'技術金字塔', cases_live:'應用案例（已上線）', cases_poc:'應用案例（POC）', roadmap:'產品 Roadmap', alliances:'多方聯盟／產業組織', governance:'權力布局／合規治理', ecosystem:'生態系夥伴'};
+        const cc = {};
+        pItems.forEach(it=>{ const k = (it && Object.prototype.hasOwnProperty.call(NV_PENDING_CAT, it.category)) ? it.category : 'other'; cc[k] = (cc[k]||0) + 1; });
+        const brk = Object.keys(cc).map(k=>`${k==='other'?'其他':NV_PENDING_CAT[k]} ${cc[k]}`).join('、');
+        pendingHtml = `<div class="ethic-alert">🔔 本週查證偵測到 ${n2} 項可能需要更新的內容（${_arcEsc(brk)}；尚未套用，僅供參考），請告知 Claude 複核後正式更新</div>`;
       }
       // 08-24：分頁按鈕本身也標示待複核，不用先點進NVIDIA分頁才看得到
       const btnNv = document.getElementById('btn-nv');
@@ -1377,6 +1457,7 @@ async function renderNvidia(){
   // governance_links，兩者都清楚標註是相對強弱示意評估，不是逐一查證的精確量化指標。
   // 08-13再調整：使用者要求「官方技術堆疊」跟這兩張圖結構上同級，都是「產品應用鏈」
   // 這個sec-title底下的nv-sub-title子區塊；📌來源說明移到整個產品應用鏈區塊最下方
+  // 10-27：使用者要求治理內容（governance 卡＋兩張圖）併入生態系放射圖區塊下方，成為同區子段
   const govDiagramsHtml = `
     <div class="nv-gov-diagram-row">
       <div class="nv-gov-diagram-col">
@@ -1410,7 +1491,6 @@ async function renderNvidia(){
         <a onclick="nvScrollTo('nv-sec-roadmap')">進行中／規劃項</a>
         <a onclick="nvScrollTo('nv-sec-eco')">生態系放射圖</a>
         <a onclick="nvScrollTo('nv-sec-alliance')">聯盟動態</a>
-        <a onclick="nvScrollTo('nv-sec-gov')">生態治理</a>
       </div>
       ${pendingHtml}
       <div class="sec-title" id="nv-sec-chain">產品應用鏈</div>
@@ -1419,7 +1499,6 @@ async function renderNvidia(){
         <div class="nv-pyramid-visual">${bandsHtml}</div>
         <div class="nv-pyramid-legend">${legendHtml}</div>
       </div>
-      ${govDiagramsHtml}
       <div style="font-size:11px;color:var(--muted);margin:2px 0 14px;padding-left:2px;">📌 綜合NVIDIA官方GTC 2026 keynote與技術文件整理，非單一官方圖表逐字翻譯${pyramidSrcHtml?`；來源：${pyramidSrcHtml}`:''}</div>
 
       <div class="sec-title" id="nv-sec-live">已導入實際應用場域</div>
@@ -1432,13 +1511,14 @@ async function renderNvidia(){
       <div class="nv-case-grid">${roadmapHtml}</div>
 
       ${ecoHtml}
+      <div class="nv-sub-title">🧭 生態系權力布局／合規治理</div>
+      <div class="nv-case-grid">${governanceHtml}</div>
+      ${govDiagramsHtml}
 
       <div class="sec-title" id="nv-sec-alliance">聯盟發展狀況</div>
+      <div class="nv-sec-note">追蹤 NVIDIA 加入或主導的多方聯盟、產業組織、標準與政策聯盟的推進狀況；雙邊投資與合作見上方生態系放射圖。</div>
       ${allianceOverviewHtml}
       <div class="nv-case-grid">${allianceHtml}</div>
-
-      <div class="sec-title" id="nv-sec-gov">生態系權力布局／合規治理</div>
-      <div class="nv-case-grid">${governanceHtml}</div>
 
       <div style="font-size:11px;color:var(--muted);margin:4px 0 4px;padding-left:2px;">📌 每週由排程自動查證是否過時（候選異動需人工複核才會套用），最後查證：${_arcEsc(nv.last_checked||'—')}</div>
     </div>

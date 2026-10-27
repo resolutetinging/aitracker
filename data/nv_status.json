@@ -131,44 +131,188 @@
       "src": "https://www.globenewswire.com/news-release/2026/05/26/3301400/0/en/nasa-selects-lunar-outpost-to-deliver-next-gen-crewed-lunar-terrain-vehicle-for-artemis-astronauts-and-moon-base.html"
     }
   ],
-  "alliance_overview": "2026年前4個月NVIDIA已承諾超過$400億美元AI股權投資（最大單筆OpenAI $300億，原框架$1000億大幅縮水），另有Anthropic最高$100億等約7筆多億美元級交易及近20筆新創投資；FY2026主權AI營收逾$300億，占總營收約14%。歐洲/日本/沙烏地等主權AI合作案並行推進，各筆投資口徑（股權/採購承諾/資料中心建設）差異大，不宜直接加總。",
-  "alliance_overview_src": "https://thenextweb.com/news/nvidia-40bn-ai-equity-investments-2026",
+  "alliance_overview": [
+    {
+      "text": "7月發起開放安全AI聯盟，9月移交Linux Foundation中立治理",
+      "src": "https://www.linuxfoundation.org/blog/open-secure-ai-alliance-joins-the-linux-foundation-to-build-a-shared-open-defense-stack-for-the-ai-era"
+    },
+    {
+      "text": "7/24開放權重公開信：NVIDIA等簽署，8/3逾270家",
+      "src": "https://www.microsoft.com/en-us/corporate-responsibility/topics/open-weight/"
+    },
+    {
+      "text": "OCP：與Google、Microsoft推800 VDC供電規格，固態變壓器v0.3",
+      "src": "https://www.opencompute.org/news/powering-the-next-era-of-ai-how-google-microsoft-and-nvidia-are-standardizing-and-accelerating-the-industry-transition-to-lvdc/"
+    },
+    {
+      "text": "OCP ESUN 1.0於3月發布，參與企業逾175家",
+      "src": "https://www.opencompute.org/news/the-ocp-esun-10-specification-has-been-released/"
+    },
+    {
+      "text": "OpenUSD核心規格1.1於7月啟動ISO國際標準認證",
+      "src": "https://www.linuxfoundation.org/press/aousd-drives-global-3d-data-interoperability-ai-workflows-with-core-spec-milestones-and-members"
+    },
+    {
+      "text": "10/8宣布5年$10億支持美國科學，並合作Genesis Mission",
+      "src": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Commits-1-Billion-to-Advance-US-Science-Over-the-Next-Five-Years/default.aspx"
+    }
+  ],
   "alliances": [
     {
-      "name": "OpenAI",
-      "desc": "擬建至少10GW資料中心，NVIDIA承諾最高$1000億漸進式投資",
-      "status": "⚠️ 2026/2實際僅完成$300億投資，較原框架大幅縮水；Huang暗示因OpenAI/Anthropic即將IPO類似投資可能已是最後一輪",
-      "src": "https://investor.nvidia.com/news/press-release-details/2025/OpenAI-and-NVIDIA-Announce-Strategic-Partnership-to-Deploy-10-Gigawatts-of-NVIDIA-Systems/default.aspx"
+      "name": "開放運算計畫：800 VDC／低壓直流供電規格（Open Compute Project, OCP LVDC）",
+      "type": "標準",
+      "nv_role": "共同發起工作流（與 Google、Microsoft 發起 MV AC 至 800 VDC 轉換工作流）；OCP 會員層級未查到",
+      "members_note": "Google、Microsoft；NVIDIA稱逾80家廠商跟進",
+      "progress": "2026/3 發布 LVDC 白皮書 v1.0；2026/7 固態變壓器規格 v0.3；Mt Diablo 2.0 預告支援原生 800V",
+      "date": "2026-08",
+      "significance": "資料中心供電由 AC 轉向高壓 DC，NVIDIA 機櫃設計與開放規格對齊，降低供應鏈導入門檻。",
+      "src": "https://www.opencompute.org/news/powering-the-next-era-of-ai-how-google-microsoft-and-nvidia-are-standardizing-and-accelerating-the-industry-transition-to-lvdc/",
+      "member_evidence": "同 src（OCP 官方文章，NVIDIA 為共同作者與工作流發起方）；NVIDIA 官方 blog 2026-08-11 https://blogs.nvidia.com/blog/800-vdc-power-architecture-ai-factory/；OCP 2026 峰會回顧 https://www.opencompute.org/news/2026-ocp-global-summit-by-the-numbers/",
+      "verify": "ok"
     },
     {
-      "name": "Anthropic",
-      "desc": "NVIDIA與Microsoft共同宣布分別投資最高$100億／$50億，Anthropic同步承諾採購$300億Azure運算量",
-      "status": "2025/11宣布",
-      "src": "https://www.anthropic.com/news/microsoft-nvidia-anthropic-announce-strategic-partnerships"
+      "name": "OCP ESUN：乙太網路擴展式（Scale-Up）網路工作流（Ethernet for Scale-Up Networking）",
+      "type": "標準",
+      "nv_role": "12 家發起參與者之一",
+      "members_note": "Meta、Microsoft 主導；AMD、Broadcom、OpenAI",
+      "progress": "2026/3 發布 ESUN 1.0 規格（含壅塞管理、鏈路重傳、4 位元組表頭）；參與企業逾175家",
+      "date": "2026-03",
+      "significance": "以乙太網路承載 GPU 間擴展連線，與 NVIDIA 自家 NVLink 路線形成並行的開放標準選項。",
+      "src": "https://www.opencompute.org/news/the-ocp-esun-10-specification-has-been-released/",
+      "member_evidence": "同 src（列出 2025-10-13 發起參與者含 NVIDIA）",
+      "verify": "ok"
     },
     {
-      "name": "CoreWeave",
-      "desc": "NVIDIA投資$20億助其擴充5GW算力，另有$63億容量保底協議（NVIDIA承諾買下未用容量，合約至2032）",
-      "status": "2026/1宣布",
-      "src": "https://techcrunch.com/2026/01/26/nvidia-invests-2b-to-help-debt-ridden-coreweave-add-5gw-of-ai-compute/"
+      "name": "超乙太網路聯盟（Ultra Ethernet Consortium, UEC）",
+      "type": "標準",
+      "nv_role": "一般會員（General Member）；非創始成員",
+      "members_note": "指導成員：AMD、Broadcom、Cisco、Meta、Microsoft",
+      "progress": "2026/10 發布規格 1.1：擴展式網路、網內集合運算、壅塞訊號、可程式壅塞管理；官方稱將與 OCP ESUN、IEEE 對接",
+      "date": "2026-10",
+      "significance": "AI 叢集乙太網路標準擴及機內互連，與 NVIDIA 的 InfiniBand／Spectrum-X 路線並存。",
+      "src": "https://ultraethernet.org/ultra-ethernet-consortium-releases-specification-1-1/",
+      "member_evidence": "UEC 官網會員頁（General Members 列有 NVIDIA）https://ultraethernet.org/（已 fetch）。1.1 官方頁無明載發布日，僅顯示更新日 2026-10-12；10/12 發布日出自 Network World https://www.networkworld.com/article/4235340/，未取得官方公告",
+      "verify": "partial"
     },
     {
-      "name": "沙烏地阿拉伯（HUMAIN／SDAIA）",
-      "desc": "HUMAIN（沙烏地PIF旗下）與NVIDIA建置最高500MW的AI工廠，五年內部署數十萬顆GPU，首期18,000顆GB300與InfiniBand",
-      "status": "",
-      "src": "https://nvidianews.nvidia.com/news/humain-and-nvidia-announce-strategic-partnership-to-build-ai-factories-of-the-future-in-saudi-arabia"
+      "name": "通用晶片互連聯盟（UCIe Consortium）",
+      "type": "標準",
+      "nv_role": "發起成員（Promoter Member，董事會層級）",
+      "members_note": "AMD、Arm、Google、Intel、Meta、TSMC",
+      "progress": "官網新聞稿列表最新為 2025/8/5 的 UCIe 3.0（64 GT/s、可管理性增強）；2026 年無新版",
+      "date": "2025-08",
+      "significance": "小晶片（chiplet）互連標準化，NVIDIA 具董事席位，可影響客製化 XPU 周邊規格走向。",
+      "src": "https://www.uciexpress.org/press-releases",
+      "member_evidence": "UCIe 官網會員頁（Promoter Members 列有 NVIDIA）https://www.uciexpress.org/membership（已 fetch）；新聞稿列表頁未提 NVIDIA",
+      "verify": "ok"
     },
     {
-      "name": "日本（政府與產業界）",
-      "desc": "啟動日本國家級AI基礎設施；日本企業與研究機構以Nemotron開放模型建置產業專用模型",
-      "status": "",
-      "src": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000073/q2fy27pr.htm"
+      "name": "AI-RAN 聯盟（AI-RAN Alliance）",
+      "type": "產業聯盟",
+      "nv_role": "創始成員，執行成員（Executive Member，董事會成員）",
+      "members_note": "Nokia、Ericsson、Samsung、T-Mobile",
+      "progress": "2026/2 達132會員；Qualcomm、SK Telecom、Vodafone 進董事會；發布參考架構等4份文件",
+      "date": "2026-02-26",
+      "significance": "把 AI 運算放進無線接取網路的產業共識，與 NVIDIA 6G、Aerial 平台布局一致。",
+      "src": "https://ai-ran.org/press-releases/mwc-2026-momentum",
+      "member_evidence": "NVIDIA 官方新聞稿（2026-02-28）原文：NVIDIA is a founding member of the AI-RAN Alliance, which now has over 130 participating companies https://nvidianews.nvidia.com/news/nvidia-and-global-telecom-leaders-commit-to-build-6g-on-open-and-secure-ai-native-platforms（已 fetch）。董事會成員與4份文件出自聯盟官網新聞稿（JS 頁面讀不到）與義大利語轉載，未逐字核對官方原文",
+      "verify": "partial"
     },
     {
-      "name": "TSMC／Foxconn",
-      "desc": "TSMC 3nm量產Rubin晶片；2026年8月財報說明會後追加訂購30%先進製程晶圓產能，以支應未來高效能AI加速卡需求；Foxconn針對Vera Rubin液冷機櫃工程驗證，H2 2026量產",
-      "status": "",
-      "src": "https://www.trendforce.com/news/2026/06/01/"
+      "name": "OpenUSD 聯盟（Alliance for OpenUSD, AOUSD）",
+      "type": "標準",
+      "nv_role": "創始成員，NVIDIA 開源與標準主管任指導委員會副主席",
+      "members_note": "Adobe、Apple、Autodesk、Pixar、Unity",
+      "progress": "2026/7 核心規格 1.1 啟動 ISO 認證；新增4家會員；Geometry、Physics、Materials 1.0 預計年內",
+      "date": "2026-07-21",
+      "significance": "3D／實體 AI 資料交換走向國際標準，NVIDIA Omniverse 生態的共同底層。",
+      "src": "https://www.linuxfoundation.org/press/aousd-drives-global-3d-data-interoperability-ai-workflows-with-core-spec-milestones-and-members",
+      "member_evidence": "同 src（列 NVIDIA 為創始成員，Guy Martin 為指導委員會副主席）",
+      "verify": "ok"
+    },
+    {
+      "name": "開放安全 AI 聯盟（Open Secure AI Alliance）",
+      "type": "產業聯盟",
+      "nv_role": "發起者",
+      "members_note": "Microsoft、IBM、Cisco（三大模型商未參與）",
+      "progress": "2026/7/27 發起；9/14 移交 Linux Foundation 中立治理；SAFE 資安發現交換機制徵求意見中",
+      "date": "2026-09-14",
+      "significance": "主張開放模型為防禦資產，成員數各報導不一；是否影響法規制定尚無具體提案。",
+      "src": "https://www.linuxfoundation.org/blog/open-secure-ai-alliance-joins-the-linux-foundation-to-build-a-shared-open-defense-stack-for-the-ai-era",
+      "member_evidence": "NVIDIA 官方 blog 2026-07-27 https://blogs.nvidia.com/blog/open-secure-ai-alliance/；成員數各報導 27／35／52／逾100不一，以 NVIDIA blog 名單為準",
+      "verify": "ok"
+    },
+    {
+      "name": "安全 AI 聯盟（Coalition for Secure AI, CoSAI，OASIS Open 專案）",
+      "type": "政策",
+      "nv_role": "創始高級贊助成員（Premier Sponsor）",
+      "members_note": "Google、IBM、Microsoft、PayPal、Meta",
+      "progress": "2026/1/27 發布 MCP 安全白皮書：12類、近40種威脅與緩解做法，NVIDIA 貢獻者參與",
+      "date": "2026-01-27",
+      "significance": "代理式 AI 安全的業界自律框架，屬自願性標準，非法規。",
+      "src": "https://www.oasis-open.org/2026/01/27/coalition-for-secure-ai-releases-extensive-taxonomy-for-model-context-protocol-security/",
+      "member_evidence": "同 src（點名 NVIDIA 為 Premier Sponsor）；2024 創始名單見 https://www.oasis-open.org/2024/07/18/introducing-cosai/（僅見搜尋摘要）",
+      "verify": "ok"
+    },
+    {
+      "name": "開放權重與美國 AI 領導力公開信（Open Weights and American AI Leadership）",
+      "type": "政策",
+      "nv_role": "簽署成員（非發起人，公開資料未標示發起者）",
+      "members_note": "Microsoft、Meta、IBM、Palantir、Hugging Face",
+      "progress": "2026/7/24 公開信建議擴大新創運算資源、避免過早限制開放模型；截至8/3逾270家簽署",
+      "date": "2026-07-24",
+      "significance": "向美國決策者表達立場，內容為建議而非立法；蒸餾與開放權重風險仍有爭議。",
+      "src": "https://www.microsoft.com/en-us/corporate-responsibility/topics/open-weight/",
+      "member_evidence": "同 src（Microsoft 頁確認 NVIDIA 在簽署名單）；NVIDIA 託管全文 https://images.nvidia.com/pdf/Open-Weights-and-American-AI-Leadership.pdf（PDF 無法解析）",
+      "verify": "ok"
+    },
+    {
+      "name": "Nemotron 聯盟（Nemotron Coalition）",
+      "type": "開源",
+      "nv_role": "發起者",
+      "members_note": "Mistral AI、Perplexity、Cursor、LangChain",
+      "progress": "2026/3/16 成立，8家創始成員；首個專案為與 Mistral 共同開發並開源的基礎模型",
+      "date": "2026-03-16",
+      "significance": "以開源前沿模型鞏固 NVIDIA 平台；模型競爭力尚無基準資料。",
+      "src": "https://nvidianews.nvidia.com/news/nvidia-launches-nemotron-coalition-of-leading-global-ai-labs-to-advance-open-frontier-models",
+      "member_evidence": "同 src（NVIDIA 官方新聞稿，為發起方）",
+      "verify": "ok"
+    },
+    {
+      "name": "Genesis Mission 產業合作（美國能源部，DOE）",
+      "type": "政策",
+      "nv_role": "合作方（簽署 DOE 合作備忘錄；政府計畫，非 NVIDIA 主導）",
+      "members_note": "Microsoft、Google、AWS、OpenAI、Anthropic",
+      "progress": "2026/10/8 NVIDIA 宣布5年投入$10億，並為第二階段多項獎助計畫合作者",
+      "date": "2026-10-08",
+      "significance": "與美國科學政策綁定，強化國家實驗室運算需求；備忘錄條款未公開。",
+      "src": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Commits-1-Billion-to-Advance-US-Science-Over-the-Next-Five-Years/default.aspx",
+      "member_evidence": "DOE 官方 2025-12-18 公告列出 24 家組織含 NVIDIA https://www.energy.gov/node/4855568（已 fetch）；NVIDIA 官方新聞稿 2026-10-08 稱 NVIDIA 去年與 DOE 合作 Genesis Mission，並為第二階段多項獎助的合作者（src，已 fetch）。DOE 2026-07-22 公告 https://www.energy.gov/node/4859592 未點名 NVIDIA",
+      "verify": "ok"
+    },
+    {
+      "name": "NVLink Fusion 夥伴計畫（NVLink Fusion ecosystem）",
+      "type": "產業聯盟",
+      "nv_role": "發起者",
+      "members_note": "Marvell、MediaTek、Alchip、Astera Labs",
+      "progress": "2026/3/31 與 Marvell 結盟：Marvell 供客製 XPU，NVIDIA 投資$20億，合作矽光子",
+      "date": "2026-03-31",
+      "significance": "開放互連給第三方以擴大生態，同時技術規範仍由 NVIDIA 掌握。",
+      "src": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-AI-Ecosystem-Expands-as-Marvell-Joins-Forces-Through-NVLink-Fusion/default.aspx",
+      "member_evidence": "同 src（NVIDIA 官方新聞稿）；其他夥伴名單出自 2025 年報導，官方完整名單未查到",
+      "verify": "ok"
+    },
+    {
+      "name": "AI 能源管理聯盟（AI Energy Management Alliance, AEMA）",
+      "type": "政策",
+      "nv_role": "共同發起者（與 Emerald AI、Google 共同宣布）",
+      "members_note": "Emerald AI、Google；納入電力業者與電網營運商",
+      "progress": "2026/9/16 成立；提出需預先約定降載與緊急應變義務、統一技術要求，並向政策端倡議",
+      "date": "2026-09-16",
+      "significance": "推動資料中心配合電網調度以加速併網；主張屬倡議，尚無具體法規或標準成果。",
+      "src": "https://blogs.nvidia.com/blog/ai-energy-management-alliance/",
+      "member_evidence": "同 src（NVIDIA 官方 blog，列 NVIDIA 為共同宣布方；創始夥伴名單未公布）",
+      "verify": "ok"
     }
   ],
   "governance": [
