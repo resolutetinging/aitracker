@@ -1,5 +1,110 @@
 [
   {
+    "date": "2026-10-29",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "SK Hynix 預測記憶體短缺將持續至 2030 年",
+        "layer": "capacity commitments",
+        "body": "SK Hynix 在 2026 年第四季財報說明，預計記憶體供應短缺將持續到 2030 年，因為新廠建設速度無法跟上 AI 基礎建設與自動駕駛等需求增長。公司指出，AI 相關應用與機器人市場將持續推高對 DRAM 與 NAND 的需求。",
+        "impact": "",
+        "rating": "core",
+        "insight": "記憶體供應緊張將推高 AI 伺服器成本，相關廠商應提前鎖定長期供貨合約。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/10/28/sk-hynix-says-memory-shortages-to-persist-until-2030/5305887"
+      },
+      {
+        "title": "Oracle 與 Google 合作於 OCI 提供 TPU 服務",
+        "layer": "strategic supplier decisions",
+        "body": "Oracle 宣布將於 2027 年起在 Oracle Cloud Infrastructure (OCI) 上提供 Google 的 Tensor Processing Units (TPU)，成為首家在自家雲平台提供 Google TPU 的大型雲服務供應商。此舉將補足 Oracle 目前對 Nvidia 晶片的高度依賴，並擴大其 AI 加速器產品線。",
+        "impact": "引入 TPU 使 OCI 能提供多樣化的 AI 加速器選項，降低對 Nvidia 晶片的需求，提升 AI 工作負載的成本效益與彈性。",
+        "rating": "core",
+        "insight": "Oracle 多元化 AI 加速器供應鏈，可降低單一晶片供應風險，提升雲端 AI 服務的競爭力。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/10/27/big-red-gets-cozy-with-google-to-offer-tpus-to-ai-customers/5305846"
+      }
+    ],
+    "corp": [
+      {
+        "title": "Apple 推出第六代 M 系列晶片 M6 於 MacBook Pro 與 iMac",
+        "layer": "core",
+        "body": "Apple 宣佈在 MacBook Pro 與 iMac 內搭載全新 M6 晶片，該晶片具備更多核心、更快記憶體與更大的神經網路處理單元 (NPU)。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Apple 以 M6 強化高階筆電與桌機布局，將帶動代工產能與高價位 PC 市場需求。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/personal-tech/2026/10/27/apple-takes-powerful-m6-chip-to-the-macbook-pro-imac/5305797"
+      },
+      {
+        "title": "Google 開放 TPU 供應給雲端合作夥伴以擴大 AI 晶片銷售",
+        "layer": "core",
+        "body": "Google 宣布將其 Tensor Processing Units (TPU) 業務向非自家雲端平台開放，允許合作夥伴在自家基礎設施上販售 TPU 服務。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Google 透過開放 TPU 給合作夥伴，擴大晶片銷售渠道，將刺激代工產能與 AI 計算市場需求。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/28/google-alters-cloud-playbook-turning-to-partners-to-sell-more-ai-chips.html"
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Strategic Investment Program",
+        "full": "Strategic Investment Program (SIP)",
+        "def": "美國俄勒岡州提供給企業的稅收減免計畫，允許符合條件的投資獲得財產稅減免，以吸引大型製造業設廠。",
+        "why": "此計畫直接影響地方政府稅收與企業投資決策，關係到半導體製造基地的經濟可行性。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Tensor Processing Unit",
+        "full": "Tensor Processing Unit (TPU)",
+        "def": "Google 自行設計的 AI 加速器晶片，專為深度學習推論與訓練優化，提供高效能矩陣運算。",
+        "why": "TPU 作為 AI 基礎建設的關鍵硬體，進入多雲平台將改變 AI 加速器的供應鏈格局。",
+        "category": "hardware"
+      },
+      {
+        "term": "TPU",
+        "full": "Tensor Processing Unit",
+        "def": "Google 設計的專用 AI 加速晶片，用於加速深度學習模型的推論與訓練。",
+        "why": "TPU 具備高效能與低功耗特性，正成為大型雲端平台的 AI 計算核心。",
+        "category": "hardware"
+      },
+      {
+        "term": "M6",
+        "full": "Apple 第六代自研晶片",
+        "def": "Apple 於 Mac 系列產品中使用的自研 CPU+GPU+NPU 整合晶片，提供更高效能與更佳能源效率。",
+        "why": "M6 的推出標誌著 Apple 在高階 PC 市場的技術領先，將影響代工與上游供應鏈需求。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "NPU",
+        "full": "Neural Processing Unit",
+        "def": "專門用於加速神經網路運算的硬體單元，常見於 AI 晶片中。",
+        "why": "NPU 的效能提升直接關係到 AI 推論速度與功耗表現，是晶片競爭的關鍵指標。",
+        "category": "hardware"
+      },
+      {
+        "term": "tokenmaxxing",
+        "full": "Token Maxxing",
+        "def": "在使用大型語言模型時，過度填充輸入或輸出文字以最大化使用的 token 數量，常導致成本上升與效能下降。",
+        "why": "了解此概念有助於企業在導入 AI 編碼輔助工具時控制運算成本與資源使用。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-28",
     "is_sunday": false,
     "hw": [
@@ -799,161 +904,6 @@
         "full": "On-premises AI solution",
         "def": "在使用者自有的硬體環境中直接執行的人工智慧軟體系統，無需依賴外部雲端平台。此類方案常用於需要高資料隱私或低延遲的應用，如醫療影像分析。",
         "why": "可降低資料傳輸風險、提升即時處理能力，符合醫療法規與隱私要求。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-22",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Nvidia 宣布 DSX Pod 模組化資料中心部署方案",
-        "layer": "AI 基礎建設供應鏈",
-        "body": "Nvidia 於 GTC Berlin 公布 DSX Pod，為一種模組化容器化資料中心單元，內含七台 Vera Rubin NVL72 機架，合計 504 顆 GPU 與 252 顆 Vera CPU，重量約 28 噸。此容器化方案預計於 2027 年起由合作夥伴如 HPE、Dell、Schneider Electric 交付，並可在準備好的場址上於兩週內完成部署，較傳統六個月的建置時間縮短至 14 天。Nvidia 表示，透過此方式可在 AI 計算需求激增時快速擴充算力，並降低部署前的電力、網路與冷卻基礎建設準備時間。",
-        "impact": "此 DSX Pod 方案直接提升 Nvidia 硬體供應鏈上游的 GPU 需求，預計拉升 NVIDIA GPU 出貨量 (↑) 並刺激晶圓代工廠如 TSMC、Samsung 的高階製程產能使用率 (↑)。下游資料中心建設商與雲端服務供應商將因快速部署能力而加速 AI 服務擴張，進一步推高對高頻寬記憶體 (HBM) 與高速互連 (CoWoS) 的需求 (↑)。同時，模組化容器的標準化也可能降低傳統資料中心建設公司的競爭力，促使其轉向提供模組化解決方案。",
-        "rating": "core",
-        "insight": "Nvidia 的 DSX Pod 將加速 AI 計算基礎建設部署，提升 GPU 與相關高階封裝需求。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/on-prem/2026/10/21/nvidias-grand-plan-for-speeding-up-datacenter-deployments-ai-trailer-parks/5304303",
-        "chain": [
-          {
-            "label": "Nvidia DSX Pod 部署↑",
-            "type": "up"
-          },
-          {
-            "label": "HPE Dell Schneider Electric 交付量↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 將模型上架 Google Cloud",
-        "layer": "core",
-        "body": "OpenAI 宣布其 GPT 系列模型將於本月在 Google Cloud 上線，讓開發者可透過 Google Cloud 的模型園區與 Antigravity 編碼工具使用，這是繼 Microsoft 與 Amazon 之後的第三大公有雲平台合作。",
-        "impact": "Google Cloud 需要擴充 Nvidia GPU（如 H100）與自家 TPUs 的供應，導致相關晶片製造商需求 ↑；同時 OpenAI 的模型在多雲環境部署，促使雲端基礎設施供應商爭奪 AI 加速卡市場，可能提升 Nvidia 與 Google 自製加速卡的出貨量。下游 SaaS 供應商可利用多雲模型服務降低供應商鎖定風險，提升服務彈性。",
-        "rating": "core",
-        "insight": "OpenAI 跨三大雲平台部署，加速 AI 加速卡需求，提升供應鏈整體活躍度。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/21/openai-bring-its-ai-models-to-googles-cloud-expands-beyond-microsoft.html",
-        "chain": [
-          {
-            "label": "OpenAI GPT 模型上架 Google Cloud↑",
-            "type": "up"
-          },
-          {
-            "label": "Google Cloud AI 服務需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Meta 超大規模 GPU 冗餘池待命",
-        "layer": "opp",
-        "body": "Meta 在俄亥俄州 New Albany 的 Prometheus 超級叢集中，有超過 11% 的 Nvidia GPU 處於待命或失效狀態，作為備援以應對未來故障。",
-        "impact": "大量待命 GPU 代表 Nvidia 需要持續供應高可靠性 GPU，提升其高階 GPU（如 H100）出貨量 ↑；同時 Meta 透過冗餘設計提升資料中心可用性，可能促使其他大型雲端業者也加大備援 GPU 採購，帶動上游晶圓與封測需求。下游 AI 研發團隊因可即時取得備援資源，縮短模型訓練中斷時間，提升研發效率。",
-        "rating": "opp",
-        "insight": "Meta 大規模 GPU 冗餘策略將推動高階 GPU 需求持續增長。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/10/20/tens-of-thousands-of-nvidia-gpus-sit-idle-in-metas-prometheus-supercluster-just-waiting-for-a-failure/5304269",
-        "chain": [
-          {
-            "label": "Meta Nvidia GPU 待命率↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta 超級叢集維護成本↑",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "SpaceX 與 Tesla 討論合併可能性",
-        "layer": "opp",
-        "body": "SpaceX 執行長 Elon Musk 在財報電話會議中暗示可能與 Tesla 合併，若成真將形成跨太空與電動車領域的超大型企業。",
-        "impact": "合併後的資本規模可能提升對高效能運算與 AI 需求，進一步刺激 Nvidia 與 AMD 高效能 GPU 的需求 ↑；同時兩家公司共同採購的電池與半導體供應鏈（如 LG Chem、Samsung）將面臨更大訂單，提升其產能利用率。下游太空任務與自動駕駛系統將受益於更整合的硬體平台與 AI 計算資源。",
-        "rating": "opp",
-        "insight": "若 SpaceX 與 Tesla 合併，將創造對高效能算力與半導體的大幅需求。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/21/spacex-spcx-stock-musk-merger-tesla.html",
-        "chain": [
-          {
-            "label": "SpaceX 與 Tesla 合併討論↑",
-            "type": "up"
-          },
-          {
-            "label": "跨領域整合風險↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "新加坡企業局撥款 4,500 萬新元加速 AI 在先進製造的應用",
-        "layer": "AI加速製造",
-        "body": "新加坡企業局（Enterprise Singapore）宣布將撥款 4,500 萬新加坡元（約合 3,300 萬美元）用於推動 AI 技術在先進製造領域的落地。資金將支援本地製造業者導入 AI 監控、預測維護與自動化優化等解決方案，以提升產能與良率。",
-        "impact": "此資金直接提升 AI 軟體供應商（如 Siemens MindSphere、Microsoft Azure AI）的需求，帶動其雲端運算與資料標註服務↑；隨著製造業者採用 AI 監控系統，相關感測器與高效能運算硬體供應鏈（如 NVIDIA GPU、Intel Xeon）需求亦將上升↑；長遠看，製造業的產能提升將降低成品成本，提升下游電子組裝與終端產品的競爭力。",
-        "rating": "opp",
-        "insight": "投資者可關注提供製造業 AI 解決方案的軟體與硬體供應商，因資金刺激將加速其營收成長。",
-        "source_label": "TNGlobal",
-        "source": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPcVRUUkNuQ1NrVVZLTFJ5ZW1BOGx6S0MwMFlFaC1HNWk2TXFJbUF1Y2ZrUWpPaVAtRi1YQlpHZEFrQ3JlNXdLT2E3eFpMMllTZFhlMUxvZlJlZFpMYlgwUnpVMGp1bFBRYmxkSnA4T0U2aXMweEtVWmx2dEd0c0JSelZxU1poTnhmcW1uQVNBamQ0TFRoYVhrZjR5VnBZSkZaU0ZhU1d2VUJGaTFOMUFsUjJVQ0l4LTJnaXc",
-        "chain": [
-          {
-            "label": "Enterprise Singapore AI 補助金額↑",
-            "type": "up"
-          },
-          {
-            "label": "本地製造業 AI 導入率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "DSX Pod",
-        "full": "Data Center Deployment eXpress Pod",
-        "def": "Nvidia 與合作夥伴共同開發的模組化容器化資料中心單元，內含完整的算力、電力、冷卻與網路配置，可在短時間內部署於客戶場址。",
-        "why": "提供快速、標準化的 AI 計算資源部署，降低建置時間與成本。",
-        "category": "hardware"
-      },
-      {
-        "term": "Vera Rubin",
-        "full": "Nvidia Vera Rubin 計算平台",
-        "def": "Nvidia 針對 AI 工作負載設計的高密度伺服器平台，結合多顆 GPU 與專用 CPU，支援大規模分散式運算。",
-        "why": "是 DSX Pod 內的核心算力模組，決定了整體效能與能源需求。",
-        "category": "hardware"
-      },
-      {
-        "term": "FTCO",
-        "full": "Fab Technology Co‑Optimization",
-        "def": "將製程變異納入光子積體電路設計與模擬的工作流程，結合 GDS 匯入、三維製程模擬與 AI 代理模型，以提升製造可預測性。",
-        "why": "雖非直接硬體供應鏈訊號，但顯示光子晶片製造對製程供應鏈的依賴與優化需求。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "GPT",
-        "full": "Generative Pre-trained Transformer",
-        "def": "OpenAI 開發的生成式預訓練變換模型系列，支援自然語言處理與多種 AI 應用。",
-        "why": "其在多雲平台的部署推動了高階 GPU 與加速卡需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "先進製造",
-        "full": "Advanced Manufacturing",
-        "def": "結合自動化、數位化與人工智慧等技術，以提升生產效率、品質與彈性的新型製造模式。",
-        "why": "AI 在先進製造中的應用可加速產能提升與成本下降，對供應鏈上下游均有顯著影響。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "S$",
-        "full": "新加坡元",
-        "def": "新加坡的法定貨幣，常用於政府資金與投資計畫的計價單位。",
-        "why": "了解資金規模有助於評估相關 AI 產業的投資規模與市場潛力。",
         "category": "ai_technique"
       }
     ],
