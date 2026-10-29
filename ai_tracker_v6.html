@@ -397,10 +397,10 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .nv-ally-head{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;margin-bottom:6px;}
 .nv-ally-type{font-size:10.5px;padding:1px 7px;border-radius:9px;background:var(--card2);border:1px solid var(--border);color:var(--nv);font-weight:600;}
 .nv-ally-partial{font-size:10.5px;padding:1px 7px;border-radius:9px;background:#f3e6d2;border:1px solid #dfc39a;color:var(--ethic);font-weight:700;}
-.nv-ally-row{font-size:11.5px;color:var(--text2);line-height:1.6;margin-bottom:4px;}
-.nv-ally-k{font-weight:700;color:var(--muted);margin-right:5px;}
+.nv-ally-row{font-size:12px;color:var(--text2);line-height:1.6;margin-top:8px;}
+.nv-ally-k{display:block;font-size:10.5px;font-weight:700;color:var(--nv);margin-bottom:2px;}
 .nv-ally-date{display:inline-block;margin-left:6px;font-size:10.5px;color:var(--muted2);white-space:nowrap;}
-.nv-ally-evi{font-size:10.5px;color:var(--muted);line-height:1.6;margin-top:6px;padding-top:6px;border-top:1px dashed var(--border);overflow-wrap:anywhere;}
+.nv-ally-evi{font-size:10.5px;color:var(--muted);line-height:1.6;margin-top:10px;padding-top:8px;border-top:1px dashed var(--border);overflow-wrap:anywhere;}
 .nv-ally-evi a,.nv-ally-ov a{color:var(--hw);}
 .nv-ally-ov ul{margin:0;padding-left:18px;}
 .nv-ally-ov li{font-size:12.5px;color:var(--text2);line-height:1.7;margin-bottom:3px;}
@@ -1128,14 +1128,15 @@ document.addEventListener('click', e=>{
 });
 let NV_ECO_DATA = null, NV_ECO_LASTW = 0, NV_ECO_TIMER = null;
 // 視窗縮放：只重算放射圖版面（不重新 fetch、不動 NV 專區其他區塊）；全域只綁一次，寬度沒變就略過（手機網址列伸縮也會觸發 resize）
+function nvEcoRelayout(){
+  const wrap = document.querySelector('.nv-eco-wrap'), pn = document.getElementById('panel-nv');
+  if(!NV_ECO_DATA || !wrap || !pn || !pn.clientWidth) return;
+  if(pn.clientWidth === NV_ECO_LASTW) return;
+  wrap.outerHTML = nvEcoSection(NV_ECO_DATA, true);
+}
 window.addEventListener('resize', ()=>{
   clearTimeout(NV_ECO_TIMER);
-  NV_ECO_TIMER = setTimeout(()=>{
-    const wrap = document.querySelector('.nv-eco-wrap'), pn = document.getElementById('panel-nv');
-    if(!NV_ECO_DATA || !wrap || !pn || !pn.clientWidth) return;
-    if(pn.clientWidth === NV_ECO_LASTW) return;
-    wrap.outerHTML = nvEcoSection(NV_ECO_DATA, true);
-  }, 200);
+  NV_ECO_TIMER = setTimeout(nvEcoRelayout, 200);
 });
 function nvEcoSection(eco, bodyOnly){
   NV_ECO_DATA = eco;
@@ -1147,8 +1148,11 @@ function nvEcoSection(eco, bodyOnly){
   // 窄螢幕（<520px）：舞台拉高成 1:1.3、橫向壓縮並改三圈交錯，標籤一律放節點左右側，避免標籤重疊／出界
   const compact = window.innerWidth < 520;
   // 先估舞台像素尺寸，節點同角度下依序試多個半徑／標籤側，挑第一個與已放置標籤、圓點、中心圓不重疊且不出界的組合
-  const aspect = compact ? 1.3 : 1;
-  const W = Math.min(760, Math.max(280, (document.getElementById('panel-nv').clientWidth || window.innerWidth) - (compact?28:34)));
+  const aspect = compact ? 1.8 : 1;
+  const _pnl = document.getElementById('panel-nv');
+  // 10-29：舞台寬度＝面板內寬扣掉舞台左右留白（窄螢幕實測 22px，原寫 28 讓碰撞檢查與實際位置差 6px）；面板隱藏（寬度 0）時以視窗寬估算，顯示後由 nvEcoRelayout() 重排
+  const _gut = compact ? 22 : 34;
+  const W = Math.min(760, Math.max(280, (_pnl.clientWidth ? _pnl.clientWidth - _gut : window.innerWidth - (compact?28:34) - (compact?22:0))));
   const H = W*aspect, fs = compact ? 9.5 : 10.5;
   const pt = (deg, r) => [50 + r*50*Math.sin(rad(deg)), 50 - r*50*Math.cos(rad(deg))];
   // 10-27：標籤加了國旗＋國家代碼後變長，字寬估算誤差會造成窄螢幕標籤重疊；改用 canvas 實測字寬（失敗才退回估算）
@@ -1157,7 +1161,103 @@ function nvEcoSection(eco, bodyOnly){
   const lblW = t => (mctx ? mctx.measureText(t).width : Array.from(t).reduce((a,ch)=>a+(ch.charCodeAt(0)>255?fs:fs*0.6),0)) + 3;
   const placed = [[W/2-34,H/2-34,W/2+34,H/2+34]];
   const hit = (a,b) => a[0]<b[2] && b[0]<a[2] && a[1]<b[3] && b[1]<a[3];
+  // 10-29：標籤碰撞擴充——標籤框四角須落在實際繪製的外圓（橢圓，半徑 0.96×舞台半寬／半高）內，且不得壓到其他節點的連線
+  const rectInCircle = r => [[r[0],r[1]],[r[2],r[1]],[r[0],r[3]],[r[2],r[3]]].every(([cx,cy])=>{
+    const u = (cx-W/2)/(0.48*W), v = (cy-H/2)/(0.48*H); return u*u+v*v <= 1;
+  });
+  const segHitRect = (l, r) => {
+    let t0 = 0, t1 = 1; const dx = l[2]-l[0], dy = l[3]-l[1];
+    for(const [p,q] of [[-dx,l[0]-r[0]],[dx,r[2]-l[0]],[-dy,l[1]-r[1]],[dy,r[3]-l[1]]]){
+      if(p===0){ if(q<0) return false; }
+      else { const t = q/p; if(p<0){ if(t>t1) return false; if(t>t0) t0 = t; } else { if(t<t0) return false; if(t<t1) t1 = t; } }
+    }
+    return true;
+  };
   const rings = compact ? [0.5,0.64,0.78,0.9,0.4,0.97] : [0.56,0.82,0.7,0.92,0.45];
+  // 10-29：先規劃再輸出——排列順序不同結果不同，多試幾種順序，挑「需要退回／縮字」最少的一組（有一組全數放下就停）
+  const baseDjList = Array.from({length:41}, (_,k)=>k===0?0:(k%2?1:-1)*Math.ceil(k/2)*2);
+  const ringsAll = [...rings, ...[0.97,0.94,0.9,0.86,0.82,0.78,0.74,0.7,0.66,0.62,0.58,0.54,0.5,0.46,0.42,0.38,0.34].filter(r=>!rings.includes(r))];
+  const baseBoxes = [[W/2-34,H/2-34,W/2+34,H/2+34]];
+  const items = [];
+  Object.keys(NV_ECO_TIERS).forEach(tk=>{
+    const T = NV_ECO_TIERS[tk], nodes = eco.nodes.filter(n=>n.tier===tk), n = nodes.length;
+    const [lx,ly] = pt(T.center, 0.3);
+    baseBoxes.push([lx*W/100-16,ly*H/100-8,lx*W/100+16,ly*H/100+8]);
+    nodes.forEach((nd,i)=>{
+      const deg = n>1 ? (T.center-46) + 92*i/(n-1) : T.center;
+      const s = Math.sin(rad(deg)), c = Math.cos(rad(deg));
+      const pref = compact ? (s>=0 ? 'lr' : 'll') : (s>0.5 ? 'lr' : (s<-0.5 ? 'll' : (c>0 ? 'lt' : 'lb')));
+      const sides = [pref, 'lr', 'll', 'lt', 'lb'].filter((v,k,a)=>a.indexOf(v)===k);
+      const ctry = nvEcoCountry(nd), imps = nvEcoImpacts(nd);
+      const baseName = nd.short||nd.name||'';
+      // 放不下時依序退回：完整標籤 -> 國家只留代碼（去國旗）-> 只留名稱 -> 縮字級（0.92 / 0.84 / 0.76）
+      const codeOnly = ctry ? ctry.replace(/^\S+\s/, '') : '';
+      const variants = [
+        {t: baseName + (ctry ? ' '+ctry : ''), f:1},
+        ...(ctry ? [{t: baseName + ' '+codeOnly, f:1}, {t: baseName, f:1}] : []),
+        {t: baseName + (ctry ? ' '+codeOnly : ''), f:0.92}, {t: baseName, f:0.92}, {t: baseName, f:0.84}, {t: baseName, f:0.76}, {t: baseName, f:0.68}
+      ];
+      items.push({nd, T, deg, pref, sides, ctry, imps, variants, w: lblW(variants[0].t)});
+    });
+  });
+  const labelRectOf = (px,py,sd,lw,lh) => sd==='lr' ? [px+7,py-lh/2,px+7+lw,py+lh/2]
+    : sd==='ll' ? [px-7-lw,py-lh/2,px-7,py+lh/2]
+    : sd==='lt' ? [px-lw/2,py-6-lh,px+lw/2,py-6] : [px-lw/2,py+6,px+lw/2,py+6+lh];
+  const runPlan = order => {
+    const placed = baseBoxes.slice(), lines = [], nodeLbls = [], res = new Map();
+    let score = 0; const failed = [];
+    order.forEach(it=>{
+      const {nd, T, deg, pref, sides, variants} = it;
+      let best = null, vUsed = variants[0];
+      search: for(let vi=0; vi<variants.length; vi++){
+        const v = variants[vi], lw = lblW(v.t)*v.f, lh = (fs*1.25+1)*v.f;
+        for(const dj of baseDjList){
+          if(Math.abs(deg+dj-T.center) > 56) continue; // 節點必須留在自己的扇區內
+          for(const rr of ringsAll){
+            const [bx,by] = pt(deg+dj, rr), px = bx*W/100, py = by*H/100;
+            for(const sd of sides){
+              const lr = labelRectOf(px,py,sd,lw,lh), dr = [px-10,py-10,px+10,py+10];
+              if(lr[0]<2 || lr[2]>W-2 || lr[1]<2 || lr[3]>H-2) continue;
+              if(!rectInCircle(lr)) continue;
+              if(placed.some(q=>hit(q,lr)||hit(q,dr))) continue;
+              if(lines.some(l=>segHitRect(l,lr))) continue;
+              if(nodeLbls.some(q=>segHitRect([W/2,H/2,px,py],q))) continue;
+              best = {rr,sd,lr,dr,dj}; vUsed = v; score += vi; break search;
+            }
+          }
+        }
+      }
+      if(!best){
+        const v = variants[variants.length-1]; vUsed = v; score += 1000; failed.push(it);
+        const lw = lblW(v.t)*v.f, lh = (fs*1.25+1)*v.f, rr = rings[0], [bx,by] = pt(deg, rr);
+        best = {rr, dj:0, sd:pref, lr:labelRectOf(bx*W/100,by*H/100,pref,lw,lh), dr:[bx*W/100-10,by*H/100-10,bx*W/100+10,by*H/100+10]};
+      }
+      placed.push(best.lr, best.dr); nodeLbls.push(best.lr);
+      const [x,y] = pt(deg+best.dj, best.rr);
+      lines.push([W/2, H/2, x*W/100, y*H/100]);
+      res.set(nd, {deg, best, vUsed, ctry: it.ctry, imps: it.imps});
+    });
+    return {res, score, failed};
+  };
+  let PLAN = null, planScore = Infinity;
+  {
+    const t0 = performance.now();
+    let seed = 7; const rnd = () => (seed = (seed*1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
+    const tryOrder = o => { const r = runPlan(o); if(r.score < planScore){ planScore = r.score; PLAN = r.res; } return r; };
+    // 失敗的節點挪到最前面優先排位，反覆微調；仍有退回就再試隨機順序（總時間上限 900ms）
+    let order = items.slice();
+    for(let k=0; k<12 && planScore>=1000 && performance.now()-t0<450; k++){
+      const r = tryOrder(order);
+      if(!r.failed.length) break;
+      order = r.failed.concat(order.filter(x=>!r.failed.includes(x)));
+    }
+    const orders = [items.slice().reverse(), items.slice().sort((a,b)=>b.w-a.w)];
+    for(let k=0; k<40; k++) orders.push(items.slice().sort(()=>rnd()-0.5));
+    for(const o of orders){
+      if(planScore < 1000 || performance.now()-t0 > 900) break;
+      tryOrder(o);
+    }
+  }
   const pinsArr = [], linesArr = [], sectorsArr = [], labelsArr = [];
   Object.keys(NV_ECO_TIERS).forEach(tk=>{
     const T = NV_ECO_TIERS[tk];
@@ -1166,32 +1266,10 @@ function nvEcoSection(eco, bodyOnly){
     const [sx0,sy0] = pt(a0, 0.96), [sx1,sy1] = pt(a1, 0.96);
     sectorsArr.push(`<path d="M50 50 L${sx0.toFixed(2)} ${sy0.toFixed(2)} A48 48 0 0 1 ${sx1.toFixed(2)} ${sy1.toFixed(2)} Z" fill="${T.color}" fill-opacity=".09" stroke="${T.color}" stroke-opacity=".35" stroke-width="1" vector-effect="non-scaling-stroke"/>`);
     const [lx,ly] = pt(T.center, 0.3);
-    placed.push([lx*W/100-16,ly*H/100-8,lx*W/100+16,ly*H/100+8]);
     labelsArr.push(`<div class="nv-eco-sec" style="left:${lx.toFixed(2)}%;top:${ly.toFixed(2)}%;color:${T.color};">${_arcEsc(T.label)}</div>`);
-    const n = nodes.length;
     nodes.forEach((nd,i)=>{
-      const deg = n>1 ? (T.center-46) + 92*i/(n-1) : T.center;
-      const s = Math.sin(rad(deg)), c = Math.cos(rad(deg));
-      const pref = compact ? (s>=0 ? 'lr' : 'll') : (s>0.5 ? 'lr' : (s<-0.5 ? 'll' : (c>0 ? 'lt' : 'lb')));
-      const sides = [pref, 'lr', 'll', 'lt', 'lb'].filter((v,k,a)=>a.indexOf(v)===k);
-      const ctry = nvEcoCountry(nd), imps = nvEcoImpacts(nd);
-      const lblText = (nd.short||nd.name||'') + (ctry ? ' '+ctry : '');
-      const lw = lblW(lblText), lh = fs*1.25+1;
-      const labelRect = (px,py,sd) => sd==='lr' ? [px+7,py-lh/2,px+7+lw,py+lh/2]
-        : sd==='ll' ? [px-7-lw,py-lh/2,px-7,py+lh/2]
-        : sd==='lt' ? [px-lw/2,py-6-lh,px+lw/2,py-6] : [px-lw/2,py+6,px+lw/2,py+6+lh];
-      let best = null;
-      search: for(const dj of (compact ? [0,3,-3,6,-6,9,-9,12,-12] : [0,3,-3,6,-6])) for(const rr of rings){
-        const [bx,by] = pt(deg+dj, rr), px = bx*W/100, py = by*H/100;
-        for(const sd of sides){
-          const lr = labelRect(px,py,sd), dr = [px-10,py-10,px+10,py+10];
-          if(lr[0]<2 || lr[2]>W-2 || lr[1]<2 || lr[3]>H-2) continue;
-          if(placed.some(q=>hit(q,lr)||hit(q,dr))) continue;
-          best = {rr,sd,lr,dr,dj}; break search;
-        }
-      }
-      if(!best){ const rr = rings[0], [bx,by] = pt(deg, rr); best = {rr, dj:0, sd:pref, lr:labelRect(bx*W/100,by*H/100,pref), dr:[bx*W/100-10,by*H/100-10,bx*W/100+10,by*H/100+10]}; }
-      placed.push(best.lr, best.dr);
+      const {deg, best, vUsed, ctry, imps} = PLAN.get(nd);
+      const lblText = vUsed.t, lblStyle = vUsed.f<1 ? ` style="font-size:${(fs*vUsed.f).toFixed(1)}px;"` : '';
       const [x,y] = pt(deg+best.dj, best.rr);
       const lc = best.sd;
       const tv = y>50 ? 'tup' : 'tdn';
@@ -1206,7 +1284,7 @@ function nvEcoSection(eco, bodyOnly){
         + (nd.date?`<br><span class="te-k">日期</span> ${_arcEsc(nd.date)}`:'')
         + nvSrcLink(nd.src);
       pinsArr.push(`<div class="nv-eco-pin ${lc} ${tv} ${th}${nd.pending?' pending':''}" style="left:${x.toFixed(2)}%;top:${y.toFixed(2)}%;--tc:${T.color};" onclick="nvEcoToggle(this,event)">
-        <div class="nv-eco-dot"></div><div class="nv-eco-lbl">${_arcEsc(lblText)}</div>
+        <div class="nv-eco-dot"></div><div class="nv-eco-lbl"${lblStyle}>${_arcEsc(lblText)}</div>
         <div class="nv-eco-tip">${tip}</div></div>`);
     });
   });
@@ -1218,7 +1296,7 @@ function nvEcoSection(eco, bodyOnly){
     <span>空心點＝待複核</span></div>`;
   NV_ECO_LASTW = document.getElementById('panel-nv').clientWidth;
   return (bodyOnly?'':head) + `<div class="nv-eco-wrap">
-    <div class="nv-eco-stage"${compact?' style="aspect-ratio:1/1.3;"':''}>
+    <div class="nv-eco-stage"${compact?' style="aspect-ratio:1/'+aspect+';"':''}>
       <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${sectorsArr.join('')}${linesArr.join('')}</svg>
       ${labelsArr.join('')}${pinsArr.join('')}
       <div class="nv-eco-center">NVIDIA</div>
@@ -3392,6 +3470,7 @@ function sw(tab) {
   document.getElementById('panel-'+tab).classList.add('active');
   document.getElementById('btn-'+tab).classList.add(TCLS[tab]);
   sessionStorage.setItem('at_tab', tab);
+  if (tab === 'nv') nvEcoRelayout(); // 首次渲染時 NV 面板是隱藏的（寬度 0），顯示後用實際寬度重排放射圖
   const freqBadge = document.getElementById('freq-badge');
   if (freqBadge) {
     if (tab === 'nv') {
