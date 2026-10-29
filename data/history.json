@@ -1,5 +1,143 @@
 [
   {
+    "date": "2026-10-30",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "SK Hynix 公布 AI 記憶體需求推動創紀錄 Q3 營收",
+        "layer": "capacity",
+        "body": "SK Hynix 於 2026 年第三季公布創紀錄營收，主要受 AI 記憶體需求激增驅動。公司同時透露已簽署多項長期客戶合約，並因晶片價格上揚提升毛利。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "AI 記憶體需求的持續成長將驅動上游封裝與晶圓代工產能擴張，投資者應關注相關供應鏈的產能配置與價格走勢。",
+        "source_label": "—",
+        "source": "",
+        "chain": [
+          {
+            "label": "SK Hynix AI 記憶體需求↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix 晶片價格上揚↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Oracle 於 OCI 推出使用量計費 AI 服務",
+        "layer": "core",
+        "body": "Oracle 在投資人日透露，將在其 Fusion 應用套件中加入使用量計費模式，客戶依 AI 工作單位付費，而非僅以座位數收費。此舉同時推出 Fusion Claw 執行階段，讓客戶能在 OCI 上控制 AI 代理程式的自動化流程。Oracle 表示此模式將提升 AI 相關收入，因為 AI 工作量增加即產生更多營收。",
+        "impact": "直接提升 OCI 計算資源需求。",
+        "rating": "core",
+        "insight": "使用量計費將把 AI 工作量直接轉化為雲端算力需求，提升上游硬體供應鏈訂單。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/applications/2026/10/29/oracle-wants-to-bill-you-for-every-ai-task-not-just-every-seat/5306403",
+        "chain": [
+          {
+            "label": "Oracle AI 使用量計費模式↑",
+            "type": "up"
+          },
+          {
+            "label": "Oracle Fusion Claw 自動化流程↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Google Gemini 4 Carbon 定價維持現價，未來將翻倍",
+        "layer": "core",
+        "body": "Google 宣布 Gemini 4 Carbon 模型在推出初期仍維持與前代 Argon 相同的價格：每百萬輸入代幣 2 美元、每百萬輸出代幣 10 美元。官方說明，若此優惠期結束，價格將升至每百萬輸入代幣 4 美元、每百萬輸出代幣 20 美元，與 Anthropic Claude Opus 5.5 相同。Gemini 4 Carbon 被描述為在資安與長時間任務上表現最佳的模型。",
+        "impact": null,
+        "rating": "core",
+        "insight": "Google 先以低價吸引用戶，後期調價將測試市場對高效能模型的付費意願。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/10/29/googles-gemini-4-carbon-looks-like-a-diamond-in-the-rough/5306149",
+        "chain": [
+          {
+            "label": "Google Gemini 4 Carbon 定價維持現價↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Gemini 4 Carbon 未來價格翻倍↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": "",
+        "chain": [
+          {
+            "label": "無相關應用新聞→無影響",
+            "type": "neutral"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "HBM",
+        "full": "High Bandwidth Memory",
+        "def": "高頻寬記憶體，提供比傳統 DRAM 更高的資料傳輸速率，常用於 AI 加速器與高效能運算平台。",
+        "why": "AI 訓練與推論對記憶體頻寬需求極高，HBM 的需求變化直接影響封裝與晶圓代工的產能規劃。",
+        "category": "hardware"
+      },
+      {
+        "term": "長期客戶合約",
+        "full": "Long‑term customer contracts",
+        "def": "記憶體製造商與下游 AI 伺服器或雲端服務供應商簽訂的多年供貨協議，確保穩定需求與收入。",
+        "why": "此類合約可降低需求波動風險，促使供應鏈上游提前規劃產能與投資。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "CoWoS",
+        "full": "Chip‑on‑Wafer‑on‑Substrate",
+        "def": "先進封裝技術，將多顆晶片堆疊於同一晶圓上，再封裝於基板，以提升效能與密度。",
+        "why": "AI 記憶體與處理器的高效能需求推動 CoWoS 產能擴張，影響相關封裝廠的訂單量。",
+        "category": "hardware"
+      },
+      {
+        "term": "Fusion Claw",
+        "full": "Oracle Fusion Claw 執行階段",
+        "def": "Oracle 為其 Fusion 應用套件開發的執行環境，允許客戶在 OCI 上管理與控制 AI 代理程式的自動化工作流程。",
+        "why": "此技術使 Oracle 能以使用量計費模式收取 AI 工作費用，直接影響雲端算力需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Gemini 4 Carbon",
+        "full": "Google Gemini 4 Carbon 模型",
+        "def": "Google DeepMind 推出的最新大型語言模型，主打資安與長時間任務表現，定價與前代 Argon 相同，未來將升價。",
+        "why": "模型的定價策略直接影響雲端算力需求與 AI 服務市場的價格競爭。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "使用量計費",
+        "full": "Usage‑based billing",
+        "def": "根據客戶實際使用的 AI 工作單位或資源量收費的商業模式，取代傳統以座位數或訂閱費為主的計費方式。",
+        "why": "此模式將 AI 工作量直接轉化為收入，促使雲端供應商提升算力供應，影響上游硬體供應鏈。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "勒索軟體",
+        "full": "Ransomware",
+        "def": "一種惡意程式，會加密受害者的資料並要求支付贖金以換取解密金鑰。",
+        "why": "了解此類威脅有助於企業在供應鏈安全上採取防護措施。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-29",
     "is_sunday": false,
     "hw": [
@@ -764,146 +902,6 @@
         "full": "Microsoft AI Diagnostic Orchestrator",
         "def": "Microsoft 開發的 AI 診斷平台，於《Science》期刊報告中以 83% 的正確率超越普通醫師。",
         "why": "作為商業化的 AI 醫療服務，將驅動相關硬體與雲端資源的採購。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-23",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Nvidia 於柏林 GTC 公布投入資金協助供應鏈以鞏固矽基板供應",
-        "layer": "capacity commitments",
-        "body": "Nvidia 在柏林 GTC 大會上宣布將動用巨額現金，協助其矽基板（wafer）供應商取得所需資源，以確保未來多年 GPU 與 AI 處理器的供應。此舉針對提供晶圓給代工廠（如 TSMC、Intel）的上游供應商，旨在提升其產能利用率。Nvidia 亦指出此投資有助於降低供應鏈金融風險，讓整體供應鏈更具韌性。",
-        "impact": "1. 上游矽基板供應商的產能利用率將上升，因為獲得 Nvidia 的資金支援可加速晶圓製程擴充；2. 受惠的代工廠（TSMC、Intel）將因晶圓需求穩定而受惠。",
-        "rating": "core",
-        "insight": "資金介入供應鏈可降低晶圓供應風險，支撐 Nvidia 長期 GPU 需求。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/10/22/to-help-world-gorge-on-gpus-nvidia-brings-cash-bucket-to-fatten-wafer-thin-supply-chain/5304623",
-        "chain": [
-          {
-            "label": "TSMC Wafer 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Intel Wafer 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia GPU 供應↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Meta 宣布全年資本支出上限提升至 1450 億美元",
-        "layer": "corp",
-        "body": "Meta 將 2026 年全年度資本支出上限調整至 1350–1450 億美元，較先前上限 1300 億美元上調 150 億美元；同時公布第三季自由現金流為負 21.2 億美元。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Meta 大幅提升資本支出將直接刺激 AI 硬體與資料中心供應鏈需求。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/22/meta-stock-q3-earnings-free-cash-flow.html",
-        "chain": [
-          {
-            "label": "Meta 資本支出上限↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta 數據中心建設↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta 廣告收入潛力↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Microsoft 揭露 ConnectWise 資安漏洞導致 2,250 個雲端租戶受影響",
-        "layer": "corp",
-        "body": "Microsoft 表示，ConnectWise 的資安漏洞使中國間諜在 2,250 個雲端租戶中取得特權存取，部分環境在三小時內被 AI 代理人完全控制。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "資安漏洞將推動雲端安全解決方案需求上升，影響相關硬體與服務供應鏈。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/security/2026/10/22/microsoft-says-connectwise-breach-let-chinese-spies-loose-on-2250-cloud-tenants/5304687",
-        "chain": [
-          {
-            "label": "ConnectWise 資安漏洞→Azure 雲端信任↓",
-            "type": "down"
-          },
-          {
-            "label": "Microsoft 安全服務聲譽↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "矽基板",
-        "full": "Silicon substrate",
-        "def": "用於製造晶圓的平板材料，供代工廠在其上刻蝕電路，是半導體製程的基礎。",
-        "why": "Nvidia 投資提升矽基板供應，可直接影響晶圓產能與成本。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "OSAT",
-        "full": "Outsourced Semiconductor Assembly and Test",
-        "def": "將晶圓交由第三方進行封裝與測試的服務，屬於半導體供應鏈的後段。",
-        "why": "矽基板供應穩定後，封測需求同步上升，影響 OSAT 廠商營運。",
-        "category": "hardware"
-      },
-      {
-        "term": "GTC",
-        "full": "GPU Technology Conference",
-        "def": "Nvidia 每年舉辦的技術與產品發布會，聚焦 GPU、AI 與資料中心等領域。",
-        "why": "本次供應鏈資金投入於 GTC 公布，顯示公司策略性重視供應鏈安全。",
-        "category": "role"
-      },
-      {
-        "term": "DSX POD",
-        "full": "Data Center Scale eXpress POD",
-        "def": "Nvidia 推出的模組化資料中心解決方案，將多台液冷計算機櫃與高速網路整合於可搬運的容器中，支援快速部署。",
-        "why": "縮短資料中心建設時間，降低部署成本，提升 AI 基礎設施彈性。",
-        "category": "hardware"
-      },
-      {
-        "term": "Vera Rubin 計算機櫃",
-        "full": "Vera Rubin liquid‑cooled compute rack",
-        "def": "Nvidia 以天文學家 Vera Rubin 命名的液冷伺服器櫃，提供高效散熱以支援大型 AI 工作負載。",
-        "why": "提升 GPU 效能與能源使用效率，符合大型 AI 訓練需求。",
-        "category": "hardware"
-      },
-      {
-        "term": "ConnectWise 漏洞",
-        "full": "ConnectWise security breach",
-        "def": "一項資安漏洞使攻擊者能在 Microsoft 雲端環境中取得特權存取，導致大量租戶資料被竊取或操控。",
-        "why": "突顯雲端服務供應鏈的資安薄弱點，促使安全防護技術需求激增。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "本地部署 AI 解決方案",
-        "full": "On-premises AI solution",
-        "def": "在使用者自有的硬體環境中直接執行的人工智慧軟體系統，無需依賴外部雲端平台。此類方案常用於需要高資料隱私或低延遲的應用，如醫療影像分析。",
-        "why": "可降低資料傳輸風險、提升即時處理能力，符合醫療法規與隱私要求。",
         "category": "ai_technique"
       }
     ],

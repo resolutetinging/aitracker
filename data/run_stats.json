@@ -2,6 +2,90 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 66,
+        "CSP/CapEx": 53,
+        "App/AI": 27,
+        "gnews-chip": 17,
+        "gnews-dc": 23,
+        "gnews-app": 21
+      },
+      "digest_filtered": 0,
+      "after_dedup": 190,
+      "buckets": {
+        "hw": 41,
+        "corp": 137,
+        "app": 40
+      },
+      "news_char_budget": {
+        "hw": 4783,
+        "corp": 8000,
+        "app": 4666
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 2,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "log",
+        "checked": 2,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0
+        },
+        "enforced": 0,
+        "items": []
+      },
+      "date": "2026-10-30",
+      "generated_at": "2026-10-30T00:04:04.342103+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 58,
         "CSP/CapEx": 58,
         "App/AI": 32,
@@ -1252,98 +1336,6 @@
       },
       "date": "2026-10-17",
       "generated_at": "2026-10-17T00:04:18.436668+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 55,
-        "CSP/CapEx": 46,
-        "App/AI": 19,
-        "gnews-chip": 21,
-        "gnews-dc": 21,
-        "gnews-app": 22
-      },
-      "digest_filtered": 0,
-      "after_dedup": 168,
-      "buckets": {
-        "hw": 45,
-        "corp": 121,
-        "app": 45
-      },
-      "news_char_budget": {
-        "hw": 5250,
-        "corp": 8000,
-        "app": 5250
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 2,
-        "corp": 3,
-        "app": 2
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "placeholders": 0,
-      "llm_ratings": {
-        "hw": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 3,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [
-        {
-          "title": "TSMC 晶圓產能成 AI 客戶激烈爭奪焦點",
-          "section": "hw",
-          "action": "downgraded",
-          "matched_title": null,
-          "reason": "內容僅說明既有產能與需求狀況，未揭示新決策或新行動，屬於背景敘述"
-        }
-      ],
-      "fact_audit": {
-        "mode": "log",
-        "checked": 6,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 1,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": []
-      },
-      "date": "2026-10-16",
-      "generated_at": "2026-10-16T00:05:04.091573+08:00"
     }
   ]
 }
