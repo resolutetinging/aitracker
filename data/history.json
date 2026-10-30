@@ -1,5 +1,165 @@
 [
   {
+    "date": "2026-10-31",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Intel 公布 PC 處理器需求下降 5% 影響代工產能",
+        "layer": "capacity_commitments",
+        "body": "Intel 在 2026 年第三季財報中指出客戶端運算（PC）營收較去年同期下降 5%，導致客戶端晶圓需求減少。該公司同時報告資料中心與 AI 產品營收年增 78%，但 PC 部分的現金流入下降 9% 於上季。此情形使 Intel 可能調整其與台積電及其他代工廠的客製化先進封裝（CoWoS）與 HBM 採購量。",
+        "impact": "因 PC 晶圓需求下降，代工廠如台積電的先進製程（7nm 以上）出貨量將出現短期 ↓，導致其高階封裝（CoWoS）與 HBM 供應鏈利用率下降。下游 AI 伺服器製造商因 Intel 資料中心與 AI 產品需求持續成長，將加大對高帶寬記憶體（HBM）與先進封裝的採購，提升相關供應鏈的需求 ↑。",
+        "rating": "core",
+        "insight": "Intel PC 市場下滑將釋放代工產能，轉向支援資料中心與 AI 需求的高階封裝與 HBM 供應。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/10/30/pc-chip-plunge-wipes-out-a-quarter-of-intels-value/5306531",
+        "chain": [
+          {
+            "label": "Intel PC 處理器需求↓",
+            "type": "down"
+          },
+          {
+            "label": "TSMC CoWoS 產能↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "AWS 每 14 秒安裝一顆 AI 加速卡，目標 2027 年營收突破 1 兆美元",
+        "layer": "AWS",
+        "body": "Amazon Web Services 在 2026 年第三季財報電話會議中透露，AI 加速卡的安裝頻率已達到每 14 秒一顆，且客戶需求與容量擴充速度幾乎同步。CEO Andy Jassy 表示，AWS 期望在未來五至十年內將營收提升至 1 兆美元，2027 或 2028 年的年增長率將超過 40%。",
+        "impact": "",
+        "rating": "core",
+        "insight": "AWS 的加速卡安裝速度顯示 AI 計算需求正快速放大，相關晶片與封裝供應鏈將持續受惠。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/off-prem/2026/10/30/aws-installs-an-ai-accelerator-every-14-seconds-and-eyes-1-trillion-annual-revenue/5306547",
+        "chain": [
+          {
+            "label": "AWS AI 加速卡安裝率↑",
+            "type": "up"
+          },
+          {
+            "label": "NVIDIA GPU 需求↑",
+            "type": "up"
+          },
+          {
+            "label": "AWS 雲端收入↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "AWS 第三季營收成長 39%，簽署多項大型 AI 合約",
+        "layer": "AWS",
+        "body": "Amazon AWS 在 2026 年第三季財報中報告營收達 1840 億美元，較去年同期成長 39.3%，並透露與 Meta 及 OpenAI 簽署了多項 AI 服務合約。此營收表現使 AWS 接近 2026 財年目標的 460 億美元。",
+        "impact": "",
+        "rating": "core",
+        "insight": "AWS 的營收與 AI 合約雙雙突破，將持續拉動上游晶片與記憶體供應鏈的需求。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/29/aws-q3-earnings-report-2026.html",
+        "chain": [
+          {
+            "label": "AWS 營收↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta AI 服務需求↑",
+            "type": "up"
+          },
+          {
+            "label": "OpenAI 合約金額↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Microsoft 計畫發行 250 億美元債券以支援 AI 建設",
+        "layer": "Microsoft",
+        "body": "Microsoft 在 2026 年 10 月 29 日宣布將發行 250 億美元的債券，用於資助其 AI 基礎建設與相關研發支出。公司指出，儘管其他大型雲端競爭者的自由現金流受壓，Microsoft 仍保持正向自由現金流。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Microsoft 透過債券融資加速 AI 基礎建設，將為上游晶片供應鏈帶來持續需求。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/29/microsoft-25-billion-debt-offering.html",
+        "chain": [
+          {
+            "label": "Microsoft AI 債券發行↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft Azure AI 服務需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft 自由現金流↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "DeepInfinity.AI 與 Baby Memorial 醫院集團合作，擴大醫療 AI 應用",
+        "layer": "醫療健康",
+        "body": "印度奧里薩邦的 Baby Memorial 醫院集團宣布與 DeepInfinity.AI 簽署合作協議，將其 AI 平台導入醫院的診斷與病歷管理流程。此合作旨在提升影像診斷效率與臨床決策支援，預計在未來一年內於多家分院部署。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "醫療 AI 平台的實際部署將驅動硬體與軟體供應鏈同步成長，為相關供應商創造新商機。",
+        "source_label": "Odisha Diary",
+        "source": "https://news.google.com/rss/articles/CBMirAFBVV95cUxORXdpaGtSWUx5WTFUeEYweVhpQnp3M3I2Yk5XOUpaRExGNXdqM1pYOGJta2Rhc0pUX0tMMHlpakwzV1Zubl9BN0pOcW40TzdLTWQ2NjZFbGd3dEtKUDdWTkVuXzk2TFpScVRzUlBjd2dYQzNxc2w2TmQxZUM4NV9oamZpNGY2TVRndmFPVjdOUkFmcEFVOFhORVBRbXpiUDU0RmVOcmxkUkZobUpV",
+        "chain": [
+          {
+            "label": "DeepInfinity.AI 醫療 AI 部署↑",
+            "type": "up"
+          },
+          {
+            "label": "Baby Memorial 醫院診斷效率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "CoWoS",
+        "full": "Chip-on-Wafer-on-Substrate",
+        "def": "一種先進封裝技術，將多顆晶片堆疊於同一晶圓上，再以基板連接，以提升效能與帶寬。",
+        "why": "Intel 需求變化直接影響此類高階封裝的採購量，進而波及代工與封裝供應鏈。",
+        "category": "hardware"
+      },
+      {
+        "term": "HBM",
+        "full": "High Bandwidth Memory",
+        "def": "高帶寬記憶體，常與 AI 加速器或高效能伺服器搭配使用，以提供大量資料吞吐。",
+        "why": "Intel 資料中心與 AI 產品營收大幅成長，將推動 HBM 需求上升，影響記憶體製造與封裝產業。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "AI 加速卡",
+        "full": "Artificial Intelligence Accelerator Card",
+        "def": "專為加速機器學習推論與訓練設計的硬體卡片，通常內建大量矩陣運算單元。",
+        "why": "AWS 每 14 秒安裝一顆，顯示雲端 AI 計算需求急速上升。",
+        "category": "hardware"
+      },
+      {
+        "term": "自由現金流",
+        "full": "Free Cash Flow",
+        "def": "公司在扣除資本支出後可自由支配的現金流量，衡量企業財務健康度。",
+        "why": "Microsoft 保持正向自由現金流，使其能以債券方式大規模投資 AI 基礎建設。",
+        "category": "role"
+      },
+      {
+        "term": "DeepInfinity.AI",
+        "full": "DeepInfinity.AI 平台",
+        "def": "提供醫療影像分析與臨床決策支援的人工智慧平台，結合深度學習模型與醫療資料庫。",
+        "why": "其與醫院的合作示範了 AI 在實際醫療流程中的落地，帶動相關硬體與資料服務需求。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-10-30",
     "is_sunday": false,
     "hw": [
@@ -767,144 +927,5 @@
       }
     ],
     "weekly_summary": "HW：Nvidia 為 OpenAI 10GW 資料中心提供最高 1050 億美元保證，推升 HBM4/4e 與 EMIB‑T 封裝需求。\nCORP：本週大型雲端與 AI 供應鏈持續擴張，OpenAI 安全監控缺口、Meta 俄亥俄資料中心上線、Silk Cloud 部署 Nvidia Blackblack Ultra GPU、Google 收購暗纖合約均顯示算力與基礎建設需求上升。\n下週看點：關注 OpenAI 是否公布新一代監控系統的實施細節，以及 Nvidia 是否進一步擴大 Blackwell 系列的產能。\nAPP：本週 Healthleap 獲得 3800 萬美元資金擴大醫院 AI 影像篩檢，Dyna.Ai 與 Bahrain FinTech Bay 合作在 GCC 推出 AI 即服務平台。\n用戶洞察：醫療與金融機構正加速採用即時 AI 服務，帶動高效能運算硬體與雲端基礎設施需求。"
-  },
-  {
-    "date": "2026-10-24",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 近完成 300 億美元融資輪 估值 1.25 兆美元",
-        "layer": "融資",
-        "body": "OpenAI 正在進行最高可達 300 億美元的融資，估值約 1.25 兆美元，主要由阿聯酋投資者與 Coatue 領投，並計畫在下週完成簽署。此輪資金同時包含與阿聯酋的計算資源商業協議，將為 OpenAI 提供額外的算力供應。",
-        "impact": "",
-        "rating": "core",
-        "insight": "300 億美元融資將直接推升高階 GPU 需求，帶動上游晶圓代工產能擴張。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/22/openai-funding-round-uae-investors.html",
-        "chain": [
-          {
-            "label": "OpenAI 融資額↑",
-            "type": "up"
-          },
-          {
-            "label": "阿聯酋算力供應↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "PHP2Shell 安全漏洞波及 Google、OpenAI、Amazon 等巨頭",
-        "layer": "資安漏洞",
-        "body": "全球多家科技公司包括 Google、OpenAI 與 Amazon 正在緊急修補名為 PHP2Shell 的兩項關鍵漏洞，該漏洞允許遠端執行惡意程式碼，NSA 已警告企業立即部署更新。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "重大 PHP 漏洞推動雲端與安全硬體供應鏈的即時升級需求。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/22/php-google-openai-and-amazon-cyber.html",
-        "chain": [
-          {
-            "label": "Google 安全修補成本↑",
-            "type": "up"
-          },
-          {
-            "label": "Amazon 服務可用性↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Microsoft AI 診斷協調器在模擬測試中正確率達 83%",
-        "layer": "healthcare",
-        "body": "Microsoft 於《Science》期刊發表的研究顯示，其 AI 診斷協調器（MAI‑DxO）在使用新英格蘭醫學雜誌的複雜病例模擬測試時，正確率為 83%。同時，僅使用參考資料的普通內科醫師正確率為 36%。該系統透過多個 AI 代理人模擬醫師小組，完成問診、檢驗指示與診斷討論。",
-        "impact": "",
-        "rating": "core",
-        "insight": "投資者可關注 AI 診斷平台相關的算力與醫療設備供應鏈，因其商業化前景快速成長。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/10/22/microsofts-mustafa-suleyman-says-its-ai-outperforms-doctors-on-hard-cases-as-he-chases-medical-superintelligence/",
-        "chain": [
-          {
-            "label": "Microsoft MAI‑DxO 正確率↑",
-            "type": "up"
-          },
-          {
-            "label": "傳統醫師診斷正確率↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "GTC",
-        "full": "GPU Technology Conference",
-        "def": "Nvidia 每年舉辦的全球性人工智慧與高效能運算技術展示會，聚焦新產品發表與產業合作。",
-        "why": "了解此會議有助於掌握 Nvidia 供應鏈新動向與合作夥伴訊息。",
-        "category": "hardware"
-      },
-      {
-        "term": "Solidigm",
-        "full": "Solidigm Inc.",
-        "def": "由 Intel 分拆出的固態儲存與記憶體子公司，近期計畫在美國上市。",
-        "why": "其 IPO 計畫的變動會影響相關記憶體製造與供應鏈資金流向。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "AI 計算中心",
-        "full": "人工智慧計算中心",
-        "def": "提供大規模 GPU 或加速器資源的資料中心，支援深度學習模型訓練與推論。",
-        "why": "AI 計算中心的需求變化直接牽動晶圓代工、HBM 記憶體與 OSAT 供應鏈。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "合併",
-        "full": "企業合併",
-        "def": "兩家或多家公司透過法律與財務手段結合成為單一實體，以整合資源、擴大市場或提升競爭力。",
-        "why": "合併往往會改變供應鏈結構，影響上下游供應商的需求與合作模式。",
-        "category": "role"
-      },
-      {
-        "term": "融資輪",
-        "full": "資金募集輪次",
-        "def": "公司在成長階段向投資者募集資金的階段性活動，通常以輪次（Series A、B、C…）劃分，金額與估值會公開披露。",
-        "why": "大規模融資直接提升公司購買上游硬體與服務的能力，帶動相關產業需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "資安漏洞",
-        "full": "資訊安全漏洞",
-        "def": "軟體或系統中未被預期的缺陷，可能被惡意攻擊者利用以取得未授權存取或執行惡意程式。",
-        "why": "重大漏洞會迫使雲端與硬體供應商加速安全升級，影響產品出貨與服務可用性。",
-        "category": "hardware"
-      },
-      {
-        "term": "診斷協調器",
-        "full": "Diagnostic Orchestrator",
-        "def": "一種結合多個 AI 代理人，模擬醫師小組流程的系統，負責問診、檢驗指示與診斷推論。",
-        "why": "它是 Microsoft AI 在醫療領域的核心產品，直接影響醫療硬體與算力需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "MAI‑DxO",
-        "full": "Microsoft AI Diagnostic Orchestrator",
-        "def": "Microsoft 開發的 AI 診斷平台，於《Science》期刊報告中以 83% 的正確率超越普通醫師。",
-        "why": "作為商業化的 AI 醫療服務，將驅動相關硬體與雲端資源的採購。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
   }
 ]

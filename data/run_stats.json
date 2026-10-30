@@ -2,6 +2,117 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 65,
+        "CSP/CapEx": 51,
+        "App/AI": 24,
+        "gnews-chip": 16,
+        "gnews-dc": 24,
+        "gnews-app": 17
+      },
+      "digest_filtered": 1,
+      "after_dedup": 180,
+      "buckets": {
+        "hw": 42,
+        "corp": 130,
+        "app": 41
+      },
+      "news_char_budget": {
+        "hw": 4900,
+        "corp": 8000,
+        "app": 4783
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 3,
+        "app": 2
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 3,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 3,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "log",
+        "checked": 4,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 1,
+        "low_coverage": {
+          "checked": 2,
+          "suspect_cards": 0
+        },
+        "enforced": 0,
+        "items": [
+          {
+            "sec": "corp",
+            "title": "AWS 第三季營收成長 39%，簽署多項大型 AI 合約",
+            "source": "https://www.cnbc.com/2026/10/29/aws-q3-earnings-report-2026.html",
+            "rating": "core",
+            "coverage": "low_coverage",
+            "suspects": [],
+            "undetermined": [
+              "1840 億美元",
+              "460 億美元",
+              "39.3%"
+            ],
+            "tense_flag": false
+          },
+          {
+            "sec": "corp",
+            "title": "Microsoft 計畫發行 250 億美元債券以支援 AI 建設",
+            "source": "https://www.cnbc.com/2026/10/29/microsoft-25-billion-debt-offering.html",
+            "rating": "core",
+            "coverage": "low_coverage",
+            "suspects": [],
+            "undetermined": [
+              "2026年10月29日"
+            ],
+            "tense_flag": false
+          }
+        ]
+      },
+      "date": "2026-10-31",
+      "generated_at": "2026-10-31T00:04:27.805122+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 66,
         "CSP/CapEx": 53,
         "App/AI": 27,
@@ -1244,98 +1355,6 @@
       },
       "date": "2026-10-18",
       "generated_at": "2026-10-18T00:04:15.822857+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 57,
-        "CSP/CapEx": 46,
-        "App/AI": 19,
-        "gnews-chip": 20,
-        "gnews-dc": 23,
-        "gnews-app": 18
-      },
-      "digest_filtered": 2,
-      "after_dedup": 168,
-      "buckets": {
-        "hw": 35,
-        "corp": 122,
-        "app": 35
-      },
-      "news_char_budget": {
-        "hw": 4083,
-        "corp": 8000,
-        "app": 4083
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 4,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "dedup_audit": [
-        {
-          "title": "Anthropic 第三季營收達 168 億美元，準備於 11 月上市",
-          "section": "corp",
-          "action": "removed",
-          "matched_title": "Anthropic 將於本週三向機構投資人披露第三季財報",
-          "reason": "兩篇皆在報導 Anthropic 同一季營收與即將公開的財報，屬同一事件"
-        }
-      ],
-      "fact_audit": {
-        "mode": "log",
-        "checked": 2,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 1,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": []
-      },
-      "date": "2026-10-17",
-      "generated_at": "2026-10-17T00:04:18.436668+08:00"
     }
   ]
 }
