@@ -2,6 +2,89 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 64,
+        "CSP/CapEx": 46,
+        "App/AI": 21,
+        "gnews-chip": 15,
+        "gnews-dc": 20,
+        "gnews-app": 21
+      },
+      "digest_filtered": 1,
+      "after_dedup": 169,
+      "buckets": {
+        "hw": 37,
+        "corp": 120,
+        "app": 37
+      },
+      "news_char_budget": {
+        "hw": 4316,
+        "corp": 8000,
+        "app": 4316
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 4,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "fact_audit": {
+        "mode": "log",
+        "checked": 2,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 1,
+        "low_coverage": {
+          "checked": 1,
+          "suspect_cards": 0
+        },
+        "enforced": 0,
+        "items": []
+      },
+      "date": "2026-11-01",
+      "generated_at": "2026-11-01T00:04:21.762166+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 65,
         "CSP/CapEx": 51,
         "App/AI": 24,
@@ -1246,115 +1329,6 @@
       },
       "date": "2026-10-19",
       "generated_at": "2026-10-19T00:04:11.512287+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 54,
-        "CSP/CapEx": 49,
-        "App/AI": 23,
-        "gnews-chip": 21,
-        "gnews-dc": 20,
-        "gnews-app": 16
-      },
-      "digest_filtered": 1,
-      "after_dedup": 166,
-      "buckets": {
-        "hw": 34,
-        "corp": 120,
-        "app": 34
-      },
-      "news_char_budget": {
-        "hw": 3966,
-        "corp": 8000,
-        "app": 3966
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 3,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 4,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [],
-      "fact_audit": {
-        "mode": "log",
-        "checked": 4,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 2,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": [
-          {
-            "sec": "corp",
-            "title": "Microsoft 將 Defender 防毒軟體擴展至 Linux 桌面",
-            "source": "https://www.theregister.com/os-platforms/2026/10/16/microsoft-bringing-defender-to-linux-desktops-repeat-microsoft-bringing-defender-to-linux-desktops/5303477",
-            "rating": "core",
-            "coverage": "low_coverage",
-            "suspects": [],
-            "undetermined": [
-              "10月16日"
-            ],
-            "tense_flag": false
-          },
-          {
-            "sec": "corp",
-            "title": "Meta 獲授權自行抓取企業客戶內容作模型訓練",
-            "source": "https://www.theregister.com/ai-and-ml/2026/10/16/meta-grants-itself-right-to-scrape-content-from-business-customers-for-model-training/5303658",
-            "rating": "core",
-            "coverage": "low_coverage",
-            "suspects": [],
-            "undetermined": [
-              "10月16日"
-            ],
-            "tense_flag": false
-          }
-        ]
-      },
-      "date": "2026-10-18",
-      "generated_at": "2026-10-18T00:04:15.822857+08:00"
     }
   ]
 }

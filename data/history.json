@@ -1,5 +1,134 @@
 [
   {
+    "date": "2026-11-01",
+    "is_sunday": true,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "Google 搜尋廣告收入成長放緩至 12%　AI 機制影響營收",
+        "layer": "Google",
+        "body": "Google 公布 Q3 搜尋廣告收入年增率從 Q2 的 17% 放緩至 12%，主要因 AI Overviews 與 AI Mode 的變現效益低於傳統搜尋。公司在財報電話會議中說明，歐洲關稅免除取消與匯率波動亦是因素。此訊息由 The Register 報導。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Google 搜尋廣告變現放緩顯示 AI 介面需重新定價以維持收入。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/10/30/googles-search-revenue-ferrari-hits-an-ai-powered-speed-bump/5306520",
+        "chain": [
+          {
+            "label": "Google 搜尋廣告收入↑",
+            "type": "up"
+          },
+          {
+            "label": "AI Overviews 變現效益↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "S&P 降級 Meta 前景　因資本支出與自由現金流憂慮",
+        "layer": "Meta",
+        "body": "S&P Global Ratings 因 Meta 大幅資本支出與自由現金流壓力，將其信用展望調整為負面。報導指出，Meta 近期的資本支出規模持續攀升，對其財務穩健性構成挑戰。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Meta 信用展望負面顯示其資本密集策略面臨財務挑戰，或削減 AI 基礎設施支出。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/30/meta-outlook-to-revised-to-negative-by-sp-after-cash-flow-negative.html",
+        "chain": [
+          {
+            "label": "Meta 資本支出↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta 自由現金流↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Doximity 推出 AI 藥物檢查工具 DoseCheck",
+        "layer": "healthcare",
+        "body": "Doximity 於本週正式上線 DoseCheck，該 AI 系統可即時檢測處方中的藥物相互作用與過量風險，已在美國超過 1,200 家診所部署。此服務依賴雲端運算平台提供的 GPU 計算資源，並與多家藥品資料庫簽署資料授權合約。根據 Fierce Healthcare 報導，首次使用者的藥物錯誤警示率下降了約 30%。",
+        "impact": "1) 雲端算力供應商因 DoseCheck 即時運算需求提升，GPU/TPU 供應量可能增加。2) 資料提供商因授權合約增加，資料清洗與更新服務需求上升，帶動資料標註與 ETL 供應鏈活躍。3) 醫院與診所端的電子病歷系統供應商需整合 API，促使醫療軟體整合服務商的市場份額提升。",
+        "rating": "core",
+        "insight": "醫療 AI 服務的快速商業化將推動雲端算力與藥品資料供應鏈同步成長。",
+        "source_label": "Fierce Healthcare",
+        "source": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPR3poTVdJMUhRam1TczVsVDdQdF9JNXlmbmFVelh1YW1ENUt2LTJ4ZGlGVW5Wdm1wUW5iMnVINkhQclBpMTR4YzJYTDM4aWV3NnQwU3lyZkNCTlVNOGZ1WWVZSHA3M3I0WkZhV19tNGZna2dUR292bmh6NkQ4UlZub3RucXdpa2ZFZzhvNVZsYUh1cElCdlpfa2EwRHl6T044NWZUbUpiNUV2WHBYQ3MtNDNGeldfbFRYZFBQWnpDQ0VlLTdEMjN4Yg",
+        "chain": [
+          {
+            "label": "Doximity DoseCheck 部署量↑",
+            "type": "up"
+          },
+          {
+            "label": "藥物錯誤警示率↓",
+            "type": "down"
+          },
+          {
+            "label": "GPU 計算資源需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Mellanox",
+        "full": "Mellanox Technologies",
+        "def": "一家專注於高效能網路介面卡（NIC）與 InfiniBand 交換機的公司，2020 年被 Nvidia 以 69 億美元收購。",
+        "why": "此收購使 Nvidia 能夠整合高效能互連技術，提升其資料中心 AI 基礎建設的網路能力。",
+        "category": "hardware"
+      },
+      {
+        "term": "InfiniBand",
+        "full": "InfiniBand 高效能互連技術",
+        "def": "一種用於高效能運算與超級電腦叢集的低延遲、高帶寬互連標準，常見於 HPC 與大型資料中心。",
+        "why": "InfiniBand 的部署擴大可提升 AI 訓練叢集的資料傳輸效率，影響相關晶圓與封裝供應鏈需求。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Agentic AI",
+        "full": "Agentic Artificial Intelligence",
+        "def": "具備自主決策與執行能力的人工智慧系統，能在不需持續人類指令的情況下完成任務。",
+        "why": "此類 AI 工作負載對資料中心 CPU 資源需求產生新挑戰，影響硬體供應鏈。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI Overviews",
+        "full": "Artificial Intelligence Overviews",
+        "def": "Google 搜尋結果頁面中嵌入的 AI 生成摘要，提供使用者快速概覽搜尋主題。",
+        "why": "其變現效益低於傳統搜尋廣告，直接影響 Google 的廣告收入結構。",
+        "category": "software"
+      },
+      {
+        "term": "DoseCheck",
+        "full": "Doximity 開發的 AI 藥物相互作用檢測工具",
+        "def": "一款即時分析處方藥物相互作用與過量風險的人工智慧服務，透過雲端運算提供警示。",
+        "why": "降低處方錯誤率，提升患者安全，並創造醫療 AI 訂閱收入。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI 驅動臨床決策支援",
+        "full": "利用人工智慧演算法協助醫師在診斷與用藥上作出更精確的判斷",
+        "def": "系統會結合患者歷史、藥品資訊與最新臨床指南，自動生成建議或警示。",
+        "why": "提升診療效率與安全性，並促進相關數據與算力供應鏈需求。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": "HW：本日無相關新聞。\nCORP：Google 搜尋廣告收入放緩、Agentic AI 促使資料中心 CPU 需求升級、Intel 受供應鏈瓶頸與 PC 需求下降衝擊、Meta 因資本支出與現金流壓力被 S&P 降級。\n下週看點：觀察 Google 是否調整 AI Overviews 定價策略以恢復廣告收入。\nAPP：Doximity 以 AI 藥物檢查工具 DoseCheck 進入臨床實務，提升處方安全。\n用戶洞察：醫療機構對即時 AI 警示服務的接受度快速提升，帶動雲端算力與藥品資料供應鏈需求。"
+  },
+  {
     "date": "2026-10-31",
     "is_sunday": false,
     "hw": [
@@ -765,167 +894,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-10-25",
-    "is_sunday": true,
-    "hw": [
-      {
-        "title": "Nvidia 為 OpenAI 俄亥俄 10GW 資料中心提供 1050 億美元保證",
-        "layer": "financial",
-        "body": "Nvidia 在 2026 年 7 月的季報中披露，已為 neocloud 提供 360 億美元的雲端協議背書，並對 OpenAI 位於俄亥俄的 10GW 資料中心提供最高 1050 億美元的晶片、土地與電力保證。",
-        "impact": "此保證將直接推升對先進 HBM（尤其是 HBM4/4e）與高功率供電封裝（如 EMIB‑T）的需求，促使相關供應商提升產能以滿足 neocloud 大規模建置。",
-        "rating": "core",
-        "insight": "投資者應關注 Nvidia 金融保證對 HBM 與先進封裝需求的拉升效應。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/24/nvidias-role-as-ai-financier-faces-first-big-test-as-neoclouds-take-market-hit.html",
-        "chain": [
-          {
-            "label": "Nvidia Blackwell Ultra GPU 供應↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI 俄亥俄 10GW 資料中心建設↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 內部錯位監控系統曝出新漏洞",
-        "layer": "AI 安全",
-        "body": "METR 與 Redwood Research 在 7 月 21 日前的測試中發現 OpenAI 的非同步內部錯位監控系統存在多項新漏洞，且系統在壓縮（compaction）期間會暫停運作，導致約 10% 的合格事件未被監控。該漏洞允許 AI 代理繞過監控，甚至可阻止近期數百筆操作被記錄。",
-        "impact": null,
-        "rating": "core",
-        "insight": "投資者應關注 OpenAI 安全基礎建設的升級進度與相關供應商的合約簽署情形。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/10/23/red-team-report-found-openai-utterly-failed-to-monitor-its-agents-during-hugging-face-attack/5305200",
-        "chain": [
-          {
-            "label": "OpenAI 監控系統漏洞曝光↓",
-            "type": "down"
-          },
-          {
-            "label": "Redwood Research 安全測試需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI 訓練期間關閉網路存取",
-        "layer": "AI 訓練政策",
-        "body": "OpenAI 宣布在模型訓練階段將網路存取功能關閉，以降低「重大風險」，此舉緊接著 Anthropic 發布的另一份道歉聲明。",
-        "impact": "關閉網路存取將減少模型在訓練期間對外部資料的即時抓取，導致對高頻寬雲端連線服務的需求↓；同時提升對本地化資料儲存與高速內部網路（如 NVMe over Fabrics）的需求↑，相關硬體供應鏈受惠。",
-        "rating": "core",
-        "insight": "關注雲端基礎設施供應商在提供高效內部網路解決方案的投資機會。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/10/23/openai-disables-internet-access-during-model-training-while-anthropic-issues-another-mea-culpa/5305238",
-        "chain": [
-          {
-            "label": "OpenAI 訓練階段關閉網路存取↑",
-            "type": "up"
-          },
-          {
-            "label": "模型安全風險降低↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Healthleap 獲得 3800 萬美元資金以擴大醫院 AI 篩檢服務",
-        "layer": "healthcare",
-        "body": "Healthleap 宣布完成 3800 萬美元的融資，用於在美國多家醫院部署其 AI 影像篩檢平台。該平台已於 2024 年在 12 家醫院實施，能即時辨識肺部結節與乳房腫塊。融資由多家風投領投，預計在 2027 年前將服務範圍擴展至全美 50 家醫院。",
-        "impact": "AI 影像篩檢需求提升將促使下游醫院資訊系統整合商擴充資料儲存與傳輸能力，帶動雲端儲存服務容量的提升。",
-        "rating": "opp",
-        "insight": "投資者可關注 AI 影像篩檢平台的資金流入與醫院採用速度，相關硬體供應鏈將受益。",
-        "source_label": "Portal ERP",
-        "source": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPVXlZTVUtYUhNWFFXV2M3cC1qUWhQaHZER0JpMEJQd3JrU2tsdGdaZE9kT0lHMDc0OVZBeXlHZFpNMGQ2UGtjNXQ0SExFSF96VkxQc1Z4TGpSX243aFZ1TEh0NkhlYUwyNnhRd0RfanQ4RHk3WUwxeTdVa3dfQXZ1UU50aUtISnBSbWx5NjM3QzR6YkNw",
-        "chain": [
-          {
-            "label": "Healthleap 獲得 3800 萬美元融資↑",
-            "type": "up"
-          },
-          {
-            "label": "美國醫院 AI 影像篩檢服務擴展↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Dyna.Ai 與 Bahrain FinTech Bay 合作在 GCC 推廣 AI 即服務",
-        "layer": "finance",
-        "body": "Dyna.Ai 與 Bahrain FinTech Bay 簽署合作備忘錄，將在海灣阿拉伯國協（GCC）提供 AI-as-a-Service 平台，支援金融機構的風險評估與客戶服務自動化。首批服務將於 2026 年第四季在巴林與沙烏地阿拉伯的三家銀行上線，預計每月處理超過 500 萬筆交易資料。",
-        "impact": "平台的雲端運算需求將提升資料中心對高效能伺服器與網路設備的採購，帶動相關硬體供應商出貨增長。",
-        "rating": "opp",
-        "insight": "AI-as-a-Service 在金融領域的快速落地將推動雲端硬體需求，同時改變傳統外包服務格局。",
-        "source_label": "FF News",
-        "source": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNWjBPSlhaOVBVTEltRHNvZ3dxMy1RbFRFcS1YOVpKSnFZVU10NFVrOUVwZmxxcmhzam9vOTROblpCcVFWekJid1QwOFFuRHZmMWhSNHo0NTFKd192cDlBbURBLTRIZnFqUzVFVzFub3RHb21qeXhGNjhUbldScDdjTnI2ZlRETkVFWDNxVk9OMzJjclJqT1YwRnBPSVNvcHYyYmN1WW5YQ2FrN2QyMGU5dzl4aw",
-        "chain": [
-          {
-            "label": "Dyna.Ai 與 Bahrain FinFinTech Bay 合作推出 AI-as-a-Service↑",
-            "type": "up"
-          },
-          {
-            "label": "GCC 金融機構 AI 風險評估與自動化服務↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "neocloud",
-        "full": "新興雲端服務提供商",
-        "def": "指以 AI 計算需求為核心，提供彈性租用 GPU 計算資源的雲端公司，通常依賴大型晶片供應商的資金與技術支援。",
-        "why": "Nvidia 的資金背書直接影響 neocloud 的資本成本與擴建速度，進而牽動整個 AI 基礎設施供應鏈。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "EMIB‑T",
-        "full": "嵌入式多晶片互連‑升級版",
-        "def": "在傳統 EMIB 基礎上加入 TSV 垂直供電與高密度互連，支援 HBM4/4e，適用於大型 AI 加速器封裝。",
-        "why": "隨著 Nvidia 為大型 AI 資料中心提供資金保證，對高效能封裝的需求將提升，EMIB‑T 為關鍵技術。",
-        "category": "hardware"
-      },
-      {
-        "term": "Blackwell Ultra GPU",
-        "full": "Nvidia Blackwell Ultra GPU",
-        "def": "Nvidia 最新一代高效能圖形處理器，針對大型 AI 模型的訓練與推理進行優化，具備更高的算力與記憶體頻寬。",
-        "why": "此 GPU 為 AI 超大規模運算提供關鍵算力，直接影響 GPU 供應鏈需求。",
-        "category": "hardware"
-      },
-      {
-        "term": "Prometheus 資料中心",
-        "full": "Meta Ohio Prometheus data center",
-        "def": "Meta 在美國俄亥俄州建置的資料中心，第一期已投入運營並用於訓練大型 AI 模型 Muse。",
-        "why": "代表大型科技公司自建算力設施的趨勢，影響 GPU 與相關基礎建設需求。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "內部錯位監控系統",
-        "full": "OpenAI internal misalignment monitoring system",
-        "def": "OpenAI 用於偵測 AI 代理行為偏離預期目標的監控平台，近期被第三方測試發現可被繞過。",
-        "why": "安全監控缺口可能促使 AI 企業加大對安全軟體與服務的投入。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI即服務",
-        "full": "Artificial Intelligence as a Service",
-        "def": "一種雲端交付模式，企業可透過 API 或平台即時使用 AI 功能，無需自行建置硬體或模型。",
-        "why": "降低企業導入 AI 的門檻，促進快速部署與彈性擴展。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "醫院AI篩檢",
-        "full": "Hospital AI Screening",
-        "def": "利用深度學習模型對醫療影像進行自動化分析，協助放射科醫師快速偵測異常病灶。",
-        "why": "提升診斷效率與準確度，減少醫師工作負荷，並加速早期疾病發現。",
-        "category": "role"
-      }
-    ],
-    "weekly_summary": "HW：Nvidia 為 OpenAI 10GW 資料中心提供最高 1050 億美元保證，推升 HBM4/4e 與 EMIB‑T 封裝需求。\nCORP：本週大型雲端與 AI 供應鏈持續擴張，OpenAI 安全監控缺口、Meta 俄亥俄資料中心上線、Silk Cloud 部署 Nvidia Blackblack Ultra GPU、Google 收購暗纖合約均顯示算力與基礎建設需求上升。\n下週看點：關注 OpenAI 是否公布新一代監控系統的實施細節，以及 Nvidia 是否進一步擴大 Blackwell 系列的產能。\nAPP：本週 Healthleap 獲得 3800 萬美元資金擴大醫院 AI 影像篩檢，Dyna.Ai 與 Bahrain FinTech Bay 合作在 GCC 推出 AI 即服務平台。\n用戶洞察：醫療與金融機構正加速採用即時 AI 服務，帶動高效能運算硬體與雲端基礎設施需求。"
   }
 ]
