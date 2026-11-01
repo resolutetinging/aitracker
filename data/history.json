@@ -1,5 +1,140 @@
 [
   {
+    "date": "2026-11-02",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Nvidia 以 69 億美元收購 Mellanox 後，2024 Q2 網路營收達 175 億美元，超越 Cisco",
+        "layer": "networking",
+        "body": "Nvidia 於 2019 年以 69 億美元收購 Mellanox，將其 ConnectX NIC 與 InfiniBand 交換機納入自家產品組合。2024 年第二季，Nvidia 的資料中心以太網營收突破 175 億美元，略高於同季 Cisco 全線產品的 173 億美元。",
+        "impact": "Nvidia 完整的系統解決方案可能減少下游資料中心建設商與雲端服務供應商對其他網路供應商的採購，對競爭廠商如 Cisco、Broadcom 形成需求壓力（↓）。",
+        "rating": "opp",
+        "insight": "Nvidia 透過收購 Mellanox 已將網路營收推至領先地位，將持續刺激上游晶圓與 HBM 供應鏈需求。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/networks/2026/10/31/backbone-of-a-beast-charting-nvidias-rise-to-networking-titan/5306499",
+        "chain": [
+          {
+            "label": "Nvidia Ethernet 營收↑",
+            "type": "up"
+          },
+          {
+            "label": "Cisco Ethernet 營收↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 融資目標下調至最高 200 億美元",
+        "layer": "core",
+        "body": "OpenAI 目前正進行新一輪融資，目標金額上限調整為 200 億美元，具體金額仍在協商中。",
+        "impact": "",
+        "rating": "core",
+        "insight": "巨額資金將加速 OpenAI 相關硬體佈局，利好上游半導體材料供應商。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/10/31/openai-fundraising-20-billion-valuation.html",
+        "chain": [
+          {
+            "label": "OpenAI 融資上限↓",
+            "type": "down"
+          },
+          {
+            "label": "OpenAI 現金流壓力↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Amazon 內部備忘錄警示 AI 使用對工程師情緒的影響",
+        "layer": "opp",
+        "body": "Amazon 發布備忘錄指出，部分軟體工程師對公司推動 AI 工具感到前景黯淡，認為未來職位安全性受威脅。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "內部人才焦慮可能促使 Amazon 增加外部合作，為供應鏈外包商帶來機會。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/10/31/amazon-sends-chills-through-its-workforce-with-mixed-message-memo-about-ai-use-corey-quinn/5306804",
+        "chain": [
+          {
+            "label": "Amazon 工程師情緒↓",
+            "type": "down"
+          },
+          {
+            "label": "Amazon AI 工具採用↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "JPMorgan 與 Walmart 在 AI 個人代理上的策略分歧",
+        "layer": "finance",
+        "body": "JPMorgan Chase 首席執行官 Jamie Dimon 表示，銀行已阻止外部 AI 個人代理在零售客戶名義下操作，理由是安全風險。 同時，Walmart 宣布將開放客戶偏好的 AI 代理進入其線上平台，以協助比價與下單。",
+        "impact": "JPMorgan 阻止外部 AI 代理降低了金融業對 AI 平台與雲端運算服務的需求（↓），而 Walmart 開放 AI 代理提升了零售端對 AI 推薦與交易 API 及資料標註服務的需求（↑）。",
+        "rating": "core",
+        "insight": "投資者應關注 AI 代理平台在零售與金融領域的需求分化。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/11/01/jpmorgan-amazon-ai-agents-meta-muse.html",
+        "chain": [
+          {
+            "label": "JPMorgan AI 代理禁用↑",
+            "type": "up"
+          },
+          {
+            "label": "Walmart AI 代理開放↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Mellanox",
+        "full": "Mellanox Technologies",
+        "def": "一家專注於高效能網路介面卡（NIC）與 InfiniBand 交換機的半導體公司，於 2019 年被 Nvidia 以 69 億美元收購。",
+        "why": "其技術是 Nvidia 進軍資料中心網路市場的關鍵組件，影響上游晶圓與記憶體供應鏈。",
+        "category": "hardware"
+      },
+      {
+        "term": "InfiniBand",
+        "full": "InfiniBand 高效能互連技術",
+        "def": "一種用於高效能運算與超級電腦叢集的高速互連標準，Mellanox 的主要產品之一。",
+        "why": "隨著 Nvidia 整合 InfiniBand 進入其資料中心解決方案，將提升相關晶片與封裝需求。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Agentic AI",
+        "full": "具自主行動能力的人工智慧代理",
+        "def": "Agentic AI 能自行在數位環境中執行任務，如搜尋、下單或與使用者互動，並可根據即時資訊調整行為。",
+        "why": "此類 AI 產生的突發工作負載改變了資料中心的資源配置需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "persistent SSH backdoor",
+        "full": "持久化 SSH 後門",
+        "def": "在軟體更新中植入的遠端存取程式碼，允許攻擊者持續以 SSH 連線控制受感染系統，支援 Windows、macOS 與 Linux。",
+        "why": "此類後門會影響開發工具供應鏈的安全性與信任度。",
+        "category": "hardware"
+      },
+      {
+        "term": "AI satellite",
+        "full": "人工智慧衛星原型機",
+        "def": "Google 於軌道上部署的實驗性衛星，搭載 TPU 進行雲端運算與生成詩歌等任務。",
+        "why": "展示了太空資料中心的概念，可能推動未來高效能運算硬體的需求。",
+        "category": "hardware"
+      },
+      {
+        "term": "AI 個人代理",
+        "full": "Artificial Intelligence Personal Agent",
+        "def": "AI 個人代理是一種具備自然語言理解與任務執行能力的軟體代理，能代表使用者在網路上搜尋、比較價格、下單或管理帳戶等。 這類代理通常整合大型語言模型與特定服務 API，提供即時且自動化的互動體驗。",
+        "why": "隨著消費者習慣使用語音與聊天介面，AI 個人代理成為提升客戶觸達與交易效率的關鍵工具，影響雲端、資料標註與模型供應鏈的需求結構。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-01",
     "is_sunday": true,
     "hw": [
@@ -783,114 +918,6 @@
         "def": "結合 SRAM、DRAM 與 NAND 儲存特性的氧化物半導體記憶體，宣稱具 SRAM 的速度、DRAM 的密度與 NAND 的可擴展性。",
         "why": "若成功商業化，可改變記憶體供應鏈格局，減少對傳統 DRAM 供應商的依賴。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-26",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "SK Hynix 停止審查 Solidigm 美國 IPO 計畫",
-        "layer": "strategic supplier decisions",
-        "body": "SK Hynix 於本週五宣布暫停對子公司 Solidigm 可能在美國上市的審查程序，該決策使公司股價在收盤時上漲 4.4%。此舉回應投資者對於 Solidigm IPO 可能帶來的治理風險的擔憂，並將 Solidigm 的價值保留在母公司內部。",
-        "impact": null,
-        "rating": "core",
-        "insight": "投資者可關注 SK Hynix 透過保留 Solidigm 內部價值降低治理風險，提升 AI 記憶體供應鏈穩定性。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/23/sk-hynix-solidigm-ipo-.html",
-        "chain": [
-          {
-            "label": "SK Hynix Solidigm IPO 暫停↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix 股價上漲↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "SpaceX 與 Tesla 合併討論升溫",
-        "layer": "corp",
-        "body": "Elon Musk 在 Tesla 股東會上表示已「說完所有該說的」關於與 SpaceX 合併的看法，並在第三季財報電話會議中肯定兩家公司已成立特別委員會以評估交易。Tesla 投資者關係主管亦透露，管理層不會在本次財報問答環節中回應合併議題。此舉使合併話題成為華爾街近期的焦點。",
-        "impact": "Tesla 供應鏈的電池與車用晶片需求可能因合併後的資金與技術整合而↑，同時 SpaceX 的火箭與衛星零件供應商亦可能因需求擴大而↑。合併若成行，兩家公司共享的 AI 與自動化平台將推動相關半導體與軟體供應商的產能提升，進一步影響下游車輛與太空服務市場的競爭格局。",
-        "rating": "opp",
-        "insight": "合併討論顯示兩大巨頭資源整合意圖，供應鏈上游廠商將受益於需求同步上升。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/23/spacex-tesla-merger-chatter-takes-center-stage-after-earnings.html",
-        "chain": [
-          {
-            "label": "Tesla 與 SpaceX 合併討論↑",
-            "type": "up"
-          },
-          {
-            "label": "Tesla 股價波動↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "CJ Logistics 獲 KT Cloud AI 資料中心建設合約",
-        "layer": "logistics",
-        "body": "CJ Logistics 簽署與 KT Cloud 的合約，將於 2026 年底前於韓國建置一座專用 AI 資料中心，預計投入伺服器與高速網路設備，以支援其物流 AI 應用。",
-        "impact": "上游供應商如伺服器製造商與 GPU 供應商的出貨量將上升 (↑)，因資料中心需求帶動硬體採購；中游建設公司與網路設備廠商亦將受惠於建置工程量增加 (↑)；下游 CJ Logistics 的物流 AI 系統可提升路徑規劃與倉儲自動化效率，預期降低配送成本並提升服務速度 (↑)。",
-        "rating": "core",
-        "insight": "投資 AI 資料中心將提升 CJ Logistics 在智慧物流領域的競爭力。",
-        "source_label": "조선일보",
-        "source": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPalFxNHNuclZtamhZemF4TzREVTJTZnVLeFhkcHZHNmh3N1VWa0x3UkFDd00xNEhCbGh4YWZjMGFsTUtNZjA1U2RmeDVHZHV0QXpCLUUteERFcHNCTExYZXFDTUJpanBKVmtyZWJVa1RnTXFsNkxzSjBFT1lLTlluZzNZM0xjSjhl?oc=5",
-        "chain": [
-          {
-            "label": "CJ Logistics 獲 KT Cloud AI 資料中心建設合約↑",
-            "type": "up"
-          },
-          {
-            "label": "CJ Logistics 物流 AI 能力提升↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Solidigm",
-        "full": "Solidigm Inc.",
-        "def": "Solidigm 為 SK Hynix 子公司，專注於高帶寬記憶體（HBM）與其他先進記憶體產品的研發與製造，供應 AI 伺服器與高效能運算市場。",
-        "why": "HBM 是 AI 加速器的關鍵元件，其供應變動直接影響 AI 基礎設施的建置與成本。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Blackwell Ultra GPU",
-        "full": "Nvidia Blackwell Ultra GPU",
-        "def": "Nvidia 推出的新一代高效能圖形處理器，專為 AI 訓練與推論設計，具備更高的運算密度與記憶體頻寬。",
-        "why": "此 GPU 的部署代表 AI 計算需求升級，將帶動上游記憶體與 PCB 供應鏈的產能擴張。",
-        "category": "hardware"
-      },
-      {
-        "term": "Prometheus 資料中心",
-        "full": "Meta Ohio Prometheus 資料中心",
-        "def": "Meta 在美國俄亥俄州建置的資料中心，旨在提供大規模 AI 訓練與雲端運算服務，已於 2026 年底完成第一階段建設。",
-        "why": "資料中心的啟用提升了伺服器與高效能儲存需求，對晶片與記憶體供應鏈產生直接拉動效應。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "暗光纖",
-        "full": "暗光纖租賃合約",
-        "def": "指未被即時使用的光纖資產，租賃給需要額外容量的服務供應商，以提升網路彈性與未來擴充能力。",
-        "why": "暗光纖的取得能快速提升區域寬頻供應，對光纖製造與佈線服務產業形成需求增長。",
-        "category": "hardware"
-      },
-      {
-        "term": "AI資料中心",
-        "full": "Artificial Intelligence Data Center",
-        "def": "專為人工智慧工作負載設計的資料中心，配備大量 GPU、TPU 或其他加速器，以及高速互聯網路，以支援模型訓練與推論。此類中心通常具備高效散熱與能源管理系統，以滿足 AI 計算的高功耗需求。",
-        "why": "AI 資料中心是支撐大規模機器學習與即時推論的基礎設施，對提升企業 AI 應用的效能與規模至關重要。",
-        "category": "hardware"
       }
     ],
     "weekly_summary": null

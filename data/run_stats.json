@@ -2,6 +2,103 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 51,
+        "CSP/CapEx": 47,
+        "App/AI": 19,
+        "gnews-chip": 18,
+        "gnews-dc": 22,
+        "gnews-app": 12
+      },
+      "digest_filtered": 2,
+      "after_dedup": 150,
+      "buckets": {
+        "hw": 29,
+        "corp": 114,
+        "app": 29
+      },
+      "news_char_budget": {
+        "hw": 3500,
+        "corp": 8000,
+        "app": 3500
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 3,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "log",
+        "checked": 4,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 2,
+          "suspect_cards": 0
+        },
+        "enforced": 0,
+        "items": [
+          {
+            "sec": "hw",
+            "title": "Nvidia 以 69 億美元收購 Mellanox 後，2024 Q2 網路營收達 175 億美元，超越 Cisco",
+            "source": "https://www.theregister.com/networks/2026/10/31/backbone-of-a-beast-charting-nvidias-rise-to-networking-titan/5306499",
+            "rating": "opp",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [
+              "2024年"
+            ],
+            "tense_flag": false
+          }
+        ]
+      },
+      "date": "2026-11-02",
+      "generated_at": "2026-11-02T00:04:04.404921+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 64,
         "CSP/CapEx": 46,
         "App/AI": 21,
@@ -1237,98 +1334,6 @@
       },
       "date": "2026-10-20",
       "generated_at": "2026-10-20T00:04:12.856618+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 38,
-        "CSP/CapEx": 43,
-        "App/AI": 20,
-        "gnews-chip": 19,
-        "gnews-dc": 22,
-        "gnews-app": 14
-      },
-      "digest_filtered": 2,
-      "after_dedup": 140,
-      "buckets": {
-        "hw": 29,
-        "corp": 107,
-        "app": 29
-      },
-      "news_char_budget": {
-        "hw": 3500,
-        "corp": 8000,
-        "app": 3500
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 3
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 0,
-          "opp": 0,
-          "noise": 2
-        },
-        "app": {
-          "core": 0,
-          "opp": 3,
-          "noise": 0
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 4,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 3,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [
-        {
-          "title": "Meta 發布可在 Apple Silicon 本機執行的開放權重模型 Muse Spark Open",
-          "section": "corp",
-          "action": "removed",
-          "matched_title": "Apple 與 Meta 合作將 Muse AI 模型本地化於 Mac Studio",
-          "reason": "兩篇皆報導 Meta 與 Apple 合作將 Muse 模型本地化於搭載 Apple Silicon 的 Mac，屬同一宣布"
-        }
-      ],
-      "fact_audit": {
-        "mode": "log",
-        "checked": 0,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 3,
-        "low_coverage": {
-          "checked": 0,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": []
-      },
-      "date": "2026-10-19",
-      "generated_at": "2026-10-19T00:04:11.512287+08:00"
     }
   ]
 }
