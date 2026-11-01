@@ -1,14 +1,28 @@
 {
-  "checked_at": "2026-10-26",
-  "items": [],
-  "no_change_summary": "本週查證後判斷現有資料仍準確。",
+  "checked_at": "2026-11-02",
+  "items": [
+    {
+      "category": "ecosystem",
+      "action": "add",
+      "target_name": "",
+      "name": "Oracle",
+      "tier": "midstream",
+      "relation": "partnership",
+      "amount": "",
+      "date": "2023-10",
+      "item": "Oracle 擴大與 NVIDIA 的雲端 AI 晶片供應合作，加入其他供應商選項",
+      "reason": "新聞指出 Oracle 正在擴大與 NVIDIA 的雲端 AI 晶片供應合作，屬於雙邊合作關係，屬於中游（雲端）夥伴，需新增於生態系夥伴清單",
+      "source": "https://www.msn.com/en-us/news/other/oracle-expands-chip-supply-deal-with-nvidia-adds-google-and-cerebras-offerings/ar-AA2gbNQS"
+    }
+  ],
+  "no_change_summary": "",
   "no_change_detail_by_category": [
-    "本週查證後，現有技術金字塔資料仍準確，無需更新。",
-    "本週查證後，未發現任何新聞可證實現有案例資料需更新，現有資料仍準確。",
+    "本週查證後，未發現任何新聞可證實技術金字塔欄位需更新，現有資料仍準確。",
+    "本週查證後，未發現任何新聞能證實現有案例資料有變動，資料仍保持準確。",
     "本週查證後，未發現任何新聞可證實現有案例資料需更新，現有資訊仍準確。",
     "本週查證後，未發現任何新聞可證實現有 roadmap 資料需更新，資料仍保持準確。",
-    "本週查證後，未發現任何新聞能佐證現有聯盟／夥伴關係資料需更新，資料仍準確。",
-    "本週查證後，未發現任何新聞可證實現有「生態系權力布局／合規治理」資料需更新，資料仍然準確。"
+    "本週查證後，未發現任何新聞能證實現有多方聯盟/產業組織資料有變動，現有資料仍準確。",
+    "本週查證後，未發現任何新聞可證實現有「生態系權力布局／合規治理」資料需更新，資料仍保持準確。"
   ],
   "category_failures": []
 }

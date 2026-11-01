@@ -1,5 +1,5 @@
 {
-  "last_checked": "2026-10-26",
+  "last_checked": "2026-11-02",
   "pyramid": [
     {
       "label": "應用層（Industries）",
@@ -687,6 +687,30 @@
       "category": "產品發布",
       "summary": "Nvidia 發布一系列開放模型，允許企業在自有資料中心部署 AI 代理人，同時支援個人電腦上運行私密 AI 代理人，顯示其推動企業自建模型的策略。",
       "src": "https://techcrunch.com/2026/10/19/nvidia-launches-new-open-models-to-run-agents-in-the-enterprise-and-on-pcs/",
+      "src_note": ""
+    },
+    {
+      "date": "2026-11-02",
+      "title": "Nvidia 以 69 億美元收購 Mellanox 後，2024 Q2 網路營收達 175 億美元，超越 Cisco",
+      "category": "營收報告",
+      "summary": "Nvidia 於 2019 年收購 Mellanox，將其網路產品整合後，2024 年第二季資料中心以太網營收突破 175 億美元，略高於同季 Cisco 的 173 億美元。",
+      "src": "https://www.theregister.com/networks/2026/10/31/backbone-of-a-beast-charting-nvidias-rise-to-networking-titan/5306499",
+      "src_note": ""
+    },
+    {
+      "date": "2026-10-29",
+      "title": "Oracle 與 Google 合作於 OCI 提供 TPU 服務",
+      "category": "合作聯盟",
+      "summary": "Oracle 宣布自 2027 年起在其雲平台 OCI 上提供 Google 的 TPU 服務，以減少對 Nvidia 晶片的依賴，擴大 AI 加速器產品線。",
+      "src": "https://www.theregister.com/ai-and-ml/2026/10/27/big-red-gets-cozy-with-google-to-offer-tpus-to-ai-customers/5305846",
+      "src_note": ""
+    },
+    {
+      "date": "2026-10-27",
+      "title": "Meta 計畫募集 95 億美元資金支援 AI 基礎建設",
+      "category": "財務募集",
+      "summary": "Meta 將透過公開增發與 ATM 方式合計募集 950 億美元，用於 AI 基礎建設與超智慧計畫，Nvidia、AMD 與 Broadcom 表示有意認購最高 50 億美元的股份。",
+      "src": "https://www.cnbc.com/2026/10/26/meta-stock-offering-ai.html",
       "src_note": ""
     }
   ]
