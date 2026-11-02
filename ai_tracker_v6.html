@@ -1978,7 +1978,7 @@ function twSupplyChainMapSvg(){
     const playersLine = (c.players||[]).length ? `\n玩家：${c.players.join('、')}` : '';
     const hoverText = `${c.name}\n主角色：${c.role||''}${playersLine}`;
     const belowCls = c.labelPos === 'below' ? ' labelBelow' : '';
-    return `<div class="tw-map-pin${belowCls}" style="left:${xPct.toFixed(2)}%;top:${yPct.toFixed(2)}%;" title="${_arcEsc(hoverText)}" onclick="twToggleMapPin(this)">
+    return `<div class="tw-map-pin${belowCls}" style="left:${xPct.toFixed(2)}%;top:${yPct.toFixed(2)}%;" aria-label="${_arcEsc(hoverText)}" onclick="twToggleMapPin(this)">
       <div class="tw-map-pin-dot"></div>
       <div class="tw-map-pin-label">${_arcEsc(c.name)}</div>
       <div class="tw-map-pin-tooltip">${_arcEsc(hoverText).replace(/\n/g,'<br>')}</div>
