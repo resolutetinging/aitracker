@@ -191,7 +191,7 @@
     {
       "key": "supply_chain",
       "label": "供應鏈",
-      "icon": "🚚",
+      "icon": "⛓️",
       "last_checked": "2026-11-02",
       "cases_live": [
         {
@@ -359,7 +359,7 @@
     {
       "key": "logistics",
       "label": "物流",
-      "icon": "📦",
+      "icon": "🚚",
       "last_checked": "2026-11-02",
       "cases_live": [
         {
