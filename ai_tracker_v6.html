@@ -1209,8 +1209,10 @@ function nvEcoSection(eco, bodyOnly){
     : sd==='ll' ? [px-7-lw,py-lh/2,px-7,py+lh/2]
     : sd==='lt' ? [px-lw/2,py-6-lh,px+lw/2,py-6] : [px-lw/2,py+6,px+lw/2,py+6+lh];
   const runPlan = order => {
-    const placed = baseBoxes.slice(), lines = [], nodeLbls = [], res = new Map();
+    const placed = baseBoxes.slice(), lines = [], nodeLbls = [], res = new Map(), angs = [];
     let score = 0; const failed = [];
+    // 11-02：連線之間至少隔 minGap 度、節點圓點不壓別人的連線（原本只檢查標籤，挪角度後多個節點會擠到同一角度、連線重疊）
+    const minGap = Math.min(4, 100 / Math.max(1, ...Object.keys(NV_ECO_TIERS).map(tk=>eco.nodes.filter(n=>n.tier===tk).length)));
     order.forEach(it=>{
       const {nd, T, deg, pref, sides, variants} = it;
       let best = null, vUsed = variants[0];
@@ -1218,6 +1220,7 @@ function nvEcoSection(eco, bodyOnly){
         const v = variants[vi], lw = lblW(v.t)*v.f, lh = (fs*1.25+1)*v.f;
         for(const dj of baseDjList){
           if(Math.abs(deg+dj-T.center) > 56) continue; // 節點必須留在自己的扇區內
+          if(angs.some(a=>Math.abs(a-(deg+dj)) < minGap)) continue;
           for(const rr of ringsAll){
             const [bx,by] = pt(deg+dj, rr), px = bx*W/100, py = by*H/100;
             for(const sd of sides){
@@ -1225,7 +1228,7 @@ function nvEcoSection(eco, bodyOnly){
               if(lr[0]<2 || lr[2]>W-2 || lr[1]<2 || lr[3]>H-2) continue;
               if(!rectInCircle(lr)) continue;
               if(placed.some(q=>hit(q,lr)||hit(q,dr))) continue;
-              if(lines.some(l=>segHitRect(l,lr))) continue;
+              if(lines.some(l=>segHitRect(l,lr)||segHitRect(l,dr))) continue;
               if(nodeLbls.some(q=>segHitRect([W/2,H/2,px,py],q))) continue;
               best = {rr,sd,lr,dr,dj}; vUsed = v; score += vi; break search;
             }
@@ -1237,7 +1240,7 @@ function nvEcoSection(eco, bodyOnly){
         const lw = lblW(v.t)*v.f, lh = (fs*1.25+1)*v.f, rr = rings[0], [bx,by] = pt(deg, rr);
         best = {rr, dj:0, sd:pref, lr:labelRectOf(bx*W/100,by*H/100,pref,lw,lh), dr:[bx*W/100-10,by*H/100-10,bx*W/100+10,by*H/100+10]};
       }
-      placed.push(best.lr, best.dr); nodeLbls.push(best.lr);
+      placed.push(best.lr, best.dr); nodeLbls.push(best.lr); angs.push(deg+best.dj);
       const [x,y] = pt(deg+best.dj, best.rr);
       lines.push([W/2, H/2, x*W/100, y*H/100]);
       res.set(nd, {deg, best, vUsed, ctry: it.ctry, imps: it.imps});
