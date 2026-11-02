@@ -33,6 +33,12 @@ if os.environ.get('CLEAN_BOILERPLATE', '').strip() == '0':
 STRICT_SOURCE_PROMPT = True
 if os.environ.get('STRICT_SOURCE_PROMPT', '').strip() == '0':
     STRICT_SOURCE_PROMPT = False
+# C 補深：LLM 選中、但只用 RSS 短摘要寫成的卡片，補抓原文全文後只重寫那張卡片；
+#    補抓或重寫失敗則標 thin_source=true（前端與 Email 顯示「僅摘要」）。
+#    回復：False 或環境變數 DEEPEN_THIN_CARDS=0（關閉時行為與改動前相同）。詳見 ../ROLLBACK_20261102.md
+DEEPEN_THIN_CARDS = True
+if os.environ.get('DEEPEN_THIN_CARDS', '').strip() == '0':
+    DEEPEN_THIN_CARDS = False
 # B 生成後比對：卡片數字/日期/型號是否出現在所掛 source 的素材原文。
 #    off＝不跑；log＝只寫 run_stats.fact_audit，不改卡片與評級（預設）；
 #    enforce＝刪除含疑似補寫的句子，刪完不達標 core→opp。環境變數 FACT_CHECK_MODE 覆寫。
@@ -2037,6 +2043,120 @@ def _fa_index_materials(news_by_cat):
                 idx[key] = {'text': text, 'title': title, 'full': full}
     return idx
 
+def deepen_thin_cards(data, news_by_cat):
+    """C 補深：對「core/opp、有 http(s) 來源、但素材只有 RSS 短摘要」的卡片補抓全文並只重寫該卡。
+    最多 3 張、core 優先；失敗一律保留原卡並標 thin_source=True。任何錯誤都不中斷主流程。"""
+    stats = {'candidates': 0, 'rewritten': 0, 'fetch_failed': 0, 'llm_failed': 0}
+    try:
+        RUN_STATS['deepen'] = stats
+    except Exception:
+        pass
+    try:
+        idx = _fa_index_materials(news_by_cat)
+        cands = []
+        for sec in ('hw', 'corp', 'app'):
+            for item in data.get(sec, []):
+                if item.get('rating') not in ('core', 'opp') or _is_placeholder(item):
+                    continue
+                url = (item.get('source') or '').strip()
+                if not re.match(r'https?://', url, re.I):
+                    continue
+                mat = idx.get(_norm_url(url))
+                if mat is not None and mat.get('full'):
+                    continue
+                cands.append((0 if item.get('rating') == 'core' else 1, sec, item, url))
+        cands.sort(key=lambda c: c[0])  # 穩定排序：core 優先，其餘維持原順序
+        cands = cands[:3]
+        stats['candidates'] = len(cands)
+        if not cands:
+            print("  → 補深：無需補深的薄卡")
+            return
+        print(f"  → 補深：{len(cands)} 張卡片只有短摘要，補抓全文重寫…")
+        for _, sec, item, url in cands:
+            try:
+                text = fetch_article_text(url, max_chars=2500)
+            except Exception as e:
+                print(f"  ⚠ 補深抓取例外（保留原卡）：{e}")
+                text = None
+            if not text or len(text) < 300:
+                stats['fetch_failed'] += 1
+                item['thin_source'] = True
+                print(f"  → 補深：全文抓取失敗，標記僅摘要：{item.get('title','')[:40]}")
+                continue
+            try:
+                time.sleep(65)  # 上一次 Groq 呼叫剛結束，避免 TPM 疊加；之後每次之間也等
+                new = call_groq(_make_deepen_prompt(item, url, text))
+                body = (new.get('body') or '').strip() if isinstance(new, dict) else ''
+                impact = new.get('impact', '') if isinstance(new, dict) else ''
+                insight = (new.get('insight') or '').strip() if isinstance(new, dict) else ''
+                chain = new.get('chain') if isinstance(new, dict) else None
+                if (not isinstance(impact, str) or not insight or len(body) < 40
+                        or not isinstance(chain, list) or len(chain) < 2
+                        or not all(isinstance(n, dict) and isinstance(n.get('label'), str)
+                                   and n['label'].strip()
+                                   and n.get('type') in ('up', 'down', 'warn', 'neutral')
+                                   for n in chain)):
+                    raise ValueError('重寫結果欄位缺漏或 body 過短')
+                item['body'] = body
+                if impact.strip():  # 重寫沒給 impact 時保留原內容，不洗成空字串
+                    item['impact'] = impact.strip()
+                item['insight'] = insight
+                item['chain'] = chain
+                item.pop('thin_source', None)
+                _swap_to_full_material(news_by_cat, sec, url, text)
+                stats['rewritten'] += 1
+                print(f"  ✓ 補深重寫：{item.get('title','')[:40]}")
+            except Exception as e:
+                stats['llm_failed'] += 1
+                item['thin_source'] = True
+                print(f"  ⚠ 補深重寫失敗，保留原卡並標記僅摘要：{e}")
+    except Exception as e:
+        print(f"  ⚠ 補深流程失敗（不影響資料生成）：{e}")
+
+def _make_deepen_prompt(item, url, text):
+    return (
+        "You are an AI supply chain analyst. Rewrite ONE news card using the full article text below. "
+        "Output pure JSON only (start directly with {), no markdown.\n"
+        f"Card title (do not change): {item.get('title','')}\n"
+        f"Rating: {item.get('rating','')}; source: {item.get('source_label','')} ({url})\n"
+        f"FULL ARTICLE TEXT:\n{text}\n\n"
+        'Output: {"body":"...","impact":"...","insight":"...","chain":[{"label":"...","type":"up"}]}\n'
+        "Rules:\n"
+        "- body: 1 to 3 sentences in Traditional Chinese (zh-TW), at least 60 characters if the article supports it; "
+        "if the article cannot support that, stay short and do NOT pad with generic reasoning.\n"
+        "- SOURCE FIDELITY (numbers, dates, specs): every number, date, spec, model number, process node, "
+        "launch/availability timing, and price in body/impact/insight MUST appear in the article text above; "
+        "if it does not, leave it out.\n"
+        "- SOURCE FIDELITY (tense): if the article reports something as upcoming, planned, reported, or unconfirmed "
+        "(will, plans to, is expected to, reportedly, according to, sources say, may, could, rumored), "
+        "write it in zh-TW with 預計／據報導／傳出, never as already happened or officially announced.\n"
+        "- impact: 2-3 sentences in zh-TW tracing supply chain ripple effects (closest tier, next tier, end market), "
+        "state direction (↑/↓) and mechanism, every claim traceable to the article, do NOT rephrase the body, "
+        "never mention stock prices; use an empty string if the article does not support any supply chain analysis.\n"
+        "- insight: exactly 1 sentence investor takeaway in zh-TW.\n"
+        "- chain: 2 to 4 nodes; each label must contain a specific company/product plus a direction word or arrow "
+        "(e.g. TSMC CoWoS 產能↑); type is up, down or warn; never use generic labels like 受益/受損/受壓.\n"
+        "- CONSISTENCY: the direction of insight and chain MUST agree with what body states "
+        "(if body says funding is cut or reduced, insight and chain must not read as a funding increase or a bullish outcome).\n"
+        "- All text fields in Traditional Chinese only (company and product names may stay in original language); "
+        "use Taiwan terms: 晶片, 記憶體, 軟體, 硬體, 影片, 程式, 智慧, 網路, 品質, 資訊.\n"
+    )
+
+def _swap_to_full_material(news_by_cat, sec, url, text):
+    """把 news_by_cat 中該網址的素材字串換成全文格式；找不到原條目就 append 到該分類。"""
+    key = _norm_url(url)
+    for cat in ('hw', 'corp', 'app'):
+        entries = (news_by_cat.get(cat) or '').split('\n\n')
+        for i, entry in enumerate(entries):
+            m = re.search(r'SOURCE_URL:(\S+)', entry)
+            if m and _norm_url(m.group(1)) == key:
+                head = entry.split(' | SOURCE_URL:', 1)[0].split(' — ', 1)[0]
+                entries[i] = f"{head} | SOURCE_URL:{m.group(1)} — {text}"
+                news_by_cat[cat] = '\n\n'.join(entries)
+                return
+    cur = news_by_cat.get(sec) or ''
+    news_by_cat[sec] = (cur + '\n\n' if cur else '') + f"[deepen] 補深全文 | SOURCE_URL:{url} — {text}"
+
 def audit_card(item, material, other_text=''):
     """單張卡片稽核結果（不改卡片）。material=None 代表找不到素材。
     other_text＝當天其他素材全文：疑似字串若出現在別條素材，視為張冠李戴或素材截斷，
@@ -2219,6 +2339,14 @@ def send_email(data):
                 src = f'<div style="margin-top:6px;font-size:11px;color:#9e9890;">{src_lbl}</div>'
             else:
                 src = ''
+            if item.get('thin_source'):
+                thin = '<span style="color:#9e9890;"> · 僅摘要</span>'
+                if src.endswith('</a></div>'):
+                    src = src[:-len('</div>')] + thin + '</div>'
+                elif src.endswith('</div>'):
+                    src = src[:-len('</div>')] + thin + '</div>'
+                else:
+                    src = f'<div style="margin-top:6px;font-size:11px;color:#9e9890;">僅摘要</div>'
             cards += f'''
             <div style="background:#faf9f7;border-left:3px solid {color};padding:14px 16px;margin:10px 0;border-radius:0 6px 6px 0;">
               <div style="display:flex;align-items:center;margin-bottom:6px;">
@@ -2526,6 +2654,10 @@ if __name__ == '__main__':
 
     print("🔗 驗證 source URL...")
     validate_sources(data)
+    # 放在 validate_sources 之後：來源已失效（source 被清空）的卡不白抓、也不會只剩一行「僅摘要」
+    if DEEPEN_THIN_CARDS:
+        print("📖 補深薄卡（補抓全文重寫）...")
+        deepen_thin_cards(data, news_by_cat)
     print("📉 品質管線（降評低品質條目）...")
     remove_repeated_stories(data, recent_titles)
     downgrade_unsourced(data)

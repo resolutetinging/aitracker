@@ -764,6 +764,11 @@ function newsCard(item, ptype, showInsight) {
   const validUrl = item.source && /^https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i.test(item.source);
   const src = validUrl
     ? `<div class="card-source">來源：<a href="${_arcEsc(item.source)}" target="_blank" rel="noopener">${_arcEsc(item.source_label||(()=>{try{return new URL(item.source).hostname;}catch(e){return item.source;}})())}</a></div>` : '';
+  const thinTag = item.thin_source
+    ? `<span style="color:#9e9890;" title="原文全文抓取失敗，內容僅依新聞摘要">・僅摘要</span>` : '';
+  const srcFull = src
+    ? (thinTag ? src.replace(/<\/div>$/, thinTag + '</div>') : src)
+    : (thinTag ? `<div class="card-source">${thinTag}</div>` : '');
   const impactBox = item.impact
     ? `<div class="impact-box"><div class="impact-title">供應鏈影響分析</div>
        <div style="font-size:12.5px;color:var(--text2);line-height:1.7;">${_arcEsc(item.impact)}</div></div>`
@@ -778,7 +783,7 @@ function newsCard(item, ptype, showInsight) {
   // LLM生成內容，未經人工複核，全數比照_arcEsc()escape，防儲存型XSS
   return `<div class="news-card ${ptype}">
     <div class="card-top"><div class="card-title">${_arcEsc(item.title)}</div><span class="tag ${tc}">${_arcEsc(item.layer)}</span>${ratingBadge}</div>
-    <div class="card-body">${fmtBody(item.body)}</div>${eth}${impactBox}${insightBox}${src}
+    <div class="card-body">${fmtBody(item.body)}</div>${eth}${impactBox}${insightBox}${srcFull}
   </div>`;
 }
 
