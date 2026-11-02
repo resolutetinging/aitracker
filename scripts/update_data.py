@@ -40,8 +40,8 @@ DEEPEN_THIN_CARDS = True
 if os.environ.get('DEEPEN_THIN_CARDS', '').strip() == '0':
     DEEPEN_THIN_CARDS = False
 # B 生成後比對：卡片數字/日期/型號是否出現在所掛 source 的素材原文。
-#    off＝不跑；log＝只寫 run_stats.fact_audit，不改卡片與評級（預設）；
-#    enforce＝刪除含疑似補寫的句子，刪完不達標 core→opp。環境變數 FACT_CHECK_MODE 覆寫。
+#    off＝不跑；log＝只寫 run_stats.fact_audit，不改卡片與評級；
+#    enforce＝刪除含疑似補寫的句子，刪完不達標 core→opp，全部句子都疑似則 rating 改 noise（預設）。環境變數 FACT_CHECK_MODE 覆寫。
 #    11-02 依 fact_audit_review_20261102.md 啟用 enforce（已修單位夾字、區間共用單位兩項誤報，
 #    標題檢查只記錄不刪改）。回復：此處改 'log'，或環境變數 FACT_CHECK_MODE=log；
 #    基準 tag factcheck-baseline-20261102。enforce 只對 coverage=full 的卡刪句／降評，
@@ -1887,6 +1887,16 @@ def _fa_source_numbers(src):
 def _fa_num_in(src_nums, v):
     return any(abs(sv - v) < 1e-9 for sv, _, _ in src_nums)
 
+def _fa_unit_window(t):
+    """數字後可找單位的範圍：預設 15 字；開頭是 of 放寬到 30 字（32,768 of AMD's "Zen 6" CPU cores）。
+    引號內字串與「字母＋1~2 位數」型號（Zen 6）不算另一個數字；遇其他數字、逗號、分號、句點、
+    and／or／with 即截斷（防 32 GB memory and 128 cores 誤配 32 核心）。"""
+    t = t[:30 if t.startswith('of ') else 15]
+    t = re.sub(r'"[^"]*"|“[^”]*”', ' ', t)
+    t = re.sub(r'(?<=[a-z]) \d{1,2}(?![\d.])', ' ', t)
+    m = re.search(r'[\d,;]|\.(?:\s|$)|\b(?:and|or|with)\b', t)
+    return t[:m.start()] if m else t
+
 def _fa_unit_supported(src_nums, v, unit):
     alts = None
     for upat, ualts in _FA_UNITS:
@@ -1897,11 +1907,11 @@ def _fa_unit_supported(src_nums, v, unit):
     for sv, _, tail in src_nums:
         if abs(sv - v) > 1e-9:
             continue
-        t = re.sub(r'^[\s\-]+', '', tail)
+        t = _fa_unit_window(re.sub(r'^[\s\-]+', '', tail))
         for a in alts:
             if len(re.sub(r'[^a-z]', '', a)) >= 3:
-                # 長單位詞：數字後 30 字內以單字邊界出現即可（容許 32,768 of AMD's Zen 6 CPU cores）
-                if re.search(r'(?<![a-z0-9])' + re.escape(a) + r'(?:s|es)?(?![a-z])', t[:30]):
+                # 長單位詞：數字後視窗內以單字邊界出現即可（視窗規則見 _fa_unit_window）
+                if re.search(r'(?<![a-z0-9])' + re.escape(a) + r'(?:s|es)?(?![a-z])', t):
                     return True
             elif t.startswith(a):   # x、w、%、nm、in. 等短單位維持必須緊接
                 return True
@@ -2210,9 +2220,58 @@ def audit_card(item, material, other_text=''):
         'tense_flag': tense_flag,
     }
 
+_FA_ABBR = re.compile(r'(?:\b(?:Inc|Corp|Ltd|Co|Mr|Mrs|Ms|Dr|vs|St|No)|\b[A-Z]|e\.g|i\.e|U\.S)$')
+
+def _fa_split_sentences(text, use_quotes=True):
+    """切句：。！？ 與英文 .!? 後接空白／結尾；引號（「」『』“” 與成對直引號）內不切。"""
+    parts, buf, depth, dq, n = [], '', 0, False, len(text)
+    i = 0
+    while i < n:
+        ch = text[i]
+        buf += ch
+        if use_quotes:
+            if ch in '「『“':
+                depth += 1
+            elif ch in '」』”':
+                depth = max(0, depth - 1)
+            elif ch == '"':
+                dq = not dq
+        quoted = use_quotes and (depth > 0 or dq)
+        end = False
+        if not quoted:
+            if ch in '。！？':
+                end = True
+            elif ch in '.!?' and (i + 1 == n or text[i + 1].isspace()):
+                end = not (ch == '.' and _FA_ABBR.search(buf[:-1]))
+        if end:
+            while i + 1 < n and (text[i + 1] in '」』”"' or text[i + 1].isspace()):
+                if text[i + 1] == '"' and not dq:
+                    break
+                i += 1
+                buf += text[i]
+                if text[i] == '"':
+                    dq = False
+            parts.append(buf)
+            buf = ''
+        i += 1
+    if buf:
+        parts.append(buf)
+    if use_quotes and (depth > 0 or dq):   # 引號沒成對：退回不看引號的切法
+        return _fa_split_sentences(text, use_quotes=False)
+    return parts
+
+def _fa_token_in(token, norm_sentence):
+    """token 比對加數字邊界：token 頭尾是數字時，前後不可再接數字或小數點＋數字（10 不誤中 100、2010）。"""
+    pat = re.escape(token)
+    if token[:1].isdigit():
+        pat = r'(?<![\d])(?<!\d\.)' + pat
+    if token[-1:].isdigit():
+        pat = pat + r'(?!\d|\.\d)'
+    return re.search(pat, norm_sentence) is not None
+
 def _fa_drop_sentences(text, tokens):
-    parts = re.split(r'(?<=[。！？])', text or '')
-    kept = [p for p in parts if p.strip() and not any(t in _fa_norm_body(p) for t in tokens)]
+    parts = _fa_split_sentences(text or '')
+    kept = [p for p in parts if p.strip() and not any(_fa_token_in(t, _fa_norm_body(p)) for t in tokens)]
     return ''.join(kept).strip()
 
 def fact_audit(data, news_by_cat, mode=None):
@@ -2265,14 +2324,20 @@ def fact_audit(data, news_by_cat, mode=None):
                     try:
                         toks = [s['token'] for s in res['suspects']]
                         new_body = _fa_drop_sentences(item.get('body', ''), toks)
-                        if item.get('insight'):
+                        if not new_body:
+                            # 全部句子都疑似：整張改 noise（不渲染、不進信件），body／insight 原樣留作稽核記錄
+                            item['rating'] = 'noise'
+                            rec['action'] = 'all_suspect_noise'
+                            audit['enforced'] += 1
+                            new_body = None
+                        elif item.get('insight'):
                             item['insight'] = _fa_drop_sentences(item.get('insight'), toks)
                         if new_body:
                             item['body'] = new_body
-                        if item.get('rating') == 'core' and _body_is_low_quality(new_body):
-                            item['rating'] = 'opp'
-                            rec['downgraded'] = True
-                        audit['enforced'] += 1
+                            if item.get('rating') == 'core' and _body_is_low_quality(new_body):
+                                item['rating'] = 'opp'
+                                rec['downgraded'] = True
+                            audit['enforced'] += 1
                     except Exception as e:
                         print(f"  ⚠ enforce 單張處理失敗（略過該張）：{e}")
                 if len(audit['items']) < 30:
