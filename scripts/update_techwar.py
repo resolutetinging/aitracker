@@ -15,7 +15,7 @@ data/techwar_pending_review.json，前端只顯示「本週查證偵測到 N 項
 唯一允許自動改寫techwar_status.json的欄位是last_checked（純粹是查證時間戳，
 不影響任何實質內容）。
 """
-import json, os, re, time
+import json, os, re, sys, time
 from datetime import datetime, timezone, timedelta
 from groq import Groq
 from groq import APIStatusError as GroqAPIStatusError
@@ -89,70 +89,130 @@ def save_json(path, obj):
         json.dump(obj, f, ensure_ascii=False, indent=2)
 
 
-def call_groq_diff(current_status, news_snippets):
-    """核對現有4大類結構化資料是否過時或有值得新增的候選項目，只回報有明確
-    新聞佐證的候選異動，system prompt刻意要求極度保守——沒有證據支持的內容
-    一律不提出，多數週查證後的正確答案就是「沒有任何異動」。
-    輸出schema跟update_nvidia.py的call_groq_diff()不同（那邊是category/action/
-    target_name/name/desc/status），這裡改成target_field+data巢狀候選物件，
-    比照前端render函式（twFlowCard/twCompanyCard/twControlCard/近期事件）
-    實際吃的4種schema分別要求LLM輸出對應欄位，減少人工複核時的轉換成本。"""
+
+# ---------------------------------------------------------------------------
+# 11-02 重構：原本整份 current_status（約45KB）塞進單一 prompt，必超 Groq 6000 TPM，
+# 連續5週失敗。改為四大類各自一次呼叫，只送精簡欄位（比照 update_nvidia.py）。
+# supply_chain_comparison 與地圖是靜態展示資料，不屬於週查證範圍，不送。
+# ---------------------------------------------------------------------------
+MAX_CATEGORY_CHARS = 4500   # 每類序列化後字數上限
+CALL_INTERVAL_SEC = 65      # 呼叫間隔，讓 Groq TPM 滾動視窗重置（全腳本唯一的 Groq 呼叫點）
+MAX_NEWS_PER_CAT = 14
+
+# 每類：(精簡欄位, 各欄位字數上限, 新聞標籤分流)
+CATEGORY_CONFIG = {
+    'recent_events': {
+        'fields': (('date', 12), ('category', 12), ('title', 60), ('summary', 70)),
+        'news_labels': None,  # None＝全部新聞
+        'schema': '近期事件：date/title/category/thread(可留空)/summary/src/src_note(可留空)',
+    },
+    'procurement_flows': {
+        'fields': (('title', 60), ('summary', 80)),
+        'news_labels': ('晶片走私/轉運', '中國採購網絡', '出口管制/關稅'),
+        'schema': '採購流向：title/summary/nodes(陣列，每個元素含label/sub/role，role只能是hw|mem|pkg|end其中之一)/arrows(陣列，長度=nodes長度-1)/src/src_note(可留空)',
+    },
+    'key_companies': {
+        'fields': (('name', 30), ('country', 8), ('role', 40), ('risk', 50)),
+        'news_labels': ('台灣供應鏈角色', '出口管制/關稅', '中國採購網絡'),
+        'schema': '關鍵企業：name/role/desc/exposure/policy_actions/risk/src/src_note(可留空)',
+    },
+    'capital_talent_controls': {
+        'fields': (('measure', 50), ('scope', 40), ('desc', 70)),
+        'news_labels': ('人才/資金管制', '出口管制/關稅'),
+        'schema': '資本與人才管制：measure/scope/desc/src/src_note(可留空)',
+    },
+}
+
+
+def _clip(v, n):
+    s = str(v if v is not None else '').replace('|', '／').replace('\n', ' ').strip()
+    return s[:n]
+
+
+def build_category_data(status, cat):
+    """只送該類精簡欄位（每筆壓成一行「欄位|欄位」字串，不送 src/長描述）。
+    序列化超過 MAX_CATEGORY_CHARS 就把各欄位上限逐步砍半，直到放得下。"""
+    cfg = CATEGORY_CONFIG[cat]
+    items = [x for x in (status.get(cat) or []) if isinstance(x, dict)]
+    if not items:
+        raise ValueError(f'techwar_status.json 的 {cat} 無資料')
+    scale = 1.0
+    for _ in range(6):
+        rows = []
+        for it in items:
+            row = []
+            for k, n in cfg['fields']:
+                v = it.get(k)
+                if cat == 'procurement_flows' and k == 'summary':
+                    pass
+                row.append(_clip(v, max(8, int(n * scale))))
+            if cat == 'procurement_flows':
+                labels = [str(nd.get('label', '')) for nd in (it.get('nodes') or []) if isinstance(nd, dict)]
+                row.append(_clip('→'.join(labels), max(20, int(80 * scale))))
+            rows.append('|'.join(row))
+        cols = [k for k, _n in cfg['fields']] + (['nodes'] if cat == 'procurement_flows' else [])
+        data = {'format': '|'.join(cols), 'rows': rows}
+        if len(json.dumps(data, ensure_ascii=False, separators=(',', ':'))) <= MAX_CATEGORY_CHARS:
+            return data
+        scale /= 2
+    raise ValueError(f'{cat} 精簡後仍超過 {MAX_CATEGORY_CHARS} 字')
+
+
+def news_for_category(news, cat):
+    labels = CATEGORY_CONFIG[cat]['news_labels']
+    if labels is None:
+        picked = list(news)
+    else:
+        picked = [n for n in news if any(str(n).startswith(f'[{lb}]') for lb in labels)]
+    return picked[:MAX_NEWS_PER_CAT]
+
+
+def call_groq_diff_one(cat, cat_data, news_snippets):
+    """單一大類核對：只回報有明確新聞佐證的候選異動，極度保守，空 items 是正常結果。"""
+    cfg = CATEGORY_CONFIG[cat]
+    label = CATEGORY_LABELS[cat]
     client = Groq(api_key=os.environ['GROQ_API_KEY'])
     sys_msg = (
         "你是中美科技戰與台灣供應鏈角色的分析師，任務是核對一份既有的結構化"
         "參考資料是否過時，並在有明確新聞佐證時提出候選新增/更新項目。"
         "只輸出純JSON，不加任何說明文字或markdown。"
         "全程繁體中文（禁止簡體字、日文、越南文等其他語言字詞混入）。"
-        "特別聚焦「台灣在中美科技戰中的角色與被影響性」這個視角，其餘國際"
-        "動態（出口管制、關稅、晶片走私轉運、人才資金管制、中國採購網絡）"
-        "若跟台灣供應鏈/廠商/政策因應無關聯，優先度較低。"
-        "極度保守：沒有明確新聞佐證的欄位一律維持原樣、不提出更新建議；"
-        "禁止臆測、禁止捏造來源URL、禁止把不確定的傳聞當成確定事實。"
-        "多數週查證後的正確答案就是「沒有任何異動」，回傳空items陣列是完全"
-        "正常且被期待的結果，不需要為了顯得有查證成果而硬湊出候選異動。"
+        "特別聚焦「台灣在中美科技戰中的角色與被影響性」這個視角。"
+        "極度保守：沒有明確新聞佐證的欄位一律維持原樣；禁止臆測、禁止捏造來源URL、"
+        "禁止把不確定的傳聞當成確定事實。多數週查證後的正確答案就是「沒有任何異動」，"
+        "回傳空items陣列是完全正常且被期待的結果。"
     )
 
     def build_prompt(news_list):
-        status_json = json.dumps(current_status, ensure_ascii=False, separators=(',', ':'))
+        data_json = json.dumps(cat_data, ensure_ascii=False, separators=(',', ':'))
         news_text = chr(10).join(news_list) if news_list else '（本週未蒐集到相關新聞片段）'
-        schema_note = chr(10).join([
-            '- target_field="recent_events" 的 data 欄位需含：date/title/category/thread(可留空)/summary/src/src_note(可留空)',
-            '- target_field="procurement_flows" 的 data 欄位需含：title/summary/nodes(陣列，每個元素含label/sub/role，role只能是hw|mem|pkg|end其中之一)/arrows(陣列，長度=nodes長度-1)/src/src_note(可留空)',
-            '- target_field="key_companies" 的 data 欄位需含：name/role/desc/exposure/policy_actions/risk/src/src_note(可留空)',
-            '- target_field="capital_talent_controls" 的 data 欄位需含：measure/scope/desc/src/src_note(可留空)',
-        ])
-        return f"""以下是「中美科技戰與台灣角色」結構化參考資料的現況（JSON）：
+        return f"""以下是「中美科技戰與台灣角色」資料中「{label}」一類的現況（精簡欄位，格式見format）：
 
-{status_json}
+{data_json}
 
-以下是過去一週蒐集到的相關新聞片段，每則片段結尾若有「| SOURCE_URL:網址」就是該則新聞的
-原始來源網址；候選項目的src欄位只能填這裡實際出現過的SOURCE_URL，禁止自己編造或憑記憶生成網址：
+以下是過去一週蒐集到的相關新聞片段，結尾若有「| SOURCE_URL:網址」就是原始來源網址；
+候選項目的src欄位只能填這裡實際出現過的SOURCE_URL，禁止自己編造網址：
 
 {news_text}
 
-請核對上述新聞是否讓現有4大類資料（recent_events/procurement_flows/key_companies/
-capital_talent_controls）過時或有值得新增的項目，只針對有明確新聞佐證的部分提出候選異動。
-不要因為沒有新聞佐證就自己推測任何欄位「應該」要改；找不到能對應到具體新聞的變化就不要提出，
-空陣列是完全正常的結果。
-
-每個target_field對應的data欄位schema：
-{schema_note}
+請核對新聞是否讓「{label}」資料過時或有值得新增的項目，只針對有明確新聞佐證的部分提出候選異動，
+找不到對應具體新聞的變化就不要提出，空陣列是正常結果。
+候選項目 data 欄位需含：{cfg['schema']}
 
 輸出格式（純JSON）：
 {{
   "items": [
     {{
-      "target_field": "recent_events|procurement_flows|key_companies|capital_talent_controls",
-      "data": {{ ...依上方schema... }},
+      "target_field": "{cat}",
+      "data": {{ ...依上方欄位... }},
       "reason": "為何提議新增/變更，具體說明新聞依據"
     }}
   ],
-  "no_change_summary": "若items為空陣列，一句話說明本週查證後判斷現有資料仍準確；若items非空則留空字串"
+  "no_change_summary": "若items為空陣列，一句話說明判斷現有資料仍準確；若items非空則留空字串"
 }}"""
 
-    # 比照update_nvidia.py call_groq_diff()的縮減重試機制：120b/20b雙model
-    # fallback，413（超出TPM）時先換model，兩個model都失敗就砍news_snippets
-    # 對半重試，最多5輪；current_status本身用compact JSON（無indent）省字元。
+    # 保留既有機制：120b/20b 雙 model 備援，413（超出TPM）先換 model，都失敗就砍新聞對半重試。
+    # gpt-oss 是 reasoning model，隱藏推理吃 max_tokens，輸出 JSON 至少留 2000，這裡給 3000。
     models = ["openai/gpt-oss-120b", "openai/gpt-oss-20b"]
     news_list = list(news_snippets)
     response = None
@@ -181,15 +241,30 @@ capital_talent_controls）過時或有值得新增的項目，只針對有明確
         news_list = news_list[:len(news_list)//2]
         print(f"  → 縮減新聞片段至{len(news_list)}則重試...")
     if response is None:
-        raise ValueError(f"連續{shrink_round+1}輪（含縮減新聞片段至{len(news_list)}則）仍超出Groq TPM限制，current_status本身可能已過大")
+        raise ValueError(f"連續{shrink_round+1}輪（含縮減新聞片段至{len(news_list)}則）仍超出Groq TPM限制")
     raw = response.choices[0].message.content.strip()
     if raw.startswith('```'):
         raw = raw.split('\n', 1)[-1].rsplit('```', 1)[0].strip()
-    finish_reason = response.choices[0].finish_reason
-    if finish_reason == 'length':
+    if response.choices[0].finish_reason == 'length':
         raise ValueError(f"Groq回應被截斷（finish_reason=length，{len(raw)}字元）")
     raw = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', ' ', raw)
     return json.loads(raw)
+
+
+def set_last_checked_text(text, date_str):
+    """文字層級只改 last_checked 值，不重新序列化整份 JSON（避免污染 diff）。"""
+    pat = re.compile(r'("last_checked":\s*")[^"]*(")')
+    m = pat.search(text)
+    if not m:
+        raise ValueError("techwar_status.json 找不到 last_checked 欄位")
+    return text[:m.start()] + m.group(1) + date_str + m.group(2) + text[m.end():]
+
+
+def write_last_checked():
+    with open(TW_STATUS_PATH, 'r', encoding='utf-8') as f:
+        text = f.read()
+    with open(TW_STATUS_PATH, 'w', encoding='utf-8') as f:
+        f.write(set_last_checked_text(text, DATE_STR))
 
 
 def main():
@@ -200,65 +275,71 @@ def main():
     status = load_json(TW_STATUS_PATH, None)
     if status is None:
         print("  ⚠ 找不到 data/techwar_status.json，中止")
-        return
+        sys.exit(1)
 
     print("📰 蒐集中美科技戰相關新聞（過去一週，聚焦台灣角色與被影響性）...")
     news = fetch_techwar_news()
     print(f"  → 共 {len(news)} 則片段")
 
-    # DDG從GitHub Actions機房IP常被限流（比照update_nvidia.py同樣的處理方式），
-    # 若這週完全沒抓到新聞片段，直接跳過Groq呼叫——沒有任何新聞佐證卻硬要模型
-    # 「核對是否過時」，等於在誘導它憑空生出候選異動
+    # DDG 從 GitHub Actions 機房 IP 常被限流；完全沒新聞就不呼叫 Groq（避免無佐證卻誘導生出異動）
     if not news:
-        print("  → 本週未蒐集到任何新聞片段，跳過Groq呼叫（避免無佐證卻要求提出異動）")
-        pending = {
+        print("  → 本週未蒐集到任何新聞片段，跳過Groq呼叫")
+        save_json(TW_PENDING_PATH, {
             'checked_at': DATE_STR,
             'items': [],
             'no_change_summary': '本週未蒐集到相關新聞片段，僅更新查證時間戳，未進行內容查證。',
-        }
-        save_json(TW_PENDING_PATH, pending)
-        status['last_checked'] = DATE_STR
-        save_json(TW_STATUS_PATH, status)
+            'category_failures': [],
+        })
+        write_last_checked()
         print("✅ 完成（本週無新聞片段，僅更新查證時間戳）\n")
         return
 
-    print("🤖 Groq 核對現有資料是否過時...")
-    try:
-        diff = call_groq_diff(status, news)
-        if not isinstance(diff, dict):
-            raise ValueError(f"Groq回傳非預期格式（非dict）：{type(diff)}")
-    except Exception as e:
-        # 比照update_nvidia.py的教訓：Groq失敗時仍要留下紀錄，last_checked刻意
-        # 不更新，讓techwar_pending_review.json/techwar_status.json誠實反映
-        # 「這週其實沒查證成功」，不能只print就悄悄return（沒有email通知的話
-        # 更不能連檔案都不留任何痕跡）
-        print(f"  ⚠ Groq 呼叫失敗，本次不更新任何內容：{e}")
-        pending = {
+    print("🤖 Groq 逐類核對現有資料是否過時...")
+    all_items, no_change_parts, category_failures = [], [], []
+    cats = list(CATEGORY_CONFIG)
+    for idx, cat in enumerate(cats):
+        label = CATEGORY_LABELS[cat]
+        print(f"  [{idx+1}/{len(cats)}] {label}")
+        try:
+            cat_data = build_category_data(status, cat)
+            diff = call_groq_diff_one(cat, cat_data, news_for_category(news, cat))
+            if not isinstance(diff, dict):
+                raise ValueError(f"Groq回傳非預期格式（非dict）：{type(diff)}")
+            cat_items = [dict(it, target_field=cat) for it in (diff.get('items') or []) if isinstance(it, dict)]
+            all_items.extend(cat_items)
+            if not cat_items and diff.get('no_change_summary'):
+                no_change_parts.append(f"{label}：{diff['no_change_summary']}")
+            print(f"    → {'偵測到'+str(len(cat_items))+'項候選異動' if cat_items else '無需更新'}")
+        except Exception as e:
+            print(f"    ⚠ 「{label}」查證失敗，其他類繼續：{e}")
+            category_failures.append(f"{label}：{e}")
+        if idx < len(cats) - 1:
+            time.sleep(CALL_INTERVAL_SEC)
+
+    if len(category_failures) == len(cats):
+        fail_summary = '；'.join(category_failures)
+        print(f"  ⚠ 全部{len(cats)}類查證失敗，不更新 last_checked：{fail_summary}")
+        save_json(TW_PENDING_PATH, {
             'checked_at': DATE_STR,
             'items': [],
-            'no_change_summary': f'本週自動查證因技術問題失敗（{e}），現有資料未變動，將於下次排程自動重試。',
-        }
-        save_json(TW_PENDING_PATH, pending)
-        return
+            'no_change_summary': f'本週自動查證因技術問題失敗（{fail_summary}），現有資料未變動，將於下次排程自動重試。',
+            'category_failures': category_failures,
+        })
+        sys.exit(1)
 
-    items = diff.get('items') or []
-    pending = {
+    summary = '' if all_items else '；'.join(no_change_parts)
+    if category_failures:
+        summary += ('；' if summary else '') + f'另有{len(category_failures)}類查證失敗：' + '；'.join(category_failures)
+    save_json(TW_PENDING_PATH, {
         'checked_at': DATE_STR,
-        'items': items,
-        'no_change_summary': diff.get('no_change_summary', ''),
-    }
-    save_json(TW_PENDING_PATH, pending)
+        'items': all_items,
+        'no_change_summary': summary,
+        'category_failures': category_failures,
+    })
+    write_last_checked()
 
-    # last_checked 時間戳寫回 techwar_status.json 本身（唯一允許自動改寫的欄位）
-    status['last_checked'] = DATE_STR
-    save_json(TW_STATUS_PATH, status)
-
-    if items:
-        print(f"  → 偵測到 {len(items)} 項候選異動，已寫入 data/techwar_pending_review.json（未套用，待人工複核）")
-    else:
-        print(f"  → 本週查證後無需更新：{pending['no_change_summary']}")
-    # git commit/push 交給 GitHub Actions 的 git-auto-commit-action 處理（比照
-    # daily-update.yml/weekly-nvidia-update.yml 慣例），本腳本只負責寫檔案，不自己動 git
+    print(f"  → 共 {len(all_items)} 項候選異動，失敗 {len(category_failures)} 類；未套用，待人工複核")
+    # git commit/push 交給 GitHub Actions（比照 weekly-nvidia-update.yml），本腳本只寫檔案
     print("✅ 完成\n")
 
 
