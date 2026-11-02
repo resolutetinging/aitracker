@@ -1887,13 +1887,18 @@ def _fa_source_numbers(src):
 def _fa_num_in(src_nums, v):
     return any(abs(sv - v) < 1e-9 for sv, _, _ in src_nums)
 
+_FA_UNIT_WORDS = {'gb', 'mb', 'tb', 'kb', 'pb', 'nm', 'mm', 'cm', 'km', 'w', 'kw', 'mw', 'gw', 'hz', 'khz',
+                  'mhz', 'ghz', 'v', 'mv', 'kv', 'ma', 'mah', 'wh', 'kwh', 'mwh', 'gbps', 'mbps',
+                  'tops', 'flops', 'tflops', 'pflops', 'inch', 'x', 'k', 'm', 'b', 't', 'g'}
+
 def _fa_unit_window(t):
     """數字後可找單位的範圍：預設 15 字；開頭是 of 放寬到 30 字（32,768 of AMD's "Zen 6" CPU cores）。
     引號內字串與「字母＋1~2 位數」型號（Zen 6）不算另一個數字；遇其他數字、逗號、分號、句點、
     and／or／with 即截斷（防 32 GB memory and 128 cores 誤配 32 核心）。"""
     t = t[:30 if t.startswith('of ') else 15]
     t = re.sub(r'"[^"]*"|“[^”]*”', ' ', t)
-    t = re.sub(r'(?<=[a-z]) \d{1,2}(?![\d.])', ' ', t)
+    t = re.sub(r'([a-z]+) \d{1,2}(?![\d.])',
+               lambda m: m.group(0) if m.group(1) in _FA_UNIT_WORDS else m.group(1) + ' ', t)
     m = re.search(r'[\d,;]|\.(?:\s|$)|\b(?:and|or|with)\b', t)
     return t[:m.start()] if m else t
 
@@ -2284,8 +2289,9 @@ def fact_audit(data, news_by_cat, mode=None):
     all_text = '\n'.join(m['text'] for m in idx.values())
     audit = {'mode': mode, 'checked': 0, 'suspect_cards': 0, 'tense_flags': 0, 'no_material': 0,
              'low_coverage': {'checked': 0, 'suspect_cards': 0, 'skipped_enforce': 0}, 'enforced': 0,
-             'title_suspect_cards': 0, 'items': []}
+             'title_suspect_cards': 0, 'removed': 0, 'items': []}
     for sec in ('hw', 'corp', 'app'):
+        removals = []
         for item in data.get(sec, []):
             if _is_placeholder(item) or item.get('rating') not in ('core', 'opp'):
                 continue
@@ -2325,9 +2331,12 @@ def fact_audit(data, news_by_cat, mode=None):
                         toks = [s['token'] for s in res['suspects']]
                         new_body = _fa_drop_sentences(item.get('body', ''), toks)
                         if not new_body:
-                            # 全部句子都疑似：整張改 noise（不渲染、不進信件），body／insight 原樣留作稽核記錄
-                            item['rating'] = 'noise'
-                            rec['action'] = 'all_suspect_noise'
+                            # 全部句子都疑似：整張移除（網頁與 Email 都不看 rating，noise 仍會顯示原句）。
+                            # 不在迭代中刪，先收集，該分類迴圈結束後統一重建清單
+                            removals.append(item)
+                            rec['action'] = 'all_suspect_removed'
+                            rec['removed_body'] = item.get('body', '')
+                            audit['removed'] += 1
                             audit['enforced'] += 1
                             new_body = None
                         elif item.get('insight'):
@@ -2345,10 +2354,16 @@ def fact_audit(data, news_by_cat, mode=None):
                 if res['suspects'] or res['tense_flag']:
                     print(f"  ⚠ 疑似補寫[{sec}/{res['coverage']}] {rec['title'][:40]}：{rec['suspects']}"
                           + ("（原文為預告/傳聞，卡片寫成已發生）" if res['tense_flag'] else ''))
+        if removals:
+            # 迭代結束後才重建清單；分類被移到全空時補標準佔位卡（比照 remove_repeated_stories）
+            data[sec] = [it for it in data.get(sec, []) if not any(it is r for r in removals)]
+            if not data[sec]:
+                data[sec] = [make_placeholder_item(sec)]
+            print(f"  ✂ {sec} 移除 {len(removals)} 張全句疑似補寫的卡片")
     print(f"  → 原文比對（{mode}）：檢查 {audit['checked']} 張，疑似補寫 {audit['suspect_cards']} 張"
           f"（其中摘要素材 {audit['low_coverage']['suspect_cards']}/{audit['low_coverage']['checked']}），"
           f"語氣疑慮 {audit['tense_flags']} 張，標題疑似 {audit['title_suspect_cards']} 張，"
-          f"無素材 {audit['no_material']} 張")
+          f"無素材 {audit['no_material']} 張，整張移除 {audit['removed']} 張")
     try:
         RUN_STATS['fact_audit'] = audit
     except Exception as e:
