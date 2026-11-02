@@ -42,7 +42,11 @@ if os.environ.get('DEEPEN_THIN_CARDS', '').strip() == '0':
 # B 生成後比對：卡片數字/日期/型號是否出現在所掛 source 的素材原文。
 #    off＝不跑；log＝只寫 run_stats.fact_audit，不改卡片與評級（預設）；
 #    enforce＝刪除含疑似補寫的句子，刪完不達標 core→opp。環境變數 FACT_CHECK_MODE 覆寫。
-FACT_CHECK_MODE = 'log'
+#    11-02 依 fact_audit_review_20261102.md 啟用 enforce（已修單位夾字、區間共用單位兩項誤報，
+#    標題檢查只記錄不刪改）。回復：此處改 'log'，或環境變數 FACT_CHECK_MODE=log；
+#    基準 tag factcheck-baseline-20261102。enforce 只對 coverage=full 的卡刪句／降評，
+#    low_coverage（僅摘要素材）維持只記錄，計入 low_coverage.skipped_enforce。
+FACT_CHECK_MODE = 'enforce'
 if os.environ.get('FACT_CHECK_MODE', '').strip().lower() in ('off', 'log', 'enforce'):
     FACT_CHECK_MODE = os.environ['FACT_CHECK_MODE'].strip().lower()
 
@@ -1866,12 +1870,16 @@ def _fa_norm_source(text):
     return t
 
 def _fa_source_numbers(src):
-    """原文每個數字出現：(數值, 量級換算後數值, 後接 20 字)。"""
+    """原文每個數字出現：(數值, 量級換算後數值, 後接 40 字)。
+    區間（$135-145 billion、10 to 20 million）共用單位：首數字也套用後面的量級。"""
     out = []
     for m in re.finditer(r'(?<![\w.])\$?(\d+(?:\.\d+)?)', src):
         v = float(m.group(1))
-        tail = src[m.end():m.end() + 20]
+        tail = src[m.end():m.end() + 40]
         sm = re.match(r'\s*-?\s*(thousand|million|billion|trillion|bn|mn|tn|k|m|b|t)\b', tail)
+        if not sm:
+            sm = re.match(r'\s*(?:[-–—~～]|to|and)\s*\$?\d+(?:\.\d+)?\s*-?\s*'
+                          r'(thousand|million|billion|trillion|bn|mn|tn)\b', tail)
         scaled = v * _FA_EN_SCALE[sm.group(1)] if sm else v
         out.append((v, scaled, tail))
     return out
@@ -1890,8 +1898,13 @@ def _fa_unit_supported(src_nums, v, unit):
         if abs(sv - v) > 1e-9:
             continue
         t = re.sub(r'^[\s\-]+', '', tail)
-        if any(t.startswith(a) for a in alts):
-            return True
+        for a in alts:
+            if len(re.sub(r'[^a-z]', '', a)) >= 3:
+                # 長單位詞：數字後 30 字內以單字邊界出現即可（容許 32,768 of AMD's Zen 6 CPU cores）
+                if re.search(r'(?<![a-z0-9])' + re.escape(a) + r'(?:s|es)?(?![a-z])', t[:30]):
+                    return True
+            elif t.startswith(a):   # x、w、%、nm、in. 等短單位維持必須緊接
+                return True
     return False
 
 def _fa_date_supported(src, month, day):
@@ -1980,12 +1993,20 @@ def audit_text_facts(text, source_text):
         flag(suspects, m, 'model')
     # 3) 金額/量級：數字＋兆億萬千 或 ＋幣別 或 ＋英文量級
     for m in re.finditer(r'(\d+(?:\.\d+)?)\s*(兆|億|萬|千)?\s*(billion|million|trillion)?\s*(' + _FA_CURRENCY + r')?', body):
-        if not (m.group(2) or m.group(3) or m.group(4)):
-            continue
+        zh_u, en_u = m.group(2), m.group(3)
+        if not (zh_u or en_u or m.group(4)):
+            # 區間共用單位：「1350–1450 億」首數字沒有單位，借用區間末尾的量級
+            rm = re.match(r'\s*(?:[-–—~～至到]|to)\s*\d+(?:\.\d+)?\s*(兆|億|萬|千|billion|million|trillion)', body[m.end():], re.I)
+            if not rm:
+                continue
+            if rm.group(1) in _FA_ZH_SCALE:
+                zh_u = rm.group(1)
+            else:
+                en_u = rm.group(1).lower()
         if not claim(m):
             continue
         v = float(m.group(1))
-        scale = _FA_ZH_SCALE.get(m.group(2) or '', 1) * _FA_EN_SCALE.get((m.group(3) or '').lower(), 1)
+        scale = _FA_ZH_SCALE.get(zh_u or '', 1) * _FA_EN_SCALE.get((en_u or '').lower(), 1)
         target = v * scale
         if any(abs(sc - target) <= 0.015 * max(target, 1) for _, sc, _ in src_nums):
             continue
@@ -2170,6 +2191,13 @@ def audit_card(item, material, other_text=''):
         moved = [dict(s, kind='other_source') for s in suspects if s['token'] not in still]
         suspects = [s for s in suspects if s['token'] in still]
         undetermined = undetermined + moved
+    # 標題檢查（只記錄）：標題的數字量級對不上（原文有該數字但量級不同，如 95 億 vs $95 billion）也列入
+    title_suspects = []
+    try:
+        ts, tu = audit_text_facts(item.get('title') or '', material['text'])
+        title_suspects = ts + [u for u in tu if u.get('kind') == 'amount']
+    except Exception:
+        title_suspects = []
     hedged_src = bool(_FA_HEDGE_SRC.search(material['text'][:700])) or material['title'].rstrip().endswith('?')
     body = item.get('body') or ''
     tense_flag = hedged_src and bool(_FA_ASSERTIVE_BODY.search(body))
@@ -2178,6 +2206,7 @@ def audit_card(item, material, other_text=''):
         'coverage': 'full' if material['full'] else 'low_coverage',
         'suspects': suspects,
         'undetermined': undetermined,
+        'title_suspects': title_suspects,
         'tense_flag': tense_flag,
     }
 
@@ -2195,13 +2224,18 @@ def fact_audit(data, news_by_cat, mode=None):
     idx = _fa_index_materials(news_by_cat)
     all_text = '\n'.join(m['text'] for m in idx.values())
     audit = {'mode': mode, 'checked': 0, 'suspect_cards': 0, 'tense_flags': 0, 'no_material': 0,
-             'low_coverage': {'checked': 0, 'suspect_cards': 0}, 'enforced': 0, 'items': []}
+             'low_coverage': {'checked': 0, 'suspect_cards': 0, 'skipped_enforce': 0}, 'enforced': 0,
+             'title_suspect_cards': 0, 'items': []}
     for sec in ('hw', 'corp', 'app'):
         for item in data.get(sec, []):
             if _is_placeholder(item) or item.get('rating') not in ('core', 'opp'):
                 continue
             mat = idx.get(_norm_url(item.get('source') or ''))
-            res = audit_card(item, mat, all_text.replace(mat['text'], '') if mat else '')
+            try:
+                res = audit_card(item, mat, all_text.replace(mat['text'], '') if mat else '')
+            except Exception as e:
+                print(f"  ⚠ 單張稽核失敗（略過該張）：{e}")
+                continue
             if res['status'] != 'checked':
                 audit['no_material'] += 1
                 continue
@@ -2215,22 +2249,32 @@ def fact_audit(data, news_by_cat, mode=None):
                 audit['suspect_cards'] += 1
                 if low:
                     audit['low_coverage']['suspect_cards'] += 1
-            if res['suspects'] or res['undetermined'] or res['tense_flag']:
+            if res.get('title_suspects'):
+                audit['title_suspect_cards'] += 1
+            if res['suspects'] or res['undetermined'] or res['tense_flag'] or res.get('title_suspects'):
                 rec = {'sec': sec, 'title': (item.get('title') or '')[:60], 'source': item.get('source', ''),
                        'rating': item.get('rating'), 'coverage': res['coverage'],
                        'suspects': [s['token'] for s in res['suspects']],
                        'undetermined': [s['token'] for s in res['undetermined']],
-                       'tense_flag': res['tense_flag']}
-                if mode == 'enforce' and res['suspects']:
-                    toks = [s['token'] for s in res['suspects']]
-                    new_body = _fa_drop_sentences(item.get('body', ''), toks)
-                    item['insight'] = _fa_drop_sentences(item.get('insight', ''), toks)
-                    if new_body:
-                        item['body'] = new_body
-                    if item.get('rating') == 'core' and _body_is_low_quality(new_body):
-                        item['rating'] = 'opp'
-                        rec['downgraded'] = True
-                    audit['enforced'] += 1
+                       'tense_flag': res['tense_flag'],
+                       'title_suspects': [s['token'] for s in res.get('title_suspects', [])]}
+                if mode == 'enforce' and res['suspects'] and low:
+                    audit['low_coverage']['skipped_enforce'] += 1
+                elif mode == 'enforce' and res['suspects']:
+                    # 標題疑似只記錄，不刪改、不降評；單張卡例外不中斷其餘卡片
+                    try:
+                        toks = [s['token'] for s in res['suspects']]
+                        new_body = _fa_drop_sentences(item.get('body', ''), toks)
+                        if item.get('insight'):
+                            item['insight'] = _fa_drop_sentences(item.get('insight'), toks)
+                        if new_body:
+                            item['body'] = new_body
+                        if item.get('rating') == 'core' and _body_is_low_quality(new_body):
+                            item['rating'] = 'opp'
+                            rec['downgraded'] = True
+                        audit['enforced'] += 1
+                    except Exception as e:
+                        print(f"  ⚠ enforce 單張處理失敗（略過該張）：{e}")
                 if len(audit['items']) < 30:
                     audit['items'].append(rec)
                 if res['suspects'] or res['tense_flag']:
@@ -2238,7 +2282,8 @@ def fact_audit(data, news_by_cat, mode=None):
                           + ("（原文為預告/傳聞，卡片寫成已發生）" if res['tense_flag'] else ''))
     print(f"  → 原文比對（{mode}）：檢查 {audit['checked']} 張，疑似補寫 {audit['suspect_cards']} 張"
           f"（其中摘要素材 {audit['low_coverage']['suspect_cards']}/{audit['low_coverage']['checked']}），"
-          f"語氣疑慮 {audit['tense_flags']} 張，無素材 {audit['no_material']} 張")
+          f"語氣疑慮 {audit['tense_flags']} 張，標題疑似 {audit['title_suspect_cards']} 張，"
+          f"無素材 {audit['no_material']} 張")
     try:
         RUN_STATS['fact_audit'] = audit
     except Exception as e:
