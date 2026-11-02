@@ -55,8 +55,13 @@ SEARCH_QUERIES_BY_INDUSTRY = {
         ("學術期刊臨床試驗", "AI clinical trial results health outcomes site:nature.com OR site:nejm.org OR site:thelancet.com OR site:jamanetwork.com"),
     ],
     'supply_chain': [
-        ("OECD供應鏈AI", "OECD artificial intelligence supply chain logistics report site:oecd.org"),
-        ("WTO/世銀物流AI", "AI logistics trade supply chain report site:wto.org OR site:worldbank.org"),
+        ("OECD供應鏈AI", "OECD artificial intelligence supply chain demand forecasting inventory report site:oecd.org"),
+        ("WTO/世銀供應鏈AI", "AI supply chain resilience procurement planning report site:wto.org OR site:worldbank.org"),
+    ],
+    'logistics': [
+        ("Eurostat運輸倉儲AI", "Eurostat artificial intelligence transport storage enterprises site:ec.europa.eu"),
+        ("日本國交省物流DX", "物流 DX 自動化 AI 総合物流施策大綱 site:mlit.go.jp"),
+        ("港口倉儲自動化官方", "port warehouse automation AI logistics report site:unctad.org OR site:itf-oecd.org OR site:worldbank.org"),
     ],
     'finance': [
         ("BIS金融AI", "artificial intelligence finance banking report site:bis.org OR site:fsb.org"),
@@ -90,6 +95,9 @@ ALLOWED_SOURCE_DOMAINS = [
     'wto.org', 'worldbank.org', 'bis.org', 'fsb.org', 'imf.org', 'un.org',
     'iea.org', 'energy.gov', 'nrel.gov', 'fao.org', 'usda.gov',
     'nhtsa.gov', 'transportation.gov', 'itf-oecd.org', 'europa.eu',
+    'ec.europa.eu', 'unctad.org', 'mlit.go.jp', 'gov.cn',
+    'news.lenovo.com', 'aboutamazon.com', 'sej.co.jp', 'lawson.co.jp',
+    'family.co.jp', 'aholddelhaize.com',
     # .gov / .go.jp 等政府網域一般規則（system prompt文字裡另外強調「任何國家政府
     # 機構官網，網域結尾含.gov或.go.xx」也算符合，不是只有清單裡列出的才算）
 ]
