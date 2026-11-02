@@ -1,5 +1,136 @@
 [
   {
+    "date": "2026-11-03",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Nvidia 可能為 Nscale 西維吉尼亞 AI 數據中心提供數十億美元債務保證",
+        "layer": "strategic_supplier_decision",
+        "body": "Nvidia 正在與 AI 雲端供應商 Nscale 討論為其在西維吉尼亞的 Anthropic 數據中心提供數十億美元的債務擔保。Nscale 已在 IPO 文件中披露，Anthropic 為首座建築簽署了 446 億美元的合約。此安排屬於餘值保證，若 Nscale 未能如期支付建設款項，Nvidia 會暫時接管設施並協助尋找買家或新租戶。",
+        "impact": "此保證將直接提升 Nscale 獲得電力與建設資金的能力，促使相關建築與電力供應商的需求 ↑；上游的晶圓代工與 HBM 供應商因 Nscale 可能加速採購 GPU 而受益，需求亦可能上升；下游的 AI 雲端服務客戶將因更快完成數據中心建設而提前取得算力，提升競爭力。",
+        "rating": "core",
+        "insight": "Nvidia 以財務保證方式介入 AI 基礎建設，可降低供應鏈資金風險，提升其在 AI 基礎設施市場的影響力。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/10/30/nvidia-weighs-playing-the-cosigner-for-nscales-ai-data-center-in-west-virginia/",
+        "chain": [
+          {
+            "label": "Nvidia 債務保證收入↑",
+            "type": "up"
+          },
+          {
+            "label": "Nscale AI 數據中心建設支出↑",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Anthropic IPO 招股說明書披露近兆美元運算承諾",
+        "layer": "core",
+        "body": "Anthropic 在最新 S‑1 招股說明書中透露，未來需支付近 1 兆美元的運算服務費用，預計將持續大量燃燒資金。該公司同時指出，其運算需求大部分依賴同時也是競爭對手的客戶供應的晶片與雲端資源。",
+        "impact": null,
+        "rating": "core",
+        "insight": "Anthropic 巨額運算承諾將推高高階 AI 晶片與資料中心基礎建設需求。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/11/02/anthropics-ipo-prospectus-is-big-on-promises-short-on-answers-to-tough-questions/5306811",
+        "chain": [
+          {
+            "label": "Anthropic 運算支出↑",
+            "type": "down"
+          },
+          {
+            "label": "競爭對手晶片供應商營收↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 創辦人 Altman 赴韓國與三星、SK 集團討論 AI 晶片合作",
+        "layer": "core",
+        "body": "OpenAI CEO Sam Altman 於本週末未預告造訪韓國，與 Samsung 及 SK 集團高層會面，討論 AI 晶片與高頻寬記憶體供應的合作可能。會議於京仁舉行，參與者包括 Samsung 旗下多家子公司與 SK Hynix、SK Telecom 的高階主管。",
+        "impact": "上游記憶體與晶片製造商（如 SK Hynix、Samsung）將因 OpenAI 需求而提升 HBM 產能利用率 (↑)；OpenAI 的資料中心建設將帶動本地化晶片採購，降低對美國供應鏈的依賴 (↓)；其他 AI 初創公司若無法取得同等晶片供應，可能在模型效能上處於劣勢。",
+        "rating": "core",
+        "insight": "OpenAI 與韓國晶片巨頭的合作將加速本地 AI 晶片供應鏈的布局。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/11/02/openai-sam-altman-samsung-sk-south-korea.html",
+        "chain": [
+          {
+            "label": "Samsung AI 晶片合作計畫↑",
+            "type": "up"
+          },
+          {
+            "label": "SK Hynix 高頻寬記憶體需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": "",
+        "chain": [
+          {
+            "label": "無相關應用新聞",
+            "type": "neutral"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "餘值保證",
+        "full": "Residual Value Guarantee",
+        "def": "當借款方無法履行建設付款時，保證方會暫時接管資產並協助尋找買家或新租戶，以降低貸款風險。",
+        "why": "此機制可讓資金需求大的 AI 數據中心在資金緊張時仍能持續建設，減少供應鏈斷裂風險。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Agentic AI",
+        "full": "具自主決策能力的人工智慧模型",
+        "def": "此類 AI 能根據環境即時調整行動路徑，產生突發且不均衡的運算需求。它在資料中心會造成 CPU 使用率波動，需特殊調度與硬體設計。",
+        "why": "了解此概念有助於判斷未來 CPU 與加速卡的規格走向。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "HBM",
+        "full": "高頻寬記憶體（High Bandwidth Memory）",
+        "def": "HBM 以堆疊式封裝提供極高的資料傳輸速率，常用於 AI 加速卡與高效能運算平台。",
+        "why": "OpenAI 與韓國晶片廠的合作聚焦於 HBM 供應，直接影響記憶體供應鏈的需求與價格走勢。",
+        "category": "hardware"
+      },
+      {
+        "term": "S‑1 招股說明書",
+        "full": "美國證券交易委員會要求的首次公開募股註冊文件",
+        "def": "公司在上市前必須提交 S‑1，披露財務、營運與未來資金需求等關鍵資訊。",
+        "why": "Anthropic 在 S‑1 中揭露的 1 兆美元運算承諾顯示其資金壓力與供應鏈需求規模。",
+        "category": "role"
+      },
+      {
+        "term": "DeepInfinity.AI",
+        "full": "DeepInfinity.AI",
+        "def": "一家專注於醫療影像深度學習分析的人工智慧公司，提供自動標註與診斷輔助平台。",
+        "why": "其技術可提升醫院影像診斷效率，帶動相關硬體與雲端資源需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "BMH",
+        "full": "BMH",
+        "def": "一家全球醫療服務集團，經營多家醫院與診所，致力於引入先進醫療科技。",
+        "why": "作為大型醫療機構的採購方，BMH 的採購決策會直接影響醫療設備與 AI 軟體供應鏈。",
+        "category": "role"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-02",
     "is_sunday": false,
     "hw": [
@@ -781,142 +912,6 @@
         "full": "多學科人機協作生態系統",
         "def": "結合醫療專業人員與 AI 代理人，提供即時決策支援、資料分析與工作流程自動化的整合平台。",
         "why": "可降低臨床決策時間、提升診斷準確度，並加速 AI 技術在醫療場域的落地。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-27",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "Anthropic 申請 IPO 以 80.7 億美元淨虧損上市",
-        "layer": "IPO",
-        "body": "Anthropic 已於本週一向美國證券交易委員會提交 S‑1 註冊聲明，計畫在 Nasdaq 以代號 ANT 上市。公司披露 2026 上半年營收 163 億美元，較去年同期的 12 億美元大幅成長，同時報告淨虧損 807 億美元，其中 724 億美元為估值調整。除淨虧外，營運虧損為 6.93 億美元，較去年同期的 21 億美元下降。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Anthropic 大規模 IPO 與營收成長將加速 GPU 供應鏈需求，受惠於上游晶圓代工與下游雲端服務。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/10/26/trumpets-blare-and-skies-part-as-ai-hypefest-culminates-in-anthropic-ipo-filing/5305456",
-        "chain": [
-          {
-            "label": "Anthropic 營收↑",
-            "type": "up"
-          },
-          {
-            "label": "Anthropic 淨虧損↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Meta 計畫募集 950 億美元資金支援 AI 基礎建設",
-        "layer": "資金募集",
-        "body": "Meta 於本週一宣布將透過公開增發與 ATM 方式合計募集 950 億美元，以支援其 AI 基礎建設與超智慧計畫。首輪將以承銷方式募集 350 億美元，隨後再以市場增發方式募集 600 億美元；Nvidia、AMD 與 Broadcom 表示有意認購最高 50 億美元的股份。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Meta 大規模資金投入將成為 AI 硬體需求的主要驅動力，提升相關供應鏈的出貨量。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/26/meta-stock-offering-ai.html",
-        "chain": [
-          {
-            "label": "Meta 募資額↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia AI 晶片需求↑",
-            "type": "up"
-          },
-          {
-            "label": "AMD AI 晶片需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "SoftBank 計畫投入 500 億美元於馬來西亞 AI 與資料中心",
-        "layer": "投資",
-        "body": "SoftBank Group 近日傳出將在馬來西亞科技領域投入 500 億美元，重點包括人工智慧與資料中心建設。此筆投資預計涵蓋 AI 研發、雲端基礎設施與相關硬體供應鏈的全方位布局。",
-        "impact": "巨額資金將刺激馬來西亞本地資料中心建設需求，帶動伺服器、網路設備與高效能晶片的採購。",
-        "rating": "core",
-        "insight": "SoftBank 的馬來西亞投資將為亞太 AI 硬體供應鏈注入新需求，提升相關製造與服務業的出貨量。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/26/softbank-masayoshi-son-malaysia-ai-billions.html",
-        "chain": [
-          {
-            "label": "SoftBank AI 投資↑",
-            "type": "up"
-          },
-          {
-            "label": "馬來西亞資料中心建設↑",
-            "type": "up"
-          },
-          {
-            "label": "相關硬體供應鏈需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "AI硬體在軌道",
-        "full": "AI硬體在軌道（AI hardware in orbit）",
-        "def": "指將人工智慧運算硬體部署於太空環境，以利用低重力與高輻射條件進行特殊計算或資料處理的技術。",
-        "why": "此技術可降低地面資料傳輸延遲，並為衛星影像分析與即時決策提供本地化 AI 能力。",
-        "category": "hardware"
-      },
-      {
-        "term": "ATM增發",
-        "full": "ATM增發（At‑the‑market offering）",
-        "def": "公司在公開市場上以不固定價格持續發行新股，以快速籌集資金的方式。",
-        "why": "Meta 透過 ATM 方式募集 600 億美元，顯示其對 AI 基礎建設的長期資金需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "IPO風險因素",
-        "full": "IPO風險因素（Risk factors disclosed in IPO filing）",
-        "def": "公司在首次公開募股文件中列示的可能影響未來營運與財務表現的風險項目。",
-        "why": "Anthropic 在 S‑1 中列出 94 頁風險因素，突顯其 AI 模型可能帶來的法律與倫理挑戰。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Pt‑W 合金",
-        "full": "鉑‑鎢合金 (Pt‑W alloy)",
-        "def": "一種用於高數值孔徑（High‑NA）極紫外光（EUV）掩模的低折射率吸收材料，可製作更薄的掩模層以提升成像解析度。",
-        "why": "降低掩模厚度有助於提升光刻效率與良率，對先進製程的光刻設備供應鏈產生正向影響。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Z2RAM",
-        "full": "Nagare Labs 開發的 Z2RAM 記憶體技術",
-        "def": "結合 SRAM、DRAM 與 NAND 儲存特性的氧化物半導體記憶體，宣稱具 SRAM 的速度、DRAM 的密度與 NAND 的可擴展性。",
-        "why": "若成功商業化，可改變記憶體供應鏈格局，減少對傳統 DRAM 供應商的依賴。",
         "category": "ai_technique"
       }
     ],

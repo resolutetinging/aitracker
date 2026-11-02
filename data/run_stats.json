@@ -2,6 +2,121 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 47,
+        "CSP/CapEx": 44,
+        "App/AI": 18,
+        "gnews-chip": 14,
+        "gnews-dc": 17,
+        "gnews-app": 15
+      },
+      "digest_filtered": 2,
+      "after_dedup": 133,
+      "buckets": {
+        "hw": 25,
+        "corp": 107,
+        "app": 24
+      },
+      "news_char_budget": {
+        "hw": 3500,
+        "corp": 8000,
+        "app": 3500
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 4,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "deepen": {
+        "candidates": 1,
+        "rewritten": 0,
+        "fetch_failed": 1,
+        "llm_failed": 0
+      },
+      "dedup_audit": [
+        {
+          "title": "OpenAI 與阿布達比簽署能源、政府與投資多領域合作協議",
+          "section": "corp",
+          "action": "removed",
+          "matched_title": "OpenAI 融資目標下調至最高 200 億美元",
+          "reason": "兩篇皆描述 OpenAI 近期 200 億美元新一輪融資計畫，屬同一事件"
+        }
+      ],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 3,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "items": [
+          {
+            "sec": "corp",
+            "title": "Anthropic IPO 招股說明書披露近兆美元運算承諾",
+            "source": "https://www.theregister.com/ai-and-ml/2026/11/02/anthropics-ipo-prospectus-is-big-on-promises-short-on-answers-to-tough-questions/5306811",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [
+              "1 兆美元"
+            ],
+            "tense_flag": false,
+            "title_suspects": []
+          }
+        ]
+      },
+      "date": "2026-11-03",
+      "generated_at": "2026-11-03T00:04:31.886919+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 51,
         "CSP/CapEx": 47,
         "App/AI": 19,
@@ -1250,90 +1365,6 @@
       },
       "date": "2026-10-21",
       "generated_at": "2026-10-21T00:03:58.570460+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 42,
-        "CSP/CapEx": 38,
-        "App/AI": 12,
-        "gnews-chip": 18,
-        "gnews-dc": 25,
-        "gnews-app": 20
-      },
-      "digest_filtered": 1,
-      "after_dedup": 150,
-      "buckets": {
-        "hw": 32,
-        "corp": 107,
-        "app": 32
-      },
-      "news_char_budget": {
-        "hw": 3733,
-        "corp": 8000,
-        "app": 3733
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 2
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 1,
-          "opp": 2,
-          "noise": 0
-        },
-        "app": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 4,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [],
-      "fact_audit": {
-        "mode": "log",
-        "checked": 3,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 2,
-        "low_coverage": {
-          "checked": 1,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": []
-      },
-      "date": "2026-10-20",
-      "generated_at": "2026-10-20T00:04:12.856618+08:00"
     }
   ]
 }
