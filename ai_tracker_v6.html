@@ -1212,6 +1212,7 @@ function nvEcoSection(eco, bodyOnly){
     const placed = baseBoxes.slice(), lines = [], nodeLbls = [], res = new Map(), angs = [];
     let score = 0; const failed = [];
     // 11-02：連線之間至少隔 minGap 度、節點圓點不壓別人的連線（原本只檢查標籤，挪角度後多個節點會擠到同一角度、連線重疊）
+    // 只套用寬螢幕：窄螢幕（compact）舞台太擠，實測加這兩條反而標籤重疊、縮字變多且規劃跑滿時間上限，維持原排法
     const minGap = Math.min(4, 100 / Math.max(1, ...Object.keys(NV_ECO_TIERS).map(tk=>eco.nodes.filter(n=>n.tier===tk).length)));
     order.forEach(it=>{
       const {nd, T, deg, pref, sides, variants} = it;
@@ -1220,7 +1221,7 @@ function nvEcoSection(eco, bodyOnly){
         const v = variants[vi], lw = lblW(v.t)*v.f, lh = (fs*1.25+1)*v.f;
         for(const dj of baseDjList){
           if(Math.abs(deg+dj-T.center) > 56) continue; // 節點必須留在自己的扇區內
-          if(angs.some(a=>Math.abs(a-(deg+dj)) < minGap)) continue;
+          if(!compact && angs.some(a=>Math.abs(a-(deg+dj)) < minGap)) continue;
           for(const rr of ringsAll){
             const [bx,by] = pt(deg+dj, rr), px = bx*W/100, py = by*H/100;
             for(const sd of sides){
@@ -1228,7 +1229,7 @@ function nvEcoSection(eco, bodyOnly){
               if(lr[0]<2 || lr[2]>W-2 || lr[1]<2 || lr[3]>H-2) continue;
               if(!rectInCircle(lr)) continue;
               if(placed.some(q=>hit(q,lr)||hit(q,dr))) continue;
-              if(lines.some(l=>segHitRect(l,lr)||segHitRect(l,dr))) continue;
+              if(lines.some(l=>segHitRect(l,lr)||(!compact && segHitRect(l,dr)))) continue;
               if(nodeLbls.some(q=>segHitRect([W/2,H/2,px,py],q))) continue;
               best = {rr,sd,lr,dr,dj}; vUsed = v; score += vi; break search;
             }
