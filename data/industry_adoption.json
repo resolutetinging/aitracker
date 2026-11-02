@@ -4,7 +4,7 @@
       "key": "medical",
       "label": "醫療產業",
       "icon": "🏥",
-      "last_checked": "2026-09-03",
+      "last_checked": "2026-11-02",
       "cases_live": [
         {
           "name": "Viz.ai LVO 腦中風偵測平台",
@@ -192,7 +192,7 @@
       "key": "supply_chain",
       "label": "供應鏈",
       "icon": "🚚",
-      "last_checked": "2026-09-03",
+      "last_checked": "2026-11-02",
       "cases_live": [
         {
           "name": "Amazon 倉儲機器人網路 + DeepFleet AI車隊調度",
@@ -373,7 +373,7 @@
       "key": "finance",
       "label": "金融業",
       "icon": "💳",
-      "last_checked": "2026-09-03",
+      "last_checked": "2026-11-02",
       "cases_live": [
         {
           "name": "Mastercard Decision Intelligence（AI詐欺偵測）",
@@ -579,7 +579,7 @@
       "key": "government",
       "label": "政府／公共治理",
       "icon": "🏛️",
-      "last_checked": "2026-09-03",
+      "last_checked": "2026-11-02",
       "cases_live": [
         {
           "name": "愛沙尼亞 Bürokratt（政府AI虛擬助理網路）",
@@ -817,7 +817,7 @@
       "key": "energy",
       "label": "能源／電網",
       "icon": "⚡",
-      "last_checked": "2026-09-04",
+      "last_checked": "2026-11-02",
       "cases_live": [
         {
           "name": "National Grid ESO/NESO（英國）AI太陽能出力預測",
@@ -985,7 +985,7 @@
       "key": "agriculture",
       "label": "農業",
       "icon": "🌾",
-      "last_checked": "2026-09-04",
+      "last_checked": "2026-11-02",
       "cases_live": [
         {
           "name": "John Deere See & Spray（美國，精準除草）",
@@ -1197,7 +1197,7 @@
       "key": "transportation",
       "label": "交通運輸",
       "icon": "🚦",
-      "last_checked": "2026-09-04",
+      "last_checked": "2026-11-02",
       "cases_live": [
         {
           "name": "Waymo 全無人駕駛計程車服務（美國）",
