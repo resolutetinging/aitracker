@@ -817,6 +817,52 @@
     ]
    },
    {
+    "key": "CA",
+    "label": "加拿大",
+    "value": 19.2,
+    "period": "2026 第 2 季",
+    "scope": "有員工的企業與組織，1 人以上不限規模（含非營利，私部門為 19.0%）；回顧過去 12 個月是否用 AI 生產商品或提供服務",
+    "src": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3310116701",
+    "method": "manual",
+    "series": [
+     {
+      "period": "2024 第 2 季",
+      "value": 6.1
+     },
+     {
+      "period": "2025 第 2 季",
+      "value": 12.2
+     },
+     {
+      "period": "2026 第 2 季",
+      "value": 19.2
+     }
+    ]
+   },
+   {
+    "key": "JP",
+    "label": "日本",
+    "value": 9.17,
+    "period": "2023",
+    "scope": "OECD 資料庫轉載（原始調查來源 OECD 未標示）；10 人以上企業；當年度是否使用 AI；調查為隔年一次；OECD 標示日本此數列為 D（定義略有差異）",
+    "src": "https://data-explorer.oecd.org/?lc=en&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_ICT_B%40DF_BUSINESSES",
+    "method": "auto",
+    "series": [
+     {
+      "period": "2019",
+      "value": 3.91
+     },
+     {
+      "period": "2021",
+      "value": 3.59
+     },
+     {
+      "period": "2023",
+      "value": 9.17
+     }
+    ]
+   },
+   {
     "key": "KR",
     "label": "韓國",
     "value": 32.91,
@@ -836,6 +882,21 @@
      {
       "period": "2024",
       "value": 32.91
+     }
+    ]
+   },
+   {
+    "key": "CN",
+    "label": "中國",
+    "value": 16.4,
+    "period": "2023",
+    "scope": "國家統計局第五次全國經濟普查；規模以上企業（148.2 萬家法人單位）；是否應用人工智能（企業可複選多項數位技術）；普查不定期，非逐年",
+    "src": "https://www.stats.gov.cn/sj/sjjd/202502/t20250227_1958814.html",
+    "method": "manual",
+    "series": [
+     {
+      "period": "2023",
+      "value": 16.4
      }
     ]
    },
@@ -887,29 +948,6 @@
     ]
    },
    {
-    "key": "CA",
-    "label": "加拿大",
-    "value": 19.2,
-    "period": "2026 第 2 季",
-    "scope": "有員工的企業與組織，1 人以上不限規模（含非營利，私部門為 19.0%）；回顧過去 12 個月是否用 AI 生產商品或提供服務",
-    "src": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3310116701",
-    "method": "manual",
-    "series": [
-     {
-      "period": "2024 第 2 季",
-      "value": 6.1
-     },
-     {
-      "period": "2025 第 2 季",
-      "value": 12.2
-     },
-     {
-      "period": "2026 第 2 季",
-      "value": 19.2
-     }
-    ]
-   },
-   {
     "key": "AU",
     "label": "澳洲",
     "value": 12,
@@ -925,6 +963,36 @@
      {
       "period": "2024-25 財年",
       "value": 12
+     }
+    ]
+   },
+   {
+    "key": "NZ",
+    "label": "紐西蘭",
+    "value": 9.02,
+    "period": "2022",
+    "scope": "OECD 資料庫轉載（原始調查來源 OECD 未標示）；10 人以上企業；當年度是否使用 AI；目前僅 2022 年一期",
+    "src": "https://data-explorer.oecd.org/?lc=en&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_ICT_B%40DF_BUSINESSES",
+    "method": "auto",
+    "series": [
+     {
+      "period": "2022",
+      "value": 9.02
+     }
+    ]
+   },
+   {
+    "key": "IN",
+    "label": "印度",
+    "value": 23.4,
+    "period": "2025–26 調查（世界銀行）",
+    "scope": "世界銀行企業調查（非印度政府官方統計）；正式企業 5 人以上，樣本 1,355 家，電話訪問；是否使用任何形式的 AI；世界銀行《南亞經濟更新》2026 年 10 月報告",
+    "src": "https://openknowledge.worldbank.org/server/api/core/bitstreams/a3de4d6c-513c-462a-83a0-f8f946954a69/content",
+    "method": "manual",
+    "series": [
+     {
+      "period": "2025–26",
+      "value": 23.4
      }
     ]
    }
@@ -1041,42 +1109,6 @@
     ]
    },
    {
-    "key": "KR",
-    "label": "韓國",
-    "period": "2024",
-    "short": "年度・10 人以上",
-    "scope": "10 人以上企業（含金融）；當年度是否使用 AI；韓國 2022 年起調查方式改變（OECD 標示斷點），前一期僅在斷點之後才列；批發業（不含汽機車）該年度 OECD 標為 D（定義與標準不同）",
-    "src": "https://data-explorer.oecd.org/?lc=en&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_ICT_B%40DF_BUSINESSES",
-    "method": "auto",
-    "industries": [
-     {
-      "label": "金融保險業",
-      "value": 63.13,
-      "prev": 52.36
-     },
-     {
-      "label": "資訊及通訊業",
-      "value": 55.98,
-      "prev": 49.54
-     },
-     {
-      "label": "批發業（不含汽機車）",
-      "value": 41.06,
-      "prev": 38.55
-     },
-     {
-      "label": "製造業",
-      "value": 36.35,
-      "prev": 25.43
-     },
-     {
-      "label": "住宿與餐飲",
-      "value": 30.36,
-      "prev": 33.36
-     }
-    ]
-   },
-   {
     "key": "CA",
     "label": "加拿大",
     "period": "2026 第 2 季",
@@ -1113,6 +1145,73 @@
     ]
    },
    {
+    "key": "JP",
+    "label": "日本",
+    "period": "2023",
+    "short": "隔年・10 人以上",
+    "scope": "OECD 資料庫轉載；10 人以上企業；當年度是否使用 AI；OECD 標示日本此數列為 D（定義略有差異）；調查隔年一次，不列前期變化",
+    "src": "https://data-explorer.oecd.org/?lc=en&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_ICT_B%40DF_BUSINESSES",
+    "method": "auto",
+    "industries": [
+     {
+      "label": "資訊及通訊業",
+      "value": 43.38
+     },
+     {
+      "label": "金融保險業",
+      "value": 25.17
+     },
+     {
+      "label": "專業、科學及技術服務",
+      "value": 20.59
+     },
+     {
+      "label": "不動產業",
+      "value": 11.37
+     },
+     {
+      "label": "製造業",
+      "value": 9.71
+     }
+    ]
+   },
+   {
+    "key": "KR",
+    "label": "韓國",
+    "period": "2024",
+    "short": "年度・10 人以上",
+    "scope": "10 人以上企業（含金融）；當年度是否使用 AI；韓國 2022 年起調查方式改變（OECD 標示斷點），前一期僅在斷點之後才列；批發業（不含汽機車）該年度 OECD 標為 D（定義與標準不同）",
+    "src": "https://data-explorer.oecd.org/?lc=en&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_ICT_B%40DF_BUSINESSES",
+    "method": "auto",
+    "industries": [
+     {
+      "label": "金融保險業",
+      "value": 63.13,
+      "prev": 52.36
+     },
+     {
+      "label": "資訊及通訊業",
+      "value": 55.98,
+      "prev": 49.54
+     },
+     {
+      "label": "批發業（不含汽機車）",
+      "value": 41.06,
+      "prev": 38.55
+     },
+     {
+      "label": "製造業",
+      "value": 36.35,
+      "prev": 25.43
+     },
+     {
+      "label": "住宿與餐飲",
+      "value": 30.36,
+      "prev": 33.36
+     }
+    ]
+   },
+   {
     "key": "AU",
     "label": "澳洲",
     "period": "2024-25 財年",
@@ -1140,6 +1239,37 @@
      {
       "label": "醫療保健與社會救助",
       "value": 17.4
+     }
+    ]
+   },
+   {
+    "key": "NZ",
+    "label": "紐西蘭",
+    "period": "2022",
+    "short": "年度・10 人以上",
+    "scope": "OECD 資料庫轉載；10 人以上企業；當年度是否使用 AI；目前僅 2022 年一期，無前期可比",
+    "src": "https://data-explorer.oecd.org/?lc=en&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_ICT_B%40DF_BUSINESSES",
+    "method": "auto",
+    "industries": [
+     {
+      "label": "資訊及通訊業",
+      "value": 20.31
+     },
+     {
+      "label": "專業、科學及技術服務",
+      "value": 19.21
+     },
+     {
+      "label": "金融保險業",
+      "value": 18.73
+     },
+     {
+      "label": "不動產業",
+      "value": 16.17
+     },
+     {
+      "label": "批發業（不含汽機車）",
+      "value": 9.51
      }
     ]
    }

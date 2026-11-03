@@ -5,9 +5,9 @@
   1. TSMC 月營收：TWSE OpenAPI（最新月）＋ MOPS 靜態頁（歷史回補）
   2. 四大雲端業者每季 CapEx：每季人工依官方財報查證填入，本腳本不抓、只保留
   3. Eurostat isoc_eb_ai：EU27、10 人以上企業使用 AI 比例
-  4. 企業 AI 採用深化：Eurostat isoc_eb_ain2 產業排行；各地區（美 BTOS、韓 OECD、星 SingStat 自動，
-     加 StatCan、澳 ABS 人工查證原樣保留）；跨區資訊業（歐／美自動，加／澳人工）；
-     各地區採用率前 5 產業（歐 Eurostat、美 BTOS Sector、韓 OECD 自動，加／澳人工）
+  4. 企業 AI 採用深化：Eurostat isoc_eb_ain2 產業排行；各地區（美 BTOS、日韓紐 OECD、星 SingStat 自動，
+     加 StatCan、澳 ABS、中國統計局、印度世銀 人工查證原樣保留）；跨區資訊業（歐／美自動，加／澳人工）；
+     各地區採用率前 5 產業（歐 Eurostat、美 BTOS Sector、日韓紐 OECD 自動，加／澳人工）
 
 輸出 data/global_indicators.json。全部自動類失敗 exit 1，部分失敗 exit 0 並印警告。
 來源資料變少時以 月份／季／年 為 key 合併，不刪舊點。
@@ -370,6 +370,35 @@ def fetch_kr(old):
             "src": OECD_PAGE, "method": "auto", "series": series}
 
 
+def _oecd_region(old, area, key, label, scope):
+    """OECD G14_B：單一國家、10 人以上、全產業的完整年份數列（不做斷點截斷）。"""
+    pts = []
+    for row in oecd_rows():
+        if (row["REF_AREA"] == area and row["MEASURE"] == "G14_B" and row["ACTIVITY"] == "_T"
+                and row["SIZE_CLASS"] == "S_GE10" and row["UNIT_MEASURE"] == "PT_ENT"):
+            pts.append((int(row["TIME_PERIOD"]), float(row["OBS_VALUE"])))
+    if not pts:
+        raise RuntimeError("OECD 無%s G14_B 資料" % label)
+    merged = dict((p["period"], p["value"]) for p in (old or {}).get("series", []))
+    for y, v in pts:
+        merged[str(y)] = round(v, 2)
+    series = [{"period": k, "value": merged[k]} for k in sorted(merged)]
+    return {"key": key, "label": label, "value": series[-1]["value"], "period": series[-1]["period"],
+            "scope": scope, "src": OECD_PAGE, "method": "auto", "series": series}
+
+
+def fetch_jp(old):
+    return _oecd_region(old, "JPN", "JP", "日本", (
+        "OECD 資料庫轉載（原始調查來源 OECD 未標示）；10 人以上企業；當年度是否使用 AI；"
+        "調查為隔年一次；OECD 標示日本此數列為 D（定義略有差異）"))
+
+
+def fetch_nz(old):
+    return _oecd_region(old, "NZL", "NZ", "紐西蘭", (
+        "OECD 資料庫轉載（原始調查來源 OECD 未標示）；10 人以上企業；當年度是否使用 AI；"
+        "目前僅 2022 年一期"))
+
+
 SG_URL = "https://tablebuilder.singstat.gov.sg/api/table/tabledata/M651551"
 SG_PAGE = "https://tablebuilder.singstat.gov.sg/table/TS/M651551"
 
@@ -405,6 +434,17 @@ MANUAL_REGIONS = [
      "src": "https://www.abs.gov.au/statistics/industry/technology-and-innovation/characteristics-australian-business/2024-25",
      "method": "manual",
      "series": [{"period": "2022-23 財年", "value": 1}, {"period": "2024-25 財年", "value": 12}]},
+    {"key": "CN", "label": "中國", "value": 16.4, "period": "2023",
+     "scope": ("國家統計局第五次全國經濟普查；規模以上企業（148.2 萬家法人單位）；"
+               "是否應用人工智能（企業可複選多項數位技術）；普查不定期，非逐年"),
+     "src": "https://www.stats.gov.cn/sj/sjjd/202502/t20250227_1958814.html", "method": "manual",
+     "series": [{"period": "2023", "value": 16.4}]},
+    {"key": "IN", "label": "印度", "value": 23.4, "period": "2025–26 調查（世界銀行）",
+     "scope": ("世界銀行企業調查（非印度政府官方統計）；正式企業 5 人以上，樣本 1,355 家，"
+               "電話訪問；是否使用任何形式的 AI；世界銀行《南亞經濟更新》2026 年 10 月報告"),
+     "src": ("https://openknowledge.worldbank.org/server/api/core/bitstreams/"
+             "a3de4d6c-513c-462a-83a0-f8f946954a69/content"), "method": "manual",
+     "series": [{"period": "2025–26", "value": 23.4}]},
 ]
 MANUAL_INFO = [
     {"key": "CA", "label": "加拿大", "sector": "資訊與文化產業（NAICS 51）", "value": 42.3,
@@ -519,6 +559,34 @@ def kr_industries(old):
             "scope": scope, "src": OECD_PAGE, "method": "auto", "industries": top}
 
 
+def _oecd_industries(area, key, label, short, scope):
+    """OECD G14_B 產業別前 5 名（10 人以上）；不放前期（調查非逐年，口徑未必連續）。"""
+    pts = {}
+    for row in oecd_rows():
+        if (row["REF_AREA"] == area and row["SIZE_CLASS"] == "S_GE10"
+                and row["ACTIVITY"] in KR_ZH):
+            pts.setdefault(int(row["TIME_PERIOD"]), {})[row["ACTIVITY"]] = (
+                float(row["OBS_VALUE"]), row["OBS_STATUS"])
+    ok_years = sorted(y for y, d in pts.items() if len(d) >= TOP_N)
+    if not ok_years:
+        raise RuntimeError("OECD %s產業別資料不足" % label)
+    cur = ok_years[-1]
+    cand = [{"label": KR_ZH[c], "value": round(v, 2)} for c, (v, st) in pts[cur].items()]
+    return {"key": key, "label": label, "period": str(cur), "short": short,
+            "scope": scope, "src": OECD_PAGE, "method": "auto", "industries": top_n(cand)}
+
+
+def jp_industries(old):
+    return _oecd_industries("JPN", "JP", "日本", "隔年・10 人以上", (
+        "OECD 資料庫轉載；10 人以上企業；當年度是否使用 AI；OECD 標示日本此數列為 D（定義略有差異）；"
+        "調查隔年一次，不列前期變化"))
+
+
+def nz_industries(old):
+    return _oecd_industries("NZL", "NZ", "紐西蘭", "年度・10 人以上", (
+        "OECD 資料庫轉載；10 人以上企業；當年度是否使用 AI；目前僅 2022 年一期，無前期可比"))
+
+
 # 人工查證項目：值取自官方 API／頁面（證據見 research/adoption_evidence.md 第 8 節）
 MANUAL_REGION_INDUSTRIES = [
     {"key": "CA", "label": "加拿大", "period": "2026 第 2 季", "short": "過去 12 個月・1 人以上",
@@ -544,6 +612,10 @@ MANUAL_REGION_INDUSTRIES = [
          {"label": "採礦業", "value": 17.8},
          {"label": "醫療保健與社會救助", "value": 17.4}]},
 ]
+
+
+# 地區顯示順序：歐盟、美國、加拿大；亞太（日、韓、中、星、澳、紐）；最後印度
+REGION_ORDER = ["EU", "US", "CA", "JP", "KR", "CN", "SG", "AU", "NZ", "IN"]
 
 
 def keep_or_seed(old_items, seed):
@@ -603,9 +675,13 @@ def main():
         ("region.US", lambda: fetch_us(old_regions.get("US")), ("region", "US")),
         ("region.KR", lambda: fetch_kr(old_regions.get("KR")), ("region", "KR")),
         ("region.SG", lambda: fetch_sg(old_regions.get("SG")), ("region", "SG")),
+        ("region.JP", lambda: fetch_jp(old_regions.get("JP")), ("region", "JP")),
+        ("region.NZ", lambda: fetch_nz(old_regions.get("NZ")), ("region", "NZ")),
         ("info_sector.US", lambda: fetch_us_info(old_info.get("US")), ("info", "US")),
         ("region_industries.US", lambda: us_industries(old_rind.get("US")), ("rind", "US")),
         ("region_industries.KR", lambda: kr_industries(old_rind.get("KR")), ("rind", "KR")),
+        ("region_industries.JP", lambda: jp_industries(old_rind.get("JP")), ("rind", "JP")),
+        ("region_industries.NZ", lambda: nz_industries(old_rind.get("NZ")), ("rind", "NZ")),
     ]
     ok = 0
     for name, fn, dest in jobs:
@@ -626,11 +702,12 @@ def main():
     regions = []
     if "eu_ai_adoption" in out:
         regions.append(eu_region(out["eu_ai_adoption"]))
-    for k in ("US", "KR", "SG"):
+    for k in ("US", "KR", "SG", "JP", "NZ"):
         item = fresh_region.get(k) or old_regions.get(k)
         if item:
             regions.append(item)
     regions += keep_or_seed(list(old_regions.values()), MANUAL_REGIONS)
+    regions.sort(key=lambda i: REGION_ORDER.index(i["key"]) if i["key"] in REGION_ORDER else 99)
     out["ai_adoption_regions"] = {"items": regions}
     infos = []
     if "ai_adoption_industry" in out:
@@ -658,11 +735,12 @@ def main():
                 rinds.append(old_rind["EU"])
     elif "EU" in old_rind:
         rinds.append(old_rind["EU"])
-    for k in ("US", "KR"):
+    for k in ("US", "KR", "JP", "NZ"):
         item = fresh_rind.get(k) or old_rind.get(k)
         if item:
             rinds.append(item)
     rinds += keep_or_seed(list(old_rind.values()), MANUAL_REGION_INDUSTRIES)
+    rinds.sort(key=lambda i: REGION_ORDER.index(i["key"]) if i["key"] in REGION_ORDER else 99)
     out["ai_adoption_region_industries"] = {"items": rinds}
     out["failures"] = failures
     if "csp_capex" in out:  # 維持慣用鍵序（csp_capex 在最後），避免 diff 雜訊

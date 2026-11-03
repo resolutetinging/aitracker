@@ -3961,7 +3961,8 @@ function trRenderReg(d){
       + `<div class="tr-reg-dir">${_arcEsc(dirTxt)}</div>`
       + (r.series.length>=3 ? trMiniLine(r.series.map(p=>p.value)) : '')
       + (r.scope?`<div class="tr-note">${_arcEsc(r.scope)}</div>`:'') + nvSrcLink(r.src) + '</div>';
-  }).join('') + '</div>';
+  }).join('') + '</div>'
+    + '<div class="tr-note">台灣、香港官方統計目前無企業 AI 採用率（已查主計總處、經濟部、數位發展部、香港統計處）</div>';
 }
 function trCalcRegInd(gi){
   const o = gi && gi.ai_adoption_region_industries;
