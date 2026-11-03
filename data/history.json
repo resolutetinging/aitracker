@@ -1,5 +1,103 @@
 [
   {
+    "date": "2026-11-04",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Marvell 以 1150 億美元收購 Lumentum 加速光子供應鏈",
+        "layer": "strategic_supplier_decision",
+        "body": "Marvell Technology 宣布以全股票交易方式收購光子元件領導廠商 Lumentum，交易總價約 1150 億美元。此舉將為 Marvell 帶來高效能雷射光源、光學收發器與光路交換晶片等關鍵光子產品。收購同時包含 Lumentum 的磷化銦化合物半導體製造能力，提升 Marvell 在光學互連領域的自製比例。",
+        "impact": "此收購直接提升 Marvell 在光子元件上游供應商（如磷化銦晶圓代工）的需求，預期相關代工廠產能使用率上升 (↑)。下游的 AI 伺服器與資料中心將因光學互連取代銅線而降低傳輸延遲與功耗，促使光學模組採購量增加 (↑)。長期看，光子供應鏈的擴張可能削弱傳統銅互連廠商的市場份額，對其營收形成下行壓力 (↓)。",
+        "rating": "core",
+        "insight": "Marvell 透過收購 Lumentum 把握光子互連成長機會，將加速光學元件在 AI 基礎設施的部署。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/11/02/marvell-wants-to-be-a-copper-topper-bets-115b-on-photonics-leader-to-push-optical-networking/5307028"
+      },
+      {
+        "title": "AI 晶片走私者利用貿易漏洞將韓國 HBM 運入中國",
+        "layer": "export_control_shift",
+        "body": "根據 Google News 報導，走私團隊利用貿易管制漏洞，將受禁運的高帶寬記憶體（HBM）從南韓非法運送至中國。該行為涉及多家供應鏈中介，並利用文件偽造掩蓋實際目的地。",
+        "impact": "此走私行為使中國的 HBM 供應短期內出現非官方增量，提升本地 AI 伺服器製造商的記憶體取得率 (↑)。同時，正規的 HBM 代工廠（如三星、SK 海力士）因需求被分流，出貨量可能下降 (↓)，進一步影響其上游晶圓代工與材料供應商的產能利用率。長遠看，貿易管制的執行難度提升，可能促使相關國家加強出口審查，導致全球 HBM 供應鏈的合規成本上升 (↑)。",
+        "rating": "opp",
+        "insight": "走私 HBM 暴露貿易管制漏洞，短期供應上升但長期合規成本將加劇供應鏈緊張。",
+        "source_label": "Google News",
+        "source": "https://news.google.com/rss/articles/CBMi4wJBVV95cUxNczB1bmd3Umc1VkpITE9hR0cybF9uMTNvT01RcWVodndZRlZpUS1TTTBDOEs2WlFWMGo5OC1UR2szQ3VENE1fbHFSYW9mdG52R3RwSVFfNjNRM2F0MGtIWFVWMzdpWndQYzg0OWNyV3l2NnV6SFNzNmVPOTVnYWxEZUFQRlZIbEdXbXBZNlpOTVBzVS1HSWhHaEVNcklmX2Vza3VZQ25KbU1KZzVKbS1INjZMN2Z5MEtCTmctT1hSVjhtYU0zdnhBcDNsQ1FmRkZWX2lDUjIya2RCdXFjR0J3V2JWdVFCMHZSbjlnSno5RDBkdnItOFFKTkVUNmhzU0tNY2ZFLXNGWkY5LU93VnROZFZqQi1sdldaN29zRExpN20xbnRUMjlnM216ZGtDaUsyWFVfY1pzY2N1eEFOMXlvWTNOUWNtTlNNa1R4WU1nYlpPcVFlZ0ZWZC13S2NHYnc1Ym5R?oc=5"
+      }
+    ],
+    "corp": [
+      {
+        "title": "Oracle 於 2027 財政年度借入 200 億美元上限資金",
+        "layer": "core",
+        "body": "Oracle 在 2026 財政年度結束後的 2027 財政年度計畫一次性借入 200 億美元，以支援其資料中心資本支出。該公司先前承諾在 2030 財政年度前將新借款上限定於 200 億美元，現已宣布將於 2027 財政年度內全部動用。此舉將用於營運資金、資本支出、合約義務、收購、股息、回購股票及償還債務等多項用途。",
+        "impact": "此筆巨額借款將直接提升資料中心建設需求，帶動晶圓代工（如 TSMC）與伺服器硬體供應商的訂單↑。上游的記憶體與高速互連供應鏈亦因資料中心擴張而需求↑，進一步推高相關元件的出貨量。競爭對手如 Microsoft 與 Google 可能面臨資金壓力較大，需加速自有資本投入以維持市場份額。",
+        "rating": "core",
+        "insight": "Oracle 大規模借款顯示 AI 資料中心資本支出正快速擴張，供應鏈上游需求將持續上揚。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/paas-and-iaas/2026/11/02/oracle-gobbles-20-billion-borrowing-limit-a-week-after-setting-it/5307014"
+      },
+      {
+        "title": "Apple 記憶體成本上升致毛利率下降至 45%~46%",
+        "layer": "opp",
+        "body": "Apple 在 2026 年 12 月季財報中透露，受全球記憶體成本上漲影響，預估本季毛利率將介於 45% 至 46%，低於分析師預期的 46.3%。CFO 表示此成本壓力主要來自記憶體價格上揚以及 Siri AI 相關支出。Apple 股價因毛利率下修而下跌 3%。",
+        "impact": "記憶體成本上升直接推高 iPhone 與 Mac 等終端產品的製造成本，導致供應鏈上游的 DRAM 與 NAND 供應商需求↑，但同時迫使 Apple 可能調整採購策略或尋求替代供應商，對記憶體廠商的訂單結構產生波動。下游零售與企業客戶面臨毛利率下降，可能轉向成本較低的競爭品牌，對 Apple 產品的市場佔有率形成下行壓力。",
+        "rating": "opp",
+        "insight": "記憶體價格持續高企將削弱 Apple 的毛利空間，供應鏈需關注成本傳導效應。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/11/03/apple-earnings-john-ternus-faces-first-test-amid-high-memory-costs.html"
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "光子晶片",
+        "full": "Photonics Chip",
+        "def": "利用光子（光子）而非電子傳輸訊號的晶片，可在高頻寬與長距離傳輸上優於銅線。",
+        "why": "光子晶片是未來 AI 伺服器高效能互連的關鍵技術，供應鏈上游包括磷化銦晶圓代工與光學元件製造商。",
+        "category": "hardware"
+      },
+      {
+        "term": "光學互連",
+        "full": "Optical Interconnect",
+        "def": "使用光纖或光子元件在伺服器與資料中心內部傳輸資料的技術。",
+        "why": "光學互連可突破銅線的頻寬與距離限制，成為 AI 基礎設施升級的主要方向。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "借款上限",
+        "full": "Borrowing Limit",
+        "def": "公司在特定期間內允許向金融機構或市場籌集的最高資金額度。此上限通常用於控制財務風險並規劃資本支出。",
+        "why": "了解借款上限有助於評估企業資本支出規模與資金來源的可持續性。",
+        "category": "finance"
+      },
+      {
+        "term": "毛利率",
+        "full": "Gross Margin",
+        "def": "營收扣除直接成本（如材料與製造費用）後的比例，反映產品或服務的盈利能力。",
+        "why": "毛利率變化直接顯示供應鏈成本波動對企業獲利的衝擊。",
+        "category": "financial_metric"
+      },
+      {
+        "term": "GMV",
+        "full": "Gross Merchandise Volume",
+        "def": "指平台在特定期間內完成的商品交易總額，常用於衡量電商平台的營運規模。",
+        "why": "GMV 直接反映平台的交易規模，對供應鏈上下游的需求預測與資源配置具有指標性意義。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-03",
     "is_sunday": false,
     "hw": [
@@ -792,126 +890,6 @@
         "full": "Token Maxxing",
         "def": "在使用大型語言模型時，過度填充輸入或輸出文字以最大化使用的 token 數量，常導致成本上升與效能下降。",
         "why": "了解此概念有助於企業在導入 AI 編碼輔助工具時控制運算成本與資源使用。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-28",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 推出成本效益更高的 GPT-6.1 Terra 中階模型",
-        "layer": "模型商業化",
-        "body": "OpenAI 宣布在 GPT-6.1 系列中新增 Terra 中階模型，標稱 API 價格較 GPT-5.6 Terra 與 GPT-6.1 Sol 低 50%，相當於原價的 1/2。該模型在處理發票自動化等高容量工作時，成本僅為同類高階模型的三分之一。Artificial Analysis 評估其為首款 Terra 級別模型自 GPT-5.6 以來的升級版。",
-        "impact": "企業客戶可降低 AI 應用的運營成本，促進 AI 在財務與會計領域的滲透。",
-        "rating": "core",
-        "insight": "成本更低的中階模型將擴大 AI 服務的下游採用，帶動整體供應鏈需求上升。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/10/26/openai-rolls-out-budget-priced-mid-tier-gpt-61-terra/5305574",
-        "chain": [
-          {
-            "label": "OpenAI Terra 中階模型價格↓",
-            "type": "down"
-          },
-          {
-            "label": "企業 API 成本↓",
-            "type": "down"
-          },
-          {
-            "label": "發票自動化需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Tairex 推出多學科人機協作生態系統以加速臨床 AI 應用",
-        "layer": "healthcare",
-        "body": "Tairex 宣布於 2026 年推出一套多學科人機協作生態系統，旨在於真實臨床環境中推廣 AI 應用。該平台結合醫師、研究人員與 AI 代理人，提供即時決策支援與資料分析功能。",
-        "impact": "醫院與診所因可獲得即時 AI 輔助診斷工具，提升診斷效率與病患流量。醫療資訊系統供應商加速整合相關 API。",
-        "rating": "opp",
-        "insight": "投資提供醫療 AI 平台的公司，可受益於臨床 AI 需求快速成長。",
-        "source_label": "CEOWORLD magazine",
-        "source": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxONWN3aW5LVU5OV3UzYWMyejZXTUZCQ0xhdUxYZC1uX1BBdmswSjlGMzVpcEgzSXhhWGo3S1lxNDY3NkZOVXVMNktaWm1STDE5WGFaRVg3cVNmZjlCc1FaOXI5bnVObEtaay1va2M4ZjlQYzAzdFhSTW96TnVRR2IwY2VkbmVLb2Q4dWRha1d0aEdpU1J1aWVlTjJDQXlhMk1qNHFyRnplc016dU84YXBGa21Mam9FZGNBT0dtRlJJOUlxRnVkTWIxeVlQdGlzbmtleWdfWXFOdWJBbnpGM3NYUDg4UkxYUnFSZjJOWlF3?oc=5",
-        "chain": [
-          {
-            "label": "Tairex 多學科協作平台↑",
-            "type": "up"
-          },
-          {
-            "label": "臨床 AI 應用採用率↑",
-            "type": "up"
-          },
-          {
-            "label": "醫師決策支援需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "3D Volumetric DRAM-on-GPU",
-        "full": "三維體積式 DRAM 直接堆疊於 GPU 之上",
-        "def": "一種將 DRAM 晶片垂直堆疊於圖形處理器之上，並在其間設置冷卻腔的封裝技術，可提升熱設計彈性與記憶體容量。",
-        "why": "此技術可減少傳統 HBM 2.5D 封裝的熱瓶頸，對高效能運算與 AI 加速卡的散熱需求具重要意義。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "HBM",
-        "full": "High Bandwidth Memory",
-        "def": "高頻寬記憶體，通常以 2.5D 方式與 GPU 透過硅通孔 (TSV) 直接相連，提供極高的資料傳輸速率。",
-        "why": "HBM 是目前 AI 加速卡與高效能運算平台的主流記憶體解決方案，供應鏈變動會直接影響記憶體製造與封裝產能。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "OSAT",
-        "full": "Outsourced Semiconductor Assembly and Test",
-        "def": "委外半導體封裝與測試服務廠商，負責將晶圓組裝成最終產品並執行測試。",
-        "why": "AI 伺服器與加速卡的先進封裝需求提升，將帶動 OSAT 廠商的產能利用率上升。",
-        "category": "hardware"
-      },
-      {
-        "term": "基礎模型",
-        "full": "Foundation Model",
-        "def": "大型預訓練 AI 模型，具備廣泛的語言或視覺理解能力，可作為多種下游應用的基礎。",
-        "why": "基礎模型是 AI 供應鏈的核心驅動力，決定算力與晶片需求規模。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "GPT-6.1 Terra",
-        "full": "Generative Pre-trained Transformer 6.1 Terra",
-        "def": "OpenAI 推出的中階語言模型，定位於成本效益平衡，API 價格較高階模型低 50%。",
-        "why": "其低成本特性將擴大企業對 AI 服務的採用，直接影響算力需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI 基礎建設",
-        "full": "Artificial Intelligence Infrastructure",
-        "def": "支撐 AI 訓練與推理的硬體與軟體資源，包括 GPU、加速卡、資料中心與網路連接。",
-        "why": "大量資本投入於 AI 基礎建設會帶動晶片、伺服器與電力供應鏈的需求增長。",
-        "category": "hardware"
-      },
-      {
-        "term": "Human-Agent Collaboration Ecosystem",
-        "full": "多學科人機協作生態系統",
-        "def": "結合醫療專業人員與 AI 代理人，提供即時決策支援、資料分析與工作流程自動化的整合平台。",
-        "why": "可降低臨床決策時間、提升診斷準確度，並加速 AI 技術在醫療場域的落地。",
         "category": "ai_technique"
       }
     ],

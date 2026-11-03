@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03",
+ "updated": "2026-11-04",
  "since": "2026-07-01",
  "entities": [
   {
@@ -902,16 +902,16 @@
   {
    "week": "2026-W45",
    "start": "2026-11-02",
-   "cards": 7,
+   "cards": 11,
    "dims": {
     "hw": {
-     "core": 1,
-     "opp": 1,
+     "core": 2,
+     "opp": 2,
      "noise": 0
     },
     "corp": {
-     "core": 3,
-     "opp": 1,
+     "core": 4,
+     "opp": 2,
      "noise": 0
     },
     "app": {
@@ -928,14 +928,15 @@
     "Anthropic": 2,
     "Samsung": 1,
     "SK hynix": 1,
-    "HBM": 1
+    "HBM": 2,
+    "Google": 1,
+    "出口管制": 1,
+    "Oracle": 1,
+    "Apple": 1
    }
   }
  ],
  "seen": [
-  "2026-10-13|Apple 推出 HomeView 智慧家庭中樞",
-  "2026-10-13|Microsoft 公布 Maia 300 AI 晶片 2027 年量產",
-  "2026-10-13|Microsoft將加大自研Maia AI晶片使用，降低對Nvidia GPU依賴",
   "2026-10-14|AMD 於 OCP 峰會公布 Helion AI 代理伺服器機架",
   "2026-10-14|Anthropic 將於本週三向機構投資人披露第三季財報",
   "2026-10-14|Meta 發布前沿模型 Muse Wonder 與 Wonder Full",
@@ -1011,6 +1012,10 @@
   "2026-11-02|OpenAI 融資目標下調至最高 200 億美元",
   "2026-11-03|Anthropic IPO 招股說明書披露近兆美元運算承諾",
   "2026-11-03|Nvidia 可能為 Nscale 西維吉尼亞 AI 數據中心提供數十億美元債務保證",
-  "2026-11-03|OpenAI 創辦人 Altman 赴韓國與三星、SK 集團討論 AI 晶片合作"
+  "2026-11-03|OpenAI 創辦人 Altman 赴韓國與三星、SK 集團討論 AI 晶片合作",
+  "2026-11-04|AI 晶片走私者利用貿易漏洞將韓國 HBM 運入中國",
+  "2026-11-04|Apple 記憶體成本上升致毛利率下降至 45%~46%",
+  "2026-11-04|Marvell 以 1150 億美元收購 Lumentum 加速光子供應鏈",
+  "2026-11-04|Oracle 於 2027 財政年度借入 200 億美元上限資金"
  ]
 }

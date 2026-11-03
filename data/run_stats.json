@@ -2,6 +2,107 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 58,
+        "CSP/CapEx": 44,
+        "App/AI": 20,
+        "gnews-chip": 24,
+        "gnews-dc": 25,
+        "gnews-app": 21
+      },
+      "digest_filtered": 2,
+      "after_dedup": 176,
+      "buckets": {
+        "hw": 38,
+        "corp": 129,
+        "app": 37
+      },
+      "news_char_budget": {
+        "hw": 4433,
+        "corp": 8000,
+        "app": 4316
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 2,
+        "corp": 2,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "deepen": {
+        "candidates": 0,
+        "rewritten": 0,
+        "fetch_failed": 0,
+        "llm_failed": 0
+      },
+      "dedup_audit": [
+        {
+          "title": "AI 晶片走私者利用貿易漏洞將韓國 HBM 運入中國",
+          "section": "hw",
+          "action": "downgraded",
+          "matched_title": null,
+          "reason": "描述的是已發生的走私行為，未包含新決策或宣布，只是背景說明"
+        }
+      ],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 4,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "items": []
+      },
+      "date": "2026-11-04",
+      "generated_at": "2026-11-04T00:04:11.382473+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 47,
         "CSP/CapEx": 44,
         "App/AI": 18,
@@ -1257,114 +1358,6 @@
       },
       "date": "2026-10-22",
       "generated_at": "2026-10-22T00:04:02.133374+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 46,
-        "CSP/CapEx": 47,
-        "App/AI": 17,
-        "gnews-chip": 15,
-        "gnews-dc": 24,
-        "gnews-app": 21
-      },
-      "digest_filtered": 3,
-      "after_dedup": 156,
-      "buckets": {
-        "hw": 34,
-        "corp": 109,
-        "app": 34
-      },
-      "news_char_budget": {
-        "hw": 3966,
-        "corp": 8000,
-        "app": 3966
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 2,
-          "opp": 2,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 2,
-          "opp": 2,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "fact_audit": {
-        "mode": "log",
-        "checked": 5,
-        "suspect_cards": 1,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 2,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": [
-          {
-            "sec": "corp",
-            "title": "Anthropic 與 Nscale 商談第二筆約 450 億美元計算租賃合約",
-            "source": "https://www.cnbc.com/2026/10/20/anthropic-nscale-data-center-deal.html",
-            "rating": "core",
-            "coverage": "full",
-            "suspects": [],
-            "undetermined": [
-              "460 兆"
-            ],
-            "tense_flag": false
-          },
-          {
-            "sec": "app",
-            "title": "Arda 推出 AI 軟體平台協助製造工程師快速調整自動化",
-            "source": "https://www.cnbc.com/2026/10/20/ex-openai-executive-builds-1point5-billion-ai-manufacturing-startup-arda.html",
-            "rating": "core",
-            "coverage": "full",
-            "suspects": [
-              "80%"
-            ],
-            "undetermined": [],
-            "tense_flag": false
-          }
-        ]
-      },
-      "date": "2026-10-21",
-      "generated_at": "2026-10-21T00:03:58.570460+08:00"
     }
   ]
 }
