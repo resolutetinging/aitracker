@@ -2375,6 +2375,53 @@ def fact_audit(data, news_by_cat, mode=None):
 # ══════════════════════════════════════════════════════════════════
 DATA_PATH = 'data/history.json'
 
+def _glossary_key(term):
+    """詞彙比對 key：去頭尾空白、小寫、取括號前主詞（HBM (High Bandwidth Memory) -> hbm）。"""
+    t = (term or '').strip()
+    t = re.split(r'[(（]', t, maxsplit=1)[0]
+    return t.strip().lower()
+
+def _known_glossary_keys(history, html_path=None, exclude_date=None):
+    """蒐集既有詞：html 靜態詞彙表 term:"..." ＋ history 各天 glossary_new。讀檔失敗一律 fallback 成不排除。"""
+    keys = set()
+    try:
+        if html_path is None:
+            html_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'ai_tracker_v6.html')
+        with open(html_path, encoding='utf-8') as f:
+            for m in re.finditer(r'\bterm:"([^"]+)"', f.read()):
+                k = _glossary_key(m.group(1))
+                if k:
+                    keys.add(k)
+    except Exception as e:
+        print(f"  ⚠ 讀取靜態詞彙表失敗，略過此排除來源：{e}")
+    try:
+        for day in (history or []):
+            if exclude_date and day.get('date') == exclude_date:
+                continue  # 同日重跑時不排除自己上次寫入的詞
+            for g in (day.get('glossary_new') or []):
+                k = _glossary_key(g.get('term') if isinstance(g, dict) else '')
+                if k:
+                    keys.add(k)
+    except Exception as e:
+        print(f"  ⚠ 讀取 history 詞彙失敗，略過此排除來源：{e}")
+    return keys
+
+def filter_new_glossary(items, history, html_path=None, exclude_date=None):
+    """同批依 term 去重，並排除已收錄的詞。任何例外都 fallback 成只做同批去重。"""
+    try:
+        known = _known_glossary_keys(history, html_path, exclude_date)
+    except Exception as e:
+        print(f"  ⚠ 詞彙排除清單建立失敗，fallback 不排除：{e}")
+        known = set()
+    seen, out = set(), []
+    for g in (items or []):
+        k = _glossary_key(g.get('term') if isinstance(g, dict) else '')
+        if not k or k in seen or k in known:
+            continue
+        seen.add(k)
+        out.append(g)
+    return out
+
 def load_history():
     if os.path.exists(DATA_PATH):
         with open(DATA_PATH, encoding='utf-8') as f:
@@ -2751,14 +2798,9 @@ if __name__ == '__main__':
     if IS_SUNDAY and weekly_parts:
         data['weekly_summary'] = '\n'.join(weekly_parts)
 
-    # glossary_new 三次呼叫各自產生，依 term 去重（大小寫不分）
-    seen_terms, deduped_glossary = set(), []
-    for g in data['glossary_new']:
-        t = (g.get('term') or '').strip().lower()
-        if t and t not in seen_terms:
-            seen_terms.add(t)
-            deduped_glossary.append(g)
-    data['glossary_new'] = deduped_glossary
+    # glossary_new 三次呼叫各自產生，依 term 去重（大小寫不分）；
+    # 另排除 html 靜態詞彙表與 history 既有 glossary_new 已收錄的詞（事後過濾，不動 prompt）
+    data['glossary_new'] = filter_new_glossary(data['glossary_new'], history, exclude_date=data.get('date'))
 
     print(f"  → 硬體 {len(data.get('hw',[]))} / 巨頭 {len(data.get('corp',[]))} / 應用 {len(data.get('app',[]))} 則")
 

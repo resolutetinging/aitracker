@@ -208,6 +208,8 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .nv-view-nav-btn{padding:6px 14px;border-radius:16px;border:1px solid var(--border);background:var(--card);color:var(--muted);font-size:12.5px;font-weight:600;cursor:pointer;}
 .nv-view-nav-btn.active{border-color:var(--nv);background:rgba(106,138,32,.10);color:var(--nv);}
 .nv-view-nav-btn.has-review{border-color:var(--ethic);}
+.nv-event-cross{display:inline-block;font-size:10.5px;font-weight:600;color:var(--hw);border:1px solid var(--border);border-radius:10px;padding:2px 9px;margin-top:6px;cursor:pointer;}
+.nv-event-cross:hover{border-color:var(--hw);background:rgba(90,127,168,.08);}
 .nv-event-review-badge{display:inline-block;font-size:10px;font-weight:700;color:var(--ethic);background:rgba(200,140,60,.14);border-radius:10px;padding:2px 8px;margin-left:6px;}
 /* 09-23：中美科技戰分頁「總覽／近期動態」view切換，CSS規則照抄nv-view-nav
    一份、換techwar色票，不共用class名稱（比照上方205-206行既定慣例） */
@@ -640,6 +642,27 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 // ══════════════════════════════════════════════════════════════════
 //  GLOSSARY (分三類)
 // ══════════════════════════════════════════════════════════════════
+// 11-03：詞彙表 CapEx 的總額不再寫死，改由 hw_corp_reference.json 的 corp.capex_bars 即時算出
+// （guidance 如 "$195–205B" 取區間中位數；任一家解析失敗就整句不顯示數字，不會出現 NaN）。
+// 靜態 why 內的 {{CAPEX_TOTAL}} 於 renderGlossary 渲染時才代換；init() 會先 await loadHwCorpRef()。
+function glossCapexTotalB(ref){
+  const bars = ref && ref.corp && ref.corp.capex_bars;
+  if(!Array.isArray(bars) || !bars.length) return null;
+  let sum = 0;
+  for(const r of bars){
+    const g = String((r && r.guidance) == null ? '' : r.guidance);
+    if(!/B\s*$/i.test(g.trim())) return null;
+    const nums = (g.match(/\d+(?:\.\d+)?/g)||[]).map(Number).filter(Number.isFinite);
+    if(nums.length < 1 || nums.length > 2) return null;
+    sum += nums.length === 2 ? (nums[0]+nums[1])/2 : nums[0];
+  }
+  return Number.isFinite(sum) && sum > 0 ? sum : null;
+}
+function glossCapexText(){
+  const b = glossCapexTotalB(_hwCorpRef);
+  if(b == null) return '四大 CSP 仍在大幅擴增 CapEx，';
+  return '依巨頭角力分頁最新指引，四大 CSP 合計 CapEx 約 $' + Math.round(b*10).toLocaleString('en-US') + ' 億美元，';
+}
 const GLOSS_CATS = [
   {
     label:'Role（角色）',
@@ -655,7 +678,7 @@ const GLOSS_CATS = [
       {term:"CoWoS",full:"Chip-on-Wafer-on-Substrate　晶片堆疊封裝",def:"TSMC 的先進封裝技術，將 GPU 邏輯晶片與 HBM 堆疊並排放在矽中介層上，實現 TB/s 等級頻寬。分為 CoWoS-S（矽中介層）與 CoWoS-L（LSI 橋接，用於超大晶片）兩種版本。",why:"📌 沒有 CoWoS，GPU + HBM 無法組成 AI 加速器。這是目前 AI 硬體最核心的生產瓶頸。"},
       {term:"Reticle Limit",full:"光刻極限",def:"光刻機單次曝光能印製的最大晶片面積（約 858mm²）。NVIDIA Blackwell 系列晶片已超過此限制，迫使 TSMC 改用 CoWoS-L 技術拼接多個 chiplet。",why:"📌 說明為何 AI 晶片不能無限做大，也解釋了封裝技術從配角變主角的原因。"},
       {term:"TSV",full:"Through-Silicon Via　矽穿孔",def:"垂直穿透矽晶片的金屬導電通道，讓多層堆疊的記憶體晶片能彼此高速傳輸資料。HBM 的核心製造技術之一，也是 HBM 製造複雜度遠高於傳統 DRAM 的主因。",why:"📌 TSV 的製造良率和可靠性直接影響 HBM 產量，也是為何 HBM 每 GB 需消耗 3 倍 DDR5 晶圓的根本原因。"},
-      {term:"CapEx",full:"Capital Expenditure　資本支出",def:"企業用於購置或升級固定資產（如伺服器、資料中心、GPU）的支出，區別於日常營運費用（Opex）。",why:"📌 四大 CSP 2026 年合計 CapEx 達 $7,250 億，較 2025 年 +77%，這是產業仍在擴張而非收縮的最強有力證據。"},
+      {term:"CapEx",full:"Capital Expenditure　資本支出",def:"企業用於購置或升級固定資產（如伺服器、資料中心、GPU）的支出，區別於日常營運費用（Opex）。",why:"📌 {{CAPEX_TOTAL}}這是產業仍在擴張而非收縮的最強有力證據。"},
     ]
   },
   {
@@ -1037,7 +1060,7 @@ function nvAllianceOverviewHtml(ov){
 // 這類查證等級落差，不能省略或包裝成官方立場，比照產業導入分頁已確立的規範。
 // nvEventBody()是單則事件的內容（不含外層卡片框），獨立事件卡跟同故事線
 // 時間軸內的每一則更新都重用同一份內容，避免markup重複兩份要一起維護。
-function nvEventBody(ev){
+function nvEventBody(ev, side){
   // 09-14新增：needs_review=true代表週更自動分類信心不足，直接顯示待確認徽章
   // 讓使用者瀏覽頁面時就看到，不需要另外開口問Claude有沒有東西要複核
   // 09-16稽核發現：ev.title/summary/category/src_note等欄位09-14起改由
@@ -1052,10 +1075,41 @@ function nvEventBody(ev){
     <div class="nv-event-title">${_arcEsc(ev.title||'')}</div>
     <div class="nv-event-summary">${_arcEsc(ev.summary||'')}</div>
     ${nvSrcLink(ev.src)}
-    ${ev.src_note ? `<div class="nv-event-note">⚠️ ${_arcEsc(ev.src_note)}</div>` : ''}`;
+    ${ev.src_note ? `<div class="nv-event-note">⚠️ ${_arcEsc(ev.src_note)}</div>` : ''}
+    ${nvCrossLink(ev, side)}`;
 }
-function nvEventCard(ev){
-  return `<div class="nv-event-card">${nvEventBody(ev)}</div>`;
+function nvEventCard(ev, side){
+  return `<div class="nv-event-card">${nvEventBody(ev, side)}</div>`;
+}
+// 11-03：NVIDIA近期事件與中美科技戰近期動態收錄同一事件時互相標示。
+// 判定同一事件：src相同，或thread相同且日期相差<=3天；任一邊資料尚未載入就不顯示（載入完成後會補重繪）。
+function nvDayNum(d){
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(d||''));
+  return m ? Date.UTC(+m[1], +m[2]-1, +m[3])/86400000 : NaN;
+}
+function nvSameEvent(a, b){
+  if(!a || !b) return false;
+  if(a.src && b.src && a.src === b.src) return true;
+  if(a.thread && b.thread && a.thread === b.thread){
+    const dd = Math.abs(nvDayNum(a.date) - nvDayNum(b.date));
+    return Number.isFinite(dd) && dd <= 3;
+  }
+  return false;
+}
+function nvCrossMatches(ev, side){
+  const other = side === 'nv' ? TW_DATA : (side === 'tw' ? NV_DATA : null);
+  if(!other) return [];
+  return (other.recent_events||[]).filter(o => nvSameEvent(ev, o));
+}
+function nvCrossLink(ev, side){
+  if(!nvCrossMatches(ev, side).length) return '';
+  if(side === 'nv') return `<div class="nv-event-cross" onclick="nvGoCross('tw')">⚔️ 中美科技戰分頁有完整敘事 →</div>`;
+  return `<div class="nv-event-cross" onclick="nvGoCross('nv')">🟢 NVIDIA 專區亦收錄 →</div>`;
+}
+function nvGoCross(target){
+  if(target === 'tw'){ sw('techwar'); twSwitchView('events'); }
+  else { sw('nv'); nvSwitchView('events'); }
+  window.scrollTo(0, 0);
 }
 // 09-08新增：把屬於同一條故事線（有共同thread欄位）的事件併成一張時間軸卡；
 // 沒有thread欄位的各自獨立成一組，維持原本單張卡片的呈現方式。
@@ -1078,14 +1132,14 @@ function nvGroupEvents(events){
   groups.sort((a,b)=>(b.items[0].date||'').localeCompare(a.items[0].date||''));
   return groups;
 }
-function nvEventGroupCard(group){
-  if(group.type==='single') return nvEventCard(group.items[0]);
+function nvEventGroupCard(group, side){
+  if(group.type==='single') return nvEventCard(group.items[0], side);
   const items = group.items;
   const dateRange = _arcEsc(items.length>1 ? `${items[items.length-1].date} ～ ${items[0].date}` : items[0].date);
   const timelineHtml = items.map(ev=>`
     <div class="nv-event-thread-item">
       <div class="nv-event-thread-dot"></div>
-      <div class="nv-event-thread-body">${nvEventBody(ev)}</div>
+      <div class="nv-event-thread-body">${nvEventBody(ev, side)}</div>
     </div>`).join('');
   return `<div class="nv-event-card nv-event-thread-card">
     <div class="nv-event-thread-header">
@@ -1116,7 +1170,7 @@ function nvRenderEventsBody(){
   const navHtml = ['all', ...allCats].map(c=>
     `<button class="nv-event-nav-btn ${NV_EVENT_CAT===c?'active':''}" onclick="nvEventFilter('${_arcEscJsAttr(c)}')">${c==='all'?'全部':_arcEsc(c)}</button>`
   ).join('');
-  const cardsHtml = filtered.map(nvEventGroupCard).join('') || '<div class="empty-state">此分類目前沒有事件</div>';
+  const cardsHtml = filtered.map(g=>nvEventGroupCard(g,'nv')).join('') || '<div class="empty-state">此分類目前沒有事件</div>';
   body.innerHTML = `<div class="nv-event-nav">${navHtml}</div><div class="nv-event-grid">${cardsHtml}</div>`;
 }
 // 10-26新增：NVIDIA生態系放射圖（資料 data/nv_ecosystem.json；載入失敗只影響本區塊）
@@ -1643,6 +1697,7 @@ async function renderNvidia(){
 
   nvAttachGovernanceTooltips(panel);
   nvRenderEventsBody();
+  twRenderEventsBody(); // 科技戰資料若已先載入，補上「NVIDIA 專區亦收錄」標示
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -2121,7 +2176,7 @@ function twRenderEventsBody(){
   const navHtml = ['all', ...allCats].map(c=>
     `<button class="nv-event-nav-btn ${TW_EVENT_CAT===c?'active':''}" onclick="twEventFilter('${_arcEscJsAttr(c)}')">${c==='all'?'全部':_arcEsc(c)}</button>`
   ).join('');
-  const cardsHtml = filtered.map(nvEventGroupCard).join('') || '<div class="empty-state">此分類目前沒有事件</div>';
+  const cardsHtml = filtered.map(g=>nvEventGroupCard(g,'tw')).join('') || '<div class="empty-state">此分類目前沒有事件</div>';
   body.innerHTML = `<div class="nv-event-nav">${navHtml}</div><div class="nv-event-grid">${cardsHtml}</div>`;
 }
 
@@ -2204,6 +2259,7 @@ async function renderTechwar(){
 
   twRenderCompanyBody();
   twRenderEventsBody();
+  nvRenderEventsBody(); // NVIDIA 資料若已先載入，補上「中美科技戰分頁有完整敘事」標示
   twMapDrawArrows(true);
 }
 
@@ -2369,7 +2425,7 @@ function renderGlossary(hist) {
         <div class="gloss-full">${_arcEsc(g.full)}</div>
         <div class="gloss-def">${_arcEsc(g.def)}</div>
       </div>
-      <div class="gloss-why">${g.why ? (String(g.why).trimStart().startsWith('📌') ? _arcEsc(g.why) : '📌 ' + _arcEsc(g.why)) : ''}</div>
+      <div class="gloss-why">${g.why ? (()=>{ const w = String(g.why).replace('{{CAPEX_TOTAL}}', glossCapexText()); return w.trimStart().startsWith('📌') ? _arcEsc(w) : '📌 ' + _arcEsc(w); })() : ''}</div>
     </div>`;
   }
 
@@ -3636,6 +3692,7 @@ async function init() {
   let runs = [];
   try { runs = await fetchRunStats(); } catch (e) {}
   LATEST_RUNS = runs;
+  await loadHwCorpRef(); // 詞彙表 CapEx 總額要讀 hw_corp_reference，渲染前先載入（失敗只會不顯示數字）
   renderAll(hist);
   renderFunnelStat(runs, hist[0].date);
   sw(initTab);
