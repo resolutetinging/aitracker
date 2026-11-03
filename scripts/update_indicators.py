@@ -27,7 +27,7 @@ BROWSER_UA = "Mozilla/5.0"
 
 TWSE_API = "https://openapi.twse.com.tw/v1/opendata/t187ap05_L"
 MOPS_URL = "https://mopsov.twse.com.tw/nas/t21/sii/t21sc03_{y}_{m}_0.html"
-TSMC_SRC = "https://mopsov.twse.com.tw/nas/t21/sii/ (TWSE OpenAPI t187ap05_L、公開資訊觀測站 t21sc03，公司代號 2330)"
+TSMC_SRC = "https://mopsov.twse.com.tw/nas/t21/sii/"
 TSMC_MONTHS = 60
 
 

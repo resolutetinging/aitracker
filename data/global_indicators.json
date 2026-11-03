@@ -1,7 +1,7 @@
 {
  "updated": "2026-11-03",
  "tsmc_monthly": {
-  "src": "https://mopsov.twse.com.tw/nas/t21/sii/ (TWSE OpenAPI t187ap05_L、公開資訊觀測站 t21sc03，公司代號 2330)",
+  "src": "https://mopsov.twse.com.tw/nas/t21/sii/",
   "unit": "新台幣億元",
   "series": [
    {

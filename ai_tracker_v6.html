@@ -3933,7 +3933,8 @@ function trCalcReg(gi){
   const rows = o.items.filter(x=>x && x.label && trNum(x.value)).map(x=>{
     const s = Array.isArray(x.series) ? x.series.filter(p=>p && trNum(p.value)) : [];
     const dir = s.length>=2 ? s[s.length-1].value - s[s.length-2].value : null;
-    return {label:String(x.label), value:x.value, period:x.period||'', scope:x.scope||'', src:x.src||'', manual:x.method==='manual', series:s, diff:dir};
+    const prevP = s.length>=2 ? String(s[s.length-2].period||'') : '';
+    return {label:String(x.label), value:x.value, period:x.period||'', scope:x.scope||'', src:x.src||'', manual:x.method==='manual', series:s, diff:dir, prevP:prevP};
   });
   return rows.length ? {rows} : null;
 }
@@ -3943,7 +3944,7 @@ function trCalcInfo(gi, ind){
   const rows = o.items.filter(x=>x && x.label && trNum(x.value)).map(x=>({label:String(x.label), sector:x.sector||'', value:x.value, period:x.period||'', scope:x.scope||'', src:x.src||''}));
   if(!rows.length) return null;
   const euTop = ind && ind.rows && ind.rows[0] && /^J/i.test(ind.rows[0].code);
-  const text = euTop ? '歐盟採用率最高的產業為資訊相關產業（NACE J）；其他地區口徑不同，不在此判斷' : '';
+  const text = euTop ? '僅就歐盟而言：採用率最高的產業屬資訊相關產業（NACE J）；下列各地數值口徑不同，不比高低' : '';
   return {rows, note:o.note||'各地口徑不同，僅並列參考，不比高低', text, max:trNiceMax(Math.max.apply(null,rows.map(r=>r.value))*1.05)};
 }
 function trBarRow(name, sub, value, max, extra){
@@ -3963,7 +3964,7 @@ function trRenderInd(d){
 }
 function trRenderReg(d){
   return '<div class="tr-reg-grid">' + d.rows.map(r=>{
-    const dirTxt = r.diff==null ? '僅一期' : (r.diff>=0?'↑ ':'↓ ') + trSgn(r.diff).replace(/^[+-]/,'') + ' 個百分點（較上一期）';
+    const dirTxt = r.diff==null ? '僅一期' : (r.diff>=0?'↑ ':'↓ ') + trSgn(r.diff).replace(/^[+-]/,'') + ' 個百分點（較 ' + (r.prevP || '上一期') + '）';
     return `<div class="tr-reg"><div class="tr-reg-name">${_arcEsc(r.label)}${r.manual?'<span class="tr-tag">人工更新</span>':''}</div>`
       + `<div class="tr-reg-val">${_arcEsc(r.value.toFixed(1))}%</div>`
       + `<div class="tr-reg-per">${_arcEsc(r.period)}</div>`
