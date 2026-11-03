@@ -971,6 +971,185 @@
    }
   ]
  },
+ "ai_adoption_region_industries": {
+  "items": [
+   {
+    "key": "EU",
+    "label": "歐盟",
+    "period": "2025",
+    "short": "過去 12 個月・10 人以上",
+    "scope": "EU27，10 人以上企業（不含農林漁、採礦、金融保險），過去 12 個月使用至少一種 AI 技術；排行已排除上層彙總類別",
+    "src": "https://ec.europa.eu/eurostat/databrowser/view/isoc_eb_ain2/default/table",
+    "method": "auto",
+    "industries": [
+     {
+      "label": "電腦程式設計與資訊服務",
+      "value": 65.7,
+      "prev": 52.63
+     },
+     {
+      "label": "出版、影視與廣播",
+      "value": 56.2,
+      "prev": 39.68
+     },
+     {
+      "label": "科學研究與發展",
+      "value": 52.08,
+      "prev": 40.29
+     },
+     {
+      "label": "廣告市調與其他專業科技服務",
+      "value": 48.02,
+      "prev": 33.66
+     },
+     {
+      "label": "製藥",
+      "value": 41.32,
+      "prev": 25.82
+     }
+    ]
+   },
+   {
+    "key": "US",
+    "label": "美國",
+    "period": "2026 第 21 期（雙週）",
+    "short": "過去兩週・不分規模",
+    "scope": "BTOS Sector 檔（NAICS 2 位碼）；與全國檔同一題目（過去兩週是否在任何業務功能使用 AI，題目用語為 SI，原稱 AI）、同一期別；有員工的非農業私部門企業，不分規模；已排除「XX」列（跨部門多單位企業）；prev 為前一雙週期，雙週樣本波動大",
+    "src": "https://www.census.gov/hfp/btos/downloads/Sector.xlsx",
+    "method": "auto",
+    "industries": [
+     {
+      "label": "資訊業",
+      "value": 46.4,
+      "prev": 50.2
+     },
+     {
+      "label": "專業、科學及技術服務",
+      "value": 43.8,
+      "prev": 42.7
+     },
+     {
+      "label": "金融保險業",
+      "value": 40.5,
+      "prev": 40.1
+     },
+     {
+      "label": "企業總管理",
+      "value": 36.4,
+      "prev": 23.2
+     },
+     {
+      "label": "教育服務",
+      "value": 33.4,
+      "prev": 39.9
+     }
+    ]
+   },
+   {
+    "key": "KR",
+    "label": "韓國",
+    "period": "2024",
+    "short": "年度・10 人以上",
+    "scope": "10 人以上企業（含金融）；當年度是否使用 AI；韓國 2022 年起調查方式改變（OECD 標示斷點），前一期僅在斷點之後才列；批發業（不含汽機車）該年度 OECD 標為 D（定義與標準不同）",
+    "src": "https://data-explorer.oecd.org/?lc=en&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_ICT_B%40DF_BUSINESSES",
+    "method": "auto",
+    "industries": [
+     {
+      "label": "金融保險業",
+      "value": 63.13,
+      "prev": 52.36
+     },
+     {
+      "label": "資訊及通訊業",
+      "value": 55.98,
+      "prev": 49.54
+     },
+     {
+      "label": "批發業（不含汽機車）",
+      "value": 41.06,
+      "prev": 38.55
+     },
+     {
+      "label": "製造業",
+      "value": 36.35,
+      "prev": 25.43
+     },
+     {
+      "label": "住宿與餐飲",
+      "value": 30.36,
+      "prev": 33.36
+     }
+    ]
+   },
+   {
+    "key": "CA",
+    "label": "加拿大",
+    "period": "2026 第 2 季",
+    "short": "過去 12 個月・1 人以上",
+    "scope": "CSBC 表 33-10-1167-01，加拿大全國；有員工的企業與組織（含非營利），1 人以上不限規模；回顧過去 12 個月是否用 AI 生產商品或提供服務；prev 為 2025 第 2 季（表 33-10-1004-01，同題）",
+    "src": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3310116701",
+    "method": "manual",
+    "industries": [
+     {
+      "label": "資訊與文化產業",
+      "value": 42.3,
+      "prev": 35.6
+     },
+     {
+      "label": "金融保險業",
+      "value": 40.4,
+      "prev": 30.6
+     },
+     {
+      "label": "專業、科學及技術服務",
+      "value": 32.4,
+      "prev": 31.7
+     },
+     {
+      "label": "醫療保健與社會救助",
+      "value": 30.0,
+      "prev": 17.4
+     },
+     {
+      "label": "藝術、娛樂與休閒",
+      "value": 25.3,
+      "prev": 14.0
+     }
+    ]
+   },
+   {
+    "key": "AU",
+    "label": "澳洲",
+    "period": "2024-25 財年",
+    "short": "財年度・含微型企業",
+    "scope": "ABS 企業特性調查 2024-25 資料表 BCSDC06 Table 2；全體企業含微型（0–4 人）；財年度內是否使用 AI（為 ICT 選項之一，可複選）；雙年調查，產業別無前期可比值",
+    "src": "https://www.abs.gov.au/statistics/industry/technology-and-innovation/characteristics-australian-business/2024-25",
+    "method": "manual",
+    "industries": [
+     {
+      "label": "資訊媒體與電信業",
+      "value": 38.1
+     },
+     {
+      "label": "金融保險業",
+      "value": 24.1
+     },
+     {
+      "label": "專業、科學及技術服務",
+      "value": 24.1
+     },
+     {
+      "label": "採礦業",
+      "value": 17.8
+     },
+     {
+      "label": "醫療保健與社會救助",
+      "value": 17.4
+     }
+    ]
+   }
+  ]
+ },
  "failures": [],
  "csp_capex": {
   "src": "各公司官方財報新聞稿（SEC 8-K 附件 99.1）與 Microsoft IR 財報會議頁",

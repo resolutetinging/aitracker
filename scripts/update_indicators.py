@@ -6,7 +6,8 @@
   2. 四大雲端業者每季 CapEx：每季人工依官方財報查證填入，本腳本不抓、只保留
   3. Eurostat isoc_eb_ai：EU27、10 人以上企業使用 AI 比例
   4. 企業 AI 採用深化：Eurostat isoc_eb_ain2 產業排行；各地區（美 BTOS、韓 OECD、星 SingStat 自動，
-     加 StatCan、澳 ABS 人工查證原樣保留）；跨區資訊業（歐／美自動，加／澳人工）
+     加 StatCan、澳 ABS 人工查證原樣保留）；跨區資訊業（歐／美自動，加／澳人工）；
+     各地區採用率前 5 產業（歐 Eurostat、美 BTOS Sector、韓 OECD 自動，加／澳人工）
 
 輸出 data/global_indicators.json。全部自動類失敗 exit 1，部分失敗 exit 0 並印警告。
 來源資料變少時以 月份／季／年 為 key 合併，不刪舊點。
@@ -252,6 +253,22 @@ def pct(s):
     return float(m.group(1)) if m else None
 
 
+_CACHE = {}
+
+
+def cached(name, fn):
+    """同一次執行內共用下載結果（成功或失敗都只做一次）。"""
+    if name not in _CACHE:
+        try:
+            _CACHE[name] = (True, fn())
+        except Exception as e:
+            _CACHE[name] = (False, e)
+    ok, val = _CACHE[name]
+    if not ok:
+        raise val
+    return val
+
+
 def btos_label(smpdt):
     return "%s 第 %d 期" % (smpdt[:4], int(smpdt[4:]))
 
@@ -291,8 +308,12 @@ def fetch_us(old):
             "src": BTOS_PAGE, "method": "auto", "series": series}
 
 
+def btos_sector_wb():
+    return cached("btos_sector", lambda: read_xlsx(http_get(BTOS_SEC, timeout=180)))
+
+
 def fetch_us_info(old):
-    wb = read_xlsx(http_get(BTOS_SEC, timeout=180))
+    wb = btos_sector_wb()
     rows = wb["Response Estimates"]
     hdr = rows[0]
     r51 = next(r for r in rows[1:] if r.get("A") == "51" and r.get("B") == "7" and r.get("E") == "Yes")
@@ -313,13 +334,23 @@ OECD_URL = os.environ.get("INDICATORS_OECD_URL") or (
 OECD_PAGE = "https://data-explorer.oecd.org/?lc=en&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_ICT_B%40DF_BUSINESSES"
 
 
-def fetch_kr(old):
+def _oecd_download():
     req = Request(OECD_URL, headers={"User-Agent": BROWSER_UA,
                                      "Accept": "application/vnd.sdmx.data+csv;version=1.0.0"})
     with urlopen(req, timeout=300) as r:
         text = r.read().decode("utf-8")
+    # 只留 G14_B（使用 AI 的企業比例，企業百分比）的列，供韓國總計與產業別共用
+    return [row for row in csv.DictReader(io.StringIO(text))
+            if row["MEASURE"] == "G14_B" and row["UNIT_MEASURE"] == "PT_ENT"]
+
+
+def oecd_rows():
+    return cached("oecd", _oecd_download)
+
+
+def fetch_kr(old):
     pts = []
-    for row in csv.DictReader(io.StringIO(text)):
+    for row in oecd_rows():
         if (row["REF_AREA"] == "KOR" and row["MEASURE"] == "G14_B" and row["ACTIVITY"] == "_T"
                 and row["SIZE_CLASS"] == "S_GE10" and row["UNIT_MEASURE"] == "PT_ENT"):
             pts.append((int(row["TIME_PERIOD"]), float(row["OBS_VALUE"]), row["OBS_STATUS"]))
@@ -385,6 +416,138 @@ MANUAL_INFO = [
 ]
 
 
+# ---------- 4b. 各地區採用率前 5 產業 ----------
+TOP_N = 5
+BTOS_SEC_ZH = {
+    "11": "農林漁牧業", "21": "採礦業", "22": "公用事業", "23": "營建業",
+    "31": "製造業", "42": "批發業", "44": "零售業", "48": "運輸與倉儲",
+    "51": "資訊業", "52": "金融保險業", "53": "不動產與租賃", "54": "專業、科學及技術服務",
+    "55": "企業總管理", "56": "行政支援與廢棄物處理", "61": "教育服務",
+    "62": "醫療保健與社會救助", "71": "藝術、娛樂與休閒", "72": "住宿與餐飲",
+    "81": "其他服務業",
+}
+KR_ZH = {
+    "C": "製造業", "F": "營建業", "G46": "批發業（不含汽機車）", "G47": "零售業（不含汽機車）",
+    "H": "運輸與倉儲", "I": "住宿與餐飲", "J": "資訊及通訊業", "K": "金融保險業",
+    "L": "不動產業", "M": "專業、科學及技術服務", "N": "行政支援服務",
+}
+EU_PAGE = "https://ec.europa.eu/eurostat/databrowser/view/isoc_eb_ain2/default/table"
+
+
+def top_n(items):
+    return sorted(items, key=lambda x: -x["value"])[:TOP_N]
+
+
+def eu_industries(ind):
+    rows = [i for i in ind["items"] if not i.get("agg")]
+    if len(rows) < TOP_N:
+        raise RuntimeError("EU 非彙總產業不足 %d 筆" % TOP_N)
+    inds = []
+    for i in top_n(rows):
+        e = {"label": i["label"], "value": i["value"]}
+        if i.get("prev") is not None:
+            e["prev"] = i["prev"]
+        inds.append(e)
+    return {"key": "EU", "label": "歐盟", "period": str(ind["year"]),
+            "short": "過去 12 個月・10 人以上", "scope": IND_SCOPE + "；排行已排除上層彙總類別",
+            "src": EU_PAGE, "method": "auto", "industries": inds}
+
+
+def us_industries(old):
+    wb = btos_sector_wb()
+    rows = wb["Response Estimates"]
+    hdr = rows[0]
+    cols = sorted([c for c, k in hdr.items() if re.match(r"^\d{6}$", k or "")],
+                  key=lambda c: -int(hdr[c]))
+    # Sector 代碼 XX 僅指跨部門／跨州多單位企業，非全體，排除；只取 Q7（AI 題）Yes 列
+    q7 = dict((r["A"], r) for r in rows[1:]
+              if r.get("B") == "7" and r.get("E") == "Yes" and r.get("A") in BTOS_SEC_ZH)
+    cur = next((c for c in cols if sum(1 for r in q7.values() if pct(r.get(c)) is not None) >= 10),
+               None)
+    if cur is None:
+        raise RuntimeError("BTOS Sector 檔 AI 題無足夠產業數值")
+    nxt = cols.index(cur) + 1
+    prev = cols[nxt] if nxt < len(cols) else None
+    cand = []
+    for code, r in q7.items():
+        v = pct(r.get(cur))
+        if v is None:
+            continue
+        e = {"label": BTOS_SEC_ZH[code], "value": v}
+        pv = pct(r.get(prev)) if prev else None
+        if pv is not None:
+            e["prev"] = pv
+        cand.append(e)
+    return {"key": "US", "label": "美國", "period": btos_label(hdr[cur]) + "（雙週）",
+            "short": "過去兩週・不分規模",
+            "scope": ("BTOS Sector 檔（NAICS 2 位碼）；與全國檔同一題目（過去兩週是否在任何業務功能使用 AI，"
+                      "題目用語為 SI，原稱 AI）、同一期別；有員工的非農業私部門企業，不分規模；"
+                      "已排除「XX」列（跨部門多單位企業）；prev 為前一雙週期，雙週樣本波動大"),
+            "src": BTOS_SEC, "method": "auto", "industries": top_n(cand)}
+
+
+def kr_industries(old):
+    allrows = oecd_rows()
+    pts = {}
+    for row in allrows:
+        if (row["REF_AREA"] == "KOR" and row["SIZE_CLASS"] == "S_GE10"
+                and row["ACTIVITY"] in KR_ZH):
+            pts.setdefault(int(row["TIME_PERIOD"]), {})[row["ACTIVITY"]] = (
+                float(row["OBS_VALUE"]), row["OBS_STATUS"])
+    ok_years = sorted(y for y, d in pts.items() if len(d) >= TOP_N)
+    if not ok_years:
+        raise RuntimeError("OECD 韓國產業別資料不足")
+    cur = ok_years[-1]
+    # 韓國 2022 起才是同一口徑（OECD 標斷點 B），前一期只在斷點（含）之後才採用
+    brk = [int(r["TIME_PERIOD"]) for r in allrows if r["REF_AREA"] == "KOR"
+           and r["ACTIVITY"] == "_T" and r["SIZE_CLASS"] == "S_GE10" and r["OBS_STATUS"] == "B"]
+    start = max(brk) if brk else min(ok_years)
+    cand = []
+    for code, (v, st) in pts[cur].items():
+        e = {"label": KR_ZH[code], "value": round(v, 2), "_st": st}
+        pv = pts.get(cur - 1, {}).get(code)
+        if pv and cur - 1 >= start:
+            e["prev"] = round(pv[0], 2)
+        cand.append(e)
+    top = top_n(cand)
+    flagged = [e["label"] for e in top if e["_st"] == "D"]
+    for e in top:
+        del e["_st"]
+    scope = ("10 人以上企業（含金融）；當年度是否使用 AI；韓國 2022 年起調查方式改變"
+             "（OECD 標示斷點），前一期僅在斷點之後才列")
+    if flagged:
+        scope += "；%s該年度 OECD 標為 D（定義與標準不同）" % "、".join(flagged)
+    return {"key": "KR", "label": "韓國", "period": str(cur), "short": "年度・10 人以上",
+            "scope": scope, "src": OECD_PAGE, "method": "auto", "industries": top}
+
+
+# 人工查證項目：值取自官方 API／頁面（證據見 research/adoption_evidence.md 第 8 節）
+MANUAL_REGION_INDUSTRIES = [
+    {"key": "CA", "label": "加拿大", "period": "2026 第 2 季", "short": "過去 12 個月・1 人以上",
+     "scope": ("CSBC 表 33-10-1167-01，加拿大全國；有員工的企業與組織（含非營利），1 人以上不限規模；"
+               "回顧過去 12 個月是否用 AI 生產商品或提供服務；prev 為 2025 第 2 季（表 33-10-1004-01，同題）"),
+     "src": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3310116701", "method": "manual",
+     "industries": [
+         {"label": "資訊與文化產業", "value": 42.3, "prev": 35.6},
+         {"label": "金融保險業", "value": 40.4, "prev": 30.6},
+         {"label": "專業、科學及技術服務", "value": 32.4, "prev": 31.7},
+         {"label": "醫療保健與社會救助", "value": 30.0, "prev": 17.4},
+         {"label": "藝術、娛樂與休閒", "value": 25.3, "prev": 14.0}]},
+    {"key": "AU", "label": "澳洲", "period": "2024-25 財年", "short": "財年度・含微型企業",
+     "scope": ("ABS 企業特性調查 2024-25 資料表 BCSDC06 Table 2；全體企業含微型（0–4 人）；"
+               "財年度內是否使用 AI（為 ICT 選項之一，可複選）；雙年調查，產業別無前期可比值"),
+     "src": ("https://www.abs.gov.au/statistics/industry/technology-and-innovation/"
+             "characteristics-australian-business/2024-25"),
+     "method": "manual",
+     "industries": [
+         {"label": "資訊媒體與電信業", "value": 38.1},
+         {"label": "金融保險業", "value": 24.1},
+         {"label": "專業、科學及技術服務", "value": 24.1},
+         {"label": "採礦業", "value": 17.8},
+         {"label": "醫療保健與社會救助", "value": 17.4}]},
+]
+
+
 def keep_or_seed(old_items, seed):
     """人工項目：舊檔有就原樣保留，沒有才用腳本內建初始值。"""
     have = dict((i["key"], i) for i in old_items or [])
@@ -430,8 +593,10 @@ def main():
         out["csp_capex"] = old["csp_capex"]
     old_regions = dict((i["key"], i) for i in (old.get("ai_adoption_regions") or {}).get("items", []))
     old_info = dict((i["key"], i) for i in (old.get("ai_adoption_info_sector") or {}).get("items", []))
+    old_rind = dict((i["key"], i) for i in (old.get("ai_adoption_region_industries") or {}).get("items", []))
     fresh_region = {}
     fresh_info = {}
+    fresh_rind = {}
     jobs = [
         ("tsmc_monthly", lambda: fetch_tsmc(old.get("tsmc_monthly")), "tsmc_monthly"),
         ("eu_ai_adoption", lambda: fetch_eu(old.get("eu_ai_adoption")), "eu_ai_adoption"),
@@ -441,6 +606,8 @@ def main():
         ("region.KR", lambda: fetch_kr(old_regions.get("KR")), ("region", "KR")),
         ("region.SG", lambda: fetch_sg(old_regions.get("SG")), ("region", "SG")),
         ("info_sector.US", lambda: fetch_us_info(old_info.get("US")), ("info", "US")),
+        ("region_industries.US", lambda: us_industries(old_rind.get("US")), ("rind", "US")),
+        ("region_industries.KR", lambda: kr_industries(old_rind.get("KR")), ("rind", "KR")),
     ]
     ok = 0
     for name, fn, dest in jobs:
@@ -448,7 +615,7 @@ def main():
             res = fn()
             ok += 1
             if isinstance(dest, tuple):
-                (fresh_region if dest[0] == "region" else fresh_info)[dest[1]] = res
+                {"region": fresh_region, "info": fresh_info, "rind": fresh_rind}[dest[0]][dest[1]] = res
             else:
                 out[dest] = res
         except Exception as e:
@@ -482,6 +649,23 @@ def main():
         infos.append(item)
     infos += keep_or_seed(list(old_info.values()), MANUAL_INFO)
     out["ai_adoption_info_sector"] = {"note": "各地口徑不同，僅並列參考，不比高低", "items": infos}
+    # 各地區採用率前 5 產業：歐盟取自本次產業排行，美／韓取本次或舊值，加／澳人工原樣保留
+    rinds = []
+    if "ai_adoption_industry" in out:
+        try:
+            rinds.append(eu_industries(out["ai_adoption_industry"]))
+        except Exception as e:
+            failures.append("region_industries.EU: %s" % str(e)[:200])
+            if "EU" in old_rind:
+                rinds.append(old_rind["EU"])
+    elif "EU" in old_rind:
+        rinds.append(old_rind["EU"])
+    for k in ("US", "KR"):
+        item = fresh_rind.get(k) or old_rind.get(k)
+        if item:
+            rinds.append(item)
+    rinds += keep_or_seed(list(old_rind.values()), MANUAL_REGION_INDUSTRIES)
+    out["ai_adoption_region_industries"] = {"items": rinds}
     out["failures"] = failures
     if "csp_capex" in out:  # 維持慣用鍵序（csp_capex 在最後），避免 diff 雜訊
         out["csp_capex"] = out.pop("csp_capex")
