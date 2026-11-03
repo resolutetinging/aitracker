@@ -527,6 +527,9 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .gloss-term{font-size:15px;font-weight:800;color:var(--gloss);margin-bottom:2px;}
 .gloss-full{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:6px;}
 .gloss-def{font-size:12px;color:var(--text2);line-height:1.55;}
+.gloss-note{margin-top:8px;font-size:11.5px;line-height:1.5;color:var(--muted);}
+.gloss-note[data-kind=ok]{color:var(--gloss);}
+.gloss-note[data-kind=err]{color:#b04a3a;}
 .gloss-why{margin-top:10px;padding:10px 9px 8px;font-size:11.5px;line-height:1.55;color:var(--gloss);background:rgba(74,104,128,.07);border-radius:5px;border-left:2px solid var(--gloss);}
 .new-badge{display:inline-block;font-size:10px;background:rgba(74,138,106,.12);color:var(--app);border:1px solid rgba(74,138,106,.3);border-radius:8px;padding:1px 7px;margin-left:6px;font-weight:600;}
 .user-badge{display:inline-block;font-size:10px;background:rgba(40,38,32,.07);color:var(--sub);border:1px solid rgba(40,38,32,.18);border-radius:8px;padding:1px 7px;margin-left:6px;font-weight:600;cursor:pointer;}
@@ -2373,7 +2376,7 @@ document.addEventListener('click', e => {
     document.querySelectorAll('.gloss-cat-picker.open').forEach(p=>p.classList.remove('open'));
   // ↻ 刷新按鈕 — 事件委派（取代 inline onclick，確保觸發）
   const rb = e.target.closest('[data-regen]');
-  if (rb) { e.stopPropagation(); regenerateUserTerm(rb.dataset.regen); }
+  if (rb) { e.stopPropagation(); regenerateUserTerm(rb.dataset.regen, rb); }
 });
 function setCat(term, catKey, pickerId) {
   saveCatOverride(term, catKey);
@@ -2595,32 +2598,68 @@ async function addUserTerm(){
   if(newBtn){newBtn.disabled=false;newBtn.textContent='✦ AI 補完';}
 }
 
-async function regenerateUserTerm(term){
+function _glossCardNote(cardEl, msg, kind, ms){
+  // 在卡片上顯示短提示（文字走 textContent，不進 innerHTML）
+  if(!cardEl)return;
+  let n=cardEl.querySelector('.gloss-note');
+  if(!n){n=document.createElement('div');n.className='gloss-note';cardEl.appendChild(n);}
+  n.textContent=msg; n.dataset.kind=kind||'info';
+  clearTimeout(n._t);
+  if(ms)n._t=setTimeout(()=>{if(n.parentNode)n.remove();},ms);
+}
+function _glossFindCard(term){
+  const b=[...document.querySelectorAll('[data-regen]')].find(x=>x.dataset.regen===term);
+  return b?b.closest('.gloss-card'):null;
+}
+async function _glossGroqOnce(key,prompt,max){
+  const resp=await fetch('https://api.groq.com/openai/v1/chat/completions',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
+    body:JSON.stringify({
+      model:'openai/gpt-oss-120b',
+      reasoning_effort:'low',
+      messages:[{role:'user',content:prompt}],
+      max_tokens:max,temperature:0.4
+    })
+  });
+  let json=null;
+  try{json=await resp.json();}catch(_e){}
+  if(!resp.ok){
+    const err=new Error((json&&json.error&&json.error.message)||('HTTP '+resp.status));
+    err.status=resp.status; throw err;
+  }
+  const ch=json&&json.choices&&json.choices[0];
+  return {content:(ch&&ch.message&&ch.message.content)||'', finish:ch&&ch.finish_reason};
+}
+function _glossParseJson(text){
+  // 允許 ```json 區塊包裹；取第一個 { 到最後一個 }
+  const t=String(text||'').replace(/```(?:json)?/gi,'');
+  const m=t.match(/\{[\s\S]*\}/);
+  if(!m)return null;
+  try{return JSON.parse(m[0]);}catch(_e){return null;}
+}
+async function regenerateUserTerm(term, btnEl){
   const key=(localStorage.getItem('groq_key')||localStorage.getItem('tina_groq')||localStorage.getItem('oasis_groq_key'));
   if(!key){alert('請先在「⚙ 設定」區儲存 Groq Key');return;}
-  const btn=document.getElementById('regen-'+term.replace(/'/g,"\\'"));
+  const btn=btnEl||_glossFindCard(term)?.querySelector('[data-regen]');
+  const card=btn?btn.closest('.gloss-card'):null;
+  if(btn&&btn.disabled)return; // 防重複點擊
   if(btn){btn.disabled=true;btn.textContent='⏳';}
+  _glossCardNote(card,'重新生成中…','busy',0);
   try{
     const catList=getAllCatDefs().map(c=>c.key).join('|');
-    const resp=await fetch('https://api.groq.com/openai/v1/chat/completions',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
-      body:JSON.stringify({
-        model:'openai/gpt-oss-120b',
-        reasoning_effort:'low',
-        messages:[{role:'user',content:
-          `Generate a detailed glossary card for the AI/semiconductor supply chain term: "${term}"\nOutput ONLY pure JSON, no markdown:\n{"term":"${term}","full":"English Full Name　繁體中文名稱","def":"必須寫滿3句繁體中文定義，每句需包含具體數字、產品規格或公司名稱","why":"📌 對AI供應鏈投資者的重要性：具體說明影響哪些公司及上下游供應鏈效應，2句繁體中文","category":"${catList}"}`
-        }],
-        max_tokens:1000,temperature:0.4
-      })
-    });
-    const json=await resp.json();
-    if(!resp.ok)throw new Error(json.error?.message||'HTTP '+resp.status);
-    const text=json.choices?.[0]?.message?.content||'';
-    const m=text.match(/\{[\s\S]*\}/);
-    if(!m)throw new Error('回傳非 JSON');
-    const g=JSON.parse(m[0]);
-    if(!g.term||!g.def)throw new Error('缺少必要欄位');
+    const prompt=`Generate a detailed glossary card for the AI/semiconductor supply chain term: "${term}"\nOutput ONLY pure JSON, no markdown:\n{"term":"${term}","full":"English Full Name　繁體中文名稱","def":"必須寫滿3句繁體中文定義，每句需包含具體數字、產品規格或公司名稱","why":"📌 對AI供應鏈投資者的重要性：具體說明影響哪些公司及上下游供應鏈效應，2句繁體中文","category":"${catList}"}`;
+    let r=await _glossGroqOnce(key,prompt,1800);
+    let g=r.finish==='length'?null:_glossParseJson(r.content);
+    if(!g){
+      // 被截斷或解析失敗：放大 max_tokens 重試一次
+      r=await _glossGroqOnce(key,prompt,3600);
+      g=r.finish==='length'?null:_glossParseJson(r.content);
+      if(!g){
+        throw new Error(r.finish==='length'?'AI 回覆被截斷，請再按一次':'AI 回傳格式無法解析，請再按一次');
+      }
+    }
+    if(!g.term||!g.def)throw new Error('AI 回傳缺少必要欄位，請再按一次');
     g.term=term;
     g._addedAt=new Date().toISOString().slice(0,10);
     const ut=loadUserTerms();
@@ -2632,13 +2671,15 @@ async function regenerateUserTerm(term){
       ov[term]=g; localStorage.setItem('gloss_hist_overrides',JSON.stringify(ov));
     }
     renderGlossary(HISTORY);
-    // 重建後顯示成功提示
+    // 重繪後卡片已是新元素：在新卡片上顯示「已更新」
+    _glossCardNote(_glossFindCard(term),'✓ 已更新','ok',3500);
     const st=document.getElementById('add-term-status');
     if(st){st.textContent='✓ '+term+' 已更新';setTimeout(()=>{if(st)st.textContent='';},3000);}
   }catch(e){
     console.error('regen failed:',e);
-    alert('↻ 刷新失敗：'+e.message);
-    if(btn){btn.disabled=false;btn.textContent='↻';}
+    if(btn&&btn.isConnected){btn.disabled=false;btn.textContent='↻';}
+    const msg=e.status===429?'請求過於頻繁（429），請稍候約一分鐘再按 ↻':('刷新失敗：'+e.message);
+    _glossCardNote(card&&card.isConnected?card:_glossFindCard(term),msg,'err',8000);
   }
 }
 
