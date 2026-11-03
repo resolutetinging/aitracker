@@ -1,0 +1,398 @@
+{
+ "_note": "ASCII 別名採字邊界；4 字元以內區分大小寫；exclude 為比對前先自文字刪除的詞",
+ "entities": [
+  {
+   "key": "OpenAI",
+   "label": "OpenAI",
+   "type": "company",
+   "aliases": [
+    "OpenAI",
+    "ChatGPT"
+   ]
+  },
+  {
+   "key": "NVIDIA",
+   "label": "NVIDIA",
+   "type": "company",
+   "aliases": [
+    "NVIDIA",
+    "輝達"
+   ]
+  },
+  {
+   "key": "Anthropic",
+   "label": "Anthropic",
+   "type": "company",
+   "aliases": [
+    "Anthropic",
+    "Claude"
+   ]
+  },
+  {
+   "key": "Google",
+   "label": "Google",
+   "type": "company",
+   "aliases": [
+    "Google",
+    "Alphabet",
+    "Gemini",
+    "DeepMind"
+   ]
+  },
+  {
+   "key": "Microsoft",
+   "label": "Microsoft",
+   "type": "company",
+   "aliases": [
+    "Microsoft",
+    "微軟"
+   ]
+  },
+  {
+   "key": "Meta",
+   "label": "Meta",
+   "type": "company",
+   "aliases": [
+    "Meta",
+    "Meta Platforms",
+    "Llama"
+   ],
+   "exclude": [
+    "metadata"
+   ]
+  },
+  {
+   "key": "Amazon",
+   "label": "Amazon",
+   "type": "company",
+   "aliases": [
+    "Amazon",
+    "AWS",
+    "亞馬遜"
+   ]
+  },
+  {
+   "key": "Apple",
+   "label": "Apple",
+   "type": "company",
+   "aliases": [
+    "Apple",
+    "蘋果"
+   ]
+  },
+  {
+   "key": "TSMC",
+   "label": "TSMC",
+   "type": "company",
+   "aliases": [
+    "TSMC",
+    "台積電"
+   ]
+  },
+  {
+   "key": "Samsung",
+   "label": "Samsung",
+   "type": "company",
+   "aliases": [
+    "Samsung",
+    "三星"
+   ]
+  },
+  {
+   "key": "SK hynix",
+   "label": "SK hynix",
+   "type": "company",
+   "aliases": [
+    "SK hynix",
+    "SK 海力士",
+    "SK海力士",
+    "海力士"
+   ]
+  },
+  {
+   "key": "Micron",
+   "label": "Micron",
+   "type": "company",
+   "aliases": [
+    "Micron",
+    "美光"
+   ],
+   "exclude": [
+    "Micronesia"
+   ]
+  },
+  {
+   "key": "AMD",
+   "label": "AMD",
+   "type": "company",
+   "aliases": [
+    "AMD",
+    "超微"
+   ],
+   "exclude": [
+    "美超微",
+    "Super Micro"
+   ]
+  },
+  {
+   "key": "Intel",
+   "label": "Intel",
+   "type": "company",
+   "aliases": [
+    "Intel",
+    "英特爾"
+   ]
+  },
+  {
+   "key": "Broadcom",
+   "label": "Broadcom",
+   "type": "company",
+   "aliases": [
+    "Broadcom",
+    "博通"
+   ]
+  },
+  {
+   "key": "ASML",
+   "label": "ASML",
+   "type": "company",
+   "aliases": [
+    "ASML",
+    "艾司摩爾"
+   ]
+  },
+  {
+   "key": "Tesla",
+   "label": "Tesla",
+   "type": "company",
+   "aliases": [
+    "Tesla",
+    "特斯拉"
+   ]
+  },
+  {
+   "key": "華為",
+   "label": "華為",
+   "type": "company",
+   "aliases": [
+    "華為",
+    "Huawei"
+   ]
+  },
+  {
+   "key": "xAI",
+   "label": "xAI",
+   "type": "company",
+   "aliases": [
+    "xAI",
+    "Grok"
+   ]
+  },
+  {
+   "key": "DeepSeek",
+   "label": "DeepSeek",
+   "type": "company",
+   "aliases": [
+    "DeepSeek",
+    "深度求索"
+   ]
+  },
+  {
+   "key": "阿里巴巴",
+   "label": "阿里巴巴",
+   "type": "company",
+   "aliases": [
+    "阿里巴巴",
+    "Alibaba",
+    "Qwen",
+    "通義"
+   ]
+  },
+  {
+   "key": "Oracle",
+   "label": "Oracle",
+   "type": "company",
+   "aliases": [
+    "Oracle",
+    "甲骨文"
+   ]
+  },
+  {
+   "key": "Qualcomm",
+   "label": "Qualcomm",
+   "type": "company",
+   "aliases": [
+    "Qualcomm",
+    "高通"
+   ]
+  },
+  {
+   "key": "CoreWeave",
+   "label": "CoreWeave",
+   "type": "company",
+   "aliases": [
+    "CoreWeave"
+   ]
+  },
+  {
+   "key": "Palantir",
+   "label": "Palantir",
+   "type": "company",
+   "aliases": [
+    "Palantir"
+   ]
+  },
+  {
+   "key": "Mistral",
+   "label": "Mistral",
+   "type": "company",
+   "aliases": [
+    "Mistral"
+   ]
+  },
+  {
+   "key": "HBM",
+   "label": "HBM",
+   "type": "topic",
+   "aliases": [
+    "HBM",
+    "高頻寬記憶體"
+   ]
+  },
+  {
+   "key": "CoWoS／先進封裝",
+   "label": "CoWoS／先進封裝",
+   "type": "topic",
+   "aliases": [
+    "CoWoS",
+    "先進封裝",
+    "Advanced Packaging",
+    "混合鍵合"
+   ]
+  },
+  {
+   "key": "Agentic AI",
+   "label": "Agentic AI",
+   "type": "topic",
+   "aliases": [
+    "Agentic",
+    "AI Agent",
+    "AI 代理",
+    "AI代理",
+    "代理式",
+    "智能體",
+    "Agent"
+   ],
+   "exclude": [
+    "代理商",
+    "代理人員"
+   ]
+  },
+  {
+   "key": "Physical AI",
+   "label": "Physical AI",
+   "type": "topic",
+   "aliases": [
+    "Physical AI",
+    "人形機器人",
+    "機器人",
+    "具身",
+    "Humanoid"
+   ],
+   "exclude": [
+    "聊天機器人",
+    "客服機器人",
+    "對話機器人"
+   ]
+  },
+  {
+   "key": "出口管制",
+   "label": "出口管制",
+   "type": "topic",
+   "aliases": [
+    "出口管制",
+    "Export Control",
+    "Export Controls",
+    "禁運"
+   ]
+  },
+  {
+   "key": "資料中心電力／能源",
+   "label": "資料中心電力／能源",
+   "type": "topic",
+   "aliases": [
+    "資料中心電力",
+    "資料中心能源",
+    "電網",
+    "核能",
+    "Data Center Power",
+    "算力電力",
+    "用電"
+   ]
+  },
+  {
+   "key": "推論",
+   "label": "推論",
+   "type": "topic",
+   "aliases": [
+    "推論",
+    "Inference"
+   ]
+  },
+  {
+   "key": "ASIC／自研晶片",
+   "label": "ASIC／自研晶片",
+   "type": "topic",
+   "aliases": [
+    "ASIC",
+    "自研晶片",
+    "自研 AI 晶片",
+    "TPU",
+    "Trainium"
+   ]
+  },
+  {
+   "key": "主權 AI",
+   "label": "主權 AI",
+   "type": "topic",
+   "aliases": [
+    "主權 AI",
+    "主權AI",
+    "Sovereign AI"
+   ]
+  },
+  {
+   "key": "液冷／散熱",
+   "label": "液冷／散熱",
+   "type": "topic",
+   "aliases": [
+    "液冷",
+    "Liquid Cooling",
+    "散熱"
+   ]
+  },
+  {
+   "key": "光通訊／CPO",
+   "label": "光通訊／CPO",
+   "type": "topic",
+   "aliases": [
+    "CPO",
+    "共封裝光學",
+    "光通訊",
+    "矽光子",
+    "Silicon Photonics"
+   ]
+  },
+  {
+   "key": "開源模型",
+   "label": "開源模型",
+   "type": "topic",
+   "aliases": [
+    "開源模型",
+    "Open-source",
+    "開源",
+    "Open Source"
+   ]
+  }
+ ]
+}

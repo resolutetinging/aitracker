@@ -59,10 +59,14 @@ jobs:
           fi
           python scripts/update_data.py $EXTRA
 
+      - name: Build attention trend
+        continue-on-error: true
+        run: python scripts/build_attention.py
+
       - name: Commit updated data
         env:
           COMMIT_MSG: "🤖 Auto-update ${{ env.TODAY }}"
-          FILES: 'data/history.json data/notes_backup.json data/run_stats.json'
+          FILES: 'data/history.json data/notes_backup.json data/run_stats.json data/attention_trend.json'
         run: |
           # 同一 repo 有多支排程會推送：push 被拒時先 rebase 到最新再推，最多 5 次
           git config user.name "github-actions[bot]"

@@ -49,6 +49,30 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .t-nv   {background:rgba(106,138,32,.10); border-color:var(--nv);   color:var(--nv);}
 .t-industry {background:rgba(74,120,104,.10); border-color:var(--industry); color:var(--industry);}
 .t-techwar {background:rgba(90,111,149,.10); border-color:var(--techwar); color:var(--techwar);}
+/* ── 全球趨勢分頁（11-03）：文字固定 10.5–11px，圖寬取容器實際寬度（見 trDraw） ── */
+.t-trend {background:rgba(90,127,168,.10); border-color:var(--hw); color:var(--hw);}
+#panel-trend{position:relative;}
+.tr-sec-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.tr-sec-sub{font-size:12px;color:var(--muted);margin-bottom:12px;}
+.tr-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin:10px 0 14px;max-width:800px;}
+.tr-card-title{font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.tr-dir{font-size:12.5px;font-weight:600;color:var(--hw);margin-bottom:8px;}
+.tr-note{font-size:11.5px;color:var(--muted);margin-top:6px;}
+.tr-chart{width:100%;overflow:hidden;}
+.tr-svg{display:block;max-width:100%;touch-action:manipulation;cursor:crosshair;}
+.tr-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:4px;}
+.tr-sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px;}
+.tr-empty{font-size:13px;color:var(--muted);padding:18px 0;text-align:center;}
+.tr-tip{position:absolute;z-index:20;background:var(--text);color:var(--card);font-size:12px;line-height:1.5;padding:6px 10px;border-radius:6px;max-width:280px;pointer-events:none;box-shadow:var(--shadow);}
+.tr-rank-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;}
+.tr-rank-head{font-size:12.5px;font-weight:700;margin-bottom:6px;}
+.tr-rank-head.up{color:var(--app);}.tr-rank-head.down{color:var(--corp);}
+.tr-rank-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-top:1px solid var(--border);}
+.tr-rank-name{flex:1;font-size:13px;font-weight:600;min-width:0;overflow-wrap:anywhere;}
+.tr-rank-val{font-size:11.5px;color:var(--muted);text-align:right;line-height:1.4;}
+.tr-rank-val b{font-size:12.5px;}
+.tr-rank-val.up b{color:var(--app);}.tr-rank-val.down b{color:var(--corp);}
+.tr-spark{flex:none;cursor:pointer;}
 .t-ins  {background:rgba(58,104,96,.10);  border-color:var(--insight);color:var(--insight);}
 .t-hist    {background:rgba(96,112,128,.10);  border-color:var(--hist);    color:var(--hist);}
 .t-archive {background:rgba(120,96,160,.10);  border-color:#8a60b0;        color:#8a60b0;}
@@ -561,6 +585,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
   <button class="tab-btn" id="btn-hw"    onclick="sw('hw')">🔩 硬體缺口</button>
   <button class="tab-btn" id="btn-corp"  onclick="sw('corp')">💰 巨頭角力</button>
   <button class="tab-btn" id="btn-app"   onclick="sw('app')">🤖 新興應用</button>
+  <button class="tab-btn" id="btn-trend" onclick="sw('trend')">📈 全球趨勢</button>
   <button class="tab-btn" id="btn-nv"    onclick="sw('nv')">🟢 NVIDIA專區</button>
   <button class="tab-btn" id="btn-industry" onclick="sw('industry')">🏭 產業導入</button>
   <button class="tab-btn" id="btn-techwar" onclick="sw('techwar')">⚔️ 中美科技戰</button>
@@ -572,6 +597,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 <div id="panel-hw"      class="panel"></div>
 <div id="panel-corp"    class="panel"></div>
 <div id="panel-app"     class="panel"></div>
+<div id="panel-trend"   class="panel"></div>
 <div id="panel-nv"      class="panel"></div>
 <div id="panel-industry" class="panel"></div>
 <div id="panel-techwar" class="panel"></div>
@@ -3630,7 +3656,7 @@ async function saveArchiveToGitHub() {
 // ══════════════════════════════════════════════════════════════════
 //  TAB SWITCHING
 // ══════════════════════════════════════════════════════════════════
-const TCLS = {hw:'t-hw',corp:'t-corp',app:'t-app',nv:'t-nv',industry:'t-industry',techwar:'t-techwar',gloss:'t-gloss',hist:'t-hist',archive:'t-archive'};
+const TCLS = {hw:'t-hw',corp:'t-corp',app:'t-app',trend:'t-trend',nv:'t-nv',industry:'t-industry',techwar:'t-techwar',gloss:'t-gloss',hist:'t-hist',archive:'t-archive'};
 function sw(tab) {
   Object.keys(TCLS).forEach(k => {
     document.getElementById('panel-'+k).classList.remove('active');
@@ -3640,6 +3666,7 @@ function sw(tab) {
   document.getElementById('btn-'+tab).classList.add(TCLS[tab]);
   sessionStorage.setItem('at_tab', tab);
   if (tab === 'techwar') twMapDrawArrows(); // 切到此分頁後才取得到真實寬度，重排箭頭
+  if (tab === 'trend') trDraw(); // 隱藏時寬度為 0，切到此分頁後才依實際寬度重畫圖
   if (tab === 'nv') nvEcoRelayout(); // 首次渲染時 NV 面板是隱藏的（寬度 0），顯示後用實際寬度重排放射圖
   const freqBadge = document.getElementById('freq-badge');
   if (freqBadge) {
@@ -3652,12 +3679,313 @@ function sw(tab) {
     } else if (tab === 'techwar') {
       freqBadge.textContent = '🕐 每週日 00:00 更新';
       freqBadge.title = '中美科技戰專區週查證每週日00:00更新';
+    } else if (tab === 'trend') {
+      freqBadge.textContent = '🕐 指標每月12號／關注度每日更新';
+      freqBadge.title = 'TSMC與歐盟指標每月12號10:00更新；雲端CapEx每季財報後人工更新；新聞關注度每日更新';
     } else {
       freqBadge.textContent = '🕐 每日更新';
       freqBadge.title = '一般資料每日更新';
     }
   }
 }
+
+// ══════════════════════════════════════════════════════════════════
+//  全球趨勢（11-03新增；資料 data/global_indicators.json、data/attention_trend.json）
+//  純 SVG 手寫；方向解讀句全部由程式計算，不經 LLM。
+//  圖表寬度取容器實際寬度當 viewBox 寬（縮放比 1:1），字級才固定可讀；
+//  分頁隱藏時寬度為 0，所以切到此分頁與視窗縮放時才重畫（trDraw）。
+// ══════════════════════════════════════════════════════════════════
+let TR_GI = null, TR_AT = null, TR_GI_ERR = false, TR_AT_ERR = false, TR_HOT = {};
+const TR_CSP_COLORS = ['var(--hw)','var(--corp)','var(--app)','var(--muted2)'];
+
+function trAvg(a){ return a.length ? a.reduce((s,x)=>s+x,0)/a.length : null; }
+function trSgn(v,d){ const n=(d==null?1:d); return (v>=0?'+':'')+v.toFixed(n); }
+function trNiceMax(v){
+  if(!(v>0)) return 1;
+  const p = Math.pow(10, Math.floor(Math.log10(v))), f = v/p;
+  return (f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10)*p;
+}
+// 不完整週：週一 start + 6 天 > 資料 updated 日
+function trCompleteWeeks(at){
+  if(!at || !Array.isArray(at.weeks) || !at.updated) return [];
+  const up = Date.parse(at.updated+'T00:00:00Z');
+  if(isNaN(up)) return [];
+  return at.weeks.filter(w=>{
+    const s = Date.parse(w.start+'T00:00:00Z');
+    return !isNaN(s) && s + 6*86400000 <= up;
+  });
+}
+function trCalcTsmc(gi){
+  const s = gi && gi.tsmc_monthly && Array.isArray(gi.tsmc_monthly.series) ? gi.tsmc_monthly.series.slice(-36) : [];
+  if(s.length < 6) return null;
+  const yo = s.map(x=>x.yoy).filter(v=>typeof v==='number');
+  const lastYo = s.slice(-3).map(x=>x.yoy).filter(v=>typeof v==='number');
+  const prevYo = s.slice(-6,-3).map(x=>x.yoy).filter(v=>typeof v==='number');
+  if(!lastYo.length || !prevYo.length) return {series:s, text:'年增率資料不足，暫無方向解讀'};
+  const a = trAvg(lastYo), b = trAvg(prevYo);
+  const dir = a > b + 0.5 ? '加速' : a < b - 0.5 ? '放緩' : '持平';
+  return {series:s, text:`近 3 個月營收年增平均 ${trSgn(a)}%，較前 3 個月（${trSgn(b)}%）${dir}`};
+}
+function trCalcEu(gi){
+  const s = gi && gi.eu_ai_adoption && Array.isArray(gi.eu_ai_adoption.series) ? gi.eu_ai_adoption.series.filter(x=>typeof x.value==='number') : [];
+  if(s.length < 2) return null;
+  const f = s[0], l = s[s.length-1], p = s[s.length-2];
+  const verb = l.value>=f.value ? '升至' : '降至';
+  return {series:s, text:`${f.year}→${l.year} 由 ${f.value.toFixed(1)}% ${verb} ${l.value.toFixed(1)}%，最近一年（${p.year}→${l.year}）${trSgn(l.value-p.value)} 個百分點`};
+}
+function trCalcCsp(gi){
+  const c = gi && gi.csp_capex && gi.csp_capex.companies;
+  if(!c || typeof c !== 'object') return null;
+  const keys = Object.keys(c).filter(k=>c[k] && Array.isArray(c[k].series) && c[k].series.length);
+  if(!keys.length) return null;
+  const qs = {};
+  keys.forEach(k=>c[k].series.forEach(p=>{ if(p && p.q && typeof p.value==='number'){ (qs[p.q]=qs[p.q]||{})[k]=p.value; } }));
+  const all = Object.keys(qs).sort();
+  if(!all.length) return null;
+  const quarters = all.slice(-12).map(q=>({q, by:qs[q], total:Object.values(qs[q]).reduce((a,b)=>a+b,0)}));
+  const last = all[all.length-1];
+  const m = /^(\d{4})(Q\d)$/.exec(last);
+  let text = '最近一季年增率資料不足';
+  if(m){
+    const prev = (parseInt(m[1],10)-1)+m[2];
+    if(qs[prev]){
+      const common = keys.filter(k=>qs[last][k]!=null && qs[prev][k]!=null);
+      const a = common.reduce((s,k)=>s+qs[last][k],0), b = common.reduce((s,k)=>s+qs[prev][k],0);
+      if(b>0) text = `${last} 合計 ${Math.round(a)} 億美元，年增 ${trSgn((a/b-1)*100)}%`;
+    }
+  }
+  return {keys, names:keys.map(k=>c[k].name||k), quarters, text};
+}
+function trCalcRisers(at){
+  const wk = trCompleteWeeks(at);
+  if(wk.length < 8 || !Array.isArray(at.entities)) return null;
+  const recent = wk.slice(-4), base = wk.slice(-16,-4);
+  if(!base.length) return null;
+  const share = (w,k)=> w.cards>0 ? (((w.mentions||{})[k])||0)/w.cards*100 : 0;
+  const rows = [];
+  at.entities.forEach(e=>{
+    const tot = recent.concat(base).reduce((s,w)=>s+(((w.mentions||{})[e.key])||0),0);
+    if(tot < 8) return;
+    const r = trAvg(recent.map(w=>share(w,e.key))), b = trAvg(base.map(w=>share(w,e.key)));
+    rows.push({label:e.label||e.key, recent:r, base:b, diff:r-b, spark:wk.slice(-12).map(w=>share(w,e.key))});
+  });
+  rows.sort((a,b)=>b.diff-a.diff);
+  return {up:rows.filter(r=>r.diff>0).slice(0,5), down:rows.filter(r=>r.diff<0).sort((a,b)=>a.diff-b.diff).slice(0,5),
+          nRecent:recent.length, nBase:base.length};
+}
+function trCalcDims(at){
+  const wk = trCompleteWeeks(at);
+  const D = ['hw','corp','app'];
+  const rows = wk.map(w=>{
+    const c = D.map(d=>((w.dims||{})[d]||{}).core||0), t = c[0]+c[1]+c[2];
+    return {week:w.week, start:w.start, c, t, p: t>0 ? c.map(x=>x/t*100) : null};
+  });
+  if(rows.length < 8) return null;
+  const valid = rows.filter(r=>r.p);
+  const recent = valid.slice(-4), base = valid.slice(-16,-4);
+  if(!recent.length || !base.length) return {rows, text:'資料不足，暫無方向解讀'};
+  const names = ['硬體缺口','巨頭角力','新興應用'];
+  const diffs = D.map((d,i)=>trAvg(recent.map(r=>r.p[i])) - trAvg(base.map(r=>r.p[i])));
+  let bi = 0; diffs.forEach((v,i)=>{ if(v>diffs[bi]) bi=i; });
+  const ra = trAvg(recent.map(r=>r.p[bi])), ba = trAvg(base.map(r=>r.p[bi]));
+  return {rows, text:`近 4 週與前 12 週相比，比重上升最多的是「${names[bi]}」（${ba.toFixed(0)}% → ${ra.toFixed(0)}%，${trSgn(diffs[bi],0)} 個百分點）`};
+}
+
+// ── 繪圖 ──
+function trSpark(vals){
+  const W=84,H=24,mx=Math.max.apply(null,vals.concat([0.01]));
+  const pts = vals.map((v,i)=>(2+i*(W-4)/Math.max(vals.length-1,1)).toFixed(1)+','+(H-3-v/mx*(H-6)).toFixed(1));
+  const tip = '12 週占比：'+vals.map(v=>v.toFixed(0)+'%').join(' → ');
+  return `<svg class="tr-spark" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" data-tip="${_arcEsc(tip)}"><polyline points="${pts.join(' ')}" fill="none" stroke="var(--hw)" stroke-width="1.6"/><circle cx="${pts[pts.length-1].split(',')[0]}" cy="${pts[pts.length-1].split(',')[1]}" r="2.4" fill="var(--hw)"/></svg>`;
+}
+function trSvgOpen(id, W, H, step, x0, tips){
+  TR_HOT[id] = {x0:x0, step:step, tips:tips, W:W};
+  return `<svg class="tr-svg" id="${id}" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" data-hot="${id}">`;
+}
+function trAxisY(x1, x2, y0, y1, max, fmt, n){
+  let s = '';
+  for(let i=0;i<=n;i++){
+    const v = max*i/n, y = y0 + (y1-y0)*(1-i/n);
+    s += `<line x1="${x1}" x2="${x2}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="var(--border)" stroke-width="1"/>`
+       + `<text x="${x1-4}" y="${(y+3.5).toFixed(1)}" text-anchor="end" font-size="10.5" fill="var(--muted)">${fmt(v)}</text>`;
+  }
+  return s;
+}
+function trDrawTsmc(W, d){
+  const H=230, L=44, R=40, T=14, B=26, pw=W-L-R, ph=H-T-B, s=d.series, n=s.length, step=pw/n;
+  const maxR = trNiceMax(Math.max.apply(null,s.map(x=>x.revenue))*1.05);
+  const yo = s.map(x=>typeof x.yoy==='number'?x.yoy:null).filter(v=>v!=null);
+  const maxY = trNiceMax(Math.max.apply(null,yo.concat([1]))*1.05);
+  const tips = s.map(x=>`${x.month}：營收 ${x.revenue.toFixed(0)} 億元`+(typeof x.yoy==='number'?`，年增 ${trSgn(x.yoy)}%`:''));
+  let g = trSvgOpen('tr-svg-tsmc', W, H, step, L, tips);
+  g += trAxisY(L, L+pw, T, T+ph, maxR, v=>v.toFixed(0), 4);
+  s.forEach((x,i)=>{
+    const h = x.revenue/maxR*ph;
+    g += `<rect x="${(L+i*step+step*0.15).toFixed(1)}" y="${(T+ph-h).toFixed(1)}" width="${(step*0.7).toFixed(1)}" height="${h.toFixed(1)}" fill="var(--hw)" opacity=".55" data-i="${i}"/>`;
+    if(i%6===0 || i===n-1) g += `<text x="${(L+i*step+step/2).toFixed(1)}" y="${H-8}" text-anchor="middle" font-size="10.5" fill="var(--muted)">${_arcEsc(x.month.slice(2))}</text>`;
+  });
+  for(let i=0;i<=4;i++){ g += `<text x="${L+pw+4}" y="${(T+ph*(1-i/4)+3.5).toFixed(1)}" font-size="10.5" fill="var(--corp)">${(maxY*i/4).toFixed(0)}%</text>`; }
+  const pts = s.map((x,i)=> typeof x.yoy==='number' ? (L+i*step+step/2).toFixed(1)+','+(T+ph*(1-Math.max(x.yoy,0)/maxY)).toFixed(1) : null).filter(Boolean);
+  g += `<polyline points="${pts.join(' ')}" fill="none" stroke="var(--corp)" stroke-width="2"/>`;
+  return g + '<rect class="tr-cursor" x="-99" y="'+T+'" width="'+step.toFixed(1)+'" height="'+ph+'" fill="var(--text)" opacity=".08" pointer-events="none"/></svg>'
+    + `<div class="tr-legend"><span><span class="tr-sw" style="background:var(--hw);opacity:.55"></span>月營收（左軸，億元）</span><span><span class="tr-sw" style="background:var(--corp)"></span>年增率（右軸）</span></div>`;
+}
+function trDrawCsp(W, d){
+  const H=230, L=44, R=10, T=22, B=26, pw=W-L-R, ph=H-T-B, q=d.quarters, n=q.length, step=pw/n;
+  const maxV = trNiceMax(Math.max.apply(null,q.map(x=>x.total))*1.05);
+  const tips = q.map(x=>x.q+'：合計 '+x.total.toFixed(0)+' 億美元；'+d.keys.map((k,i)=>d.names[i]+' '+(x.by[k]!=null?x.by[k].toFixed(0):'—')).join('、'));
+  let g = trSvgOpen('tr-svg-csp', W, H, step, L, tips);
+  g += trAxisY(L, L+pw, T, T+ph, maxV, v=>v.toFixed(0), 4);
+  q.forEach((x,i)=>{
+    let y = T+ph;
+    d.keys.forEach((k,j)=>{
+      const v = x.by[k]; if(v==null) return;
+      const h = v/maxV*ph; y -= h;
+      g += `<rect x="${(L+i*step+step*0.15).toFixed(1)}" y="${y.toFixed(1)}" width="${(step*0.7).toFixed(1)}" height="${h.toFixed(1)}" fill="${TR_CSP_COLORS[j%4]}"/>`;
+    });
+    g += `<text x="${(L+i*step+step/2).toFixed(1)}" y="${(y-4).toFixed(1)}" text-anchor="middle" font-size="10" fill="var(--text2)">${x.total.toFixed(0)}</text>`;
+    if(i%2===(n-1)%2) g += `<text x="${(L+i*step+step/2).toFixed(1)}" y="${H-8}" text-anchor="middle" font-size="10.5" fill="var(--muted)">${_arcEsc(x.q.slice(2))}</text>`;
+  });
+  return g + '<rect class="tr-cursor" x="-99" y="'+T+'" width="'+step.toFixed(1)+'" height="'+ph+'" fill="var(--text)" opacity=".08" pointer-events="none"/></svg>'
+    + '<div class="tr-legend">'+d.names.map((nm,j)=>`<span><span class="tr-sw" style="background:${TR_CSP_COLORS[j%4]}"></span>${_arcEsc(nm)}</span>`).join('')+'</div>';
+}
+function trDrawEu(W, d){
+  const H=200, L=40, R=24, T=22, B=26, pw=W-L-R, ph=H-T-B, s=d.series;
+  const y0 = s[0].year, y1 = s[s.length-1].year, span = Math.max(y1-y0,1);
+  const maxV = trNiceMax(Math.max.apply(null,s.map(x=>x.value))*1.1);
+  const xs = s.map(x=>L+(x.year-y0)/span*pw);
+  const tips = s.map(x=>x.year+'：'+x.value.toFixed(1)+'%');
+  let g = trSvgOpen('tr-svg-eu', W, H, 0, 0, tips);
+  TR_HOT['tr-svg-eu'].xs = xs;
+  g += trAxisY(L, L+pw, T, T+ph, maxV, v=>v.toFixed(0)+'%', 4);
+  const ys = s.map(x=>T+ph*(1-x.value/maxV));
+  g += `<polyline points="${xs.map((x,i)=>x.toFixed(1)+','+ys[i].toFixed(1)).join(' ')}" fill="none" stroke="var(--app)" stroke-width="2.2"/>`;
+  s.forEach((x,i)=>{
+    g += `<circle cx="${xs[i].toFixed(1)}" cy="${ys[i].toFixed(1)}" r="4" fill="var(--app)"/>`
+      + `<text x="${xs[i].toFixed(1)}" y="${(ys[i]-9).toFixed(1)}" text-anchor="middle" font-size="11" fill="var(--text2)">${x.value.toFixed(1)}%</text>`
+      + `<text x="${xs[i].toFixed(1)}" y="${H-8}" text-anchor="middle" font-size="10.5" fill="var(--muted)">${x.year}</text>`;
+  });
+  return g + '<line class="tr-cursor-l" x1="-99" x2="-99" y1="'+T+'" y2="'+(T+ph)+'" stroke="var(--text)" opacity=".25" pointer-events="none"/></svg>';
+}
+function trDrawDims(W, d){
+  const H=210, L=36, R=8, T=10, B=26, pw=W-L-R, ph=H-T-B, r=d.rows, n=r.length, step=pw/n;
+  const cols = ['var(--hw)','var(--corp)','var(--app)'], names = ['硬體缺口','巨頭角力','新興應用'];
+  const tips = r.map(x=>x.week+'（'+x.start+' 起）：'+(x.p ? names.map((nm,i)=>nm+' '+x.p[i].toFixed(0)+'%（'+x.c[i]+' 則）').join('、') : '本週無重要新聞'));
+  let g = trSvgOpen('tr-svg-dims', W, H, step, L, tips);
+  g += trAxisY(L, L+pw, T, T+ph, 100, v=>v.toFixed(0)+'%', 4);
+  r.forEach((x,i)=>{
+    if(x.p){ let y = T+ph;
+      x.p.forEach((p,j)=>{ const h=p/100*ph; y-=h; g += `<rect x="${(L+i*step+step*0.12).toFixed(1)}" y="${y.toFixed(1)}" width="${(step*0.76).toFixed(1)}" height="${h.toFixed(1)}" fill="${cols[j]}"/>`; });
+    }
+    if(i%3===(n-1)%3) g += `<text x="${(L+i*step+step/2).toFixed(1)}" y="${H-8}" text-anchor="middle" font-size="10.5" fill="var(--muted)">${_arcEsc(x.week.slice(-3))}</text>`;
+  });
+  return g + '<rect class="tr-cursor" x="-99" y="'+T+'" width="'+step.toFixed(1)+'" height="'+ph+'" fill="var(--text)" opacity=".12" pointer-events="none"/></svg>'
+    + '<div class="tr-legend">'+names.map((nm,j)=>`<span><span class="tr-sw" style="background:${cols[j]}"></span>${nm}</span>`).join('')+'</div>';
+}
+function trSrcFoot(src, note){
+  return (note?`<div class="tr-note">${_arcEsc(note)}</div>`:'') + nvSrcLink(src)
+    + (TR_GI && TR_GI.updated ? `<div class="card-source">資料更新日：${_arcEsc(TR_GI.updated)}</div>` : '');
+}
+function trCard(title, dirText, body, foot){
+  return `<div class="tr-card"><div class="tr-card-title">${title}</div>`
+    + (dirText ? `<div class="tr-dir">${_arcEsc(dirText)}</div>` : '') + body + (foot||'') + '</div>';
+}
+function trRankList(rows, kind){
+  if(!rows.length) return '<div class="tr-empty">本期無達門檻的實體</div>';
+  return rows.map(r=>`<div class="tr-rank-row"><div class="tr-rank-name">${_arcEsc(r.label)}</div>`
+    + `<div class="tr-rank-val ${kind}">${_arcEsc(r.base.toFixed(1))}% → ${_arcEsc(r.recent.toFixed(1))}%<br><b>${_arcEsc(trSgn(r.diff))} 個百分點</b></div>${trSpark(r.spark)}</div>`).join('');
+}
+function trDraw(){
+  const panel = document.getElementById('panel-trend');
+  if(!panel || !panel.classList.contains('active')) return;
+  const W = Math.max(280, Math.min(760, panel.clientWidth - 32, window.innerWidth - 80));
+  if(!W || !isFinite(W)) return;
+  TR_HOT = {};
+  const put = (id, fn)=>{ const el=document.getElementById(id); if(el) el.innerHTML = fn(); };
+  const t = TR_GI ? trCalcTsmc(TR_GI) : null;
+  if(t) put('tr-tsmc-chart', ()=>trDrawTsmc(W, t));
+  const e = TR_GI ? trCalcEu(TR_GI) : null;
+  if(e) put('tr-eu-chart', ()=>trDrawEu(W, e));
+  const c = TR_GI ? trCalcCsp(TR_GI) : null;
+  if(c) put('tr-csp-chart', ()=>trDrawCsp(W, c));
+  const d = TR_AT ? trCalcDims(TR_AT) : null;
+  if(d) put('tr-dims-chart', ()=>trDrawDims(W, d));
+}
+function renderTrendPanel(){
+  const panel = document.getElementById('panel-trend');
+  let h = '<div class="tr-sec-title">實際指標（官方來源）</div>';
+  if(TR_GI_ERR || !TR_GI){
+    h += '<div class="empty-state">⚠️ 暫時無法載入（data/global_indicators.json）</div>';
+  } else {
+    const gi = TR_GI, t = trCalcTsmc(gi), c = trCalcCsp(gi), e = trCalcEu(gi);
+    h += t ? trCard('台積電月營收（近 36 個月）', t.text, '<div id="tr-tsmc-chart" class="tr-chart"></div>',
+            trSrcFoot(gi.tsmc_monthly.src, gi.tsmc_monthly.note))
+         : trCard('台積電月營收', '', '<div class="tr-empty">資料準備中</div>');
+    h += c ? trCard('四大雲端業者每季 CapEx（近 12 季，億美元）', c.text, '<div id="tr-csp-chart" class="tr-chart"></div>',
+            trSrcFoot(gi.csp_capex.src, gi.csp_capex.note || '各公司口徑不同，僅供方向參考'))
+         : trCard('四大雲端業者每季 CapEx', '', '<div class="tr-empty">資料準備中</div>');
+    h += e ? trCard('歐盟企業 AI 採用率', e.text, '<div id="tr-eu-chart" class="tr-chart"></div>',
+            trSrcFoot(gi.eu_ai_adoption.src, gi.eu_ai_adoption.scope ? '範圍：'+gi.eu_ai_adoption.scope+'；2022 年無資料，未補點' : ''))
+         : trCard('歐盟企業 AI 採用率', '', '<div class="tr-empty">資料準備中</div>');
+  }
+  h += '<div class="tr-sec-title" style="margin-top:22px;">新聞關注度</div>'
+     + '<div class="tr-sec-sub">反映媒體在談什麼，非產業實際數據。占比＝實體被提及次數 ÷ 當週總卡數；排除尚未結束的週。</div>';
+  if(TR_AT_ERR || !TR_AT){
+    h += '<div class="empty-state">⚠️ 暫時無法載入（data/attention_trend.json）</div>';
+  } else {
+    const rk = trCalcRisers(TR_AT), dm = trCalcDims(TR_AT);
+    if(rk){
+      h += trCard('升溫／退燒排行', `比較最近 ${rk.nRecent} 個完整週與前 ${rk.nBase} 個完整週的平均占比（兩段合計提及 <8 者不列入）`,
+        '<div class="tr-rank-grid"><div><div class="tr-rank-head up">升溫前 5</div>'+trRankList(rk.up,'up')+'</div>'
+        +'<div><div class="tr-rank-head down">退燒前 5</div>'+trRankList(rk.down,'down')+'</div></div>',
+        `<div class="card-source">迷你走勢線為近 12 個完整週占比；資料更新日：${_arcEsc(TR_AT.updated||'')}</div>`);
+    } else h += trCard('升溫／退燒排行', '', '<div class="tr-empty">資料準備中（完整週數不足）</div>');
+    h += dm ? trCard('三維度重要新聞比重（core 卡占比）', dm.text, '<div id="tr-dims-chart" class="tr-chart"></div>',
+            `<div class="card-source">每週硬體／巨頭／應用三維度 core 卡占三者合計的比例；資料更新日：${_arcEsc(TR_AT.updated||'')}</div>`)
+         : trCard('三維度重要新聞比重', '', '<div class="tr-empty">資料準備中（完整週數不足）</div>');
+  }
+  panel.innerHTML = h + '<div id="tr-tip" class="tr-tip" style="display:none"></div>';
+  trDraw();
+}
+async function renderTrend(){
+  const get = async (u)=>{ const r = await fetch(u+'?v='+Date.now()); if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); };
+  try{ TR_GI = await get('data/global_indicators.json'); }catch(e){ TR_GI_ERR = true; }
+  try{ TR_AT = await get('data/attention_trend.json'); }catch(e){ TR_AT_ERR = true; }
+  try{ renderTrendPanel(); }catch(e){
+    document.getElementById('panel-trend').innerHTML = '<div class="empty-state">⚠️ 暫時無法載入</div>';
+  }
+}
+function trShowTip(svg, clientX, clientY){
+  const tip = document.getElementById('tr-tip'), panel = document.getElementById('panel-trend');
+  if(!tip) return;
+  let txt = svg.getAttribute('data-tip'), idx = -1;
+  const hot = svg.getAttribute('data-hot') && TR_HOT[svg.getAttribute('data-hot')];
+  if(hot){
+    const rc = svg.getBoundingClientRect(), x = (clientX - rc.left) * (hot.W / rc.width);
+    if(hot.xs){ let bd = 1e9; hot.xs.forEach((px,i)=>{ const dd=Math.abs(px-x); if(dd<bd){bd=dd;idx=i;} }); }
+    else idx = Math.max(0, Math.min(hot.tips.length-1, Math.floor((x - hot.x0)/hot.step)));
+    txt = hot.tips[idx];
+    const cur = svg.querySelector('.tr-cursor'), curL = svg.querySelector('.tr-cursor-l');
+    if(cur) cur.setAttribute('x', (hot.x0 + idx*hot.step).toFixed(1));
+    if(curL){ curL.setAttribute('x1', hot.xs[idx]); curL.setAttribute('x2', hot.xs[idx]); }
+  }
+  if(!txt){ tip.style.display='none'; return; }
+  tip.textContent = txt; tip.style.display = 'block';
+  const pr = panel.getBoundingClientRect(), tw = tip.offsetWidth;
+  let left = clientX - pr.left + 12; if(left + tw > pr.width - 4) left = Math.max(4, clientX - pr.left - tw - 12);
+  tip.style.left = left + 'px'; tip.style.top = (clientY - pr.top + 14) + 'px';
+}
+function trHideTip(){ const t = document.getElementById('tr-tip'); if(t) t.style.display = 'none'; }
+document.addEventListener('mousemove', function(ev){
+  const svg = ev.target.closest && ev.target.closest('#panel-trend svg[data-hot], #panel-trend svg[data-tip]');
+  if(svg) trShowTip(svg, ev.clientX, ev.clientY); else trHideTip();
+});
+document.addEventListener('click', function(ev){
+  const svg = ev.target.closest && ev.target.closest('#panel-trend svg[data-hot], #panel-trend svg[data-tip]');
+  if(svg) trShowTip(svg, ev.clientX, ev.clientY); else trHideTip();
+});
+let _trResizeT = null;
+window.addEventListener('resize', function(){ clearTimeout(_trResizeT); _trResizeT = setTimeout(trDraw, 150); });
 
 // ══════════════════════════════════════════════════════════════════
 //  INIT
@@ -3670,6 +3998,7 @@ function renderAll(hist) {
   renderNvidia();
   renderIndustryAdoption();
   renderTechwar();
+  renderTrend();
   renderGlossary(hist);
   renderHistory(hist);
 }
@@ -3677,7 +4006,7 @@ function renderAll(hist) {
 async function init() {
   const savedTab = sessionStorage.getItem('at_tab');
   const initTab = savedTab && Object.keys(TCLS).includes(savedTab) ? savedTab : 'hw';
-  ['hw','corp','app','nv','industry','techwar','gloss','hist'].forEach(p => {
+  ['hw','corp','app','trend','nv','industry','techwar','gloss','hist'].forEach(p => {
     document.getElementById('panel-'+p).innerHTML =
       '<div class="loading-screen"><div class="spinner"></div><div class="loading-text">載入最新資料中...</div></div>';
   });

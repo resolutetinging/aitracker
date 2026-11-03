@@ -1,0 +1,1016 @@
+{
+ "updated": "2026-11-03",
+ "since": "2026-07-01",
+ "entities": [
+  {
+   "key": "OpenAI",
+   "label": "OpenAI",
+   "type": "company"
+  },
+  {
+   "key": "NVIDIA",
+   "label": "NVIDIA",
+   "type": "company"
+  },
+  {
+   "key": "Anthropic",
+   "label": "Anthropic",
+   "type": "company"
+  },
+  {
+   "key": "Google",
+   "label": "Google",
+   "type": "company"
+  },
+  {
+   "key": "Microsoft",
+   "label": "Microsoft",
+   "type": "company"
+  },
+  {
+   "key": "Meta",
+   "label": "Meta",
+   "type": "company"
+  },
+  {
+   "key": "Amazon",
+   "label": "Amazon",
+   "type": "company"
+  },
+  {
+   "key": "Apple",
+   "label": "Apple",
+   "type": "company"
+  },
+  {
+   "key": "TSMC",
+   "label": "TSMC",
+   "type": "company"
+  },
+  {
+   "key": "Samsung",
+   "label": "Samsung",
+   "type": "company"
+  },
+  {
+   "key": "SK hynix",
+   "label": "SK hynix",
+   "type": "company"
+  },
+  {
+   "key": "Micron",
+   "label": "Micron",
+   "type": "company"
+  },
+  {
+   "key": "AMD",
+   "label": "AMD",
+   "type": "company"
+  },
+  {
+   "key": "Intel",
+   "label": "Intel",
+   "type": "company"
+  },
+  {
+   "key": "Broadcom",
+   "label": "Broadcom",
+   "type": "company"
+  },
+  {
+   "key": "ASML",
+   "label": "ASML",
+   "type": "company"
+  },
+  {
+   "key": "Tesla",
+   "label": "Tesla",
+   "type": "company"
+  },
+  {
+   "key": "華為",
+   "label": "華為",
+   "type": "company"
+  },
+  {
+   "key": "xAI",
+   "label": "xAI",
+   "type": "company"
+  },
+  {
+   "key": "DeepSeek",
+   "label": "DeepSeek",
+   "type": "company"
+  },
+  {
+   "key": "阿里巴巴",
+   "label": "阿里巴巴",
+   "type": "company"
+  },
+  {
+   "key": "Oracle",
+   "label": "Oracle",
+   "type": "company"
+  },
+  {
+   "key": "Qualcomm",
+   "label": "Qualcomm",
+   "type": "company"
+  },
+  {
+   "key": "CoreWeave",
+   "label": "CoreWeave",
+   "type": "company"
+  },
+  {
+   "key": "Palantir",
+   "label": "Palantir",
+   "type": "company"
+  },
+  {
+   "key": "Mistral",
+   "label": "Mistral",
+   "type": "company"
+  },
+  {
+   "key": "HBM",
+   "label": "HBM",
+   "type": "topic"
+  },
+  {
+   "key": "CoWoS／先進封裝",
+   "label": "CoWoS／先進封裝",
+   "type": "topic"
+  },
+  {
+   "key": "Agentic AI",
+   "label": "Agentic AI",
+   "type": "topic"
+  },
+  {
+   "key": "Physical AI",
+   "label": "Physical AI",
+   "type": "topic"
+  },
+  {
+   "key": "出口管制",
+   "label": "出口管制",
+   "type": "topic"
+  },
+  {
+   "key": "資料中心電力／能源",
+   "label": "資料中心電力／能源",
+   "type": "topic"
+  },
+  {
+   "key": "推論",
+   "label": "推論",
+   "type": "topic"
+  },
+  {
+   "key": "ASIC／自研晶片",
+   "label": "ASIC／自研晶片",
+   "type": "topic"
+  },
+  {
+   "key": "主權 AI",
+   "label": "主權 AI",
+   "type": "topic"
+  },
+  {
+   "key": "液冷／散熱",
+   "label": "液冷／散熱",
+   "type": "topic"
+  },
+  {
+   "key": "光通訊／CPO",
+   "label": "光通訊／CPO",
+   "type": "topic"
+  },
+  {
+   "key": "開源模型",
+   "label": "開源模型",
+   "type": "topic"
+  }
+ ],
+ "weeks": [
+  {
+   "week": "2026-W27",
+   "start": "2026-06-29",
+   "cards": 22,
+   "dims": {
+    "hw": {
+     "core": 4,
+     "opp": 1,
+     "noise": 9
+    },
+    "corp": {
+     "core": 1,
+     "opp": 0,
+     "noise": 4
+    },
+    "app": {
+     "core": 0,
+     "opp": 0,
+     "noise": 3
+    }
+   },
+   "mentions": {
+    "Microsoft": 4,
+    "NVIDIA": 2,
+    "AMD": 1,
+    "Google": 5,
+    "Agentic AI": 1,
+    "TSMC": 2,
+    "Samsung": 2,
+    "SK hynix": 2,
+    "Amazon": 3,
+    "Physical AI": 2
+   }
+  },
+  {
+   "week": "2026-W28",
+   "start": "2026-07-06",
+   "cards": 35,
+   "dims": {
+    "hw": {
+     "core": 7,
+     "opp": 1,
+     "noise": 9
+    },
+    "corp": {
+     "core": 1,
+     "opp": 0,
+     "noise": 13
+    },
+    "app": {
+     "core": 0,
+     "opp": 0,
+     "noise": 4
+    }
+   },
+   "mentions": {
+    "Anthropic": 2,
+    "開源模型": 1,
+    "Google": 2,
+    "Micron": 2,
+    "Amazon": 1,
+    "Meta": 3,
+    "NVIDIA": 4,
+    "Intel": 1,
+    "華為": 1,
+    "DeepSeek": 1,
+    "OpenAI": 2,
+    "Microsoft": 1,
+    "SK hynix": 2,
+    "Apple": 1
+   }
+  },
+  {
+   "week": "2026-W29",
+   "start": "2026-07-13",
+   "cards": 33,
+   "dims": {
+    "hw": {
+     "core": 1,
+     "opp": 0,
+     "noise": 6
+    },
+    "corp": {
+     "core": 6,
+     "opp": 2,
+     "noise": 8
+    },
+    "app": {
+     "core": 0,
+     "opp": 0,
+     "noise": 10
+    }
+   },
+   "mentions": {
+    "OpenAI": 9,
+    "Anthropic": 4,
+    "NVIDIA": 2,
+    "華為": 1,
+    "Intel": 1,
+    "Apple": 2,
+    "Google": 4,
+    "Microsoft": 2,
+    "Oracle": 1,
+    "Meta": 1,
+    "SK hynix": 1,
+    "TSMC": 1,
+    "CoWoS／先進封裝": 1,
+    "開源模型": 1,
+    "Amazon": 1,
+    "Tesla": 1,
+    "Physical AI": 1
+   }
+  },
+  {
+   "week": "2026-W30",
+   "start": "2026-07-20",
+   "cards": 32,
+   "dims": {
+    "hw": {
+     "core": 7,
+     "opp": 2,
+     "noise": 1
+    },
+    "corp": {
+     "core": 7,
+     "opp": 5,
+     "noise": 2
+    },
+    "app": {
+     "core": 4,
+     "opp": 1,
+     "noise": 3
+    }
+   },
+   "mentions": {
+    "Google": 4,
+    "OpenAI": 8,
+    "Physical AI": 1,
+    "ASML": 1,
+    "Anthropic": 5,
+    "阿里巴巴": 1,
+    "NVIDIA": 5,
+    "Intel": 2,
+    "Tesla": 1,
+    "開源模型": 3,
+    "AMD": 2,
+    "Agentic AI": 2,
+    "Microsoft": 1,
+    "Meta": 1,
+    "Mistral": 1,
+    "SK hynix": 1,
+    "HBM": 1
+   }
+  },
+  {
+   "week": "2026-W31",
+   "start": "2026-07-27",
+   "cards": 44,
+   "dims": {
+    "hw": {
+     "core": 9,
+     "opp": 8,
+     "noise": 0
+    },
+    "corp": {
+     "core": 12,
+     "opp": 2,
+     "noise": 0
+    },
+    "app": {
+     "core": 6,
+     "opp": 5,
+     "noise": 0
+    }
+   },
+   "mentions": {
+    "AMD": 5,
+    "Intel": 3,
+    "Physical AI": 2,
+    "NVIDIA": 4,
+    "Anthropic": 6,
+    "Google": 4,
+    "ASML": 1,
+    "Microsoft": 5,
+    "OpenAI": 5,
+    "出口管制": 3,
+    "Amazon": 2,
+    "開源模型": 1,
+    "Agentic AI": 2,
+    "SK hynix": 2,
+    "光通訊／CPO": 1,
+    "CoWoS／先進封裝": 1,
+    "Meta": 2,
+    "HBM": 1,
+    "Oracle": 2,
+    "阿里巴巴": 1,
+    "CoreWeave": 1,
+    "Micron": 1
+   }
+  },
+  {
+   "week": "2026-W32",
+   "start": "2026-08-03",
+   "cards": 43,
+   "dims": {
+    "hw": {
+     "core": 5,
+     "opp": 8,
+     "noise": 0
+    },
+    "corp": {
+     "core": 13,
+     "opp": 6,
+     "noise": 0
+    },
+    "app": {
+     "core": 4,
+     "opp": 7,
+     "noise": 0
+    }
+   },
+   "mentions": {
+    "OpenAI": 8,
+    "Anthropic": 4,
+    "Apple": 5,
+    "NVIDIA": 2,
+    "阿里巴巴": 1,
+    "TSMC": 1,
+    "Tesla": 1,
+    "Physical AI": 1,
+    "Amazon": 3,
+    "Google": 5,
+    "Microsoft": 2,
+    "Intel": 2,
+    "Agentic AI": 2,
+    "AMD": 1,
+    "Meta": 1,
+    "SK hynix": 1
+   }
+  },
+  {
+   "week": "2026-W33",
+   "start": "2026-08-10",
+   "cards": 36,
+   "dims": {
+    "hw": {
+     "core": 7,
+     "opp": 6,
+     "noise": 0
+    },
+    "corp": {
+     "core": 6,
+     "opp": 7,
+     "noise": 0
+    },
+    "app": {
+     "core": 2,
+     "opp": 8,
+     "noise": 0
+    }
+   },
+   "mentions": {
+    "NVIDIA": 8,
+    "華為": 1,
+    "Amazon": 2,
+    "Google": 4,
+    "TSMC": 1,
+    "Anthropic": 2,
+    "OpenAI": 4,
+    "HBM": 1,
+    "Meta": 1,
+    "開源模型": 3,
+    "主權 AI": 1,
+    "Palantir": 2,
+    "Microsoft": 1,
+    "Apple": 1
+   }
+  },
+  {
+   "week": "2026-W34",
+   "start": "2026-08-17",
+   "cards": 23,
+   "dims": {
+    "hw": {
+     "core": 1,
+     "opp": 5,
+     "noise": 0
+    },
+    "corp": {
+     "core": 9,
+     "opp": 6,
+     "noise": 0
+    },
+    "app": {
+     "core": 2,
+     "opp": 0,
+     "noise": 0
+    }
+   },
+   "mentions": {
+    "Anthropic": 5,
+    "Meta": 2,
+    "開源模型": 2,
+    "Agentic AI": 1,
+    "OpenAI": 6,
+    "NVIDIA": 3,
+    "AMD": 1,
+    "華為": 1,
+    "推論": 1,
+    "Amazon": 1,
+    "Google": 2,
+    "HBM": 1,
+    "ASIC／自研晶片": 1,
+    "資料中心電力／能源": 1
+   }
+  },
+  {
+   "week": "2026-W35",
+   "start": "2026-08-24",
+   "cards": 19,
+   "dims": {
+    "hw": {
+     "core": 5,
+     "opp": 1,
+     "noise": 0
+    },
+    "corp": {
+     "core": 7,
+     "opp": 2,
+     "noise": 0
+    },
+    "app": {
+     "core": 4,
+     "opp": 0,
+     "noise": 0
+    }
+   },
+   "mentions": {
+    "OpenAI": 5,
+    "Anthropic": 3,
+    "Google": 1,
+    "Agentic AI": 2,
+    "NVIDIA": 5,
+    "Intel": 1,
+    "TSMC": 1,
+    "Samsung": 2,
+    "推論": 2,
+    "Meta": 2,
+    "Physical AI": 2,
+    "SK hynix": 1,
+    "Micron": 1,
+    "HBM": 1,
+    "出口管制": 1,
+    "Microsoft": 1
+   }
+  },
+  {
+   "week": "2026-W36",
+   "start": "2026-08-31",
+   "cards": 21,
+   "dims": {
+    "hw": {
+     "core": 3,
+     "opp": 1,
+     "noise": 0
+    },
+    "corp": {
+     "core": 10,
+     "opp": 3,
+     "noise": 0
+    },
+    "app": {
+     "core": 4,
+     "opp": 0,
+     "noise": 0
+    }
+   },
+   "mentions": {
+    "Anthropic": 6,
+    "NVIDIA": 5,
+    "TSMC": 1,
+    "Google": 2,
+    "Microsoft": 1,
+    "Amazon": 2,
+    "HBM": 2,
+    "OpenAI": 4,
+    "Apple": 1,
+    "推論": 1,
+    "開源模型": 2,
+    "AMD": 1,
+    "Physical AI": 1,
+    "Agentic AI": 1
+   }
+  },
+  {
+   "week": "2026-W37",
+   "start": "2026-09-07",
+   "cards": 15,
+   "dims": {
+    "hw": {
+     "core": 2,
+     "opp": 3,
+     "noise": 0
+    },
+    "corp": {
+     "core": 4,
+     "opp": 4,
+     "noise": 0
+    },
+    "app": {
+     "core": 2,
+     "opp": 0,
+     "noise": 0
+    }
+   },
+   "mentions": {
+    "OpenAI": 4,
+    "Microsoft": 1,
+    "Google": 2,
+    "NVIDIA": 4,
+    "出口管制": 1,
+    "Anthropic": 2,
+    "TSMC": 3,
+    "Samsung": 3,
+    "Intel": 1,
+    "ASML": 1,
+    "SK hynix": 1,
+    "液冷／散熱": 1,
+    "Amazon": 2,
+    "Qualcomm": 1,
+    "推論": 2
+   }
+  },
+  {
+   "week": "2026-W38",
+   "start": "2026-09-14",
+   "cards": 24,
+   "dims": {
+    "hw": {
+     "core": 4,
+     "opp": 1,
+     "noise": 0
+    },
+    "corp": {
+     "core": 10,
+     "opp": 7,
+     "noise": 0
+    },
+    "app": {
+     "core": 1,
+     "opp": 1,
+     "noise": 0
+    }
+   },
+   "mentions": {
+    "Anthropic": 6,
+    "OpenAI": 7,
+    "TSMC": 1,
+    "Meta": 4,
+    "Microsoft": 2,
+    "Agentic AI": 4,
+    "資料中心電力／能源": 2,
+    "SK hynix": 1,
+    "Intel": 1,
+    "NVIDIA": 3,
+    "Physical AI": 1,
+    "Amazon": 1,
+    "華為": 1,
+    "ASIC／自研晶片": 1,
+    "Google": 2,
+    "推論": 1
+   }
+  },
+  {
+   "week": "2026-W39",
+   "start": "2026-09-21",
+   "cards": 21,
+   "dims": {
+    "hw": {
+     "core": 1,
+     "opp": 4,
+     "noise": 0
+    },
+    "corp": {
+     "core": 11,
+     "opp": 4,
+     "noise": 0
+    },
+    "app": {
+     "core": 0,
+     "opp": 1,
+     "noise": 0
+    }
+   },
+   "mentions": {
+    "Meta": 3,
+    "Amazon": 1,
+    "Agentic AI": 5,
+    "Physical AI": 1,
+    "Google": 4,
+    "NVIDIA": 4,
+    "ASIC／自研晶片": 1,
+    "AMD": 1,
+    "出口管制": 1,
+    "Anthropic": 3,
+    "OpenAI": 3,
+    "Oracle": 1
+   }
+  },
+  {
+   "week": "2026-W40",
+   "start": "2026-09-28",
+   "cards": 34,
+   "dims": {
+    "hw": {
+     "core": 3,
+     "opp": 4,
+     "noise": 0
+    },
+    "corp": {
+     "core": 17,
+     "opp": 5,
+     "noise": 0
+    },
+    "app": {
+     "core": 3,
+     "opp": 2,
+     "noise": 0
+    }
+   },
+   "mentions": {
+    "Google": 4,
+    "OpenAI": 12,
+    "Meta": 2,
+    "華為": 1,
+    "Agentic AI": 3,
+    "Samsung": 1,
+    "Anthropic": 2,
+    "開源模型": 2,
+    "Microsoft": 1,
+    "Amazon": 4,
+    "Micron": 1,
+    "NVIDIA": 4,
+    "Physical AI": 1,
+    "ASIC／自研晶片": 1,
+    "液冷／散熱": 1,
+    "推論": 1
+   }
+  },
+  {
+   "week": "2026-W41",
+   "start": "2026-10-05",
+   "cards": 27,
+   "dims": {
+    "hw": {
+     "core": 3,
+     "opp": 3,
+     "noise": 0
+    },
+    "corp": {
+     "core": 15,
+     "opp": 2,
+     "noise": 0
+    },
+    "app": {
+     "core": 2,
+     "opp": 2,
+     "noise": 0
+    }
+   },
+   "mentions": {
+    "Micron": 1,
+    "HBM": 1,
+    "NVIDIA": 3,
+    "OpenAI": 6,
+    "Amazon": 3,
+    "Meta": 3,
+    "Agentic AI": 4,
+    "開源模型": 2,
+    "Google": 4,
+    "Anthropic": 8,
+    "Physical AI": 1,
+    "Microsoft": 3,
+    "Apple": 1,
+    "DeepSeek": 1,
+    "TSMC": 1,
+    "CoWoS／先進封裝": 1
+   }
+  },
+  {
+   "week": "2026-W42",
+   "start": "2026-10-12",
+   "cards": 26,
+   "dims": {
+    "hw": {
+     "core": 5,
+     "opp": 2,
+     "noise": 0
+    },
+    "corp": {
+     "core": 13,
+     "opp": 0,
+     "noise": 0
+    },
+    "app": {
+     "core": 3,
+     "opp": 3,
+     "noise": 0
+    }
+   },
+   "mentions": {
+    "TSMC": 3,
+    "AMD": 2,
+    "Microsoft": 5,
+    "Amazon": 4,
+    "OpenAI": 1,
+    "Agentic AI": 3,
+    "NVIDIA": 3,
+    "推論": 1,
+    "Apple": 4,
+    "Anthropic": 1,
+    "Meta": 3,
+    "Google": 3
+   }
+  },
+  {
+   "week": "2026-W43",
+   "start": "2026-10-19",
+   "cards": 29,
+   "dims": {
+    "hw": {
+     "core": 3,
+     "opp": 0,
+     "noise": 0
+    },
+    "corp": {
+     "core": 8,
+     "opp": 8,
+     "noise": 0
+    },
+    "app": {
+     "core": 4,
+     "opp": 6,
+     "noise": 0
+    }
+   },
+   "mentions": {
+    "Amazon": 5,
+    "Google": 3,
+    "資料中心電力／能源": 2,
+    "NVIDIA": 6,
+    "Agentic AI": 5,
+    "Anthropic": 4,
+    "OpenAI": 6,
+    "Microsoft": 3,
+    "Meta": 2,
+    "Tesla": 1,
+    "TSMC": 1,
+    "Intel": 1
+   }
+  },
+  {
+   "week": "2026-W44",
+   "start": "2026-10-26",
+   "cards": 22,
+   "dims": {
+    "hw": {
+     "core": 4,
+     "opp": 0,
+     "noise": 0
+    },
+    "corp": {
+     "core": 13,
+     "opp": 1,
+     "noise": 0
+    },
+    "app": {
+     "core": 2,
+     "opp": 2,
+     "noise": 0
+    }
+   },
+   "mentions": {
+    "SK hynix": 2,
+    "Tesla": 1,
+    "Anthropic": 2,
+    "NVIDIA": 2,
+    "Meta": 3,
+    "AMD": 1,
+    "Broadcom": 1,
+    "OpenAI": 2,
+    "Agentic AI": 2,
+    "Physical AI": 1,
+    "Google": 4,
+    "Oracle": 2,
+    "ASIC／自研晶片": 2,
+    "Apple": 1,
+    "TSMC": 1,
+    "Intel": 1,
+    "HBM": 1,
+    "CoWoS／先進封裝": 1,
+    "Amazon": 2,
+    "Microsoft": 1
+   }
+  },
+  {
+   "week": "2026-W45",
+   "start": "2026-11-02",
+   "cards": 7,
+   "dims": {
+    "hw": {
+     "core": 1,
+     "opp": 1,
+     "noise": 0
+    },
+    "corp": {
+     "core": 3,
+     "opp": 1,
+     "noise": 0
+    },
+    "app": {
+     "core": 1,
+     "opp": 0,
+     "noise": 0
+    }
+   },
+   "mentions": {
+    "NVIDIA": 2,
+    "OpenAI": 2,
+    "Amazon": 1,
+    "Agentic AI": 1,
+    "Anthropic": 2,
+    "Samsung": 1,
+    "SK hynix": 1,
+    "HBM": 1
+   }
+  }
+ ],
+ "seen": [
+  "2026-10-13|Apple 推出 HomeView 智慧家庭中樞",
+  "2026-10-13|Microsoft 公布 Maia 300 AI 晶片 2027 年量產",
+  "2026-10-13|Microsoft將加大自研Maia AI晶片使用，降低對Nvidia GPU依賴",
+  "2026-10-14|AMD 於 OCP 峰會公布 Helion AI 代理伺服器機架",
+  "2026-10-14|Anthropic 將於本週三向機構投資人披露第三季財報",
+  "2026-10-14|Meta 發布前沿模型 Muse Wonder 與 Wonder Full",
+  "2026-10-15|Android 在 Google 訊息中導入 AI 防詐騙功能",
+  "2026-10-15|Cisco 與 Nvidia 合作推出超高密度可插拔光模組",
+  "2026-10-15|金融科技公司 63% 採用 AI 滲透測試加速程式部署",
+  "2026-10-16|AWS 投入 10 億美元建置前端部署工程師團隊",
+  "2026-10-16|Amazon 推出兩款全新 Bee 可穿戴 AI 裝置",
+  "2026-10-16|Amazon 發布 Bee 系列個人 AI 裝置，售價 75 美元與 100 美元",
+  "2026-10-16|Apate.ai 以千名 AI 代理人偽裝受害者收集詐騙情報",
+  "2026-10-16|TSMC 晶圓產能成 AI 客戶激烈爭奪焦點",
+  "2026-10-16|TSMC 派員赴美檢視資料中心建設與電力供應",
+  "2026-10-17|Apple 與 Meta 合作將 Muse AI 模型本地化於 Mac Studio",
+  "2026-10-17|HBM2 記憶體功耗實驗揭示讀取電流最高與資料切換影響",
+  "2026-10-18|Apple iPhone Duo 預購需求異常，起售價 1,999 美元",
+  "2026-10-18|LTM 擴大與 Google Cloud 合作 加速 Gemini Enterprise 部署",
+  "2026-10-18|Meta 獲授權自行抓取企業客戶內容作模型訓練",
+  "2026-10-18|Microsoft 將 Defender 防毒軟體擴展至 Linux 桌面",
+  "2026-10-19|AWS 推出對話式 AI 服務支援醫療機構",
+  "2026-10-19|Bangladesh 醫師使用 AI 輔助診斷的線上調查結果發表",
+  "2026-10-19|美國零售商採用 AI 輔助定價工具引發消費者顧慮",
+  "2026-10-20|Anthropic 與 METR、SecureBio 合作評估 AI 風險與安全實務",
+  "2026-10-20|Edvance 與 CWG 發布 RealRelay 金融 AI 代理服務",
+  "2026-10-20|Google 宣稱其明尼蘇達 AI 資料中心將使用清潔能源",
+  "2026-10-20|NTL Healthcare 推出本地部署 AI 子宮頸篩檢平台",
+  "2026-10-20|Nvidia 推出新開放模型以支援企業與 PC 端 AI 代理人",
+  "2026-10-21|Amazon 承諾以未驗證核能技術供電印第安納資料中心",
+  "2026-10-21|Amazon 推出 TorchNeuron 開發工具以削減對 Nvidia 的依賴",
+  "2026-10-21|Anthropic 承諾以 5% 股份設立公共利益基金應對 AI 工作取代",
+  "2026-10-21|Anthropic 與 Nscale 商談第二筆約 450 億美元計算租賃合約",
+  "2026-10-21|Arda 推出 AI 軟體平台協助製造工程師快速調整自動化",
+  "2026-10-22|Meta 超大規模 GPU 冗餘池待命",
+  "2026-10-22|Nvidia 宣布 DSX Pod 模組化資料中心部署方案",
+  "2026-10-22|OpenAI 將模型上架 Google Cloud",
+  "2026-10-22|SpaceX 與 Tesla 討論合併可能性",
+  "2026-10-22|新加坡企業局撥款 4,500 萬新元加速 AI 在先進製造的應用",
+  "2026-10-23|Meta 宣布全年資本支出上限提升至 1450 億美元",
+  "2026-10-23|Microsoft 揭露 ConnectWise 資安漏洞導致 2,250 個雲端租戶受影響",
+  "2026-10-23|Nvidia 於柏林 GTC 公布投入資金協助供應鏈以鞏固矽基板供應",
+  "2026-10-24|Microsoft AI 診斷協調器在模擬測試中正確率達 83%",
+  "2026-10-24|OpenAI 近完成 300 億美元融資輪 估值 1.25 兆美元",
+  "2026-10-24|PHP2Shell 安全漏洞波及 Google、OpenAI、Amazon 等巨頭",
+  "2026-10-25|Dyna.Ai 與 Bahrain FinTech Bay 合作在 GCC 推廣 AI 即服務",
+  "2026-10-25|Healthleap 獲得 3800 萬美元資金以擴大醫院 AI 篩檢服務",
+  "2026-10-25|Nvidia 為 OpenAI 俄亥俄 10GW 資料中心提供 1050 億美元保證",
+  "2026-10-25|OpenAI 內部錯位監控系統曝出新漏洞",
+  "2026-10-25|OpenAI 訓練期間關閉網路存取",
+  "2026-10-26|CJ Logistics 獲 KT Cloud AI 資料中心建設合約",
+  "2026-10-26|SK Hynix 停止審查 Solidigm 美國 IPO 計畫",
+  "2026-10-26|SpaceX 與 Tesla 合併討論升溫",
+  "2026-10-27|Anthropic 申請 IPO 以 80.7 億美元淨虧損上市",
+  "2026-10-27|Meta 計畫募集 95 億美元資金支援 AI 基礎建設",
+  "2026-10-27|SoftBank 計畫投入 500 億美元於馬來西亞 AI 與資料中心",
+  "2026-10-28|OpenAI 推出成本效益更高的 GPT-6.1 Terra 中階模型",
+  "2026-10-28|Tairex 推出多學科人機協作生態系統以加速臨床 AI 應用",
+  "2026-10-29|Apple 推出第六代 M 系列晶片 M6 於 MacBook Pro 與 iMac",
+  "2026-10-29|Google 開放 TPU 供應給雲端合作夥伴以擴大 AI 晶片銷售",
+  "2026-10-29|Oracle 與 Google 合作於 OCI 提供 TPU 服務",
+  "2026-10-29|SK Hynix 預測記憶體短缺將持續至 2030 年",
+  "2026-10-30|Google Gemini 4 Carbon 定價維持現價，未來將翻倍",
+  "2026-10-30|Oracle 於 OCI 推出使用量計費 AI 服務",
+  "2026-10-31|AWS 每 14 秒安裝一顆 AI 加速卡，目標 2027 年營收突破 1 兆美元",
+  "2026-10-31|AWS 第三季營收成長 39%，簽署多項大型 AI 合約",
+  "2026-10-31|DeepInfinity.AI 與 Baby Memorial 醫院集團合作，擴大醫療 AI 應用",
+  "2026-10-31|Intel 公布 PC 處理器需求下降 5% 影響代工產能",
+  "2026-10-31|Microsoft 計畫發行 250 億美元債券以支援 AI 建設",
+  "2026-11-01|Doximity 推出 AI 藥物檢查工具 DoseCheck",
+  "2026-11-01|Google 搜尋廣告收入成長放緩至 12%　AI 機制影響營收",
+  "2026-11-01|S&P 降級 Meta 前景　因資本支出與自由現金流憂慮",
+  "2026-11-02|Amazon 內部備忘錄警示 AI 使用對工程師情緒的影響",
+  "2026-11-02|JPMorgan 與 Walmart 在 AI 個人代理上的策略分歧",
+  "2026-11-02|Nvidia 以 69 億美元收購 Mellanox 後，2024 Q2 網路營收達 175 億美元，超越 Cisco",
+  "2026-11-02|OpenAI 融資目標下調至最高 200 億美元",
+  "2026-11-03|Anthropic IPO 招股說明書披露近兆美元運算承諾",
+  "2026-11-03|Nvidia 可能為 Nscale 西維吉尼亞 AI 數據中心提供數十億美元債務保證",
+  "2026-11-03|OpenAI 創辦人 Altman 赴韓國與三星、SK 集團討論 AI 晶片合作"
+ ]
+}
