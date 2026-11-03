@@ -3752,6 +3752,8 @@ function trCalcCsp(gi){
       const common = keys.filter(k=>qs[last][k]!=null && qs[prev][k]!=null);
       const a = common.reduce((s,k)=>s+qs[last][k],0), b = common.reduce((s,k)=>s+qs[prev][k],0);
       if(b>0) text = `${last} 合計 ${Math.round(a)} 億美元，年增 ${trSgn((a/b-1)*100)}%`;
+      const yoy = common.filter(k=>qs[prev][k]>0).map(k=>({n:c[k].name||k, v:(qs[last][k]/qs[prev][k]-1)*100})).sort((x,y)=>y.v-x.v);
+      if(yoy.length) text += '\n年增：' + yoy.map(o=>o.n+' '+trSgn(o.v,1)+'%').join('、');
     }
   }
   return {keys, names:keys.map(k=>c[k].name||k), quarters, text};
@@ -3831,20 +3833,34 @@ function trDrawTsmc(W, d){
     + `<div class="tr-legend"><span><span class="tr-sw" style="background:var(--hw);opacity:.55"></span>月營收（左軸，億元）</span><span><span class="tr-sw" style="background:var(--corp)"></span>年增率（右軸）</span></div>`;
 }
 function trDrawCsp(W, d){
-  const H=230, L=44, R=10, T=22, B=26, pw=W-L-R, ph=H-T-B, q=d.quarters, n=q.length, step=pw/n;
-  const maxV = trNiceMax(Math.max.apply(null,q.map(x=>x.total))*1.05);
+  const H=230, L=44, R=Math.min(96, Math.round(W*0.27)), T=16, B=26, pw=W-L-R, ph=H-T-B, q=d.quarters, n=q.length, step=pw/n;
+  let mx = 0; q.forEach(x=>d.keys.forEach(k=>{ if(x.by[k]!=null && x.by[k]>mx) mx=x.by[k]; }));
+  const maxV = trNiceMax(mx*1.05);
   const tips = q.map(x=>x.q+'：合計 '+x.total.toFixed(0)+' 億美元；'+d.keys.map((k,i)=>d.names[i]+' '+(x.by[k]!=null?x.by[k].toFixed(0):'—')).join('、'));
   let g = trSvgOpen('tr-svg-csp', W, H, step, L, tips);
   g += trAxisY(L, L+pw, T, T+ph, maxV, v=>v.toFixed(0), 4);
+  const cx = i=>L+i*step+step/2, cy = v=>T+ph*(1-v/maxV);
+  const ends = [];
+  d.keys.forEach((k,j)=>{
+    const col = TR_CSP_COLORS[j%4], pts = [];
+    let li = -1;
+    q.forEach((x,i)=>{ if(x.by[k]!=null){ pts.push(cx(i).toFixed(1)+','+cy(x.by[k]).toFixed(1)); li=i; } });
+    if(!pts.length) return;
+    g += `<polyline points="${pts.join(' ')}" fill="none" stroke="${col}" stroke-width="2.2" stroke-linejoin="round"/>`;
+    g += `<circle cx="${cx(li).toFixed(1)}" cy="${cy(q[li].by[k]).toFixed(1)}" r="3.2" fill="${col}"/>`;
+    ends.push({y:cy(q[li].by[k]), ly:0, col, label:d.names[j]+' '+q[li].by[k].toFixed(0), x:cx(li)});
+  });
+  ends.sort((a,b)=>a.y-b.y);
+  const gap = 12;
+  ends.forEach((e,i)=>{ e.ly = (i && e.y < ends[i-1].ly + gap) ? ends[i-1].ly + gap : e.y; });
+  const over = ends.length ? ends[ends.length-1].ly - (T+ph) : 0;
+  if(over > 0) ends.forEach(e=>{ e.ly -= over; });
+  for(let i=ends.length-2;i>=0;i--){ if(ends[i].ly > ends[i+1].ly - gap) ends[i].ly = ends[i+1].ly - gap; }
+  ends.forEach(e=>{
+    g += `<text x="${(e.x+7).toFixed(1)}" y="${(e.ly+3.5).toFixed(1)}" font-size="10.5" font-weight="600" fill="${e.col}">${_arcEsc(e.label)}</text>`;
+  });
   q.forEach((x,i)=>{
-    let y = T+ph;
-    d.keys.forEach((k,j)=>{
-      const v = x.by[k]; if(v==null) return;
-      const h = v/maxV*ph; y -= h;
-      g += `<rect x="${(L+i*step+step*0.15).toFixed(1)}" y="${y.toFixed(1)}" width="${(step*0.7).toFixed(1)}" height="${h.toFixed(1)}" fill="${TR_CSP_COLORS[j%4]}"/>`;
-    });
-    g += `<text x="${(L+i*step+step/2).toFixed(1)}" y="${(y-4).toFixed(1)}" text-anchor="middle" font-size="10" fill="var(--text2)">${x.total.toFixed(0)}</text>`;
-    if(i%2===(n-1)%2) g += `<text x="${(L+i*step+step/2).toFixed(1)}" y="${H-8}" text-anchor="middle" font-size="10.5" fill="var(--muted)">${_arcEsc(x.q.slice(2))}</text>`;
+    if(i%2===(n-1)%2) g += `<text x="${cx(i).toFixed(1)}" y="${H-8}" text-anchor="middle" font-size="10.5" fill="var(--muted)">${_arcEsc(x.q.slice(2))}</text>`;
   });
   return g + '<rect class="tr-cursor" x="-99" y="'+T+'" width="'+step.toFixed(1)+'" height="'+ph+'" fill="var(--text)" opacity=".08" pointer-events="none"/></svg>'
     + '<div class="tr-legend">'+d.names.map((nm,j)=>`<span><span class="tr-sw" style="background:${TR_CSP_COLORS[j%4]}"></span>${_arcEsc(nm)}</span>`).join('')+'</div>';
@@ -3888,7 +3904,7 @@ function trSrcFoot(src, note){
 }
 function trCard(title, dirText, body, foot){
   return `<div class="tr-card"><div class="tr-card-title">${title}</div>`
-    + (dirText ? `<div class="tr-dir">${_arcEsc(dirText)}</div>` : '') + body + (foot||'') + '</div>';
+    + (dirText ? `<div class="tr-dir">${_arcEsc(dirText).replace(/\n/g,'<br>')}</div>` : '') + body + (foot||'') + '</div>';
 }
 function trRankList(rows, kind){
   if(!rows.length) return '<div class="tr-empty">本期無達門檻的實體</div>';
