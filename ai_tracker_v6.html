@@ -3754,13 +3754,6 @@ function trCalcTsmc(gi){
   const dir = a > b + 0.5 ? '加速' : a < b - 0.5 ? '放緩' : '持平';
   return {series:s, text:`近 3 個月營收年增平均 ${trSgn(a)}%，較前 3 個月（${trSgn(b)}%）${dir}`};
 }
-function trCalcEu(gi){
-  const s = gi && gi.eu_ai_adoption && Array.isArray(gi.eu_ai_adoption.series) ? gi.eu_ai_adoption.series.filter(x=>typeof x.value==='number') : [];
-  if(s.length < 2) return null;
-  const f = s[0], l = s[s.length-1], p = s[s.length-2];
-  const verb = l.value>=f.value ? '升至' : '降至';
-  return {series:s, text:`${f.year}→${l.year} 由 ${f.value.toFixed(1)}% ${verb} ${l.value.toFixed(1)}%，最近一年（${p.year}→${l.year}）${trSgn(l.value-p.value)} 個百分點`};
-}
 function trCalcCsp(gi){
   const c = gi && gi.csp_capex && gi.csp_capex.companies;
   if(!c || typeof c !== 'object') return null;
@@ -3918,24 +3911,6 @@ function trDrawCsp(W, d){
   return g + '<rect class="tr-cursor" x="-99" y="'+T+'" width="'+step.toFixed(1)+'" height="'+ph+'" fill="var(--text)" opacity=".08" pointer-events="none"/></svg>'
     + '<div class="tr-legend">'+d.names.map((nm,j)=>`<span><span class="tr-sw" style="background:${TR_CSP_COLORS[j%4]}"></span>${_arcEsc(nm)}</span>`).join('')+'</div>';
 }
-function trDrawEu(W, d){
-  const H=200, L=40, R=24, T=22, B=26, pw=W-L-R, ph=H-T-B, s=d.series;
-  const y0 = s[0].year, y1 = s[s.length-1].year, span = Math.max(y1-y0,1);
-  const maxV = trNiceMax(Math.max.apply(null,s.map(x=>x.value))*1.1);
-  const xs = s.map(x=>L+(x.year-y0)/span*pw);
-  const tips = s.map(x=>x.year+'：'+x.value.toFixed(1)+'%');
-  let g = trSvgOpen('tr-svg-eu', W, H, 0, 0, tips);
-  TR_HOT['tr-svg-eu'].xs = xs;
-  g += trAxisY(L, L+pw, T, T+ph, maxV, v=>v.toFixed(0)+'%', 4);
-  const ys = s.map(x=>T+ph*(1-x.value/maxV));
-  g += `<polyline points="${xs.map((x,i)=>x.toFixed(1)+','+ys[i].toFixed(1)).join(' ')}" fill="none" stroke="var(--app)" stroke-width="2.2"/>`;
-  s.forEach((x,i)=>{
-    g += `<circle cx="${xs[i].toFixed(1)}" cy="${ys[i].toFixed(1)}" r="4" fill="var(--app)"/>`
-      + `<text x="${xs[i].toFixed(1)}" y="${(ys[i]-9).toFixed(1)}" text-anchor="middle" font-size="11" fill="var(--text2)">${x.value.toFixed(1)}%</text>`
-      + `<text x="${xs[i].toFixed(1)}" y="${H-8}" text-anchor="middle" font-size="10.5" fill="var(--muted)">${x.year}</text>`;
-  });
-  return g + '<line class="tr-cursor-l" x1="-99" x2="-99" y1="'+T+'" y2="'+(T+ph)+'" stroke="var(--text)" opacity=".25" pointer-events="none"/></svg>';
-}
 function trDrawDims(W, d){
   const H=210, L=36, R=8, T=10, B=26, pw=W-L-R, ph=H-T-B, r=d.rows, n=r.length, step=pw/n;
   const cols = ['var(--hw)','var(--corp)','var(--app)'], names = ['硬體缺口','巨頭角力','新興應用'];
@@ -4050,8 +4025,6 @@ function trDraw(){
   const put = (id, fn)=>{ const el=document.getElementById(id); if(el) el.innerHTML = fn(); };
   const t = TR_GI ? trCalcTsmc(TR_GI) : null;
   if(t) put('tr-tsmc-chart', ()=>trDrawTsmc(W, t));
-  const e = TR_GI ? trCalcEu(TR_GI) : null;
-  if(e) put('tr-eu-chart', ()=>trDrawEu(W, e));
   const c = TR_GI ? trCalcCsp(TR_GI) : null;
   if(c) put('tr-csp-chart', ()=>trDrawCsp(W, c));
   const d = TR_AT ? trCalcDims(TR_AT) : null;
@@ -4071,7 +4044,7 @@ function renderTrendPanel(){
   if(TR_GI_ERR || !TR_GI){
     h += '<div class="empty-state">⚠️ 暫時無法載入（data/global_indicators.json）</div>';
   } else {
-    const gi = TR_GI, t = trCalcTsmc(gi), c = trCalcCsp(gi), e = trCalcEu(gi);
+    const gi = TR_GI, t = trCalcTsmc(gi), c = trCalcCsp(gi);
     h += t ? trCard('台積電月營收（近 36 個月）', t.text, '<div id="tr-tsmc-chart" class="tr-chart"></div>',
             trSrcFoot(gi.tsmc_monthly.src, gi.tsmc_monthly.note))
          : trCard('台積電月營收', '', '<div class="tr-empty">資料準備中</div>');
@@ -4081,11 +4054,8 @@ function renderTrendPanel(){
     const ind = trCalcInd(gi), reg = trCalcReg(gi), inf = trCalcInfo(gi, ind);
     const gv = k=>(gi[k]||{});
     const empty = '<div class="tr-empty">資料準備中</div>';
-    const euSrc = e ? trSrcFoot(gv('eu_ai_adoption').src, gv('eu_ai_adoption').scope ? '範圍：'+gv('eu_ai_adoption').scope+'；2022 年無資料，未補點' : '') : '';
     const indSrc = ind ? trSrcFoot(gv('ai_adoption_industry').src, (gv('ai_adoption_industry').scope ? '範圍：'+gv('ai_adoption_industry').scope : '') + (ind.prevYear ? '；變化為較 '+ind.prevYear+' 年' : '')) : '';
-    const pane1 = '<div class="tr-pane-title">歐盟企業 AI 採用率</div>'
-      + (e ? '<div class="tr-dir">'+_arcEsc(e.text)+'</div><div id="tr-eu-chart" class="tr-chart"></div>'+euSrc : empty)
-      + '<div class="tr-pane-title">各地區企業 AI 採用率（口徑不同，各自看趨勢）</div>'
+    const pane1 = '<div class="tr-pane-title">各地區企業 AI 採用率（口徑不同，各自看趨勢）</div>'
       + (reg ? '<div class="tr-note" style="margin:0 0 6px;">各地調查口徑不同，數字不宜直接比較高低</div>'+trRenderReg(reg) : empty);
     const pane2 = '<div class="tr-pane-title">歐盟採用率最高的產業' + (ind && ind.year ? '（'+_arcEsc(ind.year)+'）' : '') + '</div>'
       + (ind ? '<div class="tr-dir">'+_arcEsc(ind.text)+'</div>'+trRenderInd(ind)+indSrc : empty)
