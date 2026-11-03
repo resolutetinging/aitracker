@@ -73,6 +73,23 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .tr-rank-val b{font-size:12.5px;}
 .tr-rank-val.up b{color:var(--app);}.tr-rank-val.down b{color:var(--corp);}
 .tr-spark{flex:none;cursor:pointer;}
+.tr-bars{display:flex;flex-direction:column;gap:7px;margin-top:6px;}
+.tr-bar-row{display:grid;grid-template-columns:minmax(90px,38%) 1fr auto;gap:8px;align-items:center;}
+.tr-bar-name{font-size:12.5px;color:var(--text);overflow-wrap:anywhere;}
+.tr-bar-sub{font-size:11px;color:var(--muted);}
+.tr-bar-track{background:var(--card2);border-radius:4px;height:12px;overflow:hidden;}
+.tr-bar-fill{background:var(--app);height:100%;border-radius:4px;}
+.tr-bar-val{font-size:12.5px;font-weight:700;color:var(--text);text-align:right;white-space:nowrap;}
+.tr-bar-chg{display:block;font-size:11px;font-weight:400;color:var(--muted);}
+.tr-reg-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:6px;}
+@media(min-width:640px){.tr-reg-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:900px){.tr-reg-grid{grid-template-columns:repeat(3,1fr);}}
+.tr-reg{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;}
+.tr-reg-name{font-size:13px;font-weight:700;color:var(--text);}
+.tr-tag{font-size:10.5px;font-weight:400;color:var(--muted);border:1px solid var(--border2);border-radius:4px;padding:0 4px;margin-left:6px;}
+.tr-reg-val{font-size:24px;font-weight:700;color:var(--app);line-height:1.2;}
+.tr-reg-per,.tr-reg-dir{font-size:11.5px;color:var(--muted);}
+.tr-mini{display:block;max-width:100%;margin:4px 0;}
 .t-ins  {background:rgba(58,104,96,.10);  border-color:var(--insight);color:var(--insight);}
 .t-hist    {background:rgba(96,112,128,.10);  border-color:var(--hist);    color:var(--hist);}
 .t-archive {background:rgba(120,96,160,.10);  border-color:#8a60b0;        color:#8a60b0;}
@@ -3898,6 +3915,67 @@ function trDrawDims(W, d){
   return g + '<rect class="tr-cursor" x="-99" y="'+T+'" width="'+step.toFixed(1)+'" height="'+ph+'" fill="var(--text)" opacity=".12" pointer-events="none"/></svg>'
     + '<div class="tr-legend">'+names.map((nm,j)=>`<span><span class="tr-sw" style="background:${cols[j]}"></span>${nm}</span>`).join('')+'</div>';
 }
+function trNum(v){ return typeof v==='number' && isFinite(v); }
+function trCalcInd(gi){
+  const o = gi && gi.ai_adoption_industry;
+  if(!o || !Array.isArray(o.items)) return null;
+  const rows = o.items.filter(x=>x && !x.agg && trNum(x.value) && x.label).sort((a,b)=>b.value-a.value).slice(0,8)
+    .map(x=>({code:String(x.code||''), label:String(x.label), value:x.value, chg:trNum(x.prev) ? x.value-x.prev : null}));
+  if(!rows.length) return null;
+  let text = `${rows[0].label} ${rows[0].value.toFixed(1)}% 居首`;
+  const gr = rows.filter(r=>r.chg!=null).sort((a,b)=>b.chg-a.chg)[0];
+  if(gr) text += `；前 ${rows.length} 名中成長最快的是 ${gr.label}（${trSgn(gr.chg)} 個百分點）`;
+  return {rows, text, year:o.year, prevYear:o.prev_year, max:trNiceMax(rows[0].value*1.05)};
+}
+function trCalcReg(gi){
+  const o = gi && gi.ai_adoption_regions;
+  if(!o || !Array.isArray(o.items)) return null;
+  const rows = o.items.filter(x=>x && x.label && trNum(x.value)).map(x=>{
+    const s = Array.isArray(x.series) ? x.series.filter(p=>p && trNum(p.value)) : [];
+    const dir = s.length>=2 ? s[s.length-1].value - s[s.length-2].value : null;
+    return {label:String(x.label), value:x.value, period:x.period||'', scope:x.scope||'', src:x.src||'', manual:x.method==='manual', series:s, diff:dir};
+  });
+  return rows.length ? {rows} : null;
+}
+function trCalcInfo(gi, ind){
+  const o = gi && gi.ai_adoption_info_sector;
+  if(!o || !Array.isArray(o.items)) return null;
+  const rows = o.items.filter(x=>x && x.label && trNum(x.value)).map(x=>({label:String(x.label), sector:x.sector||'', value:x.value, period:x.period||'', scope:x.scope||'', src:x.src||''}));
+  if(!rows.length) return null;
+  const euTop = ind && ind.rows && ind.rows[0] && /^J/i.test(ind.rows[0].code);
+  const text = euTop ? '歐盟採用率最高的產業為資訊相關產業（NACE J）；其他地區口徑不同，不在此判斷' : '';
+  return {rows, note:o.note||'各地口徑不同，僅並列參考，不比高低', text, max:trNiceMax(Math.max.apply(null,rows.map(r=>r.value))*1.05)};
+}
+function trBarRow(name, sub, value, max, extra){
+  const w = Math.max(1, Math.min(100, value/max*100));
+  return `<div class="tr-bar-row"><div class="tr-bar-name">${_arcEsc(name)}${sub?`<div class="tr-bar-sub">${_arcEsc(sub)}</div>`:''}</div>`
+    + `<div class="tr-bar-track"><div class="tr-bar-fill" style="width:${w.toFixed(1)}%"></div></div>`
+    + `<div class="tr-bar-val">${_arcEsc(value.toFixed(1))}%${extra?`<span class="tr-bar-chg">${_arcEsc(extra)}</span>`:''}</div></div>`;
+}
+function trMiniLine(vals){
+  const W=120,H=34,mn=Math.min.apply(null,vals),mx=Math.max.apply(null,vals),rg=(mx-mn)||1;
+  const pts = vals.map((v,i)=>[2+i*(W-4)/(vals.length-1), H-4-(v-mn)/rg*(H-8)]);
+  const last = pts[pts.length-1];
+  return `<svg class="tr-mini" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}"><polyline points="${pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ')}" fill="none" stroke="var(--app)" stroke-width="1.8"/><circle cx="${last[0].toFixed(1)}" cy="${last[1].toFixed(1)}" r="2.6" fill="var(--app)"/></svg>`;
+}
+function trRenderInd(d){
+  return '<div class="tr-bars">' + d.rows.map(r=>trBarRow(r.label, '', r.value, d.max, r.chg!=null ? trSgn(r.chg)+' 個百分點' : '')).join('') + '</div>';
+}
+function trRenderReg(d){
+  return '<div class="tr-reg-grid">' + d.rows.map(r=>{
+    const dirTxt = r.diff==null ? '僅一期' : (r.diff>=0?'↑ ':'↓ ') + trSgn(r.diff).replace(/^[+-]/,'') + ' 個百分點（較上一期）';
+    return `<div class="tr-reg"><div class="tr-reg-name">${_arcEsc(r.label)}${r.manual?'<span class="tr-tag">人工更新</span>':''}</div>`
+      + `<div class="tr-reg-val">${_arcEsc(r.value.toFixed(1))}%</div>`
+      + `<div class="tr-reg-per">${_arcEsc(r.period)}</div>`
+      + `<div class="tr-reg-dir">${_arcEsc(dirTxt)}</div>`
+      + (r.series.length>=3 ? trMiniLine(r.series.map(p=>p.value)) : '')
+      + (r.scope?`<div class="tr-note">${_arcEsc(r.scope)}</div>`:'') + nvSrcLink(r.src) + '</div>';
+  }).join('') + '</div>';
+}
+function trRenderInfo(d){
+  return '<div class="tr-bars">' + d.rows.map(r=>trBarRow(r.label, [r.sector, r.period, r.scope].filter(Boolean).join('｜'), r.value, '')).join('') + '</div>'
+    + d.rows.filter(r=>/^https?:\/\//i.test(r.src)).map(r=>nvSrcLink(r.src)).join('');
+}
 function trSrcFoot(src, note){
   return (note?`<div class="tr-note">${_arcEsc(note)}</div>`:'') + nvSrcLink(src)
     + (TR_GI && TR_GI.updated ? `<div class="card-source">資料更新日：${_arcEsc(TR_GI.updated)}</div>` : '');
@@ -3943,6 +4021,14 @@ function renderTrendPanel(){
     h += e ? trCard('歐盟企業 AI 採用率', e.text, '<div id="tr-eu-chart" class="tr-chart"></div>',
             trSrcFoot(gi.eu_ai_adoption.src, gi.eu_ai_adoption.scope ? '範圍：'+gi.eu_ai_adoption.scope+'；2022 年無資料，未補點' : ''))
          : trCard('歐盟企業 AI 採用率', '', '<div class="tr-empty">資料準備中</div>');
+    const ind = trCalcInd(gi), reg = trCalcReg(gi), inf = trCalcInfo(gi, ind);
+    h += ind ? trCard('歐盟採用率最高的產業' + (ind.year ? '（'+_arcEsc(ind.year)+'）' : ''), ind.text, trRenderInd(ind),
+            trSrcFoot(gi.ai_adoption_industry.src, (gi.ai_adoption_industry.scope ? '範圍：'+gi.ai_adoption_industry.scope : '') + (ind.prevYear ? '；變化為較 '+ind.prevYear+' 年' : '')))
+         : trCard('歐盟採用率最高的產業', '', '<div class="tr-empty">資料準備中</div>');
+    h += reg ? trCard('各地區企業 AI 採用率（口徑不同，各自看趨勢）', '各地調查口徑不同，數字不宜直接比較高低', trRenderReg(reg), '')
+         : trCard('各地區企業 AI 採用率（口徑不同，各自看趨勢）', '', '<div class="tr-empty">資料準備中</div>');
+    h += inf ? trCard('各地資訊業 AI 採用率', inf.text, '<div class="tr-note" style="margin:0 0 8px;">'+_arcEsc(inf.note)+'</div>'+trRenderInfo(inf), '')
+         : trCard('各地資訊業 AI 採用率', '', '<div class="tr-empty">資料準備中</div>');
   }
   h += '<div class="tr-sec-title" style="margin-top:22px;">新聞關注度</div>'
      + '<div class="tr-sec-sub">反映媒體在談什麼，非產業實際數據。占比＝實體被提及次數 ÷ 當週總卡數；排除尚未結束的週。</div>';

@@ -329,6 +329,648 @@
    }
   ]
  },
+ "ai_adoption_industry": {
+  "src": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_eb_ain2?format=JSON&lang=EN&unit=PC_ENT&indic_is=E_AI_TANY&size_emp=GE10&geo=EU27_2020",
+  "scope": "EU27，10 人以上企業（不含農林漁、採礦、金融保險），過去 12 個月使用至少一種 AI 技術",
+  "year": 2025,
+  "prev_year": 2024,
+  "items": [
+   {
+    "code": "J62_J63",
+    "label": "電腦程式設計與資訊服務",
+    "value": 65.7,
+    "prev": 52.63,
+    "agg": false
+   },
+   {
+    "code": "J",
+    "label": "資訊及通訊業",
+    "value": 62.52,
+    "prev": 48.72,
+    "agg": true
+   },
+   {
+    "code": "ICT",
+    "label": "資通訊產業合計",
+    "value": 60.13,
+    "prev": 46.58,
+    "agg": true
+   },
+   {
+    "code": "J58-J60",
+    "label": "出版、影視與廣播",
+    "value": 56.2,
+    "prev": 39.68,
+    "agg": false
+   },
+   {
+    "code": "M72",
+    "label": "科學研究與發展",
+    "value": 52.08,
+    "prev": 40.29,
+    "agg": false
+   },
+   {
+    "code": "M73-M75",
+    "label": "廣告市調與其他專業科技服務",
+    "value": 48.02,
+    "prev": 33.66,
+    "agg": false
+   },
+   {
+    "code": "C21",
+    "label": "製藥",
+    "value": 41.32,
+    "prev": 25.82,
+    "agg": false
+   },
+   {
+    "code": "M",
+    "label": "專業、科學及技術服務",
+    "value": 40.43,
+    "prev": 30.53,
+    "agg": true
+   },
+   {
+    "code": "J61",
+    "label": "電信業",
+    "value": 39.76,
+    "prev": 27.06,
+    "agg": false
+   },
+   {
+    "code": "L_M",
+    "label": "不動產與專業科學技術",
+    "value": 38.16,
+    "prev": 28.25,
+    "agg": true
+   },
+   {
+    "code": "M69-M71",
+    "label": "法律會計、管理顧問與建築工程",
+    "value": 37.92,
+    "prev": 29.18,
+    "agg": false
+   },
+   {
+    "code": "C26",
+    "label": "電腦、電子與光學產品製造",
+    "value": 37.44,
+    "prev": 25.29,
+    "agg": false
+   },
+   {
+    "code": "N79",
+    "label": "旅行社與訂位服務",
+    "value": 34.96,
+    "prev": 24.39,
+    "agg": false
+   },
+   {
+    "code": "D",
+    "label": "電力、燃氣與空調供應",
+    "value": 33.57,
+    "prev": 25.68,
+    "agg": true
+   },
+   {
+    "code": "D35",
+    "label": "電力、燃氣與空調供應",
+    "value": 33.57,
+    "prev": 25.68,
+    "agg": false
+   },
+   {
+    "code": "C19",
+    "label": "煉油與焦炭製品",
+    "value": 30.41,
+    "prev": 20.35,
+    "agg": false
+   },
+   {
+    "code": "C20",
+    "label": "化學品製造",
+    "value": 28.45,
+    "prev": 16.7,
+    "agg": false
+   },
+   {
+    "code": "C27",
+    "label": "電機設備製造",
+    "value": 25.9,
+    "prev": 16.37,
+    "agg": false
+   },
+   {
+    "code": "C27_C28",
+    "label": "電機設備與機械製造",
+    "value": 25.57,
+    "prev": 15.26,
+    "agg": true
+   },
+   {
+    "code": "C28",
+    "label": "機械設備製造",
+    "value": 25.45,
+    "prev": 14.85,
+    "agg": false
+   },
+   {
+    "code": "L",
+    "label": "不動產業",
+    "value": 24.76,
+    "prev": 15.45,
+    "agg": true
+   },
+   {
+    "code": "L68",
+    "label": "不動產活動",
+    "value": 24.76,
+    "prev": 15.45,
+    "agg": false
+   },
+   {
+    "code": "S951",
+    "label": "電腦與通訊設備維修",
+    "value": 24.5,
+    "prev": 14.07,
+    "agg": false
+   },
+   {
+    "code": "C29_C30",
+    "label": "汽車與運輸設備製造",
+    "value": 23.86,
+    "prev": 14.59,
+    "agg": false
+   },
+   {
+    "code": "G46",
+    "label": "批發業（不含汽機車）",
+    "value": 23.42,
+    "prev": 14.08,
+    "agg": false
+   },
+   {
+    "code": "G45-S951_X_K",
+    "label": "服務業（不含金融保險）",
+    "value": 22.96,
+    "prev": 16.12,
+    "agg": true
+   },
+   {
+    "code": "C26-C33",
+    "label": "電腦、電機與機械設備製造",
+    "value": 22.73,
+    "prev": 14.39,
+    "agg": true
+   },
+   {
+    "code": "I55",
+    "label": "住宿業",
+    "value": 21.31,
+    "prev": 12.32,
+    "agg": false
+   },
+   {
+    "code": "C19-C23",
+    "label": "石化、化學與非金屬製品製造",
+    "value": 20.35,
+    "prev": 13.62,
+    "agg": true
+   },
+   {
+    "code": "N",
+    "label": "行政支援服務",
+    "value": 19.86,
+    "prev": 14.33,
+    "agg": true
+   },
+   {
+    "code": "N77-N82_X_N79",
+    "label": "租賃、人力派遣與保全等支援服務",
+    "value": 19.05,
+    "prev": 13.83,
+    "agg": false
+   },
+   {
+    "code": "G",
+    "label": "批發與零售業",
+    "value": 18.62,
+    "prev": 12.11,
+    "agg": true
+   },
+   {
+    "code": "D_E",
+    "label": "電力燃氣與水資源廢棄物",
+    "value": 18.16,
+    "prev": 12.62,
+    "agg": true
+   },
+   {
+    "code": "C-E",
+    "label": "製造、能源與水資源",
+    "value": 17.32,
+    "prev": 10.69,
+    "agg": true
+   },
+   {
+    "code": "C",
+    "label": "製造業",
+    "value": 17.27,
+    "prev": 10.57,
+    "agg": true
+   },
+   {
+    "code": "C31-C33",
+    "label": "家具、珠寶與其他製造",
+    "value": 17.16,
+    "prev": 11.45,
+    "agg": false
+   },
+   {
+    "code": "C22_C23",
+    "label": "橡塑膠與非金屬礦物製品",
+    "value": 16.77,
+    "prev": 11.98,
+    "agg": false
+   },
+   {
+    "code": "C16-C18",
+    "label": "木製品、紙業與印刷",
+    "value": 15.63,
+    "prev": 9.37,
+    "agg": false
+   },
+   {
+    "code": "G47",
+    "label": "零售業（不含汽機車）",
+    "value": 15.46,
+    "prev": 11.29,
+    "agg": false
+   },
+   {
+    "code": "C-F",
+    "label": "製造、能源、水電與營建",
+    "value": 14.75,
+    "prev": 8.92,
+    "agg": true
+   },
+   {
+    "code": "G45",
+    "label": "汽機車批發零售與維修",
+    "value": 14.35,
+    "prev": 8.65,
+    "agg": false
+   },
+   {
+    "code": "C24_C25",
+    "label": "基本金屬與金屬製品",
+    "value": 14.33,
+    "prev": 8.59,
+    "agg": false
+   },
+   {
+    "code": "C10-C18",
+    "label": "食品、紡織、木材紙業製造",
+    "value": 13.17,
+    "prev": 7.27,
+    "agg": true
+   },
+   {
+    "code": "E",
+    "label": "水資源、廢棄物與環境整治",
+    "value": 13.12,
+    "prev": 8.38,
+    "agg": false
+   },
+   {
+    "code": "C10-C12",
+    "label": "食品、飲料與菸草製造",
+    "value": 12.47,
+    "prev": 6.79,
+    "agg": false
+   },
+   {
+    "code": "C13-C15",
+    "label": "紡織、服飾與皮革製造",
+    "value": 12.01,
+    "prev": 5.98,
+    "agg": false
+   },
+   {
+    "code": "I",
+    "label": "住宿與餐飲",
+    "value": 11.98,
+    "prev": 6.09,
+    "agg": true
+   },
+   {
+    "code": "H",
+    "label": "運輸與倉儲",
+    "value": 11.15,
+    "prev": 8.13,
+    "agg": false
+   },
+   {
+    "code": "F",
+    "label": "營建業",
+    "value": 10.79,
+    "prev": 6.09,
+    "agg": false
+   }
+  ]
+ },
+ "ai_adoption_regions": {
+  "items": [
+   {
+    "key": "EU",
+    "label": "歐盟",
+    "value": 19.95,
+    "period": "2025",
+    "scope": "EU27，10 人以上企業（不含農林漁、採礦、金融保險）；過去 12 個月使用至少一種 AI 技術",
+    "src": "https://ec.europa.eu/eurostat/databrowser/view/isoc_eb_ai/default/table",
+    "method": "auto",
+    "series": [
+     {
+      "period": "2021",
+      "value": 7.65
+     },
+     {
+      "period": "2023",
+      "value": 8.06
+     },
+     {
+      "period": "2024",
+      "value": 13.48
+     },
+     {
+      "period": "2025",
+      "value": 19.95
+     }
+    ]
+   },
+   {
+    "key": "US",
+    "label": "美國",
+    "value": 24.6,
+    "period": "2026 第 21 期（雙週）",
+    "scope": "有員工的非農業私部門企業，不分規模（含 1–4 人）；回顧過去兩週是否在任何業務功能使用 AI（問卷題目用語為 SI，原稱 AI）；比例分母含「不知道」回答。Sector 檔的 32.1% 為「XX」列，依 Census 資料字典僅指跨多部門或多州的多單位企業，並非全體，故與全國 24.6% 不矛盾，此處採 National",
+    "src": "https://www.census.gov/hfp/btos/data_downloads",
+    "method": "auto",
+    "series": [
+     {
+      "period": "2025 第 24 期",
+      "value": 17.3
+     },
+     {
+      "period": "2025 第 25 期",
+      "value": 17.2
+     },
+     {
+      "period": "2025 第 26 期",
+      "value": 17.8
+     },
+     {
+      "period": "2026 第 1 期",
+      "value": 17.7
+     },
+     {
+      "period": "2026 第 2 期",
+      "value": 18.2
+     },
+     {
+      "period": "2026 第 3 期",
+      "value": 18.9
+     },
+     {
+      "period": "2026 第 4 期",
+      "value": 17.5
+     },
+     {
+      "period": "2026 第 5 期",
+      "value": 18.2
+     },
+     {
+      "period": "2026 第 6 期",
+      "value": 18.9
+     },
+     {
+      "period": "2026 第 7 期",
+      "value": 19.1
+     },
+     {
+      "period": "2026 第 8 期",
+      "value": 19.8
+     },
+     {
+      "period": "2026 第 9 期",
+      "value": 19.8
+     },
+     {
+      "period": "2026 第 10 期",
+      "value": 19.5
+     },
+     {
+      "period": "2026 第 11 期",
+      "value": 20.6
+     },
+     {
+      "period": "2026 第 12 期",
+      "value": 20.6
+     },
+     {
+      "period": "2026 第 13 期",
+      "value": 20.6
+     },
+     {
+      "period": "2026 第 14 期",
+      "value": 21.7
+     },
+     {
+      "period": "2026 第 15 期",
+      "value": 21.5
+     },
+     {
+      "period": "2026 第 16 期",
+      "value": 21.8
+     },
+     {
+      "period": "2026 第 17 期",
+      "value": 22.4
+     },
+     {
+      "period": "2026 第 18 期",
+      "value": 23.2
+     },
+     {
+      "period": "2026 第 19 期",
+      "value": 23.8
+     },
+     {
+      "period": "2026 第 20 期",
+      "value": 23.8
+     },
+     {
+      "period": "2026 第 21 期",
+      "value": 24.6
+     }
+    ]
+   },
+   {
+    "key": "KR",
+    "label": "韓國",
+    "value": 32.91,
+    "period": "2024",
+    "scope": "10 人以上企業（含金融）；當年度是否使用 AI；韓國 2022 年起調查方式改變（OECD 標示斷點），故數列只放 2022 年之後",
+    "src": "https://data-explorer.oecd.org/?lc=en&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_ICT_B%40DF_BUSINESSES",
+    "method": "auto",
+    "series": [
+     {
+      "period": "2022",
+      "value": 27.99
+     },
+     {
+      "period": "2023",
+      "value": 30.28
+     },
+     {
+      "period": "2024",
+      "value": 32.91
+     }
+    ]
+   },
+   {
+    "key": "SG",
+    "label": "新加坡",
+    "value": 23.5,
+    "period": "2025",
+    "scope": "全體企業（SingStat 定義，含小微）；年度調查，企業是否使用 AI（不限技術類型）",
+    "src": "https://tablebuilder.singstat.gov.sg/table/TS/M651551",
+    "method": "auto",
+    "series": [
+     {
+      "period": "2017",
+      "value": 1.3
+     },
+     {
+      "period": "2018",
+      "value": 3.5
+     },
+     {
+      "period": "2019",
+      "value": 3.7
+     },
+     {
+      "period": "2020",
+      "value": 3.9
+     },
+     {
+      "period": "2021",
+      "value": 3.3
+     },
+     {
+      "period": "2022",
+      "value": 3.5
+     },
+     {
+      "period": "2023",
+      "value": 4.4
+     },
+     {
+      "period": "2024",
+      "value": 14.7
+     },
+     {
+      "period": "2025",
+      "value": 23.5
+     }
+    ]
+   },
+   {
+    "key": "CA",
+    "label": "加拿大",
+    "value": 19.2,
+    "period": "2026 第 2 季",
+    "scope": "有員工的企業與組織，1 人以上不限規模（含非營利，私部門為 19.0%）；回顧過去 12 個月是否用 AI 生產商品或提供服務",
+    "src": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3310116701",
+    "method": "manual",
+    "series": [
+     {
+      "period": "2024 第 2 季",
+      "value": 6.1
+     },
+     {
+      "period": "2025 第 2 季",
+      "value": 12.2
+     },
+     {
+      "period": "2026 第 2 季",
+      "value": 19.2
+     }
+    ]
+   },
+   {
+    "key": "AU",
+    "label": "澳洲",
+    "value": 12,
+    "period": "2024-25 財年",
+    "scope": "全體企業含微型（0–4 人）；財年度內是否使用 AI（為 ICT 選項之一，可複選）；雙年調查",
+    "src": "https://www.abs.gov.au/statistics/industry/technology-and-innovation/characteristics-australian-business/2024-25",
+    "method": "manual",
+    "series": [
+     {
+      "period": "2022-23 財年",
+      "value": 1
+     },
+     {
+      "period": "2024-25 財年",
+      "value": 12
+     }
+    ]
+   }
+  ]
+ },
+ "ai_adoption_info_sector": {
+  "note": "各地口徑不同，僅並列參考，不比高低",
+  "items": [
+   {
+    "key": "EU",
+    "label": "歐盟",
+    "sector": "資訊及通訊業（NACE J）",
+    "value": 62.52,
+    "period": "2025",
+    "scope": "Eurostat 口徑：EU27，10 人以上企業、過去 12 個月",
+    "src": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_eb_ain2?format=JSON&lang=EN&unit=PC_ENT&indic_is=E_AI_TANY&size_emp=GE10&geo=EU27_2020"
+   },
+   {
+    "key": "US",
+    "label": "美國",
+    "sector": "資訊業（NAICS 51）",
+    "value": 46.4,
+    "period": "2026 第 21 期（雙週）",
+    "scope": "BTOS 口徑：有員工企業、不分規模、過去兩週",
+    "src": "https://www.census.gov/hfp/btos/downloads/Sector.xlsx"
+   },
+   {
+    "key": "CA",
+    "label": "加拿大",
+    "sector": "資訊與文化產業（NAICS 51）",
+    "value": 42.3,
+    "period": "2026 第 2 季",
+    "scope": "CSBC 口徑：1 人以上、過去 12 個月",
+    "src": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3310116701"
+   },
+   {
+    "key": "AU",
+    "label": "澳洲",
+    "sector": "資訊媒體與電信業",
+    "value": 38,
+    "period": "2024-25 財年",
+    "scope": "ABS 口徑：全體企業含微型、財年度",
+    "src": "https://www.abs.gov.au/statistics/industry/technology-and-innovation/characteristics-australian-business/2024-25"
+   }
+  ]
+ },
  "failures": [],
  "csp_capex": {
   "src": "各公司官方財報新聞稿（SEC 8-K 附件 99.1）與 Microsoft IR 財報會議頁",
