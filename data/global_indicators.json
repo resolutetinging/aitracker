@@ -1014,34 +1014,29 @@
     "label": "美國",
     "period": "2026 第 21 期（雙週）",
     "short": "過去兩週・不分規模",
-    "scope": "BTOS Sector 檔（NAICS 2 位碼）；與全國檔同一題目（過去兩週是否在任何業務功能使用 AI，題目用語為 SI，原稱 AI）、同一期別；有員工的非農業私部門企業，不分規模；已排除「XX」列（跨部門多單位企業）；prev 為前一雙週期，雙週樣本波動大",
+    "scope": "BTOS Sector 檔（NAICS 2 位碼）；與全國檔同一題目（過去兩週是否在任何業務功能使用 AI，題目用語為 SI，原稱 AI）、同一期別；有員工的非農業私部門企業，不分規模；已排除「XX」列（跨部門多單位企業）；不列前期變化（雙週樣本波動大）",
     "src": "https://www.census.gov/hfp/btos/downloads/Sector.xlsx",
     "method": "auto",
     "industries": [
      {
       "label": "資訊業",
-      "value": 46.4,
-      "prev": 50.2
+      "value": 46.4
      },
      {
       "label": "專業、科學及技術服務",
-      "value": 43.8,
-      "prev": 42.7
+      "value": 43.8
      },
      {
       "label": "金融保險業",
-      "value": 40.5,
-      "prev": 40.1
+      "value": 40.5
      },
      {
       "label": "企業總管理",
-      "value": 36.4,
-      "prev": 23.2
+      "value": 36.4
      },
      {
       "label": "教育服務",
-      "value": 33.4,
-      "prev": 39.9
+      "value": 33.4
      }
     ]
    },

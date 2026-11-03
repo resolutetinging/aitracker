@@ -474,15 +474,13 @@ def us_industries(old):
         if v is None:
             continue
         e = {"label": BTOS_SEC_ZH[code], "value": v}
-        pv = pct(r.get(prev)) if prev else None
-        if pv is not None:
-            e["prev"] = pv
+        # 不輸出 prev：雙週樣本波動大，與他地年度前期並列易被誤讀為年成長
         cand.append(e)
     return {"key": "US", "label": "美國", "period": btos_label(hdr[cur]) + "（雙週）",
             "short": "過去兩週・不分規模",
             "scope": ("BTOS Sector 檔（NAICS 2 位碼）；與全國檔同一題目（過去兩週是否在任何業務功能使用 AI，"
                       "題目用語為 SI，原稱 AI）、同一期別；有員工的非農業私部門企業，不分規模；"
-                      "已排除「XX」列（跨部門多單位企業）；prev 為前一雙週期，雙週樣本波動大"),
+                      "已排除「XX」列（跨部門多單位企業）；不列前期變化（雙週樣本波動大）"),
             "src": BTOS_SEC, "method": "auto", "industries": top_n(cand)}
 
 

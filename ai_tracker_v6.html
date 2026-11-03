@@ -99,6 +99,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .tr-ir-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:3px;}
 .tr-ir-name{font-size:12px;color:var(--text);overflow-wrap:anywhere;min-width:0;}
 .tr-ir-val{font-size:12px;font-weight:700;color:var(--text);text-align:right;white-space:nowrap;}
+.tr-ir-val .tr-bar-chg{display:inline;margin-left:6px;}
 .tr-reg-per,.tr-reg-dir{font-size:11.5px;color:var(--muted);}
 .tr-mini{display:block;max-width:100%;margin:4px 0;}
 .t-ins  {background:rgba(58,104,96,.10);  border-color:var(--insight);color:var(--insight);}
@@ -3977,7 +3978,7 @@ function trCalcRegInd(gi){
   const eu = regs.filter(r=>r.key==='EU')[0];
   if(eu){
     const gr = eu.inds.filter(i=>i.chg!=null).sort((a,b)=>b.chg-a.chg)[0];
-    if(gr) text += (text?'；':'') + `歐盟成長最快的產業是 ${gr.label}（${trSgn(gr.chg)} 個百分點）`;
+    if(gr) text += (text?'；':'') + `歐盟：成長最快的產業是 ${gr.label}（${trSgn(gr.chg)} 個百分點）`;
   }
   return {regs:regs, text:text};
 }
