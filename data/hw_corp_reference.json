@@ -29,16 +29,16 @@
   },
   "corp": {
     "metric_cards": [
-      {"label": "3大CSP 資本支出指引", "value": "$558B", "value_cls": "c-corp", "sub": "Amazon+Google+Meta最新guidance合計（不含Microsoft，財年制不同）"},
+      {"label": "4大CSP 2026 資本支出指引", "value": "$720–740B", "value_cls": "c-corp", "sub": "Amazon+Google+Microsoft+Meta 2026日曆年官方指引合計（區間上下限各自加總）"},
       {"label": "Microsoft Azure 全年營收", "value": "突破 $100B", "value_cls": "c-app", "sub": "FY26全年+41% · Q4單季+43%"},
       {"label": "Google Cloud Q2 成長", "value": "+82% YoY", "value_cls": "c-app", "sub": "單季 $248 億 · 積壓訂單 $5,140 億"}
     ],
     "capex_bars": [
-      {"company": "Amazon", "guidance": "$220B", "pct": 86, "bar_cls": "b-amz", "note": "↑原$200B", "qoq": "Q2較Q1實際+$9.9B"},
-      {"company": "Google", "guidance": "$195–205B", "pct": 78, "bar_cls": "b-goog", "note": "↑原$180–190B", "qoq": "Q2較Q1實際+$9.2B"},
-      {"company": "Microsoft", "guidance": "$255–260B", "pct": 100, "bar_cls": "b-ms", "note": "FY27新揭露", "qoq": "Q2較Q1實際+$9.1B"},
-      {"company": "Meta", "guidance": "$130–145B", "pct": 54, "bar_cls": "b-meta", "note": "原$125–145B窄化", "qoq": "Q2較Q1實際+$11.3B"}
+      {"company": "Amazon", "guidance": "$220B", "pct": 100, "bar_cls": "b-amz", "note": "Q3維持", "qoq": "Q3較Q2實際+$23.1B"},
+      {"company": "Google", "guidance": "$195–205B", "pct": 91, "bar_cls": "b-goog", "note": "Q3維持", "qoq": "Q3較Q2實際+$6.4B"},
+      {"company": "Microsoft", "guidance": "約$170B", "pct": 77, "bar_cls": "b-ms", "note": "日曆2026；FY27 Q2逾$50B", "qoq": "Q3較Q2實際+$4.2B"},
+      {"company": "Meta", "guidance": "$135–145B", "pct": 64, "bar_cls": "b-meta", "note": "原$130–145B窄化", "qoq": "Q3較Q2實際+$3.8B"}
     ],
-    "capex_note": "*Microsoft財年為7月–隔年6月，FY27指引涵蓋2026/7–2027/6，與其他三家的2026日曆年guidance非同期，未列入左側合計；QoQ列的Q1/Q2對Microsoft指FY26 Q3(1–3月)/Q4(4–6月)，非日曆季"
+    "capex_note": "*四家皆為2026日曆年官方指引（Microsoft採FY27 Q1電話會議所述日曆年金額）；QoQ為2026日曆Q3較Q2實際CapEx，各公司依自家口徑"
   }
 }
