@@ -2,8 +2,8 @@ name: 🏥 Monthly Industry Adoption Update
 
 on:
   schedule:
-    - cron: '0 16 1 * *'  # 每月1號 16:00 UTC（台北時間每月2號 00:00）；時間點沿用
-                           # weekly-nvidia-update的16:00 UTC慣例，改成每月查證一次
+    - cron: '0 4 2 * *'   # 每月2號 04:00 UTC（台北時間每月2號 12:00）；11-04 由每月1號 16:00 UTC 移出，
+                           # 避免與每日管線（16:00 UTC）及 NVIDIA 週查證（週日 16:00 UTC）共用 Groq key 撞同一分鐘 TPM（11-01 撞期失敗）
   workflow_dispatch:        # 手動備用
 
 jobs:
