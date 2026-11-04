@@ -2,6 +2,143 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 52,
+        "CSP/CapEx": 45,
+        "App/AI": 26,
+        "gnews-chip": 23,
+        "gnews-dc": 18,
+        "gnews-app": 17
+      },
+      "digest_filtered": 0,
+      "after_dedup": 169,
+      "buckets": {
+        "hw": 37,
+        "corp": 122,
+        "app": 36
+      },
+      "news_char_budget": {
+        "hw": 4316,
+        "corp": 8000,
+        "app": 4200
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 4,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 4,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "deepen": {
+        "candidates": 1,
+        "rewritten": 1,
+        "fetch_failed": 0,
+        "llm_failed": 0
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 5,
+        "suspect_cards": 1,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 1,
+        "title_suspect_cards": 1,
+        "removed": 0,
+        "items": [
+          {
+            "sec": "corp",
+            "title": "AMD 2026 第三季營收成長 45% 目標超越 Intel 成為最大 x86 供應商",
+            "source": "https://www.theregister.com/systems/2026/11/04/amd-on-track-to-overtake-intel-as-biggest-x86-outfit/5307448",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [
+              "150"
+            ],
+            "tense_flag": false,
+            "title_suspects": [
+              "AMD 2026"
+            ]
+          },
+          {
+            "sec": "corp",
+            "title": "AMD 資料中心營收近翻倍 2026 Q3 亮眼表現",
+            "source": "https://www.cnbc.com/2026/11/03/amd-amd-q3-earnings-report-2026-.html",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [
+              "43 億美元"
+            ],
+            "undetermined": [
+              "85 億美元"
+            ],
+            "tense_flag": false,
+            "title_suspects": []
+          },
+          {
+            "sec": "corp",
+            "title": "Meta 計畫發行最高 250 億美元債券以支援 AI 基礎建設",
+            "source": "https://www.cnbc.com/2026/11/03/meta-bond-sale-ai-funding.html",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [
+              "95 億美元"
+            ],
+            "tense_flag": false,
+            "title_suspects": []
+          }
+        ]
+      },
+      "date": "2026-11-05",
+      "generated_at": "2026-11-05T00:05:07.461789+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 58,
         "CSP/CapEx": 44,
         "App/AI": 20,
@@ -1261,103 +1398,6 @@
       },
       "date": "2026-10-23",
       "generated_at": "2026-10-23T00:04:14.664059+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 63,
-        "CSP/CapEx": 54,
-        "App/AI": 21,
-        "gnews-chip": 20,
-        "gnews-dc": 21,
-        "gnews-app": 23
-      },
-      "digest_filtered": 1,
-      "after_dedup": 184,
-      "buckets": {
-        "hw": 47,
-        "corp": 131,
-        "app": 47
-      },
-      "news_char_budget": {
-        "hw": 5483,
-        "corp": 8000,
-        "app": 5483
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 1,
-          "opp": 2,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "placeholders": 0,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 2,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [],
-      "fact_audit": {
-        "mode": "log",
-        "checked": 4,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 1,
-        "low_coverage": {
-          "checked": 0,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": [
-          {
-            "sec": "hw",
-            "title": "Nvidia 宣布 DSX Pod 模組化資料中心部署方案",
-            "source": "https://www.theregister.com/on-prem/2026/10/21/nvidias-grand-plan-for-speeding-up-datacenter-deployments-ai-trailer-parks/5304303",
-            "rating": "core",
-            "coverage": "full",
-            "suspects": [],
-            "undetermined": [
-              "14"
-            ],
-            "tense_flag": false
-          }
-        ]
-      },
-      "date": "2026-10-22",
-      "generated_at": "2026-10-22T00:04:02.133374+08:00"
     }
   ]
 }

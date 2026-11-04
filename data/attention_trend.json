@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04",
+ "updated": "2026-11-05",
  "since": "2026-07-01",
  "entities": [
   {
@@ -902,7 +902,7 @@
   {
    "week": "2026-W45",
    "start": "2026-11-02",
-   "cards": 11,
+   "cards": 16,
    "dims": {
     "hw": {
      "core": 2,
@@ -910,36 +910,39 @@
      "noise": 0
     },
     "corp": {
-     "core": 4,
+     "core": 8,
      "opp": 2,
      "noise": 0
     },
     "app": {
-     "core": 1,
+     "core": 2,
      "opp": 0,
      "noise": 0
     }
    },
    "mentions": {
-    "NVIDIA": 2,
+    "NVIDIA": 3,
     "OpenAI": 2,
     "Amazon": 1,
     "Agentic AI": 1,
-    "Anthropic": 2,
+    "Anthropic": 3,
     "Samsung": 1,
     "SK hynix": 1,
     "HBM": 2,
     "Google": 1,
     "出口管制": 1,
     "Oracle": 1,
-    "Apple": 1
+    "Apple": 1,
+    "AMD": 2,
+    "Intel": 1,
+    "CoWoS／先進封裝": 1,
+    "Microsoft": 1,
+    "Meta": 1,
+    "推論": 1
    }
   }
  ],
  "seen": [
-  "2026-10-14|AMD 於 OCP 峰會公布 Helion AI 代理伺服器機架",
-  "2026-10-14|Anthropic 將於本週三向機構投資人披露第三季財報",
-  "2026-10-14|Meta 發布前沿模型 Muse Wonder 與 Wonder Full",
   "2026-10-15|Android 在 Google 訊息中導入 AI 防詐騙功能",
   "2026-10-15|Cisco 與 Nvidia 合作推出超高密度可插拔光模組",
   "2026-10-15|金融科技公司 63% 採用 AI 滲透測試加速程式部署",
@@ -1016,6 +1019,11 @@
   "2026-11-04|AI 晶片走私者利用貿易漏洞將韓國 HBM 運入中國",
   "2026-11-04|Apple 記憶體成本上升致毛利率下降至 45%~46%",
   "2026-11-04|Marvell 以 1150 億美元收購 Lumentum 加速光子供應鏈",
-  "2026-11-04|Oracle 於 2027 財政年度借入 200 億美元上限資金"
+  "2026-11-04|Oracle 於 2027 財政年度借入 200 億美元上限資金",
+  "2026-11-05|AMD 2026 第三季營收成長 45% 目標超越 Intel 成為最大 x86 供應商",
+  "2026-11-05|AMD 資料中心營收近翻倍 2026 Q3 亮眼表現",
+  "2026-11-05|Meta 計畫發行最高 250 億美元債券以支援 AI 基礎建設",
+  "2026-11-05|Microsoft 針對 8 GB 記憶體 PC 進行 Windows 11 效能優化",
+  "2026-11-05|Revolut 以自主持 AI 模型降低 90% 程式碼推論成本"
  ]
 }

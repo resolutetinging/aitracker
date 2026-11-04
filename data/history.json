@@ -1,5 +1,207 @@
 [
   {
+    "date": "2026-11-05",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": "",
+        "chain": [
+          {
+            "label": "Intel 市場份額↔",
+            "type": "neutral"
+          },
+          {
+            "label": "AMD 市場份額↔",
+            "type": "neutral"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "AMD 2026 第三季營收成長 45% 目標超越 Intel 成為最大 x86 供應商",
+        "layer": "core",
+        "body": "AMD 公布 2026 Q3 營收達 134 億美元，較去年同期成長 45%。其中資料中心部門營收 85 億美元，年增 97%。公司預估下一季營收約 170 億美元，將有望超過 Intel 的預估 150‑160 億美元。",
+        "impact": "",
+        "rating": "core",
+        "insight": "AMD 迅速擴張資料中心營收，將改寫 x86 市場格局。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/11/04/amd-on-track-to-overtake-intel-as-biggest-x86-outfit/5307448",
+        "chain": [
+          {
+            "label": "AMD 營收↑",
+            "type": "up"
+          },
+          {
+            "label": "Intel 營收↓",
+            "type": "down"
+          },
+          {
+            "label": "AMD x86 市占↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "AMD 資料中心營收近翻倍 2026 Q3 亮眼表現",
+        "layer": "core",
+        "body": "CEO Lisa Su 表示 2027 年資料中心 AI 營收將再度翻倍，已確保晶圓、基板與先進封裝等關鍵元件供應。",
+        "impact": "",
+        "rating": "core",
+        "insight": "AMD 供應鏈已為 AI 需求做好布局，將持續推高上游產能需求。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/11/03/amd-amd-q3-earnings-report-2026-.html",
+        "chain": [
+          {
+            "label": "AMD 資料中心營收↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC 高階製程供應↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD AI 加速卡需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Microsoft 針對 8 GB 記憶體 PC 進行 Windows 11 效能優化",
+        "layer": "core",
+        "body": "Microsoft 宣布 Windows 11 在配備 8 GB 記憶體的 PC 上提升 20% 響應速度與 40% 多工效能，透過記憶體管理機制讓系統可保留額外 2 GB 活躍資料於記憶體中。此舉回應 AI 需求推高的記憶體價格，並配合 Copilot+ 需要 16 GB 記憶體的策略。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Microsoft 軟體優化可在記憶體緊缺時維持 PC 市場需求。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/software/2026/11/03/microsoft-improves-windows-11-performance-on-8-gb-pcs-as-ram-prices-keep-climbing/5307382",
+        "chain": [
+          {
+            "label": "Microsoft Windows 11 效能↑",
+            "type": "up"
+          },
+          {
+            "label": "PC 記憶體需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Intel DDR5 供應壓力↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Meta 計畫發行最高 250 億美元債券以支援 AI 基礎建設",
+        "layer": "core",
+        "body": "Meta 預計在本週二發行 200 億至 250 億美元的債券，以支援其人工智慧基礎建設與模型服務的支出，債券銷售約三分之二以美元計、三分之一以歐元計。此舉發生於 S&P Global Ratings 將其展望調降至 AA- 負面、且公司最新季自由現金流為負 21.2 億美元之後。Meta 亦計畫透過公開增資與 ATM 計畫共籌集 95 億美元以進一步推動 AI 計畫。",
+        "impact": "",
+        "rating": "core",
+        "insight": "投資者可關注 AI 相關硬體供應鏈的需求上升，因 Meta 大規模資金投入可能提升相關公司的營運表現。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/11/03/meta-bond-sale-ai-funding.html",
+        "chain": [
+          {
+            "label": "TSMC 晶圓產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Samsung 記憶體產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 智慧晶片需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Revolut 以自主持 AI 模型降低 90% 程式碼推論成本",
+        "layer": "fintech",
+        "body": "Revolut 在一年內將 AI 程式碼推論成本削減約 90%，主要透過改用自主持模型取代 Claude 服務。公司目前使用 56 台 Nvidia B200 GPU 來部署 GLM‑5.3，服務約 2,000 名工程師。根據 ops 主管 David Abitbol，部署後程式碼開發時間提升 60%，交付週期縮短 70%。",
+        "impact": "上游 Nvidia GPU 需求因 56 台 B200 GPU 的採購而上升。",
+        "rating": "core",
+        "insight": "自主持 AI 模型可大幅降低運算成本，同時提升開發效率，為金融科技公司提供競爭優勢。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/11/03/british-fintech-revolut-slashes-ai-coding-costs-10x-by-cutting-out-claude-and-going-self-hosted/5307345",
+        "chain": [
+          {
+            "label": "Revolut AI 推論成本↓",
+            "type": "down"
+          },
+          {
+            "label": "Nvidia B200 GPU 使用率↑",
+            "type": "up"
+          },
+          {
+            "label": "GLM‑5.3 部署效能↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "AI 基礎設施供應鏈",
+        "full": "人工智慧硬體與相關零組件的供應鏈",
+        "def": "涵蓋晶圓代工、先進封裝、HBM 記憶體、OSAT 以及其他支援 AI 計算的硬體供應商，從原料到最終模組的完整鏈條。",
+        "why": "AI 工作負載的快速成長使得上游零組件供應緊張，供應鏈的瓶頸直接影響 AI 伺服器的交付與成本。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "先進封裝",
+        "full": "Advanced Packaging",
+        "def": "將多顆晶片或晶圓堆疊、互連於單一封裝內的技術，提升功率密度與訊號傳輸效率。",
+        "why": "先進封裝是支撐 AI 晶片高功耗與高速互連的關鍵，供應鏈的產能與技術成熟度直接決定 AI 系統的可擴展性。",
+        "category": "hardware"
+      },
+      {
+        "term": "x86 處理器",
+        "full": "x86 架構的中央處理器",
+        "def": "由 Intel 最早開發的指令集架構，廣泛用於個人電腦與伺服器。AMD 亦生產相容的 x86 處理器，與 Intel 形成主要競爭關係。",
+        "why": "AMD 目標成為最大 x86 供應商，將改變市場格局。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "AI 基礎建設",
+        "full": "支撐人工智慧運算的硬體與軟體資源",
+        "def": "包括高效能 GPU、CPU、記憶體、儲存與資料中心設施，用以訓練與推論大型模型。",
+        "why": "Meta 大規模債券發行即是為了擴充此類基礎建設。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "記憶體管理機制",
+        "full": "作業系統對 RAM 使用的調度與分配策略",
+        "def": "Windows 11 透過保留額外 2 GB 活躍資料於記憶體中，提高低階 PC 的效能。",
+        "why": "此技術在記憶體價格高漲時可降低硬體升級需求。",
+        "category": "software"
+      },
+      {
+        "term": "自主持模型",
+        "full": "Self‑hosted AI model",
+        "def": "企業自行在自有硬體上部署與運行的人工智慧模型，避免依賴第三方雲端服務。",
+        "why": "可降低使用成本並提升資料安全與運算效能。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Nvidia B200 GPU",
+        "full": "Nvidia B200 GPU",
+        "def": "Nvidia 針對資料中心與 AI 推論工作負載設計的高效能圖形處理器，支援大型語言模型的加速運算。",
+        "why": "是 Revolut 部署 GLM‑5.3 所採用的關鍵硬體，直接影響 GPU 供應鏈需求。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-04",
     "is_sunday": false,
     "hw": [
@@ -785,111 +987,6 @@
         "full": "Ransomware",
         "def": "一種惡意程式，會加密受害者的資料並要求支付贖金以換取解密金鑰。",
         "why": "了解此類威脅有助於企業在供應鏈安全上採取防護措施。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-29",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "SK Hynix 預測記憶體短缺將持續至 2030 年",
-        "layer": "capacity commitments",
-        "body": "SK Hynix 在 2026 年第四季財報說明，預計記憶體供應短缺將持續到 2030 年，因為新廠建設速度無法跟上 AI 基礎建設與自動駕駛等需求增長。公司指出，AI 相關應用與機器人市場將持續推高對 DRAM 與 NAND 的需求。",
-        "impact": "",
-        "rating": "core",
-        "insight": "記憶體供應緊張將推高 AI 伺服器成本，相關廠商應提前鎖定長期供貨合約。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/10/28/sk-hynix-says-memory-shortages-to-persist-until-2030/5305887"
-      },
-      {
-        "title": "Oracle 與 Google 合作於 OCI 提供 TPU 服務",
-        "layer": "strategic supplier decisions",
-        "body": "Oracle 宣布將於 2027 年起在 Oracle Cloud Infrastructure (OCI) 上提供 Google 的 Tensor Processing Units (TPU)，成為首家在自家雲平台提供 Google TPU 的大型雲服務供應商。此舉將補足 Oracle 目前對 Nvidia 晶片的高度依賴，並擴大其 AI 加速器產品線。",
-        "impact": "引入 TPU 使 OCI 能提供多樣化的 AI 加速器選項，降低對 Nvidia 晶片的需求，提升 AI 工作負載的成本效益與彈性。",
-        "rating": "core",
-        "insight": "Oracle 多元化 AI 加速器供應鏈，可降低單一晶片供應風險，提升雲端 AI 服務的競爭力。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/10/27/big-red-gets-cozy-with-google-to-offer-tpus-to-ai-customers/5305846"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Apple 推出第六代 M 系列晶片 M6 於 MacBook Pro 與 iMac",
-        "layer": "core",
-        "body": "Apple 宣佈在 MacBook Pro 與 iMac 內搭載全新 M6 晶片，該晶片具備更多核心、更快記憶體與更大的神經網路處理單元 (NPU)。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Apple 以 M6 強化高階筆電與桌機布局，將帶動代工產能與高價位 PC 市場需求。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/personal-tech/2026/10/27/apple-takes-powerful-m6-chip-to-the-macbook-pro-imac/5305797"
-      },
-      {
-        "title": "Google 開放 TPU 供應給雲端合作夥伴以擴大 AI 晶片銷售",
-        "layer": "core",
-        "body": "Google 宣布將其 Tensor Processing Units (TPU) 業務向非自家雲端平台開放，允許合作夥伴在自家基礎設施上販售 TPU 服務。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Google 透過開放 TPU 給合作夥伴，擴大晶片銷售渠道，將刺激代工產能與 AI 計算市場需求。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/28/google-alters-cloud-playbook-turning-to-partners-to-sell-more-ai-chips.html"
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Strategic Investment Program",
-        "full": "Strategic Investment Program (SIP)",
-        "def": "美國俄勒岡州提供給企業的稅收減免計畫，允許符合條件的投資獲得財產稅減免，以吸引大型製造業設廠。",
-        "why": "此計畫直接影響地方政府稅收與企業投資決策，關係到半導體製造基地的經濟可行性。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Tensor Processing Unit",
-        "full": "Tensor Processing Unit (TPU)",
-        "def": "Google 自行設計的 AI 加速器晶片，專為深度學習推論與訓練優化，提供高效能矩陣運算。",
-        "why": "TPU 作為 AI 基礎建設的關鍵硬體，進入多雲平台將改變 AI 加速器的供應鏈格局。",
-        "category": "hardware"
-      },
-      {
-        "term": "TPU",
-        "full": "Tensor Processing Unit",
-        "def": "Google 設計的專用 AI 加速晶片，用於加速深度學習模型的推論與訓練。",
-        "why": "TPU 具備高效能與低功耗特性，正成為大型雲端平台的 AI 計算核心。",
-        "category": "hardware"
-      },
-      {
-        "term": "M6",
-        "full": "Apple 第六代自研晶片",
-        "def": "Apple 於 Mac 系列產品中使用的自研 CPU+GPU+NPU 整合晶片，提供更高效能與更佳能源效率。",
-        "why": "M6 的推出標誌著 Apple 在高階 PC 市場的技術領先，將影響代工與上游供應鏈需求。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "NPU",
-        "full": "Neural Processing Unit",
-        "def": "專門用於加速神經網路運算的硬體單元，常見於 AI 晶片中。",
-        "why": "NPU 的效能提升直接關係到 AI 推論速度與功耗表現，是晶片競爭的關鍵指標。",
-        "category": "hardware"
-      },
-      {
-        "term": "tokenmaxxing",
-        "full": "Token Maxxing",
-        "def": "在使用大型語言模型時，過度填充輸入或輸出文字以最大化使用的 token 數量，常導致成本上升與效能下降。",
-        "why": "了解此概念有助於企業在導入 AI 編碼輔助工具時控制運算成本與資源使用。",
         "category": "ai_technique"
       }
     ],
