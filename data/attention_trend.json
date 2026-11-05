@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05",
+ "updated": "2026-11-06",
  "since": "2026-07-01",
  "entities": [
   {
@@ -902,50 +902,47 @@
   {
    "week": "2026-W45",
    "start": "2026-11-02",
-   "cards": 16,
+   "cards": 21,
    "dims": {
     "hw": {
-     "core": 2,
+     "core": 3,
      "opp": 2,
      "noise": 0
     },
     "corp": {
-     "core": 8,
-     "opp": 2,
+     "core": 10,
+     "opp": 3,
      "noise": 0
     },
     "app": {
-     "core": 2,
+     "core": 3,
      "opp": 0,
      "noise": 0
     }
    },
    "mentions": {
-    "NVIDIA": 3,
-    "OpenAI": 2,
+    "NVIDIA": 5,
+    "OpenAI": 3,
     "Amazon": 1,
-    "Agentic AI": 1,
+    "Agentic AI": 3,
     "Anthropic": 3,
     "Samsung": 1,
     "SK hynix": 1,
     "HBM": 2,
     "Google": 1,
-    "出口管制": 1,
+    "出口管制": 2,
     "Oracle": 1,
     "Apple": 1,
     "AMD": 2,
     "Intel": 1,
     "CoWoS／先進封裝": 1,
     "Microsoft": 1,
-    "Meta": 1,
+    "Meta": 2,
     "推論": 1
    }
   }
  ],
  "seen": [
-  "2026-10-15|Android 在 Google 訊息中導入 AI 防詐騙功能",
-  "2026-10-15|Cisco 與 Nvidia 合作推出超高密度可插拔光模組",
-  "2026-10-15|金融科技公司 63% 採用 AI 滲透測試加速程式部署",
   "2026-10-16|AWS 投入 10 億美元建置前端部署工程師團隊",
   "2026-10-16|Amazon 推出兩款全新 Bee 可穿戴 AI 裝置",
   "2026-10-16|Amazon 發布 Bee 系列個人 AI 裝置，售價 75 美元與 100 美元",
@@ -1024,6 +1021,11 @@
   "2026-11-05|AMD 資料中心營收近翻倍 2026 Q3 亮眼表現",
   "2026-11-05|Meta 計畫發行最高 250 億美元債券以支援 AI 基礎建設",
   "2026-11-05|Microsoft 針對 8 GB 記憶體 PC 進行 Windows 11 效能優化",
-  "2026-11-05|Revolut 以自主持 AI 模型降低 90% 程式碼推論成本"
+  "2026-11-05|Revolut 以自主持 AI 模型降低 90% 程式碼推論成本",
+  "2026-11-06|Box 將 Nvidia Nemotron 嵌入式模型整合至內容檢索服務",
+  "2026-11-06|CrowdStrike 推出 AI 殺死開關以關閉惡意代理程式",
+  "2026-11-06|Meta 收購 Agent Orchestration 初創公司 Conductor",
+  "2026-11-06|Moonshot AI 透過歐洲資料中心租用 Nvidia Blackwell GPU 以規避美國出口管制",
+  "2026-11-06|OpenAI 承諾停止與公部門簽署保密協議並提升透明度"
  ]
 }

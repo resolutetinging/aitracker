@@ -1,5 +1,169 @@
 [
   {
+    "date": "2026-11-06",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Moonshot AI 透過歐洲資料中心租用 Nvidia Blackwell GPU 以規避美國出口管制",
+        "layer": "capacity commitments",
+        "body": "Moonshot AI 正與位於歐洲的 neoclouds 討論租用其資料中心內的 Nvidia Blackwell 系統 GPU，該系統目前受美國出口管制禁止直接進口至中國。此舉顯示中國 AI 研發團隊正尋求透過歐洲雲端基礎設施取得先進晶片算力。來源指出，四位熟悉此事的消息人士透露，相關租用協議已於今年展開討論。",
+        "impact": "此租用需求將直接提升歐洲資料中心對 Nvidia 高階 GPU 的需求。",
+        "rating": "core",
+        "insight": "投資者應關注歐洲資料中心對高階 GPU 的需求增長，因其可能成為繞過美國出口管制的關鍵供應鏈節點。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/11/05/moonshot-ai-nvidia-chips-europe-china.html",
+        "chain": [
+          {
+            "label": "Moonshot AI Blackwell GPU 租用↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia Blackwell GPU 出口管制↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 承諾停止與公部門簽署保密協議並提升透明度",
+        "layer": "policy",
+        "body": "OpenAI 在選舉後的回應中宣布，未來在自有資料中心的建設與營運上將不再使用與公部門的保密協議，並將徵求社群意見、公開建設計畫。此政策藍圖亦鼓勵立法者將相同承諾寫入法律。此舉於 2026 年 11 月 5 日於 CNBC 報導。",
+        "impact": "",
+        "rating": "core",
+        "insight": "OpenAI 以政策透明化爭取公眾信任，可能提升其資料中心擴建速度。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/11/05/openai-to-pay-for-data-center-power-after-election-shows-ai-concern.html",
+        "chain": [
+          {
+            "label": "OpenAI 公部門保密協議取消↑"
+          },
+          {
+            "label": "OpenAI 透明度提升↑"
+          }
+        ]
+      },
+      {
+        "title": "Meta 收購 Agent Orchestration 初創公司 Conductor",
+        "layer": "acquisition",
+        "body": "Meta 已收購 AI 程式編寫初創公司 Conductor，該公司宣布其 Conductor Cloud 於 11 月 13 日將改為唯讀，並於 11 月 20 日關閉；其 macOS 應用程式仍可在未來數月內使用，且預計在 2027 年初不再提供新模型或關鍵錯誤修正。Meta 發言人表示，此次收購將強化公司面向開發者的智慧 AI 能力，並可能與近期推出的 Muse Code 代理程式整合。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Meta 強化開發者 AI 服務，長期看好相關硬體與軟體供應鏈需求。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/11/05/meta-brings-conductor-on-board-its-model-train/5307711",
+        "chain": [
+          {
+            "label": "Meta AI 代理程式需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia GPU 供應需求↓",
+            "type": "down"
+          },
+          {
+            "label": "開發者軟體工具平台需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Box 將 Nvidia Nemotron 嵌入式模型整合至內容檢索服務",
+        "layer": "technology",
+        "body": "Box 在開發者大會上展示新功能 Box Content Retrieval，將 Nvidia 的 Nemotron 嵌入式模型作為核心技術，預計查詢速度提升四倍、錯誤率下降 20%、使用的 token 數減少 90%。此功能將於明年初向 Box Enterprise Advance 客戶推出，訊息來源為 TechCrunch 於 2026 年 11 月 5 日的報導。",
+        "impact": "Nemotron 的嵌入將提升 Nvidia 在 AI 推理晶片需求。",
+        "rating": "opp",
+        "insight": "Box 與 Nvidia 的合作將擴大高效能推理晶片的應用範圍。",
+        "source_label": "TechCrunch",
+        "source": "https://techcrunch.com/2026/11/05/box-taps-nvidias-nemotron-for-new-agent-first-content-retrieval-system/",
+        "chain": [
+          {
+            "label": "Box Nemotron 嵌入式模型整合↑"
+          },
+          {
+            "label": "Box Content Retrieval 查詢速度↑"
+          },
+          {
+            "label": "Box 錯誤率下降↓"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "CrowdStrike 推出 AI 殺死開關以關閉惡意代理程式",
+        "layer": "security",
+        "body": "CrowdStrike 宣布推出 AI 殺死開關功能，能即時偵測並關閉企業環境中的惡意 AI 代理程式。此功能於本月在其雲端防護平台上正式上線，並伴隨企業採用率持續上升的趨勢。該公司指出，此舉可降低受感染端點的持續攻擊時間。",
+        "impact": "此功能降低企業環境中惡意 AI 代理程式的持續攻擊時間，減少資料外洩與營運中斷的風險。",
+        "rating": "core",
+        "insight": "AI 驅動的即時防禦工具將成為企業資安支出的新焦點，相關供應鏈上游模型服務商受惠。",
+        "source_label": "Tekedia",
+        "source": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQVU9sSTJNc3JlUHJmVUNmQWRNdFNZV0NVNm9HazNsNVpLaW1EWFRrZHdMYmd5R0lfLXlWNXlxeW9zbDhyZ0p4d203QTY1VGY2YmdqTmdMMGVXOHdtQ2hzdTY4MUJKblRZZnVtZy1MX0NoMVR1TDNZZEk4NkpGVnVvRkNzRXBZUUpPaW1Ud1F1RW9BMlcxUDg3TW9rc0h4ZTMzVjBCWGRuT1VCUGlrUmJXYVdmbS04QQ",
+        "thin_source": true,
+        "chain": [
+          {
+            "label": "CrowdStrike AI 殺死開關上線↑"
+          },
+          {
+            "label": "企業惡意 AI 代理程式檢測↓"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "neoclouds",
+        "full": "新興雲端服務提供商",
+        "def": "提供高效能運算資源的雲端平台，常與大型晶片製造商合作部署先進 GPU，供客戶租用算力。",
+        "why": "其平台成為中國 AI 研發繞過出口管制的主要渠道，影響全球 AI 基礎建設供應鏈布局。",
+        "category": "hardware"
+      },
+      {
+        "term": "Blackwell",
+        "full": "Nvidia Blackwell 系列 GPU",
+        "def": "Nvidia 最新代的高階圖形處理單元，具備最先進的 AI 訓練與推論效能，屬於受美國出口管制限制的產品。",
+        "why": "此晶片的供應受限，促使需求方尋找跨境租用方案，改變晶片供應鏈的地理分布。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "出口管制",
+        "full": "美國對先進 AI 晶片的出口限制",
+        "def": "美國政府針對特定高階 AI 晶片設定的出口禁令，禁止其直接銷往中國，以維持技術領先優勢。",
+        "why": "管制政策直接影響晶片的全球流通路徑，迫使供應鏈重新配置至可繞過限制的地區。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Nemotron",
+        "full": "Nvidia Nemotron 嵌入式模型",
+        "def": "Nvidia 開發的開放權重嵌入模型，用於將文字或文件轉換為向量，以支援高效能語意檢索與生成任務。",
+        "why": "Box 以此模型提升內容檢索速度與精準度，顯示嵌入式 AI 技術在企業軟體中的應用擴大。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Conductor",
+        "full": "Conductor AI 工作流編排平台",
+        "def": "一套專為 AI 代理與模型訓練設計的編排系統，能協調多個 AI 模型與資源以完成複雜任務。",
+        "why": "Meta 收購 Conductor 後可將其整合至自家 AI 平台，提升模型訓練與部署效率。",
+        "category": "software"
+      },
+      {
+        "term": "NDAs",
+        "full": "Non-Disclosure Agreements（保密協議）",
+        "def": "在商業合作或政府項目中，用於限制資訊披露的法律文件。",
+        "why": "OpenAI 承諾不再與公部門使用 NDAs，旨在提升政策透明度並減少合規成本。",
+        "category": "role"
+      },
+      {
+        "term": "AI 殺死開關",
+        "full": "Artificial Intelligence Kill Switch",
+        "def": "一種利用 AI 技術即時偵測並自動關閉惡意軟體或代理程式的防護機制，可在攻擊持續期間自動中斷其執行。",
+        "why": "在企業環境中快速阻斷惡意 AI 代理，可大幅降低資料外洩與系統中斷的風險。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-05",
     "is_sunday": false,
     "hw": [
@@ -849,144 +1013,6 @@
         "full": "DeepInfinity.AI 平台",
         "def": "提供醫療影像分析與臨床決策支援的人工智慧平台，結合深度學習模型與醫療資料庫。",
         "why": "其與醫院的合作示範了 AI 在實際醫療流程中的落地，帶動相關硬體與資料服務需求。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-10-30",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "SK Hynix 公布 AI 記憶體需求推動創紀錄 Q3 營收",
-        "layer": "capacity",
-        "body": "SK Hynix 於 2026 年第三季公布創紀錄營收，主要受 AI 記憶體需求激增驅動。公司同時透露已簽署多項長期客戶合約，並因晶片價格上揚提升毛利。",
-        "impact": null,
-        "rating": "noise",
-        "insight": "AI 記憶體需求的持續成長將驅動上游封裝與晶圓代工產能擴張，投資者應關注相關供應鏈的產能配置與價格走勢。",
-        "source_label": "—",
-        "source": "",
-        "chain": [
-          {
-            "label": "SK Hynix AI 記憶體需求↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix 晶片價格上揚↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Oracle 於 OCI 推出使用量計費 AI 服務",
-        "layer": "core",
-        "body": "Oracle 在投資人日透露，將在其 Fusion 應用套件中加入使用量計費模式，客戶依 AI 工作單位付費，而非僅以座位數收費。此舉同時推出 Fusion Claw 執行階段，讓客戶能在 OCI 上控制 AI 代理程式的自動化流程。Oracle 表示此模式將提升 AI 相關收入，因為 AI 工作量增加即產生更多營收。",
-        "impact": "直接提升 OCI 計算資源需求。",
-        "rating": "core",
-        "insight": "使用量計費將把 AI 工作量直接轉化為雲端算力需求，提升上游硬體供應鏈訂單。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/applications/2026/10/29/oracle-wants-to-bill-you-for-every-ai-task-not-just-every-seat/5306403",
-        "chain": [
-          {
-            "label": "Oracle AI 使用量計費模式↑",
-            "type": "up"
-          },
-          {
-            "label": "Oracle Fusion Claw 自動化流程↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Google Gemini 4 Carbon 定價維持現價，未來將翻倍",
-        "layer": "core",
-        "body": "Google 宣布 Gemini 4 Carbon 模型在推出初期仍維持與前代 Argon 相同的價格：每百萬輸入代幣 2 美元、每百萬輸出代幣 10 美元。官方說明，若此優惠期結束，價格將升至每百萬輸入代幣 4 美元、每百萬輸出代幣 20 美元，與 Anthropic Claude Opus 5.5 相同。Gemini 4 Carbon 被描述為在資安與長時間任務上表現最佳的模型。",
-        "impact": null,
-        "rating": "core",
-        "insight": "Google 先以低價吸引用戶，後期調價將測試市場對高效能模型的付費意願。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/10/29/googles-gemini-4-carbon-looks-like-a-diamond-in-the-rough/5306149",
-        "chain": [
-          {
-            "label": "Google Gemini 4 Carbon 定價維持現價↑",
-            "type": "up"
-          },
-          {
-            "label": "Google Gemini 4 Carbon 未來價格翻倍↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": "",
-        "chain": [
-          {
-            "label": "無相關應用新聞→無影響",
-            "type": "neutral"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "HBM",
-        "full": "High Bandwidth Memory",
-        "def": "高頻寬記憶體，提供比傳統 DRAM 更高的資料傳輸速率，常用於 AI 加速器與高效能運算平台。",
-        "why": "AI 訓練與推論對記憶體頻寬需求極高，HBM 的需求變化直接影響封裝與晶圓代工的產能規劃。",
-        "category": "hardware"
-      },
-      {
-        "term": "長期客戶合約",
-        "full": "Long‑term customer contracts",
-        "def": "記憶體製造商與下游 AI 伺服器或雲端服務供應商簽訂的多年供貨協議，確保穩定需求與收入。",
-        "why": "此類合約可降低需求波動風險，促使供應鏈上游提前規劃產能與投資。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "CoWoS",
-        "full": "Chip‑on‑Wafer‑on‑Substrate",
-        "def": "先進封裝技術，將多顆晶片堆疊於同一晶圓上，再封裝於基板，以提升效能與密度。",
-        "why": "AI 記憶體與處理器的高效能需求推動 CoWoS 產能擴張，影響相關封裝廠的訂單量。",
-        "category": "hardware"
-      },
-      {
-        "term": "Fusion Claw",
-        "full": "Oracle Fusion Claw 執行階段",
-        "def": "Oracle 為其 Fusion 應用套件開發的執行環境，允許客戶在 OCI 上管理與控制 AI 代理程式的自動化工作流程。",
-        "why": "此技術使 Oracle 能以使用量計費模式收取 AI 工作費用，直接影響雲端算力需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Gemini 4 Carbon",
-        "full": "Google Gemini 4 Carbon 模型",
-        "def": "Google DeepMind 推出的最新大型語言模型，主打資安與長時間任務表現，定價與前代 Argon 相同，未來將升價。",
-        "why": "模型的定價策略直接影響雲端算力需求與 AI 服務市場的價格競爭。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "使用量計費",
-        "full": "Usage‑based billing",
-        "def": "根據客戶實際使用的 AI 工作單位或資源量收費的商業模式，取代傳統以座位數或訂閱費為主的計費方式。",
-        "why": "此模式將 AI 工作量直接轉化為收入，促使雲端供應商提升算力供應，影響上游硬體供應鏈。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "勒索軟體",
-        "full": "Ransomware",
-        "def": "一種惡意程式，會加密受害者的資料並要求支付贖金以換取解密金鑰。",
-        "why": "了解此類威脅有助於企業在供應鏈安全上採取防護措施。",
         "category": "ai_technique"
       }
     ],

@@ -2,6 +2,99 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 57,
+        "CSP/CapEx": 52,
+        "App/AI": 26,
+        "gnews-chip": 18,
+        "gnews-dc": 22,
+        "gnews-app": 17
+      },
+      "digest_filtered": 0,
+      "after_dedup": 179,
+      "buckets": {
+        "hw": 36,
+        "corp": 126,
+        "app": 36
+      },
+      "news_char_budget": {
+        "hw": 4200,
+        "corp": 8000,
+        "app": 4200
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 3,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "deepen": {
+        "candidates": 2,
+        "rewritten": 1,
+        "fetch_failed": 1,
+        "llm_failed": 0
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 4,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 1,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "items": []
+      },
+      "date": "2026-11-06",
+      "generated_at": "2026-11-06T00:05:08.795592+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 52,
         "CSP/CapEx": 45,
         "App/AI": 26,
@@ -1299,105 +1392,6 @@
       },
       "date": "2026-10-24",
       "generated_at": "2026-10-24T00:04:01.125711+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 65,
-        "CSP/CapEx": 56,
-        "App/AI": 23,
-        "gnews-chip": 19,
-        "gnews-dc": 22,
-        "gnews-app": 17
-      },
-      "digest_filtered": 0,
-      "after_dedup": 183,
-      "buckets": {
-        "hw": 46,
-        "corp": 126,
-        "app": 45
-      },
-      "news_char_budget": {
-        "hw": 5366,
-        "corp": 8000,
-        "app": 5250
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 3,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [],
-      "fact_audit": {
-        "mode": "log",
-        "checked": 3,
-        "suspect_cards": 1,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 1,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": [
-          {
-            "sec": "corp",
-            "title": "Meta 宣布全年資本支出上限提升至 1450 億美元",
-            "source": "https://www.cnbc.com/2026/10/22/meta-stock-q3-earnings-free-cash-flow.html",
-            "rating": "core",
-            "coverage": "full",
-            "suspects": [
-              "1350"
-            ],
-            "undetermined": [
-              "150 億美元"
-            ],
-            "tense_flag": false
-          }
-        ]
-      },
-      "date": "2026-10-23",
-      "generated_at": "2026-10-23T00:04:14.664059+08:00"
     }
   ]
 }
