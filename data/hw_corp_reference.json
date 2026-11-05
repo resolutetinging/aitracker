@@ -16,15 +16,15 @@
       {"label": "Samsung DS部門營收", "value": "+344% YoY", "value_cls": "c-red", "sub": "2026 Q3財報 · 147.1兆韓元 · QoQ +15%（YoY依官方去年同季33.1兆韓元自算）· HBM市占約21%（2026全年估上看30%+）"}
     ],
     "signal_pills": [
-      {"text": "🔴 HBM 2027年供給幾乎售罄", "color": "red"},
-      {"text": "🔴 台積電：AI需求仍高於供給", "color": "red"},
-      {"text": "🔴 Dell AI伺服器積壓訂單達950億美元", "color": "red"},
-      {"text": "🔴 DRAM持續供不應求，Q4報價續上調", "color": "red"},
-      {"text": "🟡 TSMC亞利桑那再加碼1000億美元", "color": "yellow"},
-      {"text": "🟡 美國資料中心2027年用電再增17GW", "color": "yellow"},
-      {"text": "🟡 台灣地緣集中風險", "color": "yellow"},
-      {"text": "🟢 Broadcom AI半導體營收年增221%", "color": "green"},
-      {"text": "🟢 AMD Helios上線，資料中心年增97%", "color": "green"}
+      {"text": "🔴 HBM 2027年供給幾乎售罄", "color": "red", "note": "HBM是貼在AI GPU旁的高頻寬記憶體。\nSK hynix表示長約已占2027–28年產能逾半，供不應求預期延續到2030年；Samsung、Micron也稱2027年大致訂滿。\n影響：AI晶片出貨量受記憶體產能限制。"},
+      {"text": "🔴 台積電：AI需求仍高於供給", "color": "red", "note": "台積電Q3法說會：AI需求高於供給，仍在努力縮小差距，未見放緩跡象。\nTrendForce估2026底CoWoS先進封裝月產能13–14萬片，全年缺口仍約20%。\n影響：NVIDIA、AMD與客製ASIC的出貨節奏。"},
+      {"text": "🔴 Dell AI伺服器積壓訂單達950億美元", "color": "red", "note": "Dell 2026/9/1財報：季底積壓訂單創新高950億美元（前一季513億）。\n積壓代表接單遠超出貨能力。\n下一季財報約11月下旬公布。"},
+      {"text": "🔴 DRAM持續供不應求，Q4報價續上調", "color": "red", "note": "TrendForce 2026/09：供給吃緊加上雲端業者需求強勁，DRAM供不應求，上修第四季合約價展望。\n原因：記憶體廠優先生產HBM與伺服器DRAM。\n影響：可能推升手機、PC等消費電子成本。"},
+      {"text": "🟡 TSMC亞利桑那再加碼1000億美元", "color": "yellow", "note": "台積電宣布在亞利桑那再投資1000億美元，興建2奈米及以下製程廠，美國總投資計畫達2650億美元。\n意義：分散台灣集中風險，但量產需數年，短期緩解有限。"},
+      {"text": "🟡 美國資料中心2027年用電再增17GW", "color": "yellow", "note": "Goldman Sachs 2026/10估（Reuters轉述）：美國資料中心用電2026年增12GW、2027年再增17GW，容量2027底達90GW。\n5月報告另指排定新增容量約僅6成能如期上線。\n影響：電網與發電設備成為擴建瓶頸。"},
+      {"text": "🟡 台灣地緣集中風險", "color": "yellow", "note": "風險：10奈米以下先進製程晶片逾七成在台灣製造（SIA／BCG 2024），集中在同一座島上，兩岸衝突或封鎖、地震、停電等任一事件都可能造成單點中斷。\n影響產業：AI加速器與資料中心伺服器、手機、PC、汽車電子。\n情境估計：台灣晶圓廠停擺一年，電子裝置業營收恐減4900億美元（SIA／BCG 2021）；封鎖情境下全球依賴晶片的產業年營收恐損1.6兆美元（Rhodium 2022）。"},
+      {"text": "🟢 Broadcom AI半導體營收年增221%", "color": "green", "note": "Broadcom FY2026 Q3：AI半導體營收167億美元，年增221%、季增54%；預估下一季達217億美元、年增236%。\n主力是替雲端業者設計的客製AI晶片（ASIC）。"},
+      {"text": "🟢 AMD Helios上線，資料中心年增97%", "color": "green", "note": "AMD 2026 Q3：資料中心營收創新高85億美元，年增97%。\nAnthropic、Meta、Microsoft、OpenAI、Oracle已在Helios機櫃平台上執行模型；AMD預期第四季隨Helios量產成長再加速。"}
     ]
   },
   "corp": {

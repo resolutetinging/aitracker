@@ -164,6 +164,12 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .pill-red   {border-color:#b05050;background:rgba(176,80,80,.06);color:#883030;}
 .pill-yellow{border-color:#a07828;background:rgba(160,120,40,.06);color:#806020;}
 .pill-green {border-color:#408060;background:rgba(64,128,96,.06);color:#306850;}
+/* 11-05：pill 可帶 note 補充說明，滑鼠移上（桌機）或點一下（手機）顯示；樣式比照 tw-map-pin-tooltip */
+.signal-pill.has-tip{position:relative;cursor:help;}
+.signal-pill.has-tip::after{content:" ⓘ";opacity:.55;font-size:11px;}
+.signal-pill-tip{display:none;position:absolute;left:0;top:calc(100% + 6px);white-space:pre-line;background:rgba(35,32,28,.95);color:#fff;font-size:11.5px;line-height:1.65;padding:8px 10px;border-radius:6px;width:max-content;max-width:min(300px,86vw);box-shadow:0 4px 14px rgba(0,0,0,.25);z-index:30;pointer-events:none;text-align:left;font-weight:400;}
+.signal-pill.tip-right .signal-pill-tip{left:auto;right:0;}
+.signal-pill.has-tip:hover .signal-pill-tip,.signal-pill.pill-open .signal-pill-tip{display:block;}
 
 /* ── Section title ── */
 .sec-title{font-size:11px;text-transform:uppercase;letter-spacing:.9px;color:var(--muted);font-weight:700;margin-top:30px;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border);}
@@ -917,7 +923,21 @@ function hwCorpCard(c){
   return `<div class="metric-card"><div class="metric-label">${_hwE(c.label)}</div><div class="metric-value ${_hwCls(c.value_cls)}">${_hwE(c.value)}</div><div class="metric-sub">${_hwE(c.sub)}</div></div>`;
 }
 function hwCorpPill(p){
-  return `<div class="signal-pill pill-${_hwCls(p.color)}">${_hwE(p.text)}</div>`;
+  // 11-05：有 note 才加 hover 說明；note 來自 json，一律 escape
+  if(!p.note) return `<div class="signal-pill pill-${_hwCls(p.color)}">${_hwE(p.text)}</div>`;
+  return `<div class="signal-pill has-tip pill-${_hwCls(p.color)}" onmouseenter="hwPillPos(this)" onclick="hwPillToggle(this)">${_hwE(p.text)}<div class="signal-pill-tip">${_hwE(p.note)}</div></div>`;
+}
+// 說明框靠右邊會超出畫面時改成往左展開
+function hwPillPos(el){
+  el.classList.remove('tip-right');
+  const r = el.getBoundingClientRect();
+  if(r.left + Math.min(300, window.innerWidth*0.86) > window.innerWidth - 8) el.classList.add('tip-right');
+}
+// 手機沒有 hover：點一下打開、再點或點別顆關閉
+function hwPillToggle(el){
+  const wasOpen = el.classList.contains('pill-open');
+  document.querySelectorAll('.signal-pill.pill-open').forEach(x=>x.classList.remove('pill-open'));
+  if(!wasOpen){ hwPillPos(el); el.classList.add('pill-open'); }
 }
 
 async function renderHW(d) {
