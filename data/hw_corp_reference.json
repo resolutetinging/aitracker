@@ -2,10 +2,10 @@
   "last_updated": "2026 Q3財報",
   "hw": {
     "bottleneck_cards": [
-      {"label": "HBM 供需", "value": "三大廠皆售罄", "value_cls": "c-red", "sub": "SK Hynix／Samsung／Micron 2026年產能均全數預訂，市占最大的SK Hynix：DRAM/NAND/HBM明年產能已全部訂光"},
-      {"label": "CoWoS 月產能（2026底）", "value": "12–13 萬片 / 月", "value_cls": "c-hw", "sub": "TrendForce估計 · 供需缺口20%→10%收斂中"},
-      {"label": "AI伺服器缺口", "value": "出貨年增31%創新高", "value_cls": "c-warn", "sub": "TrendForce 2026/08上修全年出貨年增；Dell單季AI訂單積壓達513億美元，記憶體為首要瓶頸"},
-      {"label": "資料中心電力瓶頸", "value": "美國用電2026達41GW", "value_cls": "c-red", "sub": "Goldman Sachs估算，2026排定新增產能僅約6成如期完工，2027將飆至66GW"}
+      {"label": "HBM 供需", "value": "2027年幾乎售罄", "value_cls": "c-red", "sub": "Samsung稱2027年HBM已售罄；Micron簽妥2027年絕大部分；SK hynix長約已占2027–28產能逾半（2026 Q3財報）"},
+      {"label": "CoWoS 月產能（2026底）", "value": "13–14 萬片 / 月", "value_cls": "c-hw", "sub": "TrendForce 2026/08估計 · 2026全年供需缺口仍約20%"},
+      {"label": "AI伺服器需求", "value": "出貨年增近31%", "value_cls": "c-warn", "sub": "TrendForce 2026/08上修全年出貨；Dell 9/1財報AI伺服器積壓訂單達950億美元"},
+      {"label": "資料中心電力瓶頸", "value": "2027年用電再增17GW", "value_cls": "c-red", "sub": "Goldman Sachs 2026/10估（Reuters轉述）：美國資料中心容量2026底64GW、2027底90GW"}
     ],
     "vendor_cards": [
       {"label": "TSMC 營收YoY", "value": "+41% YoY", "value_cls": "c-hw", "sub": "2026 Q3財報 · $467億美元（美元計，新台幣計+51%）· 晶圓代工市占72.3%（TrendForce）"},
@@ -16,15 +16,16 @@
       {"label": "Samsung DS部門營收", "value": "+344% YoY", "value_cls": "c-red", "sub": "2026 Q3財報 · 147.1兆韓元 · QoQ +15%（YoY依官方去年同季33.1兆韓元自算）· HBM市占約21%（2026全年估上看30%+）"}
     ],
     "signal_pills": [
-      {"text": "🔴 HBM 嚴重吃緊", "color": "red"},
-      {"text": "🔴 CoWoS 售罄至2026底", "color": "red"},
-      {"text": "🔴 TSMC Arizona加碼擴產因應CoWoS吃緊", "color": "red"},
-      {"text": "🔴 AI伺服器積壓訂單創新高，記憶體卡脖子", "color": "red"},
-      {"text": "🔴 資料中心電力恐成2027最大瓶頸", "color": "red"},
+      {"text": "🔴 HBM 2027年供給幾乎售罄", "color": "red"},
+      {"text": "🔴 台積電：AI需求仍高於供給", "color": "red"},
+      {"text": "🔴 Dell AI伺服器積壓訂單達950億美元", "color": "red"},
+      {"text": "🔴 DRAM持續供不應求，Q4報價續上調", "color": "red"},
+      {"text": "🟡 TSMC亞利桑那再加碼1000億美元", "color": "yellow"},
+      {"text": "🟡 美國資料中心2027年用電再增17GW", "color": "yellow"},
       {"text": "🟡 台灣地緣集中風險", "color": "yellow"},
-      {"text": "🟡 Tesla AI5流片完成，Samsung 2nm量產倒數", "color": "yellow"},
-      {"text": "🟡 Broadcom AI backlog破$300億，2027展望上修", "color": "yellow"},
-      {"text": "🟢 AMD Helios機櫃平台出貨Meta/OpenAI/Oracle", "color": "green"}
+      {"text": "🟡 Tesla AI5三星量產看2027下半年", "color": "yellow"},
+      {"text": "🟢 Broadcom AI半導體營收年增221%", "color": "green"},
+      {"text": "🟢 AMD Helios上線，資料中心年增97%", "color": "green"}
     ]
   },
   "corp": {
