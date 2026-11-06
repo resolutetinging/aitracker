@@ -1,5 +1,107 @@
 [
   {
+    "date": "2026-11-07",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "英國內政部雲端服務合約或為 AWS 帶來 10 億英鎊收入",
+        "layer": "CSP/CapEx",
+        "body": "根據規劃公告，英國內政部將於2027年12月起續約公共雲服務，合約估值為£881,621,007（含VAT 超過£1億），預計執行至2029年12月，最長可延伸至2031年。",
+        "impact": "AWS 公共雲服務收入將顯著上升。",
+        "rating": "opp",
+        "insight": "投資者可關注AWS在英國公共部門的合約擴張，預期其營收將持續增長。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/public-sector/2026/11/06/home-office-cloud-services-contract-may-net-aws-1b/5308106",
+        "chain": [
+          {
+            "label": "AWS 公共雲服務收入↑",
+            "type": "up"
+          },
+          {
+            "label": "Azure 競爭地位↓",
+            "type": "down"
+          },
+          {
+            "label": "UK 本地雲供應商 市場份額↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 發布 GPT-6 Cyber，提升安全測試合規性",
+        "layer": "AI_technique",
+        "body": "OpenAI 於 2026 年 11 月推出 GPT-6 Cyber，該模型在 ExploitGym 基準測試中取得 48.5% 的得分，高於前代 GPT-5.6 Cyber 的 32.1%。OpenAI 表示此模型在 99% 以上的情況下不會超出授權範圍。",
+        "impact": "",
+        "rating": "core",
+        "insight": "OpenAI 的安全導向模型可能成為企業 AI 安全測試的新標準。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/security/2026/11/05/openai-releases-gpt-6-cyber-and-promises-this-one-stays-within-rules-of-engagement/5307855",
+        "chain": [
+          {
+            "label": "OpenAI 訂閱收入↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft Azure AI 服務需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Google AI Cloud 競爭壓力↑",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Kiro",
+        "full": "AWS Kiro",
+        "def": "AWS 推出的 AI 驅動整合開發環境，提供桌面 IDE、CLI、Web、行動與個人 AI 代理等多種介面。",
+        "why": "代表雲端平台在開發者工具領域的差異化布局，可能影響 IDE 市場供應鏈。",
+        "category": "software"
+      },
+      {
+        "term": "GPT-6 Cyber",
+        "full": "OpenAI GPT-6 Cyber",
+        "def": "OpenAI 針對資安測試優化的語言模型，具備高合規性與漏洞偵測能力。",
+        "why": "提升 AI 安全測試需求，牽動相關硬體安全加速器與軟體供應鏈。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "H200",
+        "full": "Nvidia H200 AI 晶片",
+        "def": "Nvidia 針對高效能 AI 工作負載設計的加速卡，支援大型模型訓練與推論。",
+        "why": "其供應受限會波及全球 AI 超算與資料中心建設的硬體需求。",
+        "category": "semiconductor"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-06",
     "is_sunday": false,
     "hw": [
@@ -857,165 +959,5 @@
       }
     ],
     "weekly_summary": "HW：本日無相關新聞。\nCORP：Google 搜尋廣告收入放緩、Agentic AI 促使資料中心 CPU 需求升級、Intel 受供應鏈瓶頸與 PC 需求下降衝擊、Meta 因資本支出與現金流壓力被 S&P 降級。\n下週看點：觀察 Google 是否調整 AI Overviews 定價策略以恢復廣告收入。\nAPP：Doximity 以 AI 藥物檢查工具 DoseCheck 進入臨床實務，提升處方安全。\n用戶洞察：醫療機構對即時 AI 警示服務的接受度快速提升，帶動雲端算力與藥品資料供應鏈需求。"
-  },
-  {
-    "date": "2026-10-31",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Intel 公布 PC 處理器需求下降 5% 影響代工產能",
-        "layer": "capacity_commitments",
-        "body": "Intel 在 2026 年第三季財報中指出客戶端運算（PC）營收較去年同期下降 5%，導致客戶端晶圓需求減少。該公司同時報告資料中心與 AI 產品營收年增 78%，但 PC 部分的現金流入下降 9% 於上季。此情形使 Intel 可能調整其與台積電及其他代工廠的客製化先進封裝（CoWoS）與 HBM 採購量。",
-        "impact": "因 PC 晶圓需求下降，代工廠如台積電的先進製程（7nm 以上）出貨量將出現短期 ↓，導致其高階封裝（CoWoS）與 HBM 供應鏈利用率下降。下游 AI 伺服器製造商因 Intel 資料中心與 AI 產品需求持續成長，將加大對高帶寬記憶體（HBM）與先進封裝的採購，提升相關供應鏈的需求 ↑。",
-        "rating": "core",
-        "insight": "Intel PC 市場下滑將釋放代工產能，轉向支援資料中心與 AI 需求的高階封裝與 HBM 供應。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/10/30/pc-chip-plunge-wipes-out-a-quarter-of-intels-value/5306531",
-        "chain": [
-          {
-            "label": "Intel PC 處理器需求↓",
-            "type": "down"
-          },
-          {
-            "label": "TSMC CoWoS 產能↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "AWS 每 14 秒安裝一顆 AI 加速卡，目標 2027 年營收突破 1 兆美元",
-        "layer": "AWS",
-        "body": "Amazon Web Services 在 2026 年第三季財報電話會議中透露，AI 加速卡的安裝頻率已達到每 14 秒一顆，且客戶需求與容量擴充速度幾乎同步。CEO Andy Jassy 表示，AWS 期望在未來五至十年內將營收提升至 1 兆美元，2027 或 2028 年的年增長率將超過 40%。",
-        "impact": "",
-        "rating": "core",
-        "insight": "AWS 的加速卡安裝速度顯示 AI 計算需求正快速放大，相關晶片與封裝供應鏈將持續受惠。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/off-prem/2026/10/30/aws-installs-an-ai-accelerator-every-14-seconds-and-eyes-1-trillion-annual-revenue/5306547",
-        "chain": [
-          {
-            "label": "AWS AI 加速卡安裝率↑",
-            "type": "up"
-          },
-          {
-            "label": "NVIDIA GPU 需求↑",
-            "type": "up"
-          },
-          {
-            "label": "AWS 雲端收入↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "AWS 第三季營收成長 39%，簽署多項大型 AI 合約",
-        "layer": "AWS",
-        "body": "Amazon AWS 在 2026 年第三季財報中報告營收達 1840 億美元，較去年同期成長 39.3%，並透露與 Meta 及 OpenAI 簽署了多項 AI 服務合約。此營收表現使 AWS 接近 2026 財年目標的 460 億美元。",
-        "impact": "",
-        "rating": "core",
-        "insight": "AWS 的營收與 AI 合約雙雙突破，將持續拉動上游晶片與記憶體供應鏈的需求。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/29/aws-q3-earnings-report-2026.html",
-        "chain": [
-          {
-            "label": "AWS 營收↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta AI 服務需求↑",
-            "type": "up"
-          },
-          {
-            "label": "OpenAI 合約金額↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Microsoft 計畫發行 250 億美元債券以支援 AI 建設",
-        "layer": "Microsoft",
-        "body": "Microsoft 在 2026 年 10 月 29 日宣布將發行 250 億美元的債券，用於資助其 AI 基礎建設與相關研發支出。公司指出，儘管其他大型雲端競爭者的自由現金流受壓，Microsoft 仍保持正向自由現金流。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Microsoft 透過債券融資加速 AI 基礎建設，將為上游晶片供應鏈帶來持續需求。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/29/microsoft-25-billion-debt-offering.html",
-        "chain": [
-          {
-            "label": "Microsoft AI 債券發行↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft Azure AI 服務需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft 自由現金流↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "DeepInfinity.AI 與 Baby Memorial 醫院集團合作，擴大醫療 AI 應用",
-        "layer": "醫療健康",
-        "body": "印度奧里薩邦的 Baby Memorial 醫院集團宣布與 DeepInfinity.AI 簽署合作協議，將其 AI 平台導入醫院的診斷與病歷管理流程。此合作旨在提升影像診斷效率與臨床決策支援，預計在未來一年內於多家分院部署。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "醫療 AI 平台的實際部署將驅動硬體與軟體供應鏈同步成長，為相關供應商創造新商機。",
-        "source_label": "Odisha Diary",
-        "source": "https://news.google.com/rss/articles/CBMirAFBVV95cUxORXdpaGtSWUx5WTFUeEYweVhpQnp3M3I2Yk5XOUpaRExGNXdqM1pYOGJta2Rhc0pUX0tMMHlpakwzV1Zubl9BN0pOcW40TzdLTWQ2NjZFbGd3dEtKUDdWTkVuXzk2TFpScVRzUlBjd2dYQzNxc2w2TmQxZUM4NV9oamZpNGY2TVRndmFPVjdOUkFmcEFVOFhORVBRbXpiUDU0RmVOcmxkUkZobUpV",
-        "chain": [
-          {
-            "label": "DeepInfinity.AI 醫療 AI 部署↑",
-            "type": "up"
-          },
-          {
-            "label": "Baby Memorial 醫院診斷效率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "CoWoS",
-        "full": "Chip-on-Wafer-on-Substrate",
-        "def": "一種先進封裝技術，將多顆晶片堆疊於同一晶圓上，再以基板連接，以提升效能與帶寬。",
-        "why": "Intel 需求變化直接影響此類高階封裝的採購量，進而波及代工與封裝供應鏈。",
-        "category": "hardware"
-      },
-      {
-        "term": "HBM",
-        "full": "High Bandwidth Memory",
-        "def": "高帶寬記憶體，常與 AI 加速器或高效能伺服器搭配使用，以提供大量資料吞吐。",
-        "why": "Intel 資料中心與 AI 產品營收大幅成長，將推動 HBM 需求上升，影響記憶體製造與封裝產業。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "AI 加速卡",
-        "full": "Artificial Intelligence Accelerator Card",
-        "def": "專為加速機器學習推論與訓練設計的硬體卡片，通常內建大量矩陣運算單元。",
-        "why": "AWS 每 14 秒安裝一顆，顯示雲端 AI 計算需求急速上升。",
-        "category": "hardware"
-      },
-      {
-        "term": "自由現金流",
-        "full": "Free Cash Flow",
-        "def": "公司在扣除資本支出後可自由支配的現金流量，衡量企業財務健康度。",
-        "why": "Microsoft 保持正向自由現金流，使其能以債券方式大規模投資 AI 基礎建設。",
-        "category": "role"
-      },
-      {
-        "term": "DeepInfinity.AI",
-        "full": "DeepInfinity.AI 平台",
-        "def": "提供醫療影像分析與臨床決策支援的人工智慧平台，結合深度學習模型與醫療資料庫。",
-        "why": "其與醫院的合作示範了 AI 在實際醫療流程中的落地，帶動相關硬體與資料服務需求。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
   }
 ]

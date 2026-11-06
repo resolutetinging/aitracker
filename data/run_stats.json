@@ -2,6 +2,116 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 48,
+        "CSP/CapEx": 49,
+        "App/AI": 29,
+        "gnews-chip": 18,
+        "gnews-dc": 21,
+        "gnews-app": 20
+      },
+      "digest_filtered": 2,
+      "after_dedup": 170,
+      "buckets": {
+        "hw": 36,
+        "corp": 122,
+        "app": 35
+      },
+      "news_char_budget": {
+        "hw": 4200,
+        "corp": 8000,
+        "app": 4083
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 2,
+      "llm_ratings": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 4,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "deepen": {
+        "candidates": 1,
+        "rewritten": 1,
+        "fetch_failed": 0,
+        "llm_failed": 0
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 2,
+        "suspect_cards": 1,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 1,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "items": [
+          {
+            "sec": "corp",
+            "title": "英國內政部雲端服務合約或為 AWS 帶來 10 億英鎊收入",
+            "source": "https://www.theregister.com/public-sector/2026/11/06/home-office-cloud-services-contract-may-net-aws-1b/5308106",
+            "rating": "opp",
+            "coverage": "full",
+            "suspects": [
+              "450000000"
+            ],
+            "undetermined": [
+              "1億",
+              "1億"
+            ],
+            "tense_flag": false,
+            "title_suspects": []
+          }
+        ]
+      },
+      "date": "2026-11-07",
+      "generated_at": "2026-11-07T00:04:43.645054+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 57,
         "CSP/CapEx": 52,
         "App/AI": 26,
@@ -1300,98 +1410,6 @@
       },
       "date": "2026-10-25",
       "generated_at": "2026-10-25T00:04:17.508603+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 58,
-        "CSP/CapEx": 54,
-        "App/AI": 25,
-        "gnews-chip": 20,
-        "gnews-dc": 23,
-        "gnews-app": 19
-      },
-      "digest_filtered": 1,
-      "after_dedup": 180,
-      "buckets": {
-        "hw": 40,
-        "corp": 125,
-        "app": 39
-      },
-      "news_char_budget": {
-        "hw": 4666,
-        "corp": 8000,
-        "app": 4550
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 3,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [
-        {
-          "title": "Elon Musk 暗示 SpaceX 與 Tesla 合併已進入專門委員會階段",
-          "section": "corp",
-          "action": "removed",
-          "matched_title": "SpaceX 與 Tesla 討論合併可能性",
-          "reason": "兩篇皆描述 Elon Musk 在財報電話會議中暗示 SpaceX 與 Tesla 合併的可能性，屬同一事件"
-        }
-      ],
-      "fact_audit": {
-        "mode": "log",
-        "checked": 3,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 0,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": []
-      },
-      "date": "2026-10-24",
-      "generated_at": "2026-10-24T00:04:01.125711+08:00"
     }
   ]
 }
