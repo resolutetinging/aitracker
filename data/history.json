@@ -1,5 +1,163 @@
 [
   {
+    "date": "2026-11-08",
+    "is_sunday": true,
+    "hw": [
+      {
+        "title": "美國橡樹嶺國家實驗室獲得 AMD 與 IBM 合作的混合量子‑HPC 系統",
+        "layer": "strategic_supplier",
+        "body": "美國能源部資助的橡樹嶺國家實驗室量子科學中心（QSC）宣布部署一套結合 IBM 量子處理器與 AMD CPU、GPU 的混合量子‑HPC 平台，旨在測試量子錯誤更正技術，QSC 總監 Travis Humble 強調此舉對實現容錯量子計算至關重要。",
+        "impact": "平台結合 AMD CPU 與 GPU，提升相關產品需求。",
+        "rating": "core",
+        "insight": "投資者應關注 AMD 在量子‑HPC 合作中的晶片需求提升，可能帶動其高效能 CPU/GPU 產能上揚。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/hpc/2026/11/06/oak-ridge-labs-gets-hybrid-quantum-hpc-system-to-test-qubit-error-correction/5308187",
+        "chain": [
+          {
+            "label": "AMD GPU/CPU 需求↑",
+            "type": "up"
+          },
+          {
+            "label": "IBM 量子處理器合作↑",
+            "type": "up"
+          },
+          {
+            "label": "橡樹嶺混合量子‑HPC 平台效能提升↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "AWS 針對 Kiro 身份危機新增 Bot Orchestrator 功能",
+        "layer": "aws",
+        "body": "AWS 於 2026 年 11 月 5 日宣布，Kiro 這套 AI 導向的整合開發環境將加入「Bot Orchestrator」身份，以緩解其定位不清的問題。此功能將於桌面 IDE、CLI、Web 應用與行動應用同步提供，並以開源工作區形式持續運作。",
+        "impact": "",
+        "rating": "core",
+        "insight": "AWS 透過功能擴充提升 Kiro 魅力，將直接拉動雲端運算資源需求。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/11/05/aws-kiro-aims-to-solve-identity-crisis-by-adding-another-identity-bot-orchestrator/5307965",
+        "chain": [
+          {
+            "label": "AWS Kiro Bot Orchestrator 功能新增↑",
+            "type": "up"
+          },
+          {
+            "label": "AWS 桌面 IDE/CLI/Web/行動應用整合度↑",
+            "type": "up"
+          },
+          {
+            "label": "開源工作區活躍度↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic IPO 估值下修至 1.5 兆美元",
+        "layer": "anthropic",
+        "body": "Anthropic 於 2026 年 11 月 6 日被投資者指出，原先目標的 2 兆美元估值已下修至 1.5 兆美元，且仍被部分投資者視為「過高」；公司預計在本月底前於 Nasdaq 以代號 ANT 上市。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Anthropic 估值回調將抑制 AI 晶片需求增長，讓競爭者受益。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/11/06/investors-brace-for-anthropic-valuation-1point5-trillion-a-stretch.html",
+        "chain": [
+          {
+            "label": "Anthropic 估值↓",
+            "type": "down"
+          },
+          {
+            "label": "NASDAQ 上市代號 ANT 發行價格↓",
+            "type": "down"
+          },
+          {
+            "label": "投資者信心↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Microsoft 精簡 neocloud 合作夥伴以聚焦自有資料中心",
+        "layer": "microsoft",
+        "body": "微軟正評估縮減與多家 neocloud 合作夥伴的關係，並優先擴充自有資料中心，已傳出不再續約 Oracle，且尚未決定將停止使用哪些 neocloud，包括 CoreWeave、Nebius、Chronoscale、IREN、Lambda 與 Nscale。微軟在本季財報中披露資本支出達 452 億美元，並表示其基礎建設策略以彈性與選擇為核心。",
+        "impact": "因微軟可能削減對 CoreWeave、Nebius、Chronoscale、IREN、Lambda 與 Nscale 的需求，這些 neocloud 供應商的伺服器與網路設備採購將出現下降，進一步影響相關硬體供應鏈上游的晶片與儲存設備需求，導致整體供應鏈需求↓。",
+        "rating": "opp",
+        "insight": "投資者應關注微軟自建資料中心對第三方 neocloud 供應商需求的減少可能帶來的營收衝擊。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/11/06/microsoft-moves-to-consolidate-its-relationships-with-neoclouds-in-ai.html",
+        "chain": [
+          {
+            "label": "CoreWeave 需求↓",
+            "type": "down"
+          },
+          {
+            "label": "Nebius 需求↓",
+            "type": "down"
+          },
+          {
+            "label": "IREN 需求↓",
+            "type": "down"
+          },
+          {
+            "label": "Microsoft 自建資料中心 產能↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "量子錯誤更正",
+        "full": "Quantum Error Correction",
+        "def": "一套用於保護量子資訊免受環境噪聲干擾的技術，透過編碼與糾錯演算法維持量子位元的相干性。",
+        "why": "是實現容錯量子電腦的關鍵，直接影響未來量子計算的實用性與商業化進度。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "混合量子‑HPC 系統",
+        "full": "Hybrid Quantum‑High Performance Computing System",
+        "def": "結合量子處理器與傳統高效能計算資源（CPU、GPU）的平台，用於加速量子演算法的模擬與驗證。",
+        "why": "可利用現有 HPC 基礎設施提升量子研究效率，降低純量子硬體的開發門檻。",
+        "category": "hardware"
+      },
+      {
+        "term": "agentic development environment",
+        "full": "agentic development environment",
+        "def": "一種結合 AI 助手與自動化代理的開發環境，允許開發者透過 AI 生成、測試與部署程式碼。",
+        "why": "AWS 以此定位 Kiro，意在提升開發者對平台的黏著度。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "neocloud",
+        "full": "neocloud",
+        "def": "新興的雲端服務提供商，專注於 AI 訓練與推論的高效能運算資源。",
+        "why": "Microsoft 縮減與 neocloud 的合作，顯示大型雲端廠商正重新評估供應鏈策略。",
+        "category": "role"
+      },
+      {
+        "term": "AI輔助威脅行為者",
+        "full": "AI-assisted threat actor",
+        "def": "利用人工智慧技術自動化攻擊流程的惡意行為者，能在目標系統中快速尋找漏洞並執行惡意操作。",
+        "why": "此類攻擊提升了網路安全風險，迫使防禦供應鏈必須加速部署AI偵測與回應技術。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": "HW：美國橡樹嶺實驗室部署 AMD 與 IBM 合作的混合量子‑HPC 系統，提升 AMD 高效能晶片在量子研究領域的需求。\nCORP：AWS 透過新增 Bot Orchestrator 功能強化 Kiro，Microsoft 精簡 neocloud 合作夥伴以聚焦自有資料中心，Anthropic IPO 估值下修至 1.5 兆美元。\n下週看點：AWS 是否會推出 Kiro 付費版以擴大雲端資源需求。\nAPP：本週未出現具體的AI應用部署新聞。\n用戶洞察：目前市場缺乏可量化的AI商業化案例，投資者應關注未來實際落地的AI服務。"
+  },
+  {
     "date": "2026-11-07",
     "is_sunday": false,
     "hw": [
@@ -830,134 +988,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-11-01",
-    "is_sunday": true,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "Google 搜尋廣告收入成長放緩至 12%　AI 機制影響營收",
-        "layer": "Google",
-        "body": "Google 公布 Q3 搜尋廣告收入年增率從 Q2 的 17% 放緩至 12%，主要因 AI Overviews 與 AI Mode 的變現效益低於傳統搜尋。公司在財報電話會議中說明，歐洲關稅免除取消與匯率波動亦是因素。此訊息由 The Register 報導。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Google 搜尋廣告變現放緩顯示 AI 介面需重新定價以維持收入。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/10/30/googles-search-revenue-ferrari-hits-an-ai-powered-speed-bump/5306520",
-        "chain": [
-          {
-            "label": "Google 搜尋廣告收入↑",
-            "type": "up"
-          },
-          {
-            "label": "AI Overviews 變現效益↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "S&P 降級 Meta 前景　因資本支出與自由現金流憂慮",
-        "layer": "Meta",
-        "body": "S&P Global Ratings 因 Meta 大幅資本支出與自由現金流壓力，將其信用展望調整為負面。報導指出，Meta 近期的資本支出規模持續攀升，對其財務穩健性構成挑戰。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Meta 信用展望負面顯示其資本密集策略面臨財務挑戰，或削減 AI 基礎設施支出。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/10/30/meta-outlook-to-revised-to-negative-by-sp-after-cash-flow-negative.html",
-        "chain": [
-          {
-            "label": "Meta 資本支出↑",
-            "type": "up"
-          },
-          {
-            "label": "Meta 自由現金流↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Doximity 推出 AI 藥物檢查工具 DoseCheck",
-        "layer": "healthcare",
-        "body": "Doximity 於本週正式上線 DoseCheck，該 AI 系統可即時檢測處方中的藥物相互作用與過量風險，已在美國超過 1,200 家診所部署。此服務依賴雲端運算平台提供的 GPU 計算資源，並與多家藥品資料庫簽署資料授權合約。根據 Fierce Healthcare 報導，首次使用者的藥物錯誤警示率下降了約 30%。",
-        "impact": "1) 雲端算力供應商因 DoseCheck 即時運算需求提升，GPU/TPU 供應量可能增加。2) 資料提供商因授權合約增加，資料清洗與更新服務需求上升，帶動資料標註與 ETL 供應鏈活躍。3) 醫院與診所端的電子病歷系統供應商需整合 API，促使醫療軟體整合服務商的市場份額提升。",
-        "rating": "core",
-        "insight": "醫療 AI 服務的快速商業化將推動雲端算力與藥品資料供應鏈同步成長。",
-        "source_label": "Fierce Healthcare",
-        "source": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPR3poTVdJMUhRam1TczVsVDdQdF9JNXlmbmFVelh1YW1ENUt2LTJ4ZGlGVW5Wdm1wUW5iMnVINkhQclBpMTR4YzJYTDM4aWV3NnQwU3lyZkNCTlVNOGZ1WWVZSHA3M3I0WkZhV19tNGZna2dUR292bmh6NkQ4UlZub3RucXdpa2ZFZzhvNVZsYUh1cElCdlpfa2EwRHl6T044NWZUbUpiNUV2WHBYQ3MtNDNGeldfbFRYZFBQWnpDQ0VlLTdEMjN4Yg",
-        "chain": [
-          {
-            "label": "Doximity DoseCheck 部署量↑",
-            "type": "up"
-          },
-          {
-            "label": "藥物錯誤警示率↓",
-            "type": "down"
-          },
-          {
-            "label": "GPU 計算資源需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Mellanox",
-        "full": "Mellanox Technologies",
-        "def": "一家專注於高效能網路介面卡（NIC）與 InfiniBand 交換機的公司，2020 年被 Nvidia 以 69 億美元收購。",
-        "why": "此收購使 Nvidia 能夠整合高效能互連技術，提升其資料中心 AI 基礎建設的網路能力。",
-        "category": "hardware"
-      },
-      {
-        "term": "InfiniBand",
-        "full": "InfiniBand 高效能互連技術",
-        "def": "一種用於高效能運算與超級電腦叢集的低延遲、高帶寬互連標準，常見於 HPC 與大型資料中心。",
-        "why": "InfiniBand 的部署擴大可提升 AI 訓練叢集的資料傳輸效率，影響相關晶圓與封裝供應鏈需求。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Agentic AI",
-        "full": "Agentic Artificial Intelligence",
-        "def": "具備自主決策與執行能力的人工智慧系統，能在不需持續人類指令的情況下完成任務。",
-        "why": "此類 AI 工作負載對資料中心 CPU 資源需求產生新挑戰，影響硬體供應鏈。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI Overviews",
-        "full": "Artificial Intelligence Overviews",
-        "def": "Google 搜尋結果頁面中嵌入的 AI 生成摘要，提供使用者快速概覽搜尋主題。",
-        "why": "其變現效益低於傳統搜尋廣告，直接影響 Google 的廣告收入結構。",
-        "category": "software"
-      },
-      {
-        "term": "DoseCheck",
-        "full": "Doximity 開發的 AI 藥物相互作用檢測工具",
-        "def": "一款即時分析處方藥物相互作用與過量風險的人工智慧服務，透過雲端運算提供警示。",
-        "why": "降低處方錯誤率，提升患者安全，並創造醫療 AI 訂閱收入。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI 驅動臨床決策支援",
-        "full": "利用人工智慧演算法協助醫師在診斷與用藥上作出更精確的判斷",
-        "def": "系統會結合患者歷史、藥品資訊與最新臨床指南，自動生成建議或警示。",
-        "why": "提升診療效率與安全性，並促進相關數據與算力供應鏈需求。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": "HW：本日無相關新聞。\nCORP：Google 搜尋廣告收入放緩、Agentic AI 促使資料中心 CPU 需求升級、Intel 受供應鏈瓶頸與 PC 需求下降衝擊、Meta 因資本支出與現金流壓力被 S&P 降級。\n下週看點：觀察 Google 是否調整 AI Overviews 定價策略以恢復廣告收入。\nAPP：Doximity 以 AI 藥物檢查工具 DoseCheck 進入臨床實務，提升處方安全。\n用戶洞察：醫療機構對即時 AI 警示服務的接受度快速提升，帶動雲端算力與藥品資料供應鏈需求。"
   }
 ]

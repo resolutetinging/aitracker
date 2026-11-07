@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07",
+ "updated": "2026-11-08",
  "since": "2026-07-01",
  "entities": [
   {
@@ -902,16 +902,16 @@
   {
    "week": "2026-W45",
    "start": "2026-11-02",
-   "cards": 23,
+   "cards": 27,
    "dims": {
     "hw": {
-     "core": 3,
+     "core": 4,
      "opp": 2,
      "noise": 0
     },
     "corp": {
-     "core": 11,
-     "opp": 4,
+     "core": 13,
+     "opp": 5,
      "noise": 0
     },
     "app": {
@@ -923,28 +923,28 @@
    "mentions": {
     "NVIDIA": 5,
     "OpenAI": 4,
-    "Amazon": 2,
+    "Amazon": 3,
     "Agentic AI": 3,
-    "Anthropic": 3,
+    "Anthropic": 4,
     "Samsung": 1,
     "SK hynix": 1,
     "HBM": 2,
     "Google": 1,
     "出口管制": 2,
-    "Oracle": 1,
+    "Oracle": 2,
     "Apple": 1,
-    "AMD": 2,
+    "AMD": 3,
     "Intel": 1,
     "CoWoS／先進封裝": 1,
-    "Microsoft": 1,
+    "Microsoft": 2,
     "Meta": 2,
-    "推論": 1
+    "推論": 1,
+    "開源模型": 1,
+    "CoreWeave": 1
    }
   }
  ],
  "seen": [
-  "2026-10-17|Apple 與 Meta 合作將 Muse AI 模型本地化於 Mac Studio",
-  "2026-10-17|HBM2 記憶體功耗實驗揭示讀取電流最高與資料切換影響",
   "2026-10-18|Apple iPhone Duo 預購需求異常，起售價 1,999 美元",
   "2026-10-18|LTM 擴大與 Google Cloud 合作 加速 Gemini Enterprise 部署",
   "2026-10-18|Meta 獲授權自行抓取企業客戶內容作模型訓練",
@@ -1022,6 +1022,10 @@
   "2026-11-06|Moonshot AI 透過歐洲資料中心租用 Nvidia Blackwell GPU 以規避美國出口管制",
   "2026-11-06|OpenAI 承諾停止與公部門簽署保密協議並提升透明度",
   "2026-11-07|OpenAI 發布 GPT-6 Cyber，提升安全測試合規性",
-  "2026-11-07|英國內政部雲端服務合約或為 AWS 帶來 10 億英鎊收入"
+  "2026-11-07|英國內政部雲端服務合約或為 AWS 帶來 10 億英鎊收入",
+  "2026-11-08|AWS 針對 Kiro 身份危機新增 Bot Orchestrator 功能",
+  "2026-11-08|Anthropic IPO 估值下修至 1.5 兆美元",
+  "2026-11-08|Microsoft 精簡 neocloud 合作夥伴以聚焦自有資料中心",
+  "2026-11-08|美國橡樹嶺國家實驗室獲得 AMD 與 IBM 合作的混合量子‑HPC 系統"
  ]
 }

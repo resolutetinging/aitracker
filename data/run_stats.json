@@ -2,6 +2,134 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 50,
+        "CSP/CapEx": 53,
+        "App/AI": 26,
+        "gnews-chip": 20,
+        "gnews-dc": 25,
+        "gnews-app": 12
+      },
+      "digest_filtered": 1,
+      "after_dedup": 169,
+      "buckets": {
+        "hw": 34,
+        "corp": 123,
+        "app": 34
+      },
+      "news_char_budget": {
+        "hw": 3966,
+        "corp": 8000,
+        "app": 3966
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 3,
+        "app": 1
+      },
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 3,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "deepen": {
+        "candidates": 1,
+        "rewritten": 1,
+        "fetch_failed": 0,
+        "llm_failed": 0
+      },
+      "dedup_audit": [
+        {
+          "title": "Microsoft 精簡 neocloud 合作夥伴以聚焦自有資料中心",
+          "section": "corp",
+          "action": "downgraded",
+          "matched_title": null,
+          "reason": "描述的是已在進行的評估與背景，未宣布具體的新決策或行動"
+        }
+      ],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 4,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "items": [
+          {
+            "sec": "corp",
+            "title": "AWS 針對 Kiro 身份危機新增 Bot Orchestrator 功能",
+            "source": "https://www.theregister.com/ai-and-ml/2026/11/05/aws-kiro-aims-to-solve-identity-crisis-by-adding-another-identity-bot-orchestrator/5307965",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [
+              "2026年11月5日"
+            ],
+            "tense_flag": false,
+            "title_suspects": []
+          },
+          {
+            "sec": "corp",
+            "title": "Anthropic IPO 估值下修至 1.5 兆美元",
+            "source": "https://www.cnbc.com/2026/11/06/investors-brace-for-anthropic-valuation-1point5-trillion-a-stretch.html",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [
+              "2026年11月6日"
+            ],
+            "tense_flag": false,
+            "title_suspects": []
+          }
+        ]
+      },
+      "date": "2026-11-08",
+      "generated_at": "2026-11-08T00:04:46.218232+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 48,
         "CSP/CapEx": 49,
         "App/AI": 29,
@@ -1313,103 +1441,6 @@
       },
       "date": "2026-10-26",
       "generated_at": "2026-10-26T00:03:44.091977+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 45,
-        "CSP/CapEx": 50,
-        "App/AI": 23,
-        "gnews-chip": 20,
-        "gnews-dc": 23,
-        "gnews-app": 19
-      },
-      "digest_filtered": 1,
-      "after_dedup": 161,
-      "buckets": {
-        "hw": 33,
-        "corp": 119,
-        "app": 32
-      },
-      "news_char_budget": {
-        "hw": 3850,
-        "corp": 8000,
-        "app": 3733
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 5,
-        "app": 2
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 2,
-          "noise": 0
-        }
-      },
-      "placeholders": 0,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 4,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [],
-      "fact_audit": {
-        "mode": "log",
-        "checked": 3,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 2,
-        "low_coverage": {
-          "checked": 1,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": [
-          {
-            "sec": "corp",
-            "title": "OpenAI 內部錯位監控系統曝出新漏洞",
-            "source": "https://www.theregister.com/ai-and-ml/2026/10/23/red-team-report-found-openai-utterly-failed-to-monitor-its-agents-during-hugging-face-attack/5305200",
-            "rating": "core",
-            "coverage": "full",
-            "suspects": [],
-            "undetermined": [
-              "7月21日"
-            ],
-            "tense_flag": false
-          }
-        ]
-      },
-      "date": "2026-10-25",
-      "generated_at": "2026-10-25T00:04:17.508603+08:00"
     }
   ]
 }
