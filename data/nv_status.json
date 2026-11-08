@@ -1,5 +1,5 @@
 {
-  "last_checked": "2026-11-02",
+  "last_checked": "2026-11-09",
   "pyramid": [
     {
       "label": "應用層（Industries）",
@@ -711,6 +711,39 @@
       "category": "財務募集",
       "summary": "Meta 將透過公開增發與 ATM 方式合計募集 950 億美元，用於 AI 基礎建設與超智慧計畫，Nvidia、AMD 與 Broadcom 表示有意認購最高 50 億美元的股份。",
       "src": "https://www.cnbc.com/2026/10/26/meta-stock-offering-ai.html",
+      "src_note": ""
+    },
+    {
+      "date": "2026-11-06",
+      "title": "Moonshot AI 透過歐洲資料中心租用 Nvidia Blackwell GPU 以規避美國出口管制",
+      "category": "供應鏈",
+      "summary": "Moonshot AI 正與歐洲 neoclouds 討論租用其資料中心內的 Nvidia Blackwell GPU，以繞過美國對中國的出口禁令。此租用協議已於今年展開討論，顯示中國 AI 團隊尋求歐洲雲端取得先進算力。",
+      "src": "https://www.cnbc.com/2026/11/05/moonshot-ai-nvidia-chips-europe-china.html",
+      "src_note": "",
+      "thread": "月之暗面（Moonshot AI）GB300爭議"
+    },
+    {
+      "date": "2026-11-06",
+      "title": "Box 將 Nvidia Nemotron 嵌入式模型整合至內容檢索服務",
+      "category": "產品發布",
+      "summary": "Box 在開發者大會展示 Box Content Retrieval，核心使用 Nvidia Nemotron 嵌入式模型，提升查詢速度四倍、錯誤率下降 20%、token 使用減少 90%。預計明年初向企業客戶推出。",
+      "src": "https://techcrunch.com/2026/11/05/box-taps-nvidias-nemotron-for-new-agent-first-content-retrieval-system/",
+      "src_note": ""
+    },
+    {
+      "date": "2026-11-05",
+      "title": "Revolut 以自主持 AI 模型降低 90% 程式碼推論成本",
+      "category": "產品發布",
+      "summary": "Revolut 透過自主持模型取代 Claude，使用 56 台 Nvidia B200 GPU 部署 GLM‑5.3，將 AI 程式碼推論成本削減約 90%，開發效率提升 60%，交付週期縮短 70%。",
+      "src": "https://www.theregister.com/ai-and-ml/2026/11/03/british-fintech-revolut-slashes-ai-coding-costs-10x-by-cutting-out-claude-and-going-self-hosted/5307345",
+      "src_note": ""
+    },
+    {
+      "date": "2026-11-03",
+      "title": "Nvidia 可能為 Nscale 西維吉尼亞 AI 數據中心提供數十億美元債務保證",
+      "category": "合作聯盟",
+      "summary": "Nvidia 正與 AI 雲端供應商 Nscale 討論為其在西維吉尼亞的 Anthropic 數據中心提供數十億美元的債務擔保，若 Nscale 未付款，Nvidia 會暫時接管設施並協助尋找買家或新租戶。",
+      "src": "https://techcrunch.com/2026/10/30/nvidia-weighs-playing-the-cosigner-for-nscales-ai-data-center-in-west-virginia/",
       "src_note": ""
     }
   ]
