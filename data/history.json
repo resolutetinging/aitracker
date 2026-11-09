@@ -1,5 +1,168 @@
 [
   {
+    "date": "2026-11-10",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI CFO 表示即使選舉結果不利仍將持續投資 AI 資料中心",
+        "layer": "CSP/CapEx",
+        "body": "OpenAI 首席財務官 Sarah Friar 於 11 月 6 日表示，即使在 10 州 41 項地方選票中多數選民反對資料中心，OpenAI 仍將持續投入 AI 基礎建設，並計畫在 2027 年推出首次公開發行。她指出公司已與多家超大規模雲端服務商建立關係，未來仍會籌集資金以滿足客戶需求，並將依據新政策在資料中心與社區建立信任。",
+        "impact": "持續的資金投入將提升超大規模雲端服務商對 AI 晶片的需求。",
+        "rating": "opp",
+        "insight": "投資者可關注 OpenAI 持續資金需求，將帶動上游晶片與資料中心供應鏈的成長機會。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/11/06/open-ai-data-centers-election.html",
+        "chain": [
+          {
+            "label": "Nvidia 晶片 需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Equinix 資料中心 擴建↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC 晶圓 產能↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Doximity 將臨床 AI 擴展至超過 190 家健康系統",
+        "layer": "healthcare",
+        "body": "Doximity 宣布其臨床 AI 服務已在超過 190 家美國健康系統部署，涵蓋門診與住院部門的診斷輔助與病歷摘要功能。",
+        "impact": "此舉直接提升了醫療影像與電子病歷供應商（如 Philips、Cerner）的軟體需求，導致相關雲端運算與儲存硬體（如 SSD、NVMe）需求 ↑。上游的 AI 晶片供應商（如 Nvidia、Qualcomm）將因算力需求上升而受惠，產能利用率提升。下游的醫療服務提供者可縮短診斷時間，提升病患流量與收入，進一步刺激醫療器材與藥品的需求。",
+        "rating": "core",
+        "insight": "臨床 AI 大規模部署將推動醫療資訊硬體與 AI 晶片需求同步上升。",
+        "source_label": "Fierce Healthcare",
+        "source": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNam9IaEE1Y0pueEpOR0dYUUcta21MM09DTWFGNDRBc0FtRUxWdUxsQ2VEaUNtYm9teDJOVTJVSEVuU09PaThlTVNlNEUzZWFuaUJ3YmlJdHVnVnZEa3NfWVVfc19EZk5pdXNTVnRtYVhoU2Q4bXBLY1kwTUdvbzZjU3pZdElZRmZ5Nm1SUW5Kb09zYnVqVlhDc2g4ZmxMcGdSNS1XY3M3SWhsbFIyV2tQLU9rYnZhdk1zOXMw?oc=5",
+        "chain": [
+          {
+            "label": "Doximity 臨床 AI 系統部署醫院數↑",
+            "type": "up"
+          },
+          {
+            "label": "醫院診斷輔助效率↑",
+            "type": "up"
+          },
+          {
+            "label": "競爭 AI 醫療平台市占↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "AWS 承諾 1 億美元雲端與 AI 信用額度以縮小健康公平差距",
+        "layer": "cloud",
+        "body": "AWS 於本月宣布提供 1 億美元的雲端與 AI 信用額度，專供美國弱勢社區醫療機構使用，以加速資料分析與遠端診療服務的部署。該計畫預計在 2027 年底前覆蓋超過 500 家診所與社區健康中心。",
+        "impact": "大量信用額度將促進雲端基礎建設需求。",
+        "rating": "core",
+        "insight": "大規模雲端 AI 信用額度將帶動伺服器與記憶體供應鏈的需求同步上揚。",
+        "source_label": "Healthcare Dive",
+        "source": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQNnVqSUxyLXlLdzZLTzRmUHVsTUo0YklfMW5hb2ZGQmRBRllGMDNfYnp5dzdHTkx3VGtLWDJ1eUc5SlhTUnRFYk44RkZ0LXlDdjNqTURZU1J6MHdZVjEwcElvUVlXT3d0WTdFMl9HeXkzaklhQmlRY2NQeGNWajJ1Z09xUHpzcTZZMXl4MHFEWlJRQTdwaVhFT3o1WVhHWHdwY2RGUFdxc0ZJU1Za?oc=5",
+        "thin_source": true,
+        "chain": [
+          {
+            "label": "AWS 雲端與 AI 信用額度提供↑",
+            "type": "up"
+          },
+          {
+            "label": "弱勢醫療機構 AI 分析使用↑",
+            "type": "up"
+          },
+          {
+            "label": "傳統醫療 IT 供應商需求↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Tencent 推動跨境支付 AI 應用於金融服務",
+        "layer": "finance",
+        "body": "Tencent 在最新的跨境支付平台中整合 AI 風險評估模型，已於本季在超過 20 個國家與地區上線，協助金融機構即時偵測可疑交易並降低詐騙率。該平台同時支援多幣別即時結算，預計今年交易額將突破 5 億美元。",
+        "impact": "AI 風險模型的部署將提升對高效能運算晶片的需求。",
+        "rating": "opp",
+        "insight": "跨境支付 AI 風險模型將加速金融硬體與安全晶片的需求增長。",
+        "source_label": "Telecompaper",
+        "source": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOWktoVWFaS1NDUmRnOWJFQkFPNHljNlhoSXItOVJFSmhNMnVacFRuc2dRMWJVcUt4emFKZGtDaS1tdm1CS2haS0JXZXZ4NmlpdmYwSzdfc25xM0I5TDdFOG1fZjg1N1BTYTdKb0ZGTkxKdTZ5RTNrVlhZMy1NbF9qTkpUZmI4Uk42OVZ1NzU0bnZLTGZVODVXMUJEYU5fVkxqVFVkLWgyekVWVHc0RGhVVndrTmVZWnp2Rm1RZGFxMlNOX1luUU52Ng?oc=5",
+        "thin_source": true,
+        "chain": [
+          {
+            "label": "Tencent 跨境支付 AI 風險模型上線↑",
+            "type": "up"
+          },
+          {
+            "label": "金融機構詐騙偵測成功率↑",
+            "type": "up"
+          },
+          {
+            "label": "傳統風險評估服務需求↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "AI基礎設施供應鏈",
+        "full": "人工智慧運算所需的硬體與服務供應鏈",
+        "def": "包括晶圓代工、HBM記憶體、OSAT封測、以及資料中心建設等環節，支撐AI模型的訓練與推論。",
+        "why": "供應鏈瓶頸或政策變動會直接影響AI運算成本與產能。",
+        "category": "hardware"
+      },
+      {
+        "term": "燃氣發電機",
+        "full": "Gas Generator",
+        "def": "用於提供備援或主要電力的燃氣驅動發電設備，常見於大型資料中心以確保電力供應穩定。",
+        "why": "AI 資料中心對持續電力需求極高，燃氣發電機可降低對公共電網的依賴。",
+        "category": "hardware"
+      },
+      {
+        "term": "推論網路",
+        "full": "Inference Network",
+        "def": "專門用於 AI 推論工作負載的低延遲、高帶寬網路基礎設施，通常結合高速互連與專用硬體加速器。",
+        "why": "隨著 AI 服務即時化需求提升，推論網路成為提升服務效能的關鍵。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "臨床AI",
+        "full": "Clinical Artificial Intelligence",
+        "def": "利用機器學習與自然語言處理技術協助醫師在診斷、病歷摘要與治療決策上提供即時建議的人工智慧系統。",
+        "why": "可提升醫療效率與診斷準確度，直接影響醫療器材與資料基礎建設需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "雲端AI信用額度",
+        "full": "Cloud AI Credit",
+        "def": "雲端服務供應商提供的免費或補貼式計算資源，讓使用者在特定期間內可免費使用 AI 訓練與推論服務。",
+        "why": "降低 AI 應用門檻，促進硬體供應鏈（伺服器晶片、記憶體）需求快速成長。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "跨境支付AI風險模型",
+        "full": "Cross‑border Payment AI Risk Model",
+        "def": "運用機器學習分析跨境交易行為，實時偵測異常與詐騙的人工智慧模型。",
+        "why": "提升金融機構風控效率，帶動支付終端硬體與安全晶片的需求上升。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-09",
     "is_sunday": false,
     "hw": [
@@ -817,137 +980,6 @@
         "def": "指平台在特定期間內完成的商品交易總額，常用於衡量電商平台的營運規模。",
         "why": "GMV 直接反映平台的交易規模，對供應鏈上下游的需求預測與資源配置具有指標性意義。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-11-03",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Nvidia 可能為 Nscale 西維吉尼亞 AI 數據中心提供數十億美元債務保證",
-        "layer": "strategic_supplier_decision",
-        "body": "Nvidia 正在與 AI 雲端供應商 Nscale 討論為其在西維吉尼亞的 Anthropic 數據中心提供數十億美元的債務擔保。Nscale 已在 IPO 文件中披露，Anthropic 為首座建築簽署了 446 億美元的合約。此安排屬於餘值保證，若 Nscale 未能如期支付建設款項，Nvidia 會暫時接管設施並協助尋找買家或新租戶。",
-        "impact": "此保證將直接提升 Nscale 獲得電力與建設資金的能力，促使相關建築與電力供應商的需求 ↑；上游的晶圓代工與 HBM 供應商因 Nscale 可能加速採購 GPU 而受益，需求亦可能上升；下游的 AI 雲端服務客戶將因更快完成數據中心建設而提前取得算力，提升競爭力。",
-        "rating": "core",
-        "insight": "Nvidia 以財務保證方式介入 AI 基礎建設，可降低供應鏈資金風險，提升其在 AI 基礎設施市場的影響力。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/10/30/nvidia-weighs-playing-the-cosigner-for-nscales-ai-data-center-in-west-virginia/",
-        "chain": [
-          {
-            "label": "Nvidia 債務保證收入↑",
-            "type": "up"
-          },
-          {
-            "label": "Nscale AI 數據中心建設支出↑",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Anthropic IPO 招股說明書披露近兆美元運算承諾",
-        "layer": "core",
-        "body": "Anthropic 在最新 S‑1 招股說明書中透露，未來需支付近 1 兆美元的運算服務費用，預計將持續大量燃燒資金。該公司同時指出，其運算需求大部分依賴同時也是競爭對手的客戶供應的晶片與雲端資源。",
-        "impact": null,
-        "rating": "core",
-        "insight": "Anthropic 巨額運算承諾將推高高階 AI 晶片與資料中心基礎建設需求。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/11/02/anthropics-ipo-prospectus-is-big-on-promises-short-on-answers-to-tough-questions/5306811",
-        "chain": [
-          {
-            "label": "Anthropic 運算支出↑",
-            "type": "down"
-          },
-          {
-            "label": "競爭對手晶片供應商營收↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI 創辦人 Altman 赴韓國與三星、SK 集團討論 AI 晶片合作",
-        "layer": "core",
-        "body": "OpenAI CEO Sam Altman 於本週末未預告造訪韓國，與 Samsung 及 SK 集團高層會面，討論 AI 晶片與高頻寬記憶體供應的合作可能。會議於京仁舉行，參與者包括 Samsung 旗下多家子公司與 SK Hynix、SK Telecom 的高階主管。",
-        "impact": "上游記憶體與晶片製造商（如 SK Hynix、Samsung）將因 OpenAI 需求而提升 HBM 產能利用率 (↑)；OpenAI 的資料中心建設將帶動本地化晶片採購，降低對美國供應鏈的依賴 (↓)；其他 AI 初創公司若無法取得同等晶片供應，可能在模型效能上處於劣勢。",
-        "rating": "core",
-        "insight": "OpenAI 與韓國晶片巨頭的合作將加速本地 AI 晶片供應鏈的布局。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/11/02/openai-sam-altman-samsung-sk-south-korea.html",
-        "chain": [
-          {
-            "label": "Samsung AI 晶片合作計畫↑",
-            "type": "up"
-          },
-          {
-            "label": "SK Hynix 高頻寬記憶體需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": "",
-        "chain": [
-          {
-            "label": "無相關應用新聞",
-            "type": "neutral"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "餘值保證",
-        "full": "Residual Value Guarantee",
-        "def": "當借款方無法履行建設付款時，保證方會暫時接管資產並協助尋找買家或新租戶，以降低貸款風險。",
-        "why": "此機制可讓資金需求大的 AI 數據中心在資金緊張時仍能持續建設，減少供應鏈斷裂風險。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Agentic AI",
-        "full": "具自主決策能力的人工智慧模型",
-        "def": "此類 AI 能根據環境即時調整行動路徑，產生突發且不均衡的運算需求。它在資料中心會造成 CPU 使用率波動，需特殊調度與硬體設計。",
-        "why": "了解此概念有助於判斷未來 CPU 與加速卡的規格走向。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "HBM",
-        "full": "高頻寬記憶體（High Bandwidth Memory）",
-        "def": "HBM 以堆疊式封裝提供極高的資料傳輸速率，常用於 AI 加速卡與高效能運算平台。",
-        "why": "OpenAI 與韓國晶片廠的合作聚焦於 HBM 供應，直接影響記憶體供應鏈的需求與價格走勢。",
-        "category": "hardware"
-      },
-      {
-        "term": "S‑1 招股說明書",
-        "full": "美國證券交易委員會要求的首次公開募股註冊文件",
-        "def": "公司在上市前必須提交 S‑1，披露財務、營運與未來資金需求等關鍵資訊。",
-        "why": "Anthropic 在 S‑1 中揭露的 1 兆美元運算承諾顯示其資金壓力與供應鏈需求規模。",
-        "category": "role"
-      },
-      {
-        "term": "DeepInfinity.AI",
-        "full": "DeepInfinity.AI",
-        "def": "一家專注於醫療影像深度學習分析的人工智慧公司，提供自動標註與診斷輔助平台。",
-        "why": "其技術可提升醫院影像診斷效率，帶動相關硬體與雲端資源需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "BMH",
-        "full": "BMH",
-        "def": "一家全球醫療服務集團，經營多家醫院與診所，致力於引入先進醫療科技。",
-        "why": "作為大型醫療機構的採購方，BMH 的採購決策會直接影響醫療設備與 AI 軟體供應鏈。",
-        "category": "role"
       }
     ],
     "weekly_summary": null

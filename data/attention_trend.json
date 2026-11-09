@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-09",
+ "updated": "2026-11-10",
  "since": "2026-07-01",
  "entities": [
   {
@@ -946,7 +946,7 @@
   {
    "week": "2026-W46",
    "start": "2026-11-09",
-   "cards": 2,
+   "cards": 6,
    "dims": {
     "hw": {
      "core": 0,
@@ -955,27 +955,25 @@
     },
     "corp": {
      "core": 0,
-     "opp": 2,
+     "opp": 3,
      "noise": 0
     },
     "app": {
-     "core": 0,
-     "opp": 0,
+     "core": 2,
+     "opp": 1,
      "noise": 0
     }
    },
    "mentions": {
-    "Amazon": 1,
+    "Amazon": 2,
     "Physical AI": 1,
     "Meta": 1,
-    "推論": 1
+    "推論": 1,
+    "OpenAI": 1
    }
   }
  ],
  "seen": [
-  "2026-10-19|AWS 推出對話式 AI 服務支援醫療機構",
-  "2026-10-19|Bangladesh 醫師使用 AI 輔助診斷的線上調查結果發表",
-  "2026-10-19|美國零售商採用 AI 輔助定價工具引發消費者顧慮",
   "2026-10-20|Anthropic 與 METR、SecureBio 合作評估 AI 風險與安全實務",
   "2026-10-20|Edvance 與 CWG 發布 RealRelay 金融 AI 代理服務",
   "2026-10-20|Google 宣稱其明尼蘇達 AI 資料中心將使用清潔能源",
@@ -1052,6 +1050,10 @@
   "2026-11-08|Microsoft 精簡 neocloud 合作夥伴以聚焦自有資料中心",
   "2026-11-08|美國橡樹嶺國家實驗室獲得 AMD 與 IBM 合作的混合量子‑HPC 系統",
   "2026-11-09|Amazon 組建新團隊研發全新家用機器人，延續 Astro 失敗後的布局",
-  "2026-11-09|Meta 首席策略官 Dave Wehner 轉任 AI 基礎設施新創 Fireworks CFO"
+  "2026-11-09|Meta 首席策略官 Dave Wehner 轉任 AI 基礎設施新創 Fireworks CFO",
+  "2026-11-10|AWS 承諾 1 億美元雲端與 AI 信用額度以縮小健康公平差距",
+  "2026-11-10|Doximity 將臨床 AI 擴展至超過 190 家健康系統",
+  "2026-11-10|OpenAI CFO 表示即使選舉結果不利仍將持續投資 AI 資料中心",
+  "2026-11-10|Tencent 推動跨境支付 AI 應用於金融服務"
  ]
 }

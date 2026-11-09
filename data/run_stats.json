@@ -2,6 +2,252 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 51,
+        "CSP/CapEx": 48,
+        "App/AI": 18,
+        "gnews-chip": 23,
+        "gnews-dc": 23,
+        "gnews-app": 16
+      },
+      "digest_filtered": 1,
+      "after_dedup": 162,
+      "buckets": {
+        "hw": 43,
+        "corp": 113,
+        "app": 36
+      },
+      "news_char_budget": {
+        "hw": 6000,
+        "corp": 8000,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 43,
+          "full_text_total": 5,
+          "full_text_sent": 4,
+          "sent": 13,
+          "partial_cut": 0,
+          "chars_sent": 5778,
+          "dropped": 30
+        },
+        "corp": {
+          "mode": "slice",
+          "budget": 8000,
+          "candidates": 113,
+          "full_text_total": 4,
+          "full_text_sent": 4,
+          "sent": 14,
+          "partial_cut": 1,
+          "chars_sent": 8000,
+          "dropped": 99
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 36,
+          "full_text_total": 3,
+          "full_text_sent": 3,
+          "sent": 14,
+          "partial_cut": 0,
+          "chars_sent": 5776,
+          "dropped": 22
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 3,
+        "app": 3
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 4526,
+          "completion_tokens": 372,
+          "total_tokens": 4898
+        },
+        "corp": {
+          "prompt_tokens": 5198,
+          "completion_tokens": 1253,
+          "total_tokens": 6451
+        },
+        "app": {
+          "prompt_tokens": 5211,
+          "completion_tokens": 2021,
+          "total_tokens": 7232
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "corp",
+          "title": "Anthropic 簽署 34 億美元燃氣發電機合約支援 1.7GW 資料中心電力",
+          "gate": "validate_sources",
+          "action": "source_cleared",
+          "reason": "source_cleared"
+        },
+        {
+          "section": "corp",
+          "title": "Nvidia 探索利用 Brightspeed 中央局點建置推論網路",
+          "gate": "validate_sources",
+          "action": "source_cleared",
+          "reason": "source_cleared"
+        },
+        {
+          "section": "hw",
+          "title": "本日無相關hw新聞",
+          "gate": "remove_repeated_stories",
+          "action": "removed",
+          "reason": "removed"
+        },
+        {
+          "section": "corp",
+          "title": "Anthropic 簽署 34 億美元燃氣發電機合約支援 1.7GW 資料中心電力",
+          "gate": "downgrade_unsourced",
+          "action": "rating core→noise",
+          "reason": "rating core→noise"
+        },
+        {
+          "section": "corp",
+          "title": "Nvidia 探索利用 Brightspeed 中央局點建置推論網路",
+          "gate": "downgrade_unsourced",
+          "action": "rating core→noise",
+          "reason": "rating core→noise"
+        },
+        {
+          "section": "corp",
+          "title": "OpenAI CFO 表示即使選舉結果不利仍將持續投資 AI 資料中心",
+          "gate": "downgrade_shallow_impact",
+          "action": "rating core→opp",
+          "reason": "rating core→opp"
+        },
+        {
+          "section": "corp",
+          "title": "Anthropic 簽署 34 億美元燃氣發電機合約支援 1.7GW 資料中心電力",
+          "gate": "drop_stale_placeholders",
+          "action": "removed",
+          "reason": "removed"
+        },
+        {
+          "section": "corp",
+          "title": "Nvidia 探索利用 Brightspeed 中央局點建置推論網路",
+          "gate": "drop_stale_placeholders",
+          "action": "removed",
+          "reason": "removed"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 3,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "deepen": {
+        "candidates": 3,
+        "rewritten": 1,
+        "fetch_failed": 2,
+        "llm_failed": 0
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 4,
+        "suspect_cards": 1,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 2,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 1,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "fragment_restored": 0,
+        "items": [
+          {
+            "sec": "app",
+            "title": "Doximity 將臨床 AI 擴展至超過 190 家健康系統",
+            "source": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNam9IaEE1Y0pueEpOR0dYUUcta21MM09DTWFGNDRBc0FtRUxWdUxsQ2VEaUNtYm9teDJOVTJVSEVuU09PaThlTVNlNEUzZWFuaUJ3YmlJdHVnVnZEa3NfWVVfc19EZk5pdXNTVnRtYVhoU2Q4bXBLY1kwTUdvbzZjU3pZdElZRmZ5Nm1SUW5Kb09zYnVqVlhDc2g4ZmxMcGdSNS1XY3M3SWhsbFIyV2tQLU9rYnZhdk1zOXMw?oc=5",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [
+              "30"
+            ],
+            "undetermined": [],
+            "tense_flag": false,
+            "title_suspects": []
+          },
+          {
+            "sec": "app",
+            "title": "AWS 承諾 1 億美元雲端與 AI 信用額度以縮小健康公平差距",
+            "source": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQNnVqSUxyLXlLdzZLTzRmUHVsTUo0YklfMW5hb2ZGQmRBRllGMDNfYnp5dzdHTkx3VGtLWDJ1eUc5SlhTUnRFYk44RkZ0LXlDdjNqTURZU1J6MHdZVjEwcElvUVlXT3d0WTdFMl9HeXkzaklhQmlRY2NQeGNWajJ1Z09xUHpzcTZZMXl4MHFEWlJRQTdwaVhFT3o1WVhHWHdwY2RGUFdxc0ZJU1Za?oc=5",
+            "rating": "core",
+            "coverage": "low_coverage",
+            "suspects": [],
+            "undetermined": [
+              "2027年",
+              "500"
+            ],
+            "tense_flag": false,
+            "title_suspects": []
+          },
+          {
+            "sec": "app",
+            "title": "Tencent 推動跨境支付 AI 應用於金融服務",
+            "source": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOWktoVWFaS1NDUmRnOWJFQkFPNHljNlhoSXItOVJFSmhNMnVacFRuc2dRMWJVcUt4emFKZGtDaS1tdm1CS2haS0JXZXZ4NmlpdmYwSzdfc25xM0I5TDdFOG1fZjg1N1BTYTdKb0ZGTkxKdTZ5RTNrVlhZMy1NbF9qTkpUZmI4Uk42OVZ1NzU0bnZLTGZVODVXMUJEYU5fVkxqVFVkLWgyekVWVHc0RGhVVndrTmVZWnp2Rm1RZGFxMlNOX1luUU52Ng?oc=5",
+            "rating": "opp",
+            "coverage": "low_coverage",
+            "suspects": [],
+            "undetermined": [
+              "5 億美元",
+              "20"
+            ],
+            "tense_flag": false,
+            "title_suspects": []
+          }
+        ]
+      },
+      "date": "2026-11-10",
+      "generated_at": "2026-11-10T00:08:50.685118+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 46,
         "CSP/CapEx": 53,
         "App/AI": 25,
@@ -1355,101 +1601,6 @@
       },
       "date": "2026-10-28",
       "generated_at": "2026-10-28T00:04:09.748860+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 36,
-        "CSP/CapEx": 36,
-        "App/AI": 11,
-        "gnews-chip": 18,
-        "gnews-dc": 22,
-        "gnews-app": 22
-      },
-      "digest_filtered": 0,
-      "after_dedup": 144,
-      "buckets": {
-        "hw": 30,
-        "corp": 110,
-        "app": 29
-      },
-      "news_char_budget": {
-        "hw": 3500,
-        "corp": 8000,
-        "app": 3500
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 3,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 2,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 4,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "dedup_audit": [],
-      "fact_audit": {
-        "mode": "log",
-        "checked": 3,
-        "suspect_cards": 0,
-        "tense_flags": 1,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 1,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": [
-          {
-            "sec": "corp",
-            "title": "Anthropic 申請 IPO 以 80.7 億美元淨虧損上市",
-            "source": "https://www.theregister.com/ai-and-ml/2026/10/26/trumpets-blare-and-skies-part-as-ai-hypefest-culminates-in-anthropic-ipo-filing/5305456",
-            "rating": "core",
-            "coverage": "full",
-            "suspects": [],
-            "undetermined": [],
-            "tense_flag": true
-          }
-        ]
-      },
-      "date": "2026-10-27",
-      "generated_at": "2026-10-27T00:04:00.651543+08:00"
     }
   ]
 }
