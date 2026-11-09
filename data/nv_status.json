@@ -772,6 +772,22 @@
       "src": "https://www.cnbc.com/2026/11/08/nvidia-jensen-huang-email-board-of-directors-statement.html",
       "src_note": "",
       "thread": "黃仁勳與 Megaspeed 間諜疑雲"
+    },
+    {
+      "date": "2026-11-02",
+      "title": "NVIDIA Brev 雲端平台出現未授權活動，客戶 SSH 金鑰恐受影響",
+      "category": "資安事件",
+      "summary": "據 NVIDIA 寄給受影響客戶的通知，Brev 雲端開發平台在 10 月 4 日至 10 月 20 日間出現未授權活動，Brev 為客戶虛擬機設定的 SSH 金鑰可能受影響。NVIDIA 表示該金鑰已輪替、客戶執行個體已換上新金鑰，且未發現被濫用的證據。報導指出，NVIDIA 並未說明入侵途徑，也未說明客戶資料或工作負載是否被存取。",
+      "src": "https://www.tomshardware.com/tech-industry/cyber-security/nvidia-brev-security-breach-may-have-exposed-ssh-keys-used-to-access-customer-vms-investigation-finds-unauthorized-activity-spanning-16-days-but-no-evidence-of-misuse",
+      "src_note": "Tom's Hardware 報導引述 NVIDIA 寄給客戶的通知；未見 NVIDIA 官方公告原文"
+    },
+    {
+      "date": "2026-11-06",
+      "title": "據報導 NVIDIA 要求東南亞客戶加入晶片追蹤系統才能成為官方雲端夥伴",
+      "category": "出口管制",
+      "summary": "據 Bloomberg 引述知情人士報導，NVIDIA 現在要求東南亞客戶加入 fleet intelligence 系統（可追蹤 AI 加速器位置），才能成為 NVIDIA Cloud Partner。此舉被形容為以夥伴資格鼓勵更多業者加入原本屬自願的追蹤計畫，以回應中國走私晶片的批評。NVIDIA 對現有夥伴是否也須加入、是否擴及其他地區，均拒絕置評。",
+      "src": "https://theedgemalaysia.com/node/824907",
+      "src_note": "Bloomberg 報導，由 The Edge Malaysia 轉載（11-06）"
     }
   ]
 }
