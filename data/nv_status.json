@@ -745,6 +745,33 @@
       "summary": "Nvidia 正與 AI 雲端供應商 Nscale 討論為其在西維吉尼亞的 Anthropic 數據中心提供數十億美元的債務擔保，若 Nscale 未付款，Nvidia 會暫時接管設施並協助尋找買家或新租戶。",
       "src": "https://techcrunch.com/2026/10/30/nvidia-weighs-playing-the-cosigner-for-nscales-ai-data-center-in-west-virginia/",
       "src_note": ""
+    },
+    {
+      "date": "2026-10-29",
+      "title": "紐時：美方認定 Megaspeed 高管為中國情報人員，與黃仁勳往來密切",
+      "category": "政府調查",
+      "summary": "《紐約時報》引述匿名官員報導，美國情報機構認定新加坡 Megaspeed 中國籍高管黃樂（與黃仁勳無親屬關係）為中國情報人員，並曾接觸黃仁勳。黃仁勳表示雙方往來正常，輝達已查核 Megaspeed 未非法轉運晶片；中國稱報導毫無根據。指控目前未經官方證實。",
+      "src": "https://cna.com.tw/news/aopl/202611010041.aspx",
+      "src_note": "中央社轉述《紐約時報》報導",
+      "thread": "黃仁勳與 Megaspeed 間諜疑雲"
+    },
+    {
+      "date": "2026-11-05",
+      "title": "美眾院三位委員會主席要求黃仁勳閉門說明",
+      "category": "政府調查",
+      "summary": "據 Axios 報導，三位眾議院共和黨籍委員會主席要求黃仁勳就相關疑慮向國會閉門簡報，邀約日期為 11 月 18 日；輝達預定 11 月 17 日公布財報。",
+      "src": "https://axios.com/2026/11/05/jensen-huang-nvidia-congress-china",
+      "src_note": "Axios 報導",
+      "thread": "黃仁勳與 Megaspeed 間諜疑雲"
+    },
+    {
+      "date": "2026-11-08",
+      "title": "黃仁勳致信員工承認婚外情，輝達董事會啟動獨立調查",
+      "category": "高層動態",
+      "summary": "黃仁勳寄信給全體員工，承認對妻子不忠，表示「沒有任何藉口」、承擔全部責任並將全力配合調查，信中未點名對象。董事會聲明將由獨立董事與外部顧問進行獨立調查，表示沒有理由相信國家安全或公司機密遭洩漏，黃仁勳續任執行長。",
+      "src": "https://www.cnbc.com/2026/11/08/nvidia-jensen-huang-email-board-of-directors-statement.html",
+      "src_note": "",
+      "thread": "黃仁勳與 Megaspeed 間諜疑雲"
     }
   ]
 }
