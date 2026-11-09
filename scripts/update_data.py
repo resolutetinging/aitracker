@@ -71,8 +71,16 @@ RUN_STATS = {
     'after_dedup': 0,
     'buckets': {},
     'news_char_budget': {},
+    # 11-09：各分類實際送進 LLM 的素材組成（候選數、全文篇數、送出字數、被截掉的候選數），
+    # 見 _fit_news_context；用來分辨「來源少」還是「素材被預算截掉」
+    'news_context': {},
     'enriched': 0,
+    # llm_items＝LLM 原始回傳條數（call_groq 解析後立即記，任何閘門之前；含 LLM 自己給的佔位卡）
     'llm_items': {},
+    # 11-09：各分類主呼叫的 Groq usage（prompt/completion tokens），供日後 TPM 試算用實測值
+    'llm_usage': {},
+    # 11-09：生成後各閘門每刪一張／改一次評級／清掉來源網址就記一筆，見 _run_gate
+    'gate_removed': [],
     'llm_failed': {},
     'final': {},
     'placeholders': 0,
@@ -497,8 +505,8 @@ def enrich_with_full_text(buckets, max_fetch=12):
     取代舊版「單一素材池、先到先贏」（hw 類新聞源強勢佔滿、app 類永遠擠不進）。
     只對高信號候選（有 SOURCE_URL 且命中 HIGH_SIGNAL_PAT）抓取真實內文取代薄摘要；
     同一 URL 若重複出現於多桶（一篇文章可同時進多桶），只實際抓取一次並快取結果，
-    避免重複網路請求。成功抓到內文的條目移到該桶最前面，確保後續 3500 字截斷時
-    優先保留高密度素材（沿用舊版行為）。"""
+    避免重複網路請求。成功抓到內文的條目移到該桶最前面，確保後續預算截斷時
+    優先保留高密度素材（沿用舊版行為；hw/app 的全文佔比上限見 _fit_news_context）。"""
     cats = ['hw', 'corp', 'app']
     lists = {c: list(buckets.get(c, [])) for c in cats}
     eligible = {c: [i for i, s in enumerate(lists[c])
@@ -750,7 +758,102 @@ def _category_char_budget(category):
     bucket_sizes = RUN_STATS.get('buckets', {})
     size = bucket_sizes.get(category, REFERENCE_BUCKET_SIZE)
     budget = int(BASE_NEWS_CHAR_BUDGET * (size / REFERENCE_BUCKET_SIZE))
+    # 11-09：hw/app 預算改固定 6000 字（舊：3500×bucket/30，實際 3500–4400；corp 公式與 8000 上限不變）。
+    # 實測 11-09 本機抓到的真實 bucket：全文條目每條約 1300 字（標題＋網址＋1100 字內文），
+    # 摘要條目平均約 390–440 字（Google News 網址很長）。舊預算 3500–4400 字時
+    # hw 只看得到前 2–3 條（全是全文），其餘 30 幾條候選全被截掉，LLM 只能回 1 則或佔位卡
+    # （10-27 起 llm_items hw/app 幾乎天天＝1）。6000 字搭配 _fit_news_context 的全文縮短
+    # 與佔比上限，hw 可看到約 10–12 條不同候選。token 試算：hw/app 6000 字新聞約 1400–1900
+    # tokens，整個請求仍小於 corp（8000 字）每天都成功的請求量。不隨 bucket 放大到 8000：
+    # hw/app bucket 常態 22–45 條，6000 字已能放進 10–15 條，固定值讓 TPM 最壞情況可預估。
+    if category in ('hw', 'app'):
+        return HW_APP_NEWS_CHAR_BUDGET
     return max(BASE_NEWS_CHAR_BUDGET, min(MAX_NEWS_CHAR_BUDGET, budget))
+
+HW_APP_NEWS_CHAR_BUDGET = 6000
+# hw/app 素材分配（11-09）：全文條目在 prompt 內只放前 600 字內文（約 100 個英文詞，
+# 通常就是導言段＋第一個具體數字段），且全文條目合計不超過預算的一半，
+# 另一半留給摘要候選；否則 3–4 篇全文就吃光預算、LLM 永遠只看到 3 個事件。
+# 只影響「送進 prompt 的那份文字」：fact_audit／補深用的 news_by_cat 仍是完整全文。
+PROMPT_FULLTEXT_CHARS = 600
+PROMPT_FULLTEXT_SHARE = 0.5
+_FULLTEXT_ENTRY_PAT = re.compile(r'SOURCE_URL:\S+ — ')  # 與 _fa_index_materials 同一判準
+
+def _trim_fulltext_entry(entry, max_chars=PROMPT_FULLTEXT_CHARS):
+    """全文條目（標題 | SOURCE_URL:… — 內文）只保留前 max_chars 字內文；
+    盡量切在句尾（. 。! ?），找不到句尾才硬切並加 …。標題與網址原樣保留。"""
+    m = _FULLTEXT_ENTRY_PAT.search(entry)
+    if not m:
+        return entry
+    head, text = entry[:m.end()], entry[m.end():]
+    if len(text) <= max_chars:
+        return entry
+    cut = text[:max_chars]
+    ends = [cut.rfind(p) for p in ('. ', '。', '! ', '? ')]
+    pos = max(ends)
+    if pos >= max_chars * 0.5:
+        cut = cut[:pos + 1]
+    else:
+        cut = cut.rstrip() + '…'
+    return head + cut
+
+def _fit_news_context(news_context, category, budget):
+    """把分類素材裝進 budget 字內，回傳 (送進 prompt 的文字, 統計 dict)。
+    corp：維持舊行為 news_context[:budget]（逐字不變），只補統計。
+    hw/app：以「條」為單位裝箱、不從中間切斷條目；全文條目縮短到 PROMPT_FULLTEXT_CHARS
+    且合計 ≤ budget×PROMPT_FULLTEXT_SHARE，超出佔比的全文條目延後到摘要之後、有空間才放。"""
+    entries = [e for e in (news_context or '').split('\n\n') if e.strip()]
+    full_total = sum(1 for e in entries if _FULLTEXT_ENTRY_PAT.search(e))
+    if category not in ('hw', 'app'):
+        text = (news_context or '')[:budget]
+        sent_whole, prefix = 0, 0
+        for e in entries:
+            nxt = prefix + len(e) + (2 if sent_whole else 0)
+            if nxt > budget:
+                break
+            prefix, sent_whole = nxt, sent_whole + 1
+        # 最後一條被切到一半（舊行為）：送出字數多於完整條目合計 → 算 1 條 partial
+        partial = 1 if sent_whole < len(entries) and len(text) > prefix + 2 else 0
+        stats = {'mode': 'slice', 'budget': budget, 'candidates': len(entries),
+                 'full_text_total': full_total,
+                 'full_text_sent': sum(1 for e in entries[:sent_whole + partial]
+                                       if _FULLTEXT_ENTRY_PAT.search(e)),
+                 'sent': sent_whole + partial, 'partial_cut': partial,
+                 'chars_sent': len(text), 'dropped': len(entries) - sent_whole - partial}
+        return text, stats
+    full_cap = int(budget * PROMPT_FULLTEXT_SHARE)
+    chosen, deferred = [], []
+    total, full_used = 0, 0
+
+    def _fits(e):
+        return total + len(e) + (2 if chosen else 0) <= budget
+
+    for e in entries:
+        if _FULLTEXT_ENTRY_PAT.search(e):
+            t = _trim_fulltext_entry(e)
+            if full_used + len(t) <= full_cap and _fits(t):
+                total += len(t) + (2 if chosen else 0)
+                full_used += len(t)
+                chosen.append((t, True))
+            else:
+                deferred.append(t)
+    for e in entries:
+        if _FULLTEXT_ENTRY_PAT.search(e):
+            continue
+        if _fits(e):
+            total += len(e) + (2 if chosen else 0)
+            chosen.append((e, False))
+    for t in deferred:
+        if _fits(t):
+            total += len(t) + (2 if chosen else 0)
+            chosen.append((t, True))
+    text = '\n\n'.join(e for e, _ in chosen)
+    stats = {'mode': 'pack', 'budget': budget, 'candidates': len(entries),
+             'full_text_total': full_total,
+             'full_text_sent': sum(1 for _, f in chosen if f),
+             'sent': len(chosen), 'partial_cut': 0,
+             'chars_sent': len(text), 'dropped': len(entries) - len(chosen)}
+    return text, stats
 
 def build_cross_bucket_block(avoid_items):
     """把同次執行中先產生的分類條目（標題+來源網址）組成追加段落；無條目回傳空字串。"""
@@ -812,9 +915,19 @@ def make_prompt(news_context, category, recent_titles=None, avoid_items=None):
     no_repeat_str = ("NO-REPEAT (STRICT): these topics were covered in recent days — do NOT generate any item about the same story or event even with a different headline; only include if there is a significant new development with wholly new facts not present before: " + "; ".join(recent_titles)) if recent_titles else ""
     notes_ctx = ("User notes context: " + notes_text[:200]) if notes_text else ""
     char_budget = _category_char_budget(category)
-    news_short = news_context[:char_budget]
+    try:
+        news_short, ctx_stats = _fit_news_context(news_context, category, char_budget)
+    except Exception as e:
+        # 裝箱邏輯出錯時退回舊行為（直接截斷），不讓統計／裝箱拖垮生成
+        print(f"  ⚠ 素材裝箱失敗，退回直接截斷（不影響資料生成）：{e}")
+        news_short, ctx_stats = news_context[:char_budget], None
     try:
         RUN_STATS.setdefault('news_char_budget', {})[category] = char_budget
+        if ctx_stats is not None:
+            RUN_STATS.setdefault('news_context', {})[category] = ctx_stats
+            print(f"  → {category} 送進 LLM：{ctx_stats['sent']}/{ctx_stats['candidates']} 條候選"
+                  f"（全文 {ctx_stats['full_text_sent']}/{ctx_stats['full_text_total']}），"
+                  f"{ctx_stats['chars_sent']}/{char_budget} 字，截掉 {ctx_stats['dropped']} 條")
     except Exception as e:
         print(f"  ⚠ 漏斗統計收集失敗（news_char_budget，不影響資料生成）：{e}")
     weekly_rule = (
@@ -839,7 +952,8 @@ OUTPUT FORMAT:
 Each ITEM: {{"title":"Traditional Chinese title","layer":"sublayer","body":"1 to 3 sentences, ALL about the SAME single news event. Write ONLY as many sentences as the source material actually supports with a distinct fact — every sentence must contain at least one specific number, date, or named entity from the source AND must state a fact NOT already stated in a previous sentence. HARD MINIMUM BAR: the total body must be at least 60 Traditional Chinese characters long AND must contain at least 1 distinct concrete fact (pick one: specific numbers/quantities, technical specs, monetary amounts, timelines/dates, or place names/locations) PLUS at least 1 clearly named entity (a specific company, institution, or product name) — a sentence with neither a concrete fact nor a named entity (pure vague restatement of the headline) is NOT acceptable and must not be treated as done. A single honest, fact-dense sentence is ALWAYS better than 3 sentences where sentences 2-3 restate sentence 1 in different words or add generic unsourced reasoning (e.g. speculation about competitors, job creation, timelines like 'will launch soon', or vague ambition/expansion framing) — that kind of padding gets the whole item rejected as noise, so never do it. If the source material genuinely cannot support 60 characters with 1 concrete fact and 1 named entity, do NOT pad with generic reasoning to reach the length — rate the item noise instead.","impact":"2-3 sentences in zh-TW tracing the upstream/downstream ripple effects on the SUPPLY CHAIN. Structure: (1) direct effect on the closest supply chain tier (e.g. TSMC capacity, HBM ASP, OSAT utilization); (2) second-order effect on the next tier; (3) if applicable, end-market or competitor implication. Every claim must be traceable to the news source — do NOT just rephrase the body. NEVER say '可能會影響X' without stating the direction (↑/↓) and mechanism. NEVER mention stock prices.","rating":"core|opp|noise","insight":"1-sentence investor takeaway","source_label":"source name","source":"use SOURCE_URL value or empty string"}}
 
 RULES:
-- 2-4 items per section; if no relevant news → 1 noise item only, and that item's title/body must PLAINLY say so (e.g. title:"今日無相關新聞", body:"今日該分類無足夠具體新聞素材可供分析。") — do NOT invent a vague-sounding pseudo-headline like "AI 應用進步" or "產業趨勢觀察" with circular reasoning; a fake generic title is worse than admitting there is no news
+- ITEM COUNT: if the NEWS above contains 2 or more distinct, concrete events that fit the TARGET CATEGORY, output 2-4 items (one item per distinct event, most material first); output exactly 1 real item only when there is exactly one such event; NEVER pad the count by splitting one event into several items, by repeating an event, or by inventing anything — every item must still obey all source-fidelity rules below
+- if no relevant news → 1 noise item only, and that item's title/body must PLAINLY say so (e.g. title:"今日無相關新聞", body:"今日該分類無足夠具體新聞素材可供分析。") — do NOT invent a vague-sounding pseudo-headline like "AI 應用進步" or "產業趨勢觀察" with circular reasoning; a fake generic title is worse than admitting there is no news
 - RATING PHILOSOPHY (materiality over phrasing strictness): weigh real-world significance over how strictly the wording matches a checklist — a story that is clearly a big deal should not be rated noise just because its phrasing is informal. CORE examples: a major or challenger company reducing supplier dependency via a self-developed chip (e.g. DeepSeek developing its own AI chip to cut reliance on Nvidia) -> core; a billion-dollar-scale financing round or acquisition (e.g. SambaNova closing an approximately 1.1 billion USD Series F) -> core; a 100MW-plus data-center build or firm commitment -> core or opp. NOISE examples: a small regional project that was abandoned or rejected (e.g. a 29MW project dropped in a Montana county, a Texas county rejecting a bitcoin-mining data center) -> noise; an intent-only announcement with no concrete scale or timeline -> noise. When a story clearly matches a CORE example, write the body around whichever facts ARE available (named entity plus amount/spec) rather than defaulting to noise merely because the wording is informal — the 60-character / named-entity / concrete-fact bar below still applies, but do not let phrasing strictness override obvious real-world materiality
 - ONE STORY PER CARD (critical): each item covers exactly one news event or announcement; if the source contains 2 unrelated stories, create 2 separate items; NEVER mix multiple unrelated events into one body — doing so is a format error
 - body LENGTH IS VARIABLE (1-3 sentences), NOT FIXED: write only as many sentences as you have distinct facts for; a true 1-sentence body outranks a padded 3-sentence one — padding is treated as noise regardless of sentence count, so there is no benefit to reaching 3
@@ -864,6 +978,38 @@ RULES:
 # ══════════════════════════════════════════════════════════════════
 #  3. GROQ API + CHAIN QUALITY FIX
 # ══════════════════════════════════════════════════════════════════
+# ── Groq 呼叫間隔（11-09）：生成後的 validate_body／fix_chains／validate_impact／
+# dedup_and_freshness_check 原本緊接著 app 主呼叫或補深重寫背靠背送出，同一個 60 秒窗
+# 內最多 5 個請求疊加（試算見 11-09 修正報告）。改成每個生成後 LLM 請求都距離上一個
+# Groq 請求結束 ≥ GROQ_WINDOW_GAP 秒；主迴圈與補深原本的固定 65 秒照舊。
+GROQ_WINDOW_GAP = 65
+_GROQ_STATE = {'last_end': 0.0, 'last_usage': None}
+
+def _groq_mark(resp=None):
+    """記錄一次 Groq 請求結束時間與 usage；任何錯誤都吞掉（統計不可影響主流程）。"""
+    try:
+        _GROQ_STATE['last_end'] = time.time()
+        u = getattr(resp, 'usage', None) if resp is not None else None
+        _GROQ_STATE['last_usage'] = ({'prompt_tokens': getattr(u, 'prompt_tokens', None),
+                                      'completion_tokens': getattr(u, 'completion_tokens', None),
+                                      'total_tokens': getattr(u, 'total_tokens', None)}
+                                     if u is not None else None)
+    except Exception as e:
+        print(f"  ⚠ Groq 呼叫紀錄失敗（不影響資料生成）：{e}")
+
+def _groq_wait_window():
+    """距離上一個 Groq 請求結束未滿 GROQ_WINDOW_GAP 秒就補睡到滿；本次執行還沒呼叫過就不等。"""
+    try:
+        last = _GROQ_STATE.get('last_end') or 0.0
+        if last <= 0:
+            return
+        wait = GROQ_WINDOW_GAP - (time.time() - last)
+        if wait > 0:
+            print(f"  → 避開 TPM 限流，距上一個 Groq 請求未滿 {GROQ_WINDOW_GAP} 秒，休息 {wait:.0f} 秒...")
+            time.sleep(wait)
+    except Exception as e:
+        print(f"  ⚠ Groq 間隔計算失敗（略過等待）：{e}")
+
 _GENERIC_LABELS = {
     '受益','受損','受壓','獲益','利好','利空','影響','波及','受害',
     '上漲','下跌','提升','下降','增加','減少','擴大','縮小'
@@ -903,6 +1049,7 @@ def fix_chains(data):
         '[{"id":0,"chain":[{"label":"具體公司+方向","type":"up"}]}]'
     )
     try:
+        _groq_wait_window()
         resp = client.chat.completions.create(
             model="openai/gpt-oss-120b",
             reasoning_effort="low",
@@ -912,6 +1059,7 @@ def fix_chains(data):
             ],
             temperature=0.3, max_tokens=800,
         )
+        _groq_mark(resp)
         raw = resp.choices[0].message.content.strip()
         if raw.startswith('```'):
             raw = raw.split('\n',1)[-1].rsplit('```',1)[0].strip()
@@ -966,6 +1114,7 @@ def validate_impact(data):
         '輸出純JSON陣列（直接從[開始）：[{"title":"原標題","impact":"修正後impact或空字串"}]'
     )
     try:
+        _groq_wait_window()
         resp = client.chat.completions.create(
             model="openai/gpt-oss-120b",
             reasoning_effort="low",
@@ -975,6 +1124,7 @@ def validate_impact(data):
             ],
             temperature=0.1, max_tokens=1200,
         )
+        _groq_mark(resp)
         raw = resp.choices[0].message.content.strip()
         if raw.startswith('```'):
             raw = raw.split('\n', 1)[-1].rsplit('```', 1)[0].strip()
@@ -1043,6 +1193,7 @@ def dedup_and_freshness_check(data, recent_items):
         '"stale_background":[{"title":"目前條目中屬於背景陳述的core title","reason":"一句話說明為何是背景陳述"}]}'
     )
     try:
+        _groq_wait_window()
         resp = client.chat.completions.create(
             model="openai/gpt-oss-120b",
             reasoning_effort="low",
@@ -1052,6 +1203,7 @@ def dedup_and_freshness_check(data, recent_items):
             ],
             temperature=0.1, max_tokens=1000,
         )
+        _groq_mark(resp)
         raw = resp.choices[0].message.content.strip()
         if raw.startswith('```'):
             raw = raw.split('\n', 1)[-1].rsplit('```', 1)[0].strip()
@@ -1155,10 +1307,12 @@ def call_groq(prompt):
                 temperature=0.3,
                 max_tokens=4000,
             )
+            _groq_mark(response)
             if model != models[0]:
                 print(f"  → 使用備用模型 {model}")
             break
         except GroqAPIStatusError as e:
+            _groq_mark(None)
             if e.status_code == 413 and model != models[-1]:
                 print(f"  → {model} 超出 TPM，切換備用模型…")
                 continue
@@ -1650,6 +1804,7 @@ def validate_body(data, news_by_cat):
         '只輸出純JSON陣列：[{"title":"原標題","downgrade":true或false}]'
     )
     try:
+        _groq_wait_window()
         resp = client.chat.completions.create(
             model="openai/gpt-oss-120b",
             reasoning_effort="low",
@@ -1659,6 +1814,7 @@ def validate_body(data, news_by_cat):
             ],
             temperature=0.1, max_tokens=500,
         )
+        _groq_mark(resp)
         raw = resp.choices[0].message.content.strip()
         if raw.startswith('```'):
             raw = raw.split('\n', 1)[-1].rsplit('```', 1)[0].strip()
@@ -2279,6 +2435,23 @@ def _fa_drop_sentences(text, tokens):
     kept = [p for p in parts if p.strip() and not any(_fa_token_in(t, _fa_norm_body(p)) for t in tokens)]
     return ''.join(kept).strip()
 
+FA_FRAGMENT_MIN_CHARS = 60
+_FA_DANGLING_START = re.compile(r'^[，,、；;：:）)」』”]|^(?:此外|另外|同時|並且|而且|但是|然而|不過|因此|因而|所以|但|且|並|也)')
+_FA_SENT_END = re.compile(r'[。！？.!?」』”）)]\s*$')
+
+def _fa_body_is_fragment(body):
+    """enforce 刪句後的 body 是否只剩殘句：少於 60 字、括號／引號不成對、
+    開頭是接續詞或標點（前一句被刪掉）、或結尾沒有句末標點。"""
+    b = (body or '').strip()
+    if len(b) < FA_FRAGMENT_MIN_CHARS:
+        return True
+    for o, c in (('（', '）'), ('(', ')'), ('「', '」'), ('『', '』'), ('“', '”')):
+        if b.count(o) != b.count(c):
+            return True
+    if _FA_DANGLING_START.search(b):
+        return True
+    return not _FA_SENT_END.search(b)
+
 def fact_audit(data, news_by_cat, mode=None):
     """方案 B。log：只記錄到 RUN_STATS['fact_audit']；enforce：刪含疑似補寫字串的句子，
     刪完 body 不達標（_body_is_low_quality）的 core 降 opp；off：不跑。回傳 audit dict。"""
@@ -2289,7 +2462,7 @@ def fact_audit(data, news_by_cat, mode=None):
     all_text = '\n'.join(m['text'] for m in idx.values())
     audit = {'mode': mode, 'checked': 0, 'suspect_cards': 0, 'tense_flags': 0, 'no_material': 0,
              'low_coverage': {'checked': 0, 'suspect_cards': 0, 'skipped_enforce': 0}, 'enforced': 0,
-             'title_suspect_cards': 0, 'removed': 0, 'items': []}
+             'title_suspect_cards': 0, 'removed': 0, 'fragment_restored': 0, 'items': []}
     for sec in ('hw', 'corp', 'app'):
         removals = []
         for item in data.get(sec, []):
@@ -2329,6 +2502,7 @@ def fact_audit(data, news_by_cat, mode=None):
                     # 標題疑似只記錄，不刪改、不降評；單張卡例外不中斷其餘卡片
                     try:
                         toks = [s['token'] for s in res['suspects']]
+                        orig_insight = item.get('insight')
                         new_body = _fa_drop_sentences(item.get('body', ''), toks)
                         if not new_body:
                             # 全部句子都疑似：整張移除（網頁與 Email 都不看 rating，noise 仍會顯示原句）。
@@ -2341,7 +2515,19 @@ def fact_audit(data, news_by_cat, mode=None):
                             new_body = None
                         elif item.get('insight'):
                             item['insight'] = _fa_drop_sentences(item.get('insight'), toks)
-                        if new_body:
+                        if new_body and _fa_body_is_fragment(new_body):
+                            # 11-09：刪句後只剩殘句（<60 字或句子明顯不完整）→ 還原整張原文
+                            # （body 與 insight 都不動），讓讀者看到的是完整句子；疑似字串仍列在
+                            # rec['suspects'] 可追查。原文含疑似補寫句，core 比照舊版刪句後降 opp
+                            if 'insight' in item:
+                                item['insight'] = orig_insight
+                            if item.get('rating') == 'core':
+                                item['rating'] = 'opp'
+                                rec['downgraded'] = True
+                            rec['action'] = 'fragment_restored'
+                            rec['dropped_body'] = new_body
+                            audit['fragment_restored'] += 1
+                        elif new_body:
                             item['body'] = new_body
                             if item.get('rating') == 'core' and _body_is_low_quality(new_body):
                                 item['rating'] = 'opp'
@@ -2369,6 +2555,72 @@ def fact_audit(data, news_by_cat, mode=None):
     except Exception as e:
         print(f"  ⚠ 漏斗統計收集失敗（fact_audit，不影響資料生成）：{e}")
     return audit
+
+# ── 閘門紀錄（11-09）：包住生成後的每一關，比對前後差異寫進 RUN_STATS['gate_removed']，
+# 讓「卡片被哪一關刪掉／降評」查得到。只加紀錄、不改任何閘門判斷；閘門本身的例外照舊往外丟
+# （行為與直接呼叫相同），只有紀錄邏輯出錯時吞掉並印警告。
+GATE_LOG_MAX = 60
+_RATING_RANK = {'core': 2, 'opp': 1, 'noise': 0}
+
+def _gate_snapshot(data):
+    snap = {}
+    for sec in ('hw', 'corp', 'app'):
+        for item in data.get(sec, []) or []:
+            if isinstance(item, dict):
+                snap[id(item)] = (sec, item, item.get('rating'), (item.get('source') or '').strip())
+    return snap
+
+def _gate_reason(gate, title, action):
+    """盡量帶出該關自己記的理由；沒有就回傳通用說明。"""
+    try:
+        if gate == 'dedup_and_freshness_check':
+            for a in RUN_STATS.get('dedup_audit') or []:
+                if a.get('title') == title:
+                    return (a.get('reason') or '')[:120]
+        if gate == 'fact_audit':
+            for a in (RUN_STATS.get('fact_audit') or {}).get('items', []):
+                if a.get('title') == (title or '')[:60]:
+                    return ('suspects=' + ','.join(a.get('suspects') or [])
+                            + (('；' + a['action']) if a.get('action') else ''))[:120]
+    except Exception:
+        pass
+    return action
+
+def _run_gate(name, fn, data, *args):
+    try:
+        before = _gate_snapshot(data)
+    except Exception as e:
+        print(f"  ⚠ 閘門紀錄失敗（{name}，不影響資料生成）：{e}")
+        before = None
+    result = fn(data, *args)
+    if before is None:
+        return result
+    try:
+        after = _gate_snapshot(data)
+        log = RUN_STATS.setdefault('gate_removed', [])
+        events = []
+        for key, (sec, item, rating, src) in before.items():
+            title = (item.get('title') or '')
+            if _is_placeholder(item) and key not in after:
+                action = 'placeholder_removed'
+            elif key not in after:
+                action = 'removed'
+            else:
+                new_rating = after[key][2]
+                if new_rating != rating:
+                    action = f"rating {rating}→{new_rating}"
+                elif src and not after[key][3]:
+                    action = 'source_cleared'
+                else:
+                    continue
+            events.append({'section': sec, 'title': title[:60], 'gate': name,
+                           'action': action, 'reason': _gate_reason(name, title, action)})
+        for ev in events:
+            if len(log) < GATE_LOG_MAX:
+                log.append(ev)
+    except Exception as e:
+        print(f"  ⚠ 閘門紀錄失敗（{name}，不影響資料生成）：{e}")
+    return result
 
 # ══════════════════════════════════════════════════════════════════
 #  5. HISTORY
@@ -2779,8 +3031,10 @@ if __name__ == '__main__':
                 weekly_parts.append(result['weekly_summary'])
             print(f"  → {cat} 完成，{len(data[cat])} 則")
             try:
+                # 原始回傳數：在任何閘門之前記（含 LLM 自己給的佔位卡）
                 RUN_STATS['llm_items'][cat] = len(data[cat])
                 RUN_STATS['llm_failed'][cat] = False
+                RUN_STATS.setdefault('llm_usage', {})[cat] = _GROQ_STATE.get('last_usage')
             except Exception as e:
                 print(f"  ⚠ 漏斗統計收集失敗（LLM/{cat}，不影響資料生成）：{e}")
         except Exception as e:
@@ -2820,46 +3074,46 @@ if __name__ == '__main__':
         print(f"  ⚠ 漏斗統計收集失敗（llm_ratings，不影響資料生成）：{e}")
 
     print("🔗 驗證 source URL...")
-    validate_sources(data)
+    _run_gate('validate_sources', validate_sources, data)
     # 放在 validate_sources 之後：來源已失效（source 被清空）的卡不白抓、也不會只剩一行「僅摘要」
     if DEEPEN_THIN_CARDS:
         print("📖 補深薄卡（補抓全文重寫）...")
-        deepen_thin_cards(data, news_by_cat)
+        _run_gate('deepen_thin_cards', deepen_thin_cards, data, news_by_cat)
     print("📉 品質管線（降評低品質條目）...")
-    remove_repeated_stories(data, recent_titles)
-    downgrade_unsourced(data)
+    _run_gate('remove_repeated_stories', remove_repeated_stories, data, recent_titles)
+    _run_gate('downgrade_unsourced', downgrade_unsourced, data)
     print("🔍 body 品質檢核...")
-    downgrade_low_quality(data)
+    _run_gate('downgrade_low_quality', downgrade_low_quality, data)
     print("🔍 impact 品質檢核（換句話說偵測）...")
-    downgrade_shallow_impact(data)
+    _run_gate('downgrade_shallow_impact', downgrade_shallow_impact, data)
     print("🚨 幻覺 pattern 攔截...")
-    downgrade_hallucination_patterns(data)
-    downgrade_hallucinated(data)
+    _run_gate('downgrade_hallucination_patterns', downgrade_hallucination_patterns, data)
+    _run_gate('downgrade_hallucinated', downgrade_hallucinated, data)
     print("🎯 HW 區跑偏偵測...")
-    downgrade_hw_offtopic(data)
+    _run_gate('downgrade_hw_offtopic', downgrade_hw_offtopic, data)
     print("🔤 禁句 pattern 攔截...")
-    downgrade_forbidden_phrases(data)
+    _run_gate('downgrade_forbidden_phrases', downgrade_forbidden_phrases, data)
     print("🔁 跨條目重複偵測...")
-    downgrade_cross_item_duplicates(data)
+    _run_gate('downgrade_cross_item_duplicates', downgrade_cross_item_duplicates, data)
     print("🔗 跨分類同網址重複移除...")
-    remove_cross_item_url_duplicates(data)
-    strip_noise_impact(data)
+    _run_gate('remove_cross_item_url_duplicates', remove_cross_item_url_duplicates, data)
+    _run_gate('strip_noise_impact', strip_noise_impact, data)
     print("🔎 body 聲明 LLM 驗證...")
-    validate_body(data, news_by_cat)
+    _run_gate('validate_body', validate_body, data, news_by_cat)
     print("🔗 supply chain 品質檢核...")
-    fix_chains(data)
+    _run_gate('fix_chains', fix_chains, data)
     print("🔎 impact 因果驗證...")
-    validate_impact(data)
+    _run_gate('validate_impact', validate_impact, data)
     print("🧠 語意去重/新鮮度檢核...")
-    dedup_and_freshness_check(data, recent_items)
+    _run_gate('dedup_and_freshness_check', dedup_and_freshness_check, data, recent_items)
     print("🔍 主角矛盾偵測...")
-    fix_protagonist_as_competitor(data)
+    _run_gate('fix_protagonist_as_competitor', fix_protagonist_as_competitor, data)
     print("🧹 佔位卡攔截（真實卡存在時移除並存佔位卡）...")
-    drop_stale_placeholders(data)
+    _run_gate('drop_stale_placeholders', drop_stale_placeholders, data)
     if FACT_CHECK_MODE != 'off':
         print(f"🧾 原文比對稽核（FACT_CHECK_MODE={FACT_CHECK_MODE}）...")
         try:
-            fact_audit(data, news_by_cat)
+            _run_gate('fact_audit', fact_audit, data, news_by_cat)
         except Exception as e:
             print(f"  ⚠ 原文比對稽核失敗（略過，不影響資料生成）：{e}")
 
