@@ -240,12 +240,14 @@ def conclusion(good, warn):
 
 
 # ---------- HTML ----------
-TD = 'padding:6px 8px;border-bottom:1px solid #e8e2d6;font-size:13px;'
+TD = 'padding:6px 8px;border-bottom:1px solid #ece8e2;font-size:13px;color:#4a4744;'
+TH = ('padding:6px 8px;border-bottom:1px solid #ece8e2;font-size:11px;'
+      'color:#9e9890;text-align:left;font-weight:600;')
+LINK = 'https://resolutetinging.github.io/sleep-dashboard/sleep_dashboard_v3_live.html'
 
 
 def table(headers, rows):
-    h = ''.join('<th style="%stext-align:left;color:#6a6460;">%s</th>'
-                % (TD, esc(x)) for x in headers)
+    h = ''.join('<th style="%s">%s</th>' % (TH, esc(x)) for x in headers)
     body = ''
     for r in rows:
         body += '<tr>' + ''.join(
@@ -270,14 +272,24 @@ LABELS = ['平均時數', '睡滿 7h', '6h 以下', '平均入睡', '入睡波�
           '平均起床', '深睡', '夜間清醒', '效率', '晚數']
 
 
-def section(title, items):
-    if items:
-        lines = ''.join('<div style="margin:3px 0;">・%s</div>' % esc(x) for x in items)
-    else:
-        lines = '<div style="margin:3px 0;">無</div>'
-    return ('<div style="margin-top:16px;font-weight:700;font-size:14px;'
-            'color:#4a4540;">%s</div><div style="font-size:13px;'
-            'color:#4a4540;">%s</div>' % (esc(title), lines))
+def card(inner, color, bg='#faf9f7'):
+    return ('<div style="background:%s;border-left:3px solid %s;'
+            'padding:14px 16px;margin:10px 0;border-radius:0 6px 6px 0;">'
+            '%s</div>' % (bg, color, inner))
+
+
+def head(title, color):
+    return ('<h3 style="margin:22px 0 4px;font-size:14px;font-weight:700;'
+            'color:%s;border-bottom:2px solid %s33;padding-bottom:6px;">%s</h3>'
+            % (color, color, esc(title)))
+
+
+def section(title, items, color, bg='#faf9f7'):
+    out = head(title, color)
+    for x in (items or ['無']):
+        out += card('<div style="font-size:13px;line-height:1.6;'
+                    'color:#4a4744;">%s</div>' % esc(x), color, bg)
+    return out
 
 
 def build(nights, today):
@@ -294,8 +306,9 @@ def build(nights, today):
 
     stale = ''
     if L < today - one:
-        stale = ('<div style="background:#fbeed5;color:#7a5a10;padding:8px 10px;'
-                 'font-size:13px;margin-bottom:12px;">最新睡眠資料停在 %s，'
+        stale = ('<div style="background:#fff8f0;border-left:3px solid #c07030;'
+                 'padding:10px 14px;margin:14px 0 0;font-size:13px;color:#805020;'
+                 'border-radius:0 6px 6px 0;">最新睡眠資料停在 %s，'
                  '近期幾晚可能尚未同步</div>' % esc(md(L)))
 
     cols = [metric_cells(cur), metric_cells(prev), metric_cells(total)]
@@ -314,25 +327,48 @@ def build(nights, today):
                           hhmm(w['bed']), '%d 分' % rnd(w['awake']), '%d' % w['n']])
     t2 = table(['週別', '平均時數', '睡滿 7h', '平均入睡', '夜間清醒', '晚數'], wrows)
 
+    span = rng(L - 13 * one, L)
+    summary = ('<div style="background:#fdf8f0;border:1px solid #d4b060;'
+               'border-radius:8px;padding:14px 16px;margin:18px 0 0;">'
+               '<div style="font-size:14px;font-weight:700;color:#8a6a20;'
+               'margin-bottom:8px;">%s</div>'
+               '<div style="border-left:2px solid #d4b060;padding:3px 0 3px 10px;'
+               'font-size:13px;line-height:1.6;color:#4a4744;">%s</div></div>'
+               % (esc('📊 這兩週'), esc(concl)))
+    button = ('<a href="%s" style="display:inline-block;background:#5a7fa8;'
+              'color:#ffffff;padding:10px 24px;border-radius:8px;font-size:13px;'
+              'font-weight:700;text-decoration:none;">%s</a>'
+              % (LINK, esc('🔗 查看睡眠頁 →')))
     doc = (
         '<!DOCTYPE html><html><head><meta charset="utf-8"><title>%s</title></head>'
-        '<body style="margin:0;padding:0;background:#faf6ee;">'
-        '<table width="100%%" cellpadding="0" cellspacing="0"><tr><td align="center">'
+        '<body style="margin:0;padding:0;background:#eceae6;">'
+        '<table width="100%%" cellpadding="0" cellspacing="0" '
+        'style="background:#eceae6;"><tr><td align="center">'
         '<table width="620" cellpadding="0" cellspacing="0" style="max-width:620px;'
-        'background:#ffffff;font-family:-apple-system,Helvetica,Arial,sans-serif;">'
-        '<tr><td style="padding:20px;color:#4a4540;">'
-        '%s'
-        '<div style="font-size:18px;font-weight:700;">%s</div>'
-        '<div style="margin:10px 0 16px;font-size:14px;line-height:1.6;">%s</div>'
-        '%s'
-        '<div style="margin-top:20px;font-weight:700;font-size:14px;">近 4 週逐週</div>'
-        '%s%s%s%s'
-        '<div style="margin-top:20px;font-size:11px;color:#9e9890;">%s</div>'
-        '</td></tr></table></td></tr></table></body></html>'
-    ) % (esc(subject), stale, esc(subject), esc(concl), t1, t2,
-         section('有進步', [s for _, s in good]),
-         section('需要注意', [s for _, s in warn]),
-         section('建議', recs), esc(NOTE))
+        'width:100%%;background:#faf9f7;font-family:\'Segoe UI\',sans-serif;">'
+        '<tr><td style="padding:24px 28px;color:#4a4744;">'
+        '<div style="padding-bottom:14px;border-bottom:1px solid #d8d4ce;">'
+        '<div style="font-size:20px;font-weight:800;color:#2c2a28;">%s</div>'
+        '<div style="font-size:13px;color:#9e9890;margin-top:4px;">'
+        '%s &nbsp;&middot;&nbsp; %s</div></div>'
+        '%s%s'
+        '%s%s'
+        '%s%s'
+        '%s%s%s'
+        '<div style="margin-top:28px;padding-top:18px;border-top:1px solid #d8d4ce;'
+        'text-align:center;">%s'
+        '<div style="margin-top:12px;font-size:11px;color:#b0b0b0;">%s</div>'
+        '<div style="margin-top:4px;font-size:11px;color:#b0b0b0;">%s</div>'
+        '</div></td></tr></table></td></tr></table></body></html>'
+    ) % (esc(subject), esc('🌙 睡眠兩週總覽'), esc(span), esc('自動更新'),
+         stale, summary,
+         head('📈 數字對照', '#5a7fa8'), card(t1, '#5a7fa8'),
+         head('🗓 近 4 週逐週', '#7a756f'), card(t2, '#7a756f'),
+         section('✅ 有進步', [x for _, x in good], '#4a8a6a'),
+         section('⚠️ 需要注意', [x for _, x in warn], '#a07040'),
+         section('💡 建議', recs, '#3a6860', '#f0f8f6'),
+         button, esc(NOTE),
+         esc('Sleep Dashboard · 自動產生 · %s' % today.strftime('%Y-%m-%d')))
     return subject, doc, cur, prev
 
 
