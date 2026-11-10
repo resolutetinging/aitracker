@@ -1,0 +1,28 @@
+name: Sleep Biweekly Email
+
+on:
+  schedule:
+    - cron: '30 2 1,15 * *'  # 每月 1 日、15 日 02:30 UTC（台北 10:30）
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Send sleep biweekly email
+        env:
+          NOTIFY_EMAIL:       ${{ secrets.NOTIFY_EMAIL }}
+          GMAIL_USER:         ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: python scripts/sleep_biweekly_email.py
