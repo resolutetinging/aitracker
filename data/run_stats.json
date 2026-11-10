@@ -2,6 +2,227 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 70,
+        "CSP/CapEx": 57,
+        "App/AI": 31,
+        "gnews-chip": 24,
+        "gnews-dc": 23,
+        "gnews-app": 18
+      },
+      "digest_filtered": 0,
+      "after_dedup": 201,
+      "buckets": {
+        "hw": 58,
+        "corp": 136,
+        "app": 45
+      },
+      "news_char_budget": {
+        "hw": 6000,
+        "corp": 8000,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 58,
+          "full_text_total": 4,
+          "full_text_sent": 4,
+          "sent": 14,
+          "partial_cut": 0,
+          "chars_sent": 5898,
+          "dropped": 44
+        },
+        "corp": {
+          "mode": "slice",
+          "budget": 8000,
+          "candidates": 136,
+          "full_text_total": 4,
+          "full_text_sent": 4,
+          "sent": 13,
+          "partial_cut": 1,
+          "chars_sent": 8000,
+          "dropped": 123
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 45,
+          "full_text_total": 4,
+          "full_text_sent": 4,
+          "sent": 12,
+          "partial_cut": 0,
+          "chars_sent": 5832,
+          "dropped": 33
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 2,
+        "app": 3
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 4637,
+          "completion_tokens": 409,
+          "total_tokens": 5046
+        },
+        "corp": {
+          "prompt_tokens": 5279,
+          "completion_tokens": 1127,
+          "total_tokens": 6406
+        },
+        "app": {
+          "prompt_tokens": 5244,
+          "completion_tokens": 1978,
+          "total_tokens": 7222
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "hw",
+          "title": "本日無相關hw新聞",
+          "gate": "remove_repeated_stories",
+          "action": "removed",
+          "reason": "removed"
+        },
+        {
+          "section": "app",
+          "title": "TEKsystems 成為 Google Cloud Gemini 醫療保健的 Launch Partner",
+          "gate": "downgrade_forbidden_phrases",
+          "action": "rating core→opp",
+          "reason": "rating core→opp"
+        },
+        {
+          "section": "app",
+          "title": "PwC 將 Google Cloud Gemini 醫療版導入日常工作流程",
+          "gate": "downgrade_forbidden_phrases",
+          "action": "rating core→opp",
+          "reason": "rating core→opp"
+        },
+        {
+          "section": "app",
+          "title": "Deerfield 與 AWS 合作在醫療投資組合中擴大 AI 應用",
+          "gate": "fact_audit",
+          "action": "removed",
+          "reason": "suspects=2024年,30；all_suspect_removed"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 2,
+          "noise": 0
+        }
+      },
+      "placeholders": 1,
+      "llm_ratings": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "deepen": {
+        "candidates": 0,
+        "rewritten": 0,
+        "fetch_failed": 0,
+        "llm_failed": 0
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 5,
+        "suspect_cards": 3,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 3,
+        "title_suspect_cards": 0,
+        "removed": 1,
+        "fragment_restored": 0,
+        "items": [
+          {
+            "sec": "app",
+            "title": "TEKsystems 成為 Google Cloud Gemini 醫療保健的 Launch Partner",
+            "source": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOekJnV0RzemJYZ05TNEpacUlSQ0lTN1NrZHE3d0dJVU03TWE1Y1pIRHE0ZThocWE1WTQ4Vnc5c2RvRXV2TlNjV1RhOS1kamhsZ3Q2T1ByUF8zQ0xfZnI2RnBIME9VQl94QWNGOHh4YU40a3NBU2p5UDJrdXNKaWtOUzVPWjJMVWFkRHhDR1oxWXYtdzRkMmR4Zi1yUUplWGVTRlFQN2Zjc3kwNDNfMDVmNFZERHlJZTZ2V3VxZTBteFh0WUZTZHBoaldoX05QZmRhblE?oc=5",
+            "rating": "opp",
+            "coverage": "full",
+            "suspects": [
+              "2024年"
+            ],
+            "undetermined": [],
+            "tense_flag": false,
+            "title_suspects": []
+          },
+          {
+            "sec": "app",
+            "title": "PwC 將 Google Cloud Gemini 醫療版導入日常工作流程",
+            "source": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQZ0FYZHc2NE13MUE2U0k4R0RvLWVZZnAzX0xFV0ZTQVd5S2ZrbHRzQ05KWTZmWjNlZXZPZXB1VHBtZVJXWUlib2xCY21vOGtHems0VVI4RUtqcU9xSExVTzB2MGMyeFRSR0ZKQlVuVkYzN0s4Zk80MFp1TkUwYnN5MXUxYllpUk93djU4Smo4dmxIODR0cDk1WVc5aktDM2VNQXJIb0xPSXIxN01VRk5YNWlZWEhYd0hQQjlteEV5SjJ6a28?oc=5",
+            "rating": "opp",
+            "coverage": "full",
+            "suspects": [
+              "2024年"
+            ],
+            "undetermined": [],
+            "tense_flag": false,
+            "title_suspects": []
+          },
+          {
+            "sec": "app",
+            "title": "Deerfield 與 AWS 合作在醫療投資組合中擴大 AI 應用",
+            "source": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQNXdxT1pTeEhtUUp4bEJFdER2TklGMUNpNTVtZEdxNnBJajlPLVVTSUd2T1ZRY1BRSzlIWGsxeXRGRkkzbnBhUjMtVlE3bGZUbDZ1YnZWU1h2cldpWXVHNUZCU3dySUhzMDI1cEtYcGVtcHVRSVFtUU1CVEhzNUJTSmZHbnVGM2pQOXdsaTFUOA?oc=5",
+            "rating": "opp",
+            "coverage": "full",
+            "suspects": [
+              "2024年",
+              "30"
+            ],
+            "undetermined": [
+              "1 億美元"
+            ],
+            "tense_flag": false,
+            "title_suspects": [],
+            "action": "all_suspect_removed",
+            "removed_body": "Deerfield Management 與 Amazon Web Services 簽署合作協議，利用 AWS 的 AI 基礎設施在其持有的 30 家醫療公司中部署機器學習模型，以提升診斷與藥物研發效率。協議預計在 2024 年底前完成全部部署，涉及超過 1 億美元的雲端資源支出。"
+          }
+        ]
+      },
+      "date": "2026-11-11",
+      "generated_at": "2026-11-11T00:07:58.436934+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 51,
         "CSP/CapEx": 48,
         "App/AI": 18,
@@ -1489,118 +1710,6 @@
       },
       "date": "2026-10-29",
       "generated_at": "2026-10-29T00:04:20.839423+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 44,
-        "CSP/CapEx": 45,
-        "App/AI": 23,
-        "gnews-chip": 22,
-        "gnews-dc": 24,
-        "gnews-app": 19
-      },
-      "digest_filtered": 1,
-      "after_dedup": 165,
-      "buckets": {
-        "hw": 28,
-        "corp": 131,
-        "app": 27
-      },
-      "news_char_budget": {
-        "hw": 3500,
-        "corp": 8000,
-        "app": 3500
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 3,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 3,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [
-        {
-          "title": "Nvidia 與 AMD 合計投資 40 億美元於 Meta AI 基礎建設",
-          "section": "hw",
-          "action": "removed",
-          "matched_title": "Meta 計畫募集 95 億美元資金支援 AI 基礎建設",
-          "reason": "兩篇皆描述 Nvidia、AMD、Broadcom 對 Meta AI 基礎建設的投資與募集計畫，同一事件"
-        },
-        {
-          "title": "Anthropic IPO 招股說明書揭露逾 5,000 億美元十年計算支出",
-          "section": "corp",
-          "action": "removed",
-          "matched_title": "Anthropic 申請 IPO 以 80.7 億美元淨虧損上市",
-          "reason": "皆關於 Anthropic 提交 IPO 註冊文件並披露未來計算支出，屬同一次 IPO 申請事件"
-        }
-      ],
-      "fact_audit": {
-        "mode": "log",
-        "checked": 2,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 0,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": [
-          {
-            "sec": "corp",
-            "title": "OpenAI 推出成本效益更高的 GPT-6.1 Terra 中階模型",
-            "source": "https://www.theregister.com/ai-and-ml/2026/10/26/openai-rolls-out-budget-priced-mid-tier-gpt-61-terra/5305574",
-            "rating": "core",
-            "coverage": "full",
-            "suspects": [],
-            "undetermined": [
-              "1/2"
-            ],
-            "tense_flag": false
-          }
-        ]
-      },
-      "date": "2026-10-28",
-      "generated_at": "2026-10-28T00:04:09.748860+08:00"
     }
   ]
 }

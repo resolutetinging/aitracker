@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-10",
+ "updated": "2026-11-11",
  "since": "2026-07-01",
  "entities": [
   {
@@ -946,7 +946,7 @@
   {
    "week": "2026-W46",
    "start": "2026-11-09",
-   "cards": 6,
+   "cards": 10,
    "dims": {
     "hw": {
      "core": 0,
@@ -954,13 +954,13 @@
      "noise": 0
     },
     "corp": {
-     "core": 0,
+     "core": 2,
      "opp": 3,
      "noise": 0
     },
     "app": {
      "core": 2,
-     "opp": 1,
+     "opp": 3,
      "noise": 0
     }
    },
@@ -969,16 +969,14 @@
     "Physical AI": 1,
     "Meta": 1,
     "推論": 1,
-    "OpenAI": 1
+    "OpenAI": 1,
+    "Anthropic": 2,
+    "Microsoft": 1,
+    "Google": 2
    }
   }
  ],
  "seen": [
-  "2026-10-20|Anthropic 與 METR、SecureBio 合作評估 AI 風險與安全實務",
-  "2026-10-20|Edvance 與 CWG 發布 RealRelay 金融 AI 代理服務",
-  "2026-10-20|Google 宣稱其明尼蘇達 AI 資料中心將使用清潔能源",
-  "2026-10-20|NTL Healthcare 推出本地部署 AI 子宮頸篩檢平台",
-  "2026-10-20|Nvidia 推出新開放模型以支援企業與 PC 端 AI 代理人",
   "2026-10-21|Amazon 承諾以未驗證核能技術供電印第安納資料中心",
   "2026-10-21|Amazon 推出 TorchNeuron 開發工具以削減對 Nvidia 的依賴",
   "2026-10-21|Anthropic 承諾以 5% 股份設立公共利益基金應對 AI 工作取代",
@@ -1054,6 +1052,10 @@
   "2026-11-10|AWS 承諾 1 億美元雲端與 AI 信用額度以縮小健康公平差距",
   "2026-11-10|Doximity 將臨床 AI 擴展至超過 190 家健康系統",
   "2026-11-10|OpenAI CFO 表示即使選舉結果不利仍將持續投資 AI 資料中心",
-  "2026-11-10|Tencent 推動跨境支付 AI 應用於金融服務"
+  "2026-11-10|Tencent 推動跨境支付 AI 應用於金融服務",
+  "2026-11-11|Anthropic Mythos 模型整合至 Cisco 與 IBM 安全產品",
+  "2026-11-11|Microsoft 預設在英國 Copilot 租戶啟用 Anthropic Claude 模型",
+  "2026-11-11|PwC 將 Google Cloud Gemini 醫療版導入日常工作流程",
+  "2026-11-11|TEKsystems 成為 Google Cloud Gemini 醫療保健的 Launch Partner"
  ]
 }

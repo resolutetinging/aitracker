@@ -1,5 +1,157 @@
 [
   {
+    "date": "2026-11-11",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "Microsoft 預設在英國 Copilot 租戶啟用 Anthropic Claude 模型",
+        "layer": "core",
+        "body": "Microsoft 將於 12 月 9 日起，對尚未設定的英國 Copilot 租戶預設開啟 Anthropic 的 Claude 模型存取權。Anthropic 以 Microsoft 子處理者身分，於美國處理相關資料。若管理員未在期限前停用，視同同意使用。",
+        "impact": "此舉直接增加美國資料中心對 Claude 輸入資料的需求，提升相關伺服器與網路帶寬使用量 (↑)。",
+        "rating": "core",
+        "insight": "英國企業若重視資料主權，將迫使 Microsoft 加速本地化模型部署或提供更靈活的合規選項。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/11/10/microsoft-is-giving-claude-the-keys-to-uk-copilot-tenants-by-default/5308693",
+        "chain": [
+          {
+            "label": "Microsoft Anthropic Claude 模型部署↑",
+            "type": "up"
+          },
+          {
+            "label": "Azure AI 服務需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic Mythos 模型整合至 Cisco 與 IBM 安全產品",
+        "layer": "core",
+        "body": "Anthropic 允許 Cisco 在其 AI Defense 套件中呼叫 Mythos 模型，以檢測客戶 AI 系統的弱點與不當行為。IBM 亦將同樣功能納入自家安全產品，且兩家公司均以現有授權提供，無需額外付費。",
+        "impact": "Mythos 模型需求提升將驅動 Anthropic 在美國資料中心的運算資源使用量 (↑)。",
+        "rating": "core",
+        "insight": "大型企業安全廠商採用 Mythos 代表 AI 安全市場正快速商業化，相關硬體供應鏈將受益於算力需求上升。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/11/10/anthropics-super-bug-finding-mythos-model-is-going-into-cisco-and-ibm-products/5308616",
+        "chain": [
+          {
+            "label": "Cisco AI Defense 產品整合 Anthropic Mythos↑",
+            "type": "up"
+          },
+          {
+            "label": "IBM 安全產品加入 Anthropic Mythos↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "TEKsystems 成為 Google Cloud Gemini 醫療保健的 Launch Partner",
+        "layer": "healthcare",
+        "body": "Google Cloud 宣布 TEKsystems Global Services 被指定為 Gemini for Healthcare 的 Launch Partner，負責協助醫療機構部署該大型語言模型平台。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "Google Cloud 透過合作夥伴快速切入醫療 AI 市場，可加速其平台在醫院供應鏈的滲透。",
+        "source_label": "Google Cloud Press Corner",
+        "source": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOekJnV0RzemJYZ05TNEpacUlSQ0lTN1NrZHE3d0dJVU03TWE1Y1pIRHE0ZThocWE1WTQ4Vnc5c2RvRXV2TlNjV1RhOS1kamhsZ3Q2T1ByUF8zQ0xfZnI2RnBIME9VQl94QWNGOHh4YU40a3NBU2p5UDJrdXNKaWtOUzVPWjJMVWFkRHhDR1oxWXYtdzRkMmR4Zi1yUUplWGVTRlFQN2Zjc3kwNDNfMDVmNFZERHlJZTZ2V3VxZTBteFh0WUZTZHBoaldoX05QZmRhblE?oc=5",
+        "chain": [
+          {
+            "label": "TEKsystems Google Cloud Gemini 醫療部署服務↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Cloud 醫療市場佔有率↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "PwC 將 Google Cloud Gemini 醫療版導入日常工作流程",
+        "layer": "healthcare",
+        "body": "PwC 宣布已將 Google Cloud Gemini for Healthcare 整合至其顧問服務平台，讓客戶在臨床決策、醫療記錄分析等日常工作中直接使用該模型。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "顧問巨頭採用雲端 AI 平台，可快速擴散技術至多家醫院，提升整體醫療 AI 供應鏈活躍度。",
+        "source_label": "Google Cloud Press Corner",
+        "source": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQZ0FYZHc2NE13MUE2U0k4R0RvLWVZZnAzX0xFV0ZTQVd5S2ZrbHRzQ05KWTZmWjNlZXZPZXB1VHBtZVJXWUlib2xCY21vOGtHems0VVI4RUtqcU9xSExVTzB2MGMyeFRSR0ZKQlVuVkYzN0s4Zk80MFp1TkUwYnN5MXUxYllpUk93djU4Smo4dmxIODR0cDk1WVc5aktDM2VNQXJIb0xPSXIxN01VRk5YNWlZWEhYd0hQQjlteEV5SjJ6a28?oc=5",
+        "chain": [
+          {
+            "label": "PwC Google Cloud Gemini 醫療版導入↑",
+            "type": "up"
+          },
+          {
+            "label": "北美與歐洲醫療機構 AI 使用率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "AI基礎設施",
+        "full": "Artificial Intelligence Infrastructure",
+        "def": "支援人工智慧模型訓練與推論的硬體與軟體組合，包括伺服器、加速卡、儲存與網路等資源。",
+        "why": "AI基礎設施是決定AI服務成本與效能的關鍵，供應鏈波動會直接影響相關產業的競爭力。",
+        "category": "hardware"
+      },
+      {
+        "term": "Claude",
+        "full": "Anthropic Claude 大型語言模型",
+        "def": "由 Anthropic 開發的對話式大型語言模型，支援多輪對話與指令執行，已在 Microsoft Azure 服務中提供。",
+        "why": "Microsoft 在英國 Copilot 預設啟用，涉及跨境資料處理與合規議題，影響雲端基礎設施需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Mythos",
+        "full": "Anthropic Mythos 漏洞偵測模型",
+        "def": "專為 AI 系統安全測試設計的模型，能自動發現模型、代理與應用程式中的弱點與不當行為。",
+        "why": "被 Cisco 與 IBM 整合至安全產品，代表 AI 安全工具的商業化趨勢。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI Defense",
+        "full": "Cisco AI Defense 安全套件",
+        "def": "Cisco 提供的 AI 安全平台，利用紅隊測試與模型分析功能，協助企業檢測 AI 系統的安全風險。",
+        "why": "新加入 Mythos 後可提升檢測深度，將推動相關硬體與算力需求上升。",
+        "category": "hardware"
+      },
+      {
+        "term": "Gemini for Healthcare",
+        "full": "Google Cloud Gemini for Healthcare",
+        "def": "Google Cloud 推出的專為醫療保健設計的大型語言模型平台，支援臨床文件自動化、診斷輔助與醫療數據分析。",
+        "why": "提供醫療機構快速部署 AI 功能的即服務解決方案，降低自行開發成本。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Launch Partner",
+        "full": "Launch Partner",
+        "def": "指在新產品或平台推出初期，協助客戶部署、整合與驗證的合作夥伴，通常具備特定產業的實作經驗。",
+        "why": "確保新平台在目標產業的快速落地與客製化應用。",
+        "category": "role"
+      },
+      {
+        "term": "Supply Chain Integrity & Fraud Solution",
+        "full": "Quantexa Supply Chain Integrity & Fraud Solution",
+        "def": "Quantexa 與 PwC 合作開發的供應鏈完整性與詐騙偵測解決方案，利用決策智慧平台在多層供應商網路中提供可視化與風險監控。",
+        "why": "協助企業在全球供應鏈中即時偵測異常與詐騙，提高營運安全。",
+        "category": "software"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-10",
     "is_sunday": false,
     "hw": [
@@ -882,104 +1034,6 @@
         "def": "Nvidia 針對資料中心與 AI 推論工作負載設計的高效能圖形處理器，支援大型語言模型的加速運算。",
         "why": "是 Revolut 部署 GLM‑5.3 所採用的關鍵硬體，直接影響 GPU 供應鏈需求。",
         "category": "hardware"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-11-04",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Marvell 以 1150 億美元收購 Lumentum 加速光子供應鏈",
-        "layer": "strategic_supplier_decision",
-        "body": "Marvell Technology 宣布以全股票交易方式收購光子元件領導廠商 Lumentum，交易總價約 1150 億美元。此舉將為 Marvell 帶來高效能雷射光源、光學收發器與光路交換晶片等關鍵光子產品。收購同時包含 Lumentum 的磷化銦化合物半導體製造能力，提升 Marvell 在光學互連領域的自製比例。",
-        "impact": "此收購直接提升 Marvell 在光子元件上游供應商（如磷化銦晶圓代工）的需求，預期相關代工廠產能使用率上升 (↑)。下游的 AI 伺服器與資料中心將因光學互連取代銅線而降低傳輸延遲與功耗，促使光學模組採購量增加 (↑)。長期看，光子供應鏈的擴張可能削弱傳統銅互連廠商的市場份額，對其營收形成下行壓力 (↓)。",
-        "rating": "core",
-        "insight": "Marvell 透過收購 Lumentum 把握光子互連成長機會，將加速光學元件在 AI 基礎設施的部署。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/11/02/marvell-wants-to-be-a-copper-topper-bets-115b-on-photonics-leader-to-push-optical-networking/5307028"
-      },
-      {
-        "title": "AI 晶片走私者利用貿易漏洞將韓國 HBM 運入中國",
-        "layer": "export_control_shift",
-        "body": "根據 Google News 報導，走私團隊利用貿易管制漏洞，將受禁運的高帶寬記憶體（HBM）從南韓非法運送至中國。該行為涉及多家供應鏈中介，並利用文件偽造掩蓋實際目的地。",
-        "impact": "此走私行為使中國的 HBM 供應短期內出現非官方增量，提升本地 AI 伺服器製造商的記憶體取得率 (↑)。同時，正規的 HBM 代工廠（如三星、SK 海力士）因需求被分流，出貨量可能下降 (↓)，進一步影響其上游晶圓代工與材料供應商的產能利用率。長遠看，貿易管制的執行難度提升，可能促使相關國家加強出口審查，導致全球 HBM 供應鏈的合規成本上升 (↑)。",
-        "rating": "opp",
-        "insight": "走私 HBM 暴露貿易管制漏洞，短期供應上升但長期合規成本將加劇供應鏈緊張。",
-        "source_label": "Google News",
-        "source": "https://news.google.com/rss/articles/CBMi4wJBVV95cUxNczB1bmd3Umc1VkpITE9hR0cybF9uMTNvT01RcWVodndZRlZpUS1TTTBDOEs2WlFWMGo5OC1UR2szQ3VENE1fbHFSYW9mdG52R3RwSVFfNjNRM2F0MGtIWFVWMzdpWndQYzg0OWNyV3l2NnV6SFNzNmVPOTVnYWxEZUFQRlZIbEdXbXBZNlpOTVBzVS1HSWhHaEVNcklmX2Vza3VZQ25KbU1KZzVKbS1INjZMN2Z5MEtCTmctT1hSVjhtYU0zdnhBcDNsQ1FmRkZWX2lDUjIya2RCdXFjR0J3V2JWdVFCMHZSbjlnSno5RDBkdnItOFFKTkVUNmhzU0tNY2ZFLXNGWkY5LU93VnROZFZqQi1sdldaN29zRExpN20xbnRUMjlnM216ZGtDaUsyWFVfY1pzY2N1eEFOMXlvWTNOUWNtTlNNa1R4WU1nYlpPcVFlZ0ZWZC13S2NHYnc1Ym5R?oc=5"
-      }
-    ],
-    "corp": [
-      {
-        "title": "Oracle 於 2027 財政年度借入 200 億美元上限資金",
-        "layer": "core",
-        "body": "Oracle 在 2026 財政年度結束後的 2027 財政年度計畫一次性借入 200 億美元，以支援其資料中心資本支出。該公司先前承諾在 2030 財政年度前將新借款上限定於 200 億美元，現已宣布將於 2027 財政年度內全部動用。此舉將用於營運資金、資本支出、合約義務、收購、股息、回購股票及償還債務等多項用途。",
-        "impact": "此筆巨額借款將直接提升資料中心建設需求，帶動晶圓代工（如 TSMC）與伺服器硬體供應商的訂單↑。上游的記憶體與高速互連供應鏈亦因資料中心擴張而需求↑，進一步推高相關元件的出貨量。競爭對手如 Microsoft 與 Google 可能面臨資金壓力較大，需加速自有資本投入以維持市場份額。",
-        "rating": "core",
-        "insight": "Oracle 大規模借款顯示 AI 資料中心資本支出正快速擴張，供應鏈上游需求將持續上揚。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/paas-and-iaas/2026/11/02/oracle-gobbles-20-billion-borrowing-limit-a-week-after-setting-it/5307014"
-      },
-      {
-        "title": "Apple 記憶體成本上升致毛利率下降至 45%~46%",
-        "layer": "opp",
-        "body": "Apple 在 2026 年 12 月季財報中透露，受全球記憶體成本上漲影響，預估本季毛利率將介於 45% 至 46%，低於分析師預期的 46.3%。CFO 表示此成本壓力主要來自記憶體價格上揚以及 Siri AI 相關支出。Apple 股價因毛利率下修而下跌 3%。",
-        "impact": "記憶體成本上升直接推高 iPhone 與 Mac 等終端產品的製造成本，導致供應鏈上游的 DRAM 與 NAND 供應商需求↑，但同時迫使 Apple 可能調整採購策略或尋求替代供應商，對記憶體廠商的訂單結構產生波動。下游零售與企業客戶面臨毛利率下降，可能轉向成本較低的競爭品牌，對 Apple 產品的市場佔有率形成下行壓力。",
-        "rating": "opp",
-        "insight": "記憶體價格持續高企將削弱 Apple 的毛利空間，供應鏈需關注成本傳導效應。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/11/03/apple-earnings-john-ternus-faces-first-test-amid-high-memory-costs.html"
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "光子晶片",
-        "full": "Photonics Chip",
-        "def": "利用光子（光子）而非電子傳輸訊號的晶片，可在高頻寬與長距離傳輸上優於銅線。",
-        "why": "光子晶片是未來 AI 伺服器高效能互連的關鍵技術，供應鏈上游包括磷化銦晶圓代工與光學元件製造商。",
-        "category": "hardware"
-      },
-      {
-        "term": "光學互連",
-        "full": "Optical Interconnect",
-        "def": "使用光纖或光子元件在伺服器與資料中心內部傳輸資料的技術。",
-        "why": "光學互連可突破銅線的頻寬與距離限制，成為 AI 基礎設施升級的主要方向。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "借款上限",
-        "full": "Borrowing Limit",
-        "def": "公司在特定期間內允許向金融機構或市場籌集的最高資金額度。此上限通常用於控制財務風險並規劃資本支出。",
-        "why": "了解借款上限有助於評估企業資本支出規模與資金來源的可持續性。",
-        "category": "finance"
-      },
-      {
-        "term": "毛利率",
-        "full": "Gross Margin",
-        "def": "營收扣除直接成本（如材料與製造費用）後的比例，反映產品或服務的盈利能力。",
-        "why": "毛利率變化直接顯示供應鏈成本波動對企業獲利的衝擊。",
-        "category": "financial_metric"
-      },
-      {
-        "term": "GMV",
-        "full": "Gross Merchandise Volume",
-        "def": "指平台在特定期間內完成的商品交易總額，常用於衡量電商平台的營運規模。",
-        "why": "GMV 直接反映平台的交易規模，對供應鏈上下游的需求預測與資源配置具有指標性意義。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
