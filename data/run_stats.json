@@ -4,6 +4,168 @@
       "feeds": {
         "Semiconductor": 70,
         "CSP/CapEx": 57,
+        "App/AI": 30,
+        "gnews-chip": 20,
+        "gnews-dc": 23,
+        "gnews-app": 14
+      },
+      "digest_filtered": 0,
+      "after_dedup": 191,
+      "buckets": {
+        "hw": 45,
+        "corp": 127,
+        "app": 45
+      },
+      "news_char_budget": {
+        "hw": 6000,
+        "corp": 8000,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 45,
+          "full_text_total": 4,
+          "full_text_sent": 3,
+          "sent": 14,
+          "partial_cut": 0,
+          "chars_sent": 5829,
+          "dropped": 31
+        },
+        "corp": {
+          "mode": "slice",
+          "budget": 8000,
+          "candidates": 127,
+          "full_text_total": 5,
+          "full_text_sent": 5,
+          "sent": 11,
+          "partial_cut": 1,
+          "chars_sent": 8000,
+          "dropped": 116
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 45,
+          "full_text_total": 3,
+          "full_text_sent": 3,
+          "sent": 13,
+          "partial_cut": 0,
+          "chars_sent": 5888,
+          "dropped": 32
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 2,
+        "app": 1
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 4650,
+          "completion_tokens": 448,
+          "total_tokens": 5098
+        },
+        "corp": {
+          "prompt_tokens": 5227,
+          "completion_tokens": 1266,
+          "total_tokens": 6493
+        },
+        "app": {
+          "prompt_tokens": 5177,
+          "completion_tokens": 249,
+          "total_tokens": 5426
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "hw",
+          "title": "本日無相關AI基礎設施供應鏈新聞",
+          "gate": "remove_repeated_stories",
+          "action": "removed",
+          "reason": "removed"
+        },
+        {
+          "section": "app",
+          "title": "本日無相關app新聞",
+          "gate": "remove_repeated_stories",
+          "action": "removed",
+          "reason": "removed"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 2,
+      "llm_ratings": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "deepen": {
+        "candidates": 0,
+        "rewritten": 0,
+        "fetch_failed": 0,
+        "llm_failed": 0
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 2,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "fragment_restored": 0,
+        "items": []
+      },
+      "date": "2026-11-12",
+      "generated_at": "2026-11-12T00:07:47.228081+08:00"
+    },
+    {
+      "feeds": {
+        "Semiconductor": 70,
+        "CSP/CapEx": 57,
         "App/AI": 31,
         "gnews-chip": 24,
         "gnews-dc": 23,
@@ -1626,90 +1788,6 @@
       },
       "date": "2026-10-30",
       "generated_at": "2026-10-30T00:04:04.342103+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 58,
-        "CSP/CapEx": 58,
-        "App/AI": 32,
-        "gnews-chip": 23,
-        "gnews-dc": 23,
-        "gnews-app": 16
-      },
-      "digest_filtered": 1,
-      "after_dedup": 186,
-      "buckets": {
-        "hw": 45,
-        "corp": 135,
-        "app": 44
-      },
-      "news_char_budget": {
-        "hw": 5250,
-        "corp": 8000,
-        "app": 5133
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 2,
-        "corp": 2,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "dedup_audit": [],
-      "fact_audit": {
-        "mode": "log",
-        "checked": 4,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 2,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": []
-      },
-      "date": "2026-10-29",
-      "generated_at": "2026-10-29T00:04:20.839423+08:00"
     }
   ]
 }

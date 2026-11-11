@@ -1,5 +1,86 @@
 [
   {
+    "date": "2026-11-12",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 建置「Control Room」緊急關閉系統",
+        "layer": "AI 安全與運營",
+        "body": "OpenAI 於本週二宣布已在研究實驗室部署名為「Control Room」的殺死開關，能在決策後 35 秒內停止模型產出。此系統透過快取層的推論授權機制實現快速中斷，並可更快執行關閉指令。",
+        "impact": "",
+        "rating": "core",
+        "insight": "OpenAI 的即時關閉機制提升模型安全，將刺激安全軟體供應鏈需求，同時穩定雲端運算資源使用。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/11/11/openai-builds-a-kill-switch-for-its-research-models/5309006"
+      },
+      {
+        "title": "Anthropic 在澳洲啟動零售 IPO，募資上限 904 億美元",
+        "layer": "資金與市場擴張",
+        "body": "Anthropic 本週三在澳洲開放零售 IPO，計畫募集最高 644 億美元的公開發行金額，另加 260 億美元的私募，合計最高可達 904 億美元。發行價格預計介於每股 70 至 78 美元，並於 11 月 17 日結束。參與券商包括 CommSec、Macquarie Group、Morgan Stanley Wealth Management 等。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Anthropic 的大規模募資將推動 AI 計算資源需求，提升上游晶片與相關硬體供應鏈的成長動能。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/11/11/anthopic-australian-retail-ipo-offering-.html"
+      }
+    ],
+    "app": [
+      {
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Verano",
+        "full": "AMD Verano 處理器",
+        "def": "AMD 宣布的以 Zen 為基礎、針對 GPU 伺服器設計的處理器平台，旨在與 Nvidia Vera Rubin 超級晶片競爭。",
+        "why": "此平台代表 AMD 可能在 AI 伺服器市場尋求自有晶片供應，影響未來晶圓代工與記憶體需求。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Control Room",
+        "full": "OpenAI 緊急關閉系統",
+        "def": "一套集中管理與即時中斷 AI 模型工作負載的系統，能在決策後 35 秒內停止模型輸出，以降低安全風險。",
+        "why": "提供模型安全的即時防護，降低異常運算對資源與服務的衝擊。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "零售 IPO",
+        "full": "面向個人投資者的首次公開發行",
+        "def": "公司向一般大眾投資者發行股份的上市方式，通常伴隨較大規模的募資目標。",
+        "why": "能快速聚集資金支援 AI 基礎設施擴張與研發投入。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "殺死開關 (kill switch)",
+        "full": "緊急停止 AI 模型運作的機制",
+        "def": "在偵測到安全或安全性問題時，立即中斷模型的推論與輸出，防止潛在危害。",
+        "why": "是大型 AI 研發機構必備的風險控制工具，影響算力使用與安全合規。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-11",
     "is_sunday": false,
     "hw": [
@@ -832,208 +913,6 @@
         "def": "一種利用 AI 技術即時偵測並自動關閉惡意軟體或代理程式的防護機制，可在攻擊持續期間自動中斷其執行。",
         "why": "在企業環境中快速阻斷惡意 AI 代理，可大幅降低資料外洩與系統中斷的風險。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-11-05",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": "",
-        "chain": [
-          {
-            "label": "Intel 市場份額↔",
-            "type": "neutral"
-          },
-          {
-            "label": "AMD 市場份額↔",
-            "type": "neutral"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "AMD 2026 第三季營收成長 45% 目標超越 Intel 成為最大 x86 供應商",
-        "layer": "core",
-        "body": "AMD 公布 2026 Q3 營收達 134 億美元，較去年同期成長 45%。其中資料中心部門營收 85 億美元，年增 97%。公司預估下一季營收約 170 億美元，將有望超過 Intel 的預估 150‑160 億美元。",
-        "impact": "",
-        "rating": "core",
-        "insight": "AMD 迅速擴張資料中心營收，將改寫 x86 市場格局。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/11/04/amd-on-track-to-overtake-intel-as-biggest-x86-outfit/5307448",
-        "chain": [
-          {
-            "label": "AMD 營收↑",
-            "type": "up"
-          },
-          {
-            "label": "Intel 營收↓",
-            "type": "down"
-          },
-          {
-            "label": "AMD x86 市占↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "AMD 資料中心營收近翻倍 2026 Q3 亮眼表現",
-        "layer": "core",
-        "body": "CEO Lisa Su 表示 2027 年資料中心 AI 營收將再度翻倍，已確保晶圓、基板與先進封裝等關鍵元件供應。",
-        "impact": "",
-        "rating": "core",
-        "insight": "AMD 供應鏈已為 AI 需求做好布局，將持續推高上游產能需求。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/11/03/amd-amd-q3-earnings-report-2026-.html",
-        "chain": [
-          {
-            "label": "AMD 資料中心營收↑",
-            "type": "up"
-          },
-          {
-            "label": "TSMC 高階製程供應↑",
-            "type": "up"
-          },
-          {
-            "label": "AMD AI 加速卡需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Microsoft 針對 8 GB 記憶體 PC 進行 Windows 11 效能優化",
-        "layer": "core",
-        "body": "Microsoft 宣布 Windows 11 在配備 8 GB 記憶體的 PC 上提升 20% 響應速度與 40% 多工效能，透過記憶體管理機制讓系統可保留額外 2 GB 活躍資料於記憶體中。此舉回應 AI 需求推高的記憶體價格，並配合 Copilot+ 需要 16 GB 記憶體的策略。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Microsoft 軟體優化可在記憶體緊缺時維持 PC 市場需求。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/software/2026/11/03/microsoft-improves-windows-11-performance-on-8-gb-pcs-as-ram-prices-keep-climbing/5307382",
-        "chain": [
-          {
-            "label": "Microsoft Windows 11 效能↑",
-            "type": "up"
-          },
-          {
-            "label": "PC 記憶體需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Intel DDR5 供應壓力↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Meta 計畫發行最高 250 億美元債券以支援 AI 基礎建設",
-        "layer": "core",
-        "body": "Meta 預計在本週二發行 200 億至 250 億美元的債券，以支援其人工智慧基礎建設與模型服務的支出，債券銷售約三分之二以美元計、三分之一以歐元計。此舉發生於 S&P Global Ratings 將其展望調降至 AA- 負面、且公司最新季自由現金流為負 21.2 億美元之後。Meta 亦計畫透過公開增資與 ATM 計畫共籌集 95 億美元以進一步推動 AI 計畫。",
-        "impact": "",
-        "rating": "core",
-        "insight": "投資者可關注 AI 相關硬體供應鏈的需求上升，因 Meta 大規模資金投入可能提升相關公司的營運表現。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/11/03/meta-bond-sale-ai-funding.html",
-        "chain": [
-          {
-            "label": "TSMC 晶圓產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Samsung 記憶體產能↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia 智慧晶片需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Revolut 以自主持 AI 模型降低 90% 程式碼推論成本",
-        "layer": "fintech",
-        "body": "Revolut 在一年內將 AI 程式碼推論成本削減約 90%，主要透過改用自主持模型取代 Claude 服務。公司目前使用 56 台 Nvidia B200 GPU 來部署 GLM‑5.3，服務約 2,000 名工程師。根據 ops 主管 David Abitbol，部署後程式碼開發時間提升 60%，交付週期縮短 70%。",
-        "impact": "上游 Nvidia GPU 需求因 56 台 B200 GPU 的採購而上升。",
-        "rating": "core",
-        "insight": "自主持 AI 模型可大幅降低運算成本，同時提升開發效率，為金融科技公司提供競爭優勢。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/11/03/british-fintech-revolut-slashes-ai-coding-costs-10x-by-cutting-out-claude-and-going-self-hosted/5307345",
-        "chain": [
-          {
-            "label": "Revolut AI 推論成本↓",
-            "type": "down"
-          },
-          {
-            "label": "Nvidia B200 GPU 使用率↑",
-            "type": "up"
-          },
-          {
-            "label": "GLM‑5.3 部署效能↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "AI 基礎設施供應鏈",
-        "full": "人工智慧硬體與相關零組件的供應鏈",
-        "def": "涵蓋晶圓代工、先進封裝、HBM 記憶體、OSAT 以及其他支援 AI 計算的硬體供應商，從原料到最終模組的完整鏈條。",
-        "why": "AI 工作負載的快速成長使得上游零組件供應緊張，供應鏈的瓶頸直接影響 AI 伺服器的交付與成本。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "先進封裝",
-        "full": "Advanced Packaging",
-        "def": "將多顆晶片或晶圓堆疊、互連於單一封裝內的技術，提升功率密度與訊號傳輸效率。",
-        "why": "先進封裝是支撐 AI 晶片高功耗與高速互連的關鍵，供應鏈的產能與技術成熟度直接決定 AI 系統的可擴展性。",
-        "category": "hardware"
-      },
-      {
-        "term": "x86 處理器",
-        "full": "x86 架構的中央處理器",
-        "def": "由 Intel 最早開發的指令集架構，廣泛用於個人電腦與伺服器。AMD 亦生產相容的 x86 處理器，與 Intel 形成主要競爭關係。",
-        "why": "AMD 目標成為最大 x86 供應商，將改變市場格局。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "AI 基礎建設",
-        "full": "支撐人工智慧運算的硬體與軟體資源",
-        "def": "包括高效能 GPU、CPU、記憶體、儲存與資料中心設施，用以訓練與推論大型模型。",
-        "why": "Meta 大規模債券發行即是為了擴充此類基礎建設。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "記憶體管理機制",
-        "full": "作業系統對 RAM 使用的調度與分配策略",
-        "def": "Windows 11 透過保留額外 2 GB 活躍資料於記憶體中，提高低階 PC 的效能。",
-        "why": "此技術在記憶體價格高漲時可降低硬體升級需求。",
-        "category": "software"
-      },
-      {
-        "term": "自主持模型",
-        "full": "Self‑hosted AI model",
-        "def": "企業自行在自有硬體上部署與運行的人工智慧模型，避免依賴第三方雲端服務。",
-        "why": "可降低使用成本並提升資料安全與運算效能。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Nvidia B200 GPU",
-        "full": "Nvidia B200 GPU",
-        "def": "Nvidia 針對資料中心與 AI 推論工作負載設計的高效能圖形處理器，支援大型語言模型的加速運算。",
-        "why": "是 Revolut 部署 GLM‑5.3 所採用的關鍵硬體，直接影響 GPU 供應鏈需求。",
-        "category": "hardware"
       }
     ],
     "weekly_summary": null

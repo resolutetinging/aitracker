@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-11",
+ "updated": "2026-11-12",
  "since": "2026-07-01",
  "entities": [
   {
@@ -946,7 +946,7 @@
   {
    "week": "2026-W46",
    "start": "2026-11-09",
-   "cards": 10,
+   "cards": 12,
    "dims": {
     "hw": {
      "core": 0,
@@ -954,7 +954,7 @@
      "noise": 0
     },
     "corp": {
-     "core": 2,
+     "core": 4,
      "opp": 3,
      "noise": 0
     },
@@ -968,20 +968,15 @@
     "Amazon": 2,
     "Physical AI": 1,
     "Meta": 1,
-    "推論": 1,
-    "OpenAI": 1,
-    "Anthropic": 2,
+    "推論": 2,
+    "OpenAI": 2,
+    "Anthropic": 3,
     "Microsoft": 1,
     "Google": 2
    }
   }
  ],
  "seen": [
-  "2026-10-21|Amazon 承諾以未驗證核能技術供電印第安納資料中心",
-  "2026-10-21|Amazon 推出 TorchNeuron 開發工具以削減對 Nvidia 的依賴",
-  "2026-10-21|Anthropic 承諾以 5% 股份設立公共利益基金應對 AI 工作取代",
-  "2026-10-21|Anthropic 與 Nscale 商談第二筆約 450 億美元計算租賃合約",
-  "2026-10-21|Arda 推出 AI 軟體平台協助製造工程師快速調整自動化",
   "2026-10-22|Meta 超大規模 GPU 冗餘池待命",
   "2026-10-22|Nvidia 宣布 DSX Pod 模組化資料中心部署方案",
   "2026-10-22|OpenAI 將模型上架 Google Cloud",
@@ -1056,6 +1051,8 @@
   "2026-11-11|Anthropic Mythos 模型整合至 Cisco 與 IBM 安全產品",
   "2026-11-11|Microsoft 預設在英國 Copilot 租戶啟用 Anthropic Claude 模型",
   "2026-11-11|PwC 將 Google Cloud Gemini 醫療版導入日常工作流程",
-  "2026-11-11|TEKsystems 成為 Google Cloud Gemini 醫療保健的 Launch Partner"
+  "2026-11-11|TEKsystems 成為 Google Cloud Gemini 醫療保健的 Launch Partner",
+  "2026-11-12|Anthropic 在澳洲啟動零售 IPO，募資上限 904 億美元",
+  "2026-11-12|OpenAI 建置「Control Room」緊急關閉系統"
  ]
 }
