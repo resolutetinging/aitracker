@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03",
+ "updated": "2026-11-12",
  "tsmc_monthly": {
   "src": "https://mopsov.twse.com.tw/nas/t21/sii/",
   "unit": "新台幣億元",
@@ -303,6 +303,11 @@
     "month": "2026-09",
     "revenue": 5118.6,
     "yoy": 54.6
+   },
+   {
+    "month": "2026-10",
+    "revenue": 5868.9,
+    "yoy": 59.7
    }
   ]
  },
@@ -1275,7 +1280,11 @@
    }
   ]
  },
- "failures": [],
+ "failures": [
+  "region.US: \"There is no item named 'xl/sharedStrings.xml' in the archive\"",
+  "info_sector.US: \"There is no item named 'xl/sharedStrings.xml' in the archive\"",
+  "region_industries.US: \"There is no item named 'xl/sharedStrings.xml' in the archive\""
+ ],
  "csp_capex": {
   "src": "各公司官方財報新聞稿（SEC 8-K 附件 99.1）與 Microsoft IR 財報會議頁",
   "unit": "億美元",
