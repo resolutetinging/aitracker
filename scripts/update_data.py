@@ -4,7 +4,7 @@ AI Tracker 每日自動更新腳本 v3
 新聞來源：RSS feeds（主）+ DuckDuckGo（副）
 """
 
-import json, os, sys, smtplib, urllib.request, xml.etree.ElementTree as ET, time, re
+import json, os, sys, smtplib, urllib.request, xml.etree.ElementTree as ET, time, re, copy
 from datetime import datetime, timezone, timedelta
 from email.utils import parsedate_to_datetime
 from groq import Groq
@@ -904,11 +904,12 @@ def _trim_fulltext_entry(entry, max_chars=PROMPT_FULLTEXT_CHARS):
         cut = cut.rstrip() + '…'
     return head + cut
 
-def _fit_news_context(news_context, category, budget):
+def _fit_news_context(news_context, category, budget, sent_out=None):
     """把分類素材裝進 budget 字內，回傳 (送進 prompt 的文字, 統計 dict)。
     corp：維持舊行為 news_context[:budget]（逐字不變），只補統計。
     hw/app：以「條」為單位裝箱、不從中間切斷條目；全文條目縮短到 PROMPT_FULLTEXT_CHARS
-    且合計 ≤ budget×PROMPT_FULLTEXT_SHARE，超出佔比的全文條目延後到摘要之後、有空間才放。"""
+    且合計 ≤ budget×PROMPT_FULLTEXT_SHARE，超出佔比的全文條目延後到摘要之後、有空間才放。
+    sent_out：可選 list；給了就把 hw/app 實際送出的「原始條目」依序 append 進去（補抓排除用，corp 不動）。"""
     entries = [e for e in (news_context or '').split('\n\n') if e.strip()]
     full_total = sum(1 for e in entries if _FULLTEXT_ENTRY_PAT.search(e))
     if category not in ('hw', 'app'):
@@ -930,6 +931,7 @@ def _fit_news_context(news_context, category, budget):
         return text, stats
     full_cap = int(budget * PROMPT_FULLTEXT_SHARE)
     chosen, deferred = [], []
+    chosen_orig = []
     total, full_used = 0, 0
 
     def _fits(e):
@@ -942,18 +944,23 @@ def _fit_news_context(news_context, category, budget):
                 total += len(t) + (2 if chosen else 0)
                 full_used += len(t)
                 chosen.append((t, True))
+                chosen_orig.append(e)
             else:
-                deferred.append(t)
+                deferred.append((t, e))
     for e in entries:
         if _FULLTEXT_ENTRY_PAT.search(e):
             continue
         if _fits(e):
             total += len(e) + (2 if chosen else 0)
             chosen.append((e, False))
-    for t in deferred:
+            chosen_orig.append(e)
+    for t, e in deferred:
         if _fits(t):
             total += len(t) + (2 if chosen else 0)
             chosen.append((t, True))
+            chosen_orig.append(e)
+    if sent_out is not None:
+        sent_out.extend(chosen_orig)
     text = '\n\n'.join(e for e, _ in chosen)
     stats = {'mode': 'pack', 'budget': budget, 'candidates': len(entries),
              'full_text_total': full_total,
@@ -961,6 +968,65 @@ def _fit_news_context(news_context, category, budget):
              'sent': len(chosen), 'partial_cut': 0,
              'chars_sent': len(text), 'dropped': len(entries) - len(chosen)}
     return text, stats
+
+RETRY_MIN_CANDIDATES = 20   # 補抓：該區候選總數下限
+RETRY_MIN_REMAINING = 5     # 補抓：第一批之後剩餘候選下限
+RETRY_CATEGORIES = ('hw', 'app')
+
+
+def _has_real_news(items):
+    """與前端「真實新聞」一致：有非空 source 且不是佔位卡。"""
+    return any((it.get('source') or '').strip() and not _is_placeholder(it)
+               for it in (items or []) if isinstance(it, dict))
+
+
+def retry_bucket_if_empty(cat, result, news_context, recent_titles, avoid_items=None):
+    """hw/app 第一次 LLM 無真實新聞且還有未看過的候選時，用下一批再問一次（最多 1 次）。
+    回傳 (採用的 result, retry 統計 dict)。任何失敗都保留第一次 result，不拋例外。"""
+    st = {'tried': False, 'sent': 0, 'items': 0, 'used': False, 'error': ''}
+    if cat not in RETRY_CATEGORIES:
+        return result, st
+    saved = None
+    try:
+        if _has_real_news((result or {}).get(cat)):
+            return result, st
+        entries = [e for e in (news_context or '').split('\n\n') if e.strip()]
+        if len(entries) < RETRY_MIN_CANDIDATES:
+            return result, st
+        first_sent = []
+        saved = copy.deepcopy(RUN_STATS.get('news_context', {}).get(cat))
+        _fit_news_context(news_context, cat, _category_char_budget(cat), sent_out=first_sent)
+        sent_set = set(first_sent)
+        remaining = [e for e in entries if e not in sent_set]
+        if len(remaining) < RETRY_MIN_REMAINING:
+            return result, st
+        st['tried'] = True
+        print(f"  → {cat} 第一批無真實新聞，剩 {len(remaining)} 條未看過，補抓第二批（等 65 秒避開 TPM）...")
+        time.sleep(65)
+        second_sent = []
+        prompt = make_prompt(news_context, cat, recent_titles, avoid_items=avoid_items,
+                             exclude_entries=first_sent, sent_out=second_sent)
+        st['sent'] = len(second_sent)
+        r2 = call_groq(prompt)
+        st['items'] = len((r2 or {}).get(cat) or [])
+        if _has_real_news((r2 or {}).get(cat)):
+            st['used'] = True
+            print(f"  → {cat} 補抓成功，採用第二批結果（{st['items']} 則）")
+            return r2, st
+        print(f"  → {cat} 補抓仍無真實新聞，保留第一次結果")
+        return result, st
+    except Exception as e:
+        st['error'] = str(e)[:200]
+        print(f"  ⚠ {cat} 補抓失敗，保留第一次結果（不影響 pipeline）：{e}")
+        return result, st
+    finally:
+        # make_prompt 會覆寫 RUN_STATS['news_context'][cat]；還原成第一批的統計，既有欄位不變
+        try:
+            if saved is not None:
+                RUN_STATS.setdefault('news_context', {})[cat] = saved
+        except Exception:
+            pass
+
 
 def build_cross_bucket_block(avoid_items):
     """把同次執行中先產生的分類條目（標題+來源網址）組成追加段落；無條目回傳空字串。"""
@@ -1012,7 +1078,8 @@ def apply_strict_source_prompt(prompt):
             print(f"  ⚠ STRICT_SOURCE_PROMPT 找不到要替換的片段（略過）：{old[:50]}")
     return prompt
 
-def make_prompt(news_context, category, recent_titles=None, avoid_items=None):
+def make_prompt(news_context, category, recent_titles=None, avoid_items=None,
+                exclude_entries=None, sent_out=None):
     notes = load_notes() if IS_SUNDAY else {}
     notes_text = "; ".join(f"{d}:{n}" for d, n in sorted(notes.items()) if n.strip()) if notes else ""
     weekly_line = CATEGORY_WEEKLY_TEMPLATE[category]
@@ -1022,8 +1089,13 @@ def make_prompt(news_context, category, recent_titles=None, avoid_items=None):
     no_repeat_str = ("NO-REPEAT (STRICT): these topics were covered in recent days — do NOT generate any item about the same story or event even with a different headline; only include if there is a significant new development with wholly new facts not present before: " + "; ".join(recent_titles)) if recent_titles else ""
     notes_ctx = ("User notes context: " + notes_text[:200]) if notes_text else ""
     char_budget = _category_char_budget(category)
+    if exclude_entries:
+        # 補抓用：排除第一批已送出的條目，其餘維持原排序
+        _ex = set(exclude_entries)
+        news_context = '\n\n'.join(e for e in (news_context or '').split('\n\n')
+                                   if e.strip() and e not in _ex)
     try:
-        news_short, ctx_stats = _fit_news_context(news_context, category, char_budget)
+        news_short, ctx_stats = _fit_news_context(news_context, category, char_budget, sent_out=sent_out)
     except Exception as e:
         # 裝箱邏輯出錯時退回舊行為（直接截斷），不讓統計／裝箱拖垮生成
         print(f"  ⚠ 素材裝箱失敗，退回直接截斷（不影響資料生成）：{e}")
@@ -3133,6 +3205,9 @@ if __name__ == '__main__':
     for i, cat in enumerate(categories):
         try:
             result = call_groq(make_prompt(news_by_cat[cat], cat, recent_titles, avoid_items=data.get('hw')))
+            result, _retry_st = retry_bucket_if_empty(cat, result, news_by_cat[cat], recent_titles,
+                                                      avoid_items=data.get('hw'))
+            RUN_STATS.setdefault('retry', {})[cat] = _retry_st
             data[cat] = result.get(cat, [])
             data['glossary_new'].extend(result.get('glossary_new') or [])
             if IS_SUNDAY and result.get('weekly_summary'):
