@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "since": "2026-07-01",
  "entities": [
   {
@@ -946,20 +946,20 @@
   {
    "week": "2026-W46",
    "start": "2026-11-09",
-   "cards": 12,
+   "cards": 18,
    "dims": {
     "hw": {
      "core": 0,
-     "opp": 0,
+     "opp": 2,
      "noise": 0
     },
     "corp": {
-     "core": 4,
-     "opp": 3,
+     "core": 5,
+     "opp": 4,
      "noise": 0
     },
     "app": {
-     "core": 2,
+     "core": 4,
      "opp": 3,
      "noise": 0
     }
@@ -970,18 +970,16 @@
     "Meta": 1,
     "推論": 2,
     "OpenAI": 2,
-    "Anthropic": 3,
-    "Microsoft": 1,
-    "Google": 2
+    "Anthropic": 4,
+    "Microsoft": 3,
+    "Google": 3,
+    "NVIDIA": 3,
+    "出口管制": 1,
+    "Agentic AI": 2
    }
   }
  ],
  "seen": [
-  "2026-10-22|Meta 超大規模 GPU 冗餘池待命",
-  "2026-10-22|Nvidia 宣布 DSX Pod 模組化資料中心部署方案",
-  "2026-10-22|OpenAI 將模型上架 Google Cloud",
-  "2026-10-22|SpaceX 與 Tesla 討論合併可能性",
-  "2026-10-22|新加坡企業局撥款 4,500 萬新元加速 AI 在先進製造的應用",
   "2026-10-23|Meta 宣布全年資本支出上限提升至 1450 億美元",
   "2026-10-23|Microsoft 揭露 ConnectWise 資安漏洞導致 2,250 個雲端租戶受影響",
   "2026-10-23|Nvidia 於柏林 GTC 公布投入資金協助供應鏈以鞏固矽基板供應",
@@ -1053,6 +1051,12 @@
   "2026-11-11|PwC 將 Google Cloud Gemini 醫療版導入日常工作流程",
   "2026-11-11|TEKsystems 成為 Google Cloud Gemini 醫療保健的 Launch Partner",
   "2026-11-12|Anthropic 在澳洲啟動零售 IPO，募資上限 904 億美元",
-  "2026-11-12|OpenAI 建置「Control Room」緊急關閉系統"
+  "2026-11-12|OpenAI 建置「Control Room」緊急關閉系統",
+  "2026-11-13|Altimetrik 與 Google Cloud 合作推動醫療領域 Agentic AI 採用",
+  "2026-11-13|Anthropic 於 2026 年第二季首次達成調整後營運盈餘正值",
+  "2026-11-13|IBM 與 Microsoft 推出企業級 Agentic AI 平台",
+  "2026-11-13|Lutnick 暫緩對中國的 Nvidia 晶片銷售限制",
+  "2026-11-13|Nvidia 財務長 Colette Kress 受命暫代執行長",
+  "2026-11-13|中國 AI 企業加速確保 Nvidia 晶片產能以防美國限制"
  ]
 }

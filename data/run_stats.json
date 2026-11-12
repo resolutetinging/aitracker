@@ -2,6 +2,226 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 65,
+        "CSP/CapEx": 58,
+        "App/AI": 27,
+        "gnews-chip": 21,
+        "gnews-dc": 23,
+        "gnews-app": 21
+      },
+      "digest_filtered": 0,
+      "after_dedup": 194,
+      "buckets": {
+        "hw": 58,
+        "corp": 130,
+        "app": 9
+      },
+      "news_char_budget": {
+        "hw": 6000,
+        "corp": 8000,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 58,
+          "full_text_total": 3,
+          "full_text_sent": 3,
+          "sent": 13,
+          "partial_cut": 0,
+          "chars_sent": 5953,
+          "dropped": 45
+        },
+        "corp": {
+          "mode": "slice",
+          "budget": 8000,
+          "candidates": 130,
+          "full_text_total": 4,
+          "full_text_sent": 4,
+          "sent": 14,
+          "partial_cut": 1,
+          "chars_sent": 8000,
+          "dropped": 116
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 9,
+          "full_text_total": 5,
+          "full_text_sent": 5,
+          "sent": 9,
+          "partial_cut": 0,
+          "chars_sent": 5014,
+          "dropped": 0
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 2,
+        "corp": 2,
+        "app": 2
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 4987,
+          "completion_tokens": 1646,
+          "total_tokens": 6633
+        },
+        "corp": {
+          "prompt_tokens": 5643,
+          "completion_tokens": 1329,
+          "total_tokens": 6972
+        },
+        "app": {
+          "prompt_tokens": 4990,
+          "completion_tokens": 1395,
+          "total_tokens": 6385
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "corp",
+          "title": "Nvidia 財務長 Colette Kress 受命暫代執行長",
+          "gate": "downgrade_forbidden_phrases",
+          "action": "rating core→opp",
+          "reason": "rating core→opp"
+        },
+        {
+          "section": "hw",
+          "title": "Lutnick 暫緩對中國的 Nvidia 晶片銷售限制",
+          "gate": "fact_audit",
+          "action": "rating core→opp",
+          "reason": "suspects=H100；fragment_restored"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 2,
+          "noise": 0
+        },
+        "corp": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "unmatched_dropped": 35,
+      "retry": {
+        "hw": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "corp": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "app": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        }
+      },
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "deepen": {
+        "candidates": 1,
+        "rewritten": 0,
+        "fetch_failed": 1,
+        "llm_failed": 0
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 6,
+        "suspect_cards": 2,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 1,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "fragment_restored": 2,
+        "items": [
+          {
+            "sec": "hw",
+            "title": "Lutnick 暫緩對中國的 Nvidia 晶片銷售限制",
+            "source": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPa01VNnZpTE10OFNfTFRXZDZzeUJwSjFkNmlhVjFwUVExM3RmaUlNOG1jWm1aYXJMRHkyb2s1WGdMQU9IQUN6RE5kVi1ub3JkQ0wxVnc2YWFvY2VzTWRiX0FZeVlpdDNsMzBhcWpzOVhqNVh4UUFCa2cySy1ZSlkwTGRxbHVjcEU?oc=5",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [
+              "H100"
+            ],
+            "undetermined": [],
+            "tense_flag": false,
+            "title_suspects": [],
+            "downgraded": true,
+            "action": "fragment_restored",
+            "dropped_body": "Nvidia 首席財務官 Lutnick 於本週宣布暫緩實施對中國的晶片銷售限制，維持目前向中國市場的供應量。"
+          },
+          {
+            "sec": "hw",
+            "title": "中國 AI 企業加速確保 Nvidia 晶片產能以防美國限制",
+            "source": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPc1EtU18tWjZNZTZtOFBZNzdqZkRFMk1nbm9MTm9VWUQwUHlLc1dTdDNLWmNCcllESHVVYjFnXzlKcFJrSWpHUkY2S1lhcTFtWWdPVG9WdkcyTkFSaEpLanVzeWctM1hCTkdxUEJ6VnBrLXFYVnBsalpKUkJVUGQyUE5DOEJtaTctZlFEaV9VR1loQ1JrVlhyRmRxR25UMkI2MVgtZnBFU1pVaXhBcmw0ZV9jb0RPYlduY1ppbnpCTlc?oc=5",
+            "rating": "opp",
+            "coverage": "full",
+            "suspects": [
+              "H100"
+            ],
+            "undetermined": [
+              "A100"
+            ],
+            "tense_flag": false,
+            "title_suspects": [],
+            "action": "fragment_restored",
+            "dropped_body": "多家中國 AI 企業在近期加速向 Nvidia 訂購晶片產能，因近期間諜醜聞引發對美國可能加強出口管制的擔憂。"
+          }
+        ]
+      },
+      "date": "2026-11-13",
+      "generated_at": "2026-11-13T00:07:46.410764+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 70,
         "CSP/CapEx": 57,
         "App/AI": 30,
@@ -1704,90 +1924,6 @@
       },
       "date": "2026-10-31",
       "generated_at": "2026-10-31T00:04:27.805122+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 66,
-        "CSP/CapEx": 53,
-        "App/AI": 27,
-        "gnews-chip": 17,
-        "gnews-dc": 23,
-        "gnews-app": 21
-      },
-      "digest_filtered": 0,
-      "after_dedup": 190,
-      "buckets": {
-        "hw": 41,
-        "corp": 137,
-        "app": 40
-      },
-      "news_char_budget": {
-        "hw": 4783,
-        "corp": 8000,
-        "app": 4666
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 2,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "dedup_audit": [],
-      "fact_audit": {
-        "mode": "log",
-        "checked": 2,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 0,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": []
-      },
-      "date": "2026-10-30",
-      "generated_at": "2026-10-30T00:04:04.342103+08:00"
     }
   ]
 }

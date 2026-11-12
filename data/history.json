@@ -1,5 +1,153 @@
 [
   {
+    "date": "2026-11-13",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Lutnick 暫緩對中國的 Nvidia 晶片銷售限制",
+        "layer": "export_control",
+        "body": "Nvidia 首席財務官 Lutnick 於本週宣布暫緩實施對中國的晶片銷售限制，維持目前向中國市場的供應量。此舉意味著短期內 Nvidia 仍可向中國客戶交付其高階 AI 晶片，如 H100 系列。",
+        "impact": null,
+        "rating": "opp",
+        "insight": "投資者可關注 Nvidia 供應鏈的持續需求，短期內相關代工與封裝廠的營收將保持穩定。",
+        "source_label": "gnews-chip",
+        "source": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPa01VNnZpTE10OFNfTFRXZDZzeUJwSjFkNmlhVjFwUVExM3RmaUlNOG1jWm1aYXJMRHkyb2s1WGdMQU9IQUN6RE5kVi1ub3JkQ0wxVnc2YWFvY2VzTWRiX0FZeVlpdDNsMzBhcWpzOVhqNVh4UUFCa2cySy1ZSlkwTGRxbHVjcEU?oc=5",
+        "chain": [
+          {
+            "label": "Nvidia H100 供應量↑",
+            "type": "up"
+          },
+          {
+            "label": "中國 AI 企業採購需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "中國 AI 企業加速確保 Nvidia 晶片產能以防美國限制",
+        "layer": "capacity_commitment",
+        "body": "多家中國 AI 企業在近期加速向 Nvidia 訂購晶片產能，因近期間諜醜聞引發對美國可能加強出口管制的擔憂。這些企業正爭取在現有供應配額內鎖定足夠的 H100 與 A100 晶片。",
+        "impact": "(1) 直接提升 Nvidia 供應鏈上游的晶圓代工（如 TSMC）與 HBM 製造商（如 SK Hynix）近期產能利用率上升；(2) 隨著中國需求提前占用產能，OSAT 廠商的封裝排程將更緊湊，可能壓縮其他客戶的交付窗口；(3) 若美國最終實施更嚴格限制，其他競爭供應商（如 AMD）可能受惠於中國市場的替代需求。",
+        "rating": "opp",
+        "insight": "中國 AI 企業的提前訂購行為可能短期內推高相關代工與封裝廠的產能利用率。",
+        "source_label": "gnews-chip",
+        "source": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPc1EtU18tWjZNZTZtOFBZNzdqZkRFMk1nbm9MTm9VWUQwUHlLc1dTdDNLWmNCcllESHVVYjFnXzlKcFJrSWpHUkY2S1lhcTFtWWdPVG9WdkcyTkFSaEpLanVzeWctM1hCTkdxUEJ6VnBrLXFYVnBsalpKUkJVUGQyUE5DOEJtaTctZlFEaV9VR1loQ1JrVlhyRmRxR25UMkI2MVgtZnBFU1pVaXhBcmw0ZV9jb0RPYlduY1ppbnpCTlc?oc=5",
+        "chain": [
+          {
+            "label": "Nvidia H100 產能鎖定↑",
+            "type": "up"
+          },
+          {
+            "label": "美國出口管制風險↑",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Nvidia 財務長 Colette Kress 受命暫代執行長",
+        "layer": "leadership",
+        "body": "Nvidia 首席財務官 Colette Kress 在 Jensen Huang 突然辭職後，於 2026 年 11 月 12 日被指派為臨時執行長。Kress 於 2013 年 9 月加入 Nvidia，曾在 Cisco、Microsoft 與 Texas Instruments 擔任財務職務。董事會表示將同時考慮內部與外部候選人以尋找永久接任者。",
+        "impact": "Kress 接任將直接影響 Nvidia 與其代工夥伴如 TSMC 的晶圓需求，因其可能維持現有的高效能運算與 AI 加速器產品路線，短期內上游晶圓供應將保持穩定 (↑)。其領導風格被形容為兼具 CFO 與 COO 職能，可能加速供應鏈協同與成本控制，進一步提升下游雲端服務商對 Nvidia GPU 的採購意願 (↑)。競爭對手如 AMD 與 Intel 可能面臨市場份額壓力，需加速自家 GPU 產品的技術迭代以維持競爭力。",
+        "rating": "opp",
+        "insight": "投資者應關注 Nvidia 供應鏈穩定性與新領導層對產品路線的持續性。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/11/12/colette-kress-nvidia-cfo-interim-ceo-candidate.html",
+        "chain": [
+          {
+            "label": "Nvidia CEO 變動↑",
+            "type": "up"
+          },
+          {
+            "label": "市場對領導層不確定性↑",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic 於 2026 年第二季首次達成調整後營運盈餘正值",
+        "layer": "financial",
+        "body": "Anthropic 在 2026 年第二季調整後營運收入達到 40.8 億美元，首次在調整後營運基礎上實現正盈餘，並在第三季持續保持正值。公司在 IPO 招股說明書中說明，調整後營運盈餘排除股票基礎補償、非現金慈善捐贈與版權訴訟和解金額。Anthropic 預計在即將到來的 IPO 中募集資金以支撐未來巨額支出。",
+        "impact": "正向的調整後營運盈餘將提升 Anthropic 與其雲端基礎設施供應商（如 Azure、AWS）的合作需求，推動相關伺服器與高速記憶體供應鏈需求上升 (↑)。同時，盈利能力的提升可能吸引更多企業客戶採用其 Claude 模型，進一步刺激 AI 軟體堆疊供應商的授權與支援服務需求 (↑)。",
+        "rating": "core",
+        "insight": "Anthropic 的盈利突破顯示其商業模式具備可持續性，值得關注其在 AI 訓練基礎設施上的資本支出規模。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/11/11/anthropic-ipo-profit-computing-commitments.html",
+        "chain": [
+          {
+            "label": "Anthropic 調整後營運盈餘↑",
+            "type": "up"
+          },
+          {
+            "label": "IPO 募資規模↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "IBM 與 Microsoft 推出企業級 Agentic AI 平台",
+        "layer": "AI平台",
+        "body": "IBM 與 Microsoft 於 2026 年發布了針對企業部署的 Agentic AI 平台，平台結合了兩家公司在雲端與 AI 基礎設施的技術。該平台已向大型企業客戶開放，提供可自動化決策與流程編排的功能。",
+        "impact": "平台的雲端基礎設施需求將提升主要雲服務供應商（如 Azure、IBM Cloud）的運算資源使用率↑，進一步刺激伺服器與高效能儲存設備供應鏈的需求↑；同時企業導入此平台後，將減少對傳統軟體顧問服務的依賴↓，使系統整合商的服務模式需轉向 AI 模型部署與維護。",
+        "rating": "core",
+        "insight": "企業級 Agentic AI 平台的推出將加速雲端運算與 AI 模型供應鏈的需求增長。",
+        "source_label": "Petri IT Knowledgebase",
+        "source": "https://news.google.com/rss/articles/CBMibkFVX3lxTE8tZW9GUmhqTldzVVVjR0hWV0JqaURoeWtqZU5HVzJzNklkazZ6dHM0d2FVVHJCalhHTF81ZjBBdk5hWGk0X0dnM0JLVFJpSEIxV2tCN25IMjk0Yjl6RmNyR05rc3ZzSW5zLUF1UnBB?oc=5",
+        "chain": [
+          {
+            "label": "IBM Azure AI 服務↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft Azure 雲端資源需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Altimetrik 與 Google Cloud 合作推動醫療領域 Agentic AI 採用",
+        "layer": "AI應用",
+        "body": "Altimetrik 宣布與 Google Cloud 合作，於 2026 年在醫療保健領域推動 Agentic AI 的採用，雙方將共同開發可支援臨床決策的 AI 服務。合作計畫已在美國多家醫院試點，並提供雲端 AI 模型的即時部署能力。",
+        "impact": "Google Cloud 需要擴充其醫療專屬 AI 基礎設施，帶動資料中心伺服器與高效能 GPU 需求↑；Altimetrik 作為系統整合商，將向醫療設備供應商與電子病歷系統提供 AI 模組，促使相關硬體與軟體供應鏈的訂單增加↑，同時提升醫療服務供應商的數位化轉型速度。",
+        "rating": "core",
+        "insight": "Agentic AI 在醫療領域的落地將拉動雲端運算與醫療資訊系統的供應鏈需求。",
+        "source_label": "Digital Health News",
+        "source": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOaFppZ21zb2hKUjNkNHFMTDBwZlZlSFA4TXVGbXlqZTNCbENxSk5BaXZ2MHNDZTY3eFFJWGNFQjRBSy1lVVdzRDNEczBQU0RyOXBZSUJUSFIyQVQxS2pOWXpnazg1OFZZRnJ4empYZjlsUjFBOS1pbkUwZ1Y0WDJGbERUNnUyN2lFWW9GSU1LS0JpVVVVYmRiUkYwLVNWNXhTcHQ2VWNlZ1JHckpJbTdyZWZMN253NlE?oc=5",
+        "thin_source": true,
+        "chain": [
+          {
+            "label": "Altimetrik 醫療 AI 方案↑",
+            "type": "up"
+          },
+          {
+            "label": "Google Cloud 醫療 AI 部署↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "臨時執行長",
+        "full": "Interim Chief Executive Officer",
+        "def": "公司在正式執行長離職或無法履職期間，由內部或外部臨時指派的最高管理者，負責維持營運與策略執行。",
+        "why": "此職位變動直接影響公司決策速度與供應鏈策略的連貫性。",
+        "category": "role"
+      },
+      {
+        "term": "調整後營運盈餘",
+        "full": "Adjusted Operating Income",
+        "def": "公司在排除一次性項目、股票基礎補償及非經常性支出後的營運利潤，用以衡量核心營運績效。",
+        "why": "此指標揭示 AI 企業在高額研發與基礎設施支出下的獲利能力，關係供應鏈資金流向。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-12",
     "is_sunday": false,
     "hw": [
@@ -749,170 +897,6 @@
         "def": "Nvidia 針對高效能 AI 工作負載設計的加速卡，支援大型模型訓練與推論。",
         "why": "其供應受限會波及全球 AI 超算與資料中心建設的硬體需求。",
         "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-11-06",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Moonshot AI 透過歐洲資料中心租用 Nvidia Blackwell GPU 以規避美國出口管制",
-        "layer": "capacity commitments",
-        "body": "Moonshot AI 正與位於歐洲的 neoclouds 討論租用其資料中心內的 Nvidia Blackwell 系統 GPU，該系統目前受美國出口管制禁止直接進口至中國。此舉顯示中國 AI 研發團隊正尋求透過歐洲雲端基礎設施取得先進晶片算力。來源指出，四位熟悉此事的消息人士透露，相關租用協議已於今年展開討論。",
-        "impact": "此租用需求將直接提升歐洲資料中心對 Nvidia 高階 GPU 的需求。",
-        "rating": "core",
-        "insight": "投資者應關注歐洲資料中心對高階 GPU 的需求增長，因其可能成為繞過美國出口管制的關鍵供應鏈節點。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/11/05/moonshot-ai-nvidia-chips-europe-china.html",
-        "chain": [
-          {
-            "label": "Moonshot AI Blackwell GPU 租用↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia Blackwell GPU 出口管制↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 承諾停止與公部門簽署保密協議並提升透明度",
-        "layer": "policy",
-        "body": "OpenAI 在選舉後的回應中宣布，未來在自有資料中心的建設與營運上將不再使用與公部門的保密協議，並將徵求社群意見、公開建設計畫。此政策藍圖亦鼓勵立法者將相同承諾寫入法律。此舉於 2026 年 11 月 5 日於 CNBC 報導。",
-        "impact": "",
-        "rating": "core",
-        "insight": "OpenAI 以政策透明化爭取公眾信任，可能提升其資料中心擴建速度。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/11/05/openai-to-pay-for-data-center-power-after-election-shows-ai-concern.html",
-        "chain": [
-          {
-            "label": "OpenAI 公部門保密協議取消↑"
-          },
-          {
-            "label": "OpenAI 透明度提升↑"
-          }
-        ]
-      },
-      {
-        "title": "Meta 收購 Agent Orchestration 初創公司 Conductor",
-        "layer": "acquisition",
-        "body": "Meta 已收購 AI 程式編寫初創公司 Conductor，該公司宣布其 Conductor Cloud 於 11 月 13 日將改為唯讀，並於 11 月 20 日關閉；其 macOS 應用程式仍可在未來數月內使用，且預計在 2027 年初不再提供新模型或關鍵錯誤修正。Meta 發言人表示，此次收購將強化公司面向開發者的智慧 AI 能力，並可能與近期推出的 Muse Code 代理程式整合。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Meta 強化開發者 AI 服務，長期看好相關硬體與軟體供應鏈需求。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/11/05/meta-brings-conductor-on-board-its-model-train/5307711",
-        "chain": [
-          {
-            "label": "Meta AI 代理程式需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia GPU 供應需求↓",
-            "type": "down"
-          },
-          {
-            "label": "開發者軟體工具平台需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Box 將 Nvidia Nemotron 嵌入式模型整合至內容檢索服務",
-        "layer": "technology",
-        "body": "Box 在開發者大會上展示新功能 Box Content Retrieval，將 Nvidia 的 Nemotron 嵌入式模型作為核心技術，預計查詢速度提升四倍、錯誤率下降 20%、使用的 token 數減少 90%。此功能將於明年初向 Box Enterprise Advance 客戶推出，訊息來源為 TechCrunch 於 2026 年 11 月 5 日的報導。",
-        "impact": "Nemotron 的嵌入將提升 Nvidia 在 AI 推理晶片需求。",
-        "rating": "opp",
-        "insight": "Box 與 Nvidia 的合作將擴大高效能推理晶片的應用範圍。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/11/05/box-taps-nvidias-nemotron-for-new-agent-first-content-retrieval-system/",
-        "chain": [
-          {
-            "label": "Box Nemotron 嵌入式模型整合↑"
-          },
-          {
-            "label": "Box Content Retrieval 查詢速度↑"
-          },
-          {
-            "label": "Box 錯誤率下降↓"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "CrowdStrike 推出 AI 殺死開關以關閉惡意代理程式",
-        "layer": "security",
-        "body": "CrowdStrike 宣布推出 AI 殺死開關功能，能即時偵測並關閉企業環境中的惡意 AI 代理程式。此功能於本月在其雲端防護平台上正式上線，並伴隨企業採用率持續上升的趨勢。該公司指出，此舉可降低受感染端點的持續攻擊時間。",
-        "impact": "此功能降低企業環境中惡意 AI 代理程式的持續攻擊時間，減少資料外洩與營運中斷的風險。",
-        "rating": "core",
-        "insight": "AI 驅動的即時防禦工具將成為企業資安支出的新焦點，相關供應鏈上游模型服務商受惠。",
-        "source_label": "Tekedia",
-        "source": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQVU9sSTJNc3JlUHJmVUNmQWRNdFNZV0NVNm9HazNsNVpLaW1EWFRrZHdMYmd5R0lfLXlWNXlxeW9zbDhyZ0p4d203QTY1VGY2YmdqTmdMMGVXOHdtQ2hzdTY4MUJKblRZZnVtZy1MX0NoMVR1TDNZZEk4NkpGVnVvRkNzRXBZUUpPaW1Ud1F1RW9BMlcxUDg3TW9rc0h4ZTMzVjBCWGRuT1VCUGlrUmJXYVdmbS04QQ",
-        "thin_source": true,
-        "chain": [
-          {
-            "label": "CrowdStrike AI 殺死開關上線↑"
-          },
-          {
-            "label": "企業惡意 AI 代理程式檢測↓"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "neoclouds",
-        "full": "新興雲端服務提供商",
-        "def": "提供高效能運算資源的雲端平台，常與大型晶片製造商合作部署先進 GPU，供客戶租用算力。",
-        "why": "其平台成為中國 AI 研發繞過出口管制的主要渠道，影響全球 AI 基礎建設供應鏈布局。",
-        "category": "hardware"
-      },
-      {
-        "term": "Blackwell",
-        "full": "Nvidia Blackwell 系列 GPU",
-        "def": "Nvidia 最新代的高階圖形處理單元，具備最先進的 AI 訓練與推論效能，屬於受美國出口管制限制的產品。",
-        "why": "此晶片的供應受限，促使需求方尋找跨境租用方案，改變晶片供應鏈的地理分布。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "出口管制",
-        "full": "美國對先進 AI 晶片的出口限制",
-        "def": "美國政府針對特定高階 AI 晶片設定的出口禁令，禁止其直接銷往中國，以維持技術領先優勢。",
-        "why": "管制政策直接影響晶片的全球流通路徑，迫使供應鏈重新配置至可繞過限制的地區。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Nemotron",
-        "full": "Nvidia Nemotron 嵌入式模型",
-        "def": "Nvidia 開發的開放權重嵌入模型，用於將文字或文件轉換為向量，以支援高效能語意檢索與生成任務。",
-        "why": "Box 以此模型提升內容檢索速度與精準度，顯示嵌入式 AI 技術在企業軟體中的應用擴大。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Conductor",
-        "full": "Conductor AI 工作流編排平台",
-        "def": "一套專為 AI 代理與模型訓練設計的編排系統，能協調多個 AI 模型與資源以完成複雜任務。",
-        "why": "Meta 收購 Conductor 後可將其整合至自家 AI 平台，提升模型訓練與部署效率。",
-        "category": "software"
-      },
-      {
-        "term": "NDAs",
-        "full": "Non-Disclosure Agreements（保密協議）",
-        "def": "在商業合作或政府項目中，用於限制資訊披露的法律文件。",
-        "why": "OpenAI 承諾不再與公部門使用 NDAs，旨在提升政策透明度並減少合規成本。",
-        "category": "role"
-      },
-      {
-        "term": "AI 殺死開關",
-        "full": "Artificial Intelligence Kill Switch",
-        "def": "一種利用 AI 技術即時偵測並自動關閉惡意軟體或代理程式的防護機制，可在攻擊持續期間自動中斷其執行。",
-        "why": "在企業環境中快速阻斷惡意 AI 代理，可大幅降低資料外洩與系統中斷的風險。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
