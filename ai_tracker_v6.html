@@ -559,7 +559,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .hist-friday{border-color:rgba(160,112,64,.4);}
 .hist-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;user-select:none;}
 .hist-header:hover{background:var(--card2);}
-.hist-date-row{display:flex;align-items:center;gap:10px;}
+.hist-date-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;row-gap:4px;}
 .hist-date{font-size:14px;font-weight:700;}
 .fri-badge{font-size:11px;background:rgba(160,112,64,.12);border:1px solid rgba(160,112,64,.3);color:var(--corp);padding:2px 9px;border-radius:10px;font-weight:600;}
 .hist-meta{display:flex;align-items:center;gap:12px;}
@@ -2751,12 +2751,16 @@ function renderHistory(hist) {
       </div>` : '';
     const coreCount = [...(d.hw||[]),...(d.corp||[]),...(d.app||[])].filter(x=>x.rating==='core').length;
     const coldTag = coreCount < 2 ? '<span style="font-size:10px;color:var(--noise);font-weight:700;padding:1px 7px;border:1px solid rgba(104,100,96,.3);border-radius:8px;letter-spacing:.3px;">冷</span>' : '';
+    // 11-12「缺」：某區沒有任何真實新聞（只有佔位卡＝source 空字串），排程可能有問題；與「冷」（核心<2，新聞價值低）分開
+    const missSecs = [['hw','硬體缺口'],['corp','巨頭角力'],['app','新興應用']].filter(([k])=>!(d[k]||[]).some(x=>x && x.source)).map(([,n])=>n);
+    const missTag = missSecs.length ? '<span style="font-size:10px;color:var(--noise);font-weight:700;padding:1px 7px;border:1px solid rgba(104,100,96,.3);border-radius:8px;letter-spacing:.3px;">缺：'+missSecs.join('、')+'</span>' : '';
     return `<div class="hist-card ${d.is_sunday?'hist-sunday':''}">
       <div class="hist-header" onclick="tog(${i})">
         <div class="hist-date-row">
           <span class="hist-date">${fmtDate(d.date)}</span>
           ${d.is_sunday?'<span class="fri-badge">📊 週報</span>':''}
           ${coldTag}
+          ${missTag}
           ${savedNote?'<span style="font-size:11px;color:var(--insight);">📝</span>':''}
         </div>
         <div class="hist-meta">
