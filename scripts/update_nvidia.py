@@ -255,7 +255,7 @@ def call_groq_events(existing_events, candidates):
 針對每一則，判斷：
 1. thread：若屬於上面某個既有故事線的延續，填該故事線名稱（一字不差）；
    若是全新獨立事件，thread留空字串
-2. category：簡短分類詞（例如：財報動態、產品發布、政府調查、合作聯盟、供應鏈）
+2. category：只能從以下9類擇一，不得自創：{"、".join(RECENT_EVENT_CATEGORIES)}
 3. summary：2-3句話中文摘要，說明具體事實
 4. confidence：'high'或'low'
 
@@ -297,6 +297,35 @@ def call_groq_events(existing_events, candidates):
     return json.loads(raw).get('events', [])
 
 
+RECENT_EVENT_CATEGORIES = [
+    '財報', '產品發布', '合作與投資', '供應鏈與基建', '出口管制與地緣',
+    '政府與法律', '高層動態', '市場與觀點', '營運與資安',
+]
+RECENT_EVENT_CATEGORY_MAP = {
+    '財報動態': '財報', '營收報告': '財報',
+    '合作聯盟': '合作與投資', '競爭與合作': '合作與投資', '融資與投資': '合作與投資',
+    '財務承諾': '合作與投資', '財務募集': '合作與投資',
+    '供應鏈': '供應鏈與基建', '供應鏈投資': '供應鏈與基建', '基礎建設': '供應鏈與基建',
+    '出口管制': '出口管制與地緣', '地緣政治': '出口管制與地緣',
+    '政府調查': '政府與法律', '法律訴訟': '政府與法律', '政府政策': '政府與法律',
+    '政府資助': '政府與法律',
+    '市場爭議': '市場與觀點', '市場預測': '市場與觀點', '市場動態': '市場與觀點',
+    '產業觀點': '市場與觀點',
+    '運營狀況': '營運與資安', '資安事件': '營運與資安',
+}
+
+
+def normalize_recent_category(raw):
+    """近期事件category固定9類：9類內保留、舊標籤換新類、其餘歸「營運與資安」。"""
+    cat = raw.strip() if isinstance(raw, str) else ''
+    if cat in RECENT_EVENT_CATEGORIES:
+        return cat
+    if cat in RECENT_EVENT_CATEGORY_MAP:
+        return RECENT_EVENT_CATEGORY_MAP[cat]
+    print(f"  → 近期事件category「{cat}」不在固定9類，歸入「營運與資安」")
+    return '營運與資安'
+
+
 def merge_recent_events(status, new_events):
     """把LLM分類好的近期事件併進nv_status.json的recent_events。**09-14鐵律
     例外**：跟其餘6大類「絕不直接改寫nv_status.json」不同，這裡高信心與
@@ -320,7 +349,7 @@ def merge_recent_events(status, new_events):
         entry = {
             'date': ev_date,
             'title': ev.get('title', ''),
-            'category': ev.get('category', ''),
+            'category': normalize_recent_category(ev.get('category', '')),
             'summary': ev.get('summary', ''),
             'src': src,
             'src_note': '',
