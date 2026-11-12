@@ -233,12 +233,110 @@ MAJOR_PLAYERS_PAT = re.compile(
     re.IGNORECASE
 )
 
+# ── hw / app 桶內排序（讓全文挑選與 6000 字裝箱都先吃到最對題的來源）──
+# 來源鍵：gnews-* 用 label；其餘用 SOURCE_URL 的網域（RSS label 如 "Semiconductor" 多來源共用，
+# 無法區分）。優先級 0=高、1=中（未列者預設）、2=低。分級理由與調整方式：
+#  - hw：gnews-chip／Tom's Hardware／DCD／digitimes／eetimes 直接報晶片與基礎設施，最對題；
+#    semiengineering 常為研討會場次、CNBC 常被單一事件洗版，降為低優先（仍保留，排在後面）。
+#  - app：gnews-app 與垂直／科技媒體為高優先；CNBC、semiengineering 與 app 關聯弱，降為低。
+#  - DDG 的 label（產業投資／出口管制／企業採用／應用落地）不在表內者視為中優先。
+HW_SOURCE_PRIORITY = {
+    'gnews-chip': 0, 'tomshardware.com': 0, 'datacenterdynamics.com': 0,
+    'digitimes.com': 0, 'eetimes.com': 0,
+    'semiengineering.com': 2, 'cnbc.com': 2,
+}
+APP_SOURCE_PRIORITY = {
+    'gnews-app': 0, 'technologyreview.com': 0, 'venturebeat.com': 0,
+    'theverge.com': 0, 'arstechnica.com': 0, 'techcrunch.com': 0,
+    '企業採用': 0, '應用落地': 0,
+    'semiengineering.com': 2, 'cnbc.com': 2,
+}
+BUCKET_SOURCE_PRIORITY = {'hw': HW_SOURCE_PRIORITY, 'app': APP_SOURCE_PRIORITY}
+# 同話題判定：標題關鍵詞共享 >= 2 個，或 Jaccard >= 0.3，視為同話題；同話題最多 2 條排前面
+TOPIC_SHARED_KW_MIN = 2
+TOPIC_JACCARD_MIN = 0.3
+TOPIC_MAX_PER_BUCKET = 2
+_TOPIC_STOPWORDS = frozenset((
+    'this that with from have will says said about after over into more than what when '
+    'their they them been were also just your like amid could would should while where '
+    'which these those here there some most much many other only news report reports '
+    'chip chips data center centers new year week today first back make makes made '
+).split())
+
+def _snippet_source_key(s):
+    m = re.match(r'\[([^\]]+)\]', s)
+    label = m.group(1) if m else ''
+    # gnews 與 DDG 主題標籤（企業採用／應用落地）以 label 為準，不看網域
+    if label.startswith('gnews') or label in ('企業採用', '應用落地'):
+        return label
+    um = re.search(r'SOURCE_URL:https?://([^/\s]+)', s)
+    if um:
+        host = um.group(1).lower()
+        return host[4:] if host.startswith('www.') else host
+    return label
+
+def _snippet_topic_kw(s):
+    body = re.sub(r'^\[[^\]]+\]\s*', '', s).split(' — ', 1)[0].split(' | SOURCE_URL:', 1)[0]
+    kws = set()
+    for w in re.findall(r"[A-Za-z0-9][A-Za-z0-9'\-]*", body):
+        lw = w.lower().strip("'-")
+        if lw in _TOPIC_STOPWORDS:
+            continue
+        if len(lw) >= 4 or (len(lw) >= 3 and w.isupper()):
+            kws.add(lw)
+    return kws
+
+def _same_topic(a, b):
+    if not a or not b:
+        return False
+    inter = len(a & b)
+    return inter >= TOPIC_SHARED_KW_MIN or inter / len(a | b) >= TOPIC_JACCARD_MIN
+
+def rank_bucket(items, priorities):
+    """hw/app 桶排序（穩定、決定性、不用隨機）：
+    1) 依來源優先級分層；2) 同層內各來源輪流取（round-robin，來源依首次出現順序）；
+    3) 同話題最多保留 TOPIC_MAX_PER_BUCKET 條在前，其餘移到最後（不刪除）。"""
+    tiers = {}
+    for s in items:
+        key = _snippet_source_key(s)
+        tiers.setdefault(priorities.get(key, 1), {}).setdefault(key, []).append(s)
+    ordered = []
+    for tier in sorted(tiers):
+        queues = list(tiers[tier].values())
+        idx = 0
+        while any(idx < len(q) for q in queues):
+            for q in queues:
+                if idx < len(q):
+                    ordered.append(q[idx])
+            idx += 1
+    clusters, head, tail = [], [], []
+    for s in ordered:
+        kw = _snippet_topic_kw(s)
+        hit = None
+        for c in clusters:
+            if any(_same_topic(kw, m) for m in c['kws']):
+                hit = c
+                break
+        if hit is None:
+            clusters.append({'kws': [kw], 'n': 1})
+            head.append(s)
+        else:
+            hit['kws'].append(kw)
+            if hit['n'] < TOPIC_MAX_PER_BUCKET:
+                hit['n'] += 1
+                head.append(s)
+            else:
+                tail.append(s)
+    return head + tail
+
 def route_snippets(snippets):
     """把新聞摘要分流到 hw/corp/app 三桶；可同時命中多桶（不互斥）；
-    三桶都沒命中的進素材最少的那個桶，避免被浪費掉。
+    三桶都沒命中者：原邏輯會附加到當下素材最少的桶，現改為只在該桶是 corp 時保留
+    （corp 行為與舊版完全相同），若會落入 hw/app 則丟棄（避免雜訊稀釋對題新聞）。
     corp 桶另依 80/20 選材原則排序：命中 MAJOR_PLAYERS_PAT（全球市占領先巨頭）
     的文章排到最前面，讓後續 enrich_with_full_text 的全文抓取名額與
-    enrich 揀選都優先落在巨頭動態上，抑制區域性小型雜訊。"""
+    enrich 揀選都優先落在巨頭動態上，抑制區域性小型雜訊。
+    hw/app 桶另以 rank_bucket 排序（來源分級、輪流取、同話題上限）。"""
     buckets = {'hw': [], 'corp': [], 'app': []}
     unmatched = []
     for s in snippets:
@@ -249,14 +347,23 @@ def route_snippets(snippets):
                 hit_any = True
         if not hit_any:
             unmatched.append(s)
+    sizes = {k: len(v) for k, v in buckets.items()}
+    dropped_unmatched = 0
     for s in unmatched:
-        target = min(buckets, key=lambda k: len(buckets[k]))
-        buckets[target].append(s)
+        target = min(sizes, key=lambda k: sizes[k])
+        sizes[target] += 1
+        if target == 'corp':
+            buckets['corp'].append(s)
+        else:
+            dropped_unmatched += 1
     buckets['corp'].sort(key=lambda s: 0 if MAJOR_PLAYERS_PAT.search(s) else 1)
+    for cat in ('hw', 'app'):
+        buckets[cat] = rank_bucket(buckets[cat], BUCKET_SOURCE_PRIORITY[cat])
     print(f"  → 分類分流：hw {len(buckets['hw'])} / corp {len(buckets['corp'])} / app {len(buckets['app'])} 條"
-          + (f"（其中 {len(unmatched)} 條無命中，已分配至素材最少的桶）" if unmatched else ""))
+          + (f"（其中 {len(unmatched)} 條無命中，{dropped_unmatched} 條丟棄）" if unmatched else ""))
     try:
         RUN_STATS['buckets'] = {c: len(buckets[c]) for c in ('hw', 'corp', 'app')}
+        RUN_STATS['unmatched_dropped'] = dropped_unmatched
     except Exception as e:
         print(f"  ⚠ 漏斗統計收集失敗（route_snippets，不影響資料生成）：{e}")
     return buckets
@@ -1618,9 +1725,10 @@ def make_placeholder_item(section):
     }
 
 def _is_placeholder(item):
-    """無來源網址且標題為「今日無…」句式的 noise 佔位卡"""
+    """無來源網址且標題為「今日無…」「本日無…」句式的 noise 佔位卡"""
+    title = item.get('title', '')
     return (not (item.get('source') or '').strip()
-            and '今日無' in item.get('title', ''))
+            and ('今日無' in title or '本日無' in title))
 
 def remove_repeated_stories(data, recent_titles):
     """生成後 title-level 去重：LLM 改寫標題繞過 NO-REPEAT 指令時的最後一道 guard。
