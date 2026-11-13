@@ -2,6 +2,200 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 70,
+        "CSP/CapEx": 55,
+        "App/AI": 26,
+        "gnews-chip": 24,
+        "gnews-dc": 23,
+        "gnews-app": 12
+      },
+      "digest_filtered": 1,
+      "after_dedup": 188,
+      "buckets": {
+        "hw": 70,
+        "corp": 122,
+        "app": 9
+      },
+      "news_char_budget": {
+        "hw": 6000,
+        "corp": 8000,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 70,
+          "full_text_total": 3,
+          "full_text_sent": 3,
+          "sent": 13,
+          "partial_cut": 0,
+          "chars_sent": 5993,
+          "dropped": 57
+        },
+        "corp": {
+          "mode": "slice",
+          "budget": 8000,
+          "candidates": 122,
+          "full_text_total": 5,
+          "full_text_sent": 5,
+          "sent": 10,
+          "partial_cut": 1,
+          "chars_sent": 8000,
+          "dropped": 112
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 9,
+          "full_text_total": 4,
+          "full_text_sent": 4,
+          "sent": 9,
+          "partial_cut": 0,
+          "chars_sent": 4568,
+          "dropped": 0
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 2,
+        "corp": 3,
+        "app": 1
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 5249,
+          "completion_tokens": 1503,
+          "total_tokens": 6752
+        },
+        "corp": {
+          "prompt_tokens": 5471,
+          "completion_tokens": 1651,
+          "total_tokens": 7122
+        },
+        "app": {
+          "prompt_tokens": 4676,
+          "completion_tokens": 914,
+          "total_tokens": 5590
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "hw",
+          "title": "美國商務部長 Lutnick 同意就 Nvidia AI 晶片對華銷售接受質詢",
+          "gate": "downgrade_low_quality",
+          "action": "rating core→opp",
+          "reason": "rating core→opp"
+        },
+        {
+          "section": "corp",
+          "title": "Nvidia 創辦人離職引發晶片股輪換 投資者關注 AMD、Broadcom 與 TSMC",
+          "gate": "dedup_and_freshness_check",
+          "action": "removed",
+          "reason": "兩篇皆報導 Jensen Huang 辭職及其後繼者安排，屬同一領導層變動事件"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "unmatched_dropped": 30,
+      "retry": {
+        "hw": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "corp": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "app": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        }
+      },
+      "llm_ratings": {
+        "hw": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "deepen": {
+        "candidates": 1,
+        "rewritten": 1,
+        "fetch_failed": 0,
+        "llm_failed": 0
+      },
+      "dedup_audit": [
+        {
+          "title": "Nvidia 創辦人離職引發晶片股輪換 投資者關注 AMD、Broadcom 與 TSMC",
+          "section": "corp",
+          "action": "removed",
+          "matched_title": "Nvidia 財務長 Colette Kress 受命暫代執行長",
+          "reason": "兩篇皆報導 Jensen Huang 辭職及其後繼者安排，屬同一領導層變動事件"
+        }
+      ],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 5,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "fragment_restored": 0,
+        "items": []
+      },
+      "date": "2026-11-14",
+      "generated_at": "2026-11-14T00:09:06.293440+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 65,
         "CSP/CapEx": 58,
         "App/AI": 27,
@@ -1813,117 +2007,6 @@
       },
       "date": "2026-11-01",
       "generated_at": "2026-11-01T00:04:21.762166+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 65,
-        "CSP/CapEx": 51,
-        "App/AI": 24,
-        "gnews-chip": 16,
-        "gnews-dc": 24,
-        "gnews-app": 17
-      },
-      "digest_filtered": 1,
-      "after_dedup": 180,
-      "buckets": {
-        "hw": 42,
-        "corp": 130,
-        "app": 41
-      },
-      "news_char_budget": {
-        "hw": 4900,
-        "corp": 8000,
-        "app": 4783
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 3,
-        "app": 2
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 3,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "placeholders": 0,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 3,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [],
-      "fact_audit": {
-        "mode": "log",
-        "checked": 4,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 1,
-        "low_coverage": {
-          "checked": 2,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": [
-          {
-            "sec": "corp",
-            "title": "AWS 第三季營收成長 39%，簽署多項大型 AI 合約",
-            "source": "https://www.cnbc.com/2026/10/29/aws-q3-earnings-report-2026.html",
-            "rating": "core",
-            "coverage": "low_coverage",
-            "suspects": [],
-            "undetermined": [
-              "1840 億美元",
-              "460 億美元",
-              "39.3%"
-            ],
-            "tense_flag": false
-          },
-          {
-            "sec": "corp",
-            "title": "Microsoft 計畫發行 250 億美元債券以支援 AI 建設",
-            "source": "https://www.cnbc.com/2026/10/29/microsoft-25-billion-debt-offering.html",
-            "rating": "core",
-            "coverage": "low_coverage",
-            "suspects": [],
-            "undetermined": [
-              "2026年10月29日"
-            ],
-            "tense_flag": false
-          }
-        ]
-      },
-      "date": "2026-10-31",
-      "generated_at": "2026-10-31T00:04:27.805122+08:00"
     }
   ]
 }

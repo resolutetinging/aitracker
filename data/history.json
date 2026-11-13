@@ -1,5 +1,174 @@
 [
   {
+    "date": "2026-11-14",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "美國商務部長 Lutnick 同意就 Nvidia AI 晶片對華銷售接受質詢",
+        "layer": "export_controls",
+        "body": "Lutnick 已同意在即將舉行的聽證會上說明 Nvidia 向中國出售 AI 晶片的情況。此舉顯示美國政府正加緊審查 Nvidia 的出口許可。據 Quartz 報導，聽證會將聚焦於是否有違反現行出口管制的行為。",
+        "impact": "此訊息將直接導致 Nvidia 向中國的 AI 晶片出貨量可能下降 (↓)，進而減少台積電等代工廠的相關製程需求 (↓)。下游雲端服務供應商若需替代來源，可能轉向 AMD 或自研晶片，提升其供應鏈多元化 (↑)。長期看，嚴格的出口管制可能促使中國加速本土 AI 晶片產能建置，對全球 AI 晶片市場格局產生再分配效應 (↑)。",
+        "rating": "opp",
+        "insight": "投資者應關注美國出口管制對 Nvidia 及其代工廠的出貨量衝擊。",
+        "source_label": "Quartz",
+        "source": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1ONGdtNVRHVDhFOHNJRXBHUzBTN0drdU5XLTFFUHNGWlIya0NCaVZmU0xnRGl3MEJZU1FxUFZIWnJJcW1FakZ2NllyYmpVdTZXSF8tNnJ6UEx2WWR4TzlnakRrVm1uVmdWRGNuVHUwSWJMSFk2enNReF9Udw?oc=5",
+        "chain": [
+          {
+            "label": "Nvidia AI 晶片出口許可審查↓",
+            "type": "down"
+          },
+          {
+            "label": "美國政府出口管制加嚴↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "分析師稱 150 萬顆 Nvidia AI GPU 走私至中國可能是黃雄辭職根因",
+        "layer": "export_controls",
+        "body": "分析師指出，超過 150 萬顆 Nvidia AI GPU 走私至中國的事件可能是創辦人黃雄辭職的根本原因。",
+        "impact": "大量走私將迫使美國加緊對 Nvidia AI 晶片的出口管制 (↑)，導致合法出口量下降 (↓) 並影響台積電等代工的高階 HBM 需求 (↓)。同時，走私渠道的曝光可能促使中國加速本土替代晶片研發，提升本土供應鏈自給率 (↑)。全球 AI 晶片市場供應緊張，可能使其他供應商如 AMD、Intel 的需求上升 (↑)。",
+        "rating": "core",
+        "insight": "投資人應警惕與 Nvidia 相關供應鏈的風險。",
+        "source_label": "Tom's Hardware",
+        "source": "https://www.tomshardware.com/tech-industry/artificial-intelligence/mass-smuggling-of-nvidia-ai-gpus-could-be-the-underlying-cause-of-jensen-huangs-departure-analysts-claim-more-than-1-5-gigawatts-of-banned-chips-tracked-to-china-despite-export-controls",
+        "chain": [
+          {
+            "label": "Nvidia AI GPU 出口↓",
+            "type": "down"
+          },
+          {
+            "label": "台積電 HBM 產能↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "OpenAI 推出 Daybreak 安全平台 包含紅隊與防禦工廠",
+        "layer": "core",
+        "body": "OpenAI 於 2026 年 11 月 12 日發表兩項新安全產品：Daybreak Red Team 用於滲透測試，Daybreak Defense Factory 用於防禦，皆屬於 Daybreak 安全平台。該平台由 OpenAI 總裁 Greg Brockman 在當日的 keynote 中宣布，並強調企業若不使用此類 AI 防護工具將面臨「注定失敗」的風險。",
+        "impact": "此舉直接提升 AI 模型供應商對安全測試服務的需求，促使安全軟體供應商（如 Palo Alto、CrowdStrike）加速整合 AI 驗證模組，提升上游算力平台（如 Azure、AWS）對安全算力的使用率↑。間接帶動防禦硬體（如 HSM、TPM）需求上升，供應鏈上游的晶片製造商（如 Intel、AMD）將受惠於安全加速卡的訂單增長↑。長遠看，競爭對手若未提供類似 AI 安全解決方案，可能在企業 AI 部署市場失去競爭力↓。",
+        "rating": "core",
+        "insight": "OpenAI 以安全產品切入企業 AI 市場，將推動上游算力與安全硬體需求同步上升。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/security/2026/11/12/openai-launches-security-products-tells-orgs-theyre-doomed-if-they-dont-use-them/5309500",
+        "chain": [
+          {
+            "label": "OpenAI Daybreak Red Team 需求↑",
+            "type": "up"
+          },
+          {
+            "label": "企業 AI 防護支出↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI 推出 ChatGPT Wallet 讓 AI 代理人代為購物",
+        "layer": "core",
+        "body": "OpenAI 於 2026 年 11 月 13 日宣布 ChatGPT Wallet，與美國運通、Mastercard、Visa 合作，允許其「dots」AI 代理人使用支付代幣代替實際卡號完成交易。用戶僅需一次輸入卡資訊，之後每筆購買皆需經由安全檢查授權，且 AI 代理人永不直接接觸卡號。",
+        "impact": "此服務將刺激支付網路對 AI 代幣化技術的需求，促使卡片發卡行加速部署代幣化平台，提升上游加密晶片（如安全元件、TPM）出貨量↑。同時，電商平台與零售商若欲支援 AI 代理購物，需整合 API 與驗證流程，帶動雲端服務供應商（如 AWS、Google Cloud）相關 API 使用量↑。競爭對手若未提供類似 AI 代購功能，可能在消費者 AI 服務市場失去吸引力↓。",
+        "rating": "core",
+        "insight": "ChatGPT Wallet 為 AI 代理人商業化開闢新場景，將帶動支付安全晶片與雲端 API 的需求增長。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/11/13/openai-chatgpt-wallet-dot-purchases.html",
+        "chain": [
+          {
+            "label": "OpenAI ChatGPT Wallet 與美國運通合作↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 代理人支付交易量↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "AI 聊天機器人被測出引導使用者至偽造零售網站",
+        "layer": "risk",
+        "body": "IP 保護公司 Podqi 針對 151 個品牌向 ChatGPT、Gemini 與 Perplexity 提出購物相關問題，結果發現這三款聊天機器人會將使用者導向冒牌或高風險的網站。研究顯示，問題包括「哪裡可以購買 [品牌]」與「[品牌] 是否支援國際運送」等，均被回覆為不實的購買管道。",
+        "impact": "此結果將迫使聊天機器人平台提升內容驗證與防詐機制，↑ 相關安全服務供應商（如內容審核與網址驗證公司）的需求；同時，偽造網站的流量被削減，↓ 受害電商平台的潛在損失與客訴成本；長期看，提升驗證功能的模型供應商將在 AI 應用市場獲得競爭優勢。",
+        "rating": "opp",
+        "insight": "投資者應關注 AI 對話模型的安全驗證服務市場將快速成長。",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/ai-artificial-intelligence/1032020/gemini-chatgpt-perplexity-shopping-test-risky-fake-websites-citations",
+        "chain": [
+          {
+            "label": "ChatGPT 誤導購物鏈接風險↑",
+            "type": "up"
+          },
+          {
+            "label": "品牌方品牌保護支出↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "AI 晶片",
+        "full": "人工智慧專用晶片",
+        "def": "專為深度學習與推論工作負載設計的處理器，具備高效能矩陣運算單元與大量記憶體頻寬。",
+        "why": "AI 晶片是資料中心與雲端服務的核心硬體，供應鏈波動直接影響整個 AI 生態系統。",
+        "category": "hardware"
+      },
+      {
+        "term": "出口管制",
+        "full": "政府對特定技術或產品的跨境銷售限制",
+        "def": "透過法律與許可制度限制敏感技術（如高階 AI 晶片）向特定國家或實體出口，以維護國家安全與競爭優勢。",
+        "why": "出口管制會改變晶片供應鏈的流向與需求結構，影響代工廠與下游客戶的產能規劃。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "走私",
+        "full": "非法跨境運輸受管制商品",
+        "def": "未經授權或違反出口許可的方式將受限制的晶片或設備運往目標市場，常伴隨隱蔽的供應鏈渠道。",
+        "why": "走私行為會促使監管機構加強審查，進一步收緊合法出口渠道，對產業供應鏈產生連鎖反應。",
+        "category": "role"
+      },
+      {
+        "term": "Daybreak",
+        "full": "OpenAI Daybreak 安全平台",
+        "def": "Daybreak 為 OpenAI 推出的安全平台，包含 Red Team 滲透測試工具與 Defense Factory 防禦工具，旨在利用大型語言模型提升企業資安防護。",
+        "why": "說明 OpenAI 進軍企業資安市場的具體產品形態。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "ChatGPT Wallet",
+        "full": "ChatGPT Wallet 支付功能",
+        "def": "ChatGPT Wallet 允許 OpenAI 的「dots」AI 代理人使用支付代幣代替實際卡號完成購物，並與美國運通、Mastercard、Visa 合作提供安全驗證。",
+        "why": "展示 AI 代理人在金融交易領域的實際應用。",
+        "category": "software"
+      },
+      {
+        "term": "AI 代理人",
+        "full": "Artificial Intelligence Agent (dots)",
+        "def": "OpenAI 所稱的「dots」為具備執行指令與完成任務能力的 AI 代理人，可在使用者授權下代為搜尋、購物等操作。",
+        "why": "說明新興的 AI 代理人概念及其商業化方向。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "偽造零售網站",
+        "full": "偽造零售網站（Fake Retail Websites）",
+        "def": "冒充正牌電商或品牌官方網站的虛假網頁，常以相似域名或設計騙取使用者下單，導致詐騙或個資外洩。",
+        "why": "使用者透過 AI 聊天機器人搜尋購買資訊時容易被誤導，增加詐騙風險。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "內容驗證服務",
+        "full": "內容驗證服務（Content Verification Service）",
+        "def": "針對 AI 輸出或網路連結進行真偽檢查的技術與平台，常結合 URL 黑名單、機器學習模型與人工審核。",
+        "why": "可降低聊天機器人將使用者導向偽造網站的機率，提升使用者信任度。",
+        "category": "software"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-13",
     "is_sunday": false,
     "hw": [
@@ -798,107 +967,5 @@
       }
     ],
     "weekly_summary": "HW：美國橡樹嶺實驗室部署 AMD 與 IBM 合作的混合量子‑HPC 系統，提升 AMD 高效能晶片在量子研究領域的需求。\nCORP：AWS 透過新增 Bot Orchestrator 功能強化 Kiro，Microsoft 精簡 neocloud 合作夥伴以聚焦自有資料中心，Anthropic IPO 估值下修至 1.5 兆美元。\n下週看點：AWS 是否會推出 Kiro 付費版以擴大雲端資源需求。\nAPP：本週未出現具體的AI應用部署新聞。\n用戶洞察：目前市場缺乏可量化的AI商業化案例，投資者應關注未來實際落地的AI服務。"
-  },
-  {
-    "date": "2026-11-07",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "英國內政部雲端服務合約或為 AWS 帶來 10 億英鎊收入",
-        "layer": "CSP/CapEx",
-        "body": "根據規劃公告，英國內政部將於2027年12月起續約公共雲服務，合約估值為£881,621,007（含VAT 超過£1億），預計執行至2029年12月，最長可延伸至2031年。",
-        "impact": "AWS 公共雲服務收入將顯著上升。",
-        "rating": "opp",
-        "insight": "投資者可關注AWS在英國公共部門的合約擴張，預期其營收將持續增長。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/public-sector/2026/11/06/home-office-cloud-services-contract-may-net-aws-1b/5308106",
-        "chain": [
-          {
-            "label": "AWS 公共雲服務收入↑",
-            "type": "up"
-          },
-          {
-            "label": "Azure 競爭地位↓",
-            "type": "down"
-          },
-          {
-            "label": "UK 本地雲供應商 市場份額↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI 發布 GPT-6 Cyber，提升安全測試合規性",
-        "layer": "AI_technique",
-        "body": "OpenAI 於 2026 年 11 月推出 GPT-6 Cyber，該模型在 ExploitGym 基準測試中取得 48.5% 的得分，高於前代 GPT-5.6 Cyber 的 32.1%。OpenAI 表示此模型在 99% 以上的情況下不會超出授權範圍。",
-        "impact": "",
-        "rating": "core",
-        "insight": "OpenAI 的安全導向模型可能成為企業 AI 安全測試的新標準。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/security/2026/11/05/openai-releases-gpt-6-cyber-and-promises-this-one-stays-within-rules-of-engagement/5307855",
-        "chain": [
-          {
-            "label": "OpenAI 訂閱收入↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft Azure AI 服務需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Google AI Cloud 競爭壓力↑",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Kiro",
-        "full": "AWS Kiro",
-        "def": "AWS 推出的 AI 驅動整合開發環境，提供桌面 IDE、CLI、Web、行動與個人 AI 代理等多種介面。",
-        "why": "代表雲端平台在開發者工具領域的差異化布局，可能影響 IDE 市場供應鏈。",
-        "category": "software"
-      },
-      {
-        "term": "GPT-6 Cyber",
-        "full": "OpenAI GPT-6 Cyber",
-        "def": "OpenAI 針對資安測試優化的語言模型，具備高合規性與漏洞偵測能力。",
-        "why": "提升 AI 安全測試需求，牽動相關硬體安全加速器與軟體供應鏈。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "H200",
-        "full": "Nvidia H200 AI 晶片",
-        "def": "Nvidia 針對高效能 AI 工作負載設計的加速卡，支援大型模型訓練與推論。",
-        "why": "其供應受限會波及全球 AI 超算與資料中心建設的硬體需求。",
-        "category": "semiconductor"
-      }
-    ],
-    "weekly_summary": null
   }
 ]

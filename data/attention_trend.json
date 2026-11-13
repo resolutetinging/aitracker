@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-13",
+ "updated": "2026-11-14",
  "since": "2026-07-01",
  "entities": [
   {
@@ -946,21 +946,21 @@
   {
    "week": "2026-W46",
    "start": "2026-11-09",
-   "cards": 18,
+   "cards": 23,
    "dims": {
     "hw": {
-     "core": 0,
-     "opp": 2,
+     "core": 1,
+     "opp": 3,
      "noise": 0
     },
     "corp": {
-     "core": 5,
+     "core": 7,
      "opp": 4,
      "noise": 0
     },
     "app": {
      "core": 4,
-     "opp": 3,
+     "opp": 4,
      "noise": 0
     }
    },
@@ -969,20 +969,17 @@
     "Physical AI": 1,
     "Meta": 1,
     "推論": 2,
-    "OpenAI": 2,
+    "OpenAI": 5,
     "Anthropic": 4,
     "Microsoft": 3,
-    "Google": 3,
-    "NVIDIA": 3,
-    "出口管制": 1,
-    "Agentic AI": 2
+    "Google": 4,
+    "NVIDIA": 5,
+    "出口管制": 2,
+    "Agentic AI": 3
    }
   }
  ],
  "seen": [
-  "2026-10-23|Meta 宣布全年資本支出上限提升至 1450 億美元",
-  "2026-10-23|Microsoft 揭露 ConnectWise 資安漏洞導致 2,250 個雲端租戶受影響",
-  "2026-10-23|Nvidia 於柏林 GTC 公布投入資金協助供應鏈以鞏固矽基板供應",
   "2026-10-24|Microsoft AI 診斷協調器在模擬測試中正確率達 83%",
   "2026-10-24|OpenAI 近完成 300 億美元融資輪 估值 1.25 兆美元",
   "2026-10-24|PHP2Shell 安全漏洞波及 Google、OpenAI、Amazon 等巨頭",
@@ -1057,6 +1054,11 @@
   "2026-11-13|IBM 與 Microsoft 推出企業級 Agentic AI 平台",
   "2026-11-13|Lutnick 暫緩對中國的 Nvidia 晶片銷售限制",
   "2026-11-13|Nvidia 財務長 Colette Kress 受命暫代執行長",
-  "2026-11-13|中國 AI 企業加速確保 Nvidia 晶片產能以防美國限制"
+  "2026-11-13|中國 AI 企業加速確保 Nvidia 晶片產能以防美國限制",
+  "2026-11-14|AI 聊天機器人被測出引導使用者至偽造零售網站",
+  "2026-11-14|OpenAI 推出 ChatGPT Wallet 讓 AI 代理人代為購物",
+  "2026-11-14|OpenAI 推出 Daybreak 安全平台 包含紅隊與防禦工廠",
+  "2026-11-14|分析師稱 150 萬顆 Nvidia AI GPU 走私至中國可能是黃雄辭職根因",
+  "2026-11-14|美國商務部長 Lutnick 同意就 Nvidia AI 晶片對華銷售接受質詢"
  ]
 }
