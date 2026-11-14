@@ -1,6 +1,65 @@
 {
-  "checked_at": "2026-11-08",
-  "items": [],
-  "no_change_summary": "近期動態：現有的近期動態資料仍與已知新聞一致，未發現需新增或更新的項目。；採購／供應流向：經核對新聞，未發現可具體佐證的採購或供應流向變化，現有資料仍然準確。；關鍵企業：經核對本週新聞，未發現可證實之具體變化，現有關鍵企業資料仍然準確。；資本與人才管制：現有資本與人才管制資料仍與最新新聞一致，無需更新。",
+  "checked_at": "2026-11-15",
+  "items": [
+    {
+      "target_field": "recent_events",
+      "data": {
+        "date": "2026-11-12",
+        "title": "Democrats probe Nvidia chip exports to China",
+        "category": "出口管制",
+        "thread": "",
+        "summary": "美國國會民主黨議員於2026年11月12日展開調查，針對前川普政府批准的Nvidia H200 AI晶片對中國的出口及相關關稅政策是否合法與國安風險進行審查。",
+        "src": "https://www.unite.ai/neal-and-wyden-open-probe-into-nvidias-china-chip-sales/",
+        "src_note": ""
+      },
+      "reason": "新聞明確指出2026年11月12日美國國會民主黨展開對Nvidia晶片出口中國的調查，屬於近期出口管制動態，現有資料中未包含此事件，故建議新增。"
+    },
+    {
+      "target_field": "procurement_flows",
+      "data": {
+        "title": "新加坡Aperia集團伺服器轉運詐欺網絡(經馬來西亞流向未明)",
+        "summary": "新加坡Aperia集團（Aperia International、A-Speed Infotech、Aperia Cloud Services (II)）及關聯公司利用新加坡Megaspeed公司作為中轉，將含受管制GPU的伺服器從美國廠商轉出口至馬來西亞，最終流向仍未確認。",
+        "nodes": [
+          {
+            "label": "Dell／Super Micro／華碩",
+            "sub": "美國/台灣原廠",
+            "role": "hw"
+          },
+          {
+            "label": "Aperia集團 / A-Speed Infotech / Megaspeed",
+            "sub": "新加坡中介公司",
+            "role": "pkg"
+          },
+          {
+            "label": "馬來西亞下游環節",
+            "sub": "轉出口目的地",
+            "role": "end"
+          }
+        ],
+        "arrows": [
+          "→",
+          "→"
+        ],
+        "src": "https://www.cnn.com/2026/11/14/tech/china-megaspeed-nvidia-scandal-hnk-intl",
+        "src_note": "CNN 報導揭露 Megaspeed（與 A-Speed Infotech 相關）在新加坡的轉運作業，說明其在 Aperia 集團伺服器轉運網路中的角色。"
+      },
+      "reason": "CNN 2026-11-14 報導指出新加坡 Megaspeed 公司是 Aperia 集團伺服器轉運鏈中的關鍵中介，提供具體的轉運節點資訊，符合新增/更新採購流向的條件。"
+    },
+    {
+      "target_field": "key_companies",
+      "data": {
+        "name": "輝達（NVIDIA）",
+        "role": "AI晶片設計龍頭，H100/H200/B200/B30A等產品委由台積電製造，是",
+        "desc": "美國AI晶片領導廠商，產品高度依賴先進製程代工，營收與股價受美中科技政策影響顯著。",
+        "exposure": "高度曝險——身處美中晶片戰爭最前線，營收與股價高度受單一政策決定影響。",
+        "policy_actions": "美國國會於2026年11月展開多項調查，針對Nvidia向中國出口H200等AI晶片的批准、稅務與出口許可程序提出審查，可能導致未來出口管制更嚴格。",
+        "risk": "高度曝險",
+        "src": "https://www.ap7am.com/en/139315/us-democrats-probe-nvidia-chip-exports-to-china",
+        "src_note": "美國民主黨議員針對Nvidia向中國出口AI晶片展開調查，涉及出口許可與稅務問題。"
+      },
+      "reason": "最新新聞顯示美國國會對Nvidia向中國出口AI晶片展開調查，增加了政策審查風險，需在資料中加入此政策行動說明。"
+    }
+  ],
+  "no_change_summary": "",
   "category_failures": []
 }
