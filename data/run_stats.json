@@ -2,6 +2,248 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 67,
+        "CSP/CapEx": 49,
+        "App/AI": 27,
+        "gnews-chip": 22,
+        "gnews-dc": 24,
+        "gnews-app": 14
+      },
+      "digest_filtered": 1,
+      "after_dedup": 184,
+      "buckets": {
+        "hw": 67,
+        "corp": 115,
+        "app": 7
+      },
+      "news_char_budget": {
+        "hw": 6000,
+        "corp": 8000,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 67,
+          "full_text_total": 3,
+          "full_text_sent": 3,
+          "sent": 13,
+          "partial_cut": 0,
+          "chars_sent": 5999,
+          "dropped": 54
+        },
+        "corp": {
+          "mode": "slice",
+          "budget": 8000,
+          "candidates": 115,
+          "full_text_total": 5,
+          "full_text_sent": 5,
+          "sent": 10,
+          "partial_cut": 1,
+          "chars_sent": 8000,
+          "dropped": 105
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 7,
+          "full_text_total": 4,
+          "full_text_sent": 4,
+          "sent": 7,
+          "partial_cut": 0,
+          "chars_sent": 3284,
+          "dropped": 0
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 3,
+        "corp": 2,
+        "app": 1
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 5354,
+          "completion_tokens": 2003,
+          "total_tokens": 7357
+        },
+        "corp": {
+          "prompt_tokens": 5835,
+          "completion_tokens": 1527,
+          "total_tokens": 7362
+        },
+        "app": {
+          "prompt_tokens": 4855,
+          "completion_tokens": 1146,
+          "total_tokens": 6001
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "hw",
+          "title": "美國行政部門對 Nvidia AI 晶片對華出口政策分歧",
+          "gate": "dedup_and_freshness_check",
+          "action": "removed",
+          "reason": "皆描述美國政府內部對 Nvidia AI 晶片對華出口政策的爭議與最新調整，屬同一事件"
+        },
+        {
+          "section": "corp",
+          "title": "中國 AI 實驗室使用 Nvidia Blackwell GPU 繞過出口管制",
+          "gate": "dedup_and_freshness_check",
+          "action": "rating core→opp",
+          "reason": "報導的是已發生的技術使用情況，屬於背景說明而非新政策或新行動"
+        },
+        {
+          "section": "corp",
+          "title": "Nvidia 創辦人兼執行長辭職引發晶片股輪換",
+          "gate": "dedup_and_freshness_check",
+          "action": "removed",
+          "reason": "兩篇皆在報導 Jensen Huang 突然辭職及其後繼者的任命，屬同一事件"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "unmatched_dropped": 35,
+      "retry": {
+        "hw": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "corp": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "app": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        }
+      },
+      "llm_ratings": {
+        "hw": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "deepen": {
+        "candidates": 2,
+        "rewritten": 0,
+        "fetch_failed": 2,
+        "llm_failed": 0
+      },
+      "dedup_audit": [
+        {
+          "title": "美國行政部門對 Nvidia AI 晶片對華出口政策分歧",
+          "section": "hw",
+          "action": "removed",
+          "matched_title": "Lutnick 暫緩對中國的 Nvidia 晶片銷售限制",
+          "reason": "皆描述美國政府內部對 Nvidia AI 晶片對華出口政策的爭議與最新調整，屬同一事件"
+        },
+        {
+          "title": "Nvidia 創辦人兼執行長辭職引發晶片股輪換",
+          "section": "corp",
+          "action": "removed",
+          "matched_title": "Nvidia 財務長 Colette Kress 受命暫代執行長",
+          "reason": "兩篇皆在報導 Jensen Huang 突然辭職及其後繼者的任命，屬同一事件"
+        },
+        {
+          "title": "中國 AI 實驗室使用 Nvidia Blackwell GPU 繞過出口管制",
+          "section": "corp",
+          "action": "downgraded",
+          "matched_title": null,
+          "reason": "報導的是已發生的技術使用情況，屬於背景說明而非新政策或新行動"
+        }
+      ],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 3,
+        "suspect_cards": 1,
+        "tense_flags": 0,
+        "no_material": 1,
+        "low_coverage": {
+          "checked": 1,
+          "suspect_cards": 1,
+          "skipped_enforce": 1
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "fragment_restored": 0,
+        "items": [
+          {
+            "sec": "hw",
+            "title": "美國晶片出口管制失效 68.7 萬顆晶片流入中國",
+            "source": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNTUhnSFlZWkxONVN6V2JLMDVQdmRaV2pzMWZXN3FsWnhzVERmYWdfUGpjbVFrLWZaYms0Mm5QQ0NXQ2tWRlVGLTk3YV8wUV9aMlJPQlN0VU14ekhfckRWQjkzWl9fa3U0dDNUdWhVS05KTE9QZXhJQVZHcEdrZzg3NmZqSFhFMkFUTTFXNHMwZw?oc=5",
+            "rating": "core",
+            "coverage": "low_coverage",
+            "suspects": [
+              "678000"
+            ],
+            "undetermined": [],
+            "tense_flag": false,
+            "title_suspects": []
+          },
+          {
+            "sec": "corp",
+            "title": "中國 AI 實驗室使用 Nvidia Blackwell GPU 繞過出口管制",
+            "source": "https://www.theregister.com/ai-and-ml/2026/11/13/chinese-ai-labs-are-training-models-on-nvidias-blackwell-despite-export-controls-says-ex-openai-engineer/5309891",
+            "rating": "opp",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [
+              "2026年11月13日"
+            ],
+            "tense_flag": false,
+            "title_suspects": []
+          }
+        ]
+      },
+      "date": "2026-11-15",
+      "generated_at": "2026-11-15T00:07:54.205802+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 70,
         "CSP/CapEx": 55,
         "App/AI": 26,
@@ -1924,89 +2166,6 @@
       },
       "date": "2026-11-02",
       "generated_at": "2026-11-02T00:04:04.404921+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 64,
-        "CSP/CapEx": 46,
-        "App/AI": 21,
-        "gnews-chip": 15,
-        "gnews-dc": 20,
-        "gnews-app": 21
-      },
-      "digest_filtered": 1,
-      "after_dedup": 169,
-      "buckets": {
-        "hw": 37,
-        "corp": 120,
-        "app": 37
-      },
-      "news_char_budget": {
-        "hw": 4316,
-        "corp": 8000,
-        "app": 4316
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 4,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "fact_audit": {
-        "mode": "log",
-        "checked": 2,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 1,
-        "low_coverage": {
-          "checked": 1,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": []
-      },
-      "date": "2026-11-01",
-      "generated_at": "2026-11-01T00:04:21.762166+08:00"
     }
   ]
 }

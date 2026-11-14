@@ -1,5 +1,132 @@
 [
   {
+    "date": "2026-11-15",
+    "is_sunday": true,
+    "hw": [
+      {
+        "title": "美國晶片出口管制失效 68.7 萬顆晶片流入中國",
+        "layer": "export_control",
+        "body": "根據 shattered.io 報導，約 678,000 顆 AI 晶片在美國出口管制期間未被攔截而流入中國市場。該數量包括使用 Nvidia Blackwell 架構的高階 GPU，屬於受限產品。此事件顯示現行管制機制在實務執行上存在漏洞。",
+        "impact": "此流失直接降低美國對中國的晶片供應限制，導致美國晶圓代工（如 TSMC）與 HBM 供應商的出貨量可能上升 (↑) 因為需求被轉移至非正式渠道；間接使得 OSAT 廠商的利用率下降 (↓) 因為正規訂單減少；長期可能促使中國本土 AI 晶片供應鏈加速自給自足，削弱美國供應鏈的市場份額。",
+        "rating": "core",
+        "insight": "投資者應關注美國對高階 AI 晶片的出口管制執行力度，因其直接影響供應鏈可靠性。",
+        "source_label": "shattered.io",
+        "source": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNTUhnSFlZWkxONVN6V2JLMDVQdmRaV2pzMWZXN3FsWnhzVERmYWdfUGpjbVFrLWZaYms0Mm5QQ0NXQ2tWRlVGLTk3YV8wUV9aMlJPQlN0VU14ekhfckRWQjkzWl9fa3U0dDNUdWhVS05KTE9QZXhJQVZHcEdrZzg3NmZqSFhFMkFUTTFXNHMwZw?oc=5",
+        "thin_source": true,
+        "chain": [
+          {
+            "label": "Nvidia Blackwell GPU 流入中國↑",
+            "type": "up"
+          },
+          {
+            "label": "美國出口管制效能↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "美國財政部長質疑 Nvidia 向空殼公司出售 AI GPU",
+        "layer": "regulatory",
+        "body": "Tom's Hardware 報導稱，美國財政部長質疑 Nvidia 是否故意將 AI GPU 出售給註冊為空殼公司的客戶，並要求公司負起全部責任。部長表示任何參與此類交易的員工都應受到追究。此指控暗示 Nvidia 可能違反出口管制規定。",
+        "impact": null,
+        "rating": "core",
+        "insight": "合規風險升高可能削減 Nvidia 在中國的 AI 晶片出貨，進一步影響相關上游供應商的營運。",
+        "source_label": "Tom's Hardware",
+        "source": "https://www.tomshardware.com/tech-industry/artificial-intelligence/u-s-treasury-secretary-questions-whether-nvidia-knowingly-sold-ai-gpus-to-shell-companies-says-company-itself-is-responsible-i-think-it-is-important-that-anyone-at-the-company-there-be-held-accountable-for-that",
+        "chain": [
+          {
+            "label": "Nvidia AI GPU 出售空殼公司↑",
+            "type": "up"
+          },
+          {
+            "label": "美國財政部監管風險↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "中國 AI 實驗室使用 Nvidia Blackwell GPU 繞過出口管制",
+        "layer": "AI芯片供應",
+        "body": "前 OpenAI 工程師 Will DePue 公布取證，指出 DeepSeek、Moonshot AI、MiniMax 與螞蟻集團已取得 Nvidia 的 Blackwell GPU，儘管美國對此類晶片實施出口限制。DePue 表示每個 GPU 在模型初始化時會留下獨特的硬體指紋，從而證實這些模型是使用 Blackwell 訓練的。此資訊於 2026 年 11 月 13 日的 The Register 報導。",
+        "impact": "1) Nvidia Blackwell GPU 的需求因中國 AI 企業的非法採購而出現短期 ↑，可能導致供應鏈上游的晶圓代工（如 TSMC）出貨量增加。2) 中國 AI 服務供應商獲得先進 GPU 後，將加速模型開發，提升對高階 HBM 記憶體與散熱解決方案的需求，帶動相關供應商（如 Micron、SK Hynix）出貨 ↑。",
+        "rating": "opp",
+        "insight": "美國管制未能阻止中國 AI 企業取得 Blackwell，顯示供應鏈漏洞仍存，投資者應關注相關合規與供應鏈風險。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/ai-and-ml/2026/11/13/chinese-ai-labs-are-training-models-on-nvidias-blackwell-despite-export-controls-says-ex-openai-engineer/5309891",
+        "chain": [
+          {
+            "label": "DeepSeek 等取得 Nvidia Blackwell GPU↑",
+            "type": "up"
+          },
+          {
+            "label": "中國 AI 研發加速↑",
+            "type": "up"
+          },
+          {
+            "label": "美國出口管制違規風險↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Databricks 公布三條企業採用 OpenAI 工具的路徑",
+        "layer": "enterprise_adoption",
+        "body": "Databricks 在 Unite.AI 報導中說明，企業可透過三種路徑導入 OpenAI 的生成式 AI 工具，包括直接 API 整合、平台化服務以及共創解決方案。此說明同時指出，Databricks 已與多家大型雲端供應商合作提供即時運算資源。報導亦提到，該公司正加速建置專屬的 AI 工作負載管理平台，以支援客戶在不同產業的落地需求。",
+        "impact": "1) 直接提升 GPU 供應鏈上游廠商（如 Nvidia）對雲端資料中心的需求，導致晶片出貨量 ↑；2) 雲端服務商（如 AWS、Azure）因需擴充算力，將加速採購高效能伺服器與散熱解決方案，帶動硬體供應鏈利用率 ↑；3) 企業客戶因採用 Databricks 平台，可縮短 AI 應用開發週期，提升下游軟體服務與顧問業務的市場佔有率 ↑。",
+        "rating": "core",
+        "insight": "Databricks 的多元採用路徑將推動 GPU 與雲端算力需求同步成長。",
+        "source_label": "Unite.AI",
+        "source": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOY28yMUtVTjJpU2xLWkNUOENLc054ZDh5eTF2cVhmTXc5Y3J2bjFydjNGVi1qaElZZl9MdFdfMlBIN2NlcnhISlBLakZlaWlEbTRSQTV4eDZNY0lnc1RiNWszWWxRblFhZVZuTGlyTHVYT2F3aFZvSHl5Q2VyQnU4QVkzeUF6SFpCMlBsLVl6YzZWYlU",
+        "thin_source": true,
+        "chain": [
+          {
+            "label": "Databricks 與雲端供應商合作↑",
+            "type": "up"
+          },
+          {
+            "label": "企業採用 OpenAI 工具↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Blackwell GPU",
+        "full": "Nvidia Blackwell 系列圖形處理器",
+        "def": "Nvidia 於 2026 年推出的高階 AI 專用 GPU，具備更高的算力與記憶體頻寬，屬於受美國出口管制的產品。此晶片常被大型雲端服務供應商與 AI 研究機構採用。",
+        "why": "因其高效能，成為美國對華 AI 晶片出口審查的焦點，影響相關供應鏈的合規與市場分配。",
+        "category": "hardware"
+      },
+      {
+        "term": "硬體指紋",
+        "full": "GPU 硬體指紋",
+        "def": "在模型初始化階段，GPU 的隨機種子與硬體特性會留下獨特的數值模式，可用於追蹤模型的訓練硬體來源。",
+        "why": "此技術讓研究者能辨識模型是否使用受限的 Nvidia 晶片訓練，具備合規與安全監測價值。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "神經符號 AI",
+        "full": "Neurosymbolic AI",
+        "def": "結合神經網路的學習能力與符號推理的結構化知識，讓 AI 系統能同時處理統計模式與邏輯規則。",
+        "why": "可提升醫療、金融等領域的決策透明度與可解釋性，符合嚴格法規要求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "API 整合",
+        "full": "Application Programming Interface 整合",
+        "def": "透過標準化介面將外部服務（如 OpenAI）直接嵌入企業內部系統，實現功能即時呼叫。",
+        "why": "降低開發門檻，使企業快速部署生成式 AI 應用。",
+        "category": "role"
+      }
+    ],
+    "weekly_summary": "HW：美國晶片出口管制失效導致 68.7 萬顆 AI 晶片流入中國，顯示管制執行漏洞。\\nHW：美國財政部長質疑 Nvidia 向空殼公司出售 AI GPU，可能引發合規審查與出貨縮減。\\nHW：特朗普政府內部對 Nvidia AI 晶片對華出口政策存分歧，未來政策走向將直接影響供應鏈上下游。\nCORP：Nvidia 受領導層變動衝擊，AI 晶片需求出現輪換，AMD 與 TSMC 受惠。\n下週看點：Nvidia 是否能快速任命新執行長並穩定 AI 晶片供應鏈。\nAPP：Databricks 公布三條企業採用 OpenAI 工具的路徑，促進 AI 服務在各產業快速落地。\n用戶洞察：企業正尋求多元化的 AI 整合方式，以縮短開發週期並降低技術門檻。"
+  },
+  {
     "date": "2026-11-14",
     "is_sunday": false,
     "hw": [
@@ -809,163 +936,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-11-08",
-    "is_sunday": true,
-    "hw": [
-      {
-        "title": "美國橡樹嶺國家實驗室獲得 AMD 與 IBM 合作的混合量子‑HPC 系統",
-        "layer": "strategic_supplier",
-        "body": "美國能源部資助的橡樹嶺國家實驗室量子科學中心（QSC）宣布部署一套結合 IBM 量子處理器與 AMD CPU、GPU 的混合量子‑HPC 平台，旨在測試量子錯誤更正技術，QSC 總監 Travis Humble 強調此舉對實現容錯量子計算至關重要。",
-        "impact": "平台結合 AMD CPU 與 GPU，提升相關產品需求。",
-        "rating": "core",
-        "insight": "投資者應關注 AMD 在量子‑HPC 合作中的晶片需求提升，可能帶動其高效能 CPU/GPU 產能上揚。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/hpc/2026/11/06/oak-ridge-labs-gets-hybrid-quantum-hpc-system-to-test-qubit-error-correction/5308187",
-        "chain": [
-          {
-            "label": "AMD GPU/CPU 需求↑",
-            "type": "up"
-          },
-          {
-            "label": "IBM 量子處理器合作↑",
-            "type": "up"
-          },
-          {
-            "label": "橡樹嶺混合量子‑HPC 平台效能提升↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "AWS 針對 Kiro 身份危機新增 Bot Orchestrator 功能",
-        "layer": "aws",
-        "body": "AWS 於 2026 年 11 月 5 日宣布，Kiro 這套 AI 導向的整合開發環境將加入「Bot Orchestrator」身份，以緩解其定位不清的問題。此功能將於桌面 IDE、CLI、Web 應用與行動應用同步提供，並以開源工作區形式持續運作。",
-        "impact": "",
-        "rating": "core",
-        "insight": "AWS 透過功能擴充提升 Kiro 魅力，將直接拉動雲端運算資源需求。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/11/05/aws-kiro-aims-to-solve-identity-crisis-by-adding-another-identity-bot-orchestrator/5307965",
-        "chain": [
-          {
-            "label": "AWS Kiro Bot Orchestrator 功能新增↑",
-            "type": "up"
-          },
-          {
-            "label": "AWS 桌面 IDE/CLI/Web/行動應用整合度↑",
-            "type": "up"
-          },
-          {
-            "label": "開源工作區活躍度↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic IPO 估值下修至 1.5 兆美元",
-        "layer": "anthropic",
-        "body": "Anthropic 於 2026 年 11 月 6 日被投資者指出，原先目標的 2 兆美元估值已下修至 1.5 兆美元，且仍被部分投資者視為「過高」；公司預計在本月底前於 Nasdaq 以代號 ANT 上市。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Anthropic 估值回調將抑制 AI 晶片需求增長，讓競爭者受益。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/11/06/investors-brace-for-anthropic-valuation-1point5-trillion-a-stretch.html",
-        "chain": [
-          {
-            "label": "Anthropic 估值↓",
-            "type": "down"
-          },
-          {
-            "label": "NASDAQ 上市代號 ANT 發行價格↓",
-            "type": "down"
-          },
-          {
-            "label": "投資者信心↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Microsoft 精簡 neocloud 合作夥伴以聚焦自有資料中心",
-        "layer": "microsoft",
-        "body": "微軟正評估縮減與多家 neocloud 合作夥伴的關係，並優先擴充自有資料中心，已傳出不再續約 Oracle，且尚未決定將停止使用哪些 neocloud，包括 CoreWeave、Nebius、Chronoscale、IREN、Lambda 與 Nscale。微軟在本季財報中披露資本支出達 452 億美元，並表示其基礎建設策略以彈性與選擇為核心。",
-        "impact": "因微軟可能削減對 CoreWeave、Nebius、Chronoscale、IREN、Lambda 與 Nscale 的需求，這些 neocloud 供應商的伺服器與網路設備採購將出現下降，進一步影響相關硬體供應鏈上游的晶片與儲存設備需求，導致整體供應鏈需求↓。",
-        "rating": "opp",
-        "insight": "投資者應關注微軟自建資料中心對第三方 neocloud 供應商需求的減少可能帶來的營收衝擊。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/11/06/microsoft-moves-to-consolidate-its-relationships-with-neoclouds-in-ai.html",
-        "chain": [
-          {
-            "label": "CoreWeave 需求↓",
-            "type": "down"
-          },
-          {
-            "label": "Nebius 需求↓",
-            "type": "down"
-          },
-          {
-            "label": "IREN 需求↓",
-            "type": "down"
-          },
-          {
-            "label": "Microsoft 自建資料中心 產能↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "量子錯誤更正",
-        "full": "Quantum Error Correction",
-        "def": "一套用於保護量子資訊免受環境噪聲干擾的技術，透過編碼與糾錯演算法維持量子位元的相干性。",
-        "why": "是實現容錯量子電腦的關鍵，直接影響未來量子計算的實用性與商業化進度。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "混合量子‑HPC 系統",
-        "full": "Hybrid Quantum‑High Performance Computing System",
-        "def": "結合量子處理器與傳統高效能計算資源（CPU、GPU）的平台，用於加速量子演算法的模擬與驗證。",
-        "why": "可利用現有 HPC 基礎設施提升量子研究效率，降低純量子硬體的開發門檻。",
-        "category": "hardware"
-      },
-      {
-        "term": "agentic development environment",
-        "full": "agentic development environment",
-        "def": "一種結合 AI 助手與自動化代理的開發環境，允許開發者透過 AI 生成、測試與部署程式碼。",
-        "why": "AWS 以此定位 Kiro，意在提升開發者對平台的黏著度。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "neocloud",
-        "full": "neocloud",
-        "def": "新興的雲端服務提供商，專注於 AI 訓練與推論的高效能運算資源。",
-        "why": "Microsoft 縮減與 neocloud 的合作，顯示大型雲端廠商正重新評估供應鏈策略。",
-        "category": "role"
-      },
-      {
-        "term": "AI輔助威脅行為者",
-        "full": "AI-assisted threat actor",
-        "def": "利用人工智慧技術自動化攻擊流程的惡意行為者，能在目標系統中快速尋找漏洞並執行惡意操作。",
-        "why": "此類攻擊提升了網路安全風險，迫使防禦供應鏈必須加速部署AI偵測與回應技術。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": "HW：美國橡樹嶺實驗室部署 AMD 與 IBM 合作的混合量子‑HPC 系統，提升 AMD 高效能晶片在量子研究領域的需求。\nCORP：AWS 透過新增 Bot Orchestrator 功能強化 Kiro，Microsoft 精簡 neocloud 合作夥伴以聚焦自有資料中心，Anthropic IPO 估值下修至 1.5 兆美元。\n下週看點：AWS 是否會推出 Kiro 付費版以擴大雲端資源需求。\nAPP：本週未出現具體的AI應用部署新聞。\n用戶洞察：目前市場缺乏可量化的AI商業化案例，投資者應關注未來實際落地的AI服務。"
   }
 ]

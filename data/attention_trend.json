@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-14",
+ "updated": "2026-11-15",
  "since": "2026-07-01",
  "entities": [
   {
@@ -946,20 +946,20 @@
   {
    "week": "2026-W46",
    "start": "2026-11-09",
-   "cards": 23,
+   "cards": 27,
    "dims": {
     "hw": {
-     "core": 1,
+     "core": 3,
      "opp": 3,
      "noise": 0
     },
     "corp": {
      "core": 7,
-     "opp": 4,
+     "opp": 5,
      "noise": 0
     },
     "app": {
-     "core": 4,
+     "core": 5,
      "opp": 4,
      "noise": 0
     }
@@ -969,20 +969,18 @@
     "Physical AI": 1,
     "Meta": 1,
     "推論": 2,
-    "OpenAI": 5,
+    "OpenAI": 7,
     "Anthropic": 4,
     "Microsoft": 3,
     "Google": 4,
-    "NVIDIA": 5,
-    "出口管制": 2,
-    "Agentic AI": 3
+    "NVIDIA": 8,
+    "出口管制": 5,
+    "Agentic AI": 3,
+    "DeepSeek": 1
    }
   }
  ],
  "seen": [
-  "2026-10-24|Microsoft AI 診斷協調器在模擬測試中正確率達 83%",
-  "2026-10-24|OpenAI 近完成 300 億美元融資輪 估值 1.25 兆美元",
-  "2026-10-24|PHP2Shell 安全漏洞波及 Google、OpenAI、Amazon 等巨頭",
   "2026-10-25|Dyna.Ai 與 Bahrain FinTech Bay 合作在 GCC 推廣 AI 即服務",
   "2026-10-25|Healthleap 獲得 3800 萬美元資金以擴大醫院 AI 篩檢服務",
   "2026-10-25|Nvidia 為 OpenAI 俄亥俄 10GW 資料中心提供 1050 億美元保證",
@@ -1059,6 +1057,10 @@
   "2026-11-14|OpenAI 推出 ChatGPT Wallet 讓 AI 代理人代為購物",
   "2026-11-14|OpenAI 推出 Daybreak 安全平台 包含紅隊與防禦工廠",
   "2026-11-14|分析師稱 150 萬顆 Nvidia AI GPU 走私至中國可能是黃雄辭職根因",
-  "2026-11-14|美國商務部長 Lutnick 同意就 Nvidia AI 晶片對華銷售接受質詢"
+  "2026-11-14|美國商務部長 Lutnick 同意就 Nvidia AI 晶片對華銷售接受質詢",
+  "2026-11-15|Databricks 公布三條企業採用 OpenAI 工具的路徑",
+  "2026-11-15|中國 AI 實驗室使用 Nvidia Blackwell GPU 繞過出口管制",
+  "2026-11-15|美國晶片出口管制失效 68.7 萬顆晶片流入中國",
+  "2026-11-15|美國財政部長質疑 Nvidia 向空殼公司出售 AI GPU"
  ]
 }
