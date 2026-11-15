@@ -1,5 +1,111 @@
 [
   {
+    "date": "2026-11-16",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "美國國會推動更嚴格 AI 晶片出口管制法案",
+        "layer": "policy",
+        "body": "美國國會正草擬更嚴格的 AI 晶片出口管制法案，因應近期 Nvidia 高層醜聞所引發的政治壓力。",
+        "impact": "此舉將直接導致向中國的 AI 晶片出貨量下降（↓）。",
+        "rating": "opp",
+        "insight": "投資者應關注美國出口管制對 AI 晶片供應鏈上游代工與下游雲端需求的雙向壓力。",
+        "source_label": "Financial Times",
+        "source": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQVGxvZmxUQ0JxLVJuWmRILTBpbUwwbEMxbDV1bEhkYVdjdnl3WVYzWFBGZFhqckFER1JyYWptWEI3XzAzeEZ1dnZuSUdYVkFCdFZXTjVmMUxtVjJSc0dPZHR2R05TbE1mQzA0OU84TEdXd1I0UkFrS2Z0dDRIUXozV2Y3b2o?oc=5",
+        "thin_source": true,
+        "chain": [
+          {
+            "label": "Nvidia AI 晶片出口受限↓",
+            "type": "down"
+          },
+          {
+            "label": "AMD AI 晶片需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Anthropic IPO 受多家巨頭共投 260 億美元",
+        "layer": "core",
+        "body": "Anthropic 預計於本週四在 Nasdaq 首次公開發行，發行價每股 70 至 78 美元。AMD、Broadcom、Google、Micron、Microsoft、Nvidia 與台積電等七家巨頭合計承諾投入 260 億美元資金。Amazon 亦為早期投資者，持股規模可能達數千億美元。",
+        "impact": "此輪資金直接提升晶圓代工（如台積電）與記憶體供應商（如 Micron）產能需求，因 Anthropic 長期需大量 AI 晶片與記憶體；隨後下游 AI 服務平台（如 Google、Microsoft）將加速部署 Anthropic 模型，提升雲端算力需求，進一步刺激 GPU 供應鏈（如 Nvidia）產能擴張 (↑)。",
+        "rating": "core",
+        "insight": "Anthropic 大規模 IPO 為 AI 晶片與記憶體需求注入新資金，供應鏈上游將受益。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/11/15/anthropic-ipo-is-make-or-break-for-the-technology-industry.html",
+        "chain": [
+          {
+            "label": "Anthropic IPO 資金投入↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia AI 軟體需求↑",
+            "type": "up"
+          },
+          {
+            "label": "AMD AI 晶片需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "全球篩選測試平台市場預估至2030年達 20.1 億美元",
+        "layer": "enterprise_software",
+        "body": "根據 Yahoo Finance 報導，2026 年全球篩選測試平台市場規模為 20.1 億美元，預測至 2030 年將持續擴大。平台結合 AI 自動化、雲端部署與即時分析，提供系統整合與本地化軟體以降低成本、提升準確度並確保合規。此類解決方案已在醫療、診斷、安全、製造與生命科學等多個產業落地。",
+        "impact": "AI 驅動的測試平台需求上升將直接拉高雲端服務供應與資料中心硬體需求，並提升認證機構與品質保證服務供應商的訂單量，進一步刺激相關軟硬體供應鏈的產能利用率。下游客戶因平台提升測試效率，可縮短產品上市時間，提升整體產業競爭力。",
+        "rating": "opp",
+        "insight": "AI 及雲端結合的測試平台正快速擴張，相關硬體與服務供應鏈將受益。",
+        "source_label": "Yahoo Finance",
+        "source": "https://finance.yahoo.com/healthcare/articles/2026-global-screener-proficiency-testing-143300423.html",
+        "chain": [
+          {
+            "label": "測試平台 AI 整合需求↑",
+            "type": "up"
+          },
+          {
+            "label": "雲端部署服務供應商收入↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "IPO",
+        "full": "Initial Public Offering（首次公開發行）",
+        "def": "公司首次向公眾投資者發行股票以募集資金的過程。通常伴隨著上市公司治理結構的變化與資金規模的快速擴張。",
+        "why": "Anthropic 的 IPO 牽涉多家 AI 巨頭共同投資，直接影響晶圓與記憶體供應鏈需求。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "AI 晶片供應鏈",
+        "full": "人工智慧專用晶片的上下游供應鏈",
+        "def": "包括設計公司（如 Nvidia、AMD）、晶圓代工（如台積電、三星）、封測廠（OSAT）以及記憶體供應商（如 Micron）。此鏈條決定 AI 訓練與推理的成本與效能。",
+        "why": "Nvidia 執行長變動與 Anthropic 大規模資金投入均會改變該供應鏈的需求與布局。",
+        "category": "hardware"
+      },
+      {
+        "term": "篩選測試平台",
+        "full": "Proficiency Testing Platform",
+        "def": "一種結合 AI 與雲端技術的軟體系統，用於標準化性能評估、合規與品質保證，常見於醫療、製造與安全領域。",
+        "why": "平台提供即時分析與自動化流程，可降低測試成本並提升結果準確度，成為多產業的關鍵工具。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "認證支援",
+        "full": "Accreditation Support",
+        "def": "協助企業符合國際或產業標準的服務，通常包括文件審核、流程檢查與合規報告。",
+        "why": "隨著 AI 測試平台普及，對認證支援的需求同步增長，牽動相關服務供應商的營收。",
+        "category": "role"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-15",
     "is_sunday": true,
     "hw": [
@@ -834,104 +940,6 @@
         "full": "Cross‑border Payment AI Risk Model",
         "def": "運用機器學習分析跨境交易行為，實時偵測異常與詐騙的人工智慧模型。",
         "why": "提升金融機構風控效率，帶動支付終端硬體與安全晶片的需求上升。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-11-09",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "Amazon 組建新團隊研發全新家用機器人，延續 Astro 失敗後的布局",
-        "layer": "R&D",
-        "body": "Amazon 在過去數月內組建了一支新團隊，專注於開發「全新世界機器人產品」，此舉是對 2021 年推出且僅限邀請的 Astro 機器人失敗後的再次嘗試。該團隊已開始招聘相關硬體與軟體工程師，並於近期在招聘平台上公開職缺。公司未透露新機器人的具體規格或上市時間。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "Amazon 重啟家用機器人研發顯示其仍視家庭自動化為長期戰略，相關硬體供應鏈將受益於早期採購。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/11/08/amazon-home-robot-fauna-sprout.html",
-        "chain": [
-          {
-            "label": "Amazon 家用機器人研發↑",
-            "type": "up"
-          },
-          {
-            "label": "Astro 失敗影響↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Meta 首席策略官 Dave Wehner 轉任 AI 基礎設施新創 Fireworks CFO",
-        "layer": "人事",
-        "body": "Meta 首席策略官 Dave Wehner 宣布於本週五離職，轉任 AI 基礎設施新創 Fireworks 的財務長，負責擴大公司財務與營運規模。Fireworks 為 2022 年成立的開放模型推論與訓練平台，去年七月完成 D 輪融資估值 175 億美元，近期亦有報導稱正與投資人討論 300 至 400 億美元的再融資。Wehner 於 2012 年加入 Meta，曾任 CFO 直至 2022 年，並在 14 年任期內協助公司度過高速成長與複雜挑戰。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "投資者可關注 AI 基礎設施新創在資金與人才加持下的快速成長潛力。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/11/07/dave-wehner-meta-fireworks-cfo.html",
-        "chain": [
-          {
-            "label": "Nvidia GPU 需求↑",
-            "type": "up"
-          },
-          {
-            "label": "晶圓代工產能需求↑",
-            "type": "up"
-          },
-          {
-            "label": "雲端運算資源需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Astro",
-        "full": "Amazon Astro 家用機器人",
-        "def": "Amazon 於 2021 年推出的具備 Alexa 功能、可在家庭內自主導航與臉部辨識的機器人，最初僅限邀請制發售，後因需求不足而停產。",
-        "why": "了解 Astro 的失敗有助於評估 Amazon 在家庭自動化硬體領域的策略調整。",
-        "category": "hardware"
-      },
-      {
-        "term": "AI資料中心",
-        "full": "人工智慧專用資料中心",
-        "def": "為支援大規模 AI 模型訓練與推理而建置的資料中心，通常配備大量 GPU、TPU 或自研加速卡，並需高效能散熱與電力供應。",
-        "why": "AI資料中心的擴建需求直接拉動晶片、電源與散熱解決方案的供應鏈。",
-        "category": "hardware"
-      },
-      {
-        "term": "AI‑assisted threat actor",
-        "full": "AI‑assisted threat actor",
-        "def": "利用人工智慧技術協助執行網路攻擊的威脅團隊或個人，常透過自動化工具快速掃描漏洞並發動惡意行動。",
-        "why": "此類攻擊者能在防禦薄弱時段（如週末）快速滲透，提升攻擊成功率，對金融服務供應鏈的資安防護構成新挑戰。",
         "category": "ai_technique"
       }
     ],

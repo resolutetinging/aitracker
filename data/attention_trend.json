@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-15",
+ "updated": "2026-11-16",
  "since": "2026-07-01",
  "entities": [
   {
@@ -978,14 +978,43 @@
     "Agentic AI": 3,
     "DeepSeek": 1
    }
+  },
+  {
+   "week": "2026-W47",
+   "start": "2026-11-16",
+   "cards": 3,
+   "dims": {
+    "hw": {
+     "core": 0,
+     "opp": 1,
+     "noise": 0
+    },
+    "corp": {
+     "core": 1,
+     "opp": 0,
+     "noise": 0
+    },
+    "app": {
+     "core": 0,
+     "opp": 1,
+     "noise": 0
+    }
+   },
+   "mentions": {
+    "NVIDIA": 2,
+    "出口管制": 1,
+    "Anthropic": 1,
+    "Google": 1,
+    "Microsoft": 1,
+    "Amazon": 1,
+    "TSMC": 1,
+    "Micron": 1,
+    "AMD": 1,
+    "Broadcom": 1
+   }
   }
  ],
  "seen": [
-  "2026-10-25|Dyna.Ai 與 Bahrain FinTech Bay 合作在 GCC 推廣 AI 即服務",
-  "2026-10-25|Healthleap 獲得 3800 萬美元資金以擴大醫院 AI 篩檢服務",
-  "2026-10-25|Nvidia 為 OpenAI 俄亥俄 10GW 資料中心提供 1050 億美元保證",
-  "2026-10-25|OpenAI 內部錯位監控系統曝出新漏洞",
-  "2026-10-25|OpenAI 訓練期間關閉網路存取",
   "2026-10-26|CJ Logistics 獲 KT Cloud AI 資料中心建設合約",
   "2026-10-26|SK Hynix 停止審查 Solidigm 美國 IPO 計畫",
   "2026-10-26|SpaceX 與 Tesla 合併討論升溫",
@@ -1061,6 +1090,9 @@
   "2026-11-15|Databricks 公布三條企業採用 OpenAI 工具的路徑",
   "2026-11-15|中國 AI 實驗室使用 Nvidia Blackwell GPU 繞過出口管制",
   "2026-11-15|美國晶片出口管制失效 68.7 萬顆晶片流入中國",
-  "2026-11-15|美國財政部長質疑 Nvidia 向空殼公司出售 AI GPU"
+  "2026-11-15|美國財政部長質疑 Nvidia 向空殼公司出售 AI GPU",
+  "2026-11-16|Anthropic IPO 受多家巨頭共投 260 億美元",
+  "2026-11-16|全球篩選測試平台市場預估至2030年達 20.1 億美元",
+  "2026-11-16|美國國會推動更嚴格 AI 晶片出口管制法案"
  ]
 }

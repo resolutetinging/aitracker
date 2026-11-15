@@ -2,6 +2,235 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 52,
+        "CSP/CapEx": 47,
+        "App/AI": 30,
+        "gnews-chip": 22,
+        "gnews-dc": 22,
+        "gnews-app": 13
+      },
+      "digest_filtered": 1,
+      "after_dedup": 165,
+      "buckets": {
+        "hw": 66,
+        "corp": 112,
+        "app": 6
+      },
+      "news_char_budget": {
+        "hw": 6000,
+        "corp": 8000,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 66,
+          "full_text_total": 4,
+          "full_text_sent": 4,
+          "sent": 12,
+          "partial_cut": 0,
+          "chars_sent": 5894,
+          "dropped": 54
+        },
+        "corp": {
+          "mode": "slice",
+          "budget": 8000,
+          "candidates": 112,
+          "full_text_total": 4,
+          "full_text_sent": 4,
+          "sent": 13,
+          "partial_cut": 1,
+          "chars_sent": 8000,
+          "dropped": 99
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 6,
+          "full_text_total": 4,
+          "full_text_sent": 4,
+          "sent": 6,
+          "partial_cut": 0,
+          "chars_sent": 3355,
+          "dropped": 0
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 2,
+        "corp": 2,
+        "app": 1
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 5264,
+          "completion_tokens": 1382,
+          "total_tokens": 6646
+        },
+        "corp": {
+          "prompt_tokens": 5496,
+          "completion_tokens": 1178,
+          "total_tokens": 6674
+        },
+        "app": {
+          "prompt_tokens": 4148,
+          "completion_tokens": 845,
+          "total_tokens": 4993
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "hw",
+          "title": "Cerebras 獲得 Microsoft 成為客戶，擴大雲端 AI 供應",
+          "gate": "validate_sources",
+          "action": "source_cleared",
+          "reason": "source_cleared"
+        },
+        {
+          "section": "hw",
+          "title": "Cerebras 獲得 Microsoft 成為客戶，擴大雲端 AI 供應",
+          "gate": "downgrade_unsourced",
+          "action": "rating core→noise",
+          "reason": "rating core→noise"
+        },
+        {
+          "section": "hw",
+          "title": "美國國會推動更嚴格 AI 晶片出口管制法案",
+          "gate": "downgrade_low_quality",
+          "action": "rating core→opp",
+          "reason": "rating core→opp"
+        },
+        {
+          "section": "corp",
+          "title": "Nvidia 創辦人兼執行長 Jensen Huang 突然辭職",
+          "gate": "dedup_and_freshness_check",
+          "action": "removed",
+          "reason": "兩篇皆報導同一位創辦人 Jensen Huang 辭職及其後繼者 Colette Kress 暫代執行長的事件"
+        },
+        {
+          "section": "app",
+          "title": "全球篩選測試平台市場預估至2030年達 20.1 億美元",
+          "gate": "dedup_and_freshness_check",
+          "action": "rating core→opp",
+          "reason": "內容僅為市場規模預測與產業概況，未涉及新決策或新宣布"
+        },
+        {
+          "section": "hw",
+          "title": "Cerebras 獲得 Microsoft 成為客戶，擴大雲端 AI 供應",
+          "gate": "drop_stale_placeholders",
+          "action": "removed",
+          "reason": "removed"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "unmatched_dropped": 20,
+      "retry": {
+        "hw": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "corp": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "app": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        }
+      },
+      "llm_ratings": {
+        "hw": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "deepen": {
+        "candidates": 1,
+        "rewritten": 0,
+        "fetch_failed": 1,
+        "llm_failed": 0
+      },
+      "dedup_audit": [
+        {
+          "title": "Nvidia 創辦人兼執行長 Jensen Huang 突然辭職",
+          "section": "corp",
+          "action": "removed",
+          "matched_title": "Nvidia 財務長 Colette Kress 受命暫代執行長",
+          "reason": "兩篇皆報導同一位創辦人 Jensen Huang 辭職及其後繼者 Colette Kress 暫代執行長的事件"
+        },
+        {
+          "title": "全球篩選測試平台市場預估至2030年達 20.1 億美元",
+          "section": "app",
+          "action": "downgraded",
+          "matched_title": null,
+          "reason": "內容僅為市場規模預測與產業概況，未涉及新決策或新宣布"
+        }
+      ],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 2,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 1,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "fragment_restored": 0,
+        "items": []
+      },
+      "date": "2026-11-16",
+      "generated_at": "2026-11-16T00:07:47.757327+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 67,
         "CSP/CapEx": 49,
         "App/AI": 27,
@@ -2069,103 +2298,6 @@
       },
       "date": "2026-11-03",
       "generated_at": "2026-11-03T00:04:31.886919+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 51,
-        "CSP/CapEx": 47,
-        "App/AI": 19,
-        "gnews-chip": 18,
-        "gnews-dc": 22,
-        "gnews-app": 12
-      },
-      "digest_filtered": 2,
-      "after_dedup": 150,
-      "buckets": {
-        "hw": 29,
-        "corp": 114,
-        "app": 29
-      },
-      "news_char_budget": {
-        "hw": 3500,
-        "corp": 8000,
-        "app": 3500
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "placeholders": 0,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 3,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "dedup_audit": [],
-      "fact_audit": {
-        "mode": "log",
-        "checked": 4,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 2,
-          "suspect_cards": 0
-        },
-        "enforced": 0,
-        "items": [
-          {
-            "sec": "hw",
-            "title": "Nvidia 以 69 億美元收購 Mellanox 後，2024 Q2 網路營收達 175 億美元，超越 Cisco",
-            "source": "https://www.theregister.com/networks/2026/10/31/backbone-of-a-beast-charting-nvidias-rise-to-networking-titan/5306499",
-            "rating": "opp",
-            "coverage": "full",
-            "suspects": [],
-            "undetermined": [
-              "2024年"
-            ],
-            "tense_flag": false
-          }
-        ]
-      },
-      "date": "2026-11-02",
-      "generated_at": "2026-11-02T00:04:04.404921+08:00"
     }
   ]
 }
