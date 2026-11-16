@@ -793,11 +793,11 @@
     },
     {
       "date": "2026-11-11",
-      "title": "國會施壓黃仁勳：議員考慮傳喚、跨黨派呼籲辭職",
+      "title": "國會施壓黃仁勳：議員稱若拒絕出席將傳喚、跨黨派呼籲辭職",
       "category": "政府與法律",
-      "summary": "眾議員 Mast 被問及是否傳喚黃仁勳時表示會考慮，並有跨黨派議員公開呼籲黃仁勳辭職。川普表示 FBI 正在調查此事。",
+      "summary": "眾議員 Mast 被問及若黃仁勳拒絕出席是否傳喚時回答「yes」，並有跨黨派議員公開呼籲黃仁勳辭職。",
       "src": "https://www.cnbc.com/2026/11/11/nvidia-jensen-huang-congress-resign-ai-chips.html",
-      "src_note": "CNBC 引述議員與川普公開談話",
+      "src_note": "CNBC 引述議員公開談話",
       "thread": "黃仁勳與 Megaspeed 間諜疑雲"
     },
     {
@@ -845,28 +845,11 @@
     },
     {
       "date": "2026-11-16",
-      "title": "美國國會推動更嚴格 AI 晶片出口管制法案",
-      "category": "出口管制與地緣",
-      "summary": "美國國會正草擬更嚴格的 AI 晶片出口管制法案，以回應近期 Nvidia 高層醜聞帶來的政治壓力。",
-      "src": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQVGxvZmxUQ0JxLVJuWmRILTBpbUwwbEMxbDV1bEhkYVdjdnl3WVYzWFBGZFhqckFER1JyYWptWEI3XzAzeEZ1dnZuSUdYVkFCdFZXTjVmMUxtVjJSc0dPZHR2R05TbE1mQzA0OU84TEdXd1I0UkFrS2Z0dDRIUXozV2Y3b2o?oc=5",
-      "src_note": ""
-    },
-    {
-      "date": "2026-11-16",
       "title": "Anthropic IPO 受多家巨頭共投 260 億美元",
       "category": "合作與投資",
       "summary": "Anthropic 將於本週四在 Nasdaq 首次公開發行，Nvidia 與其他六家巨頭共同承諾投入 260 億美元資金。",
       "src": "https://www.cnbc.com/2026/11/15/anthropic-ipo-is-make-or-break-for-the-technology-industry.html",
       "src_note": ""
-    },
-    {
-      "date": "2026-11-15",
-      "title": "美國晶片出口管制失效 68.7 萬顆晶片流入中國",
-      "category": "出口管制與地緣",
-      "summary": "約 678,000 顆含 Nvidia Blackwell 架構的 AI 晶片在美國出口管制期間未被攔截，流入中國市場，顯示管制機制漏洞。",
-      "src": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNTUhnSFlZWkxONVN6V2JLMDVQdmRaV2pzMWZXN3FsWnhzVERmYWdfUGpjbVFrLWZaYms0Mm5QQ0NXQ2tWRlVGLTk3YV8wUV9aMlJPQlN0VU14ekhfckRWQjkzWl9fa3U0dDNUdWhVS05KTE9QZXhJQVZHcEdrZzg3NmZqSFhFMkFUTTFXNHMwZw?oc=5",
-      "src_note": "",
-      "thread": "美超微／輝達晶片走私網絡查緝"
     },
     {
       "date": "2026-11-15",
@@ -879,9 +862,9 @@
     },
     {
       "date": "2026-11-15",
-      "title": "中國 AI 實驗室使用 Nvidia Blackwell GPU 繞過出口管制",
+      "title": "前 OpenAI 工程師稱中國 AI 實驗室使用 Nvidia Blackwell GPU 訓練模型",
       "category": "出口管制與地緣",
-      "summary": "前 OpenAI 工程師披露 DeepSeek、Moonshot AI、MiniMax 與螞蟻集團取得 Nvidia Blackwell GPU，並以硬體指紋證實用於模型訓練，違反美國出口限制。",
+      "summary": "前 OpenAI 工程師 Will DePue 指出 DeepSeek、Moonshot AI、MiniMax 與螞蟻集團的模型使用過 Nvidia Blackwell GPU；其方法只能顯示用過 Blackwell，無法證明硬體所在位置，此說法尚未經報導獨立查證。",
       "src": "https://www.theregister.com/ai-and-ml/2026/11/13/chinese-ai-labs-are-training-models-on-nvidias-blackwell-despite-export-controls-says-ex-openai-engineer/5309891",
       "src_note": "",
       "thread": "月之暗面（Moonshot AI）GB300爭議"
@@ -897,30 +880,21 @@
     },
     {
       "date": "2026-11-14",
-      "title": "分析師稱 150 萬顆 Nvidia AI GPU 走私至中國可能是黃雄辭職根因",
+      "title": "SemiAnalysis 推估最多 150 萬顆 Nvidia AI GPU 走私至中國，可能是黃仁勳辭職根因",
       "category": "供應鏈與基建",
-      "summary": "分析師指出，超過 150 萬顆 Nvidia AI GPU 走私至中國的事件可能是創辦人黃雄（Jensen Huang）辭職的根本原因。",
+      "summary": "SemiAnalysis 依約 1.5GW 的功率推估，最多有 150 萬顆 Nvidia AI GPU 走私至中國，分析師稱此事可能是創辦人黃仁勳辭職的根本原因；原報導指出沒有直接證據證明黃仁勳參與走私。",
       "src": "https://www.tomshardware.com/tech-industry/artificial-intelligence/mass-smuggling-of-nvidia-ai-gpus-could-be-the-underlying-cause-of-jensen-huangs-departure-analysts-claim-more-than-1-5-gigawatts-of-banned-chips-tracked-to-china-despite-export-controls",
       "src_note": "",
       "thread": "美超微／輝達晶片走私網絡查緝"
     },
     {
       "date": "2026-11-13",
-      "title": "Lutnick 暫緩對中國的 Nvidia 晶片銷售限制",
+      "title": "Lutnick 被報導拖延川普對涉嫌轉運 Nvidia 晶片公司的查緝",
       "category": "出口管制與地緣",
-      "summary": "Nvidia CFO Lutnick 宣布暫緩實施對中國的晶片銷售限制，短期內仍可向中國客戶交付高階 AI 晶片。",
+      "summary": "美國商務部長 Lutnick 被報導拖延川普對涉嫌轉運 Nvidia 晶片的公司所採取的查緝行動。",
       "src": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPa01VNnZpTE10OFNfTFRXZDZzeUJwSjFkNmlhVjFwUVExM3RmaUlNOG1jWm1aYXJMRHkyb2s1WGdMQU9IQUN6RE5kVi1ub3JkQ0wxVnc2YWFvY2VzTWRiX0FZeVlpdDNsMzBhcWpzOVhqNVh4UUFCa2cySy1ZSlkwTGRxbHVjcEU?oc=5",
       "src_note": "",
       "thread": "美超微／輝達晶片走私網絡查緝"
-    },
-    {
-      "date": "2026-11-13",
-      "title": "中國 AI 企業加速確保 Nvidia 晶片產能以防美國限制",
-      "category": "供應鏈與基建",
-      "summary": "多家中國 AI 企業因近期諜醜聞擔憂美國加強出口管制，急速向 Nvidia 訂購 H100 與 A100 晶片以鎖定產能。",
-      "src": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPc1EtU18tWjZNZTZtOFBZNzdqZkRFMk1nbm9MTm9VWUQwUHlLc1dTdDNLWmNCcllESHVVYjFnXzlKcFJrSWpHUkY2S1lhcTFtWWdPVG9WdkcyTkFSaEpLanVzeWctM1hCTkdxUEJ6VnBrLXFYVnBsalpKUkJVUGQyUE5DOEJtaTctZlFEaV9VR1loQ1JrVlhyRmRxR25UMkI2MVgtZnBFU1pVaXhBcmw0ZV9jb0RPYlduY1ppbnpCTlc?oc=5",
-      "src_note": "",
-      "thread": "黃仁勳與 Megaspeed 間諜疑雲"
     },
     {
       "date": "2026-11-13",

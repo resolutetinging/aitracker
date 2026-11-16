@@ -4,25 +4,14 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "美國國會推動更嚴格 AI 晶片出口管制法案",
-        "layer": "policy",
-        "body": "美國國會正草擬更嚴格的 AI 晶片出口管制法案，因應近期 Nvidia 高層醜聞所引發的政治壓力。",
-        "impact": "此舉將直接導致向中國的 AI 晶片出貨量下降（↓）。",
-        "rating": "opp",
-        "insight": "投資者應關注美國出口管制對 AI 晶片供應鏈上游代工與下游雲端需求的雙向壓力。",
-        "source_label": "Financial Times",
-        "source": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQVGxvZmxUQ0JxLVJuWmRILTBpbUwwbEMxbDV1bEhkYVdjdnl3WVYzWFBGZFhqckFER1JyYWptWEI3XzAzeEZ1dnZuSUdYVkFCdFZXTjVmMUxtVjJSc0dPZHR2R05TbE1mQzA0OU84TEdXd1I0UkFrS2Z0dDRIUXozV2Y3b2o?oc=5",
-        "thin_source": true,
-        "chain": [
-          {
-            "label": "Nvidia AI 晶片出口受限↓",
-            "type": "down"
-          },
-          {
-            "label": "AMD AI 晶片需求↑",
-            "type": "up"
-          }
-        ]
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
       }
     ],
     "corp": [
@@ -55,7 +44,7 @@
       {
         "title": "全球篩選測試平台市場預估至2030年達 20.1 億美元",
         "layer": "enterprise_software",
-        "body": "根據 Yahoo Finance 報導，2026 年全球篩選測試平台市場規模為 20.1 億美元，預測至 2030 年將持續擴大。平台結合 AI 自動化、雲端部署與即時分析，提供系統整合與本地化軟體以降低成本、提升準確度並確保合規。此類解決方案已在醫療、診斷、安全、製造與生命科學等多個產業落地。",
+        "body": "根據 Yahoo Finance 報導，全球篩選測試平台市場規模 2026 年為 13.6 億美元，預測至 2030 年達 20.1 億美元（年複合成長率 10.3%）。平台結合 AI 自動化、雲端部署與即時分析，提供系統整合與本地化軟體以降低成本、提升準確度並確保合規。此類解決方案已在醫療、診斷、安全、製造與生命科學等多個產業落地。",
         "impact": "AI 驅動的測試平台需求上升將直接拉高雲端服務供應與資料中心硬體需求，並提升認證機構與品質保證服務供應商的訂單量，進一步刺激相關軟硬體供應鏈的產能利用率。下游客戶因平台提升測試效率，可縮短產品上市時間，提升整體產業競爭力。",
         "rating": "opp",
         "insight": "AI 及雲端結合的測試平台正快速擴張，相關硬體與服務供應鏈將受益。",
@@ -110,27 +99,6 @@
     "is_sunday": true,
     "hw": [
       {
-        "title": "美國晶片出口管制失效 68.7 萬顆晶片流入中國",
-        "layer": "export_control",
-        "body": "根據 shattered.io 報導，約 678,000 顆 AI 晶片在美國出口管制期間未被攔截而流入中國市場。該數量包括使用 Nvidia Blackwell 架構的高階 GPU，屬於受限產品。此事件顯示現行管制機制在實務執行上存在漏洞。",
-        "impact": "此流失直接降低美國對中國的晶片供應限制，導致美國晶圓代工（如 TSMC）與 HBM 供應商的出貨量可能上升 (↑) 因為需求被轉移至非正式渠道；間接使得 OSAT 廠商的利用率下降 (↓) 因為正規訂單減少；長期可能促使中國本土 AI 晶片供應鏈加速自給自足，削弱美國供應鏈的市場份額。",
-        "rating": "core",
-        "insight": "投資者應關注美國對高階 AI 晶片的出口管制執行力度，因其直接影響供應鏈可靠性。",
-        "source_label": "shattered.io",
-        "source": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNTUhnSFlZWkxONVN6V2JLMDVQdmRaV2pzMWZXN3FsWnhzVERmYWdfUGpjbVFrLWZaYms0Mm5QQ0NXQ2tWRlVGLTk3YV8wUV9aMlJPQlN0VU14ekhfckRWQjkzWl9fa3U0dDNUdWhVS05KTE9QZXhJQVZHcEdrZzg3NmZqSFhFMkFUTTFXNHMwZw?oc=5",
-        "thin_source": true,
-        "chain": [
-          {
-            "label": "Nvidia Blackwell GPU 流入中國↑",
-            "type": "up"
-          },
-          {
-            "label": "美國出口管制效能↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
         "title": "美國財政部長質疑 Nvidia 向空殼公司出售 AI GPU",
         "layer": "regulatory",
         "body": "Tom's Hardware 報導稱，美國財政部長質疑 Nvidia 是否故意將 AI GPU 出售給註冊為空殼公司的客戶，並要求公司負起全部責任。部長表示任何參與此類交易的員工都應受到追究。此指控暗示 Nvidia 可能違反出口管制規定。",
@@ -153,17 +121,17 @@
     ],
     "corp": [
       {
-        "title": "中國 AI 實驗室使用 Nvidia Blackwell GPU 繞過出口管制",
+        "title": "前 OpenAI 工程師稱中國 AI 實驗室使用 Nvidia Blackwell GPU 訓練模型",
         "layer": "AI芯片供應",
-        "body": "前 OpenAI 工程師 Will DePue 公布取證，指出 DeepSeek、Moonshot AI、MiniMax 與螞蟻集團已取得 Nvidia 的 Blackwell GPU，儘管美國對此類晶片實施出口限制。DePue 表示每個 GPU 在模型初始化時會留下獨特的硬體指紋，從而證實這些模型是使用 Blackwell 訓練的。此資訊於 2026 年 11 月 13 日的 The Register 報導。",
-        "impact": "1) Nvidia Blackwell GPU 的需求因中國 AI 企業的非法採購而出現短期 ↑，可能導致供應鏈上游的晶圓代工（如 TSMC）出貨量增加。2) 中國 AI 服務供應商獲得先進 GPU 後，將加速模型開發，提升對高階 HBM 記憶體與散熱解決方案的需求，帶動相關供應商（如 Micron、SK Hynix）出貨 ↑。",
+        "body": "前 OpenAI 工程師 Will DePue 公布取證，指出 DeepSeek、Moonshot AI、MiniMax 與螞蟻集團的模型使用過 Nvidia 的 Blackwell GPU，儘管美國對此類晶片實施出口限制。DePue 比對模型初始權重與 GPU 及隨機種子（seed）的模式，據此判斷使用過 Blackwell（GB200／GB300）；此方法無法證明硬體所在位置，也可能是經美國雲端租用。此說法出自 DePue 本人，報導未獨立查證。此資訊於 2026 年 11 月 13 日的 The Register 報導。",
+        "impact": "1) Nvidia Blackwell GPU 的需求因中國 AI 企業的採購而出現短期 ↑，可能導致供應鏈上游的晶圓代工（如 TSMC）出貨量增加。2) 中國 AI 服務供應商獲得先進 GPU 後，將加速模型開發，提升對高階 HBM 記憶體與散熱解決方案的需求，帶動相關供應商（如 Micron、SK Hynix）出貨 ↑。",
         "rating": "opp",
-        "insight": "美國管制未能阻止中國 AI 企業取得 Blackwell，顯示供應鏈漏洞仍存，投資者應關注相關合規與供應鏈風險。",
+        "insight": "此說法指出中國 AI 企業可能已取得 Blackwell，投資者應關注相關合規與供應鏈風險。",
         "source_label": "The Register",
         "source": "https://www.theregister.com/ai-and-ml/2026/11/13/chinese-ai-labs-are-training-models-on-nvidias-blackwell-despite-export-controls-says-ex-openai-engineer/5309891",
         "chain": [
           {
-            "label": "DeepSeek 等取得 Nvidia Blackwell GPU↑",
+            "label": "DeepSeek 等使用 Nvidia Blackwell GPU↑",
             "type": "up"
           },
           {
@@ -179,25 +147,14 @@
     ],
     "app": [
       {
-        "title": "Databricks 公布三條企業採用 OpenAI 工具的路徑",
-        "layer": "enterprise_adoption",
-        "body": "Databricks 在 Unite.AI 報導中說明，企業可透過三種路徑導入 OpenAI 的生成式 AI 工具，包括直接 API 整合、平台化服務以及共創解決方案。此說明同時指出，Databricks 已與多家大型雲端供應商合作提供即時運算資源。報導亦提到，該公司正加速建置專屬的 AI 工作負載管理平台，以支援客戶在不同產業的落地需求。",
-        "impact": "1) 直接提升 GPU 供應鏈上游廠商（如 Nvidia）對雲端資料中心的需求，導致晶片出貨量 ↑；2) 雲端服務商（如 AWS、Azure）因需擴充算力，將加速採購高效能伺服器與散熱解決方案，帶動硬體供應鏈利用率 ↑；3) 企業客戶因採用 Databricks 平台，可縮短 AI 應用開發週期，提升下游軟體服務與顧問業務的市場佔有率 ↑。",
-        "rating": "core",
-        "insight": "Databricks 的多元採用路徑將推動 GPU 與雲端算力需求同步成長。",
-        "source_label": "Unite.AI",
-        "source": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOY28yMUtVTjJpU2xLWkNUOENLc054ZDh5eTF2cVhmTXc5Y3J2bjFydjNGVi1qaElZZl9MdFdfMlBIN2NlcnhISlBLakZlaWlEbTRSQTV4eDZNY0lnc1RiNWszWWxRblFhZVZuTGlyTHVYT2F3aFZvSHl5Q2VyQnU4QVkzeUF6SFpCMlBsLVl6YzZWYlU",
-        "thin_source": true,
-        "chain": [
-          {
-            "label": "Databricks 與雲端供應商合作↑",
-            "type": "up"
-          },
-          {
-            "label": "企業採用 OpenAI 工具↑",
-            "type": "up"
-          }
-        ]
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
       }
     ],
     "glossary_new": [
@@ -230,7 +187,7 @@
         "category": "role"
       }
     ],
-    "weekly_summary": "HW：美國晶片出口管制失效導致 68.7 萬顆 AI 晶片流入中國，顯示管制執行漏洞。\\nHW：美國財政部長質疑 Nvidia 向空殼公司出售 AI GPU，可能引發合規審查與出貨縮減。\\nHW：特朗普政府內部對 Nvidia AI 晶片對華出口政策存分歧，未來政策走向將直接影響供應鏈上下游。\nCORP：Nvidia 受領導層變動衝擊，AI 晶片需求出現輪換，AMD 與 TSMC 受惠。\n下週看點：Nvidia 是否能快速任命新執行長並穩定 AI 晶片供應鏈。\nAPP：Databricks 公布三條企業採用 OpenAI 工具的路徑，促進 AI 服務在各產業快速落地。\n用戶洞察：企業正尋求多元化的 AI 整合方式，以縮短開發週期並降低技術門檻。"
+    "weekly_summary": "HW：美國財政部長質疑 Nvidia 是否故意向空殼公司出售 AI GPU，並稱公司須對此負責。\nHW：美國商務部長 Lutnick 被報導拖延川普對涉嫌轉運 Nvidia 晶片公司的查緝。\nCORP：Nvidia 執行長黃仁勳辭職，財務長 Colette Kress 暫代執行長。\n下週看點：Nvidia 是否能快速任命新執行長並穩定 AI 晶片供應鏈。"
   },
   {
     "date": "2026-11-14",
@@ -257,9 +214,9 @@
         ]
       },
       {
-        "title": "分析師稱 150 萬顆 Nvidia AI GPU 走私至中國可能是黃雄辭職根因",
+        "title": "SemiAnalysis 推估最多 150 萬顆 Nvidia AI GPU 走私至中國，可能是黃仁勳辭職根因",
         "layer": "export_controls",
-        "body": "分析師指出，超過 150 萬顆 Nvidia AI GPU 走私至中國的事件可能是創辦人黃雄辭職的根本原因。",
+        "body": "SemiAnalysis 依約 1.5GW 的功率推估，最多有 150 萬顆 Nvidia AI GPU 走私至中國，分析師稱此事可能是創辦人黃仁勳辭職的根本原因。原報導指出，目前沒有直接證據證明情報機關影響董事會，或黃仁勳參與走私。",
         "impact": "大量走私將迫使美國加緊對 Nvidia AI 晶片的出口管制 (↑)，導致合法出口量下降 (↓) 並影響台積電等代工的高階 HBM 需求 (↓)。同時，走私渠道的曝光可能促使中國加速本土替代晶片研發，提升本土供應鏈自給率 (↑)。全球 AI 晶片市場供應緊張，可能使其他供應商如 AMD、Intel 的需求上升 (↑)。",
         "rating": "core",
         "insight": "投資人應警惕與 Nvidia 相關供應鏈的風險。",
@@ -281,7 +238,7 @@
       {
         "title": "OpenAI 推出 Daybreak 安全平台 包含紅隊與防禦工廠",
         "layer": "core",
-        "body": "OpenAI 於 2026 年 11 月 12 日發表兩項新安全產品：Daybreak Red Team 用於滲透測試，Daybreak Defense Factory 用於防禦，皆屬於 Daybreak 安全平台。該平台由 OpenAI 總裁 Greg Brockman 在當日的 keynote 中宣布，並強調企業若不使用此類 AI 防護工具將面臨「注定失敗」的風險。",
+        "body": "OpenAI 於 2026 年 11 月 12 日發表兩項新安全產品：Daybreak Red Team 用於滲透測試，Daybreak Defense Factory 用於防禦，皆屬於 Daybreak 安全平台。該平台由 OpenAI 總裁 Greg Brockman 在當日的 keynote 中宣布，並指出公司只會在其所用前沿模型的程度內安全，資安基本功仍然重要。",
         "impact": "此舉直接提升 AI 模型供應商對安全測試服務的需求，促使安全軟體供應商（如 Palo Alto、CrowdStrike）加速整合 AI 驗證模組，提升上游算力平台（如 Azure、AWS）對安全算力的使用率↑。間接帶動防禦硬體（如 HSM、TPM）需求上升，供應鏈上游的晶片製造商（如 Intel、AMD）將受惠於安全加速卡的訂單增長↑。長遠看，競爭對手若未提供類似 AI 安全解決方案，可能在企業 AI 部署市場失去競爭力↓。",
         "rating": "core",
         "insight": "OpenAI 以安全產品切入企業 AI 市場，將推動上游算力與安全硬體需求同步上升。",
@@ -321,24 +278,14 @@
     ],
     "app": [
       {
-        "title": "AI 聊天機器人被測出引導使用者至偽造零售網站",
-        "layer": "risk",
-        "body": "IP 保護公司 Podqi 針對 151 個品牌向 ChatGPT、Gemini 與 Perplexity 提出購物相關問題，結果發現這三款聊天機器人會將使用者導向冒牌或高風險的網站。研究顯示，問題包括「哪裡可以購買 [品牌]」與「[品牌] 是否支援國際運送」等，均被回覆為不實的購買管道。",
-        "impact": "此結果將迫使聊天機器人平台提升內容驗證與防詐機制，↑ 相關安全服務供應商（如內容審核與網址驗證公司）的需求；同時，偽造網站的流量被削減，↓ 受害電商平台的潛在損失與客訴成本；長期看，提升驗證功能的模型供應商將在 AI 應用市場獲得競爭優勢。",
-        "rating": "opp",
-        "insight": "投資者應關注 AI 對話模型的安全驗證服務市場將快速成長。",
-        "source_label": "The Verge",
-        "source": "https://www.theverge.com/ai-artificial-intelligence/1032020/gemini-chatgpt-perplexity-shopping-test-risky-fake-websites-citations",
-        "chain": [
-          {
-            "label": "ChatGPT 誤導購物鏈接風險↑",
-            "type": "up"
-          },
-          {
-            "label": "品牌方品牌保護支出↑",
-            "type": "up"
-          }
-        ]
+        "title": "今日無相關應用新聞",
+        "layer": "",
+        "body": "今日無相關應用新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
       }
     ],
     "glossary_new": [
@@ -406,41 +353,21 @@
     "is_sunday": false,
     "hw": [
       {
-        "title": "Lutnick 暫緩對中國的 Nvidia 晶片銷售限制",
+        "title": "Lutnick 被報導拖延川普對涉嫌轉運 Nvidia 晶片公司的查緝",
         "layer": "export_control",
-        "body": "Nvidia 首席財務官 Lutnick 於本週宣布暫緩實施對中國的晶片銷售限制，維持目前向中國市場的供應量。此舉意味著短期內 Nvidia 仍可向中國客戶交付其高階 AI 晶片，如 H100 系列。",
+        "body": "美國商務部長 Lutnick 被報導拖延川普對涉嫌轉運 Nvidia 晶片的公司所採取的查緝行動。",
         "impact": null,
         "rating": "opp",
-        "insight": "投資者可關注 Nvidia 供應鏈的持續需求，短期內相關代工與封裝廠的營收將保持穩定。",
+        "insight": "投資者可關注美國對 Nvidia 晶片轉運查緝的執行力道。",
         "source_label": "gnews-chip",
         "source": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPa01VNnZpTE10OFNfTFRXZDZzeUJwSjFkNmlhVjFwUVExM3RmaUlNOG1jWm1aYXJMRHkyb2s1WGdMQU9IQUN6RE5kVi1ub3JkQ0wxVnc2YWFvY2VzTWRiX0FZeVlpdDNsMzBhcWpzOVhqNVh4UUFCa2cySy1ZSlkwTGRxbHVjcEU?oc=5",
         "chain": [
           {
-            "label": "Nvidia H100 供應量↑",
-            "type": "up"
+            "label": "Nvidia 晶片轉運查緝↓",
+            "type": "down"
           },
           {
-            "label": "中國 AI 企業採購需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "中國 AI 企業加速確保 Nvidia 晶片產能以防美國限制",
-        "layer": "capacity_commitment",
-        "body": "多家中國 AI 企業在近期加速向 Nvidia 訂購晶片產能，因近期間諜醜聞引發對美國可能加強出口管制的擔憂。這些企業正爭取在現有供應配額內鎖定足夠的 H100 與 A100 晶片。",
-        "impact": "(1) 直接提升 Nvidia 供應鏈上游的晶圓代工（如 TSMC）與 HBM 製造商（如 SK Hynix）近期產能利用率上升；(2) 隨著中國需求提前占用產能，OSAT 廠商的封裝排程將更緊湊，可能壓縮其他客戶的交付窗口；(3) 若美國最終實施更嚴格限制，其他競爭供應商（如 AMD）可能受惠於中國市場的替代需求。",
-        "rating": "opp",
-        "insight": "中國 AI 企業的提前訂購行為可能短期內推高相關代工與封裝廠的產能利用率。",
-        "source_label": "gnews-chip",
-        "source": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPc1EtU18tWjZNZTZtOFBZNzdqZkRFMk1nbm9MTm9VWUQwUHlLc1dTdDNLWmNCcllESHVVYjFnXzlKcFJrSWpHUkY2S1lhcTFtWWdPVG9WdkcyTkFSaEpLanVzeWctM1hCTkdxUEJ6VnBrLXFYVnBsalpKUkJVUGQyUE5DOEJtaTctZlFEaV9VR1loQ1JrVlhyRmRxR25UMkI2MVgtZnBFU1pVaXhBcmw0ZV9jb0RPYlduY1ppbnpCTlc?oc=5",
-        "chain": [
-          {
-            "label": "Nvidia H100 產能鎖定↑",
-            "type": "up"
-          },
-          {
-            "label": "美國出口管制風險↑",
+            "label": "美國出口管制執行力道↓",
             "type": "down"
           }
         ]
@@ -468,9 +395,9 @@
         ]
       },
       {
-        "title": "Anthropic 於 2026 年第二季首次達成調整後營運盈餘正值",
+        "title": "Anthropic 前九個月調整後營運收益達 40.8 億美元",
         "layer": "financial",
-        "body": "Anthropic 在 2026 年第二季調整後營運收入達到 40.8 億美元，首次在調整後營運基礎上實現正盈餘，並在第三季持續保持正值。公司在 IPO 招股說明書中說明，調整後營運盈餘排除股票基礎補償、非現金慈善捐贈與版權訴訟和解金額。Anthropic 預計在即將到來的 IPO 中募集資金以支撐未來巨額支出。",
+        "body": "Anthropic 在 IPO 招股說明書中揭露，前九個月調整後營運收益為 40.8 億美元；同期依 GAAP 計算的前三季營運虧損為 12.6 億美元。調整後營運盈餘排除股票基礎補償、非現金慈善捐贈與版權訴訟和解金額。Anthropic 預計在即將到來的 IPO 中募集資金以支撐未來巨額支出。",
         "impact": "正向的調整後營運盈餘將提升 Anthropic 與其雲端基礎設施供應商（如 Azure、AWS）的合作需求，推動相關伺服器與高速記憶體供應鏈需求上升 (↑)。同時，盈利能力的提升可能吸引更多企業客戶採用其 Claude 模型，進一步刺激 AI 軟體堆疊供應商的授權與支援服務需求 (↑)。",
         "rating": "core",
         "insight": "Anthropic 的盈利突破顯示其商業模式具備可持續性，值得關注其在 AI 訓練基礎設施上的資本支出規模。",
@@ -512,7 +439,7 @@
       {
         "title": "Altimetrik 與 Google Cloud 合作推動醫療領域 Agentic AI 採用",
         "layer": "AI應用",
-        "body": "Altimetrik 宣布與 Google Cloud 合作，於 2026 年在醫療保健領域推動 Agentic AI 的採用，雙方將共同開發可支援臨床決策的 AI 服務。合作計畫已在美國多家醫院試點，並提供雲端 AI 模型的即時部署能力。",
+        "body": "Altimetrik 宣布與 Google Cloud 合作，於 2026 年在醫療保健領域推動 Agentic AI 的採用。雙方合作重點為行政流程、資訊檢索與營運協調的 AI agent（ALTi AIOS），並具備權限控管與人類監督機制。",
         "impact": "Google Cloud 需要擴充其醫療專屬 AI 基礎設施，帶動資料中心伺服器與高效能 GPU 需求↑；Altimetrik 作為系統整合商，將向醫療設備供應商與電子病歷系統提供 AI 模組，促使相關硬體與軟體供應鏈的訂單增加↑，同時提升醫療服務供應商的數位化轉型速度。",
         "rating": "core",
         "insight": "Agentic AI 在醫療領域的落地將拉動雲端運算與醫療資訊系統的供應鏈需求。",
@@ -669,7 +596,7 @@
       {
         "title": "Anthropic Mythos 模型整合至 Cisco 與 IBM 安全產品",
         "layer": "core",
-        "body": "Anthropic 允許 Cisco 在其 AI Defense 套件中呼叫 Mythos 模型，以檢測客戶 AI 系統的弱點與不當行為。IBM 亦將同樣功能納入自家安全產品，且兩家公司均以現有授權提供，無需額外付費。",
+        "body": "Anthropic 允許 Cisco 在其 AI Defense 套件的紅隊工具中呼叫 Mythos 模型，以檢測客戶 AI 系統的弱點與不當行為，Cisco 以現有授權提供、不加價。IBM 則將 Mythos 整合進 Concert，用於掃描應用程式碼的弱點。",
         "impact": "Mythos 模型需求提升將驅動 Anthropic 在美國資料中心的運算資源使用量 (↑)。",
         "rating": "core",
         "insight": "大型企業安全廠商採用 Mythos 代表 AI 安全市場正快速商業化，相關硬體供應鏈將受益於算力需求上升。",
@@ -704,26 +631,6 @@
           },
           {
             "label": "Google Cloud 醫療市場佔有率↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "PwC 將 Google Cloud Gemini 醫療版導入日常工作流程",
-        "layer": "healthcare",
-        "body": "PwC 宣布已將 Google Cloud Gemini for Healthcare 整合至其顧問服務平台，讓客戶在臨床決策、醫療記錄分析等日常工作中直接使用該模型。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "顧問巨頭採用雲端 AI 平台，可快速擴散技術至多家醫院，提升整體醫療 AI 供應鏈活躍度。",
-        "source_label": "Google Cloud Press Corner",
-        "source": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQZ0FYZHc2NE13MUE2U0k4R0RvLWVZZnAzX0xFV0ZTQVd5S2ZrbHRzQ05KWTZmWjNlZXZPZXB1VHBtZVJXWUlib2xCY21vOGtHems0VVI4RUtqcU9xSExVTzB2MGMyeFRSR0ZKQlVuVkYzN0s4Zk80MFp1TkUwYnN5MXUxYllpUk93djU4Smo4dmxIODR0cDk1WVc5aktDM2VNQXJIb0xPSXIxN01VRk5YNWlZWEhYd0hQQjlteEV5SjJ6a28?oc=5",
-        "chain": [
-          {
-            "label": "PwC Google Cloud Gemini 醫療版導入↑",
-            "type": "up"
-          },
-          {
-            "label": "北美與歐洲醫療機構 AI 使用率↑",
             "type": "up"
           }
         ]
@@ -851,7 +758,7 @@
       {
         "title": "AWS 承諾 1 億美元雲端與 AI 信用額度以縮小健康公平差距",
         "layer": "cloud",
-        "body": "AWS 於本月宣布提供 1 億美元的雲端與 AI 信用額度，專供美國弱勢社區醫療機構使用，以加速資料分析與遠端診療服務的部署。該計畫預計在 2027 年底前覆蓋超過 500 家診所與社區健康中心。",
+        "body": "AWS 宣布提供 1 億美元的雲端與 AI 信用額度，為期五年（Health Impact Initiative），對象為全球的健康非營利組織、政府、研究機構與公司，以縮小健康公平差距。",
         "impact": "大量信用額度將促進雲端基礎建設需求。",
         "rating": "core",
         "insight": "大規模雲端 AI 信用額度將帶動伺服器與記憶體供應鏈的需求同步上揚。",
@@ -864,36 +771,11 @@
             "type": "up"
           },
           {
-            "label": "弱勢醫療機構 AI 分析使用↑",
+            "label": "健康領域機構 AI 分析使用↑",
             "type": "up"
           },
           {
             "label": "傳統醫療 IT 供應商需求↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Tencent 推動跨境支付 AI 應用於金融服務",
-        "layer": "finance",
-        "body": "Tencent 在最新的跨境支付平台中整合 AI 風險評估模型，已於本季在超過 20 個國家與地區上線，協助金融機構即時偵測可疑交易並降低詐騙率。該平台同時支援多幣別即時結算，預計今年交易額將突破 5 億美元。",
-        "impact": "AI 風險模型的部署將提升對高效能運算晶片的需求。",
-        "rating": "opp",
-        "insight": "跨境支付 AI 風險模型將加速金融硬體與安全晶片的需求增長。",
-        "source_label": "Telecompaper",
-        "source": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOWktoVWFaS1NDUmRnOWJFQkFPNHljNlhoSXItOVJFSmhNMnVacFRuc2dRMWJVcUt4emFKZGtDaS1tdm1CS2haS0JXZXZ4NmlpdmYwSzdfc25xM0I5TDdFOG1fZjg1N1BTYTdKb0ZGTkxKdTZ5RTNrVlhZMy1NbF9qTkpUZmI4Uk42OVZ1NzU0bnZLTGZVODVXMUJEYU5fVkxqVFVkLWgyekVWVHc0RGhVVndrTmVZWnp2Rm1RZGFxMlNOX1luUU52Ng?oc=5",
-        "thin_source": true,
-        "chain": [
-          {
-            "label": "Tencent 跨境支付 AI 風險模型上線↑",
-            "type": "up"
-          },
-          {
-            "label": "金融機構詐騙偵測成功率↑",
-            "type": "up"
-          },
-          {
-            "label": "傳統風險評估服務需求↓",
             "type": "down"
           }
         ]
