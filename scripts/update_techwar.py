@@ -36,6 +36,20 @@ CATEGORY_LABELS = {
 }
 
 
+# 11-16：週查證候選建議的原文忠實規則（與 update_data.py SOURCE_FIDELITY_RULES 同一精神，只改 prompt 文字）
+FIDELITY_RULES_ZH = (
+    "【原文忠實鐵律】候選異動的每個事實都必須出自所附新聞片段本身："
+    "人物職稱與所屬機構原文沒寫就不寫、不可憑印象補；"
+    "時間範圍照原文（單季／前幾季累計／全年；實際值或未來預測年份），不可互換或改年份；"
+    "指標種類照原文（營收／營業利益／淨利；預測值或實際值），不可互換；"
+    "限定語照原文（up to＝最多、at least＝至少、about＝約），不可改成「超過」或刪掉；"
+    "發言歸屬：標題或作者的話不可寫成某人原話；地理與對象範圍照原文，不可縮小或放大。"
+    "【人名】一律保留原文英文拼寫，只有以下可寫中文：Jensen Huang→黃仁勳、Lisa Su→蘇姿丰、"
+    "Donald Trump→川普、Morris Chang→張忠謀、C.C. Wei→魏哲家、Elon Musk→馬斯克、Xi Jinping→習近平、"
+    "Joe Biden→拜登、Masayoshi Son→孫正義、Lip-Bu Tan→陳立武；表外人名不得自行翻譯或音譯。"
+    "【標題】候選項目的標題、名稱、描述一律繁體中文（專有名詞可保留原文）。"
+)
+
 def fetch_techwar_news():
     """用DDG查最近一週中美科技戰相關新聞，關鍵字方向對準出口管制/關稅/TSMC/
     晶片走私轉運/人才資金管制/中國採購網絡，特別聚焦台灣在其中的角色與
@@ -181,6 +195,7 @@ def call_groq_diff_one(cat, cat_data, news_snippets):
         "極度保守：沒有明確新聞佐證的欄位一律維持原樣；禁止臆測、禁止捏造來源URL、"
         "禁止把不確定的傳聞當成確定事實。多數週查證後的正確答案就是「沒有任何異動」，"
         "回傳空items陣列是完全正常且被期待的結果。"
+        + FIDELITY_RULES_ZH
     )
 
     def build_prompt(news_list):

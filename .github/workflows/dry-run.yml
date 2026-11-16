@@ -1,0 +1,72 @@
+name: 🧪 Daily Update Dry Run
+
+# 11-16：用真 Groq 試跑新的內容正確性規則，但不寄信、不推 Notion、不寫 data/、不動網站。
+# 只在 push 到 dryrun/** 分支時觸發；結果（dryrun/result_*.json）只 commit 回同一個 dryrun 分支，絕不推 main。
+# 防自我觸發：GITHUB_TOKEN 推送本來就不會觸發 workflow；另加 paths-ignore（只改 dryrun/ 的 commit 不觸發）
+# 與 commit message [skip ci] 兩道保險。
+on:
+  push:
+    branches:
+      - 'dryrun/**'
+    paths-ignore:
+      - 'dryrun/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dry-run-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout dryrun branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install groq ddgs
+
+      - name: Run update_data.py (DRY_RUN)
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          DRY_RUN: '1'
+        run: python scripts/update_data.py --force
+
+      - name: Commit dryrun results to the same dryrun branch
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          case "$BRANCH" in
+            dryrun/*) ;;
+            *) echo "拒絕推送：$BRANCH 不是 dryrun/ 分支"; exit 1 ;;
+          esac
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # 只加 dryrun/ 目錄；確認 data/ 等正式檔案沒有被改動
+          if ! git diff --quiet -- data/ ai_tracker_v6.html; then
+            echo "DRY_RUN 不應改動 data/ 或 html，停止"; git diff --stat; exit 1
+          fi
+          git add -- dryrun/
+          if git diff --cached --quiet; then
+            echo "No dryrun results to commit"
+            exit 0
+          fi
+          git commit -m "🧪 dry-run result [skip ci]"
+          for i in 1 2 3; do
+            if git push origin "HEAD:refs/heads/$BRANCH"; then
+              exit 0
+            fi
+            sleep $((i * 10))
+            git pull --rebase origin "$BRANCH" || { git rebase --abort; exit 1; }
+          done
+          exit 1

@@ -109,6 +109,20 @@ CALL_INTERVAL_SEC = 65   # Groq免費額度6000 TPM，呼叫間隔等滾動視�
 TEXT_FIELD_CAP = 120     # effect/events/scope 等長文字截斷長度
 
 
+# 11-16：週查證候選建議的原文忠實規則（與 update_data.py SOURCE_FIDELITY_RULES 同一精神，只改 prompt 文字）
+FIDELITY_RULES_ZH = (
+    "【原文忠實鐵律】候選異動的每個事實都必須出自所附新聞片段本身："
+    "人物職稱與所屬機構原文沒寫就不寫、不可憑印象補；"
+    "時間範圍照原文（單季／前幾季累計／全年；實際值或未來預測年份），不可互換或改年份；"
+    "指標種類照原文（營收／營業利益／淨利；預測值或實際值），不可互換；"
+    "限定語照原文（up to＝最多、at least＝至少、about＝約），不可改成「超過」或刪掉；"
+    "發言歸屬：標題或作者的話不可寫成某人原話；地理與對象範圍照原文，不可縮小或放大。"
+    "【人名】一律保留原文英文拼寫，只有以下可寫中文：Jensen Huang→黃仁勳、Lisa Su→蘇姿丰、"
+    "Donald Trump→川普、Morris Chang→張忠謀、C.C. Wei→魏哲家、Elon Musk→馬斯克、Xi Jinping→習近平、"
+    "Joe Biden→拜登、Masayoshi Son→孫正義、Lip-Bu Tan→陳立武；表外人名不得自行翻譯或音譯。"
+    "【標題】候選項目的標題、名稱、描述一律繁體中文（專有名詞可保留原文）。"
+)
+
 def fetch_industry_news():
     """用DDG查最近一個月各產業AI導入相關新聞，query強制加官方機構關鍵字／站內限定，
     盡量在蒐集端就過濾掉一般新聞媒體，Groq prompt再做第二層網域白名單把關。"""
@@ -229,6 +243,7 @@ def call_groq_diff_one(industry_label, batch_json, news_snippets):
         "如果新聞片段的來源不是這類官方/學術/政府機構網站，即使內容看起來相關，"
         "也絕對不可以拿來當作候選異動的依據，寧可判定該部分無異動、不提出。"
         "一般新聞媒體（科技媒體、財經媒體、部落格等）一律不得作為source。"
+        + FIDELITY_RULES_ZH
     )
     def build_prompt(news_lines):
         news_text = chr(10).join(news_lines) if news_lines else '（本月未蒐集到相關新聞片段）'

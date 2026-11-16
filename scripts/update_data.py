@@ -50,6 +50,53 @@ FACT_CHECK_MODE = 'enforce'
 if os.environ.get('FACT_CHECK_MODE', '').strip().lower() in ('off', 'log', 'enforce'):
     FACT_CHECK_MODE = os.environ['FACT_CHECK_MODE'].strip().lower()
 
+# ── 內容正確性（11-16）：稽核 11-09～11-15 共 36 則有 12 則與原文不符，成因分兩類：
+# (a) 輸入假內文（Google News 轉址頁介紹句、付費牆廣告字被當成全文）；(b) 有原文仍寫錯
+# （時間範圍、指標種類、限定語、發言歸屬、人名翻譯、數字矛盾）。對應四層防線：
+# 1. Google News 解碼（只對即將抓全文的候選）＋內文與標題相關性檢查
+# 2. 抓不到全文的候選在素材行標 [HEADLINE_ONLY]；該類卡片最高 opp、寫入 headline_only=true
+# 3. 程式數字閘門 numeric_gate（title/body 數字一致、須出自原文）
+# 4. LLM 查核關卡 llm_fact_check（ok／fix／drop，以編號對應），fix 後再跑一次數字閘門
+# DRY_RUN（11-16）：環境變數 DRY_RUN=1。照常抓新聞、解碼、呼叫 Groq、跑所有閘門與查核，
+# 但不寄信、不推 Notion、不寫 data/ 任何檔（history/run_stats/notes_backup）；
+# 改把 data 物件、RUN_STATS、每則條目的原文素材寫到 dryrun/result_YYYYMMDD_HHMM.json。
+DRY_RUN = os.environ.get('DRY_RUN', '').strip() == '1'
+DRY_RUN_DIR = os.environ.get('DRY_RUN_DIR', '').strip() or os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), '..', 'dryrun')
+GNEWS_DECODE = True
+if os.environ.get('GNEWS_DECODE', '').strip() == '0':
+    GNEWS_DECODE = False
+GNEWS_DECODE_MAX = 15        # 單次執行解碼上限（Google 對 batchexecute 連打約 40 次就回 429）
+GNEWS_DECODE_GAP = 5         # 每則解碼之間至少間隔秒數
+GNEWS_TIMEOUT = 15
+# 內文有效性：標題關鍵詞（英文去停用詞、長度≥4；中文取 bigram）至少命中幾個才算真內文
+TEXT_TITLE_MIN_HITS = 2
+# 摘要候選的 RSS 描述扣掉標題後，至少要有幾個新詞才算有內容（Google News 描述＝標題＋媒體名）
+HEADLINE_DESC_MIN_NEW_WORDS = 5
+HEADLINE_ONLY_TAG = '[HEADLINE_ONLY]'
+# LLM 查核關卡：環境變數 LLM_FACT_CHECK=0 關閉；查核失敗一律保留原卡，不影響當日輸出
+LLM_FACT_CHECK = True
+if os.environ.get('LLM_FACT_CHECK', '').strip() == '0':
+    LLM_FACT_CHECK = False
+# Groq 免費檔 gpt-oss-120b/20b：TPM 8K（11-16 查官方 rate-limits 頁），prompt＋max_tokens 預留須 ≤ 約 7K
+FACT_CHECK_TOKEN_BUDGET = 7000
+FACT_CHECK_MAX_TOKENS = 4000      # 與 call_groq 分類主呼叫相同，留足 reasoning 餘裕
+FACT_CHECK_MATERIAL_CHARS = 1500  # 每則送查核的原文素材上限字數
+FACT_CHECK_REASONING = 'low'      # 與其餘生成後呼叫一致，降低推理吃光 max_tokens 的機率
+# 人名中文對照表：表外人名一律保留原文英文拼寫（prompt 明令不得自行翻譯）
+PERSON_NAME_ZH = {
+    'Jensen Huang': '黃仁勳',
+    'Lisa Su': '蘇姿丰',
+    'Donald Trump': '川普',
+    'Morris Chang': '張忠謀',
+    'C.C. Wei': '魏哲家',
+    'Elon Musk': '馬斯克',
+    'Xi Jinping': '習近平',
+    'Joe Biden': '拜登',
+    'Masayoshi Son': '孫正義',
+    'Lip-Bu Tan': '陳立武',
+}
+
 TW = timezone(timedelta(hours=8))
 NOW = datetime.now(TW)
 DATE_STR = NOW.strftime('%Y-%m-%d')
@@ -90,6 +137,9 @@ def save_run_stats(stats):
     """把本次執行的漏斗計數寫入 data/run_stats.json：新到舊排列、同日覆寫、
     最近 14 筆上限。呼叫端必須自行包 try/except（本函式的檔案寫入可能失敗，
     但絕不可因此中斷主管線）。"""
+    if DRY_RUN:
+        print("  → DRY_RUN：不寫 data/run_stats.json")
+        return
     entry = dict(stats)
     entry['date'] = DATE_STR
     entry['generated_at'] = datetime.now(TW).isoformat()
@@ -497,11 +547,200 @@ def fetch_ddg():
                     print(f"  DDG '{label}' failed after 3 attempts: {e}")
     return snippets
 
-def fetch_article_text(url, max_chars=1100, timeout=6):
-    """抓取文章內文前幾段真實段落，取代單薄的 RSS/DDG 摘要（title+200字短句無法支撐具體事實）"""
+# ── 內文有效性（11-16）：舊判準「>80 字元即成功」會把 Google News 轉址頁介紹句、
+# 付費牆會員廣告當成內文。改成結構性判準：抓回的文字必須含該則標題的實質關鍵詞
+# （英文去停用詞、長度≥4；中文取 bigram）至少 TEXT_TITLE_MIN_HITS 個，不寫死任何網站或句子。
+_RELEVANCE_STOPWORDS = frozenset((
+    'with from that this will says said about after over into more than what when their '
+    'they them been were also just your like amid could would should while where which '
+    'these those here there some most much many other only news report reports year week '
+    'today first back make makes made have has having being does doing gets than then '
+    'amid against among before below between during under until upon within without '
+    'latest update updates live watch video photos exclusive analysis opinion '
+).split())
+_FETCH_STATE = {'last_reason': ''}
+
+def _strip_media_suffix(title):
+    """Google News 標題尾端「 - 媒體名」不算標題內容（媒體名常出現在任何頁面）。"""
+    return re.sub(r'\s+[-–—|]\s+[^-–—|]{2,40}$', '', (title or '').strip())
+
+def _title_keywords(title):
+    t = _strip_media_suffix(title)
+    eng = set()
+    for w in re.findall(r"[A-Za-z0-9][A-Za-z0-9'\-]*", t):
+        lw = w.lower().strip("'-")
+        if lw.endswith("'s"):
+            lw = lw[:-2]
+        if len(lw) >= 4 and lw not in _RELEVANCE_STOPWORDS and not lw.isdigit():
+            eng.add(lw)
+    cjk = set()
+    for run in re.findall(r'[一-鿿]{2,}', t):
+        cjk.update(run[i:i + 2] for i in range(len(run) - 1))
+    return eng, cjk
+
+def text_matches_title(text, title, min_hits=None):
+    """抓回的內文是否真的是這則新聞：標題關鍵詞命中數 ≥ min(門檻, 關鍵詞總數)；
+    標題完全沒有可用關鍵詞時無法判定，視為不通過（保守）。"""
+    if not text:
+        return False
+    min_hits = TEXT_TITLE_MIN_HITS if min_hits is None else min_hits
+    eng, cjk = _title_keywords(title)
+    total = len(eng) + len(cjk)
+    if total == 0:
+        return False
+    low = text.lower()
+    hits = sum(1 for w in eng if re.search(r'(?<![a-z0-9])' + re.escape(w), low))
+    hits += sum(1 for b in cjk if b in text)
+    return hits >= min(min_hits, total)
+
+def summary_is_headline_only(title, desc):
+    """摘要候選的 RSS 描述是否只是標題（＋媒體名）：扣掉標題已有的詞後，新詞少於
+    HEADLINE_DESC_MIN_NEW_WORDS 個（中文以 bigram 計，門檻×2）即視為只有標題。"""
+    tw = {w.lower() for w in re.findall(r"[A-Za-z0-9][A-Za-z0-9'\-]*", title or '')}
+    dw = [w.lower() for w in re.findall(r"[A-Za-z0-9][A-Za-z0-9'\-]*", desc or '')]
+    new_eng = {w for w in dw if w not in tw and len(w) >= 3}
+    t_cjk = set()
+    for run in re.findall(r'[一-鿿]{2,}', title or ''):
+        t_cjk.update(run[i:i + 2] for i in range(len(run) - 1))
+    new_cjk = set()
+    for run in re.findall(r'[一-鿿]{2,}', desc or ''):
+        new_cjk.update(b for b in (run[i:i + 2] for i in range(len(run) - 1)) if b not in t_cjk)
+    return len(new_eng) < HEADLINE_DESC_MIN_NEW_WORDS and len(new_cjk) < HEADLINE_DESC_MIN_NEW_WORDS * 2
+
+# ── Google News 解碼（11-16）：news.google.com/rss/articles/… 直接抓只會拿到 Google 介紹頁。
+# 取文章頁的 data-n-a-sg／data-n-a-ts 簽章，POST batchexecute（rpcid Fbv4je，garturlreq）
+# 換回原網址。只對 enrich_with_full_text 即將抓全文的候選解碼；每則間隔 ≥ GNEWS_DECODE_GAP 秒、
+# 單次上限 GNEWS_DECODE_MAX 則；遇 HTTP 429 立刻停止本次所有後續解碼（不重試）。失敗不中斷管線。
+_GNEWS_UA = ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+             '(KHTML, like Gecko) Chrome/124.0 Safari/537.36')
+_GNEWS_ARTICLE_PAT = re.compile(r'^https?://news\.google\.com/(?:rss/)?articles/([^?/#]+)', re.I)
+
+class GNewsRateLimited(Exception):
+    pass
+
+def is_gnews_url(url):
+    return bool(_GNEWS_ARTICLE_PAT.match(url or ''))
+
+def _gnews_get(url, data=None, headers=None):
+    import urllib.error
+    h = {'User-Agent': _GNEWS_UA}
+    h.update(headers or {})
+    req = urllib.request.Request(url, data=data, headers=h)
+    try:
+        with urllib.request.urlopen(req, timeout=GNEWS_TIMEOUT) as r:
+            return r.read().decode('utf-8', 'replace')
+    except urllib.error.HTTPError as e:
+        if e.code == 429:
+            raise GNewsRateLimited(str(e))
+        raise
+
+def _gnews_parse_batchexecute(out):
+    """從 batchexecute 回應取原網址：先正規解析（JSON 內嵌 JSON，\\u003d 等跳脫由 json 還原），
+    失敗再用正規式退回並手動還原 unicode 跳脫。"""
+    for line in (out or '').splitlines():
+        line = line.strip()
+        if not line.startswith('[['):
+            continue
+        try:
+            arr = json.loads(line)
+        except Exception:
+            continue
+        for row in arr:
+            if isinstance(row, list) and len(row) > 2 and row[0] == 'wrb.fr' and isinstance(row[2], str):
+                try:
+                    inner = json.loads(row[2])
+                except Exception:
+                    continue
+                if isinstance(inner, list) and len(inner) > 1 and inner[0] == 'garturlres' \
+                        and isinstance(inner[1], str) and inner[1].startswith('http'):
+                    return inner[1]
+    m = re.search(r'garturlres\\+",\\+"(.*?)\\+"', out or '')
+    if not m:
+        return None
+    u = m.group(1)
+    u = re.sub(r'\\+u([0-9a-fA-F]{4})', lambda x: chr(int(x.group(1), 16)), u)
+    u = u.replace('\\/', '/').replace('\\', '')
+    return u if u.startswith('http') else None
+
+def decode_gnews_url(url):
+    """回傳原網址或 None；遇 429 拋 GNewsRateLimited（呼叫端據此停止後續解碼）。"""
+    import urllib.parse
+    m = _GNEWS_ARTICLE_PAT.match(url or '')
+    if not m:
+        return None
+    aid = m.group(1)
+    sg = ts = None
+    for page in (f"https://news.google.com/articles/{aid}", f"https://news.google.com/rss/articles/{aid}"):
+        html = _gnews_get(page)
+        sgm = re.search(r'data-n-a-sg="([^"]+)"', html)
+        tsm = re.search(r'data-n-a-ts="([^"]+)"', html)
+        if sgm and tsm:
+            sg, ts = sgm.group(1), tsm.group(1)
+            break
+    if not (sg and ts):
+        return None
+    inner = ('["garturlreq",[["X","X",["X","X"],null,null,1,1,"US:en",null,1,null,null,null,null,null,0,1],'
+             '"X","X",1,[1,1,1],1,1,null,0,0,null,0],"' + aid + '",' + ts + ',"' + sg + '"]')
+    payload = json.dumps([[["Fbv4je", inner, None, "generic"]]])
+    body = urllib.parse.urlencode({'f.req': payload}).encode()
+    out = _gnews_get('https://news.google.com/_/DotsSplashUi/data/batchexecute', body,
+                     {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'})
+    dec = _gnews_parse_batchexecute(out)
+    if dec and not is_gnews_url(dec):
+        return dec
+    return None
+
+def gnews_decode_limited(url, state):
+    """加上次數上限、間隔與 429 熔斷的解碼；state 會被更新並寫進 RUN_STATS['gnews_decode']。"""
+    if not GNEWS_DECODE or state.get('rate_limited'):
+        state['skipped'] = state.get('skipped', 0) + 1
+        return None
+    if state.get('attempted', 0) >= GNEWS_DECODE_MAX:
+        state['skipped_cap'] = state.get('skipped_cap', 0) + 1
+        return None
+    wait = GNEWS_DECODE_GAP - (time.time() - state.get('_last', 0.0))
+    if state.get('_last') and wait > 0:
+        time.sleep(wait)
+    state['attempted'] = state.get('attempted', 0) + 1
+    try:
+        dec = decode_gnews_url(url)
+    except GNewsRateLimited:
+        state['rate_limited'] = True
+        dec = None
+        print("  ⚠ Google News 解碼遇到 HTTP 429，本次執行停止所有後續解碼")
+    except Exception as e:
+        dec = None
+        print(f"  ⚠ Google News 解碼失敗（不影響管線）：{str(e)[:80]}")
+    state['_last'] = time.time()
+    if dec:
+        state['ok'] = state.get('ok', 0) + 1
+    else:
+        state['failed'] = state.get('failed', 0) + 1
+    return dec
+
+def fetch_article_text(url, max_chars=1100, timeout=6, title=None):
+    """抓取文章內文前幾段真實段落，取代單薄的 RSS/DDG 摘要（title+200字短句無法支撐具體事實）。
+    title：給了就做內文有效性檢查（text_matches_title），不通過視為抓取失敗回 None。
+    _FETCH_STATE['last_reason'] 記錄最近一次失敗原因（http_4xx／invalid_text／error）。"""
+    _FETCH_STATE['last_reason'] = ''
+    text = _fetch_article_text_raw(url, max_chars, timeout)
+    if text and title and not text_matches_title(text, title):
+        _FETCH_STATE['last_reason'] = 'invalid_text'
+        return None
+    if not text and not _FETCH_STATE['last_reason']:
+        _FETCH_STATE['last_reason'] = 'invalid_text'
+    return text
+
+def _fetch_article_text_raw(url, max_chars=1100, timeout=6):
+    import urllib.error
     try:
         req = urllib.request.Request(url, headers={'User-Agent':'Mozilla/5.0'})
-        with urllib.request.urlopen(req, timeout=timeout) as r:
+        try:
+            r = urllib.request.urlopen(req, timeout=timeout)
+        except urllib.error.HTTPError as e:
+            _FETCH_STATE['last_reason'] = f'http_{e.code}'
+            return None
+        with r:
             raw = r.read(CLEAN_READ_BYTES if CLEAN_BOILERPLATE else 300_000)
         html = raw.decode('utf-8', errors='ignore')
         if CLEAN_BOILERPLATE:
@@ -520,6 +759,7 @@ def fetch_article_text(url, max_chars=1100, timeout=6):
         text = ' '.join(parts)[:max_chars]
         return text if len(text) > 80 else None
     except Exception:
+        _FETCH_STATE['last_reason'] = 'error'
         return None
 
 # ── A1：樣板段落過濾（CLEAN_BOILERPLATE）──
@@ -607,20 +847,52 @@ def extract_clean_text(html, max_chars=1100):
     text = ' '.join(parts)[:max_chars]
     return text if len(text) > 80 else None
 
+def _entry_title(s):
+    """素材條目的原文標題（去 [label]／[HEADLINE_ONLY] 標記、去內文與網址）。"""
+    t = re.sub(r'^(?:\[[^\]]+\]\s*)+', '', s)
+    return t.split(' — ', 1)[0].split(' | SOURCE_URL:', 1)[0].strip()
+
+def _entry_desc(s):
+    """摘要條目（標題 — 描述 | SOURCE_URL:…）的描述部分；全文條目回傳空字串。"""
+    if _FULLTEXT_ENTRY_PAT.search(s):
+        return ''
+    rest = s.split(' — ', 1)[1] if ' — ' in s else ''
+    return rest.split(' | SOURCE_URL:', 1)[0].strip()
+
+def mark_headline_only(entry):
+    """在 [label] 之後插入 [HEADLINE_ONLY] 標記（已標過不重複）；無 label 時放最前面。"""
+    if HEADLINE_ONLY_TAG in entry:
+        return entry
+    m = re.match(r'\[[^\]]+\]\s*', entry)
+    if m:
+        return entry[:m.end()] + HEADLINE_ONLY_TAG + ' ' + entry[m.end():]
+    return HEADLINE_ONLY_TAG + ' ' + entry
+
+def _replace_source_url(entry, new_url):
+    return re.sub(r'SOURCE_URL:\S+', lambda _m: 'SOURCE_URL:' + new_url, entry, count=1)
+
 def enrich_with_full_text(buckets, max_fetch=12):
     """三分類輪流分配全文抓取名額（round-robin：hw桶第1篇→corp桶第1篇→app桶第1篇→hw桶第2篇…），
     取代舊版「單一素材池、先到先贏」（hw 類新聞源強勢佔滿、app 類永遠擠不進）。
     只對高信號候選（有 SOURCE_URL 且命中 HIGH_SIGNAL_PAT）抓取真實內文取代薄摘要；
     同一 URL 若重複出現於多桶（一篇文章可同時進多桶），只實際抓取一次並快取結果，
     避免重複網路請求。成功抓到內文的條目移到該桶最前面，確保後續預算截斷時
-    優先保留高密度素材（沿用舊版行為；hw/app 的全文佔比上限見 _fit_news_context）。"""
+    優先保留高密度素材（沿用舊版行為；hw/app 的全文佔比上限見 _fit_news_context）。
+    11-16：Google News 連結先解碼成原網址再抓（gnews_decode_limited），成功即把 SOURCE_URL
+    換成原網址；抓回的文字須通過 text_matches_title。全文失敗（解碼失敗、原站 401/403、
+    內文無效）的候選，以及 RSS 描述只有標題的摘要候選，素材行標 [HEADLINE_ONLY]。"""
     cats = ['hw', 'corp', 'app']
     lists = {c: list(buckets.get(c, [])) for c in cats}
     eligible = {c: [i for i, s in enumerate(lists[c])
                     if 'SOURCE_URL:' in s and HIGH_SIGNAL_PAT.search(s)] for c in cats}
     cursor = {c: 0 for c in cats}
     enriched_idx = {c: set() for c in cats}
+    failed_idx = {c: set() for c in cats}
     cache = {}
+    url_map = {}
+    decode_state = {'attempted': 0, 'ok': 0, 'failed': 0, 'rate_limited': False,
+                    'skipped': 0, 'skipped_cap': 0}
+    fail_reasons = {}
     fetched = 0
     active = True
     while fetched < max_fetch and active:
@@ -638,24 +910,63 @@ def enrich_with_full_text(buckets, max_fetch=12):
             m = re.search(r'SOURCE_URL:(\S+)', s)
             url = m.group(1) if m else None
             if url not in cache:
-                cache[url] = fetch_article_text(url) if url else None
+                fetch_url = url
+                reason = ''
+                if url and is_gnews_url(url):
+                    dec = gnews_decode_limited(url, decode_state)
+                    if dec:
+                        url_map[url] = dec
+                        fetch_url = dec
+                    else:
+                        fetch_url = None
+                        reason = 'decode_failed'
+                text = None
+                if fetch_url:
+                    text = fetch_article_text(fetch_url, title=_entry_title(s))
+                    if not text:
+                        reason = _FETCH_STATE.get('last_reason') or 'invalid_text'
+                cache[url] = text
+                if not text:
+                    fail_reasons[reason] = fail_reasons.get(reason, 0) + 1
             text = cache[url]
+            new_url = url_map.get(url, url)
             if text:
-                head = s.split(' — ', 1)[0]
-                url_part = s[s.find(' | SOURCE_URL:'):]
+                head = s.split(' — ', 1)[0].split(' | SOURCE_URL:', 1)[0]
                 # SOURCE_URL 緊接標題之後，不放在長內文最後面——內文拉長到 1100 字後，
                 # LLM 常常讀到文末前就已經寫完 JSON，導致 source 欄位留空或抓錯
-                lists[c][i] = f"{head}{url_part} — {text}"
+                lists[c][i] = f"{head} | SOURCE_URL:{new_url} — {text}"
                 enriched_idx[c].add(i)
                 fetched += 1
+            else:
+                failed_idx[c].add(i)
+    ho = {'fetch_failed': 0, 'thin_summary': 0}
+    for c in cats:
+        for i, s in enumerate(lists[c]):
+            if i in enriched_idx[c]:
+                continue
+            m = re.search(r'SOURCE_URL:(\S+)', s)
+            if m and m.group(1) in url_map:
+                s = _replace_source_url(s, url_map[m.group(1)])
+            if i in failed_idx[c]:
+                s = mark_headline_only(s)
+                ho['fetch_failed'] += 1
+            elif summary_is_headline_only(_entry_title(s), _entry_desc(s)):
+                s = mark_headline_only(s)
+                ho['thin_summary'] += 1
+            lists[c][i] = s
     for c in cats:
         front = [lists[c][i] for i in range(len(lists[c])) if i in enriched_idx[c]]
         rest  = [lists[c][i] for i in range(len(lists[c])) if i not in enriched_idx[c]]
         lists[c] = front + rest
     if fetched:
         print(f"  → 已抓取 {fetched} 篇完整內文取代薄摘要（三分類輪流分配，非先到先贏）")
+    rl_note = '（遇 429 已停止）' if decode_state['rate_limited'] else ''
+    print(f"  → Google News 解碼：嘗試 {decode_state['attempted']}、成功 {decode_state['ok']}{rl_note}；"
+          f"標記 HEADLINE_ONLY：全文失敗 {ho['fetch_failed']} 條、描述只有標題 {ho['thin_summary']} 條")
     try:
         RUN_STATS['enriched'] = fetched
+        RUN_STATS['gnews_decode'] = {k: v for k, v in decode_state.items() if not k.startswith('_')}
+        RUN_STATS['headline_only'] = dict(ho, fail_reasons=fail_reasons)
     except Exception as e:
         print(f"  ⚠ 漏斗統計收集失敗（enrich_with_full_text，不影響資料生成）：{e}")
     return lists
@@ -811,6 +1122,9 @@ def load_notes():
 
 def snapshot_notes_backup():
     """每日快照：從 Gist 抓 notes.json 寫入 data/notes_backup.json（config 缺失則靜默跳過）"""
+    if DRY_RUN:
+        print("  → DRY_RUN：不寫 data/notes_backup.json")
+        return
     cfg_path = 'data/notes_config.json'
     if not os.path.exists(cfg_path):
         return
@@ -844,11 +1158,51 @@ CATEGORY_DESC = {
 # main 流程合併三次呼叫結果時用 \n 接回原本的多行格式；
 # 「下週看點」放在 corp（CSP/CapEx 視角最貼近總體展望）、
 # 「用戶洞察」放在 app（三次呼叫中順序最後，象徵彙整收尾）。
+# 11-16：weekly_rule 舊版要求「每點一行」與這裡 hw「一句」互相矛盾，HW 段出現字面「\n」。
+# 統一：HW／APP 各一句；CORP 一句＋下週看點一句（用戶洞察行只在有筆記時附加於 app）。
 CATEGORY_WEEKLY_TEMPLATE = {
-    'hw':   'HW：[半導體本週最重要一句摘要]',
-    'corp': 'CORP：[CSP/CapEx本週一句摘要]\\n下週看點：[下週最值得追蹤的一個指標或事件]',
+    'hw':   'HW：[半導體本週最重要的一句摘要]',
+    'corp': 'CORP：[CSP/CapEx本週一句摘要]\\n下週看點：[下週最值得追蹤的一個指標或事件，一句]',
     'app':  'APP：[新興AI本週一句摘要]',
 }
+CATEGORY_WEEKLY_RULE = {
+    'hw':   'exactly ONE line: "HW：" followed by exactly one sentence ending with 。 — no line breaks, no second sentence',
+    'corp': 'exactly TWO lines separated by a single \\n: line 1 "CORP：" + one sentence ending with 。; '
+            'line 2 "下週看點：" + one sentence ending with 。 — no other lines',
+    'app':  'exactly ONE line: "APP：" followed by exactly one sentence ending with 。 — no line breaks, no second sentence',
+}
+WEEKLY_RULE_NOTES_SUFFIX = ('; because user notes are provided, add exactly one more line after a single \\n: '
+                            '"用戶洞察：" + one sentence ending with 。')
+
+# ── 原文忠實規則（11-16）：稽核發現有原文仍寫錯的 8 則都屬下列型態；分類主呼叫、補深重寫、
+# LLM 查核關卡共用同一段文字，避免三處規則漂移。
+def person_name_rule_text():
+    pairs = ', '.join(f"{en}→{zh}" for en, zh in PERSON_NAME_ZH.items())
+    return ("- PERSON NAMES: keep each person's name in the source's English spelling; only this fixed table may be "
+            "written in Chinese: " + pairs + "; never translate or transliterate any other name")
+
+# 11-16 精簡版：分類主呼叫的 corp prompt 實測已達 5.8K tokens，規則以最短措辭加入，避免逼近 TPM 8K
+SOURCE_FIDELITY_RULES = (
+    "- SOURCE FIDELITY (facts): each of these must come from the same source entry, else leave it out — "
+    "a person's title and employer; the period (single quarter vs. nine-month/YTD cumulative vs. full year; "
+    "actual vs. forecast, and the forecast year); the metric (revenue vs. operating profit vs. adjusted operating "
+    "profit vs. net income; projection vs. reported); qualifiers (up to→最多, at least→至少, about→約; never write "
+    "超過 for up to); attribution (a headline's or author's words are never a person's quote); scope (global vs. "
+    "one country, multi-year plan vs. one deadline)\n"
+)
+
+def system_fidelity_text():
+    """system 訊息用的原文忠實鐵律（繁中精簡版），與 SOURCE_FIDELITY_RULES 同一精神。"""
+    return (
+        "【原文忠實】職稱與所屬機構、時間範圍、指標種類、限定語、發言歸屬、地理與對象範圍都必須出自同一則原文，"
+        "原文沒寫就不寫。人名保留英文原文，只有對照表內可寫中文。[HEADLINE_ONLY] 素材只能一句改寫標題，最高 opp。"
+    )
+
+HEADLINE_ONLY_RULES = (
+    "- [HEADLINE_ONLY] ENTRIES have no article text, only a headline: an item from one gets a ONE-sentence body that "
+    "only restates the headline (no titles, background, numbers, dates, model numbers, causes it lacks), "
+    "impact/insight add no new number or named fact, and rating is at most opp\n"
+)
 
 BASE_NEWS_CHAR_BUDGET = 3500
 MAX_NEWS_CHAR_BUDGET = 8000
@@ -1110,7 +1464,10 @@ def make_prompt(news_context, category, recent_titles=None, avoid_items=None,
     except Exception as e:
         print(f"  ⚠ 漏斗統計收集失敗（news_char_budget，不影響資料生成）：{e}")
     weekly_rule = (
-        'each distinct point must be its own line separated by \\n (one sentence per line, ending with 。); never merge multiple topics into one continuous paragraph'
+        (CATEGORY_WEEKLY_RULE[category]
+         + (WEEKLY_RULE_NOTES_SUFFIX if (category == 'app' and notes_text) else '')
+         + '; every number in it must appear in today\'s NEWS above; write a line break as a single \\n '
+         'escape inside the JSON string (never a double-escaped \\\\n)')
         if IS_SUNDAY else
         'MUST be null — today is NOT Sunday; outputting any non-null value is an error'
     )
@@ -1148,7 +1505,8 @@ RULES:
 - impact: write a genuine supply chain analysis — identify upstream suppliers, downstream customers, and competing alternatives affected by this event; state direction (↑/↓) and mechanism for each; do NOT rephrase the body; NEVER use vague phrases like "可能會影響X" without specifying direction and reason; NEVER mention stock prices
 - glossary_new: required, 1-3 terms from today's news that readers may not know
 - source: copy verbatim from SOURCE_URL in the news; never fabricate URLs
-- All titles, body, impact, insight in Traditional Chinese (zh-TW)
+{SOURCE_FIDELITY_RULES}{person_name_rule_text()}
+{HEADLINE_ONLY_RULES}- All titles, body, impact, insight in Traditional Chinese (zh-TW)
 - weekly_summary: {weekly_rule}
 {no_repeat_str}
 {notes_ctx}{cross_block}"""
@@ -1471,6 +1829,7 @@ def call_groq(prompt):
         "noise 條目的 title 必須是『本日無相關[分區名稱]新聞』，不得使用任何具體或看似具體的新聞標題（例如「AI 應用進步」「產業趨勢觀察」皆為違規）。"
         "【body 句數】body 是 1 到 3 句，句數視你實際掌握的具體事實數量而定，不得為了湊句數而重述前一句或加入未經證實的推論；"
         "湊出來的句子無論句數多寡都會被視為空洞輸出。"
+        + system_fidelity_text()
     )
     models = ["openai/gpt-oss-120b", "openai/gpt-oss-20b"]
     response = None
@@ -2408,11 +2767,14 @@ def _fa_index_materials(news_by_cat):
             if not m:
                 continue
             full = bool(re.search(r'SOURCE_URL:\S+ — ', entry))
-            text = re.sub(r'^\[[^\]]+\]\s*', '', entry).replace(m.group(0), ' ')
+            # 11-16：去掉開頭所有 [label]／[HEADLINE_ONLY] 標記；headline_only＝該素材只有標題
+            headline_only = (HEADLINE_ONLY_TAG in entry) and not full
+            text = re.sub(r'^(?:\[[^\]]+\]\s*)+', '', entry).replace(m.group(0), ' ')
             title = text.split(' — ', 1)[0].replace(' | ', ' ').strip()
             key = _norm_url(m.group(1))
-            if key not in idx or (full and not idx[key]['full']):
-                idx[key] = {'text': text, 'title': title, 'full': full}
+            if key not in idx or (full and not idx[key]['full']) \
+                    or (idx[key].get('headline_only') and not headline_only):
+                idx[key] = {'text': text, 'title': title, 'full': full, 'headline_only': headline_only}
     return idx
 
 def deepen_thin_cards(data, news_by_cat):
@@ -2436,7 +2798,8 @@ def deepen_thin_cards(data, news_by_cat):
                 mat = idx.get(_norm_url(url))
                 if mat is not None and mat.get('full'):
                     continue
-                cands.append((0 if item.get('rating') == 'core' else 1, sec, item, url))
+                cands.append((0 if item.get('rating') == 'core' else 1, sec, item, url,
+                              (mat or {}).get('title')))
         cands.sort(key=lambda c: c[0])  # 穩定排序：core 優先，其餘維持原順序
         cands = cands[:3]
         stats['candidates'] = len(cands)
@@ -2444,9 +2807,10 @@ def deepen_thin_cards(data, news_by_cat):
             print("  → 補深：無需補深的薄卡")
             return
         print(f"  → 補深：{len(cands)} 張卡片只有短摘要，補抓全文重寫…")
-        for _, sec, item, url in cands:
+        for _, sec, item, url, mat_title in cands:
             try:
-                text = fetch_article_text(url, max_chars=2500)
+                # 11-16：有原文標題就做內文有效性檢查（擋 Google 介紹頁、付費牆廣告）
+                text = fetch_article_text(url, max_chars=2500, title=mat_title)
             except Exception as e:
                 print(f"  ⚠ 補深抓取例外（保留原卡）：{e}")
                 text = None
@@ -2475,6 +2839,7 @@ def deepen_thin_cards(data, news_by_cat):
                 item['insight'] = insight
                 item['chain'] = chain
                 item.pop('thin_source', None)
+                item.pop('headline_only', None)   # 已用全文重寫，不再是只有標題的卡
                 _swap_to_full_material(news_by_cat, sec, url, text)
                 stats['rewritten'] += 1
                 print(f"  ✓ 補深重寫：{item.get('title','')[:40]}")
@@ -2502,6 +2867,7 @@ def _make_deepen_prompt(item, url, text):
         "- SOURCE FIDELITY (tense): if the article reports something as upcoming, planned, reported, or unconfirmed "
         "(will, plans to, is expected to, reportedly, according to, sources say, may, could, rumored), "
         "write it in zh-TW with 預計／據報導／傳出, never as already happened or officially announced.\n"
+        + SOURCE_FIDELITY_RULES + person_name_rule_text() + "\n" +
         "- impact: 2-3 sentences in zh-TW tracing supply chain ripple effects (closest tier, next tier, end market), "
         "state direction (↑/↓) and mechanism, every claim traceable to the article, do NOT rephrase the body, "
         "never mention stock prices; use an empty string if the article does not support any supply chain analysis.\n"
@@ -2523,6 +2889,7 @@ def _swap_to_full_material(news_by_cat, sec, url, text):
             m = re.search(r'SOURCE_URL:(\S+)', entry)
             if m and _norm_url(m.group(1)) == key:
                 head = entry.split(' | SOURCE_URL:', 1)[0].split(' — ', 1)[0]
+                head = head.replace(HEADLINE_ONLY_TAG + ' ', '').replace(HEADLINE_ONLY_TAG, '')
                 entries[i] = f"{head} | SOURCE_URL:{m.group(1)} — {text}"
                 news_by_cat[cat] = '\n\n'.join(entries)
                 return
@@ -2753,6 +3120,9 @@ def _gate_snapshot(data):
 def _gate_reason(gate, title, action):
     """盡量帶出該關自己記的理由；沒有就回傳通用說明。"""
     try:
+        r = (RUN_STATS.get('gate_reasons') or {}).get(gate, {}).get((title or '')[:60])
+        if r:
+            return r
         if gate == 'dedup_and_freshness_check':
             for a in RUN_STATS.get('dedup_audit') or []:
                 if a.get('title') == title:
@@ -2802,6 +3172,501 @@ def _run_gate(name, fn, data, *args):
         print(f"  ⚠ 閘門紀錄失敗（{name}，不影響資料生成）：{e}")
     return result
 
+
+# ══════════════════════════════════════════════════════════════════
+#  4b. 內容正確性閘門（11-16）：HEADLINE_ONLY 強制、數字閘門、LLM 查核、週報數字
+# ══════════════════════════════════════════════════════════════════
+# validate_sources 會清空失效網址；數字閘門／查核仍需要找回原素材，main 在清空前先記下原 source
+_ORIG_SOURCES = {}
+
+def _gate_reason_set(gate, title, reason):
+    try:
+        RUN_STATS.setdefault('gate_reasons', {}).setdefault(gate, {})[(title or '')[:60]] = (reason or '')[:120]
+    except Exception:
+        pass
+
+def _material_for(item, idx):
+    src = (item.get('source') or '').strip() or (_ORIG_SOURCES.get(id(item)) or '').strip()
+    return idx.get(_norm_url(src)) if src else None
+
+def enforce_headline_only(data, news_by_cat):
+    """來源素材只有標題（[HEADLINE_ONLY]）的卡片：寫入 headline_only=true，core 一律降 opp。"""
+    idx = _fa_index_materials(news_by_cat)
+    stats = {'marked': 0, 'downgraded': 0}
+    for sec in ('hw', 'corp', 'app'):
+        for item in data.get(sec, []) or []:
+            if not isinstance(item, dict) or _is_placeholder(item):
+                continue
+            mat = _material_for(item, idx)
+            if mat is not None and mat.get('headline_only'):
+                item['headline_only'] = True
+                stats['marked'] += 1
+                if item.get('rating') == 'core':
+                    item['rating'] = 'opp'
+                    stats['downgraded'] += 1
+                    _gate_reason_set('enforce_headline_only', item.get('title'), '素材只有標題，core 上限 opp')
+    if stats['marked']:
+        print(f"  → HEADLINE_ONLY：{stats['marked']} 張卡只有標題素材，其中 {stats['downgraded']} 張 core→opp")
+    try:
+        RUN_STATS['headline_only_cards'] = stats
+    except Exception:
+        pass
+    return stats
+
+# ── 數字閘門 ──
+# 數值以「換算後的值＋卡片顯示精度」比對：卡片 68.7 萬＝687,000±500，原文 678,000 → 不符；
+# 67.8 萬＝678,000±500 → 相符；150 萬 vs 1.5 million、40.8 億 vs 4.08 billion → 相符。
+_NG_ZH_SCALE = {'千萬': 1e7, '百萬': 1e6, '十億': 1e9, '百億': 1e10, '千億': 1e11, '萬億': 1e12,
+                '兆': 1e12, '億': 1e8, '萬': 1e4, '千': 1e3}
+_NG_EN_SCALE = {'thousand': 1e3, 'million': 1e6, 'billion': 1e9, 'trillion': 1e12,
+                'bn': 1e9, 'mn': 1e6, 'tn': 1e12, 'k': 1e3, 'm': 1e6, 'b': 1e9}
+_NG_ORDINALS = {'first': 1, 'second': 2, 'third': 3, 'fourth': 4, 'fifth': 5, 'sixth': 6,
+                'seventh': 7, 'eighth': 8, 'ninth': 9, 'tenth': 10}
+_NG_SCALE_RE = (r'(?:\s*(千萬|百萬|十億|百億|千億|萬億|兆|億|萬|千(?!瓦))'
+                r'|\s*-?\s*(thousand|million|billion|trillion|bn|mn|tn)\b'
+                r'|(k|m|b)(?![a-z]))?')
+_NG_NUM_PAT = re.compile(r'(?<![A-Za-z0-9.])(?<![A-Za-z]-)(\d+(?:\.\d+)?)' + _NG_SCALE_RE, re.I)
+_NG_RANGE_TAIL = re.compile(r'\s*(?:[-–—~～至到]|to)\s*\$?\d+(?:\.\d+)?' + _NG_SCALE_RE, re.I)
+_NG_FW = str.maketrans('０１２３４５６７８９．，', '0123456789.,')
+
+def _ng_norm(text, source=False):
+    t = (text or '').translate(_NG_FW)
+    if source:
+        t = _fa_norm_source(t)
+        for w, n in _NG_ORDINALS.items():
+            t = re.sub(r'\b' + w + r'\b', str(n), t)
+    else:
+        t = t.lower()
+    t = re.sub(r'(?<=\d),(?=\d{3})', '', t)
+    t = re.sub(r'(?<=\d),(?=\d{3})', '', t)
+    return t
+
+def _ng_scale_of(m):
+    zh, en, short = m.group(2), m.group(3), m.group(4)
+    if zh:
+        return _NG_ZH_SCALE[zh]
+    if en:
+        return _NG_EN_SCALE[en.lower()]
+    if short:
+        return _NG_EN_SCALE[short.lower()]
+    return 1.0
+
+def _ng_extract(text, source=False):
+    """回傳 [{'v':數值,'scaled':換算後,'tol':容許誤差,'scaled_flag':是否帶量級,'kind':類別,
+    'raw':原字串,'span':(s,e)}]。卡片端另抽日期、月份、年份、季度；原文端只抽數值。"""
+    t = _ng_norm(text, source)
+    out = []
+    taken = [False] * (len(t) + 1)
+
+    def claim(s, e):
+        if any(taken[s:e]):
+            return False
+        for i in range(s, e):
+            taken[i] = True
+        return True
+
+    if not source:
+        for m in re.finditer(r'(?:((?:19|20)\d{2})\s*年\s*)?(\d{1,2})\s*月\s*(\d{1,2})\s*日'
+                             r'|(?<![\d/.])(\d{1,2})/(\d{1,2})(?![\d/])', t):
+            if not claim(m.start(), m.end()):
+                continue
+            if m.group(2):
+                out.append({'kind': 'date', 'mo': int(m.group(2)), 'dy': int(m.group(3)),
+                            'year': m.group(1), 'raw': m.group(0), 'span': m.span()})
+            else:
+                out.append({'kind': 'date', 'mo': int(m.group(4)), 'dy': int(m.group(5)),
+                            'year': None, 'raw': m.group(0), 'span': m.span()})
+        for m in re.finditer(r'(?<![a-z0-9])q([1-4])(?![0-9])|第\s*([1-4])\s*季', t):
+            if claim(m.start(), m.end()):
+                out.append({'kind': 'quarter', 'q': int(m.group(1) or m.group(2)),
+                            'raw': m.group(0), 'span': m.span()})
+        for m in re.finditer(r'(?<![\d.])((?:19|20)\d{2})(?:\s*年)?(?![\d.]|\s*(?:億|萬|千|兆|billion|million))', t):
+            if claim(m.start(), m.end()):
+                out.append({'kind': 'year', 'year': m.group(1), 'raw': m.group(0), 'span': m.span()})
+        for m in re.finditer(r'(?<![\d.])(\d{1,2})\s*月(?![\d底初中])|(?<![\d.])(\d{1,2})\s*月(?=[底初中])', t):
+            if claim(m.start(), m.end()):
+                out.append({'kind': 'month', 'mo': int(m.group(1) or m.group(2)),
+                            'raw': m.group(0), 'span': m.span()})
+    for m in _NG_NUM_PAT.finditer(t):
+        if not claim(m.start(1), m.end(1)):
+            continue
+        num = m.group(1)
+        v = float(num)
+        scale = _ng_scale_of(m)
+        if scale == 1.0:
+            rm = _NG_RANGE_TAIL.match(t, m.end())
+            if rm and (rm.group(1) or rm.group(2) or rm.group(3)):
+                scale = _ng_scale_of(rm)
+        dec = len(num.split('.')[1]) if '.' in num else 0
+        tol = 0.5 * (10 ** -dec) * scale if scale > 1 else 1e-9
+        out.append({'kind': 'num', 'v': v, 'scaled': v * scale, 'tol': tol, 'scaled_flag': scale > 1,
+                    'raw': m.group(0).strip(), 'span': m.span()})
+    return out
+
+def _ng_num_supported(tok, src_nums):
+    for s in src_nums:
+        if s['kind'] != 'num':
+            continue
+        if abs(s['scaled'] - tok['scaled']) <= max(tok['tol'], s['tol']) + 1e-9 * max(1.0, abs(tok['scaled'])):
+            return True
+        if not tok['scaled_flag'] and abs(s['v'] - tok['v']) < 1e-9:
+            return True
+    return False
+
+def _ng_token_supported(tok, src_norm, src_nums):
+    k = tok['kind']
+    if k == 'num':
+        return _ng_num_supported(tok, src_nums)
+    if k == 'year':
+        return re.search(r'(?<!\d)' + tok['year'] + r'(?!\d)', src_norm) is not None
+    if k == 'quarter':
+        q = tok['q']
+        return bool(re.search(r'(?<![a-z0-9])q' + str(q) + r'(?![0-9])', src_norm)
+                    or re.search(r'(?<!\d)' + str(q) + r'(?:st|nd|rd|th)?[\s-]+quarter', src_norm)
+                    or re.search(r'第\s*' + str(q) + r'\s*季', src_norm))
+    if k == 'month':
+        mo = tok['mo']
+        if not 1 <= mo <= 12:
+            return False
+        return mo == NOW.month or re.search(r'\b' + _FA_MONTHS[mo - 1], src_norm) is not None \
+            or re.search(r'(?<!\d)' + str(mo) + r'\s*月', src_norm) is not None
+    if k == 'date':
+        mo, dy = tok['mo'], tok['dy']
+        if not (1 <= mo <= 12 and 1 <= dy <= 31):
+            return False
+        if tok.get('year') and not re.search(r'(?<!\d)' + tok['year'] + r'(?!\d)', src_norm) \
+                and tok['year'] != str(NOW.year):
+            return False
+        if (mo, dy) == (NOW.month, NOW.day) or _fa_date_supported(src_norm, mo, dy) \
+                or re.search(r'(?<!\d)' + str(mo) + r'\s*月\s*' + str(dy) + r'\s*日', src_norm):
+            return True
+        # 近 7 天內的日期多半是文章發布日（RSS 素材常不帶發布日），比照 fact_audit 視為無法判定、不刪
+        try:
+            back = (NOW.date() - NOW.replace(month=mo, day=dy).date()).days
+        except ValueError:
+            return False
+        return 0 < back <= 7
+    return True
+
+def numbers_unsupported(text, source_text):
+    """text 中找不到原文出處的數字字串清單（空清單＝全部有出處）。"""
+    src_norm = _ng_norm(source_text, source=True)
+    src_nums = _ng_extract(source_text, source=True)
+    return [t['raw'] for t in _ng_extract(text) if not _ng_token_supported(t, src_norm, src_nums)]
+
+def numbers_contradict(title, body):
+    """title 與 body 是否有同一數量卻寫不同數值（量級相近 0.8～1.25 倍、超出顯示精度）。
+    回傳 [(title 字串, body 字串)]。只比較 ≥1000 或帶萬／億／million 等量級的數值。"""
+    tn = [t for t in _ng_extract(title) if t['kind'] == 'num' and (t['scaled_flag'] or t['scaled'] >= 1000)]
+    bn = [t for t in _ng_extract(body) if t['kind'] == 'num' and (t['scaled_flag'] or t['scaled'] >= 1000)]
+    out = []
+    for a in tn:
+        for b in bn:
+            if a['scaled'] <= 0 or b['scaled'] <= 0:
+                continue
+            ratio = a['scaled'] / b['scaled']
+            if not 0.8 <= ratio <= 1.25:
+                continue
+            if abs(a['scaled'] - b['scaled']) <= max(a['tol'], b['tol']) + 1e-9 * a['scaled']:
+                continue
+            out.append((a['raw'], b['raw']))
+    return out
+
+def _ng_drop_unsupported_sentences(text, source_text):
+    """刪除含無出處數字的句子，回傳 (新文字, 被刪的數字清單)。"""
+    parts = _fa_split_sentences(text or '')
+    kept, dropped = [], []
+    for p in parts:
+        if not p.strip():
+            continue
+        bad = numbers_unsupported(p, source_text)
+        if bad:
+            dropped.extend(bad)
+        else:
+            kept.append(p)
+    return ''.join(kept).strip(), dropped
+
+def numeric_gate(data, news_by_cat):
+    """程式數字閘門：title 數字找不到原文 → 移除該卡；body 含無出處數字的句子刪除，刪完為空 → 移除；
+    刪完後 title 與 body 仍有同一數量寫不同數值 → 移除（兩者都在原文、無法判定哪個對，保守處理）。
+    找不到素材的卡（來源空白或非素材網址）以空字串當原文：title 有數字即移除、body 數字句刪除。"""
+    idx = _fa_index_materials(news_by_cat)
+    stats = RUN_STATS.setdefault('numeric_gate', {'runs': 0, 'removed': 0, 'sentences_dropped': 0,
+                                                 'contradiction_removed': 0, 'no_material': 0, 'items': []})
+    stats['runs'] += 1
+    for sec in ('hw', 'corp', 'app'):
+        removals = []
+        for item in data.get(sec, []) or []:
+            if not isinstance(item, dict) or _is_placeholder(item):
+                continue
+            try:
+                mat = _material_for(item, idx)
+                if mat is None:
+                    stats['no_material'] += 1
+                src = mat['text'] if mat else ''
+                title = item.get('title') or ''
+                bad_title = numbers_unsupported(title, src)
+                if bad_title:
+                    removals.append(item)
+                    reason = '標題數字無原文出處：' + '、'.join(bad_title)
+                else:
+                    new_body, dropped = _ng_drop_unsupported_sentences(item.get('body') or '', src)
+                    reason = ''
+                    if dropped:
+                        stats['sentences_dropped'] += 1
+                        reason = 'body 數字無原文出處：' + '、'.join(dropped)
+                        if not new_body:
+                            removals.append(item)
+                        else:
+                            item['body'] = new_body
+                    if item not in removals:
+                        conflict = numbers_contradict(title, item.get('body') or '')
+                        if conflict:
+                            removals.append(item)
+                            stats['contradiction_removed'] += 1
+                            reason = '標題與內文數字矛盾：' + '、'.join(f"{a} vs {b}" for a, b in conflict)
+                if reason:
+                    _gate_reason_set('numeric_gate', title, reason)
+                    if len(stats['items']) < 30:
+                        stats['items'].append({'sec': sec, 'title': title[:60], 'reason': reason[:120],
+                                               'removed': any(item is r for r in removals)})
+                    print(f"  ✂ 數字閘門[{sec}] {title[:40]}：{reason[:80]}")
+            except Exception as e:
+                print(f"  ⚠ 數字閘門單張處理失敗（略過該張）：{e}")
+        if removals:
+            stats['removed'] += len(removals)
+            data[sec] = [it for it in data.get(sec, []) if not any(it is r for r in removals)]
+            if not data[sec]:
+                data[sec] = [make_placeholder_item(sec)]
+    return stats
+
+# ── LLM 查核關卡 ──
+def estimate_tokens(text):
+    """粗估 token：中日韓字元約 1 token／字，其餘約 3.5 字元／token（偏保守）。"""
+    text = text or ''
+    cjk = len(re.findall(r'[　-〿一-鿿＀-￯]', text))
+    return int(cjk + (len(text) - cjk) / 3.5) + 1
+
+def _fact_check_header():
+    pairs = '、'.join(f"{en}→{zh}" for en, zh in PERSON_NAME_ZH.items())
+    return (
+        "你是新聞查核員。下面每一則是根據「原文素材」寫成的新聞卡片。請只依各則自己的原文素材逐則查核，"
+        "不得使用原文以外的知識、不得引入原文沒有的資訊。\n"
+        "查核項目：數字與單位、時間範圍（單季／累計／全年、實際值或預測年份）、指標種類（營收／營業利益／淨利、"
+        "預測或實際）、限定語（up to＝最多、at least＝至少、about＝約，不可寫成「超過」）、發言歸屬（標題或作者的話"
+        "不可寫成某人原話）、人物職稱與所屬機構、地理與對象範圍、人名（只准以下對照表用中文：" + pairs +
+        "；表外人名必須保留原文英文拼寫）。原文標示「只有標題」的卡片，body 只能改寫標題已有資訊。\n"
+        "判定：ok＝全部有原文支撐；fix＝有錯但可只靠原文修正（刪掉或改成原文說法，不准補新資訊），"
+        "回傳修正後的 title 與 body（若 impact／insight 有列出且有錯，一併回傳修正版）；"
+        "drop＝主要事實與原文不符且無法修正。title／body 一律繁體中文（台灣用語）。\n"
+        "輸出純 JSON 陣列，不加說明或 markdown；每一則都必須回覆、id 照抄輸入編號：\n"
+        '[{"id":1,"verdict":"ok"},{"id":2,"verdict":"fix","title":"…","body":"…","reason":"…"},'
+        '{"id":3,"verdict":"drop","reason":"…"}]\n\n'
+    )
+
+def _fact_check_entry(n, item, mat):
+    lines = [f"#{n}", "TITLE: " + (item.get('title') or ''), "BODY: " + (item.get('body') or '')]
+    for f in ('impact', 'insight'):
+        v = item.get(f) or ''
+        if isinstance(v, str) and re.search(r'\d', v):
+            lines.append(f.upper() + ": " + v)
+    if mat is None:
+        lines.append("SOURCE: （找不到原文素材）")
+    else:
+        label = "SOURCE（只有標題）" if mat.get('headline_only') else "SOURCE"
+        lines.append(label + ": " + (mat.get('text') or '')[:FACT_CHECK_MATERIAL_CHARS])
+    return '\n'.join(lines) + '\n\n'
+
+def _call_groq_fact_check(prompt):
+    """同模型、同 fallback（413 改用 20b）；回傳 (解析後的 list, usage dict)。"""
+    from groq import APIStatusError as GroqAPIStatusError
+    client = Groq(api_key=os.environ['GROQ_API_KEY'])
+    models = ["openai/gpt-oss-120b", "openai/gpt-oss-20b"]
+    response = None
+    for model in models:
+        try:
+            _groq_wait_window()
+            response = client.chat.completions.create(
+                model=model,
+                reasoning_effort=FACT_CHECK_REASONING,
+                messages=[
+                    {"role": "system", "content": "只輸出純JSON陣列，不加任何說明或markdown。全程繁體中文。"},
+                    {"role": "user", "content": prompt},
+                ],
+                temperature=0.1,
+                max_tokens=FACT_CHECK_MAX_TOKENS,
+            )
+            _groq_mark(response)
+            break
+        except GroqAPIStatusError as e:
+            _groq_mark(None)
+            if e.status_code == 413 and model != models[-1]:
+                print(f"  → {model} 超出 TPM，查核改用備用模型…")
+                continue
+            raise
+    raw = (response.choices[0].message.content or '').strip()
+    if response.choices[0].finish_reason == 'length':
+        raise ValueError(f"查核回應被截斷（finish_reason=length，{len(raw)} 字）")
+    if raw.startswith('```'):
+        raw = raw.split('\n', 1)[-1].rsplit('```', 1)[0].strip()
+    raw = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', ' ', raw)
+    parsed = json.loads(raw)
+    if isinstance(parsed, dict):
+        parsed = next((v for v in parsed.values() if isinstance(v, list)), [])
+    return parsed, _GROQ_STATE.get('last_usage')
+
+def _fact_check_batches(entries, header_tokens):
+    """依 token 預算分批：每批 header＋各則 ≤ FACT_CHECK_TOKEN_BUDGET − FACT_CHECK_MAX_TOKENS。
+    單則就超過預算者回傳在 skipped。entries：[(n, item, text)]。"""
+    limit = FACT_CHECK_TOKEN_BUDGET - FACT_CHECK_MAX_TOKENS
+    batches, cur, cur_tok, skipped = [], [], header_tokens, []
+    for e in entries:
+        tk = estimate_tokens(e[2])
+        if header_tokens + tk > limit:
+            skipped.append(e)
+            continue
+        if cur and cur_tok + tk > limit:
+            batches.append((cur, cur_tok))
+            cur, cur_tok = [], header_tokens
+        cur.append(e)
+        cur_tok += tk
+    if cur:
+        batches.append((cur, cur_tok))
+    return batches, skipped
+
+def apply_fact_check_results(batch, results, stats):
+    """batch：[(n, item, text)]；results：LLM 回傳 list。以編號對應，回傳要移除的 item 清單。
+    漏答者保留原樣並計入 stats['missing']；無效編號略過。"""
+    by_id = {}
+    for r in results or []:
+        if not isinstance(r, dict):
+            continue
+        rid = r.get('id')
+        if isinstance(rid, str) and rid.strip().lstrip('#').isdigit():
+            rid = int(rid.strip().lstrip('#'))
+        if isinstance(rid, int) and not isinstance(rid, bool):
+            by_id.setdefault(rid, r)
+    removals = []
+    for n, item, _ in batch:
+        r = by_id.get(n)
+        verdict = (r or {}).get('verdict')
+        verdict = verdict.strip().lower() if isinstance(verdict, str) else ''
+        title = (item.get('title') or '')[:60]
+        rec = {'title': title, 'verdict': verdict or 'missing'}
+        if r is None or verdict not in ('ok', 'fix', 'drop'):
+            stats['missing'] += 1
+            rec['verdict'] = 'missing'
+        elif verdict == 'ok':
+            stats['ok'] += 1
+        elif verdict == 'drop':
+            stats['dropped'] += 1
+            removals.append(item)
+            rec['reason'] = str(r.get('reason') or '')[:120]
+            _gate_reason_set('llm_fact_check', item.get('title'), 'drop：' + rec['reason'])
+        else:
+            nt, nb = r.get('title'), r.get('body')
+            if not (isinstance(nt, str) and nt.strip() and isinstance(nb, str) and nb.strip()):
+                stats['missing'] += 1
+                rec['verdict'] = 'fix_invalid'
+            else:
+                item['title'] = nt.strip()
+                item['body'] = nb.strip()
+                for f in ('impact', 'insight'):
+                    if isinstance(r.get(f), str) and r.get(f).strip() and f in item:
+                        item[f] = r[f].strip()
+                stats['fixed'] += 1
+                rec['reason'] = str(r.get('reason') or '')[:120]
+                rec['new_title'] = item['title'][:60]
+        if len(stats['items']) < 30 and rec['verdict'] != 'ok':
+            stats['items'].append(rec)
+    return removals
+
+def llm_fact_check(data, news_by_cat):
+    """LLM 查核關卡：每分類一次（必要時分批）送「卡片 title/body＋原文素材」，逐則回 ok／fix／drop。
+    呼叫前 _groq_wait_window 維持 65 秒間隔；任何失敗都保留原卡、不影響當日輸出。"""
+    stats = {'enabled': LLM_FACT_CHECK, 'calls': 0, 'failed_calls': 0, 'checked': 0, 'ok': 0, 'fixed': 0,
+             'dropped': 0, 'missing': 0, 'skipped_over_budget': 0, 'est_prompt_tokens': [], 'usage': [],
+             'items': []}
+    try:
+        RUN_STATS['llm_fact_check'] = stats
+    except Exception:
+        pass
+    if not LLM_FACT_CHECK:
+        return stats
+    idx = _fa_index_materials(news_by_cat)
+    header = _fact_check_header()
+    header_tok = estimate_tokens(header)
+    for sec in ('hw', 'corp', 'app'):
+        items = [it for it in data.get(sec, []) or [] if isinstance(it, dict) and not _is_placeholder(it)]
+        if not items:
+            continue
+        entries = [(n, it, _fact_check_entry(n, it, _material_for(it, idx))) for n, it in enumerate(items, 1)]
+        batches, skipped = _fact_check_batches(entries, header_tok)
+        stats['skipped_over_budget'] += len(skipped)
+        removals = []
+        for batch, est in batches:
+            prompt = header + ''.join(e[2] for e in batch)
+            stats['est_prompt_tokens'].append(est)
+            try:
+                print(f"  → 查核 {sec}：{len(batch)} 則（估 {est}＋{FACT_CHECK_MAX_TOKENS} tokens）")
+                results, usage = _call_groq_fact_check(prompt)
+                stats['calls'] += 1
+                stats['usage'].append(usage)
+                stats['checked'] += len(batch)
+                removals.extend(apply_fact_check_results(batch, results, stats))
+            except Exception as e:
+                stats['calls'] += 1
+                stats['failed_calls'] += 1
+                print(f"  ⚠ 查核 {sec} 失敗，保留原卡（不影響資料生成）：{str(e)[:120]}")
+        if removals:
+            data[sec] = [it for it in data.get(sec, []) if not any(it is r for r in removals)]
+            if not data[sec]:
+                data[sec] = [make_placeholder_item(sec)]
+    print(f"  → LLM 查核：檢查 {stats['checked']} 則，ok {stats['ok']}、修正 {stats['fixed']}、"
+          f"移除 {stats['dropped']}、漏答 {stats['missing']}、超出預算略過 {stats['skipped_over_budget']}、"
+          f"呼叫失敗 {stats['failed_calls']}")
+    return stats
+
+# ── 週報 ──
+def normalize_weekly_part(part):
+    """LLM 雙重跳脫留下的字面反斜線 n（\\n 兩字元）轉成真換行；去掉空行與行首尾空白。"""
+    if not isinstance(part, str):
+        return ''
+    t = re.sub(r'\\+n', '\n', part)
+    return '\n'.join(l.strip() for l in t.split('\n') if l.strip())
+
+def check_weekly_numbers(data, news_by_cat):
+    """週報每一句的數字須在今日最終條目（title/body/impact/insight）或素材原文找得到；
+    找不到的句子刪除，刪到只剩前綴（HW：等）的行整行刪除。"""
+    ws = data.get('weekly_summary')
+    if not ws or not isinstance(ws, str):
+        return None
+    ref_parts = []
+    for sec in ('hw', 'corp', 'app'):
+        for it in data.get(sec, []) or []:
+            if isinstance(it, dict) and not _is_placeholder(it):
+                ref_parts.extend(str(it.get(f) or '') for f in ('title', 'body', 'impact', 'insight'))
+    ref_parts.extend(m['text'] for m in _fa_index_materials(news_by_cat).values())
+    ref = '\n'.join(ref_parts)
+    removed = []
+    out_lines = []
+    for line in ws.split('\n'):
+        pm = re.match(r'^\s*([^：:]{1,8}[：:])\s*', line)
+        prefix = pm.group(1) if pm else ''
+        content = line[pm.end():] if pm else line
+        kept, dropped = _ng_drop_unsupported_sentences(content, ref)
+        if dropped:
+            removed.extend(dropped)
+        if kept.strip():
+            out_lines.append(prefix + kept)
+    data['weekly_summary'] = '\n'.join(out_lines) or None
+    try:
+        RUN_STATS['weekly_numeric'] = {'removed_numbers': removed[:20]}
+    except Exception:
+        pass
+    if removed:
+        print(f"  ✂ 週報刪除數字無出處的句子：{removed[:5]}")
+    return removed
 # ══════════════════════════════════════════════════════════════════
 #  5. HISTORY
 # ══════════════════════════════════════════════════════════════════
@@ -2861,6 +3726,9 @@ def load_history():
     return []
 
 def save_history(history):
+    if DRY_RUN:
+        print("  → DRY_RUN：不寫 data/history.json")
+        return
     history.sort(key=lambda x: x['date'], reverse=True)
     history = history[:7]
     os.makedirs('data', exist_ok=True)
@@ -2891,6 +3759,9 @@ def _safe_url(u):
     return u if re.match(r'^https?://', u, re.I) else ''
 
 def send_email(data):
+    if DRY_RUN:
+        print("  → DRY_RUN：不寄信")
+        return
     user = os.environ.get('GMAIL_USER','').replace('\xa0','').replace(' ','').strip()
     pwd  = os.environ.get('GMAIL_APP_PASSWORD','').replace('\xa0','').replace(' ','').strip()
 
@@ -3081,6 +3952,9 @@ def send_email(data):
 #  6. NOTION
 # ══════════════════════════════════════════════════════════════════
 def push_notion(data):
+    if DRY_RUN:
+        print("  → DRY_RUN：不推送 Notion")
+        return
     token = os.environ.get('NOTION_TOKEN')
     db_id = os.environ.get('NOTION_DB_ID')
     if not token or not db_id:
@@ -3133,6 +4007,32 @@ def push_notion(data):
     except Exception as e:
         print(f"  → Notion 錯誤：{e}")
 
+def write_dry_run_result(data, news_by_cat=None, note=''):
+    """DRY_RUN：把當日 data、RUN_STATS、每則條目的原文素材寫到 DRY_RUN_DIR/result_YYYYMMDD_HHMM.json。
+    失敗只印警告。回傳寫入路徑或 None。"""
+    try:
+        idx = _fa_index_materials(news_by_cat or {})
+        per_item = []
+        for sec in ('hw', 'corp', 'app'):
+            for it in (data or {}).get(sec, []) or []:
+                if not isinstance(it, dict):
+                    continue
+                mat = _material_for(it, idx)
+                per_item.append({'section': sec, 'title': it.get('title'), 'rating': it.get('rating'),
+                                 'source': it.get('source'), 'headline_only': bool(it.get('headline_only')),
+                                 'material': mat})
+        out = {'note': note, 'generated_at': datetime.now(TW).isoformat(), 'data': data,
+               'run_stats': RUN_STATS, 'item_materials': per_item, 'news_by_cat': news_by_cat}
+        os.makedirs(DRY_RUN_DIR, exist_ok=True)
+        path = os.path.join(DRY_RUN_DIR, 'result_' + datetime.now(TW).strftime('%Y%m%d_%H%M') + '.json')
+        with open(path, 'w', encoding='utf-8') as f:
+            json.dump(out, f, ensure_ascii=False, indent=2, default=str)
+        print(f"  → DRY_RUN 結果已寫入 {path}")
+        return path
+    except Exception as e:
+        print(f"  ⚠ DRY_RUN 結果寫入失敗：{e}")
+        return None
+
 # ══════════════════════════════════════════════════════════════════
 #  MAIN
 # ══════════════════════════════════════════════════════════════════
@@ -3146,7 +4046,7 @@ if __name__ == '__main__':
 
     # ── 冪等保護：今日已有高品質資料，直接沿用（加 --force 強制重跑）──
     existing_today = next((h for h in history if h.get('date') == DATE_STR), None)
-    if existing_today and not FORCE_REGEN:
+    if existing_today and not FORCE_REGEN and not DRY_RUN:
         all_items = existing_today.get('hw',[]) + existing_today.get('corp',[]) + existing_today.get('app',[])
         core_count = sum(1 for i in all_items if i.get('rating') == 'core')
         if core_count >= 2:
@@ -3188,6 +4088,8 @@ if __name__ == '__main__':
             print("  → data/run_stats.json 已更新（空日）")
         except Exception as e:
             print(f"  ⚠ run_stats 寫入失敗（不影響主流程）：{e}")
+        if DRY_RUN:
+            write_dry_run_result(data, news_by_cat, note='empty_day')
         print("✅ 完成（空日）")
         sys.exit(0)
 
@@ -3211,7 +4113,10 @@ if __name__ == '__main__':
             data[cat] = result.get(cat, [])
             data['glossary_new'].extend(result.get('glossary_new') or [])
             if IS_SUNDAY and result.get('weekly_summary'):
-                weekly_parts.append(result['weekly_summary'])
+                # 11-16：LLM 雙重跳脫的字面 \\n 轉成真換行
+                _wp = normalize_weekly_part(result['weekly_summary'])
+                if _wp:
+                    weekly_parts.append(_wp)
             print(f"  → {cat} 完成，{len(data[cat])} 則")
             try:
                 # 原始回傳數：在任何閘門之前記（含 LLM 自己給的佔位卡）
@@ -3256,12 +4161,22 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"  ⚠ 漏斗統計收集失敗（llm_ratings，不影響資料生成）：{e}")
 
+    print("🏷 HEADLINE_ONLY 卡片（core 上限 opp）...")
+    _run_gate('enforce_headline_only', enforce_headline_only, data, news_by_cat)
+    # validate_sources 會清空失效網址；先記下原 source，數字閘門／查核仍能找回原素材
+    _ORIG_SOURCES.update({id(it): (it.get('source') or '') for sec in ('hw', 'corp', 'app')
+                          for it in data.get(sec, []) if isinstance(it, dict)})
     print("🔗 驗證 source URL...")
     _run_gate('validate_sources', validate_sources, data)
     # 放在 validate_sources 之後：來源已失效（source 被清空）的卡不白抓、也不會只剩一行「僅摘要」
     if DEEPEN_THIN_CARDS:
         print("📖 補深薄卡（補抓全文重寫）...")
         _run_gate('deepen_thin_cards', deepen_thin_cards, data, news_by_cat)
+    print("🔢 數字閘門（title/body 數字一致且出自原文）...")
+    try:
+        _run_gate('numeric_gate', numeric_gate, data, news_by_cat)
+    except Exception as e:
+        print(f"  ⚠ 數字閘門失敗（略過，不影響資料生成）：{e}")
     print("📉 品質管線（降評低品質條目）...")
     _run_gate('remove_repeated_stories', remove_repeated_stories, data, recent_titles)
     _run_gate('downgrade_unsourced', downgrade_unsourced, data)
@@ -3299,6 +4214,23 @@ if __name__ == '__main__':
             _run_gate('fact_audit', fact_audit, data, news_by_cat)
         except Exception as e:
             print(f"  ⚠ 原文比對稽核失敗（略過，不影響資料生成）：{e}")
+    if LLM_FACT_CHECK:
+        print("🕵 LLM 查核關卡（逐則對照原文）...")
+        try:
+            _run_gate('llm_fact_check', llm_fact_check, data, news_by_cat)
+        except Exception as e:
+            print(f"  ⚠ LLM 查核失敗（略過，不影響資料生成）：{e}")
+        print("🔢 數字閘門（查核修正後再跑一次）...")
+        try:
+            _run_gate('numeric_gate', numeric_gate, data, news_by_cat)
+        except Exception as e:
+            print(f"  ⚠ 數字閘門失敗（略過，不影響資料生成）：{e}")
+    if data.get('weekly_summary'):
+        print("🔢 週報數字出處檢查...")
+        try:
+            check_weekly_numbers(data, news_by_cat)
+        except Exception as e:
+            print(f"  ⚠ 週報數字檢查失敗（略過，不影響資料生成）：{e}")
 
     try:
         final = {}
@@ -3320,6 +4252,10 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"  ⚠ run_stats 寫入失敗（不影響主流程）：{e}")
 
+    if DRY_RUN:
+        write_dry_run_result(data, news_by_cat)
+        print("✅ 完成（DRY_RUN：未寫 data/、未寄信、未推 Notion）")
+        sys.exit(0)
     history = upsert(history, data)
     save_history(history)
     print(f"  → data/history.json 已更新（共 {len(history)} 天）")
