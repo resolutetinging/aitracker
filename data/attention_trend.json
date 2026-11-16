@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16",
+ "updated": "2026-11-17",
  "since": "2026-07-01",
  "entities": [
   {
@@ -982,11 +982,11 @@
   {
    "week": "2026-W47",
    "start": "2026-11-16",
-   "cards": 3,
+   "cards": 8,
    "dims": {
     "hw": {
-     "core": 0,
-     "opp": 1,
+     "core": 2,
+     "opp": 2,
      "noise": 0
     },
     "corp": {
@@ -996,28 +996,26 @@
     },
     "app": {
      "core": 0,
-     "opp": 1,
+     "opp": 3,
      "noise": 0
     }
    },
    "mentions": {
     "NVIDIA": 2,
     "出口管制": 1,
-    "Anthropic": 1,
+    "Anthropic": 2,
     "Google": 1,
     "Microsoft": 1,
     "Amazon": 1,
     "TSMC": 1,
     "Micron": 1,
-    "AMD": 1,
-    "Broadcom": 1
+    "AMD": 3,
+    "Broadcom": 1,
+    "推論": 1
    }
   }
  ],
  "seen": [
-  "2026-10-26|CJ Logistics 獲 KT Cloud AI 資料中心建設合約",
-  "2026-10-26|SK Hynix 停止審查 Solidigm 美國 IPO 計畫",
-  "2026-10-26|SpaceX 與 Tesla 合併討論升溫",
   "2026-10-27|Anthropic 申請 IPO 以 80.7 億美元淨虧損上市",
   "2026-10-27|Meta 計畫募集 95 億美元資金支援 AI 基礎建設",
   "2026-10-27|SoftBank 計畫投入 500 億美元於馬來西亞 AI 與資料中心",
@@ -1086,6 +1084,11 @@
   "2026-11-15|前 OpenAI 工程師稱中國 AI 實驗室使用 Nvidia Blackwell GPU 訓練模型",
   "2026-11-15|美國財政部長質疑 Nvidia 向空殼公司出售 AI GPU",
   "2026-11-16|Anthropic IPO 受多家巨頭共投 260 億美元",
-  "2026-11-16|全球篩選測試平台市場預估至2030年達 20.1 億美元"
+  "2026-11-16|全球篩選測試平台市場預估至2030年達 20.1 億美元",
+  "2026-11-17|Anthropic 宣稱 Claude Mythos 預覽版將 AMD MI355X GPU 上線時間縮至約三天",
+  "2026-11-17|Core Scientific 申請 285MW 資料中心，將約半租給 AMD",
+  "2026-11-17|Zowie 將 AI 客服代理擴展至羅馬尼亞",
+  "2026-11-17|美國參議員 Cantwell 要求立即阻止中國取得先進 AI 晶片",
+  "2026-11-17|醫療 AI 支出2026年升至37億美元"
  ]
 }

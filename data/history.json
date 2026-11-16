@@ -1,5 +1,158 @@
 [
   {
+    "date": "2026-11-17",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Anthropic 宣稱 Claude Mythos 預覽版將 AMD MI355X GPU 上線時間縮至約三天",
+        "layer": "software integration",
+        "body": "Anthropic 向 IPO 投資者透露，其 Claude Mythos 預覽版在 AMD MI355X GPU 上完成軟體整合僅需約三天，過去需六至十二個月。此過程「基本上無人工介入」且寫入或移植了「近 100% 的 kernel」。該模型已在 MI355X 上達到可用的效能水平。",
+        "impact": "AMD GPU 需求 ↑（因 Anthropic 直接使用 AMD 晶片），上游晶圓代工與 HBM 供應鏈利用率提升；下游 AI 服務供應商可更快部署於 AMD 平台，減少對 Nvidia CUDA 的依賴。",
+        "rating": "core",
+        "insight": "投資者應關注 AMD GPU 需求因 Anthropic 迅速上線而提升的潛在增長。",
+        "source_label": "Tom's Hardware",
+        "source": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropic-says-claude-mythos-slashed-software-work-to-onboard-amd-gpus-from-up-to-12-months-to-around-three-days-writing-almost-100-percent-of-kernels-autonomously-chips-away-at-nvidias-cuda-moat",
+        "chain": [
+          {
+            "label": "AMD MI355X GPU 整合時間↓",
+            "type": "down"
+          },
+          {
+            "label": "Anthropic Claude Mythos 上線速度↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "美國參議員 Cantwell 要求立即阻止中國取得先進 AI 晶片",
+        "layer": "export controls",
+        "body": "美國參議員 Maria Cantwell 在致商務部長 Howard Lutnick 的正式信函中要求「立即行動」阻止與中國有關的企業取得美國先進 AI 晶片。她指出若相關機構未能執行自身管制，美國將失去 AI 領導地位。",
+        "impact": "美國對高階 AI 晶片的出口管制 ↑，中國取得先進 AI 晶片的渠道受限。",
+        "rating": "core",
+        "insight": "投資者需留意美國出口管制政策對高階 AI 晶片供應鏈的直接衝擊。",
+        "source_label": "Anadolu Ajansı",
+        "source": "https://aa.com.tr/en/americas/us-senator-demands-immediate-action-to-close-china-ai-chip-loopholes-amid-nvidia-diversion-claims/4126911",
+        "chain": [
+          {
+            "label": "美國限制 AI 晶片出口↓",
+            "type": "down"
+          },
+          {
+            "label": "中國先進 AI 晶片取得難度↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Core Scientific 申請 285MW 資料中心，將約半租給 AMD",
+        "layer": "data center capacity",
+        "body": "Core Scientific 向德州達拉斯郊外提交 285MW 資料中心建設申請，計畫將場地約一半租予 AMD 用於 AI 訓練與推論服務。",
+        "impact": "AMD 資料中心需求 ↑，帶動電源、散熱與機櫃等上游硬體供應鏈利用率提升；該資料中心的建設推動美國本土資料中心基礎建設需求 ↑，對相關建築與工程服務形成正向拉動。",
+        "rating": "opp",
+        "insight": "AMD 在美國本土擴大資料中心布局，將提升其硬體需求與相關供應鏈活絡。",
+        "source_label": "Data Center Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/core-scientific-files-for-285mw-data-center-outside-dallas-texas/",
+        "thin_source": true,
+        "chain": [
+          {
+            "label": "AMD AI 訓練資源需求↑",
+            "type": "up"
+          },
+          {
+            "label": "Core Scientific 資料中心租用率↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "本日無相關corp新聞",
+        "layer": "",
+        "body": "今日該分類無足夠具體新聞素材可供分析。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "app": [
+      {
+        "title": "醫療 AI 支出2026年升至37億美元",
+        "layer": "healthcare",
+        "body": "根據 Beckers Hospital Review 報導，2026 年全球醫療機構在臨床與患者互動工具上的 AI 投資總額躍升至 37 億美元。此金額較前一年顯著增長，顯示醫院與診所正加速導入 AI 以提升診斷與行政效率。",
+        "impact": "AI 投資金額上升，可能提升相關硬體與雲端服務需求。",
+        "rating": "opp",
+        "insight": "醫療 AI 市場資金快速累積，相關硬體與平台供應鏈將持續受惠。",
+        "source_label": "Beckers Hospital Review",
+        "source": "https://www.beckershospitalreview.com/healthcare-information-technology/ai/healthcare-ai-spending-jumps-to-3-7b/",
+        "thin_source": true,
+        "chain": [
+          {
+            "label": "醫療機構 AI 投資額↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 醫療工具市場規模↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Zowie 將 AI 客服代理擴展至羅馬尼亞",
+        "layer": "finance",
+        "body": "Zowie 將 AI 客服代理擴展至羅馬尼亞。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "The Fintech Times",
+        "source": "https://thefintechtimes.com/zowie-expands-ai-customer-service-agents-into-romania/",
+        "headline_only": true,
+        "thin_source": true,
+        "chain": []
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "MI355X",
+        "full": "AMD Instinct MI355X GPU",
+        "def": "AMD 針對資料中心與 AI 工作負載設計的高效能 GPU，支援大規模平行運算與深度學習模型。",
+        "why": "Anthropic 以此 GPU 為目標快速完成軟體整合，顯示 AMD 在 AI 硬體市場的競爭力提升。",
+        "category": "hardware"
+      },
+      {
+        "term": "Claude Mythos",
+        "full": "Anthropic 的大型語言模型預覽版",
+        "def": "Anthropic 開發的 AI 模型，具備自動生成與移植 kernel 的能力，可在不同硬體平台上快速部署。",
+        "why": "其能在三天內完成 AMD GPU 的軟體適配，對 AI 晶片供應鏈的依賴結構產生衝擊。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI 客服代理",
+        "full": "Artificial Intelligence Customer Service Agent",
+        "def": "利用自然語言處理與機器學習技術，自動回應客戶查詢並執行基本服務流程的軟體代理。",
+        "why": "降低人力成本、提升回應速度，是金融與電商業者提升客戶體驗的關鍵工具。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "醫療 AI 支出",
+        "full": "Healthcare AI Expenditure",
+        "def": "醫療機構在 AI 軟硬體、平台與應用服務上的投資總額，涵蓋臨床決策支援、患者互動與行政自動化等領域。",
+        "why": "顯示醫療產業對 AI 技術的接受度與市場規模快速成長，直接影響相關供應鏈需求。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI 硬體供應鏈",
+        "full": "AI Hardware Supply Chain",
+        "def": "提供 AI 訓練與推論所需的 GPU、加速卡、伺服器與相關晶片的製造與分銷網路。",
+        "why": "醫療與客服等 AI 應用的擴張直接推動此供應鏈的產能與需求變化。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-16",
     "is_sunday": false,
     "hw": [
@@ -685,144 +838,6 @@
         "def": "Quantexa 與 PwC 合作開發的供應鏈完整性與詐騙偵測解決方案，利用決策智慧平台在多層供應商網路中提供可視化與風險監控。",
         "why": "協助企業在全球供應鏈中即時偵測異常與詐騙，提高營運安全。",
         "category": "software"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-11-10",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI CFO 表示即使選舉結果不利仍將持續投資 AI 資料中心",
-        "layer": "CSP/CapEx",
-        "body": "OpenAI 首席財務官 Sarah Friar 於 11 月 6 日表示，即使在 10 州 41 項地方選票中多數選民反對資料中心，OpenAI 仍將持續投入 AI 基礎建設，並計畫在 2027 年推出首次公開發行。她指出公司已與多家超大規模雲端服務商建立關係，未來仍會籌集資金以滿足客戶需求，並將依據新政策在資料中心與社區建立信任。",
-        "impact": "持續的資金投入將提升超大規模雲端服務商對 AI 晶片的需求。",
-        "rating": "opp",
-        "insight": "投資者可關注 OpenAI 持續資金需求，將帶動上游晶片與資料中心供應鏈的成長機會。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/11/06/open-ai-data-centers-election.html",
-        "chain": [
-          {
-            "label": "Nvidia 晶片 需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Equinix 資料中心 擴建↑",
-            "type": "up"
-          },
-          {
-            "label": "TSMC 晶圓 產能↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Doximity 將臨床 AI 擴展至超過 190 家健康系統",
-        "layer": "healthcare",
-        "body": "Doximity 宣布其臨床 AI 服務已在超過 190 家美國健康系統部署，涵蓋門診與住院部門的診斷輔助與病歷摘要功能。",
-        "impact": "此舉直接提升了醫療影像與電子病歷供應商（如 Philips、Cerner）的軟體需求，導致相關雲端運算與儲存硬體（如 SSD、NVMe）需求 ↑。上游的 AI 晶片供應商（如 Nvidia、Qualcomm）將因算力需求上升而受惠，產能利用率提升。下游的醫療服務提供者可縮短診斷時間，提升病患流量與收入，進一步刺激醫療器材與藥品的需求。",
-        "rating": "core",
-        "insight": "臨床 AI 大規模部署將推動醫療資訊硬體與 AI 晶片需求同步上升。",
-        "source_label": "Fierce Healthcare",
-        "source": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNam9IaEE1Y0pueEpOR0dYUUcta21MM09DTWFGNDRBc0FtRUxWdUxsQ2VEaUNtYm9teDJOVTJVSEVuU09PaThlTVNlNEUzZWFuaUJ3YmlJdHVnVnZEa3NfWVVfc19EZk5pdXNTVnRtYVhoU2Q4bXBLY1kwTUdvbzZjU3pZdElZRmZ5Nm1SUW5Kb09zYnVqVlhDc2g4ZmxMcGdSNS1XY3M3SWhsbFIyV2tQLU9rYnZhdk1zOXMw?oc=5",
-        "chain": [
-          {
-            "label": "Doximity 臨床 AI 系統部署醫院數↑",
-            "type": "up"
-          },
-          {
-            "label": "醫院診斷輔助效率↑",
-            "type": "up"
-          },
-          {
-            "label": "競爭 AI 醫療平台市占↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "AWS 承諾 1 億美元雲端與 AI 信用額度以縮小健康公平差距",
-        "layer": "cloud",
-        "body": "AWS 宣布提供 1 億美元的雲端與 AI 信用額度，為期五年（Health Impact Initiative），對象為全球的健康非營利組織、政府、研究機構與公司，以縮小健康公平差距。",
-        "impact": "大量信用額度將促進雲端基礎建設需求。",
-        "rating": "core",
-        "insight": "大規模雲端 AI 信用額度將帶動伺服器與記憶體供應鏈的需求同步上揚。",
-        "source_label": "Healthcare Dive",
-        "source": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQNnVqSUxyLXlLdzZLTzRmUHVsTUo0YklfMW5hb2ZGQmRBRllGMDNfYnp5dzdHTkx3VGtLWDJ1eUc5SlhTUnRFYk44RkZ0LXlDdjNqTURZU1J6MHdZVjEwcElvUVlXT3d0WTdFMl9HeXkzaklhQmlRY2NQeGNWajJ1Z09xUHpzcTZZMXl4MHFEWlJRQTdwaVhFT3o1WVhHWHdwY2RGUFdxc0ZJU1Za?oc=5",
-        "thin_source": true,
-        "chain": [
-          {
-            "label": "AWS 雲端與 AI 信用額度提供↑",
-            "type": "up"
-          },
-          {
-            "label": "健康領域機構 AI 分析使用↑",
-            "type": "up"
-          },
-          {
-            "label": "傳統醫療 IT 供應商需求↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "AI基礎設施供應鏈",
-        "full": "人工智慧運算所需的硬體與服務供應鏈",
-        "def": "包括晶圓代工、HBM記憶體、OSAT封測、以及資料中心建設等環節，支撐AI模型的訓練與推論。",
-        "why": "供應鏈瓶頸或政策變動會直接影響AI運算成本與產能。",
-        "category": "hardware"
-      },
-      {
-        "term": "燃氣發電機",
-        "full": "Gas Generator",
-        "def": "用於提供備援或主要電力的燃氣驅動發電設備，常見於大型資料中心以確保電力供應穩定。",
-        "why": "AI 資料中心對持續電力需求極高，燃氣發電機可降低對公共電網的依賴。",
-        "category": "hardware"
-      },
-      {
-        "term": "推論網路",
-        "full": "Inference Network",
-        "def": "專門用於 AI 推論工作負載的低延遲、高帶寬網路基礎設施，通常結合高速互連與專用硬體加速器。",
-        "why": "隨著 AI 服務即時化需求提升，推論網路成為提升服務效能的關鍵。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "臨床AI",
-        "full": "Clinical Artificial Intelligence",
-        "def": "利用機器學習與自然語言處理技術協助醫師在診斷、病歷摘要與治療決策上提供即時建議的人工智慧系統。",
-        "why": "可提升醫療效率與診斷準確度，直接影響醫療器材與資料基礎建設需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "雲端AI信用額度",
-        "full": "Cloud AI Credit",
-        "def": "雲端服務供應商提供的免費或補貼式計算資源，讓使用者在特定期間內可免費使用 AI 訓練與推論服務。",
-        "why": "降低 AI 應用門檻，促進硬體供應鏈（伺服器晶片、記憶體）需求快速成長。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "跨境支付AI風險模型",
-        "full": "Cross‑border Payment AI Risk Model",
-        "def": "運用機器學習分析跨境交易行為，實時偵測異常與詐騙的人工智慧模型。",
-        "why": "提升金融機構風控效率，帶動支付終端硬體與安全晶片的需求上升。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null

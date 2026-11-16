@@ -3,6 +3,324 @@
     {
       "feeds": {
         "Semiconductor": 52,
+        "CSP/CapEx": 40,
+        "App/AI": 18,
+        "gnews-chip": 23,
+        "gnews-dc": 23,
+        "gnews-app": 15
+      },
+      "digest_filtered": 1,
+      "after_dedup": 159,
+      "buckets": {
+        "hw": 50,
+        "corp": 109,
+        "app": 15
+      },
+      "news_char_budget": {
+        "hw": 6000,
+        "corp": 4871,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 50,
+          "full_text_total": 5,
+          "full_text_sent": 3,
+          "sent": 12,
+          "partial_cut": 0,
+          "chars_sent": 5818,
+          "dropped": 38
+        },
+        "corp": {
+          "mode": "slice",
+          "budget": 4871,
+          "candidates": 109,
+          "full_text_total": 3,
+          "full_text_sent": 3,
+          "sent": 6,
+          "partial_cut": 1,
+          "chars_sent": 4871,
+          "dropped": 103
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 15,
+          "full_text_total": 4,
+          "full_text_sent": 3,
+          "sent": 13,
+          "partial_cut": 0,
+          "chars_sent": 5812,
+          "dropped": 2
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 3,
+        "corp": 1,
+        "app": 2
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 5001,
+          "completion_tokens": 1791,
+          "total_tokens": 6792
+        },
+        "corp": {
+          "prompt_tokens": 5097,
+          "completion_tokens": 179,
+          "total_tokens": 5276
+        },
+        "app": {
+          "prompt_tokens": 5030,
+          "completion_tokens": 1375,
+          "total_tokens": 6405
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "app",
+          "title": "醫療 AI 支出2026年升至37億美元",
+          "gate": "dedup_and_freshness_check",
+          "action": "rating core→opp",
+          "reason": "僅報導未來 AI 投資預測，未涉及新決策或新行動，屬於背景說明"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "app": {
+          "core": 0,
+          "opp": 2,
+          "noise": 0
+        }
+      },
+      "placeholders": 1,
+      "feed_errors": [
+        {
+          "label": "Semiconductor",
+          "host": "www.digitimes.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "App/AI",
+          "host": "feeds.arstechnica.com",
+          "error": "zero_kept",
+          "detail": "items=20 bytes=76241"
+        },
+        {
+          "label": "App/AI",
+          "host": "venturebeat.com",
+          "error": "HTTP 429",
+          "detail": "Too Many Requests"
+        }
+      ],
+      "gnews_feed_times": [
+        {
+          "label": "gnews-chip",
+          "at": "2026-11-17T00:00:49+08:00"
+        },
+        {
+          "label": "gnews-dc",
+          "at": "2026-11-17T00:00:54+08:00"
+        },
+        {
+          "label": "gnews-app",
+          "at": "2026-11-17T00:00:54+08:00"
+        }
+      ],
+      "unmatched_dropped": 19,
+      "gnews_decode": {
+        "attempted": 15,
+        "ok": 15,
+        "failed": 0,
+        "rate_limited": false,
+        "skipped": 0,
+        "skipped_cap": 0,
+        "started_at": "2026-11-17T00:00:57+08:00"
+      },
+      "headline_only": {
+        "fetch_failed": 8,
+        "thin_summary": 61,
+        "fetch_failed_desc_kept": 4,
+        "fail_reasons": {
+          "http_403": 9,
+          "error": 2,
+          "invalid_text": 1
+        }
+      },
+      "main_call_estimate": {
+        "hw": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 5058,
+          "est_completion_tokens": 1170,
+          "safety": 300,
+          "est_total_tokens": 6528,
+          "target": 6800
+        },
+        "corp": {
+          "news_char_budget": 4871,
+          "est_prompt_tokens": 5206,
+          "est_completion_tokens": 1270,
+          "safety": 300,
+          "est_total_tokens": 6776,
+          "target": 6800
+        },
+        "app": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 5058,
+          "est_completion_tokens": 910,
+          "safety": 300,
+          "est_total_tokens": 6268,
+          "target": 6800
+        }
+      },
+      "retry": {
+        "hw": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "corp": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "app": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        }
+      },
+      "llm_ratings": {
+        "hw": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "app": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "headline_only_cards": {
+        "marked": 1,
+        "downgraded": 0,
+        "scrubbed": 1
+      },
+      "deepen": {
+        "candidates": 3,
+        "rewritten": 0,
+        "fetch_failed": 3,
+        "llm_failed": 0
+      },
+      "numeric_gate": {
+        "runs": 2,
+        "removed": 0,
+        "sentences_dropped": 0,
+        "contradiction_removed": 0,
+        "no_material": 0,
+        "items": []
+      },
+      "dedup_audit": [
+        {
+          "title": "醫療 AI 支出2026年升至37億美元",
+          "section": "app",
+          "action": "downgraded",
+          "matched_title": null,
+          "reason": "僅報導未來 AI 投資預測，未涉及新決策或新行動，屬於背景說明"
+        }
+      ],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 5,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 3,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "fragment_restored": 0,
+        "items": []
+      },
+      "llm_fact_check": {
+        "enabled": true,
+        "calls": 2,
+        "failed_calls": 0,
+        "checked": 5,
+        "ok": 4,
+        "fixed": 1,
+        "dropped": 0,
+        "missing": 0,
+        "skipped_over_budget": 0,
+        "est_prompt_tokens": [
+          1648,
+          882
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 1494,
+            "completion_tokens": 315,
+            "total_tokens": 1809
+          },
+          {
+            "prompt_tokens": 927,
+            "completion_tokens": 371,
+            "total_tokens": 1298
+          }
+        ],
+        "items": [
+          {
+            "title": "Zowie 將 AI 客服代理擴展至羅馬尼亞",
+            "verdict": "fix",
+            "returned": {
+              "title": "Zowie 將 AI 客服代理擴展至羅馬尼亞",
+              "body": "Zowie 將 AI 客服代理擴展至羅馬尼亞"
+            },
+            "reason": "原文僅提供標題，正文加入未在標題中出現的資訊，需刪除",
+            "new_title": "Zowie 將 AI 客服代理擴展至羅馬尼亞"
+          }
+        ]
+      },
+      "date": "2026-11-17",
+      "generated_at": "2026-11-17T00:11:20.141514+08:00"
+    },
+    {
+      "feeds": {
+        "Semiconductor": 52,
         "CSP/CapEx": 47,
         "App/AI": 30,
         "gnews-chip": 22,
@@ -2183,121 +2501,6 @@
       },
       "date": "2026-11-04",
       "generated_at": "2026-11-04T00:04:11.382473+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 47,
-        "CSP/CapEx": 44,
-        "App/AI": 18,
-        "gnews-chip": 14,
-        "gnews-dc": 17,
-        "gnews-app": 15
-      },
-      "digest_filtered": 2,
-      "after_dedup": 133,
-      "buckets": {
-        "hw": 25,
-        "corp": 107,
-        "app": 24
-      },
-      "news_char_budget": {
-        "hw": 3500,
-        "corp": 8000,
-        "app": 3500
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 4,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "deepen": {
-        "candidates": 1,
-        "rewritten": 0,
-        "fetch_failed": 1,
-        "llm_failed": 0
-      },
-      "dedup_audit": [
-        {
-          "title": "OpenAI 與阿布達比簽署能源、政府與投資多領域合作協議",
-          "section": "corp",
-          "action": "removed",
-          "matched_title": "OpenAI 融資目標下調至最高 200 億美元",
-          "reason": "兩篇皆描述 OpenAI 近期 200 億美元新一輪融資計畫，屬同一事件"
-        }
-      ],
-      "fact_audit": {
-        "mode": "enforce",
-        "checked": 3,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 0,
-          "suspect_cards": 0,
-          "skipped_enforce": 0
-        },
-        "enforced": 0,
-        "title_suspect_cards": 0,
-        "removed": 0,
-        "items": [
-          {
-            "sec": "corp",
-            "title": "Anthropic IPO 招股說明書披露近兆美元運算承諾",
-            "source": "https://www.theregister.com/ai-and-ml/2026/11/02/anthropics-ipo-prospectus-is-big-on-promises-short-on-answers-to-tough-questions/5306811",
-            "rating": "core",
-            "coverage": "full",
-            "suspects": [],
-            "undetermined": [
-              "1 兆美元"
-            ],
-            "tense_flag": false,
-            "title_suspects": []
-          }
-        ]
-      },
-      "date": "2026-11-03",
-      "generated_at": "2026-11-03T00:04:31.886919+08:00"
     }
   ]
 }
