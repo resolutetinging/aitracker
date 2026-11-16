@@ -465,6 +465,9 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .nv-ally-evi a,.nv-ally-ov a{color:var(--hw);}
 .nv-ally-ov ul{margin:0;padding-left:18px;}
 .nv-ally-ov li{font-size:12.5px;color:var(--text2);line-height:1.7;margin-bottom:3px;}
+/* 11-16：中美科技戰分頁卡片文字改條列（twBulletList），字級行高比照 .nv-case-desc */
+.tw-bl{margin:0 0 6px;padding-left:18px;}
+.tw-bl li{font-size:12px;color:var(--text2);line-height:1.62;margin-bottom:3px;}
 .nv-ally-ov li a{font-size:11px;margin-left:4px;white-space:nowrap;}
 .nv-sec-note{font-size:11px;color:var(--muted);margin:-4px 0 10px;padding-left:2px;line-height:1.6;}
 @media(max-width:520px){.nv-eco-lbl{font-size:9.5px;}.nv-eco-center{width:50px;height:50px;font-size:10px;}.nv-eco-sec{font-size:11px;}.nv-eco-tip{width:214px;}}
@@ -1151,7 +1154,7 @@ function nvEventBody(ev, side){
       ${ev.needs_review ? `<span class="nv-event-review-badge">⚠️ 待確認</span>` : ''}
     </div>
     <div class="nv-event-title">${_arcEsc(ev.title||'')}</div>
-    <div class="nv-event-summary">${_arcEsc(ev.summary||'')}</div>
+    ${side==='tw' ? twBulletList(ev.summary, 'nv-event-summary') : `<div class="nv-event-summary">${_arcEsc(ev.summary||'')}</div>`}
     ${nvSrcLink(ev.src)}
     ${ev.src_note ? `<div class="nv-event-note">⚠️ ${_arcEsc(ev.src_note)}</div>` : ''}
     ${nvCrossLink(ev, side)}`;
@@ -1977,6 +1980,36 @@ function twSwitchView(view){
 
 // role對應.tw-flow既有四種節點顏色class（n-hw藍/n-mem灰藍/n-pkg棕/n-end綠），
 // 白名單限制在這四種之內，避免candidate資料寫入非預期role時產生任意class名稱
+// 11-16：中美科技戰卡片長段落改條列。依「。」「；」切句（括號內不切、句尾標點去除），
+// 只有一句時維持原本段落樣式；每句 _arcEsc 後才包 <li>
+function twSplitSentences(text){
+  const t = String(text==null?'':text).trim();
+  const out = []; let buf = '', depth = 0;
+  for(const ch of t){
+    if('（(「『'.includes(ch)) depth++;
+    else if('）)」』'.includes(ch) && depth>0) depth--;
+    if(depth===0 && (ch==='。' || ch==='；')){
+      if(buf.trim()) out.push(buf.trim());
+      buf = '';
+    } else buf += ch;
+  }
+  if(buf.trim()) out.push(buf.trim().replace(/[。；]+$/,''));
+  return out;
+}
+function twBulletList(text, singleCls){
+  const parts = twSplitSentences(text);
+  if(!parts.length) return '';
+  if(parts.length===1) return `<div class="${singleCls||'nv-case-desc'}">${_arcEsc(parts[0])}</div>`;
+  return `<ul class="tw-bl">${parts.map(p=>`<li>${_arcEsc(p)}</li>`).join('')}</ul>`;
+}
+function twDetailBlock(icon, label, text, isRisk){
+  if(!text) return '';
+  return `<div class="ind-detail-block">
+    <span class="ind-detail-label${isRisk?' risk':''}">${icon} ${label}</span>
+    ${twBulletList(text, 'ind-detail-text')}
+  </div>`;
+}
+
 function twNodeRoleCls(role){
   return ['hw','mem','pkg','end'].includes(role) ? 'n-'+role : 'n-end';
 }
@@ -1999,7 +2032,7 @@ function twFlowCard(flow){
   }).join('');
   return `<div class="tw-chain">
     <div class="tw-chain-title">${_arcEsc(flow.title||'')}</div>
-    ${flow.summary ? `<div class="nv-case-desc" style="margin-bottom:12px;">${_arcEsc(flow.summary)}</div>` : ''}
+    ${flow.summary ? `<div style="margin-bottom:12px;">${twBulletList(flow.summary)}</div>` : ''}
     <div class="tw-flow">${flowHtml}</div>
     ${nvSrcLink(flow.src)}
     ${flow.src_note ? `<div class="nv-event-note">⚠️ ${_arcEsc(flow.src_note)}</div>` : ''}
@@ -2013,10 +2046,10 @@ function twCompanyCard(item){
     <div class="nv-case-name">${_arcEsc(item.name)}</div>
     ${item.country ? `<div class="nv-case-scope">🌏 ${_arcEsc(item.country)}</div>` : ''}
     ${item.role ? `<div class="nv-case-scope">🧩 ${_arcEsc(item.role)}</div>` : ''}
-    <div class="nv-case-desc">${_arcEsc(item.desc)}</div>
-    ${item.exposure ? indDetailBlock('📍','受影響程度',item.exposure) : ''}
-    ${item.policy_actions ? indDetailBlock('📋','政策因應',item.policy_actions) : ''}
-    ${item.risk ? indDetailBlock('⚠️','風險',item.risk,true) : ''}
+    ${twBulletList(item.desc)}
+    ${item.exposure ? twDetailBlock('📍','受影響程度',item.exposure) : ''}
+    ${item.policy_actions ? twDetailBlock('📋','政策因應',item.policy_actions) : ''}
+    ${item.risk ? twDetailBlock('⚠️','風險',item.risk,true) : ''}
     ${nvSrcLink(item.src)}
     ${item.src_note ? `<div class="nv-event-note">⚠️ ${_arcEsc(item.src_note)}</div>` : ''}
   </div>`;
@@ -2027,7 +2060,7 @@ function twControlCard(item){
   return `<div class="nv-case-card">
     <div class="nv-case-name">${_arcEsc(item.measure)}</div>
     ${item.scope ? `<div class="nv-case-scope">📁 ${_arcEsc(item.scope)}</div>` : ''}
-    <div class="nv-case-desc">${_arcEsc(item.desc)}</div>
+    ${twBulletList(item.desc)}
     ${nvSrcLink(item.src)}
     ${item.src_note ? `<div class="nv-event-note">⚠️ ${_arcEsc(item.src_note)}</div>` : ''}
   </div>`;
@@ -2058,7 +2091,7 @@ function twGameChangerCard(gc){
   return `<div class="tw-gc-card">
     <div class="tw-gc-name">${_arcEsc(gc.name||'')}</div>
     <div class="nv-case-scope">🎯 ${_arcEsc(gc.role||'')}</div>
-    <div class="nv-case-desc">${_arcEsc(gc.influence||'')}</div>
+    ${twBulletList(gc.influence)}
     ${nvSrcLink(gc.src)}
     ${gc.src_note ? `<div class="nv-event-note">⚠️ ${_arcEsc(gc.src_note)}</div>` : ''}
   </div>`;
@@ -2068,7 +2101,7 @@ function twSupplyChainCol(d, flagLabel){
   const gcHtml = (d.game_changers||[]).map(twGameChangerCard).join('') || '<div class="empty-state">尚無資料</div>';
   return `<div class="tw-sc-col">
     <div class="tw-sc-flag">${flagLabel}</div>
-    ${d.overview ? `<div class="nv-case-desc">${_arcEsc(d.overview)}</div>` : ''}
+    ${d.overview ? twBulletList(d.overview) : ''}
     <div class="tw-gc-list">${gcHtml}</div>
   </div>`;
 }
