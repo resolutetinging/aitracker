@@ -3336,6 +3336,35 @@ def _material_for(item, idx):
         src = (orig if isinstance(orig, str) else '').strip()
     return idx.get(_norm_url(src)) if src else None
 
+def headline_sentence(item):
+    """只有標題素材時的保底 body：中文標題（已是原文標題的直譯）加句號。"""
+    t = (item.get('title') or '').strip().rstrip('。.！!？?')
+    return (t + '。') if t else ''
+
+def scrub_headline_only_item(item):
+    """只有標題素材的卡（11-16 決定性處理，不依賴 LLM 自律）：impact、insight、chain 一律清空，body 只留 1 句。"""
+    if 'impact' in item:
+        item['impact'] = ''
+    if 'insight' in item:
+        item['insight'] = ''
+    if 'chain' in item:
+        item['chain'] = []
+    limit_headline_body(item)
+
+def scrub_headline_only(data):
+    """生成後管線最後一步：所有 headline_only 卡做決定性清理（前面 fix_chains／validate_impact 可能又補回內容）。"""
+    n = 0
+    for sec in ('hw', 'corp', 'app'):
+        for item in data.get(sec, []) or []:
+            if isinstance(item, dict) and item.get('headline_only'):
+                scrub_headline_only_item(item)
+                n += 1
+    try:
+        RUN_STATS.setdefault('headline_only_cards', {})['scrubbed'] = n
+    except Exception:
+        pass
+    return n
+
 def limit_headline_body(item):
     """只有標題素材的卡：body 限 1 句，多句只留第一句。回傳是否有截斷。"""
     body = item.get('body') or ''
@@ -3644,9 +3673,8 @@ def _fact_check_header():
         "預測或實際）、限定語（up to＝最多、at least＝至少、about＝約，不可寫成「超過」）、發言歸屬（標題或作者的話"
         "不可寫成某人原話）、人物職稱與所屬機構、地理與對象範圍、人名（只准以下對照表用中文：" + pairs +
         "；表外人名必須保留原文英文拼寫）。\n"
-        "【只有標題的卡片】SOURCE 標示「只有標題」時，標題是唯一素材：BODY、IMPACT、INSIGHT、CHAIN 中凡是標題沒寫的"
-        "事實（用途、背景、職稱、數字、型號、競爭對手影響、市佔變化、因果推論）都算錯，一律判 fix 並刪除；"
-        "BODY 只能是一句改寫標題的話；CHAIN 只保留標題直接寫到的公司與方向，沒有就回傳空陣列。\n"
+        "【只有標題的卡片】SOURCE 標示「只有標題」時，標題是唯一素材，只查 TITLE 與 BODY：凡是標題沒寫的事實"
+        "（用途、背景、職稱、數字、型號、影響、因果推論）都算錯，判 fix，並在 body 回傳「一句直譯原文標題」的修正句。\n"
         "判定：ok＝全部有原文支撐；fix＝有錯但可只靠原文修正（刪掉或改成原文說法，不准補新資訊），"
         "回傳修正後的 title 與 body（若 impact／insight／chain 有列出且有錯，一併回傳修正版，"
         'chain 格式 [{"label":"…","type":"up|down|warn|neutral"}]）；'
@@ -3659,15 +3687,12 @@ def _fact_check_header():
 def _fact_check_entry(n, item, mat):
     lines = [f"#{n}", "TITLE: " + (item.get('title') or ''), "BODY: " + (item.get('body') or '')]
     ho = bool(item.get('headline_only') or (mat or {}).get('headline_only'))
-    for f in ('impact', 'insight'):
-        v = item.get(f) or ''
-        # 只有標題的卡：impact／insight 一律送查（推論欄也可能補了標題沒有的事實）；其餘卡含數字才送
-        if isinstance(v, str) and v.strip() and (ho or re.search(r'\d', v)):
-            lines.append(f.upper() + ": " + v)
-    if ho and isinstance(item.get('chain'), list) and item['chain']:
-        labels = [str(n_.get('label', '')) + '(' + str(n_.get('type', '')) + ')'
-                  for n_ in item['chain'] if isinstance(n_, dict)]
-        lines.append("CHAIN: " + '；'.join(labels))
+    # 只有標題的卡：impact／insight／chain 由程式一律清空（scrub_headline_only），查核只看 title 與 body
+    if not ho:
+        for f in ('impact', 'insight'):
+            v = item.get(f) or ''
+            if isinstance(v, str) and v.strip() and re.search(r'\d', v):
+                lines.append(f.upper() + ": " + v)
     if mat is None:
         lines.append("SOURCE: （找不到原文素材）")
     else:
@@ -3767,12 +3792,29 @@ def apply_fact_check_results(batch, results, stats):
             rec['reason'] = str(r.get('reason') or '')[:120]
             _gate_reason_set('llm_fact_check', item.get('title'), 'drop：' + rec['reason'])
         else:
+            # 11-16：1116c 試跑兩則 fix 實際沒改到內容 → 記下 LLM 回傳的新欄位，方便追查
+            rec['returned'] = {k: (v if isinstance(v, str) else json.dumps(v, ensure_ascii=False))[:200]
+                               for k, v in r.items() if k in ('title', 'body', 'impact', 'insight', 'chain')}
             nt, nb = r.get('title'), r.get('body')
             if not (isinstance(nt, str) and nt.strip()):
                 nt = item.get('title') or ''
-            if not (isinstance(nb, str) and nb.strip()):
-                stats['missing'] += 1
-                rec['verdict'] = 'fix_invalid'
+            unchanged = (isinstance(nb, str) and nb.strip() == (item.get('body') or '').strip()
+                         and nt.strip() == (item.get('title') or '').strip()
+                         and not any(isinstance(r.get(f), (str, list)) and r.get(f) != item.get(f)
+                                     for f in ('impact', 'insight', 'chain') if f in r))
+            if not (isinstance(nb, str) and nb.strip()) or unchanged:
+                # fix 卻沒給修正內容：只有標題的卡改用標題直譯句＋決定性清理；一般卡降為 opp
+                stats['fix_no_content'] = stats.get('fix_no_content', 0) + 1
+                rec['verdict'] = 'fix_no_content'
+                rec['reason'] = str(r.get('reason') or '')[:120]
+                if item.get('headline_only'):
+                    item['body'] = headline_sentence(item)
+                    scrub_headline_only_item(item)
+                    rec['action'] = 'headline_scrub'
+                elif item.get('rating') == 'core':
+                    item['rating'] = 'opp'
+                    rec['action'] = 'core_to_opp'
+                _gate_reason_set('llm_fact_check', item.get('title'), 'fix 無修正內容：' + rec['reason'])
             else:
                 item['title'] = nt.strip()
                 item['body'] = nb.strip()
@@ -3786,7 +3828,7 @@ def apply_fact_check_results(batch, results, stats):
                         and n_.get('type') in ('up', 'down', 'warn', 'neutral') for n_ in ch):
                     item['chain'] = ch
                 if item.get('headline_only'):
-                    limit_headline_body(item)
+                    scrub_headline_only_item(item)
                 stats['fixed'] += 1
                 rec['reason'] = str(r.get('reason') or '')[:120]
                 rec['new_title'] = item['title'][:60]
@@ -4029,6 +4071,15 @@ def send_email(data):
     def chain_text(chain):
         return ' → '.join(_esc(c['label']) for c in chain)
 
+    def impact_box(item):
+        # 11-16：headline_only 卡 impact 與 chain 皆清空，空值時不畫空框
+        inner = _esc(item["impact"]) if item.get("impact") else chain_text(item.get("chain") or [])
+        if not inner:
+            return ''
+        return ('<div style="background:#f0ede9;border-radius:5px;padding:8px 12px;font-size:12px;color:#6a6460;">'
+                '<span style="font-size:10px;text-transform:uppercase;letter-spacing:0.6px;color:#9e9890;'
+                'display:block;margin-bottom:4px;">供應鏈影響分析</span>' + inner + '</div>')
+
     def rating_badge(r):
         return {'core':'🔵 CORE','noise':'⚫ NOISE','opp':'🟢 OPP'}.get(r,'')
 
@@ -4061,10 +4112,7 @@ def send_email(data):
               </div>
               <div style="font-size:14px;font-weight:700;color:#2c2a28;margin-bottom:8px;line-height:1.4;">{_esc(item["title"])}</div>
               <div style="font-size:13px;color:#4a4744;line-height:1.65;margin-bottom:10px;">{_esc(item["body"])}</div>
-              <div style="background:#f0ede9;border-radius:5px;padding:8px 12px;font-size:12px;color:#6a6460;">
-                <span style="font-size:10px;text-transform:uppercase;letter-spacing:0.6px;color:#9e9890;display:block;margin-bottom:4px;">供應鏈影響分析</span>
-                {_esc(item["impact"]) if item.get("impact") else chain_text(item.get("chain") or [])}
-              </div>
+              {impact_box(item)}
               {eth}
               {f'<div style="margin-top:10px;font-size:12.5px;color:#3a6860;background:#f0f8f6;padding:8px 12px;border-radius:5px;border-left:2px solid #4a8a6a;">注意方向：{_esc(item["insight"])}</div>' if item.get("insight") else ''}
               {src}
@@ -4200,7 +4248,7 @@ def push_notion(data):
 
     def item_block(item):
         impact = item.get('impact') or ' → '.join(c['label'] for c in item.get('chain') or [])
-        text = f"▸ {item['title']}\n{item['body']}\n供應鏈影響：{impact}"
+        text = f"▸ {item['title']}\n{item['body']}" + (f"\n供應鏈影響：{impact}" if impact else "")
         if item.get('insight'):
             text += f"\n注意方向：{item['insight']}"
         return para(text)
@@ -4469,6 +4517,11 @@ if __name__ == '__main__':
             _run_gate('numeric_gate', numeric_gate, data, news_by_cat)
         except Exception as e:
             print(f"  ⚠ 數字閘門失敗（略過，不影響資料生成）：{e}")
+    print("🏷 HEADLINE_ONLY 卡片決定性清理（impact／insight／chain 清空、body 1 句）...")
+    try:
+        _run_gate('scrub_headline_only', scrub_headline_only, data)
+    except Exception as e:
+        print(f"  ⚠ HEADLINE_ONLY 清理失敗（略過，不影響資料生成）：{e}")
     if data.get('weekly_summary'):
         print("🔢 週報數字出處檢查...")
         try:
