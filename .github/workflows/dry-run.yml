@@ -40,9 +40,21 @@ jobs:
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           DRY_RUN: '1'
-        run: python scripts/update_data.py --force
+          PYTHONUNBUFFERED: '1'
+        # stdout/stderr 用 tee 存成 dryrun/log_*.txt 一起 commit（update_data.py 不印任何環境變數或金鑰；
+        # GitHub 也會把 secrets 值遮罩成 ***）。pipefail 讓腳本失敗時這一步照樣變紅。
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p dryrun
+          LOG="dryrun/log_$(TZ=Asia/Taipei date +%Y%m%d_%H%M).txt"
+          python scripts/update_data.py --force 2>&1 | tee "$LOG"
+          if [ -n "$GROQ_API_KEY" ] && grep -qF "$GROQ_API_KEY" "$LOG"; then
+            echo "log 含金鑰，刪除 log"; rm -f "$LOG"; exit 1
+          fi
 
       - name: Commit dryrun results to the same dryrun branch
+        if: always()   # 腳本失敗時也把 log 推回，方便查原因
         env:
           BRANCH: ${{ github.ref_name }}
         run: |

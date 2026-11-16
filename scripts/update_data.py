@@ -4,7 +4,7 @@ AI Tracker 每日自動更新腳本 v3
 新聞來源：RSS feeds（主）+ DuckDuckGo（副）
 """
 
-import json, os, sys, smtplib, urllib.request, xml.etree.ElementTree as ET, time, re, copy
+import json, os, sys, smtplib, urllib.request, urllib.error, xml.etree.ElementTree as ET, time, re, copy
 from datetime import datetime, timezone, timedelta
 from email.utils import parsedate_to_datetime
 from groq import Groq
@@ -465,11 +465,23 @@ def fetch_rss():
     snippets = []
     feed_counts = {}
     digest_filtered = 0
+    # 11-16：1116b 試跑 gnews 三個 feed 全部消失卻看不出原因 → 每個 feed 失敗原因、0 則、抓取時間都記錄
+    feed_errors = []
+    gnews_times = []
     for label, url in RSS_FEEDS:
+        host = url.split('/')[2]
+        if label.startswith('gnews'):
+            gnews_times.append({'label': label, 'at': datetime.now(TW).isoformat(timespec='seconds')})
         try:
             req = urllib.request.Request(url, headers={'User-Agent':'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=10) as r:
-                raw = r.read()
+            try:
+                with urllib.request.urlopen(req, timeout=10) as r:
+                    raw = r.read()
+            except urllib.error.HTTPError as he:
+                feed_errors.append({'label': label, 'host': host, 'error': f"HTTP {he.code}",
+                                    'detail': str(he.reason)[:120]})
+                print(f"  RSS failed ({host}): HTTP {he.code}")
+                continue
             root = ET.fromstring(raw)
             ns = {'atom':'http://www.w3.org/2005/Atom'}
             # Handle both RSS and Atom
@@ -504,11 +516,18 @@ def fetch_rss():
                     snippets.append(f"[{label}] {title} — {desc}{url_part}")
                     kept += 1
             feed_counts[label] = feed_counts.get(label, 0) + kept
-            print(f"  RSS {label}({url.split('/')[2]}): {len(items)} items, {kept} kept (72h filter)")
+            if kept == 0:
+                feed_errors.append({'label': label, 'host': host, 'error': 'zero_kept',
+                                    'detail': f"items={len(items)} bytes={len(raw)}"})
+            print(f"  RSS {label}({host}): {len(items)} items, {kept} kept (72h filter)")
         except Exception as e:
-            print(f"  RSS failed ({url.split('/')[2]}): {e}")
+            feed_errors.append({'label': label, 'host': host, 'error': type(e).__name__,
+                                'detail': str(e)[:120]})
+            print(f"  RSS failed ({host}): {e}")
     try:
         RUN_STATS['feeds'] = feed_counts
+        RUN_STATS['feed_errors'] = feed_errors
+        RUN_STATS['gnews_feed_times'] = gnews_times
         RUN_STATS['digest_filtered'] = digest_filtered
     except Exception as e:
         print(f"  ⚠ 漏斗統計收集失敗（fetch_rss，不影響資料生成）：{e}")
@@ -712,6 +731,8 @@ def gnews_decode_limited(url, state):
     if state.get('_last') and wait > 0:
         time.sleep(wait)
     state['attempted'] = state.get('attempted', 0) + 1
+    if 'started_at' not in state:
+        state['started_at'] = datetime.now(TW).isoformat(timespec='seconds')
     try:
         dec = decode_gnews_url(url)
     except GNewsRateLimited:
@@ -1501,31 +1522,38 @@ def apply_strict_source_prompt(prompt):
 # 11-16：分類主呼叫 TPM 控制。1116 試跑 corp prompt 5748＋completion 1360＝7108 tokens，逼近 TPM 8K。
 # 估算「system＋prompt＋預期 completion」超過 MAIN_CALL_TOKEN_TARGET 時，按差額縮減新聞字數重組 prompt（最多 4 次）。
 MAIN_CALL_TOKEN_TARGET = 6800
-MAIN_EXPECTED_COMPLETION = 1500   # 近一週分類主呼叫 completion 實測 249～2003，多數 ≤1650
 MAIN_MIN_NEWS_CHARS = 3000
-# estimate_tokens 偏保守；1116 試跑以實際 prompt_tokens 校準：hw 0.87、corp 0.83、app 0.84，取最高 0.87
-MAIN_TOKEN_CALIBRATION = 0.87
+# 校準依據（11-16 兩次真 Groq 試跑）：實際 prompt_tokens ÷ estimate_tokens(system＋prompt)
+#   1116a：hw 0.872、corp 0.826、app 0.841；1116b：hw 0.836、corp 0.822、app 0.845 → 平均 0.840
+# 預期 completion：各分類近 7 天正式排程＋兩次試跑共 9 筆實測的中位數（hw 1168、corp 1266、app 914）
+# 安全餘裕 300：目標是「估算 ≈ 實際＋300」。1116b 以此公式回算：hw 6524（實際 6196）、
+#   corp 6639（實際 5718，當天 completion 只有 761）、app 5435（實際 4719）
+MAIN_TOKEN_CALIBRATION = 0.84
+MAIN_EXPECTED_COMPLETION = {'hw': 1170, 'corp': 1270, 'app': 910}
+MAIN_TOKEN_SAFETY = 300
 
 def make_prompt(news_context, category, recent_titles=None, avoid_items=None,
                 exclude_entries=None, sent_out=None):
     budget = _category_char_budget(category)
     sys_tok = estimate_tokens(main_system_message())
-    prompt, est = None, 0
+    prompt, est, est_prompt = None, 0, 0
     for _ in range(4):
         tmp_sent = [] if sent_out is not None else None
         prompt = _make_prompt_once(news_context, category, recent_titles, avoid_items,
                                    exclude_entries, tmp_sent, char_budget=budget)
-        est = int((sys_tok + estimate_tokens(prompt)) * MAIN_TOKEN_CALIBRATION) + MAIN_EXPECTED_COMPLETION
+        est_prompt = int((sys_tok + estimate_tokens(prompt)) * MAIN_TOKEN_CALIBRATION)
+        est = est_prompt + MAIN_EXPECTED_COMPLETION.get(category, 1270) + MAIN_TOKEN_SAFETY
         if est <= MAIN_CALL_TOKEN_TARGET or budget <= MAIN_MIN_NEWS_CHARS:
             break
-        cut = int((est - MAIN_CALL_TOKEN_TARGET) / MAIN_TOKEN_CALIBRATION * 3.5) + 200
+        cut = int((est - MAIN_CALL_TOKEN_TARGET) / MAIN_TOKEN_CALIBRATION * 3.5) + 100
         budget = max(MAIN_MIN_NEWS_CHARS, budget - cut)
     if sent_out is not None and tmp_sent is not None:
         sent_out.extend(tmp_sent)
     try:
         RUN_STATS.setdefault('main_call_estimate', {})[category] = {
-            'news_char_budget': budget, 'est_prompt_tokens': est - MAIN_EXPECTED_COMPLETION,
-            'est_total_tokens': est, 'target': MAIN_CALL_TOKEN_TARGET}
+            'news_char_budget': budget, 'est_prompt_tokens': est_prompt,
+            'est_completion_tokens': MAIN_EXPECTED_COMPLETION.get(category, 1270),
+            'safety': MAIN_TOKEN_SAFETY, 'est_total_tokens': est, 'target': MAIN_CALL_TOKEN_TARGET}
     except Exception:
         pass
     return prompt
