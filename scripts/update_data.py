@@ -1136,7 +1136,11 @@ def fetch_news(recent_titles=None, recent_urls=None):
     # 分類分流：一篇文章可同時進多桶，三桶都沒命中的進素材最少的桶
     buckets = route_snippets(unique)
     # 對高信號候選抓取完整內文取代薄摘要，三分類輪流分配名額（不再先到先贏）
-    buckets = enrich_with_full_text(buckets, max_fetch=12)
+    try:
+        buckets = enrich_with_full_text(buckets, max_fetch=12)
+    except Exception as e:
+        # 11-16：全文抓取／GN 解碼任何例外都退回 RSS 摘要，不中斷管線
+        print(f"  ⚠ 全文抓取失敗，改用 RSS 摘要（不影響資料生成）：{e}")
     return {cat: "\n\n".join(buckets[cat]) for cat in ['hw', 'corp', 'app']}
 
 
@@ -3349,7 +3353,13 @@ def scrub_headline_only_item(item):
         item['insight'] = ''
     if 'chain' in item:
         item['chain'] = []
-    limit_headline_body(item)
+    # 11-16 最終驗證 nice-to-have：LLM 改寫的 body 仍可能夾帶標題沒有的資訊（試跑「研發與產能擴充」），
+    # 一律以標題直譯句取代；標題為空才退回只留 1 句
+    hs = headline_sentence(item)
+    if hs:
+        item['body'] = hs
+    else:
+        limit_headline_body(item)
 
 def scrub_headline_only(data):
     """生成後管線最後一步：所有 headline_only 卡做決定性清理（前面 fix_chains／validate_impact 可能又補回內容）。"""
