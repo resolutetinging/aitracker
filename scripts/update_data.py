@@ -591,6 +591,16 @@ def text_matches_title(text, title, min_hits=None):
     low = text.lower()
     hits = sum(1 for w in eng if re.search(r'(?<![a-z0-9])' + re.escape(w), low))
     hits += sum(1 for b in cjk if b in text)
+    if total == 1 and min_hits >= 2:
+        # 11-16 審查：只有 1 個關鍵詞（如 "Nvidia's big week"）時，任何提到該公司的付費牆頁都會通過；
+        # 改要求該詞＋標題中至少 1 個數字或短專有名詞（全大寫或首字大寫、2～3 字母）同時命中，否則判失敗
+        if hits < 1:
+            return False
+        t = _strip_media_suffix(title)
+        extras = set(re.findall(r'(?<![\w.])\d+(?:\.\d+)?(?![\w])', t))
+        extras |= {w.lower() for w in re.findall(r'\b[A-Z][A-Za-z]{1,2}\b', t)
+                   if w.lower() not in ('ai', 'the', 'and', 'for', 'new', 'its', 'to', 'in', 'on', 'of', 'at', 'by', 'is', 'as')}
+        return any(re.search(r'(?<![a-z0-9])' + re.escape(x) + r'(?![a-z0-9])', low) for x in extras)
     return hits >= min(min_hits, total)
 
 def summary_is_headline_only(title, desc):
@@ -939,7 +949,7 @@ def enrich_with_full_text(buckets, max_fetch=12):
                 fetched += 1
             else:
                 failed_idx[c].add(i)
-    ho = {'fetch_failed': 0, 'thin_summary': 0}
+    ho = {'fetch_failed': 0, 'thin_summary': 0, 'fetch_failed_desc_kept': 0}
     for c in cats:
         for i, s in enumerate(lists[c]):
             if i in enriched_idx[c]:
@@ -947,12 +957,16 @@ def enrich_with_full_text(buckets, max_fetch=12):
             m = re.search(r'SOURCE_URL:(\S+)', s)
             if m and m.group(1) in url_map:
                 s = _replace_source_url(s, url_map[m.group(1)])
-            if i in failed_idx[c]:
+            # 11-16 審查：全文抓取失敗但 RSS 描述本身有足夠新資訊（非 Google News「標題＋媒體名」）時不標，
+            # 描述照常當素材；只有描述不足才標 HEADLINE_ONLY
+            if summary_is_headline_only(_entry_title(s), _entry_desc(s)):
                 s = mark_headline_only(s)
-                ho['fetch_failed'] += 1
-            elif summary_is_headline_only(_entry_title(s), _entry_desc(s)):
-                s = mark_headline_only(s)
-                ho['thin_summary'] += 1
+                if i in failed_idx[c]:
+                    ho['fetch_failed'] += 1
+                else:
+                    ho['thin_summary'] += 1
+            elif i in failed_idx[c]:
+                ho['fetch_failed_desc_kept'] += 1
             lists[c][i] = s
     for c in cats:
         front = [lists[c][i] for i in range(len(lists[c])) if i in enriched_idx[c]]
@@ -3186,7 +3200,11 @@ def _gate_reason_set(gate, title, reason):
         pass
 
 def _material_for(item, idx):
-    src = (item.get('source') or '').strip() or (_ORIG_SOURCES.get(id(item)) or '').strip()
+    src = item.get('source') or ''
+    src = (src if isinstance(src, str) else '').strip()
+    if not src:
+        orig = _ORIG_SOURCES.get(id(item)) or ''
+        src = (orig if isinstance(orig, str) else '').strip()
     return idx.get(_norm_url(src)) if src else None
 
 def enforce_headline_only(data, news_by_cat):
@@ -3195,9 +3213,13 @@ def enforce_headline_only(data, news_by_cat):
     stats = {'marked': 0, 'downgraded': 0}
     for sec in ('hw', 'corp', 'app'):
         for item in data.get(sec, []) or []:
-            if not isinstance(item, dict) or _is_placeholder(item):
+            try:
+                if not isinstance(item, dict) or _is_placeholder(item):
+                    continue
+                mat = _material_for(item, idx)
+            except Exception as e:
+                print(f"  ⚠ HEADLINE_ONLY 單張判斷失敗（略過該張）：{e}")
                 continue
-            mat = _material_for(item, idx)
             if mat is not None and mat.get('headline_only'):
                 item['headline_only'] = True
                 stats['marked'] += 1
@@ -3219,14 +3241,17 @@ def enforce_headline_only(data, news_by_cat):
 _NG_ZH_SCALE = {'千萬': 1e7, '百萬': 1e6, '十億': 1e9, '百億': 1e10, '千億': 1e11, '萬億': 1e12,
                 '兆': 1e12, '億': 1e8, '萬': 1e4, '千': 1e3}
 _NG_EN_SCALE = {'thousand': 1e3, 'million': 1e6, 'billion': 1e9, 'trillion': 1e12,
-                'bn': 1e9, 'mn': 1e6, 'tn': 1e12, 'k': 1e3, 'm': 1e6, 'b': 1e9}
+                'bn': 1e9, 'mn': 1e6, 'tn': 1e12, 'k': 1e3, 'm': 1e6, 'b': 1e9, 't': 1e12}
 _NG_ORDINALS = {'first': 1, 'second': 2, 'third': 3, 'fourth': 4, 'fifth': 5, 'sixth': 6,
                 'seventh': 7, 'eighth': 8, 'ninth': 9, 'tenth': 10}
+# 量級三個 group：(中文量級)(英文量級字)(緊接的 k/m/b/t)；_NG_NUM_PAT 與 _NG_RANGE_TAIL 共用，
+# 取值一律走 _ng_scale_from(三個字串)，不依賴 group 編號（11-16 審查 M1：區間曾讀到不存在的 group）
 _NG_SCALE_RE = (r'(?:\s*(千萬|百萬|十億|百億|千億|萬億|兆|億|萬|千(?!瓦))'
                 r'|\s*-?\s*(thousand|million|billion|trillion|bn|mn|tn)\b'
-                r'|(k|m|b)(?![a-z]))?')
+                r'|(k|m|b|t)(?![a-z]))?')
 _NG_NUM_PAT = re.compile(r'(?<![A-Za-z0-9.])(?<![A-Za-z]-)(\d+(?:\.\d+)?)' + _NG_SCALE_RE, re.I)
 _NG_RANGE_TAIL = re.compile(r'\s*(?:[-–—~～至到]|to)\s*\$?\d+(?:\.\d+)?' + _NG_SCALE_RE, re.I)
+_NG_PCT_TAIL = re.compile(r'\s*(?:%|％|percent|per cent|個百分點|percentage point)', re.I)
 _NG_FW = str.maketrans('０１２３４５６７８９．，', '0123456789.,')
 
 def _ng_norm(text, source=False):
@@ -3241,8 +3266,7 @@ def _ng_norm(text, source=False):
     t = re.sub(r'(?<=\d),(?=\d{3})', '', t)
     return t
 
-def _ng_scale_of(m):
-    zh, en, short = m.group(2), m.group(3), m.group(4)
+def _ng_scale_from(zh, en, short):
     if zh:
         return _NG_ZH_SCALE[zh]
     if en:
@@ -3253,7 +3277,8 @@ def _ng_scale_of(m):
 
 def _ng_extract(text, source=False):
     """回傳 [{'v':數值,'scaled':換算後,'tol':容許誤差,'scaled_flag':是否帶量級,'kind':類別,
-    'raw':原字串,'span':(s,e)}]。卡片端另抽日期、月份、年份、季度；原文端只抽數值。"""
+    'pct':是否百分比,'model':是否型號（英文字＋空白緊接數字，如 RTX 5090）,'raw':原字串,'span':(s,e)}]。
+    卡片端另抽日期、月份、年份、季度；原文端只抽數值。區間（$135-145 billion、1,350 至 1,450 億）首數字借用尾端量級。"""
     t = _ng_norm(text, source)
     out = []
     taken = [False] * (len(t) + 1)
@@ -3292,15 +3317,18 @@ def _ng_extract(text, source=False):
             continue
         num = m.group(1)
         v = float(num)
-        scale = _ng_scale_of(m)
+        scale = _ng_scale_from(m.group(2), m.group(3), m.group(4))
         if scale == 1.0:
             rm = _NG_RANGE_TAIL.match(t, m.end())
             if rm and (rm.group(1) or rm.group(2) or rm.group(3)):
-                scale = _ng_scale_of(rm)
+                scale = _ng_scale_from(rm.group(1), rm.group(2), rm.group(3))
         dec = len(num.split('.')[1]) if '.' in num else 0
         tol = 0.5 * (10 ** -dec) * scale if scale > 1 else 1e-9
+        pct = scale == 1.0 and bool(_NG_PCT_TAIL.match(t, m.end()))
+        model = bool(re.search(r'[a-z]\s$', t[max(0, m.start(1) - 2):m.start(1)])) \
+            or bool(scale == 1.0 and re.match(r'[a-z]', t[m.end(1):m.end(1) + 1]))
         out.append({'kind': 'num', 'v': v, 'scaled': v * scale, 'tol': tol, 'scaled_flag': scale > 1,
-                    'raw': m.group(0).strip(), 'span': m.span()})
+                    'pct': pct, 'dec': dec, 'model': model, 'raw': m.group(0).strip(), 'span': m.span()})
     return out
 
 def _ng_num_supported(tok, src_nums):
@@ -3311,14 +3339,24 @@ def _ng_num_supported(tok, src_nums):
             return True
         if not tok['scaled_flag'] and abs(s['v'] - tok['v']) < 1e-9:
             return True
+        # 百分比四捨五入：原文 12.3%、卡片 12% 或 12.3% 皆可（卡片精度以內）
+        if tok.get('pct') and s.get('pct') and abs(s['v'] - tok['v']) <= 0.5 * (10 ** -tok.get('dec', 0)) + 1e-9:
+            return True
     return False
+
+def _ng_year_supported(year, src_norm):
+    if re.search(r'(?<!\d)' + year + r'(?!\d)', src_norm):
+        return True
+    yy = year[2:]
+    # FY26／FY 2026／fiscal 26：視同 2026 財年
+    return re.search(r"\bfy\s*'?" + yy + r'(?!\d)|\bfiscal\s+(?:year\s+)?\'?' + yy + r'(?!\d)', src_norm) is not None
 
 def _ng_token_supported(tok, src_norm, src_nums):
     k = tok['kind']
     if k == 'num':
         return _ng_num_supported(tok, src_nums)
     if k == 'year':
-        return re.search(r'(?<!\d)' + tok['year'] + r'(?!\d)', src_norm) is not None
+        return _ng_year_supported(tok['year'], src_norm)
     if k == 'quarter':
         q = tok['q']
         return bool(re.search(r'(?<![a-z0-9])q' + str(q) + r'(?![0-9])', src_norm)
@@ -3334,7 +3372,7 @@ def _ng_token_supported(tok, src_norm, src_nums):
         mo, dy = tok['mo'], tok['dy']
         if not (1 <= mo <= 12 and 1 <= dy <= 31):
             return False
-        if tok.get('year') and not re.search(r'(?<!\d)' + tok['year'] + r'(?!\d)', src_norm) \
+        if tok.get('year') and not _ng_year_supported(tok['year'], src_norm) \
                 and tok['year'] != str(NOW.year):
             return False
         if (mo, dy) == (NOW.month, NOW.day) or _fa_date_supported(src_norm, mo, dy) \
@@ -3354,22 +3392,32 @@ def numbers_unsupported(text, source_text):
     src_nums = _ng_extract(source_text, source=True)
     return [t['raw'] for t in _ng_extract(text) if not _ng_token_supported(t, src_norm, src_nums)]
 
-def numbers_contradict(title, body):
-    """title 與 body 是否有同一數量卻寫不同數值（量級相近 0.8～1.25 倍、超出顯示精度）。
-    回傳 [(title 字串, body 字串)]。只比較 ≥1000 或帶萬／億／million 等量級的數值。"""
-    tn = [t for t in _ng_extract(title) if t['kind'] == 'num' and (t['scaled_flag'] or t['scaled'] >= 1000)]
-    bn = [t for t in _ng_extract(body) if t['kind'] == 'num' and (t['scaled_flag'] or t['scaled'] >= 1000)]
+def numbers_contradict(title, body, source_text=None):
+    """標題與內文數字矛盾（11-16 審查 M2 修正）：只有「標題數字在原文找不到，而內文有接近值
+    （0.8～1.25 倍、超出顯示精度）且該值在原文找得到」才算，例如標題 68.7 萬、內文與原文 678,000。
+    年增對比、財測、不同年度（92 億 vs 去年 75 億）因標題值本身有出處，不判矛盾；
+    型號（RTX 5090 vs 5080）與年份不列入比較；沒有原文時無法判定，回傳空清單。回傳 [(標題字串, 內文字串)]。"""
+    if not source_text:
+        return []
+    src_norm = _ng_norm(source_text, source=True)
+    src_nums = _ng_extract(source_text, source=True)
+
+    def _cands(text):
+        return [t for t in _ng_extract(text) if t['kind'] == 'num' and not t.get('model')
+                and (t['scaled_flag'] or t['scaled'] >= 1000)]
     out = []
-    for a in tn:
-        for b in bn:
+    for a in _cands(title):
+        if _ng_token_supported(a, src_norm, src_nums):
+            continue
+        for b in _cands(body):
             if a['scaled'] <= 0 or b['scaled'] <= 0:
                 continue
-            ratio = a['scaled'] / b['scaled']
-            if not 0.8 <= ratio <= 1.25:
+            if not 0.8 <= a['scaled'] / b['scaled'] <= 1.25:
                 continue
             if abs(a['scaled'] - b['scaled']) <= max(a['tol'], b['tol']) + 1e-9 * a['scaled']:
                 continue
-            out.append((a['raw'], b['raw']))
+            if _ng_token_supported(b, src_norm, src_nums):
+                out.append((a['raw'], b['raw']))
     return out
 
 def _ng_drop_unsupported_sentences(text, source_text):
@@ -3387,8 +3435,8 @@ def _ng_drop_unsupported_sentences(text, source_text):
     return ''.join(kept).strip(), dropped
 
 def numeric_gate(data, news_by_cat):
-    """程式數字閘門：title 數字找不到原文 → 移除該卡；body 含無出處數字的句子刪除，刪完為空 → 移除；
-    刪完後 title 與 body 仍有同一數量寫不同數值 → 移除（兩者都在原文、無法判定哪個對，保守處理）。
+    """程式數字閘門：title 數字找不到原文 → 移除該卡（若內文有接近且有出處的值，記為「標題與內文矛盾」）；
+    body 含無出處數字的句子刪除，刪完為空 → 移除。
     找不到素材的卡（來源空白或非素材網址）以空字串當原文：title 有數字即移除、body 數字句刪除。"""
     idx = _fa_index_materials(news_by_cat)
     stats = RUN_STATS.setdefault('numeric_gate', {'runs': 0, 'removed': 0, 'sentences_dropped': 0,
@@ -3406,7 +3454,13 @@ def numeric_gate(data, news_by_cat):
                 src = mat['text'] if mat else ''
                 title = item.get('title') or ''
                 bad_title = numbers_unsupported(title, src)
-                if bad_title:
+                conflict = numbers_contradict(title, item.get('body') or '', src) if bad_title else []
+                if conflict:
+                    # 標題數字無出處、內文接近值有出處 → 標題寫錯（例：68.7 萬 vs 678,000）
+                    removals.append(item)
+                    stats['contradiction_removed'] += 1
+                    reason = '標題與內文數字矛盾：' + '、'.join(f"{a} vs {b}" for a, b in conflict)
+                elif bad_title:
                     removals.append(item)
                     reason = '標題數字無原文出處：' + '、'.join(bad_title)
                 else:
@@ -3419,12 +3473,6 @@ def numeric_gate(data, news_by_cat):
                             removals.append(item)
                         else:
                             item['body'] = new_body
-                    if item not in removals:
-                        conflict = numbers_contradict(title, item.get('body') or '')
-                        if conflict:
-                            removals.append(item)
-                            stats['contradiction_removed'] += 1
-                            reason = '標題與內文數字矛盾：' + '、'.join(f"{a} vs {b}" for a, b in conflict)
                 if reason:
                     _gate_reason_set('numeric_gate', title, reason)
                     if len(stats['items']) < 30:
@@ -3535,17 +3583,22 @@ def _fact_check_batches(entries, header_tokens):
     return batches, skipped
 
 def apply_fact_check_results(batch, results, stats):
-    """batch：[(n, item, text)]；results：LLM 回傳 list。以編號對應，回傳要移除的 item 清單。
-    漏答者保留原樣並計入 stats['missing']；無效編號略過。"""
+    """batch：[(n, item, text)]，n 為批內編號 1..k；results：LLM 回傳 list。以編號對應，回傳要移除的 item 清單。
+    漏答者保留原樣並計入 stats['missing']；無效編號略過。容錯：批內編號一個都對不上、但回傳筆數
+    與批內則數相同時（例如 LLM 自行改用別的編號起點），依回傳順序對應並計入 stats['positional']。
+    fix 只回 body 時保留原標題。修正過的卡片記入 _FACT_CHECK_FIXED，供之後重跑既有文字閘門。"""
     by_id = {}
-    for r in results or []:
-        if not isinstance(r, dict):
-            continue
+    dict_results = [r for r in (results or []) if isinstance(r, dict)]
+    for r in dict_results:
         rid = r.get('id')
         if isinstance(rid, str) and rid.strip().lstrip('#').isdigit():
             rid = int(rid.strip().lstrip('#'))
         if isinstance(rid, int) and not isinstance(rid, bool):
             by_id.setdefault(rid, r)
+    batch_ids = [n for n, _, _ in batch]
+    if not any(n in by_id for n in batch_ids) and len(dict_results) == len(batch) and batch:
+        by_id = {n: r for n, r in zip(batch_ids, dict_results)}
+        stats['positional'] = stats.get('positional', 0) + 1
     removals = []
     for n, item, _ in batch:
         r = by_id.get(n)
@@ -3565,12 +3618,15 @@ def apply_fact_check_results(batch, results, stats):
             _gate_reason_set('llm_fact_check', item.get('title'), 'drop：' + rec['reason'])
         else:
             nt, nb = r.get('title'), r.get('body')
-            if not (isinstance(nt, str) and nt.strip() and isinstance(nb, str) and nb.strip()):
+            if not (isinstance(nt, str) and nt.strip()):
+                nt = item.get('title') or ''
+            if not (isinstance(nb, str) and nb.strip()):
                 stats['missing'] += 1
                 rec['verdict'] = 'fix_invalid'
             else:
                 item['title'] = nt.strip()
                 item['body'] = nb.strip()
+                _FACT_CHECK_FIXED.append(item)
                 for f in ('impact', 'insight'):
                     if isinstance(r.get(f), str) and r.get(f).strip() and f in item:
                         item[f] = r[f].strip()
@@ -3605,6 +3661,8 @@ def llm_fact_check(data, news_by_cat):
         stats['skipped_over_budget'] += len(skipped)
         removals = []
         for batch, est in batches:
+            # 每批重新從 1 編號（批內編號），避免 LLM 自行從 1 起算時整批對不上
+            batch = [(i, it, _fact_check_entry(i, it, _material_for(it, idx))) for i, (_, it, _) in enumerate(batch, 1)]
             prompt = header + ''.join(e[2] for e in batch)
             stats['est_prompt_tokens'].append(est)
             try:
@@ -3626,6 +3684,22 @@ def llm_fact_check(data, news_by_cat):
           f"移除 {stats['dropped']}、漏答 {stats['missing']}、超出預算略過 {stats['skipped_over_budget']}、"
           f"呼叫失敗 {stats['failed_calls']}")
     return stats
+
+_FACT_CHECK_FIXED = []
+
+def recheck_fixed_items(data):
+    """LLM 查核 fix 過的卡片再過既有文字閘門（禁句、幻覺 pattern、幻覺數字、低品質），只處理被修正的卡。"""
+    fixed_ids = {id(it) for it in _FACT_CHECK_FIXED}
+    sub = {sec: [it for it in data.get(sec, []) or [] if isinstance(it, dict) and id(it) in fixed_ids]
+           for sec in ('hw', 'corp', 'app')}
+    if not any(sub.values()):
+        return
+    for fn in (downgrade_forbidden_phrases, downgrade_hallucination_patterns, downgrade_hallucinated,
+               downgrade_low_quality):
+        try:
+            fn(sub)
+        except Exception as e:
+            print(f"  ⚠ 查核後重跑 {fn.__name__} 失敗（略過）：{e}")
 
 # ── 週報 ──
 def normalize_weekly_part(part):
@@ -4162,9 +4236,13 @@ if __name__ == '__main__':
         print(f"  ⚠ 漏斗統計收集失敗（llm_ratings，不影響資料生成）：{e}")
 
     print("🏷 HEADLINE_ONLY 卡片（core 上限 opp）...")
-    _run_gate('enforce_headline_only', enforce_headline_only, data, news_by_cat)
+    try:
+        _run_gate('enforce_headline_only', enforce_headline_only, data, news_by_cat)
+    except Exception as e:
+        print(f"  ⚠ HEADLINE_ONLY 標記失敗（略過，不影響資料生成）：{e}")
     # validate_sources 會清空失效網址；先記下原 source，數字閘門／查核仍能找回原素材
-    _ORIG_SOURCES.update({id(it): (it.get('source') or '') for sec in ('hw', 'corp', 'app')
+    _ORIG_SOURCES.update({id(it): (it.get('source') if isinstance(it.get('source'), str) else '')
+                          for sec in ('hw', 'corp', 'app')
                           for it in data.get(sec, []) if isinstance(it, dict)})
     print("🔗 驗證 source URL...")
     _run_gate('validate_sources', validate_sources, data)
@@ -4220,6 +4298,11 @@ if __name__ == '__main__':
             _run_gate('llm_fact_check', llm_fact_check, data, news_by_cat)
         except Exception as e:
             print(f"  ⚠ LLM 查核失敗（略過，不影響資料生成）：{e}")
+        print("🔤 查核修正過的卡片重跑既有文字閘門...")
+        try:
+            _run_gate('recheck_fixed_items', recheck_fixed_items, data)
+        except Exception as e:
+            print(f"  ⚠ 查核後文字閘門失敗（略過，不影響資料生成）：{e}")
         print("🔢 數字閘門（查核修正後再跑一次）...")
         try:
             _run_gate('numeric_gate', numeric_gate, data, news_by_cat)

@@ -53,8 +53,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           # 只加 dryrun/ 目錄；確認 data/ 等正式檔案沒有被改動
-          if ! git diff --quiet -- data/ ai_tracker_v6.html; then
-            echo "DRY_RUN 不應改動 data/ 或 html，停止"; git diff --stat; exit 1
+          # 含未追蹤檔：git status --porcelain 有任何輸出就中止
+          if [ -n "$(git status --porcelain -- data/ ai_tracker_v6.html)" ]; then
+            echo "DRY_RUN 不應改動 data/ 或 html，停止"; git status --porcelain -- data/ ai_tracker_v6.html; exit 1
           fi
           git add -- dryrun/
           if git diff --cached --quiet; then
