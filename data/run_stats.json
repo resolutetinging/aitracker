@@ -2,6 +2,380 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 55,
+        "CSP/CapEx": 41,
+        "App/AI": 22,
+        "gnews-chip": 21,
+        "gnews-dc": 24,
+        "gnews-app": 19
+      },
+      "digest_filtered": 2,
+      "after_dedup": 164,
+      "buckets": {
+        "hw": 49,
+        "corp": 117,
+        "app": 11
+      },
+      "news_char_budget": {
+        "hw": 6000,
+        "corp": 4655,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 49,
+          "full_text_total": 3,
+          "full_text_sent": 3,
+          "sent": 11,
+          "partial_cut": 0,
+          "chars_sent": 5802,
+          "dropped": 38
+        },
+        "corp": {
+          "mode": "pack",
+          "budget": 4655,
+          "candidates": 117,
+          "full_text_total": 2,
+          "full_text_sent": 2,
+          "sent": 13,
+          "partial_cut": 0,
+          "chars_sent": 4604,
+          "dropped": 104
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 11,
+          "full_text_total": 7,
+          "full_text_sent": 6,
+          "sent": 10,
+          "partial_cut": 0,
+          "chars_sent": 5911,
+          "dropped": 1
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 3,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 5127,
+          "completion_tokens": 1585,
+          "total_tokens": 6712
+        },
+        "corp": {
+          "prompt_tokens": 5208,
+          "completion_tokens": 2111,
+          "total_tokens": 7319
+        },
+        "app": {
+          "prompt_tokens": 4972,
+          "completion_tokens": 1109,
+          "total_tokens": 6081
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "corp",
+          "title": "Anthropic 可能以高於 $70‑$78 的價格上市",
+          "gate": "numeric_gate",
+          "action": "removed",
+          "reason": "body 數字無原文出處：16、00"
+        },
+        {
+          "section": "hw",
+          "title": "川普政府加嚴 AI 晶片出口限制",
+          "gate": "downgrade_low_quality",
+          "action": "rating core→opp",
+          "reason": "rating core→opp"
+        },
+        {
+          "section": "hw",
+          "title": "Nvidia 警示中國遠端存取 AI 晶片可能招致美國訴訟",
+          "gate": "downgrade_low_quality",
+          "action": "rating core→opp",
+          "reason": "rating core→opp"
+        },
+        {
+          "section": "app",
+          "title": "Isomorphic Labs 獲得 50 億美元 Series C 融資以推進 AI 藥物候選品臨床試驗",
+          "gate": "downgrade_forbidden_phrases",
+          "action": "rating core→opp",
+          "reason": "rating core→opp"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 2,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "feed_errors": [
+        {
+          "label": "Semiconductor",
+          "host": "www.digitimes.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "App/AI",
+          "host": "feeds.arstechnica.com",
+          "error": "zero_kept",
+          "detail": "items=20 bytes=75486"
+        },
+        {
+          "label": "App/AI",
+          "host": "venturebeat.com",
+          "error": "HTTP 429",
+          "detail": "Too Many Requests"
+        }
+      ],
+      "gnews_feed_times": [
+        {
+          "label": "gnews-chip",
+          "at": "2026-11-18T00:00:52+08:00"
+        },
+        {
+          "label": "gnews-dc",
+          "at": "2026-11-18T00:00:53+08:00"
+        },
+        {
+          "label": "gnews-app",
+          "at": "2026-11-18T00:00:53+08:00"
+        }
+      ],
+      "unmatched_dropped": 18,
+      "gnews_decode": {
+        "attempted": 13,
+        "ok": 13,
+        "failed": 0,
+        "rate_limited": false,
+        "skipped": 0,
+        "skipped_cap": 0,
+        "started_at": "2026-11-18T00:00:58+08:00"
+      },
+      "headline_only": {
+        "fetch_failed": 4,
+        "thin_summary": 62,
+        "fetch_failed_desc_kept": 2,
+        "fail_reasons": {
+          "http_403": 5,
+          "error": 1
+        }
+      },
+      "main_call_estimate": {
+        "hw": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 5202,
+          "est_completion_tokens": 1170,
+          "safety": 300,
+          "est_total_tokens": 6672,
+          "target": 6800
+        },
+        "corp": {
+          "news_char_budget": 4655,
+          "est_prompt_tokens": 5212,
+          "est_completion_tokens": 1270,
+          "safety": 300,
+          "est_total_tokens": 6782,
+          "target": 6800
+        },
+        "app": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 5224,
+          "est_completion_tokens": 910,
+          "safety": 300,
+          "est_total_tokens": 6434,
+          "target": 6800
+        }
+      },
+      "retry": {
+        "hw": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "corp": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "app": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        }
+      },
+      "llm_ratings": {
+        "hw": {
+          "core": 3,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 2,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "headline_only_cards": {
+        "marked": 0,
+        "downgraded": 0,
+        "scrubbed": 0
+      },
+      "deepen": {
+        "candidates": 2,
+        "rewritten": 2,
+        "fetch_failed": 0,
+        "llm_failed": 0
+      },
+      "desc_only_cards": {
+        "marked": 0,
+        "downgraded": 0,
+        "body_trimmed": 0,
+        "scrubbed": 0
+      },
+      "numeric_gate": {
+        "runs": 2,
+        "removed": 1,
+        "sentences_dropped": 3,
+        "contradiction_removed": 0,
+        "no_material": 0,
+        "items": [
+          {
+            "sec": "corp",
+            "title": "Anthropic 可能以高於 $70‑$78 的價格上市",
+            "reason": "body 數字無原文出處：16、00",
+            "removed": true
+          },
+          {
+            "sec": "corp",
+            "title": "Blackstone 合資收購 AWS 校園再租回雲端巨頭",
+            "reason": "body 數字無原文出處：647 兆",
+            "removed": false
+          },
+          {
+            "sec": "app",
+            "title": "Isomorphic Labs 獲得 50 億美元 Series C 融資以推進 AI 藥物候選品臨床試驗",
+            "reason": "body 數字無原文出處：2026 年",
+            "removed": false
+          }
+        ]
+      },
+      "gate_reasons": {
+        "numeric_gate": {
+          "Anthropic 可能以高於 $70‑$78 的價格上市": "body 數字無原文出處：16、00",
+          "Blackstone 合資收購 AWS 校園再租回雲端巨頭": "body 數字無原文出處：647 兆",
+          "Isomorphic Labs 獲得 50 億美元 Series C 融資以推進 AI 藥物候選品臨床試驗": "body 數字無原文出處：2026 年"
+        }
+      },
+      "scrub_skipped": {
+        "fix_chains": 0,
+        "validate_impact": 0
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 7,
+        "suspect_cards": 0,
+        "tense_flags": 1,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "fragment_restored": 0,
+        "items": [
+          {
+            "sec": "corp",
+            "title": "Nvidia 警告中國 AI 晶片使用者面臨法律風險",
+            "source": "https://www.cnbc.com/2026/11/17/nvidia-china-cloud-ai-chip-access.html",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [],
+            "tense_flag": true,
+            "title_suspects": []
+          }
+        ]
+      },
+      "llm_fact_check": {
+        "enabled": true,
+        "calls": 3,
+        "failed_calls": 0,
+        "checked": 7,
+        "ok": 7,
+        "fixed": 0,
+        "dropped": 0,
+        "missing": 0,
+        "skipped_over_budget": 0,
+        "est_prompt_tokens": [
+          2031,
+          2518,
+          1408
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 1781,
+            "completion_tokens": 209,
+            "total_tokens": 1990
+          },
+          {
+            "prompt_tokens": 2182,
+            "completion_tokens": 343,
+            "total_tokens": 2525
+          },
+          {
+            "prompt_tokens": 1381,
+            "completion_tokens": 93,
+            "total_tokens": 1474
+          }
+        ],
+        "items": [],
+        "desc_only_sent": 0
+      },
+      "date": "2026-11-18",
+      "generated_at": "2026-11-18T00:14:40.990352+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 52,
         "CSP/CapEx": 40,
         "App/AI": 18,
@@ -2400,107 +2774,6 @@
       },
       "date": "2026-11-05",
       "generated_at": "2026-11-05T00:05:07.461789+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 58,
-        "CSP/CapEx": 44,
-        "App/AI": 20,
-        "gnews-chip": 24,
-        "gnews-dc": 25,
-        "gnews-app": 21
-      },
-      "digest_filtered": 2,
-      "after_dedup": 176,
-      "buckets": {
-        "hw": 38,
-        "corp": 129,
-        "app": 37
-      },
-      "news_char_budget": {
-        "hw": 4433,
-        "corp": 8000,
-        "app": 4316
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 2,
-        "corp": 2,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "deepen": {
-        "candidates": 0,
-        "rewritten": 0,
-        "fetch_failed": 0,
-        "llm_failed": 0
-      },
-      "dedup_audit": [
-        {
-          "title": "AI 晶片走私者利用貿易漏洞將韓國 HBM 運入中國",
-          "section": "hw",
-          "action": "downgraded",
-          "matched_title": null,
-          "reason": "描述的是已發生的走私行為，未包含新決策或宣布，只是背景說明"
-        }
-      ],
-      "fact_audit": {
-        "mode": "enforce",
-        "checked": 4,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 0,
-          "suspect_cards": 0,
-          "skipped_enforce": 0
-        },
-        "enforced": 0,
-        "title_suspect_cards": 0,
-        "removed": 0,
-        "items": []
-      },
-      "date": "2026-11-04",
-      "generated_at": "2026-11-04T00:04:11.382473+08:00"
     }
   ]
 }
