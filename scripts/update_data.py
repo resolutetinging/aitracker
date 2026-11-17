@@ -1283,7 +1283,7 @@ SOURCE_FIDELITY_RULES = (
     "one country, multi-year plan vs. one deadline)\n"
     # 11-17 C：首日稽核（某模型的 prompt processing 約三天寫成整個 GPU 上線約三天、cannot maintain 寫成將失去）
     "- SOURCE FIDELITY (scope/strength/attribution): never widen scope (one part, step or model never becomes "
-    "the whole system/company); keep modal strength (cannot maintain→無法維持 not 將失去; may/could→可能 not will); "
+    "the whole system/product/company/industry); keep modal strength (cannot maintain→無法維持 not 將失去; may/could→可能 not will); "
     "keep that attribution when the source gives a person's or company's claim or words to a specific audience "
     "(據 X 表示／X 向投資人表示)\n"
 )
