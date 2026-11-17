@@ -225,8 +225,8 @@ def collect_nvidia_daily_items(history):
                     continue  # 佔位卡(source空字串)或本週已收錄過的同一來源
                 if it.get('rating') == 'noise':
                     continue
-                if it.get('headline_only'):
-                    continue  # 11-16：素材只有標題的卡片不擴散到 NVIDIA 近期事件
+                if it.get('headline_only') or it.get('desc_only'):
+                    continue  # 11-16 只有標題／11-17 只有 RSS 描述的卡片不擴散到 NVIDIA 近期事件
                 text = f"{it.get('title','')} {it.get('body','')}"
                 if NVIDIA_KEYWORD_PAT.search(text):
                     seen.add(src)

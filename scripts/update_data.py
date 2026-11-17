@@ -903,19 +903,11 @@ def _replace_source_url(entry, new_url):
     return re.sub(r'SOURCE_URL:\S+', lambda _m: 'SOURCE_URL:' + new_url, entry, count=1)
 
 def _would_send_entries(entries, cat):
-    """試算這一桶目前會送進 LLM 的條目（依送出順序）：hw/app 走 _fit_news_context 裝箱，
-    corp 取 budget 內的前段條目（與 slice 模式一致）。用分類原始預算（make_prompt 之後可能再縮減，屬超集合）。"""
+    """試算這一桶目前會送進 LLM 的條目（依送出順序）：三分類都走 _fit_news_context 裝箱（11-17 corp 也改 pack）。
+    用分類原始預算（make_prompt 之後可能再縮減，屬超集合）。"""
     budget = _category_char_budget(cat)
-    if cat in ('hw', 'app'):
-        out = []
-        _fit_news_context('\n\n'.join(entries), cat, budget, sent_out=out)
-        return out
-    out, total = [], 0
-    for e in entries:
-        if total >= budget:
-            break
-        out.append(e)
-        total += len(e) + 2
+    out = []
+    _fit_news_context('\n\n'.join(entries), cat, budget, sent_out=out)
     return out
 
 def enrich_with_full_text(buckets, max_fetch=12):
@@ -1279,6 +1271,12 @@ SOURCE_FIDELITY_RULES = (
     "profit vs. net income; projection vs. reported); qualifiers (up to→最多, at least→至少, about→約; never write "
     "超過 for up to); attribution (a headline's or author's words are never a person's quote); scope (global vs. "
     "one country, multi-year plan vs. one deadline)\n"
+    # 11-17 C：首日稽核（某模型的 prompt processing 約三天寫成整個 GPU 上線約三天、cannot maintain 寫成將失去）
+    "- SOURCE FIDELITY (scope, strength, attribution): never widen scope (a claim about one part, step, model or "
+    "product stays that narrow, never the whole system/company/industry); never change modal strength "
+    "(cannot maintain→無法維持 not 將失去, may/could→可能 not will, up to→最多 not 超過); when the source gives "
+    "something as a person's or company's claim, or as said to a specific audience, keep that attribution in "
+    "body (據 X 表示／X 向投資人表示)\n"
 )
 
 def system_fidelity_text():
@@ -1292,6 +1290,13 @@ HEADLINE_ONLY_RULES = (
     "- [HEADLINE_ONLY] ENTRIES have no article text, only a headline: an item from one gets a ONE-sentence body that "
     "only restates the headline (no titles, background, numbers, dates, model numbers, causes it lacks), "
     "impact/insight add no new number or named fact, and rating is at most opp\n"
+)
+
+# 11-17 B：只有 RSS 描述的素材（「標題 — 描述 | SOURCE_URL:…」，網址後沒有內文）；程式另以 desc_only 決定性清理
+DESC_ONLY_RULES = (
+    "- ENTRIES WITH NO TEXT AFTER SOURCE_URL have only a short RSS description: an item from one gets a body of at "
+    "most 2 sentences using only facts in that description (no added scope, region, comparison, trend or purpose), "
+    "impact/insight add no new fact, and rating is at most opp\n"
 )
 
 BASE_NEWS_CHAR_BUDGET = 3500
@@ -1328,6 +1333,10 @@ HW_APP_NEWS_CHAR_BUDGET = 6000
 # 只影響「送進 prompt 的那份文字」：fact_audit／補深用的 news_by_cat 仍是完整全文。
 PROMPT_FULLTEXT_CHARS = 600
 PROMPT_FULLTEXT_SHARE = 0.5
+# corp（11-17）：舊 slice 模式下 3 則全文（每則約 1300 字）就吃光 4871 字預算，109 則候選只送 6 則、
+# LLM 回 noise。改走 pack：全文內文同樣只放前 600 字，佔比上限見下（依 1116 三份試跑素材離線重算）。
+CORP_PROMPT_FULLTEXT_CHARS = 600
+CORP_PROMPT_FULLTEXT_SHARE = 0.3
 _FULLTEXT_ENTRY_PAT = re.compile(r'SOURCE_URL:\S+ — ')  # 與 _fa_index_materials 同一判準
 
 def _trim_fulltext_entry(entry, max_chars=PROMPT_FULLTEXT_CHARS):
@@ -1348,32 +1357,23 @@ def _trim_fulltext_entry(entry, max_chars=PROMPT_FULLTEXT_CHARS):
         cut = cut.rstrip() + '…'
     return head + cut
 
+def _fulltext_params(category):
+    """(全文條目內文上限, 全文合計佔預算比例)。11-17：corp 改用 pack 裝箱，參數見 CORP_PROMPT_FULLTEXT_*。"""
+    if category in ('hw', 'app'):
+        return PROMPT_FULLTEXT_CHARS, PROMPT_FULLTEXT_SHARE
+    return CORP_PROMPT_FULLTEXT_CHARS, CORP_PROMPT_FULLTEXT_SHARE
+
 def _fit_news_context(news_context, category, budget, sent_out=None):
     """把分類素材裝進 budget 字內，回傳 (送進 prompt 的文字, 統計 dict)。
-    corp：維持舊行為 news_context[:budget]（逐字不變），只補統計。
-    hw/app：以「條」為單位裝箱、不從中間切斷條目；全文條目縮短到 PROMPT_FULLTEXT_CHARS
-    且合計 ≤ budget×PROMPT_FULLTEXT_SHARE，超出佔比的全文條目延後到摘要之後、有空間才放。
-    sent_out：可選 list；給了就把 hw/app 實際送出的「原始條目」依序 append 進去（補抓排除用，corp 不動）。"""
+    三分類都以「條」為單位裝箱、不從中間切斷條目；全文條目縮短到該分類的全文上限
+    （hw/app PROMPT_FULLTEXT_CHARS、corp CORP_PROMPT_FULLTEXT_CHARS）且合計 ≤ budget×佔比，
+    超出佔比的全文條目延後到摘要之後、有空間才放。
+    11-17：corp 舊行為 news_context[:budget] 讓 3 則 1100 字全文吃光預算（109 則候選只送 6 則），改走同一套裝箱。
+    sent_out：可選 list；給了就把實際送出的「原始條目」依序 append 進去（補抓排除、優先解碼試算用）。"""
     entries = [e for e in (news_context or '').split('\n\n') if e.strip()]
     full_total = sum(1 for e in entries if _FULLTEXT_ENTRY_PAT.search(e))
-    if category not in ('hw', 'app'):
-        text = (news_context or '')[:budget]
-        sent_whole, prefix = 0, 0
-        for e in entries:
-            nxt = prefix + len(e) + (2 if sent_whole else 0)
-            if nxt > budget:
-                break
-            prefix, sent_whole = nxt, sent_whole + 1
-        # 最後一條被切到一半（舊行為）：送出字數多於完整條目合計 → 算 1 條 partial
-        partial = 1 if sent_whole < len(entries) and len(text) > prefix + 2 else 0
-        stats = {'mode': 'slice', 'budget': budget, 'candidates': len(entries),
-                 'full_text_total': full_total,
-                 'full_text_sent': sum(1 for e in entries[:sent_whole + partial]
-                                       if _FULLTEXT_ENTRY_PAT.search(e)),
-                 'sent': sent_whole + partial, 'partial_cut': partial,
-                 'chars_sent': len(text), 'dropped': len(entries) - sent_whole - partial}
-        return text, stats
-    full_cap = int(budget * PROMPT_FULLTEXT_SHARE)
+    full_chars, full_share = _fulltext_params(category)
+    full_cap = int(budget * full_share)
     chosen, deferred = [], []
     chosen_orig = []
     total, full_used = 0, 0
@@ -1383,7 +1383,7 @@ def _fit_news_context(news_context, category, budget, sent_out=None):
 
     for e in entries:
         if _FULLTEXT_ENTRY_PAT.search(e):
-            t = _trim_fulltext_entry(e)
+            t = _trim_fulltext_entry(e, full_chars)
             if full_used + len(t) <= full_cap and _fits(t):
                 total += len(t) + (2 if chosen else 0)
                 full_used += len(t)
@@ -1636,7 +1636,7 @@ RULES:
 - glossary_new: required, 1-3 terms from today's news that readers may not know
 - source: copy verbatim from SOURCE_URL in the news; never fabricate URLs
 {SOURCE_FIDELITY_RULES}{person_name_rule_text()}
-{HEADLINE_ONLY_RULES}- All titles, body, impact, insight in Traditional Chinese (zh-TW)
+{HEADLINE_ONLY_RULES}{DESC_ONLY_RULES}- All titles, body, impact, insight in Traditional Chinese (zh-TW)
 - weekly_summary: {weekly_rule}
 {no_repeat_str}
 {notes_ctx}{cross_block}"""
@@ -2921,7 +2921,10 @@ def _fa_index_materials(news_by_cat):
             key = _norm_url(m.group(1))
             if key not in idx or (full and not idx[key]['full']) \
                     or (idx[key].get('headline_only') and not headline_only):
-                idx[key] = {'text': text, 'title': title, 'full': full, 'headline_only': headline_only}
+                # 11-17 B：desc_only＝素材不含全文、也不是只有標題（只有 RSS 描述）；desc 為描述原文
+                desc = '' if (full or headline_only) else _entry_desc(entry)
+                idx[key] = {'text': text, 'title': title, 'full': full, 'headline_only': headline_only,
+                            'desc_only': not full and not headline_only, 'desc': desc}
     return idx
 
 def deepen_thin_cards(data, news_by_cat):
@@ -2987,6 +2990,7 @@ def deepen_thin_cards(data, news_by_cat):
                 item['chain'] = chain
                 item.pop('thin_source', None)
                 item.pop('headline_only', None)   # 已用全文重寫，不再是只有標題的卡
+                item.pop('desc_only', None)       # 11-17：同上，不再是只有描述的卡
                 _swap_to_full_material(news_by_cat, sec, url, text)
                 stats['rewritten'] += 1
                 print(f"  ✓ 補深重寫：{item.get('title','')[:40]}")
@@ -3414,6 +3418,81 @@ def enforce_headline_only(data, news_by_cat):
         pass
     return stats
 
+# ── 11-17 B：只有 RSS 描述的卡（desc_only）──
+# 全文抓取失敗、描述保留（fetch_failed_desc_kept），以及任何最終素材不含全文（也不是只有標題）的卡。
+# 比照 headline_only：body 只能寫描述裡有的資訊、最多 DESC_ONLY_MAX_SENTENCES 句；impact／insight／chain 清空；
+# 最高 opp；必送 LLM 查核（查核以描述為唯一素材）。
+DESC_ONLY_MAX_SENTENCES = 2
+
+def limit_desc_body(item):
+    """desc_only 卡：body 最多 DESC_ONLY_MAX_SENTENCES 句，多的截掉。回傳是否有截斷。"""
+    body = item.get('body') or ''
+    parts = [x.strip() for x in _fa_split_sentences(body) if x.strip()]
+    if len(parts) > DESC_ONLY_MAX_SENTENCES:
+        item['body'] = ''.join(parts[:DESC_ONLY_MAX_SENTENCES])
+        return True
+    return False
+
+def scrub_desc_only_item(item):
+    """desc_only 卡決定性清理（不依賴 LLM 自律）：impact、insight、chain 清空，body 最多 2 句，core 降 opp。"""
+    if 'impact' in item:
+        item['impact'] = ''
+    if 'insight' in item:
+        item['insight'] = ''
+    if 'chain' in item:
+        item['chain'] = []
+    limit_desc_body(item)
+    if not (item.get('body') or '').strip():
+        item['body'] = headline_sentence(item)
+    if item.get('rating') == 'core':
+        item['rating'] = 'opp'
+
+def enforce_desc_only(data, news_by_cat):
+    """素材只有 RSS 描述的卡：寫入 desc_only=true、body 限 2 句、core 一律降 opp。
+    放在 deepen_thin_cards 之後：補深成功的卡素材已換成全文，不會被標。"""
+    idx = _fa_index_materials(news_by_cat)
+    stats = {'marked': 0, 'downgraded': 0, 'body_trimmed': 0}
+    for sec in ('hw', 'corp', 'app'):
+        for item in data.get(sec, []) or []:
+            try:
+                if not isinstance(item, dict) or _is_placeholder(item) or item.get('headline_only'):
+                    continue
+                mat = _material_for(item, idx)
+                if mat is None or not mat.get('desc_only'):
+                    item.pop('desc_only', None)
+                    continue
+                item['desc_only'] = True
+                stats['marked'] += 1
+                if limit_desc_body(item):
+                    stats['body_trimmed'] += 1
+                if item.get('rating') == 'core':
+                    item['rating'] = 'opp'
+                    stats['downgraded'] += 1
+                    _gate_reason_set('enforce_desc_only', item.get('title'), '素材只有 RSS 描述，core 上限 opp')
+            except Exception as e:
+                print(f"  ⚠ DESC_ONLY 單張判斷失敗（略過該張）：{e}")
+    if stats['marked']:
+        print(f"  → DESC_ONLY：{stats['marked']} 張卡只有 RSS 描述素材，其中 {stats['downgraded']} 張 core→opp")
+    try:
+        RUN_STATS['desc_only_cards'] = stats
+    except Exception:
+        pass
+    return stats
+
+def scrub_desc_only(data):
+    """生成後管線最後一步：所有 desc_only 卡做決定性清理（前面 fix_chains／validate_impact 可能又補回內容）。"""
+    n = 0
+    for sec in ('hw', 'corp', 'app'):
+        for item in data.get(sec, []) or []:
+            if isinstance(item, dict) and item.get('desc_only') and not item.get('headline_only'):
+                scrub_desc_only_item(item)
+                n += 1
+    try:
+        RUN_STATS.setdefault('desc_only_cards', {})['scrubbed'] = n
+    except Exception:
+        pass
+    return n
+
 # ── 數字閘門 ──
 # 數值以「換算後的值＋卡片顯示精度」比對：卡片 68.7 萬＝687,000±500，原文 678,000 → 不符；
 # 67.8 萬＝678,000±500 → 相符；150 萬 vs 1.5 million、40.8 億 vs 4.08 billion → 相符。
@@ -3685,6 +3764,14 @@ def _fact_check_header():
         "；表外人名必須保留原文英文拼寫）。\n"
         "【只有標題的卡片】SOURCE 標示「只有標題」時，標題是唯一素材，只查 TITLE 與 BODY：凡是標題沒寫的事實"
         "（用途、背景、職稱、數字、型號、影響、因果推論）都算錯，判 fix，並在 body 回傳「一句直譯原文標題」的修正句。\n"
+        "【只有 RSS 描述的卡片】SOURCE 標示「只有 RSS 描述」時，標題與描述是唯一素材，只查 TITLE 與 BODY：BODY 最多 2 句，"
+        "凡是描述沒寫的資訊（全球等範圍、細項分類、與前期比較、趨勢、用途、因果推論）都算錯，判 fix，"
+        "並在 body 回傳只含描述資訊的修正句（寫不出來就回傳一句直譯描述）。\n"
+        "【範圍、語氣、歸屬】下列三類一律判 fix 並回傳修正後的 title／body：①擴大範圍——原文講部分、特定環節、"
+        "單一模型或產品，卡片寫成整體（例：某模型的 prompt processing 約三天，不可寫成整個 GPU 上線約三天）；"
+        "②改變語氣強度——cannot maintain 是「無法維持」不是「將失去」、may／could 是「可能」不是「將」、"
+        "up to 是「最多」不是「超過」；③漏掉歸屬——原文是某人或某公司的說法、或對特定對象（如 IPO 投資人）的陳述，"
+        "卡片必須保留歸屬（「據 X 表示」「X 向投資人稱」），不可寫成既定事實。\n"
         "判定：ok＝全部有原文支撐；fix＝有錯但可只靠原文修正（刪掉或改成原文說法，不准補新資訊），"
         "回傳修正後的 title 與 body（若 impact／insight／chain 有列出且有錯，一併回傳修正版，"
         'chain 格式 [{"label":"…","type":"up|down|warn|neutral"}]）；'
@@ -3697,8 +3784,9 @@ def _fact_check_header():
 def _fact_check_entry(n, item, mat):
     lines = [f"#{n}", "TITLE: " + (item.get('title') or ''), "BODY: " + (item.get('body') or '')]
     ho = bool(item.get('headline_only') or (mat or {}).get('headline_only'))
-    # 只有標題的卡：impact／insight／chain 由程式一律清空（scrub_headline_only），查核只看 title 與 body
-    if not ho:
+    do = bool(not ho and (item.get('desc_only') or (mat or {}).get('desc_only')))
+    # 只有標題／只有描述的卡：impact／insight／chain 由程式一律清空（scrub_*），查核只看 title 與 body
+    if not ho and not do:
         for f in ('impact', 'insight'):
             v = item.get(f) or ''
             if isinstance(v, str) and v.strip() and re.search(r'\d', v):
@@ -3706,7 +3794,12 @@ def _fact_check_entry(n, item, mat):
     if mat is None:
         lines.append("SOURCE: （找不到原文素材）")
     else:
-        label = "SOURCE（只有標題）" if mat.get('headline_only') else "SOURCE"
+        if mat.get('headline_only'):
+            label = "SOURCE（只有標題）"
+        elif do:
+            label = "SOURCE（只有 RSS 描述）"   # 11-17 B：標題＋描述是唯一素材
+        else:
+            label = "SOURCE"
         lines.append(label + ": " + (mat.get('text') or '')[:FACT_CHECK_MATERIAL_CHARS])
     return '\n'.join(lines) + '\n\n'
 
@@ -3821,6 +3914,11 @@ def apply_fact_check_results(batch, results, stats):
                     item['body'] = headline_sentence(item)
                     scrub_headline_only_item(item)
                     rec['action'] = 'headline_scrub'
+                elif item.get('desc_only'):
+                    # 11-17 B：程式無法自行翻譯描述，退回標題直譯一句（標題即描述素材的一部分）＋決定性清理
+                    item['body'] = headline_sentence(item)
+                    scrub_desc_only_item(item)
+                    rec['action'] = 'desc_scrub'
                 elif item.get('rating') == 'core':
                     item['rating'] = 'opp'
                     rec['action'] = 'core_to_opp'
@@ -3839,6 +3937,8 @@ def apply_fact_check_results(batch, results, stats):
                     item['chain'] = ch
                 if item.get('headline_only'):
                     scrub_headline_only_item(item)
+                elif item.get('desc_only'):
+                    scrub_desc_only_item(item)
                 stats['fixed'] += 1
                 rec['reason'] = str(r.get('reason') or '')[:120]
                 rec['new_title'] = item['title'][:60]
@@ -3865,6 +3965,9 @@ def llm_fact_check(data, news_by_cat):
         items = [it for it in data.get(sec, []) or [] if isinstance(it, dict) and not _is_placeholder(it)]
         if not items:
             continue
+        # 11-17 B：desc_only／headline_only 卡必送查核——排在最前面，分批時優先進第一批
+        items.sort(key=lambda it: 0 if (it.get('desc_only') or it.get('headline_only')) else 1)
+        stats['desc_only_sent'] = stats.get('desc_only_sent', 0) + sum(1 for it in items if it.get('desc_only'))
         entries = [(n, it, _fact_check_entry(n, it, _material_for(it, idx))) for n, it in enumerate(items, 1)]
         batches, skipped = _fact_check_batches(entries, header_tok)
         stats['skipped_over_budget'] += len(skipped)
@@ -4309,7 +4412,7 @@ def write_dry_run_result(data, news_by_cat=None, note=''):
                 mat = _material_for(it, idx)
                 per_item.append({'section': sec, 'title': it.get('title'), 'rating': it.get('rating'),
                                  'source': it.get('source'), 'headline_only': bool(it.get('headline_only')),
-                                 'material': mat})
+                                 'desc_only': bool(it.get('desc_only')), 'material': mat})
         out = {'note': note, 'generated_at': datetime.now(TW).isoformat(), 'data': data,
                'run_stats': RUN_STATS, 'item_materials': per_item, 'news_by_cat': news_by_cat}
         os.makedirs(DRY_RUN_DIR, exist_ok=True)
@@ -4469,6 +4572,12 @@ if __name__ == '__main__':
     if DEEPEN_THIN_CARDS:
         print("📖 補深薄卡（補抓全文重寫）...")
         _run_gate('deepen_thin_cards', deepen_thin_cards, data, news_by_cat)
+    # 11-17 B：放在補深之後——補深成功的卡素材已換成全文，不標 desc_only
+    print("🏷 DESC_ONLY 卡片（只有 RSS 描述，core 上限 opp、body 最多 2 句）...")
+    try:
+        _run_gate('enforce_desc_only', enforce_desc_only, data, news_by_cat)
+    except Exception as e:
+        print(f"  ⚠ DESC_ONLY 標記失敗（略過，不影響資料生成）：{e}")
     print("🔢 數字閘門（title/body 數字一致且出自原文）...")
     try:
         _run_gate('numeric_gate', numeric_gate, data, news_by_cat)
@@ -4532,6 +4641,11 @@ if __name__ == '__main__':
         _run_gate('scrub_headline_only', scrub_headline_only, data)
     except Exception as e:
         print(f"  ⚠ HEADLINE_ONLY 清理失敗（略過，不影響資料生成）：{e}")
+    print("🏷 DESC_ONLY 卡片決定性清理（impact／insight／chain 清空、body 最多 2 句）...")
+    try:
+        _run_gate('scrub_desc_only', scrub_desc_only, data)
+    except Exception as e:
+        print(f"  ⚠ DESC_ONLY 清理失敗（略過，不影響資料生成）：{e}")
     if data.get('weekly_summary'):
         print("🔢 週報數字出處檢查...")
         try:
