@@ -622,6 +622,16 @@ def text_matches_title(text, title, min_hits=None):
         return any(re.search(r'(?<![a-z0-9])' + re.escape(x) + r'(?![a-z0-9])', low) for x in extras)
     return hits >= min(min_hits, total)
 
+def _desc_residue_empty(title, desc):
+    """RSS 描述是否為空，或扣掉標題已有的詞（英數詞、中文單字）後什麼都不剩。"""
+    if not (desc or '').strip():
+        return True
+    tw = {w.lower() for w in re.findall(r"[A-Za-z0-9][A-Za-z0-9'\-]*", title or '')}
+    rest_eng = [w for w in re.findall(r"[A-Za-z0-9][A-Za-z0-9'\-]*", desc) if w.lower() not in tw]
+    t_cjk = set(re.findall(r'[一-鿿]', title or ''))
+    rest_cjk = [c for c in re.findall(r'[一-鿿]', desc) if c not in t_cjk]
+    return not rest_eng and not rest_cjk
+
 def summary_is_headline_only(title, desc):
     """摘要候選的 RSS 描述是否只是標題（＋媒體名）：扣掉標題已有的詞後，新詞少於
     HEADLINE_DESC_MIN_NEW_WORDS 個（中文以 bigram 計，門檻×2）即視為只有標題。"""
@@ -1272,11 +1282,10 @@ SOURCE_FIDELITY_RULES = (
     "超過 for up to); attribution (a headline's or author's words are never a person's quote); scope (global vs. "
     "one country, multi-year plan vs. one deadline)\n"
     # 11-17 C：首日稽核（某模型的 prompt processing 約三天寫成整個 GPU 上線約三天、cannot maintain 寫成將失去）
-    "- SOURCE FIDELITY (scope, strength, attribution): never widen scope (a claim about one part, step, model or "
-    "product stays that narrow, never the whole system/company/industry); never change modal strength "
-    "(cannot maintain→無法維持 not 將失去, may/could→可能 not will, up to→最多 not 超過); when the source gives "
-    "something as a person's or company's claim, or as said to a specific audience, keep that attribution in "
-    "body (據 X 表示／X 向投資人表示)\n"
+    "- SOURCE FIDELITY (scope/strength/attribution): never widen scope (one part, step or model never becomes "
+    "the whole system/company); keep modal strength (cannot maintain→無法維持 not 將失去; may/could→可能 not will); "
+    "keep that attribution when the source gives a person's or company's claim or words to a specific audience "
+    "(據 X 表示／X 向投資人表示)\n"
 )
 
 def system_fidelity_text():
@@ -1294,9 +1303,8 @@ HEADLINE_ONLY_RULES = (
 
 # 11-17 B：只有 RSS 描述的素材（「標題 — 描述 | SOURCE_URL:…」，網址後沒有內文）；程式另以 desc_only 決定性清理
 DESC_ONLY_RULES = (
-    "- ENTRIES WITH NO TEXT AFTER SOURCE_URL have only a short RSS description: an item from one gets a body of at "
-    "most 2 sentences using only facts in that description (no added scope, region, comparison, trend or purpose), "
-    "impact/insight add no new fact, and rating is at most opp\n"
+    "- ENTRIES WITH NO TEXT AFTER SOURCE_URL (description only, not [HEADLINE_ONLY]): body at most 2 sentences "
+    "using only facts in that description (no added scope, region, comparison or trend), rating at most opp\n"
 )
 
 BASE_NEWS_CHAR_BUDGET = 3500
@@ -1692,9 +1700,21 @@ def _is_bad_chain(item):
             return True
     return False
 
+def _will_be_scrubbed(item):
+    """headline_only／desc_only 卡最後會被 scrub_* 清空 impact／insight／chain，補分析的 Groq 呼叫可略過（11-17 省 TPM）。"""
+    return bool(isinstance(item, dict) and (item.get('headline_only') or item.get('desc_only')))
+
+def _note_scrub_skip(step, n):
+    try:
+        RUN_STATS.setdefault('scrub_skipped', {})[step] = n
+    except Exception:
+        pass
+
 def fix_chains(data):
-    bad = [(sec, item) for sec in ['hw','corp','app']
-           for item in data.get(sec,[]) if _is_bad_chain(item)]
+    bad_all = [(sec, item) for sec in ['hw','corp','app']
+               for item in data.get(sec,[]) if _is_bad_chain(item)]
+    bad = [(sec, item) for sec, item in bad_all if not _will_be_scrubbed(item)]
+    _note_scrub_skip('fix_chains', len(bad_all) - len(bad))
     if not bad:
         print("  → chain 品質檢核通過"); return
 
@@ -1762,8 +1782,11 @@ def validate_impact(data):
          "impact": item.get("impact", "")}
         for sec in ['hw', 'corp', 'app']
         for item in data.get(sec, [])
-        if item.get("impact") and item.get("rating") in ("core", "opp")
+        if item.get("impact") and item.get("rating") in ("core", "opp") and not _will_be_scrubbed(item)
     ]
+    _note_scrub_skip('validate_impact', sum(
+        1 for sec in ['hw', 'corp', 'app'] for item in data.get(sec, [])
+        if item.get("impact") and item.get("rating") in ("core", "opp") and _will_be_scrubbed(item)))
     if not items:
         print("  → impact 驗證：無需處理"); return
 
@@ -2916,6 +2939,9 @@ def _fa_index_materials(news_by_cat):
             full = bool(re.search(r'SOURCE_URL:\S+ — ', entry))
             # 11-16：去掉開頭所有 [label]／[HEADLINE_ONLY] 標記；headline_only＝該素材只有標題
             headline_only = (HEADLINE_ONLY_TAG in entry) and not full
+            # 11-17 審查：摘要條目沒有描述（或描述扣掉標題後為空）一律算只有標題，不算 desc_only
+            if not full and not headline_only and _desc_residue_empty(_entry_title(entry), _entry_desc(entry)):
+                headline_only = True
             text = re.sub(r'^(?:\[[^\]]+\]\s*)+', '', entry).replace(m.group(0), ' ')
             title = text.split(' — ', 1)[0].replace(' | ', ' ').strip()
             key = _norm_url(m.group(1))
