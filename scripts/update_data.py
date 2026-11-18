@@ -772,6 +772,27 @@ def fetch_article_text(url, max_chars=1100, timeout=6, title=None):
         _FETCH_STATE['last_reason'] = 'invalid_text'
     return text
 
+_OG_TYPE_PATS = (
+    re.compile(r'<meta[^>]+property=["\']og:type["\'][^>]*content=["\']([^"\']+)["\']', re.I),
+    re.compile(r'<meta[^>]+content=["\']([^"\']+)["\'][^>]*property=["\']og:type["\']', re.I),
+)
+
+def _is_video_page(url, html):
+    """11-18 A：影片頁判定（og:type 以 video 開頭，或網址路徑有 video／videos 這一段）。"""
+    try:
+        from urllib.parse import urlparse
+        segs = [s.lower() for s in urlparse(url or '').path.split('/') if s]
+        if 'video' in segs or 'videos' in segs:
+            return True
+    except Exception:
+        pass
+    head = (html or '')[:300_000]
+    for pat in _OG_TYPE_PATS:
+        m = pat.search(head)
+        if m:
+            return m.group(1).strip().lower().startswith('video')
+    return False
+
 def _fetch_article_text_raw(url, max_chars=1100, timeout=6):
     import urllib.error
     try:
@@ -784,6 +805,11 @@ def _fetch_article_text_raw(url, max_chars=1100, timeout=6):
         with r:
             raw = r.read(CLEAN_READ_BYTES if CLEAN_BOILERPLATE else 300_000)
         html = raw.decode('utf-8', errors='ignore')
+        # 11-18 A：影片頁只有影片簡介（11-18 Fox Business 兩段簡介共 435 字被當全文，漏過 desc_only，
+        # 分析寫出原文沒有的推論）。結構性判準：og:type 為 video* 或網址路徑含 /video(s)/ 段，一律視為抓不到內文
+        if _is_video_page(url, html):
+            _FETCH_STATE['last_reason'] = 'video_page'
+            return None
         if CLEAN_BOILERPLATE:
             return extract_clean_text(html, max_chars)
         html = re.sub(r'<(script|style|noscript|nav|footer|header)[^>]*>.*?</\1>', ' ', html, flags=re.S|re.I)
@@ -1292,7 +1318,8 @@ def system_fidelity_text():
     """system 訊息用的原文忠實鐵律（繁中精簡版），與 SOURCE_FIDELITY_RULES 同一精神。"""
     return (
         "【原文忠實】職稱與所屬機構、時間範圍、指標種類、限定語、發言歸屬、地理與對象範圍都必須出自同一則原文，"
-        "原文沒寫就不寫。人名保留英文原文，只有對照表內可寫中文。[HEADLINE_ONLY] 素材只能一句改寫標題，最高 opp。"
+        "原文沒寫就不寫。法案／交易的進度（提案或已通過）、金額口徑（交易總值或部分股權）照原文，"
+        "Congressman 是聯邦眾議員。人名保留英文原文，只有對照表內可寫中文。[HEADLINE_ONLY] 素材只能一句改寫標題，最高 opp。"
     )
 
 HEADLINE_ONLY_RULES = (
@@ -3798,6 +3825,12 @@ def _fact_check_header():
         "②改變語氣強度——cannot maintain 是「無法維持」不是「將失去」、may／could 是「可能」不是「將」、"
         "up to 是「最多」不是「超過」；③漏掉歸屬——原文是某人或某公司的說法、或對特定對象（如 IPO 投資人）的陳述，"
         "卡片必須保留歸屬（「據 X 表示」「X 向投資人稱」），不可寫成既定事實。\n"
+        # 11-18 B：11-18 產出三類中度錯誤（提案寫成已通過、交易總值寫成部分股權價格、聯邦眾議員寫成州議員）
+        "【狀態、口徑、職稱】下列三類同樣判 fix：④進度狀態——法案、規則、協議、交易、計畫要照原文的階段："
+        "proposed／introduced／pending 是「提案中」，passed the House 只是「眾議院已通過」不是「已通過成法」，"
+        "傳聞或洽談中不可寫成已完成；⑤金額口徑——transaction／deal valued at 是整筆交易總值，不可寫成買下某部分股權的價格，"
+        "估值不可寫成募資額、預估不可寫成實際；⑥職稱照原文——Congressman／Representative 是美國聯邦眾議員、Senator 是聯邦參議員，"
+        "原文沒寫 state 就不可寫成州議員或地方職位，不可依地名自行推斷層級。\n"
         "判定：ok＝全部有原文支撐；fix＝有錯但可只靠原文修正（刪掉或改成原文說法，不准補新資訊），"
         "回傳修正後的 title 與 body（若 impact／insight／chain 有列出且有錯，一併回傳修正版，"
         'chain 格式 [{"label":"…","type":"up|down|warn|neutral"}]）；'
