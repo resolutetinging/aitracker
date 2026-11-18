@@ -5,7 +5,7 @@
       "date": "2026-01-14",
       "title": "BIS將輸中先進AI晶片出口審查改為逐案審查",
       "category": "出口管制",
-      "thread": "美國對中AI晶片出口管制政策鬆綁",
+      "thread": "美國對中H200晶片有條件放行與爭議",
       "summary": "美國商務部工業與安全局（BIS）自1月15日生效之新規，將輝達H200、超微(AMD) MI325X等先進運算晶片對中國與澳門的出口許可審查方式，由「原則駁回」改為「逐案審查」。企業若通過審查並取得許可，晶片方可依條件出口。此政策調整被部分國會議員與對中鷹派人士質疑可能弱化既有管制力道，BIS官方則強調審查仍會納入國安考量、個案決定。",
       "src": "https://www.morganlewis.com/pubs/2026/01/bis-revises-export-review-policy-for-advanced-ai-chips-destined-for-china-and-macau",
       "src_note": "僅見律師事務所(Morgan Lewis)對BIS新規的專業分析報導，查無BIS官方新聞稿或聯邦公報原文連結"
@@ -14,7 +14,7 @@
       "date": "2026-01-15",
       "title": "川普對輸中H200晶片加徵25%國安關稅",
       "category": "關稅動態",
-      "thread": "美國對中AI晶片出口管制政策鬆綁",
+      "thread": "美國對中H200晶片有條件放行與爭議",
       "summary": "美國政府核准輝達H200晶片可有條件銷往中國後一天，川普總統以國安為由簽署行政命令，對輸往中國的H200晶片加徵25%關稅，高於稍早提出的15%營收分成方案。白宮表示此舉可確保美國從對中晶片銷售中獲得更大財政利益；批評者則認為關稅與出口核准同時放行，實質上等同鬆綁對中先進晶片管制。",
       "src": "https://www.cnbc.com/2026/01/14/trump-nvidia-h200-china-ai-chips.html",
       "src_note": "主流財經媒體CNBC報導，查無白宮或BIS就此關稅措施的獨立官方新聞稿"
@@ -50,7 +50,7 @@
       "date": "2026-06-01",
       "title": "美國重申晶片出口禁令適用於海外中資企業",
       "category": "出口管制",
-      "thread": "美國對中AI晶片出口管制政策鬆綁",
+      "thread": "",
       "summary": "美國商務部重申，其對輝達等先進AI晶片的出口管制規定，同樣適用於在中國境外註冊、但受中資實質控制或持股的企業，意在防堵中資企業透過設立海外子公司或關聯實體規避管制取得晶片。此一立場被解讀為美方擴大管制範圍的訊號，企業合規界人士提醒跨國供應鏈中具中資背景的客戶須加強審查。",
       "src": "https://www.aljazeera.com/economy/2026/6/1/us-says-ban-on-ai-chip-shipments-applies-to-chinese-firms-outside-china",
       "src_note": "主流國際媒體(半島電視台)報導，查無美國商務部就此表態的獨立官方新聞稿連結"
@@ -113,7 +113,7 @@
       "date": "2026-11-12",
       "title": "美國民主黨議員Neal與Wyden致函商務部長，調查輝達對中銷售的25%關稅安排",
       "category": "出口管制",
-      "thread": "美國對中AI晶片出口管制政策鬆綁",
+      "thread": "美國對中H200晶片有條件放行與爭議",
       "summary": "美國聯邦眾議院歲入委員會首席民主黨議員Richard Neal與參議院財政委員會首席民主黨議員Ron Wyden宣布展開調查，並致函商務部長Lutnick。兩人指稱，川普政府讓輝達晶片先輸入美國接受安全審查、依《1962年貿易擴張法》第232條課徵25%關稅後再賣給中國企業，是把違憲的出口稅包裝成國安關稅。兩人要求商務部保存第232條調查與關稅、輝達出口許可核准，以及與輝達、黃仁勳往來通訊的所有紀錄。以上為議員指控。",
       "src": "https://democrats-waysandmeans.house.gov/media-center/press-releases/neal-wyden-begin-investigate-trump-administrations-scheme-take-cut",
       "src_note": "官方原文：眾議院歲入委員會民主黨新聞稿；致商務部長信函全文為PDF，未逐字核對"
