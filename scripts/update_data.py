@@ -1319,7 +1319,7 @@ def system_fidelity_text():
     return (
         "【原文忠實】職稱與所屬機構、時間範圍、指標種類、限定語、發言歸屬、地理與對象範圍都必須出自同一則原文，"
         "原文沒寫就不寫。法案／交易的進度（提案或已通過）、金額口徑（交易總值或部分股權）照原文，"
-        "Congressman 是聯邦眾議員。人名保留英文原文，只有對照表內可寫中文。[HEADLINE_ONLY] 素材只能一句改寫標題，最高 opp。"
+        "Congressman 是聯邦眾議員（原文有 State 限定才寫州議員）。人名保留英文原文，只有對照表內可寫中文。[HEADLINE_ONLY] 素材只能一句改寫標題，最高 opp。"
     )
 
 HEADLINE_ONLY_RULES = (
@@ -3830,7 +3830,7 @@ def _fact_check_header():
         "proposed／introduced／pending 是「提案中」，passed the House 只是「眾議院已通過」不是「已通過成法」，"
         "傳聞或洽談中不可寫成已完成；⑤金額口徑——transaction／deal valued at 是整筆交易總值，不可寫成買下某部分股權的價格，"
         "估值不可寫成募資額、預估不可寫成實際；⑥職稱照原文——Congressman／Representative 是美國聯邦眾議員、Senator 是聯邦參議員，"
-        "原文沒寫 state 就不可寫成州議員或地方職位，不可依地名自行推斷層級。\n"
+        "原文有 State／local 限定就照寫（State Representative 是州眾議員），原文沒寫 state 就不可寫成州議員或地方職位，不可依地名自行推斷層級。\n"
         "判定：ok＝全部有原文支撐；fix＝有錯但可只靠原文修正（刪掉或改成原文說法，不准補新資訊），"
         "回傳修正後的 title 與 body（若 impact／insight／chain 有列出且有錯，一併回傳修正版，"
         'chain 格式 [{"label":"…","type":"up|down|warn|neutral"}]）；'
