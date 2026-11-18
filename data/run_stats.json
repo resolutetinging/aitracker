@@ -2,6 +2,424 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 67,
+        "CSP/CapEx": 38,
+        "App/AI": 11,
+        "gnews-chip": 23,
+        "gnews-app": 17
+      },
+      "digest_filtered": 1,
+      "after_dedup": 154,
+      "buckets": {
+        "hw": 52,
+        "corp": 92,
+        "app": 11
+      },
+      "news_char_budget": {
+        "hw": 5809,
+        "corp": 4113,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 5755,
+          "candidates": 52,
+          "full_text_total": 4,
+          "full_text_sent": 3,
+          "sent": 10,
+          "partial_cut": 0,
+          "chars_sent": 5731,
+          "dropped": 42
+        },
+        "corp": {
+          "mode": "pack",
+          "budget": 4113,
+          "candidates": 92,
+          "full_text_total": 7,
+          "full_text_sent": 1,
+          "sent": 11,
+          "partial_cut": 0,
+          "chars_sent": 4018,
+          "dropped": 81
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 11,
+          "full_text_total": 1,
+          "full_text_sent": 1,
+          "sent": 9,
+          "partial_cut": 0,
+          "chars_sent": 5885,
+          "dropped": 2
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 2,
+        "corp": 3,
+        "app": 1
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 5629,
+          "completion_tokens": 1157,
+          "total_tokens": 6786
+        },
+        "corp": {
+          "prompt_tokens": 5309,
+          "completion_tokens": 1560,
+          "total_tokens": 6869
+        },
+        "app": {
+          "prompt_tokens": 6486,
+          "completion_tokens": 314,
+          "total_tokens": 6800
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "corp",
+          "title": "Elementl Power 與 Google Cloud 合作推出 AI 套件，加速核能選址與許可流程",
+          "gate": "enforce_headline_only",
+          "action": "rating core→opp",
+          "reason": "素材只有標題，core 上限 opp"
+        },
+        {
+          "section": "hw",
+          "title": "美國加嚴 AI 晶片出口規則 影響台積電與 ASE 供應鏈",
+          "gate": "validate_sources",
+          "action": "source_cleared",
+          "reason": "source_cleared"
+        },
+        {
+          "section": "hw",
+          "title": "美國加嚴 AI 晶片出口規則 影響台積電與 ASE 供應鏈",
+          "gate": "enforce_desc_only",
+          "action": "rating core→opp",
+          "reason": "素材只有 RSS 描述，core 上限 opp"
+        },
+        {
+          "section": "hw",
+          "title": "美國加嚴 AI 晶片出口規則 影響台積電與 ASE 供應鏈",
+          "gate": "downgrade_unsourced",
+          "action": "rating opp→noise",
+          "reason": "rating opp→noise"
+        },
+        {
+          "section": "hw",
+          "title": "Nvidia 停止向中國出貨美國核准的 AI 晶片",
+          "gate": "dedup_and_freshness_check",
+          "action": "removed",
+          "reason": "兩篇皆報導美國對 Nvidia AI 晶片向中國的出口限制與供應中止，同屬同一政策事件"
+        },
+        {
+          "section": "corp",
+          "title": "Anthropic 考慮提升 IPO 發行規模以因應機構與散戶需求激增",
+          "gate": "dedup_and_freshness_check",
+          "action": "removed",
+          "reason": "皆圍繞 Anthropic 即將上市的規模與投資者安排，屬同一次 IPO 相關事件"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 0,
+          "opp": 2,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 1,
+      "feed_errors": [
+        {
+          "label": "Semiconductor",
+          "host": "www.digitimes.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "CSP/CapEx",
+          "host": "techcrunch.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "App/AI",
+          "host": "feeds.arstechnica.com",
+          "error": "zero_kept",
+          "detail": "items=20 bytes=75355"
+        },
+        {
+          "label": "App/AI",
+          "host": "techcrunch.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "App/AI",
+          "host": "venturebeat.com",
+          "error": "HTTP 429",
+          "detail": "Too Many Requests"
+        },
+        {
+          "label": "gnews-dc",
+          "host": "news.google.com",
+          "error": "HTTP 429",
+          "detail": "Too Many Requests"
+        }
+      ],
+      "gnews_feed_times": [
+        {
+          "label": "gnews-chip",
+          "at": "2026-11-19T00:01:00+08:00"
+        },
+        {
+          "label": "gnews-dc",
+          "at": "2026-11-19T00:01:00+08:00"
+        },
+        {
+          "label": "gnews-app",
+          "at": "2026-11-19T00:01:00+08:00"
+        }
+      ],
+      "unmatched_dropped": 30,
+      "gnews_decode": {
+        "attempted": 1,
+        "ok": 0,
+        "failed": 1,
+        "rate_limited": true,
+        "skipped": 11,
+        "skipped_cap": 0,
+        "started_at": "2026-11-19T00:01:04+08:00"
+      },
+      "headline_only": {
+        "fetch_failed": 13,
+        "thin_summary": 45,
+        "fetch_failed_desc_kept": 4,
+        "fail_reasons": {
+          "decode_failed": 12,
+          "error": 1,
+          "invalid_text": 1,
+          "http_403": 2
+        }
+      },
+      "main_call_estimate": {
+        "hw": {
+          "news_char_budget": 5809,
+          "est_prompt_tokens": 5288,
+          "est_completion_tokens": 1170,
+          "safety": 300,
+          "est_total_tokens": 6758,
+          "target": 6800
+        },
+        "corp": {
+          "news_char_budget": 4113,
+          "est_prompt_tokens": 5220,
+          "est_completion_tokens": 1270,
+          "safety": 300,
+          "est_total_tokens": 6790,
+          "target": 6800
+        },
+        "app": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 5348,
+          "est_completion_tokens": 910,
+          "safety": 300,
+          "est_total_tokens": 6558,
+          "target": 6800
+        }
+      },
+      "retry": {
+        "hw": {
+          "tried": true,
+          "sent": 12,
+          "items": 2,
+          "used": true,
+          "error": ""
+        },
+        "corp": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "app": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        }
+      },
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "gate_reasons": {
+        "enforce_headline_only": {
+          "Elementl Power 與 Google Cloud 合作推出 AI 套件，加速核能選址與許可流程": "素材只有標題，core 上限 opp"
+        },
+        "enforce_desc_only": {
+          "美國加嚴 AI 晶片出口規則 影響台積電與 ASE 供應鏈": "素材只有 RSS 描述，core 上限 opp"
+        }
+      },
+      "headline_only_cards": {
+        "marked": 2,
+        "downgraded": 1,
+        "body_trimmed": 1,
+        "scrubbed": 1
+      },
+      "deepen": {
+        "candidates": 3,
+        "rewritten": 0,
+        "fetch_failed": 3,
+        "llm_failed": 0
+      },
+      "desc_only_cards": {
+        "marked": 2,
+        "downgraded": 1,
+        "body_trimmed": 0,
+        "scrubbed": 2
+      },
+      "numeric_gate": {
+        "runs": 2,
+        "removed": 0,
+        "sentences_dropped": 0,
+        "contradiction_removed": 0,
+        "no_material": 0,
+        "items": []
+      },
+      "scrub_skipped": {
+        "fix_chains": 4,
+        "validate_impact": 3
+      },
+      "dedup_audit": [
+        {
+          "title": "Nvidia 停止向中國出貨美國核准的 AI 晶片",
+          "section": "hw",
+          "action": "removed",
+          "matched_title": "Nvidia 警告中國 AI 晶片使用者面臨法律風險",
+          "reason": "兩篇皆報導美國對 Nvidia AI 晶片向中國的出口限制與供應中止，同屬同一政策事件"
+        },
+        {
+          "title": "Anthropic 考慮提升 IPO 發行規模以因應機構與散戶需求激增",
+          "section": "corp",
+          "action": "removed",
+          "matched_title": "Anthropic IPO 受多家巨頭共投 260 億美元",
+          "reason": "皆圍繞 Anthropic 即將上市的規模與投資者安排，屬同一次 IPO 相關事件"
+        }
+      ],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 2,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 2,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "fragment_restored": 0,
+        "items": []
+      },
+      "llm_fact_check": {
+        "enabled": true,
+        "calls": 2,
+        "failed_calls": 0,
+        "checked": 3,
+        "ok": 0,
+        "fixed": 3,
+        "dropped": 0,
+        "missing": 0,
+        "skipped_over_budget": 0,
+        "est_prompt_tokens": [
+          1357,
+          1432
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 1369,
+            "completion_tokens": 240,
+            "total_tokens": 1609
+          },
+          {
+            "prompt_tokens": 1431,
+            "completion_tokens": 485,
+            "total_tokens": 1916
+          }
+        ],
+        "items": [
+          {
+            "title": "美國加嚴 AI 晶片出口規則 影響台積電與 ASE 供應鏈",
+            "verdict": "fix",
+            "returned": {
+              "title": "美國商務部產業與安全局（BIS）收緊 AI 晶片及海外運算存取的限制",
+              "body": "美國商務部產業與安全局（BIS）收緊 AI 晶片及海外運算存取的限制。"
+            },
+            "reason": "原始 RSS 描述未提及對台積電與 ASE 供應鏈的影響，需僅保留描述內容。",
+            "new_title": "美國商務部產業與安全局（BIS）收緊 AI 晶片及海外運算存取的限制"
+          },
+          {
+            "title": "Elementl Power 與 Google Cloud 合作推出 AI 套件，加速核能選址與許可流程",
+            "verdict": "fix",
+            "returned": {
+              "title": "Elementl Power 與 Google Cloud 合作推出 AI 套件，加速核能選址與許可流程——建立在與 Google 的既有合作基礎上",
+              "body": "Elementl Power 與 Google Cloud 合作推出 AI 套件，加速核能選址與許可流程。"
+            },
+            "reason": "卡片內容加入了標題未提及的資訊，需僅保留標題所述事實。",
+            "new_title": "Elementl Power 與 Google Cloud 合作推出 AI 套件，加速核能選址與許可流程——建立在與 G"
+          },
+          {
+            "title": "OpenAI 任命清潔能源負責人以推動永續運營",
+            "verdict": "fix",
+            "returned": {
+              "title": "OpenAI 任命清潔能源負責人",
+              "body": "Nate Sweet 加入團隊。"
+            },
+            "reason": "卡片內容加入了 RSS 描述未提及的資訊，需僅保留描述所述事實。",
+            "new_title": "OpenAI 任命清潔能源負責人"
+          }
+        ],
+        "desc_only_sent": 2
+      },
+      "date": "2026-11-19",
+      "generated_at": "2026-11-19T00:11:14.449138+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 55,
         "CSP/CapEx": 41,
         "App/AI": 22,
@@ -2637,143 +3055,6 @@
       },
       "date": "2026-11-06",
       "generated_at": "2026-11-06T00:05:08.795592+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 52,
-        "CSP/CapEx": 45,
-        "App/AI": 26,
-        "gnews-chip": 23,
-        "gnews-dc": 18,
-        "gnews-app": 17
-      },
-      "digest_filtered": 0,
-      "after_dedup": 169,
-      "buckets": {
-        "hw": 37,
-        "corp": 122,
-        "app": 36
-      },
-      "news_char_budget": {
-        "hw": 4316,
-        "corp": 8000,
-        "app": 4200
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 4,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 4,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "deepen": {
-        "candidates": 1,
-        "rewritten": 1,
-        "fetch_failed": 0,
-        "llm_failed": 0
-      },
-      "dedup_audit": [],
-      "fact_audit": {
-        "mode": "enforce",
-        "checked": 5,
-        "suspect_cards": 1,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 0,
-          "suspect_cards": 0,
-          "skipped_enforce": 0
-        },
-        "enforced": 1,
-        "title_suspect_cards": 1,
-        "removed": 0,
-        "items": [
-          {
-            "sec": "corp",
-            "title": "AMD 2026 第三季營收成長 45% 目標超越 Intel 成為最大 x86 供應商",
-            "source": "https://www.theregister.com/systems/2026/11/04/amd-on-track-to-overtake-intel-as-biggest-x86-outfit/5307448",
-            "rating": "core",
-            "coverage": "full",
-            "suspects": [],
-            "undetermined": [
-              "150"
-            ],
-            "tense_flag": false,
-            "title_suspects": [
-              "AMD 2026"
-            ]
-          },
-          {
-            "sec": "corp",
-            "title": "AMD 資料中心營收近翻倍 2026 Q3 亮眼表現",
-            "source": "https://www.cnbc.com/2026/11/03/amd-amd-q3-earnings-report-2026-.html",
-            "rating": "core",
-            "coverage": "full",
-            "suspects": [
-              "43 億美元"
-            ],
-            "undetermined": [
-              "85 億美元"
-            ],
-            "tense_flag": false,
-            "title_suspects": []
-          },
-          {
-            "sec": "corp",
-            "title": "Meta 計畫發行最高 250 億美元債券以支援 AI 基礎建設",
-            "source": "https://www.cnbc.com/2026/11/03/meta-bond-sale-ai-funding.html",
-            "rating": "core",
-            "coverage": "full",
-            "suspects": [],
-            "undetermined": [
-              "95 億美元"
-            ],
-            "tense_flag": false,
-            "title_suspects": []
-          }
-        ]
-      },
-      "date": "2026-11-05",
-      "generated_at": "2026-11-05T00:05:07.461789+08:00"
     }
   ]
 }

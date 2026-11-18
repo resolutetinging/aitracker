@@ -1,5 +1,84 @@
 [
   {
+    "date": "2026-11-19",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "美國商務部產業與安全局（BIS）收緊 AI 晶片及海外運算存取的限制",
+        "layer": "export_controls",
+        "body": "美國商務部產業與安全局（BIS）收緊 AI 晶片及海外運算存取的限制。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "—",
+        "source": "",
+        "desc_only": true
+      }
+    ],
+    "corp": [
+      {
+        "title": "Elementl Power 與 Google Cloud 合作推出 AI 套件，加速核能選址與許可流程——建立在與 Google 的既有合作基礎上",
+        "layer": "core",
+        "body": "Elementl Power 與 Google Cloud 合作推出 AI 套件，加速核能選址與許可流程——建立在與 Google 的既有合作基礎上。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "Data Center Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/elementl-power-partners-with-google-cloud-on-ai-suite-to-speed-up-nuclear-siting-and-licensing/",
+        "headline_only": true,
+        "thin_source": true
+      },
+      {
+        "title": "OpenAI 任命清潔能源負責人",
+        "layer": "opp",
+        "body": "Nate Sweet 加入團隊。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "Data Center Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/openai-hires-clean-energy-lead/",
+        "thin_source": true,
+        "desc_only": true
+      }
+    ],
+    "app": [
+      {
+        "title": "本日無相關app新聞",
+        "layer": "",
+        "body": "今日該分類無足夠具體新聞素材可供分析。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Edge AI",
+        "full": "Edge Artificial Intelligence（邊緣人工智慧）",
+        "def": "在終端設備或靠近資料來源的地方執行 AI 推論，減少延遲並提升資料隱私。",
+        "why": "Edge AI 讓農業機械等垂直應用能在現場即時決策，減少對雲端的依賴。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "核能選址 AI 套件",
+        "full": "利用人工智慧協助核電站選址與許可流程的軟體工具",
+        "def": "結合 GIS 數據、模擬模型與機器學習，快速評估核電站建設的環境與安全條件。",
+        "why": "加速核能建設可提升能源供應穩定性，同時為雲端算力與高效能硬體創造新需求。",
+        "category": "software"
+      },
+      {
+        "term": "Real World Evidence",
+        "full": "Real World Evidence (RWE)",
+        "def": "利用真實世界資料（如電子健康紀錄、保險理賠資料、患者登錄、穿戴式裝置與患者自報結果）進行醫療效果與安全性分析的技術與服務。",
+        "why": "RWE 可協助藥廠與醫療機構在臨床試驗之外快速取得實際使用情況，提升新藥上市與療效驗證效率。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-18",
     "is_sunday": false,
     "hw": [
@@ -835,87 +914,6 @@
         "def": "公司在排除一次性項目、股票基礎補償及非經常性支出後的營運利潤，用以衡量核心營運績效。",
         "why": "此指標揭示 AI 企業在高額研發與基礎設施支出下的獲利能力，關係供應鏈資金流向。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-11-12",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "OpenAI 建置「Control Room」緊急關閉系統",
-        "layer": "AI 安全與運營",
-        "body": "OpenAI 於本週二宣布已在研究實驗室部署名為「Control Room」的殺死開關，能在決策後 35 秒內停止模型產出。此系統透過快取層的推論授權機制實現快速中斷，並可更快執行關閉指令。",
-        "impact": "",
-        "rating": "core",
-        "insight": "OpenAI 的即時關閉機制提升模型安全，將刺激安全軟體供應鏈需求，同時穩定雲端運算資源使用。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/11/11/openai-builds-a-kill-switch-for-its-research-models/5309006"
-      },
-      {
-        "title": "Anthropic 在澳洲啟動零售 IPO，募資上限 904 億美元",
-        "layer": "資金與市場擴張",
-        "body": "Anthropic 本週三在澳洲開放零售 IPO，計畫募集最高 644 億美元的公開發行金額，另加 260 億美元的私募，合計最高可達 904 億美元。發行價格預計介於每股 70 至 78 美元，並於 11 月 17 日結束。參與券商包括 CommSec、Macquarie Group、Morgan Stanley Wealth Management 等。",
-        "impact": "",
-        "rating": "core",
-        "insight": "Anthropic 的大規模募資將推動 AI 計算資源需求，提升上游晶片與相關硬體供應鏈的成長動能。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/11/11/anthopic-australian-retail-ipo-offering-.html"
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Verano",
-        "full": "AMD Verano 處理器",
-        "def": "AMD 宣布的以 Zen 為基礎、針對 GPU 伺服器設計的處理器平台，旨在與 Nvidia Vera Rubin 超級晶片競爭。",
-        "why": "此平台代表 AMD 可能在 AI 伺服器市場尋求自有晶片供應，影響未來晶圓代工與記憶體需求。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "Control Room",
-        "full": "OpenAI 緊急關閉系統",
-        "def": "一套集中管理與即時中斷 AI 模型工作負載的系統，能在決策後 35 秒內停止模型輸出，以降低安全風險。",
-        "why": "提供模型安全的即時防護，降低異常運算對資源與服務的衝擊。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "零售 IPO",
-        "full": "面向個人投資者的首次公開發行",
-        "def": "公司向一般大眾投資者發行股份的上市方式，通常伴隨較大規模的募資目標。",
-        "why": "能快速聚集資金支援 AI 基礎設施擴張與研發投入。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "殺死開關 (kill switch)",
-        "full": "緊急停止 AI 模型運作的機制",
-        "def": "在偵測到安全或安全性問題時，立即中斷模型的推論與輸出，防止潛在危害。",
-        "why": "是大型 AI 研發機構必備的風險控制工具，影響算力使用與安全合規。",
-        "category": "hardware"
       }
     ],
     "weekly_summary": null
