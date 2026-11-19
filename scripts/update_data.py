@@ -69,6 +69,14 @@ if os.environ.get('GNEWS_DECODE', '').strip() == '0':
 GNEWS_DECODE_MAX = 15        # 單次執行解碼上限（Google 對 batchexecute 連打約 40 次就回 429）
 GNEWS_DECODE_GAP = 5         # 每則解碼之間至少間隔秒數
 GNEWS_TIMEOUT = 15
+# 429 退避（11-19）：11-19 第 1 則就 429、舊行為立刻停掉其餘 11 則 → 12 則全成只有標題／描述。
+# 改成同一則等待後重試：有 Retry-After（秒數或 HTTP 日期）就照它，否則依序等 GNEWS_429_WAITS 秒；
+# 同一則最多再試 len(GNEWS_429_WAITS) 次，仍 429（連續 429）才停止本次所有後續解碼。
+# 整次執行退避總等待 ≤ GNEWS_429_TOTAL_WAIT_MAX 秒（下一次需要的等待超過剩餘額度就直接停），避免拖長 Actions。
+# 重試也計入 attempted（GNEWS_DECODE_MAX／GNEWS_DECODE_GAP 不變，對 Google 的總請求量不增加）。
+GNEWS_429_WAITS = (45, 60)
+GNEWS_429_TOTAL_WAIT_MAX = 150
+GNEWS_429_RETRY_AFTER_MIN = 10
 # 內文有效性：標題關鍵詞（英文去停用詞、長度≥4；中文取 bigram）至少命中幾個才算真內文
 TEXT_TITLE_MIN_HITS = 2
 # 摘要候選的 RSS 描述扣掉標題後，至少要有幾個新詞才算有內容（Google News 描述＝標題＋媒體名）
@@ -649,13 +657,32 @@ def summary_is_headline_only(title, desc):
 # ── Google News 解碼（11-16）：news.google.com/rss/articles/… 直接抓只會拿到 Google 介紹頁。
 # 取文章頁的 data-n-a-sg／data-n-a-ts 簽章，POST batchexecute（rpcid Fbv4je，garturlreq）
 # 換回原網址。只對 enrich_with_full_text 即將抓全文的候選解碼；每則間隔 ≥ GNEWS_DECODE_GAP 秒、
-# 單次上限 GNEWS_DECODE_MAX 則；遇 HTTP 429 立刻停止本次所有後續解碼（不重試）。失敗不中斷管線。
+# 單次上限 GNEWS_DECODE_MAX 則；遇 HTTP 429 依 GNEWS_429_WAITS 退避重試（11-19），連續 429 才停止。失敗不中斷管線。
 _GNEWS_UA = ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
              '(KHTML, like Gecko) Chrome/124.0 Safari/537.36')
 _GNEWS_ARTICLE_PAT = re.compile(r'^https?://news\.google\.com/(?:rss/)?articles/([^?/#]+)', re.I)
 
 class GNewsRateLimited(Exception):
-    pass
+    def __init__(self, msg='', retry_after=None):
+        super().__init__(msg)
+        self.retry_after = retry_after  # 秒數（float）或 None
+
+def _parse_retry_after(value):
+    """Retry-After 標頭 → 秒數；支援整數秒與 HTTP 日期，解析不了回 None。"""
+    if not value:
+        return None
+    value = str(value).strip()
+    try:
+        return max(0.0, float(value))
+    except ValueError:
+        pass
+    try:
+        dt = parsedate_to_datetime(value)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return max(0.0, (dt - datetime.now(timezone.utc)).total_seconds())
+    except Exception:
+        return None
 
 def is_gnews_url(url):
     return bool(_GNEWS_ARTICLE_PAT.match(url or ''))
@@ -670,7 +697,12 @@ def _gnews_get(url, data=None, headers=None):
             return r.read().decode('utf-8', 'replace')
     except urllib.error.HTTPError as e:
         if e.code == 429:
-            raise GNewsRateLimited(str(e))
+            ra = None
+            try:
+                ra = _parse_retry_after(e.headers.get('Retry-After') if e.headers else None)
+            except Exception:
+                ra = None
+            raise GNewsRateLimited(str(e), retry_after=ra)
         raise
 
 def _gnews_parse_batchexecute(out):
@@ -729,30 +761,62 @@ def decode_gnews_url(url):
         return dec
     return None
 
+def _gnews_429_wait(state, retry_no, retry_after):
+    """第 retry_no 次重試（0 起算）前要等的秒數；超過總額度回 None（呼叫端據此停止）。"""
+    if retry_no >= len(GNEWS_429_WAITS):
+        return None
+    if retry_after is not None:
+        wait = max(float(GNEWS_429_RETRY_AFTER_MIN), float(retry_after))
+    else:
+        wait = float(GNEWS_429_WAITS[retry_no])
+    remaining = GNEWS_429_TOTAL_WAIT_MAX - state.get('backoff_wait_sec', 0)
+    if wait > remaining:
+        return None
+    return wait
+
 def gnews_decode_limited(url, state):
-    """加上次數上限、間隔與 429 熔斷的解碼；state 會被更新並寫進 RUN_STATS['gnews_decode']。"""
+    """加上次數上限、間隔與 429 退避／熔斷的解碼；state 會被更新並寫進 RUN_STATS['gnews_decode']。
+    11-19：遇 429 不再立刻放棄整批，見 GNEWS_429_WAITS 註解；backoff_count／backoff_wait_sec 記退避次數與秒數。"""
     if not GNEWS_DECODE or state.get('rate_limited'):
         state['skipped'] = state.get('skipped', 0) + 1
         return None
     if state.get('attempted', 0) >= GNEWS_DECODE_MAX:
         state['skipped_cap'] = state.get('skipped_cap', 0) + 1
         return None
-    wait = GNEWS_DECODE_GAP - (time.time() - state.get('_last', 0.0))
-    if state.get('_last') and wait > 0:
-        time.sleep(wait)
-    state['attempted'] = state.get('attempted', 0) + 1
     if 'started_at' not in state:
         state['started_at'] = datetime.now(TW).isoformat(timespec='seconds')
-    try:
-        dec = decode_gnews_url(url)
-    except GNewsRateLimited:
-        state['rate_limited'] = True
-        dec = None
-        print("  ⚠ Google News 解碼遇到 HTTP 429，本次執行停止所有後續解碼")
-    except Exception as e:
-        dec = None
-        print(f"  ⚠ Google News 解碼失敗（不影響管線）：{str(e)[:80]}")
-    state['_last'] = time.time()
+    state.setdefault('backoff_count', 0)
+    state.setdefault('backoff_wait_sec', 0)
+    dec = None
+    retry_no = 0
+    while True:
+        wait = GNEWS_DECODE_GAP - (time.time() - state.get('_last', 0.0))
+        if state.get('_last') and wait > 0:
+            time.sleep(wait)
+        state['attempted'] = state.get('attempted', 0) + 1
+        try:
+            dec = decode_gnews_url(url)
+            state['_last'] = time.time()
+            break
+        except GNewsRateLimited as e:
+            state['_last'] = time.time()
+            dec = None
+            bw = _gnews_429_wait(state, retry_no, getattr(e, 'retry_after', None))
+            if bw is None or state['attempted'] >= GNEWS_DECODE_MAX:
+                state['rate_limited'] = True
+                print("  ⚠ Google News 解碼連續遇到 HTTP 429（或退避額度／次數用完），本次執行停止所有後續解碼")
+                break
+            retry_no += 1
+            state['backoff_count'] += 1
+            state['backoff_wait_sec'] = int(round(state['backoff_wait_sec'] + bw))
+            print(f"  ⚠ Google News 解碼遇到 HTTP 429，等待 {bw:.0f} 秒後重試（第 {retry_no} 次）")
+            time.sleep(bw)
+            state['_last'] = 0.0  # 剛退避完，不再疊加 GNEWS_DECODE_GAP
+        except Exception as e:
+            state['_last'] = time.time()
+            dec = None
+            print(f"  ⚠ Google News 解碼失敗（不影響管線）：{str(e)[:80]}")
+            break
     if dec:
         state['ok'] = state.get('ok', 0) + 1
     else:
@@ -966,7 +1030,7 @@ def enrich_with_full_text(buckets, max_fetch=12):
     cache = {}
     url_map = {}
     decode_state = {'attempted': 0, 'ok': 0, 'failed': 0, 'rate_limited': False,
-                    'skipped': 0, 'skipped_cap': 0}
+                    'skipped': 0, 'skipped_cap': 0, 'backoff_count': 0, 'backoff_wait_sec': 0}
     fail_reasons = {}
     fetched = 0
     attempted = {c: set() for c in cats}
@@ -1074,7 +1138,9 @@ def enrich_with_full_text(buckets, max_fetch=12):
         lists[c] = front + rest
     if fetched:
         print(f"  → 已抓取 {fetched} 篇完整內文取代薄摘要（三分類輪流分配，非先到先贏）")
-    rl_note = '（遇 429 已停止）' if decode_state['rate_limited'] else ''
+    rl_note = '（連續 429 已停止）' if decode_state['rate_limited'] else ''
+    if decode_state.get('backoff_count'):
+        rl_note += f"（429 退避 {decode_state['backoff_count']} 次、共等 {decode_state['backoff_wait_sec']} 秒）"
     print(f"  → Google News 解碼：嘗試 {decode_state['attempted']}、成功 {decode_state['ok']}{rl_note}；"
           f"標記 HEADLINE_ONLY：全文失敗 {ho['fetch_failed']} 條、描述只有標題 {ho['thin_summary']} 條")
     try:
@@ -1372,6 +1438,14 @@ PROMPT_FULLTEXT_SHARE = 0.5
 # LLM 回 noise。改走 pack：全文內文同樣只放前 600 字，佔比上限見下（依 1116 三份試跑素材離線重算）。
 CORP_PROMPT_FULLTEXT_CHARS = 600
 CORP_PROMPT_FULLTEXT_SHARE = 0.3
+# corp 全文保底（11-19）：佔比上限綁在「被 TPM 估算壓縮後的預算」上，預算縮到 4113 字時
+# 上限只剩 1233 字，一則縮短後的全文（標題＋網址＋600 字內文）約 800 字，7 則全文只送得進 1 則，
+# 其餘 6 則延後到摘要之後、摘要已把預算填滿 → 11-19 corp 全文 7→1、多數卡只剩描述。
+# 全文是唯一能寫出非 desc_only／headline_only 卡的素材，故保底：佔比上限至少容納前
+# CORP_PROMPT_FULLTEXT_MIN 則全文，但不超過預算 CORP_PROMPT_FULLTEXT_MAX_SHARE（留 ≥40% 給摘要候選，
+# 維持 11-17 擴大送出候選數的目的）。只改裝箱順序，不改總預算，TPM 估算不受影響。
+CORP_PROMPT_FULLTEXT_MIN = 3
+CORP_PROMPT_FULLTEXT_MAX_SHARE = 0.6
 _FULLTEXT_ENTRY_PAT = re.compile(r'SOURCE_URL:\S+ — ')  # 與 _fa_index_materials 同一判準
 
 def _trim_fulltext_entry(entry, max_chars=PROMPT_FULLTEXT_CHARS):
@@ -1409,6 +1483,11 @@ def _fit_news_context(news_context, category, budget, sent_out=None):
     full_total = sum(1 for e in entries if _FULLTEXT_ENTRY_PAT.search(e))
     full_chars, full_share = _fulltext_params(category)
     full_cap = int(budget * full_share)
+    if category == 'corp':
+        # 11-19 全文保底（見 CORP_PROMPT_FULLTEXT_MIN 註解）
+        _first = [_trim_fulltext_entry(e, full_chars) for e in entries if _FULLTEXT_ENTRY_PAT.search(e)]
+        _need = sum(len(t) for t in _first[:CORP_PROMPT_FULLTEXT_MIN])
+        full_cap = max(full_cap, min(_need, int(budget * CORP_PROMPT_FULLTEXT_MAX_SHARE)))
     chosen, deferred = [], []
     chosen_orig = []
     total, full_used = 0, 0
@@ -1568,6 +1647,13 @@ MAIN_MIN_NEWS_CHARS = 3000
 # 安全餘裕 300：目標是「估算 ≈ 實際＋300」。1116b 以此公式回算：hw 6524（實際 6196）、
 #   corp 6639（實際 5718，當天 completion 只有 761）、app 5435（實際 4719）
 MAIN_TOKEN_CALIBRATION = 0.84
+# 11-19：MAIN_CALL_TOKEN_TARGET／校準值不動（11-19 正式排程實測 corp 6869、app 6800 tokens，
+#   app 實際 prompt 比估算高約 20%（Google News 長網址多），沒有放寬依據）。改從固定規則省 token：
+#   system＋user 固定部分估算 4470→4025（11-15 為 3774；11-16～18 新增的規則段原樣保留），
+#   刪的只是重複敘述與舉例（見 main_system_message docstring；user RULES 刪 body LENGTH IS VARIABLE 整條、
+#   body FORBIDDEN 與 ONE STORY PER CARD 重複的子句、GENERIC REASONING 與 body 說明重複的結尾、
+#   impact 規則改為只寫 ITEM 格式沒有的上下游／替代方案要求、source 規則併入 SOURCE_URL LOCATION）。
+#   以 11-19 規模重算 corp 新聞預算約 4400→6000 字，再加 corp 全文保底（CORP_PROMPT_FULLTEXT_MIN）。
 MAIN_EXPECTED_COMPLETION = {'hw': 1170, 'corp': 1270, 'app': 910}
 MAIN_TOKEN_SAFETY = 300
 
@@ -1657,19 +1743,17 @@ RULES:
 - if no relevant news → 1 noise item only, and that item's title/body must PLAINLY say so (e.g. title:"今日無相關新聞", body:"今日該分類無足夠具體新聞素材可供分析。") — do NOT invent a vague-sounding pseudo-headline like "AI 應用進步" or "產業趨勢觀察" with circular reasoning; a fake generic title is worse than admitting there is no news
 - RATING PHILOSOPHY (materiality over phrasing strictness): weigh real-world significance over how strictly the wording matches a checklist — a story that is clearly a big deal should not be rated noise just because its phrasing is informal. CORE examples: a major or challenger company reducing supplier dependency via a self-developed chip (e.g. DeepSeek developing its own AI chip to cut reliance on Nvidia) -> core; a billion-dollar-scale financing round or acquisition (e.g. SambaNova closing an approximately 1.1 billion USD Series F) -> core; a 100MW-plus data-center build or firm commitment -> core or opp. NOISE examples: a small regional project that was abandoned or rejected (e.g. a 29MW project dropped in a Montana county, a Texas county rejecting a bitcoin-mining data center) -> noise; an intent-only announcement with no concrete scale or timeline -> noise. When a story clearly matches a CORE example, write the body around whichever facts ARE available (named entity plus amount/spec) rather than defaulting to noise merely because the wording is informal — the 60-character / named-entity / concrete-fact bar below still applies, but do not let phrasing strictness override obvious real-world materiality
 - ONE STORY PER CARD (critical): each item covers exactly one news event or announcement; if the source contains 2 unrelated stories, create 2 separate items; NEVER mix multiple unrelated events into one body — doing so is a format error
-- body LENGTH IS VARIABLE (1-3 sentences), NOT FIXED: write only as many sentences as you have distinct facts for; a true 1-sentence body outranks a padded 3-sentence one — padding is treated as noise regardless of sentence count, so there is no benefit to reaching 3
 - body MINIMUM BAR (hard requirement): body must total at least 60 characters AND include at least 1 concrete fact (numbers/quantities, specs, monetary amounts, timelines/dates, or place names) PLUS at least 1 named entity (a specific company, institution, or product name) — e.g. "X簽署合約，金額N美元" DOES pass this bar (X = named entity, N美元 = concrete fact); a body with neither a concrete fact nor a named entity fails this bar; if the source truly supports neither, rate the item noise rather than stretching it to 60 characters with filler
-- body FORBIDDEN: never write "這是X的重要趨勢" / "這將推動X發展" / "可能會帶來新的機會" — these add no facts; never combine two unrelated companies or events in the same body
-- body GENERIC REASONING FORBIDDEN: if you only have ONE concrete fact from the source, do NOT pad the remaining sentences with generic economic-impact reasoning that could apply to any company ("將迫使競爭對手提高服務質量和降低價格", "預計將創造大量的就業機會", "投資者應該關注...的發展", "對使用者/企業產生競爭壓力") — these are template filler, not facts; sentence 2 and 3 MUST cite a different concrete detail from the source text (another number, date, named entity, or quote) — if the source genuinely offers only one fact and no named entity to pair with it, rate the item noise instead of padding
+- body FORBIDDEN: never write "這是X的重要趨勢" / "這將推動X發展" / "可能會帶來新的機會" — these add no facts
+- body GENERIC REASONING FORBIDDEN: if you only have ONE concrete fact from the source, do NOT pad the remaining sentences with generic economic-impact reasoning that could apply to any company ("將迫使競爭對手提高服務質量和降低價格", "預計將創造大量的就業機會", "投資者應該關注...的發展", "對使用者/企業產生競爭壓力") — these are template filler, not facts; sentence 2 and 3 MUST cite a different concrete detail from the source text (another number, date, named entity, or quote)
 - SOURCE REQUIREMENT: every core or opp item MUST have a SOURCE_URL from the news; if no SOURCE_URL exists for a story, you MUST rate it noise — never assign core/opp to unsourced items
-- SOURCE_URL LOCATION: for each news entry, "SOURCE_URL:" appears right after the headline, BEFORE the long article text that follows — do not skip past it; before writing each item's "source" field, look back at the SOURCE_URL that immediately followed that entry's headline and copy it exactly; leaving "source" empty for a story that actually has a SOURCE_URL is a mistake, not a valid choice
+- SOURCE_URL LOCATION: for each news entry, "SOURCE_URL:" appears right after the headline, BEFORE the long article text that follows — do not skip past it; before writing each item's "source" field, look back at the SOURCE_URL that immediately followed that entry's headline and copy it exactly (never fabricate URLs); leaving "source" empty for a story that actually has a SOURCE_URL is a mistake, not a valid choice
 - HALLUCINATION IS FORBIDDEN: do not combine unrelated companies or technologies; every company-technology pairing must come directly from the news text
 - FORBIDDEN ADOPTION CLAIM: NEVER write that a major platform company (Google/Microsoft/Amazon/Meta/Apple/Nvidia) "has adopted", "is using", or "already uses" technology from a smaller/startup company unless the source article EXPLICITLY names that platform company as a confirmed customer, partner, or evaluator — inference-based adoption claims are hallucinations and will be rejected
 - FORBIDDEN CAPACITY TEMPLATE: NEVER write production/manufacturing capacity figures ("每月X個單位的產能", "月產X萬晶圓", "產能達每月X") for software, IP licensing, or startup companies that do not operate physical fabs — this phrasing belongs only to foundry/memory manufacturers (TSMC, Samsung, SK Hynix, Micron, OSAT); applying it to non-fab entities is a hallucination regardless of what numbers appear in other articles
 - FORBIDDEN GROWTH FORECAST: NEVER invent a specific revenue-growth percentage or forecast ("該公司預計在20XX年底前將其X業務收入增加N%") unless that exact number appears verbatim in the source text — a company's real news being reported does NOT license you to guess a plausible-sounding percentage
-- impact: write a genuine supply chain analysis — identify upstream suppliers, downstream customers, and competing alternatives affected by this event; state direction (↑/↓) and mechanism for each; do NOT rephrase the body; NEVER use vague phrases like "可能會影響X" without specifying direction and reason; NEVER mention stock prices
+- impact: besides the rules in the ITEM format above, name the upstream suppliers, downstream customers, and competing alternatives affected, each with direction (↑/↓) and mechanism
 - glossary_new: required, 1-3 terms from today's news that readers may not know
-- source: copy verbatim from SOURCE_URL in the news; never fabricate URLs
 {SOURCE_FIDELITY_RULES}{person_name_rule_text()}
 {HEADLINE_ONLY_RULES}{DESC_ONLY_RULES}- All titles, body, impact, insight in Traditional Chinese (zh-TW)
 - weekly_summary: {weekly_rule}
@@ -1999,15 +2083,22 @@ def dedup_and_freshness_check(data, recent_items):
         print(f"  → 語意去重/新鮮度檢核失敗：{e}")
 
 def main_system_message():
-    """分類主呼叫的 system 訊息（11-16 抽出成函式，make_prompt 估算 token 時共用）。"""
+    """分類主呼叫的 system 訊息（11-16 抽出成函式，make_prompt 估算 token 時共用）。
+    11-19 精簡（只刪重複敘述與舉例，每條規則語意都保留）：用語對照表刪掉「例如…不可寫成…」舉例、
+    語言鐵律刪中越混雜舉例、noise 鐵律刪與 user prompt 重複的假標題舉例、【body 句數】整段與
+    user prompt 的 body 規則（Each ITEM body 說明＋body MINIMUM BAR／GENERIC REASONING）完全重複故刪。"""
     return (
-        "你是AI供應鏈分析師。只輸出純JSON，不加說明。全程繁體中文：晶片（非芯片）、記憶體（非内存）、當機（非宕機）、合併（非合並，例如「合併了一個拉取請求」不可寫成「合並」）、合約（非合同，例如「國防部合約」不可寫成「國防部合同」）、硬體（非硬件）、軟體（非軟件）、影片（非視頻）、程式（非程序，例如「應用程式」不可寫「應用程序」）、智慧（非智能，例如「人工智慧」不可寫「人工智能」）、範圍（非范圍）、電腦（非計算機）、網路（非網絡）、品質（非質量，例如「服務品質」不可寫「服務質量」）、資訊（非信息，例如「地理資訊」不可寫「地理信息」、「虛假資訊」不可寫「虛假信息」）。"
-        "【語言鐵律】title/body/impact/insight 全部欄位只准繁體中文（含允許保留原文的英文專有名詞、公司名、產品名），絕對禁止出現任何其他語言的字詞或片語——包括但不限於越南文、日文、韓文、泰文、西班牙文——連接詞、助詞、單字都不例外（例如絕不可寫成「A nhưng B」這種中越文混雜的句子）。若不確定某詞彙屬於哪種語言，一律改寫成純繁體中文表達，不要照抄原文語言。"
-        "【公司名稱】一律用原文品牌名（Google、Apple、Meta、Microsoft、Amazon、Qualcomm等），不可翻譯成中文（禁止「谷歌」「蘋果」「高通」等譯名）；台灣上市公司既有中文全名（如台積電、日月光）不受影響。"
+        "你是AI供應鏈分析師。只輸出純JSON，不加說明。全程繁體中文：晶片（非芯片）、記憶體（非内存）、"
+        "當機（非宕機）、合併（非合並）、合約（非合同）、硬體（非硬件）、軟體（非軟件）、影片（非視頻）、"
+        "程式（非程序）、智慧（非智能）、範圍（非范圍）、電腦（非計算機）、網路（非網絡）、品質（非質量）、"
+        "資訊（非信息）。"
+        "【語言鐵律】title/body/impact/insight 全部欄位只准繁體中文（含允許保留原文的英文專有名詞、公司名、產品名），"
+        "絕對禁止出現任何其他語言的字詞或片語——包括但不限於越南文、日文、韓文、泰文、西班牙文——連接詞、助詞、單字都不例外。"
+        "若不確定某詞彙屬於哪種語言，一律改寫成純繁體中文表達，不要照抄原文語言。"
+        "【公司名稱】一律用原文品牌名（Google、Apple、Meta、Microsoft、Amazon、Qualcomm等），"
+        "不可翻譯成中文（禁止「谷歌」「蘋果」「高通」等譯名）；台灣上市公司既有中文全名（如台積電、日月光）不受影響。"
         "【noise 鐵律】某分區若已有任何 core 或 opp 條目，該分區嚴禁再加 noise 條目。"
-        "noise 條目的 title 必須是『本日無相關[分區名稱]新聞』，不得使用任何具體或看似具體的新聞標題（例如「AI 應用進步」「產業趨勢觀察」皆為違規）。"
-        "【body 句數】body 是 1 到 3 句，句數視你實際掌握的具體事實數量而定，不得為了湊句數而重述前一句或加入未經證實的推論；"
-        "湊出來的句子無論句數多寡都會被視為空洞輸出。"
+        "noise 條目的 title 必須是『本日無相關[分區名稱]新聞』，不得使用任何具體或看似具體的新聞標題。"
         + system_fidelity_text()
     )
 
