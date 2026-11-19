@@ -3,6 +3,400 @@
     {
       "feeds": {
         "Semiconductor": 67,
+        "CSP/CapEx": 42,
+        "App/AI": 7,
+        "gnews-chip": 20,
+        "gnews-dc": 24,
+        "gnews-app": 20
+      },
+      "digest_filtered": 0,
+      "after_dedup": 175,
+      "buckets": {
+        "hw": 57,
+        "corp": 119,
+        "app": 18
+      },
+      "news_char_budget": {
+        "hw": 6000,
+        "corp": 5534,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 57,
+          "full_text_total": 4,
+          "full_text_sent": 3,
+          "sent": 12,
+          "partial_cut": 0,
+          "chars_sent": 5828,
+          "dropped": 45
+        },
+        "corp": {
+          "mode": "pack",
+          "budget": 5534,
+          "candidates": 119,
+          "full_text_total": 1,
+          "full_text_sent": 1,
+          "sent": 16,
+          "partial_cut": 0,
+          "chars_sent": 5460,
+          "dropped": 103
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 18,
+          "full_text_total": 7,
+          "full_text_sent": 4,
+          "sent": 12,
+          "partial_cut": 0,
+          "chars_sent": 5719,
+          "dropped": 6
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 2,
+        "corp": 2,
+        "app": 2
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 4973,
+          "completion_tokens": 1573,
+          "total_tokens": 6546
+        },
+        "corp": {
+          "prompt_tokens": 5207,
+          "completion_tokens": 1277,
+          "total_tokens": 6484
+        },
+        "app": {
+          "prompt_tokens": 4794,
+          "completion_tokens": 1342,
+          "total_tokens": 6136
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "corp",
+          "title": "Intel 獲得首位外部客戶採用 18A‑P 製程",
+          "gate": "enforce_desc_only",
+          "action": "rating core→opp",
+          "reason": "素材只有 RSS 描述，core 上限 opp"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "feed_errors": [
+        {
+          "label": "Semiconductor",
+          "host": "www.digitimes.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "CSP/CapEx",
+          "host": "techcrunch.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "App/AI",
+          "host": "feeds.arstechnica.com",
+          "error": "zero_kept",
+          "detail": "items=20 bytes=75690"
+        },
+        {
+          "label": "App/AI",
+          "host": "techcrunch.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "App/AI",
+          "host": "venturebeat.com",
+          "error": "HTTP 429",
+          "detail": "Too Many Requests"
+        }
+      ],
+      "gnews_feed_times": [
+        {
+          "label": "gnews-chip",
+          "at": "2026-11-20T00:00:50+08:00"
+        },
+        {
+          "label": "gnews-dc",
+          "at": "2026-11-20T00:00:51+08:00"
+        },
+        {
+          "label": "gnews-app",
+          "at": "2026-11-20T00:00:51+08:00"
+        }
+      ],
+      "unmatched_dropped": 24,
+      "gnews_decode": {
+        "attempted": 12,
+        "ok": 12,
+        "failed": 0,
+        "rate_limited": false,
+        "skipped": 0,
+        "skipped_cap": 0,
+        "backoff_count": 0,
+        "backoff_wait_sec": 0,
+        "started_at": "2026-11-20T00:00:55+08:00"
+      },
+      "headline_only": {
+        "fetch_failed": 3,
+        "thin_summary": 77,
+        "fetch_failed_desc_kept": 5,
+        "fail_reasons": {
+          "error": 3,
+          "http_429": 1,
+          "invalid_text": 2,
+          "http_403": 2
+        }
+      },
+      "main_call_estimate": {
+        "hw": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 4996,
+          "est_completion_tokens": 1170,
+          "safety": 300,
+          "est_total_tokens": 6466,
+          "target": 6800
+        },
+        "corp": {
+          "news_char_budget": 5534,
+          "est_prompt_tokens": 5190,
+          "est_completion_tokens": 1270,
+          "safety": 300,
+          "est_total_tokens": 6760,
+          "target": 6800
+        },
+        "app": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 4971,
+          "est_completion_tokens": 910,
+          "safety": 300,
+          "est_total_tokens": 6181,
+          "target": 6800
+        }
+      },
+      "retry": {
+        "hw": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "corp": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "app": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        }
+      },
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "headline_only_cards": {
+        "marked": 0,
+        "downgraded": 0,
+        "scrubbed": 0
+      },
+      "deepen": {
+        "candidates": 1,
+        "rewritten": 0,
+        "fetch_failed": 1,
+        "llm_failed": 0
+      },
+      "gate_reasons": {
+        "enforce_desc_only": {
+          "Intel 獲得首位外部客戶採用 18A‑P 製程": "素材只有 RSS 描述，core 上限 opp"
+        }
+      },
+      "desc_only_cards": {
+        "marked": 1,
+        "downgraded": 1,
+        "body_trimmed": 0,
+        "scrubbed": 1
+      },
+      "numeric_gate": {
+        "runs": 2,
+        "removed": 0,
+        "sentences_dropped": 0,
+        "contradiction_removed": 0,
+        "no_material": 0,
+        "items": []
+      },
+      "scrub_skipped": {
+        "fix_chains": 1,
+        "validate_impact": 1
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 6,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 1,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "fragment_restored": 0,
+        "items": [
+          {
+            "sec": "hw",
+            "title": "美國眾議院議長 Johnson 支持加緊 AI 晶片出口管制",
+            "source": "https://www.nola.com/news/mike-johnson-ai-chips-nvidia/article_72ddd6a2-3645-4e78-9f05-3de77a9498ba.html",
+            "rating": "opp",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [
+              "11月19日"
+            ],
+            "tense_flag": false,
+            "title_suspects": []
+          },
+          {
+            "sec": "corp",
+            "title": "Qualcomm 推出 Dragonfly AI200 伺服器測試服務",
+            "source": "https://www.theregister.com/systems/2026/11/19/qualcomm-offers-test-drive-of-its-rack-scale-nvidia-ai-challenger/5310966",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [
+              "11"
+            ],
+            "tense_flag": false,
+            "title_suspects": []
+          }
+        ]
+      },
+      "llm_fact_check": {
+        "enabled": true,
+        "calls": 3,
+        "failed_calls": 0,
+        "checked": 6,
+        "ok": 3,
+        "fixed": 3,
+        "dropped": 0,
+        "missing": 0,
+        "skipped_over_budget": 0,
+        "est_prompt_tokens": [
+          2153,
+          1909,
+          2069
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 1980,
+            "completion_tokens": 458,
+            "total_tokens": 2438
+          },
+          {
+            "prompt_tokens": 1828,
+            "completion_tokens": 631,
+            "total_tokens": 2459
+          },
+          {
+            "prompt_tokens": 1838,
+            "completion_tokens": 181,
+            "total_tokens": 2019
+          }
+        ],
+        "items": [
+          {
+            "title": "TSMC 收緊中國 AI 晶片限制 暫停先進製程訂單",
+            "verdict": "fix",
+            "returned": {
+              "title": "TSMC 收緊中國 AI 晶片限制 暫停先進製程訂單",
+              "body": "TSMC 於 11 月 19 日宣布，將暫停使用 16 奈米及以下製程的已批准訂單，除非客戶取得美國出口許可，並將受影響客戶限制於較舊的 28 奈米與 40 奈米製程（不使用高頻寬記憶體或先進封裝）。"
+            },
+            "reason": "原文指出暫停的是 16 奈米及以下製程，而非 7 奈米及以下；限制的較舊製程為 28 奈米與 40 奈米。",
+            "new_title": "TSMC 收緊中國 AI 晶片限制 暫停先進製程訂單"
+          },
+          {
+            "title": "Intel 獲得首位外部客戶採用 18A‑P 製程",
+            "verdict": "fix",
+            "returned": {
+              "title": "Intel 獲得首位外部客戶採用 18A‑P 製程",
+              "body": "Intel 獲得首位外部客戶採用 18A‑P 製程，客戶未具名。"
+            },
+            "reason": "BODY 含有未在 RSS 描述中出現的資訊（如效能與能效比），需僅保留描述內容。",
+            "new_title": "Intel 獲得首位外部客戶採用 18A‑P 製程"
+          },
+          {
+            "title": "Qualcomm 推出 Dragonfly AI200 伺服器測試服務",
+            "verdict": "fix",
+            "returned": {
+              "title": "Qualcomm 推出 Dragonfly AI200 伺服器測試服務",
+              "body": "Qualcomm 於 11 月 17-18 日在芝加哥 SC26 展示其 Dragonfly AI200 機架等級推論系統，並透過 Cirrascale Cloud Services 開放雲端試用給選定客戶。每張 AI200 加速卡配備 768 GB LPDDR 記憶體，56 卡提供約 43 TB 的液冷機架容量。系統支援模型範圍從 70 億至 10 兆參數。"
+            },
+            "reason": "移除未在原文中提供的 IMPACT 內容，保留原文事實。",
+            "new_title": "Qualcomm 推出 Dragonfly AI200 伺服器測試服務"
+          }
+        ],
+        "desc_only_sent": 1
+      },
+      "date": "2026-11-20",
+      "generated_at": "2026-11-20T00:12:13.309135+08:00"
+    },
+    {
+      "feeds": {
+        "Semiconductor": 67,
         "CSP/CapEx": 38,
         "App/AI": 11,
         "gnews-chip": 23,
@@ -2962,99 +3356,6 @@
       },
       "date": "2026-11-07",
       "generated_at": "2026-11-07T00:04:43.645054+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 57,
-        "CSP/CapEx": 52,
-        "App/AI": 26,
-        "gnews-chip": 18,
-        "gnews-dc": 22,
-        "gnews-app": 17
-      },
-      "digest_filtered": 0,
-      "after_dedup": 179,
-      "buckets": {
-        "hw": 36,
-        "corp": 126,
-        "app": 36
-      },
-      "news_char_budget": {
-        "hw": 4200,
-        "corp": 8000,
-        "app": 4200
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "placeholders": 0,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 3,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "deepen": {
-        "candidates": 2,
-        "rewritten": 1,
-        "fetch_failed": 1,
-        "llm_failed": 0
-      },
-      "dedup_audit": [],
-      "fact_audit": {
-        "mode": "enforce",
-        "checked": 4,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 1,
-        "low_coverage": {
-          "checked": 0,
-          "suspect_cards": 0,
-          "skipped_enforce": 0
-        },
-        "enforced": 0,
-        "title_suspect_cards": 0,
-        "removed": 0,
-        "items": []
-      },
-      "date": "2026-11-06",
-      "generated_at": "2026-11-06T00:05:08.795592+08:00"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19",
+ "updated": "2026-11-20",
  "since": "2026-07-01",
  "entities": [
   {
@@ -982,47 +982,48 @@
   {
    "week": "2026-W47",
    "start": "2026-11-16",
-   "cards": 17,
+   "cards": 23,
    "dims": {
     "hw": {
-     "core": 3,
-     "opp": 4,
+     "core": 4,
+     "opp": 5,
      "noise": 0
     },
     "corp": {
-     "core": 3,
-     "opp": 3,
+     "core": 4,
+     "opp": 4,
      "noise": 0
     },
     "app": {
-     "core": 0,
-     "opp": 4,
+     "core": 1,
+     "opp": 5,
      "noise": 0
     }
    },
    "mentions": {
-    "NVIDIA": 4,
-    "出口管制": 3,
+    "NVIDIA": 5,
+    "出口管制": 4,
     "Anthropic": 2,
     "Google": 3,
-    "Microsoft": 1,
+    "Microsoft": 2,
     "Amazon": 2,
-    "TSMC": 1,
+    "TSMC": 2,
     "Micron": 1,
     "AMD": 3,
     "Broadcom": 1,
-    "推論": 1,
+    "推論": 2,
     "OpenAI": 2,
     "主權 AI": 1,
-    "資料中心電力／能源": 1
+    "資料中心電力／能源": 1,
+    "HBM": 1,
+    "CoWoS／先進封裝": 1,
+    "Qualcomm": 1,
+    "液冷／散熱": 1,
+    "Intel": 1
    }
   }
  ],
  "seen": [
-  "2026-10-29|Apple 推出第六代 M 系列晶片 M6 於 MacBook Pro 與 iMac",
-  "2026-10-29|Google 開放 TPU 供應給雲端合作夥伴以擴大 AI 晶片銷售",
-  "2026-10-29|Oracle 與 Google 合作於 OCI 提供 TPU 服務",
-  "2026-10-29|SK Hynix 預測記憶體短缺將持續至 2030 年",
   "2026-10-30|Google Gemini 4 Carbon 定價維持現價，未來將翻倍",
   "2026-10-30|Oracle 於 OCI 推出使用量計費 AI 服務",
   "2026-10-31|AWS 每 14 秒安裝一顆 AI 加速卡，目標 2027 年營收突破 1 兆美元",
@@ -1096,6 +1097,12 @@
   "2026-11-18|加州總檢察長起訴 OpenAI 誤導公眾安全資訊",
   "2026-11-18|川普政府加嚴 AI 晶片出口限制",
   "2026-11-19|Elementl Power 與 Google Cloud 合作推出 AI 套件，加速核能選址與許可流程——建立在與 Google 的既有合作基礎上",
-  "2026-11-19|OpenAI 任命清潔能源負責人"
+  "2026-11-19|OpenAI 任命清潔能源負責人",
+  "2026-11-20|Intel 獲得首位外部客戶採用 18A‑P 製程",
+  "2026-11-20|NC CHAIN 協助北卡農村醫療機構安全導入 AI 工具",
+  "2026-11-20|Qualcomm 推出 Dragonfly AI200 伺服器測試服務",
+  "2026-11-20|Straive 於 Microsoft Ignite 展示 700+ AI 加速器助企業快速部署",
+  "2026-11-20|TSMC 收緊中國 AI 晶片限制 暫停先進製程訂單",
+  "2026-11-20|美國眾議院議長 Johnson 支持加緊 AI 晶片出口管制"
  ]
 }

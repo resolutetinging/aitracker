@@ -1,5 +1,165 @@
 [
   {
+    "date": "2026-11-20",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "TSMC 收緊中國 AI 晶片限制 暫停先進製程訂單",
+        "layer": "policy",
+        "body": "TSMC 於 11 月 19 日宣布，將暫停使用 16 奈米及以下製程的已批准訂單，除非客戶取得美國出口許可，並將受影響客戶限制於較舊的 28 奈米與 40 奈米製程（不使用高頻寬記憶體或先進封裝）。",
+        "impact": "TSMC 先進製程產能需求 ↓，導致先進製程晶圓代工廠的利用率下降；同時，較舊製程的需求 ↑，提升 OSAT 及封測廠的產能使用。中國 AI 晶片設計公司失去取得先進製程的管道，可能轉向本土或其他非美國供應鏈，進一步削弱美國晶片技術在中國市場的滲透。",
+        "rating": "core",
+        "insight": "投資者應關注 TSMC 先進製程訂單減少對營收的直接衝擊與中國客戶需求轉移的長期影響。",
+        "source_label": "Reuters",
+        "source": "https://95kqds.com/2026/11/19/tsmc-tightens-china-ai-chip-curbs-as-new-us-rules-close-manufacturing-loophole-sources-say/",
+        "chain": [
+          {
+            "label": "TSMC 7nm 產能↓",
+            "type": "down"
+          },
+          {
+            "label": "Nvidia AI晶片供應↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "美國眾議院議長 Johnson 支持加緊 AI 晶片出口管制",
+        "layer": "policy",
+        "body": "美國眾議院議長 Mike Johnson（路易斯安那州共和黨）在 11 月 19 日表示，將支持在 Nvidia 相關醜聞後加緊對 AI 晶片的出口管制。此聲明出現在民主黨於 11 月 3 日中期選舉取得國會控制權的背景下，顯示美國立法層面對中國取得先進 AI 晶片的限制意圖增強。",
+        "impact": "美國對 AI 晶片的出口管制力度 ↑，可能迫使美國晶圓代工與 HBM 供應商減少對中國客戶的出貨；中國 AI 晶片公司將面臨供應短缺，可能加速尋找替代供應商或自行研發，進一步影響全球晶片供應鏈的地理分布。",
+        "rating": "opp",
+        "insight": "政策信號顯示未來美國對 AI 晶片的出口限制將更嚴格，相關供應鏈參與者需評估合規風險與市場重新配置。",
+        "source_label": "NOLA.com",
+        "source": "https://www.nola.com/news/mike-johnson-ai-chips-nvidia/article_72ddd6a2-3645-4e78-9f05-3de77a9498ba.html",
+        "chain": [
+          {
+            "label": "Nvidia AI晶片出口↓",
+            "type": "down"
+          },
+          {
+            "label": "AMD AI晶片需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Qualcomm 推出 Dragonfly AI200 伺服器測試服務",
+        "layer": "AI硬體",
+        "body": "Qualcomm 於 11 月 17-18 日在芝加哥 SC26 展示其 Dragonfly AI200 機架等級推論系統，並透過 Cirrascale Cloud Services 開放雲端試用給選定客戶。每張 AI200 加速卡配備 768 GB LPDDR 記憶體，56 卡提供約 43 TB 的液冷機架容量。系統支援模型範圍從 70 億至 10 兆參數。",
+        "impact": "Qualcomm 需求上升將促使其代工廠 TSMC 18A 及相關先進製程利用率 ↑；Cirrascale 客戶改用 Dragonfly AI200 可能減少對 Nvidia GPU 的採購需求 ↓，進一步削弱 Nvidia 在資料中心 AI 市場的議價能力。此舉亦鼓勵其他雲端服務商探索非 Nvidia AI 加速方案，提升產業供應鏈多元化。",
+        "rating": "core",
+        "insight": "Qualcomm 以自研 AI 推論平台挑戰 Nvidia，供應鏈上游代工與下游雲端服務皆受正面衝擊。",
+        "source_label": "The Register",
+        "source": "https://www.theregister.com/systems/2026/11/19/qualcomm-offers-test-drive-of-its-rack-scale-nvidia-ai-challenger/5310966",
+        "chain": [
+          {
+            "label": "Qualcomm Dragonfly AI200 交期↑",
+            "type": "up"
+          },
+          {
+            "label": "Cirrascale Cloud 測試機會↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Intel 獲得首位外部客戶採用 18A‑P 製程",
+        "layer": "製程技術",
+        "body": "Intel 獲得首位外部客戶採用 18A‑P 製程，客戶未具名。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "Data Center Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/intel-secures-first-external-customer-for-18a-p-process-node/",
+        "thin_source": true,
+        "desc_only": true
+      }
+    ],
+    "app": [
+      {
+        "title": "NC CHAIN 協助北卡農村醫療機構安全導入 AI 工具",
+        "layer": "healthcare",
+        "body": "NC CHAIN（North Carolina Collaborative Health AI Network）已在格蘭維爾縣等北卡農村地區部署 AI 工具，協助資源有限的診所與醫院安全使用健康相關 AI。此計畫於 Spectrum News 報導，旨在縮小 AI 使用差距，讓全州居民皆能受惠。",
+        "impact": "AI 軟體供應商需求因農村醫院採用而上升 (↑)，促使相關雲端服務與資料標註公司獲得新訂單；醫療機構因 AI 輔助提升診斷與行政效率，降低營運成本 (↓)；競爭的醫療 AI 方案供應商需加速產品合規與治理功能，以爭取同樣的農村市場。",
+        "rating": "core",
+        "insight": "投資者可關注提供合規治理平台的 AI 軟體公司，因農村醫療 AI 部署將推動其需求成長。",
+        "source_label": "UNC Health",
+        "source": "https://news.unchealthcare.org/2026/11/new-unc-initiative-to-help-rural-healthcare-outlets-safely-adopt-ai-tools-featured-in-tv-news-story/",
+        "chain": [
+          {
+            "label": "NC CHAIN 農村醫院 AI工具使用↑",
+            "type": "up"
+          },
+          {
+            "label": "地方診所 AI成本↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Straive 於 Microsoft Ignite 展示 700+ AI 加速器助企業快速部署",
+        "layer": "enterprise",
+        "body": "Straive 在 2026 年舊金山舉行的 Microsoft Ignite 大會上展示超過 700 個資料、分析與 AI 解決方案加速器，旨在縮短企業將 AI 用例從概念驗證轉為正式營運的時間。此加速器組合針對不同行業提供即插即用的模型與工具，降低開發成本與所需技術資源。",
+        "impact": "AI 平台供應商因需求增加而提升服務使用率 (↑)，帶動雲端基礎設施供應商（如 Microsoft Azure）儲存與運算資源需求上升 (↑)；企業客戶因部署速度提升而加速數位轉型，對傳統系統整合商形成競爭壓力，迫使其提供更快速的 AI 整合方案。",
+        "rating": "opp",
+        "insight": "關注提供即時 AI 加速器的 SaaS 供應商，因其可成為企業加速 AI 採用的關鍵橋樑。",
+        "source_label": "StartUp Beat",
+        "source": "https://startupbeat.com/straive-brings-700-ai-accelerators-to-microsoft-ignite-to-speed-up-enterprise-adoption/39888/",
+        "chain": [
+          {
+            "label": "Straive AI加速器部署↑",
+            "type": "up"
+          },
+          {
+            "label": "Microsoft Azure AI 整合速度↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "先進製程",
+        "full": "先進製程（Advanced Process Node）",
+        "def": "指 7 奈米及以下的半導體製造技術，具備更高密度與效能，常用於高階 AI 晶片。",
+        "why": "先進製程是 AI 晶片性能的關鍵，供應限制會直接削弱客戶的產品競爭力。",
+        "category": "hardware"
+      },
+      {
+        "term": "Dragonfly AI200",
+        "full": "Qualcomm 的機架等級 AI 推論系統",
+        "def": "一套結合 Qualcomm 自研 AI 加速器的伺服器平台，設計用於在較低功耗與成本下執行大型語言模型與多模態 AI 工作負載。",
+        "why": "提供雲端服務商替代 Nvidia GPU 的選項，可能改變 AI 計算資源的供應鏈結構。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "18A‑P",
+        "full": "Intel 的最新先進製程節點",
+        "def": "Intel 推出的 18 奈米等效製程，採用先進的 EUV 光刻技術，旨在提升晶片效能與能效比，支援高效能運算與 AI 應用。",
+        "why": "代表 Intel 在高階製程市場的突破，對代工競爭與上游設備供應鏈具有重要影響。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "NC CHAIN",
+        "full": "North Carolina Collaborative Health AI Network",
+        "def": "一個由北卡羅來納州推動的協作平台，旨在協助農村醫療機構安全導入與使用人工智慧工具，縮小醫療 AI 使用差距。",
+        "why": "提供 AI 治理與支援，促進偏遠地區醫療服務品質提升。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI 加速器",
+        "full": "AI solution accelerators",
+        "def": "預先建置的模型、資料管線與工具組合，可快速套用於特定業務場景，減少開發時間與成本。",
+        "why": "幫助企業在既有流程中快速部署 AI，提升競爭力。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-19",
     "is_sunday": false,
     "hw": [
@@ -786,134 +946,6 @@
         "def": "針對 AI 輸出或網路連結進行真偽檢查的技術與平台，常結合 URL 黑名單、機器學習模型與人工審核。",
         "why": "可降低聊天機器人將使用者導向偽造網站的機率，提升使用者信任度。",
         "category": "software"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-11-13",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Lutnick 被報導拖延川普對涉嫌轉運 Nvidia 晶片公司的查緝",
-        "layer": "export_control",
-        "body": "美國商務部長 Lutnick 被報導拖延川普對涉嫌轉運 Nvidia 晶片的公司所採取的查緝行動。",
-        "impact": null,
-        "rating": "opp",
-        "insight": "投資者可關注美國對 Nvidia 晶片轉運查緝的執行力道。",
-        "source_label": "gnews-chip",
-        "source": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPa01VNnZpTE10OFNfTFRXZDZzeUJwSjFkNmlhVjFwUVExM3RmaUlNOG1jWm1aYXJMRHkyb2s1WGdMQU9IQUN6RE5kVi1ub3JkQ0wxVnc2YWFvY2VzTWRiX0FZeVlpdDNsMzBhcWpzOVhqNVh4UUFCa2cySy1ZSlkwTGRxbHVjcEU?oc=5",
-        "chain": [
-          {
-            "label": "Nvidia 晶片轉運查緝↓",
-            "type": "down"
-          },
-          {
-            "label": "美國出口管制執行力道↓",
-            "type": "down"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Nvidia 財務長 Colette Kress 受命暫代執行長",
-        "layer": "leadership",
-        "body": "Nvidia 首席財務官 Colette Kress 在 Jensen Huang 突然辭職後，於 2026 年 11 月 12 日被指派為臨時執行長。Kress 於 2013 年 9 月加入 Nvidia，曾在 Cisco、Microsoft 與 Texas Instruments 擔任財務職務。董事會表示將同時考慮內部與外部候選人以尋找永久接任者。",
-        "impact": "Kress 接任將直接影響 Nvidia 與其代工夥伴如 TSMC 的晶圓需求，因其可能維持現有的高效能運算與 AI 加速器產品路線，短期內上游晶圓供應將保持穩定 (↑)。其領導風格被形容為兼具 CFO 與 COO 職能，可能加速供應鏈協同與成本控制，進一步提升下游雲端服務商對 Nvidia GPU 的採購意願 (↑)。競爭對手如 AMD 與 Intel 可能面臨市場份額壓力，需加速自家 GPU 產品的技術迭代以維持競爭力。",
-        "rating": "opp",
-        "insight": "投資者應關注 Nvidia 供應鏈穩定性與新領導層對產品路線的持續性。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/11/12/colette-kress-nvidia-cfo-interim-ceo-candidate.html",
-        "chain": [
-          {
-            "label": "Nvidia CEO 變動↑",
-            "type": "up"
-          },
-          {
-            "label": "市場對領導層不確定性↑",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic 前九個月調整後營運收益達 40.8 億美元",
-        "layer": "financial",
-        "body": "Anthropic 在 IPO 招股說明書中揭露，前九個月調整後營運收益為 40.8 億美元；同期依 GAAP 計算的前三季營運虧損為 12.6 億美元。調整後營運盈餘排除股票基礎補償、非現金慈善捐贈與版權訴訟和解金額。Anthropic 預計在即將到來的 IPO 中募集資金以支撐未來巨額支出。",
-        "impact": "正向的調整後營運盈餘將提升 Anthropic 與其雲端基礎設施供應商（如 Azure、AWS）的合作需求，推動相關伺服器與高速記憶體供應鏈需求上升 (↑)。同時，盈利能力的提升可能吸引更多企業客戶採用其 Claude 模型，進一步刺激 AI 軟體堆疊供應商的授權與支援服務需求 (↑)。",
-        "rating": "core",
-        "insight": "Anthropic 的盈利突破顯示其商業模式具備可持續性，值得關注其在 AI 訓練基礎設施上的資本支出規模。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/11/11/anthropic-ipo-profit-computing-commitments.html",
-        "chain": [
-          {
-            "label": "Anthropic 調整後營運盈餘↑",
-            "type": "up"
-          },
-          {
-            "label": "IPO 募資規模↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "IBM 與 Microsoft 推出企業級 Agentic AI 平台",
-        "layer": "AI平台",
-        "body": "IBM 與 Microsoft 於 2026 年發布了針對企業部署的 Agentic AI 平台，平台結合了兩家公司在雲端與 AI 基礎設施的技術。該平台已向大型企業客戶開放，提供可自動化決策與流程編排的功能。",
-        "impact": "平台的雲端基礎設施需求將提升主要雲服務供應商（如 Azure、IBM Cloud）的運算資源使用率↑，進一步刺激伺服器與高效能儲存設備供應鏈的需求↑；同時企業導入此平台後，將減少對傳統軟體顧問服務的依賴↓，使系統整合商的服務模式需轉向 AI 模型部署與維護。",
-        "rating": "core",
-        "insight": "企業級 Agentic AI 平台的推出將加速雲端運算與 AI 模型供應鏈的需求增長。",
-        "source_label": "Petri IT Knowledgebase",
-        "source": "https://news.google.com/rss/articles/CBMibkFVX3lxTE8tZW9GUmhqTldzVVVjR0hWV0JqaURoeWtqZU5HVzJzNklkazZ6dHM0d2FVVHJCalhHTF81ZjBBdk5hWGk0X0dnM0JLVFJpSEIxV2tCN25IMjk0Yjl6RmNyR05rc3ZzSW5zLUF1UnBB?oc=5",
-        "chain": [
-          {
-            "label": "IBM Azure AI 服務↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft Azure 雲端資源需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Altimetrik 與 Google Cloud 合作推動醫療領域 Agentic AI 採用",
-        "layer": "AI應用",
-        "body": "Altimetrik 宣布與 Google Cloud 合作，於 2026 年在醫療保健領域推動 Agentic AI 的採用。雙方合作重點為行政流程、資訊檢索與營運協調的 AI agent（ALTi AIOS），並具備權限控管與人類監督機制。",
-        "impact": "Google Cloud 需要擴充其醫療專屬 AI 基礎設施，帶動資料中心伺服器與高效能 GPU 需求↑；Altimetrik 作為系統整合商，將向醫療設備供應商與電子病歷系統提供 AI 模組，促使相關硬體與軟體供應鏈的訂單增加↑，同時提升醫療服務供應商的數位化轉型速度。",
-        "rating": "core",
-        "insight": "Agentic AI 在醫療領域的落地將拉動雲端運算與醫療資訊系統的供應鏈需求。",
-        "source_label": "Digital Health News",
-        "source": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOaFppZ21zb2hKUjNkNHFMTDBwZlZlSFA4TXVGbXlqZTNCbENxSk5BaXZ2MHNDZTY3eFFJWGNFQjRBSy1lVVdzRDNEczBQU0RyOXBZSUJUSFIyQVQxS2pOWXpnazg1OFZZRnJ4empYZjlsUjFBOS1pbkUwZ1Y0WDJGbERUNnUyN2lFWW9GSU1LS0JpVVVVYmRiUkYwLVNWNXhTcHQ2VWNlZ1JHckpJbTdyZWZMN253NlE?oc=5",
-        "thin_source": true,
-        "chain": [
-          {
-            "label": "Altimetrik 醫療 AI 方案↑",
-            "type": "up"
-          },
-          {
-            "label": "Google Cloud 醫療 AI 部署↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "臨時執行長",
-        "full": "Interim Chief Executive Officer",
-        "def": "公司在正式執行長離職或無法履職期間，由內部或外部臨時指派的最高管理者，負責維持營運與策略執行。",
-        "why": "此職位變動直接影響公司決策速度與供應鏈策略的連貫性。",
-        "category": "role"
-      },
-      {
-        "term": "調整後營運盈餘",
-        "full": "Adjusted Operating Income",
-        "def": "公司在排除一次性項目、股票基礎補償及非經常性支出後的營運利潤，用以衡量核心營運績效。",
-        "why": "此指標揭示 AI 企業在高額研發與基礎設施支出下的獲利能力，關係供應鏈資金流向。",
-        "category": "ai_technique"
       }
     ],
     "weekly_summary": null
