@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-20",
+ "updated": "2026-11-21",
  "since": "2026-07-01",
  "entities": [
   {
@@ -982,15 +982,15 @@
   {
    "week": "2026-W47",
    "start": "2026-11-16",
-   "cards": 23,
+   "cards": 26,
    "dims": {
     "hw": {
      "core": 4,
-     "opp": 5,
+     "opp": 7,
      "noise": 0
     },
     "corp": {
-     "core": 4,
+     "core": 5,
      "opp": 4,
      "noise": 0
     },
@@ -1001,11 +1001,11 @@
     }
    },
    "mentions": {
-    "NVIDIA": 5,
+    "NVIDIA": 6,
     "出口管制": 4,
-    "Anthropic": 2,
+    "Anthropic": 3,
     "Google": 3,
-    "Microsoft": 2,
+    "Microsoft": 3,
     "Amazon": 2,
     "TSMC": 2,
     "Micron": 1,
@@ -1019,13 +1019,11 @@
     "CoWoS／先進封裝": 1,
     "Qualcomm": 1,
     "液冷／散熱": 1,
-    "Intel": 1
+    "Intel": 2
    }
   }
  ],
  "seen": [
-  "2026-10-30|Google Gemini 4 Carbon 定價維持現價，未來將翻倍",
-  "2026-10-30|Oracle 於 OCI 推出使用量計費 AI 服務",
   "2026-10-31|AWS 每 14 秒安裝一顆 AI 加速卡，目標 2027 年營收突破 1 兆美元",
   "2026-10-31|AWS 第三季營收成長 39%，簽署多項大型 AI 合約",
   "2026-10-31|DeepInfinity.AI 與 Baby Memorial 醫院集團合作，擴大醫療 AI 應用",
@@ -1103,6 +1101,9 @@
   "2026-11-20|Qualcomm 推出 Dragonfly AI200 伺服器測試服務",
   "2026-11-20|Straive 於 Microsoft Ignite 展示 700+ AI 加速器助企業快速部署",
   "2026-11-20|TSMC 收緊中國 AI 晶片限制 暫停先進製程訂單",
-  "2026-11-20|美國眾議院議長 Johnson 支持加緊 AI 晶片出口管制"
+  "2026-11-20|美國眾議院議長 Johnson 支持加緊 AI 晶片出口管制",
+  "2026-11-21|Anthropic 以 935 億美元總募資創下史上最大 IPO",
+  "2026-11-21|Microsoft 成首家採用 Intel EMIB 包裝技術於 Azure 硬體",
+  "2026-11-21|Nvidia 融資風險或持續壓低 AI 晶片股價"
  ]
 }

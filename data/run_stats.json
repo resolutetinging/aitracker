@@ -2,6 +2,347 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 61,
+        "CSP/CapEx": 40,
+        "App/AI": 10,
+        "gnews-chip": 25,
+        "gnews-dc": 23,
+        "gnews-app": 20
+      },
+      "digest_filtered": 1,
+      "after_dedup": 178,
+      "buckets": {
+        "hw": 41,
+        "corp": 130,
+        "app": 14
+      },
+      "news_char_budget": {
+        "hw": 6000,
+        "corp": 5509,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 41,
+          "full_text_total": 3,
+          "full_text_sent": 3,
+          "sent": 13,
+          "partial_cut": 0,
+          "chars_sent": 5973,
+          "dropped": 28
+        },
+        "corp": {
+          "mode": "pack",
+          "budget": 5509,
+          "candidates": 130,
+          "full_text_total": 5,
+          "full_text_sent": 3,
+          "sent": 14,
+          "partial_cut": 0,
+          "chars_sent": 5461,
+          "dropped": 116
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 14,
+          "full_text_total": 4,
+          "full_text_sent": 4,
+          "sent": 13,
+          "partial_cut": 0,
+          "chars_sent": 5990,
+          "dropped": 1
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 2,
+        "corp": 1,
+        "app": 1
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 5020,
+          "completion_tokens": 1329,
+          "total_tokens": 6349
+        },
+        "corp": {
+          "prompt_tokens": 5260,
+          "completion_tokens": 996,
+          "total_tokens": 6256
+        },
+        "app": {
+          "prompt_tokens": 4967,
+          "completion_tokens": 631,
+          "total_tokens": 5598
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "hw",
+          "title": "Microsoft 成首家採用 Intel EMIB 包裝技術於 Azure 硬體",
+          "gate": "enforce_desc_only",
+          "action": "rating core→opp",
+          "reason": "素材只有 RSS 描述，core 上限 opp"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 2,
+          "noise": 0
+        },
+        "corp": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 1,
+      "feed_errors": [
+        {
+          "label": "Semiconductor",
+          "host": "www.digitimes.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "CSP/CapEx",
+          "host": "techcrunch.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "App/AI",
+          "host": "feeds.arstechnica.com",
+          "error": "zero_kept",
+          "detail": "items=20 bytes=75923"
+        },
+        {
+          "label": "App/AI",
+          "host": "techcrunch.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "App/AI",
+          "host": "venturebeat.com",
+          "error": "HTTP 429",
+          "detail": "Too Many Requests"
+        }
+      ],
+      "gnews_feed_times": [
+        {
+          "label": "gnews-chip",
+          "at": "2026-11-21T00:00:57+08:00"
+        },
+        {
+          "label": "gnews-dc",
+          "at": "2026-11-21T00:00:58+08:00"
+        },
+        {
+          "label": "gnews-app",
+          "at": "2026-11-21T00:00:58+08:00"
+        }
+      ],
+      "unmatched_dropped": 30,
+      "gnews_decode": {
+        "attempted": 11,
+        "ok": 11,
+        "failed": 0,
+        "rate_limited": false,
+        "skipped": 0,
+        "skipped_cap": 0,
+        "backoff_count": 0,
+        "backoff_wait_sec": 0,
+        "started_at": "2026-11-21T00:01:02+08:00"
+      },
+      "headline_only": {
+        "fetch_failed": 6,
+        "thin_summary": 75,
+        "fetch_failed_desc_kept": 5,
+        "fail_reasons": {
+          "video_page": 1,
+          "http_403": 6,
+          "invalid_text": 1,
+          "error": 2
+        }
+      },
+      "main_call_estimate": {
+        "hw": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 5038,
+          "est_completion_tokens": 1170,
+          "safety": 300,
+          "est_total_tokens": 6508,
+          "target": 6800
+        },
+        "corp": {
+          "news_char_budget": 5509,
+          "est_prompt_tokens": 5197,
+          "est_completion_tokens": 1270,
+          "safety": 300,
+          "est_total_tokens": 6767,
+          "target": 6800
+        },
+        "app": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 5041,
+          "est_completion_tokens": 910,
+          "safety": 300,
+          "est_total_tokens": 6251,
+          "target": 6800
+        }
+      },
+      "retry": {
+        "hw": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "corp": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "app": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        }
+      },
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "headline_only_cards": {
+        "marked": 0,
+        "downgraded": 0,
+        "scrubbed": 0
+      },
+      "deepen": {
+        "candidates": 1,
+        "rewritten": 0,
+        "fetch_failed": 1,
+        "llm_failed": 0
+      },
+      "gate_reasons": {
+        "enforce_desc_only": {
+          "Microsoft 成首家採用 Intel EMIB 包裝技術於 Azure 硬體": "素材只有 RSS 描述，core 上限 opp"
+        }
+      },
+      "desc_only_cards": {
+        "marked": 1,
+        "downgraded": 1,
+        "body_trimmed": 0,
+        "scrubbed": 1
+      },
+      "numeric_gate": {
+        "runs": 2,
+        "removed": 0,
+        "sentences_dropped": 0,
+        "contradiction_removed": 0,
+        "no_material": 0,
+        "items": []
+      },
+      "scrub_skipped": {
+        "fix_chains": 1,
+        "validate_impact": 1
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 3,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 1,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "fragment_restored": 0,
+        "items": []
+      },
+      "llm_fact_check": {
+        "enabled": true,
+        "calls": 2,
+        "failed_calls": 0,
+        "checked": 3,
+        "ok": 2,
+        "fixed": 1,
+        "dropped": 0,
+        "missing": 0,
+        "skipped_over_budget": 0,
+        "est_prompt_tokens": [
+          1839,
+          1665
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 1733,
+            "completion_tokens": 430,
+            "total_tokens": 2163
+          },
+          {
+            "prompt_tokens": 1620,
+            "completion_tokens": 118,
+            "total_tokens": 1738
+          }
+        ],
+        "items": [
+          {
+            "title": "Microsoft 成首家採用 Intel EMIB 包裝技術於 Azure 硬體",
+            "verdict": "fix",
+            "returned": {
+              "title": "Microsoft 成首家採用 Intel EMIB 包裝技術於 Azure 硬體",
+              "body": "Microsoft 成為首家在 Azure 硬體上使用 Intel 的 EMIB 包裝技術的公司，且協議確認長期供應 Xeon 處理器給 Microsoft。"
+            },
+            "reason": "body 含有未在 RSS 描述中提及的資訊，已修正為僅保留描述內容。",
+            "new_title": "Microsoft 成首家採用 Intel EMIB 包裝技術於 Azure 硬體"
+          }
+        ],
+        "desc_only_sent": 1
+      },
+      "date": "2026-11-21",
+      "generated_at": "2026-11-21T00:11:01.959421+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 67,
         "CSP/CapEx": 42,
         "App/AI": 7,
@@ -3246,116 +3587,6 @@
       },
       "date": "2026-11-08",
       "generated_at": "2026-11-08T00:04:46.218232+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 48,
-        "CSP/CapEx": 49,
-        "App/AI": 29,
-        "gnews-chip": 18,
-        "gnews-dc": 21,
-        "gnews-app": 20
-      },
-      "digest_filtered": 2,
-      "after_dedup": 170,
-      "buckets": {
-        "hw": 36,
-        "corp": 122,
-        "app": 35
-      },
-      "news_char_budget": {
-        "hw": 4200,
-        "corp": 8000,
-        "app": 4083
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 4,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 2,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 4,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "deepen": {
-        "candidates": 1,
-        "rewritten": 1,
-        "fetch_failed": 0,
-        "llm_failed": 0
-      },
-      "dedup_audit": [],
-      "fact_audit": {
-        "mode": "enforce",
-        "checked": 2,
-        "suspect_cards": 1,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 0,
-          "suspect_cards": 0,
-          "skipped_enforce": 0
-        },
-        "enforced": 1,
-        "title_suspect_cards": 0,
-        "removed": 0,
-        "items": [
-          {
-            "sec": "corp",
-            "title": "英國內政部雲端服務合約或為 AWS 帶來 10 億英鎊收入",
-            "source": "https://www.theregister.com/public-sector/2026/11/06/home-office-cloud-services-contract-may-net-aws-1b/5308106",
-            "rating": "opp",
-            "coverage": "full",
-            "suspects": [
-              "450000000"
-            ],
-            "undetermined": [
-              "1億",
-              "1億"
-            ],
-            "tense_flag": false,
-            "title_suspects": []
-          }
-        ]
-      },
-      "date": "2026-11-07",
-      "generated_at": "2026-11-07T00:04:43.645054+08:00"
     }
   ]
 }
