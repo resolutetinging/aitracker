@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21",
+ "updated": "2026-11-22",
  "since": "2026-07-01",
  "entities": [
   {
@@ -982,30 +982,30 @@
   {
    "week": "2026-W47",
    "start": "2026-11-16",
-   "cards": 26,
+   "cards": 31,
    "dims": {
     "hw": {
-     "core": 4,
+     "core": 6,
      "opp": 7,
      "noise": 0
     },
     "corp": {
      "core": 5,
-     "opp": 4,
+     "opp": 5,
      "noise": 0
     },
     "app": {
-     "core": 1,
-     "opp": 5,
+     "core": 2,
+     "opp": 6,
      "noise": 0
     }
    },
    "mentions": {
-    "NVIDIA": 6,
+    "NVIDIA": 9,
     "出口管制": 4,
     "Anthropic": 3,
     "Google": 3,
-    "Microsoft": 3,
+    "Microsoft": 4,
     "Amazon": 2,
     "TSMC": 2,
     "Micron": 1,
@@ -1019,16 +1019,12 @@
     "CoWoS／先進封裝": 1,
     "Qualcomm": 1,
     "液冷／散熱": 1,
-    "Intel": 2
+    "Intel": 2,
+    "Agentic AI": 1
    }
   }
  ],
  "seen": [
-  "2026-10-31|AWS 每 14 秒安裝一顆 AI 加速卡，目標 2027 年營收突破 1 兆美元",
-  "2026-10-31|AWS 第三季營收成長 39%，簽署多項大型 AI 合約",
-  "2026-10-31|DeepInfinity.AI 與 Baby Memorial 醫院集團合作，擴大醫療 AI 應用",
-  "2026-10-31|Intel 公布 PC 處理器需求下降 5% 影響代工產能",
-  "2026-10-31|Microsoft 計畫發行 250 億美元債券以支援 AI 建設",
   "2026-11-01|Doximity 推出 AI 藥物檢查工具 DoseCheck",
   "2026-11-01|Google 搜尋廣告收入成長放緩至 12%　AI 機制影響營收",
   "2026-11-01|S&P 降級 Meta 前景　因資本支出與自由現金流憂慮",
@@ -1104,6 +1100,11 @@
   "2026-11-20|美國眾議院議長 Johnson 支持加緊 AI 晶片出口管制",
   "2026-11-21|Anthropic 以 935 億美元總募資創下史上最大 IPO",
   "2026-11-21|Microsoft 成首家採用 Intel EMIB 包裝技術於 Azure 硬體",
-  "2026-11-21|Nvidia 融資風險或持續壓低 AI 晶片股價"
+  "2026-11-21|Nvidia 融資風險或持續壓低 AI 晶片股價",
+  "2026-11-22|AI 健康應用雖通過 HIPAA 審查仍難被臨床採用",
+  "2026-11-22|Nvidia AI 供應鏈承諾 1180 億美元保證金以支援客戶建設 AI 設施",
+  "2026-11-22|Nvidia 股價連跌七日 市值縮減約 2.6 萬億美元",
+  "2026-11-22|State Farm 以 Microsoft Copilot 加速核保流程",
+  "2026-11-22|美國財政部長確認 Nvidia H200 晶片出口限制維持不變"
  ]
 }

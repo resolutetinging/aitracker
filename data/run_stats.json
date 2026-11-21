@@ -2,6 +2,365 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 58,
+        "CSP/CapEx": 42,
+        "App/AI": 10,
+        "gnews-chip": 18,
+        "gnews-dc": 24,
+        "gnews-app": 18
+      },
+      "digest_filtered": 1,
+      "after_dedup": 162,
+      "buckets": {
+        "hw": 38,
+        "corp": 120,
+        "app": 12
+      },
+      "news_char_budget": {
+        "hw": 6000,
+        "corp": 4975,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 38,
+          "full_text_total": 5,
+          "full_text_sent": 3,
+          "sent": 14,
+          "partial_cut": 0,
+          "chars_sent": 5995,
+          "dropped": 24
+        },
+        "corp": {
+          "mode": "pack",
+          "budget": 4975,
+          "candidates": 120,
+          "full_text_total": 3,
+          "full_text_sent": 3,
+          "sent": 11,
+          "partial_cut": 0,
+          "chars_sent": 4839,
+          "dropped": 109
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 12,
+          "full_text_total": 4,
+          "full_text_sent": 4,
+          "sent": 12,
+          "partial_cut": 0,
+          "chars_sent": 5776,
+          "dropped": 0
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 2,
+        "corp": 2,
+        "app": 2
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 5194,
+          "completion_tokens": 1228,
+          "total_tokens": 6422
+        },
+        "corp": {
+          "prompt_tokens": 5206,
+          "completion_tokens": 1179,
+          "total_tokens": 6385
+        },
+        "app": {
+          "prompt_tokens": 4985,
+          "completion_tokens": 1424,
+          "total_tokens": 6409
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "corp",
+          "title": "Anthropic 創下史上最大 IPO 紀錄",
+          "gate": "remove_repeated_stories",
+          "action": "removed",
+          "reason": "removed"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "feed_errors": [
+        {
+          "label": "Semiconductor",
+          "host": "www.digitimes.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "CSP/CapEx",
+          "host": "techcrunch.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "App/AI",
+          "host": "techcrunch.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "App/AI",
+          "host": "venturebeat.com",
+          "error": "HTTP 429",
+          "detail": "Too Many Requests"
+        },
+        {
+          "label": "App/AI",
+          "host": "www.technologyreview.com",
+          "error": "zero_kept",
+          "detail": "items=10 bytes=101560"
+        }
+      ],
+      "gnews_feed_times": [
+        {
+          "label": "gnews-chip",
+          "at": "2026-11-22T00:00:50+08:00"
+        },
+        {
+          "label": "gnews-dc",
+          "at": "2026-11-22T00:00:50+08:00"
+        },
+        {
+          "label": "gnews-app",
+          "at": "2026-11-22T00:00:50+08:00"
+        }
+      ],
+      "unmatched_dropped": 22,
+      "gnews_decode": {
+        "attempted": 11,
+        "ok": 11,
+        "failed": 0,
+        "rate_limited": false,
+        "skipped": 0,
+        "skipped_cap": 0,
+        "backoff_count": 0,
+        "backoff_wait_sec": 0,
+        "started_at": "2026-11-22T00:01:01+08:00"
+      },
+      "headline_only": {
+        "fetch_failed": 3,
+        "thin_summary": 65,
+        "fetch_failed_desc_kept": 3,
+        "fail_reasons": {
+          "http_403": 4,
+          "error": 1
+        }
+      },
+      "main_call_estimate": {
+        "hw": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 5149,
+          "est_completion_tokens": 1170,
+          "safety": 300,
+          "est_total_tokens": 6619,
+          "target": 6800
+        },
+        "corp": {
+          "news_char_budget": 4975,
+          "est_prompt_tokens": 5184,
+          "est_completion_tokens": 1270,
+          "safety": 300,
+          "est_total_tokens": 6754,
+          "target": 6800
+        },
+        "app": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 5135,
+          "est_completion_tokens": 910,
+          "safety": 300,
+          "est_total_tokens": 6345,
+          "target": 6800
+        }
+      },
+      "retry": {
+        "hw": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "corp": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "app": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        }
+      },
+      "llm_ratings": {
+        "hw": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 0,
+          "opp": 2,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "headline_only_cards": {
+        "marked": 0,
+        "downgraded": 0,
+        "scrubbed": 0
+      },
+      "deepen": {
+        "candidates": 1,
+        "rewritten": 1,
+        "fetch_failed": 0,
+        "llm_failed": 0
+      },
+      "desc_only_cards": {
+        "marked": 0,
+        "downgraded": 0,
+        "body_trimmed": 0,
+        "scrubbed": 0
+      },
+      "numeric_gate": {
+        "runs": 2,
+        "removed": 0,
+        "sentences_dropped": 0,
+        "contradiction_removed": 0,
+        "no_material": 0,
+        "items": []
+      },
+      "scrub_skipped": {
+        "fix_chains": 0,
+        "validate_impact": 0
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 5,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 1,
+        "removed": 0,
+        "fragment_restored": 0,
+        "items": [
+          {
+            "sec": "corp",
+            "title": "Nvidia 股價連跌七日 市值縮減約 2.6 萬億美元",
+            "source": "https://www.cnbc.com/2026/11/20/nvidias-7-week-losing-streak-is-longest-since-2008-financial-crisis.html",
+            "rating": "opp",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [
+              "2.6 萬"
+            ],
+            "tense_flag": false,
+            "title_suspects": [
+              "2.6 萬"
+            ]
+          }
+        ]
+      },
+      "llm_fact_check": {
+        "enabled": true,
+        "calls": 3,
+        "failed_calls": 0,
+        "checked": 5,
+        "ok": 4,
+        "fixed": 1,
+        "dropped": 0,
+        "missing": 0,
+        "skipped_over_budget": 0,
+        "est_prompt_tokens": [
+          2319,
+          1638,
+          2063
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 2068,
+            "completion_tokens": 448,
+            "total_tokens": 2516
+          },
+          {
+            "prompt_tokens": 1575,
+            "completion_tokens": 218,
+            "total_tokens": 1793
+          },
+          {
+            "prompt_tokens": 1829,
+            "completion_tokens": 120,
+            "total_tokens": 1949
+          }
+        ],
+        "items": [
+          {
+            "title": "Nvidia AI 供應鏈承諾 1180 億美元保證金以支援客戶建設 AI 設施",
+            "verdict": "fix",
+            "returned": {
+              "title": "Nvidia AI 供應鏈承諾 1180 億美元保證金以支援客戶建設 AI 設施",
+              "body": "Nvidia 宣布為供應商承諾 3900 億美元，同時提供最高 1180 億美元的財務保證，以協助客戶建置 AI 設施。公司本季資料中心營收達 1076 億美元，較去年同期成長 110%。"
+            },
+            "reason": "移除未在原文素材中提及的俄亥俄州 SB Energy PORTS‑Pike 科技園區、4.25 GW 電力容量及 2029 年營運等資訊。",
+            "new_title": "Nvidia AI 供應鏈承諾 1180 億美元保證金以支援客戶建設 AI 設施"
+          }
+        ],
+        "desc_only_sent": 0
+      },
+      "weekly_numeric": {
+        "removed_numbers": []
+      },
+      "date": "2026-11-22",
+      "generated_at": "2026-11-22T00:13:10.545412+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 61,
         "CSP/CapEx": 40,
         "App/AI": 10,
@@ -3459,134 +3818,6 @@
       },
       "date": "2026-11-09",
       "generated_at": "2026-11-09T00:04:46.888960+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 50,
-        "CSP/CapEx": 53,
-        "App/AI": 26,
-        "gnews-chip": 20,
-        "gnews-dc": 25,
-        "gnews-app": 12
-      },
-      "digest_filtered": 1,
-      "after_dedup": 169,
-      "buckets": {
-        "hw": 34,
-        "corp": 123,
-        "app": 34
-      },
-      "news_char_budget": {
-        "hw": 3966,
-        "corp": 8000,
-        "app": 3966
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 3,
-        "app": 1
-      },
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 3,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "deepen": {
-        "candidates": 1,
-        "rewritten": 1,
-        "fetch_failed": 0,
-        "llm_failed": 0
-      },
-      "dedup_audit": [
-        {
-          "title": "Microsoft 精簡 neocloud 合作夥伴以聚焦自有資料中心",
-          "section": "corp",
-          "action": "downgraded",
-          "matched_title": null,
-          "reason": "描述的是已在進行的評估與背景，未宣布具體的新決策或行動"
-        }
-      ],
-      "fact_audit": {
-        "mode": "enforce",
-        "checked": 4,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 0,
-          "suspect_cards": 0,
-          "skipped_enforce": 0
-        },
-        "enforced": 0,
-        "title_suspect_cards": 0,
-        "removed": 0,
-        "items": [
-          {
-            "sec": "corp",
-            "title": "AWS 針對 Kiro 身份危機新增 Bot Orchestrator 功能",
-            "source": "https://www.theregister.com/ai-and-ml/2026/11/05/aws-kiro-aims-to-solve-identity-crisis-by-adding-another-identity-bot-orchestrator/5307965",
-            "rating": "core",
-            "coverage": "full",
-            "suspects": [],
-            "undetermined": [
-              "2026年11月5日"
-            ],
-            "tense_flag": false,
-            "title_suspects": []
-          },
-          {
-            "sec": "corp",
-            "title": "Anthropic IPO 估值下修至 1.5 兆美元",
-            "source": "https://www.cnbc.com/2026/11/06/investors-brace-for-anthropic-valuation-1point5-trillion-a-stretch.html",
-            "rating": "core",
-            "coverage": "full",
-            "suspects": [],
-            "undetermined": [
-              "2026年11月6日"
-            ],
-            "tense_flag": false,
-            "title_suspects": []
-          }
-        ]
-      },
-      "date": "2026-11-08",
-      "generated_at": "2026-11-08T00:04:46.218232+08:00"
     }
   ]
 }

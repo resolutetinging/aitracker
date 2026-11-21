@@ -1,5 +1,169 @@
 [
   {
+    "date": "2026-11-22",
+    "is_sunday": true,
+    "hw": [
+      {
+        "title": "美國財政部長確認 Nvidia H200 晶片出口限制維持不變",
+        "layer": "policy",
+        "body": "美國財政部長 Scott Bessent 於 2026 年 11 月 20 日在華盛頓表示，針對 Nvidia H200 晶片的現行出口限制將持續執行，且不會再加設遠端運算存取的額外限制。此聲明是在聯邦臨時最終規則已生效後發表，旨在為大學運算叢集與國際研究合規部門提供明確指引。Bessent 強調現有管制已足以維持供應鏈的合規性。",
+        "impact": "下游的 AI 研究機構與雲端服務商將面臨取得高效能 GPU 的障礙，可能轉向其他供應商或降低算力需求。",
+        "rating": "core",
+        "insight": "出口限制維持將抑制 Nvidia H200 在國際市場的供應，提升替代晶片的相對吸引力。",
+        "source_label": "CASRAI",
+        "source": "https://casrai.org/news/bessent-us-nvidia-chip-export-policy-china-holds-remote-access-2026",
+        "chain": [
+          {
+            "label": "Nvidia H200 晶片出口限制維持↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia 相關 AI 伺服器需求↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "Nvidia AI 供應鏈承諾 1180 億美元保證金以支援客戶建設 AI 設施",
+        "layer": "finance",
+        "body": "Nvidia 宣布為供應商承諾 3900 億美元，同時提供最高 1180 億美元的財務保證，以協助客戶建置 AI 設施。公司本季資料中心營收達 1076 億美元，較去年同期成長 110%。",
+        "impact": "此筆保證金將促使建築與電力供應商在 AI 設施建置上需求上升，帶動相關建材與電力設備供應量增加。",
+        "rating": "core",
+        "insight": "投資者可關注 Nvidia 透過資金保證擴大 AI 基礎設施供應鏈的成長潛力。",
+        "source_label": "Data Center Knowledge",
+        "source": "https://www.datacenterknowledge.com/data-center-chips/nvidia-ai-surge-comes-with-118-billion-in-guarantees",
+        "chain": [
+          {
+            "label": "Nvidia AI 基礎設施保證金↑",
+            "type": "up"
+          },
+          {
+            "label": "TSMC 晶圓產能↑",
+            "type": "up"
+          },
+          {
+            "label": "電力供應商 電力容量↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Nvidia 股價連跌七日 市值縮減約 2.6 萬億美元",
+        "layer": "corp",
+        "body": "Nvidia 股價本週連續七天下跌，單日跌幅達 14%，使公司市值縮減約 2.6 萬億美元。此跌勢為自 2008 年金融危機以來最長的週跌勢。市場對於創辦人黃仁勳未來領導的疑慮加劇了股價下滑。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "觀察 Nvidia 是否會調整資本支出策略，以維持其在 AI 晶片市場的領導地位。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/11/20/nvidias-7-week-losing-streak-is-longest-since-2008-financial-crisis.html",
+        "chain": [
+          {
+            "label": "Nvidia 股價連跌七日↓",
+            "type": "down"
+          },
+          {
+            "label": "Nvidia 市值縮減 2.6 萬億美元↓",
+            "type": "down"
+          },
+          {
+            "label": "競爭對手 AMD 市占↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "State Farm 以 Microsoft Copilot 加速核保流程",
+        "layer": "app",
+        "body": "State Farm 透過 Microsoft Copilot 的 agentic AI 協助員工快速取得關鍵資訊以加速核保。此舉將行銷材料從英文翻譯成西班牙文的週期由原本的 12 個月縮短至 24 小時。",
+        "impact": "Microsoft 企業 AI 服務需求 ↑，因金融客戶增加 Copilot 授權；State Farm 的核保速度 ↑，可縮短保單簽發時間；行銷翻譯成本 ↓，提升其在西班牙語市場的競爭力。",
+        "rating": "core",
+        "insight": "AI 助理可顯著提升金融服務效率，值得關注相關授權收入成長。",
+        "source_label": "BizTech Magazine",
+        "source": "https://biztechmagazine.com/article/2026/11/what-financial-services-should-consider-when-measuring-roi-ai",
+        "chain": [
+          {
+            "label": "Microsoft Copilot 加速 State Farm 核保流程↑",
+            "type": "up"
+          },
+          {
+            "label": "State Farm 保單處理時間縮短↑",
+            "type": "up"
+          },
+          {
+            "label": "保險業務成本下降↓",
+            "type": "down"
+          }
+        ]
+      },
+      {
+        "title": "AI 健康應用雖通過 HIPAA 審查仍難被臨床採用",
+        "layer": "app",
+        "body": "健康公司往往需花數月時間建置 AI 健康應用、完成 HIPAA 合規審查並測試功能。即使通過審查，醫師仍習慣手動更新病歷、在不同醫院系統間切換或使用熟悉的工具。",
+        "impact": "健康 IT 供應商的整合需求 ↓，因醫院對獨立 AI 應用的採用意願減弱；醫療機構的工作流程效率 ↓，因仍依賴手動操作；AI 服務提供商的收入增長受限。",
+        "rating": "opp",
+        "insight": "AI 醫療應用的臨床落地關鍵在於與既有系統的深度整合。",
+        "source_label": "South Florida Reporter",
+        "source": "https://southfloridareporter.com/why-ai-health-apps-pass-hipaa-review-and-still-fail-clinical-adoption/",
+        "chain": [
+          {
+            "label": "AI 健康應用 HIPAA 合規↑",
+            "type": "up"
+          },
+          {
+            "label": "臨床醫師採用率低↓",
+            "type": "down"
+          },
+          {
+            "label": "醫院系統整合成本↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "H200",
+        "full": "Nvidia H200 AI 加速器晶片",
+        "def": "Nvidia 針對高效能運算與 AI 工作負載設計的高階加速器晶片，具備多張 GPU 及高速記憶體介面。",
+        "why": "受出口管制影響，其國際供應鏈與市場布局將受到限制。",
+        "category": "hardware"
+      },
+      {
+        "term": "光學交換器",
+        "full": "光子交換器 (Photonics Switch)",
+        "def": "利用光子技術在資料中心內部實現高速、低延遲的資料傳輸，常與 AI 加速器搭配使用。",
+        "why": "Nvidia 的資金保證計畫中包含對光學交換器供應商的投資，顯示其在 AI 基礎建設中的關鍵角色。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "AI 代理",
+        "full": "Artificial Intelligence Agent",
+        "def": "具備自主學習與決策能力的軟體實體，可在特定任務中執行自動化操作。",
+        "why": "隨著攻擊者利用 AI 代理自動化漏洞利用，對供應鏈安全構成新威脅。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "HIPAA",
+        "full": "Health Insurance Portability and Accountability Act",
+        "def": "美國醫療資訊隱私與安全法規，規範患者資料的保護與傳輸。",
+        "why": "AI 醫療應用必須符合 HIPAA 才能在美國市場合法運營。",
+        "category": "role"
+      },
+      {
+        "term": "Copilot",
+        "full": "Microsoft Copilot",
+        "def": "Microsoft 提供的企業級生成式 AI 助理，整合於 Office 與其他商務應用中。",
+        "why": "作為 agentic AI 平台，可加速資訊檢索與決策流程，成為金融機構提升效率的關鍵工具。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": "HW：美國維持 Nvidia H200 出口限制，同時 Nvidia 提供 1180 億美元保證金以支援 AI 設施建設，雙重政策將同時抑制部分供應並刺激上游產能擴張。\nCORP：Anthropic 以創紀錄 IPO 推動 GPU 需求上升，Nvidia 市值大幅縮減影響供應鏈資本支出。\n下週看點：留意 Nvidia 是否公布新一輪資本支出計畫或調整 AI 晶片路線圖。\nAPP：金融與醫療領域的 AI 應用正從提升內部效率（如翻譯週期從 12 個月縮至 24 小時）轉向解決系統整合挑戰。\n用戶洞察：金融機構與醫療機構皆在探索 AI 效能，但落地障礙仍不同。"
+  },
+  {
     "date": "2026-11-21",
     "is_sunday": false,
     "hw": [
@@ -792,100 +956,5 @@
       }
     ],
     "weekly_summary": null
-  },
-  {
-    "date": "2026-11-15",
-    "is_sunday": true,
-    "hw": [
-      {
-        "title": "美國財政部長質疑 Nvidia 向空殼公司出售 AI GPU",
-        "layer": "regulatory",
-        "body": "Tom's Hardware 報導稱，美國財政部長質疑 Nvidia 是否故意將 AI GPU 出售給註冊為空殼公司的客戶，並要求公司負起全部責任。部長表示任何參與此類交易的員工都應受到追究。此指控暗示 Nvidia 可能違反出口管制規定。",
-        "impact": null,
-        "rating": "core",
-        "insight": "合規風險升高可能削減 Nvidia 在中國的 AI 晶片出貨，進一步影響相關上游供應商的營運。",
-        "source_label": "Tom's Hardware",
-        "source": "https://www.tomshardware.com/tech-industry/artificial-intelligence/u-s-treasury-secretary-questions-whether-nvidia-knowingly-sold-ai-gpus-to-shell-companies-says-company-itself-is-responsible-i-think-it-is-important-that-anyone-at-the-company-there-be-held-accountable-for-that",
-        "chain": [
-          {
-            "label": "Nvidia AI GPU 出售空殼公司↑",
-            "type": "up"
-          },
-          {
-            "label": "美國財政部監管風險↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "前 OpenAI 工程師稱中國 AI 實驗室使用 Nvidia Blackwell GPU 訓練模型",
-        "layer": "AI芯片供應",
-        "body": "前 OpenAI 工程師 Will DePue 公布取證，指出 DeepSeek、Moonshot AI、MiniMax 與螞蟻集團的模型使用過 Nvidia 的 Blackwell GPU，儘管美國對此類晶片實施出口限制。DePue 比對模型初始權重與 GPU 及隨機種子（seed）的模式，據此判斷使用過 Blackwell（GB200／GB300）；此方法無法證明硬體所在位置，也可能是經美國雲端租用。此說法出自 DePue 本人，報導未獨立查證。此資訊於 2026 年 11 月 13 日的 The Register 報導。",
-        "impact": "1) Nvidia Blackwell GPU 的需求因中國 AI 企業的採購而出現短期 ↑，可能導致供應鏈上游的晶圓代工（如 TSMC）出貨量增加。2) 中國 AI 服務供應商獲得先進 GPU 後，將加速模型開發，提升對高階 HBM 記憶體與散熱解決方案的需求，帶動相關供應商（如 Micron、SK Hynix）出貨 ↑。",
-        "rating": "opp",
-        "insight": "此說法指出中國 AI 企業可能已取得 Blackwell，投資者應關注相關合規與供應鏈風險。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/11/13/chinese-ai-labs-are-training-models-on-nvidias-blackwell-despite-export-controls-says-ex-openai-engineer/5309891",
-        "chain": [
-          {
-            "label": "DeepSeek 等使用 Nvidia Blackwell GPU↑",
-            "type": "up"
-          },
-          {
-            "label": "中國 AI 研發加速↑",
-            "type": "up"
-          },
-          {
-            "label": "美國出口管制違規風險↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "今日無相關應用新聞",
-        "layer": "",
-        "body": "今日無相關應用新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Blackwell GPU",
-        "full": "Nvidia Blackwell 系列圖形處理器",
-        "def": "Nvidia 於 2026 年推出的高階 AI 專用 GPU，具備更高的算力與記憶體頻寬，屬於受美國出口管制的產品。此晶片常被大型雲端服務供應商與 AI 研究機構採用。",
-        "why": "因其高效能，成為美國對華 AI 晶片出口審查的焦點，影響相關供應鏈的合規與市場分配。",
-        "category": "hardware"
-      },
-      {
-        "term": "硬體指紋",
-        "full": "GPU 硬體指紋",
-        "def": "在模型初始化階段，GPU 的隨機種子與硬體特性會留下獨特的數值模式，可用於追蹤模型的訓練硬體來源。",
-        "why": "此技術讓研究者能辨識模型是否使用受限的 Nvidia 晶片訓練，具備合規與安全監測價值。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "神經符號 AI",
-        "full": "Neurosymbolic AI",
-        "def": "結合神經網路的學習能力與符號推理的結構化知識，讓 AI 系統能同時處理統計模式與邏輯規則。",
-        "why": "可提升醫療、金融等領域的決策透明度與可解釋性，符合嚴格法規要求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "API 整合",
-        "full": "Application Programming Interface 整合",
-        "def": "透過標準化介面將外部服務（如 OpenAI）直接嵌入企業內部系統，實現功能即時呼叫。",
-        "why": "降低開發門檻，使企業快速部署生成式 AI 應用。",
-        "category": "role"
-      }
-    ],
-    "weekly_summary": "HW：美國財政部長質疑 Nvidia 是否故意向空殼公司出售 AI GPU，並稱公司須對此負責。\nHW：美國商務部長 Lutnick 被報導拖延川普對涉嫌轉運 Nvidia 晶片公司的查緝。\nCORP：Nvidia 執行長黃仁勳辭職，財務長 Colette Kress 暫代執行長。\n下週看點：Nvidia 是否能快速任命新執行長並穩定 AI 晶片供應鏈。"
   }
 ]
