@@ -1,15 +1,34 @@
 {
-  "checked_at": "2026-11-16",
-  "items": [],
-  "no_change_summary": "本週查證後判斷現有資料仍準確。",
+  "checked_at": "2026-11-23",
+  "items": [
+    {
+      "category": "pyramid",
+      "action": "add",
+      "target_name": "",
+      "name": "Vera Rubin Ultra",
+      "desc": "新一代 GPU/加速器系列，預計於明年推出",
+      "status": "",
+      "reason": "Nvidia interim CEO 在財報電話會議中表示公司仍在按計畫於明年推出 Vera Rubin Ultra 系列產品",
+      "source": "https://www.marketwatch.com/livecoverage/nvidia-earnings-stock-nvidia-jensen-huang-results-call/card/nvidia-s-interim-ceo-reinforces-the-product-roadmap-tCuIkT0htibUp5l29kAq"
+    },
+    {
+      "category": "roadmap",
+      "action": "add",
+      "target_name": "",
+      "name": "NVIDIA Rubin HPC",
+      "desc": "Rubin HPC GPU，具備 50,000+ CUDA 核心，於 SC26 公布，預計 2028 年可用，具體規格如記憶體頻寬、雙精度效能、功耗與價格尚未公布。",
+      "status": "規劃2028推出，尚未出貨",
+      "reason": "新聞指出 NVIDIA 在 SC26 發表 Rubin HPC，具備 50,000+ CUDA 核心，並說明將於 2028 年上市。",
+      "source": "https://www.techspot.com/news/114583-nvidia-reveals-rubin-hpc-gpu-50000-cuda-cores.html"
+    }
+  ],
+  "no_change_summary": "",
   "no_change_detail_by_category": [
-    "本週查證後，技術金字塔各層級的項目皆未見新聞佐證有變動，現有資料仍準確。",
-    "本週查證後，未發現任何新聞能證實現有案例資料需更新，資料仍保持準確。",
-    "本週查證後，未發現任何新聞可證實現有案例資料需更新，現有資料仍保持準確。",
-    "本週查證後，未發現任何新聞可佐證更新現有產品 Roadmap 資料，現有資訊仍保持準確。",
-    "本週查證後未發現任何新聞能證實現有多方聯盟資料有變動，現有資料仍準確。",
-    "本週查證後，現有「生態系權力布局／合規治理」資料仍準確，無需更新。",
-    "本週查證後未發現任何新聞可證實現有生態系夥伴資料有變動，現有資料仍準確。"
+    "本週查證後，現有「應用案例（已上線）」資料仍準確，未發現需更新之資訊。",
+    "本週查證後，未發現任何新聞能證實現有案例資料需更新，現有資料仍準確。",
+    "本週查證後，未發現任何新聞可證實現有多方聯盟資料需更新，現有資料仍準確。",
+    "本週查證後，現有生態系權力布局／合規治理資料仍準確，未發現需更新之項目。",
+    "本週查證後未發現任何新聞對現有生態系夥伴資料有明確變動，資料仍保持準確。"
   ],
   "category_failures": []
 }

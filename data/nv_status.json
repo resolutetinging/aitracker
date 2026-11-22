@@ -1,5 +1,5 @@
 {
-  "last_checked": "2026-11-16",
+  "last_checked": "2026-11-23",
   "pyramid": [
     {
       "label": "應用層（Industries）",
@@ -902,6 +902,70 @@
       "category": "高層動態",
       "summary": "在 Jensen Huang 突然辭職後，Nvidia CFO Colette Kress 被指派為臨時執行長，董事會將同時考慮內外部候選人。",
       "src": "https://www.cnbc.com/2026/11/12/colette-kress-nvidia-cfo-interim-ceo-candidate.html",
+      "src_note": ""
+    },
+    {
+      "date": "2026-11-23",
+      "title": "中國回應美國新 AI 晶片限制措施",
+      "category": "出口管制與地緣",
+      "summary": "美國商務部限制中國租用海外資料中心的先進 Nvidia AI 晶片，中國政府表示將採取必要措施因應，可能加強本土供應或尋求替代。",
+      "src": "https://globalpost.com/stories/china-vows-response-to-new-us-ai-chip-restrictions/",
+      "src_note": ""
+    },
+    {
+      "date": "2026-11-22",
+      "title": "美國財政部長確認 Nvidia H200 晶片出口限制維持不變",
+      "category": "出口管制與地緣",
+      "summary": "美國財政部長 Scott Bessent 表示，針對 Nvidia H200 晶片的現行出口限制將持續執行，且不會再加設遠端運算存取的額外限制，以維持供應鏈合規。",
+      "src": "https://casrai.org/news/bessent-us-nvidia-chip-export-policy-china-holds-remote-access-2026",
+      "src_note": ""
+    },
+    {
+      "date": "2026-11-22",
+      "title": "Nvidia AI 供應鏈承諾 1180 億美元保證金以支援客戶建設 AI 設施",
+      "category": "供應鏈與基建",
+      "summary": "Nvidia 宣布為供應商承諾 3900 億美元，並提供最高 1180 億美元的財務保證，協助客戶建置 AI 設施，當季資料中心營收達 1076 億美元。",
+      "src": "https://www.datacenterknowledge.com/data-center-chips/nvidia-ai-surge-comes-with-118-billion-in-guarantees",
+      "src_note": ""
+    },
+    {
+      "date": "2026-11-22",
+      "title": "Nvidia 股價連跌七日 市值縮減約 2.6 萬億美元",
+      "category": "市場與觀點",
+      "summary": "Nvidia 股價連續七天下跌，單日跌幅最高 14%，市值縮減約 2.6 萬億美元，市場對黃仁勳領導產生疑慮。",
+      "src": "https://www.cnbc.com/2026/11/20/nvidias-7-week-losing-streak-is-longest-since-2008-financial-crisis.html",
+      "src_note": ""
+    },
+    {
+      "date": "2026-11-21",
+      "title": "Nvidia 融資風險或持續壓低 AI 晶片股價",
+      "category": "市場與觀點",
+      "summary": "Lynx Equity Strategies 分析師指出，Nvidia 為客戶籌資受阻，可能拖累 AI 晶片板塊，股價接近分析師設定的目標價 135 美元。",
+      "src": "https://finance.yahoo.com/technology/ai/articles/nvidia-financing-risks-could-keep-135314222.html",
+      "src_note": ""
+    },
+    {
+      "date": "2026-11-20",
+      "title": "美國眾議院議長 Johnson 支持加緊 AI 晶片出口管制",
+      "category": "政府與法律",
+      "summary": "美國眾議院議長 Mike Johnson 表示將支持在 Nvidia 相關醜聞後加緊對 AI 晶片的出口管制，顯示美國立法層面欲限制中國取得先進 AI 晶片。",
+      "src": "https://www.nola.com/news/mike-johnson-ai-chips-nvidia/article_72ddd6a2-3645-4e78-9f05-3de77a9498ba.html",
+      "src_note": ""
+    },
+    {
+      "date": "2026-11-18",
+      "title": "Nvidia 警示中國遠端存取 AI 晶片可能招致美國訴訟",
+      "category": "出口管制與地緣",
+      "summary": "Nvidia 警告若中國公司遠端存取其 AI 晶片，可能因美國新立法而面臨訴訟風險。",
+      "src": "https://finance.yahoo.com/news/nvidia-warns-chip-buyers-legal-073724047.html",
+      "src_note": ""
+    },
+    {
+      "date": "2026-11-18",
+      "title": "Nvidia 警告中國 AI 晶片使用者面臨法律風險",
+      "category": "政府與法律",
+      "summary": "Nvidia 告知若客戶將超過 50% GPU 租給中國公司將暫停供貨，且新通過的《遠端存取安全法案》可能導致美國對雲端服務存取更嚴格控制。",
+      "src": "https://www.cnbc.com/2026/11/17/nvidia-china-cloud-ai-chip-access.html",
       "src_note": ""
     }
   ]
