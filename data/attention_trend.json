@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-22",
+ "updated": "2026-11-23",
  "since": "2026-07-01",
  "entities": [
   {
@@ -1022,12 +1022,38 @@
     "Intel": 2,
     "Agentic AI": 1
    }
+  },
+  {
+   "week": "2026-W48",
+   "start": "2026-11-23",
+   "cards": 3,
+   "dims": {
+    "hw": {
+     "core": 1,
+     "opp": 0,
+     "noise": 0
+    },
+    "corp": {
+     "core": 1,
+     "opp": 0,
+     "noise": 0
+    },
+    "app": {
+     "core": 0,
+     "opp": 1,
+     "noise": 0
+    }
+   },
+   "mentions": {
+    "NVIDIA": 1,
+    "Google": 1,
+    "Broadcom": 1,
+    "Oracle": 1,
+    "Agentic AI": 1
+   }
   }
  ],
  "seen": [
-  "2026-11-01|Doximity 推出 AI 藥物檢查工具 DoseCheck",
-  "2026-11-01|Google 搜尋廣告收入成長放緩至 12%　AI 機制影響營收",
-  "2026-11-01|S&P 降級 Meta 前景　因資本支出與自由現金流憂慮",
   "2026-11-02|Amazon 內部備忘錄警示 AI 使用對工程師情緒的影響",
   "2026-11-02|JPMorgan 與 Walmart 在 AI 個人代理上的策略分歧",
   "2026-11-02|Nvidia 以 69 億美元收購 Mellanox 後，2024 Q2 網路營收達 175 億美元，超越 Cisco",
@@ -1105,6 +1131,9 @@
   "2026-11-22|Nvidia AI 供應鏈承諾 1180 億美元保證金以支援客戶建設 AI 設施",
   "2026-11-22|Nvidia 股價連跌七日 市值縮減約 2.6 萬億美元",
   "2026-11-22|State Farm 以 Microsoft Copilot 加速核保流程",
-  "2026-11-22|美國財政部長確認 Nvidia H200 晶片出口限制維持不變"
+  "2026-11-22|美國財政部長確認 Nvidia H200 晶片出口限制維持不變",
+  "2026-11-23|Broadcom AI 加速器訂單遭 Google 縮減",
+  "2026-11-23|Oracle 推出生命科學 AI 代理與 AI 加強版 Primavera Cloud",
+  "2026-11-23|中國回應美國新 AI 晶片限制措施"
  ]
 }

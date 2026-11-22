@@ -1,5 +1,106 @@
 [
   {
+    "date": "2026-11-23",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "中國回應美國新 AI 晶片限制措施",
+        "layer": "export_controls",
+        "body": "美國商務部於本週一發布新規則，限制中國企業租用海外資料中心的先進 Nvidia AI 晶片。中國政府於週二表示將採取「必要措施」因應此限制，暗示可能加強本土供應或尋求替代來源。規則亦針對新加坡、馬來西亞、泰國與巴西等國的出貨路徑加強管制。",
+        "impact": "此舉將直接降低 Nvidia 先進 AI 晶片在中國的出貨量 (↓)，迫使中國資料中心供應鏈尋求本土晶片或其他供應商。",
+        "rating": "core",
+        "insight": "美國限制將驅動中國加速本土 AI 晶片供應鏈建置。",
+        "source_label": "globalpost.com",
+        "source": "https://globalpost.com/stories/china-vows-response-to-new-us-ai-chip-restrictions/",
+        "chain": [
+          {
+            "label": "Nvidia AI 晶片 出口↓",
+            "type": "down"
+          },
+          {
+            "label": "中國本土 AI 晶片 產能↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "corp": [
+      {
+        "title": "Broadcom AI 加速器訂單遭 Google 縮減",
+        "layer": "AI晶片供應",
+        "body": "Broadcom（NasdaqGS: AVGO）據報導將向 Google 的資料中心供應的 AI 加速器出貨量減少。Google 正在縮減對 Broadcom AI 加速器的訂單，以調整其大規模運算基礎建設需求。此變動將影響 Broadcom 於 AI 相關半導體營收的組合比例。",
+        "impact": "Broadcom 直接面臨 Google 訂單下降，導致其 AI 晶片營收可能出現下滑（↓）。此波動亦可能促使其他資料中心客戶重新評估 AI 加速器供應來源，進一步影響整體 AI 晶片供應鏈格局。",
+        "rating": "core",
+        "insight": "投資者應關注 Broadcom AI 晶片營收的下行風險及其對上游代工需求的衝擊。",
+        "source_label": "Yahoo Finance",
+        "source": "https://finance.yahoo.com/technology/ai/articles/broadcom-avgo-faces-reported-ai-150805371.html",
+        "chain": [
+          {
+            "label": "Broadcom AI 加速器 訂單↓",
+            "type": "down"
+          },
+          {
+            "label": "Google 資料中心 AI 需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Oracle 推出生命科學 AI 代理與 AI 加強版 Primavera Cloud",
+        "layer": "healthcare",
+        "body": "Oracle (NYSE:ORCL) 公布美國多家醫院系統因 Java 安全漏洞而加速進行補丁作業。於同時，Oracle 正式推出 Life Sciences AI Agents，並將 AI 功能整合至 Primavera Cloud，以支援藥物研發與大型建設專案規劃。",
+        "impact": "此舉直接提升 Oracle 在醫療資訊軟體供應鏈的需求，並加速醫院的藥物研發流程。",
+        "rating": "opp",
+        "insight": "Oracle 以 AI 產品切入生命科學與建設領域，擴大其在高價值企業軟體市場的版圖。",
+        "source_label": "Yahoo Finance",
+        "source": "https://finance.yahoo.com/healthcare/articles/oracle-orcl-hospital-java-patching-180644592.html",
+        "chain": [
+          {
+            "label": "Oracle Life Sciences AI 代理 服務↑",
+            "type": "up"
+          },
+          {
+            "label": "醫院系統 Java 安全補丁需求↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "先進人工智慧晶片",
+        "full": "Advanced Artificial Intelligence Chip",
+        "def": "具備高效能運算與大量記憶體介面的晶片，主要用於大型語言模型與深度學習推論。",
+        "why": "此類晶片是 AI 伺服器的核心，供應限制會直接影響 AI 基礎設施建置。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "出口管制",
+        "full": "Export Control",
+        "def": "政府對特定技術或產品的跨境銷售與轉移設定的限制措施。",
+        "why": "出口管制會改變晶片供應鏈的地理分布與客戶選擇，影響產能配置。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "Life Sciences AI Agents",
+        "full": "Oracle 針對生命科學研發所設計的人工智慧代理服務",
+        "def": "一套結合機器學習與資料分析的工具，協助藥物研發團隊自動化實驗設計與結果解讀。",
+        "why": "可縮短新藥開發週期，提升研發效率，對生技供應鏈產生正向拉動。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Primavera Cloud",
+        "full": "Oracle 的雲端建設專案管理平台",
+        "def": "提供 AI 驅動的排程與資源最佳化功能，支援大型基礎建設與工程專案的規劃與執行。",
+        "why": "AI 功能提升專案預測精度，降低建設成本，影響建材與設備供應鏈需求。",
+        "category": "software"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-22",
     "is_sunday": true,
     "hw": [
@@ -858,101 +959,6 @@
         "def": "提供 AI 訓練與推論所需的 GPU、加速卡、伺服器與相關晶片的製造與分銷網路。",
         "why": "醫療與客服等 AI 應用的擴張直接推動此供應鏈的產能與需求變化。",
         "category": "hardware"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-11-16",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "今日無相關晶片新聞",
-        "layer": "",
-        "body": "今日無相關晶片新聞。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "corp": [
-      {
-        "title": "Anthropic IPO 受多家巨頭共投 260 億美元",
-        "layer": "core",
-        "body": "Anthropic 預計於本週四在 Nasdaq 首次公開發行，發行價每股 70 至 78 美元。AMD、Broadcom、Google、Micron、Microsoft、Nvidia 與台積電等七家巨頭合計承諾投入 260 億美元資金。Amazon 亦為早期投資者，持股規模可能達數千億美元。",
-        "impact": "此輪資金直接提升晶圓代工（如台積電）與記憶體供應商（如 Micron）產能需求，因 Anthropic 長期需大量 AI 晶片與記憶體；隨後下游 AI 服務平台（如 Google、Microsoft）將加速部署 Anthropic 模型，提升雲端算力需求，進一步刺激 GPU 供應鏈（如 Nvidia）產能擴張 (↑)。",
-        "rating": "core",
-        "insight": "Anthropic 大規模 IPO 為 AI 晶片與記憶體需求注入新資金，供應鏈上游將受益。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/11/15/anthropic-ipo-is-make-or-break-for-the-technology-industry.html",
-        "chain": [
-          {
-            "label": "Anthropic IPO 資金投入↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia AI 軟體需求↑",
-            "type": "up"
-          },
-          {
-            "label": "AMD AI 晶片需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "全球篩選測試平台市場預估至2030年達 20.1 億美元",
-        "layer": "enterprise_software",
-        "body": "根據 Yahoo Finance 報導，全球篩選測試平台市場規模 2026 年為 13.6 億美元，預測至 2030 年達 20.1 億美元（年複合成長率 10.3%）。平台結合 AI 自動化、雲端部署與即時分析，提供系統整合與本地化軟體以降低成本、提升準確度並確保合規。此類解決方案已在醫療、診斷、安全、製造與生命科學等多個產業落地。",
-        "impact": "AI 驅動的測試平台需求上升將直接拉高雲端服務供應與資料中心硬體需求，並提升認證機構與品質保證服務供應商的訂單量，進一步刺激相關軟硬體供應鏈的產能利用率。下游客戶因平台提升測試效率，可縮短產品上市時間，提升整體產業競爭力。",
-        "rating": "opp",
-        "insight": "AI 及雲端結合的測試平台正快速擴張，相關硬體與服務供應鏈將受益。",
-        "source_label": "Yahoo Finance",
-        "source": "https://finance.yahoo.com/healthcare/articles/2026-global-screener-proficiency-testing-143300423.html",
-        "chain": [
-          {
-            "label": "測試平台 AI 整合需求↑",
-            "type": "up"
-          },
-          {
-            "label": "雲端部署服務供應商收入↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "IPO",
-        "full": "Initial Public Offering（首次公開發行）",
-        "def": "公司首次向公眾投資者發行股票以募集資金的過程。通常伴隨著上市公司治理結構的變化與資金規模的快速擴張。",
-        "why": "Anthropic 的 IPO 牽涉多家 AI 巨頭共同投資，直接影響晶圓與記憶體供應鏈需求。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "AI 晶片供應鏈",
-        "full": "人工智慧專用晶片的上下游供應鏈",
-        "def": "包括設計公司（如 Nvidia、AMD）、晶圓代工（如台積電、三星）、封測廠（OSAT）以及記憶體供應商（如 Micron）。此鏈條決定 AI 訓練與推理的成本與效能。",
-        "why": "Nvidia 執行長變動與 Anthropic 大規模資金投入均會改變該供應鏈的需求與布局。",
-        "category": "hardware"
-      },
-      {
-        "term": "篩選測試平台",
-        "full": "Proficiency Testing Platform",
-        "def": "一種結合 AI 與雲端技術的軟體系統，用於標準化性能評估、合規與品質保證，常見於醫療、製造與安全領域。",
-        "why": "平台提供即時分析與自動化流程，可降低測試成本並提升結果準確度，成為多產業的關鍵工具。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "認證支援",
-        "full": "Accreditation Support",
-        "def": "協助企業符合國際或產業標準的服務，通常包括文件審核、流程檢查與合規報告。",
-        "why": "隨著 AI 測試平台普及，對認證支援的需求同步增長，牽動相關服務供應商的營收。",
-        "category": "role"
       }
     ],
     "weekly_summary": null
