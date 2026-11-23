@@ -1,28 +1,7 @@
 {
   "checked_at": "2026-11-23",
-  "items": [
-    {
-      "category": "pyramid",
-      "action": "add",
-      "target_name": "",
-      "name": "Vera Rubin Ultra",
-      "desc": "新一代 GPU/加速器系列，預計於明年推出",
-      "status": "",
-      "reason": "Nvidia interim CEO 在財報電話會議中表示公司仍在按計畫於明年推出 Vera Rubin Ultra 系列產品",
-      "source": "https://www.marketwatch.com/livecoverage/nvidia-earnings-stock-nvidia-jensen-huang-results-call/card/nvidia-s-interim-ceo-reinforces-the-product-roadmap-tCuIkT0htibUp5l29kAq"
-    },
-    {
-      "category": "roadmap",
-      "action": "add",
-      "target_name": "",
-      "name": "NVIDIA Rubin HPC",
-      "desc": "Rubin HPC GPU，具備 50,000+ CUDA 核心，於 SC26 公布，預計 2028 年可用，具體規格如記憶體頻寬、雙精度效能、功耗與價格尚未公布。",
-      "status": "規劃2028推出，尚未出貨",
-      "reason": "新聞指出 NVIDIA 在 SC26 發表 Rubin HPC，具備 50,000+ CUDA 核心，並說明將於 2028 年上市。",
-      "source": "https://www.techspot.com/news/114583-nvidia-reveals-rubin-hpc-gpu-50000-cuda-cores.html"
-    }
-  ],
-  "no_change_summary": "",
+  "items": [],
+  "no_change_summary": "11-23 複核：Rubin HPC 依 NVIDIA 官方部落格（11-16 SC26 發表）收錄至產品 Roadmap；Vera Rubin Ultra 為既有 Roadmap 項目，暫代執行長 Kress 於 11-17 財報會議重申明年推出，與現有 2027 時程一致，不另增列技術金字塔。",
   "no_change_detail_by_category": [
     "本週查證後，現有「應用案例（已上線）」資料仍準確，未發現需更新之資訊。",
     "本週查證後，未發現任何新聞能證實現有案例資料需更新，現有資料仍準確。",
