@@ -2,6 +2,405 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 23,
+        "CSP/CapEx": 27,
+        "App/AI": 8,
+        "gnews-chip": 23,
+        "gnews-dc": 24,
+        "gnews-app": 11
+      },
+      "digest_filtered": 1,
+      "after_dedup": 119,
+      "buckets": {
+        "hw": 28,
+        "corp": 93,
+        "app": 5
+      },
+      "news_char_budget": {
+        "hw": 6000,
+        "corp": 6163,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 28,
+          "full_text_total": 1,
+          "full_text_sent": 1,
+          "sent": 15,
+          "partial_cut": 0,
+          "chars_sent": 5922,
+          "dropped": 13
+        },
+        "corp": {
+          "mode": "pack",
+          "budget": 6163,
+          "candidates": 93,
+          "full_text_total": 8,
+          "full_text_sent": 3,
+          "sent": 14,
+          "partial_cut": 0,
+          "chars_sent": 5934,
+          "dropped": 79
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 5,
+          "full_text_total": 3,
+          "full_text_sent": 3,
+          "sent": 5,
+          "partial_cut": 0,
+          "chars_sent": 2944,
+          "dropped": 0
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 4,
+        "app": 1
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 5006,
+          "completion_tokens": 851,
+          "total_tokens": 5857
+        },
+        "corp": {
+          "prompt_tokens": 5160,
+          "completion_tokens": 2286,
+          "total_tokens": 7446
+        },
+        "app": {
+          "prompt_tokens": 4092,
+          "completion_tokens": 840,
+          "total_tokens": 4932
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "corp",
+          "title": "Nvidia董事會恢復黃仁勳為執行長",
+          "gate": "enforce_desc_only",
+          "action": "rating core→opp",
+          "reason": "素材只有 RSS 描述，core 上限 opp"
+        },
+        {
+          "section": "corp",
+          "title": "AWS於希臘科扎尼規劃300MW資料中心",
+          "gate": "enforce_desc_only",
+          "action": "rating core→opp",
+          "reason": "素材只有 RSS 描述，core 上限 opp"
+        },
+        {
+          "section": "corp",
+          "title": "Oracle獲得資金支援OpenAI建設",
+          "gate": "enforce_desc_only",
+          "action": "rating core→opp",
+          "reason": "素材只有 RSS 描述，core 上限 opp"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 0,
+          "opp": 4,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "feed_errors": [
+        {
+          "label": "Semiconductor",
+          "host": "semiengineering.com",
+          "error": "zero_kept",
+          "detail": "items=10 bytes=188882"
+        },
+        {
+          "label": "Semiconductor",
+          "host": "www.digitimes.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "Semiconductor",
+          "host": "www.theregister.com",
+          "error": "ParseError",
+          "detail": "not well-formed (invalid token): line 7, column 22"
+        },
+        {
+          "label": "CSP/CapEx",
+          "host": "techcrunch.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "App/AI",
+          "host": "techcrunch.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "App/AI",
+          "host": "venturebeat.com",
+          "error": "HTTP 429",
+          "detail": "Too Many Requests"
+        },
+        {
+          "label": "Semiconductor",
+          "host": "spectrum.ieee.org",
+          "error": "zero_kept",
+          "detail": "items=30 bytes=342610"
+        }
+      ],
+      "gnews_feed_times": [
+        {
+          "label": "gnews-chip",
+          "at": "2026-11-24T00:01:05+08:00"
+        },
+        {
+          "label": "gnews-dc",
+          "at": "2026-11-24T00:01:05+08:00"
+        },
+        {
+          "label": "gnews-app",
+          "at": "2026-11-24T00:01:06+08:00"
+        }
+      ],
+      "unmatched_dropped": 13,
+      "gnews_decode": {
+        "attempted": 11,
+        "ok": 11,
+        "failed": 0,
+        "rate_limited": false,
+        "skipped": 0,
+        "skipped_cap": 0,
+        "backoff_count": 0,
+        "backoff_wait_sec": 0,
+        "started_at": "2026-11-24T00:01:18+08:00"
+      },
+      "headline_only": {
+        "fetch_failed": 5,
+        "thin_summary": 56,
+        "fetch_failed_desc_kept": 3,
+        "fail_reasons": {
+          "http_403": 3,
+          "http_401": 1,
+          "error": 1
+        }
+      },
+      "main_call_estimate": {
+        "hw": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 4915,
+          "est_completion_tokens": 1170,
+          "safety": 300,
+          "est_total_tokens": 6385,
+          "target": 6800
+        },
+        "corp": {
+          "news_char_budget": 6163,
+          "est_prompt_tokens": 5156,
+          "est_completion_tokens": 1270,
+          "safety": 300,
+          "est_total_tokens": 6726,
+          "target": 6800
+        },
+        "app": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 4194,
+          "est_completion_tokens": 910,
+          "safety": 300,
+          "est_total_tokens": 5404,
+          "target": 6800
+        }
+      },
+      "retry": {
+        "hw": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "corp": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "app": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        }
+      },
+      "llm_ratings": {
+        "hw": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 3,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        }
+      },
+      "headline_only_cards": {
+        "marked": 2,
+        "downgraded": 0,
+        "body_trimmed": 2,
+        "scrubbed": 2
+      },
+      "deepen": {
+        "candidates": 3,
+        "rewritten": 0,
+        "fetch_failed": 3,
+        "llm_failed": 0
+      },
+      "gate_reasons": {
+        "enforce_desc_only": {
+          "Nvidia董事會恢復黃仁勳為執行長": "素材只有 RSS 描述，core 上限 opp",
+          "AWS於希臘科扎尼規劃300MW資料中心": "素材只有 RSS 描述，core 上限 opp",
+          "Oracle獲得資金支援OpenAI建設": "素材只有 RSS 描述，core 上限 opp"
+        }
+      },
+      "desc_only_cards": {
+        "marked": 3,
+        "downgraded": 3,
+        "body_trimmed": 3,
+        "scrubbed": 3
+      },
+      "numeric_gate": {
+        "runs": 2,
+        "removed": 0,
+        "sentences_dropped": 0,
+        "contradiction_removed": 0,
+        "no_material": 0,
+        "items": []
+      },
+      "scrub_skipped": {
+        "fix_chains": 5,
+        "validate_impact": 5
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 6,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 5,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "fragment_restored": 0,
+        "items": [
+          {
+            "sec": "hw",
+            "title": "Marlowe 獲得 2.77 億美元資金以推動 Nvidia 晶片替代方案",
+            "source": "https://www.bloomberg.com/news/articles/2026-11-23/marlowe-raises-277-million-to-bolster-alternatives-to-nvidia-chips",
+            "rating": "opp",
+            "coverage": "low_coverage",
+            "suspects": [],
+            "undetermined": [
+              "2026年11月23日"
+            ],
+            "tense_flag": false,
+            "title_suspects": []
+          }
+        ]
+      },
+      "llm_fact_check": {
+        "enabled": true,
+        "calls": 3,
+        "failed_calls": 0,
+        "checked": 6,
+        "ok": 4,
+        "fixed": 2,
+        "dropped": 0,
+        "missing": 0,
+        "skipped_over_budget": 0,
+        "est_prompt_tokens": [
+          1298,
+          1638,
+          1660
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 1326,
+            "completion_tokens": 247,
+            "total_tokens": 1573
+          },
+          {
+            "prompt_tokens": 1609,
+            "completion_tokens": 397,
+            "total_tokens": 2006
+          },
+          {
+            "prompt_tokens": 1560,
+            "completion_tokens": 167,
+            "total_tokens": 1727
+          }
+        ],
+        "items": [
+          {
+            "title": "Marlowe 獲得 2.77 億美元資金以推動 Nvidia 晶片替代方案",
+            "verdict": "fix",
+            "returned": {
+              "title": "Marlowe 獲得 2.77 億美元資金以推動 Nvidia 晶片替代方案",
+              "body": "Marlowe 獲得 2.77 億美元資金以推動 Nvidia 晶片替代方案。"
+            },
+            "reason": "BODY 中加入了原標題未提及的日期與完成時間，需僅保留標題所述事實。",
+            "new_title": "Marlowe 獲得 2.77 億美元資金以推動 Nvidia 晶片替代方案"
+          },
+          {
+            "title": "Amazon收購Decart AI晶片優化技術",
+            "verdict": "fix",
+            "returned": {
+              "title": "Amazon收購Decart AI晶片優化技術",
+              "body": "Amazon將收購Decart的AI晶片優化技術。"
+            },
+            "reason": "卡片內容加入未於標題出現的目的說明，需僅保留標題直譯。",
+            "new_title": "Amazon收購Decart AI晶片優化技術"
+          }
+        ],
+        "desc_only_sent": 3
+      },
+      "date": "2026-11-24",
+      "generated_at": "2026-11-24T00:12:22.458200+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 43,
         "CSP/CapEx": 37,
         "App/AI": 9,
@@ -3819,252 +4218,6 @@
       },
       "date": "2026-11-11",
       "generated_at": "2026-11-11T00:07:58.436934+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 51,
-        "CSP/CapEx": 48,
-        "App/AI": 18,
-        "gnews-chip": 23,
-        "gnews-dc": 23,
-        "gnews-app": 16
-      },
-      "digest_filtered": 1,
-      "after_dedup": 162,
-      "buckets": {
-        "hw": 43,
-        "corp": 113,
-        "app": 36
-      },
-      "news_char_budget": {
-        "hw": 6000,
-        "corp": 8000,
-        "app": 6000
-      },
-      "news_context": {
-        "hw": {
-          "mode": "pack",
-          "budget": 6000,
-          "candidates": 43,
-          "full_text_total": 5,
-          "full_text_sent": 4,
-          "sent": 13,
-          "partial_cut": 0,
-          "chars_sent": 5778,
-          "dropped": 30
-        },
-        "corp": {
-          "mode": "slice",
-          "budget": 8000,
-          "candidates": 113,
-          "full_text_total": 4,
-          "full_text_sent": 4,
-          "sent": 14,
-          "partial_cut": 1,
-          "chars_sent": 8000,
-          "dropped": 99
-        },
-        "app": {
-          "mode": "pack",
-          "budget": 6000,
-          "candidates": 36,
-          "full_text_total": 3,
-          "full_text_sent": 3,
-          "sent": 14,
-          "partial_cut": 0,
-          "chars_sent": 5776,
-          "dropped": 22
-        }
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 3,
-        "app": 3
-      },
-      "llm_usage": {
-        "hw": {
-          "prompt_tokens": 4526,
-          "completion_tokens": 372,
-          "total_tokens": 4898
-        },
-        "corp": {
-          "prompt_tokens": 5198,
-          "completion_tokens": 1253,
-          "total_tokens": 6451
-        },
-        "app": {
-          "prompt_tokens": 5211,
-          "completion_tokens": 2021,
-          "total_tokens": 7232
-        }
-      },
-      "gate_removed": [
-        {
-          "section": "corp",
-          "title": "Anthropic 簽署 34 億美元燃氣發電機合約支援 1.7GW 資料中心電力",
-          "gate": "validate_sources",
-          "action": "source_cleared",
-          "reason": "source_cleared"
-        },
-        {
-          "section": "corp",
-          "title": "Nvidia 探索利用 Brightspeed 中央局點建置推論網路",
-          "gate": "validate_sources",
-          "action": "source_cleared",
-          "reason": "source_cleared"
-        },
-        {
-          "section": "hw",
-          "title": "本日無相關hw新聞",
-          "gate": "remove_repeated_stories",
-          "action": "removed",
-          "reason": "removed"
-        },
-        {
-          "section": "corp",
-          "title": "Anthropic 簽署 34 億美元燃氣發電機合約支援 1.7GW 資料中心電力",
-          "gate": "downgrade_unsourced",
-          "action": "rating core→noise",
-          "reason": "rating core→noise"
-        },
-        {
-          "section": "corp",
-          "title": "Nvidia 探索利用 Brightspeed 中央局點建置推論網路",
-          "gate": "downgrade_unsourced",
-          "action": "rating core→noise",
-          "reason": "rating core→noise"
-        },
-        {
-          "section": "corp",
-          "title": "OpenAI CFO 表示即使選舉結果不利仍將持續投資 AI 資料中心",
-          "gate": "downgrade_shallow_impact",
-          "action": "rating core→opp",
-          "reason": "rating core→opp"
-        },
-        {
-          "section": "corp",
-          "title": "Anthropic 簽署 34 億美元燃氣發電機合約支援 1.7GW 資料中心電力",
-          "gate": "drop_stale_placeholders",
-          "action": "removed",
-          "reason": "removed"
-        },
-        {
-          "section": "corp",
-          "title": "Nvidia 探索利用 Brightspeed 中央局點建置推論網路",
-          "gate": "drop_stale_placeholders",
-          "action": "removed",
-          "reason": "removed"
-        }
-      ],
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 2,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 3,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 2,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "deepen": {
-        "candidates": 3,
-        "rewritten": 1,
-        "fetch_failed": 2,
-        "llm_failed": 0
-      },
-      "dedup_audit": [],
-      "fact_audit": {
-        "mode": "enforce",
-        "checked": 4,
-        "suspect_cards": 1,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 2,
-          "suspect_cards": 0,
-          "skipped_enforce": 0
-        },
-        "enforced": 1,
-        "title_suspect_cards": 0,
-        "removed": 0,
-        "fragment_restored": 0,
-        "items": [
-          {
-            "sec": "app",
-            "title": "Doximity 將臨床 AI 擴展至超過 190 家健康系統",
-            "source": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNam9IaEE1Y0pueEpOR0dYUUcta21MM09DTWFGNDRBc0FtRUxWdUxsQ2VEaUNtYm9teDJOVTJVSEVuU09PaThlTVNlNEUzZWFuaUJ3YmlJdHVnVnZEa3NfWVVfc19EZk5pdXNTVnRtYVhoU2Q4bXBLY1kwTUdvbzZjU3pZdElZRmZ5Nm1SUW5Kb09zYnVqVlhDc2g4ZmxMcGdSNS1XY3M3SWhsbFIyV2tQLU9rYnZhdk1zOXMw?oc=5",
-            "rating": "core",
-            "coverage": "full",
-            "suspects": [
-              "30"
-            ],
-            "undetermined": [],
-            "tense_flag": false,
-            "title_suspects": []
-          },
-          {
-            "sec": "app",
-            "title": "AWS 承諾 1 億美元雲端與 AI 信用額度以縮小健康公平差距",
-            "source": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQNnVqSUxyLXlLdzZLTzRmUHVsTUo0YklfMW5hb2ZGQmRBRllGMDNfYnp5dzdHTkx3VGtLWDJ1eUc5SlhTUnRFYk44RkZ0LXlDdjNqTURZU1J6MHdZVjEwcElvUVlXT3d0WTdFMl9HeXkzaklhQmlRY2NQeGNWajJ1Z09xUHpzcTZZMXl4MHFEWlJRQTdwaVhFT3o1WVhHWHdwY2RGUFdxc0ZJU1Za?oc=5",
-            "rating": "core",
-            "coverage": "low_coverage",
-            "suspects": [],
-            "undetermined": [
-              "2027年",
-              "500"
-            ],
-            "tense_flag": false,
-            "title_suspects": []
-          },
-          {
-            "sec": "app",
-            "title": "Tencent 推動跨境支付 AI 應用於金融服務",
-            "source": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOWktoVWFaS1NDUmRnOWJFQkFPNHljNlhoSXItOVJFSmhNMnVacFRuc2dRMWJVcUt4emFKZGtDaS1tdm1CS2haS0JXZXZ4NmlpdmYwSzdfc25xM0I5TDdFOG1fZjg1N1BTYTdKb0ZGTkxKdTZ5RTNrVlhZMy1NbF9qTkpUZmI4Uk42OVZ1NzU0bnZLTGZVODVXMUJEYU5fVkxqVFVkLWgyekVWVHc0RGhVVndrTmVZWnp2Rm1RZGFxMlNOX1luUU52Ng?oc=5",
-            "rating": "opp",
-            "coverage": "low_coverage",
-            "suspects": [],
-            "undetermined": [
-              "5 億美元",
-              "20"
-            ],
-            "tense_flag": false,
-            "title_suspects": []
-          }
-        ]
-      },
-      "date": "2026-11-10",
-      "generated_at": "2026-11-10T00:08:50.685118+08:00"
     }
   ]
 }

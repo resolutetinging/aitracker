@@ -1,5 +1,142 @@
 [
   {
+    "date": "2026-11-24",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "Marlowe 獲得 2.77 億美元資金以推動 Nvidia 晶片替代方案",
+        "layer": "financing",
+        "body": "Marlowe 獲得 2.77 億美元資金以推動 Nvidia 晶片替代方案。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "Bloomberg.com",
+        "source": "https://www.bloomberg.com/news/articles/2026-11-23/marlowe-raises-277-million-to-bolster-alternatives-to-nvidia-chips",
+        "headline_only": true
+      }
+    ],
+    "corp": [
+      {
+        "title": "Nvidia董事會恢復黃仁勳為執行長",
+        "layer": "CSP/CapEx",
+        "body": "Nvidia董事會決定恢復黃仁勳為執行長。董事會在決策過程中收到美國政府高層的意見。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "DatacenterDynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/nvidia-board-reinstates-jensen-huang-as-ceo/",
+        "thin_source": true,
+        "desc_only": true
+      },
+      {
+        "title": "AWS於希臘科扎尼規劃300MW資料中心",
+        "layer": "CSP/CapEx",
+        "body": "AWS公開了位於希臘科扎尼的300MW資料中心環境影響評估。該評估揭露了新建設施的規模與能源需求。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "DatacenterDynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/details-shared-of-aws-300mw-data-center-in-kozani-greece/",
+        "thin_source": true,
+        "desc_only": true
+      },
+      {
+        "title": "Oracle獲得資金支援OpenAI建設",
+        "layer": "CSP/CapEx",
+        "body": "Oracle宣布其11月的資金募集已完全覆蓋OpenAI建設所需的投資週期。公司表示此輪資金將用於支援OpenAI的基礎設施擴張。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "DatacenterDynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/oracle-secures-funding-needed-for-openai-buildout/",
+        "thin_source": true,
+        "desc_only": true
+      },
+      {
+        "title": "Amazon收購Decart AI晶片優化技術",
+        "layer": "CSP/CapEx",
+        "body": "Amazon收購Decart AI晶片優化技術。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "Reuters",
+        "source": "https://www.reuters.com/business/retail-consumer/amazon-buy-decarts-ai-chip-optimization-tech-latest-ai-talent-grab-2026-11-23/",
+        "headline_only": true
+      }
+    ],
+    "app": [
+      {
+        "title": "Meta Muse 於 Walmart 代理購物服務正式上線",
+        "layer": "shopping",
+        "body": "Walmart 讓 Meta 的 AI 代理 Muse 代替使用者在平台上搜尋並購買黑色星期五優惠。此服務透過 Walmart 先前公布的 Agent Gateway 與 Sparky AI 助手串接，並利用「Agent Profiles」在顧客帳號中開設專屬代理空間。Muse 能在不共享購買歷史的前提下完成交易，為使用者提供即時下單功能。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Meta 與 Walmart 的合作將加速 AI 代理在零售結帳環節的商業化，提升雙方平台黏著度。",
+        "source_label": "The Verge",
+        "source": "https://www.theverge.com/ai-artificial-intelligence/1039874/walmart-agent-gateway-meta-muse-black-friday",
+        "chain": [
+          {
+            "label": "Walmart 電商銷售↑",
+            "type": "up"
+          },
+          {
+            "label": "Meta AI 代理服務收入↑",
+            "type": "up"
+          },
+          {
+            "label": "Amazon 購物 AI 市占↓",
+            "type": "down"
+          }
+        ]
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Marlowe",
+        "full": "Marlowe AI 晶片初創公司",
+        "def": "Marlowe 是一家專注於開發可取代 Nvidia AI 晶片的新創企業，近期完成多億美元融資以加速產品研發。",
+        "why": "其資金規模顯示市場對非 Nvidia AI 晶片的需求增長，可能改變供應鏈格局。",
+        "category": "hardware"
+      },
+      {
+        "term": "AI晶片",
+        "full": "人工智慧專用晶片",
+        "def": "專為深度學習與推論工作負載設計的處理器，提供高效能運算與低功耗特性。",
+        "why": "AI晶片是支撐大型模型訓練與推論的核心硬體，供應鏈波動直接影響AI服務成本與可用性。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "300MW資料中心",
+        "full": "功率為300兆瓦的資料中心",
+        "def": "指單一資料中心的電力需求約為300兆瓦，通常代表數千台伺服器規模的設施。",
+        "why": "此規模的資料中心需要大量硬體與能源供應，對建築、電力與晶片供應鏈產生顯著拉動效應。",
+        "category": "hardware"
+      },
+      {
+        "term": "OpenAI建設",
+        "full": "OpenAI基礎設施擴建計畫",
+        "def": "OpenAI為支援大型語言模型運算所進行的資料中心與硬體基礎設施擴張。",
+        "why": "建設規模擴大將直接提升對高階GPU與雲端資源的需求，牽動整個AI硬體供應鏈。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Agent Gateway",
+        "full": "Agent Gateway",
+        "def": "Walmart 提供的介面，讓第三方 AI 代理能安全存取商品資訊並執行購買行為。",
+        "why": "此技術降低了資料共享壁壘，促進跨平台 AI 代理的商業落地。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Agent Profiles",
+        "full": "Agent Profiles",
+        "def": "在 Walmart 顧客帳號內為 AI 代理開設的專屬空間，用於記錄代理活動與交易紀錄。",
+        "why": "提供了使用者隱私保護與交易追蹤的機制，提升 AI 代理服務的信任度。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-23",
     "is_sunday": false,
     "hw": [
@@ -806,159 +943,6 @@
         "def": "利用機器學習與深度學習模型分析生物數據，快速預測藥物分子與目標的相互作用，以縮短藥物研發週期。",
         "why": "平台的成功將改變傳統藥物研發流程，影響上下游供應鏈的需求結構。",
         "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-11-17",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Anthropic 宣稱 Claude Mythos 預覽版將 AMD MI355X GPU 上線時間縮至約三天",
-        "layer": "software integration",
-        "body": "Anthropic 向 IPO 投資者透露，其 Claude Mythos 預覽版在 AMD MI355X GPU 上完成軟體整合僅需約三天，過去需六至十二個月。此過程「基本上無人工介入」且寫入或移植了「近 100% 的 kernel」。該模型已在 MI355X 上達到可用的效能水平。",
-        "impact": "AMD GPU 需求 ↑（因 Anthropic 直接使用 AMD 晶片），上游晶圓代工與 HBM 供應鏈利用率提升；下游 AI 服務供應商可更快部署於 AMD 平台，減少對 Nvidia CUDA 的依賴。",
-        "rating": "core",
-        "insight": "投資者應關注 AMD GPU 需求因 Anthropic 迅速上線而提升的潛在增長。",
-        "source_label": "Tom's Hardware",
-        "source": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropic-says-claude-mythos-slashed-software-work-to-onboard-amd-gpus-from-up-to-12-months-to-around-three-days-writing-almost-100-percent-of-kernels-autonomously-chips-away-at-nvidias-cuda-moat",
-        "chain": [
-          {
-            "label": "AMD MI355X GPU 整合時間↓",
-            "type": "down"
-          },
-          {
-            "label": "Anthropic Claude Mythos 上線速度↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "美國參議員 Cantwell 要求立即阻止中國取得先進 AI 晶片",
-        "layer": "export controls",
-        "body": "美國參議員 Maria Cantwell 在致商務部長 Howard Lutnick 的正式信函中要求「立即行動」阻止與中國有關的企業取得美國先進 AI 晶片。她指出若相關機構未能執行自身管制，美國將失去 AI 領導地位。",
-        "impact": "美國對高階 AI 晶片的出口管制 ↑，中國取得先進 AI 晶片的渠道受限。",
-        "rating": "core",
-        "insight": "投資者需留意美國出口管制政策對高階 AI 晶片供應鏈的直接衝擊。",
-        "source_label": "Anadolu Ajansı",
-        "source": "https://aa.com.tr/en/americas/us-senator-demands-immediate-action-to-close-china-ai-chip-loopholes-amid-nvidia-diversion-claims/4126911",
-        "chain": [
-          {
-            "label": "美國限制 AI 晶片出口↓",
-            "type": "down"
-          },
-          {
-            "label": "中國先進 AI 晶片取得難度↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Core Scientific 申請 285MW 資料中心，將約半租給 AMD",
-        "layer": "data center capacity",
-        "body": "Core Scientific 向德州達拉斯郊外提交 285MW 資料中心建設申請，計畫將場地約一半租予 AMD 用於 AI 訓練與推論服務。",
-        "impact": "AMD 資料中心需求 ↑，帶動電源、散熱與機櫃等上游硬體供應鏈利用率提升；該資料中心的建設推動美國本土資料中心基礎建設需求 ↑，對相關建築與工程服務形成正向拉動。",
-        "rating": "opp",
-        "insight": "AMD 在美國本土擴大資料中心布局，將提升其硬體需求與相關供應鏈活絡。",
-        "source_label": "Data Center Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/core-scientific-files-for-285mw-data-center-outside-dallas-texas/",
-        "thin_source": true,
-        "chain": [
-          {
-            "label": "AMD AI 訓練資源需求↑",
-            "type": "up"
-          },
-          {
-            "label": "Core Scientific 資料中心租用率↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "本日無相關corp新聞",
-        "layer": "",
-        "body": "今日該分類無足夠具體新聞素材可供分析。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "app": [
-      {
-        "title": "醫療 AI 支出2026年升至37億美元",
-        "layer": "healthcare",
-        "body": "根據 Beckers Hospital Review 報導，2026 年全球醫療機構在臨床與患者互動工具上的 AI 投資總額躍升至 37 億美元。此金額較前一年顯著增長，顯示醫院與診所正加速導入 AI 以提升診斷與行政效率。",
-        "impact": "AI 投資金額上升，可能提升相關硬體與雲端服務需求。",
-        "rating": "opp",
-        "insight": "醫療 AI 市場資金快速累積，相關硬體與平台供應鏈將持續受惠。",
-        "source_label": "Beckers Hospital Review",
-        "source": "https://www.beckershospitalreview.com/healthcare-information-technology/ai/healthcare-ai-spending-jumps-to-3-7b/",
-        "thin_source": true,
-        "chain": [
-          {
-            "label": "醫療機構 AI 投資額↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 醫療工具市場規模↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Zowie 將 AI 客服代理擴展至羅馬尼亞",
-        "layer": "finance",
-        "body": "Zowie 將 AI 客服代理擴展至羅馬尼亞。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "",
-        "source_label": "The Fintech Times",
-        "source": "https://thefintechtimes.com/zowie-expands-ai-customer-service-agents-into-romania/",
-        "headline_only": true,
-        "thin_source": true,
-        "chain": []
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "MI355X",
-        "full": "AMD Instinct MI355X GPU",
-        "def": "AMD 針對資料中心與 AI 工作負載設計的高效能 GPU，支援大規模平行運算與深度學習模型。",
-        "why": "Anthropic 以此 GPU 為目標快速完成軟體整合，顯示 AMD 在 AI 硬體市場的競爭力提升。",
-        "category": "hardware"
-      },
-      {
-        "term": "Claude Mythos",
-        "full": "Anthropic 的大型語言模型預覽版",
-        "def": "Anthropic 開發的 AI 模型，具備自動生成與移植 kernel 的能力，可在不同硬體平台上快速部署。",
-        "why": "其能在三天內完成 AMD GPU 的軟體適配，對 AI 晶片供應鏈的依賴結構產生衝擊。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI 客服代理",
-        "full": "Artificial Intelligence Customer Service Agent",
-        "def": "利用自然語言處理與機器學習技術，自動回應客戶查詢並執行基本服務流程的軟體代理。",
-        "why": "降低人力成本、提升回應速度，是金融與電商業者提升客戶體驗的關鍵工具。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "醫療 AI 支出",
-        "full": "Healthcare AI Expenditure",
-        "def": "醫療機構在 AI 軟硬體、平台與應用服務上的投資總額，涵蓋臨床決策支援、患者互動與行政自動化等領域。",
-        "why": "顯示醫療產業對 AI 技術的接受度與市場規模快速成長，直接影響相關供應鏈需求。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI 硬體供應鏈",
-        "full": "AI Hardware Supply Chain",
-        "def": "提供 AI 訓練與推論所需的 GPU、加速卡、伺服器與相關晶片的製造與分銷網路。",
-        "why": "醫療與客服等 AI 應用的擴張直接推動此供應鏈的產能與需求變化。",
-        "category": "hardware"
       }
     ],
     "weekly_summary": null

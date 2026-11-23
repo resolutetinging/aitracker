@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23",
+ "updated": "2026-11-24",
  "since": "2026-07-01",
  "entities": [
   {
@@ -1026,38 +1026,37 @@
   {
    "week": "2026-W48",
    "start": "2026-11-23",
-   "cards": 3,
+   "cards": 9,
    "dims": {
     "hw": {
      "core": 1,
-     "opp": 0,
+     "opp": 1,
      "noise": 0
     },
     "corp": {
      "core": 1,
-     "opp": 0,
+     "opp": 4,
      "noise": 0
     },
     "app": {
-     "core": 0,
+     "core": 1,
      "opp": 1,
      "noise": 0
     }
    },
    "mentions": {
-    "NVIDIA": 1,
+    "NVIDIA": 3,
     "Google": 1,
     "Broadcom": 1,
-    "Oracle": 1,
-    "Agentic AI": 1
+    "Oracle": 2,
+    "Agentic AI": 2,
+    "Amazon": 2,
+    "OpenAI": 1,
+    "Meta": 1
    }
   }
  ],
  "seen": [
-  "2026-11-02|Amazon 內部備忘錄警示 AI 使用對工程師情緒的影響",
-  "2026-11-02|JPMorgan 與 Walmart 在 AI 個人代理上的策略分歧",
-  "2026-11-02|Nvidia 以 69 億美元收購 Mellanox 後，2024 Q2 網路營收達 175 億美元，超越 Cisco",
-  "2026-11-02|OpenAI 融資目標下調至最高 200 億美元",
   "2026-11-03|Anthropic IPO 招股說明書披露近兆美元運算承諾",
   "2026-11-03|Nvidia 可能為 Nscale 西維吉尼亞 AI 數據中心提供數十億美元債務保證",
   "2026-11-03|OpenAI 創辦人 Altman 赴韓國與三星、SK 集團討論 AI 晶片合作",
@@ -1134,6 +1133,12 @@
   "2026-11-22|美國財政部長確認 Nvidia H200 晶片出口限制維持不變",
   "2026-11-23|Broadcom AI 加速器訂單遭 Google 縮減",
   "2026-11-23|Oracle 推出生命科學 AI 代理與 AI 加強版 Primavera Cloud",
-  "2026-11-23|中國回應美國新 AI 晶片限制措施"
+  "2026-11-23|中國回應美國新 AI 晶片限制措施",
+  "2026-11-24|AWS於希臘科扎尼規劃300MW資料中心",
+  "2026-11-24|Amazon收購Decart AI晶片優化技術",
+  "2026-11-24|Marlowe 獲得 2.77 億美元資金以推動 Nvidia 晶片替代方案",
+  "2026-11-24|Meta Muse 於 Walmart 代理購物服務正式上線",
+  "2026-11-24|Nvidia董事會恢復黃仁勳為執行長",
+  "2026-11-24|Oracle獲得資金支援OpenAI建設"
  ]
 }
