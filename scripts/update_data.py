@@ -1225,6 +1225,7 @@ def fetch_news(recent_titles=None, recent_urls=None):
         print(f"  → 預過濾後剩 {len(unique)} 條")
     try:
         RUN_STATS['after_dedup'] = len(unique)
+        RUN_STATS['ddg'] = len(ddg)  # 11-24：feeds 只計 RSS，前端漏斗「掃描」須加上 DDG，否則會小於去重後篇數
     except Exception as e:
         print(f"  ⚠ 漏斗統計收集失敗（fetch_news/after_dedup，不影響資料生成）：{e}")
     # 分類分流：一篇文章可同時進多桶，三桶都沒命中的進素材最少的桶

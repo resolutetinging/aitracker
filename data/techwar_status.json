@@ -117,6 +117,24 @@
       "summary": "美國聯邦眾議院歲入委員會首席民主黨議員Richard Neal與參議院財政委員會首席民主黨議員Ron Wyden宣布展開調查，並致函商務部長Lutnick。兩人指稱，川普政府讓輝達晶片先輸入美國接受安全審查、依《1962年貿易擴張法》第232條課徵25%關稅後再賣給中國企業，是把違憲的出口稅包裝成國安關稅。兩人要求商務部保存第232條調查與關稅、輝達出口許可核准，以及與輝達、黃仁勳往來通訊的所有紀錄。以上為議員指控。",
       "src": "https://democrats-waysandmeans.house.gov/media-center/press-releases/neal-wyden-begin-investigate-trump-administrations-scheme-take-cut",
       "src_note": "官方原文：眾議院歲入委員會民主黨新聞稿；致商務部長信函全文為PDF，未逐字核對"
+    },
+    {
+      "date": "2026-11-17",
+      "title": "輝達財報會議：本季對中國銷售已獲許可的Hopper產品24億美元，目前已停止對中出貨",
+      "category": "出口管制",
+      "thread": "美國對中H200晶片有條件放行與爭議",
+      "summary": "輝達於11月17日FY2027第三季財報電話會議中，暫代執行長Colette Kress表示，本季對中國銷售已獲許可的Hopper資料中心產品為24億美元，下季財測不含此類產品，且目前已不再向中國出貨已獲許可的Hopper資料中心產品。",
+      "src": "https://www.fool.com/earnings/call-transcripts/2026/11/18/nvidia-nvda-q3-2027-earnings-call-transcript/",
+      "src_note": "Motley Fool 財報電話會議逐字稿"
+    },
+    {
+      "date": "2026-11-19",
+      "title": "BIS發布「遠端存取先進半導體」暫行最終規則，即日生效",
+      "category": "出口管制",
+      "thread": "",
+      "summary": "美國商務部工業與安全局（BIS）於2026年11月19日在聯邦公報刊登暫行最終規則「Addressing Remote Access to Advanced Semiconductors」，即日生效；規則內含修訂前段晶圓製造商與封測（OSAT）業者所適用推定規定的章節。",
+      "src": "https://www.federalregister.gov/documents/2026/11/19/2026-23529/addressing-remote-access-to-advanced-semiconductors",
+      "src_note": "聯邦公報 2026-23529"
     }
   ],
   "procurement_flows": [

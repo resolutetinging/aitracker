@@ -806,12 +806,13 @@ function renderFunnelStat(runs, todayDate) {
   try {
     const entry = (runs || []).find(r => r.date === todayDate);
     if (!entry) { el.style.display = 'none'; return; }
-    const n = Object.values(entry.feeds || {}).reduce((a, b) => a + b, 0);
+    // 11-24：feeds 只計 RSS；DDG 另記 entry.ddg（舊資料無此欄位視為 0）
+    const n = Object.values(entry.feeds || {}).reduce((a, b) => a + b, 0) + (Number(entry.ddg) || 0);
     const m = entry.after_dedup;
     const finalObj = entry.final || {};
     const k = ['hw', 'corp', 'app'].reduce((sum, c) => sum + ((finalObj[c] && finalObj[c].core) || 0), 0);
     if (!Number.isFinite(n) || !Number.isFinite(m) || !Number.isFinite(k)) { el.style.display = 'none'; return; }
-    el.textContent = `今日掃描 ${n} 篇來源 → 高訊號 ${m} 篇 → 核心 ${k} 則`;
+    el.textContent = `今日掃描 ${n} 篇來源 → 去重後 ${m} 篇 → 核心 ${k} 則`;
     el.style.display = '';
   } catch (e) {
     el.style.display = 'none';
