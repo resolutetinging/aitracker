@@ -43,6 +43,19 @@ DEEPEN_ALT_MAX_CANDS = 3        # 每張卡最多試幾個替代來源
 DEEPEN_ALT_GN_QUERIES = 3       # 全批 Google News 搜尋查詢上限
 if os.environ.get('DEEPEN_THIN_CARDS', '').strip() == '0':
     DEEPEN_THIN_CARDS = False
+# 11-24 實體閘門 entity_gate（純程式，不靠 prompt）：body／impact／insight／chain 提到的公司、組織、地點
+#    必須出現在該卡素材原文（中文名以別名表對到英文原文，例：台積電↔TSMC）。找不到 → 刪該句／該 chain 節點
+#    （chain 剩不到 2 個節點整條清空；body 刪光則移除該卡，比照 numeric_gate）。
+#    ENTITY_SCOPE_GATE：範圍擴大檢查——卡片某子句把「數字」和「地點／非標題主角的公司」寫在一起時，
+#    該地點／公司必須出現在原文含同一數字那句的前後 ENTITY_SCOPE_WINDOW 句內，否則刪該句。
+#    回復：False 或環境變數 ENTITY_GATE=0（整個關掉）／ENTITY_SCOPE_GATE=0（只關範圍檢查）。
+ENTITY_GATE = True
+ENTITY_SCOPE_GATE = True
+ENTITY_SCOPE_WINDOW = 2
+if os.environ.get('ENTITY_GATE', '').strip() == '0':
+    ENTITY_GATE = False
+if os.environ.get('ENTITY_SCOPE_GATE', '').strip() == '0':
+    ENTITY_SCOPE_GATE = False
 # B 生成後比對：卡片數字/日期/型號是否出現在所掛 source 的素材原文。
 #    off＝不跑；log＝只寫 run_stats.fact_audit，不改卡片與評級；
 #    enforce＝刪除含疑似補寫的句子，刪完不達標 core→opp，全部句子都疑似則 rating 改 noise（預設）。環境變數 FACT_CHECK_MODE 覆寫。
@@ -4098,6 +4111,345 @@ def numeric_gate(data, news_by_cat):
                 data[sec] = [make_placeholder_item(sec)]
     return stats
 
+# ── 實體閘門（11-24）──
+# 卡片 body／impact／insight／chain 提到的公司、組織、地點必須出自該卡素材原文。
+# 別名表：重用 scripts/attention_aliases.json 的公司條目（產品名別名除外，改走字面比對），
+# 再補 ENTITY_GATE_EXTRA（地點、組織、常見台廠／供應鏈公司，以及既有公司缺的別名）。
+# 卡片中未被別名表涵蓋的英文專有名詞（含大寫字母的英文詞，例：HANMI、Decart、SMIC）一律以字面
+# （不分大小寫）比對原文；通用技術詞（AI、HBM、GPU…）不算實體。
+_EG_ALIAS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'attention_aliases.json')
+# attention_aliases 裡屬於「產品名」的別名：不當公司別名用（卡片寫 Gemini 而原文只有 Google 不算有出處）
+_EG_PRODUCT_ALIASES = frozenset(('ChatGPT', 'Claude', 'Gemini', 'DeepMind', 'Llama', 'Grok', 'Qwen', '通義'))
+# (key, type, 別名, 排除詞)；key 與 attention_aliases 相同者合併別名
+ENTITY_GATE_EXTRA = [
+    # 地點（國家別名含國民形容詞與主要城市／州：原文寫城市、卡片寫國家，視為有出處）
+    ('台灣', 'place', ['台灣', '臺灣', 'Taiwan', 'Taiwanese', 'Taipei', 'Hsinchu', 'Taichung', 'Tainan', 'Kaohsiung'], []),
+    ('美國', 'place', ['美國', 'US', 'U.S.', 'USA', 'United States', 'America', 'American', 'Americans',
+                     'Washington', 'California', 'Texas', 'Arizona', 'Silicon Valley', 'New York', 'Ohio', 'Oregon'], []),
+    ('中國', 'place', ['中國', '大陸', 'China', 'Chinese', 'PRC', 'Beijing', 'Shanghai', 'Shenzhen'], ['中國信託']),
+    ('日本', 'place', ['日本', 'Japan', 'Japanese', 'Tokyo'], []),
+    ('韓國', 'place', ['韓國', '南韓', 'Korea', 'Korean', 'Seoul'], []),
+    ('新加坡', 'place', ['新加坡', 'Singapore', 'Singaporean'], []),
+    ('印度', 'place', ['印度', 'India', 'Indian'], []),
+    ('歐洲', 'place', ['歐洲', '歐盟', 'Europe', 'European', 'EU'], []),
+    ('德國', 'place', ['德國', 'Germany', 'German'], []),
+    ('英國', 'place', ['英國', 'UK', 'U.K.', 'Britain', 'British', 'England', 'London'], []),
+    ('法國', 'place', ['法國', 'France', 'French', 'Paris'], []),
+    ('荷蘭', 'place', ['荷蘭', 'Netherlands', 'Dutch'], []),
+    ('以色列', 'place', ['以色列', 'Israel', 'Israeli'], []),
+    ('馬來西亞', 'place', ['馬來西亞', 'Malaysia', 'Malaysian', 'Penang'], []),
+    ('越南', 'place', ['越南', 'Vietnam', 'Vietnamese'], []),
+    ('泰國', 'place', ['泰國', 'Thailand', 'Thai'], []),
+    ('墨西哥', 'place', ['墨西哥', 'Mexico', 'Mexican'], []),
+    ('加拿大', 'place', ['加拿大', 'Canada', 'Canadian'], []),
+    ('澳洲', 'place', ['澳洲', 'Australia', 'Australian'], []),
+    ('沙烏地阿拉伯', 'place', ['沙烏地', '沙特', 'Saudi'], []),
+    ('阿聯', 'place', ['阿聯', 'UAE', 'Emirates', 'Abu Dhabi', 'Dubai', '杜拜'], []),
+    ('中東', 'place', ['中東', 'Middle East', 'Gulf'], []),
+    ('香港', 'place', ['香港', 'Hong Kong'], []),
+    ('東南亞', 'place', ['東南亞', 'Southeast Asia', 'ASEAN'], []),
+    # 組織
+    ('美國商務部', 'org', ['美國商務部', '商務部', 'Commerce Department', 'Department of Commerce', 'Commerce Secretary', 'Commerce Dept', 'Commerce Dept.', 'BIS'], []),
+    ('白宮', 'org', ['白宮', 'White House'], []),
+    ('美國國會', 'org', ['國會', 'Congress', 'Senate', 'House of Representatives', 'lawmakers'], []),
+    ('聯準會', 'org', ['聯準會', 'Federal Reserve', 'Fed'], []),
+    ('SEC', 'org', ['證券交易委員會', 'SEC', 'Securities and Exchange Commission'], []),
+    ('FTC', 'org', ['聯邦貿易委員會', 'FTC', 'Federal Trade Commission'], []),
+    # 既有公司補別名
+    ('TSMC', 'company', ['台積', 'Taiwan Semiconductor'], []),
+    ('NVIDIA', 'company', ['英偉達'], []),
+    ('SK hynix', 'company', ['SK Hynix', 'Hynix'], []),
+    ('Amazon', 'company', ['Amazon Web Services'], []),
+    # 常見台廠／供應鏈公司（中文名需別名才能對到英文原文）
+    ('MediaTek', 'company', ['聯發科', 'MediaTek'], []),
+    ('ASE', 'company', ['日月光', 'ASE Technology', 'ASE Group'], []),
+    ('Foxconn', 'company', ['鴻海', '富士康', 'Foxconn', 'Hon Hai'], []),
+    ('Quanta', 'company', ['廣達', 'Quanta'], []),
+    ('Wistron', 'company', ['緯創', 'Wistron'], []),
+    ('Wiwynn', 'company', ['緯穎', 'Wiwynn'], []),
+    ('Inventec', 'company', ['英業達', 'Inventec'], []),
+    ('UMC', 'company', ['聯電', 'United Microelectronics', 'UMC'], []),
+    ('SMIC', 'company', ['中芯', 'SMIC', 'Semiconductor Manufacturing International'], []),
+    ('Delta', 'company', ['台達電', 'Delta Electronics'], []),
+    ('ASUS', 'company', ['華碩', 'ASUS', 'Asustek'], []),
+    ('Acer', 'company', ['宏碁', 'Acer'], []),
+    ('Nanya', 'company', ['南亞科', 'Nanya'], []),
+    ('Winbond', 'company', ['華邦', 'Winbond'], []),
+    ('Alchip', 'company', ['世芯', 'Alchip'], []),
+    ('Tencent', 'company', ['騰訊', 'Tencent'], []),
+    ('Baidu', 'company', ['百度', 'Baidu'], []),
+    ('ByteDance', 'company', ['字節跳動', 'ByteDance', 'TikTok'], []),
+    ('Xiaomi', 'company', ['小米', 'Xiaomi'], []),
+    ('SoftBank', 'company', ['軟銀', 'SoftBank'], []),
+    ('Applied Materials', 'company', ['應用材料', 'Applied Materials'], []),
+    ('Lam Research', 'company', ['科林研發', 'Lam Research'], []),
+    ('Tokyo Electron', 'company', ['東京威力', 'Tokyo Electron'], []),
+    ('HANMI', 'company', ['韓美半導體', 'HANMI', 'Hanmi'], []),
+    ('Arm', 'company', ['安謀', 'Arm Holdings'], []),
+]
+# 通用詞（小寫比對；英文複數 s 會先去掉再查）：技術名詞、單位、職稱、財務縮寫，不算實體
+_EG_GENERIC_TERMS = frozenset((
+    'ai', 'agi', 'genai', 'gpu', 'cpu', 'npu', 'tpu', 'dpu', 'xpu', 'asic', 'fpga', 'soc', 'hbm', 'dram', 'nand',
+    'sram', 'ssd', 'hdd', 'euv', 'duv', 'cowos', 'soic', 'cpo', 'osat', 'csp', 'asp', 'capex', 'opex', 'yoy',
+    'qoq', 'mom', 'ipo', 'ceo', 'cfo', 'cto', 'coo', 'api', 'sdk', 'llm', 'vla', 'rag', 'saas', 'paas', 'iaas',
+    'b2b', 'b2c', 'it', 'iot', 'pc', 'ar', 'vr', 'xr', 'ct', 'mr', 'mri', 'ev', 'adas', 'tc', 'tsv', 'ip', 'pcb',
+    'abf', 'kpi', 'roi', 'etf', 'gw', 'mw', 'kw', 'tw', 'tb', 'gb', 'mb', 'pb', 'gbps', 'tbps', 'nm', 'ghz',
+    'mhz', 'tops', 'tflops', 'pflops', 'eflops', 'flops', 'fy', 'ok', 'id', 'ui', 'ux', 'os', 'app', 'gpt',
+    'agentic', 'agent', 'physical', 'reticle', 'limit', 'inference', 'token', 'ml', 'nlp', 'oem', 'odm', 'ems',
+    'idm', 'fab', 'wafer', 'cmos', 'mems', 'led', 'oled', 'lcd', 'micro', 'rf', 'pmic', 'ddr', 'lpddr', 'gddr',
+    'pcie', 'cxl', 'nvlink', 'ethernet', 'infiniband', 'sram', 'risc', 'arm64', 'x86', 'hpc', 'dc', 'aidc',
+    'gaa', 'finfet', 'tco', 'sla', 'gdp', 'esg', 'r', 'd', 'm', 'a', 'q', 'h', 'vs', 'etc', 'inc', 'ltd', 'corp',
+    'co', 'pro', 'max', 'ultra', 'mini', 'plus', 'beta', 'alpha', 'cloud', 'edge', 'data', 'center', 'chip',
+    'chips', 'memory', 'server', 'servers', 'hyperscaler', 'neocloud', 'robotaxi', 'humanoid', 'copilot',
+    'chatbot', 'open', 'source', 'ttm', 'eps', 'pe', 'nre', 'bom', 'ota', 'adr', 'mou', 'loi', 'poc',
+    # 11-24 審查：公司名後綴（卡片寫全名、原文只寫簡稱時不可把後綴當未知實體）
+    'electronics', 'technology', 'technologies', 'foundry', 'precision', 'platforms', 'semiconductor',
+    'semiconductors', 'holdings', 'group', 'industries', 'industry', 'systems', 'solutions', 'devices',
+    'international', 'global', 'labs', 'company', 'motor', 'motors', 'micro', 'instruments',
+))
+_EG_GENERIC_PAT = re.compile(r'^(?:q[1-4]|h[12]|fy\d{0,4}|hbm\d[a-z]?|l?p?g?ddr\d[a-z]?|pcie\d*|\d+g|n\d|a\d{2}|'
+                             r'[a-z]{1,3}\d{1,4}[a-z]?)$', re.I)
+_EG_LATIN_TOKEN = re.compile(r"(?<![A-Za-z0-9])[A-Za-z][A-Za-z0-9]*(?:[&.\-][A-Za-z0-9]+)*")
+_EG_TABLE = []
+
+def _eg_table():
+    """回傳 [{'key','type','aliases':[...],'exclude':[...]}]；只載入一次，別名檔讀不到時只用內建表。"""
+    if _EG_TABLE:
+        return _EG_TABLE
+    merged = {}
+    try:
+        with open(_EG_ALIAS_FILE, 'r', encoding='utf-8') as f:
+            for e in json.load(f).get('entities', []):
+                if e.get('type') != 'company':
+                    continue
+                als = [a for a in e.get('aliases', []) if a not in _EG_PRODUCT_ALIASES]
+                merged[e['key']] = {'key': e['key'], 'type': 'company', 'aliases': als,
+                                    'exclude': list(e.get('exclude', []))}
+    except Exception as ex:
+        print(f"  ⚠ 實體閘門別名檔讀取失敗（改用內建表）：{ex}")
+    for key, typ, als, exc in ENTITY_GATE_EXTRA:
+        ent = merged.setdefault(key, {'key': key, 'type': typ, 'aliases': [], 'exclude': []})
+        for a in als:
+            if a not in ent['aliases']:
+                ent['aliases'].append(a)
+        ent['exclude'].extend(x for x in exc if x not in ent['exclude'])
+    _EG_TABLE.extend(merged.values())
+    return _EG_TABLE
+
+def _eg_alias_pat(alias):
+    """英文別名：字邊界，4 字元以內區分大小寫（與 attention_aliases 慣例一致），可接 's／s 結尾；中文別名：子字串。"""
+    if re.search(r'[^\x00-\x7f]', alias):
+        return re.compile(re.escape(alias))
+    flags = 0 if len(alias) <= 4 else re.I
+    return re.compile(r'(?<![A-Za-z0-9])' + re.escape(alias) + r"(?:'s|’s|s)?(?![A-Za-z0-9])", flags)
+
+_EG_PAT_CACHE = {}
+
+def _eg_find(ent, text):
+    """回傳 ent 任一別名在 text 中的出現位置 [(s,e)]；排除詞先以等長空白遮掉。"""
+    t = text
+    for x in ent['exclude']:
+        t = re.sub(re.escape(x), lambda m: ' ' * len(m.group(0)), t, flags=re.I)
+    spans = []
+    for a in ent['aliases']:
+        p = _EG_PAT_CACHE.get(a)
+        if p is None:
+            p = _EG_PAT_CACHE[a] = _eg_alias_pat(a)
+        spans.extend(m.span() for m in p.finditer(t))
+    return spans
+
+def _eg_is_generic(tok):
+    low = tok.lower()
+    if low in _EG_GENERIC_TERMS or _EG_GENERIC_PAT.match(low):
+        return True
+    return low.endswith('s') and len(low) > 2 and low[:-1] in _EG_GENERIC_TERMS
+
+def _eg_source_ctx(src):
+    src = _html_unescape(src or '')
+    sents = [s for s in _fa_split_sentences(src) if s.strip()]
+    return {'src': src, 'cache': {}, 'sents': sents, 'sent_nums': None}
+
+def _eg_in_source(ent, ctx):
+    k = ent['key']
+    if k not in ctx['cache']:
+        ctx['cache'][k] = bool(_eg_find(ent, ctx['src']))
+    return ctx['cache'][k]
+
+def _eg_literal_in_source(tok, ctx):
+    k = 'lit:' + tok.lower()
+    if k not in ctx['cache']:
+        pat = r'(?<![A-Za-z0-9])' + re.escape(tok) + r"(?:'s|’s|s|es)?(?![A-Za-z0-9])"
+        ctx['cache'][k] = re.search(pat, ctx['src'], re.I) is not None
+    return ctx['cache'][k]
+
+def _eg_mentions(text):
+    """卡片文字中提到的別名表實體 [(ent, 字面)] 與其涵蓋位置。"""
+    found, covered = [], [False] * (len(text) + 1)
+    # 11-24 審查：最長字面優先，已被較長實體涵蓋的片段不再單獨檢查（「美國商務部」不另查「美國」）
+    cands = []
+    for ent in _eg_table():
+        for s, e in (_eg_find(ent, text) or []):
+            cands.append((e - s, s, e, ent))
+    cands.sort(key=lambda c: (-c[0], c[1]))
+    seen = set()
+    for _, s, e, ent in cands:
+        if any(covered[s:e]):
+            continue
+        for i in range(s, e):
+            covered[i] = True
+        if id(ent) not in seen:
+            seen.add(id(ent))
+            found.append((ent, text[s:e]))
+    return found, covered
+
+def entities_unsupported(text, ctx):
+    """text 中原文找不到的公司／組織／地點／英文專有名詞清單（空清單＝全部有出處）。"""
+    found, covered = _eg_mentions(text)
+    bad = [surf for ent, surf in found if not _eg_in_source(ent, ctx)]
+    for m in _EG_LATIN_TOKEN.finditer(text):
+        tok = m.group(0).rstrip('.-&')
+        if len(tok) < 2 or not re.search(r'[A-Z]', tok) or any(covered[m.start():m.end()]):
+            continue
+        if _eg_is_generic(tok):
+            continue
+        if not _eg_literal_in_source(tok, ctx):
+            bad.append(tok)
+    out = []
+    for b in bad:
+        if b not in out:
+            out.append(b)
+    return out
+
+def scope_expanded(sentence, ctx, title=''):
+    """範圍擴大檢查：卡片子句同時寫了數字與地點（或非標題主角的公司／組織）時，該地點／公司必須出現在原文
+    含同一數字的句子前後 ENTITY_SCOPE_WINDOW 句內。回傳違規說明清單。
+    例：原文「The total investment is estimated at $7 billion」附近只有 Singapore，
+    卡片寫「在新加坡與台灣投入約70億美元」→「台灣」違規。數字在原文找不到時不判（交給 numeric_gate）。"""
+    if ctx['sent_nums'] is None:
+        ctx['sent_nums'] = [_ng_extract(s, source=True) for s in ctx['sents']]
+    title_keys = {ent['key'] for ent, _ in _eg_mentions(title or '')[0]}
+    out = []
+    for clause in re.split(r'[，,；;：:]', sentence or ''):
+        toks = [t for t in _ng_extract(clause) if t['kind'] == 'num' and not t.get('model')
+                and (t['scaled_flag'] or t.get('pct') or t['scaled'] >= 100)]
+        if not toks:
+            continue
+        ents = [(ent, surf) for ent, surf in _eg_mentions(clause)[0]
+                if ent['type'] == 'place' or ent['key'] not in title_keys]
+        if not ents:
+            continue
+        for tok in toks:
+            hits = [i for i, nums in enumerate(ctx['sent_nums']) if _ng_num_supported(tok, nums)]
+            if not hits:
+                continue
+            w = ENTITY_SCOPE_WINDOW
+            idxs = sorted({j for i in hits for j in range(max(0, i - w), min(len(ctx['sents']), i + w + 1))})
+            window = ' '.join(ctx['sents'][j] for j in idxs)
+            for ent, surf in ents:
+                if not _eg_find(ent, window):
+                    msg = f"{surf} 不在原文「{tok['raw']}」附近"
+                    if msg not in out:
+                        out.append(msg)
+    return out
+
+def _eg_log(sec, title, action, reason):
+    try:
+        log = RUN_STATS.setdefault('gate_removed', [])
+        if len(log) < GATE_LOG_MAX:
+            log.append({'section': sec, 'title': (title or '')[:60], 'gate': 'entity_gate',
+                        'action': action, 'reason': (reason or '')[:120]})
+    except Exception:
+        pass
+
+def entity_gate(data, news_by_cat):
+    """實體閘門：chain 節點含原文沒有的實體 → 刪節點（剩不到 2 個清空整條）；
+    body／impact／insight 含原文沒有的實體、或範圍擴大的句子 → 刪句；body 刪光 → 移除該卡（比照 numeric_gate）。
+    headline_only／desc_only 卡略過（管線最後由 scrub_* 決定性清理）；找不到素材的卡略過並計數。
+    句子／節點層級的刪除直接寫進 RUN_STATS['gate_removed']（_run_gate 只記整卡移除與評級變化）。"""
+    idx = _fa_index_materials(news_by_cat)
+    stats = RUN_STATS.setdefault('entity_gate', {'runs': 0, 'cards_checked': 0, 'removed': 0,
+                                                'chain_nodes_dropped': 0, 'chains_cleared': 0,
+                                                'sentences_dropped': 0, 'scope_dropped': 0,
+                                                'no_material': 0, 'items': []})
+    stats['runs'] += 1
+    for sec in ('hw', 'corp', 'app'):
+        removals = []
+        for item in data.get(sec, []) or []:
+            if not isinstance(item, dict) or _is_placeholder(item) \
+                    or item.get('headline_only') or item.get('desc_only'):
+                continue
+            try:
+                mat = _material_for(item, idx)
+                if mat is None:
+                    stats['no_material'] += 1
+                    continue
+                stats['cards_checked'] += 1
+                ctx = _eg_source_ctx(mat['text'])
+                title = item.get('title') or ''
+                events = []
+                chain = item.get('chain')
+                if isinstance(chain, list) and chain:
+                    kept = []
+                    for node in chain:
+                        label = node.get('label', '') if isinstance(node, dict) else str(node)
+                        bad = entities_unsupported(label, ctx)
+                        if bad:
+                            stats['chain_nodes_dropped'] += 1
+                            events.append(('chain_node_removed', '原文無：' + '、'.join(bad) + '｜' + label))
+                        else:
+                            kept.append(node)
+                    if len(kept) < len(chain):
+                        if len(kept) < 2 and kept:
+                            stats['chains_cleared'] += 1
+                            events.append(('chain_cleared', f'刪節點後剩 {len(kept)} 個，整條清空'))
+                            kept = []
+                        elif not kept:
+                            stats['chains_cleared'] += 1
+                        item['chain'] = kept
+                for field in ('body', 'impact', 'insight'):
+                    text = item.get(field)
+                    if not isinstance(text, str) or not text.strip():
+                        continue
+                    kept = []
+                    for p in _fa_split_sentences(text):
+                        if not p.strip():
+                            continue
+                        bad = entities_unsupported(p, ctx)
+                        scope = [] if (bad or not ENTITY_SCOPE_GATE) else scope_expanded(p, ctx, title)
+                        if bad:
+                            stats['sentences_dropped'] += 1
+                            events.append((f'sentence_removed:{field}', '原文無：' + '、'.join(bad) + '｜' + p.strip()))
+                        elif scope:
+                            stats['scope_dropped'] += 1
+                            events.append((f'scope_removed:{field}', '範圍擴大：' + '；'.join(scope) + '｜' + p.strip()))
+                        else:
+                            kept.append(p)
+                    new = ''.join(kept).strip()
+                    if new != text.strip():
+                        if field == 'body' and not new:
+                            removals.append(item)
+                        else:
+                            item[field] = new
+                if events:
+                    removed = any(item is r for r in removals)
+                    if removed:
+                        body_ev = next((r for a, r in events if a.endswith(':body')), events[0][1])
+                        _gate_reason_set('entity_gate', title, 'body 全部句子含原文沒有的實體或範圍擴大：' + body_ev)
+                    for action, reason in events:
+                        _eg_log(sec, title, action, reason)
+                        if len(stats['items']) < 30:
+                            stats['items'].append({'sec': sec, 'title': title[:60], 'action': action,
+                                                   'reason': reason[:120], 'removed': removed})
+                        print(f"  ✂ 實體閘門[{sec}] {title[:30]}：{action} {reason[:70]}")
+            except Exception as e:
+                print(f"  ⚠ 實體閘門單張處理失敗（略過該張）：{e}")
+        if removals:
+            stats['removed'] += len(removals)
+            data[sec] = [it for it in data.get(sec, []) if not any(it is r for r in removals)]
+            if not data[sec]:
+                data[sec] = [make_placeholder_item(sec)]
+    return stats
+
 # ── LLM 查核關卡 ──
 def estimate_tokens(text):
     """粗估 token：中日韓字元約 1 token／字，其餘約 3.5 字元／token（偏保守）。"""
@@ -4994,6 +5346,14 @@ if __name__ == '__main__':
             _run_gate('numeric_gate', numeric_gate, data, news_by_cat)
         except Exception as e:
             print(f"  ⚠ 數字閘門失敗（略過，不影響資料生成）：{e}")
+    # 11-24：放在所有會改寫內容的關卡（fix_chains／validate_impact 補 chain、LLM 查核 fix）之後，
+    # 被清空的 chain 不會再被 fix_chains 補回；headline_only／desc_only 卡交給下面的 scrub_*
+    if ENTITY_GATE:
+        print("🏢 實體閘門（公司／組織／地點須出自原文、數字句範圍不得擴大）...")
+        try:
+            _run_gate('entity_gate', entity_gate, data, news_by_cat)
+        except Exception as e:
+            print(f"  ⚠ 實體閘門失敗（略過，不影響資料生成）：{e}")
     print("🏷 HEADLINE_ONLY 卡片決定性清理（impact／insight／chain 清空、body 1 句）...")
     try:
         _run_gate('scrub_headline_only', scrub_headline_only, data)
