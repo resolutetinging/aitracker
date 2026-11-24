@@ -37,6 +37,10 @@ if os.environ.get('STRICT_SOURCE_PROMPT', '').strip() == '0':
 #    補抓或重寫失敗則標 thin_source=true（前端與 Email 顯示「僅摘要」）。
 #    回復：False 或環境變數 DEEPEN_THIN_CARDS=0（關閉時行為與改動前相同）。詳見 ../ROLLBACK_20261102.md
 DEEPEN_THIN_CARDS = True
+# 11-24：補深時原來源抓不到全文（403、付費牆、影片頁、內文不符），改找「同一事件」抓得到全文的其他來源。
+DEEPEN_ALT_SOURCE = True
+DEEPEN_ALT_MAX_CANDS = 3        # 每張卡最多試幾個替代來源
+DEEPEN_ALT_GN_QUERIES = 3       # 全批 Google News 搜尋查詢上限
 if os.environ.get('DEEPEN_THIN_CARDS', '').strip() == '0':
     DEEPEN_THIN_CARDS = False
 # B 生成後比對：卡片數字/日期/型號是否出現在所掛 source 的素材原文。
@@ -170,7 +174,7 @@ RSS_FEEDS = [
     # ── 硬體供應鏈 & 半導體（供應鏈投資訊號優先）───────────────────────
     ("Semiconductor", "https://semiengineering.com/feed/"),
     ("Semiconductor", "https://www.eetimes.com/feed/"),
-    ("Semiconductor", "https://www.digitimes.com/rss/"),          # 台灣供應鏈第一手
+    ("Semiconductor", "https://www.digitimes.com/rss/daily.xml"),  # 台灣供應鏈第一手（11-24：舊 /rss/ 對腳本 403，daily.xml 實測 200、72h 約 25 篇）
     ("Semiconductor", "https://www.theregister.com/headlines.atom"),
     ("Semiconductor", "https://www.cnbc.com/id/19854910/device/rss/rss.html"),  # Micron/NVIDIA 財報
     # ── 產業採用 / 巨頭投資 ──────────────────────────────────────────
@@ -490,7 +494,17 @@ def fetch_rss():
                                     'detail': str(he.reason)[:120]})
                 print(f"  RSS failed ({host}): HTTP {he.code}")
                 continue
-            root = ET.fromstring(raw)
+            try:
+                root = ET.fromstring(raw)
+            except ET.ParseError as pe:
+                # 11-24：The Register 偶發 ParseError（not well-formed）→ 先移除 XML 1.0 不允許的控制字元再 parse；
+                # 仍失敗就把回應開頭寫進 detail（判斷是不是擋爬蟲的 HTML 頁），再往外拋
+                cleaned = re.sub(rb'[\x00-\x08\x0b\x0c\x0e-\x1f]', b'', raw)
+                try:
+                    root = ET.fromstring(cleaned)
+                except ET.ParseError:
+                    head = raw[:160].decode('utf-8', 'replace').replace('\n', ' ')
+                    raise ET.ParseError(f"{pe}; head={head}")
             ns = {'atom':'http://www.w3.org/2005/Atom'}
             # Handle both RSS and Atom
             items = root.findall('.//item') or root.findall('.//atom:entry', ns)
@@ -530,7 +544,7 @@ def fetch_rss():
             print(f"  RSS {label}({host}): {len(items)} items, {kept} kept (72h filter)")
         except Exception as e:
             feed_errors.append({'label': label, 'host': host, 'error': type(e).__name__,
-                                'detail': str(e)[:120]})
+                                'detail': str(e)[:300]})
             print(f"  RSS failed ({host}): {e}")
     try:
         RUN_STATS['feeds'] = feed_counts
@@ -3075,7 +3089,9 @@ def _fa_index_materials(news_by_cat):
 def deepen_thin_cards(data, news_by_cat):
     """C 補深：對「core/opp、有 http(s) 來源、但素材只有 RSS 短摘要」的卡片補抓全文並只重寫該卡。
     最多 3 張、core 優先；失敗一律保留原卡並標 thin_source=True。任何錯誤都不中斷主流程。"""
-    stats = {'candidates': 0, 'rewritten': 0, 'fetch_failed': 0, 'llm_failed': 0}
+    stats = {'candidates': 0, 'rewritten': 0, 'fetch_failed': 0, 'llm_failed': 0,
+             'alt_tried': 0, 'alt_found': 0, 'alt_used': 0, 'alt_sources': []}
+    alt_state = {}  # 11-24：替代來源搜尋／解碼狀態（全批共用，查詢上限）
     try:
         RUN_STATS['deepen'] = stats
     except Exception:
@@ -3109,14 +3125,26 @@ def deepen_thin_cards(data, news_by_cat):
             except Exception as e:
                 print(f"  ⚠ 補深抓取例外（保留原卡）：{e}")
                 text = None
+            use_url, alt_label = url, None
             if not text or len(text) < 300:
                 stats['fetch_failed'] += 1
-                item['thin_source'] = True
-                print(f"  → 補深：全文抓取失敗，標記僅摘要：{item.get('title','')[:40]}")
-                continue
+                alt = None
+                if DEEPEN_ALT_SOURCE:
+                    # 11-24：原來源抓不到全文 → 找同一事件、抓得到全文的其他來源
+                    stats['alt_tried'] += 1
+                    alt = _deepen_find_alt(sec, item, url, mat_title, news_by_cat, data, alt_state)
+                if alt:
+                    use_url, text, alt_label = alt
+                    stats['alt_found'] += 1
+                    print(f"  → 補深：改用替代來源 {_host_of(use_url)}：{item.get('title','')[:40]}")
+                else:
+                    item['thin_source'] = True
+                    print(f"  → 補深：全文抓取失敗，標記僅摘要：{item.get('title','')[:40]}")
+                    continue
             try:
                 time.sleep(65)  # 上一次 Groq 呼叫剛結束，避免 TPM 疊加；之後每次之間也等
-                new = call_groq(_make_deepen_prompt(item, url, text))
+                pitem = dict(item, source_label=alt_label) if alt_label else item  # 提示詞用替代來源名
+                new = call_groq(_make_deepen_prompt(pitem, use_url, text))
                 body = (new.get('body') or '').strip() if isinstance(new, dict) else ''
                 impact = new.get('impact', '') if isinstance(new, dict) else ''
                 insight = (new.get('insight') or '').strip() if isinstance(new, dict) else ''
@@ -3136,7 +3164,15 @@ def deepen_thin_cards(data, news_by_cat):
                 item.pop('thin_source', None)
                 item.pop('headline_only', None)   # 已用全文重寫，不再是只有標題的卡
                 item.pop('desc_only', None)       # 11-17：同上，不再是只有描述的卡
-                _swap_to_full_material(news_by_cat, sec, url, text)
+                if alt_label:
+                    # 11-24：素材與來源必須一致：卡片來源改成替代來源，查核／數字閘門以替代全文為準
+                    orig_host = _host_of(url)
+                    item['source'] = use_url
+                    item['source_label'] = alt_label
+                    _ORIG_SOURCES[id(item)] = use_url
+                    stats['alt_used'] += 1
+                    stats['alt_sources'].append({'orig_host': orig_host, 'alt_host': alt_label})
+                _swap_to_full_material(news_by_cat, sec, use_url, text)
                 stats['rewritten'] += 1
                 print(f"  ✓ 補深重寫：{item.get('title','')[:40]}")
             except Exception as e:
@@ -3145,6 +3181,177 @@ def deepen_thin_cards(data, news_by_cat):
                 print(f"  ⚠ 補深重寫失敗，保留原卡並標記僅摘要：{e}")
     except Exception as e:
         print(f"  ⚠ 補深流程失敗（不影響資料生成）：{e}")
+
+def _host_of(url):
+    """網址的主機名（小寫、去 www.）；解析失敗回空字串。"""
+    try:
+        from urllib.parse import urlparse
+        h = (urlparse(url or '').hostname or '').lower()
+        return h[4:] if h.startswith('www.') else h
+    except Exception:
+        return ''
+
+# 11-24：替代來源「同一事件」比對用的停用詞與高頻詞（太常見，重疊不代表同事件）
+_ALT_STOPWORDS = frozenset((
+    'the for with new and from after says said over into its has will are was were that this than '
+    'but not you your can may how why what who out off one two all any more most about amid '
+    'as at by in is it of on or to up vs via per his her their they them been being also just'
+).split())
+_ALT_COMMON = frozenset((
+    'nvidia ai chip chips data center centers cloud stock stocks billion million trillion '
+    'report reports news market tech company companies deal plan plans year years week'
+).split())
+
+def _alt_tokens(title):
+    """11-24：回傳 (去停用詞與高頻詞後的 token 集合, 其中的專有名詞或數字 token 集合)。
+    專有名詞＝標題中非句首且首字大寫（或全大寫）的詞；數字＝含數字或 $ 的詞。"""
+    words = re.findall(r"[A-Za-z0-9$][A-Za-z0-9$.'\-]*", title or '')
+    toks, proper = set(), set()
+    for idx, w in enumerate(words):
+        lw = re.sub(r"'s$", '', w.lower()).strip("'.-")
+        if len(lw) < 2 or lw in _ALT_STOPWORDS or lw in _ALT_COMMON:
+            continue
+        toks.add(lw)
+        if re.search(r'[0-9$]', w) or (idx > 0 and w[0].isupper()):
+            proper.add(lw)
+    return toks, proper
+
+def _alt_same_event(title_a, title_b):
+    """11-24：替代來源專用的同事件判定（比 filter_recent 嚴格）：
+    去停用詞與高頻詞後 token 重疊 >= 3，且至少 1 個共同的專有名詞或數字。"""
+    if not title_a or not title_b:
+        return False
+    ta, pa = _alt_tokens(title_a)
+    tb, pb = _alt_tokens(title_b)
+    return len(ta & tb) >= 3 and bool(pa & pb)
+
+def _alt_cands_from_materials(sec, orig_url, orig_title, news_by_cat, exclude_urls):
+    """11-24：從本次已抓到的全部素材（hw/corp/app 三桶）找同一事件、不同網域的其他報導。
+    回傳 [(url, title)]，依既有 rank_bucket 來源分級排序。Google News 連結（網域未知）可入選，解碼後再比網域。"""
+    orig_host = _host_of(orig_url)
+    orig_norm = _norm_url(orig_url)
+    entries, seen = [], set()
+    for cat in ('hw', 'corp', 'app'):
+        for entry in (news_by_cat.get(cat) or '').split('\n\n'):
+            m = _SOURCE_URL_PAT.search(entry)
+            if not m:
+                continue
+            u = m.group(1)
+            key = _norm_url(u)
+            if key == orig_norm or key in seen or key in exclude_urls:
+                continue
+            if not re.match(r'https?://', u, re.I):
+                continue
+            if not is_gnews_url(u) and _host_of(u) == orig_host:
+                continue
+            if not _alt_same_event(orig_title, _entry_title(entry)):
+                continue
+            seen.add(key)
+            entries.append(entry)
+    if not entries:
+        return []
+    try:
+        entries = rank_bucket(entries, BUCKET_SOURCE_PRIORITY.get(sec, HW_SOURCE_PRIORITY))
+    except Exception:
+        pass
+    out = []
+    for e in entries:
+        m = _SOURCE_URL_PAT.search(e)
+        out.append((m.group(1), _entry_title(e)))
+    return out
+
+def _alt_cands_from_gnews(orig_url, orig_title, exclude_urls, state):
+    """11-24：用卡片原文標題（英文）查 Google News RSS 搜尋，找同一事件的其他報導。
+    沿用 _gnews_get（逾時 GNEWS_TIMEOUT）；遇 429 立即停止本批後續查詢。每呼叫一次計一次查詢。"""
+    import urllib.parse
+    if state.get('queries', 0) >= DEEPEN_ALT_GN_QUERIES or state.get('rate_limited'):
+        return []
+    state['queries'] = state.get('queries', 0) + 1
+    try:
+        q = urllib.parse.quote(re.sub(r'\s+', ' ', orig_title).strip())
+        raw = _gnews_get(f"https://news.google.com/rss/search?q={q}&hl=en-US&gl=US&ceid=US:en")
+        root = ET.fromstring(raw)
+    except GNewsRateLimited:
+        state['rate_limited'] = True
+        print("  ⚠ 補深替代來源搜尋遇到 HTTP 429，本批停止後續查詢")
+        return []
+    except Exception as e:
+        print(f"  ⚠ 補深替代來源搜尋失敗（不影響管線）：{str(e)[:80]}")
+        return []
+    orig_host = _host_of(orig_url)
+    orig_norm = _norm_url(orig_url)
+    out = []
+    for it in root.findall('.//item')[:20]:
+        t = (it.findtext('title') or '').strip()
+        link = (it.findtext('link') or '').strip()
+        if not t or not re.match(r'https?://', link, re.I) or _norm_url(link) in exclude_urls or _norm_url(link) == orig_norm:
+            continue
+        src_el = it.find('source')
+        src_host = _host_of(src_el.get('url', '')) if src_el is not None else ''
+        if src_host and src_host == orig_host:
+            continue
+        if _alt_same_event(orig_title, t):
+            out.append((link, t))
+    return out
+
+def _deepen_find_alt(sec, item, orig_url, orig_title, news_by_cat, data, state):
+    """11-24：找替代來源全文。回傳 (alt_url, text, label) 或 None。
+    步驟：a 從已抓素材找同事件（rank_bucket 排序）→ b 不足時 Google News 搜尋 → c 逐一抓全文，
+    須過 fetch_article_text 的標題關鍵詞／非影片頁判定且 >= 300 字；每張卡最多試 DEEPEN_ALT_MAX_CANDS 個。
+    任何例外回傳 None，不影響主流程。"""
+    try:
+        if not orig_title:
+            return None
+        used = set()
+        for sc in ('hw', 'corp', 'app'):
+            for it in data.get(sc, []):
+                if isinstance(it, dict) and it is not item and it.get('source'):
+                    used.add(_norm_url(it.get('source')))
+        state['cards_tried'] = state.get('cards_tried', 0) + 1
+        cands = _alt_cands_from_materials(sec, orig_url, orig_title, news_by_cat, used)
+        tried_n = 0
+        orig_host = _host_of(orig_url)
+        searched = False
+        if 'dec' not in state:
+            # 與主流程共用 Google News 解碼計數與熔斷：以 RUN_STATS['gnews_decode'] 為起點
+            state['dec'] = dict(RUN_STATS.get('gnews_decode') or {})
+        dec_state = state['dec']
+        while True:
+            for cu, ct in cands:
+                if tried_n >= DEEPEN_ALT_MAX_CANDS:
+                    return None
+                tried_n += 1
+                real = cu
+                if is_gnews_url(cu):
+                    real = gnews_decode_limited(cu, dec_state)
+                    try:
+                        RUN_STATS['gnews_decode'] = {k: v for k, v in dec_state.items() if not k.startswith('_')}
+                    except Exception:
+                        pass
+                    if not real:
+                        continue
+                if not re.match(r'https?://', real, re.I):
+                    continue
+                if _host_of(real) == orig_host or _norm_url(real) in used:
+                    continue
+                try:
+                    text = fetch_article_text(real, max_chars=2500, title=ct)
+                except Exception:
+                    text = None
+                # 候選自己的標題已在 fetch_article_text 檢查；再用原卡標題檢查，兩者都過才採用
+                if text and len(text) >= 300 and text_matches_title(text, orig_title):
+                    return (real, text, _host_of(real) or '—')
+            if searched or tried_n >= DEEPEN_ALT_MAX_CANDS:
+                return None
+            searched = True
+            have = set(_norm_url(c[0]) for c in cands)
+            cands = [c for c in _alt_cands_from_gnews(orig_url, orig_title, used, state)
+                     if _norm_url(c[0]) not in have]
+            if not cands:
+                return None
+    except Exception as e:
+        print(f"  ⚠ 補深替代來源流程失敗（不影響管線）：{e}")
+        return None
 
 def _make_deepen_prompt(item, url, text):
     return (
