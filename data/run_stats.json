@@ -2,6 +2,457 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 66,
+        "CSP/CapEx": 32,
+        "App/AI": 13,
+        "gnews-chip": 24,
+        "gnews-dc": 22,
+        "gnews-app": 13
+      },
+      "digest_filtered": 0,
+      "after_dedup": 171,
+      "buckets": {
+        "hw": 51,
+        "corp": 106,
+        "app": 9
+      },
+      "news_char_budget": {
+        "hw": 6000,
+        "corp": 5621,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 51,
+          "full_text_total": 2,
+          "full_text_sent": 2,
+          "sent": 16,
+          "partial_cut": 0,
+          "chars_sent": 5905,
+          "dropped": 35
+        },
+        "corp": {
+          "mode": "pack",
+          "budget": 5621,
+          "candidates": 106,
+          "full_text_total": 6,
+          "full_text_sent": 3,
+          "sent": 15,
+          "partial_cut": 0,
+          "chars_sent": 5532,
+          "dropped": 91
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 9,
+          "full_text_total": 4,
+          "full_text_sent": 4,
+          "sent": 9,
+          "partial_cut": 0,
+          "chars_sent": 4571,
+          "dropped": 0
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 4,
+        "corp": 2,
+        "app": 1
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 4891,
+          "completion_tokens": 2242,
+          "total_tokens": 7133
+        },
+        "corp": {
+          "prompt_tokens": 5140,
+          "completion_tokens": 1405,
+          "total_tokens": 6545
+        },
+        "app": {
+          "prompt_tokens": 4516,
+          "completion_tokens": 944,
+          "total_tokens": 5460
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "corp",
+          "title": "台積電申請在德州 Brazos County 建設 2nm 晶圓廠",
+          "gate": "numeric_gate",
+          "action": "removed",
+          "reason": "body 數字無原文出處：22.6 億"
+        },
+        {
+          "section": "corp",
+          "title": "三星記憶體2027‑2029年產能大部已簽約",
+          "gate": "downgrade_shallow_impact",
+          "action": "rating core→opp",
+          "reason": "rating core→opp"
+        },
+        {
+          "section": "hw",
+          "title": "TSMC 考慮在德州投資 226 億美元建設 2nm 晶圓廠",
+          "gate": "llm_fact_check",
+          "action": "rating core→opp",
+          "reason": "fix 無修正內容：移除未在原文中的 Insight。"
+        },
+        {
+          "section": "hw",
+          "title": "美國將新加坡雲端公司 Megaspeed 及六家東南亞關聯企業列入實體清單",
+          "gate": "entity_gate",
+          "action": "sentence_removed:body",
+          "reason": "原文無：東南亞｜美國商務部於本週一將新加坡雲端服務供應商 Megaspeed 及其六家東南亞關聯公司加入貿易實體清單，指控其涉及 Nvidia 晶片走私。"
+        },
+        {
+          "section": "hw",
+          "title": "美國將新加坡雲端公司 Megaspeed 及六家東南亞關聯企業列入實體清單",
+          "gate": "entity_gate",
+          "action": "sentence_removed:insight",
+          "reason": "原文無：東南亞｜出口管制將重新配置東南亞 AI 晶片供應鏈。"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 3,
+          "noise": 0
+        },
+        "corp": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "feed_errors": [
+        {
+          "label": "CSP/CapEx",
+          "host": "techcrunch.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "App/AI",
+          "host": "techcrunch.com",
+          "error": "HTTP 403",
+          "detail": "Forbidden"
+        },
+        {
+          "label": "App/AI",
+          "host": "venturebeat.com",
+          "error": "HTTP 429",
+          "detail": "Too Many Requests"
+        },
+        {
+          "label": "Semiconductor",
+          "host": "spectrum.ieee.org",
+          "error": "zero_kept",
+          "detail": "items=30 bytes=351767"
+        },
+        {
+          "label": "Semiconductor",
+          "host": "www.tomshardware.com",
+          "error": "HTTP 404",
+          "detail": "Not Found"
+        }
+      ],
+      "gnews_feed_times": [
+        {
+          "label": "gnews-chip",
+          "at": "2026-11-25T00:00:57+08:00"
+        },
+        {
+          "label": "gnews-dc",
+          "at": "2026-11-25T00:00:58+08:00"
+        },
+        {
+          "label": "gnews-app",
+          "at": "2026-11-25T00:00:58+08:00"
+        }
+      ],
+      "ddg": 20,
+      "unmatched_dropped": 25,
+      "gnews_decode": {
+        "attempted": 9,
+        "ok": 9,
+        "failed": 0,
+        "rate_limited": false,
+        "skipped": 0,
+        "skipped_cap": 0,
+        "backoff_count": 0,
+        "backoff_wait_sec": 0,
+        "started_at": "2026-11-25T00:01:01+08:00"
+      },
+      "headline_only": {
+        "fetch_failed": 5,
+        "thin_summary": 68,
+        "fetch_failed_desc_kept": 4,
+        "fail_reasons": {
+          "http_401": 1,
+          "http_403": 5,
+          "invalid_text": 1,
+          "error": 2
+        }
+      },
+      "main_call_estimate": {
+        "hw": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 4935,
+          "est_completion_tokens": 1170,
+          "safety": 300,
+          "est_total_tokens": 6405,
+          "target": 6800
+        },
+        "corp": {
+          "news_char_budget": 5621,
+          "est_prompt_tokens": 5215,
+          "est_completion_tokens": 1270,
+          "safety": 300,
+          "est_total_tokens": 6785,
+          "target": 6800
+        },
+        "app": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 4614,
+          "est_completion_tokens": 910,
+          "safety": 300,
+          "est_total_tokens": 5824,
+          "target": 6800
+        }
+      },
+      "retry": {
+        "hw": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "corp": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "app": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        }
+      },
+      "llm_ratings": {
+        "hw": {
+          "core": 2,
+          "opp": 2,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "headline_only_cards": {
+        "marked": 1,
+        "downgraded": 0,
+        "body_trimmed": 1,
+        "scrubbed": 1
+      },
+      "deepen": {
+        "candidates": 3,
+        "rewritten": 3,
+        "fetch_failed": 3,
+        "llm_failed": 0,
+        "alt_tried": 3,
+        "alt_found": 3,
+        "alt_used": 3,
+        "alt_sources": [
+          {
+            "orig_host": "digitimes.com",
+            "alt_host": "biz.chosun.com"
+          },
+          {
+            "orig_host": "digitimes.com",
+            "alt_host": "kucoin.com"
+          },
+          {
+            "orig_host": "datacenterdynamics.com",
+            "alt_host": "explainx.ai"
+          }
+        ]
+      },
+      "desc_only_cards": {
+        "marked": 1,
+        "downgraded": 0,
+        "body_trimmed": 0,
+        "scrubbed": 1
+      },
+      "numeric_gate": {
+        "runs": 2,
+        "removed": 1,
+        "sentences_dropped": 1,
+        "contradiction_removed": 0,
+        "no_material": 0,
+        "items": [
+          {
+            "sec": "corp",
+            "title": "台積電申請在德州 Brazos County 建設 2nm 晶圓廠",
+            "reason": "body 數字無原文出處：22.6 億",
+            "removed": true
+          }
+        ]
+      },
+      "gate_reasons": {
+        "numeric_gate": {
+          "台積電申請在德州 Brazos County 建設 2nm 晶圓廠": "body 數字無原文出處：22.6 億"
+        },
+        "llm_fact_check": {
+          "TSMC 考慮在德州投資 226 億美元建設 2nm 晶圓廠": "fix 無修正內容：移除未在原文中的 Insight。"
+        }
+      },
+      "scrub_skipped": {
+        "fix_chains": 2,
+        "validate_impact": 2
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 6,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 2,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "fragment_restored": 0,
+        "items": []
+      },
+      "llm_fact_check": {
+        "enabled": true,
+        "calls": 3,
+        "failed_calls": 0,
+        "checked": 6,
+        "ok": 3,
+        "fixed": 2,
+        "dropped": 0,
+        "missing": 0,
+        "skipped_over_budget": 0,
+        "est_prompt_tokens": [
+          2338,
+          1686,
+          1309
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 2221,
+            "completion_tokens": 905,
+            "total_tokens": 3126
+          },
+          {
+            "prompt_tokens": 1620,
+            "completion_tokens": 63,
+            "total_tokens": 1683
+          },
+          {
+            "prompt_tokens": 1316,
+            "completion_tokens": 224,
+            "total_tokens": 1540
+          }
+        ],
+        "items": [
+          {
+            "title": "Apollo 與高盛領投 440 億美元 SpaceX GPU 融資，將購買 Nvidia Vera Rubin 晶片",
+            "verdict": "fix",
+            "returned": {
+              "title": "Apollo 與高盛領投 440 億美元 SpaceX GPU 融資，將購買 Nvidia Vera Rubin 晶片",
+              "body": "Apollo 與高盛牽頭為 SpaceX 提供 440 億美元的 GPU 融資，資金將用於採購 Nvidia Vera Rubin 系列 AI 晶片。"
+            },
+            "reason": "移除未在 RSS 描述中的額外說明。",
+            "new_title": "Apollo 與高盛領投 440 億美元 SpaceX GPU 融資，將購買 Nvidia Vera Rubin 晶片"
+          },
+          {
+            "title": "TSMC 考慮在德州投資 226 億美元建設 2nm 晶圓廠",
+            "verdict": "fix_no_content",
+            "returned": {
+              "title": "TSMC 考慮在德州投資 226 億美元建設 2nm 晶圓廠",
+              "body": "TSMC 正在評估於美國德州興建總投資 226 億美元的半導體製造園區，其中約 140 億美元將用於機械設備採購。此計畫針對 2nm 先進製程，並與亞利桑那州的擴建方案競爭。公司尚未對最終落址作出最終決定。"
+            },
+            "reason": "移除未在原文中的 Insight。",
+            "action": "core_to_opp"
+          },
+          {
+            "title": "CDW 推出先進 AI 工具以提升企業採用",
+            "verdict": "fix",
+            "returned": {
+              "title": "CDW 推出先進 AI 工具以提升企業採用",
+              "body": "CDW 推出先進 AI 工具以提升企業採用。"
+            },
+            "reason": "原文僅有標題，卡片內容加入未在標題中提及的細節，需僅保留標題資訊。",
+            "new_title": "CDW 推出先進 AI 工具以提升企業採用"
+          }
+        ],
+        "desc_only_sent": 1,
+        "fix_no_content": 1
+      },
+      "entity_gate": {
+        "runs": 1,
+        "cards_checked": 4,
+        "removed": 0,
+        "chain_nodes_dropped": 0,
+        "chains_cleared": 0,
+        "sentences_dropped": 2,
+        "scope_dropped": 0,
+        "no_material": 0,
+        "items": [
+          {
+            "sec": "hw",
+            "title": "美國將新加坡雲端公司 Megaspeed 及六家東南亞關聯企業列入實體清單",
+            "action": "sentence_removed:body",
+            "reason": "原文無：東南亞｜美國商務部於本週一將新加坡雲端服務供應商 Megaspeed 及其六家東南亞關聯公司加入貿易實體清單，指控其涉及 Nvidia 晶片走私。",
+            "removed": false
+          },
+          {
+            "sec": "hw",
+            "title": "美國將新加坡雲端公司 Megaspeed 及六家東南亞關聯企業列入實體清單",
+            "action": "sentence_removed:insight",
+            "reason": "原文無：東南亞｜出口管制將重新配置東南亞 AI 晶片供應鏈。",
+            "removed": false
+          }
+        ]
+      },
+      "date": "2026-11-25",
+      "generated_at": "2026-11-25T00:15:28.301547+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 23,
         "CSP/CapEx": 27,
         "App/AI": 8,
@@ -3997,227 +4448,6 @@
       },
       "date": "2026-11-12",
       "generated_at": "2026-11-12T00:07:47.228081+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 70,
-        "CSP/CapEx": 57,
-        "App/AI": 31,
-        "gnews-chip": 24,
-        "gnews-dc": 23,
-        "gnews-app": 18
-      },
-      "digest_filtered": 0,
-      "after_dedup": 201,
-      "buckets": {
-        "hw": 58,
-        "corp": 136,
-        "app": 45
-      },
-      "news_char_budget": {
-        "hw": 6000,
-        "corp": 8000,
-        "app": 6000
-      },
-      "news_context": {
-        "hw": {
-          "mode": "pack",
-          "budget": 6000,
-          "candidates": 58,
-          "full_text_total": 4,
-          "full_text_sent": 4,
-          "sent": 14,
-          "partial_cut": 0,
-          "chars_sent": 5898,
-          "dropped": 44
-        },
-        "corp": {
-          "mode": "slice",
-          "budget": 8000,
-          "candidates": 136,
-          "full_text_total": 4,
-          "full_text_sent": 4,
-          "sent": 13,
-          "partial_cut": 1,
-          "chars_sent": 8000,
-          "dropped": 123
-        },
-        "app": {
-          "mode": "pack",
-          "budget": 6000,
-          "candidates": 45,
-          "full_text_total": 4,
-          "full_text_sent": 4,
-          "sent": 12,
-          "partial_cut": 0,
-          "chars_sent": 5832,
-          "dropped": 33
-        }
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 2,
-        "app": 3
-      },
-      "llm_usage": {
-        "hw": {
-          "prompt_tokens": 4637,
-          "completion_tokens": 409,
-          "total_tokens": 5046
-        },
-        "corp": {
-          "prompt_tokens": 5279,
-          "completion_tokens": 1127,
-          "total_tokens": 6406
-        },
-        "app": {
-          "prompt_tokens": 5244,
-          "completion_tokens": 1978,
-          "total_tokens": 7222
-        }
-      },
-      "gate_removed": [
-        {
-          "section": "hw",
-          "title": "本日無相關hw新聞",
-          "gate": "remove_repeated_stories",
-          "action": "removed",
-          "reason": "removed"
-        },
-        {
-          "section": "app",
-          "title": "TEKsystems 成為 Google Cloud Gemini 醫療保健的 Launch Partner",
-          "gate": "downgrade_forbidden_phrases",
-          "action": "rating core→opp",
-          "reason": "rating core→opp"
-        },
-        {
-          "section": "app",
-          "title": "PwC 將 Google Cloud Gemini 醫療版導入日常工作流程",
-          "gate": "downgrade_forbidden_phrases",
-          "action": "rating core→opp",
-          "reason": "rating core→opp"
-        },
-        {
-          "section": "app",
-          "title": "Deerfield 與 AWS 合作在醫療投資組合中擴大 AI 應用",
-          "gate": "fact_audit",
-          "action": "removed",
-          "reason": "suspects=2024年,30；all_suspect_removed"
-        }
-      ],
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 2,
-          "noise": 0
-        }
-      },
-      "placeholders": 1,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 2,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "deepen": {
-        "candidates": 0,
-        "rewritten": 0,
-        "fetch_failed": 0,
-        "llm_failed": 0
-      },
-      "dedup_audit": [],
-      "fact_audit": {
-        "mode": "enforce",
-        "checked": 5,
-        "suspect_cards": 3,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 0,
-          "suspect_cards": 0,
-          "skipped_enforce": 0
-        },
-        "enforced": 3,
-        "title_suspect_cards": 0,
-        "removed": 1,
-        "fragment_restored": 0,
-        "items": [
-          {
-            "sec": "app",
-            "title": "TEKsystems 成為 Google Cloud Gemini 醫療保健的 Launch Partner",
-            "source": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOekJnV0RzemJYZ05TNEpacUlSQ0lTN1NrZHE3d0dJVU03TWE1Y1pIRHE0ZThocWE1WTQ4Vnc5c2RvRXV2TlNjV1RhOS1kamhsZ3Q2T1ByUF8zQ0xfZnI2RnBIME9VQl94QWNGOHh4YU40a3NBU2p5UDJrdXNKaWtOUzVPWjJMVWFkRHhDR1oxWXYtdzRkMmR4Zi1yUUplWGVTRlFQN2Zjc3kwNDNfMDVmNFZERHlJZTZ2V3VxZTBteFh0WUZTZHBoaldoX05QZmRhblE?oc=5",
-            "rating": "opp",
-            "coverage": "full",
-            "suspects": [
-              "2024年"
-            ],
-            "undetermined": [],
-            "tense_flag": false,
-            "title_suspects": []
-          },
-          {
-            "sec": "app",
-            "title": "PwC 將 Google Cloud Gemini 醫療版導入日常工作流程",
-            "source": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQZ0FYZHc2NE13MUE2U0k4R0RvLWVZZnAzX0xFV0ZTQVd5S2ZrbHRzQ05KWTZmWjNlZXZPZXB1VHBtZVJXWUlib2xCY21vOGtHems0VVI4RUtqcU9xSExVTzB2MGMyeFRSR0ZKQlVuVkYzN0s4Zk80MFp1TkUwYnN5MXUxYllpUk93djU4Smo4dmxIODR0cDk1WVc5aktDM2VNQXJIb0xPSXIxN01VRk5YNWlZWEhYd0hQQjlteEV5SjJ6a28?oc=5",
-            "rating": "opp",
-            "coverage": "full",
-            "suspects": [
-              "2024年"
-            ],
-            "undetermined": [],
-            "tense_flag": false,
-            "title_suspects": []
-          },
-          {
-            "sec": "app",
-            "title": "Deerfield 與 AWS 合作在醫療投資組合中擴大 AI 應用",
-            "source": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQNXdxT1pTeEhtUUp4bEJFdER2TklGMUNpNTVtZEdxNnBJajlPLVVTSUd2T1ZRY1BRSzlIWGsxeXRGRkkzbnBhUjMtVlE3bGZUbDZ1YnZWU1h2cldpWXVHNUZCU3dySUhzMDI1cEtYcGVtcHVRSVFtUU1CVEhzNUJTSmZHbnVGM2pQOXdsaTFUOA?oc=5",
-            "rating": "opp",
-            "coverage": "full",
-            "suspects": [
-              "2024年",
-              "30"
-            ],
-            "undetermined": [
-              "1 億美元"
-            ],
-            "tense_flag": false,
-            "title_suspects": [],
-            "action": "all_suspect_removed",
-            "removed_body": "Deerfield Management 與 Amazon Web Services 簽署合作協議，利用 AWS 的 AI 基礎設施在其持有的 30 家醫療公司中部署機器學習模型，以提升診斷與藥物研發效率。協議預計在 2024 年底前完成全部部署，涉及超過 1 億美元的雲端資源支出。"
-          }
-        ]
-      },
-      "date": "2026-11-11",
-      "generated_at": "2026-11-11T00:07:58.436934+08:00"
     }
   ]
 }

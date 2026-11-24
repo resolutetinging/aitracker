@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "since": "2026-07-01",
  "entities": [
   {
@@ -1026,40 +1026,42 @@
   {
    "week": "2026-W48",
    "start": "2026-11-23",
-   "cards": 9,
+   "cards": 15,
    "dims": {
     "hw": {
-     "core": 1,
-     "opp": 1,
+     "core": 2,
+     "opp": 4,
      "noise": 0
     },
     "corp": {
      "core": 1,
-     "opp": 4,
+     "opp": 5,
      "noise": 0
     },
     "app": {
      "core": 1,
-     "opp": 1,
+     "opp": 2,
      "noise": 0
     }
    },
    "mentions": {
-    "NVIDIA": 3,
+    "NVIDIA": 4,
     "Google": 1,
     "Broadcom": 1,
     "Oracle": 2,
     "Agentic AI": 2,
     "Amazon": 2,
     "OpenAI": 1,
-    "Meta": 1
+    "Meta": 1,
+    "TSMC": 1,
+    "Samsung": 2,
+    "SK hynix": 1,
+    "Micron": 1,
+    "HBM": 1
    }
   }
  ],
  "seen": [
-  "2026-11-03|Anthropic IPO 招股說明書披露近兆美元運算承諾",
-  "2026-11-03|Nvidia 可能為 Nscale 西維吉尼亞 AI 數據中心提供數十億美元債務保證",
-  "2026-11-03|OpenAI 創辦人 Altman 赴韓國與三星、SK 集團討論 AI 晶片合作",
   "2026-11-04|AI 晶片走私者利用貿易漏洞將韓國 HBM 運入中國",
   "2026-11-04|Apple 記憶體成本上升致毛利率下降至 45%~46%",
   "2026-11-04|Marvell 以 1150 億美元收購 Lumentum 加速光子供應鏈",
@@ -1139,6 +1141,12 @@
   "2026-11-24|Marlowe 獲得 2.77 億美元資金以推動 Nvidia 晶片替代方案",
   "2026-11-24|Meta Muse 於 Walmart 代理購物服務正式上線",
   "2026-11-24|Nvidia董事會恢復黃仁勳為執行長",
-  "2026-11-24|Oracle獲得資金支援OpenAI建設"
+  "2026-11-24|Oracle獲得資金支援OpenAI建設",
+  "2026-11-25|Apollo 與高盛領投 440 億美元 SpaceX GPU 融資，將購買 Nvidia Vera Rubin 晶片",
+  "2026-11-25|CDW 推出先進 AI 工具以提升企業採用",
+  "2026-11-25|Micron 加碼台灣與新加坡 HBM 產能以縮小與三星差距",
+  "2026-11-25|TSMC 考慮在德州投資 226 億美元建設 2nm 晶圓廠",
+  "2026-11-25|三星記憶體2027‑2029年產能大部已簽約",
+  "2026-11-25|美國將新加坡雲端公司 Megaspeed 及六家東南亞關聯企業列入實體清單"
  ]
 }

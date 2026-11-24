@@ -1,5 +1,163 @@
 [
   {
+    "date": "2026-11-25",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "TSMC 考慮在德州投資 226 億美元建設 2nm 晶圓廠",
+        "layer": "capacity_commitment",
+        "body": "TSMC 正在評估於美國德州興建總投資 226 億美元的半導體製造園區，其中約 140 億美元將用於機械設備採購。此計畫針對 2nm 先進製程，並與亞利桑那州的擴建方案競爭。公司尚未對最終落址作出最終決定。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "美國本土 2nm 產能擴張將加速 AI 晶片供應鏈本地化。",
+        "source_label": "Digitimes",
+        "source": "https://www.digitimes.com/news/a20261124VL226/tsmc-texas-arizona-investment-manufacturing.html",
+        "chain": [
+          {
+            "label": "TSMC 2nm 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "美國半導體供應鏈安全↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Micron 加碼台灣與新加坡 HBM 產能以縮小與三星差距",
+        "layer": "capacity_commitment",
+        "body": "Micron 正加速在新加坡與台灣的第六代高頻寬記憶體（HBM4）產能擴張，預計投資約 70 億美元（約 9.4 兆韓元），首批設備於 19 日抵達新加坡的封裝廠，預計於 2027 年上半年開始貢獻產能，預估年底前月產能可達 10 萬片晶圓，仍約為 Samsung 與 SK hynix 的一半。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Micron 的擴產投資有望縮小與 Samsung 的產能差距，提升其在 AI 記憶體市場的競爭力。",
+        "source_label": "biz.chosun.com",
+        "source": "https://biz.chosun.com/en/en-it/2026/11/24/QUHPICOVNRAN3APHG5LFNDOQUQ/",
+        "chain": [
+          {
+            "label": "HANMI Semiconductor TC Bonder 供應↑",
+            "type": "up"
+          },
+          {
+            "label": "Micron HBM4 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "Nvidia AI 記憶體供應↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "美國將新加坡雲端公司 Megaspeed 及六家東南亞關聯企業列入實體清單",
+        "layer": "export_control",
+        "body": "此舉擴大了對涉嫌違規 AI 晶片交易的制裁範圍。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "Digitimes",
+        "source": "https://www.digitimes.com/news/a20261124VL222/nvidia-alibaba-probe-entity-list-blacklist.html",
+        "chain": [
+          {
+            "label": "Megaspeed 供應鏈受阻↓",
+            "type": "down"
+          },
+          {
+            "label": "Nvidia AI 晶片走私風險↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Apollo 與高盛領投 440 億美元 SpaceX GPU 融資，將購買 Nvidia Vera Rubin 晶片",
+        "layer": "financing",
+        "body": "Apollo 與高盛牽頭為 SpaceX 提供 440 億美元的 GPU 融資，資金將用於採購 Nvidia Vera Rubin 系列 AI 晶片。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "DataCenterDynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/apollo-and-goldman-sachs-lead-44bn-spacex-gpu-financing-deal/",
+        "desc_only": true
+      }
+    ],
+    "corp": [
+      {
+        "title": "三星記憶體2027‑2029年產能大部已簽約",
+        "layer": "sublayer",
+        "body": "根據Citrini分析師Jukan於11月21日引述韓國媒體報導，三星電子2027至2029年大部分記憶體產能已透過合約鎖定。來源指出，AI資料中心投資增加延長了記憶體供應短缺，客戶不僅要求超出現有合約的額外出貨，亦爭取至2031年的長期供應。三星於11月29日的第三季財報電話會議表示，已與十大全球客戶簽署長期供應合約，並正與另外十家談判，目標在2030年前讓60%至70%的產能受長期合約覆蓋。",
+        "impact": "長期供應合約因AI資料中心投資增加，提升記憶體需求。",
+        "rating": "opp",
+        "insight": "投資者可關注三星記憶體長期合約帶來的產能利用率提升，預期將支撐其營收成長。",
+        "source_label": "kucoin.com",
+        "source": "https://www.kucoin.com/news/flash/samsung-s-2027-2029-memory-production-mostly-secured-some-clients-seek-supply-until-2031",
+        "chain": [
+          {
+            "label": "Samsung 記憶體 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "AI資料中心 需求↑",
+            "type": "up"
+          },
+          {
+            "label": "伺服器製造商 出貨量↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "CDW 推出先進 AI 工具以提升企業採用",
+        "layer": "AI 服務",
+        "body": "CDW 推出先進 AI 工具以提升企業採用。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "Zacks Investment Research",
+        "source": "https://www.zacks.com/stock/news/3034348/cdw-launches-advanced-ai-tools-to-boost-enterprise-adoption",
+        "headline_only": true
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "Vera Rubin",
+        "full": "Nvidia Vera Rubin GPU",
+        "def": "Nvidia Vera Rubin 系列是針對大型 AI 模型訓練與推論設計的高效能 GPU，具備多達數千個 CUDA 核心與大型 HBM 記憶體。",
+        "why": "此系列 GPU 為 AI 超算與太空領域提供關鍵運算資源，資金投入將直接推高其需求。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "MATCH Act",
+        "full": "Multilateral Alignment of Technology Controls on Hardware Act",
+        "def": "美國國會推動的多邊硬體技術管制協調法案，旨在加強對先進半導體與 AI 晶片的出口限制。",
+        "why": "法案通過與否將決定美國與盟國在先進晶片供應鏈上的政策走向，影響全球 AI 硬體布局。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "2nm 製程",
+        "full": "2奈米製程",
+        "def": "指半導體製程節點的尺寸為 2 奈米，屬於目前最先進的製程技術，可提供更高的晶體管密度與效能。",
+        "why": "AI 高階晶片需求大量運算單元，2nm 製程能降低功耗並提升效能，是未來 AI 晶片的關鍵。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "AI 資料中心",
+        "full": "人工智慧資料中心",
+        "def": "專門部署大量 GPU、TPU 等加速器，以支援大型深度學習模型訓練與推論的設施。",
+        "why": "此類中心對高效能記憶體與先進製程晶片的需求極大，直接影響半導體供應鏈的產能規劃。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI 工具套件",
+        "full": "Artificial Intelligence 工具套件",
+        "def": "提供企業使用的 AI 應用程式集合，包含自動化分析、語意搜尋與決策支援等功能。",
+        "why": "可加速企業導入 AI，提升營運效率與決策品質。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-24",
     "is_sunday": false,
     "hw": [
@@ -732,216 +890,6 @@
         "full": "Real World Evidence (RWE)",
         "def": "利用真實世界資料（如電子健康紀錄、保險理賠資料、患者登錄、穿戴式裝置與患者自報結果）進行醫療效果與安全性分析的技術與服務。",
         "why": "RWE 可協助藥廠與醫療機構在臨床試驗之外快速取得實際使用情況，提升新藥上市與療效驗證效率。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-11-18",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "川普政府加嚴 AI 晶片出口限制",
-        "layer": "policy",
-        "body": "美國商務部於本週一公布新規則，對向中國、伊朗、俄羅斯等受美國武器禁運國家的資料中心提供大量運算能力的 AI 晶片實施額外出口管制。",
-        "impact": "此舉直接降低美國晶片供應商對中國資料中心的出貨量（↓），下游使用這些晶片的中國 AI 服務供應商將被迫尋找替代供應來源，可能加速本土化或轉向非美國晶片（↑）。",
-        "rating": "opp",
-        "insight": "投資者應關注美國出口管制對中國 AI 晶片需求的直接削減效應。",
-        "source_label": "Politics Today",
-        "source": "https://politicstoday.org/trump-administration-tightens-ai-chip-export-restrictions-ahead-of-china-visit/",
-        "chain": [
-          {
-            "label": "Nvidia AI 晶片出口限制↑",
-            "type": "up"
-          },
-          {
-            "label": "美國政府出口管制↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "佛羅里達議員警告寬鬆 AI 晶片出口管制危害國安",
-        "layer": "policy",
-        "body": "佛羅里達州議員 Carlos Gimenez 警告稱，美國對先進 AI 晶片的寬鬆出口管制使中國能竊取關鍵國家安全技術。",
-        "impact": "寬鬆管制導致中國取得美國高階 AI 晶片的機會增加（↑），迫使美國晶圓代工與封裝廠需重新評估對華出貨策略（↓）。",
-        "rating": "core",
-        "insight": "投資者應留意美國對華 AI 晶片出口政策的收緊可能帶來的供應鏈重新配置。",
-        "source_label": "Fox Business",
-        "source": "https://www.foxbusiness.com/video/6408496782112",
-        "chain": [
-          {
-            "label": "美國 AI 晶片出口管制嚴格化↑",
-            "type": "up"
-          },
-          {
-            "label": "中國 AI 晶片取得難度↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Nvidia 警示中國遠端存取 AI 晶片可能招致美國訴訟",
-        "layer": "legal",
-        "body": "Nvidia 表示，若中國公司遠端存取其 AI 晶片，根據近期美國立法提案，可能使 Nvidia 及相關公司面臨美國法律訴訟，該報導由 CNBC 引述消息來源。",
-        "impact": "此法律風險將使中國客戶減少對 Nvidia AI 晶片的採購（↓），導致 Nvidia 相關晶圓代工與封裝需求下降（↓）。",
-        "rating": "opp",
-        "insight": "關注 Nvidia 法律風險對其中國出貨量的直接衝擊。",
-        "source_label": "Yahoo Finance",
-        "source": "https://finance.yahoo.com/news/nvidia-warns-chip-buyers-legal-073724047.html",
-        "chain": [
-          {
-            "label": "Nvidia 遠端存取風險↑",
-            "type": "up"
-          },
-          {
-            "label": "Nvidia 法律訴訟風險↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "加州總檢察長起訴 OpenAI 誤導公眾安全資訊",
-        "layer": "legal",
-        "body": "加州總檢察長 Rob Bonta 依不公平競爭法與公共滋擾法起訴 OpenAI，指其部署未受授權或監督的實驗模型，導致 Hugging Face 基礎設施遭受入侵，並危害大眾安全，訴訟已於加州高等法院立案。",
-        "impact": "此訴訟將使 OpenAI 服務需求短期下降 (↓)，進而減少 Nvidia GPU 供應給其模型訓練的需求 (↓)。",
-        "rating": "core",
-        "insight": "投資者應關注 OpenAI 法律風險對其雲端 AI 需求的直接衝擊。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/ai-and-ml/2026/11/16/california-sues-openai-for-misleading-public-about-ai-safety/5310297",
-        "chain": [
-          {
-            "label": "OpenAI 訴訟風險↑",
-            "type": "up"
-          },
-          {
-            "label": "Hugging Face 基礎設施安全風險↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Nvidia 警告中國 AI 晶片使用者面臨法律風險",
-        "layer": "regulation",
-        "body": "Nvidia 近期告知晶片買家，若客戶將超過 50% 的 GPU 租給中國公司，將暫停供貨，且新通過的《遠端存取安全法案》（RASA）可能讓美國政府對雲端服務的存取權限加以更嚴格控制，進一步使雙方面臨法律風險。RASA 已於 1 月在美國眾議院通過，但尚未獲參議院批准。美國商務部亦於本週公布臨時最終規則，阻止中國公司遠端使用 AI 晶片。",
-        "impact": "此限制將使中國雲端服務供應商的 GPU 可用性下降，導致其 AI 計算服務受限，進而影響本地 AI 應用與服務的供應；同時，非中國客戶的 GPU 需求可能上升，促使 Nvidia 將產能轉向其他市場。",
-        "rating": "core",
-        "insight": "投資人應留意與中國相關的 AI 晶片需求可能下降，並評估供應鏈重新配置的風險。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/11/17/nvidia-china-cloud-ai-chip-access.html",
-        "chain": [
-          {
-            "label": "Nvidia GPU 銷售↓",
-            "type": "down"
-          },
-          {
-            "label": "中國雲端服務供應商 GPU 可用性↓",
-            "type": "down"
-          },
-          {
-            "label": "非中國客戶 GPU 需求↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Blackstone 合資收購 AWS 校園再租回雲端巨頭",
-        "layer": "real_estate",
-        "body": "Blackstone Digital Infrastructure Trust (BXDC) 與 Amazon Web Services 簽署租賃回購協議，將以約 50 億美元收購兩個 AWS 資料中心聯營公司 75% 的股權，並以 12 年的三淨租約將資產租回給 AWS，後者保留 25% 股權。",
-        "impact": "BXDC 取得大型資料中心資產，提升其 REIT 規模與租金收入，AWS 因租賃回購可釋放資金，預計將資金投入 AI 硬體建置，進一步刺激上游晶片與記憶體供應商需求上升。",
-        "rating": "opp",
-        "insight": "投資者可關注 BXDC 首筆大型租賃回購案，顯示雲端基礎設施資產證券化的成長潛力。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/on-prem/2026/11/17/reit-move-blackstone-joint-venture-buys-aws-campuses-to-lease-back-to-the-cloud-giant/5310355",
-        "chain": [
-          {
-            "label": "Blackstone Digital Infrastructure Trust 資產收購↑",
-            "type": "up"
-          },
-          {
-            "label": "AWS 釋放資金↑",
-            "type": "up"
-          },
-          {
-            "label": "晶片 需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "app": [
-      {
-        "title": "Isomorphic Labs 獲得 50 億美元 Series C 融資以推進 AI 藥物候選品臨床試驗",
-        "layer": "app",
-        "body": "公司原為 Google DeepMind 於 2021 年分拆的 AI 藥物發現平台，現正利用本輪資金將其藥物候選品推進至臨床試驗階段。所有既有投資者包括 Alphabet 旗下 GV、Capital G、Thrive Capital、MGX、Temasek 及英國主權 AI 基金亦同步增資。",
-        "impact": "此筆資金將直接提升對高效能運算（GPU、TPU）與雲端運算服務的需求，帶動供應鏈上游的晶片製造商與資料中心業者產能 ↑。",
-        "rating": "opp",
-        "insight": "大規模融資顯示資本市場對 AI 藥物發現的商業化前景高度看好，投資者可關注相關運算硬體與臨床服務供應鏈的需求增長。",
-        "source_label": "TechCrunch",
-        "source": "https://techcrunch.com/2026/11/17/isomorphic-labs-raises-5b-as-it-looks-to-take-drug-candidates-to-clinical-trials/",
-        "chain": [
-          {
-            "label": "Isomorphic Labs 融資額↑",
-            "type": "up"
-          },
-          {
-            "label": "AI 藥物臨床試驗進度↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "遠端存取",
-        "full": "Remote Access",
-        "def": "指第三方在地理上遠離實體設備的情況下，透過網路介面直接操作或使用 AI 晶片的功能。",
-        "why": "遠端存取涉及跨境資料流與技術授權，受出口管制與法律限制影響，直接關係供應鏈合規成本。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "AI 晶片出口管制",
-        "full": "AI Chip Export Controls",
-        "def": "美國政府對高階人工智慧晶片的跨國銷售設定的限制措施，旨在防止關鍵技術落入敵對國家手中。",
-        "why": "出口管制決定了晶圓代工與封裝廠的出貨目的地與量能，對全球 AI 硬體供應鏈布局具有決定性影響。",
-        "category": "policy"
-      },
-      {
-        "term": "不公平競爭法",
-        "full": "Unfair Competition Law",
-        "def": "美國各州用以防止企業透過欺騙或不正當手段取得市場優勢的法律，常被用於針對誤導性廣告或不當商業行為的訴訟。",
-        "why": "OpenAI 被指違反此法，顯示 AI 企業的合規風險上升。",
-        "category": "role"
-      },
-      {
-        "term": "公共滋擾",
-        "full": "Public Nuisance",
-        "def": "法律概念，指企業的行為對公共健康、安全或福祉造成廣泛且持續的負面影響。",
-        "why": "加州檢察長以此指控 OpenAI，突顯 AI 產品安全的公共政策關注。",
-        "category": "role"
-      },
-      {
-        "term": "臨床試驗",
-        "full": "Clinical Trial",
-        "def": "在人體受試者身上測試新藥或醫療裝置的安全性與有效性的研究階段，通常分為 I、II、III 期。",
-        "why": "AI 藥物平台的最終目標是將候選藥物推進至此階段，決定其商業化可行性。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "Series C 融資",
-        "full": "Series C Funding",
-        "def": "公司在成長階段的第三輪股權融資，資金規模通常在數億至十億美元，用於擴大商業化與市場佈局。",
-        "why": "此輪融資金額顯示投資者對 AI 藥物發現平台的信心與未來營收潛力。",
-        "category": "role"
-      },
-      {
-        "term": "AI 藥物發現平台",
-        "full": "Artificial Intelligence Drug Discovery Platform",
-        "def": "利用機器學習與深度學習模型分析生物數據，快速預測藥物分子與目標的相互作用，以縮短藥物研發週期。",
-        "why": "平台的成功將改變傳統藥物研發流程，影響上下游供應鏈的需求結構。",
         "category": "ai_technique"
       }
     ],
