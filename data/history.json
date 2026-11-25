@@ -26,7 +26,7 @@
       {
         "title": "Micron 加碼台灣與新加坡 HBM 產能以縮小與三星差距",
         "layer": "capacity_commitment",
-        "body": "Micron 正加速在新加坡與台灣的第六代高頻寬記憶體（HBM4）產能擴張，預計投資約 70 億美元（約 9.4 兆韓元），首批設備於 19 日抵達新加坡的封裝廠，預計於 2027 年上半年開始貢獻產能，預估年底前月產能可達 10 萬片晶圓，仍約為 Samsung 與 SK hynix 的一半。",
+        "body": "Micron 正加速擴建以新加坡與台灣為主的第六代高頻寬記憶體（HBM4）產能。新加坡 HBM 封裝廠首批設備已於 19 日進場，該廠總投資估計約 70 億美元（約 9.4 兆韓元），預計 2027 年上半年開始貢獻產能。業界估計 Micron 年底前 HBM 月投片量約 10 萬片晶圓，約為 Samsung 與 SK hynix 的一半。",
         "impact": "",
         "rating": "core",
         "insight": "Micron 的擴產投資有望縮小與 Samsung 的產能差距，提升其在 AI 記憶體市場的競爭力。",
@@ -50,22 +50,13 @@
       {
         "title": "美國將新加坡雲端公司 Megaspeed 及六家東南亞關聯企業列入實體清單",
         "layer": "export_control",
-        "body": "此舉擴大了對涉嫌違規 AI 晶片交易的制裁範圍。",
+        "body": "美國商務部於週一將新加坡雲端公司 Megaspeed 及其六家東南亞關聯企業列入貿易黑名單，擴大打擊涉嫌將 AI 晶片走私至中國的行為，國會議員與政府官員正密切關注此事。",
         "impact": "",
         "rating": "opp",
         "insight": "",
         "source_label": "Digitimes",
         "source": "https://www.digitimes.com/news/a20261124VL222/nvidia-alibaba-probe-entity-list-blacklist.html",
-        "chain": [
-          {
-            "label": "Megaspeed 供應鏈受阻↓",
-            "type": "down"
-          },
-          {
-            "label": "Nvidia AI 晶片走私風險↑",
-            "type": "up"
-          }
-        ]
+        "chain": []
       },
       {
         "title": "Apollo 與高盛領投 440 億美元 SpaceX GPU 融資，將購買 Nvidia Vera Rubin 晶片",
@@ -81,28 +72,14 @@
     ],
     "corp": [
       {
-        "title": "三星記憶體2027‑2029年產能大部已簽約",
-        "layer": "sublayer",
-        "body": "根據Citrini分析師Jukan於11月21日引述韓國媒體報導，三星電子2027至2029年大部分記憶體產能已透過合約鎖定。來源指出，AI資料中心投資增加延長了記憶體供應短缺，客戶不僅要求超出現有合約的額外出貨，亦爭取至2031年的長期供應。三星於11月29日的第三季財報電話會議表示，已與十大全球客戶簽署長期供應合約，並正與另外十家談判，目標在2030年前讓60%至70%的產能受長期合約覆蓋。",
-        "impact": "長期供應合約因AI資料中心投資增加，提升記憶體需求。",
-        "rating": "opp",
-        "insight": "投資者可關注三星記憶體長期合約帶來的產能利用率提升，預期將支撐其營收成長。",
-        "source_label": "kucoin.com",
-        "source": "https://www.kucoin.com/news/flash/samsung-s-2027-2029-memory-production-mostly-secured-some-clients-seek-supply-until-2031",
-        "chain": [
-          {
-            "label": "Samsung 記憶體 產能↑",
-            "type": "up"
-          },
-          {
-            "label": "AI資料中心 需求↑",
-            "type": "up"
-          },
-          {
-            "label": "伺服器製造商 出貨量↑",
-            "type": "up"
-          }
-        ]
+        "title": "今日無相關巨頭新聞",
+        "layer": "",
+        "body": "今日無相關巨頭新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
       }
     ],
     "app": [
