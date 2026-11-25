@@ -41,6 +41,31 @@ DEEPEN_THIN_CARDS = True
 DEEPEN_ALT_SOURCE = True
 DEEPEN_ALT_MAX_CANDS = 3        # 每張卡最多試幾個替代來源
 DEEPEN_ALT_GN_QUERIES = 3       # 全批 Google News 搜尋查詢上限
+# 11-25：替代來源只接受可信新聞網域（白名單，子網域也算，例：asia.nikkei.com、biz.chosun.com）。
+#    由來：11-25 首跑挑到 kucoin.com（加密貨幣站轉載、日期錯誤）、explainx.ai（課程站 AI 改寫聚合）。
+#    基礎＝RSS_FEEDS 網域＋HW/APP_SOURCE_PRIORITY 高優先來源，再加通訊社、財經／科技媒體、韓媒英文版。
+#    不在名單內一律跳過，記進 run_stats.deepen.alt_rejected_domain。
+DEEPEN_ALT_ALLOWED_DOMAINS = frozenset((
+    # RSS_FEEDS 與來源優先表
+    'semiengineering.com', 'eetimes.com', 'digitimes.com', 'theregister.com', 'cnbc.com',
+    'datacenterdynamics.com', 'techcrunch.com', 'arstechnica.com', 'theverge.com', 'venturebeat.com',
+    'spectrum.ieee.org', 'technologyreview.com', 'datacenterknowledge.com', 'tomshardware.com',
+    # 通訊社
+    'reuters.com', 'apnews.com', 'bloomberg.com', 'afp.com', 'kyodonews.net', 'focustaiwan.tw', 'yna.co.kr',
+    # 財經媒體
+    'wsj.com', 'ft.com', 'nikkei.com', 'barrons.com', 'marketwatch.com', 'economist.com', 'fortune.com',
+    'forbes.com', 'businessinsider.com', 'axios.com', 'theinformation.com', 'nytimes.com',
+    'washingtonpost.com', 'bbc.com', 'bbc.co.uk', 'theguardian.com', 'scmp.com', 'asia.nikkei.com',
+    # 科技／半導體媒體
+    'wired.com', 'zdnet.com', 'engadget.com', 'anandtech.com', 'servethehome.com', 'nextplatform.com',
+    'hpcwire.com', 'trendforce.com', 'eenewseurope.com', 'electronicsweekly.com', 'semianalysis.com',
+    'siliconangle.com', 'fiercebiotech.com', 'fiercehealthcare.com',
+    'statnews.com', 'computerworld.com', 'networkworld.com', 'infoworld.com', 'crn.com', 'ithome.com.tw',
+    # 韓媒英文版與台灣財經媒體
+    'chosun.com', 'koreaherald.com', 'koreajoongangdaily.joins.com', 'joongang.co.kr', 'businesskorea.co.kr',
+    'thelec.net', 'koreatimes.co.kr', 'kedglobal.com', 'taipeitimes.com', 'money.udn.com', 'udn.com',
+    'cna.com.tw', 'ctee.com.tw', 'technews.tw',
+))
 if os.environ.get('DEEPEN_THIN_CARDS', '').strip() == '0':
     DEEPEN_THIN_CARDS = False
 # 11-24 實體閘門 entity_gate（純程式，不靠 prompt）：body／impact／insight／chain 提到的公司、組織、地點
@@ -56,6 +81,13 @@ if os.environ.get('ENTITY_GATE', '').strip() == '0':
     ENTITY_GATE = False
 if os.environ.get('ENTITY_SCOPE_GATE', '').strip() == '0':
     ENTITY_SCOPE_GATE = False
+# 11-25 未來日期閘門 future_date_gate：句子含明確日期（X月Y日／英文月份＋日）且晚於執行日（台北時間），
+#    又沒有未來語氣（將、預計、預定…）→ 刪句；body 刪光則移除該卡（比照 numeric_gate）。
+#    由來：11-25 三星卡「三星於11月29日的第三季財報電話會議表示…」（執行日 11-25，來源本身寫錯）被當已發生事實。
+#    回復：False 或環境變數 FUTURE_DATE_GATE=0。
+FUTURE_DATE_GATE = True
+if os.environ.get('FUTURE_DATE_GATE', '').strip() == '0':
+    FUTURE_DATE_GATE = False
 # B 生成後比對：卡片數字/日期/型號是否出現在所掛 source 的素材原文。
 #    off＝不跑；log＝只寫 run_stats.fact_audit，不改卡片與評級；
 #    enforce＝刪除含疑似補寫的句子，刪完不達標 core→opp，全部句子都疑似則 rating 改 noise（預設）。環境變數 FACT_CHECK_MODE 覆寫。
@@ -1010,6 +1042,20 @@ def _entry_title(s):
     t = re.sub(r'^(?:\[[^\]]+\]\s*)+', '', s)
     return t.split(' — ', 1)[0].split(' | SOURCE_URL:', 1)[0].strip()
 
+# 11-25：條目換成全文時 RSS 描述會被丟掉，但描述也是同一來源的原文（常含導言）。
+# 換之前先記下 {正規化網址: 描述}，_fa_index_materials 把它接在全文素材後面供各閘門比對（不進主 prompt）。
+_RSS_DESC = {}
+
+def _remember_rss_desc(entry, *urls):
+    try:
+        d = _entry_desc(entry)
+        if d:
+            for u in urls:
+                if u:
+                    _RSS_DESC.setdefault(_norm_url(u), d)
+    except Exception:
+        pass
+
 def _entry_desc(s):
     """摘要條目（標題 — 描述 | SOURCE_URL:…）的描述部分；全文條目回傳空字串。"""
     if _FULLTEXT_ENTRY_PAT.search(s):
@@ -1091,6 +1137,7 @@ def enrich_with_full_text(buckets, max_fetch=12):
         new_url = url_map.get(url, url)
         if text:
             head = s.split(' — ', 1)[0].split(' | SOURCE_URL:', 1)[0]
+            _remember_rss_desc(s, url, new_url)
             # SOURCE_URL 緊接標題之後，不放在長內文最後面——內文拉長到 1100 字後，
             # LLM 常常讀到文末前就已經寫完 JSON，導致 source 欄位留空或抓錯
             lists[c][i] = f"{head} | SOURCE_URL:{new_url} — {text}"
@@ -3095,6 +3142,11 @@ def _fa_index_materials(news_by_cat):
                     or (idx[key].get('headline_only') and not headline_only):
                 # 11-17 B：desc_only＝素材不含全文、也不是只有標題（只有 RSS 描述）；desc 為描述原文
                 desc = '' if (full or headline_only) else _entry_desc(entry)
+                if full:
+                    # 11-25：全文素材補回換成全文前的 RSS 描述（素材＝標題＋描述＋全文）；描述已在全文裡就不重複
+                    rd = _html_unescape(_RSS_DESC.get(key) or '').strip()
+                    if rd and re.sub(r'\s+', ' ', rd[:80]).lower() not in re.sub(r'\s+', ' ', _html_unescape(text)).lower():
+                        text = text + ' ｜RSS 描述：' + rd
                 idx[key] = {'text': text, 'title': title, 'full': full, 'headline_only': headline_only,
                             'desc_only': not full and not headline_only, 'desc': desc}
     return idx
@@ -3204,6 +3256,22 @@ def _host_of(url):
     except Exception:
         return ''
 
+def _alt_domain_allowed(url):
+    """11-25：替代來源網域是否在 DEEPEN_ALT_ALLOWED_DOMAINS（含子網域）。"""
+    h = _host_of(url)
+    return bool(h) and any(h == d or h.endswith('.' + d) for d in DEEPEN_ALT_ALLOWED_DOMAINS)
+
+def _alt_reject_domain(url, where):
+    """記錄被白名單擋下的替代來源（run_stats.deepen.alt_rejected_domain，最多 20 筆）。"""
+    try:
+        lst = RUN_STATS.setdefault('deepen', {}).setdefault('alt_rejected_domain', [])
+        h = _host_of(url) or (url or '')[:60]
+        if len(lst) < 20 and not any(x.get('host') == h for x in lst):
+            lst.append({'host': h, 'stage': where})
+        print(f"  → 補深替代來源：{h} 不在可信網域白名單，跳過")
+    except Exception:
+        pass
+
 # 11-24：替代來源「同一事件」比對用的停用詞與高頻詞（太常見，重疊不代表同事件）
 _ALT_STOPWORDS = frozenset((
     'the for with new and from after says said over into its has will are was were that this than '
@@ -3259,6 +3327,9 @@ def _alt_cands_from_materials(sec, orig_url, orig_title, news_by_cat, exclude_ur
                 continue
             if not _alt_same_event(orig_title, _entry_title(entry)):
                 continue
+            if not is_gnews_url(u) and not _alt_domain_allowed(u):
+                _alt_reject_domain(u, 'materials')
+                continue
             seen.add(key)
             entries.append(entry)
     if not entries:
@@ -3304,6 +3375,10 @@ def _alt_cands_from_gnews(orig_url, orig_title, exclude_urls, state):
         if src_host and src_host == orig_host:
             continue
         if _alt_same_event(orig_title, t):
+            # 11-25：Google News 的 <source url> 已知網域就先篩白名單，不浪費解碼與試抓次數
+            if src_host and not _alt_domain_allowed('https://' + src_host):
+                _alt_reject_domain('https://' + src_host, 'gnews_source')
+                continue
             out.append((link, t))
     return out
 
@@ -3346,6 +3421,9 @@ def _deepen_find_alt(sec, item, orig_url, orig_title, news_by_cat, data, state):
                 if not re.match(r'https?://', real, re.I):
                     continue
                 if _host_of(real) == orig_host or _norm_url(real) in used:
+                    continue
+                if not _alt_domain_allowed(real):   # 11-25：解碼後的真實網域也要過白名單
+                    _alt_reject_domain(real, 'decoded')
                     continue
                 try:
                     text = fetch_article_text(real, max_chars=2500, title=ct)
@@ -3405,6 +3483,7 @@ def _swap_to_full_material(news_by_cat, sec, url, text):
             m = re.search(r'SOURCE_URL:(\S+)', entry)
             if m and _norm_url(m.group(1)) == key:
                 head = entry.split(' | SOURCE_URL:', 1)[0].split(' — ', 1)[0]
+                _remember_rss_desc(entry, m.group(1))
                 head = head.replace(HEADLINE_ONLY_TAG + ' ', '').replace(HEADLINE_ONLY_TAG, '')
                 entries[i] = f"{head} | SOURCE_URL:{m.group(1)} — {text}"
                 news_by_cat[cat] = '\n\n'.join(entries)
@@ -4131,11 +4210,11 @@ ENTITY_GATE_EXTRA = [
     ('韓國', 'place', ['韓國', '南韓', 'Korea', 'Korean', 'Seoul'], []),
     ('新加坡', 'place', ['新加坡', 'Singapore', 'Singaporean'], []),
     ('印度', 'place', ['印度', 'India', 'Indian'], []),
-    ('歐洲', 'place', ['歐洲', '歐盟', 'Europe', 'European', 'EU'], []),
+    ('歐洲', 'place', ['歐洲', '歐盟', 'Europe', 'European', 'Europeans', 'European Union', 'EU'], []),
     ('德國', 'place', ['德國', 'Germany', 'German'], []),
     ('英國', 'place', ['英國', 'UK', 'U.K.', 'Britain', 'British', 'England', 'London'], []),
     ('法國', 'place', ['法國', 'France', 'French', 'Paris'], []),
-    ('荷蘭', 'place', ['荷蘭', 'Netherlands', 'Dutch'], []),
+    ('荷蘭', 'place', ['荷蘭', 'Netherlands', 'Dutch', 'Holland'], []),
     ('以色列', 'place', ['以色列', 'Israel', 'Israeli'], []),
     ('馬來西亞', 'place', ['馬來西亞', 'Malaysia', 'Malaysian', 'Penang'], []),
     ('越南', 'place', ['越南', 'Vietnam', 'Vietnamese'], []),
@@ -4145,9 +4224,22 @@ ENTITY_GATE_EXTRA = [
     ('澳洲', 'place', ['澳洲', 'Australia', 'Australian'], []),
     ('沙烏地阿拉伯', 'place', ['沙烏地', '沙特', 'Saudi'], []),
     ('阿聯', 'place', ['阿聯', 'UAE', 'Emirates', 'Abu Dhabi', 'Dubai', '杜拜'], []),
-    ('中東', 'place', ['中東', 'Middle East', 'Gulf'], []),
+    ('中東', 'place', ['中東', 'Middle East', 'Middle Eastern', 'Gulf'], []),
     ('香港', 'place', ['香港', 'Hong Kong'], []),
-    ('東南亞', 'place', ['東南亞', 'Southeast Asia', 'ASEAN'], []),
+    # 11-25：英文別名比對只容許 's 與 s 結尾，形容詞（Southeast Asian）必須另列；
+    # Megaspeed 卡因缺 'Southeast Asian' 誤刪「東南亞」句
+    ('東南亞', 'place', ['東南亞', 'Southeast Asia', 'Southeast Asian', 'South-East Asia', 'South East Asia',
+                       'South-East Asian', 'ASEAN'], []),
+    ('東亞', 'place', ['東亞', 'East Asia', 'East Asian'], []),
+    ('南亞', 'place', ['南亞', 'South Asia', 'South Asian'], ['南亞科', '南亞塑膠']),
+    ('亞洲', 'place', ['亞洲', 'Asia', 'Asian', 'Asians'], []),
+    ('亞太', 'place', ['亞太', 'Asia-Pacific', 'Asia Pacific', 'APAC'], []),
+    ('北美', 'place', ['北美', 'North America', 'North American'], []),
+    ('拉丁美洲', 'place', ['拉丁美洲', '拉美', 'Latin America', 'Latin American'], []),
+    ('非洲', 'place', ['非洲', 'Africa', 'African'], []),
+    ('印尼', 'place', ['印尼', 'Indonesia', 'Indonesian'], []),
+    ('菲律賓', 'place', ['菲律賓', 'Philippines', 'Philippine', 'Filipino'], []),
+    ('俄羅斯', 'place', ['俄羅斯', '俄國', 'Russia', 'Russian'], []),
     # 組織
     ('美國商務部', 'org', ['美國商務部', '商務部', 'Commerce Department', 'Department of Commerce', 'Commerce Secretary', 'Commerce Dept', 'Commerce Dept.', 'BIS'], []),
     ('白宮', 'org', ['白宮', 'White House'], []),
@@ -4320,6 +4412,9 @@ def entities_unsupported(text, ctx):
             out.append(b)
     return out
 
+# 子句承接：後句以這些詞開頭＝省略主詞，沿用前句的地點／公司
+_SCOPE_CARRY_START = re.compile(r'(?:預計|預估|計畫|計劃|將|並|擬|另|總投資|投資)')
+
 def scope_expanded(sentence, ctx, title=''):
     """範圍擴大檢查：卡片子句同時寫了數字與地點（或非標題主角的公司／組織）時，該地點／公司必須出現在原文
     含同一數字的句子前後 ENTITY_SCOPE_WINDOW 句內。回傳違規說明清單。
@@ -4329,15 +4424,27 @@ def scope_expanded(sentence, ctx, title=''):
         ctx['sent_nums'] = [_ng_extract(s, source=True) for s in ctx['sents']]
     title_keys = {ent['key'] for ent, _ in _eg_mentions(title or '')[0]}
     out = []
+    carry = []   # 11-25：上一個「有實體、沒數字」的子句的實體，給緊接的「有數字、沒實體」子句承接
     for clause in re.split(r'[，,；;：:]', sentence or ''):
         toks = [t for t in _ng_extract(clause) if t['kind'] == 'num' and not t.get('model')
                 and (t['scaled_flag'] or t.get('pct') or t['scaled'] >= 100)]
-        if not toks:
-            continue
+        # 地點一律檢查（不因出現在標題而豁免）；公司／組織若是標題主角則豁免（主角幾乎每句都出現，代名詞指涉多）
         ents = [(ent, surf) for ent, surf in _eg_mentions(clause)[0]
                 if ent['type'] == 'place' or ent['key'] not in title_keys]
-        if not ents:
+        if not toks:
+            carry = ents
             continue
+        if not ents:
+            # 11-25 Micron 漏網：「Micron 正加速在新加坡與台灣的…產能擴張，預計投資約 70 億美元」
+            # 地點與金額分在兩個子句，中文主詞省略、後句沿用前句的地點，改由前句承接。
+            # 只在後句沒有自己的主詞（以「預計／計畫／將／並…」開頭）時承接；
+            # 「受惠於日本客戶訂單，公司第三季營收達…」這類後句有主詞，不承接（審查建議 4）
+            ents = carry if _SCOPE_CARRY_START.match(clause.lstrip(' \t　，,；;：:、')) else []
+            carry = []
+            if not ents:
+                continue
+        else:
+            carry = []
         for tok in toks:
             hits = [i for i, nums in enumerate(ctx['sent_nums']) if _ng_num_supported(tok, nums)]
             if not hits:
@@ -4443,6 +4550,106 @@ def entity_gate(data, news_by_cat):
                         print(f"  ✂ 實體閘門[{sec}] {title[:30]}：{action} {reason[:70]}")
             except Exception as e:
                 print(f"  ⚠ 實體閘門單張處理失敗（略過該張）：{e}")
+        if removals:
+            stats['removed'] += len(removals)
+            data[sec] = [it for it in data.get(sec, []) if not any(it is r for r in removals)]
+            if not data[sec]:
+                data[sec] = [make_placeholder_item(sec)]
+    return stats
+
+# ── 未來日期閘門（11-25）──
+_FD_FUTURE_MARKERS = re.compile(r'將|預計|預定|預期|預估|計畫|計劃|可望|即將|有望|明年|下週|下周|下個?月|擬|排定|'
+                                r'屆時|準備|打算|目標|規劃|安排|預告|預訂|scheduled|expected|will|plans?\b', re.I)
+# 審查 must-fix 1：只認「M月D日」「YYYY年M月D日」與英文「Month D」，不採斜線（3/4、7/16、12/13 是分數／比例）
+_FD_ZH_DATE = re.compile(r'(?:((?:19|20)\d{2})\s*年\s*)?(?<!\d)(\d{1,2})\s*月\s*(\d{1,2})\s*[日號]')
+# 審查建議 3：英文月份須首字母大寫（區分大小寫），避免「may 5 times」被當 May 5
+_FD_EN_DATE = re.compile(r'\b(January|February|March|April|May|June|July|August|September|October|November|December|'
+                         r'Jan\.?|Feb\.?|Mar\.?|Apr\.?|Jun\.?|Jul\.?|Aug\.?|Sept?\.?|Oct\.?|Nov\.?|Dec\.?)'
+                         r'\s+(\d{1,2})(?:st|nd|rd|th)?(?:,?\s*((?:19|20)\d{2}))?(?![\d])')
+# 審查 must-fix 2：期間描述（財年結束、截至某日）不是「事件已發生」的敘述，不判未來
+_FD_PERIOD_MARKERS = re.compile(r'財年|會計年度|年度結束|截至|截止|為止|日止|fiscal|ending|ended|end of', re.I)
+FD_NO_YEAR_MAX_DAYS = 60
+
+def _fd_is_future(mo, dy, year):
+    """有寫年份：照實際日期判斷是否晚於執行日。沒寫年份：只有今年該日期晚於執行日、且差距
+    <= FD_NO_YEAR_MAX_DAYS 天才算未來；超過一律視為過去（例：1 月執行時「6月30日完成收購」指去年）。"""
+    from datetime import date
+    today = NOW.date()
+    try:
+        d = date(int(year) if year else today.year, mo, dy)
+    except ValueError:
+        return False
+    diff = (d - today).days
+    if year:
+        return diff > 0
+    return 0 < diff <= FD_NO_YEAR_MAX_DAYS
+
+def future_dates_in(sentence):
+    """句子中晚於執行日（台北時間）、且所在子句沒有未來語氣的明確日期字串清單。
+    以子句（，；切開）判斷語氣：「三星於11月29日的財報會議表示，…目標在2030年前…」後半的「目標」不救前半。"""
+    out = []
+    for clause in re.split(r'[，,；;]', sentence or ''):
+        if not clause.strip() or _FD_FUTURE_MARKERS.search(clause) or _FD_PERIOD_MARKERS.search(clause):
+            continue
+        zh = clause.translate(_NG_FW)
+        for m in _FD_ZH_DATE.finditer(zh):
+            if _fd_is_future(int(m.group(2)), int(m.group(3)), m.group(1)):
+                out.append(m.group(0).strip())
+        for m in _FD_EN_DATE.finditer(clause):
+            mo = _FA_MONTHS.index(m.group(1)[:3].lower()) + 1
+            if _fd_is_future(mo, int(m.group(2)), m.group(3)):
+                out.append(m.group(0))
+    return out
+
+def future_date_gate(data, news_by_cat=None):
+    """body／impact／insight 中「未來日期＋無未來語氣」的句子刪除；body 刪光移除該卡（比照 numeric_gate）。
+    不需要素材，所有非佔位卡都檢查（headline_only 卡最後會被 scrub 成標題直譯句，這裡照樣先檢查）。
+    逐句刪除寫進 RUN_STATS['gate_removed']（gate＝future_date_gate）。"""
+    stats = RUN_STATS.setdefault('future_date_gate', {'runs': 0, 'sentences_dropped': 0, 'removed': 0, 'items': []})
+    stats['runs'] += 1
+    for sec in ('hw', 'corp', 'app'):
+        removals = []
+        for item in data.get(sec, []) or []:
+            if not isinstance(item, dict) or _is_placeholder(item):
+                continue
+            try:
+                title = item.get('title') or ''
+                for field in ('body', 'impact', 'insight'):
+                    text = item.get(field)
+                    if not isinstance(text, str) or not text.strip():
+                        continue
+                    kept, dropped = [], []
+                    for p in _fa_split_sentences(text):
+                        if not p.strip():
+                            continue
+                        fut = future_dates_in(p)
+                        if fut:
+                            dropped.append((fut, p.strip()))
+                        else:
+                            kept.append(p)
+                    if not dropped:
+                        continue
+                    new = ''.join(kept).strip()
+                    if field == 'body' and not new:
+                        removals.append(item)
+                        _gate_reason_set('future_date_gate', title, 'body 全部句子為未來日期寫成已發生：' + dropped[0][1])
+                    else:
+                        item[field] = new
+                    for fut, p in dropped:
+                        stats['sentences_dropped'] += 1
+                        reason = f"未來日期無未來語氣：{'、'.join(fut)}（執行日 {DATE_STR}）｜{p}"
+                        try:
+                            log = RUN_STATS.setdefault('gate_removed', [])
+                            if len(log) < GATE_LOG_MAX:
+                                log.append({'section': sec, 'title': title[:60], 'gate': 'future_date_gate',
+                                            'action': f'sentence_removed:{field}', 'reason': reason[:120]})
+                        except Exception:
+                            pass
+                        if len(stats['items']) < 30:
+                            stats['items'].append({'sec': sec, 'title': title[:60], 'field': field, 'reason': reason[:120]})
+                        print(f"  ✂ 未來日期閘門[{sec}] {title[:30]}：{reason[:80]}")
+            except Exception as e:
+                print(f"  ⚠ 未來日期閘門單張處理失敗（略過該張）：{e}")
         if removals:
             stats['removed'] += len(removals)
             data[sec] = [it for it in data.get(sec, []) if not any(it is r for r in removals)]
@@ -5354,6 +5561,12 @@ if __name__ == '__main__':
             _run_gate('entity_gate', entity_gate, data, news_by_cat)
         except Exception as e:
             print(f"  ⚠ 實體閘門失敗（略過，不影響資料生成）：{e}")
+    if FUTURE_DATE_GATE:
+        print("📅 未來日期閘門（晚於執行日的日期須有未來語氣）...")
+        try:
+            _run_gate('future_date_gate', future_date_gate, data, news_by_cat)
+        except Exception as e:
+            print(f"  ⚠ 未來日期閘門失敗（略過，不影響資料生成）：{e}")
     print("🏷 HEADLINE_ONLY 卡片決定性清理（impact／insight／chain 清空、body 1 句）...")
     try:
         _run_gate('scrub_headline_only', scrub_headline_only, data)
