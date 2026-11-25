@@ -550,10 +550,22 @@ def fetch_rss():
                 with urllib.request.urlopen(req, timeout=10) as r:
                     raw = r.read()
             except urllib.error.HTTPError as he:
-                feed_errors.append({'label': label, 'host': host, 'error': f"HTTP {he.code}",
-                                    'detail': str(he.reason)[:120]})
-                print(f"  RSS failed ({host}): HTTP {he.code}")
-                continue
+                raw = None
+                if he.code == 403:
+                    # 11-25：TechCrunch 對過短 UA 回 403、完整瀏覽器 UA 回 200；只在 403 時改用完整 UA 重試一次，
+                    # 原本抓得到的 feed 行為不變
+                    try:
+                        req2 = urllib.request.Request(url, headers={'User-Agent': _GNEWS_UA})
+                        with urllib.request.urlopen(req2, timeout=10) as r2:
+                            raw = r2.read()
+                        print(f"  RSS 403 改用完整 UA 重試成功（{host}）")
+                    except Exception:
+                        raw = None
+                if raw is None:
+                    feed_errors.append({'label': label, 'host': host, 'error': f"HTTP {he.code}",
+                                        'detail': str(he.reason)[:120]})
+                    print(f"  RSS failed ({host}): HTTP {he.code}")
+                    continue
             try:
                 root = ET.fromstring(raw)
             except ET.ParseError as pe:
