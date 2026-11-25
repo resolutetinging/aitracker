@@ -382,6 +382,17 @@ def _snippet_source_key(s):
         return host[4:] if host.startswith('www.') else host
     return label
 
+def _funnel_add(stage, source_key, n=1):
+    """11-25：每來源漏斗計數 RUN_STATS['source_funnel'][來源鍵][stage] += n（純記錄，不影響選材；
+    失敗只印警告）。stage：candidates＝去重＋近三日預過濾後的候選、dropped_unmatched＝三類都沒命中被丟、
+    sent＝實際進主呼叫 prompt 的條目、final＝最終成卡（來源網址網域）。"""
+    try:
+        f = RUN_STATS.setdefault('source_funnel', {})
+        row = f.setdefault(source_key or '?', {})
+        row[stage] = row.get(stage, 0) + n
+    except Exception as e:
+        print(f"  ⚠ source_funnel 記錄失敗（不影響資料生成）：{e}")
+
 def _snippet_topic_kw(s):
     body = re.sub(r'^\[[^\]]+\]\s*', '', s).split(' — ', 1)[0].split(' | SOURCE_URL:', 1)[0]
     kws = set()
@@ -463,6 +474,10 @@ def route_snippets(snippets):
             buckets['corp'].append(s)
         else:
             dropped_unmatched += 1
+            try:
+                _funnel_add('dropped_unmatched', _snippet_source_key(s))
+            except Exception:
+                pass
     buckets['corp'].sort(key=lambda s: 0 if MAJOR_PLAYERS_PAT.search(s) else 1)
     for cat in ('hw', 'app'):
         buckets[cat] = rank_bucket(buckets[cat], BUCKET_SOURCE_PRIORITY[cat])
@@ -1299,6 +1314,8 @@ def fetch_news(recent_titles=None, recent_urls=None):
         print(f"  → 預過濾後剩 {len(unique)} 條")
     try:
         RUN_STATS['after_dedup'] = len(unique)
+        for _s in unique:
+            _funnel_add('candidates', _snippet_source_key(_s))
         RUN_STATS['ddg'] = len(ddg)  # 11-24：feeds 只計 RSS，前端漏斗「掃描」須加上 DDG，否則會小於去重後篇數
     except Exception as e:
         print(f"  ⚠ 漏斗統計收集失敗（fetch_news/after_dedup，不影響資料生成）：{e}")
@@ -5415,7 +5432,14 @@ if __name__ == '__main__':
     categories = ['hw', 'corp', 'app']
     for i, cat in enumerate(categories):
         try:
-            result = call_groq(make_prompt(news_by_cat[cat], cat, recent_titles, avoid_items=data.get('hw')))
+            _funnel_sent = []  # 11-25：只收集實際送出的條目供 source_funnel 記錄，不改變送出內容
+            result = call_groq(make_prompt(news_by_cat[cat], cat, recent_titles, avoid_items=data.get('hw'),
+                                           sent_out=_funnel_sent))
+            try:
+                for _e in _funnel_sent:
+                    _funnel_add('sent', _snippet_source_key(_e))
+            except Exception as _fe:
+                print(f"  ⚠ source_funnel(sent) 記錄失敗（不影響資料生成）：{_fe}")
             result, _retry_st = retry_bucket_if_empty(cat, result, news_by_cat[cat], recent_titles,
                                                       avoid_items=data.get('hw'))
             RUN_STATS.setdefault('retry', {})[cat] = _retry_st
@@ -5584,6 +5608,15 @@ if __name__ == '__main__':
         except Exception as e:
             print(f"  ⚠ 週報數字檢查失敗（略過，不影響資料生成）：{e}")
 
+    try:
+        # 11-25：最終成卡數依來源網址網域（沿用 _snippet_source_key 的網域規則；無來源的佔位卡不計）
+        for section in ['hw', 'corp', 'app']:
+            for item in data.get(section, []):
+                _u = (item.get('source') or '').strip() if isinstance(item, dict) else ''
+                if _u.startswith('http'):
+                    _funnel_add('final', _snippet_source_key('SOURCE_URL:' + _u))
+    except Exception as e:
+        print(f"  ⚠ source_funnel(final) 記錄失敗（不影響資料生成）：{e}")
     try:
         final = {}
         placeholders = 0
