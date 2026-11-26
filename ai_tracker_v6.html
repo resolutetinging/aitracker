@@ -4262,5 +4262,25 @@ async function init() {
 init();
 </script>
 <script src="https://resolutetinging.github.io/control-center/cc_track.js" data-cc-key="aitracker" data-cc-label="AI Tracker"></script>
+<script>
+// cc_flash 卡片識別：分頁 id＋卡片種類＋卡內名稱（各分頁非同步渲染，全頁順序不穩；同名加序號）
+(function(){
+  var SEL='.nv-case-card,.nv-event-card,.ind-region-card,.tw-gc-card,.tr-card,.metric-card,.app-sector-card,#panel-hw .news-card,#panel-corp .news-card,#panel-app .news-card';
+  var NAMES=['.nv-event-thread-title','.card-title','.tr-card-title','.nv-case-name','.nv-event-title','.tw-gc-name','.ind-region-name','.asc-title','.metric-label'];
+  function keyIt(){
+    var seen={};
+    document.querySelectorAll(SEL).forEach(function(el){
+      if(el.parentElement&&el.parentElement.closest(SEL)) return;
+      var pn=el.closest('.panel'), pid=pn&&pn.id||'top', kind=(el.className||'').split(' ')[0], nm='';
+      for(var i=0;i<NAMES.length&&!nm;i++){ var h=el.querySelector(NAMES[i]); if(h) nm=(h.textContent||'').replace(/\s+/g,' ').trim().slice(0,50); }
+      var base=pid+'/'+kind+'/'+nm; seen[base]=(seen[base]||0)+1;
+      el.setAttribute('data-flash-key', nm ? base+(seen[base]>1?'~'+seen[base]:'') : pid+'/'+kind+'/#'+seen[base]);
+    });
+  }
+  keyIt();
+  try{ new MutationObserver(keyIt).observe(document.body,{childList:true,subtree:true}); }catch(e){}
+})();
+</script>
+<script src="https://resolutetinging.github.io/control-center/cc_flash.js" data-flash-sel=".nv-case-card,.nv-event-card,.ind-region-card,.tw-gc-card,.tr-card,.metric-card,.app-sector-card,#panel-hw .news-card,#panel-corp .news-card,#panel-app .news-card" data-flash-page="aitracker"></script>
 </body>
 </html>
