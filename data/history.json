@@ -6,7 +6,7 @@
       {
         "title": "TSMC 2nm N2 產能佔 Q3 晶圓營收 8％",
         "layer": "fab",
-        "body": "TSMC 在 2026 年第三季的財報電話會議中透露，其 2nm N2 先進製程貢獻了約 8% 的晶圓營收。該比例較第二季的約 3% 有顯著提升，顯示 AI 晶片需求正快速推動 N2 進入量產。TSMC 自 2025 年第四季起已於高容量模式持續量產 N2。",
+        "body": "據 OpenNash 整理的 TSMC 2026 年第三季財報電話會議摘要，2nm N2 製程約貢獻 8% 的晶圓營收；報導指第二季占比約 3%。文章認為此躍升顯示 AI 晶片短缺正快速推動最新製程進入量產。TSMC 自 2025 年第四季起已以高量產模式生產 N2。",
         "impact": "",
         "rating": "core",
         "insight": "投資者可關注 N2 相關設備與材料供應鏈的營收成長。",
@@ -93,10 +93,6 @@
           {
             "label": "SpaceX 衛星製造↑",
             "type": "up"
-          },
-          {
-            "label": "Rocket Lab 發射服務↑",
-            "type": "up"
           }
         ]
       }
@@ -105,7 +101,7 @@
       {
         "title": "Okta 推出 AI Agents‑Core 供受規範環境使用",
         "layer": "app",
-        "body": "Okta 在 2027 財政年度第二季，AI Agents‑Core 獲得美國國防部工作負載的 Impact Level 5 授權，並在受規範環境中一般可用。客戶年合約價值超過 100 萬美元的企業數量較上季增長超過 20%，已超過 600 家。",
+        "body": "Okta 2027 財政年度第二季，年合約價值（ACV）超過 100 萬美元的客戶數成長超過 20%，已超過 600 家。此外，Okta for AI Agents‑Core 已在受規範環境中全面上市，並獲得美國國防部工作負載的 Impact Level 5 授權。",
         "impact": "",
         "rating": "core",
         "insight": "Okta 在高安全需求市場的產品化將帶動其企業收入持續成長。",
@@ -113,7 +109,7 @@
         "source": "https://www.tradingview.com/news/zacks:3b18b7fc0094b:0-okta-pushes-for-large-enterprise-adoption-will-it-drive-growth/",
         "chain": [
           {
-            "label": "Okta AI Agents‑Core 合約數↑",
+            "label": "Okta 百萬美元級客戶數↑",
             "type": "up"
           },
           {
