@@ -1,5 +1,113 @@
 [
   {
+    "date": "2026-11-27",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "SK Hynix 尋求 TSMC 3nm 專業人才開發客製化 HBM",
+        "layer": "capacity_commitment",
+        "body": "SK Hynix 正向具備 TSMC 3nm 製程經驗的工程師招募，以開發客製化高頻寬記憶體（HBM）。此舉顯示 SK Hynix 企圖利用先進 3nm 技術提升 HBM 產能與性能。Micron 同時在韓國加速招聘，支援其亞洲擴張計畫。",
+        "impact": "SK Hynix 需求 TSMC 3nm 專業人才。Micron 在韓國加大招聘。",
+        "rating": "core",
+        "insight": "先進 3nm HBM 研發將推動記憶體供應鏈向更高效能與更緊密的代工合作演進。",
+        "source_label": "Digitimes",
+        "source": "https://www.digitimes.com/news/a20261126VL224/sk-hynix-tsmc-micron-3nm-hbm.html"
+      },
+      {
+        "title": "Nvidia 因美國出口管制暫停向東南亞四國出貨伺服器",
+        "layer": "export_control",
+        "body": "Nvidia 已停止向馬來西亞、新加坡、泰國與印尼出貨 AI 伺服器，因美國商務部新頒布的出口規則。此暫停的具體持續時間未明，影響了該區域的伺服器供應鏈。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "Data Center Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/nvidia-halts-server-shipments-to-malaysia-singapore-thailand-and-indonesia-in-wake-of-new-dept-of-commerce-export-rule-report/",
+        "thin_source": true,
+        "desc_only": true
+      },
+      {
+        "title": "Micron、Samsung、SK Hynix 簽署多年度記憶體供應合約",
+        "layer": "multiyear_supply",
+        "body": "全球三大記憶體晶圓廠 Micron、Samsung 與 SK Hynix 簽訂多年度供應協議，以因應 AI 需求推高的記憶體短缺。合約內容包括在未來數年內提前鎖定產能，確保客戶在需求高峰期取得足夠的 HBM 與 DRAM。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "Digitimes",
+        "source": "https://www.digitimes.com/news/a20261126VL222/sk-hynix-micron-chipmakers-demand-chips.html",
+        "thin_source": true,
+        "desc_only": true
+      },
+      {
+        "title": "美國政府施壓 Intel 接受政府持股，相關訴訟文件披露",
+        "layer": "government_investment",
+        "body": "根據訴訟文件顯示，特朗普政府曾透過商務部律師向 Intel 施壓，要求其接受政府持股，並暗示若拒絕將面臨不可預測的後果。Intel 被指在此壓力下考慮讓步。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "Data Center Dynamics",
+        "source": "https://www.datacenterdynamics.com/en/news/trump-administration-pressured-intel-into-accepting-govt-stake-in-company-lawsuit-documents-allege/",
+        "desc_only": true
+      }
+    ],
+    "corp": [
+      {
+        "title": "Samsung 與 DB HiTek 因 AI 晶片需求提升 8 吋代工提價",
+        "layer": "semiconductor",
+        "body": "Samsung 與 DB HiTek 表示，隨著 AI 資料中心對功率晶片的需求激增，使用 8 吋 (200 mm) 晶圓的代工廠已接近滿載，並正尋求進一步提價。兩家公司均指出目前產能已達或接近滿載狀態，且 AI 需求是推動價格上漲的主要因素。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "Digitimes",
+        "source": "https://www.digitimes.com/news/a20261126VL227/demand-price-samsung-production-capacity.html",
+        "thin_source": true,
+        "desc_only": true
+      }
+    ],
+    "app": [
+      {
+        "title": "本日無相關app新聞",
+        "layer": "",
+        "body": "今日該分類無足夠具體新聞素材可供分析。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "多年度供應合約",
+        "full": "Multi-year Supply Agreement",
+        "def": "供應商與客戶簽訂的跨年度供應協議，提前鎖定產能與價格。",
+        "why": "此類合約可降低供應鏈不確定性，確保 AI 計算平台在需求高峰期獲得足夠記憶體。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "DRAM 短缺",
+        "full": "Dynamic Random-Access Memory 短缺",
+        "def": "指全球對 DRAM 記憶體需求超過供應，導致價格上漲與供應緊張的情況。",
+        "why": "資料中心與伺服器對記憶體需求持續增長，供應不足會影響整體運算成本。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "8 吋晶圓",
+        "full": "200 毫米直徑的晶圓",
+        "def": "相較於 12 吋晶圓，8 吋晶圓常用於功率與特殊製程，產能較有限。",
+        "why": "AI 資料中心對功率晶片需求提升，使 8 吋代工產能緊張，影響價格與供應。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "AI Flash Storage",
+        "full": "利用人工智慧管理快閃儲存的技術",
+        "def": "透過 AI 演算法將較少使用的記憶頁面搬移至快閃儲存，以降低 DRAM 使用量。",
+        "why": "可減少 DRAM 需求，緩解記憶體短缺，同時提升資料中心成本效益。",
+        "category": "ai_technique"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-26",
     "is_sunday": false,
     "hw": [
@@ -819,166 +927,6 @@
         "full": "AI Spotlight Observatory",
         "def": "由英國金融行為監管局（FCA）建立的觀測平台，用於追蹤金融服務業的人工智慧採用情況。",
         "why": "可提供業界 AI 採用率與趨勢的透明資訊，協助金融機構與供應鏈規劃資源配置。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-11-20",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "TSMC 收緊中國 AI 晶片限制 暫停先進製程訂單",
-        "layer": "policy",
-        "body": "TSMC 於 11 月 19 日宣布，將暫停使用 16 奈米及以下製程的已批准訂單，除非客戶取得美國出口許可，並將受影響客戶限制於較舊的 28 奈米與 40 奈米製程（不使用高頻寬記憶體或先進封裝）。",
-        "impact": "TSMC 先進製程產能需求 ↓，導致先進製程晶圓代工廠的利用率下降；同時，較舊製程的需求 ↑，提升 OSAT 及封測廠的產能使用。中國 AI 晶片設計公司失去取得先進製程的管道，可能轉向本土或其他非美國供應鏈，進一步削弱美國晶片技術在中國市場的滲透。",
-        "rating": "core",
-        "insight": "投資者應關注 TSMC 先進製程訂單減少對營收的直接衝擊與中國客戶需求轉移的長期影響。",
-        "source_label": "Reuters",
-        "source": "https://95kqds.com/2026/11/19/tsmc-tightens-china-ai-chip-curbs-as-new-us-rules-close-manufacturing-loophole-sources-say/",
-        "chain": [
-          {
-            "label": "TSMC 7nm 產能↓",
-            "type": "down"
-          },
-          {
-            "label": "Nvidia AI晶片供應↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "美國眾議院議長 Johnson 支持加緊 AI 晶片出口管制",
-        "layer": "policy",
-        "body": "美國眾議院議長 Mike Johnson（路易斯安那州共和黨）在 11 月 19 日表示，將支持在 Nvidia 相關醜聞後加緊對 AI 晶片的出口管制。此聲明出現在民主黨於 11 月 3 日中期選舉取得國會控制權的背景下，顯示美國立法層面對中國取得先進 AI 晶片的限制意圖增強。",
-        "impact": "美國對 AI 晶片的出口管制力度 ↑，可能迫使美國晶圓代工與 HBM 供應商減少對中國客戶的出貨；中國 AI 晶片公司將面臨供應短缺，可能加速尋找替代供應商或自行研發，進一步影響全球晶片供應鏈的地理分布。",
-        "rating": "opp",
-        "insight": "政策信號顯示未來美國對 AI 晶片的出口限制將更嚴格，相關供應鏈參與者需評估合規風險與市場重新配置。",
-        "source_label": "NOLA.com",
-        "source": "https://www.nola.com/news/mike-johnson-ai-chips-nvidia/article_72ddd6a2-3645-4e78-9f05-3de77a9498ba.html",
-        "chain": [
-          {
-            "label": "Nvidia AI晶片出口↓",
-            "type": "down"
-          },
-          {
-            "label": "AMD AI晶片需求↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "corp": [
-      {
-        "title": "Qualcomm 推出 Dragonfly AI200 伺服器測試服務",
-        "layer": "AI硬體",
-        "body": "Qualcomm 於 11 月 17-18 日在芝加哥 SC26 展示其 Dragonfly AI200 機架等級推論系統，並透過 Cirrascale Cloud Services 開放雲端試用給選定客戶。每張 AI200 加速卡配備 768 GB LPDDR 記憶體，56 卡提供約 43 TB 的液冷機架容量。系統支援模型範圍從 70 億至 10 兆參數。",
-        "impact": "Qualcomm 需求上升將促使其代工廠 TSMC 18A 及相關先進製程利用率 ↑；Cirrascale 客戶改用 Dragonfly AI200 可能減少對 Nvidia GPU 的採購需求 ↓，進一步削弱 Nvidia 在資料中心 AI 市場的議價能力。此舉亦鼓勵其他雲端服務商探索非 Nvidia AI 加速方案，提升產業供應鏈多元化。",
-        "rating": "core",
-        "insight": "Qualcomm 以自研 AI 推論平台挑戰 Nvidia，供應鏈上游代工與下游雲端服務皆受正面衝擊。",
-        "source_label": "The Register",
-        "source": "https://www.theregister.com/systems/2026/11/19/qualcomm-offers-test-drive-of-its-rack-scale-nvidia-ai-challenger/5310966",
-        "chain": [
-          {
-            "label": "Qualcomm Dragonfly AI200 交期↑",
-            "type": "up"
-          },
-          {
-            "label": "Cirrascale Cloud 測試機會↑",
-            "type": "up"
-          }
-        ]
-      },
-      {
-        "title": "Intel 獲得首位外部客戶採用 18A‑P 製程",
-        "layer": "製程技術",
-        "body": "Intel 獲得首位外部客戶採用 18A‑P 製程，客戶未具名。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "",
-        "source_label": "Data Center Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/intel-secures-first-external-customer-for-18a-p-process-node/",
-        "thin_source": true,
-        "desc_only": true
-      }
-    ],
-    "app": [
-      {
-        "title": "NC CHAIN 協助北卡農村醫療機構安全導入 AI 工具",
-        "layer": "healthcare",
-        "body": "NC CHAIN（North Carolina Collaborative Health AI Network）已在格蘭維爾縣等北卡農村地區部署 AI 工具，協助資源有限的診所與醫院安全使用健康相關 AI。此計畫於 Spectrum News 報導，旨在縮小 AI 使用差距，讓全州居民皆能受惠。",
-        "impact": "AI 軟體供應商需求因農村醫院採用而上升 (↑)，促使相關雲端服務與資料標註公司獲得新訂單；醫療機構因 AI 輔助提升診斷與行政效率，降低營運成本 (↓)；競爭的醫療 AI 方案供應商需加速產品合規與治理功能，以爭取同樣的農村市場。",
-        "rating": "core",
-        "insight": "投資者可關注提供合規治理平台的 AI 軟體公司，因農村醫療 AI 部署將推動其需求成長。",
-        "source_label": "UNC Health",
-        "source": "https://news.unchealthcare.org/2026/11/new-unc-initiative-to-help-rural-healthcare-outlets-safely-adopt-ai-tools-featured-in-tv-news-story/",
-        "chain": [
-          {
-            "label": "NC CHAIN 農村醫院 AI工具使用↑",
-            "type": "up"
-          },
-          {
-            "label": "地方診所 AI成本↓",
-            "type": "down"
-          }
-        ]
-      },
-      {
-        "title": "Straive 於 Microsoft Ignite 展示 700+ AI 加速器助企業快速部署",
-        "layer": "enterprise",
-        "body": "Straive 在 2026 年舊金山舉行的 Microsoft Ignite 大會上展示超過 700 個資料、分析與 AI 解決方案加速器，旨在縮短企業將 AI 用例從概念驗證轉為正式營運的時間。此加速器組合針對不同行業提供即插即用的模型與工具，降低開發成本與所需技術資源。",
-        "impact": "AI 平台供應商因需求增加而提升服務使用率 (↑)，帶動雲端基礎設施供應商（如 Microsoft Azure）儲存與運算資源需求上升 (↑)；企業客戶因部署速度提升而加速數位轉型，對傳統系統整合商形成競爭壓力，迫使其提供更快速的 AI 整合方案。",
-        "rating": "opp",
-        "insight": "關注提供即時 AI 加速器的 SaaS 供應商，因其可成為企業加速 AI 採用的關鍵橋樑。",
-        "source_label": "StartUp Beat",
-        "source": "https://startupbeat.com/straive-brings-700-ai-accelerators-to-microsoft-ignite-to-speed-up-enterprise-adoption/39888/",
-        "chain": [
-          {
-            "label": "Straive AI加速器部署↑",
-            "type": "up"
-          },
-          {
-            "label": "Microsoft Azure AI 整合速度↑",
-            "type": "up"
-          }
-        ]
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "先進製程",
-        "full": "先進製程（Advanced Process Node）",
-        "def": "指 7 奈米及以下的半導體製造技術，具備更高密度與效能，常用於高階 AI 晶片。",
-        "why": "先進製程是 AI 晶片性能的關鍵，供應限制會直接削弱客戶的產品競爭力。",
-        "category": "hardware"
-      },
-      {
-        "term": "Dragonfly AI200",
-        "full": "Qualcomm 的機架等級 AI 推論系統",
-        "def": "一套結合 Qualcomm 自研 AI 加速器的伺服器平台，設計用於在較低功耗與成本下執行大型語言模型與多模態 AI 工作負載。",
-        "why": "提供雲端服務商替代 Nvidia GPU 的選項，可能改變 AI 計算資源的供應鏈結構。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "18A‑P",
-        "full": "Intel 的最新先進製程節點",
-        "def": "Intel 推出的 18 奈米等效製程，採用先進的 EUV 光刻技術，旨在提升晶片效能與能效比，支援高效能運算與 AI 應用。",
-        "why": "代表 Intel 在高階製程市場的突破，對代工競爭與上游設備供應鏈具有重要影響。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "NC CHAIN",
-        "full": "North Carolina Collaborative Health AI Network",
-        "def": "一個由北卡羅來納州推動的協作平台，旨在協助農村醫療機構安全導入與使用人工智慧工具，縮小醫療 AI 使用差距。",
-        "why": "提供 AI 治理與支援，促進偏遠地區醫療服務品質提升。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "AI 加速器",
-        "full": "AI solution accelerators",
-        "def": "預先建置的模型、資料管線與工具組合，可快速套用於特定業務場景，減少開發時間與成本。",
-        "why": "幫助企業在既有流程中快速部署 AI，提升競爭力。",
         "category": "ai_technique"
       }
     ],

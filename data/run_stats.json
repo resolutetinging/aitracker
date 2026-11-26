@@ -2,6 +2,505 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 76,
+        "CSP/CapEx": 53,
+        "App/AI": 25,
+        "gnews-chip": 22,
+        "gnews-dc": 24
+      },
+      "digest_filtered": 1,
+      "after_dedup": 173,
+      "buckets": {
+        "hw": 56,
+        "corp": 111,
+        "app": 9
+      },
+      "news_char_budget": {
+        "hw": 6000,
+        "corp": 5150,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 56,
+          "full_text_total": 2,
+          "full_text_sent": 2,
+          "sent": 13,
+          "partial_cut": 0,
+          "chars_sent": 5966,
+          "dropped": 43
+        },
+        "corp": {
+          "mode": "pack",
+          "budget": 5150,
+          "candidates": 111,
+          "full_text_total": 4,
+          "full_text_sent": 3,
+          "sent": 12,
+          "partial_cut": 0,
+          "chars_sent": 5067,
+          "dropped": 99
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 9,
+          "full_text_total": 6,
+          "full_text_sent": 6,
+          "sent": 9,
+          "partial_cut": 0,
+          "chars_sent": 4743,
+          "dropped": 0
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 4,
+        "corp": 2,
+        "app": 1
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 5280,
+          "completion_tokens": 1928,
+          "total_tokens": 7208
+        },
+        "corp": {
+          "prompt_tokens": 5254,
+          "completion_tokens": 1256,
+          "total_tokens": 6510
+        },
+        "app": {
+          "prompt_tokens": 4690,
+          "completion_tokens": 300,
+          "total_tokens": 4990
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "corp",
+          "title": "AMD 以 AI 與快閃儲存減緩 DRAM 短缺",
+          "gate": "validate_sources",
+          "action": "source_cleared",
+          "reason": "source_cleared"
+        },
+        {
+          "section": "hw",
+          "title": "Nvidia 因美國出口管制暫停向東南亞四國出貨伺服器",
+          "gate": "enforce_desc_only",
+          "action": "rating core→opp",
+          "reason": "素材只有 RSS 描述，core 上限 opp"
+        },
+        {
+          "section": "hw",
+          "title": "Micron、Samsung、SK Hynix 簽署多年度記憶體供應合約",
+          "gate": "enforce_desc_only",
+          "action": "rating core→opp",
+          "reason": "素材只有 RSS 描述，core 上限 opp"
+        },
+        {
+          "section": "corp",
+          "title": "AMD 以 AI 與快閃儲存減緩 DRAM 短缺",
+          "gate": "enforce_desc_only",
+          "action": "rating core→opp",
+          "reason": "素材只有 RSS 描述，core 上限 opp"
+        },
+        {
+          "section": "corp",
+          "title": "Samsung 與 DB HiTek 因 AI 晶片需求提升 8 吋代工提價",
+          "gate": "enforce_desc_only",
+          "action": "rating core→opp",
+          "reason": "素材只有 RSS 描述，core 上限 opp"
+        },
+        {
+          "section": "corp",
+          "title": "AMD 以 AI 與快閃儲存減緩 DRAM 短缺",
+          "gate": "downgrade_unsourced",
+          "action": "rating opp→noise",
+          "reason": "rating opp→noise"
+        },
+        {
+          "section": "corp",
+          "title": "AMD 以 AI 與快閃儲存減緩 DRAM 短缺",
+          "gate": "drop_stale_placeholders",
+          "action": "removed",
+          "reason": "removed"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 3,
+          "noise": 0
+        },
+        "corp": {
+          "core": 0,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 1,
+      "feed_errors": [
+        {
+          "label": "App/AI",
+          "host": "venturebeat.com",
+          "error": "HTTP 429",
+          "detail": "Too Many Requests"
+        },
+        {
+          "label": "gnews-app",
+          "host": "news.google.com",
+          "error": "HTTP 429",
+          "detail": "Too Many Requests"
+        },
+        {
+          "label": "Semiconductor",
+          "host": "spectrum.ieee.org",
+          "error": "zero_kept",
+          "detail": "items=30 bytes=351723"
+        }
+      ],
+      "gnews_feed_times": [
+        {
+          "label": "gnews-chip",
+          "at": "2026-11-27T00:00:55+08:00"
+        },
+        {
+          "label": "gnews-dc",
+          "at": "2026-11-27T00:00:56+08:00"
+        },
+        {
+          "label": "gnews-app",
+          "at": "2026-11-27T00:00:56+08:00"
+        }
+      ],
+      "source_funnel": {
+        "semiengineering.com": {
+          "candidates": 6,
+          "dropped_unmatched": 4
+        },
+        "eetimes.com": {
+          "candidates": 5,
+          "dropped_unmatched": 2,
+          "sent": 3
+        },
+        "digitimes.com": {
+          "candidates": 16,
+          "dropped_unmatched": 4,
+          "sent": 8,
+          "final": 3
+        },
+        "theregister.com": {
+          "candidates": 14,
+          "dropped_unmatched": 7,
+          "sent": 5
+        },
+        "cnbc.com": {
+          "candidates": 19,
+          "dropped_unmatched": 4,
+          "sent": 4
+        },
+        "datacenterdynamics.com": {
+          "candidates": 16,
+          "sent": 4,
+          "final": 2
+        },
+        "techcrunch.com": {
+          "candidates": 14
+        },
+        "arstechnica.com": {
+          "candidates": 1
+        },
+        "theverge.com": {
+          "candidates": 5
+        },
+        "gnews-chip": {
+          "candidates": 21,
+          "sent": 2
+        },
+        "gnews-dc": {
+          "candidates": 22
+        },
+        "technologyreview.com": {
+          "candidates": 4
+        },
+        "datacenterknowledge.com": {
+          "candidates": 2
+        },
+        "tomshardware.com": {
+          "candidates": 12,
+          "dropped_unmatched": 2,
+          "sent": 5
+        },
+        "seekingalpha.com": {
+          "candidates": 1
+        },
+        "msn.com": {
+          "candidates": 2
+        },
+        "finance.biggo.com": {
+          "candidates": 1
+        },
+        "finance.yahoo.com": {
+          "candidates": 2,
+          "sent": 1
+        },
+        "rswebsols.com": {
+          "candidates": 1,
+          "dropped_unmatched": 1
+        },
+        "note.com": {
+          "candidates": 1,
+          "dropped_unmatched": 1
+        },
+        "ft.com": {
+          "candidates": 1,
+          "dropped_unmatched": 1
+        },
+        "stripes.com": {
+          "candidates": 1,
+          "dropped_unmatched": 1
+        },
+        "企業採用": {
+          "candidates": 5,
+          "dropped_unmatched": 4,
+          "sent": 1
+        },
+        "應用落地": {
+          "candidates": 1,
+          "sent": 1
+        }
+      },
+      "ddg": 16,
+      "unmatched_dropped": 31,
+      "gnews_decode": {
+        "attempted": 3,
+        "ok": 0,
+        "failed": 1,
+        "rate_limited": true,
+        "skipped": 4,
+        "skipped_cap": 0,
+        "backoff_count": 2,
+        "backoff_wait_sec": 105,
+        "started_at": "2026-11-27T00:01:01+08:00"
+      },
+      "headline_only": {
+        "fetch_failed": 3,
+        "thin_summary": 58,
+        "fetch_failed_desc_kept": 9,
+        "fail_reasons": {
+          "decode_failed": 2,
+          "error": 2,
+          "invalid_text": 2,
+          "http_403": 3
+        }
+      },
+      "main_call_estimate": {
+        "hw": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 5049,
+          "est_completion_tokens": 1170,
+          "safety": 300,
+          "est_total_tokens": 6519,
+          "target": 6800
+        },
+        "corp": {
+          "news_char_budget": 5150,
+          "est_prompt_tokens": 5216,
+          "est_completion_tokens": 1270,
+          "safety": 300,
+          "est_total_tokens": 6786,
+          "target": 6800
+        },
+        "app": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 4757,
+          "est_completion_tokens": 910,
+          "safety": 300,
+          "est_total_tokens": 5967,
+          "target": 6800
+        }
+      },
+      "retry": {
+        "hw": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "corp": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "app": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        }
+      },
+      "llm_ratings": {
+        "hw": {
+          "core": 3,
+          "opp": 1,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "headline_only_cards": {
+        "marked": 0,
+        "downgraded": 0,
+        "scrubbed": 0
+      },
+      "deepen": {
+        "candidates": 3,
+        "rewritten": 0,
+        "fetch_failed": 3,
+        "llm_failed": 0,
+        "alt_tried": 3,
+        "alt_found": 0,
+        "alt_used": 0,
+        "alt_sources": [],
+        "alt_rejected_domain": [
+          {
+            "host": "medium.com",
+            "stage": "gnews_source"
+          },
+          {
+            "host": "pasqualepillitteri.it",
+            "stage": "gnews_source"
+          },
+          {
+            "host": "mlq.ai",
+            "stage": "gnews_source"
+          },
+          {
+            "host": "mk.co.kr",
+            "stage": "gnews_source"
+          }
+        ]
+      },
+      "gate_reasons": {
+        "enforce_desc_only": {
+          "Nvidia 因美國出口管制暫停向東南亞四國出貨伺服器": "素材只有 RSS 描述，core 上限 opp",
+          "Micron、Samsung、SK Hynix 簽署多年度記憶體供應合約": "素材只有 RSS 描述，core 上限 opp",
+          "AMD 以 AI 與快閃儲存減緩 DRAM 短缺": "素材只有 RSS 描述，core 上限 opp",
+          "Samsung 與 DB HiTek 因 AI 晶片需求提升 8 吋代工提價": "素材只有 RSS 描述，core 上限 opp"
+        }
+      },
+      "desc_only_cards": {
+        "marked": 5,
+        "downgraded": 4,
+        "body_trimmed": 1,
+        "scrubbed": 4
+      },
+      "numeric_gate": {
+        "runs": 2,
+        "removed": 0,
+        "sentences_dropped": 0,
+        "contradiction_removed": 0,
+        "no_material": 0,
+        "items": []
+      },
+      "scrub_skipped": {
+        "fix_chains": 5,
+        "validate_impact": 4
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 5,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 4,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "fragment_restored": 0,
+        "items": []
+      },
+      "llm_fact_check": {
+        "enabled": true,
+        "calls": 2,
+        "failed_calls": 0,
+        "checked": 5,
+        "ok": 5,
+        "fixed": 0,
+        "dropped": 0,
+        "missing": 0,
+        "skipped_over_budget": 0,
+        "est_prompt_tokens": [
+          1959,
+          1397
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 1949,
+            "completion_tokens": 575,
+            "total_tokens": 2524
+          },
+          {
+            "prompt_tokens": 1410,
+            "completion_tokens": 215,
+            "total_tokens": 1625
+          }
+        ],
+        "items": [],
+        "desc_only_sent": 4
+      },
+      "entity_gate": {
+        "runs": 1,
+        "cards_checked": 1,
+        "removed": 0,
+        "chain_nodes_dropped": 0,
+        "chains_cleared": 0,
+        "sentences_dropped": 0,
+        "scope_dropped": 0,
+        "no_material": 0,
+        "items": []
+      },
+      "future_date_gate": {
+        "runs": 1,
+        "sentences_dropped": 0,
+        "removed": 0,
+        "items": []
+      },
+      "date": "2026-11-27",
+      "generated_at": "2026-11-27T00:12:10.030411+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 74,
         "CSP/CapEx": 56,
         "App/AI": 26,
@@ -4626,226 +5125,6 @@
       },
       "date": "2026-11-14",
       "generated_at": "2026-11-14T00:09:06.293440+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 65,
-        "CSP/CapEx": 58,
-        "App/AI": 27,
-        "gnews-chip": 21,
-        "gnews-dc": 23,
-        "gnews-app": 21
-      },
-      "digest_filtered": 0,
-      "after_dedup": 194,
-      "buckets": {
-        "hw": 58,
-        "corp": 130,
-        "app": 9
-      },
-      "news_char_budget": {
-        "hw": 6000,
-        "corp": 8000,
-        "app": 6000
-      },
-      "news_context": {
-        "hw": {
-          "mode": "pack",
-          "budget": 6000,
-          "candidates": 58,
-          "full_text_total": 3,
-          "full_text_sent": 3,
-          "sent": 13,
-          "partial_cut": 0,
-          "chars_sent": 5953,
-          "dropped": 45
-        },
-        "corp": {
-          "mode": "slice",
-          "budget": 8000,
-          "candidates": 130,
-          "full_text_total": 4,
-          "full_text_sent": 4,
-          "sent": 14,
-          "partial_cut": 1,
-          "chars_sent": 8000,
-          "dropped": 116
-        },
-        "app": {
-          "mode": "pack",
-          "budget": 6000,
-          "candidates": 9,
-          "full_text_total": 5,
-          "full_text_sent": 5,
-          "sent": 9,
-          "partial_cut": 0,
-          "chars_sent": 5014,
-          "dropped": 0
-        }
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 2,
-        "corp": 2,
-        "app": 2
-      },
-      "llm_usage": {
-        "hw": {
-          "prompt_tokens": 4987,
-          "completion_tokens": 1646,
-          "total_tokens": 6633
-        },
-        "corp": {
-          "prompt_tokens": 5643,
-          "completion_tokens": 1329,
-          "total_tokens": 6972
-        },
-        "app": {
-          "prompt_tokens": 4990,
-          "completion_tokens": 1395,
-          "total_tokens": 6385
-        }
-      },
-      "gate_removed": [
-        {
-          "section": "corp",
-          "title": "Nvidia 財務長 Colette Kress 受命暫代執行長",
-          "gate": "downgrade_forbidden_phrases",
-          "action": "rating core→opp",
-          "reason": "rating core→opp"
-        },
-        {
-          "section": "hw",
-          "title": "Lutnick 暫緩對中國的 Nvidia 晶片銷售限制",
-          "gate": "fact_audit",
-          "action": "rating core→opp",
-          "reason": "suspects=H100；fragment_restored"
-        }
-      ],
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 2,
-          "noise": 0
-        },
-        "corp": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "placeholders": 0,
-      "unmatched_dropped": 35,
-      "retry": {
-        "hw": {
-          "tried": false,
-          "sent": 0,
-          "items": 0,
-          "used": false,
-          "error": ""
-        },
-        "corp": {
-          "tried": false,
-          "sent": 0,
-          "items": 0,
-          "used": false,
-          "error": ""
-        },
-        "app": {
-          "tried": false,
-          "sent": 0,
-          "items": 0,
-          "used": false,
-          "error": ""
-        }
-      },
-      "llm_ratings": {
-        "hw": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        }
-      },
-      "deepen": {
-        "candidates": 1,
-        "rewritten": 0,
-        "fetch_failed": 1,
-        "llm_failed": 0
-      },
-      "dedup_audit": [],
-      "fact_audit": {
-        "mode": "enforce",
-        "checked": 6,
-        "suspect_cards": 2,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 1,
-          "suspect_cards": 0,
-          "skipped_enforce": 0
-        },
-        "enforced": 0,
-        "title_suspect_cards": 0,
-        "removed": 0,
-        "fragment_restored": 2,
-        "items": [
-          {
-            "sec": "hw",
-            "title": "Lutnick 暫緩對中國的 Nvidia 晶片銷售限制",
-            "source": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPa01VNnZpTE10OFNfTFRXZDZzeUJwSjFkNmlhVjFwUVExM3RmaUlNOG1jWm1aYXJMRHkyb2s1WGdMQU9IQUN6RE5kVi1ub3JkQ0wxVnc2YWFvY2VzTWRiX0FZeVlpdDNsMzBhcWpzOVhqNVh4UUFCa2cySy1ZSlkwTGRxbHVjcEU?oc=5",
-            "rating": "core",
-            "coverage": "full",
-            "suspects": [
-              "H100"
-            ],
-            "undetermined": [],
-            "tense_flag": false,
-            "title_suspects": [],
-            "downgraded": true,
-            "action": "fragment_restored",
-            "dropped_body": "Nvidia 首席財務官 Lutnick 於本週宣布暫緩實施對中國的晶片銷售限制，維持目前向中國市場的供應量。"
-          },
-          {
-            "sec": "hw",
-            "title": "中國 AI 企業加速確保 Nvidia 晶片產能以防美國限制",
-            "source": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPc1EtU18tWjZNZTZtOFBZNzdqZkRFMk1nbm9MTm9VWUQwUHlLc1dTdDNLWmNCcllESHVVYjFnXzlKcFJrSWpHUkY2S1lhcTFtWWdPVG9WdkcyTkFSaEpLanVzeWctM1hCTkdxUEJ6VnBrLXFYVnBsalpKUkJVUGQyUE5DOEJtaTctZlFEaV9VR1loQ1JrVlhyRmRxR25UMkI2MVgtZnBFU1pVaXhBcmw0ZV9jb0RPYlduY1ppbnpCTlc?oc=5",
-            "rating": "opp",
-            "coverage": "full",
-            "suspects": [
-              "H100"
-            ],
-            "undetermined": [
-              "A100"
-            ],
-            "tense_flag": false,
-            "title_suspects": [],
-            "action": "fragment_restored",
-            "dropped_body": "多家中國 AI 企業在近期加速向 Nvidia 訂購晶片產能，因近期間諜醜聞引發對美國可能加強出口管制的擔憂。"
-          }
-        ]
-      },
-      "date": "2026-11-13",
-      "generated_at": "2026-11-13T00:07:46.410764+08:00"
     }
   ]
 }

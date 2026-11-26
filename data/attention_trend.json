@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26",
+ "updated": "2026-11-27",
  "since": "2026-07-01",
  "entities": [
   {
@@ -1026,16 +1026,16 @@
   {
    "week": "2026-W48",
    "start": "2026-11-23",
-   "cards": 23,
+   "cards": 28,
    "dims": {
     "hw": {
-     "core": 3,
-     "opp": 7,
+     "core": 4,
+     "opp": 10,
      "noise": 0
     },
     "corp": {
      "core": 2,
-     "opp": 6,
+     "opp": 7,
      "noise": 0
     },
     "app": {
@@ -1045,7 +1045,7 @@
     }
    },
    "mentions": {
-    "NVIDIA": 5,
+    "NVIDIA": 6,
     "Google": 1,
     "Broadcom": 1,
     "Oracle": 2,
@@ -1053,21 +1053,18 @@
     "Amazon": 4,
     "OpenAI": 1,
     "Meta": 1,
-    "TSMC": 2,
-    "Samsung": 2,
-    "SK hynix": 1,
-    "Micron": 1,
-    "HBM": 1,
-    "華為": 1
+    "TSMC": 3,
+    "Samsung": 4,
+    "SK hynix": 3,
+    "Micron": 3,
+    "HBM": 3,
+    "華為": 1,
+    "出口管制": 1,
+    "Intel": 1
    }
   }
  ],
  "seen": [
-  "2026-11-05|AMD 2026 第三季營收成長 45% 目標超越 Intel 成為最大 x86 供應商",
-  "2026-11-05|AMD 資料中心營收近翻倍 2026 Q3 亮眼表現",
-  "2026-11-05|Meta 計畫發行最高 250 億美元債券以支援 AI 基礎建設",
-  "2026-11-05|Microsoft 針對 8 GB 記憶體 PC 進行 Windows 11 效能優化",
-  "2026-11-05|Revolut 以自主持 AI 模型降低 90% 程式碼推論成本",
   "2026-11-06|Box 將 Nvidia Nemotron 嵌入式模型整合至內容檢索服務",
   "2026-11-06|CrowdStrike 推出 AI 殺死開關以關閉惡意代理程式",
   "2026-11-06|Meta 收購 Agent Orchestration 初創公司 Conductor",
@@ -1152,6 +1149,11 @@
   "2026-11-26|SpaceX 獲 FCC 批准部署 100 萬顆軌道資料中心衛星",
   "2026-11-26|TSMC 2nm N2 產能佔 Q3 晶圓營收 8％",
   "2026-11-26|塔塔電子啟動阿薩姆晶圓封測廠二期規劃",
-  "2026-11-26|華為提供 UnifiedBus 晶片互連技術免費專利授權"
+  "2026-11-26|華為提供 UnifiedBus 晶片互連技術免費專利授權",
+  "2026-11-27|Micron、Samsung、SK Hynix 簽署多年度記憶體供應合約",
+  "2026-11-27|Nvidia 因美國出口管制暫停向東南亞四國出貨伺服器",
+  "2026-11-27|SK Hynix 尋求 TSMC 3nm 專業人才開發客製化 HBM",
+  "2026-11-27|Samsung 與 DB HiTek 因 AI 晶片需求提升 8 吋代工提價",
+  "2026-11-27|美國政府施壓 Intel 接受政府持股，相關訴訟文件披露"
  ]
 }
