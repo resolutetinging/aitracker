@@ -2,6 +2,566 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 74,
+        "CSP/CapEx": 56,
+        "App/AI": 26,
+        "gnews-chip": 21,
+        "gnews-dc": 22,
+        "gnews-app": 14
+      },
+      "digest_filtered": 1,
+      "after_dedup": 191,
+      "buckets": {
+        "hw": 52,
+        "corp": 126,
+        "app": 14
+      },
+      "news_char_budget": {
+        "hw": 6000,
+        "corp": 5484,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 52,
+          "full_text_total": 4,
+          "full_text_sent": 4,
+          "sent": 12,
+          "partial_cut": 0,
+          "chars_sent": 5768,
+          "dropped": 40
+        },
+        "corp": {
+          "mode": "pack",
+          "budget": 5484,
+          "candidates": 126,
+          "full_text_total": 3,
+          "full_text_sent": 3,
+          "sent": 13,
+          "partial_cut": 0,
+          "chars_sent": 5266,
+          "dropped": 113
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 14,
+          "full_text_total": 5,
+          "full_text_sent": 4,
+          "sent": 12,
+          "partial_cut": 0,
+          "chars_sent": 5547,
+          "dropped": 2
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 4,
+        "corp": 3,
+        "app": 2
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 4940,
+          "completion_tokens": 1923,
+          "total_tokens": 6863
+        },
+        "corp": {
+          "prompt_tokens": 5203,
+          "completion_tokens": 1768,
+          "total_tokens": 6971
+        },
+        "app": {
+          "prompt_tokens": 4762,
+          "completion_tokens": 1294,
+          "total_tokens": 6056
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "hw",
+          "title": "NVIDIA B300 AI 晶片訂單等待期長達 40 週",
+          "gate": "enforce_headline_only",
+          "action": "rating core→opp",
+          "reason": "素材只有標題，core 上限 opp"
+        },
+        {
+          "section": "corp",
+          "title": "AMD 以 AI 與快閃儲存減緩 DRAM 短缺",
+          "gate": "validate_sources",
+          "action": "source_cleared",
+          "reason": "source_cleared"
+        },
+        {
+          "section": "corp",
+          "title": "AMD 以 AI 與快閃儲存減緩 DRAM 短缺",
+          "gate": "enforce_desc_only",
+          "action": "rating core→opp",
+          "reason": "素材只有 RSS 描述，core 上限 opp"
+        },
+        {
+          "section": "corp",
+          "title": "Amazon Leo 發射 36 顆 LEO 衛星加速商業服務",
+          "gate": "enforce_desc_only",
+          "action": "rating core→opp",
+          "reason": "素材只有 RSS 描述，core 上限 opp"
+        },
+        {
+          "section": "corp",
+          "title": "AMD 以 AI 與快閃儲存減緩 DRAM 短缺",
+          "gate": "downgrade_unsourced",
+          "action": "rating opp→noise",
+          "reason": "rating opp→noise"
+        },
+        {
+          "section": "corp",
+          "title": "AMD 以 AI 與快閃儲存減緩 DRAM 短缺",
+          "gate": "drop_stale_placeholders",
+          "action": "removed",
+          "reason": "removed"
+        },
+        {
+          "section": "corp",
+          "title": "SpaceX 獲 FCC 批准部署 100 萬顆軌道資料中心衛星",
+          "gate": "entity_gate",
+          "action": "chain_node_removed",
+          "reason": "原文無：SolarTech｜SolarTech 太陽能板供應↑"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 1,
+          "opp": 3,
+          "noise": 0
+        },
+        "corp": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "placeholders": 0,
+      "feed_errors": [
+        {
+          "label": "App/AI",
+          "host": "venturebeat.com",
+          "error": "HTTP 429",
+          "detail": "Too Many Requests"
+        },
+        {
+          "label": "Semiconductor",
+          "host": "spectrum.ieee.org",
+          "error": "zero_kept",
+          "detail": "items=30 bytes=351723"
+        }
+      ],
+      "gnews_feed_times": [
+        {
+          "label": "gnews-chip",
+          "at": "2026-11-26T14:15:43+08:00"
+        },
+        {
+          "label": "gnews-dc",
+          "at": "2026-11-26T14:15:43+08:00"
+        },
+        {
+          "label": "gnews-app",
+          "at": "2026-11-26T14:15:44+08:00"
+        }
+      ],
+      "source_funnel": {
+        "semiengineering.com": {
+          "candidates": 6,
+          "dropped_unmatched": 4
+        },
+        "eetimes.com": {
+          "candidates": 5,
+          "dropped_unmatched": 2,
+          "sent": 3
+        },
+        "digitimes.com": {
+          "candidates": 21,
+          "dropped_unmatched": 6,
+          "sent": 8,
+          "final": 3
+        },
+        "theregister.com": {
+          "candidates": 14,
+          "dropped_unmatched": 7,
+          "sent": 5
+        },
+        "cnbc.com": {
+          "candidates": 21,
+          "dropped_unmatched": 2,
+          "sent": 7,
+          "final": 1
+        },
+        "datacenterdynamics.com": {
+          "candidates": 17
+        },
+        "techcrunch.com": {
+          "candidates": 14
+        },
+        "arstechnica.com": {
+          "candidates": 1
+        },
+        "theverge.com": {
+          "candidates": 5
+        },
+        "gnews-chip": {
+          "candidates": 20,
+          "sent": 4
+        },
+        "gnews-dc": {
+          "candidates": 19
+        },
+        "gnews-app": {
+          "candidates": 14,
+          "sent": 3
+        },
+        "technologyreview.com": {
+          "candidates": 5
+        },
+        "datacenterknowledge.com": {
+          "candidates": 3
+        },
+        "tomshardware.com": {
+          "candidates": 7,
+          "dropped_unmatched": 3,
+          "sent": 3
+        },
+        "seekingalpha.com": {
+          "candidates": 1
+        },
+        "msn.com": {
+          "candidates": 1
+        },
+        "finance.biggo.com": {
+          "candidates": 1
+        },
+        "finance.yahoo.com": {
+          "candidates": 2,
+          "sent": 1
+        },
+        "cryptobriefing.com": {
+          "candidates": 1
+        },
+        "usnews.com": {
+          "candidates": 1
+        },
+        "reuters.com": {
+          "candidates": 1
+        },
+        "tradingkey.com": {
+          "candidates": 1,
+          "sent": 1
+        },
+        "bangkokpost.com": {
+          "candidates": 1,
+          "sent": 1
+        },
+        "企業採用": {
+          "candidates": 4,
+          "dropped_unmatched": 2,
+          "sent": 1
+        },
+        "應用落地": {
+          "candidates": 5,
+          "dropped_unmatched": 5
+        },
+        "shattered.io": {
+          "final": 1
+        },
+        "tweaktown.com": {
+          "final": 1
+        },
+        "tradingview.com": {
+          "final": 1
+        },
+        "vmblog.com": {
+          "final": 1
+        }
+      },
+      "ddg": 20,
+      "unmatched_dropped": 31,
+      "gnews_decode": {
+        "attempted": 9,
+        "ok": 9,
+        "failed": 0,
+        "rate_limited": false,
+        "skipped": 0,
+        "skipped_cap": 0,
+        "backoff_count": 0,
+        "backoff_wait_sec": 0,
+        "started_at": "2026-11-26T14:15:47+08:00"
+      },
+      "headline_only": {
+        "fetch_failed": 4,
+        "thin_summary": 59,
+        "fetch_failed_desc_kept": 3,
+        "fail_reasons": {
+          "http_401": 1,
+          "http_403": 3,
+          "error": 2
+        }
+      },
+      "main_call_estimate": {
+        "hw": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 4919,
+          "est_completion_tokens": 1170,
+          "safety": 300,
+          "est_total_tokens": 6389,
+          "target": 6800
+        },
+        "corp": {
+          "news_char_budget": 5484,
+          "est_prompt_tokens": 5163,
+          "est_completion_tokens": 1270,
+          "safety": 300,
+          "est_total_tokens": 6733,
+          "target": 6800
+        },
+        "app": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 4870,
+          "est_completion_tokens": 910,
+          "safety": 300,
+          "est_total_tokens": 6080,
+          "target": 6800
+        }
+      },
+      "retry": {
+        "hw": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "corp": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "app": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        }
+      },
+      "llm_ratings": {
+        "hw": {
+          "core": 2,
+          "opp": 2,
+          "noise": 0
+        },
+        "corp": {
+          "core": 3,
+          "opp": 0,
+          "noise": 0
+        },
+        "app": {
+          "core": 1,
+          "opp": 1,
+          "noise": 0
+        }
+      },
+      "gate_reasons": {
+        "enforce_headline_only": {
+          "NVIDIA B300 AI 晶片訂單等待期長達 40 週": "素材只有標題，core 上限 opp"
+        },
+        "enforce_desc_only": {
+          "AMD 以 AI 與快閃儲存減緩 DRAM 短缺": "素材只有 RSS 描述，core 上限 opp",
+          "Amazon Leo 發射 36 顆 LEO 衛星加速商業服務": "素材只有 RSS 描述，core 上限 opp"
+        }
+      },
+      "headline_only_cards": {
+        "marked": 2,
+        "downgraded": 1,
+        "body_trimmed": 1,
+        "scrubbed": 2
+      },
+      "deepen": {
+        "candidates": 3,
+        "rewritten": 1,
+        "fetch_failed": 2,
+        "llm_failed": 0,
+        "alt_tried": 2,
+        "alt_found": 0,
+        "alt_used": 0,
+        "alt_sources": []
+      },
+      "desc_only_cards": {
+        "marked": 3,
+        "downgraded": 2,
+        "body_trimmed": 3,
+        "scrubbed": 2
+      },
+      "numeric_gate": {
+        "runs": 2,
+        "removed": 0,
+        "sentences_dropped": 0,
+        "contradiction_removed": 0,
+        "no_material": 0,
+        "items": []
+      },
+      "scrub_skipped": {
+        "fix_chains": 5,
+        "validate_impact": 4
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 8,
+        "suspect_cards": 0,
+        "tense_flags": 1,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 4,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "fragment_restored": 0,
+        "items": [
+          {
+            "sec": "hw",
+            "title": "TSMC 2nm N2 產能佔 Q3 晶圓營收 8％",
+            "source": "https://shattered.io/ai-chip-shortage-tsmc-2nm-8-percent-wafer-revenue-nov-26/",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [],
+            "tense_flag": true,
+            "title_suspects": []
+          }
+        ]
+      },
+      "llm_fact_check": {
+        "enabled": true,
+        "calls": 3,
+        "failed_calls": 0,
+        "checked": 8,
+        "ok": 4,
+        "fixed": 4,
+        "dropped": 0,
+        "missing": 0,
+        "skipped_over_budget": 0,
+        "est_prompt_tokens": [
+          2263,
+          1944,
+          1769
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 2201,
+            "completion_tokens": 702,
+            "total_tokens": 2903
+          },
+          {
+            "prompt_tokens": 1838,
+            "completion_tokens": 550,
+            "total_tokens": 2388
+          },
+          {
+            "prompt_tokens": 1668,
+            "completion_tokens": 633,
+            "total_tokens": 2301
+          }
+        ],
+        "items": [
+          {
+            "title": "NVIDIA B300 AI 晶片訂單等待期長達 40 週",
+            "verdict": "fix",
+            "returned": {
+              "title": "NVIDIA B300 AI 晶片訂單等待期長達 40 週",
+              "body": "根據 TweakTown 報導，NVIDIA B300 AI 晶片的客戶訂單目前面臨最多約 40 週的交期。"
+            },
+            "reason": "「up to」應譯為「最多」而非「最長約」。",
+            "new_title": "NVIDIA B300 AI 晶片訂單等待期長達 40 週"
+          },
+          {
+            "title": "塔塔電子啟動阿薩姆晶圓封測廠二期規劃",
+            "verdict": "fix",
+            "returned": {
+              "title": "塔塔電子啟動阿薩姆晶圓封測廠二期規劃",
+              "body": "塔塔電子正為位於印度阿薩姆的半導體組裝與測試廠規劃第二階段，該設施在正式落成前尚未啟用，且被描述為印度首座完整的晶圓封測設施。"
+            },
+            "reason": "BODY 必須僅含 RSS 描述的資訊，去除未在描述中出現的細節。",
+            "new_title": "塔塔電子啟動阿薩姆晶圓封測廠二期規劃"
+          },
+          {
+            "title": "Amazon Leo 發射 36 顆 LEO 衛星加速商業服務",
+            "verdict": "fix",
+            "returned": {
+              "title": "Amazon Leo 發射 36 顆衛星，但仍難以縮小與 Starlink 的差距",
+              "body": "Amazon Leo 成功發射 36 顆低軌道衛星，搭載歐洲 Ariane 6 火箭。 然而仍難以縮小與 Starlink 的差距。"
+            },
+            "reason": "標題與正文加入了原始描述未提及的資訊，如「加速商業服務」與「長期延遲」等，需僅根據 RSS 描述修正。",
+            "new_title": "Amazon Leo 發射 36 顆衛星，但仍難以縮小與 Starlink 的差距"
+          },
+          {
+            "title": "Okta 推出 AI Agents‑Core 供受規範環境使用",
+            "verdict": "fix",
+            "returned": {
+              "title": "Okta 推出 AI Agents‑Core 供受規範環境使用",
+              "body": "Okta 在 2027 財政年度第二季，AI Agents‑Core 獲得美國國防部工作負載的 Impact Level 5 授權，並在受規範環境中一般可用。客戶年合約價值超過 100 萬美元的企業數量較上季增長超過 20%，已超過 600 家。"
+            },
+            "reason": "「向美國國防部提供」未於原文說明，應改為「獲得美國國防部工作負載的 Impact Level 5 授權」以符合原文描述。",
+            "new_title": "Okta 推出 AI Agents‑Core 供受規範環境使用"
+          }
+        ],
+        "desc_only_sent": 2
+      },
+      "entity_gate": {
+        "runs": 1,
+        "cards_checked": 4,
+        "removed": 0,
+        "chain_nodes_dropped": 1,
+        "chains_cleared": 0,
+        "sentences_dropped": 0,
+        "scope_dropped": 0,
+        "no_material": 0,
+        "items": [
+          {
+            "sec": "corp",
+            "title": "SpaceX 獲 FCC 批准部署 100 萬顆軌道資料中心衛星",
+            "action": "chain_node_removed",
+            "reason": "原文無：SolarTech｜SolarTech 太陽能板供應↑",
+            "removed": false
+          }
+        ]
+      },
+      "future_date_gate": {
+        "runs": 1,
+        "sentences_dropped": 0,
+        "removed": 0,
+        "items": []
+      },
+      "date": "2026-11-26",
+      "generated_at": "2026-11-26T14:28:12.783646+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 66,
         "CSP/CapEx": 32,
         "App/AI": 13,
@@ -4286,168 +4846,6 @@
       },
       "date": "2026-11-13",
       "generated_at": "2026-11-13T00:07:46.410764+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 70,
-        "CSP/CapEx": 57,
-        "App/AI": 30,
-        "gnews-chip": 20,
-        "gnews-dc": 23,
-        "gnews-app": 14
-      },
-      "digest_filtered": 0,
-      "after_dedup": 191,
-      "buckets": {
-        "hw": 45,
-        "corp": 127,
-        "app": 45
-      },
-      "news_char_budget": {
-        "hw": 6000,
-        "corp": 8000,
-        "app": 6000
-      },
-      "news_context": {
-        "hw": {
-          "mode": "pack",
-          "budget": 6000,
-          "candidates": 45,
-          "full_text_total": 4,
-          "full_text_sent": 3,
-          "sent": 14,
-          "partial_cut": 0,
-          "chars_sent": 5829,
-          "dropped": 31
-        },
-        "corp": {
-          "mode": "slice",
-          "budget": 8000,
-          "candidates": 127,
-          "full_text_total": 5,
-          "full_text_sent": 5,
-          "sent": 11,
-          "partial_cut": 1,
-          "chars_sent": 8000,
-          "dropped": 116
-        },
-        "app": {
-          "mode": "pack",
-          "budget": 6000,
-          "candidates": 45,
-          "full_text_total": 3,
-          "full_text_sent": 3,
-          "sent": 13,
-          "partial_cut": 0,
-          "chars_sent": 5888,
-          "dropped": 32
-        }
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 1,
-        "corp": 2,
-        "app": 1
-      },
-      "llm_usage": {
-        "hw": {
-          "prompt_tokens": 4650,
-          "completion_tokens": 448,
-          "total_tokens": 5098
-        },
-        "corp": {
-          "prompt_tokens": 5227,
-          "completion_tokens": 1266,
-          "total_tokens": 6493
-        },
-        "app": {
-          "prompt_tokens": 5177,
-          "completion_tokens": 249,
-          "total_tokens": 5426
-        }
-      },
-      "gate_removed": [
-        {
-          "section": "hw",
-          "title": "本日無相關AI基礎設施供應鏈新聞",
-          "gate": "remove_repeated_stories",
-          "action": "removed",
-          "reason": "removed"
-        },
-        {
-          "section": "app",
-          "title": "本日無相關app新聞",
-          "gate": "remove_repeated_stories",
-          "action": "removed",
-          "reason": "removed"
-        }
-      ],
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "placeholders": 2,
-      "llm_ratings": {
-        "hw": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 0,
-          "noise": 1
-        }
-      },
-      "deepen": {
-        "candidates": 0,
-        "rewritten": 0,
-        "fetch_failed": 0,
-        "llm_failed": 0
-      },
-      "dedup_audit": [],
-      "fact_audit": {
-        "mode": "enforce",
-        "checked": 2,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 0,
-          "suspect_cards": 0,
-          "skipped_enforce": 0
-        },
-        "enforced": 0,
-        "title_suspect_cards": 0,
-        "removed": 0,
-        "fragment_restored": 0,
-        "items": []
-      },
-      "date": "2026-11-12",
-      "generated_at": "2026-11-12T00:07:47.228081+08:00"
     }
   ]
 }

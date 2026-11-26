@@ -1,5 +1,200 @@
 [
   {
+    "date": "2026-11-26",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "TSMC 2nm N2 產能佔 Q3 晶圓營收 8％",
+        "layer": "fab",
+        "body": "TSMC 在 2026 年第三季的財報電話會議中透露，其 2nm N2 先進製程貢獻了約 8% 的晶圓營收。該比例較第二季的約 3% 有顯著提升，顯示 AI 晶片需求正快速推動 N2 進入量產。TSMC 自 2025 年第四季起已於高容量模式持續量產 N2。",
+        "impact": "",
+        "rating": "core",
+        "insight": "投資者可關注 N2 相關設備與材料供應鏈的營收成長。",
+        "source_label": "shattered.io",
+        "source": "https://shattered.io/ai-chip-shortage-tsmc-2nm-8-percent-wafer-revenue-nov-26/",
+        "chain": [
+          {
+            "label": "TSMC 2nm N2 產能↑",
+            "type": "up"
+          },
+          {
+            "label": "AI 晶片需求↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "NVIDIA B300 AI 晶片訂單等待期長達 40 週",
+        "layer": "capacity",
+        "body": "NVIDIA B300 AI 晶片訂單等待期長達 40 週。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "TweakTown",
+        "source": "https://www.tweaktown.com/news/114896/nvidia-b300-ai-chip-orders-face-up-to-a-40-week-wait-while-rtx-60-gpu-production-could-slip-past-2027/index.html?utm_source=rss&utm_medium=feed&utm_campaign=news-mf",
+        "headline_only": true,
+        "thin_source": true
+      },
+      {
+        "title": "華為提供 UnifiedBus 晶片互連技術免費專利授權",
+        "layer": "ip",
+        "body": "華為科技在南京展示的 Atlas 950 SuperPoD 旁宣布，將對其 UnifiedBus 晶片互連技術提供免費專利授權。華為同時成立了專門的半導體與 AI 專利團隊，以吸引海外硬體供應商加入其生態系。此舉旨在降低國際客戶採用華為晶片的授權成本。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "投資者可關注與華為合作的封測與組裝廠的訂單變化。",
+        "source_label": "Digitimes",
+        "source": "https://www.digitimes.com/news/a20261126VL211/huawei-ascend-patent-ip-nvidia.html",
+        "chain": [
+          {
+            "label": "華為 UnifiedBus 專利授權↑",
+            "type": "up"
+          },
+          {
+            "label": "海外硬體供應商採用↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "塔塔電子啟動阿薩姆晶圓封測廠二期規劃",
+        "layer": "fab",
+        "body": "塔塔電子正為位於印度阿薩姆的半導體組裝與測試廠規劃第二階段，該設施在正式落成前尚未啟用，且被描述為印度首座完整的晶圓封測設施。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "Digitimes",
+        "source": "https://www.digitimes.com/news/a20261126VL205/tata-group-india-fab-chips-packaging-plant-cleanroom.html",
+        "desc_only": true
+      }
+    ],
+    "corp": [
+      {
+        "title": "Amazon Leo 發射 36 顆衛星，但仍難以縮小與 Starlink 的差距",
+        "layer": "衛星通訊",
+        "body": "Amazon Leo 成功發射 36 顆低軌道衛星，搭載歐洲 Ariane 6 火箭。 然而仍難以縮小與 Starlink 的差距。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "Digitimes",
+        "source": "https://www.digitimes.com/news/a20261126PD206/amazon-launch-starlink-commercial-capacity.html",
+        "thin_source": true,
+        "desc_only": true
+      },
+      {
+        "title": "SpaceX 獲 FCC 批准部署 100 萬顆軌道資料中心衛星",
+        "layer": "衛星通訊",
+        "body": "美國聯邦通訊委員會於本週三批准 SpaceX 在軌道部署 100 萬顆人工智慧運算衛星，稱為 Starmind 星座，並指出競爭星座亦將使用太陽能延伸美國在 AI 領域的領先。FCC 文件顯示，Amazon 的 Kuiper Systems、Viasat 及美國天文學會皆曾提交反對請願，Amazon 甚至批評 Starmind 為「遠大抱負」而非實際計畫。",
+        "impact": "",
+        "rating": "core",
+        "insight": "投資者可關注衛星製造、發射服務與太陽能供應鏈的成長機會。",
+        "source_label": "CNBC",
+        "source": "https://www.cnbc.com/2026/11/25/spacex-fcc-satellite-approval.html",
+        "chain": [
+          {
+            "label": "SpaceX 衛星製造↑",
+            "type": "up"
+          },
+          {
+            "label": "Rocket Lab 發射服務↑",
+            "type": "up"
+          }
+        ]
+      }
+    ],
+    "app": [
+      {
+        "title": "Okta 推出 AI Agents‑Core 供受規範環境使用",
+        "layer": "app",
+        "body": "Okta 在 2027 財政年度第二季，AI Agents‑Core 獲得美國國防部工作負載的 Impact Level 5 授權，並在受規範環境中一般可用。客戶年合約價值超過 100 萬美元的企業數量較上季增長超過 20%，已超過 600 家。",
+        "impact": "",
+        "rating": "core",
+        "insight": "Okta 在高安全需求市場的產品化將帶動其企業收入持續成長。",
+        "source_label": "TradingView",
+        "source": "https://www.tradingview.com/news/zacks:3b18b7fc0094b:0-okta-pushes-for-large-enterprise-adoption-will-it-drive-growth/",
+        "chain": [
+          {
+            "label": "Okta AI Agents‑Core 合約數↑",
+            "type": "up"
+          },
+          {
+            "label": "美國國防部授權↑",
+            "type": "up"
+          }
+        ]
+      },
+      {
+        "title": "Cycode 擴大英國營運以加速企業 AI 程式碼採用",
+        "layer": "app",
+        "body": "Cycode 擴大英國營運以加速企業 AI 程式碼採用。",
+        "impact": "",
+        "rating": "opp",
+        "insight": "",
+        "source_label": "VMblog",
+        "source": "https://vmblog.com/news/cycode-expands-uk-operations-as-enterprise-adoption-of-ai-coding-accelerates/",
+        "headline_only": true
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "UnifiedBus",
+        "full": "華為 UnifiedBus 晶片互連技術",
+        "def": "一種高效能晶片間互連架構，旨在降低資料傳輸延遲與功耗。",
+        "why": "免費授權可促進國際硬體供應商採用，影響晶圓封測與組裝供應鏈。",
+        "category": "hardware"
+      },
+      {
+        "term": "N2",
+        "full": "TSMC 2nm N2 先進製程",
+        "def": "台積電的第二代 2 奈米製程平台，主要用於高效能 AI 晶片。",
+        "why": "其營收佔比提升顯示 AI 晶片需求驅動先進製程產能擴張。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "B300",
+        "full": "NVIDIA B300 AI 晶片",
+        "def": "NVIDIA 針對資料中心 AI 工作負載設計的高效能加速卡晶片。",
+        "why": "交期長達 40 週顯示先進製程供應緊張，影響整體 AI 硬體供應鏈。",
+        "category": "hardware"
+      },
+      {
+        "term": "快閃儲存",
+        "full": "Flash Storage",
+        "def": "一種使用 NAND 快閃記憶體的儲存技術，具備高速讀寫特性，常用於暫存或替代傳統 DRAM。",
+        "why": "AMD 以此降低 DRAM 需求，直接影響記憶體供應鏈。",
+        "category": "hardware"
+      },
+      {
+        "term": "LEO 衛星",
+        "full": "Low Earth Orbit Satellite",
+        "def": "部署於低地球軌道（約 500 至 2000 公里）的衛星，適合提供低延遲寬頻服務。",
+        "why": "Amazon Leo 與 SpaceX 的星座計畫皆屬此類，關係到全球寬頻基礎建設。",
+        "category": "semiconductor"
+      },
+      {
+        "term": "軌道資料中心衛星",
+        "full": "Orbital Data Center Satellite",
+        "def": "在太空中提供計算與儲存資源的衛星，旨在降低資料傳輸延遲並分散資料中心負載。",
+        "why": "SpaceX 的 100 萬顆提案屬此類，將改變資料中心硬體部署模式。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "AI Agents‑Core",
+        "full": "Okta 為受規範環境設計的 AI 代理平台",
+        "def": "一套結合身份驗證與 AI 功能的服務，允許企業在高安全要求的場景中部署 AI 代理。",
+        "why": "提供符合政府與軍事安全標準的 AI 解決方案，開啟新市場機會。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Impact Level 5",
+        "full": "美國國防部資訊安全等級 5",
+        "def": "美國國防部對資訊系統安全性的最高授權等級，表示系統能抵禦高度敏感的威脅。",
+        "why": "獲得此授權的產品可進入國防與關鍵基礎設施市場，提升商業價值。",
+        "category": "role"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-25",
     "is_sunday": false,
     "hw": [
@@ -788,85 +983,6 @@
         "full": "AI solution accelerators",
         "def": "預先建置的模型、資料管線與工具組合，可快速套用於特定業務場景，減少開發時間與成本。",
         "why": "幫助企業在既有流程中快速部署 AI，提升競爭力。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
-  },
-  {
-    "date": "2026-11-19",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "美國商務部產業與安全局（BIS）收緊 AI 晶片及海外運算存取的限制",
-        "layer": "export_controls",
-        "body": "美國商務部產業與安全局（BIS）收緊 AI 晶片及海外運算存取的限制。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "—",
-        "source": "",
-        "desc_only": true
-      }
-    ],
-    "corp": [
-      {
-        "title": "Elementl Power 與 Google Cloud 合作推出 AI 套件，加速核能選址與許可流程——建立在與 Google 的既有合作基礎上",
-        "layer": "core",
-        "body": "Elementl Power 與 Google Cloud 合作推出 AI 套件，加速核能選址與許可流程——建立在與 Google 的既有合作基礎上。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "",
-        "source_label": "Data Center Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/elementl-power-partners-with-google-cloud-on-ai-suite-to-speed-up-nuclear-siting-and-licensing/",
-        "headline_only": true,
-        "thin_source": true
-      },
-      {
-        "title": "OpenAI 任命清潔能源負責人",
-        "layer": "opp",
-        "body": "Nate Sweet 加入團隊。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "",
-        "source_label": "Data Center Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/openai-hires-clean-energy-lead/",
-        "thin_source": true,
-        "desc_only": true
-      }
-    ],
-    "app": [
-      {
-        "title": "本日無相關app新聞",
-        "layer": "",
-        "body": "今日該分類無足夠具體新聞素材可供分析。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "Edge AI",
-        "full": "Edge Artificial Intelligence（邊緣人工智慧）",
-        "def": "在終端設備或靠近資料來源的地方執行 AI 推論，減少延遲並提升資料隱私。",
-        "why": "Edge AI 讓農業機械等垂直應用能在現場即時決策，減少對雲端的依賴。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "核能選址 AI 套件",
-        "full": "利用人工智慧協助核電站選址與許可流程的軟體工具",
-        "def": "結合 GIS 數據、模擬模型與機器學習，快速評估核電站建設的環境與安全條件。",
-        "why": "加速核能建設可提升能源供應穩定性，同時為雲端算力與高效能硬體創造新需求。",
-        "category": "software"
-      },
-      {
-        "term": "Real World Evidence",
-        "full": "Real World Evidence (RWE)",
-        "def": "利用真實世界資料（如電子健康紀錄、保險理賠資料、患者登錄、穿戴式裝置與患者自報結果）進行醫療效果與安全性分析的技術與服務。",
-        "why": "RWE 可協助藥廠與醫療機構在臨床試驗之外快速取得實際使用情況，提升新藥上市與療效驗證效率。",
         "category": "ai_technique"
       }
     ],
