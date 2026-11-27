@@ -1,5 +1,76 @@
 [
   {
+    "date": "2026-11-28",
+    "is_sunday": false,
+    "hw": [
+      {
+        "title": "今日無相關晶片新聞",
+        "layer": "",
+        "body": "今日無相關晶片新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "corp": [
+      {
+        "title": "今日無相關巨頭新聞",
+        "layer": "",
+        "body": "今日無相關巨頭新聞。",
+        "impact": "",
+        "rating": "noise",
+        "insight": "",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "app": [
+      {
+        "title": "本日無相關app新聞",
+        "layer": "noise",
+        "body": "今日該分類無足夠具體新聞素材可供分析。",
+        "impact": null,
+        "rating": "noise",
+        "insight": "無可供投資參考之AI應用訊息。",
+        "source_label": "",
+        "source": ""
+      }
+    ],
+    "glossary_new": [
+      {
+        "term": "ARTEX",
+        "full": "AI‑驅動的滲透測試框架",
+        "def": "一個開源的人工智慧工具，用於自動化偵查、憑證攻擊與漏洞利用。",
+        "why": "被駭客利用可加速攻擊流程，對供應鏈安全構成威脅。",
+        "category": "ai_technique"
+      },
+      {
+        "term": "Megapack",
+        "full": "Tesla 大型儲能電池系統",
+        "def": "由多顆鋰離子電池模組組成的高容量儲能解決方案，常用於電網備援與大型資料中心。",
+        "why": "提供高密度、快速部署的電力支援，降低資料中心對傳統電網的依賴。",
+        "category": "hardware"
+      },
+      {
+        "term": "虛擬 iPhone",
+        "full": "在雲端模擬的 iPhone 手機環境",
+        "def": "AWS 提供的雲端服務，允許開發者在不擁有實體設備的情況下測試 iOS 應用程式。",
+        "why": "降低開發測試成本，提升雲端平台的服務深度與客戶黏著度。",
+        "category": "software"
+      },
+      {
+        "term": "AI 伺服器",
+        "full": "Artificial Intelligence Server",
+        "def": "搭載高效能晶片與加速器的伺服器，用於執行大規模機器學習模型與推論工作負載。",
+        "why": "在AI運算需求快速增長的環境下，AI 伺服器是資料中心升級與算力擴充的關鍵資產。",
+        "category": "hardware"
+      }
+    ],
+    "weekly_summary": null
+  },
+  {
     "date": "2026-11-27",
     "is_sunday": false,
     "hw": [
@@ -834,102 +905,5 @@
       }
     ],
     "weekly_summary": "HW：美國維持 Nvidia H200 出口限制，同時 Nvidia 提供 1180 億美元保證金以支援 AI 設施建設，雙重政策將同時抑制部分供應並刺激上游產能擴張。\nCORP：Anthropic 以創紀錄 IPO 推動 GPU 需求上升，Nvidia 市值大幅縮減影響供應鏈資本支出。\n下週看點：留意 Nvidia 是否公布新一輪資本支出計畫或調整 AI 晶片路線圖。\nAPP：金融與醫療領域的 AI 應用正從提升內部效率（如翻譯週期從 12 個月縮至 24 小時）轉向解決系統整合挑戰。\n用戶洞察：金融機構與醫療機構皆在探索 AI 效能，但落地障礙仍不同。"
-  },
-  {
-    "date": "2026-11-21",
-    "is_sunday": false,
-    "hw": [
-      {
-        "title": "Nvidia 融資風險或持續壓低 AI 晶片股價",
-        "layer": "financial",
-        "body": "Lynx Equity Strategies 分析師 KC Rajkumar 在題為「AI Semis: The revenge of Jensen Huang」的報告中指出，Nvidia 正在為客戶籌措資金的努力受阻，可能拖累整體 AI 晶片板塊。報告顯示 Nvidia 股價已接近分析師設定的 135 美元目標價，當前交易價為 141.25 美元。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "投資者應關注 Nvidia 融資瓶頸對供應鏈需求的下行壓力。",
-        "source_label": "Yahoo Finance",
-        "source": "https://finance.yahoo.com/technology/ai/articles/nvidia-financing-risks-could-keep-135314222.html"
-      },
-      {
-        "title": "Microsoft 成首家採用 Intel EMIB 包裝技術於 Azure 硬體",
-        "layer": "strategic supplier",
-        "body": "Microsoft 成為首家在 Azure 硬體上使用 Intel 的 EMIB 包裝技術的公司，且協議確認長期供應 Xeon 處理器給 Microsoft。",
-        "impact": "",
-        "rating": "opp",
-        "insight": "",
-        "source_label": "Data Center Dynamics",
-        "source": "https://www.datacenterdynamics.com/en/news/microsoft-becomes-first-company-to-use-intels-emib-packaging-technology-for-azure-hardware/",
-        "thin_source": true,
-        "desc_only": true
-      }
-    ],
-    "corp": [
-      {
-        "title": "Anthropic 以 935 億美元總募資創下史上最大 IPO",
-        "layer": "IPO",
-        "body": "Anthropic 在 2026 年 11 月 19 日的首次公開發行中共發行 1,127,000,000 股 A 類普通股，發行價為每股 83 美元。首次公開發行當天募集資金 813 億美元，隨後承銷商行使超額配售權（greenshoe）再募集 122 億美元，使總募資金額達 935 億美元，創下史上最大規模的 IPO。",
-        "impact": "",
-        "rating": "core",
-        "insight": "巨額募資將加速 Anthropic 的算力佈局，提升上游晶圓與封裝產能需求。",
-        "source_label": "CNBC",
-        "source": "https://www.cnbc.com/2026/11/20/anthropic-ipo-greenshoe.html"
-      }
-    ],
-    "app": [
-      {
-        "title": "本日無相關app新聞",
-        "layer": "none",
-        "body": "今日該分類無足夠具體新聞素材可供分析。",
-        "impact": "",
-        "rating": "noise",
-        "insight": "",
-        "source_label": "",
-        "source": ""
-      }
-    ],
-    "glossary_new": [
-      {
-        "term": "EMIB",
-        "full": "Embedded Multi‑Die Interconnect Bridge",
-        "def": "Intel 開發的先進封裝技術，可在同一封裝內將多顆晶片以高密度互連，提升效能與功耗表現。",
-        "why": "此技術被 Azure 伺服器採用，代表高階封裝需求上升，影響晶圓代工與封裝產業的產能配置。",
-        "category": "hardware"
-      },
-      {
-        "term": "AI Semis",
-        "full": "Artificial Intelligence Semiconductors",
-        "def": "專為人工智慧工作負載設計的晶片，包括 GPU、加速卡與專用 AI 晶片。",
-        "why": "Nvidia 融資問題直接影響 AI Semis 市場的資金流與需求，關係整條供應鏈的訂單與產能規劃。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "greenshoe",
-        "full": "超額配售權（greenshoe）",
-        "def": "承銷商在 IPO 後可額外購買一定比例的股份，以穩定股價並增加募集資金的機制。",
-        "why": "此機制使 Anthropic 能在原始發行後再募集 122 億美元，提升總募資規模。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "overallotment",
-        "full": "超額配售（overallotment）",
-        "def": "承銷商在首次公開發行後行使的額外配售權，通常用於支撐股價並增加公司募集資金。",
-        "why": "Anthropic 透過此機制將募資額從 813 億美元提升至 935 億美元。",
-        "category": "ai_technique"
-      },
-      {
-        "term": "record IPO",
-        "full": "史上最大首次公開發行",
-        "def": "指單次 IPO 募資金額創下歷史最高紀錄的上市事件。",
-        "why": "Anthropic 的 935 億美元募資創下全球史上最大 IPO，顯示 AI 產業資金聚焦度極高。",
-        "category": "semiconductor"
-      },
-      {
-        "term": "AI Spotlight Observatory",
-        "full": "AI Spotlight Observatory",
-        "def": "由英國金融行為監管局（FCA）建立的觀測平台，用於追蹤金融服務業的人工智慧採用情況。",
-        "why": "可提供業界 AI 採用率與趨勢的透明資訊，協助金融機構與供應鏈規劃資源配置。",
-        "category": "ai_technique"
-      }
-    ],
-    "weekly_summary": null
   }
 ]

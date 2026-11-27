@@ -2,6 +2,537 @@
   "runs": [
     {
       "feeds": {
+        "Semiconductor": 47,
+        "CSP/CapEx": 51,
+        "App/AI": 21,
+        "gnews-chip": 23,
+        "gnews-dc": 23,
+        "gnews-app": 18
+      },
+      "digest_filtered": 1,
+      "after_dedup": 165,
+      "buckets": {
+        "hw": 39,
+        "corp": 126,
+        "app": 12
+      },
+      "news_char_budget": {
+        "hw": 6000,
+        "corp": 5580,
+        "app": 6000
+      },
+      "news_context": {
+        "hw": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 39,
+          "full_text_total": 5,
+          "full_text_sent": 3,
+          "sent": 12,
+          "partial_cut": 0,
+          "chars_sent": 5814,
+          "dropped": 27
+        },
+        "corp": {
+          "mode": "pack",
+          "budget": 5580,
+          "candidates": 126,
+          "full_text_total": 5,
+          "full_text_sent": 3,
+          "sent": 13,
+          "partial_cut": 0,
+          "chars_sent": 5473,
+          "dropped": 113
+        },
+        "app": {
+          "mode": "pack",
+          "budget": 6000,
+          "candidates": 12,
+          "full_text_total": 2,
+          "full_text_sent": 2,
+          "sent": 12,
+          "partial_cut": 0,
+          "chars_sent": 4744,
+          "dropped": 0
+        }
+      },
+      "enriched": 12,
+      "llm_items": {
+        "hw": 1,
+        "corp": 3,
+        "app": 1
+      },
+      "llm_usage": {
+        "hw": {
+          "prompt_tokens": 5150,
+          "completion_tokens": 934,
+          "total_tokens": 6084
+        },
+        "corp": {
+          "prompt_tokens": 5217,
+          "completion_tokens": 1942,
+          "total_tokens": 7159
+        },
+        "app": {
+          "prompt_tokens": 4740,
+          "completion_tokens": 353,
+          "total_tokens": 5093
+        }
+      },
+      "gate_removed": [
+        {
+          "section": "corp",
+          "title": "OpenAI 合併 Chat 與 Work 以單一使用量計量",
+          "gate": "validate_sources",
+          "action": "source_cleared",
+          "reason": "source_cleared"
+        },
+        {
+          "section": "hw",
+          "title": "Nvidia 因美國出口管制暫停向東南亞四國出貨 AI 伺服器",
+          "gate": "enforce_desc_only",
+          "action": "rating core→opp",
+          "reason": "素材只有 RSS 描述，core 上限 opp"
+        },
+        {
+          "section": "corp",
+          "title": "SpaceX 在德州 Starbase 資料中心安裝 2.5 億美元 Tesla Megapack 電池",
+          "gate": "numeric_gate",
+          "action": "removed",
+          "reason": "body 數字無原文出處：2026 年、100 兆、250 兆"
+        },
+        {
+          "section": "hw",
+          "title": "Nvidia 因美國出口管制暫停向東南亞四國出貨 AI 伺服器",
+          "gate": "remove_repeated_stories",
+          "action": "removed",
+          "reason": "removed"
+        },
+        {
+          "section": "corp",
+          "title": "OpenAI 合併 Chat 與 Work 以單一使用量計量",
+          "gate": "downgrade_unsourced",
+          "action": "rating core→noise",
+          "reason": "rating core→noise"
+        },
+        {
+          "section": "corp",
+          "title": "OpenAI 合併 Chat 與 Work 以單一使用量計量",
+          "gate": "drop_stale_placeholders",
+          "action": "removed",
+          "reason": "removed"
+        },
+        {
+          "section": "corp",
+          "title": "AWS 在雲端提供虛擬 iPhone 及 Android 模擬器",
+          "gate": "llm_fact_check",
+          "action": "removed",
+          "reason": "drop：標題與內容皆包含未在原文素材中出現的日期、裝置型號、OS 版本等資訊，無法僅依原文修正"
+        }
+      ],
+      "llm_failed": {
+        "hw": false,
+        "corp": false,
+        "app": false
+      },
+      "final": {
+        "hw": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "corp": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "placeholders": 3,
+      "feed_errors": [
+        {
+          "label": "Semiconductor",
+          "host": "www.digitimes.com",
+          "error": "ParseError",
+          "detail": "not well-formed (invalid token): line 556, column 54; head=<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r <rss version=\"2.0\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:atom=\"http://www.w3.org/2005/Atom\" xmlns:media=\"ht"
+        },
+        {
+          "label": "App/AI",
+          "host": "feeds.arstechnica.com",
+          "error": "zero_kept",
+          "detail": "items=20 bytes=76390"
+        },
+        {
+          "label": "App/AI",
+          "host": "venturebeat.com",
+          "error": "HTTP 429",
+          "detail": "Too Many Requests"
+        }
+      ],
+      "gnews_feed_times": [
+        {
+          "label": "gnews-chip",
+          "at": "2026-11-28T00:00:55+08:00"
+        },
+        {
+          "label": "gnews-dc",
+          "at": "2026-11-28T00:00:55+08:00"
+        },
+        {
+          "label": "gnews-app",
+          "at": "2026-11-28T00:00:56+08:00"
+        }
+      ],
+      "source_funnel": {
+        "semiengineering.com": {
+          "candidates": 1
+        },
+        "eetimes.com": {
+          "candidates": 5,
+          "dropped_unmatched": 1,
+          "sent": 3
+        },
+        "theregister.com": {
+          "candidates": 13,
+          "dropped_unmatched": 6,
+          "sent": 3
+        },
+        "cnbc.com": {
+          "candidates": 17,
+          "dropped_unmatched": 5,
+          "sent": 4
+        },
+        "datacenterdynamics.com": {
+          "candidates": 16,
+          "sent": 4
+        },
+        "techcrunch.com": {
+          "candidates": 16,
+          "sent": 6
+        },
+        "theverge.com": {
+          "candidates": 4,
+          "sent": 1
+        },
+        "gnews-chip": {
+          "candidates": 23,
+          "sent": 6
+        },
+        "gnews-dc": {
+          "candidates": 23
+        },
+        "gnews-app": {
+          "candidates": 17,
+          "sent": 3
+        },
+        "spectrum.ieee.org": {
+          "candidates": 1,
+          "sent": 1
+        },
+        "technologyreview.com": {
+          "candidates": 1
+        },
+        "datacenterknowledge.com": {
+          "candidates": 1
+        },
+        "tomshardware.com": {
+          "candidates": 9,
+          "sent": 3
+        },
+        "ainvest.com": {
+          "candidates": 1
+        },
+        "seekingalpha.com": {
+          "candidates": 1
+        },
+        "finance.biggo.com": {
+          "candidates": 1
+        },
+        "msn.com": {
+          "candidates": 1
+        },
+        "theglobeandmail.com": {
+          "candidates": 1
+        },
+        "wccftech.com": {
+          "candidates": 1
+        },
+        "casrai.org": {
+          "candidates": 1,
+          "dropped_unmatched": 1
+        },
+        "timesofindia.indiatimes.com": {
+          "candidates": 1,
+          "sent": 1
+        },
+        "nytimes.com": {
+          "candidates": 1
+        },
+        "dimsumdaily.hk": {
+          "candidates": 1
+        },
+        "企業採用": {
+          "candidates": 5,
+          "dropped_unmatched": 4,
+          "sent": 1
+        },
+        "應用落地": {
+          "candidates": 3,
+          "sent": 1
+        }
+      },
+      "ddg": 18,
+      "unmatched_dropped": 17,
+      "gnews_decode": {
+        "attempted": 9,
+        "ok": 9,
+        "failed": 0,
+        "rate_limited": false,
+        "skipped": 0,
+        "skipped_cap": 0,
+        "backoff_count": 0,
+        "backoff_wait_sec": 0,
+        "started_at": "2026-11-28T00:00:59+08:00"
+      },
+      "headline_only": {
+        "fetch_failed": 6,
+        "thin_summary": 73,
+        "fetch_failed_desc_kept": 4,
+        "fail_reasons": {
+          "http_403": 7,
+          "invalid_text": 2,
+          "error": 1
+        }
+      },
+      "main_call_estimate": {
+        "hw": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 5029,
+          "est_completion_tokens": 1170,
+          "safety": 300,
+          "est_total_tokens": 6499,
+          "target": 6800
+        },
+        "corp": {
+          "news_char_budget": 5580,
+          "est_prompt_tokens": 5182,
+          "est_completion_tokens": 1270,
+          "safety": 300,
+          "est_total_tokens": 6752,
+          "target": 6800
+        },
+        "app": {
+          "news_char_budget": 6000,
+          "est_prompt_tokens": 4774,
+          "est_completion_tokens": 910,
+          "safety": 300,
+          "est_total_tokens": 5984,
+          "target": 6800
+        }
+      },
+      "retry": {
+        "hw": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "corp": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        },
+        "app": {
+          "tried": false,
+          "sent": 0,
+          "items": 0,
+          "used": false,
+          "error": ""
+        }
+      },
+      "llm_ratings": {
+        "hw": {
+          "core": 1,
+          "opp": 0,
+          "noise": 0
+        },
+        "corp": {
+          "core": 2,
+          "opp": 1,
+          "noise": 0
+        },
+        "app": {
+          "core": 0,
+          "opp": 0,
+          "noise": 1
+        }
+      },
+      "headline_only_cards": {
+        "marked": 0,
+        "downgraded": 0,
+        "scrubbed": 0
+      },
+      "deepen": {
+        "candidates": 3,
+        "rewritten": 1,
+        "fetch_failed": 2,
+        "llm_failed": 0,
+        "alt_tried": 2,
+        "alt_found": 0,
+        "alt_used": 0,
+        "alt_sources": [],
+        "alt_rejected_domain": [
+          {
+            "host": "digg.com",
+            "stage": "gnews_source"
+          },
+          {
+            "host": "cryptobriefing.com",
+            "stage": "gnews_source"
+          },
+          {
+            "host": "finance.yahoo.com",
+            "stage": "gnews_source"
+          },
+          {
+            "host": "shattered.io",
+            "stage": "gnews_source"
+          }
+        ]
+      },
+      "gate_reasons": {
+        "enforce_desc_only": {
+          "Nvidia 因美國出口管制暫停向東南亞四國出貨 AI 伺服器": "素材只有 RSS 描述，core 上限 opp"
+        },
+        "numeric_gate": {
+          "OpenAI 合併 Chat 與 Work 以單一使用量計量": "body 數字無原文出處：2026 年",
+          "SpaceX 在德州 Starbase 資料中心安裝 2.5 億美元 Tesla Megapack 電池": "body 數字無原文出處：2026 年、100 兆、250 兆"
+        },
+        "llm_fact_check": {
+          "AWS 在雲端提供虛擬 iPhone 及 Android 模擬器": "drop：標題與內容皆包含未在原文素材中出現的日期、裝置型號、OS 版本等資訊，無法僅依原文修正"
+        }
+      },
+      "desc_only_cards": {
+        "marked": 2,
+        "downgraded": 1,
+        "body_trimmed": 2,
+        "scrubbed": 0
+      },
+      "numeric_gate": {
+        "runs": 2,
+        "removed": 1,
+        "sentences_dropped": 2,
+        "contradiction_removed": 0,
+        "no_material": 1,
+        "items": [
+          {
+            "sec": "corp",
+            "title": "OpenAI 合併 Chat 與 Work 以單一使用量計量",
+            "reason": "body 數字無原文出處：2026 年",
+            "removed": false
+          },
+          {
+            "sec": "corp",
+            "title": "SpaceX 在德州 Starbase 資料中心安裝 2.5 億美元 Tesla Megapack 電池",
+            "reason": "body 數字無原文出處：2026 年、100 兆、250 兆",
+            "removed": true
+          }
+        ]
+      },
+      "scrub_skipped": {
+        "fix_chains": 0,
+        "validate_impact": 0
+      },
+      "dedup_audit": [],
+      "fact_audit": {
+        "mode": "enforce",
+        "checked": 1,
+        "suspect_cards": 0,
+        "tense_flags": 0,
+        "no_material": 0,
+        "low_coverage": {
+          "checked": 0,
+          "suspect_cards": 0,
+          "skipped_enforce": 0
+        },
+        "enforced": 0,
+        "title_suspect_cards": 0,
+        "removed": 0,
+        "fragment_restored": 0,
+        "items": [
+          {
+            "sec": "corp",
+            "title": "AWS 在雲端提供虛擬 iPhone 及 Android 模擬器",
+            "source": "https://www.theregister.com/off-prem/2026/11/27/aws-adds-virtual-iphones-to-its-cloud/5312457",
+            "rating": "core",
+            "coverage": "full",
+            "suspects": [],
+            "undetermined": [
+              "2026年11月27日"
+            ],
+            "tense_flag": false,
+            "title_suspects": []
+          }
+        ]
+      },
+      "llm_fact_check": {
+        "enabled": true,
+        "calls": 1,
+        "failed_calls": 0,
+        "checked": 1,
+        "ok": 0,
+        "fixed": 0,
+        "dropped": 1,
+        "missing": 0,
+        "skipped_over_budget": 0,
+        "est_prompt_tokens": [
+          1741
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 1678,
+            "completion_tokens": 90,
+            "total_tokens": 1768
+          }
+        ],
+        "items": [
+          {
+            "title": "AWS 在雲端提供虛擬 iPhone 及 Android 模擬器",
+            "verdict": "drop",
+            "reason": "標題與內容皆包含未在原文素材中出現的日期、裝置型號、OS 版本等資訊，無法僅依原文修正"
+          }
+        ],
+        "desc_only_sent": 0
+      },
+      "entity_gate": {
+        "runs": 1,
+        "cards_checked": 0,
+        "removed": 0,
+        "chain_nodes_dropped": 0,
+        "chains_cleared": 0,
+        "sentences_dropped": 0,
+        "scope_dropped": 0,
+        "no_material": 0,
+        "items": []
+      },
+      "future_date_gate": {
+        "runs": 1,
+        "sentences_dropped": 0,
+        "removed": 0,
+        "items": []
+      },
+      "date": "2026-11-28",
+      "generated_at": "2026-11-28T00:10:48.793846+08:00"
+    },
+    {
+      "feeds": {
         "Semiconductor": 76,
         "CSP/CapEx": 53,
         "App/AI": 25,
@@ -4931,200 +5462,6 @@
       },
       "date": "2026-11-15",
       "generated_at": "2026-11-15T00:07:54.205802+08:00"
-    },
-    {
-      "feeds": {
-        "Semiconductor": 70,
-        "CSP/CapEx": 55,
-        "App/AI": 26,
-        "gnews-chip": 24,
-        "gnews-dc": 23,
-        "gnews-app": 12
-      },
-      "digest_filtered": 1,
-      "after_dedup": 188,
-      "buckets": {
-        "hw": 70,
-        "corp": 122,
-        "app": 9
-      },
-      "news_char_budget": {
-        "hw": 6000,
-        "corp": 8000,
-        "app": 6000
-      },
-      "news_context": {
-        "hw": {
-          "mode": "pack",
-          "budget": 6000,
-          "candidates": 70,
-          "full_text_total": 3,
-          "full_text_sent": 3,
-          "sent": 13,
-          "partial_cut": 0,
-          "chars_sent": 5993,
-          "dropped": 57
-        },
-        "corp": {
-          "mode": "slice",
-          "budget": 8000,
-          "candidates": 122,
-          "full_text_total": 5,
-          "full_text_sent": 5,
-          "sent": 10,
-          "partial_cut": 1,
-          "chars_sent": 8000,
-          "dropped": 112
-        },
-        "app": {
-          "mode": "pack",
-          "budget": 6000,
-          "candidates": 9,
-          "full_text_total": 4,
-          "full_text_sent": 4,
-          "sent": 9,
-          "partial_cut": 0,
-          "chars_sent": 4568,
-          "dropped": 0
-        }
-      },
-      "enriched": 12,
-      "llm_items": {
-        "hw": 2,
-        "corp": 3,
-        "app": 1
-      },
-      "llm_usage": {
-        "hw": {
-          "prompt_tokens": 5249,
-          "completion_tokens": 1503,
-          "total_tokens": 6752
-        },
-        "corp": {
-          "prompt_tokens": 5471,
-          "completion_tokens": 1651,
-          "total_tokens": 7122
-        },
-        "app": {
-          "prompt_tokens": 4676,
-          "completion_tokens": 914,
-          "total_tokens": 5590
-        }
-      },
-      "gate_removed": [
-        {
-          "section": "hw",
-          "title": "美國商務部長 Lutnick 同意就 Nvidia AI 晶片對華銷售接受質詢",
-          "gate": "downgrade_low_quality",
-          "action": "rating core→opp",
-          "reason": "rating core→opp"
-        },
-        {
-          "section": "corp",
-          "title": "Nvidia 創辦人離職引發晶片股輪換 投資者關注 AMD、Broadcom 與 TSMC",
-          "gate": "dedup_and_freshness_check",
-          "action": "removed",
-          "reason": "兩篇皆報導 Jensen Huang 辭職及其後繼者安排，屬同一領導層變動事件"
-        }
-      ],
-      "llm_failed": {
-        "hw": false,
-        "corp": false,
-        "app": false
-      },
-      "final": {
-        "hw": {
-          "core": 1,
-          "opp": 1,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "placeholders": 0,
-      "unmatched_dropped": 30,
-      "retry": {
-        "hw": {
-          "tried": false,
-          "sent": 0,
-          "items": 0,
-          "used": false,
-          "error": ""
-        },
-        "corp": {
-          "tried": false,
-          "sent": 0,
-          "items": 0,
-          "used": false,
-          "error": ""
-        },
-        "app": {
-          "tried": false,
-          "sent": 0,
-          "items": 0,
-          "used": false,
-          "error": ""
-        }
-      },
-      "llm_ratings": {
-        "hw": {
-          "core": 2,
-          "opp": 0,
-          "noise": 0
-        },
-        "corp": {
-          "core": 2,
-          "opp": 1,
-          "noise": 0
-        },
-        "app": {
-          "core": 0,
-          "opp": 1,
-          "noise": 0
-        }
-      },
-      "deepen": {
-        "candidates": 1,
-        "rewritten": 1,
-        "fetch_failed": 0,
-        "llm_failed": 0
-      },
-      "dedup_audit": [
-        {
-          "title": "Nvidia 創辦人離職引發晶片股輪換 投資者關注 AMD、Broadcom 與 TSMC",
-          "section": "corp",
-          "action": "removed",
-          "matched_title": "Nvidia 財務長 Colette Kress 受命暫代執行長",
-          "reason": "兩篇皆報導 Jensen Huang 辭職及其後繼者安排，屬同一領導層變動事件"
-        }
-      ],
-      "fact_audit": {
-        "mode": "enforce",
-        "checked": 5,
-        "suspect_cards": 0,
-        "tense_flags": 0,
-        "no_material": 0,
-        "low_coverage": {
-          "checked": 0,
-          "suspect_cards": 0,
-          "skipped_enforce": 0
-        },
-        "enforced": 0,
-        "title_suspect_cards": 0,
-        "removed": 0,
-        "fragment_restored": 0,
-        "items": []
-      },
-      "date": "2026-11-14",
-      "generated_at": "2026-11-14T00:09:06.293440+08:00"
     }
   ]
 }
